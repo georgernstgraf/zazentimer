@@ -9,3 +9,9 @@
 - **Reason**: To resolve `InflateException` crashes and broken navigation caused by incompatibilities between legacy preference frameworks and the new AndroidX `PreferenceFragmentCompat`.
 - **Considered**: Manually wiring up fragment transactions for nested `PreferenceScreen`s.
 - **Tradeoff**: Flattens the settings hierarchy slightly, placing all settings on one scrollable screen, but vastly improves stability and reduces maintenance burden.
+
+## 2026-04-04: Full Automation of Start Meditation UI Test Scenario
+- **Choice**: Implemented full automation for the "Start Meditation" UI test scenario following Android best practices with Page Object Model pattern.
+- **Reason**: To achieve full test coverage for the core meditation functionality and update the UI_TEST_PLAN.md status from partially automated (🟡) to fully automated (🟢).
+- **Considered**: Keeping the partial automation status and only documenting the enhancements.
+- **Tradeoff**: Required enhancing existing page objects and updating documentation, but provides complete test coverage for this critical user flow.
