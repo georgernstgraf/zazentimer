@@ -22,7 +22,7 @@ import de.gaffga.android.zazentimer.bo.Session;
 import java.util.ArrayList;
 
 /* loaded from: classes.dex */
-public class MainFragment extends Fragment implements AdapterView.OnItemSelectedListener {
+public class MainFragment extends androidx.fragment.app.Fragment implements AdapterView.OnItemSelectedListener {
     private static final String TAG = "ZMT_MainFragment";
     private Button butStart;
     private Context context;

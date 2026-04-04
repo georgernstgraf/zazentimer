@@ -1,6 +1,6 @@
 package de.gaffga.android.fragments;
 
-import android.app.Fragment;
+import androidx.fragment.app.Fragment;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
@@ -57,7 +57,7 @@ public class SectionEditFragment extends Fragment {
     private ImageButton butPlayGong = null;
     private HorizontalScrollView svBellGap = null;
 
-    @Override // android.app.Fragment
+    @Override
     public void onCreate(Bundle bundle) {
         super.onCreate(bundle);
         if (bundle != null) {
@@ -65,13 +65,13 @@ public class SectionEditFragment extends Fragment {
         }
     }
 
-    @Override // android.app.Fragment
+    @Override
     public void onSaveInstanceState(Bundle bundle) {
         super.onSaveInstanceState(bundle);
         bundle.putInt("sectionId", this.sectionId);
     }
 
-    @Override // android.app.Fragment
+    @Override
     public View onCreateView(LayoutInflater layoutInflater, ViewGroup viewGroup, Bundle bundle) {
         Log.d(TAG, "onCreateView");
         View inflate = layoutInflater.inflate(R.layout.fragment_edit_section, viewGroup, false);
@@ -81,7 +81,7 @@ public class SectionEditFragment extends Fragment {
         return inflate;
     }
 
-    @Override // android.app.Fragment
+    @Override
     public void onResume() {
         super.onResume();
         this.section = DbOperations.readSection(this.sectionId);
@@ -89,8 +89,8 @@ public class SectionEditFragment extends Fragment {
         getActivity().invalidateOptionsMenu();
         fillViewFromData();
         installListeners();
-        this.svBellGap.post(new Runnable() { // from class: de.gaffga.android.fragments.SectionEditFragment.1
-            @Override // java.lang.Runnable
+        this.svBellGap.post(new Runnable() {
+            @Override
             public void run() {
                 TextView textView = SectionEditFragment.this.tvGaps[SectionEditFragment.this.section.bellpause - 1];
                 Rect rect = new Rect();
@@ -100,7 +100,7 @@ public class SectionEditFragment extends Fragment {
         });
     }
 
-    @Override // android.app.Fragment
+    @Override
     public void onPause() {
         super.onPause();
         this.audio.release();
@@ -109,7 +109,7 @@ public class SectionEditFragment extends Fragment {
         DbOperations.updateSection(this.section);
     }
 
-    @Override // android.app.Fragment
+    @Override
     public void onActivityResult(int i, int i2, Intent intent) {
         super.onActivityResult(i, i2, intent);
         if (i2 == -1 && i == INTENT_GET_BELL) {
@@ -223,8 +223,8 @@ public class SectionEditFragment extends Fragment {
     }
 
     protected void installListeners() {
-        this.butAddCustomBell.setOnClickListener(new View.OnClickListener() { // from class: de.gaffga.android.fragments.SectionEditFragment.2
-            @Override // android.view.View.OnClickListener
+        this.butAddCustomBell.setOnClickListener(new View.OnClickListener() {
+            @Override
             public void onClick(View view) {
                 Intent intent = new Intent("android.intent.action.GET_CONTENT");
                 intent.setFlags(1);
@@ -232,44 +232,44 @@ public class SectionEditFragment extends Fragment {
                 SectionEditFragment.this.startActivityForResult(Intent.createChooser(intent, SectionEditFragment.this.getResources().getString(R.string.select_audio)), SectionEditFragment.INTENT_GET_BELL);
             }
         });
-        this.ivBellCount1.setOnClickListener(new View.OnClickListener() { // from class: de.gaffga.android.fragments.SectionEditFragment.3
-            @Override // android.view.View.OnClickListener
+        this.ivBellCount1.setOnClickListener(new View.OnClickListener() {
+            @Override
             public void onClick(View view) {
                 SectionEditFragment.this.section.bellcount = 1;
                 SectionEditFragment.this.setViewBellCount(SectionEditFragment.this.section.bellcount);
             }
         });
-        this.ivBellCount2.setOnClickListener(new View.OnClickListener() { // from class: de.gaffga.android.fragments.SectionEditFragment.4
-            @Override // android.view.View.OnClickListener
+        this.ivBellCount2.setOnClickListener(new View.OnClickListener() {
+            @Override
             public void onClick(View view) {
                 SectionEditFragment.this.section.bellcount = 2;
                 SectionEditFragment.this.setViewBellCount(SectionEditFragment.this.section.bellcount);
             }
         });
-        this.ivBellCount3.setOnClickListener(new View.OnClickListener() { // from class: de.gaffga.android.fragments.SectionEditFragment.5
-            @Override // android.view.View.OnClickListener
+        this.ivBellCount3.setOnClickListener(new View.OnClickListener() {
+            @Override
             public void onClick(View view) {
                 SectionEditFragment.this.section.bellcount = 3;
                 SectionEditFragment.this.setViewBellCount(SectionEditFragment.this.section.bellcount);
             }
         });
-        this.ivBellCount4.setOnClickListener(new View.OnClickListener() { // from class: de.gaffga.android.fragments.SectionEditFragment.6
-            @Override // android.view.View.OnClickListener
+        this.ivBellCount4.setOnClickListener(new View.OnClickListener() {
+            @Override
             public void onClick(View view) {
                 SectionEditFragment.this.section.bellcount = 4;
                 SectionEditFragment.this.setViewBellCount(SectionEditFragment.this.section.bellcount);
             }
         });
-        this.ivBellCount5.setOnClickListener(new View.OnClickListener() { // from class: de.gaffga.android.fragments.SectionEditFragment.7
-            @Override // android.view.View.OnClickListener
+        this.ivBellCount5.setOnClickListener(new View.OnClickListener() {
+            @Override
             public void onClick(View view) {
                 SectionEditFragment.this.section.bellcount = 5;
                 SectionEditFragment.this.setViewBellCount(SectionEditFragment.this.section.bellcount);
             }
         });
         for (int i = 0; i < 15; i++) {
-            this.tvGaps[i].setOnClickListener(new View.OnClickListener() { // from class: de.gaffga.android.fragments.SectionEditFragment.8
-                @Override // android.view.View.OnClickListener
+            this.tvGaps[i].setOnClickListener(new View.OnClickListener() {
+                @Override
                 public void onClick(View view) {
                     int i2 = 0;
                     while (true) {
@@ -286,14 +286,14 @@ public class SectionEditFragment extends Fragment {
                 }
             });
         }
-        this.lDuration.setOnClickListener(new View.OnClickListener() { // from class: de.gaffga.android.fragments.SectionEditFragment.9
-            @Override // android.view.View.OnClickListener
+        this.lDuration.setOnClickListener(new View.OnClickListener() {
+            @Override
             public void onClick(View view) {
                 SectionEditFragment.this.pickDuration();
             }
         });
-        this.butPlayGong.setOnClickListener(new View.OnClickListener() { // from class: de.gaffga.android.fragments.SectionEditFragment.10
-            @Override // android.view.View.OnClickListener
+        this.butPlayGong.setOnClickListener(new View.OnClickListener() {
+            @Override
             public void onClick(View view) {
                 Bell bellForSection = BellCollection.getInstance().getBellForSection(SectionEditFragment.this.section);
                 if (bellForSection != null) {
@@ -301,12 +301,12 @@ public class SectionEditFragment extends Fragment {
                 }
             }
         });
-        this.gongSelect.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() { // from class: de.gaffga.android.fragments.SectionEditFragment.11
-            @Override // android.widget.AdapterView.OnItemSelectedListener
+        this.gongSelect.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
             }
 
-            @Override // android.widget.AdapterView.OnItemSelectedListener
+            @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i2, long j) {
                 Bell bell = BellCollection.getInstance().getBell(i2);
                 if (bell.getUri().toString().equals(SectionEditFragment.this.section.bellUri)) {
@@ -316,16 +316,16 @@ public class SectionEditFragment extends Fragment {
                 SectionEditFragment.this.section.bell = -2;
             }
         });
-        this.volume.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() { // from class: de.gaffga.android.fragments.SectionEditFragment.12
-            @Override // android.widget.SeekBar.OnSeekBarChangeListener
+        this.volume.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
             public void onProgressChanged(SeekBar seekBar, int i2, boolean z) {
             }
 
-            @Override // android.widget.SeekBar.OnSeekBarChangeListener
+            @Override
             public void onStartTrackingTouch(SeekBar seekBar) {
             }
 
-            @Override // android.widget.SeekBar.OnSeekBarChangeListener
+            @Override
             public void onStopTrackingTouch(SeekBar seekBar) {
                 SectionEditFragment.this.section.volume = SectionEditFragment.this.volume.getProgress();
                 if (BellCollection.getInstance().getBellForSection(SectionEditFragment.this.section) != null) {
@@ -335,8 +335,7 @@ public class SectionEditFragment extends Fragment {
         });
     }
 
-    /* JADX INFO: Access modifiers changed from: private */
-    public void setViewBellCount(int i) {
+    private void setViewBellCount(int i) {
         this.ivBellCount1.setSelected(i >= 1);
         this.ivBellCount2.setSelected(i >= 2);
         this.ivBellCount3.setSelected(i >= 3);
@@ -344,8 +343,7 @@ public class SectionEditFragment extends Fragment {
         this.ivBellCount5.setSelected(i >= 5);
     }
 
-    /* JADX INFO: Access modifiers changed from: private */
-    public void setViewGap(int i) {
+    private void setViewGap(int i) {
         int i2 = 0;
         while (i2 < 15) {
             int i3 = i2 + 1;
@@ -354,19 +352,18 @@ public class SectionEditFragment extends Fragment {
         }
     }
 
-    /* JADX INFO: Access modifiers changed from: private */
-    public void pickDuration() {
+    private void pickDuration() {
         final TimePickerFragment timePickerFragment = new TimePickerFragment();
         timePickerFragment.setMinutes(this.durationMinutes);
         timePickerFragment.setSeconds(this.durationSeconds);
-        timePickerFragment.setOnOkListener(new Runnable() { // from class: de.gaffga.android.fragments.SectionEditFragment.13
-            @Override // java.lang.Runnable
+        timePickerFragment.setOnOkListener(new Runnable() {
+            @Override
             public void run() {
                 SectionEditFragment.this.setDurationMinutes(timePickerFragment.getMinutes());
                 SectionEditFragment.this.setDurationSeconds(timePickerFragment.getSeconds());
             }
         });
-        timePickerFragment.show(getFragmentManager(), "timePicker");
+        timePickerFragment.show(getParentFragmentManager(), "timePicker");
     }
 
     public void setDurationSeconds(int i) {

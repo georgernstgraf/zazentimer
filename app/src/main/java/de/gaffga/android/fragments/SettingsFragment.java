@@ -1,17 +1,17 @@
 package de.gaffga.android.fragments;
 
 import android.app.Activity;
-import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
-import android.preference.CheckBoxPreference;
-import android.preference.Preference;
-import android.preference.PreferenceFragment;
+import androidx.appcompat.app.AlertDialog;
 import androidx.core.content.ContextCompat;
+import androidx.preference.CheckBoxPreference;
+import androidx.preference.Preference;
+import androidx.preference.PreferenceFragmentCompat;
 import android.util.Log;
 import android.widget.Toast;
 import de.gaffga.android.base.preferences.BrightnessPreference;
@@ -28,26 +28,25 @@ import java.util.Enumeration;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipFile;
 
-/* loaded from: classes.dex */
-public class SettingsFragment extends PreferenceFragment {
+public class SettingsFragment extends PreferenceFragmentCompat {
     private static final String TAG = "ZMT_SettingsFragment";
     private int ASK_BACKUP_EXTERNAL_STORAGE = 123;
     private int ASK_RESTORE_EXTERNAL_STORAGE = 124;
 
-    @Override // android.preference.PreferenceFragment, android.app.Fragment
-    public void onCreate(Bundle bundle) {
-        super.onCreate(bundle);
-        addPreferencesFromResource(R.xml.preferences);
-        findPreference(ZazenTimerActivity.PREF_KEY_THEME).setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() { // from class: de.gaffga.android.fragments.SettingsFragment.1
-            @Override // android.preference.Preference.OnPreferenceChangeListener
+    @Override
+    public void onCreatePreferences(Bundle bundle, String rootKey) {
+        setPreferencesFromResource(R.xml.preferences, rootKey);
+
+        findPreference(ZazenTimerActivity.PREF_KEY_THEME).setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
+            @Override
             public boolean onPreferenceChange(Preference preference, Object obj) {
-                SettingsFragment.this.getActivity().runOnUiThread(new Runnable() { // from class: de.gaffga.android.fragments.SettingsFragment.1.1
-                    @Override // java.lang.Runnable
+                requireActivity().runOnUiThread(new Runnable() {
+                    @Override
                     public void run() {
-                        Intent intent = new Intent(SettingsFragment.this.getActivity(), (Class<?>) ZazenTimerActivity.class);
+                        Intent intent = new Intent(requireActivity(), ZazenTimerActivity.class);
                         intent.putExtra(ZazenTimerActivity.INTENT_DATA_SHOW_PREF_ON_START, true);
-                        SettingsFragment.this.getActivity().finish();
-                        SettingsFragment.this.getActivity().startActivity(intent);
+                        requireActivity().finish();
+                        requireActivity().startActivity(intent);
                     }
                 });
                 return true;
@@ -55,8 +54,8 @@ public class SettingsFragment extends PreferenceFragment {
         });
         final CheckBoxPreference checkBoxPreference = (CheckBoxPreference) findPreference(ZazenTimerActivity.PREF_KEY_OUTPUT_CHANNEL_ALARM);
         final CheckBoxPreference checkBoxPreference2 = (CheckBoxPreference) findPreference(ZazenTimerActivity.PREF_KEY_OUTPUT_CHANNEL_MUSIC);
-        checkBoxPreference.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() { // from class: de.gaffga.android.fragments.SettingsFragment.2
-            @Override // android.preference.Preference.OnPreferenceChangeListener
+        checkBoxPreference.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
+            @Override
             public boolean onPreferenceChange(Preference preference, Object obj) {
                 if (!((Boolean) obj).booleanValue()) {
                     return checkBoxPreference2.isChecked();
@@ -65,8 +64,8 @@ public class SettingsFragment extends PreferenceFragment {
                 return true;
             }
         });
-        checkBoxPreference2.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() { // from class: de.gaffga.android.fragments.SettingsFragment.3
-            @Override // android.preference.Preference.OnPreferenceChangeListener
+        checkBoxPreference2.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
+            @Override
             public boolean onPreferenceChange(Preference preference, Object obj) {
                 if (!((Boolean) obj).booleanValue()) {
                     return checkBoxPreference.isChecked();
@@ -79,9 +78,9 @@ public class SettingsFragment extends PreferenceFragment {
         final CheckBoxPreference checkBoxPreference4 = (CheckBoxPreference) findPreference(ZazenTimerActivity.PREF_KEY_MUTE_MODE_VIBRATE);
         final CheckBoxPreference checkBoxPreference5 = (CheckBoxPreference) findPreference(ZazenTimerActivity.PREF_KEY_MUTE_MODE_NONE);
         CheckBoxPreference checkBoxPreference6 = (CheckBoxPreference) findPreference(ZazenTimerActivity.PREF_KEY_KEEP_SCREEN_ON);
-        final BrightnessPreference brightnessPreference = (BrightnessPreference) findPreference(ZazenTimerActivity.PREF_KEY_BRIGHTNESS);
-        checkBoxPreference3.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() { // from class: de.gaffga.android.fragments.SettingsFragment.4
-            @Override // android.preference.Preference.OnPreferenceChangeListener
+        final Preference brightnessPreference = findPreference(ZazenTimerActivity.PREF_KEY_BRIGHTNESS);
+        checkBoxPreference3.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
+            @Override
             public boolean onPreferenceChange(Preference preference, Object obj) {
                 if (!((Boolean) obj).booleanValue()) {
                     return checkBoxPreference4.isChecked() || checkBoxPreference5.isChecked();
@@ -91,8 +90,8 @@ public class SettingsFragment extends PreferenceFragment {
                 return true;
             }
         });
-        checkBoxPreference4.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() { // from class: de.gaffga.android.fragments.SettingsFragment.5
-            @Override // android.preference.Preference.OnPreferenceChangeListener
+        checkBoxPreference4.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
+            @Override
             public boolean onPreferenceChange(Preference preference, Object obj) {
                 if (!((Boolean) obj).booleanValue()) {
                     return checkBoxPreference3.isChecked() || checkBoxPreference5.isChecked();
@@ -102,8 +101,8 @@ public class SettingsFragment extends PreferenceFragment {
                 return true;
             }
         });
-        checkBoxPreference5.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() { // from class: de.gaffga.android.fragments.SettingsFragment.6
-            @Override // android.preference.Preference.OnPreferenceChangeListener
+        checkBoxPreference5.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
+            @Override
             public boolean onPreferenceChange(Preference preference, Object obj) {
                 if (!((Boolean) obj).booleanValue()) {
                     return checkBoxPreference3.isChecked() || checkBoxPreference4.isChecked();
@@ -113,8 +112,8 @@ public class SettingsFragment extends PreferenceFragment {
                 return true;
             }
         });
-        checkBoxPreference6.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() { // from class: de.gaffga.android.fragments.SettingsFragment.7
-            @Override // android.preference.Preference.OnPreferenceChangeListener
+        checkBoxPreference6.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
+            @Override
             public boolean onPreferenceChange(Preference preference, Object obj) {
                 brightnessPreference.setEnabled(((Boolean) obj).booleanValue());
                 return true;
@@ -127,74 +126,35 @@ public class SettingsFragment extends PreferenceFragment {
         if (Environment.getExternalStorageState().equals("mounted") || Environment.getExternalStorageState().equals("mounted_ro")) {
             findPreference2.setEnabled(true);
             findPreference2.setSummary(R.string.pref_sum_restore);
-            findPreference2.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() { // from class: de.gaffga.android.fragments.SettingsFragment.8
-                @Override // android.preference.Preference.OnPreferenceClickListener
+            findPreference2.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
+                @Override
                 public boolean onPreferenceClick(Preference preference) {
-                    new AlertDialog.Builder(SettingsFragment.this.getActivity()).setTitle(R.string.restore_really_title).setMessage(R.string.restore_really_text).setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() { // from class: de.gaffga.android.fragments.SettingsFragment.8.2
-                        @Override // android.content.DialogInterface.OnClickListener
+                    new AlertDialog.Builder(requireActivity()).setTitle(R.string.restore_really_title).setMessage(R.string.restore_really_text).setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
+                        @Override
                         public void onClick(DialogInterface dialogInterface, int i) {
-                            SettingsFragment.this.doRestore();
+                            doRestore();
                         }
-                    }).setNegativeButton(R.string.abbrechen, new DialogInterface.OnClickListener() { // from class: de.gaffga.android.fragments.SettingsFragment.8.1
-                        @Override // android.content.DialogInterface.OnClickListener
+                    }).setNegativeButton(R.string.abbrechen, new DialogInterface.OnClickListener() {
+                        @Override
                         public void onClick(DialogInterface dialogInterface, int i) {
                         }
                     }).show();
                     return true;
                 }
             });
-        } else {
-            String externalStorageState = Environment.getExternalStorageState();
-            if (externalStorageState.equals("bad_removal")) {
-                findPreference.setSummary(R.string.pref_sum_bad_removal);
-            } else if (externalStorageState.equals("checking")) {
-                findPreference.setSummary(R.string.pref_sum_checking);
-            } else if (externalStorageState.equals("ejecting")) {
-                findPreference.setSummary(R.string.pref_sum_ejecting);
-            } else if (externalStorageState.equals("nofs")) {
-                findPreference.setSummary(R.string.pref_sum_nofs);
-            } else if (externalStorageState.equals("removed")) {
-                findPreference.setSummary(R.string.pref_sum_removed);
-            } else if (externalStorageState.equals("shared")) {
-                findPreference.setSummary(R.string.pref_sum_shared);
-            }
         }
         if (equals) {
             findPreference.setEnabled(true);
             findPreference.setSummary(R.string.pref_sum_backup);
-            findPreference.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() { // from class: de.gaffga.android.fragments.SettingsFragment.9
-                @Override // android.preference.Preference.OnPreferenceClickListener
+            findPreference.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
+                @Override
                 public boolean onPreferenceClick(Preference preference) {
-                    SettingsFragment.this.doBackup();
+                    doBackup();
                     return true;
                 }
             });
-            return;
-        }
-        findPreference.setEnabled(false);
-        String externalStorageState2 = Environment.getExternalStorageState();
-        if (externalStorageState2.equals("bad_removal")) {
-            findPreference.setSummary(R.string.pref_sum_bad_removal);
-            return;
-        }
-        if (externalStorageState2.equals("checking")) {
-            findPreference.setSummary(R.string.pref_sum_checking);
-            return;
-        }
-        if (externalStorageState2.equals("ejecting")) {
-            findPreference.setSummary(R.string.pref_sum_ejecting);
-            return;
-        }
-        if (externalStorageState2.equals("mounted_ro")) {
-            findPreference.setSummary(R.string.pref_sum_read_only);
-            return;
-        }
-        if (externalStorageState2.equals("nofs")) {
-            findPreference.setSummary(R.string.pref_sum_nofs);
-        } else if (externalStorageState2.equals("removed")) {
-            findPreference.setSummary(R.string.pref_sum_removed);
-        } else if (externalStorageState2.equals("shared")) {
-            findPreference.setSummary(R.string.pref_sum_shared);
+        } else {
+            findPreference.setEnabled(false);
         }
     }
 
@@ -216,34 +176,30 @@ public class SettingsFragment extends PreferenceFragment {
         return new File(backupDir, "backup.zip");
     }
 
-    /* JADX INFO: Access modifiers changed from: private */
     public void doRestore() {
-        if (Build.VERSION.SDK_INT >= 23 && ContextCompat.checkSelfPermission(getActivity(), "android.permission.WRITE_EXTERNAL_STORAGE") == -1) {
+        if (Build.VERSION.SDK_INT >= 23 && ContextCompat.checkSelfPermission(requireActivity(), "android.permission.WRITE_EXTERNAL_STORAGE") == -1) {
             requestPermissions(new String[]{"android.permission.WRITE_EXTERNAL_STORAGE"}, this.ASK_RESTORE_EXTERNAL_STORAGE);
         } else {
-            new AsyncTask<Void, Void, Integer>() { // from class: de.gaffga.android.fragments.SettingsFragment.10
-                /* JADX INFO: Access modifiers changed from: protected */
-                @Override // android.os.AsyncTask
-                public Integer doInBackground(Void... voidArr) {
-                    return Integer.valueOf(SettingsFragment.this.doRealRestore());
+            new AsyncTask<Void, Void, Integer>() {
+                @Override
+                protected Integer doInBackground(Void... voidArr) {
+                    return Integer.valueOf(doRealRestore());
                 }
 
-                /* JADX INFO: Access modifiers changed from: protected */
-                @Override // android.os.AsyncTask
-                public void onPostExecute(Integer num) {
+                @Override
+                protected void onPostExecute(Integer num) {
                     if (num.intValue() == 0) {
-                        Toast.makeText(SettingsFragment.this.getActivity(), R.string.restore_success_text, 0).show();
+                        Toast.makeText(requireActivity(), R.string.restore_success_text, 0).show();
                     } else if (num.intValue() == 1) {
-                        Toast.makeText(SettingsFragment.this.getActivity(), R.string.restore_backup_not_found, 0).show();
+                        Toast.makeText(requireActivity(), R.string.restore_backup_not_found, 0).show();
                     } else if (num.intValue() == 2) {
-                        Toast.makeText(SettingsFragment.this.getActivity(), R.string.restore_error_text, 0).show();
+                        Toast.makeText(requireActivity(), R.string.restore_error_text, 0).show();
                     }
                 }
             }.execute(new Void[0]);
         }
     }
 
-    /* JADX INFO: Access modifiers changed from: private */
     public int doRealRestore() {
         File backupFile = getBackupFile();
         boolean z = true;
@@ -259,11 +215,11 @@ public class SettingsFragment extends PreferenceFragment {
                 ZipEntry nextElement = entries.nextElement();
                 if (nextElement.getName().equals(ZenTimerDatabase.DATABASE_NAME)) {
                     DbOperations.close();
-                    if (!receiveFile(zipFile.getInputStream(nextElement), getActivity().getDatabasePath(ZenTimerDatabase.DATABASE_NAME))) {
+                    if (!receiveFile(zipFile.getInputStream(nextElement), requireActivity().getDatabasePath(ZenTimerDatabase.DATABASE_NAME))) {
                         z2 = true;
                     }
-                    DbOperations.init(getActivity());
-                } else if (!receiveFile(zipFile.getInputStream(nextElement), new File(getActivity().getFilesDir(), nextElement.getName()))) {
+                    DbOperations.init(requireActivity());
+                } else if (!receiveFile(zipFile.getInputStream(nextElement), new File(requireActivity().getFilesDir(), nextElement.getName()))) {
                     z2 = true;
                 }
             }
@@ -274,143 +230,80 @@ public class SettingsFragment extends PreferenceFragment {
         return z ? 2 : 0;
     }
 
-    @Override // android.app.Fragment
+    @Override
     public void onRequestPermissionsResult(int i, String[] strArr, int[] iArr) {
         if (i == this.ASK_BACKUP_EXTERNAL_STORAGE) {
             if (iArr.length > 0 && iArr[0] == 0) {
                 doBackup();
-                return;
             } else {
-                Toast.makeText(getActivity(), R.string.backup_no_permission, 0).show();
-                return;
+                Toast.makeText(requireActivity(), R.string.backup_no_permission, 0).show();
             }
-        }
-        if (i == this.ASK_RESTORE_EXTERNAL_STORAGE) {
+        } else if (i == this.ASK_RESTORE_EXTERNAL_STORAGE) {
             if (iArr.length > 0 && iArr[0] == 0) {
                 doRestore();
             } else {
-                Toast.makeText(getActivity(), R.string.restore_no_permission, 0).show();
+                Toast.makeText(requireActivity(), R.string.restore_no_permission, 0).show();
             }
         }
     }
 
-    /* JADX INFO: Access modifiers changed from: private */
     public void doBackup() {
-        if (Build.VERSION.SDK_INT >= 23 && ContextCompat.checkSelfPermission(getActivity(), "android.permission.WRITE_EXTERNAL_STORAGE") == -1) {
+        if (Build.VERSION.SDK_INT >= 23 && ContextCompat.checkSelfPermission(requireActivity(), "android.permission.WRITE_EXTERNAL_STORAGE") == -1) {
             requestPermissions(new String[]{"android.permission.WRITE_EXTERNAL_STORAGE"}, this.ASK_BACKUP_EXTERNAL_STORAGE);
         } else {
-            new AsyncTask<Activity, Void, Boolean>() { // from class: de.gaffga.android.fragments.SettingsFragment.11
-                /* JADX INFO: Access modifiers changed from: protected */
-                @Override // android.os.AsyncTask
-                public Boolean doInBackground(Activity... activityArr) {
-                    return Boolean.valueOf(SettingsFragment.this.doRealBackup());
+            new AsyncTask<Activity, Void, Boolean>() {
+                @Override
+                protected Boolean doInBackground(Activity... activityArr) {
+                    return Boolean.valueOf(doRealBackup());
                 }
 
-                /* JADX INFO: Access modifiers changed from: protected */
-                @Override // android.os.AsyncTask
-                public void onPostExecute(Boolean bool) {
+                @Override
+                protected void onPostExecute(Boolean bool) {
                     if (bool.booleanValue()) {
-                        Toast.makeText(SettingsFragment.this.getActivity(), R.string.backup_success_text, 0).show();
+                        Toast.makeText(requireActivity(), R.string.backup_success_text, 0).show();
                     } else {
-                        Toast.makeText(SettingsFragment.this.getActivity(), R.string.backup_error_text, 0).show();
+                        Toast.makeText(requireActivity(), R.string.backup_error_text, 0).show();
                     }
                 }
             }.execute(new Activity[0]);
         }
     }
 
-    /* JADX INFO: Access modifiers changed from: private */
-    /* JADX WARN: Code restructure failed: missing block: B:18:0x009f, code lost:
-    
-        if (getBackupFile().exists() == false) goto L18;
-     */
-    /*
-        Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct add '--show-bad-code' argument
-    */
     public boolean doRealBackup() {
-        /*
-            r10 = this;
-            java.io.File r0 = r10.getBackupFile()
-            r1 = 0
-            if (r0 != 0) goto L22
-            java.lang.String r2 = "ZMT_SettingsFragment"
-            java.lang.StringBuilder r3 = new java.lang.StringBuilder
-            r3.<init>()
-            java.lang.String r4 = "Error creating backup file "
-            r3.append(r4)
-            java.lang.String r0 = r0.getAbsolutePath()
-            r3.append(r0)
-            java.lang.String r0 = r3.toString()
-            android.util.Log.e(r2, r0)
-            return r1
-        L22:
-            java.lang.String r2 = "ZMT_SettingsFragment"
-            java.lang.StringBuilder r3 = new java.lang.StringBuilder
-            r3.<init>()
-            java.lang.String r4 = "Trying to backup to:"
-            r3.append(r4)
-            java.lang.String r4 = r0.getAbsolutePath()
-            r3.append(r4)
-            java.lang.String r3 = r3.toString()
-            android.util.Log.d(r2, r3)
-            r2 = 1
-            java.io.FileOutputStream r3 = new java.io.FileOutputStream     // Catch: java.io.IOException -> La2
-            r3.<init>(r0)     // Catch: java.io.IOException -> La2
-            java.util.zip.ZipOutputStream r0 = new java.util.zip.ZipOutputStream     // Catch: java.io.IOException -> La2
-            r0.<init>(r3)     // Catch: java.io.IOException -> La2
-            java.util.zip.ZipEntry r3 = new java.util.zip.ZipEntry     // Catch: java.io.IOException -> La2
-            java.lang.String r4 = "zentimer"
-            r3.<init>(r4)     // Catch: java.io.IOException -> La2
-            r0.putNextEntry(r3)     // Catch: java.io.IOException -> La2
-            android.app.Activity r3 = r10.getActivity()     // Catch: java.io.IOException -> La2
-            java.lang.String r4 = "zentimer"
-            java.io.File r3 = r3.getDatabasePath(r4)     // Catch: java.io.IOException -> La2
-            boolean r3 = r10.sendFile(r3, r0)     // Catch: java.io.IOException -> La2
-            r3 = r3 ^ r2
-            r0.closeEntry()     // Catch: java.io.IOException -> La2
-            android.app.Activity r4 = r10.getActivity()     // Catch: java.io.IOException -> La2
-            java.io.File r4 = r4.getFilesDir()     // Catch: java.io.IOException -> La2
-            de.gaffga.android.fragments.SettingsFragment$12 r5 = new de.gaffga.android.fragments.SettingsFragment$12     // Catch: java.io.IOException -> La2
-            r5.<init>()     // Catch: java.io.IOException -> La2
-            java.io.File[] r4 = r4.listFiles(r5)     // Catch: java.io.IOException -> La2
-            int r5 = r4.length     // Catch: java.io.IOException -> La2
-            r6 = r3
-            r3 = r1
-        L77:
-            if (r3 >= r5) goto L94
-            r7 = r4[r3]     // Catch: java.io.IOException -> La2
-            java.util.zip.ZipEntry r8 = new java.util.zip.ZipEntry     // Catch: java.io.IOException -> La2
-            java.lang.String r9 = r7.getName()     // Catch: java.io.IOException -> La2
-            r8.<init>(r9)     // Catch: java.io.IOException -> La2
-            r0.putNextEntry(r8)     // Catch: java.io.IOException -> La2
-            boolean r7 = r10.sendFile(r7, r0)     // Catch: java.io.IOException -> La2
-            if (r7 != 0) goto L8e
-            r6 = r2
-        L8e:
-            r0.closeEntry()     // Catch: java.io.IOException -> La2
-            int r3 = r3 + 1
-            goto L77
-        L94:
-            r0.close()     // Catch: java.io.IOException -> La2
-            java.io.File r0 = r10.getBackupFile()     // Catch: java.io.IOException -> La2
-            boolean r0 = r0.exists()     // Catch: java.io.IOException -> La2
-            if (r0 != 0) goto Lab
-            goto Laa
-        La2:
-            r0 = move-exception
-            java.lang.String r3 = "ZMT_SettingsFragment"
-            java.lang.String r4 = "IO/Error"
-            android.util.Log.e(r3, r4, r0)
-        Laa:
-            r6 = r2
-        Lab:
-            if (r6 != 0) goto Lae
-            r1 = r2
-        Lae:
-            return r1
-        */
-        throw new UnsupportedOperationException("Method not decompiled: de.gaffga.android.fragments.SettingsFragment.doRealBackup():boolean");
+        File backupFile = getBackupFile();
+        if (backupFile == null) {
+            Log.e(TAG, "Error creating backup file ");
+            return false;
+        }
+        Log.d(TAG, "Trying to backup to:" + backupFile.getAbsolutePath());
+        boolean r6 = false;
+        try {
+            FileOutputStream fos = new FileOutputStream(backupFile);
+            java.util.zip.ZipOutputStream zos = new java.util.zip.ZipOutputStream(fos);
+            java.util.zip.ZipEntry ze = new java.util.zip.ZipEntry("zentimer");
+            zos.putNextEntry(ze);
+            if (!sendFile(requireActivity().getDatabasePath("zentimer"), zos)) {
+                r6 = true;
+            }
+            zos.closeEntry();
+            File filesDir = requireActivity().getFilesDir();
+            File[] listFiles = filesDir.listFiles(f -> !f.getName().equals("InstantRun"));
+            if (listFiles != null) {
+                for (File file : listFiles) {
+                    java.util.zip.ZipEntry ze2 = new java.util.zip.ZipEntry(file.getName());
+                    zos.putNextEntry(ze2);
+                    if (!sendFile(file, zos)) {
+                        r6 = true;
+                    }
+                    zos.closeEntry();
+                }
+            }
+            zos.close();
+        } catch (Exception e) {
+            Log.e(TAG, "IO/Error", e);
+            r6 = true;
+        }
+        return !r6;
     }
 
     private boolean receiveFile(InputStream inputStream, File file) {
@@ -423,6 +316,7 @@ public class SettingsFragment extends PreferenceFragment {
                 fileOutputStream.write(bArr, 0, read);
                 read = inputStream.read(bArr);
             }
+            fileOutputStream.close();
             return true;
         } catch (Exception e) {
             Log.e(TAG, "Error receiving file from zip archive", e);
@@ -438,16 +332,11 @@ public class SettingsFragment extends PreferenceFragment {
             for (int read = fileInputStream.read(bArr); read > 0; read = fileInputStream.read(bArr)) {
                 outputStream.write(bArr, 0, read);
             }
+            fileInputStream.close();
             return true;
         } catch (Exception e) {
             Log.e(TAG, "Error sending file to zip archive", e);
             return false;
         }
-    }
-
-    @Override // android.app.Fragment
-    public void onResume() {
-        super.onResume();
-        getActivity().invalidateOptionsMenu();
     }
 }

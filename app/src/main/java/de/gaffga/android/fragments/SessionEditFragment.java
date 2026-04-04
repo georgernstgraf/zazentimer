@@ -1,8 +1,8 @@
 package de.gaffga.android.fragments;
 
 import android.app.Activity;
-import android.app.Fragment;
-import android.app.FragmentTransaction;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -26,7 +26,7 @@ import de.gaffga.betterlist.BetterListView;
 import de.gaffga.betterlist.IBetterListElementHandler;
 
 /* loaded from: classes.dex */
-public class SessionEditFragment extends Fragment implements BetterListView.BetterListListener<Section> {
+public class SessionEditFragment extends androidx.fragment.app.Fragment implements BetterListView.BetterListListener<Section> {
     private static final String TAG = "ZMT_SessionEditFragment";
     private MessageView messageView;
     private SharedPreferences pref;
@@ -240,7 +240,7 @@ public class SessionEditFragment extends Fragment implements BetterListView.Bett
     }
 
     public void showSectionEditFragment() {
-        FragmentTransaction beginTransaction = getFragmentManager().beginTransaction();
+        androidx.fragment.app.FragmentTransaction beginTransaction = getParentFragmentManager().beginTransaction();
         beginTransaction.setCustomAnimations(R.animator.fade_in, R.animator.fade_out, R.animator.fade_in, R.animator.fade_out);
         beginTransaction.replace(R.id.content, this.sectionEditFragment, ZazenTimerActivity.FRAGMENT_SECTION_EDIT);
         beginTransaction.addToBackStack(null);

@@ -2,7 +2,7 @@ package de.gaffga.android.fragments;
 
 import android.app.Activity;
 import android.app.Dialog;
-import android.app.DialogFragment;
+import androidx.fragment.app.DialogFragment;
 import android.app.TimePickerDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
@@ -14,7 +14,7 @@ import android.widget.TimePicker;
 import de.gaffga.android.zazentimer.R;
 
 /* loaded from: classes.dex */
-public class TimePickerFragment extends DialogFragment implements TimePickerDialog.OnTimeSetListener {
+public class TimePickerFragment extends androidx.fragment.app.DialogFragment implements TimePickerDialog.OnTimeSetListener {
     private Activity activity;
     private int minutes;
     private NumberPicker npMin;

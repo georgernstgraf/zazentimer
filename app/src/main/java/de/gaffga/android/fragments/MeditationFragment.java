@@ -1,7 +1,7 @@
 package de.gaffga.android.fragments;
 
 import android.app.Activity;
-import android.app.Fragment;
+import androidx.fragment.app.Fragment;
 import android.content.Context;
 import android.os.Bundle;
 import androidx.core.content.ContextCompat;
@@ -13,7 +13,7 @@ import android.widget.ImageButton;
 import de.gaffga.android.zazentimer.R;
 
 /* loaded from: classes.dex */
-public class MeditationFragment extends Fragment {
+public class MeditationFragment extends androidx.fragment.app.Fragment {
     private static final String TAG = "ZMT_MeditationFragment";
     private ImageButton butPause;
     private ImageButton butStop;

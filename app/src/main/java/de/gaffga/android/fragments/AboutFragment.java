@@ -1,6 +1,6 @@
 package de.gaffga.android.fragments;
 
-import android.app.Fragment;
+import androidx.fragment.app.Fragment;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import androidx.annotation.Nullable;
@@ -12,7 +12,7 @@ import android.widget.TextView;
 import de.gaffga.android.zazentimer.R;
 
 /* loaded from: classes.dex */
-public class AboutFragment extends Fragment {
+public class AboutFragment extends androidx.fragment.app.Fragment {
     @Override // android.app.Fragment
     public void onCreate(Bundle bundle) {
         super.onCreate(bundle);
@@ -31,7 +31,7 @@ public class AboutFragment extends Fragment {
         ((Button) inflate.findViewById(R.id.but_about_ok)).setOnClickListener(new View.OnClickListener() { // from class: de.gaffga.android.fragments.AboutFragment.1
             @Override // android.view.View.OnClickListener
             public void onClick(View view) {
-                AboutFragment.this.getFragmentManager().popBackStack();
+                getActivity().getSupportFragmentManager().popBackStack();
             }
         });
         String str = "App-Version: ??";

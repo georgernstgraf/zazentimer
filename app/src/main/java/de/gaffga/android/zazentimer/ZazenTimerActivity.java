@@ -2,9 +2,9 @@ package de.gaffga.android.zazentimer;
 
 import android.app.ActivityManager;
 import android.app.AlertDialog;
-import android.app.Fragment;
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
+import androidx.fragment.app.Fragment;
 import android.app.NotificationManager;
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -226,12 +226,12 @@ public class ZazenTimerActivity extends AppCompatActivity implements MainFragmen
         if (toolbar != null) {
             setSupportActionBar(toolbar);
         }
-        FragmentManager fragmentManager = getFragmentManager();
-        this.mainFragment = (MainFragment) fragmentManager.findFragmentByTag(FRAGMENT_MAIN);
-        this.meditationFragment = (MeditationFragment) fragmentManager.findFragmentByTag(FRAGMENT_MEDITATION);
-        this.settingsFragment = (SettingsFragment) fragmentManager.findFragmentByTag(FRAGMENT_SETTINGS);
-        this.aboutFragment = (AboutFragment) fragmentManager.findFragmentByTag(FRAGMENT_ABOUT);
-        this.sessionEditFragment = (SessionEditFragment) fragmentManager.findFragmentByTag(FRAGMENT_SESSION_EDIT);
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        this.mainFragment = (MainFragment) getSupportFragmentManager().findFragmentByTag(FRAGMENT_MAIN);
+        this.meditationFragment = (MeditationFragment) getSupportFragmentManager().findFragmentByTag(FRAGMENT_MEDITATION);
+        this.settingsFragment = (SettingsFragment) getSupportFragmentManager().findFragmentByTag(FRAGMENT_SETTINGS);
+        this.aboutFragment = (AboutFragment) getSupportFragmentManager().findFragmentByTag(FRAGMENT_ABOUT);
+        this.sessionEditFragment = (SessionEditFragment) getSupportFragmentManager().findFragmentByTag(FRAGMENT_SESSION_EDIT);
         if (this.mainFragment == null) {
             this.mainFragment = new MainFragment();
         }
@@ -254,19 +254,19 @@ public class ZazenTimerActivity extends AppCompatActivity implements MainFragmen
 
     @Override // android.support.v4.app.FragmentActivity, android.app.Activity
     public void onBackPressed() {
-        if (getFragmentManager().getBackStackEntryCount() > 0) {
-            getFragmentManager().popBackStack();
+        if (getSupportFragmentManager().getBackStackEntryCount() > 0) {
+            getSupportFragmentManager().popBackStack();
         } else {
             super.onBackPressed();
         }
     }
 
     public boolean isMeditationScreenShown() {
-        return getFragmentManager().findFragmentByTag(FRAGMENT_MEDITATION) != null;
+        return getSupportFragmentManager().findFragmentByTag(FRAGMENT_MEDITATION) != null;
     }
 
     public void showAboutScreen() {
-        FragmentTransaction beginTransaction = getFragmentManager().beginTransaction();
+        FragmentTransaction beginTransaction = getSupportFragmentManager().beginTransaction();
         beginTransaction.setCustomAnimations(R.animator.fade_in, R.animator.fade_out, R.animator.fade_in, R.animator.fade_out);
         beginTransaction.replace(R.id.content, this.aboutFragment, FRAGMENT_ABOUT);
         beginTransaction.addToBackStack(null);
@@ -274,7 +274,7 @@ public class ZazenTimerActivity extends AppCompatActivity implements MainFragmen
     }
 
     public void showSettingsScreen() {
-        FragmentTransaction beginTransaction = getFragmentManager().beginTransaction();
+        FragmentTransaction beginTransaction = getSupportFragmentManager().beginTransaction();
         beginTransaction.setCustomAnimations(R.animator.fade_in, R.animator.fade_out, R.animator.fade_in, R.animator.fade_out);
         beginTransaction.replace(R.id.content, this.settingsFragment, FRAGMENT_SETTINGS);
         beginTransaction.addToBackStack(null);
@@ -282,14 +282,14 @@ public class ZazenTimerActivity extends AppCompatActivity implements MainFragmen
     }
 
     public void showMeditationScreen() {
-        FragmentTransaction beginTransaction = getFragmentManager().beginTransaction();
+        FragmentTransaction beginTransaction = getSupportFragmentManager().beginTransaction();
         beginTransaction.setCustomAnimations(R.animator.fade_in, R.animator.fade_out, R.animator.fade_in, R.animator.fade_out);
         beginTransaction.replace(R.id.content, this.meditationFragment, FRAGMENT_MEDITATION);
         beginTransaction.commit();
     }
 
     public void showMainScreen() {
-        FragmentTransaction beginTransaction = getFragmentManager().beginTransaction();
+        FragmentTransaction beginTransaction = getSupportFragmentManager().beginTransaction();
         beginTransaction.setCustomAnimations(R.animator.fade_in, R.animator.fade_out, R.animator.fade_in, R.animator.fade_out);
         beginTransaction.replace(R.id.content, this.mainFragment, FRAGMENT_MAIN);
         beginTransaction.commit();
@@ -297,7 +297,7 @@ public class ZazenTimerActivity extends AppCompatActivity implements MainFragmen
 
     public void showSessionEditFragment() {
         this.sessionEditFragment.setSessionId(getSelectedSessionId());
-        FragmentTransaction beginTransaction = getFragmentManager().beginTransaction();
+        FragmentTransaction beginTransaction = getSupportFragmentManager().beginTransaction();
         beginTransaction.setCustomAnimations(R.animator.fade_in, R.animator.fade_out, R.animator.fade_in, R.animator.fade_out);
         beginTransaction.replace(R.id.content, this.sessionEditFragment, FRAGMENT_SESSION_EDIT);
         beginTransaction.addToBackStack(null);
@@ -464,7 +464,7 @@ public class ZazenTimerActivity extends AppCompatActivity implements MainFragmen
     @Override // android.app.Activity
     public boolean onPrepareOptionsMenu(Menu menu) {
         menu.clear();
-        Fragment findFragmentByTag = getFragmentManager().findFragmentByTag(FRAGMENT_MAIN);
+        Fragment findFragmentByTag = getSupportFragmentManager().findFragmentByTag(FRAGMENT_MAIN);
         if (findFragmentByTag != null && findFragmentByTag.isVisible()) {
             getMenuInflater().inflate(R.menu.main_menu, menu);
         }
