@@ -3,22 +3,21 @@
 Current status as of 2026-04-04.
 
 ## Current Focus
-Modernized project structure and migrated to AndroidX.
+Wrapping up project modernization and testing.
 
 ## Completed (this cycle)
-- [x] APK extracted and decompiled using jadx
+- [x] APK extracted and decompiled
 - [x] Project scaffolded for source build
 - [x] Build errors and duplicate resource conflicts resolved
-- [x] Linting issues bypassed
 - [x] AndroidX migration completed
 - [x] Updated to Android SDK 34
-- [x] Project successfully built and installed on device
+- [x] Basic instrumented testing implemented
 
 ## Pending
-- None.
+- [ ] Improve code readability (extract ZazenTimerActivity logic)
+- [ ] Modernize UI/UX (Material 3)
+- [ ] Implement unit tests for core services
+- [ ] Final CI/CD pipeline setup
 
 ## Blockers
 - None.
-
-## Next Session Suggestion
-Refine the decompiled source code for better maintainability and address the lint errors suppressed during the build.
