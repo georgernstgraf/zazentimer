@@ -1,22 +1,11 @@
-# Decisions
+## 2026-04-04: UI Test Meta-Definition
+- **Choice**: Adopted a Markdown-based UI Test Plan (`docs/ai/UI_TEST_PLAN.md`) instead of immediately relying on BDD/Cucumber.
+- **Reason**: To quickly establish a single source of truth for UI test coverage that is easily readable by both human developers and AI agents without adding new framework dependencies immediately.
+- **Considered**: Using BDD frameworks like Cucumber or purely relying on Java/Kotlin source code as documentation.
+- **Tradeoff**: Requires manual updates to the Markdown file when tests are implemented or status changes.
 
-Architectural and technical decisions made in this project.
-Each entry documents WHAT was decided and WHY.
-
-## 2026-04-04: Project Reconstruction
-- **Choice**: Reconstructed the Android project from a decompiled APK instead of attempting a full rewrite.
-- **Reason**: To quickly regain buildability and focus on improvement/debugging.
-- **Considered**: Rewriting the app from scratch, reverse engineering and using an existing build.
-- **Tradeoff**: Significant manual effort to fix decompiler errors and resolve resource conflicts.
-
-## 2026-04-04: Build Environment
-- **Choice**: Used Gradle 7.5 and Java 11 for the legacy Android project.
-- **Reason**: Necessary to support the project's requirements while maintaining compatibility.
-- **Considered**: Using the system-default Gradle or newer versions.
-- **Tradeoff**: Requires specific environment configuration to avoid compatibility issues.
-
-## 2026-04-04: Modernization
-- **Choice**: Migrated to AndroidX and upgraded to SDK 34.
-- **Reason**: To bring the project up to date with modern Android standards and improve dependency management.
-- **Considered**: Staying on legacy `android.support` libraries.
-- **Tradeoff**: Required significant effort to fix import mismatches, manifest issues, and duplicate resource definitions.
+## 2026-04-04: AndroidX Preferences Migration
+- **Choice**: Replaced custom legacy `DialogPreference` implementations (`VolumePreference`, `BrightnessPreference`) with standard AndroidX `SeekBarPreference`, and flattened nested `PreferenceScreen` nodes into `PreferenceCategory`.
+- **Reason**: To resolve `InflateException` crashes and broken navigation caused by incompatibilities between legacy preference frameworks and the new AndroidX `PreferenceFragmentCompat`.
+- **Considered**: Manually wiring up fragment transactions for nested `PreferenceScreen`s.
+- **Tradeoff**: Flattens the settings hierarchy slightly, placing all settings on one scrollable screen, but vastly improves stability and reduces maintenance burden.

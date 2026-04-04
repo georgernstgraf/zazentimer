@@ -15,6 +15,7 @@ Reconstructed legacy Android application using the `android.support` libraries.
 ## Knowledge Files (`docs/ai/`)
 | File | Purpose | Update mode |
 |------|---------|------------|
+| UI_TEST_PLAN.md | Meta-definition for UI test scenarios | Append/Update |
 | HANDOFF.md | Open tasks for next session | Overwrite |
 | DECISIONS.md | Chronological record of choices | Append |
 | ARCHITECTURE.md | Living structural map | Overwrite |
