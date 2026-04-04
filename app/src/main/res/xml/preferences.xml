@@ -7,69 +7,62 @@
         android:summary="@string/theme_desc"
         android:defaultValue="light"
         android:entryValues="@array/theme_values"/>
-    <de.gaffga.android.base.preferences.VolumePreference
+    <SeekBarPreference
         android:title="@string/pref_title_volume_bells"
         android:key="volume"
-        android:summary="@string/pref_desc_volume_bells"/>
-    <PreferenceScreen
-        android:title="@string/pref_muting"
-        android:summary="@string/pref_muting_desc">
-        <PreferenceCategory
-            android:title="@string/pref_mute_mode"
-            android:summary="@string/pref_mute_mode_pref">
-            <CheckBoxPreference
-                android:title="@string/pref_mute_mode_vibrate_sound"
-                android:key="mute_mode_vibrate_sound"
-                android:summary="@string/pref_mute_mode_vibrate_sound_desc"
-                android:defaultValue="false"/>
-            <CheckBoxPreference
-                android:title="@string/pref_mute_mode_vibrate"
-                android:key="mute_mode_vibrate"
-                android:summary="@string/pref_mute_mode_vibrate_desc"
-                android:defaultValue="false"/>
-            <CheckBoxPreference
-                android:title="@string/pref_mute_mode_none"
-                android:key="mute_mode_none"
-                android:summary="@string/pref_mute_mode_none_desc"
-                android:defaultValue="true"/>
-        </PreferenceCategory>
-        <PreferenceCategory
-            android:title="@string/pref_mute_channels"
-            android:summary="@string/pref_mute_channels_desc">
-            <CheckBoxPreference
-                android:title="@string/pref_mute_alarm"
-                android:key="mute_alarm"
-                android:summary="@string/pref_mute_alarm_desc"
-                android:defaultValue="true"/>
-            <CheckBoxPreference
-                android:title="@string/pref_mute_music"
-                android:key="mute_music"
-                android:summary="@string/pref_mute_music_desc"
-                android:defaultValue="false"/>
-        </PreferenceCategory>
-    </PreferenceScreen>
-    <PreferenceScreen
-        android:title="@string/pref_output_channel"
-        android:summary="@string/pref_output_channel_desc">
-        <PreferenceCategory android:title="@string/pref_output_channel">
-            <CheckBoxPreference
-                android:title="@string/output_channels_alarm"
-                android:key="pref_output_channel_alarm"
-                android:summary="@string/output_channels_alarm_desc"/>
-            <CheckBoxPreference
-                android:title="@string/output_channels_music"
-                android:key="pref_output_channel_music"
-                android:summary="@string/output_channels_music_desc"/>
-        </PreferenceCategory>
-    </PreferenceScreen>
+        android:summary="@string/pref_desc_volume_bells"
+        android:max="100"/>
+    <PreferenceCategory
+        android:title="@string/pref_muting">
+        <CheckBoxPreference
+            android:title="@string/pref_mute_mode_vibrate_sound"
+            android:key="mute_mode_vibrate_sound"
+            android:summary="@string/pref_mute_mode_vibrate_sound_desc"
+            android:defaultValue="false"/>
+        <CheckBoxPreference
+            android:title="@string/pref_mute_mode_vibrate"
+            android:key="mute_mode_vibrate"
+            android:summary="@string/pref_mute_mode_vibrate_desc"
+            android:defaultValue="false"/>
+        <CheckBoxPreference
+            android:title="@string/pref_mute_mode_none"
+            android:key="mute_mode_none"
+            android:summary="@string/pref_mute_mode_none_desc"
+            android:defaultValue="true"/>
+    </PreferenceCategory>
+    <PreferenceCategory
+        android:title="@string/pref_mute_channels">
+        <CheckBoxPreference
+            android:title="@string/pref_mute_alarm"
+            android:key="mute_alarm"
+            android:summary="@string/pref_mute_alarm_desc"
+            android:defaultValue="true"/>
+        <CheckBoxPreference
+            android:title="@string/pref_mute_music"
+            android:key="mute_music"
+            android:summary="@string/pref_mute_music_desc"
+            android:defaultValue="false"/>
+    </PreferenceCategory>
+    <PreferenceCategory
+        android:title="@string/pref_output_channel">
+        <CheckBoxPreference
+            android:title="@string/output_channels_alarm"
+            android:key="pref_output_channel_alarm"
+            android:summary="@string/output_channels_alarm_desc"/>
+        <CheckBoxPreference
+            android:title="@string/output_channels_music"
+            android:key="pref_output_channel_music"
+            android:summary="@string/output_channels_music_desc"/>
+    </PreferenceCategory>
     <CheckBoxPreference
         android:title="@string/checkbox_keep_screen_on"
         android:key="keep_screen_on"
         android:summary="@string/desc_keep_screen_on"/>
-    <de.gaffga.android.base.preferences.BrightnessPreference
+    <SeekBarPreference
         android:title="@string/pref_title_brightness"
         android:key="brightness"
-        android:summary="@string/pref_desc_brightness"/>
+        android:summary="@string/pref_desc_brightness"
+        android:max="100"/>
     <Preference
         android:title="@string/pref_title_backup"
         android:key="backup_to_sd"/>
