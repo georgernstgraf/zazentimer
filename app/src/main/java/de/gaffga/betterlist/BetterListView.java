@@ -13,10 +13,10 @@ import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Handler;
 import android.os.Looper;
-import android.support.annotation.Nullable;
-import android.support.design.widget.Snackbar;
-import android.support.v4.content.ContextCompat;
-import android.support.v7.widget.helper.ItemTouchHelper;
+import androidx.annotation.Nullable;
+import com.google.android.material.snackbar.Snackbar;
+import androidx.core.content.ContextCompat;
+import androidx.recyclerview.widget.ItemTouchHelper;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.util.TypedValue;
@@ -917,7 +917,7 @@ public class BetterListView<T> extends ListView implements ListAdapter, AdapterV
         make.setActionTextColor(obtainStyledAttributes.getColor(0, -4144960));
         obtainStyledAttributes.recycle();
         make.setCallback(new Snackbar.Callback() { // from class: de.gaffga.betterlist.BetterListView.5
-            @Override // android.support.design.widget.Snackbar.Callback
+            @Override // com.google.android.material.snackbar.Snackbar.Callback
             public void onDismissed(Snackbar snackbar, int i2) {
                 if (i2 != 1) {
                     BetterListView.this.deletedBitmap.getBmp().recycle();

@@ -19,9 +19,8 @@ import android.os.Handler;
 import android.os.Looper;
 import android.os.PowerManager;
 import android.preference.PreferenceManager;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.ActivityChooserView;
-import android.support.v7.widget.Toolbar;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -129,7 +128,7 @@ public class ZazenTimerActivity extends AppCompatActivity implements MainFragmen
         }
     }
 
-    @Override // android.support.v7.app.AppCompatActivity, android.support.v4.app.FragmentActivity, android.support.v4.app.BaseFragmentActivityGingerbread, android.app.Activity
+    @Override // androidx.appcompat.app.AppCompatActivity, android.support.v4.app.FragmentActivity, android.support.v4.app.BaseFragmentActivityGingerbread, android.app.Activity
     protected void onCreate(Bundle bundle) {
         Log.d(TAG, "onCreate");
         SharedPreferences preferences = getPreferences(this);

@@ -2,7 +2,7 @@ package de.gaffga.android.zazentimer.audio;
 
 import android.content.Context;
 import android.net.Uri;
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 import de.gaffga.android.zazentimer.Bell;
 import de.gaffga.android.zazentimer.R;
 import de.gaffga.android.zazentimer.bo.Section;

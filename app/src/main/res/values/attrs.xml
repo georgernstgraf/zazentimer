@@ -529,8 +529,6 @@
     </attr>
     <attr name="state_collapsible" format="boolean">
     </attr>
-    <attr name="statusBarBackground" format="reference">
-    </attr>
     <attr name="statusBarScrim" format="color">
     </attr>
     <attr name="subMenuArrow" format="reference">

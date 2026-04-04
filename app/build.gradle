@@ -1,19 +1,17 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 24
-    buildToolsVersion '24.0.3'
+    namespace "de.gaffga.android.zazentimer"
+    compileSdkVersion 34
 
     defaultConfig {
         applicationId "de.gaffga.android.zazentimer"
-        minSdkVersion 19
-        targetSdkVersion 24
+        minSdkVersion 21
+        targetSdkVersion 34
         versionCode 33
         versionName "2.20"
-    }
-
-    lintOptions {
-        abortOnError false
+        
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
     buildTypes {
@@ -23,6 +21,16 @@ android {
         }
     }
     
+    lintOptions {
+        abortOnError false
+        checkReleaseBuilds false
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
     sourceSets {
         main {
             manifest.srcFile 'src/main/AndroidManifest.xml'
@@ -34,7 +42,11 @@ android {
 }
 
 dependencies {
-    implementation 'com.android.support:appcompat-v7:24.2.1'
-    implementation 'com.android.support:design:24.2.1'
-    implementation 'com.android.support:support-v4:24.2.1'
+    implementation 'androidx.appcompat:appcompat:1.6.1'
+    implementation 'com.google.android.material:material:1.11.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+    
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
 }
