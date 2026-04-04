@@ -3,19 +3,17 @@
 Current status as of 2026-04-04.
 
 ## Current Focus
-Project finalized and documentation cleaned up.
+None.
 
 ## Completed (this cycle)
-- [x] Modernized to Java 17 and SDK 29.
-- [x] Completed AndroidX migration, including PreferenceFragmentCompat.
-- [x] Established CI/CD pipeline and basic unit test framework.
-- [x] Resolved resource linking and configuration issues.
+- [x] #8 Startup crash
+- [x] #6 Meditation start crash (PendingIntent mutability)
 
 ## Pending
-- None.
+- [ ] Integration tests
 
 ## Blockers
-- None.
+- None
 
 ## Next Session Suggestion
-N/A - Project modernization complete.
+Implement robust integration tests using Espresso as originally requested in #6.
