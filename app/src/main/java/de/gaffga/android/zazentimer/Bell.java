@@ -2,7 +2,6 @@ package de.gaffga.android.zazentimer;
 
 import android.net.Uri;
 
-/* loaded from: classes.dex */
 public class Bell {
     private String name;
     private Uri uri;

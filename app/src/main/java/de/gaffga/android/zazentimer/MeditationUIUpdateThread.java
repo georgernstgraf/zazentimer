@@ -8,7 +8,6 @@ import de.gaffga.android.zazentimer.service.Meditation;
 import de.gaffga.android.zazentimer.service.MeditationServiceBinder;
 import de.gaffga.android.zazentimer.views.TimerView;
 
-/* loaded from: classes.dex */
 public class MeditationUIUpdateThread implements Runnable {
     private static final String TAG = "ZMT_UIUpdateThread";
     private MeditationServiceBinder binder;

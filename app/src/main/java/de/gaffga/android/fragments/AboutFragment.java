@@ -11,7 +11,6 @@ import android.widget.Button;
 import android.widget.TextView;
 import de.gaffga.android.zazentimer.R;
 
-/* loaded from: classes.dex */
 public class AboutFragment extends androidx.fragment.app.Fragment {
     @Override // android.app.Fragment
     public void onCreate(Bundle bundle) {

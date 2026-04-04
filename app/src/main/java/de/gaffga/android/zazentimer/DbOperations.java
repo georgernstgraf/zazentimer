@@ -9,7 +9,6 @@ import de.gaffga.android.zazentimer.bo.Section;
 import de.gaffga.android.zazentimer.bo.Session;
 import java.util.ArrayList;
 
-/* loaded from: classes.dex */
 public class DbOperations {
     private static SQLiteDatabase db;
 

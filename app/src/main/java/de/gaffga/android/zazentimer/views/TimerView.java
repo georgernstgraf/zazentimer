@@ -20,7 +20,6 @@ import de.gaffga.android.zazentimer.ZazenTimerActivity;
 import java.util.HashMap;
 import java.util.Locale;
 
-/* loaded from: classes.dex */
 public class TimerView extends View {
     public static final int PROP_COUNT = 7;
     public static final int PROP_CURRENT_START_SECONDS = 2;
@@ -297,7 +296,6 @@ public class TimerView extends View {
         });
     }
 
-    /* JADX INFO: Access modifiers changed from: private */
     public void startTimeInfoFadeOut(int i) {
         if (this.timeTextAnimator.isRunning()) {
             this.timeTextAnimator.end();
@@ -520,8 +518,6 @@ public class TimerView extends View {
         postDelayed(new ChangeAnimation(), 15L);
     }
 
-    /* JADX INFO: Access modifiers changed from: private */
-    /* loaded from: classes.dex */
     public class ChangeAnimation implements Runnable {
         private ChangeAnimation() {
         }
@@ -555,8 +551,6 @@ public class TimerView extends View {
         }
     }
 
-    /* JADX INFO: Access modifiers changed from: private */
-    /* loaded from: classes.dex */
     public class MyAnimator {
         public int duration;
         public float fromVal;

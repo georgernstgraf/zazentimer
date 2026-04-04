@@ -9,7 +9,6 @@ import android.widget.TextView;
 import de.gaffga.android.zazentimer.Bell;
 import de.gaffga.android.zazentimer.R;
 
-/* loaded from: classes.dex */
 public class GongListAdapter extends ArrayAdapter<Bell> {
     private final Context context;
 

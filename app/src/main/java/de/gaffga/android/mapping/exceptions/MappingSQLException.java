@@ -2,7 +2,6 @@ package de.gaffga.android.mapping.exceptions;
 
 import android.database.SQLException;
 
-/* loaded from: classes.dex */
 public class MappingSQLException extends MappingException {
     private static final long serialVersionUID = 5593549748321720521L;
 

@@ -1,6 +1,5 @@
 package de.gaffga.android.zazentimer;
 
-/* loaded from: classes.dex */
 public class ServerMessage {
     private String message;
     private int nr;

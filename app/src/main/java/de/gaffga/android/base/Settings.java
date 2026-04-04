@@ -7,7 +7,6 @@ import android.util.Log;
 import de.gaffga.android.zazentimer.ZazenTimerActivity;
 import de.gaffga.android.zazentimer.ZenTimerDatabase;
 
-/* loaded from: classes.dex */
 public class Settings {
     public static final String PARAM_B_FIRST_START = "B_FIRST_START";
     public static final String PARAM_B_KEEP_SCREEN_ON = "B_KEEP_SCREEN_ON";

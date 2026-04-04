@@ -10,7 +10,6 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 import de.gaffga.android.zazentimer.R;
 
-/* loaded from: classes.dex */
 public class BrightnessPreference extends DialogPreference {
     private static final String TAG = "BrightnessPreference";
     private Context context;

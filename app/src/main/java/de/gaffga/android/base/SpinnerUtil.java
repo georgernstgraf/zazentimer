@@ -3,7 +3,6 @@ package de.gaffga.android.base;
 import de.gaffga.android.zazentimer.bo.Session;
 import java.util.ArrayList;
 
-/* loaded from: classes.dex */
 public class SpinnerUtil {
     public static int getPositionById(ArrayList<Session> arrayList, int i) {
         for (int i2 = 0; i2 < arrayList.size(); i2++) {

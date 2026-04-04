@@ -1,6 +1,5 @@
 package de.gaffga.primarrays;
 
-/* loaded from: classes.dex */
 public class QuickFloatList {
     private int count;
     private float[] elements;

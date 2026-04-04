@@ -1,6 +1,5 @@
 package de.gaffga.android.zazentimer.audio;
 
-/* loaded from: classes.dex */
 public class VolumeCalc {
     private int getTargetStreamVol(int i, int i2, int i3) {
         while ((i * 100) / i2 <= i3 && i < i2) {

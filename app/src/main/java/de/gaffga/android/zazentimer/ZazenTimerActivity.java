@@ -43,7 +43,6 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-/* loaded from: classes.dex */
 public class ZazenTimerActivity extends AppCompatActivity implements MainFragment.OnFragmentInteractionListener, MeditationFragment.OnFragmentInteractionListener {
     public static final String FRAGMENT_ABOUT = "about";
     public static final String FRAGMENT_MAIN = "main";
@@ -112,7 +111,6 @@ public class ZazenTimerActivity extends AppCompatActivity implements MainFragmen
     private PowerManager.WakeLock wakeLock = null;
     private boolean appRunning = false;
 
-    /* loaded from: classes.dex */
     private static class MeditationEndReceiver extends BroadcastReceiver {
         private final ZazenTimerActivity activity;
 
@@ -315,7 +313,6 @@ public class ZazenTimerActivity extends AppCompatActivity implements MainFragmen
         doStartMediation();
     }
 
-    /* JADX INFO: Access modifiers changed from: private */
     public void doStartMediation() {
         boolean z = this.pref.getBoolean(PREF_KEY_KEEP_SCREEN_ON, false);
         if (z) {
@@ -351,7 +348,6 @@ public class ZazenTimerActivity extends AppCompatActivity implements MainFragmen
         });
     }
 
-    /* JADX INFO: Access modifiers changed from: private */
     public void startUpdateThread() {
         if (this.handler == null) {
             this.handler = new Handler(Looper.getMainLooper());
@@ -360,7 +356,6 @@ public class ZazenTimerActivity extends AppCompatActivity implements MainFragmen
         this.handler.postDelayed(this.updateThread, 300L);
     }
 
-    /* JADX INFO: Access modifiers changed from: private */
     public void stopUpdateThread() {
         if (this.updateThread != null) {
             this.updateThread.stopUpdates();
@@ -599,7 +594,6 @@ public class ZazenTimerActivity extends AppCompatActivity implements MainFragmen
         }).show();
     }
 
-    /* JADX INFO: Access modifiers changed from: private */
     public void showMessageNoMuteSettings() {
         new AlertDialog.Builder(this).setTitle(R.string.title_mute_perm_request).setMessage(R.string.text_no_notify_access_settings).setIcon(R.drawable.icon).setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() { // from class: de.gaffga.android.zazentimer.ZazenTimerActivity.11
             @Override // android.content.DialogInterface.OnClickListener
@@ -613,7 +607,6 @@ public class ZazenTimerActivity extends AppCompatActivity implements MainFragmen
         return queryIntentActivities != null && queryIntentActivities.size() > 0;
     }
 
-    /* JADX INFO: Access modifiers changed from: private */
     public void serviceMeditationEndNotify() {
         runOnUiThread(new Runnable() { // from class: de.gaffga.android.zazentimer.ZazenTimerActivity.12
             @Override // java.lang.Runnable
@@ -700,7 +693,6 @@ public class ZazenTimerActivity extends AppCompatActivity implements MainFragmen
         }
     }
 
-    /* JADX INFO: Access modifiers changed from: private */
     public void unbindFromService() {
         if (this.serviceConnection != null && this.serviceConnection.isBound()) {
             try {

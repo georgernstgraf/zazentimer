@@ -9,7 +9,6 @@ import java.io.Serializable;
 import java.util.Locale;
 
 @DbTable(name = "sections")
-/* loaded from: classes.dex */
 public class Section implements Serializable {
 
     @SaveToBundle

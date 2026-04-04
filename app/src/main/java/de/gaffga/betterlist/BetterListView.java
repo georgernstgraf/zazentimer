@@ -35,7 +35,6 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
 
-/* loaded from: classes.dex */
 public class BetterListView<T> extends ListView implements ListAdapter, AdapterView.OnItemLongClickListener {
     private static final String TAG = "ZMT_BetterListView";
     private int animSpeed;
@@ -86,7 +85,6 @@ public class BetterListView<T> extends ListView implements ListAdapter, AdapterV
     private float touchY;
     private BetterListView<T>.UndoDeleteAnimator undoDeleteAnimator;
 
-    /* loaded from: classes.dex */
     public interface BetterListListener<T> {
         void onDeleteItem(T t);
 
@@ -97,8 +95,6 @@ public class BetterListView<T> extends ListView implements ListAdapter, AdapterV
         void onUndoDelete(T t);
     }
 
-    /* JADX INFO: Access modifiers changed from: private */
-    /* loaded from: classes.dex */
     public enum ETouchState {
         TOUCHSTATE_DOWN,
         TOUCHSTATE_UP
@@ -129,7 +125,6 @@ public class BetterListView<T> extends ListView implements ListAdapter, AdapterV
         return true;
     }
 
-    /* loaded from: classes.dex */
     private class UndoDeleteAnimator {
         private UndoDeleteAnimator() {
         }
@@ -137,7 +132,6 @@ public class BetterListView<T> extends ListView implements ListAdapter, AdapterV
         public void undo() {
             Log.d(BetterListView.TAG, "undo animator");
             MoveSession moveSession = new MoveSession(new Runnable() { // from class: de.gaffga.betterlist.BetterListView.UndoDeleteAnimator.1
-                /* JADX WARN: Multi-variable type inference failed */
                 @Override // java.lang.Runnable
                 public void run() {
                     Log.d(BetterListView.TAG, "finish undo animator");
@@ -166,8 +160,6 @@ public class BetterListView<T> extends ListView implements ListAdapter, AdapterV
         }
     }
 
-    /* JADX INFO: Access modifiers changed from: private */
-    /* loaded from: classes.dex */
     public class MoveSession {
         private Runnable runOnFinish;
         private BetterListView<T>.MoveSession.DrawThread drawThread = null;
@@ -195,8 +187,6 @@ public class BetterListView<T> extends ListView implements ListAdapter, AdapterV
             }
         }
 
-        /* JADX INFO: Access modifiers changed from: private */
-        /* loaded from: classes.dex */
         public class DrawThread extends AsyncTask<Void, Void, Void> {
             private boolean running;
 
@@ -204,7 +194,6 @@ public class BetterListView<T> extends ListView implements ListAdapter, AdapterV
                 this.running = false;
             }
 
-            /* JADX INFO: Access modifiers changed from: protected */
             @Override // android.os.AsyncTask
             public Void doInBackground(Void... voidArr) {
                 this.running = true;
@@ -224,7 +213,6 @@ public class BetterListView<T> extends ListView implements ListAdapter, AdapterV
             }
         }
 
-        /* loaded from: classes.dex */
         private class DrawThread2 extends Thread {
             private boolean running = false;
 
@@ -322,8 +310,6 @@ public class BetterListView<T> extends ListView implements ListAdapter, AdapterV
         }
     }
 
-    /* JADX INFO: Access modifiers changed from: private */
-    /* loaded from: classes.dex */
     public class MoveProcess {
         private Bitmap bitmap;
         private final float destXPx;
@@ -380,8 +366,6 @@ public class BetterListView<T> extends ListView implements ListAdapter, AdapterV
         }
     }
 
-    /* JADX INFO: Access modifiers changed from: private */
-    /* loaded from: classes.dex */
     public class DeleteAnimator {
         private Handler handler = new Handler(Looper.getMainLooper());
 
@@ -394,7 +378,6 @@ public class BetterListView<T> extends ListView implements ListAdapter, AdapterV
                 @Override // java.lang.Runnable
                 public void run() {
                     DeleteAnimator.this.handler.post(new Runnable() { // from class: de.gaffga.betterlist.BetterListView.DeleteAnimator.1.1
-                        /* JADX WARN: Multi-variable type inference failed */
                         @Override // java.lang.Runnable
                         public void run() {
                             BetterListView.this.unhideId(BetterListView.this.getItemId(i));
@@ -422,8 +405,6 @@ public class BetterListView<T> extends ListView implements ListAdapter, AdapterV
         }
     }
 
-    /* JADX INFO: Access modifiers changed from: private */
-    /* loaded from: classes.dex */
     public class ShiftAnimator {
         private int curDirection;
         private int curP0;
@@ -607,14 +588,12 @@ public class BetterListView<T> extends ListView implements ListAdapter, AdapterV
         return true;
     }
 
-    /* JADX INFO: Access modifiers changed from: private */
     public Bitmap getBitmapForView(View view) {
         Bitmap createBitmap = Bitmap.createBitmap(view.getWidth(), view.getHeight(), Bitmap.Config.ARGB_8888);
         view.draw(new Canvas(createBitmap));
         return createBitmap;
     }
 
-    /* JADX INFO: Access modifiers changed from: private */
     public float getYPosForPos(int i) {
         View childAt = getChildAt(0);
         if (childAt == null) {
@@ -775,7 +754,6 @@ public class BetterListView<T> extends ListView implements ListAdapter, AdapterV
         return super.onTouchEvent(motionEvent);
     }
 
-    /* JADX INFO: Access modifiers changed from: private */
     public void hideId(long j) {
         int valueOf;
         Integer num = this.hiddenIds.get(Long.valueOf(j));
@@ -792,7 +770,6 @@ public class BetterListView<T> extends ListView implements ListAdapter, AdapterV
         return num != null && num.intValue() > 0;
     }
 
-    /* JADX INFO: Access modifiers changed from: private */
     public void unhideId(long j) {
         Integer num = this.hiddenIds.get(Long.valueOf(j));
         if (num != null) {
@@ -840,7 +817,6 @@ public class BetterListView<T> extends ListView implements ListAdapter, AdapterV
         }
     }
 
-    /* JADX INFO: Access modifiers changed from: private */
     public void checkDragScroll() {
         if (this.touchState != ETouchState.TOUCHSTATE_DOWN) {
             return;
@@ -899,7 +875,6 @@ public class BetterListView<T> extends ListView implements ListAdapter, AdapterV
         }
     }
 
-    /* JADX INFO: Access modifiers changed from: private */
     public void deleteElement(int i) {
         this.deletedPos = i;
         this.deletedItem = this.elements.get(i);
@@ -999,7 +974,6 @@ public class BetterListView<T> extends ListView implements ListAdapter, AdapterV
         return -1;
     }
 
-    /* JADX INFO: Access modifiers changed from: private */
     public void sendDataChanged() {
         Iterator<DataSetObserver> it = this.dataSetObservers.iterator();
         while (it.hasNext()) {
@@ -1027,7 +1001,6 @@ public class BetterListView<T> extends ListView implements ListAdapter, AdapterV
         return -1;
     }
 
-    /* JADX INFO: Access modifiers changed from: private */
     @Nullable
     public View getViewFromPos(int i) {
         for (int i2 = 0; i2 < getChildCount(); i2++) {

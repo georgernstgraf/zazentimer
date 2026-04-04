@@ -21,7 +21,6 @@ import de.gaffga.android.zazentimer.bo.Section;
 import de.gaffga.android.zazentimer.bo.Session;
 import java.util.ArrayList;
 
-/* loaded from: classes.dex */
 public class MainFragment extends androidx.fragment.app.Fragment implements AdapterView.OnItemSelectedListener {
     private static final String TAG = "ZMT_MainFragment";
     private Button butStart;
@@ -34,7 +33,6 @@ public class MainFragment extends androidx.fragment.app.Fragment implements Adap
     private ArrayList<Session> sessions = new ArrayList<>();
     private int selectedSessionId = -1;
 
-    /* loaded from: classes.dex */
     public interface OnFragmentInteractionListener {
         void onStartPressed();
     }
@@ -86,7 +84,6 @@ public class MainFragment extends androidx.fragment.app.Fragment implements Adap
         handleAttach(context);
     }
 
-    /* JADX WARN: Multi-variable type inference failed */
     private void handleAttach(Context context) {
         if (context == null) {
             return;

@@ -1,6 +1,5 @@
 package de.gaffga.android.mapping.impl;
 
-/* loaded from: classes.dex */
 public class MappingInfo {
     public Column[] columns;
     public String primaryKey;

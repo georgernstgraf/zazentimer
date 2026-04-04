@@ -11,7 +11,6 @@ import de.gaffga.android.zazentimer.Bell;
 import de.gaffga.android.zazentimer.ZazenTimerActivity;
 import de.gaffga.android.zazentimer.bo.Section;
 
-/* loaded from: classes.dex */
 public class Audio implements MediaPlayer.OnCompletionListener {
     private static final String TAG = "ZMT_Audio";
     private static int numSoundsPlaying;
@@ -94,7 +93,6 @@ public class Audio implements MediaPlayer.OnCompletionListener {
         return (int) (((float) ((Math.exp(i / 100.0f) - 1.0d) / 1.718281828459045d)) * 100.0f);
     }
 
-    /* JADX INFO: Access modifiers changed from: private */
     public int getUsedAudioStream() {
         return (!this.pref.getBoolean(ZazenTimerActivity.PREF_KEY_OUTPUT_CHANNEL_ALARM, true) && this.pref.getBoolean(ZazenTimerActivity.PREF_KEY_OUTPUT_CHANNEL_MUSIC, false)) ? 3 : 4;
     }
@@ -107,8 +105,6 @@ public class Audio implements MediaPlayer.OnCompletionListener {
         playAbsVolume(bell, i, this.pref.getInt(ZazenTimerActivity.PREF_KEY_VOLUME, 100));
     }
 
-    /* JADX INFO: Access modifiers changed from: private */
-    /* loaded from: classes.dex */
     public class RunOnFinish implements Runnable {
         private int oldVol;
 

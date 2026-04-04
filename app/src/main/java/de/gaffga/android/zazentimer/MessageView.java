@@ -10,7 +10,6 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
-/* loaded from: classes.dex */
 public class MessageView {
     private static final String TAG = "ZMT_MessageView";
     private final Activity activity;

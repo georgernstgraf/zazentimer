@@ -1,6 +1,5 @@
 package de.gaffga.android.mapping.impl;
 
-/* loaded from: classes.dex */
 public class Column {
     public String field;
     public String name;

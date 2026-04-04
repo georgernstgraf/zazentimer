@@ -2,7 +2,6 @@ package de.gaffga.android.zazentimer.service;
 
 import android.os.Binder;
 
-/* loaded from: classes.dex */
 public class MeditationServiceBinder extends Binder {
     private MeditationService service;
 

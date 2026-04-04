@@ -18,7 +18,6 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.LinkedList;
 
-/* loaded from: classes.dex */
 public class Meditation {
     private static final String INTENT_SECTION_ENDED = "ZAZENTIMER_SECTION_ENDED";
     private static final String TAG = "ZMT_Meditation";
@@ -106,7 +105,6 @@ public class Meditation {
         }
     }
 
-    /* JADX INFO: Access modifiers changed from: private */
     public void finishMeditation() {
         this.stopping = true;
         stopSectionTimer();
@@ -140,14 +138,12 @@ public class Meditation {
         }
     }
 
-    /* JADX INFO: Access modifiers changed from: private */
     public void addPlayBellsAsync(PlayBellsAsync playBellsAsync) {
         Log.d(TAG, "adding playing bell task to list");
         this.playBellsAsyncTasks.add(playBellsAsync);
         Log.d(TAG, "  number of playing tasks is now: " + this.playBellsAsyncTasks.size());
     }
 
-    /* JADX INFO: Access modifiers changed from: private */
     public void removePlayBellsAsync(PlayBellsAsync playBellsAsync) {
         Log.d(TAG, "removing playing bell task from list");
         this.playBellsAsyncTasks.remove(playBellsAsync);
@@ -180,7 +176,6 @@ public class Meditation {
     }
 
 
-    /* JADX INFO: Access modifiers changed from: private */
     public void onSectionEnd() {
         this.currentSectionEndIntent = null;
         if (this.currentSectionIdx < this.sections.length - 1) {
@@ -280,7 +275,6 @@ public class Meditation {
         this.audioObjects.clear();
     }
 
-    /* JADX INFO: Access modifiers changed from: private */
     public boolean isPlaying() {
         Iterator<Audio> it = this.audioObjects.iterator();
         while (it.hasNext()) {
@@ -291,7 +285,6 @@ public class Meditation {
         return false;
     }
 
-    /* JADX INFO: Access modifiers changed from: private */
     public void playBell(Section section) {
         Bell bellForSection = BellCollection.getInstance().getBellForSection(section);
         if (bellForSection == null) {
@@ -385,8 +378,6 @@ public class Meditation {
         }
     }
 
-    /* JADX INFO: Access modifiers changed from: private */
-    /* loaded from: classes.dex */
     public static class PlayBellsAsync extends AsyncTask<Section, Void, Void> {
         private final Meditation meditation;
         private final Runnable onDone;
@@ -396,7 +387,6 @@ public class Meditation {
             this.onDone = runnable;
         }
 
-        /* JADX INFO: Access modifiers changed from: protected */
         @Override // android.os.AsyncTask
         public void onPostExecute(Void r1) {
             if (this.onDone != null) {
@@ -404,7 +394,6 @@ public class Meditation {
             }
         }
 
-        /* JADX INFO: Access modifiers changed from: protected */
         @Override // android.os.AsyncTask
         public Void doInBackground(Section... sectionArr) {
             PowerManager.WakeLock wakeLock;

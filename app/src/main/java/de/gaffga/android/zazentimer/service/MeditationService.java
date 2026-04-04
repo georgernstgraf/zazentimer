@@ -12,7 +12,6 @@ import de.gaffga.android.zazentimer.DbOperations;
 import de.gaffga.android.zazentimer.R;
 import de.gaffga.android.zazentimer.ZazenTimerActivity;
 
-/* loaded from: classes.dex */
 public class MeditationService extends Service {
     private static final int NOTIFY_MEDITATION_RUNNING = 1;
     private static final String TAG = "ZMT_MeditationService";

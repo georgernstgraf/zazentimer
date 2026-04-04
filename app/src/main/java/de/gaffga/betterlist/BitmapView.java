@@ -13,7 +13,6 @@ import android.util.TypedValue;
 import android.view.View;
 import de.gaffga.android.zazentimer.R;
 
-/* loaded from: classes.dex */
 public class BitmapView {
     private final int backgroundColor;
     private Bitmap bmp;

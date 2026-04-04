@@ -17,7 +17,6 @@ import de.gaffga.android.mapping.impl.MappingInfo;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 
-/* loaded from: classes.dex */
 public class DbMapper {
     private static final boolean DEBUG = false;
     private static final String TAG = "ZMT_DbMapper";

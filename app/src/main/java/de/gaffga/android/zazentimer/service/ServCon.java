@@ -7,7 +7,6 @@ import android.util.Log;
 import de.gaffga.android.zazentimer.RunOnConnect;
 import de.gaffga.android.zazentimer.ZazenTimerActivity;
 
-/* loaded from: classes.dex */
 public class ServCon implements ServiceConnection {
     private static final String TAG = "ZMT_ServiceConnection";
     private MeditationServiceBinder binder = null;

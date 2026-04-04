@@ -6,7 +6,6 @@ import de.gaffga.android.mapping.annotations.DbPrimaryKey;
 import de.gaffga.android.mapping.annotations.DbTable;
 
 @DbTable(name = "sessions")
-/* loaded from: classes.dex */
 public class Session {
 
     @SaveToBundle

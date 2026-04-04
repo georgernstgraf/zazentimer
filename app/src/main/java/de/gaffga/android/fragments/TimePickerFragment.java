@@ -13,7 +13,6 @@ import android.widget.NumberPicker;
 import android.widget.TimePicker;
 import de.gaffga.android.zazentimer.R;
 
-/* loaded from: classes.dex */
 public class TimePickerFragment extends androidx.fragment.app.DialogFragment implements TimePickerDialog.OnTimeSetListener {
     private Activity activity;
     private int minutes;

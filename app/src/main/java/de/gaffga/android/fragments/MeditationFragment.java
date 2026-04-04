@@ -12,7 +12,6 @@ import android.view.ViewGroup;
 import android.widget.ImageButton;
 import de.gaffga.android.zazentimer.R;
 
-/* loaded from: classes.dex */
 public class MeditationFragment extends androidx.fragment.app.Fragment {
     private static final String TAG = "ZMT_MeditationFragment";
     private ImageButton butPause;
@@ -21,7 +20,6 @@ public class MeditationFragment extends androidx.fragment.app.Fragment {
     private boolean mAttached = false;
     private OnFragmentInteractionListener mListener;
 
-    /* loaded from: classes.dex */
     public interface OnFragmentInteractionListener {
         boolean isPaused();
 
@@ -82,7 +80,6 @@ public class MeditationFragment extends androidx.fragment.app.Fragment {
         handleAttach(context);
     }
 
-    /* JADX WARN: Multi-variable type inference failed */
     private void handleAttach(Context context) {
         if (context == null) {
             return;

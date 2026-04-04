@@ -4,7 +4,7 @@ Living structural map of the system as of 2026-04-04.
 Overwritten when structural changes occur during a session.
 
 ## Overview
-Reconstructed legacy Android meditation timer (ZazenTimer) targeting API 29-34.
+Android meditation timer (ZazenTimer) targeting API 29-34.
 Uses AndroidX libraries, AlarmManager for timing, Foreground Service for session lifecycle.
 
 ## Commands (`commands/`)
@@ -48,5 +48,4 @@ User presses Start
 | `ServCon` | `service/` | ServiceConnection proxy for activity ↔ service communication |
 
 ## Data Flows
-- APK source -> decompilation output -> project source/resources -> gradle build -> APK.
 - AlarmManager.setAlarmClock() → SectionEndReceiver → MeditationService → Meditation.onSectionEnd() → Audio.playBell()

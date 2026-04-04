@@ -10,7 +10,6 @@ import java.io.File;
 import java.io.FilenameFilter;
 import java.util.ArrayList;
 
-/* loaded from: classes.dex */
 public class BellCollection {
     public static int BELL_IDX_HIGH_TONE = 0;
     public static int BELL_IDX_JAP_RHINBOWL_107 = 2;

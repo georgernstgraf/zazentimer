@@ -10,7 +10,6 @@ import de.gaffga.android.zazentimer.R;
 import java.util.ArrayList;
 import java.util.Locale;
 
-/* loaded from: classes.dex */
 public class SessionListAdapter extends ArrayAdapter<SessionWithTimeInfo> {
     private final Context context;
 

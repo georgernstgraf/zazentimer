@@ -12,7 +12,6 @@ import de.gaffga.android.zazentimer.R;
 import de.gaffga.android.zazentimer.audio.Audio;
 import de.gaffga.android.zazentimer.audio.BellCollection;
 
-/* loaded from: classes.dex */
 public class VolumePreference extends DialogPreference {
     private static final String TAG = "ZMT_VolumePreference";
     private Audio audio;

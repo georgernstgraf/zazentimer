@@ -7,6 +7,5 @@ import java.lang.annotation.Target;
 
 @Target({ElementType.FIELD})
 @Retention(RetentionPolicy.RUNTIME)
-/* loaded from: classes.dex */
 public @interface SaveToBundle {
 }

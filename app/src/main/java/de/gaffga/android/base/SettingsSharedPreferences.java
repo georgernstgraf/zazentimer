@@ -8,7 +8,6 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
 
-/* loaded from: classes.dex */
 public class SettingsSharedPreferences implements SharedPreferences {
     private SQLiteDatabase db;
     private ArrayList<SharedPreferences.OnSharedPreferenceChangeListener> listeners = new ArrayList<>();
@@ -23,7 +22,6 @@ public class SettingsSharedPreferences implements SharedPreferences {
         return null;
     }
 
-    /* loaded from: classes.dex */
     public class SettingsEditor implements SharedPreferences.Editor {
         private HashMap<String, String> changedValues = new HashMap<>();
         private SQLiteDatabase db;
@@ -151,7 +149,6 @@ public class SettingsSharedPreferences implements SharedPreferences {
         this.listeners.remove(onSharedPreferenceChangeListener);
     }
 
-    /* JADX INFO: Access modifiers changed from: private */
     public void fireOnSharedPreferenceChange(String str) {
         Iterator<SharedPreferences.OnSharedPreferenceChangeListener> it = this.listeners.iterator();
         while (it.hasNext()) {

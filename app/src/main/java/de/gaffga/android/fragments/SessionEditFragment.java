@@ -25,7 +25,6 @@ import de.gaffga.android.zazentimer.bo.Session;
 import de.gaffga.betterlist.BetterListView;
 import de.gaffga.betterlist.IBetterListElementHandler;
 
-/* loaded from: classes.dex */
 public class SessionEditFragment extends androidx.fragment.app.Fragment implements BetterListView.BetterListListener<Section> {
     private static final String TAG = "ZMT_SessionEditFragment";
     private MessageView messageView;
@@ -116,7 +115,6 @@ public class SessionEditFragment extends androidx.fragment.app.Fragment implemen
         this.sessionId = i;
     }
 
-    /* loaded from: classes.dex */
     private class SectionListHandler implements IBetterListElementHandler<Section> {
         @Override // de.gaffga.betterlist.IBetterListElementHandler
         public int getListItemResourceId() {
@@ -215,7 +213,6 @@ public class SessionEditFragment extends androidx.fragment.app.Fragment implemen
         DbOperations.updateSession(this.session);
     }
 
-    /* JADX INFO: Access modifiers changed from: private */
     public void doCreateNewSection() {
         Section section = new Section(getResources().getString(R.string.default_section_name), 60);
         DbOperations.insertSection(this.session, section);

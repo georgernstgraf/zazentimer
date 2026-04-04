@@ -1,6 +1,5 @@
 package de.gaffga.android.base.exceptions;
 
-/* loaded from: classes.dex */
 public class BundleSaveException extends Exception {
     private static final long serialVersionUID = -8409097301637768344L;
 

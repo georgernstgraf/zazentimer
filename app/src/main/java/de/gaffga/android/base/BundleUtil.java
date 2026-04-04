@@ -6,7 +6,6 @@ import de.gaffga.android.base.exceptions.BundleLoadException;
 import de.gaffga.android.base.exceptions.BundleSaveException;
 import java.lang.reflect.Field;
 
-/* loaded from: classes.dex */
 public class BundleUtil {
     public static void saveToBundle(Object obj, Bundle bundle) throws BundleSaveException {
         if (obj == null) {

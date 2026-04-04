@@ -2,7 +2,6 @@ package de.gaffga.android.zazentimer;
 
 import android.os.Handler;
 
-/* loaded from: classes.dex */
 public class RunOnConnect {
     private final Handler handler;
     private final Runnable runOnConnect;
