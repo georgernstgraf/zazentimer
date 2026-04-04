@@ -14,3 +14,4 @@ Follow these without question. Do not deviate unless explicitly told.
 
 ## Testing
 - Ensure standard `lint` and `gradle build` commands pass.
+- After deleting or renaming resource files (layouts, strings, drawables, IDs in `public.xml`), always run `gradle clean` before building and testing. Incremental builds can produce stale R.class entries that cause instrumented tests to fail with incorrect resource IDs.
