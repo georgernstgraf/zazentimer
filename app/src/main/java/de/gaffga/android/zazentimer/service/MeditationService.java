@@ -98,7 +98,7 @@ public class MeditationService extends Service {
         Intent intent = new Intent(this, (Class<?>) ZazenTimerActivity.class);
         intent.addFlags(536870912);
         intent.setClass(this, ZazenTimerActivity.class);
-        PendingIntent activity = PendingIntent.getActivity(this, 0, intent, 0);
+        PendingIntent activity = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_IMMUTABLE);
         Notification.Builder builder = new Notification.Builder(getBaseContext());
         builder.setContentTitle(string);
         builder.setContentText(string2);

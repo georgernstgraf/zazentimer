@@ -193,7 +193,7 @@ public class Meditation {
         Section section = this.sections[this.currentSectionIdx];
         this.sectionStartTime = SystemClock.elapsedRealtime();
         long j = this.sectionStartTime + ((section.duration - this.pauseSectionSeconds) * 1000);
-        this.currentSectionEndIntent = PendingIntent.getBroadcast(this.meditationService, 0, new Intent(INTENT_SECTION_ENDED), 0);
+        this.currentSectionEndIntent = PendingIntent.getBroadcast(this.meditationService, 0, new Intent(INTENT_SECTION_ENDED), PendingIntent.FLAG_IMMUTABLE);
         if (Build.VERSION.SDK_INT >= 23) {
             this.alarmManager.setExactAndAllowWhileIdle(2, j, this.currentSectionEndIntent);
         } else {
