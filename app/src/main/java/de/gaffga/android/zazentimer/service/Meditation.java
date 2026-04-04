@@ -2,17 +2,12 @@ package de.gaffga.android.zazentimer.service;
 
 import android.app.AlarmManager;
 import android.app.PendingIntent;
-import android.content.BroadcastReceiver;
-import android.content.Context;
 import android.content.Intent;
-import android.content.IntentFilter;
-import androidx.core.content.ContextCompat;
 import android.content.SharedPreferences;
 import android.media.AudioManager;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.PowerManager;
-import android.os.SystemClock;
 import android.util.Log;
 import de.gaffga.android.zazentimer.Bell;
 import de.gaffga.android.zazentimer.ZazenTimerActivity;
@@ -39,7 +34,6 @@ public class Meditation {
     private int pauseSectionSeconds;
     private boolean paused;
     private final SharedPreferences pref;
-    private SectionEndReceiver sectionEndReceiver;
     private long sectionStartTime;
     private Section[] sections;
     private boolean stopping;
@@ -47,22 +41,6 @@ public class Meditation {
     private HashSet<Audio> audioObjects = new HashSet<>();
     private boolean started = false;
     private LinkedList<PlayBellsAsync> playBellsAsyncTasks = new LinkedList<>();
-
-    /* JADX INFO: Access modifiers changed from: private */
-    /* loaded from: classes.dex */
-    public static class SectionEndReceiver extends BroadcastReceiver {
-        private final Meditation meditation;
-
-        SectionEndReceiver(Meditation meditation) {
-            this.meditation = meditation;
-        }
-
-        @Override // android.content.BroadcastReceiver
-        public void onReceive(Context context, Intent intent) {
-            Log.d(Meditation.TAG, "onReceive: context=" + context.getClass().getName() + " " + intent.getAction());
-            this.meditation.onSectionEnd();
-        }
-    }
 
     public Meditation(MeditationService meditationService, Section[] sectionArr) {
         this.stopping = false;
@@ -89,7 +67,6 @@ public class Meditation {
         }
         this.started = true;
         mutePhone();
-        installAlarmReceiver();
         startSectionTimer();
         if (Build.VERSION.SDK_INT < 23) {
             createMeditationWakeLock();
@@ -133,7 +110,6 @@ public class Meditation {
     public void finishMeditation() {
         this.stopping = true;
         stopSectionTimer();
-        uninstallAlarmReceiver();
         releaseAudioObjects();
         unmutePhone();
         if (Build.VERSION.SDK_INT < 23) {
@@ -191,36 +167,18 @@ public class Meditation {
 
     private void startSectionTimer() {
         Section section = this.sections[this.currentSectionIdx];
-        this.sectionStartTime = SystemClock.elapsedRealtime();
-        long j = this.sectionStartTime + ((section.duration - this.pauseSectionSeconds) * 1000);
-        this.currentSectionEndIntent = PendingIntent.getBroadcast(this.meditationService, 0, new Intent(INTENT_SECTION_ENDED), PendingIntent.FLAG_IMMUTABLE);
-        if (Build.VERSION.SDK_INT >= 23) {
-            this.alarmManager.setExactAndAllowWhileIdle(2, j, this.currentSectionEndIntent);
-        } else {
-            this.alarmManager.setExact(2, j, this.currentSectionEndIntent);
-        }
-        Log.d(TAG, "Started Alarm for next section: sectionStartTime=" + this.sectionStartTime + " alertTime=" + j);
+        this.sectionStartTime = System.currentTimeMillis();
+        long triggerTime = this.sectionStartTime + ((section.duration - this.pauseSectionSeconds) * 1000L);
+        this.currentSectionEndIntent = PendingIntent.getBroadcast(
+            this.meditationService, 0,
+            new Intent(INTENT_SECTION_ENDED),
+            PendingIntent.FLAG_IMMUTABLE
+        );
+        AlarmManager.AlarmClockInfo alarmClockInfo = new AlarmManager.AlarmClockInfo(triggerTime, this.currentSectionEndIntent);
+        this.alarmManager.setAlarmClock(alarmClockInfo, this.currentSectionEndIntent);
+        Log.d(TAG, "Started AlarmClock for next section: triggerTime=" + triggerTime);
     }
 
-    private void installAlarmReceiver() {
-        uninstallAlarmReceiver();
-        this.sectionEndReceiver = new SectionEndReceiver(this);
-        ContextCompat.registerReceiver(this.meditationService, this.sectionEndReceiver, new IntentFilter(INTENT_SECTION_ENDED), ContextCompat.RECEIVER_NOT_EXPORTED);
-    }
-
-    private void uninstallAlarmReceiver() {
-        try {
-            try {
-                if (this.sectionEndReceiver != null) {
-                    this.meditationService.unregisterReceiver(this.sectionEndReceiver);
-                }
-            } catch (Exception e) {
-                Log.e(TAG, "error unregistering Receiver", e);
-            }
-        } finally {
-            this.sectionEndReceiver = null;
-        }
-    }
 
     /* JADX INFO: Access modifiers changed from: private */
     public void onSectionEnd() {
@@ -309,7 +267,7 @@ public class Meditation {
         if (this.paused) {
             round = this.pauseSectionSeconds;
         } else {
-            round = Math.round((float) ((SystemClock.elapsedRealtime() / 1000) - (this.sectionStartTime / 1000))) + this.pauseSectionSeconds;
+            round = Math.round((float) ((System.currentTimeMillis() / 1000) - (this.sectionStartTime / 1000))) + this.pauseSectionSeconds;
         }
         return Math.min(round, getCurrentSection().duration);
     }

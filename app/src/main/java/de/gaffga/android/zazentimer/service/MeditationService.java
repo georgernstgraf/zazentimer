@@ -17,6 +17,7 @@ public class MeditationService extends Service {
     private static final int NOTIFY_MEDITATION_RUNNING = 1;
     private static final String TAG = "ZMT_MeditationService";
     public static final String ZAZENTIMER_SESSION_ENDED = "ZAZENTIMER_SESSION_ENDED";
+    public static final String ACTION_SECTION_ENDED = "ZAZENTIMER_SECTION_ENDED";
     private IBinder binder;
     private Meditation runningMeditation;
 
@@ -32,6 +33,20 @@ public class MeditationService extends Service {
         Log.d(TAG, "onUnbind");
         this.binder = null;
         return super.onUnbind(intent);
+    }
+
+    @Override
+    public int onStartCommand(Intent intent, int flags, int startId) {
+        Log.d(TAG, "onStartCommand: action=" + (intent != null ? intent.getAction() : "null"));
+        if (intent != null && ACTION_SECTION_ENDED.equals(intent.getAction())) {
+            if (this.runningMeditation != null) {
+                this.runningMeditation.onSectionEnd();
+            } else {
+                Log.w(TAG, "onStartCommand: section ended but no running meditation");
+                stopSelf();
+            }
+        }
+        return START_STICKY;
     }
 
     @Override // android.app.Service

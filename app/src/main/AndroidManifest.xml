@@ -46,5 +46,12 @@
             android:exported="false"
             android:foregroundServiceType="specialUse"
             android:description="@string/service_description"/>
+        <receiver
+            android:name="de.gaffga.android.zazentimer.service.SectionEndReceiver"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="ZAZENTIMER_SECTION_ENDED"/>
+            </intent-filter>
+        </receiver>
     </application>
 </manifest>

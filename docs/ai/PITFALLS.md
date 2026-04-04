@@ -1,1 +1,4 @@
 - Android 14+ requires `FOREGROUND_SERVICE` and explicit types (e.g. `FOREGROUND_SERVICE_SPECIAL_USE`) when starting Foreground Services. Use `ServiceInfo.FOREGROUND_SERVICE_TYPE_SPECIAL_USE` in `startForeground()`.
+- `AlarmManager.setExactAndAllowWhileIdle()` is NOT sufficient for reliable background timing on all devices — it can still be suppressed by aggressive battery optimization. Use `setAlarmClock()` for timer/alarm events that must fire at an exact time.
+- `setAlarmClock()` requires RTC (wall clock) time, not `ELAPSED_REALTIME_WAKEUP`. When switching, also update elapsed-time calculations from `SystemClock.elapsedRealtime()` to `System.currentTimeMillis()`.
+- BroadcastReceivers registered at runtime (`registerReceiver()`) die with the process. For alarms that must survive process death, register the receiver statically in `AndroidManifest.xml`.
