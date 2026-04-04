@@ -10,7 +10,7 @@ Wrapping up project modernization and testing.
 - [x] Project scaffolded for source build
 - [x] Build errors and duplicate resource conflicts resolved
 - [x] AndroidX migration completed
-- [x] Updated to Android SDK 34
+- [x] Updated minSdkVersion to 29 (Android 10)
 - [x] Basic instrumented testing implemented
 
 ## Pending
