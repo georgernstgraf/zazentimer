@@ -4,17 +4,15 @@ import android.content.ComponentName;
 import android.content.ServiceConnection;
 import android.os.IBinder;
 import android.util.Log;
+import android.content.Context;
 import de.gaffga.android.zazentimer.RunOnConnect;
-import de.gaffga.android.zazentimer.ZazenTimerActivity;
 
 public class ServCon implements ServiceConnection {
     private static final String TAG = "ZMT_ServiceConnection";
     private MeditationServiceBinder binder = null;
     private RunOnConnect runOnConnect;
-    private final ZazenTimerActivity zazenActitity;
 
-    public ServCon(ZazenTimerActivity zazenTimerActivity) {
-        this.zazenActitity = zazenTimerActivity;
+    public ServCon(Context context) {
     }
 
     @Override // android.content.ServiceConnection

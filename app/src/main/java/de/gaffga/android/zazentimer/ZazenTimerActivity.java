@@ -10,17 +10,18 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.app.Application;
 import android.content.SharedPreferences;
 import android.content.pm.ResolveInfo;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
-import android.os.PowerManager;
 import android.preference.PreferenceManager;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.content.ContextCompat;
+import androidx.lifecycle.ViewModelProvider;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -37,11 +38,13 @@ import de.gaffga.android.zazentimer.audio.BellCollection;
 import de.gaffga.android.zazentimer.bo.Section;
 import de.gaffga.android.zazentimer.bo.Session;
 import de.gaffga.android.zazentimer.service.MeditationService;
-import de.gaffga.android.zazentimer.service.ServCon;
+import de.gaffga.android.zazentimer.service.MeditationUiState;
+import de.gaffga.android.zazentimer.service.MeditationViewModel;
+import de.gaffga.android.zazentimer.views.TimerView;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ZazenTimerActivity extends AppCompatActivity implements MainFragment.OnFragmentInteractionListener, MeditationFragment.OnFragmentInteractionListener {
+public class ZazenTimerActivity extends AppCompatActivity implements MainFragment.OnFragmentInteractionListener {
     public static final String FRAGMENT_ABOUT = "about";
     public static final String FRAGMENT_MAIN = "main";
     public static final String FRAGMENT_MEDITATION = "meditation";
@@ -91,23 +94,20 @@ public class ZazenTimerActivity extends AppCompatActivity implements MainFragmen
     public static final String PREF_VALUE_THEME_LIGHT = "light";
     private static final String TAG = "ZMT_ZazenTimerActivity";
     private AboutFragment aboutFragment;
-    private Handler handler;
     private MainFragment mainFragment;
     private MeditationEndReceiver meditationEndReceiver;
     private MeditationFragment meditationFragment;
     private MessageView messageView;
     private SharedPreferences pref;
     private ArrayList<ServerMessage> serverMessages;
-    private Intent serviceIntent;
     private SessionEditFragment sessionEditFragment;
     private SettingsFragment settingsFragment;
     final Intent intentAllowMuting = new Intent("android.settings.NOTIFICATION_POLICY_ACCESS_SETTINGS");
     private boolean created = false;
     private boolean showPrefsOnStart = false;
-    private ServCon serviceConnection = null;
-    private MeditationUIUpdateThread updateThread = null;
-    private PowerManager.WakeLock wakeLock = null;
+    private MeditationViewModel viewModel;
     private boolean appRunning = false;
+    private Handler handler;
 
     private static class MeditationEndReceiver extends BroadcastReceiver {
         private final ZazenTimerActivity activity;
@@ -116,13 +116,13 @@ public class ZazenTimerActivity extends AppCompatActivity implements MainFragmen
             this.activity = zazenTimerActivity;
         }
 
-        @Override // android.content.BroadcastReceiver
+        @Override
         public void onReceive(Context context, Intent intent) {
             this.activity.serviceMeditationEndNotify();
         }
     }
 
-    @Override // androidx.appcompat.app.AppCompatActivity, android.support.v4.app.FragmentActivity, android.support.v4.app.BaseFragmentActivityGingerbread, android.app.Activity
+    @Override
     protected void onCreate(Bundle bundle) {
         Log.d(TAG, "onCreate");
         SharedPreferences preferences = getPreferences(this);
@@ -138,11 +138,13 @@ public class ZazenTimerActivity extends AppCompatActivity implements MainFragmen
         this.meditationEndReceiver = new MeditationEndReceiver(this);
         this.showPrefsOnStart = getIntent().getBooleanExtra(INTENT_DATA_SHOW_PREF_ON_START, false);
         this.handler = new Handler(Looper.getMainLooper());
+        this.viewModel = new ViewModelProvider(this).get(MeditationViewModel.class);
+        this.viewModel.setHandler(this.handler);
         DbOperations.init(this);
         BellCollection.getInstance().init(this);
         convertFromOldVersions();
         initView();
-        this.serviceIntent = new Intent(this, (Class<?>) MeditationService.class);
+        observeViewModel();
         if (preferences.getBoolean(PREF_KEY_FIRST_START, true)) {
             Log.d(TAG, "This is the first run - create demo sessions");
             createDemoSessions();
@@ -152,16 +154,57 @@ public class ZazenTimerActivity extends AppCompatActivity implements MainFragmen
         BellCollection.getInstance().init(this);
     }
 
-    @Override // android.support.v4.app.FragmentActivity, android.app.Activity
+    private void observeViewModel() {
+        viewModel.getMeditationState().observe(this, state -> {
+            if (state == null || !state.running) {
+                return;
+            }
+            View view = meditationFragment.getView();
+            if (view == null) {
+                return;
+            }
+            TimerView timerView = (TimerView) view.findViewById(R.id.timerView);
+            if (timerView == null) {
+                return;
+            }
+            timerView.setCurrentStartSeconds(state.currentStartSeconds);
+            timerView.setNumTotalSeconds(state.totalSessionTime);
+            timerView.setNextEndSeconds(state.nextEndSeconds);
+            timerView.setNextStartSeconds(state.nextStartSeconds);
+            timerView.setPrevStartSeconds(state.prevStartSeconds);
+            timerView.setSectionElapsedSeconds(state.sectionElapsedSeconds);
+            timerView.setSessionElapsedSeconds(state.sessionElapsedSeconds);
+            timerView.setSectionNames(state.currentSectionName, state.nextSectionName, state.nextNextSectionName);
+        });
+
+        viewModel.getMeditationEnded().observe(this, ended -> {
+            if (ended != null && ended) {
+                viewModel.consumeMeditationEnded();
+                viewModel.stopUpdateThread();
+                viewModel.unbindFromService((Application) getApplicationContext());
+                stopService(viewModel.getServiceIntent((Application) getApplicationContext()));
+                getWindow().clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+                WindowManager.LayoutParams attributes = getWindow().getAttributes();
+                attributes.screenBrightness = -1.0f;
+                getWindow().setAttributes(attributes);
+                viewModel.releaseScreenWakeLock();
+                if (appRunning) {
+                    showMainScreen();
+                }
+            }
+        });
+    }
+
+    @Override
     protected void onPause() {
         super.onPause();
         Log.d(TAG, "onPause");
-        stopUpdateThread();
+        viewModel.stopUpdateThread();
         unregisterReceiver(this.meditationEndReceiver);
         this.appRunning = false;
     }
 
-    @Override // android.support.v4.app.FragmentActivity, android.app.Activity
+    @Override
     protected void onResume() {
         super.onResume();
         Log.d(TAG, "onResume");
@@ -169,26 +212,26 @@ public class ZazenTimerActivity extends AppCompatActivity implements MainFragmen
         ContextCompat.registerReceiver(this, this.meditationEndReceiver, new IntentFilter(MeditationService.ZAZENTIMER_SESSION_ENDED), ContextCompat.RECEIVER_NOT_EXPORTED);
         if (MeditationService.isServiceRunning()) {
             Log.d(TAG, "MeditationService currently running");
-            bindToService(this.handler, new Runnable() { // from class: de.gaffga.android.zazentimer.ZazenTimerActivity.1
-                @Override // java.lang.Runnable
+            viewModel.bindToService((Application) getApplicationContext(), this.handler, new Runnable() {
+                @Override
                 public void run() {
-                    if (ZazenTimerActivity.this.serviceConnection.getRunningMeditation() != null) {
-                        Log.d(ZazenTimerActivity.TAG, "A Meditation is currently running");
-                        ZazenTimerActivity.this.runOnUiThread(new Runnable() { // from class: de.gaffga.android.zazentimer.ZazenTimerActivity.1.1
-                            @Override // java.lang.Runnable
+                    if (viewModel.isServiceConnected() && viewModel.isPaused() || viewModel.isServiceConnected()) {
+                        Log.d(TAG, "A Meditation is currently running");
+                        runOnUiThread(new Runnable() {
+                            @Override
                             public void run() {
-                                if (ZazenTimerActivity.this.created) {
-                                    ZazenTimerActivity.this.showMeditationScreen();
+                                if (created) {
+                                    showMeditationScreen();
                                 }
-                                ZazenTimerActivity.this.startUpdateThread();
+                                viewModel.startUpdateThread();
                             }
                         });
                     } else {
-                        Log.d(ZazenTimerActivity.TAG, "No Meditation is currently running");
-                        ZazenTimerActivity.this.runOnUiThread(new Runnable() { // from class: de.gaffga.android.zazentimer.ZazenTimerActivity.1.2
-                            @Override // java.lang.Runnable
+                        Log.d(TAG, "No Meditation is currently running");
+                        runOnUiThread(new Runnable() {
+                            @Override
                             public void run() {
-                                ZazenTimerActivity.this.showMainScreen();
+                                showMainScreen();
                             }
                         });
                     }
@@ -205,7 +248,7 @@ public class ZazenTimerActivity extends AppCompatActivity implements MainFragmen
         }
     }
 
-    @Override // android.support.v4.app.FragmentActivity, android.app.Activity
+    @Override
     protected void onActivityResult(int i, int i2, Intent intent) {
         super.onActivityResult(i, i2, intent);
     }
@@ -246,7 +289,7 @@ public class ZazenTimerActivity extends AppCompatActivity implements MainFragmen
         }
     }
 
-    @Override // android.support.v4.app.FragmentActivity, android.app.Activity
+    @Override
     public void onBackPressed() {
         if (getSupportFragmentManager().getBackStackEntryCount() > 0) {
             getSupportFragmentManager().popBackStack();
@@ -299,8 +342,8 @@ public class ZazenTimerActivity extends AppCompatActivity implements MainFragmen
     }
 
     public void showPrivacyScreen() {
-        new AlertDialog.Builder(this).setTitle(R.string.privacy_title).setMessage(R.string.privacy_message).setPositiveButton(R.string.privacy_ok, new DialogInterface.OnClickListener() { // from class: de.gaffga.android.zazentimer.ZazenTimerActivity.2
-            @Override // android.content.DialogInterface.OnClickListener
+        new AlertDialog.Builder(this).setTitle(R.string.privacy_title).setMessage(R.string.privacy_message).setPositiveButton(R.string.privacy_ok, new DialogInterface.OnClickListener() {
+            @Override
             public void onClick(DialogInterface dialogInterface, int i) {
                 dialogInterface.dismiss();
             }
@@ -314,92 +357,59 @@ public class ZazenTimerActivity extends AppCompatActivity implements MainFragmen
     public void doStartMediation() {
         boolean z = this.pref.getBoolean(PREF_KEY_KEEP_SCREEN_ON, false);
         if (z) {
-            getWindow().addFlags(128);
+            getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
             WindowManager.LayoutParams attributes = getWindow().getAttributes();
             attributes.screenBrightness = this.pref.getInt(PREF_KEY_BRIGHTNESS, 0) / 100.0f;
             getWindow().setAttributes(attributes);
         } else {
-            getWindow().clearFlags(128);
+            getWindow().clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
         }
-        PowerManager powerManager = (PowerManager) getSystemService("power");
-        if (powerManager != null) {
-            int i = 0;
-            for (Section section : DbOperations.readSections(getSelectedSessionId())) {
-                i += section.duration;
-            }
-            this.wakeLock = null;
-            if (z) {
-                this.wakeLock = powerManager.newWakeLock(1, "ScreenOnWakeLock");
-                int i2 = i + 60;
-                this.wakeLock.acquire(i2 * 1000);
-                Log.i(TAG, "Aquired WakeLock to keep screen on for " + i2 + " seconds");
-            }
-        }
-        startService(this.serviceIntent);
-        bindToService(this.handler, new Runnable() { // from class: de.gaffga.android.zazentimer.ZazenTimerActivity.6
-            @Override // java.lang.Runnable
-            public void run() {
-                ZazenTimerActivity.this.showMeditationScreen();
-                ZazenTimerActivity.this.startUpdateThread();
-                ZazenTimerActivity.this.serviceConnection.startMeditation(ZazenTimerActivity.this.getSelectedSessionId());
-            }
-        });
+        viewModel.setSelectedSessionId(getSelectedSessionId());
+        viewModel.acquireScreenWakeLock((Application) getApplicationContext(), this.pref);
+        viewModel.startMeditation((Application) getApplicationContext(), getSelectedSessionId());
+        showMeditationScreen();
+        viewModel.startUpdateThread();
     }
 
-    public void startUpdateThread() {
-        if (this.handler == null) {
-            this.handler = new Handler(Looper.getMainLooper());
-        }
-        this.updateThread = new MeditationUIUpdateThread(this.handler, this.meditationFragment, this.serviceConnection.getBinder());
-        this.handler.postDelayed(this.updateThread, 300L);
-    }
-
-    public void stopUpdateThread() {
-        if (this.updateThread != null) {
-            this.updateThread.stopUpdates();
-            this.updateThread = null;
-        }
-    }
-
-    @Override // android.app.Activity
+    @Override
     public boolean onOptionsItemSelected(MenuItem menuItem) {
         switch (menuItem.getItemId()) {
-            case R.id.menu_about /* 2131296358 */:
+            case R.id.menu_about:
                 Log.d(TAG, FRAGMENT_ABOUT);
                 showAboutScreen();
                 return true;
-            case R.id.menu_copy_session /* 2131296359 */:
+            case R.id.menu_copy_session:
                 Log.d(TAG, "duplicate session");
                 int selectedSessionId = this.mainFragment.getSelectedSessionId();
                 int duplicateSession = DbOperations.duplicateSession(selectedSessionId, getString(R.string.copy_prefix) + " " + DbOperations.readSession(selectedSessionId).name);
                 this.mainFragment.updateSessionList();
                 this.mainFragment.setSelectedSessionId(duplicateSession);
                 return true;
-            case R.id.menu_delete_session /* 2131296360 */:
+            case R.id.menu_delete_session:
                 Log.d(TAG, "delete session");
                 AlertDialog.Builder builder = new AlertDialog.Builder(this);
                 builder.setTitle(R.string.title_question_delete_session);
                 builder.setMessage(R.string.text_question_delete_session);
-                builder.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() { // from class: de.gaffga.android.zazentimer.ZazenTimerActivity.7
-                    @Override // android.content.DialogInterface.OnClickListener
+                builder.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
+                    @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         DbOperations.deleteSession(ZazenTimerActivity.this.getSelectedSessionId());
                         ZazenTimerActivity.this.mainFragment.updateSessionList();
                         ZazenTimerActivity.this.mainFragment.selectLastSession();
                     }
                 });
-                builder.setNegativeButton(R.string.abbrechen, new DialogInterface.OnClickListener() { // from class: de.gaffga.android.zazentimer.ZazenTimerActivity.8
-                    @Override // android.content.DialogInterface.OnClickListener
+                builder.setNegativeButton(R.string.abbrechen, new DialogInterface.OnClickListener() {
+                    @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                     }
                 });
                 builder.create().show();
                 return true;
-            case R.id.menu_edit_session /* 2131296361 */:
+            case R.id.menu_edit_session:
                 Log.d(TAG, "edit session");
                 showSessionEditFragment();
                 return true;
-            case R.id.menu_new_session /* 2131296362 */:
+            case R.id.menu_new_session:
                 Log.d(TAG, "new session");
                 Session session = new Session();
                 session.name = "";
@@ -410,21 +420,21 @@ public class ZazenTimerActivity extends AppCompatActivity implements MainFragmen
                 this.mainFragment.setSelectedSessionId(session.id);
                 showSessionEditFragment();
                 return true;
-            case R.id.menu_privacy /* 2131296363 */:
+            case R.id.menu_privacy:
                 Log.d(TAG, "privacy");
                 showPrivacyScreen();
                 return true;
-            case R.id.menu_session_edit_help /* 2131296364 */:
+            case R.id.menu_session_edit_help:
             default:
                 return super.onOptionsItemSelected(menuItem);
-            case R.id.menu_settings /* 2131296365 */:
+            case R.id.menu_settings:
                 Log.d(TAG, FRAGMENT_SETTINGS);
                 showSettingsScreen();
                 return true;
         }
     }
 
-    @Override // android.app.Activity
+    @Override
     public boolean onPrepareOptionsMenu(Menu menu) {
         menu.clear();
         Fragment findFragmentByTag = getSupportFragmentManager().findFragmentByTag(FRAGMENT_MAIN);
@@ -529,7 +539,7 @@ public class ZazenTimerActivity extends AppCompatActivity implements MainFragmen
         DbOperations.insertSection(session2, section8);
     }
 
-    @Override // de.gaffga.android.fragments.MainFragment.OnFragmentInteractionListener
+    @Override
     public void onStartPressed() {
         if (DbOperations.readSections(getSelectedSessionId()).length == 0) {
             if (getSelectedSessionId() == -1) {
@@ -562,12 +572,12 @@ public class ZazenTimerActivity extends AppCompatActivity implements MainFragmen
     }
 
     private void showMessageAllowMute(final Intent intent) {
-        new AlertDialog.Builder(this).setTitle(R.string.title_mute_perm_request).setMessage(R.string.test_mute_perm_request).setIcon(R.drawable.icon).setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() { // from class: de.gaffga.android.zazentimer.ZazenTimerActivity.10
-            @Override // android.content.DialogInterface.OnClickListener
+        new AlertDialog.Builder(this).setTitle(R.string.title_mute_perm_request).setMessage(R.string.test_mute_perm_request).setIcon(R.drawable.icon).setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
+            @Override
             public void onClick(DialogInterface dialogInterface, int i) {
                 try {
-                    ZazenTimerActivity.this.runOnUiThread(new Runnable() { // from class: de.gaffga.android.zazentimer.ZazenTimerActivity.10.1
-                        @Override // java.lang.Runnable
+                    ZazenTimerActivity.this.runOnUiThread(new Runnable() {
+                        @Override
                         public void run() {
                             try {
                                 ZazenTimerActivity.this.startActivity(intent);
@@ -577,24 +587,24 @@ public class ZazenTimerActivity extends AppCompatActivity implements MainFragmen
                         }
                     });
                 } catch (Exception unused) {
-                    ZazenTimerActivity.this.runOnUiThread(new Runnable() { // from class: de.gaffga.android.zazentimer.ZazenTimerActivity.10.2
-                        @Override // java.lang.Runnable
+                    ZazenTimerActivity.this.runOnUiThread(new Runnable() {
+                        @Override
                         public void run() {
                             ZazenTimerActivity.this.showMessageNoMuteSettings();
                         }
                     });
                 }
             }
-        }).setNegativeButton(R.string.abbrechen, new DialogInterface.OnClickListener() { // from class: de.gaffga.android.zazentimer.ZazenTimerActivity.9
-            @Override // android.content.DialogInterface.OnClickListener
+        }).setNegativeButton(R.string.abbrechen, new DialogInterface.OnClickListener() {
+            @Override
             public void onClick(DialogInterface dialogInterface, int i) {
             }
         }).show();
     }
 
     public void showMessageNoMuteSettings() {
-        new AlertDialog.Builder(this).setTitle(R.string.title_mute_perm_request).setMessage(R.string.text_no_notify_access_settings).setIcon(R.drawable.icon).setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() { // from class: de.gaffga.android.zazentimer.ZazenTimerActivity.11
-            @Override // android.content.DialogInterface.OnClickListener
+        new AlertDialog.Builder(this).setTitle(R.string.title_mute_perm_request).setMessage(R.string.text_no_notify_access_settings).setIcon(R.drawable.icon).setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
+            @Override
             public void onClick(DialogInterface dialogInterface, int i) {
             }
         }).show();
@@ -606,99 +616,11 @@ public class ZazenTimerActivity extends AppCompatActivity implements MainFragmen
     }
 
     public void serviceMeditationEndNotify() {
-        runOnUiThread(new Runnable() { // from class: de.gaffga.android.zazentimer.ZazenTimerActivity.12
-            @Override // java.lang.Runnable
-            public void run() {
-                ZazenTimerActivity.this.getWindow().clearFlags(128);
-                WindowManager.LayoutParams attributes = ZazenTimerActivity.this.getWindow().getAttributes();
-                attributes.screenBrightness = -1.0f;
-                ZazenTimerActivity.this.getWindow().setAttributes(attributes);
-                ZazenTimerActivity.this.stopUpdateThread();
-                ZazenTimerActivity.this.unbindFromService();
-                ZazenTimerActivity.this.stopService(ZazenTimerActivity.this.serviceIntent);
-                if (ZazenTimerActivity.this.appRunning) {
-                    ZazenTimerActivity.this.showMainScreen();
-                }
-                if (ZazenTimerActivity.this.wakeLock != null) {
-                    try {
-                        if (ZazenTimerActivity.this.wakeLock.isHeld()) {
-                            ZazenTimerActivity.this.wakeLock.release();
-                        }
-                    } catch (Exception e) {
-                        Log.d(ZazenTimerActivity.TAG, "wakeLock release error", e);
-                    }
-                    ZazenTimerActivity.this.wakeLock = null;
-                    Log.i(ZazenTimerActivity.TAG, "ScreenOn-WakeLock released");
-                }
-            }
-        });
-    }
-
-    @Override // de.gaffga.android.fragments.MeditationFragment.OnFragmentInteractionListener
-    public void onPauseClicked() {
-        if (this.serviceConnection != null) {
-            this.serviceConnection.pauseMeditation();
-        }
-    }
-
-    @Override // de.gaffga.android.fragments.MeditationFragment.OnFragmentInteractionListener
-    public void onStopClicked() {
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setMessage(R.string.really_stop);
-        builder.setCancelable(true);
-        builder.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() { // from class: de.gaffga.android.zazentimer.ZazenTimerActivity.13
-            @Override // android.content.DialogInterface.OnClickListener
-            public void onClick(DialogInterface dialogInterface, int i) {
-                if (ZazenTimerActivity.this.serviceConnection != null) {
-                    ZazenTimerActivity.this.serviceConnection.stopMeditation();
-                }
-            }
-        });
-        builder.setNegativeButton(R.string.abbrechen, new DialogInterface.OnClickListener() { // from class: de.gaffga.android.zazentimer.ZazenTimerActivity.14
-            @Override // android.content.DialogInterface.OnClickListener
-            public void onClick(DialogInterface dialogInterface, int i) {
-            }
-        });
-        builder.create().show();
-    }
-
-    @Override // de.gaffga.android.fragments.MeditationFragment.OnFragmentInteractionListener
-    public boolean isPaused() {
-        if (this.serviceConnection == null || this.serviceConnection.getRunningMeditation() == null) {
-            return false;
-        }
-        return this.serviceConnection.getRunningMeditation().isPaused();
+        viewModel.notifyMeditationEnded();
     }
 
     public int getSelectedSessionId() {
         return this.mainFragment.getSelectedSessionId();
-    }
-
-    private void bindToService(Handler handler, Runnable runnable) {
-        if (this.serviceConnection == null) {
-            Log.d(TAG, "serviceConnection is null - making fresh connection service");
-            this.serviceConnection = new ServCon(this);
-            this.serviceConnection.setRunOnConnect(new RunOnConnect(handler, runnable));
-            bindService(this.serviceIntent, this.serviceConnection, 72);
-            return;
-        }
-        if (this.serviceConnection.isBound()) {
-            Log.d(TAG, "service is already bound");
-            handler.post(runnable);
-        } else {
-            Log.d(TAG, "service comm existing, but service not bound - rebinding");
-            bindService(this.serviceIntent, this.serviceConnection, 72);
-        }
-    }
-
-    public void unbindFromService() {
-        if (this.serviceConnection != null && this.serviceConnection.isBound()) {
-            try {
-                unbindService(this.serviceConnection);
-            } catch (Exception unused) {
-            }
-        }
-        this.serviceConnection = null;
     }
 
     private void convertFromOldVersions() {
@@ -768,8 +690,8 @@ public class ZazenTimerActivity extends AppCompatActivity implements MainFragmen
             DbOperations.deleteSession(readSessions[i].id);
         }
         createDemoSessions();
-        runOnUiThread(new Runnable() { // from class: de.gaffga.android.zazentimer.ZazenTimerActivity.15
-            @Override // java.lang.Runnable
+        runOnUiThread(new Runnable() {
+            @Override
             public void run() {
                 ZazenTimerActivity.this.mainFragment.updateSessionList();
             }
