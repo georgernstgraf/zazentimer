@@ -1,20 +1,16 @@
 package de.gaffga.android.fragments;
 
-import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.AsyncTask;
-import android.os.Build;
 import android.os.Bundle;
-import android.os.Environment;
 import androidx.appcompat.app.AlertDialog;
-import androidx.core.content.ContextCompat;
 import androidx.preference.CheckBoxPreference;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceFragmentCompat;
 import android.util.Log;
 import android.widget.Toast;
-import de.gaffga.android.base.preferences.BrightnessPreference;
 import de.gaffga.android.zazentimer.DbOperations;
 import de.gaffga.android.zazentimer.R;
 import de.gaffga.android.zazentimer.ZazenTimerActivity;
@@ -27,11 +23,12 @@ import java.io.OutputStream;
 import java.util.Enumeration;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipFile;
+import java.util.zip.ZipOutputStream;
 
 public class SettingsFragment extends PreferenceFragmentCompat {
     private static final String TAG = "ZMT_SettingsFragment";
-    private int ASK_BACKUP_EXTERNAL_STORAGE = 123;
-    private int ASK_RESTORE_EXTERNAL_STORAGE = 124;
+    private static final int REQUEST_BACKUP = 201;
+    private static final int REQUEST_RESTORE = 202;
 
     @Override
     public void onCreatePreferences(Bundle bundle, String rootKey) {
@@ -120,190 +117,193 @@ public class SettingsFragment extends PreferenceFragmentCompat {
             }
         });
         brightnessPreference.setEnabled(checkBoxPreference6.isChecked());
-        Preference findPreference = findPreference("backup_to_sd");
-        Preference findPreference2 = findPreference("restore_from_sd");
-        boolean equals = Environment.getExternalStorageState().equals("mounted");
-        if (Environment.getExternalStorageState().equals("mounted") || Environment.getExternalStorageState().equals("mounted_ro")) {
-            findPreference2.setEnabled(true);
-            findPreference2.setSummary(R.string.pref_sum_restore);
-            findPreference2.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
-                @Override
-                public boolean onPreferenceClick(Preference preference) {
-                    new AlertDialog.Builder(requireActivity()).setTitle(R.string.restore_really_title).setMessage(R.string.restore_really_text).setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialogInterface, int i) {
-                            doRestore();
-                        }
-                    }).setNegativeButton(R.string.abbrechen, new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialogInterface, int i) {
-                        }
-                    }).show();
-                    return true;
-                }
-            });
-        }
-        if (equals) {
-            findPreference.setEnabled(true);
-            findPreference.setSummary(R.string.pref_sum_backup);
-            findPreference.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
-                @Override
-                public boolean onPreferenceClick(Preference preference) {
-                    doBackup();
-                    return true;
-                }
-            });
-        } else {
-            findPreference.setEnabled(false);
-        }
-    }
 
-    private File getBackupDir() {
-        File file = new File(Environment.getExternalStorageDirectory(), "zazentimer");
-        Log.d(TAG, "targetDir=" + file.getAbsolutePath());
-        if (file.exists() || file.mkdirs()) {
-            return file;
-        }
-        Log.e(TAG, "error creating dir " + file.getAbsolutePath());
-        return null;
-    }
-
-    private File getBackupFile() {
-        File backupDir = getBackupDir();
-        if (backupDir == null) {
-            return null;
-        }
-        return new File(backupDir, "backup.zip");
-    }
-
-    public void doRestore() {
-        if (Build.VERSION.SDK_INT >= 23 && ContextCompat.checkSelfPermission(requireActivity(), "android.permission.WRITE_EXTERNAL_STORAGE") == -1) {
-            requestPermissions(new String[]{"android.permission.WRITE_EXTERNAL_STORAGE"}, this.ASK_RESTORE_EXTERNAL_STORAGE);
-        } else {
-            new AsyncTask<Void, Void, Integer>() {
-                @Override
-                protected Integer doInBackground(Void... voidArr) {
-                    return Integer.valueOf(doRealRestore());
-                }
-
-                @Override
-                protected void onPostExecute(Integer num) {
-                    if (num.intValue() == 0) {
-                        Toast.makeText(requireActivity(), R.string.restore_success_text, 0).show();
-                    } else if (num.intValue() == 1) {
-                        Toast.makeText(requireActivity(), R.string.restore_backup_not_found, 0).show();
-                    } else if (num.intValue() == 2) {
-                        Toast.makeText(requireActivity(), R.string.restore_error_text, 0).show();
-                    }
-                }
-            }.execute(new Void[0]);
-        }
-    }
-
-    public int doRealRestore() {
-        File backupFile = getBackupFile();
-        boolean z = true;
-        if (backupFile == null || !backupFile.exists()) {
-            Log.e(TAG, "no backup file found");
-            return 1;
-        }
-        try {
-            ZipFile zipFile = new ZipFile(backupFile);
-            Enumeration<? extends ZipEntry> entries = zipFile.entries();
-            boolean z2 = false;
-            while (entries.hasMoreElements()) {
-                ZipEntry nextElement = entries.nextElement();
-                if (nextElement.getName().equals(ZenTimerDatabase.DATABASE_NAME)) {
-                    DbOperations.close();
-                    if (!receiveFile(zipFile.getInputStream(nextElement), requireActivity().getDatabasePath(ZenTimerDatabase.DATABASE_NAME))) {
-                        z2 = true;
-                    }
-                    DbOperations.init(requireActivity());
-                } else if (!receiveFile(zipFile.getInputStream(nextElement), new File(requireActivity().getFilesDir(), nextElement.getName()))) {
-                    z2 = true;
-                }
+        // Backup via SAF — user picks where to save
+        Preference backupPref = findPreference("backup_to_sd");
+        backupPref.setEnabled(true);
+        backupPref.setSummary(R.string.pref_sum_backup);
+        backupPref.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
+            @Override
+            public boolean onPreferenceClick(Preference preference) {
+                Intent intent = new Intent(Intent.ACTION_CREATE_DOCUMENT);
+                intent.addCategory(Intent.CATEGORY_OPENABLE);
+                intent.setType("application/zip");
+                intent.putExtra(Intent.EXTRA_TITLE, "zazentimer_backup.zip");
+                startActivityForResult(intent, REQUEST_BACKUP);
+                return true;
             }
-            z = z2;
-        } catch (Exception e) {
-            Log.e(TAG, "Error restoring", e);
-        }
-        return z ? 2 : 0;
+        });
+
+        // Restore via SAF — user picks the backup file
+        Preference restorePref = findPreference("restore_from_sd");
+        restorePref.setEnabled(true);
+        restorePref.setSummary(R.string.pref_sum_restore);
+        restorePref.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
+            @Override
+            public boolean onPreferenceClick(Preference preference) {
+                new AlertDialog.Builder(requireActivity())
+                        .setTitle(R.string.restore_really_title)
+                        .setMessage(R.string.restore_really_text)
+                        .setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                Intent intent = new Intent(Intent.ACTION_OPEN_DOCUMENT);
+                                intent.addCategory(Intent.CATEGORY_OPENABLE);
+                                intent.setType("application/zip");
+                                startActivityForResult(intent, REQUEST_RESTORE);
+                            }
+                        })
+                        .setNegativeButton(R.string.abbrechen, new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                            }
+                        })
+                        .show();
+                return true;
+            }
+        });
     }
 
     @Override
-    public void onRequestPermissionsResult(int i, String[] strArr, int[] iArr) {
-        if (i == this.ASK_BACKUP_EXTERNAL_STORAGE) {
-            if (iArr.length > 0 && iArr[0] == 0) {
-                doBackup();
-            } else {
-                Toast.makeText(requireActivity(), R.string.backup_no_permission, 0).show();
-            }
-        } else if (i == this.ASK_RESTORE_EXTERNAL_STORAGE) {
-            if (iArr.length > 0 && iArr[0] == 0) {
-                doRestore();
-            } else {
-                Toast.makeText(requireActivity(), R.string.restore_no_permission, 0).show();
-            }
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (resultCode != android.app.Activity.RESULT_OK || data == null) {
+            return;
+        }
+        Uri uri = data.getData();
+        if (uri == null) {
+            return;
+        }
+        requireActivity().getContentResolver().takePersistableUriPermission(
+                uri, Intent.FLAG_GRANT_READ_URI_PERMISSION | Intent.FLAG_GRANT_WRITE_URI_PERMISSION);
+
+        if (requestCode == REQUEST_BACKUP) {
+            doBackup(uri);
+        } else if (requestCode == REQUEST_RESTORE) {
+            doRestore(uri);
         }
     }
 
-    public void doBackup() {
-        if (Build.VERSION.SDK_INT >= 23 && ContextCompat.checkSelfPermission(requireActivity(), "android.permission.WRITE_EXTERNAL_STORAGE") == -1) {
-            requestPermissions(new String[]{"android.permission.WRITE_EXTERNAL_STORAGE"}, this.ASK_BACKUP_EXTERNAL_STORAGE);
-        } else {
-            new AsyncTask<Activity, Void, Boolean>() {
-                @Override
-                protected Boolean doInBackground(Activity... activityArr) {
-                    return Boolean.valueOf(doRealBackup());
-                }
+    private void doBackup(Uri uri) {
+        final Uri finalUri = uri;
+        new AsyncTask<Void, Void, Boolean>() {
+            @Override
+            protected Boolean doInBackground(Void... voidArr) {
+                return Boolean.valueOf(doRealBackup(finalUri));
+            }
 
-                @Override
-                protected void onPostExecute(Boolean bool) {
-                    if (bool.booleanValue()) {
-                        Toast.makeText(requireActivity(), R.string.backup_success_text, 0).show();
-                    } else {
-                        Toast.makeText(requireActivity(), R.string.backup_error_text, 0).show();
-                    }
+            @Override
+            protected void onPostExecute(Boolean success) {
+                if (success.booleanValue()) {
+                    Toast.makeText(requireActivity(), R.string.backup_success_text, 0).show();
+                } else {
+                    Toast.makeText(requireActivity(), R.string.backup_error_text, 0).show();
                 }
-            }.execute(new Activity[0]);
-        }
+            }
+        }.execute(new Void[0]);
     }
 
-    public boolean doRealBackup() {
-        File backupFile = getBackupFile();
-        if (backupFile == null) {
-            Log.e(TAG, "Error creating backup file ");
-            return false;
-        }
-        Log.d(TAG, "Trying to backup to:" + backupFile.getAbsolutePath());
-        boolean r6 = false;
+    private boolean doRealBackup(Uri uri) {
+        Log.d(TAG, "Backup to URI: " + uri);
+        boolean failed = false;
         try {
-            FileOutputStream fos = new FileOutputStream(backupFile);
-            java.util.zip.ZipOutputStream zos = new java.util.zip.ZipOutputStream(fos);
-            java.util.zip.ZipEntry ze = new java.util.zip.ZipEntry("zentimer");
+            OutputStream os = requireActivity().getContentResolver().openOutputStream(uri);
+            if (os == null) {
+                Log.e(TAG, "Could not open output stream for URI");
+                return false;
+            }
+            ZipOutputStream zos = new ZipOutputStream(os);
+
+            // Backup database
+            ZipEntry ze = new ZipEntry("zentimer");
             zos.putNextEntry(ze);
             if (!sendFile(requireActivity().getDatabasePath("zentimer"), zos)) {
-                r6 = true;
+                failed = true;
             }
             zos.closeEntry();
+
+            // Backup app files
             File filesDir = requireActivity().getFilesDir();
             File[] listFiles = filesDir.listFiles(f -> !f.getName().equals("InstantRun"));
             if (listFiles != null) {
                 for (File file : listFiles) {
-                    java.util.zip.ZipEntry ze2 = new java.util.zip.ZipEntry(file.getName());
+                    ZipEntry ze2 = new ZipEntry(file.getName());
                     zos.putNextEntry(ze2);
                     if (!sendFile(file, zos)) {
-                        r6 = true;
+                        failed = true;
                     }
                     zos.closeEntry();
                 }
             }
             zos.close();
         } catch (Exception e) {
-            Log.e(TAG, "IO/Error", e);
-            r6 = true;
+            Log.e(TAG, "IO/Error during backup", e);
+            failed = true;
         }
-        return !r6;
+        return !failed;
+    }
+
+    private void doRestore(Uri uri) {
+        final Uri finalUri = uri;
+        new AsyncTask<Void, Void, Integer>() {
+            @Override
+            protected Integer doInBackground(Void... voidArr) {
+                return Integer.valueOf(doRealRestore(finalUri));
+            }
+
+            @Override
+            protected void onPostExecute(Integer num) {
+                if (num.intValue() == 0) {
+                    Toast.makeText(requireActivity(), R.string.restore_success_text, 0).show();
+                } else if (num.intValue() == 1) {
+                    Toast.makeText(requireActivity(), R.string.restore_backup_not_found, 0).show();
+                } else if (num.intValue() == 2) {
+                    Toast.makeText(requireActivity(), R.string.restore_error_text, 0).show();
+                }
+            }
+        }.execute(new Void[0]);
+    }
+
+    private int doRealRestore(Uri uri) {
+        Log.d(TAG, "Restore from URI: " + uri);
+        boolean failed = false;
+        try {
+            // Copy URI content to a temp file so we can use ZipFile (needs seekable)
+            File tempFile = File.createTempFile("restore", ".zip", requireActivity().getCacheDir());
+            InputStream is = requireActivity().getContentResolver().openInputStream(uri);
+            if (is == null) {
+                Log.e(TAG, "Could not open input stream for URI");
+                return 1;
+            }
+            FileOutputStream fos = new FileOutputStream(tempFile);
+            byte[] buf = new byte[32768];
+            int read;
+            while ((read = is.read(buf)) > 0) {
+                fos.write(buf, 0, read);
+            }
+            fos.close();
+            is.close();
+
+            ZipFile zipFile = new ZipFile(tempFile);
+            Enumeration<? extends ZipEntry> entries = zipFile.entries();
+            while (entries.hasMoreElements()) {
+                ZipEntry entry = entries.nextElement();
+                if (entry.getName().equals(ZenTimerDatabase.DATABASE_NAME)) {
+                    DbOperations.close();
+                    if (!receiveFile(zipFile.getInputStream(entry), requireActivity().getDatabasePath(ZenTimerDatabase.DATABASE_NAME))) {
+                        failed = true;
+                    }
+                    DbOperations.init(requireActivity());
+                } else if (!receiveFile(zipFile.getInputStream(entry), new File(requireActivity().getFilesDir(), entry.getName()))) {
+                    failed = true;
+                }
+            }
+            zipFile.close();
+            tempFile.delete();
+        } catch (Exception e) {
+            Log.e(TAG, "Error restoring", e);
+            failed = true;
+        }
+        return failed ? 2 : 0;
     }
 
     private boolean receiveFile(InputStream inputStream, File file) {
