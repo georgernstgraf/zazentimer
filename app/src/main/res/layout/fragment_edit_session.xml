@@ -51,6 +51,7 @@
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
         android:src="@drawable/ic_plus"
+        app:backgroundTint="?attr/colorAccent"
         android:layout_alignBottom="@+id/list"
         android:layout_alignEnd="@+id/list"
         app:layout_anchor="@+id/list"/>
