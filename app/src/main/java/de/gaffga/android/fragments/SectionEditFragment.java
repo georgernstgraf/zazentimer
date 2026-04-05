@@ -12,12 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.EditText;
-import android.widget.HorizontalScrollView;
-import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.SeekBar;
-import android.widget.Spinner;
 import android.widget.SpinnerAdapter;
 import android.widget.TextView;
 import de.gaffga.android.zazentimer.Bell;
@@ -27,6 +22,7 @@ import de.gaffga.android.zazentimer.ZazenTimerActivity;
 import de.gaffga.android.zazentimer.audio.Audio;
 import de.gaffga.android.zazentimer.audio.BellCollection;
 import de.gaffga.android.zazentimer.bo.Section;
+import de.gaffga.android.zazentimer.databinding.FragmentEditSectionBinding;
 import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.util.ArrayList;
@@ -35,26 +31,14 @@ public class SectionEditFragment extends Fragment {
     public static int INTENT_GET_BELL = 99;
     private static final String TAG = "ZMT_SectionEdit";
     private Audio audio;
+    private FragmentEditSectionBinding binding;
     private int durationMinutes;
     private int durationSeconds;
     private GongListAdapter gongListAdapter;
     private SharedPreferences pref;
     private Section section;
     private int sectionId;
-    private EditText etName = null;
-    private SeekBar volume = null;
-    private Spinner gongSelect = null;
-    private ViewGroup lDuration = null;
-    private ImageView ivBellCount1 = null;
-    private ImageView ivBellCount2 = null;
-    private ImageView ivBellCount3 = null;
-    private ImageView ivBellCount4 = null;
-    private ImageView ivBellCount5 = null;
-    private TextView tvTime = null;
-    private TextView[] tvGaps = new TextView[15];
-    private ImageButton butAddCustomBell = null;
-    private ImageButton butPlayGong = null;
-    private HorizontalScrollView svBellGap = null;
+    private TextView tvGaps[] = new TextView[15];
 
     @Override
     public void onCreate(Bundle bundle) {
@@ -73,11 +57,11 @@ public class SectionEditFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater layoutInflater, ViewGroup viewGroup, Bundle bundle) {
         Log.d(TAG, "onCreateView");
-        View inflate = layoutInflater.inflate(R.layout.fragment_edit_section, viewGroup, false);
+        binding = FragmentEditSectionBinding.inflate(layoutInflater, viewGroup, false);
         this.pref = ZazenTimerActivity.getPreferences(getActivity());
         DbOperations.init(getActivity());
-        getViewComponents(inflate);
-        return inflate;
+        getViewComponents();
+        return binding.getRoot();
     }
 
     @Override
@@ -88,13 +72,13 @@ public class SectionEditFragment extends Fragment {
         getActivity().invalidateOptionsMenu();
         fillViewFromData();
         installListeners();
-        this.svBellGap.post(new Runnable() {
+        binding.bellGapScrollview.post(new Runnable() {
             @Override
             public void run() {
                 TextView textView = SectionEditFragment.this.tvGaps[SectionEditFragment.this.section.bellpause - 1];
                 Rect rect = new Rect();
                 textView.getDrawingRect(rect);
-                SectionEditFragment.this.svBellGap.requestChildRectangleOnScreen(textView, rect, true);
+                SectionEditFragment.this.binding.bellGapScrollview.requestChildRectangleOnScreen(textView, rect, true);
             }
         });
     }
@@ -153,19 +137,19 @@ public class SectionEditFragment extends Fragment {
     private void fillDataFromViews() {
         BellCollection.getInstance();
         this.section.bell = -2;
-        Bell bell = (Bell) this.gongSelect.getSelectedItem();
+        Bell bell = (Bell) binding.selectGongSound.getSelectedItem();
         this.section.bellUri = bell.getUri().toString();
-        this.section.volume = this.volume.getProgress();
-        this.section.name = this.etName.getText().toString();
+        this.section.volume = binding.sectionGongVolume.getProgress();
+        this.section.name = binding.sectionName.getText().toString();
         this.section.duration = (this.durationMinutes * 60) + this.durationSeconds;
     }
 
     private void fillViewFromData() {
         setViewBellCount(this.section.bellcount);
         setViewGap(this.section.bellpause);
-        this.volume.setMax(100);
-        this.volume.setProgress(this.section.volume);
-        this.etName.setText(this.section.name);
+        binding.sectionGongVolume.setMax(100);
+        binding.sectionGongVolume.setProgress(this.section.volume);
+        binding.sectionName.setText(this.section.name);
         setDurationMinutes(this.section.duration / 60);
         setDurationSeconds(this.section.duration % 60);
         fillBellList();
@@ -178,51 +162,38 @@ public class SectionEditFragment extends Fragment {
         for (int i = 0; i < bellList.size(); i++) {
             this.gongListAdapter.add(bellList.get(i));
         }
-        this.gongSelect.setAdapter((SpinnerAdapter) this.gongListAdapter);
+        binding.selectGongSound.setAdapter((SpinnerAdapter) this.gongListAdapter);
     }
 
     private void selectBell(String str) {
         ArrayList<Bell> bellList = BellCollection.getInstance().getBellList();
         for (int i = 0; i < bellList.size(); i++) {
             if (bellList.get(i).getUri().toString().equals(str)) {
-                this.gongSelect.setSelection(i);
+                binding.selectGongSound.setSelection(i);
             }
         }
     }
 
-    private void getViewComponents(View view) {
-        this.etName = (EditText) view.findViewById(R.id.section_name);
-        this.volume = (SeekBar) view.findViewById(R.id.sectionGongVolume);
-        this.gongSelect = (Spinner) view.findViewById(R.id.selectGongSound);
-        this.lDuration = (ViewGroup) view.findViewById(R.id.duration);
-        this.ivBellCount1 = (ImageView) view.findViewById(R.id.bellcount1);
-        this.ivBellCount2 = (ImageView) view.findViewById(R.id.bellcount2);
-        this.ivBellCount3 = (ImageView) view.findViewById(R.id.bellcount3);
-        this.ivBellCount4 = (ImageView) view.findViewById(R.id.bellcount4);
-        this.ivBellCount5 = (ImageView) view.findViewById(R.id.bellcount5);
-        this.tvGaps[0] = (TextView) view.findViewById(R.id.gap1);
-        this.tvGaps[1] = (TextView) view.findViewById(R.id.gap2);
-        this.tvGaps[2] = (TextView) view.findViewById(R.id.gap3);
-        this.tvGaps[3] = (TextView) view.findViewById(R.id.gap4);
-        this.tvGaps[4] = (TextView) view.findViewById(R.id.gap5);
-        this.tvGaps[5] = (TextView) view.findViewById(R.id.gap6);
-        this.tvGaps[6] = (TextView) view.findViewById(R.id.gap7);
-        this.tvGaps[7] = (TextView) view.findViewById(R.id.gap8);
-        this.tvGaps[8] = (TextView) view.findViewById(R.id.gap9);
-        this.tvGaps[9] = (TextView) view.findViewById(R.id.gap10);
-        this.tvGaps[10] = (TextView) view.findViewById(R.id.gap11);
-        this.tvGaps[11] = (TextView) view.findViewById(R.id.gap12);
-        this.tvGaps[12] = (TextView) view.findViewById(R.id.gap13);
-        this.tvGaps[13] = (TextView) view.findViewById(R.id.gap14);
-        this.tvGaps[14] = (TextView) view.findViewById(R.id.gap15);
-        this.butAddCustomBell = (ImageButton) view.findViewById(R.id.addcustombell);
-        this.tvTime = (TextView) view.findViewById(R.id.time);
-        this.butPlayGong = (ImageButton) view.findViewById(R.id.play_gong);
-        this.svBellGap = (HorizontalScrollView) view.findViewById(R.id.bell_gap_scrollview);
+    private void getViewComponents() {
+        this.tvGaps[0] = binding.gap1;
+        this.tvGaps[1] = binding.gap2;
+        this.tvGaps[2] = binding.gap3;
+        this.tvGaps[3] = binding.gap4;
+        this.tvGaps[4] = binding.gap5;
+        this.tvGaps[5] = binding.gap6;
+        this.tvGaps[6] = binding.gap7;
+        this.tvGaps[7] = binding.gap8;
+        this.tvGaps[8] = binding.gap9;
+        this.tvGaps[9] = binding.gap10;
+        this.tvGaps[10] = binding.gap11;
+        this.tvGaps[11] = binding.gap12;
+        this.tvGaps[12] = binding.gap13;
+        this.tvGaps[13] = binding.gap14;
+        this.tvGaps[14] = binding.gap15;
     }
 
     protected void installListeners() {
-        this.butAddCustomBell.setOnClickListener(new View.OnClickListener() {
+        binding.addcustombell.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent("android.intent.action.GET_CONTENT");
@@ -231,35 +202,35 @@ public class SectionEditFragment extends Fragment {
                 SectionEditFragment.this.startActivityForResult(Intent.createChooser(intent, SectionEditFragment.this.getResources().getString(R.string.select_audio)), SectionEditFragment.INTENT_GET_BELL);
             }
         });
-        this.ivBellCount1.setOnClickListener(new View.OnClickListener() {
+        binding.bellcount1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 SectionEditFragment.this.section.bellcount = 1;
                 SectionEditFragment.this.setViewBellCount(SectionEditFragment.this.section.bellcount);
             }
         });
-        this.ivBellCount2.setOnClickListener(new View.OnClickListener() {
+        binding.bellcount2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 SectionEditFragment.this.section.bellcount = 2;
                 SectionEditFragment.this.setViewBellCount(SectionEditFragment.this.section.bellcount);
             }
         });
-        this.ivBellCount3.setOnClickListener(new View.OnClickListener() {
+        binding.bellcount3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 SectionEditFragment.this.section.bellcount = 3;
                 SectionEditFragment.this.setViewBellCount(SectionEditFragment.this.section.bellcount);
             }
         });
-        this.ivBellCount4.setOnClickListener(new View.OnClickListener() {
+        binding.bellcount4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 SectionEditFragment.this.section.bellcount = 4;
                 SectionEditFragment.this.setViewBellCount(SectionEditFragment.this.section.bellcount);
             }
         });
-        this.ivBellCount5.setOnClickListener(new View.OnClickListener() {
+        binding.bellcount5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 SectionEditFragment.this.section.bellcount = 5;
@@ -285,13 +256,13 @@ public class SectionEditFragment extends Fragment {
                 }
             });
         }
-        this.lDuration.setOnClickListener(new View.OnClickListener() {
+        binding.duration.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 SectionEditFragment.this.pickDuration();
             }
         });
-        this.butPlayGong.setOnClickListener(new View.OnClickListener() {
+        binding.playGong.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Bell bellForSection = BellCollection.getInstance().getBellForSection(SectionEditFragment.this.section);
@@ -300,7 +271,7 @@ public class SectionEditFragment extends Fragment {
                 }
             }
         });
-        this.gongSelect.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        binding.selectGongSound.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
             }
@@ -315,7 +286,7 @@ public class SectionEditFragment extends Fragment {
                 SectionEditFragment.this.section.bell = -2;
             }
         });
-        this.volume.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+        binding.sectionGongVolume.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int i2, boolean z) {
             }
@@ -326,7 +297,7 @@ public class SectionEditFragment extends Fragment {
 
             @Override
             public void onStopTrackingTouch(SeekBar seekBar) {
-                SectionEditFragment.this.section.volume = SectionEditFragment.this.volume.getProgress();
+                SectionEditFragment.this.section.volume = SectionEditFragment.this.binding.sectionGongVolume.getProgress();
                 if (BellCollection.getInstance().getBellForSection(SectionEditFragment.this.section) != null) {
                     SectionEditFragment.this.audio.playAbsVolume(SectionEditFragment.this.section);
                 }
@@ -335,11 +306,11 @@ public class SectionEditFragment extends Fragment {
     }
 
     private void setViewBellCount(int i) {
-        this.ivBellCount1.setSelected(i >= 1);
-        this.ivBellCount2.setSelected(i >= 2);
-        this.ivBellCount3.setSelected(i >= 3);
-        this.ivBellCount4.setSelected(i >= 4);
-        this.ivBellCount5.setSelected(i >= 5);
+        binding.bellcount1.setSelected(i >= 1);
+        binding.bellcount2.setSelected(i >= 2);
+        binding.bellcount3.setSelected(i >= 3);
+        binding.bellcount4.setSelected(i >= 4);
+        binding.bellcount5.setSelected(i >= 5);
     }
 
     private void setViewGap(int i) {
@@ -376,7 +347,7 @@ public class SectionEditFragment extends Fragment {
     }
 
     private void updateDurationView() {
-        this.tvTime.setText(String.format("%02d", Integer.valueOf(this.durationMinutes)) + ":" + String.format("%02d", Integer.valueOf(this.durationSeconds)));
+        binding.time.setText(String.format("%02d", Integer.valueOf(this.durationMinutes)) + ":" + String.format("%02d", Integer.valueOf(this.durationSeconds)));
     }
 
     public void setSectionId(int i) {

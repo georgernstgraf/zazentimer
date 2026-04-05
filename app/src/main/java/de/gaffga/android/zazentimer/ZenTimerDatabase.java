@@ -38,7 +38,7 @@ public class ZenTimerDatabase extends SQLiteOpenHelper {
 
     public boolean isSessionExisting(String str) {
         SQLiteDatabase readableDatabase = getReadableDatabase();
-        Cursor query = readableDatabase.query("sessions", new String[]{"name"}, "name = '" + str + "'", null, null, null, null);
+        Cursor query = readableDatabase.query("sessions", new String[]{"name"}, "name = ?", new String[]{str}, null, null, null);
         boolean z = query.getCount() > 0;
         query.close();
         readableDatabase.close();

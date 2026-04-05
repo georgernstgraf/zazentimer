@@ -8,6 +8,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import androidx.annotation.Nullable;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.snackbar.Snackbar;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -16,37 +17,34 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.TextView;
+import androidx.recyclerview.widget.ItemTouchHelper;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import de.gaffga.android.zazentimer.DbOperations;
 import de.gaffga.android.zazentimer.MessageView;
 import de.gaffga.android.zazentimer.R;
 import de.gaffga.android.zazentimer.ZazenTimerActivity;
 import de.gaffga.android.zazentimer.bo.Section;
 import de.gaffga.android.zazentimer.bo.Session;
-import de.gaffga.betterlist.BetterListView;
-import de.gaffga.betterlist.IBetterListElementHandler;
+import de.gaffga.android.zazentimer.databinding.FragmentEditSessionBinding;
+import java.util.Arrays;
+import java.util.List;
 
-public class SessionEditFragment extends androidx.fragment.app.Fragment implements BetterListView.BetterListListener<Section> {
+public class SessionEditFragment extends Fragment {
     private static final String TAG = "ZMT_SessionEditFragment";
+    private FragmentEditSessionBinding binding;
     private MessageView messageView;
     private SharedPreferences pref;
     private SectionEditFragment sectionEditFragment;
     private Section[] sections;
     private Session session = null;
     private int sessionId;
-    private BetterListView<Section> vblvList;
-    private EditText vetBeschreibung;
-    private EditText vetName;
-    private FloatingActionButton vfabCreateSection;
-    private TextView vtvEmpty;
+    private SectionListAdapter adapter;
 
     private void handleAttach(Context context) {
     }
 
-    @Override // de.gaffga.betterlist.BetterListView.BetterListListener
-    public void onReorder() {
-    }
-
-    @Override // android.app.Fragment
+    @Override
     public void onCreate(Bundle bundle) {
         super.onCreate(bundle);
         setHasOptionsMenu(true);
@@ -55,7 +53,7 @@ public class SessionEditFragment extends androidx.fragment.app.Fragment implemen
         }
     }
 
-    @Override // android.app.Fragment
+    @Override
     public boolean onOptionsItemSelected(MenuItem menuItem) {
         if (menuItem.getItemId() == R.id.menu_session_edit_help) {
             showHelp13();
@@ -64,49 +62,83 @@ public class SessionEditFragment extends androidx.fragment.app.Fragment implemen
         return super.onOptionsItemSelected(menuItem);
     }
 
-    @Override // android.app.Fragment
+    @Override
     public void onPrepareOptionsMenu(Menu menu) {
         getActivity().getMenuInflater().inflate(R.menu.session_edit_menu, menu);
         super.onPrepareOptionsMenu(menu);
     }
 
-    @Override // android.app.Fragment
+    @Override
     public void onAttach(Context context) {
         super.onAttach(context);
         handleAttach(context);
     }
 
-    @Override // android.app.Fragment
+    @Override
     public void onAttach(Activity activity) {
         super.onAttach(activity);
         handleAttach(activity);
     }
 
-    @Override // android.app.Fragment
+    @Override
     @Nullable
     public View onCreateView(LayoutInflater layoutInflater, ViewGroup viewGroup, Bundle bundle) {
         Log.d(TAG, "onCreateView");
-        View inflate = layoutInflater.inflate(R.layout.fragment_edit_session, viewGroup, false);
+        binding = FragmentEditSessionBinding.inflate(layoutInflater, viewGroup, false);
         this.pref = ZazenTimerActivity.getPreferences(getActivity());
         this.sectionEditFragment = new SectionEditFragment();
         DbOperations.init(getActivity());
-        this.vtvEmpty = (TextView) inflate.findViewById(android.R.id.empty);
-        this.vetName = (EditText) inflate.findViewById(R.id.text_sitzung_name);
-        this.vetBeschreibung = (EditText) inflate.findViewById(R.id.text_sitzung_beschreibung);
-        this.vfabCreateSection = (FloatingActionButton) inflate.findViewById(R.id.but_new_section);
-        this.vblvList = (BetterListView) inflate.findViewById(R.id.list);
-        this.vblvList.setListElementHandler(new SectionListHandler());
-        this.vblvList.setListener(this);
-        this.vfabCreateSection.setOnClickListener(new View.OnClickListener() { // from class: de.gaffga.android.fragments.SessionEditFragment.1
-            @Override // android.view.View.OnClickListener
+
+        adapter = new SectionListAdapter(new SectionListAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(Section section) {
+                SessionEditFragment.this.sectionEditFragment.setSectionId(section.id);
+                SessionEditFragment.this.showSectionEditFragment();
+            }
+        });
+
+        binding.list.setLayoutManager(new LinearLayoutManager(getActivity()));
+        binding.list.setAdapter(adapter);
+
+        SectionTouchHelperCallback callback = new SectionTouchHelperCallback(
+            new SectionTouchHelperCallback.SectionTouchListener() {
+                @Override
+                public void onSwipe(int position) {
+                    final Section deletedSection = adapter.getItem(position);
+                    final int deletedPosition = position;
+                    DbOperations.deleteSection(deletedSection.id);
+                    adapter.removeItem(position);
+
+                    Snackbar.make(binding.list, "Deleted '" + deletedSection.toString() + "'", Snackbar.LENGTH_LONG)
+                        .setAction("UNDO", new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                DbOperations.insertSection(SessionEditFragment.this.session, deletedSection);
+                                adapter.insertItem(deletedPosition, deletedSection);
+                            }
+                        })
+                        .show();
+                }
+
+                @Override
+                public boolean onMove(int fromPosition, int toPosition) {
+                    adapter.moveItem(fromPosition, toPosition);
+                    return true;
+                }
+            }
+        );
+        new ItemTouchHelper(callback).attachToRecyclerView(binding.list);
+
+        binding.butNewSection.setOnClickListener(new View.OnClickListener() {
+            @Override
             public void onClick(View view) {
                 SessionEditFragment.this.doCreateNewSection();
             }
         });
-        return inflate;
+        return binding.getRoot();
     }
 
-    @Override // android.app.Fragment
+    @Override
     public void onSaveInstanceState(Bundle bundle) {
         bundle.putInt("sessionId", this.sessionId);
     }
@@ -115,51 +147,11 @@ public class SessionEditFragment extends androidx.fragment.app.Fragment implemen
         this.sessionId = i;
     }
 
-    private class SectionListHandler implements IBetterListElementHandler<Section> {
-        @Override // de.gaffga.betterlist.IBetterListElementHandler
-        public int getListItemResourceId() {
-            return R.layout.session_list_item;
-        }
-
-        private SectionListHandler() {
-        }
-
-        @Override // de.gaffga.betterlist.IBetterListElementHandler
-        public void setupView(View view, Section section) {
-            String string;
-            String str;
-            if (section.name != null && section.name.length() > 0) {
-                string = section.name;
-            } else {
-                string = SessionEditFragment.this.getResources().getString(R.string.unnamed);
-            }
-            String str2 = section.getDurationString() + ", ";
-            if (section.bellcount == 1) {
-                str = str2 + SessionEditFragment.this.getResources().getString(R.string.section_info_string_1_sg);
-            } else {
-                String str3 = (str2 + String.format(SessionEditFragment.this.getResources().getString(R.string.section_info_string_1_pl), Integer.valueOf(section.bellcount))) + " ";
-                if (section.bellpause == 1) {
-                    str = str3 + SessionEditFragment.this.getResources().getString(R.string.section_info_string_2_sg);
-                } else {
-                    str = str3 + String.format(SessionEditFragment.this.getResources().getString(R.string.section_info_string_2_pl), Integer.valueOf(section.bellpause));
-                }
-            }
-            TextView textView = (TextView) view.findViewById(R.id.spinnerText1);
-            TextView textView2 = (TextView) view.findViewById(R.id.spinnerText2);
-            textView.setText(string);
-            textView2.setText(str);
-        }
-    }
-
     private void initSectionList() {
-        this.vblvList.clear();
-        for (int i = 0; i < this.sections.length; i++) {
-            this.vblvList.add(this.sections[i]);
-        }
-        this.vblvList.setEmptyView(this.vtvEmpty);
+        adapter.setItems(Arrays.asList(this.sections));
     }
 
-    @Override // android.app.Fragment
+    @Override
     public void onResume() {
         super.onResume();
         Log.d(TAG, "sessionId=" + this.sessionId);
@@ -169,13 +161,13 @@ public class SessionEditFragment extends androidx.fragment.app.Fragment implemen
         } else {
             Log.i(TAG, "session found and valid");
         }
-        this.vetName.setText(this.session.name);
-        this.vetBeschreibung.setText(this.session.description);
+        binding.textSitzungName.setText(this.session.name);
+        binding.textSitzungBeschreibung.setText(this.session.description);
         getActivity().invalidateOptionsMenu();
         this.sections = DbOperations.readSections(this.session.id);
         initSectionList();
-        this.vetName.setText(this.session.name);
-        this.vetBeschreibung.setText(this.session.description);
+        binding.textSitzungName.setText(this.session.name);
+        binding.textSitzungBeschreibung.setText(this.session.description);
         if (this.pref.getBoolean(ZazenTimerActivity.PREF_KEY_SHOW_SESSION_EDIT_HELP_V13, false)) {
             showHelp13();
             this.pref.edit().putBoolean(ZazenTimerActivity.PREF_KEY_SHOW_SESSION_EDIT_HELP_V13, true).apply();
@@ -189,8 +181,8 @@ public class SessionEditFragment extends androidx.fragment.app.Fragment implemen
         this.messageView = new MessageView(getActivity());
         this.messageView.setTitle(getString(R.string.help_sectionlist_title));
         this.messageView.setText(getString(R.string.help_sectionlist_text));
-        this.messageView.setOnOkListener(new Runnable() { // from class: de.gaffga.android.fragments.SessionEditFragment.2
-            @Override // java.lang.Runnable
+        this.messageView.setOnOkListener(new Runnable() {
+            @Override
             public void run() {
                 SessionEditFragment.this.messageView = null;
             }
@@ -198,40 +190,23 @@ public class SessionEditFragment extends androidx.fragment.app.Fragment implemen
         this.messageView.show();
     }
 
-    @Override // android.app.Fragment
+    @Override
     public void onPause() {
         super.onPause();
-        int i = 0;
-        while (i < this.vblvList.getCount()) {
-            Section elementAt = this.vblvList.getElementAt(i);
-            i++;
-            elementAt.rank = i;
-            DbOperations.updateSection(elementAt);
+        List<Section> items = adapter.getItems();
+        for (int i = 0; i < items.size(); i++) {
+            Section section = items.get(i);
+            section.rank = i + 1;
+            DbOperations.updateSection(section);
         }
-        this.session.name = this.vetName.getText().toString();
-        this.session.description = this.vetBeschreibung.getText().toString();
+        this.session.name = binding.textSitzungName.getText().toString();
+        this.session.description = binding.textSitzungBeschreibung.getText().toString();
         DbOperations.updateSession(this.session);
     }
 
     public void doCreateNewSection() {
         Section section = new Section(getResources().getString(R.string.default_section_name), 60);
         DbOperations.insertSection(this.session, section);
-        this.sectionEditFragment.setSectionId(section.id);
-        showSectionEditFragment();
-    }
-
-    @Override // de.gaffga.betterlist.BetterListView.BetterListListener
-    public void onDeleteItem(Section section) {
-        DbOperations.deleteSection(section.id);
-    }
-
-    @Override // de.gaffga.betterlist.BetterListView.BetterListListener
-    public void onUndoDelete(Section section) {
-        DbOperations.insertSection(this.session, section);
-    }
-
-    @Override // de.gaffga.betterlist.BetterListView.BetterListListener
-    public void onItemClick(Section section) {
         this.sectionEditFragment.setSectionId(section.id);
         showSectionEditFragment();
     }

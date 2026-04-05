@@ -5,7 +5,8 @@ import android.app.PendingIntent;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.media.AudioManager;
-import android.os.AsyncTask;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 import android.os.Build;
 import android.os.PowerManager;
 import android.util.Log;
@@ -16,7 +17,6 @@ import de.gaffga.android.zazentimer.audio.BellCollection;
 import de.gaffga.android.zazentimer.bo.Section;
 import java.util.HashSet;
 import java.util.Iterator;
-import java.util.LinkedList;
 
 public class Meditation {
     private static final String INTENT_SECTION_ENDED = "ZAZENTIMER_SECTION_ENDED";
@@ -39,7 +39,7 @@ public class Meditation {
     private int totalSessionTime;
     private HashSet<Audio> audioObjects = new HashSet<>();
     private boolean started = false;
-    private LinkedList<PlayBellsAsync> playBellsAsyncTasks = new LinkedList<>();
+    private final ExecutorService bellExecutor = Executors.newSingleThreadExecutor();
 
     public Meditation(MeditationService meditationService, Section[] sectionArr) {
         this.stopping = false;
@@ -138,18 +138,6 @@ public class Meditation {
         }
     }
 
-    public void addPlayBellsAsync(PlayBellsAsync playBellsAsync) {
-        Log.d(TAG, "adding playing bell task to list");
-        this.playBellsAsyncTasks.add(playBellsAsync);
-        Log.d(TAG, "  number of playing tasks is now: " + this.playBellsAsyncTasks.size());
-    }
-
-    public void removePlayBellsAsync(PlayBellsAsync playBellsAsync) {
-        Log.d(TAG, "removing playing bell task from list");
-        this.playBellsAsyncTasks.remove(playBellsAsync);
-        Log.d(TAG, "  number of playing tasks is now: " + this.playBellsAsyncTasks.size());
-    }
-
     private void fireMeditationEnded() {
         this.meditationService.onMeditationEnd();
     }
@@ -179,18 +167,13 @@ public class Meditation {
     public void onSectionEnd() {
         this.currentSectionEndIntent = null;
         if (this.currentSectionIdx < this.sections.length - 1) {
-            new PlayBellsAsync(this, null).execute(this.sections[this.currentSectionIdx]);
+            playBells(this.sections[this.currentSectionIdx], null);
             this.currentSectionIdx++;
             this.pauseSectionSeconds = 0;
             startSectionTimer();
             return;
         }
-        new PlayBellsAsync(this, new Runnable() { // from class: de.gaffga.android.zazentimer.service.Meditation.1
-            @Override // java.lang.Runnable
-            public void run() {
-                Meditation.this.finishMeditation();
-            }
-        }).execute(this.sections[this.currentSectionIdx]);
+        playBells(this.sections[this.currentSectionIdx], () -> Meditation.this.finishMeditation());
     }
 
     public Section getCurrentSection() {
@@ -378,40 +361,20 @@ public class Meditation {
         }
     }
 
-    public static class PlayBellsAsync extends AsyncTask<Section, Void, Void> {
-        private final Meditation meditation;
-        private final Runnable onDone;
-
-        PlayBellsAsync(Meditation meditation, Runnable runnable) {
-            this.meditation = meditation;
-            this.onDone = runnable;
-        }
-
-        @Override // android.os.AsyncTask
-        public void onPostExecute(Void r1) {
-            if (this.onDone != null) {
-                this.onDone.run();
-            }
-        }
-
-        @Override // android.os.AsyncTask
-        public Void doInBackground(Section... sectionArr) {
-            PowerManager.WakeLock wakeLock;
-            Log.d(Meditation.TAG, "Playing bells in AsyncTask");
-            this.meditation.addPlayBellsAsync(this);
-            Section section = sectionArr[0];
-            PowerManager powerManager = (PowerManager) this.meditation.meditationService.getSystemService("power");
+    private void playBells(Section section, Runnable onDone) {
+        bellExecutor.execute(() -> {
+            Log.d(TAG, "Playing bells in background thread");
+            PowerManager.WakeLock wakeLock = null;
+            PowerManager powerManager = (PowerManager) this.meditationService.getSystemService("power");
             if (powerManager != null) {
-                wakeLock = powerManager.newWakeLock(26, "PlayBellsAsync");
+                wakeLock = powerManager.newWakeLock(26, "PlayBells");
                 wakeLock.acquire(section.bellcount * 25 * 1000);
-                Log.d(Meditation.TAG, "WakeLock created for playing bells");
-            } else {
-                wakeLock = null;
+                Log.d(TAG, "WakeLock created for playing bells");
             }
-            for (int i = 0; i < section.bellcount && !this.meditation.isStopped(); i++) {
-                this.meditation.playBell(section);
+            for (int i = 0; i < section.bellcount && !isStopped(); i++) {
+                playBell(section);
                 if (i < section.bellcount - 1) {
-                    for (int i2 = 0; i2 < section.bellpause * 2 && !this.meditation.isStopped(); i2++) {
+                    for (int i2 = 0; i2 < section.bellpause * 2 && !isStopped(); i2++) {
                         try {
                             Thread.sleep(500L);
                         } catch (InterruptedException unused) {
@@ -419,8 +382,8 @@ public class Meditation {
                     }
                 }
             }
-            Log.d(Meditation.TAG, "waiting until the bells have finished playing");
-            while (this.meditation.isPlaying() && !this.meditation.isStopped()) {
+            Log.d(TAG, "waiting until the bells have finished playing");
+            while (isPlaying() && !isStopped()) {
                 try {
                     Thread.sleep(500L);
                 } catch (InterruptedException unused2) {
@@ -432,13 +395,14 @@ public class Meditation {
                         wakeLock.release();
                     }
                 } catch (Exception e) {
-                    Log.d(Meditation.TAG, "wakeLock release error", e);
+                    Log.d(TAG, "wakeLock release error", e);
                 }
-                Log.d(Meditation.TAG, "WakeLock released for playing bells");
+                Log.d(TAG, "WakeLock released for playing bells");
             }
-            Log.d(Meditation.TAG, "Done playing bells in AsyncTask");
-            this.meditation.removePlayBellsAsync(this);
-            return null;
-        }
+            Log.d(TAG, "Done playing bells");
+            if (onDone != null) {
+                onDone.run();
+            }
+        });
     }
 }

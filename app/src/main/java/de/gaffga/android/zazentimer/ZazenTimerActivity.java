@@ -1,6 +1,5 @@
 package de.gaffga.android.zazentimer;
 
-import android.app.ActivityManager;
 import android.app.AlertDialog;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -40,7 +39,6 @@ import de.gaffga.android.zazentimer.bo.Session;
 import de.gaffga.android.zazentimer.service.MeditationService;
 import de.gaffga.android.zazentimer.service.ServCon;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 public class ZazenTimerActivity extends AppCompatActivity implements MainFragment.OnFragmentInteractionListener, MeditationFragment.OnFragmentInteractionListener {
@@ -169,7 +167,7 @@ public class ZazenTimerActivity extends AppCompatActivity implements MainFragmen
         Log.d(TAG, "onResume");
         this.appRunning = true;
         ContextCompat.registerReceiver(this, this.meditationEndReceiver, new IntentFilter(MeditationService.ZAZENTIMER_SESSION_ENDED), ContextCompat.RECEIVER_NOT_EXPORTED);
-        if (isMyServiceRunning(MeditationService.class)) {
+        if (MeditationService.isServiceRunning()) {
             Log.d(TAG, "MeditationService currently running");
             bindToService(this.handler, new Runnable() { // from class: de.gaffga.android.zazentimer.ZazenTimerActivity.1
                 @Override // java.lang.Runnable
@@ -701,16 +699,6 @@ public class ZazenTimerActivity extends AppCompatActivity implements MainFragmen
             }
         }
         this.serviceConnection = null;
-    }
-
-    private boolean isMyServiceRunning(Class<?> cls) {
-        Iterator<ActivityManager.RunningServiceInfo> it = ((ActivityManager) getSystemService("activity")).getRunningServices(Integer.MAX_VALUE).iterator();
-        while (it.hasNext()) {
-            if (cls.getName().equals(it.next().service.getClassName())) {
-                return true;
-            }
-        }
-        return false;
     }
 
     private void convertFromOldVersions() {

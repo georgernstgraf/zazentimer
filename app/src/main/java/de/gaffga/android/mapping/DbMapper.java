@@ -147,7 +147,7 @@ public class DbMapper {
 
     public static <T> T readObject(SQLiteDatabase sQLiteDatabase, Class<T> cls, int i) throws MappingReflectionException, InvalidClassMappingException, InvalidTypeMappingException {
         try {
-            T newInstance = cls.newInstance();
+            T newInstance = cls.getDeclaredConstructor().newInstance();
             MappingInfo mappingInfo = getMappingInfo(cls);
             if (mappingInfo == null) {
                 throw new InvalidClassMappingException("Invalid class: mapping info is null");
@@ -190,12 +190,9 @@ public class DbMapper {
             }
             query.close();
             return null;
-        } catch (IllegalAccessException e5) {
-            Log.e(TAG, "Illegal access when instantiating class '" + cls.getName() + "'", e5);
-            throw new MappingReflectionException("Illegal access when instantiating class '" + cls.getName() + "'", e5);
-        } catch (InstantiationException e6) {
-            Log.e(TAG, "Could not instantiate class '" + cls.getName() + "'", e6);
-            throw new MappingReflectionException("Could not instantiate class '" + cls.getName() + "'", e6);
+        } catch (ReflectiveOperationException e5) {
+            Log.e(TAG, "Could not instantiate class '" + cls.getName() + "'", e5);
+            throw new MappingReflectionException("Could not instantiate class '" + cls.getName() + "'", e5);
         }
     }
 

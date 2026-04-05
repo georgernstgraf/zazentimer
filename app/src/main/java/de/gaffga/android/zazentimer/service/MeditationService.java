@@ -17,8 +17,17 @@ public class MeditationService extends Service {
     private static final String TAG = "ZMT_MeditationService";
     public static final String ZAZENTIMER_SESSION_ENDED = "ZAZENTIMER_SESSION_ENDED";
     public static final String ACTION_SECTION_ENDED = "ZAZENTIMER_SECTION_ENDED";
+    private static volatile boolean isRunning = false;
     private IBinder binder;
     private Meditation runningMeditation;
+
+    public static boolean isServiceRunning() { return isRunning; }
+
+    @Override
+    public void onCreate() {
+        super.onCreate();
+        isRunning = true;
+    }
 
     @Override // android.app.Service
     public IBinder onBind(Intent intent) {
@@ -51,6 +60,7 @@ public class MeditationService extends Service {
     @Override // android.app.Service
     public void onDestroy() {
         Log.d(TAG, "onDestroy");
+        isRunning = false;
         stopMeditation();
         super.onDestroy();
     }

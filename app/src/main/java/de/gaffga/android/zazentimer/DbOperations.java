@@ -93,7 +93,7 @@ public class DbOperations {
     }
 
     public static void insertSection(Session session, Section section) {
-        Cursor rawQuery = db.rawQuery("SELECT max(rank) from sections where fk_session=" + session.id, null);
+        Cursor rawQuery = db.rawQuery("SELECT max(rank) from sections where fk_session=?", new String[]{"" + session.id});
         if (rawQuery.moveToFirst()) {
             if (section.rank == -1) {
                 section.rank = rawQuery.getInt(0) + 1;

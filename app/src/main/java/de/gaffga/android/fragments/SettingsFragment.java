@@ -3,7 +3,10 @@ package de.gaffga.android.fragments;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
-import android.os.AsyncTask;
+import android.os.Handler;
+import android.os.Looper;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 import android.os.Bundle;
 import androidx.appcompat.app.AlertDialog;
 import androidx.preference.CheckBoxPreference;
@@ -26,6 +29,8 @@ import java.util.zip.ZipFile;
 import java.util.zip.ZipOutputStream;
 
 public class SettingsFragment extends PreferenceFragmentCompat {
+    private final ExecutorService executor = Executors.newSingleThreadExecutor();
+    private final Handler uiHandler = new Handler(Looper.getMainLooper());
     private static final String TAG = "ZMT_SettingsFragment";
     private static final int REQUEST_BACKUP = 201;
     private static final int REQUEST_RESTORE = 202;
@@ -184,22 +189,16 @@ public class SettingsFragment extends PreferenceFragmentCompat {
     }
 
     private void doBackup(Uri uri) {
-        final Uri finalUri = uri;
-        new AsyncTask<Void, Void, Boolean>() {
-            @Override
-            protected Boolean doInBackground(Void... voidArr) {
-                return Boolean.valueOf(doRealBackup(finalUri));
-            }
-
-            @Override
-            protected void onPostExecute(Boolean success) {
-                if (success.booleanValue()) {
+        executor.execute(() -> {
+            boolean success = doRealBackup(uri);
+            uiHandler.post(() -> {
+                if (success) {
                     Toast.makeText(requireActivity(), R.string.backup_success_text, 0).show();
                 } else {
                     Toast.makeText(requireActivity(), R.string.backup_error_text, 0).show();
                 }
-            }
-        }.execute(new Void[0]);
+            });
+        });
     }
 
     private boolean doRealBackup(Uri uri) {
@@ -243,24 +242,18 @@ public class SettingsFragment extends PreferenceFragmentCompat {
     }
 
     private void doRestore(Uri uri) {
-        final Uri finalUri = uri;
-        new AsyncTask<Void, Void, Integer>() {
-            @Override
-            protected Integer doInBackground(Void... voidArr) {
-                return Integer.valueOf(doRealRestore(finalUri));
-            }
-
-            @Override
-            protected void onPostExecute(Integer num) {
-                if (num.intValue() == 0) {
+        executor.execute(() -> {
+            int result = doRealRestore(uri);
+            uiHandler.post(() -> {
+                if (result == 0) {
                     Toast.makeText(requireActivity(), R.string.restore_success_text, 0).show();
-                } else if (num.intValue() == 1) {
+                } else if (result == 1) {
                     Toast.makeText(requireActivity(), R.string.restore_backup_not_found, 0).show();
-                } else if (num.intValue() == 2) {
+                } else if (result == 2) {
                     Toast.makeText(requireActivity(), R.string.restore_error_text, 0).show();
                 }
-            }
-        }.execute(new Void[0]);
+            });
+        });
     }
 
     private int doRealRestore(Uri uri) {
