@@ -9,10 +9,21 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
+
     - name: Set up JDK 17
       uses: actions/setup-java@v4
       with:
         java-version: '17'
         distribution: 'temurin'
-    - name: Build with Gradle
-      run: ./gradle-7.5/bin/gradle build
+
+    - name: Setup Android SDK
+      uses: android-actions/setup-android@v3
+
+    - name: Build Debug APK
+      run: ./gradle-7.5/bin/gradle assembleDebug
+
+    - name: Upload Debug APK
+      uses: actions/upload-artifact@v4
+      with:
+        name: app-debug
+        path: app/build/outputs/apk/debug/app-debug.apk
