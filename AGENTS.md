@@ -7,6 +7,7 @@ Before starting any task, read the following files in order:
 5. `docs/ai/PITFALLS.md`
 6. `docs/ai/STATE.md`
 7. `docs/ai/DOMAIN.md` (if task involves business logic)
+8. `docs/ai/ONBOARDING.md` (if setting up the development environment)
 
 If `HANDOFF.md` contains open tasks, complete them before starting
 

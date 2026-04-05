@@ -8,11 +8,19 @@ It serves as the single source of truth for UI test coverage.
 - 🟡 Partially Automated (Basic path covered, edge cases missing)
 - 🟢 Fully Automated
 
+## Test Source Files
+| File | Tests | Status |
+|------|-------|--------|
+| `SimpleTest.java` | `testActivityLaunches()` | 🟢 |
+| `ZazenTimerActivityTest.java` | `activityLaunchesSuccessfully()`, `testFreshAppLaunch()` | 🟢 |
+| `BackupRestoreTest.java` | `testBackupCreatesValidZip()`, `testRestoreFromZip()` | 🟢 |
+| `utils/DatabaseIdlingResource.java` | (utility, not a test) | — |
+
 ## 1. Startup & Main Screen
 | Scenario | Description / Steps | Expected Outcome | Regressions / Bugs | Automated |
 | :--- | :--- | :--- | :--- | :--- |
 | **App Launch (Fresh)** | Launch app on a fresh install | Toolbar displays "Zazen Meditation Timer"; Default sessions are created and visible | #8 (Crash on init due to legacy Support Library/styles) | 🟢 |
-| **Start Meditation** | Select a session -> Click "Start Meditation" button | Transitions to Active Meditation view; Timer starts counting down | #6 (PendingIntent mutability on Android 12+), FGS Crash (Android 14+) | 🟢 |
+| **Start Meditation** | Select a session -> Click "Start Meditation" button | Transitions to Active Meditation view; Timer starts counting down | #6 (PendingIntent mutability on Android 12+), FGS Crash (Android 14+) | 🟡 |
 | **Screen Rotation** | Rotate device on Main Screen | UI adapts to landscape/portrait; Selected session remains selected | | 🔴 |
 
 ## 2. Session Management (Main Screen Options)
@@ -38,7 +46,7 @@ It serves as the single source of truth for UI test coverage.
 | **Theme Toggle** | Tap "Theme" -> Select "Dark Theme" | Application UI immediately switches to Dark Theme | | 🔴 |
 | **Mute Settings** | Tap "Mute Settings" checkboxes | Preferences update correctly | Nested PreferenceScreen issue (Fixed by flattening) | 🔴 |
 | **Volume Adjustment** | Adjust "Maximum Bell Volume" SeekBar | Preference updates; no crashes | | 🔴 |
-| **Backup to SD** | Tap "Create Backup" | Prompts for permission/location; ZIP created | Legacy Storage Access issues | 🔴 |
+| **Backup to SD** | Tap "Create Backup" | Prompts for location via SAF; ZIP created | Legacy Storage Access issues | 🟡 |
 
 ## 5. Active Meditation (Service & Notification)
 | Scenario | Description / Steps | Expected Outcome | Regressions / Bugs | Automated |
@@ -52,6 +60,6 @@ It serves as the single source of truth for UI test coverage.
 ## Automation Guidelines
 When automating the scenarios above, adhere to the following technological standards to keep tests consistent and maintainable:
 
-1. **Page Object Model (POM):** Encapsulate UI interactions within Screen classes (e.g., `MainScreen.java`, `SettingsScreen.java`). Test classes should contain domain-specific commands (e.g., `mainScreen.clickStartMeditation()`), not raw Espresso `onView()` calls.
+1. **Page Object Model (POM):** Encapsulate UI interactions within Page classes (e.g., `MainPage.java`, `SettingsPage.java`, `MeditationPage.java`). Test classes should contain domain-specific commands (e.g., `mainPage.clickStartMeditation()`), not raw Espresso `onView()` calls.
 2. **Idling Resources:** Use AndroidX `IdlingResource` for asynchronous operations like Database I/O, `MeditationService` lifecycle changes, and Audio playback to prevent flaky tests.
-3. **Hermetic Testing:** Ensure database state is reset between tests (e.g., using an in-memory database or clearing data via `@Before` methods).
+3. **Hermetic testing:** Ensure database state is reset between tests using `testInstrumentationRunnerArguments clearPackageData: 'true'` (already configured in `build.gradle` with Android Test Orchestrator).

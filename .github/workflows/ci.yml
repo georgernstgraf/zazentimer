@@ -21,8 +21,8 @@ jobs:
     - name: Setup Android SDK
       uses: android-actions/setup-android@v3
 
-    - name: Build Debug APK
-      run: ./gradle-7.5/bin/gradle assembleDebug --no-daemon
+      - name: Build Debug APK
+        run: ./gradlew assembleDebug --no-daemon
 
     - name: Upload Debug APK
       uses: actions/upload-artifact@v4
@@ -67,7 +67,7 @@ jobs:
         ram-size: 4096M
         emulator-options: -no-window -gpu swiftshader_indirect -no-snapshot -noaudio -no-boot-anim
         disable-animations: true
-        script: ./gradle-7.5/bin/gradle connectedDebugAndroidTest --no-daemon
+        script: ./gradlew connectedDebugAndroidTest --no-daemon
 
     - name: Upload Test Results
       if: always()

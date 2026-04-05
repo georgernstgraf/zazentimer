@@ -21,3 +21,18 @@
 - **Reason**: `setAlarmClock()` is the same API Android's built-in Clock app uses — it receives the highest scheduling priority, is immune to Doze suppression, and guarantees the alarm fires at the exact time. The previous approach could be deferred or suppressed by battery optimization on longer sessions.
 - **Considered**: Adding WorkManager as a fallback mechanism; running a Handler/CountDownTimer inside the foreground service; keeping the existing AlarmManager approach with additional WakeLocks.
 - **Tradeoff**: `setAlarmClock()` shows a small alarm icon in the status bar, which is actually appropriate for a meditation timer. Also required switching from `ELAPSED_REALTIME_WAKEUP` to RTC (wall clock) time. Static receiver registration means the receiver survives process death, but full process-death recovery (restoring meditation state) is not yet implemented.
+
+## 2026-04-04: AndroidX Preferences Migration — Dead Code Note
+- **Followup**: The legacy files `VolumePreference.java` and `BrightnessPreference.java` were left in the source tree after the migration to AndroidX `SeekBarPreference`. These classes extend the deprecated `android.preference.DialogPreference` (not AndroidX) and are not referenced by any active code. They were removed in #21.
+
+## 2026-04-05: Gradle Wrapper Migration
+- **Choice**: Replaced the bundled `gradle-7.5/` distribution (122 MB, 239 tracked files) with the standard Gradle Wrapper (`gradlew`).
+- **Reason**: The bundled distribution inflated every clone by 122 MB, had no integrity verification, and made upgrades difficult. The wrapper auto-downloads the correct Gradle version, provides SHA-256 verification, and is the universal standard for Android projects.
+- **Considered**: Keeping the bundled distribution; using a system-installed Gradle.
+- **Tradeoff**: First build on a clean machine downloads Gradle (~60 MB) instead of having it pre-bundled, but this is a one-time cost. CI can cache `~/.gradle/wrapper` for subsequent runs.
+
+## 2026-04-05: Developer Onboarding Documentation
+- **Choice**: Created `docs/ai/ONBOARDING.md` with Linux-specific setup instructions and expanded `README.md` with project overview and quick-start.
+- **Reason**: A new developer could not find where Android Studio was installed, where the SDK lived, or how to create an emulator. The README was 2 lines with no setup guidance.
+- **Considered**: Using only the README for setup info; relying on Android Studio's new-project wizard.
+- **Tradeoff**: Adds a documentation maintenance burden, but prevents repeated onboarding questions. Linux-specific paths may need adjustment for macOS/Windows developers.

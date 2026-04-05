@@ -3,6 +3,12 @@
 - [x] #6 Meditation start crash (PendingIntent mutability and FGS permissions)
 - [x] Full automation of Start Meditation UI test scenario
 - [x] #11 Background timer reliability (setAlarmClock + explicit Intent + removed doze warning)
+- [x] #16 FAB icon fix (replace empty ic_plus.png with vector drawable)
+- [x] #17 Session subtitle truncation fix on main screen
+- [x] #18/#19 Backup/restore via Storage Access Framework + instrumented tests
+- [x] CI: instrumented test runner with Android emulator
+- [x] CI: Android SDK setup, JDK 17, debug APK artifact upload
+- [x] #21 Phase 1: Onboarding docs, Gradle Wrapper migration, docs cleanup, dead code removal
 
 ## Pending
 - [ ] Fix failing instrumented tests (pre-existing `navigation_bar_item_active_indicator_view` issue)
@@ -11,4 +17,4 @@
 - None
 
 ## Next Session Suggestion
-Fix the 3 failing instrumented tests — all fail on a missing `navigation_bar_item_active_indicator_view` view assertion.
+Phase 2: Critical fixes for modern Android (#22) — replace AsyncTask, getRunningServices(), adopt startForegroundService() pattern.
