@@ -25,6 +25,7 @@ public abstract class AppDatabase extends RoomDatabase {
                             AppDatabase.class, DATABASE_NAME)
                             .addMigrations(MIGRATION_1_2, MIGRATION_2_3, MIGRATION_3_4)
                             .addCallback(ON_CREATE_CALLBACK)
+                            .allowMainThreadQueries()
                             .build();
                 }
             }
