@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/mainFragment">
+
+    <fragment
+        android:id="@+id/mainFragment"
+        android:name="de.gaffga.android.fragments.MainFragment"
+        android:label="Main">
+        <action
+            android:id="@+id/action_mainFragment_to_meditationFragment"
+            app:destination="@id/meditationFragment"
+            app:popUpTo="@id/mainFragment"
+            app:popUpToInclusive="true"
+            app:enterAnim="@animator/fade_in"
+            app:exitAnim="@animator/fade_out"
+            app:popEnterAnim="@animator/fade_in"
+            app:popExitAnim="@animator/fade_out" />
+        <action
+            android:id="@+id/action_mainFragment_to_sessionEditFragment"
+            app:destination="@id/sessionEditFragment"
+            app:enterAnim="@animator/fade_in"
+            app:exitAnim="@animator/fade_out"
+            app:popEnterAnim="@animator/fade_in"
+            app:popExitAnim="@animator/fade_out" />
+        <action
+            android:id="@+id/action_mainFragment_to_settingsFragment"
+            app:destination="@id/settingsFragment"
+            app:enterAnim="@animator/fade_in"
+            app:exitAnim="@animator/fade_out"
+            app:popEnterAnim="@animator/fade_in"
+            app:popExitAnim="@animator/fade_out" />
+        <action
+            android:id="@+id/action_mainFragment_to_aboutFragment"
+            app:destination="@id/aboutFragment"
+            app:enterAnim="@animator/fade_in"
+            app:exitAnim="@animator/fade_out"
+            app:popEnterAnim="@animator/fade_in"
+            app:popExitAnim="@animator/fade_out" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/meditationFragment"
+        android:name="de.gaffga.android.fragments.MeditationFragment"
+        android:label="Meditation" />
+
+    <fragment
+        android:id="@+id/sessionEditFragment"
+        android:name="de.gaffga.android.fragments.SessionEditFragment"
+        android:label="Session Edit">
+        <action
+            android:id="@+id/action_sessionEditFragment_to_sectionEditFragment"
+            app:destination="@id/sectionEditFragment"
+            app:enterAnim="@animator/fade_in"
+            app:exitAnim="@animator/fade_out"
+            app:popEnterAnim="@animator/fade_in"
+            app:popExitAnim="@animator/fade_out" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/sectionEditFragment"
+        android:name="de.gaffga.android.fragments.SectionEditFragment"
+        android:label="Section Edit" />
+
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="de.gaffga.android.fragments.SettingsFragment"
+        android:label="Settings" />
+
+    <fragment
+        android:id="@+id/aboutFragment"
+        android:name="de.gaffga.android.fragments.AboutFragment"
+        android:label="About" />
+
+    <action
+        android:id="@+id/action_global_meditationFragment"
+        app:destination="@id/meditationFragment"
+        app:popUpTo="@id/mainFragment"
+        app:popUpToInclusive="true"
+        app:enterAnim="@animator/fade_in"
+        app:exitAnim="@animator/fade_out"
+        app:popEnterAnim="@animator/fade_in"
+        app:popExitAnim="@animator/fade_out" />
+</navigation>

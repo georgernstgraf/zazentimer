@@ -4,6 +4,7 @@ import androidx.fragment.app.Fragment;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import androidx.annotation.Nullable;
+import androidx.navigation.Navigation;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -30,7 +31,7 @@ public class AboutFragment extends androidx.fragment.app.Fragment {
         ((Button) inflate.findViewById(R.id.but_about_ok)).setOnClickListener(new View.OnClickListener() { // from class: de.gaffga.android.fragments.AboutFragment.1
             @Override // android.view.View.OnClickListener
             public void onClick(View view) {
-                getActivity().getSupportFragmentManager().popBackStack();
+                Navigation.findNavController(view).popBackStack();
             }
         });
         String str = "App-Version: ??";

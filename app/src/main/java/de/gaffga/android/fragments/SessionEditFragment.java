@@ -2,24 +2,19 @@ package de.gaffga.android.fragments;
 
 import android.app.Activity;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import androidx.annotation.Nullable;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.EditText;
-import android.widget.TextView;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 import de.gaffga.android.zazentimer.DbOperations;
 import de.gaffga.android.zazentimer.MessageView;
 import de.gaffga.android.zazentimer.R;
@@ -27,6 +22,7 @@ import de.gaffga.android.zazentimer.ZazenTimerActivity;
 import de.gaffga.android.zazentimer.bo.Section;
 import de.gaffga.android.zazentimer.bo.Session;
 import de.gaffga.android.zazentimer.databinding.FragmentEditSessionBinding;
+import com.google.android.material.snackbar.Snackbar;
 import java.util.Arrays;
 import java.util.List;
 
@@ -35,7 +31,6 @@ public class SessionEditFragment extends Fragment {
     private FragmentEditSessionBinding binding;
     private MessageView messageView;
     private SharedPreferences pref;
-    private SectionEditFragment sectionEditFragment;
     private Section[] sections;
     private Session session = null;
     private int sessionId;
@@ -50,6 +45,8 @@ public class SessionEditFragment extends Fragment {
         setHasOptionsMenu(true);
         if (bundle != null) {
             this.sessionId = bundle.getInt("sessionId");
+        } else if (getArguments() != null) {
+            this.sessionId = getArguments().getInt("sessionId");
         }
     }
 
@@ -86,14 +83,12 @@ public class SessionEditFragment extends Fragment {
         Log.d(TAG, "onCreateView");
         binding = FragmentEditSessionBinding.inflate(layoutInflater, viewGroup, false);
         this.pref = ZazenTimerActivity.getPreferences(getActivity());
-        this.sectionEditFragment = new SectionEditFragment();
         DbOperations.init(getActivity());
 
         adapter = new SectionListAdapter(new SectionListAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(Section section) {
-                SessionEditFragment.this.sectionEditFragment.setSectionId(section.id);
-                SessionEditFragment.this.showSectionEditFragment();
+                SessionEditFragment.this.navigateToSectionEdit(section.id);
             }
         });
 
@@ -207,15 +202,12 @@ public class SessionEditFragment extends Fragment {
     public void doCreateNewSection() {
         Section section = new Section(getResources().getString(R.string.default_section_name), 60);
         DbOperations.insertSection(this.session, section);
-        this.sectionEditFragment.setSectionId(section.id);
-        showSectionEditFragment();
+        navigateToSectionEdit(section.id);
     }
 
-    public void showSectionEditFragment() {
-        androidx.fragment.app.FragmentTransaction beginTransaction = getParentFragmentManager().beginTransaction();
-        beginTransaction.setCustomAnimations(R.animator.fade_in, R.animator.fade_out, R.animator.fade_in, R.animator.fade_out);
-        beginTransaction.replace(R.id.content, this.sectionEditFragment, ZazenTimerActivity.FRAGMENT_SECTION_EDIT);
-        beginTransaction.addToBackStack(null);
-        beginTransaction.commit();
+    private void navigateToSectionEdit(int sectionId) {
+        Bundle args = new Bundle();
+        args.putInt("sectionId", sectionId);
+        Navigation.findNavController(getView()).navigate(R.id.action_sessionEditFragment_to_sectionEditFragment, args);
     }
 }

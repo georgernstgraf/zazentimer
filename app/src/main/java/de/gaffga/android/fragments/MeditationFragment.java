@@ -12,7 +12,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import de.gaffga.android.zazentimer.R;
+import de.gaffga.android.zazentimer.service.MeditationUiState;
 import de.gaffga.android.zazentimer.service.MeditationViewModel;
+import de.gaffga.android.zazentimer.views.TimerView;
 
 public class MeditationFragment extends androidx.fragment.app.Fragment {
     private static final String TAG = "ZMT_MeditationFragment";
@@ -97,6 +99,20 @@ public class MeditationFragment extends androidx.fragment.app.Fragment {
         super.onViewCreated(view, savedInstanceState);
         viewModel = new ViewModelProvider(requireActivity()).get(MeditationViewModel.class);
         viewModel.getMeditationState().observe(getViewLifecycleOwner(), state -> {
+            if (state == null || !state.running) {
+                return;
+            }
+            TimerView timerView = (TimerView) view.findViewById(R.id.timerView);
+            if (timerView != null) {
+                timerView.setCurrentStartSeconds(state.currentStartSeconds);
+                timerView.setNumTotalSeconds(state.totalSessionTime);
+                timerView.setNextEndSeconds(state.nextEndSeconds);
+                timerView.setNextStartSeconds(state.nextStartSeconds);
+                timerView.setPrevStartSeconds(state.prevStartSeconds);
+                timerView.setSectionElapsedSeconds(state.sectionElapsedSeconds);
+                timerView.setSessionElapsedSeconds(state.sessionElapsedSeconds);
+                timerView.setSectionNames(state.currentSectionName, state.nextSectionName, state.nextNextSectionName);
+            }
             updateButtons();
         });
     }

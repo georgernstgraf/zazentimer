@@ -45,6 +45,8 @@ public class SectionEditFragment extends Fragment {
         super.onCreate(bundle);
         if (bundle != null) {
             this.sectionId = bundle.getInt("sectionId");
+        } else if (getArguments() != null) {
+            this.sectionId = getArguments().getInt("sectionId");
         }
     }
 

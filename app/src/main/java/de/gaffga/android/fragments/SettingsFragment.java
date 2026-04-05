@@ -17,7 +17,7 @@ import android.widget.Toast;
 import de.gaffga.android.zazentimer.DbOperations;
 import de.gaffga.android.zazentimer.R;
 import de.gaffga.android.zazentimer.ZazenTimerActivity;
-import de.gaffga.android.zazentimer.ZenTimerDatabase;
+import de.gaffga.android.zazentimer.database.AppDatabase;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -280,9 +280,9 @@ public class SettingsFragment extends PreferenceFragmentCompat {
             Enumeration<? extends ZipEntry> entries = zipFile.entries();
             while (entries.hasMoreElements()) {
                 ZipEntry entry = entries.nextElement();
-                if (entry.getName().equals(ZenTimerDatabase.DATABASE_NAME)) {
+                if (entry.getName().equals(AppDatabase.DATABASE_NAME)) {
                     DbOperations.close();
-                    if (!receiveFile(zipFile.getInputStream(entry), requireActivity().getDatabasePath(ZenTimerDatabase.DATABASE_NAME))) {
+                    if (!receiveFile(zipFile.getInputStream(entry), requireActivity().getDatabasePath(AppDatabase.DATABASE_NAME))) {
                         failed = true;
                     }
                     DbOperations.init(requireActivity());

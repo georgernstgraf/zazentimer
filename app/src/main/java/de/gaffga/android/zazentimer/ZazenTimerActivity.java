@@ -1,9 +1,10 @@
 package de.gaffga.android.zazentimer;
 
 import android.app.AlertDialog;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
+import androidx.navigation.fragment.NavHostFragment;
 import android.app.NotificationManager;
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -25,32 +26,18 @@ import androidx.lifecycle.ViewModelProvider;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 import android.view.WindowManager;
 import android.widget.Toast;
-import de.gaffga.android.base.Settings;
-import de.gaffga.android.fragments.AboutFragment;
 import de.gaffga.android.fragments.MainFragment;
-import de.gaffga.android.fragments.MeditationFragment;
-import de.gaffga.android.fragments.SessionEditFragment;
-import de.gaffga.android.fragments.SettingsFragment;
 import de.gaffga.android.zazentimer.audio.BellCollection;
 import de.gaffga.android.zazentimer.bo.Section;
 import de.gaffga.android.zazentimer.bo.Session;
 import de.gaffga.android.zazentimer.service.MeditationService;
-import de.gaffga.android.zazentimer.service.MeditationUiState;
 import de.gaffga.android.zazentimer.service.MeditationViewModel;
-import de.gaffga.android.zazentimer.views.TimerView;
 import java.util.ArrayList;
 import java.util.List;
 
 public class ZazenTimerActivity extends AppCompatActivity implements MainFragment.OnFragmentInteractionListener {
-    public static final String FRAGMENT_ABOUT = "about";
-    public static final String FRAGMENT_MAIN = "main";
-    public static final String FRAGMENT_MEDITATION = "meditation";
-    public static final String FRAGMENT_SECTION_EDIT = "fragment_edit_section";
-    public static final String FRAGMENT_SESSION_EDIT = "session";
-    public static final String FRAGMENT_SETTINGS = "settings";
     public static final String INTENT_DATA_SHOW_PREF_ON_START = "gotoPrefs";
     public static final int PREF_DEFAULT_BRIGHTNESS = 0;
     public static final boolean PREF_DEFAULT_CONVERTED_BELL_INDICES = false;
@@ -93,21 +80,16 @@ public class ZazenTimerActivity extends AppCompatActivity implements MainFragmen
     public static final String PREF_VALUE_THEME_DARK = "dark";
     public static final String PREF_VALUE_THEME_LIGHT = "light";
     private static final String TAG = "ZMT_ZazenTimerActivity";
-    private AboutFragment aboutFragment;
-    private MainFragment mainFragment;
     private MeditationEndReceiver meditationEndReceiver;
-    private MeditationFragment meditationFragment;
-    private MessageView messageView;
     private SharedPreferences pref;
     private ArrayList<ServerMessage> serverMessages;
-    private SessionEditFragment sessionEditFragment;
-    private SettingsFragment settingsFragment;
     final Intent intentAllowMuting = new Intent("android.settings.NOTIFICATION_POLICY_ACCESS_SETTINGS");
     private boolean created = false;
     private boolean showPrefsOnStart = false;
     private MeditationViewModel viewModel;
     private boolean appRunning = false;
     private Handler handler;
+    private NavController navController;
 
     private static class MeditationEndReceiver extends BroadcastReceiver {
         private final ZazenTimerActivity activity;
@@ -143,7 +125,12 @@ public class ZazenTimerActivity extends AppCompatActivity implements MainFragmen
         DbOperations.init(this);
         BellCollection.getInstance().init(this);
         convertFromOldVersions();
-        initView();
+        setContentView(R.layout.main);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.my_toolbar);
+        if (toolbar != null) {
+            setSupportActionBar(toolbar);
+        }
+        navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         observeViewModel();
         if (preferences.getBoolean(PREF_KEY_FIRST_START, true)) {
             Log.d(TAG, "This is the first run - create demo sessions");
@@ -155,28 +142,6 @@ public class ZazenTimerActivity extends AppCompatActivity implements MainFragmen
     }
 
     private void observeViewModel() {
-        viewModel.getMeditationState().observe(this, state -> {
-            if (state == null || !state.running) {
-                return;
-            }
-            View view = meditationFragment.getView();
-            if (view == null) {
-                return;
-            }
-            TimerView timerView = (TimerView) view.findViewById(R.id.timerView);
-            if (timerView == null) {
-                return;
-            }
-            timerView.setCurrentStartSeconds(state.currentStartSeconds);
-            timerView.setNumTotalSeconds(state.totalSessionTime);
-            timerView.setNextEndSeconds(state.nextEndSeconds);
-            timerView.setNextStartSeconds(state.nextStartSeconds);
-            timerView.setPrevStartSeconds(state.prevStartSeconds);
-            timerView.setSectionElapsedSeconds(state.sectionElapsedSeconds);
-            timerView.setSessionElapsedSeconds(state.sessionElapsedSeconds);
-            timerView.setSectionNames(state.currentSectionName, state.nextSectionName, state.nextNextSectionName);
-        });
-
         viewModel.getMeditationEnded().observe(this, ended -> {
             if (ended != null && ended) {
                 viewModel.consumeMeditationEnded();
@@ -257,88 +222,40 @@ public class ZazenTimerActivity extends AppCompatActivity implements MainFragmen
         return PreferenceManager.getDefaultSharedPreferences(context);
     }
 
-    protected void initView() {
-        setContentView(R.layout.main);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.my_toolbar);
-        if (toolbar != null) {
-            setSupportActionBar(toolbar);
-        }
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        this.mainFragment = (MainFragment) getSupportFragmentManager().findFragmentByTag(FRAGMENT_MAIN);
-        this.meditationFragment = (MeditationFragment) getSupportFragmentManager().findFragmentByTag(FRAGMENT_MEDITATION);
-        this.settingsFragment = (SettingsFragment) getSupportFragmentManager().findFragmentByTag(FRAGMENT_SETTINGS);
-        this.aboutFragment = (AboutFragment) getSupportFragmentManager().findFragmentByTag(FRAGMENT_ABOUT);
-        this.sessionEditFragment = (SessionEditFragment) getSupportFragmentManager().findFragmentByTag(FRAGMENT_SESSION_EDIT);
-        if (this.mainFragment == null) {
-            this.mainFragment = new MainFragment();
-        }
-        if (this.meditationFragment == null) {
-            this.meditationFragment = new MeditationFragment();
-        }
-        if (this.settingsFragment == null) {
-            this.settingsFragment = new SettingsFragment();
-        }
-        if (this.aboutFragment == null) {
-            this.aboutFragment = new AboutFragment();
-        }
-        if (this.sessionEditFragment == null) {
-            this.sessionEditFragment = new SessionEditFragment();
-        }
-        if (this.created) {
-            showMainScreen();
-        }
-    }
-
     @Override
     public void onBackPressed() {
-        if (getSupportFragmentManager().getBackStackEntryCount() > 0) {
-            getSupportFragmentManager().popBackStack();
-        } else {
+        if (!navController.popBackStack()) {
             super.onBackPressed();
         }
     }
 
     public boolean isMeditationScreenShown() {
-        return getSupportFragmentManager().findFragmentByTag(FRAGMENT_MEDITATION) != null;
+        if (navController.getCurrentDestination() == null) {
+            return false;
+        }
+        return navController.getCurrentDestination().getId() == R.id.meditationFragment;
     }
 
     public void showAboutScreen() {
-        FragmentTransaction beginTransaction = getSupportFragmentManager().beginTransaction();
-        beginTransaction.setCustomAnimations(R.animator.fade_in, R.animator.fade_out, R.animator.fade_in, R.animator.fade_out);
-        beginTransaction.replace(R.id.content, this.aboutFragment, FRAGMENT_ABOUT);
-        beginTransaction.addToBackStack(null);
-        beginTransaction.commit();
+        navController.navigate(R.id.action_mainFragment_to_aboutFragment);
     }
 
     public void showSettingsScreen() {
-        FragmentTransaction beginTransaction = getSupportFragmentManager().beginTransaction();
-        beginTransaction.setCustomAnimations(R.animator.fade_in, R.animator.fade_out, R.animator.fade_in, R.animator.fade_out);
-        beginTransaction.replace(R.id.content, this.settingsFragment, FRAGMENT_SETTINGS);
-        beginTransaction.addToBackStack(null);
-        beginTransaction.commit();
+        navController.navigate(R.id.action_mainFragment_to_settingsFragment);
     }
 
     public void showMeditationScreen() {
-        FragmentTransaction beginTransaction = getSupportFragmentManager().beginTransaction();
-        beginTransaction.setCustomAnimations(R.animator.fade_in, R.animator.fade_out, R.animator.fade_in, R.animator.fade_out);
-        beginTransaction.replace(R.id.content, this.meditationFragment, FRAGMENT_MEDITATION);
-        beginTransaction.commit();
+        navController.navigate(R.id.action_global_meditationFragment);
     }
 
     public void showMainScreen() {
-        FragmentTransaction beginTransaction = getSupportFragmentManager().beginTransaction();
-        beginTransaction.setCustomAnimations(R.animator.fade_in, R.animator.fade_out, R.animator.fade_in, R.animator.fade_out);
-        beginTransaction.replace(R.id.content, this.mainFragment, FRAGMENT_MAIN);
-        beginTransaction.commit();
+        navController.popBackStack(R.id.mainFragment, false);
     }
 
-    public void showSessionEditFragment() {
-        this.sessionEditFragment.setSessionId(getSelectedSessionId());
-        FragmentTransaction beginTransaction = getSupportFragmentManager().beginTransaction();
-        beginTransaction.setCustomAnimations(R.animator.fade_in, R.animator.fade_out, R.animator.fade_in, R.animator.fade_out);
-        beginTransaction.replace(R.id.content, this.sessionEditFragment, FRAGMENT_SESSION_EDIT);
-        beginTransaction.addToBackStack(null);
-        beginTransaction.commit();
+    public void showSessionEditFragment(int sessionId) {
+        Bundle args = new Bundle();
+        args.putInt("sessionId", sessionId);
+        navController.navigate(R.id.action_mainFragment_to_sessionEditFragment, args);
     }
 
     public void showPrivacyScreen() {
@@ -375,15 +292,18 @@ public class ZazenTimerActivity extends AppCompatActivity implements MainFragmen
     public boolean onOptionsItemSelected(MenuItem menuItem) {
         switch (menuItem.getItemId()) {
             case R.id.menu_about:
-                Log.d(TAG, FRAGMENT_ABOUT);
+                Log.d(TAG, "about");
                 showAboutScreen();
                 return true;
             case R.id.menu_copy_session:
                 Log.d(TAG, "duplicate session");
-                int selectedSessionId = this.mainFragment.getSelectedSessionId();
+                int selectedSessionId = getSelectedSessionId();
                 int duplicateSession = DbOperations.duplicateSession(selectedSessionId, getString(R.string.copy_prefix) + " " + DbOperations.readSession(selectedSessionId).name);
-                this.mainFragment.updateSessionList();
-                this.mainFragment.setSelectedSessionId(duplicateSession);
+                MainFragment mainFrag = findMainFragment();
+                if (mainFrag != null) {
+                    mainFrag.updateSessionList();
+                    mainFrag.setSelectedSessionId(duplicateSession);
+                }
                 return true;
             case R.id.menu_delete_session:
                 Log.d(TAG, "delete session");
@@ -394,8 +314,11 @@ public class ZazenTimerActivity extends AppCompatActivity implements MainFragmen
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         DbOperations.deleteSession(ZazenTimerActivity.this.getSelectedSessionId());
-                        ZazenTimerActivity.this.mainFragment.updateSessionList();
-                        ZazenTimerActivity.this.mainFragment.selectLastSession();
+                        MainFragment f = ZazenTimerActivity.this.findMainFragment();
+                        if (f != null) {
+                            f.updateSessionList();
+                            f.selectLastSession();
+                        }
                     }
                 });
                 builder.setNegativeButton(R.string.abbrechen, new DialogInterface.OnClickListener() {
@@ -407,7 +330,7 @@ public class ZazenTimerActivity extends AppCompatActivity implements MainFragmen
                 return true;
             case R.id.menu_edit_session:
                 Log.d(TAG, "edit session");
-                showSessionEditFragment();
+                showSessionEditFragment(getSelectedSessionId());
                 return true;
             case R.id.menu_new_session:
                 Log.d(TAG, "new session");
@@ -415,10 +338,12 @@ public class ZazenTimerActivity extends AppCompatActivity implements MainFragmen
                 session.name = "";
                 session.description = "";
                 DbOperations.insertSession(session);
-                this.sessionEditFragment.setSessionId(session.id);
-                this.mainFragment.updateSessionList();
-                this.mainFragment.setSelectedSessionId(session.id);
-                showSessionEditFragment();
+                MainFragment mainFrag2 = findMainFragment();
+                if (mainFrag2 != null) {
+                    mainFrag2.updateSessionList();
+                    mainFrag2.setSelectedSessionId(session.id);
+                }
+                showSessionEditFragment(session.id);
                 return true;
             case R.id.menu_privacy:
                 Log.d(TAG, "privacy");
@@ -428,7 +353,7 @@ public class ZazenTimerActivity extends AppCompatActivity implements MainFragmen
             default:
                 return super.onOptionsItemSelected(menuItem);
             case R.id.menu_settings:
-                Log.d(TAG, FRAGMENT_SETTINGS);
+                Log.d(TAG, "settings");
                 showSettingsScreen();
                 return true;
         }
@@ -437,8 +362,8 @@ public class ZazenTimerActivity extends AppCompatActivity implements MainFragmen
     @Override
     public boolean onPrepareOptionsMenu(Menu menu) {
         menu.clear();
-        Fragment findFragmentByTag = getSupportFragmentManager().findFragmentByTag(FRAGMENT_MAIN);
-        if (findFragmentByTag != null && findFragmentByTag.isVisible()) {
+        if (navController.getCurrentDestination() != null
+                && navController.getCurrentDestination().getId() == R.id.mainFragment) {
             getMenuInflater().inflate(R.menu.main_menu, menu);
         }
         MenuItem findItem = menu.findItem(R.id.menu_copy_session);
@@ -453,7 +378,18 @@ public class ZazenTimerActivity extends AppCompatActivity implements MainFragmen
         if (findItem3 != null) {
             findItem3.setEnabled(getSelectedSessionId() != -1);
         }
-        return super.onCreateOptionsMenu(menu);
+        return super.onPrepareOptionsMenu(menu);
+    }
+
+    private MainFragment findMainFragment() {
+        NavHostFragment navHost = (NavHostFragment) getSupportFragmentManager().findFragmentById(R.id.nav_host_fragment);
+        if (navHost != null) {
+            Fragment f = navHost.getChildFragmentManager().getPrimaryNavigationFragment();
+            if (f instanceof MainFragment) {
+                return (MainFragment) f;
+            }
+        }
+        return null;
     }
 
     private void createDemoSessions() {
@@ -620,16 +556,18 @@ public class ZazenTimerActivity extends AppCompatActivity implements MainFragmen
     }
 
     public int getSelectedSessionId() {
-        return this.mainFragment.getSelectedSessionId();
+        MainFragment f = findMainFragment();
+        if (f != null) {
+            return f.getSelectedSessionId();
+        }
+        return viewModel.getSelectedSessionId();
     }
 
     private void convertFromOldVersions() {
         this.pref = getPreferences(this);
         if (!this.pref.getBoolean(PREF_KEY_CONVERTED_FROM_DB, false)) {
-            Log.d(TAG, "converting old settings from DB to preferences...");
-            Settings.init(this);
-            convertSettings();
-            Settings.close();
+            Log.d(TAG, "marking settings as converted from DB to preferences...");
+            this.pref.edit().putBoolean(PREF_KEY_CONVERTED_FROM_DB, true).apply();
             Log.d(TAG, "done converting settings");
         }
         if (!this.pref.getBoolean(PREF_KEY_CONVERTED_BELL_INDICES, false)) {
@@ -669,14 +607,6 @@ public class ZazenTimerActivity extends AppCompatActivity implements MainFragmen
         }
     }
 
-    private void convertSettings() {
-        boolean booleanValue = Settings.getBooleanValue(Settings.PARAM_B_PHONE_OFF_DURING_MEDITATION, true);
-        int intValue = Settings.getIntValue(Settings.PARAM_I_LAST_SELECTED_SESSION, -1);
-        int intValue2 = Settings.getIntValue(Settings.PARAM_I_BELL_VOLUME, 20);
-        boolean booleanValue2 = Settings.getBooleanValue(Settings.PARAM_B_KEEP_SCREEN_ON, false);
-        this.pref.edit().putBoolean(PREF_KEY_PHONE_OFF, booleanValue).putInt(PREF_KEY_LAST_SESSION, intValue).putInt(PREF_KEY_VOLUME, intValue2).putBoolean(PREF_KEY_KEEP_SCREEN_ON, booleanValue2).putBoolean(PREF_KEY_FIRST_START, Settings.getBooleanValue(Settings.PARAM_B_FIRST_START, true)).putBoolean(PREF_KEY_CONVERTED_FROM_DB, true).apply();
-    }
-
     public void resetSettingsForTest() {
         getPreferences(this).edit().putBoolean(PREF_KEY_MUTE_MODE_VIBRATE_SOUND, false).putBoolean(PREF_KEY_MUTE_MODE_VIBRATE, false).putBoolean(PREF_KEY_MUTE_MODE_NONE, true).putBoolean(PREF_KEY_MUTE_ALARM, true).putBoolean(PREF_KEY_MUTE_MUSIC, false).putBoolean(PREF_KEY_OUTPUT_CHANNEL_ALARM, true).putBoolean(PREF_KEY_OUTPUT_CHANNEL_MUSIC, false).apply();
     }
@@ -693,7 +623,10 @@ public class ZazenTimerActivity extends AppCompatActivity implements MainFragmen
         runOnUiThread(new Runnable() {
             @Override
             public void run() {
-                ZazenTimerActivity.this.mainFragment.updateSessionList();
+                MainFragment f = ZazenTimerActivity.this.findMainFragment();
+                if (f != null) {
+                    f.updateSessionList();
+                }
             }
         });
     }
