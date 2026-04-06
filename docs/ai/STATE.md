@@ -12,7 +12,7 @@
 - [x] #23 Phase 2: Modernize deprecated APIs (startForegroundService, Context constants, Activity Result API)
 
 ## Pending
-- [ ] Fix failing instrumented tests (pre-existing `navigation_bar_item_active_indicator_view` issue)
+- None
 
 ## Blockers
 - None

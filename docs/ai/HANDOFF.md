@@ -1,1 +1,2 @@
-No pending tasks from issue #21. Last cleared: 2026-04-05.
+No pending tasks. Phase 2 (#23) complete. All CI green including instrumented tests.
+Last cleared: 2026-04-06.
