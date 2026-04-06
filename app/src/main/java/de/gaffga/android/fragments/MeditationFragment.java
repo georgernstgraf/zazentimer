@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
+import com.google.android.material.transition.MaterialSharedAxis;
 import de.gaffga.android.zazentimer.R;
 import de.gaffga.android.zazentimer.service.MeditationUiState;
 import de.gaffga.android.zazentimer.service.MeditationViewModel;
@@ -30,6 +31,13 @@ public class MeditationFragment extends Fragment {
     private OnBackPressedCallback backPressedCallback;
 
     public MeditationFragment() {
+    }
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setEnterTransition(new MaterialSharedAxis(MaterialSharedAxis.Y, true));
+        setReturnTransition(new MaterialSharedAxis(MaterialSharedAxis.Y, false));
     }
 
     @Override

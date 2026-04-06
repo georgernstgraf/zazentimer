@@ -16,6 +16,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import de.gaffga.android.base.SpinnerUtil;
+import com.google.android.material.transition.MaterialFadeThrough;
 import de.gaffga.android.zazentimer.DbOperations;
 import de.gaffga.android.zazentimer.R;
 import de.gaffga.android.zazentimer.ZazenTimerActivity;
@@ -53,6 +54,7 @@ public class MainFragment extends Fragment {
     @Override
     public void onCreate(Bundle bundle) {
         super.onCreate(bundle);
+        setEnterTransition(new MaterialFadeThrough());
         Log.d(TAG, "onCreate");
     }
 

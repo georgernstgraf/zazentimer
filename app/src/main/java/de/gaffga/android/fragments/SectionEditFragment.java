@@ -25,6 +25,7 @@ import de.gaffga.android.zazentimer.audio.Audio;
 import de.gaffga.android.zazentimer.audio.BellCollection;
 import de.gaffga.android.zazentimer.bo.Section;
 import de.gaffga.android.zazentimer.databinding.FragmentEditSectionBinding;
+import com.google.android.material.transition.MaterialSharedAxis;
 import dagger.hilt.android.AndroidEntryPoint;
 import java.io.FileOutputStream;
 import java.io.InputStream;
@@ -93,6 +94,8 @@ public class SectionEditFragment extends Fragment {
     @Override
     public void onCreate(Bundle bundle) {
         super.onCreate(bundle);
+        setEnterTransition(new MaterialSharedAxis(MaterialSharedAxis.X, true));
+        setReturnTransition(new MaterialSharedAxis(MaterialSharedAxis.X, false));
         if (bundle != null) {
             this.sectionId = bundle.getInt("sectionId");
         } else if (getArguments() != null) {

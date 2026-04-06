@@ -23,6 +23,7 @@ import de.gaffga.android.zazentimer.bo.Section;
 import de.gaffga.android.zazentimer.bo.Session;
 import de.gaffga.android.zazentimer.databinding.FragmentEditSessionBinding;
 import com.google.android.material.snackbar.Snackbar;
+import com.google.android.material.transition.MaterialSharedAxis;
 import dagger.hilt.android.AndroidEntryPoint;
 import java.util.Arrays;
 import java.util.List;
@@ -47,6 +48,8 @@ public class SessionEditFragment extends Fragment {
     @Override
     public void onCreate(Bundle bundle) {
         super.onCreate(bundle);
+        setEnterTransition(new MaterialSharedAxis(MaterialSharedAxis.X, true));
+        setReturnTransition(new MaterialSharedAxis(MaterialSharedAxis.X, false));
         setHasOptionsMenu(true);
         if (bundle != null) {
             this.sessionId = bundle.getInt("sessionId");

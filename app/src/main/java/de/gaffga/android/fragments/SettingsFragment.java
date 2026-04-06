@@ -16,6 +16,7 @@ import androidx.preference.Preference;
 import androidx.preference.PreferenceFragmentCompat;
 import android.util.Log;
 import android.widget.Toast;
+import com.google.android.material.transition.MaterialFadeThrough;
 import de.gaffga.android.zazentimer.DbOperations;
 import de.gaffga.android.zazentimer.R;
 import de.gaffga.android.zazentimer.ZazenTimerActivity;
@@ -63,6 +64,12 @@ public class SettingsFragment extends PreferenceFragmentCompat {
                 doRestore(uri);
             }
     );
+
+    @Override
+    public void onCreate(Bundle bundle) {
+        super.onCreate(bundle);
+        setEnterTransition(new MaterialFadeThrough());
+    }
 
     @Override
     public void onCreatePreferences(Bundle bundle, String rootKey) {

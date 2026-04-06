@@ -12,32 +12,16 @@
             android:id="@+id/action_mainFragment_to_meditationFragment"
             app:destination="@id/meditationFragment"
             app:popUpTo="@id/mainFragment"
-            app:popUpToInclusive="true"
-            app:enterAnim="@animator/fade_in"
-            app:exitAnim="@animator/fade_out"
-            app:popEnterAnim="@animator/fade_in"
-            app:popExitAnim="@animator/fade_out" />
+            app:popUpToInclusive="true" />
         <action
             android:id="@+id/action_mainFragment_to_sessionEditFragment"
-            app:destination="@id/sessionEditFragment"
-            app:enterAnim="@animator/fade_in"
-            app:exitAnim="@animator/fade_out"
-            app:popEnterAnim="@animator/fade_in"
-            app:popExitAnim="@animator/fade_out" />
+            app:destination="@id/sessionEditFragment" />
         <action
             android:id="@+id/action_mainFragment_to_settingsFragment"
-            app:destination="@id/settingsFragment"
-            app:enterAnim="@animator/fade_in"
-            app:exitAnim="@animator/fade_out"
-            app:popEnterAnim="@animator/fade_in"
-            app:popExitAnim="@animator/fade_out" />
+            app:destination="@id/settingsFragment" />
         <action
             android:id="@+id/action_mainFragment_to_aboutFragment"
-            app:destination="@id/aboutFragment"
-            app:enterAnim="@animator/fade_in"
-            app:exitAnim="@animator/fade_out"
-            app:popEnterAnim="@animator/fade_in"
-            app:popExitAnim="@animator/fade_out" />
+            app:destination="@id/aboutFragment" />
     </fragment>
 
     <fragment
@@ -51,11 +35,7 @@
         android:label="Edit Session">
         <action
             android:id="@+id/action_sessionEditFragment_to_sectionEditFragment"
-            app:destination="@id/sectionEditFragment"
-            app:enterAnim="@animator/fade_in"
-            app:exitAnim="@animator/fade_out"
-            app:popEnterAnim="@animator/fade_in"
-            app:popExitAnim="@animator/fade_out" />
+            app:destination="@id/sectionEditFragment" />
     </fragment>
 
     <fragment
@@ -77,9 +57,5 @@
         android:id="@+id/action_global_meditationFragment"
         app:destination="@id/meditationFragment"
         app:popUpTo="@id/mainFragment"
-        app:popUpToInclusive="true"
-        app:enterAnim="@animator/fade_in"
-        app:exitAnim="@animator/fade_out"
-        app:popEnterAnim="@animator/fade_in"
-        app:popExitAnim="@animator/fade_out" />
+        app:popUpToInclusive="true" />
 </navigation>

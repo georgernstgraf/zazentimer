@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import com.google.android.material.transition.MaterialFadeThrough;
 import de.gaffga.android.zazentimer.R;
 import dagger.hilt.android.AndroidEntryPoint;
 
@@ -18,6 +19,7 @@ public class AboutFragment extends Fragment {
     @Override
     public void onCreate(Bundle bundle) {
         super.onCreate(bundle);
+        setEnterTransition(new MaterialFadeThrough());
     }
 
     @Override
