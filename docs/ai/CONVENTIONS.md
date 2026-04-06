@@ -13,6 +13,13 @@ Follow these without question. Do not deviate unless explicitly told.
 ## API Patterns
 - Use AndroidX libraries (`androidx.*`). The legacy `android.support` migration is complete.
 - Use `Context.*_SERVICE` constants instead of raw string service names.
+- Use `startForegroundService()` (API 26+) instead of `startService()` for foreground services.
+- Use `registerForActivityResult()` (Activity Result API) instead of `onActivityResult()`.
+
+## Dependency Injection
+- Hilt is the DI framework. Use `@AndroidEntryPoint` on Activities/Fragments, `@HiltViewModel` on ViewModels.
+- Use `@Inject` constructor injection for injectable classes. `DbOperations` is `@Singleton`.
+- Tests use `@HiltAndroidTest` + `HiltAndroidRule`. The test runner is `HiltTestRunner` (not `AndroidJUnitRunner`).
 
 ## Testing
 - Ensure standard `lint` and `./gradlew build` commands pass.

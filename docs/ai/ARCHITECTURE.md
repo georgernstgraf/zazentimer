@@ -1,11 +1,11 @@
 # Architecture
 
-Living structural map of the system as of 2026-04-05.
+Living structural map of the system as of 2026-04-06.
 Overwritten when structural changes occur during a session.
 
 ## Overview
 Android meditation timer (ZazenTimer) targeting API 29-34.
-100% Java, AndroidX libraries, AlarmManager for timing, Foreground Service for session lifecycle.
+100% Java, AndroidX libraries, Hilt DI, AlarmManager for timing, Foreground Service for session lifecycle.
 
 ## App Components
 | Component | Class | Role |
@@ -60,6 +60,11 @@ User presses Start
   → On finish: MeditationService.stopForeground(), sends broadcast, stopSelf()
 ```
 
+## Dependency Injection
+- **Hilt** — all Activities use `@AndroidEntryPoint`, ViewModels use `@HiltViewModel`
+- `DbOperations` is `@Singleton` via Hilt, injected where needed
+- Tests use `HiltTestRunner` → `HiltTestApplication`
+
 ## Key Classes
 | Class | Location | Role |
 |-------|----------|------|
@@ -74,6 +79,7 @@ User presses Start
 | `TimerView` | `views/` | Custom circular arc timer widget with section visualization |
 | `BetterListView<T>` | `betterlist/` | Custom ListView with drag-to-reorder and swipe-to-delete |
 | `JwtCallCredentials` | `grpc/` | JWT auth for gRPC (prepared, not yet invoked) |
+| `HiltTestRunner` | androidTest | Custom AndroidJUnitRunner that injects HiltTestApplication |
 
 ## Data Flows
 - **AlarmManager.setAlarmClock()** → SectionEndReceiver → MeditationService → Meditation.onSectionEnd() → Audio.playBell()
