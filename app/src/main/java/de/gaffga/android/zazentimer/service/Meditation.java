@@ -1,5 +1,6 @@
 package de.gaffga.android.zazentimer.service;
 
+import android.content.Context;
 import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.content.Intent;
@@ -49,7 +50,7 @@ public class Meditation {
         this.sections = sectionArr;
         this.meditationService = meditationService;
         this.pref = ZazenTimerActivity.getPreferences(meditationService);
-        this.alarmManager = (AlarmManager) this.meditationService.getSystemService("alarm");
+        this.alarmManager = (AlarmManager) this.meditationService.getSystemService(Context.ALARM_SERVICE);
         this.stopping = false;
         this.paused = false;
         this.currentSectionIdx = 0;
@@ -131,7 +132,7 @@ public class Meditation {
 
     private void createMeditationWakeLock() {
         Log.d(TAG, "Creating meditation wake lock");
-        PowerManager powerManager = (PowerManager) this.meditationService.getSystemService("power");
+        PowerManager powerManager = (PowerManager) this.meditationService.getSystemService(Context.POWER_SERVICE);
         if (powerManager != null) {
             this.meditationWakeLock = powerManager.newWakeLock(1, "MeditationWakeLock");
             this.meditationWakeLock.acquire((this.totalSessionTime + 120) * 1000);
@@ -303,7 +304,7 @@ public class Meditation {
         boolean z3 = this.pref.getBoolean(ZazenTimerActivity.PREF_KEY_MUTE_MODE_NONE, true);
         boolean z4 = this.pref.getBoolean(ZazenTimerActivity.PREF_KEY_MUTE_ALARM, true);
         boolean z5 = this.pref.getBoolean(ZazenTimerActivity.PREF_KEY_MUTE_MUSIC, false);
-        AudioManager audioManager = (AudioManager) this.meditationService.getSystemService("audio");
+        AudioManager audioManager = (AudioManager) this.meditationService.getSystemService(Context.AUDIO_SERVICE);
         if (!z) {
             if (z2) {
                 this.oldRingerMode = audioManager.getRingerMode();
@@ -338,7 +339,7 @@ public class Meditation {
         boolean z3 = this.pref.getBoolean(ZazenTimerActivity.PREF_KEY_MUTE_MODE_NONE, true);
         boolean z4 = this.pref.getBoolean(ZazenTimerActivity.PREF_KEY_MUTE_ALARM, true);
         boolean z5 = this.pref.getBoolean(ZazenTimerActivity.PREF_KEY_MUTE_MUSIC, false);
-        AudioManager audioManager = (AudioManager) this.meditationService.getSystemService("audio");
+        AudioManager audioManager = (AudioManager) this.meditationService.getSystemService(Context.AUDIO_SERVICE);
         if (!z && (z2 || z3)) {
             Log.d(TAG, "unmuting: ring=" + this.oldRingerVolume + " ringerMode=" + this.oldRingerMode);
             audioManager.setRingerMode(this.oldRingerMode);
@@ -365,7 +366,7 @@ public class Meditation {
         bellExecutor.execute(() -> {
             Log.d(TAG, "Playing bells in background thread");
             PowerManager.WakeLock wakeLock = null;
-            PowerManager powerManager = (PowerManager) this.meditationService.getSystemService("power");
+            PowerManager powerManager = (PowerManager) this.meditationService.getSystemService(Context.POWER_SERVICE);
             if (powerManager != null) {
                 wakeLock = powerManager.newWakeLock(26, "PlayBells");
                 wakeLock.acquire(section.bellcount * 25 * 1000);

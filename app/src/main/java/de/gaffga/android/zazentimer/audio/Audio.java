@@ -34,7 +34,7 @@ public class Audio implements MediaPlayer.OnCompletionListener {
         this.context = context;
         this.pref = PreferenceManager.getDefaultSharedPreferences(context);
         if (this.manager == null) {
-            this.manager = (AudioManager) context.getSystemService("audio");
+            this.manager = (AudioManager) context.getSystemService(Context.AUDIO_SERVICE);
         }
     }
 

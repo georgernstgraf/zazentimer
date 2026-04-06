@@ -226,11 +226,6 @@ public class ZazenTimerActivity extends AppCompatActivity implements MainFragmen
         }
     }
 
-    @Override
-    protected void onActivityResult(int i, int i2, Intent intent) {
-        super.onActivityResult(i, i2, intent);
-    }
-
     public static SharedPreferences getPreferences(Context context) {
         return PreferenceManager.getDefaultSharedPreferences(context);
     }
@@ -514,7 +509,7 @@ public class ZazenTimerActivity extends AppCompatActivity implements MainFragmen
         }
         if (this.pref.getBoolean(PREF_KEY_MUTE_MODE_NONE, true) || this.pref.getBoolean(PREF_KEY_MUTE_MODE_VIBRATE, false)) {
             if (Build.VERSION.SDK_INT >= 23) {
-                NotificationManager notificationManager = (NotificationManager) getSystemService("notification");
+                NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
                 if (notificationManager != null && !notificationManager.isNotificationPolicyAccessGranted()) {
                     if (isCallable(this.intentAllowMuting)) {
                         showMessageAllowMute(this.intentAllowMuting);

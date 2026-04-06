@@ -15,6 +15,8 @@ import android.widget.AdapterView;
 import android.widget.SeekBar;
 import android.widget.SpinnerAdapter;
 import android.widget.TextView;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import de.gaffga.android.zazentimer.Bell;
 import de.gaffga.android.zazentimer.DbOperations;
 import de.gaffga.android.zazentimer.R;
@@ -31,7 +33,6 @@ import javax.inject.Inject;
 
 @AndroidEntryPoint
 public class SectionEditFragment extends Fragment {
-    public static int INTENT_GET_BELL = 99;
     private static final String TAG = "ZMT_SectionEdit";
     private Audio audio;
     private FragmentEditSectionBinding binding;
@@ -44,6 +45,50 @@ public class SectionEditFragment extends Fragment {
     private TextView tvGaps[] = new TextView[15];
 
     @Inject DbOperations dbOperations;
+
+    private final ActivityResultLauncher<Intent> bellPickerLauncher = registerForActivityResult(
+            new ActivityResultContracts.StartActivityForResult(),
+            result -> {
+                if (result.getResultCode() != android.app.Activity.RESULT_OK || result.getData() == null) return;
+                Intent intent = result.getData();
+                Uri data = intent.getData();
+                if (data == null) return;
+                String str = "bell_unnamed";
+                if (data.getScheme().equals("content")) {
+                    Cursor query = getActivity().getContentResolver().query(data, null, null, null, null);
+                    if (query != null && query.getCount() != 0) {
+                        int columnIndex = query.getColumnIndex("_display_name");
+                        if (columnIndex >= 0) {
+                            query.moveToFirst();
+                            str = "bell_" + query.getString(columnIndex);
+                        } else {
+                            str = "bell_" + data.getLastPathSegment();
+                        }
+                    }
+                    if (query != null) {
+                        query.close();
+                    }
+                } else {
+                    str = "bell_" + data.getLastPathSegment();
+                }
+                try {
+                    InputStream openInputStream = getActivity().getContentResolver().openInputStream(data);
+                    FileOutputStream openFileOutput = getActivity().openFileOutput(str, 0);
+                    byte[] bArr = new byte[8192];
+                    for (int read = openInputStream.read(bArr); read > 0; read = openInputStream.read(bArr)) {
+                        openFileOutput.write(bArr, 0, read);
+                    }
+                    openInputStream.close();
+                    openFileOutput.close();
+                    BellCollection.getInstance().init(getActivity());
+                    fillBellList();
+                    this.section.bellUri = BellCollection.getInstance().getUriForName(str).toString();
+                    selectBell(this.section.bellUri);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+    );
 
     @Override
     public void onCreate(Bundle bundle) {
@@ -96,48 +141,6 @@ public class SectionEditFragment extends Fragment {
         this.audio = null;
         fillDataFromViews();
         dbOperations.updateSection(this.section);
-    }
-
-    @Override
-    public void onActivityResult(int i, int i2, Intent intent) {
-        super.onActivityResult(i, i2, intent);
-        if (i2 == -1 && i == INTENT_GET_BELL) {
-            Uri data = intent.getData();
-            String str = "bell_unnamed";
-            if (data.getScheme().equals("content")) {
-                Cursor query = getActivity().getContentResolver().query(data, null, null, null, null);
-                if (query != null && query.getCount() != 0) {
-                    int columnIndex = query.getColumnIndex("_display_name");
-                    if (columnIndex >= 0) {
-                        query.moveToFirst();
-                        str = "bell_" + query.getString(columnIndex);
-                    } else {
-                        str = "bell_" + data.getLastPathSegment();
-                    }
-                }
-                if (query != null) {
-                    query.close();
-                }
-            } else {
-                str = "bell_" + data.getLastPathSegment();
-            }
-            try {
-                InputStream openInputStream = getActivity().getContentResolver().openInputStream(data);
-                FileOutputStream openFileOutput = getActivity().openFileOutput(str, 0);
-                byte[] bArr = new byte[8192];
-                for (int read = openInputStream.read(bArr); read > 0; read = openInputStream.read(bArr)) {
-                    openFileOutput.write(bArr, 0, read);
-                }
-                openInputStream.close();
-                openFileOutput.close();
-                BellCollection.getInstance().init(getActivity());
-                fillBellList();
-                this.section.bellUri = BellCollection.getInstance().getUriForName(str).toString();
-                selectBell(this.section.bellUri);
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
     }
 
     private void fillDataFromViews() {
@@ -205,7 +208,7 @@ public class SectionEditFragment extends Fragment {
                 Intent intent = new Intent("android.intent.action.GET_CONTENT");
                 intent.setFlags(1);
                 intent.setType("audio/*");
-                SectionEditFragment.this.startActivityForResult(Intent.createChooser(intent, SectionEditFragment.this.getResources().getString(R.string.select_audio)), SectionEditFragment.INTENT_GET_BELL);
+                bellPickerLauncher.launch(Intent.createChooser(intent, SectionEditFragment.this.getResources().getString(R.string.select_audio)));
             }
         });
         binding.bellcount1.setOnClickListener(new View.OnClickListener() {

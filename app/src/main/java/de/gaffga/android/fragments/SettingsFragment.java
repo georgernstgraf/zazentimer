@@ -8,6 +8,8 @@ import android.os.Looper;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import android.os.Bundle;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AlertDialog;
 import androidx.preference.CheckBoxPreference;
 import androidx.preference.Preference;
@@ -35,10 +37,32 @@ public class SettingsFragment extends PreferenceFragmentCompat {
     private final ExecutorService executor = Executors.newSingleThreadExecutor();
     private final Handler uiHandler = new Handler(Looper.getMainLooper());
     private static final String TAG = "ZMT_SettingsFragment";
-    private static final int REQUEST_BACKUP = 201;
-    private static final int REQUEST_RESTORE = 202;
 
     @Inject DbOperations dbOperations;
+
+    private final ActivityResultLauncher<Intent> backupLauncher = registerForActivityResult(
+            new ActivityResultContracts.StartActivityForResult(),
+            result -> {
+                if (result.getResultCode() != android.app.Activity.RESULT_OK || result.getData() == null) return;
+                Uri uri = result.getData().getData();
+                if (uri == null) return;
+                requireActivity().getContentResolver().takePersistableUriPermission(
+                        uri, Intent.FLAG_GRANT_READ_URI_PERMISSION | Intent.FLAG_GRANT_WRITE_URI_PERMISSION);
+                doBackup(uri);
+            }
+    );
+
+    private final ActivityResultLauncher<Intent> restoreLauncher = registerForActivityResult(
+            new ActivityResultContracts.StartActivityForResult(),
+            result -> {
+                if (result.getResultCode() != android.app.Activity.RESULT_OK || result.getData() == null) return;
+                Uri uri = result.getData().getData();
+                if (uri == null) return;
+                requireActivity().getContentResolver().takePersistableUriPermission(
+                        uri, Intent.FLAG_GRANT_READ_URI_PERMISSION | Intent.FLAG_GRANT_WRITE_URI_PERMISSION);
+                doRestore(uri);
+            }
+    );
 
     @Override
     public void onCreatePreferences(Bundle bundle, String rootKey) {
@@ -138,7 +162,7 @@ public class SettingsFragment extends PreferenceFragmentCompat {
                 intent.addCategory(Intent.CATEGORY_OPENABLE);
                 intent.setType("application/zip");
                 intent.putExtra(Intent.EXTRA_TITLE, "zazentimer_backup.zip");
-                startActivityForResult(intent, REQUEST_BACKUP);
+                backupLauncher.launch(intent);
                 return true;
             }
         });
@@ -158,7 +182,7 @@ public class SettingsFragment extends PreferenceFragmentCompat {
                                 Intent intent = new Intent(Intent.ACTION_OPEN_DOCUMENT);
                                 intent.addCategory(Intent.CATEGORY_OPENABLE);
                                 intent.setType("application/zip");
-                                startActivityForResult(intent, REQUEST_RESTORE);
+                                restoreLauncher.launch(intent);
                             }
                         })
                         .setNegativeButton(R.string.abbrechen, new DialogInterface.OnClickListener() {
@@ -170,24 +194,6 @@ public class SettingsFragment extends PreferenceFragmentCompat {
                 return true;
             }
         });
-    }
-
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (resultCode != android.app.Activity.RESULT_OK || data == null) {
-            return;
-        }
-        Uri uri = data.getData();
-        if (uri == null) {
-            return;
-        }
-        requireActivity().getContentResolver().takePersistableUriPermission(
-                uri, Intent.FLAG_GRANT_READ_URI_PERMISSION | Intent.FLAG_GRANT_WRITE_URI_PERMISSION);
-        if (requestCode == REQUEST_BACKUP) {
-            doBackup(uri);
-        } else if (requestCode == REQUEST_RESTORE) {
-            doRestore(uri);
-        }
     }
 
     private void doBackup(Uri uri) {

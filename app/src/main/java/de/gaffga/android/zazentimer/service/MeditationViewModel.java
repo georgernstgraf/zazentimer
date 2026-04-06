@@ -4,6 +4,7 @@ import android.app.Application;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.Build;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.PowerManager;
@@ -105,7 +106,11 @@ public class MeditationViewModel extends AndroidViewModel {
         if (this.serviceIntent == null) {
             this.serviceIntent = new Intent(app, MeditationService.class);
         }
-        app.startService(this.serviceIntent);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            app.startForegroundService(this.serviceIntent);
+        } else {
+            app.startService(this.serviceIntent);
+        }
         bindToService(app, this.handler != null ? this.handler : new Handler(Looper.getMainLooper()), new Runnable() {
             @Override
             public void run() {
