@@ -37,6 +37,24 @@
 - **Considered**: Using only the README for setup info; relying on Android Studio's new-project wizard.
 - **Tradeoff**: Adds a documentation maintenance burden, but prevents repeated onboarding questions. Linux-specific paths may need adjustment for macOS/Windows developers.
 
+## 2026-04-06: Navigation and Information Architecture (#20)
+- **Choice**: Replaced Spinner with RecyclerView session cards, added BottomNavigationView (Sessions/Settings/About), FAB for new sessions, per-card popup menus for Edit/Copy/Delete, back-press confirmation during meditation, and Material Motion transitions.
+- **Reason**: All navigation actions were buried in the overflow menu; Spinner didn't scale; no visual hierarchy. Bottom nav makes Settings and About discoverable. Session cards show name + description + duration.
+- **Considered**: ViewPager2 for section editing; inline accordion expansion for sections; keeping overflow menu approach.
+- **Tradeoff**: Bottom nav adds a persistent UI element but eliminates menu hunting. Kept separate-screen section editing as-is (simple, already works). Section editing deferred to future if needed.
+
+## 2026-04-06: Room Schema Alignment — Migration 4→5
+- **Choice**: Bumped Room database version to 5 with MIGRATION_4_5 that recreates sessions and sections tables with explicit `NOT NULL` on `_id`, `name`, and `description` columns.
+- **Reason**: The old SQLiteOpenHelper database had `name TEXT NOT NULL` and `_id integer` (nullable), but Room entities expected `_id INTEGER NOT NULL` and `String name` (nullable). Room's schema validation failed on the physical phone's existing database.
+- **Considered**: Using `fallbackToDestructiveMigration()` (rejected — would destroy user data).
+- **Tradeoff**: Adds a migration step but preserves all user data. The table-recreation approach (CREATE new → INSERT SELECT → DROP old → RENAME) is standard for fixing NOT NULL mismatches.
+
+## 2026-04-06: Instrumented Test Rule Ordering
+- **Choice**: Added `@Rule(order = 0)` to `HiltAndroidRule` and `@Rule(order = 1)` to `ActivityScenarioRule` in all test classes.
+- **Reason**: JUnit 4 applies rules in non-deterministic order via reflection. Without explicit ordering, `ActivityScenarioRule` could fire before Hilt initialized the test component on API 31 devices, causing `NoActivityResumedException`.
+- **Considered**: Using `RuleChain` instead of `order` parameter.
+- **Tradeoff**: Minimal change, works on both API 31 and API 35 devices.
+
 ## 2026-04-06: Phase 2 — Modernize Deprecated APIs (#23)
 - **Choice**: Replaced all deprecated API usages: `startService()` → `startForegroundService()` for foreground services, raw string `getSystemService("...")` → `Context.*_SERVICE` constants, and `onActivityResult()` → Activity Result API (`registerForActivityResult`).
 - **Reason**: The app targets API 29-34 but used APIs deprecated/removed in the target range. `startForegroundService()` is required since API 26 for foreground services. Raw string service names are fragile. `onActivityResult` is deprecated since API 30.

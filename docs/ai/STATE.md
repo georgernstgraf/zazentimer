@@ -10,6 +10,14 @@
 - [x] CI: Android SDK setup, JDK 17, debug APK artifact upload
 - [x] #21 Phase 1: Onboarding docs, Gradle Wrapper migration, docs cleanup, dead code removal
 - [x] #23 Phase 2: Modernize deprecated APIs (startForegroundService, Context constants, Activity Result API)
+- [x] #22 Phase 3: Architecture modernization epic (all sub-issues complete)
+- [x] #20 Improve app navigation and information architecture
+  - [x] #31 Dynamic toolbar titles + NavigationUI setup
+  - [x] #32 Replace Spinner with RecyclerView session list
+  - [x] #33 BottomNavigationView for primary screens
+  - [x] #34 FAB and per-session contextual actions
+  - [x] #35 Back-press confirmation during meditation
+  - [x] #36 Material Motion transitions
 
 ## Pending
 - None
@@ -18,4 +26,4 @@
 - None
 
 ## Next Session Suggestion
-Phase 3: Architecture modernization (#22 epic) — consider ViewModel-driven state, Navigation component cleanup, or other items from the epic.
+Consider updating UI_TEST_PLAN.md for the new navigation structure (bottom nav, session cards, FAB). The StartMeditationTest and other UI tests may need updating for the new screen layout.
