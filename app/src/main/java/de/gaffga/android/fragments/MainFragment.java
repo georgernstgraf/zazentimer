@@ -1,6 +1,8 @@
 package de.gaffga.android.fragments;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -9,10 +11,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.Button;
-import android.widget.Spinner;
-import android.widget.SpinnerAdapter;
 import de.gaffga.android.base.SpinnerUtil;
 import de.gaffga.android.zazentimer.DbOperations;
 import de.gaffga.android.zazentimer.R;
@@ -24,11 +23,11 @@ import java.util.ArrayList;
 import javax.inject.Inject;
 
 @AndroidEntryPoint
-public class MainFragment extends Fragment implements AdapterView.OnItemSelectedListener {
+public class MainFragment extends Fragment {
     private static final String TAG = "ZMT_MainFragment";
     private Button butStart;
     private Context context;
-    private Spinner listSessions;
+    private RecyclerView recyclerSessions;
     private boolean mAttached;
     private OnFragmentInteractionListener mListener;
     private SharedPreferences pref;
@@ -40,10 +39,6 @@ public class MainFragment extends Fragment implements AdapterView.OnItemSelected
 
     public interface OnFragmentInteractionListener {
         void onStartPressed();
-    }
-
-    @Override
-    public void onNothingSelected(AdapterView<?> adapterView) {
     }
 
     public MainFragment() {
@@ -62,16 +57,23 @@ public class MainFragment extends Fragment implements AdapterView.OnItemSelected
         Log.d(TAG, "onCreateView");
         View inflate = layoutInflater.inflate(R.layout.fragment_main, viewGroup, false);
         this.butStart = (Button) inflate.findViewById(R.id.but_start);
-        this.listSessions = (Spinner) inflate.findViewById(R.id.spin_sessions);
+        this.recyclerSessions = (RecyclerView) inflate.findViewById(R.id.recycler_sessions);
         this.butStart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 MainFragment.this.mListener.onStartPressed();
             }
         });
-        this.sessionListAdapter = new SessionListAdapter(this.context, R.layout.main_session_list_item, R.id.spinnerText1);
-        this.listSessions.setAdapter((SpinnerAdapter) this.sessionListAdapter);
-        this.listSessions.setOnItemSelectedListener(this);
+        this.recyclerSessions.setLayoutManager(new LinearLayoutManager(this.context));
+        this.sessionListAdapter = new SessionListAdapter(new SessionListAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(int position, SessionWithTimeInfo session) {
+                Session s = sessions.get(position);
+                MainFragment.this.selectedSessionId = s.id;
+                MainFragment.this.pref.edit().putInt(ZazenTimerActivity.PREF_KEY_LAST_SESSION, s.id).apply();
+            }
+        });
+        this.recyclerSessions.setAdapter(this.sessionListAdapter);
         return inflate;
     }
 
@@ -113,18 +115,21 @@ public class MainFragment extends Fragment implements AdapterView.OnItemSelected
 
     @Override
     public void onResume() {
-        int positionById;
         super.onResume();
         Log.d(TAG, "onResume");
         getActivity().invalidateOptionsMenu();
         updateSessionList();
         int i = this.pref.getInt(ZazenTimerActivity.PREF_KEY_LAST_SESSION, -1);
-        if (i == -1 || (positionById = SpinnerUtil.getPositionById(this.sessions, i)) == -1) {
+        if (i == -1) {
+            return;
+        }
+        int positionById = SpinnerUtil.getPositionById(this.sessions, i);
+        if (positionById == -1) {
             return;
         }
         Log.d(TAG, "LAST_SELECTED_SESSION was idx=" + positionById + " id=" + i);
         this.selectedSessionId = i;
-        this.listSessions.setSelection(positionById);
+        this.sessionListAdapter.setSelectedPosition(positionById);
     }
 
     public void updateSessionList() {
@@ -156,13 +161,6 @@ public class MainFragment extends Fragment implements AdapterView.OnItemSelected
 
     public void setSelectedSessionId(int i) {
         this.selectedSessionId = i;
-        this.listSessions.setSelection(SpinnerUtil.getPositionById(this.sessions, i));
-    }
-
-    @Override
-    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long j) {
-        Session session = this.sessions.get(i);
-        this.selectedSessionId = session.id;
-        this.pref.edit().putInt(ZazenTimerActivity.PREF_KEY_LAST_SESSION, session.id).apply();
+        this.sessionListAdapter.setSelectedPosition(SpinnerUtil.getPositionById(this.sessions, i));
     }
 }

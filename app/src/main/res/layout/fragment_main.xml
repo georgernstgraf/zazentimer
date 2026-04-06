@@ -12,21 +12,19 @@
         android:minHeight="80dp"
         android:text="@string/but_start"
         android:layout_alignParentBottom="true"/>
-    <Spinner
-        android:gravity="center"
-        android:id="@+id/spin_sessions"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_sessions"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="20dp"
         android:layout_above="@+id/but_start"
         android:layout_alignParentTop="false"
-        android:layout_centerHorizontal="false"
-        android:spinnerMode="dropdown"/>
+        android:layout_centerHorizontal="false"/>
     <ImageView
         android:padding="40dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:scaleType="fitCenter"
-        android:layout_above="@+id/spin_sessions"
+        android:layout_above="@+id/recycler_sessions"
         style="@style/zenIcon"/>
 </RelativeLayout>

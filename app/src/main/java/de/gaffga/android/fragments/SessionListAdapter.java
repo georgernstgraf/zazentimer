@@ -1,67 +1,120 @@
 package de.gaffga.android.fragments;
 
-import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.TextView;
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
 import de.gaffga.android.zazentimer.R;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Locale;
 
-public class SessionListAdapter extends ArrayAdapter<SessionWithTimeInfo> {
-    private final Context context;
+public class SessionListAdapter extends RecyclerView.Adapter<SessionListAdapter.ViewHolder> {
 
-    public SessionListAdapter(Context context, int i, int i2) {
-        super(context, i, i2);
-        this.context = context;
+    private List<SessionWithTimeInfo> items = new ArrayList<>();
+    private int selectedPosition = -1;
+    private final OnItemClickListener clickListener;
+
+    public interface OnItemClickListener {
+        void onItemClick(int position, SessionWithTimeInfo session);
     }
 
-    public void setSessions(ArrayList<SessionWithTimeInfo> arrayList) {
-        clear();
-        addAll(arrayList);
+    static class ViewHolder extends RecyclerView.ViewHolder {
+        final TextView sessionName;
+        final TextView sessionDescription;
+        final TextView sessionDuration;
+
+        ViewHolder(View view) {
+            super(view);
+            sessionName = view.findViewById(R.id.sessionName);
+            sessionDescription = view.findViewById(R.id.sessionDescription);
+            sessionDuration = view.findViewById(R.id.sessionDuration);
+        }
+    }
+
+    public SessionListAdapter(OnItemClickListener clickListener) {
+        this.clickListener = clickListener;
+    }
+
+    @NonNull
+    @Override
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_session, parent, false);
+        return new ViewHolder(view);
+    }
+
+    @Override
+    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+        SessionWithTimeInfo item = items.get(position);
+
+        String name;
+        if (item.getSession() != null && item.getSession().name != null && !item.getSession().name.trim().equals("")) {
+            name = item.getSession().name;
+        } else {
+            name = holder.itemView.getContext().getString(R.string.session_list_unnamed_entry);
+        }
+
+        holder.sessionName.setText(name);
+        holder.sessionDuration.setText(formatDuration(item.getTotalTimeSeconds()));
+
+        if (item.getSession() != null && item.getSession().description != null) {
+            holder.sessionDescription.setText(item.getSession().description);
+        } else {
+            holder.sessionDescription.setText("");
+        }
+
+        holder.itemView.setSelected(position == selectedPosition);
+        holder.itemView.setActivated(position == selectedPosition);
+
+        holder.itemView.setOnClickListener(v -> {
+            int previous = selectedPosition;
+            selectedPosition = holder.getAdapterPosition();
+            if (previous != -1) {
+                notifyItemChanged(previous);
+            }
+            notifyItemChanged(selectedPosition);
+            if (clickListener != null) {
+                clickListener.onItemClick(selectedPosition, items.get(selectedPosition));
+            }
+        });
+    }
+
+    @Override
+    public int getItemCount() {
+        return items.size();
+    }
+
+    public void setSessions(ArrayList<SessionWithTimeInfo> newItems) {
+        items = new ArrayList<>(newItems);
+        selectedPosition = -1;
         notifyDataSetChanged();
     }
 
-    @Override // android.widget.ArrayAdapter, android.widget.Adapter
-    public View getView(int i, View view, ViewGroup viewGroup) {
-        return getMyView(i, R.layout.main_session_list_item);
-    }
-
-    private View getMyView(int i, int i2) {
-        View inflate = LayoutInflater.from(this.context).inflate(i2, (ViewGroup) null);
-        TextView textView = (TextView) inflate.findViewById(R.id.spinnerText1);
-        TextView textView2 = (TextView) inflate.findViewById(R.id.spinnerText2);
-        TextView textView3 = (TextView) inflate.findViewById(R.id.spinnerText3);
-        SessionWithTimeInfo item = getItem(i);
-        if (item != null) {
-            textView3.setText(getSessionTimeInfo(item.getTotalTimeSeconds()));
-            if (item.getSession() != null) {
-                if (item.getSession().name.trim().equals("")) {
-                    textView.setText(this.context.getString(R.string.session_list_unnamed_entry));
-                } else {
-                    textView.setText(item.getSession().name);
-                }
-                textView2.setText(item.getSession().description);
-            } else {
-                textView.setText("" + i);
-                textView2.setText("");
-            }
-        } else {
-            textView.setText("" + i);
-            textView2.setText("");
-            textView3.setText(0);
+    public void setSelectedPosition(int position) {
+        int previous = selectedPosition;
+        selectedPosition = position;
+        if (previous != -1) {
+            notifyItemChanged(previous);
         }
-        return inflate;
+        if (selectedPosition != -1) {
+            notifyItemChanged(selectedPosition);
+        }
     }
 
-    private String getSessionTimeInfo(int i) {
-        return String.format(Locale.getDefault(), "%02d:%02d", Integer.valueOf(i / 60), Integer.valueOf(i % 60));
+    public int getSelectedPosition() {
+        return selectedPosition;
     }
 
-    @Override // android.widget.ArrayAdapter, android.widget.BaseAdapter, android.widget.SpinnerAdapter
-    public View getDropDownView(int i, View view, ViewGroup viewGroup) {
-        return getMyView(i, R.layout.main_session_list_item);
+    public SessionWithTimeInfo getItem(int position) {
+        if (position >= 0 && position < items.size()) {
+            return items.get(position);
+        }
+        return null;
+    }
+
+    private String formatDuration(int totalSeconds) {
+        return String.format(Locale.getDefault(), "%02d:%02d", totalSeconds / 60, totalSeconds % 60);
     }
 }

@@ -25,15 +25,14 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"/>
-    <Spinner
-        android:id="@+id/spin_sessions"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_sessions"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_toRightOf="@+id/zenimage"
         android:layout_above="@+id/but_start"
         android:layout_alignLeft="@+id/but_start"
         android:layout_alignRight="@+id/but_start"
-        android:spinnerMode="dropdown"
         android:layout_toEndOf="@+id/zenimage"
         android:layout_alignStart="@+id/but_start"
         android:layout_alignEnd="@+id/but_start"/>

@@ -2,9 +2,9 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-    <Spinner
+    <androidx.recyclerview.widget.RecyclerView
         android:gravity="center"
-        android:id="@+id/spin_sessions"
+        android:id="@+id/recycler_sessions"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="20dp"
@@ -12,7 +12,6 @@
         android:layout_marginBottom="20dp"
         android:layout_toRightOf="@+id/zenimage"
         android:layout_above="@+id/but_start"
-        android:spinnerMode="dropdown"
         android:layout_toEndOf="@+id/zenimage"/>
     <Button
         android:id="@+id/but_start"
