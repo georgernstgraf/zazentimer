@@ -1,5 +1,6 @@
 package de.gaffga.android.fragments;
 
+import androidx.activity.OnBackPressedCallback;
 import androidx.fragment.app.Fragment;
 import android.content.Context;
 import android.os.Bundle;
@@ -10,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import de.gaffga.android.zazentimer.R;
 import de.gaffga.android.zazentimer.service.MeditationUiState;
 import de.gaffga.android.zazentimer.service.MeditationViewModel;
@@ -24,6 +26,8 @@ public class MeditationFragment extends Fragment {
     private Context context;
     private boolean mAttached = false;
     private MeditationViewModel viewModel;
+    private boolean meditationRunning = false;
+    private OnBackPressedCallback backPressedCallback;
 
     public MeditationFragment() {
     }
@@ -80,9 +84,26 @@ public class MeditationFragment extends Fragment {
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         viewModel = new ViewModelProvider(requireActivity()).get(MeditationViewModel.class);
+
+        backPressedCallback = new OnBackPressedCallback(false) {
+            @Override
+            public void handleOnBackPressed() {
+                showStopConfirmationDialog();
+            }
+        };
+        requireActivity().getOnBackPressedDispatcher().addCallback(getViewLifecycleOwner(), backPressedCallback);
+
         viewModel.getMeditationState().observe(getViewLifecycleOwner(), state -> {
             if (state == null || !state.running) {
+                meditationRunning = false;
+                if (backPressedCallback != null) {
+                    backPressedCallback.setEnabled(false);
+                }
                 return;
+            }
+            meditationRunning = true;
+            if (backPressedCallback != null) {
+                backPressedCallback.setEnabled(true);
             }
             TimerView timerView = (TimerView) view.findViewById(R.id.timerView);
             if (timerView != null) {
@@ -97,6 +118,22 @@ public class MeditationFragment extends Fragment {
             }
             updateButtons();
         });
+    }
+
+    private void showStopConfirmationDialog() {
+        new MaterialAlertDialogBuilder(requireContext())
+                .setTitle(R.string.stop_meditation_title)
+                .setMessage(R.string.stop_meditation_message)
+                .setPositiveButton(R.string.stop_meditation_stop, (dialog, which) -> {
+                    if (viewModel != null) {
+                        viewModel.stopMeditation();
+                    }
+                    backPressedCallback.setEnabled(false);
+                    requireActivity().onBackPressed();
+                })
+                .setNegativeButton(R.string.stop_meditation_cancel, (dialog, which) -> dialog.dismiss())
+                .setCancelable(true)
+                .show();
     }
 
     public void updateButtons() {

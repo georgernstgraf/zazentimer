@@ -187,4 +187,8 @@
     <string name="title_question_delete_session">Delete Session?</string>
     <string name="title_volume_bells">Bell Volume</string>
     <string name="unnamed">Unnamed</string>
+    <string name="stop_meditation_title">Stop meditation?</string>
+    <string name="stop_meditation_message">Your meditation session is still running.</string>
+    <string name="stop_meditation_stop">Stop</string>
+    <string name="stop_meditation_cancel">Cancel</string>
 </resources>
