@@ -66,6 +66,7 @@ dependencies {
     implementation 'com.google.dagger:hilt-android:2.50'
     annotationProcessor 'com.google.dagger:hilt-compiler:2.50'
     androidTestImplementation 'com.google.dagger:hilt-android-testing:2.50'
+    androidTestAnnotationProcessor 'com.google.dagger:hilt-compiler:2.50'
     
     implementation 'io.grpc:grpc-okhttp:1.53.0'
     implementation 'io.grpc:grpc-stub:1.53.0'
