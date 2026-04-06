@@ -27,13 +27,13 @@ public class ZazenTimerActivityTest {
     @Test
     public void activityLaunchesSuccessfully() {
         MainPage mainPage = new MainPage();
-        mainPage.verifyMainScreenIsIsDisplayed();
+        mainPage.verifyMainScreenIsDisplayed();
     }
     
     @Test
     public void testFreshAppLaunch() {
         MainPage mainPage = new MainPage();
-        mainPage.verifyMainScreenIsIsDisplayed()
+        mainPage.verifyMainScreenIsDisplayed();
         mainPage.verifyDefaultSessionsAreVisible();
     }
 }

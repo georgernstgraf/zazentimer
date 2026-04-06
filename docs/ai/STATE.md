@@ -9,6 +9,7 @@
 - [x] CI: instrumented test runner with Android emulator
 - [x] CI: Android SDK setup, JDK 17, debug APK artifact upload
 - [x] #21 Phase 1: Onboarding docs, Gradle Wrapper migration, docs cleanup, dead code removal
+- [x] #23 Phase 2: Modernize deprecated APIs (startForegroundService, Context constants, Activity Result API)
 
 ## Pending
 - [ ] Fix failing instrumented tests (pre-existing `navigation_bar_item_active_indicator_view` issue)
@@ -17,4 +18,4 @@
 - None
 
 ## Next Session Suggestion
-Phase 2: Critical fixes for modern Android (#22) — replace AsyncTask, getRunningServices(), adopt startForegroundService() pattern.
+Phase 3: Architecture modernization (#22 epic) — consider ViewModel-driven state, Navigation component cleanup, or other items from the epic.
