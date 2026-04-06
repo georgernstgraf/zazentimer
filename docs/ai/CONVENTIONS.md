@@ -26,9 +26,17 @@ Follow these without question. Do not deviate unless explicitly told.
 - After deleting or renaming resource files (layouts, strings, drawables, IDs in `public.xml`), always run `./gradlew clean` before building and testing. Incremental builds can produce stale R.class entries that cause instrumented tests to fail with incorrect resource IDs.
 - **Always verify GitHub Actions passes after every push.** Run `gh run list --limit 3` and `gh run view <id>` to check. Do not assume CI is green.
 
+## Workflow
+- **Issue management:** Use the `issue-workflow` skill for all GitHub issue operations (start, commit, finish). Every commit must reference a GitHub issue number.
+- **Knowledge persistence:** Use the `knowledge-persistence` skill to update `docs/ai/` files after meaningful changes or when wrapping up a session.
+
 ## Git Workflow
 - **Trunk-based development.** Commit directly to `main`. No branches, no PRs.
 - Use descriptive commit messages referencing issue numbers (e.g. `fix: backup fails on Android 11+ (#18)`).
+
+## Workflow
+- Use the `issue-workflow` skill for all GitHub issue operations (start, commit, finish).
+- Use the `knowledge-persistence` skill to update `docs/ai/` files after meaningful changes.
 
 ## Knowledge Persistence
 - Project documentation lives in `docs/ai/`. See `AGENTS.md` for the bootstrap reading order.

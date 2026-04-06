@@ -48,7 +48,17 @@ It serves as the single source of truth for UI test coverage.
 | **Volume Adjustment** | Adjust "Maximum Bell Volume" SeekBar | Preference updates; no crashes | | 🔴 |
 | **Backup to SD** | Tap "Create Backup" | Prompts for location via SAF; ZIP created | Legacy Storage Access issues | 🟡 |
 
-## 5. Active Meditation (Service & Notification)
+## 5. UI Bug Regression Tests (#37)
+| Scenario | Description / Steps | Expected Outcome | Regressions / Bugs | Automated |
+| :--- | :--- | :--- | :--- | :--- |
+| **Duplicate Session** | Select session -> card overflow -> "Copy" | Duplicate session created with "(Copy)" suffix; original unchanged | #37/#39 Crash from reusing old PKs (both session.id and section.id must be reset to 0) | 🔴 |
+| **Back Arrow Navigation** | Navigate to meditation -> press toolbar back arrow | Returns to session list without crash | #37/#40 onBackPressed() bypassed fragment callbacks; popUpToInclusive=true cleared back stack | 🔴 |
+| **Back Arrow from Edit** | Navigate to Session Edit -> press toolbar back arrow | Returns to session list without crash | #37/#40 Same root cause as above | 🔴 |
+| **Stop Meditation Confirmation** | Start meditation -> press Stop button | Confirmation dialog appears; Cancel continues, Confirm stops | #37/#41 Stop button bypassed showStopConfirmationDialog() | 🔴 |
+| **Add Session via Menu** | Open toolbar overflow menu -> "Add Session" | Navigates to Edit Session screen for new session | #37/#42 FAB removed, moved to overflow menu | 🔴 |
+| **Session Selection Highlight** | Tap a session card on main screen | Selected card shows visual highlight (activated state); tapping another moves highlight | #37/#43 No activated-state drawable on item_session.xml | 🔴 |
+
+## 6. Active Meditation (Service & Notification)
 | Scenario | Description / Steps | Expected Outcome | Regressions / Bugs | Automated |
 | :--- | :--- | :--- | :--- | :--- |
 | **Timer Countdown** | Wait 1 second during active meditation | Timer visually decrements | | 🔴 |
