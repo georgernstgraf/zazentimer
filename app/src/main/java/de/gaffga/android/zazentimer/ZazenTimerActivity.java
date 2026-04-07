@@ -35,6 +35,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import de.gaffga.android.fragments.MainFragment;
 import de.gaffga.android.zazentimer.audio.BellCollection;
 import de.gaffga.android.zazentimer.bo.Section;
+import de.gaffga.android.zazentimer.BuildConfig;
 import de.gaffga.android.zazentimer.bo.Session;
 import de.gaffga.android.zazentimer.service.MeditationService;
 import de.gaffga.android.zazentimer.service.MeditationViewModel;
@@ -152,7 +153,7 @@ public class ZazenTimerActivity extends AppCompatActivity implements MainFragmen
         NavController nc = getNavController();
         if (nc != null) {
             appBarConfiguration = new AppBarConfiguration.Builder(
-                    R.id.mainFragment, R.id.meditationFragment, R.id.settingsFragment, R.id.aboutFragment)
+                    R.id.mainFragment, R.id.meditationFragment, R.id.settingsFragment)
                     .build();
             NavigationUI.setupActionBarWithNavController(this, nc, appBarConfiguration);
             BottomNavigationView bottomNav = findViewById(R.id.bottom_navigation);
@@ -276,12 +277,6 @@ public class ZazenTimerActivity extends AppCompatActivity implements MainFragmen
         return nc.getCurrentDestination().getId() == R.id.meditationFragment;
     }
 
-    public void showAboutScreen() {
-        NavController nc = getNavController();
-        if (nc == null) return;
-        nc.navigate(R.id.action_mainFragment_to_aboutFragment);
-    }
-
     public void showSettingsScreen() {
         BottomNavigationView bottomNav = findViewById(R.id.bottom_navigation);
         bottomNav.setSelectedItemId(R.id.settingsFragment);
@@ -314,6 +309,18 @@ public class ZazenTimerActivity extends AppCompatActivity implements MainFragmen
         }).create().show();
     }
 
+    public void showAboutScreen() {
+        String message = "Commit: " + BuildConfig.GIT_HASH + "\n\n"
+                + getString(R.string.about1) + "\n\n"
+                + getString(R.string.about2) + "\n\n"
+                + getString(R.string.about3);
+        new AlertDialog.Builder(this)
+                .setTitle(R.string.caption_zazen_meditation)
+                .setMessage(message)
+                .setPositiveButton(R.string.privacy_ok, (dialog, which) -> dialog.dismiss())
+                .create().show();
+    }
+
     public void startMeditation() {
         doStartMediation();
     }
@@ -343,10 +350,7 @@ public class ZazenTimerActivity extends AppCompatActivity implements MainFragmen
                 showPrivacyScreen();
                 return true;
             case R.id.menu_about:
-                NavController nc = getNavController();
-                if (nc != null) {
-                    nc.navigate(R.id.action_mainFragment_to_aboutFragment);
-                }
+                showAboutScreen();
                 return true;
             case R.id.menu_session_edit_help:
             default:

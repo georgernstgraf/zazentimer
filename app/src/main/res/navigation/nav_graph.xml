@@ -11,9 +11,6 @@
         <action
             android:id="@+id/action_mainFragment_to_sessionEditFragment"
             app:destination="@id/sessionEditFragment" />
-        <action
-            android:id="@+id/action_mainFragment_to_aboutFragment"
-            app:destination="@id/aboutFragment" />
     </fragment>
 
     <fragment
@@ -39,9 +36,4 @@
         android:id="@+id/settingsFragment"
         android:name="de.gaffga.android.fragments.SettingsFragment"
         android:label="Settings" />
-
-    <fragment
-        android:id="@+id/aboutFragment"
-        android:name="de.gaffga.android.fragments.AboutFragment"
-        android:label="About" />
 </navigation>
