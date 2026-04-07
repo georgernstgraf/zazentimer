@@ -23,9 +23,11 @@
 - [x] #52 Fix Duplicate Session crash (SQLiteConstraintException on sessions._id) + instrumented test
 
 ## Completed (this session)
-- [x] #52 Fix Duplicate Session crash: added `source.id = 0` in `DbOperations.duplicateSession()`
-- [x] #52 Created `DuplicateSessionTest.java` with 2 instrumented tests
-- [x] Updated `UI_TEST_PLAN.md` — Duplicate/Copy Session rows 🔴→🟢
+- [x] #52 Fix DuplicateSessionTest AmbiguousViewMatcherException (scoped overflow click to RecyclerView item via `clickChildViewWithId`)
+- [x] CI: Added release APK artifact with consistent signing via GitHub Secrets
+  - Keystore stored as `RELEASE_KEYSTORE_BASE64` (+ `KEYSTORE_PASSWORD`, `KEY_ALIAS`, `KEY_PASSWORD`)
+  - Release APK signed with same key every build — users can upgrade in-place
+  - Three artifacts: `app-debug`, `app-release`, `test-results`
 
 ## Pending
 - [ ] #51 (remaining) Logcat correlation with screen navigation, full log capture per screen

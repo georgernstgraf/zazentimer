@@ -76,3 +76,9 @@
 - **Reason**: The method reused the original session's `_id` (primary key), causing `SQLiteConstraintException` on `@Insert`. Room's `@PrimaryKey(autoGenerate = true)` only auto-generates when the value is 0.
 - **Considered**: Using `@Insert(onConflict = REPLACE)` instead of resetting the ID.
 - **Tradeoff**: Resetting to 0 is more correct (creates a truly new row vs. silently overwriting). Test covers both crash regression and "Copy of" prefix verification.
+
+## 2026-04-07: Consistent Release APK Signing via GitHub Secrets (#53)
+- **Choice**: Store a single release keystore in GitHub Secrets (base64-encoded) and decode it in CI for signing. Keystore generated once with `keytool`, stored in 4 secrets: `RELEASE_KEYSTORE_BASE64`, `KEYSTORE_PASSWORD`, `KEY_ALIAS`, `KEY_PASSWORD`.
+- **Reason**: Per-run keystores produce differently-signed APKs, preventing in-place upgrades. Android refuses to install an APK signed with a different key over an existing installation. A single persistent keystore ensures all release APKs are signed identically.
+- **Considered**: Generating keystore per CI run; using the debug signing key for release; storing keystore in the repo (rejected — security risk).
+- **Tradeoff**: Requires keystore backup outside GitHub (if lost, no future release can upgrade over previously installed ones). Keystore is valid for ~27 years (10000 days).

@@ -34,10 +34,6 @@ Follow these without question. Do not deviate unless explicitly told.
 - **Trunk-based development.** Commit directly to `main`. No branches, no PRs.
 - Use descriptive commit messages referencing issue numbers (e.g. `fix: backup fails on Android 11+ (#18)`).
 
-## Workflow
-- Use the `issue-workflow` skill for all GitHub issue operations (start, commit, finish).
-- Use the `knowledge-persistence` skill to update `docs/ai/` files after meaningful changes.
-
 ## Knowledge Persistence
 - Project documentation lives in `docs/ai/`. See `AGENTS.md` for the bootstrap reading order.
 - Use the `knowledge-persistence` skill to update docs/ai/ files after meaningful changes.
@@ -46,3 +42,6 @@ Follow these without question. Do not deviate unless explicitly told.
 - Build command: `./gradlew build`
 - JDK version: 17 (AGP 7.4+ requirement)
 - Keep GitHub Actions versions up to date (`actions/checkout@v4`, `actions/setup-java@v4`) to avoid Node.js deprecation warnings.
+- Release APK signing uses GitHub Secrets (`RELEASE_KEYSTORE_BASE64`, `KEYSTORE_PASSWORD`, `KEY_ALIAS`, `KEY_PASSWORD`). Keystore must be decoded to `$RUNNER_TEMP/` using an absolute path (Gradle resolves relative paths against daemon working dir, not project dir).
+- The keystore and the private key are stored pgp-encrypted in georgs svn under private/
+- Three CI artifacts: `app-debug`, `app-release`, `test-results`.
