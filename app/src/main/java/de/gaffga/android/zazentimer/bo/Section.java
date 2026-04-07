@@ -1,39 +1,28 @@
 package de.gaffga.android.zazentimer.bo;
 
-import de.gaffga.android.base.annotations.SaveToBundle;
 import java.io.Serializable;
 import java.util.Locale;
 
 public class Section implements Serializable {
 
-    @SaveToBundle
     public int bell;
 
-    @SaveToBundle
     public String bellUri;
 
-    @SaveToBundle
     public int bellcount;
 
-    @SaveToBundle
     public int bellpause;
 
-    @SaveToBundle
     public int duration;
 
-    @SaveToBundle
     public int fkSession;
 
-    @SaveToBundle
     public int id;
 
-    @SaveToBundle
     public String name;
 
-    @SaveToBundle
     public int rank;
 
-    @SaveToBundle
     public int volume;
 
     public Section() {

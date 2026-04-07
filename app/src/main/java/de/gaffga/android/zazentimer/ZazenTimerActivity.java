@@ -89,7 +89,6 @@ public class ZazenTimerActivity extends AppCompatActivity implements MainFragmen
     private static final String TAG = "ZMT_ZazenTimerActivity";
     private MeditationEndReceiver meditationEndReceiver;
     private SharedPreferences pref;
-    private ArrayList<ServerMessage> serverMessages;
     final Intent intentAllowMuting = new Intent("android.settings.NOTIFICATION_POLICY_ACCESS_SETTINGS");
     private boolean created = false;
     private boolean showPrefsOnStart = false;

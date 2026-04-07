@@ -1,12 +1,11 @@
 app/build/
 build/
 .gradle/
-gradle-7.5/
 .idea/
 local.properties
 output/
 *.apk
 *.zip
-.DS_Store
-docs/app-docs/logcat.txt
 *.keystore
+.DS_Store
+*crash*.txt
