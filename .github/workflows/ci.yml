@@ -22,11 +22,31 @@ jobs:
     - name: Build Debug APK
       run: ./gradlew assembleDebug --no-daemon
 
+    - name: Build Release APK
+      run: |
+        keytool -genkeypair -v -keystore release.keystore -alias release \
+          -keyalg RSA -keysize 2048 -validity 10000 \
+          -storepass android -keypass android \
+          -dname "CN=CI,OU=CI,O=CI,L=CI,ST=CI,C=US"
+        ./gradlew assembleRelease \
+          -Pandroid.injected.signing.store.file=release.keystore \
+          -Pandroid.injected.signing.store.password=android \
+          -Pandroid.injected.signing.key.alias=release \
+          -Pandroid.injected.signing.key.password=android \
+          --no-daemon
+
     - name: Upload Debug APK
       uses: actions/upload-artifact@v4
       with:
         name: app-debug
         path: app/build/outputs/apk/debug/app-debug.apk
+        retention-days: 30
+
+    - name: Upload Release APK
+      uses: actions/upload-artifact@v4
+      with:
+        name: app-release
+        path: app/build/outputs/apk/release/app-release.apk
         retention-days: 30
 
   test:
