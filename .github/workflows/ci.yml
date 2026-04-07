@@ -22,18 +22,20 @@ jobs:
     - name: Build Debug APK
       run: ./gradlew assembleDebug --no-daemon
 
+    - name: Decode keystore
+      run: echo "${{ secrets.RELEASE_KEYSTORE_BASE64 }}" | base64 -d > app/release.keystore
+
     - name: Build Release APK
-      run: |
-        keytool -genkeypair -v -keystore release.keystore -alias release \
-          -keyalg RSA -keysize 2048 -validity 10000 \
-          -storepass android -keypass android \
-          -dname "CN=CI,OU=CI,O=CI,L=CI,ST=CI,C=US"
-        ./gradlew assembleRelease \
-          -Pandroid.injected.signing.store.file=release.keystore \
-          -Pandroid.injected.signing.store.password=android \
-          -Pandroid.injected.signing.key.alias=release \
-          -Pandroid.injected.signing.key.password=android \
-          --no-daemon
+      run: ./gradlew assembleRelease \
+        -Pandroid.injected.signing.store.file=release.keystore \
+        -Pandroid.injected.signing.store.password=${{ secrets.KEYSTORE_PASSWORD }} \
+        -Pandroid.injected.signing.key.alias=${{ secrets.KEY_ALIAS }} \
+        -Pandroid.injected.signing.key.password=${{ secrets.KEY_PASSWORD }} \
+        --no-daemon
+
+    - name: Cleanup keystore
+      if: always()
+      run: rm -f app/release.keystore
 
     - name: Upload Debug APK
       uses: actions/upload-artifact@v4

@@ -9,3 +9,4 @@ output/
 *.zip
 .DS_Store
 docs/app-docs/logcat.txt
+*.keystore
