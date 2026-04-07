@@ -20,26 +20,33 @@ Android meditation timer (ZazenTimer) targeting API 29-35.
 | Fragment | Nav Label | Role |
 |----------|-----------|------|
 | `MainFragment` | Sessions | Session list (RecyclerView cards) + Start button |
-| `MeditationFragment` | Meditation | Active meditation: Pause/Stop buttons |
+| `MeditationFragment` | Meditation | Dual-state: idle (paused at 00:00) or running meditation |
 | `SessionEditFragment` | Edit Session | Edit session name/description + section list |
 | `SectionEditFragment` | Edit Section | Edit section duration, bell, volume, gap |
 | `SettingsFragment` | Settings | Preferences via PreferenceFragmentCompat |
-| `AboutFragment` | About | Version info |
 
-**BottomNavigationView**: 3 tabs — Sessions, Settings, About. Hidden during meditation and drill-down screens.
-**AppBarConfiguration**: All 3 tab destinations are top-level (no up button). Wired via `NavigationUI.setupActionBarWithNavController()`.
+**BottomNavigationView**: 3 tabs — Sessions, Meditation, Settings. Always visible except during session/section editing.
+**AppBarConfiguration**: 3 tab destinations (mainFragment, meditationFragment, settingsFragment) are top-level (no up button). Wired via `NavigationUI.setupActionBarWithNavController()`.
+**About**: Shown as `AlertDialog` from overflow menu (not a fragment destination). Matches Privacy dialog pattern.
 
 Navigation flow:
 ```
-Bottom Nav: Sessions ↔ Settings ↔ About
-Sessions tab --[Start]--> MeditationFragment
+Bottom Nav: Sessions ↔ Meditation ↔ Settings
+Sessions tab --[Start]--> Meditation tab (auto-starts)
 Sessions tab --[FAB]--> SessionEditFragment (new session)
 Sessions tab --[Card Edit]--> SessionEditFragment
 SessionEdit --[Edit Section]--> SectionEditFragment
+Overflow menu --[Privacy]--> AlertDialog
+Overflow menu --[About]--> AlertDialog
 ```
 
+**MeditationFragment states:**
+- **Idle** (no running service): TimerView shows 00:00 with selected session's total duration and name. Play button starts meditation.
+- **Running** (service active): Live timer with Pause/Stop. Back press shows stop confirmation.
+- Session selection persists via `PREF_KEY_LAST_SESSION` in SharedPreferences. Idle state re-reads on every `onResume()`.
+
 ## Transitions
-- **MaterialFadeThrough**: top-level tab switches (Sessions ↔ Settings ↔ About)
+- **MaterialFadeThrough**: top-level tab switches (Sessions ↔ Meditation ↔ Settings)
 - **MaterialSharedAxis X**: drill-down navigation (session edit, section edit)
 - **MaterialSharedAxis Y**: meditation screen entry/exit
 
@@ -56,10 +63,13 @@ SessionEdit --[Edit Section]--> SectionEditFragment
 - **Migrations**: 1→2 (settings table), 2→3 (no-op), 3→4 (volume column), 4→5 (recreate tables with explicit NOT NULL)
 - Tables: `sessions`, `sections`, `settings` (legacy, migrated to SharedPreferences)
 
+## Build Config
+- `BuildConfig.GIT_HASH` — 7-character Git commit hash, injected at build time via `git rev-parse --short=7 HEAD` in `build.gradle`. Used in About dialog.
+
 ## Timer Architecture (Meditation Flow)
 ```
-User presses Start
-  → ZazenTimerActivity binds to MeditationService
+User presses Start (Sessions tab or Meditation tab)
+  → ZazenTimerActivity.startMeditation()
   → MeditationService.startMeditation() creates Meditation, calls start()
   → Meditation.start() mutes phone, schedules first section via AlarmManager.setAlarmClock()
   → When alarm fires:
@@ -95,7 +105,8 @@ User presses Start
 - **UI updates:** Handler.postDelayed (300ms polling) reads Meditation state → TimerView
 - **Preferences:** SharedPreferences via PreferenceManager → read in Activity/Service/Fragments
 - **Database:** DbOperations → Room DAOs → SessionEntity/SectionEntity → Session/Section BOs
-- **Navigation:** NavController → nav_graph.xml actions → Fragment transactions
+- **Navigation:** BottomNavigationView.setSelectedItemId() for tab switches; NavController for drill-down
+- **Tab switching:** All tab switches use `BottomNavigationView.setSelectedItemId()`. Navigation actions only for drill-down screens (session/section editing).
 
 ## Commands
 | Command | Purpose |

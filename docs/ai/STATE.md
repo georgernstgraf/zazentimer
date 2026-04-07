@@ -34,6 +34,13 @@
   - Dead `ServerMessage.java` + `serverMessages` field from ZazenTimerActivity
   - Unused `values/drawables.xml`
   - Updated `.gitignore`: added `*crash*.txt`, removed stale `gradle-7.5/` and `docs/app-docs/logcat.txt`
+- [x] #54 Navigation restructure: Meditation as bottom nav tab, About moved to overflow dialog
+  - Bottom nav: Sessions, Meditation, Settings (was Sessions, Settings, About)
+  - Overflow menu: Privacy, About (was Privacy, Add Session)
+  - MeditationFragment: dual-state (idle at 00:00 + Play, or running with Pause/Stop)
+  - About: replaced AboutFragment with AlertDialog (matching Privacy pattern)
+  - `BuildConfig.GIT_HASH` injected at build time via `git rev-parse --short=7 HEAD`
+  - Removed `AboutFragment.java`, `fragment_about.xml`, `aboutFragment` nav destination
 
 ## Pending
 - [ ] #51 (remaining) Logcat correlation with screen navigation, full log capture per screen

@@ -82,3 +82,15 @@
 - **Reason**: Per-run keystores produce differently-signed APKs, preventing in-place upgrades. Android refuses to install an APK signed with a different key over an existing installation. A single persistent keystore ensures all release APKs are signed identically.
 - **Considered**: Generating keystore per CI run; using the debug signing key for release; storing keystore in the repo (rejected — security risk).
 - **Tradeoff**: Requires keystore backup outside GitHub (if lost, no future release can upgrade over previously installed ones). Keystore is valid for ~27 years (10000 days).
+
+## 2026-04-07: Navigation Restructure — Meditation as Bottom Nav Tab (#54)
+- **Choice**: Moved Meditation to bottom nav as a persistent tab (Sessions, Meditation, Settings). Moved About from bottom nav to overflow menu as an AlertDialog (matching Privacy pattern). Removed `AboutFragment` entirely.
+- **Reason**: User requested Meditation be a first-class navigation destination accessible at any time, with the idle state showing a paused meditation at 00:00 for the selected session. About and Privacy are both informational dialogs that don't need dedicated tabs.
+- **Considered**: Keeping About as a fragment; making Meditation a modal; keeping the old 3-tab layout.
+- **Tradeoff**: Meditation tab adds complexity (dual-state fragment: idle vs running). Bottom nav visible during meditation means users can switch tabs mid-session (service continues). Removed dedicated About screen in favor of dialog — less real estate but simpler architecture.
+
+## 2026-04-07: Git Commit Hash in BuildConfig (#54)
+- **Choice**: Inject 7-character Git commit hash at build time via `buildConfigField` in `build.gradle` using `git rev-parse --short=7 HEAD`. Display in About dialog as "Commit: abc1234".
+- **Reason**: More useful than `versionCode` for identifying which code is running on a device. Changes automatically every build with zero manual updates.
+- **Considered**: Reading git hash at runtime (rejected — .git dir not in APK); using `versionName` (manual, often stale).
+- **Tradeoff**: Build fails if git is not available (unlikely in CI or local dev). Hash is baked at compile time, not runtime.
