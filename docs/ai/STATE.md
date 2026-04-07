@@ -19,11 +19,17 @@
   - [x] #35 Back-press confirmation during meditation
   - [x] #36 Material Motion transitions
 
+## Completed (this session)
+- [x] #51 (partial) Illustrated app documentation: 15 screenshots across 12 screens, 380-line APP_DOCUMENTATION.md
+- [x] Discovered bug: Duplicate Session crash (SQLiteConstraintException on sessions._id)
+- [x] Added `docs/app-docs/logcat.txt` to `.gitignore`
+
 ## Pending
-- None
+- [ ] #51 (remaining) Logcat correlation with screen navigation, full log capture per screen
+- [ ] Create fix issue for Duplicate Session crash (DbOperations.duplicateSession reuses _id)
 
 ## Blockers
 - None
 
 ## Next Session Suggestion
-Consider updating UI_TEST_PLAN.md for the new navigation structure (bottom nav, session cards, FAB). The StartMeditationTest and other UI tests may need updating for the new screen layout.
+Rerun emulator screen capture with full `adb logcat` (not PID-filtered) to capture all app logs and correlate warnings/exceptions with specific screens. Also create a bug issue for the Duplicate Session crash found during exploration.

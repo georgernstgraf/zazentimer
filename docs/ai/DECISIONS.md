@@ -55,7 +55,17 @@
 - **Considered**: Using `RuleChain` instead of `order` parameter.
 - **Tradeoff**: Minimal change, works on both API 31 and API 35 devices.
 
-## 2026-04-06: Phase 2 — Modernize Deprecated APIs (#23)
+## 2026-04-07: App Documentation — Markdown with Embedded Screenshots (#51)
+- **Choice**: Single `docs/app-docs/APP_DOCUMENTATION.md` file with embedded screenshot images using relative paths, organized by screen with TOC.
+- **Reason**: Markdown is universally viewable, easy to commit alongside code, and supports embedded images. A single file keeps all documentation cohesive. The screenshots folder lives alongside for easy reference.
+- **Considered**: Multiple Markdown files per screen; HTML for layout flexibility; AsciiDoc for richer formatting.
+- **Tradeoff**: Markdown has limited layout control (no side-by-side images), but is sufficient for per-screen documentation and works natively on GitHub.
+
+## 2026-04-07: Screen Capture via UI Automation (#51)
+- **Choice**: Used `adb shell uiautomator dump` for element hierarchy + `adb shell screencap` for visual capture + vision sub-agents for analysis, navigating between screens via `adb shell input tap` with coordinates from the UI dump.
+- **Reason**: uiautomator provides exact element bounds, resource IDs, and text content. Vision analysis adds visual description that the XML dump can't provide (colors, icons, overall layout feel). Combining both gives complete screen documentation.
+- **Considered**: Using Espresso/UI Automator test scripts for navigation; manual screenshot capture.
+- **Tradeoff**: Coordinate-based tapping is fragile and screen-resolution-dependent. Popup menus may close unexpectedly. But it works well enough for one-time documentation capture.
 - **Choice**: Replaced all deprecated API usages: `startService()` → `startForegroundService()` for foreground services, raw string `getSystemService("...")` → `Context.*_SERVICE` constants, and `onActivityResult()` → Activity Result API (`registerForActivityResult`).
 - **Reason**: The app targets API 29-34 but used APIs deprecated/removed in the target range. `startForegroundService()` is required since API 26 for foreground services. Raw string service names are fragile. `onActivityResult` is deprecated since API 30.
 - **Considered**: Keeping `onActivityResult` with `@SuppressWarnings`; using `ContextCompat.startForegroundService()`.
