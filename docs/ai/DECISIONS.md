@@ -89,6 +89,12 @@
 - **Considered**: Keeping About as a fragment; making Meditation a modal; keeping the old 3-tab layout.
 - **Tradeoff**: Meditation tab adds complexity (dual-state fragment: idle vs running). Bottom nav visible during meditation means users can switch tabs mid-session (service continues). Removed dedicated About screen in favor of dialog — less real estate but simpler architecture.
 
+## 2026-04-10: Fix Corrupted Meditation State After Natural Finish (#55)
+- **Choice**: Two single-line fixes: (1) clear `meditationState` LiveData to null in `MeditationViewModel.stopUpdateThread()`, (2) set `meditationRunning = false` in `MeditationFragment.showIdleState()`.
+- **Reason**: When meditation finishes while the user is on another tab, the activity-scoped ViewModel's `meditationState` LiveData retained its last `MeditationUiState(running=true)`. New `MeditationFragment` observers received this stale value, setting `meditationRunning = true` while no service was running. The `showIdleState()` method corrected the UI but never reset the `meditationRunning` flag, so the play button's click handler called the no-op `pauseMeditation()` instead of `startMeditationFromIdle()`.
+- **Considered**: Adding a dedicated `MeditationUiState.stopped()` factory method; resetting state in `onResume()` only; posting a `running=false` state instead of null.
+- **Tradeoff**: Setting LiveData to null is the simplest fix and is already handled by the existing observer (`if (state == null || !state.running)`). No new classes or methods needed.
+
 ## 2026-04-07: Git Commit Hash in BuildConfig (#54)
 - **Choice**: Inject 7-character Git commit hash at build time via `buildConfigField` in `build.gradle` using `git rev-parse --short=7 HEAD`. Display in About dialog as "Commit: abc1234".
 - **Reason**: More useful than `versionCode` for identifying which code is running on a device. Changes automatically every build with zero manual updates.

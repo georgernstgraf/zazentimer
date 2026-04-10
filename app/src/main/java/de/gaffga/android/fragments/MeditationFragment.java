@@ -146,6 +146,7 @@ public class MeditationFragment extends Fragment {
     }
 
     private void showIdleState() {
+        this.meditationRunning = false;
         if (timerView != null) {
             timerView.setCurrentStartSeconds(0);
             timerView.setNextEndSeconds(0);

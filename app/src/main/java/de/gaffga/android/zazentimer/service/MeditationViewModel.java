@@ -136,6 +136,7 @@ public class MeditationViewModel extends AndroidViewModel {
         if (this.handler != null) {
             this.handler.removeCallbacks(this.updateRunnable);
         }
+        meditationState.setValue(null);
     }
 
     private void pollMeditationState() {
