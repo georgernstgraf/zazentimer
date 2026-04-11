@@ -111,6 +111,7 @@ public class MeditationService extends Service {
 
     public void onMeditationEnd() {
         Log.d(TAG, "onMeditationEnd");
+        isRunning = false;
         stopForeground(true);
         this.runningMeditation = null;
         Intent intent = new Intent();

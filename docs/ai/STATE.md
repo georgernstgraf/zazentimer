@@ -33,6 +33,9 @@
   - Zen circle `ImageView` in toolbar toggled by `MeditationService.isServiceRunning()`, 16dp left margin
   - Sessions screen blocks all interactions during meditation: card selection, overflow popup, Start button, FAB
   - `SessionListAdapter.interactionsEnabled` flag guards clicks at the adapter level
+- [x] #58 Fix ringer restoration and MainFragment stuck disabled after meditation ends
+  - Smart ringer restoration: `mutedRingerMode` records what app set, `unmutePhone()` skips restore if user changed it
+  - Race condition fix: `isRunning = false` moved to `onMeditationEnd()` before `stopSelf()`
 
 ## Pending
 - [ ] #51 (remaining) Logcat correlation with screen navigation, full log capture per screen

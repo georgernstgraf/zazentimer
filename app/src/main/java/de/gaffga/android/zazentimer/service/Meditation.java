@@ -29,6 +29,7 @@ public class Meditation {
     private PowerManager.WakeLock meditationWakeLock;
     private int oldRingerMode;
     private int oldRingerVolume;
+    private int mutedRingerMode = -1;
     private int pauseSectionSeconds;
     private boolean paused;
     private final String sessionName;
@@ -310,6 +311,7 @@ public class Meditation {
                 this.oldRingerMode = audioManager.getRingerMode();
                 this.oldRingerVolume = audioManager.getStreamVolume(2);
                 audioManager.setRingerMode(1);
+                this.mutedRingerMode = audioManager.getRingerMode();
             } else if (z3) {
                 this.oldRingerMode = audioManager.getRingerMode();
                 this.oldRingerVolume = audioManager.getStreamVolume(2);
@@ -320,6 +322,7 @@ public class Meditation {
                 }
                 audioManager.setStreamVolume(2, 0, 0);
                 audioManager.setRingerMode(0);
+                this.mutedRingerMode = audioManager.getRingerMode();
             }
         }
     }
@@ -331,6 +334,14 @@ public class Meditation {
         boolean z3 = this.pref.getBoolean(ZazenTimerActivity.PREF_KEY_MUTE_MODE_NONE, true);
         AudioManager audioManager = (AudioManager) this.meditationService.getSystemService(Context.AUDIO_SERVICE);
         if (!z && (z2 || z3)) {
+            if (this.mutedRingerMode != -1) {
+                int currentMode = audioManager.getRingerMode();
+                if (currentMode != this.mutedRingerMode) {
+                    Log.d(TAG, "Ringer mode changed during meditation (was " + this.mutedRingerMode + ", now " + currentMode + ") — skipping restore");
+                    this.mutedRingerMode = -1;
+                    return;
+                }
+            }
             Log.d(TAG, "unmuting: ring=" + this.oldRingerVolume + " ringerMode=" + this.oldRingerMode);
             audioManager.setRingerMode(this.oldRingerMode);
             try {
@@ -341,6 +352,7 @@ public class Meditation {
                 audioManager.setStreamVolume(2, this.oldRingerVolume, 0);
             }
             audioManager.setRingerMode(this.oldRingerMode);
+            this.mutedRingerMode = -1;
         }
     }
 
