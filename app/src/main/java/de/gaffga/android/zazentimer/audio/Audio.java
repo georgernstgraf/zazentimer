@@ -2,6 +2,7 @@ package de.gaffga.android.zazentimer.audio;
 
 import android.content.Context;
 import android.media.AudioManager;
+import android.media.AudioAttributes;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.util.Log;
@@ -34,7 +35,10 @@ public class Audio implements MediaPlayer.OnCompletionListener {
         }
         MediaPlayer mediaPlayer = new MediaPlayer();
         try {
-            mediaPlayer.setAudioStreamType(AudioManager.STREAM_ALARM);
+            mediaPlayer.setAudioAttributes(new AudioAttributes.Builder()
+                    .setUsage(AudioAttributes.USAGE_ALARM)
+                    .setContentType(AudioAttributes.CONTENT_TYPE_SONIFICATION)
+                    .build());
             mediaPlayer.setDataSource(this.context, uri);
             mediaPlayer.prepare();
             float f = volume / 100.0f;
