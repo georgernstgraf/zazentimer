@@ -62,8 +62,22 @@ public class ZazenTimerActivity extends AppCompatActivity implements MainFragmen
     public static final boolean PREF_DEFAULT_SHOW_SESSION_EDIT_HELP_V13 = false;
     public static final int PREF_DEFAULT_SHOW_TIME_MODE = 0;
     public static final String PREF_DEFAULT_THEME = "light";
+    public static final int PREF_DEFAULT_VOLUME = 100;
     public static final String PREF_KEY_BRIGHTNESS = "brightness";
-
+    public static final String PREF_KEY_CONVERTED_BELL_INDICES = "bell_indices_converted";
+    public static final String PREF_KEY_CONVERTED_FROM_DB = "pref_converted";
+    public static final String PREF_KEY_FIRST_START = "first_start";
+    public static final String PREF_KEY_KEEP_SCREEN_ON = "keep_screen_on";
+    public static final String PREF_KEY_LAST_SESSION = "last_session";
+    public static final String PREF_KEY_MUTE_MODE_NONE = "mute_mode_none";
+    public static final String PREF_KEY_MUTE_MODE_VIBRATE = "mute_mode_vibrate";
+    public static final String PREF_KEY_MUTE_MODE_VIBRATE_SOUND = "mute_mode_vibrate_sound";
+    public static final String PREF_KEY_PHONE_OFF = "phone_off";
+    public static final String PREF_KEY_SHOW_ELAPSED_TIME = "show_elapsed_time";
+    public static final String PREF_KEY_SHOW_SESSION_EDIT_HELP_V13 = "session_edit_help_13";
+    public static final String PREF_KEY_SHOW_TIME_MODE = "view_time_mode";
+    public static final String PREF_KEY_THEME = "theme";
+    public static final String PREF_KEY_VOLUME = "volume";
     public static final String PREF_VALUE_THEME_DARK = "dark";
     public static final String PREF_VALUE_THEME_LIGHT = "light";
     private static final String TAG = "ZMT_ZazenTimerActivity";

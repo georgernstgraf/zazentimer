@@ -7,6 +7,12 @@
         android:summary="@string/theme_desc"
         android:defaultValue="light"
         android:entryValues="@array/theme_values"/>
+    <SeekBarPreference
+        android:title="@string/pref_title_bell_volume"
+        android:key="volume"
+        android:summary="@string/pref_desc_bell_volume"
+        android:max="100"
+        android:defaultValue="100"/>
     <PreferenceCategory
         android:title="@string/pref_muting">
         <CheckBoxPreference
