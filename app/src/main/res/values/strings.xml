@@ -52,7 +52,6 @@
     <string name="bell_name_8">Jap. Rhinbowl, 97mm</string>
     <string name="bell_pause">Bell gap (sec)</string>
     <string name="bell_user">Add Bell...</string>
-    <string name="bottom_nav_about">About</string>
     <string name="bottom_nav_meditation">Meditation</string>
     <string name="bottom_nav_sessions">Sessions</string>
     <string name="bottom_sheet_behavior">android.support.design.widget.BottomSheetBehavior</string>
@@ -114,17 +113,8 @@
     <string name="notification_title_paused">Zazen Meditation (paused)</string>
     <string name="num_bells">Bell count</string>
     <string name="ok">OK</string>
-    <string name="output_channels_alarm">Alarm</string>
-    <string name="output_channels_alarm_desc">The gong sounds do not disturb music being played, but the gong sounds will not be played to earphones. If Alarm is muted, it will be unmuted temporarily for bell sounds.</string>
-    <string name="output_channels_music">Music</string>
-    <string name="output_channels_music_desc">The gong sounds can be heard through earphones, but the changing volume will interfere with music being played. If Music is muted, it will be unmuted temporarily for bell sounds.</string>
     <string name="pref_desc_brightness">Brightness of the Display during Meditation</string>
-    <string name="pref_desc_volume_bells">This is the maximum volume used for playing the Bell Sounds</string>
     <string name="pref_get_messages">Check for new Messages now</string>
-    <string name="pref_mute_alarm">Mute Alarm</string>
-    <string name="pref_mute_alarm_desc">Do not play alarms</string>
-    <string name="pref_mute_channels">Other Audio sources</string>
-    <string name="pref_mute_channels_desc">Settings for other things that make sound</string>
     <string name="pref_mute_mode">Ring tone and Notifications</string>
     <string name="pref_mute_mode_none">Silence</string>
     <string name="pref_mute_mode_none_desc">No ring tone and no vibration for phone calls and Notifications</string>
@@ -133,12 +123,7 @@
     <string name="pref_mute_mode_vibrate_desc">Only vibrate for phone calls and Notifications (Does not work on Android 7 (Nougat) - behaves like the Silence setting)</string>
     <string name="pref_mute_mode_vibrate_sound">Ring tone and Vibration</string>
     <string name="pref_mute_mode_vibrate_sound_desc">Play Ring tone and Vibration</string>
-    <string name="pref_mute_music">Mute Music</string>
-    <string name="pref_mute_music_desc">Do not play music</string>
     <string name="pref_muting">Mute Settings</string>
-    <string name="pref_muting_desc">Settings to prevent disturbance during Meditations</string>
-    <string name="pref_output_channel">Bell output channel</string>
-    <string name="pref_output_channel_desc">Select the audio output channel to use for playing the Bells.</string>
     <string name="pref_sum_backup">Save a backup of your Sessions and Sounds to your SD-Card.</string>
     <string name="pref_sum_bad_removal">SD Card was removed without being unmounted first.</string>
     <string name="pref_sum_checking">SD-Card is being checked at the moment</string>
@@ -151,7 +136,6 @@
     <string name="pref_title_backup">Create Backup</string>
     <string name="pref_title_brightness">Brightness</string>
     <string name="pref_title_restore">Restore from Backup</string>
-    <string name="pref_title_volume_bells">Maximum Bell Volume</string>
     <string name="privacy_message">This App does not collect any personal data - it also does not use IP-Addresses or any other technology-related data, nor does it collect, process or use any in any way.</string>
     <string name="privacy_ok">OK</string>
     <string name="privacy_title">Privacy Information</string>
