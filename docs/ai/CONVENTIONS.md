@@ -22,6 +22,15 @@ Follow these without question. Do not deviate unless explicitly told.
 - Use `@Inject` constructor injection for injectable classes. `DbOperations` is `@Singleton`.
 - Tests use `@HiltAndroidTest` + `HiltAndroidRule`. The test runner is `HiltTestRunner` (not `AndroidJUnitRunner`).
 
+## Translation
+- Use `deep_translator` (GoogleTranslator) in `.venv/bin/python` for string translations.
+- Mask format specifiers (`%1$d`, `%1$s`, `%2$d`) and `\n` with Unicode bracket placeholders (`⦅0⦆`, `⦅1⦆`...) before sending to Google Translate. Restore after translation.
+- Do not translate: `about1`, `about2`, `about3`, `app_description`, `app_name`, `bell_name_1` through `bell_name_8`, `theme_value_dark`, `theme_value_light`.
+- Skip all `abc_*` prefixed strings.
+- Escape raw apostrophes in output (`'` → `\'`) for Android XML compatibility. Use regex `(?<!\\)'` to avoid double-escaping already-escaped `\'`.
+- Always run `./gradlew assembleDebug` after translation to verify the build is green.
+- Translation scripts stored in `scripts/translate_batch*.py`.
+
 ## Testing
 - Ensure standard `lint` and `./gradlew build` commands pass.
 - After deleting or renaming resource files (layouts, strings, drawables, IDs in `public.xml`), always run `./gradlew clean` before building and testing. Incremental builds can produce stale R.class entries that cause instrumented tests to fail with incorrect resource IDs.
