@@ -119,6 +119,35 @@ User presses Start (Sessions tab or Meditation tab)
 | `./gradlew connectedDebugAndroidTest` | Instrumented tests on device/emulator |
 | `adb install -r app/build/outputs/apk/debug/app-debug.apk` | Install debug APK |
 
+## Translation Architecture
+
+### Source of Truth
+`app/src/main/res/values/strings.xml` is the canonical English source.
+All 127 locale files (`values-*/strings.xml`) are derivatives generated
+from it via automated translation.
+
+### Directory Structure
+```
+app/src/main/res/
+├── values/strings.xml          ← Canonical English source
+├── values-af/strings.xml       ← Afrikaans (127 languages)
+├── values-zu/strings.xml       ← Zulu
+└── ...
+```
+
+### Translation Tooling
+| File | Purpose |
+|------|---------|
+| `scripts/retranslate.py` | Incremental locale update from English source |
+| `scripts/locales.json` | Mapping of Android resource dirs → Google Translate codes |
+| `scripts/keep_english.json` | List of string keys to copy verbatim (never translate) |
+| `.venv/` (gitignored) | Python venv with `deep-translator` dependency |
+
+### Workflow
+```
+English source changed → python scripts/retranslate.py --diff → 127 locales updated → assembleDebug
+```
+
 ## Knowledge Files (`docs/ai/`)
 | File | Purpose | Update mode |
 |------|---------|------------|

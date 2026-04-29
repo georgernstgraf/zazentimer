@@ -123,3 +123,20 @@ Each entry documents WHAT was decided and WHY.
 - **Reason**: The "Master Volume" slider was redundant and non-functional after issue #56 simplified the volume system. `AudioAttributes` is the recommended way to handle audio routing in modern Android, ensuring better compatibility with Bluetooth devices.
 - **Considered**: Linking the "Master Volume" slider to the system alarm volume (rejected — redundant since system volume is globally accessible).
 - **Tradeoff**: Simplifies UI and codebase but requires users to use system volume controls for global volume adjustment.
+
+## 2026-04-29: OOBE Language Translation (#67)
+- **Choice**: Translated the app into all 127 languages supported by Google
+  Translate that also appear in the Android OOBE language picker. Used
+  `deep-translator` (GoogleTranslator) over `googletrans` (4.0.0rc1 returned
+  empty JSON, was unreliable). Used incremental `--diff` approach instead of
+  full re-translation to minimize API calls (~127 per change vs ~16,000).
+- **Reason**: The app needed to match the language list Android shows during
+  initial device setup. Machine translation via Google is the only feasible
+  approach for 127 languages (~16,000+ strings). The `--diff` approach lets
+  developers change one string and propagate it to all locales in seconds.
+- **Considered**: Using a dedicated translation service (Crowdin, Lokalise) —
+  rejected for cost/complexity. Using GPT for higher quality — rejected for
+  rate limits at 127-language scale.
+- **Tradeoff**: Google Translate quality varies by language (poor for Bemba,
+  Lao, Nuer). Some short strings may be left untranslated. Product names,
+  URLs, and emails are kept in English across all locales.

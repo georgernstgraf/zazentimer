@@ -3,14 +3,17 @@
 Current status as of 2026-04-29.
 
 ## Current Focus
-Batch 9 OOBE translations completed: 12 new language files, build verified green.
+Epic #67 completed. 128 languages (127 locales + English default) with full
+translations. All stubs eliminated. Build verified green.
 
 ## Completed (this session)
-- [x] #76 Batch 9 translations: ku (Kurdish), la (Latin), lb (Luxembourgish), mg (Malagasy), mi (Maori), mt (Maltese), ny (Chichewa), om (Oromo), or (Odia), ps (Pashto), qu (Quechua), rw (Kinyarwanda)
-  - 141 translatable strings × 12 languages = 1692 translations via `deep_translator` GoogleTranslator
-  - Format specifiers masked with Unicode bracket placeholders; restored after translation
-  - Build verified: `./gradlew assembleDebug` — GREEN
-  - Translation script: `scripts/translate_batch9.py`
+- [x] #67 Epic: Translate App into 206 OOBE languages
+  - 11 sub-issues (#68-#78), all completed and closed
+  - 127 locale directories with full translations
+  - 8 regional variants (en-AU/GB/IN, es-US, fr-CA, pt-BR/PT, zh-HK, ms-rMY)
+  - Serbian Latin script variant (b+sr+Latn)
+  - Dead strings removed from English and German source files
+  - Translation script infrastructure: `scripts/retranslate.py` + `locales.json`
 
 ## Completed (previous sessions)
 - [x] Section list UI enhancements (drag handle, three-dot menu, delete/duplicate)
@@ -28,4 +31,4 @@ Batch 9 OOBE translations completed: 12 new language files, build verified green
 - None
 
 ## Next Session Suggestion
-Continue with remaining translation batches or #51 logcat documentation.
+Continue with #51 logcat documentation.

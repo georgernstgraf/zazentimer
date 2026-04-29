@@ -9,3 +9,4 @@ output/
 *.keystore
 .DS_Store
 *crash*.txt
+.venv/
