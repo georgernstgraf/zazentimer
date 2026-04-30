@@ -118,7 +118,10 @@ jobs:
         ram-size: 4096M
         emulator-options: -no-window -gpu swiftshader_indirect -no-snapshot -noaudio -no-boot-anim
         disable-animations: true
-        script: ./gradlew connectedDebugAndroidTest --no-daemon --info
+        script: |
+          adb shell pm list instrumentation
+          adb shell pm list packages | grep zazentimer
+          ./gradlew connectedDebugAndroidTest --no-daemon --debug
 
     - name: Upload Test Results (API 35)
       if: always()
