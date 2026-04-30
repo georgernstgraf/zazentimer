@@ -124,8 +124,11 @@ jobs:
           adb install -r app/build/outputs/apk/androidTest/debug/app-debug-androidTest.apk
           RESULT=$(adb shell am instrument -w -r -e debug false de.gaffga.android.zazentimer.test/de.gaffga.android.zazentimer.HiltTestRunner 2>&1)
           echo "$RESULT"
-          echo "$RESULT" | grep -q "INSTRUMENTATION_CODE: -1" && exit 1
-          exit 0
+          if echo "$RESULT" | grep -q "INSTRUMENTATION_STATUS_CODE: -2"; then
+            echo "Tests FAILED"
+            exit 1
+          fi
+          echo "Tests PASSED"
 
     - name: Upload Test Results (API 36)
       if: always()
