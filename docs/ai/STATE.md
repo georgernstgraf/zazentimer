@@ -1,43 +1,35 @@
 # Project State
 
-Current status as of 2026-04-29.
+Current status as of 2026-04-30.
 
 ## Current Focus
-Epic #67 completed. 128 languages (127 locales + English default) with full
-translations. All stubs eliminated. Build verified green.
+Issue #80 completed. CI `test-max` job now runs on API 36 using direct `adb shell am instrument` instead of Gradle UTP.
 
 ## Completed (this session)
-- [x] #67 Epic: Translate App into 206 OOBE languages
-  - 11 sub-issues (#68-#78), all completed and closed
-  - 127 locale directories with full translations
-  - 8 regional variants (en-AU/GB/IN, es-US, fr-CA, pt-BR/PT, zh-HK, ms-rMY)
-  - Serbian Latin script variant (b+sr+Latn)
-  - Dead strings removed from English and German source files
-  - Translation script infrastructure: `scripts/retranslate.py` + `locales.json`
-- [x] Enabled `-Xlint:deprecation` in `app/build.gradle` — surfaces all deprecation warnings during compilation
-- [x] Fixed 14 deprecation warnings across 10 files (see CONVENTIONS.md for full migration cheat sheet)
-- [x] Created `Medium_Phone_API_29` AVD (API 29, google_apis, x86_64)
-- [x] Ran 6 instrumentation tests on API 29 — all pass
-- [x] Ran 6 instrumentation tests on API 35 — all pass (via `am instrument`; Orchestrator broken on API 35)
+- [x] #80 Fixed 0-tests issue on API 36/35 CI test-max job
+  - Root cause: Gradle UTP (Unified Test Platform) fails to discover tests on API 35+
+  - Fix: Use `adb shell am instrument -w -r` directly for test-max job
+  - Requires `target: google_apis` on emulator system image
+  - All 6 tests pass on API 36
+- [x] Updated PITFALLS.md with precise UTP vs orchestrator distinction
+- [x] Updated DECISIONS.md with test-max CI approach decision
 
 ## Completed (previous sessions)
-- [x] Batch 9 OOBE translations: 12 new language files
-- [x] Section list UI enhancements (drag handle, three-dot menu, delete/duplicate)
-- [x] #60 Volume control and audio normalization
-- [x] #57 Show session name on meditation screen and zen indicator in toolbar
-- [x] #58 Fix ringer restoration and MainFragment stuck disabled after meditation ends
-- [x] #55 Fix corrupted meditation state after natural finish
-- [x] #56 Volume system simplification
-- [x] #52 Fix Duplicate Session crash + instrumented test
+- [x] #67 Epic: Translate App into 206 OOBE languages
+- [x] Enabled `-Xlint:deprecation` — 14 warnings fixed across 10 files
+- [x] Instrumentation tests: 6 tests pass on API 29, 34, 35, 36
+- [x] Section list UI enhancements, volume control, audio normalization
+- [x] Multiple bug fixes (#55, #56, #57, #58, #60)
 
 ## Pending
 - [ ] #51 (remaining) Logcat correlation with screen navigation, full log capture per screen
 
 ## Known Issues
-- Android Test Orchestrator does not work on API 35 (0 tests reported by Gradle UTP runner; use `am instrument` directly)
+- Gradle UTP runner fails to discover tests on API 35+ emulators (any execution mode). Workaround: direct `am instrument`.
+- API 35+ requires `target: google_apis` emulator image (default image has missing components).
 
 ## Blockers
 - None
 
 ## Next Session Suggestion
-Continue with #51 logcat documentation. Consider investigating the API 35 Orchestrator failure if CI needs to run on API 35.
+Continue with #51 logcat documentation.
