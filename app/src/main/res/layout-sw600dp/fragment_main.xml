@@ -13,7 +13,7 @@
         android:layout_above="@+id/recycler_sessions"
         android:layout_centerHorizontal="true"
         style="@style/zenIcon"/>
-    <de.gaffga.android.fragments.MaxHeightRecyclerView
+    <at.priv.graf.fragments.MaxHeightRecyclerView
         android:gravity="center"
         android:id="@+id/recycler_sessions"
         android:layout_width="match_parent"

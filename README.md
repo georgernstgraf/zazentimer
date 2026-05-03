@@ -2,7 +2,7 @@
 
 Android meditation timer with configurable sessions, multiple bell sounds, and background timer reliability.
 
-**Package:** `de.gaffga.android.zazentimer` | **Min SDK:** 29 | **Target SDK:** 34 | **Java 17**
+**Package:** `at.priv.graf.zazentimer` | **Min SDK:** 29 | **Target SDK:** 34 | **Java 17**
 
 ## Quick Start
 

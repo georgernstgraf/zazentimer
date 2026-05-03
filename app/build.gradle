@@ -2,17 +2,17 @@ apply plugin: 'com.android.application'
 apply plugin: 'dagger.hilt.android.plugin'
 
 android {
-    namespace "de.gaffga.android.zazentimer"
+    namespace "at.priv.graf.zazentimer"
     compileSdkVersion 34
 
     defaultConfig {
-        applicationId "de.gaffga.android.zazentimer"
+        applicationId "at.priv.graf.zazentimer"
         minSdkVersion 29
         targetSdkVersion 34
         versionCode 33
         versionName "2.20"
         
-        testInstrumentationRunner "de.gaffga.android.zazentimer.HiltTestRunner"
+        testInstrumentationRunner "at.priv.graf.zazentimer.HiltTestRunner"
         testInstrumentationRunnerArguments clearPackageData: 'true'
 
         buildConfigField "String", "GIT_HASH", "\"${'git rev-parse --short=7 HEAD'.execute([], rootProject.rootDir).text.trim()}\""

@@ -3,7 +3,7 @@
     android:versionCode="33"
     android:versionName="2.20"
     android:installLocation="auto"
-    package="de.gaffga.android.zazentimer">
+    package="at.priv.graf.zazentimer">
     <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS"/>
     <uses-permission android:name="android.permission.ACCESS_NOTIFICATION_POLICY"/>
     <uses-permission android:name="android.permission.WAKE_LOCK"/>
@@ -22,7 +22,7 @@
         android:theme="@style/LightZenTheme"
         android:label="@string/app_name"
         android:icon="@drawable/icon"
-        android:name="de.gaffga.android.zazentimer.ZazenTimerApplication"
+        android:name="at.priv.graf.zazentimer.ZazenTimerApplication"
         android:enabled="true"
         android:description="@string/app_description"
         android:allowBackup="true"
@@ -30,7 +30,7 @@
         android:localeConfig="@xml/locales_config">
         <activity
             android:label="@string/app_name"
-            android:name="de.gaffga.android.zazentimer.ZazenTimerActivity"
+            android:name="at.priv.graf.zazentimer.ZazenTimerActivity"
             android:exported="true"
             android:windowSoftInputMode="adjustResize">
             <intent-filter>
@@ -39,12 +39,12 @@
             </intent-filter>
         </activity>
         <service
-            android:name="de.gaffga.android.zazentimer.service.MeditationService"
+            android:name="at.priv.graf.zazentimer.service.MeditationService"
             android:exported="false"
             android:foregroundServiceType="specialUse"
             android:description="@string/service_description"/>
         <receiver
-            android:name="de.gaffga.android.zazentimer.service.SectionEndReceiver"
+            android:name="at.priv.graf.zazentimer.service.SectionEndReceiver"
             android:exported="false">
             <intent-filter>
                 <action android:name="ZAZENTIMER_SECTION_ENDED"/>

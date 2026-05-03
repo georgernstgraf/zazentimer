@@ -1,4 +1,4 @@
-package de.gaffga.android.zazentimer.audio;
+package at.priv.graf.zazentimer.audio;
 
 import static org.junit.Assert.assertEquals;
 import org.junit.Test;

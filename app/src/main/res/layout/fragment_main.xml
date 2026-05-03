@@ -21,7 +21,7 @@
             android:text="@string/but_start"
             android:layout_alignParentBottom="true"/>
 
-        <de.gaffga.android.fragments.MaxHeightRecyclerView
+        <at.priv.graf.fragments.MaxHeightRecyclerView
             android:id="@+id/recycler_sessions"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
