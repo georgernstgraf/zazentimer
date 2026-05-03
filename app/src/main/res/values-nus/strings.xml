@@ -168,8 +168,10 @@
     <string name="theme_dark">Thi̱i̱m mi̱ col</string>
     <string name="theme_desc">Kuɛn buay kiɛ col mi̱ jɔc kä App</string>
     <string name="theme_light">Thi̱i̱m buayä</string>
+    <string name="theme_system">System Theme</string>
     <string name="theme_value_dark">dark</string>
     <string name="theme_value_light">light</string>
+    <string name="theme_value_system">system</string>
     <string name="time_section_elapsed">Thɛkcin cɛ thuɔ̱k</string>
     <string name="time_section_remaining">Kä tha̱a̱ŋdɛ min ci̱ duɔth</string>
     <string name="time_session_elapsed">Thɛciɔn cɛ thuɔ̱k</string>

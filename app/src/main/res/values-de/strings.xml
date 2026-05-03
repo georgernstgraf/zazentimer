@@ -168,8 +168,10 @@
     <string name="theme_dark">Dunkles Design</string>
     <string name="theme_desc">Wähle zwischen einem dunklen oder hellen Design.</string>
     <string name="theme_light">Helles Design</string>
+    <string name="theme_system">Systemthema</string>
     <string name="theme_value_dark">dark</string>
     <string name="theme_value_light">light</string>
+    <string name="theme_value_system">system</string>
     <string name="time_section_elapsed">Abschnitt vergangen</string>
     <string name="time_section_remaining">Abschnitt verbleibend</string>
     <string name="time_session_elapsed">Sitzung vergangen</string>

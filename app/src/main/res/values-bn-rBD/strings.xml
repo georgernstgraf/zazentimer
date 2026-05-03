@@ -168,8 +168,10 @@
     <string name="theme_dark">ডার্ক থিম</string>
     <string name="theme_desc">অ্যাপের হালকা বা গাঢ় চেহারা বেছে নিন</string>
     <string name="theme_light">হালকা থিম</string>
+    <string name="theme_system">সিস্টেম থিম</string>
     <string name="theme_value_dark">dark</string>
     <string name="theme_value_light">light</string>
+    <string name="theme_value_system">system</string>
     <string name="time_section_elapsed">বিভাগ অতিবাহিত</string>
     <string name="time_section_remaining">সেকশন বাকি</string>
     <string name="time_session_elapsed">অধিবেশন শেষ</string>

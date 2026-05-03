@@ -168,8 +168,10 @@
     <string name="theme_dark">Qorong\u0027i mavzu</string>
     <string name="theme_desc">Ilovaning ochiq yoki qorong\u0027i ko\u0027rinishini tanlang</string>
     <string name="theme_light">Engil mavzu</string>
+    <string name="theme_system">Tizim mavzusi</string>
     <string name="theme_value_dark">dark</string>
     <string name="theme_value_light">light</string>
+    <string name="theme_value_system">system</string>
     <string name="time_section_elapsed">Bo\u0027lim o\u0027tdi</string>
     <string name="time_section_remaining">Qolgan bo\u0027lim</string>
     <string name="time_session_elapsed">Sessiya tugadi</string>

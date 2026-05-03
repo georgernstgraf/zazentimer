@@ -168,8 +168,10 @@
     <string name="theme_dark">ธีมสีเข้ม</string>
     <string name="theme_desc">เลือกรูปลักษณ์ที่สว่างหรือมืดของแอป</string>
     <string name="theme_light">ธีมแสง</string>
+    <string name="theme_system">ธีมของระบบ</string>
     <string name="theme_value_dark">dark</string>
     <string name="theme_value_light">light</string>
+    <string name="theme_value_system">system</string>
     <string name="time_section_elapsed">มาตราผ่านไปแล้ว</string>
     <string name="time_section_remaining">ส่วนที่เหลืออยู่</string>
     <string name="time_session_elapsed">เซสชั่นผ่านไปแล้ว</string>

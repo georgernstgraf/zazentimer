@@ -168,8 +168,10 @@
     <string name="theme_dark">Temna tema</string>
     <string name="theme_desc">Izberite svetel ali temen videz aplikacije</string>
     <string name="theme_light">Svetla tema</string>
+    <string name="theme_system">Sistemska tema</string>
     <string name="theme_value_dark">dark</string>
     <string name="theme_value_light">light</string>
+    <string name="theme_value_system">system</string>
     <string name="time_section_elapsed">Oddelek je potekel</string>
     <string name="time_section_remaining">Preostali razdelek</string>
     <string name="time_session_elapsed">Seja je potekla</string>

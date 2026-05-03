@@ -168,8 +168,10 @@
     <string name="theme_dark">डार्क थीम के बा</string>
     <string name="theme_desc">ऐप के हल्का भा गहरे रंग के रूप चुनीं</string>
     <string name="theme_light">हल्का विषय के बा</string>
+    <string name="theme_system">सिस्टम के थीम के बारे में बतावल गइल बा</string>
     <string name="theme_value_dark">dark</string>
     <string name="theme_value_light">light</string>
+    <string name="theme_value_system">system</string>
     <string name="time_section_elapsed">खंड बीत गइल</string>
     <string name="time_section_remaining">धारा बाकी बा</string>
     <string name="time_session_elapsed">सत्र बीत गइल</string>

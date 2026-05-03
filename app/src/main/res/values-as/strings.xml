@@ -168,8 +168,10 @@
     <string name="theme_dark">ডাৰ্ক থিম</string>
     <string name="theme_desc">App ৰ পোহৰ বা গাঢ় ৰূপ বাছক</string>
     <string name="theme_light">পোহৰৰ থিম</string>
+    <string name="theme_system">চিস্টেম থিম</string>
     <string name="theme_value_dark">dark</string>
     <string name="theme_value_light">light</string>
+    <string name="theme_value_system">system</string>
     <string name="time_section_elapsed">ছেকচন পাৰ হৈ গ’ল</string>
     <string name="time_section_remaining">ধাৰা বাকী আছে</string>
     <string name="time_session_elapsed">অধিবেশন পাৰ হৈ গ’ল</string>

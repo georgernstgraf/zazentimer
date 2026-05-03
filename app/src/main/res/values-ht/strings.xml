@@ -168,8 +168,10 @@
     <string name="theme_dark">Tèm nwa</string>
     <string name="theme_desc">Chwazi aparans limyè oswa nwa nan aplikasyon an</string>
     <string name="theme_light">Tèm limyè</string>
+    <string name="theme_system">Tèm sistèm</string>
     <string name="theme_value_dark">dark</string>
     <string name="theme_value_light">light</string>
+    <string name="theme_value_system">system</string>
     <string name="time_section_elapsed">Seksyon pase</string>
     <string name="time_section_remaining">Seksyon ki rete</string>
     <string name="time_session_elapsed">Sesyon pase</string>

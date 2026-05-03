@@ -168,8 +168,10 @@
     <string name="theme_dark">Cuspair Dorcha</string>
     <string name="theme_desc">Tagh coltas aotrom no dorcha an App</string>
     <string name="theme_light">Cuspair Solais</string>
+    <string name="theme_system">Cuspair an t-siostam</string>
     <string name="theme_value_dark">dark</string>
     <string name="theme_value_light">light</string>
+    <string name="theme_value_system">system</string>
     <string name="time_section_elapsed">Chaidh earrann seachad</string>
     <string name="time_section_remaining">Earrann air fhàgail</string>
     <string name="time_session_elapsed">Chaidh an seisean seachad</string>

@@ -168,8 +168,10 @@
     <string name="theme_dark">Autu Pogisa</string>
     <string name="theme_desc">Filifili foliga malamalama pe pogisa o le App</string>
     <string name="theme_light">Autu Malamalama</string>
+    <string name="theme_system">Autu Faiga</string>
     <string name="theme_value_dark">dark</string>
     <string name="theme_value_light">light</string>
+    <string name="theme_value_system">system</string>
     <string name="time_section_elapsed">Ua mavae le vaega</string>
     <string name="time_section_remaining">Vaega o totoe</string>
     <string name="time_session_elapsed">Ua mavae le sauniga</string>

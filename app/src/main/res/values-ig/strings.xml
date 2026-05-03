@@ -168,8 +168,10 @@
     <string name="theme_dark">Isiokwu gbara ọchịchịrị</string>
     <string name="theme_desc">Họrọ ìhè ma ọ bụ ọchịchịrị nke ngwa</string>
     <string name="theme_light">Gburugburu Ọkụ</string>
+    <string name="theme_system">Isiokwu Sistemu</string>
     <string name="theme_value_dark">dark</string>
     <string name="theme_value_light">light</string>
+    <string name="theme_value_system">system</string>
     <string name="time_section_elapsed">Ngalaba gafere</string>
     <string name="time_section_remaining">Akụkụ fọdụrụ</string>
     <string name="time_session_elapsed">Oge gafere</string>

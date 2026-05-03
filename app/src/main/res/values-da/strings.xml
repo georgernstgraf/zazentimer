@@ -168,8 +168,10 @@
     <string name="theme_dark">Mørkt tema</string>
     <string name="theme_desc">Vælg lyst eller mørkt udseende for appen</string>
     <string name="theme_light">Lyst tema</string>
+    <string name="theme_system">System tema</string>
     <string name="theme_value_dark">dark</string>
     <string name="theme_value_light">light</string>
+    <string name="theme_value_system">system</string>
     <string name="time_section_elapsed">Sektion forløbet</string>
     <string name="time_section_remaining">Sektion tilbage</string>
     <string name="time_session_elapsed">Session forløbet</string>

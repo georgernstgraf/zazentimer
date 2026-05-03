@@ -168,8 +168,10 @@
     <string name="theme_dark">ڈارک تھیم</string>
     <string name="theme_desc">ایپ کی ہلکی یا تاریک شکل کا انتخاب کریں۔</string>
     <string name="theme_light">ہلکی تھیم</string>
+    <string name="theme_system">سسٹم تھیم</string>
     <string name="theme_value_dark">dark</string>
     <string name="theme_value_light">light</string>
+    <string name="theme_value_system">system</string>
     <string name="time_section_elapsed">سیکشن ختم ہو گیا۔</string>
     <string name="time_section_remaining">سیکشن باقی ہے۔</string>
     <string name="time_session_elapsed">سیشن ختم ہو گیا۔</string>

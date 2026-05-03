@@ -168,8 +168,10 @@
     <string name="theme_dark">Tema Gelap</string>
     <string name="theme_desc">Pilih tampilan Aplikasi yang terang atau gelap</string>
     <string name="theme_light">Tema Ringan</string>
+    <string name="theme_system">Tema Sistem</string>
     <string name="theme_value_dark">dark</string>
     <string name="theme_value_light">light</string>
+    <string name="theme_value_system">system</string>
     <string name="time_section_elapsed">Bagian telah berlalu</string>
     <string name="time_section_remaining">Bagian tersisa</string>
     <string name="time_session_elapsed">Sesi telah berlalu</string>

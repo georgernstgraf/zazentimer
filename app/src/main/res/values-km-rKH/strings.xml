@@ -168,8 +168,10 @@
     <string name="theme_dark">ស្បែកងងឹត</string>
     <string name="theme_desc">ជ្រើសរើសរូបរាងស្រាល ឬងងឹតនៃកម្មវិធី</string>
     <string name="theme_light">ស្បែកស្រាល</string>
+    <string name="theme_system">ប្រធានបទប្រព័ន្ធ</string>
     <string name="theme_value_dark">dark</string>
     <string name="theme_value_light">light</string>
+    <string name="theme_value_system">system</string>
     <string name="time_section_elapsed">ផ្នែកបានកន្លងផុតទៅ</string>
     <string name="time_section_remaining">ផ្នែកដែលនៅសល់</string>
     <string name="time_session_elapsed">វគ្គបានកន្លងផុតទៅ</string>

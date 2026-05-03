@@ -168,8 +168,10 @@
     <string name="theme_dark">Gai iluna</string>
     <string name="theme_desc">Aukeratu aplikazioaren itxura argia edo iluna</string>
     <string name="theme_light">Gai Argia</string>
+    <string name="theme_system">Sistemaren gaia</string>
     <string name="theme_value_dark">dark</string>
     <string name="theme_value_light">light</string>
+    <string name="theme_value_system">system</string>
     <string name="time_section_elapsed">Atala igaro da</string>
     <string name="time_section_remaining">Gainerako atala</string>
     <string name="time_session_elapsed">Saioa igaro da</string>

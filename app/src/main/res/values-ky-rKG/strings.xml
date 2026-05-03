@@ -168,8 +168,10 @@
     <string name="theme_dark">Караңгы тема</string>
     <string name="theme_desc">Колдонмонун жарык же караңгы көрүнүшүн тандаңыз</string>
     <string name="theme_light">Light Theme</string>
+    <string name="theme_system">Системанын темасы</string>
     <string name="theme_value_dark">dark</string>
     <string name="theme_value_light">light</string>
+    <string name="theme_value_system">system</string>
     <string name="time_section_elapsed">Бөлүм бүттү</string>
     <string name="time_section_remaining">Бөлүм калды</string>
     <string name="time_session_elapsed">Сессия бүттү</string>

@@ -168,8 +168,10 @@
     <string name="theme_dark">Tema întunecată</string>
     <string name="theme_desc">Alegeți aspectul deschis sau întunecat al aplicației</string>
     <string name="theme_light">Tema ușoară</string>
+    <string name="theme_system">Tema sistemului</string>
     <string name="theme_value_dark">dark</string>
     <string name="theme_value_light">light</string>
+    <string name="theme_value_system">system</string>
     <string name="time_section_elapsed">Secțiunea a trecut</string>
     <string name="time_section_remaining">Secțiune rămasă</string>
     <string name="time_session_elapsed">Sesiune a trecut</string>

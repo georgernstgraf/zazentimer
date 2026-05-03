@@ -168,8 +168,10 @@
     <string name="theme_dark">Madilim na Tema</string>
     <string name="theme_desc">Pumili ng maliwanag o madilim na hitsura ng App</string>
     <string name="theme_light">Banayad na Tema</string>
+    <string name="theme_system">Tema ng System</string>
     <string name="theme_value_dark">dark</string>
     <string name="theme_value_light">light</string>
+    <string name="theme_value_system">system</string>
     <string name="time_section_elapsed">Lumipas ang seksyon</string>
     <string name="time_section_remaining">Seksyon ang natitira</string>
     <string name="time_session_elapsed">Lumipas ang session</string>

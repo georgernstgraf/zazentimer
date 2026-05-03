@@ -168,8 +168,10 @@
     <string name="theme_dark">Lohahevitra maizina</string>
     <string name="theme_desc">Misafidiana endrika maivana na maizina amin\'ny App</string>
     <string name="theme_light">Lohahevitra maivana</string>
+    <string name="theme_system">Lohahevitra momba ny rafitra</string>
     <string name="theme_value_dark">dark</string>
     <string name="theme_value_light">light</string>
+    <string name="theme_value_system">system</string>
     <string name="time_section_elapsed">Nandeha ny fizarana</string>
     <string name="time_section_remaining">Fizarana sisa</string>
     <string name="time_session_elapsed">Nandeha ny fivoriana</string>

@@ -168,8 +168,10 @@
     <string name="theme_dark">Mangitngit nga Tema</string>
     <string name="theme_desc">Pilia ang kahayag o ngitngit nga panagway sa App</string>
     <string name="theme_light">Kahayag nga Tema</string>
+    <string name="theme_system">Sistema nga Tema</string>
     <string name="theme_value_dark">dark</string>
     <string name="theme_value_light">light</string>
+    <string name="theme_value_system">system</string>
     <string name="time_section_elapsed">Nahuman ang seksyon</string>
     <string name="time_section_remaining">Ang nahabilin nga seksyon</string>
     <string name="time_session_elapsed">Nilabay ang sesyon</string>

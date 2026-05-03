@@ -168,8 +168,10 @@
     <string name="theme_dark">Tema fosc</string>
     <string name="theme_desc">Trieu l\'aspecte clar o fosc de l\'aplicació</string>
     <string name="theme_light">Tema lleuger</string>
+    <string name="theme_system">Tema del sistema</string>
     <string name="theme_value_dark">dark</string>
     <string name="theme_value_light">light</string>
+    <string name="theme_value_system">system</string>
     <string name="time_section_elapsed">Secció transcorreguda</string>
     <string name="time_section_remaining">Secció restant</string>
     <string name="time_session_elapsed">Sessió transcorreguda</string>

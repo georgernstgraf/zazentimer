@@ -168,8 +168,10 @@
     <string name="theme_dark">ಡಾರ್ಕ್ ಥೀಮ್</string>
     <string name="theme_desc">ಅಪ್ಲಿಕೇಶನ್‌ನ ಬೆಳಕು ಅಥವಾ ಗಾಢ ನೋಟವನ್ನು ಆರಿಸಿ</string>
     <string name="theme_light">ಲೈಟ್ ಥೀಮ್</string>
+    <string name="theme_system">ಸಿಸ್ಟಮ್ ಥೀಮ್</string>
     <string name="theme_value_dark">dark</string>
     <string name="theme_value_light">light</string>
+    <string name="theme_value_system">system</string>
     <string name="time_section_elapsed">ವಿಭಾಗ ಮುಗಿದಿದೆ</string>
     <string name="time_section_remaining">ವಿಭಾಗ ಉಳಿದಿದೆ</string>
     <string name="time_session_elapsed">ಸೆಷನ್ ಮುಗಿದಿದೆ</string>

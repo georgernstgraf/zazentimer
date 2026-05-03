@@ -168,8 +168,10 @@
     <string name="theme_dark">قاراڭغۇ تېما</string>
     <string name="theme_desc">ئەپنىڭ سۇس ياكى قاراڭغۇ كۆرۈنۈشىنى تاللاڭ</string>
     <string name="theme_light">Light Theme</string>
+    <string name="theme_system">سىستېما ئۇسلۇبى</string>
     <string name="theme_value_dark">dark</string>
     <string name="theme_value_light">light</string>
+    <string name="theme_value_system">system</string>
     <string name="time_section_elapsed">بۆلەك ئۆتۈپ كەتتى</string>
     <string name="time_section_remaining">بۆلەك قالدى</string>
     <string name="time_session_elapsed">يىغىن ئاخىرلاشتى</string>

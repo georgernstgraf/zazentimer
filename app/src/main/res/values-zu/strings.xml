@@ -168,8 +168,10 @@
     <string name="theme_dark">Itimu Emnyama</string>
     <string name="theme_desc">Khetha ukubukeka okukhanyayo noma okumnyama kohlelo lokusebenza</string>
     <string name="theme_light">Itimu Ekhanyayo</string>
+    <string name="theme_system">Itimu Yesistimu</string>
     <string name="theme_value_dark">dark</string>
     <string name="theme_value_light">light</string>
+    <string name="theme_value_system">system</string>
     <string name="time_section_elapsed">Isigaba siphelile</string>
     <string name="time_section_remaining">Isigaba esisele</string>
     <string name="time_session_elapsed">Iseshini iphelile</string>

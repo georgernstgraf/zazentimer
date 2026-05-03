@@ -168,8 +168,10 @@
     <string name="theme_dark">Thuolo ma Mudho</string>
     <string name="theme_desc">Yier ler kata mudho mar App</string>
     <string name="theme_light">Thuon wach maler</string>
+    <string name="theme_system">System Theme</string>
     <string name="theme_value_dark">dark</string>
     <string name="theme_value_light">light</string>
+    <string name="theme_value_system">system</string>
     <string name="time_section_elapsed">Kidieny osekalo</string>
     <string name="time_section_remaining">Sekson modong\'</string>
     <string name="time_session_elapsed">Seson osekalo</string>

@@ -168,8 +168,10 @@
     <string name="theme_dark">Sötét téma</string>
     <string name="theme_desc">Válassza ki az alkalmazás világos vagy sötét megjelenését</string>
     <string name="theme_light">Fény téma</string>
+    <string name="theme_system">Rendszer téma</string>
     <string name="theme_value_dark">dark</string>
     <string name="theme_value_light">light</string>
+    <string name="theme_value_system">system</string>
     <string name="time_section_elapsed">szakasz telt el</string>
     <string name="time_section_remaining">Maradt szakasz</string>
     <string name="time_session_elapsed">A munkamenet telt el</string>

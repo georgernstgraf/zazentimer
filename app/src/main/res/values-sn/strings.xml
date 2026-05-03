@@ -168,8 +168,10 @@
     <string name="theme_dark">Rima Theme</string>
     <string name="theme_desc">Sarudza chiedza kana rima chitarisiko cheApp</string>
     <string name="theme_light">Chiedza Theme</string>
+    <string name="theme_system">System Theme</string>
     <string name="theme_value_dark">dark</string>
     <string name="theme_value_light">light</string>
+    <string name="theme_value_system">system</string>
     <string name="time_section_elapsed">Chikamu chakapfuura</string>
     <string name="time_section_remaining">Chikamu chasara</string>
     <string name="time_session_elapsed">Session yakapera</string>

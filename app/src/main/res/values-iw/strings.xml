@@ -168,8 +168,10 @@
     <string name="theme_dark">נושא אפל</string>
     <string name="theme_desc">בחר מראה בהיר או כהה של האפליקציה</string>
     <string name="theme_light">נושא קל</string>
+    <string name="theme_system">System Theme</string>
     <string name="theme_value_dark">dark</string>
     <string name="theme_value_light">light</string>
+    <string name="theme_value_system">system</string>
     <string name="time_section_elapsed">הקטע חלף</string>
     <string name="time_section_remaining">קטע שנותר</string>
     <string name="time_session_elapsed">הסשן חלף</string>

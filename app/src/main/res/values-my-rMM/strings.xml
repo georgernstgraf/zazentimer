@@ -168,8 +168,10 @@
     <string name="theme_dark">အမှောင် အပြင်အဆင်</string>
     <string name="theme_desc">အက်ပ်၏ အလင်း သို့မဟုတ် အမှောင်အသွင်အပြင်ကို ရွေးပါ။</string>
     <string name="theme_light">အလင်းအပြင်အဆင်</string>
+    <string name="theme_system">စနစ်အပြင်အဆင်</string>
     <string name="theme_value_dark">dark</string>
     <string name="theme_value_light">light</string>
+    <string name="theme_value_system">system</string>
     <string name="time_section_elapsed">ပုဒ်မ ပြီးသွားပြီ</string>
     <string name="time_section_remaining">အပိုင်းကျန်သေးတယ်။</string>
     <string name="time_session_elapsed">အပိုင်းပြီးသွားပါပြီ။</string>

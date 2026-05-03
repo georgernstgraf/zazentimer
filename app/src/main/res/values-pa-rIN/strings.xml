@@ -168,8 +168,10 @@
     <string name="theme_dark">ਗੂੜ੍ਹਾ ਥੀਮ</string>
     <string name="theme_desc">ਐਪ ਦਾ ਹਲਕਾ ਜਾਂ ਗੂੜ੍ਹਾ ਦਿੱਖ ਚੁਣੋ</string>
     <string name="theme_light">ਹਲਕਾ ਥੀਮ</string>
+    <string name="theme_system">ਸਿਸਟਮ ਥੀਮ</string>
     <string name="theme_value_dark">dark</string>
     <string name="theme_value_light">light</string>
+    <string name="theme_value_system">system</string>
     <string name="time_section_elapsed">ਸੈਕਸ਼ਨ ਖਤਮ ਹੋ ਗਿਆ</string>
     <string name="time_section_remaining">ਸੈਕਸ਼ਨ ਬਾਕੀ</string>
     <string name="time_session_elapsed">ਸੈਸ਼ਨ ਬੀਤ ਗਿਆ</string>

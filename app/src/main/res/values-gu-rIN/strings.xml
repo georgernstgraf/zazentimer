@@ -168,8 +168,10 @@
     <string name="theme_dark">ડાર્ક થીમ</string>
     <string name="theme_desc">એપ્લિકેશનનો પ્રકાશ અથવા ઘાટો દેખાવ પસંદ કરો</string>
     <string name="theme_light">લાઇટ થીમ</string>
+    <string name="theme_system">સિસ્ટમ થીમ</string>
     <string name="theme_value_dark">dark</string>
     <string name="theme_value_light">light</string>
+    <string name="theme_value_system">system</string>
     <string name="time_section_elapsed">વિભાગ વીતી ગયો</string>
     <string name="time_section_remaining">વિભાગ બાકી</string>
     <string name="time_session_elapsed">સત્ર વીત્યું</string>

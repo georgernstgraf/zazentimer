@@ -168,8 +168,10 @@
     <string name="theme_dark">Koyu Tema</string>
     <string name="theme_desc">Uygulamanın açık veya koyu görünümünü seçin</string>
     <string name="theme_light">Işık Teması</string>
+    <string name="theme_system">Sistem Teması</string>
     <string name="theme_value_dark">dark</string>
     <string name="theme_value_light">light</string>
+    <string name="theme_value_system">system</string>
     <string name="time_section_elapsed">Bölüm geçti</string>
     <string name="time_section_remaining">Kalan bölüm</string>
     <string name="time_session_elapsed">Oturum sona erdi</string>

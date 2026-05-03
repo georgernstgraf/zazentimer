@@ -168,8 +168,10 @@
     <string name="theme_dark">ダークテーマ</string>
     <string name="theme_desc">アプリの明るいまたは暗い外観を選択します</string>
     <string name="theme_light">ライトテーマ</string>
+    <string name="theme_system">システムテーマ</string>
     <string name="theme_value_dark">dark</string>
     <string name="theme_value_light">light</string>
+    <string name="theme_value_system">system</string>
     <string name="time_section_elapsed">セクション経過</string>
     <string name="time_section_remaining">残りのセクション</string>
     <string name="time_session_elapsed">セッションが経過しました</string>

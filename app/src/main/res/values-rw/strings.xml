@@ -168,8 +168,10 @@
     <string name="theme_dark">Insanganyamatsiko Yijimye</string>
     <string name="theme_desc">Hitamo urumuri cyangwa umwijima ugaragara wa Porogaramu</string>
     <string name="theme_light">Umucyo</string>
+    <string name="theme_system">Insanganyamatsiko ya Sisitemu</string>
     <string name="theme_value_dark">dark</string>
     <string name="theme_value_light">light</string>
+    <string name="theme_value_system">system</string>
     <string name="time_section_elapsed">Igice cyashize</string>
     <string name="time_section_remaining">Igice gisigaye</string>
     <string name="time_session_elapsed">Isomo ryararangiye</string>

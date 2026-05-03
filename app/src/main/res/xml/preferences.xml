@@ -5,7 +5,7 @@
         android:title="@string/theme"
         android:key="theme"
         android:summary="@string/theme_desc"
-        android:defaultValue="light"
+        android:defaultValue="system"
         android:entryValues="@array/theme_values"/>
     <PreferenceCategory
         android:title="@string/pref_muting">

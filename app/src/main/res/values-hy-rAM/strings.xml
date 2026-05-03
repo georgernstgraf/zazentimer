@@ -168,8 +168,10 @@
     <string name="theme_dark">Մութ թեմա</string>
     <string name="theme_desc">Ընտրեք Հավելվածի թեթև կամ մութ տեսքը</string>
     <string name="theme_light">Թեթև թեմա</string>
+    <string name="theme_system">Համակարգի թեմա</string>
     <string name="theme_value_dark">dark</string>
     <string name="theme_value_light">light</string>
+    <string name="theme_value_system">system</string>
     <string name="time_section_elapsed">Բաժինն անցել է</string>
     <string name="time_section_remaining">Մնացած հատվածը</string>
     <string name="time_session_elapsed">Նիստն ավարտվեց</string>

@@ -168,8 +168,10 @@
     <string name="theme_dark">Караңгы тема</string>
     <string name="theme_desc">Кушымтаның җиңел яки караңгы күренешен сайлагыз</string>
     <string name="theme_light">Якты тема</string>
+    <string name="theme_system">Система темасы</string>
     <string name="theme_value_dark">dark</string>
     <string name="theme_value_light">light</string>
+    <string name="theme_value_system">system</string>
     <string name="time_section_elapsed">Бүлек үтте</string>
     <string name="time_section_remaining">Бүлек калган</string>
     <string name="time_session_elapsed">Сессия үтте</string>

@@ -168,8 +168,10 @@
     <string name="theme_dark">Mata Dukkana Dukkanaa</string>
     <string name="theme_desc">Appicha ifa ykn dukkanaa\'aa ta\'e filadhu</string>
     <string name="theme_light">Mata duree Ifaa</string>
+    <string name="theme_system">Mata duree Sirna</string>
     <string name="theme_value_dark">dark</string>
     <string name="theme_value_light">light</string>
+    <string name="theme_value_system">system</string>
     <string name="time_section_elapsed">Kutaan darbe</string>
     <string name="time_section_remaining">Kutaa hafe</string>
     <string name="time_session_elapsed">Session darbe</string>

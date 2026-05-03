@@ -168,8 +168,10 @@
     <string name="theme_dark">تیاره موضوع</string>
     <string name="theme_desc">د اپلیکیشن روښانه یا تیاره بڼه غوره کړئ</string>
     <string name="theme_light">رڼا موضوع</string>
+    <string name="theme_system">د سیسټم موضوع</string>
     <string name="theme_value_dark">dark</string>
     <string name="theme_value_light">light</string>
+    <string name="theme_value_system">system</string>
     <string name="time_section_elapsed">برخه تیره شوه</string>
     <string name="time_section_remaining">پاتې برخه</string>
     <string name="time_session_elapsed">غونډه تیره شوه</string>

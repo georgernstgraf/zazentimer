@@ -168,8 +168,10 @@
     <string name="theme_dark">تم تاریک</string>
     <string name="theme_desc">ظاهر روشن یا تاریک برنامه را انتخاب کنید</string>
     <string name="theme_light">تم سبک</string>
+    <string name="theme_system">تم سیستم</string>
     <string name="theme_value_dark">dark</string>
     <string name="theme_value_light">light</string>
+    <string name="theme_value_system">system</string>
     <string name="time_section_elapsed">بخش گذشت</string>
     <string name="time_section_remaining">بخش باقی مانده</string>
     <string name="time_session_elapsed">جلسه تمام شد</string>

@@ -168,8 +168,10 @@
     <string name="theme_dark">Myrkt þema</string>
     <string name="theme_desc">Veldu ljós eða dökkt útlit appsins</string>
     <string name="theme_light">Létt þema</string>
+    <string name="theme_system">Kerfisþema</string>
     <string name="theme_value_dark">dark</string>
     <string name="theme_value_light">light</string>
+    <string name="theme_value_system">system</string>
     <string name="time_section_elapsed">Kafli liðinn</string>
     <string name="time_section_remaining">Hluti eftir</string>
     <string name="time_session_elapsed">Fundur liðinn</string>

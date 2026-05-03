@@ -168,8 +168,10 @@
     <string name="theme_dark">डार्क थीम (Dark Theme)</string>
     <string name="theme_desc">ऐसे बनाएं अंधेरा या लाइटवेट ऐप</string>
     <string name="theme_light">आसान विषय</string>
+    <string name="theme_system">सिस्टम थीम</string>
     <string name="theme_value_dark">dark</string>
     <string name="theme_value_light">light</string>
+    <string name="theme_value_system">system</string>
     <string name="time_section_elapsed">सेक्शन फिसल जाये</string>
     <string name="time_section_remaining">बाकी हिस्से</string>
     <string name="time_session_elapsed">बैठक आसान</string>

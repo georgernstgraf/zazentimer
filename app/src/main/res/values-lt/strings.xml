@@ -168,8 +168,10 @@
     <string name="theme_dark">Tamsi tema</string>
     <string name="theme_desc">Pasirinkite šviesią arba tamsią programos išvaizdą</string>
     <string name="theme_light">Šviesos tema</string>
+    <string name="theme_system">Sistemos tema</string>
     <string name="theme_value_dark">dark</string>
     <string name="theme_value_light">light</string>
+    <string name="theme_value_system">system</string>
     <string name="time_section_elapsed">Skyrius praėjo</string>
     <string name="time_section_remaining">Liko skyrius</string>
     <string name="time_session_elapsed">Sesija praėjo</string>

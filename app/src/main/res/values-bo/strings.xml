@@ -168,8 +168,10 @@
     <string name="theme_dark">མུན་པའི་རྣམ་གཞག</string>
     <string name="theme_desc">འོད་ཁམས ། ཡང་ན་མུན་པའི་རྣམ་པ་གདམ་ཁ་བྱེད་དགོས །</string>
     <string name="theme_light">གནད་དོན་འཇམ་ཏོང་ཏོ་</string>
+    <string name="theme_system">གནད་ཚིག</string>
     <string name="theme_value_dark">dark</string>
     <string name="theme_value_light">light</string>
+    <string name="theme_value_system">system</string>
     <string name="time_section_elapsed">ཕྱོགས་སྟོན ། གཙོ་ངོས ། "རྩོམ་རིག"</string>
     <string name="time_section_remaining">ཡན་ལག་ལྷག་པ</string>
     <string name="time_session_elapsed">ཚོགས་འདུ་མཇུག་བསྡུ་བ །</string>

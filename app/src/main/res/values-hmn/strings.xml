@@ -168,8 +168,10 @@
     <string name="theme_dark">Tsaus Ntsiab</string>
     <string name="theme_desc">Xaiv lub teeb lossis tsaus nti ntawm App</string>
     <string name="theme_light">Lub ntsiab lus</string>
+    <string name="theme_system">Lub ntsiab lus</string>
     <string name="theme_value_dark">dark</string>
     <string name="theme_value_light">light</string>
+    <string name="theme_value_system">system</string>
     <string name="time_section_elapsed">Tshooj dhau los</string>
     <string name="time_section_remaining">seem seem</string>
     <string name="time_session_elapsed">Kev sib tham dhau mus</string>

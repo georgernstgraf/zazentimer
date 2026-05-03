@@ -168,8 +168,10 @@
     <string name="theme_dark">Mandhari ya Giza</string>
     <string name="theme_desc">Chagua mwonekano mwepesi au mweusi wa Programu</string>
     <string name="theme_light">Mandhari Nyepesi</string>
+    <string name="theme_system">Mandhari ya Mfumo</string>
     <string name="theme_value_dark">dark</string>
     <string name="theme_value_light">light</string>
+    <string name="theme_value_system">system</string>
     <string name="time_section_elapsed">Sehemu imepita</string>
     <string name="time_section_remaining">Sehemu iliyosalia</string>
     <string name="time_session_elapsed">Kikao kilipita</string>

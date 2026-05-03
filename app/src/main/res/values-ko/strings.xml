@@ -168,8 +168,10 @@
     <string name="theme_dark">어두운 테마</string>
     <string name="theme_desc">앱의 밝거나 어두운 모양을 선택하세요</string>
     <string name="theme_light">라이트 테마</string>
+    <string name="theme_system">시스템 테마</string>
     <string name="theme_value_dark">dark</string>
     <string name="theme_value_light">light</string>
+    <string name="theme_value_system">system</string>
     <string name="time_section_elapsed">구간 경과</string>
     <string name="time_section_remaining">남은 섹션</string>
     <string name="time_session_elapsed">세션이 경과되었습니다.</string>

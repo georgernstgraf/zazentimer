@@ -168,8 +168,10 @@
     <string name="theme_dark">ഇരുണ്ട തീം</string>
     <string name="theme_desc">ആപ്പിൻ്റെ വെളിച്ചമോ ഇരുണ്ട രൂപമോ തിരഞ്ഞെടുക്കുക</string>
     <string name="theme_light">ലൈറ്റ് തീം</string>
+    <string name="theme_system">സിസ്റ്റം തീം</string>
     <string name="theme_value_dark">dark</string>
     <string name="theme_value_light">light</string>
+    <string name="theme_value_system">system</string>
     <string name="time_section_elapsed">വിഭാഗം കഴിഞ്ഞു</string>
     <string name="time_section_remaining">വിഭാഗം ശേഷിക്കുന്നു</string>
     <string name="time_session_elapsed">സെഷൻ കഴിഞ്ഞു</string>

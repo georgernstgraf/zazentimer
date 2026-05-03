@@ -168,8 +168,10 @@
     <string name="theme_dark">Tumma teema</string>
     <string name="theme_desc">Valitse sovelluksen vaalea tai tumma ulkoasu</string>
     <string name="theme_light">Kevyt teema</string>
+    <string name="theme_system">Järjestelmän teema</string>
     <string name="theme_value_dark">dark</string>
     <string name="theme_value_light">light</string>
+    <string name="theme_value_system">system</string>
     <string name="time_section_elapsed">Osio kulunut</string>
     <string name="time_section_remaining">Jakso jäljellä</string>
     <string name="time_session_elapsed">Istunto kulunut</string>

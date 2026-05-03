@@ -168,8 +168,10 @@
     <string name="theme_dark">Garaňky tema</string>
     <string name="theme_desc">Programmanyň ýeňil ýa-da garaňky görnüşini saýlaň</string>
     <string name="theme_light">Lightagtylyk mowzugy</string>
+    <string name="theme_system">Ulgam mowzugy</string>
     <string name="theme_value_dark">dark</string>
     <string name="theme_value_light">light</string>
+    <string name="theme_value_system">system</string>
     <string name="time_section_elapsed">Bölüm geçdi</string>
     <string name="time_section_remaining">Bölüm galan</string>
     <string name="time_session_elapsed">Sessiýa geçdi</string>

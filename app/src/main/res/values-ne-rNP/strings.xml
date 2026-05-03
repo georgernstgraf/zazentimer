@@ -168,8 +168,10 @@
     <string name="theme_dark">गाढा विषयवस्तु</string>
     <string name="theme_desc">अनुप्रयोगको हल्का वा गाढा उपस्थिति छनौट गर्नुहोस्</string>
     <string name="theme_light">हल्का विषयवस्तु</string>
+    <string name="theme_system">प्रणाली विषयवस्तु</string>
     <string name="theme_value_dark">dark</string>
     <string name="theme_value_light">light</string>
+    <string name="theme_value_system">system</string>
     <string name="time_section_elapsed">खण्ड सकियो</string>
     <string name="time_section_remaining">खण्ड बाँकी</string>
     <string name="time_session_elapsed">सत्र बित्यो</string>

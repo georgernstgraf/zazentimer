@@ -168,8 +168,10 @@
     <string name="theme_dark">טונקל טים</string>
     <string name="theme_desc">קלייַבן ליכט אָדער טונקל אויסזען פון די אַפּ</string>
     <string name="theme_light">ליכט טעמע</string>
+    <string name="theme_system">סיסטעם טעמע</string>
     <string name="theme_value_dark">dark</string>
     <string name="theme_value_light">light</string>
+    <string name="theme_value_system">system</string>
     <string name="time_section_elapsed">סעקציע איז דורכגעגאנגען</string>
     <string name="time_section_remaining">אָפּטיילונג רוען</string>
     <string name="time_session_elapsed">סעסיע איז דורכגעגאנגען</string>

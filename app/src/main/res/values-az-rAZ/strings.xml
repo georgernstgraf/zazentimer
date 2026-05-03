@@ -168,8 +168,10 @@
     <string name="theme_dark">Qaranlıq Mövzu</string>
     <string name="theme_desc">Proqramın açıq və ya qaranlıq görünüşünü seçin</string>
     <string name="theme_light">Yüngül Mövzu</string>
+    <string name="theme_system">Sistem mövzusu</string>
     <string name="theme_value_dark">dark</string>
     <string name="theme_value_light">light</string>
+    <string name="theme_value_system">system</string>
     <string name="time_section_elapsed">Bölmə keçdi</string>
     <string name="time_section_remaining">Qalan bölmə</string>
     <string name="time_session_elapsed">Sessiya bitdi</string>

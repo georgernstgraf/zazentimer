@@ -168,8 +168,10 @@
     <string name="theme_dark">ຮູບແບບສີສັນມືດ</string>
     <string name="theme_desc">ເລືອກລັກສະນະແສງສະຫວ່າງຫຼືຊ້ໍາຂອງ App</string>
     <string name="theme_light">ຮູບແບບສີສັນແຈ້ງ</string>
+    <string name="theme_system">ຫົວຂໍ້ລະບົບ</string>
     <string name="theme_value_dark">dark</string>
     <string name="theme_value_light">light</string>
+    <string name="theme_value_system">system</string>
     <string name="time_section_elapsed">ພາກສ່ວນຜ່ານໄປ</string>
     <string name="time_section_remaining">ສ່ວນທີ່ຍັງເຫຼືອ</string>
     <string name="time_session_elapsed">ເຊດຊັນຜ່ານໄປແລ້ວ</string>

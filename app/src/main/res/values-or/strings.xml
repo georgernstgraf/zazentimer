@@ -168,8 +168,10 @@
     <string name="theme_dark">ଗା ark ଥିମ୍ |</string>
     <string name="theme_desc">ଆପ୍ ର ହାଲୁକା କିମ୍ବା ଗା dark ଼ ରୂପ ବାଛନ୍ତୁ |</string>
     <string name="theme_light">ହାଲୁକା ଥିମ୍ |</string>
+    <string name="theme_system">ସିଷ୍ଟମ୍ ଥିମ୍</string>
     <string name="theme_value_dark">dark</string>
     <string name="theme_value_light">light</string>
+    <string name="theme_value_system">system</string>
     <string name="time_section_elapsed">ବିଭାଗ ଅତିକ୍ରମ କଲା |</string>
     <string name="time_section_remaining">ବିଭାଗ ବାକି ଅଛି |</string>
     <string name="time_session_elapsed">ଅଧିବେଶନ ଶେଷ ହେଲା |</string>

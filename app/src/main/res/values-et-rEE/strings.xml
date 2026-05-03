@@ -168,8 +168,10 @@
     <string name="theme_dark">Tume teema</string>
     <string name="theme_desc">Valige rakenduse hele või tume välimus</string>
     <string name="theme_light">Valguse teema</string>
+    <string name="theme_system">Süsteemi teema</string>
     <string name="theme_value_dark">dark</string>
     <string name="theme_value_light">light</string>
+    <string name="theme_value_system">system</string>
     <string name="time_section_elapsed">Jaotis möödas</string>
     <string name="time_section_remaining">Jaotis alles</string>
     <string name="time_session_elapsed">Seanss möödus</string>

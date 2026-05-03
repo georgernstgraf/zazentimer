@@ -168,8 +168,10 @@
     <string name="theme_dark">Mijara tarî</string>
     <string name="theme_desc">Dîmenek ronahî an tarî ya Appê hilbijêrin</string>
     <string name="theme_light">Mijara Ronahî</string>
+    <string name="theme_system">Mijara Pergalê</string>
     <string name="theme_value_dark">dark</string>
     <string name="theme_value_light">light</string>
+    <string name="theme_value_system">system</string>
     <string name="time_section_elapsed">Beş derbas bû</string>
     <string name="time_section_remaining">Beşek maye</string>
     <string name="time_session_elapsed">Rûniştin bi dawî bû</string>

@@ -168,8 +168,10 @@
     <string name="theme_dark">Dark Tema</string>
     <string name="theme_desc">Kies ljocht as tsjuster uterlik fan \'e App</string>
     <string name="theme_light">Ljocht Tema</string>
+    <string name="theme_system">Systeem Tema</string>
     <string name="theme_value_dark">dark</string>
     <string name="theme_value_light">light</string>
+    <string name="theme_value_system">system</string>
     <string name="time_section_elapsed">Seksje ferrûn</string>
     <string name="time_section_remaining">Seksje oerbleaun</string>
     <string name="time_session_elapsed">Sesje ferrûn</string>

@@ -168,8 +168,10 @@
     <string name="theme_dark">இருண்ட தீம்</string>
     <string name="theme_desc">பயன்பாட்டின் ஒளி அல்லது இருண்ட தோற்றத்தைத் தேர்ந்தெடுக்கவும்</string>
     <string name="theme_light">ஒளி தீம்</string>
+    <string name="theme_system">கணினி தீம்</string>
     <string name="theme_value_dark">dark</string>
     <string name="theme_value_light">light</string>
+    <string name="theme_value_system">system</string>
     <string name="time_section_elapsed">பிரிவு முடிந்தது</string>
     <string name="time_section_remaining">மீதமுள்ள பகுதி</string>
     <string name="time_session_elapsed">அமர்வு முடிந்தது</string>

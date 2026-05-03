@@ -168,8 +168,10 @@
     <string name="theme_dark">Kaupapa pouri</string>
     <string name="theme_desc">Kōwhiria te ahua marama, pouri ranei o te App</string>
     <string name="theme_light">Kaupapa Maama</string>
+    <string name="theme_system">Kaupapa Pūnaha</string>
     <string name="theme_value_dark">dark</string>
     <string name="theme_value_light">light</string>
+    <string name="theme_value_system">system</string>
     <string name="time_section_elapsed">Kua pau te wahanga</string>
     <string name="time_section_remaining">Te wahanga e toe ana</string>
     <string name="time_session_elapsed">Kua pau te wahanga</string>

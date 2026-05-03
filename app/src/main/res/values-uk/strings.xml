@@ -168,8 +168,10 @@
     <string name="theme_dark">Темна тема</string>
     <string name="theme_desc">Виберіть світлий або темний вигляд програми</string>
     <string name="theme_light">Світла тема</string>
+    <string name="theme_system">Тема системи</string>
     <string name="theme_value_dark">dark</string>
     <string name="theme_value_light">light</string>
+    <string name="theme_value_system">system</string>
     <string name="time_section_elapsed">Розділ пройшов</string>
     <string name="time_section_remaining">Розділ залишився</string>
     <string name="time_session_elapsed">Сеанс закінчився</string>

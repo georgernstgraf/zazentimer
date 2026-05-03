@@ -168,8 +168,10 @@
     <string name="theme_dark">Temë e errët</string>
     <string name="theme_desc">Zgjidhni pamjen e lehtë ose të errët të aplikacionit</string>
     <string name="theme_light">Tema e lehtë</string>
+    <string name="theme_system">Tema e Sistemit</string>
     <string name="theme_value_dark">dark</string>
     <string name="theme_value_light">light</string>
+    <string name="theme_value_system">system</string>
     <string name="time_section_elapsed">Seksioni ka kaluar</string>
     <string name="time_section_remaining">Seksioni i mbetur</string>
     <string name="time_session_elapsed">Seanca ka kaluar</string>

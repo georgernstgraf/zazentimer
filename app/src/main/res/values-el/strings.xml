@@ -168,8 +168,10 @@
     <string name="theme_dark">Σκοτεινό θέμα</string>
     <string name="theme_desc">Επιλέξτε ανοιχτόχρωμη ή σκοτεινή εμφάνιση της εφαρμογής</string>
     <string name="theme_light">Ελαφρύ θέμα</string>
+    <string name="theme_system">Θέμα συστήματος</string>
     <string name="theme_value_dark">dark</string>
     <string name="theme_value_light">light</string>
+    <string name="theme_value_system">system</string>
     <string name="time_section_elapsed">Το τμήμα έχει παρέλθει</string>
     <string name="time_section_remaining">Τμήμα που απομένει</string>
     <string name="time_session_elapsed">Η συνεδρία έληξε</string>

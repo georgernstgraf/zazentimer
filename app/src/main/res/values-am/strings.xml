@@ -168,8 +168,10 @@
     <string name="theme_dark">ጨለማ ጭብጥ</string>
     <string name="theme_desc">የመተግበሪያውን ብርሃን ወይም ጨለማ ገጽታ ይምረጡ</string>
     <string name="theme_light">የብርሃን ጭብጥ</string>
+    <string name="theme_system">የስርዓት ጭብጥ</string>
     <string name="theme_value_dark">dark</string>
     <string name="theme_value_light">light</string>
+    <string name="theme_value_system">system</string>
     <string name="time_section_elapsed">ክፍል አልፏል</string>
     <string name="time_section_remaining">ክፍል ይቀራል</string>
     <string name="time_session_elapsed">ክፍለ ጊዜ አልፏል</string>

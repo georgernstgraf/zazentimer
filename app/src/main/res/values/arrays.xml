@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <array name="theme_texts">
+        <item>@string/theme_system</item>
         <item>@string/theme_light</item>
         <item>@string/theme_dark</item>
     </array>
     <array name="theme_values">
+        <item>@string/theme_value_system</item>
         <item>@string/theme_value_light</item>
         <item>@string/theme_value_dark</item>
     </array>

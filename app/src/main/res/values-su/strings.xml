@@ -168,8 +168,10 @@
     <string name="theme_dark">Téma Poék</string>
     <string name="theme_desc">Pilih tampilan anu terang atanapi poék tina App</string>
     <string name="theme_light">Téma Cahaya</string>
+    <string name="theme_system">Téma Sistim</string>
     <string name="theme_value_dark">dark</string>
     <string name="theme_value_light">light</string>
+    <string name="theme_value_system">system</string>
     <string name="time_section_elapsed">Bagéan dijalankeun</string>
     <string name="time_section_remaining">Bagian sésana</string>
     <string name="time_session_elapsed">Sidang ngaliwat</string>

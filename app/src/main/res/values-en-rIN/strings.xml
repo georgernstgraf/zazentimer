@@ -166,10 +166,12 @@
     <string name="text_question_delete_session">Really delete the selected Session?</string>
     <string name="theme">Theme</string>
     <string name="theme_dark">Dark Theme</string>
-    <string name="theme_desc">Choose light or dark appearance of the App</string>
+    <string name="theme_desc">Choose the app appearance</string>
     <string name="theme_light">Light Theme</string>
+    <string name="theme_system">System Theme</string>
     <string name="theme_value_dark">dark</string>
     <string name="theme_value_light">light</string>
+    <string name="theme_value_system">system</string>
     <string name="time_section_elapsed">Section elapsed</string>
     <string name="time_section_remaining">Section remaining</string>
     <string name="time_session_elapsed">Session elapsed</string>

@@ -168,8 +168,10 @@
     <string name="theme_dark">Dark Theme</string>
     <string name="theme_desc">Lucem aut obscuram speciem App</string>
     <string name="theme_light">Lux Theme</string>
+    <string name="theme_system">Systema Theme</string>
     <string name="theme_value_dark">dark</string>
     <string name="theme_value_light">light</string>
+    <string name="theme_value_system">system</string>
     <string name="time_section_elapsed">Sectio spatio</string>
     <string name="time_section_remaining">Reliqua sectione</string>
     <string name="time_session_elapsed">Sessionem spatio</string>

@@ -168,8 +168,10 @@
     <string name="theme_dark">ڳاڙهو موضوع</string>
     <string name="theme_desc">ايپ جي روشني يا اونداهي ظهور چونڊيو</string>
     <string name="theme_light">هلڪو موضوع</string>
+    <string name="theme_system">سسٽم جو موضوع</string>
     <string name="theme_value_dark">dark</string>
     <string name="theme_value_light">light</string>
+    <string name="theme_value_system">system</string>
     <string name="time_section_elapsed">سيڪشن ختم ٿي ويو</string>
     <string name="time_section_remaining">باقي حصو</string>
     <string name="time_session_elapsed">سيشن گذري ويو</string>

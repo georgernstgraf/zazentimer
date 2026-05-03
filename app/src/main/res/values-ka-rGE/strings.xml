@@ -168,8 +168,10 @@
     <string name="theme_dark">მუქი თემა</string>
     <string name="theme_desc">აირჩიეთ აპის ღია ან მუქი გარეგნობა</string>
     <string name="theme_light">მსუბუქი თემა</string>
+    <string name="theme_system">სისტემის თემა</string>
     <string name="theme_value_dark">dark</string>
     <string name="theme_value_light">light</string>
+    <string name="theme_value_system">system</string>
     <string name="time_section_elapsed">განყოფილება გავიდა</string>
     <string name="time_section_remaining">დარჩენილი მონაკვეთი</string>
     <string name="time_session_elapsed">სხდომა გავიდა</string>

@@ -168,8 +168,10 @@
     <string name="theme_dark">mörkt tema</string>
     <string name="theme_desc">Välj ljus eller mörk utseende på appen</string>
     <string name="theme_light">Lätt tema</string>
+    <string name="theme_system">Systemtema</string>
     <string name="theme_value_dark">dark</string>
     <string name="theme_value_light">light</string>
+    <string name="theme_value_system">system</string>
     <string name="time_section_elapsed">Avsnittet förflutit</string>
     <string name="time_section_remaining">Avsnitt kvar</string>
     <string name="time_session_elapsed">Sessionen har gått</string>

@@ -168,8 +168,10 @@
     <string name="theme_dark">अन्धकार विषय</string>
     <string name="theme_desc">App इत्यस्य हल्कं वा अन्धकारमयं वा रूपं चिनोतु</string>
     <string name="theme_light">प्रकाश विषयः</string>
+    <string name="theme_system">प्रणाली विषयः</string>
     <string name="theme_value_dark">dark</string>
     <string name="theme_value_light">light</string>
+    <string name="theme_value_system">system</string>
     <string name="time_section_elapsed">खण्डः व्यतीतः</string>
     <string name="time_section_remaining">खण्डः अवशिष्टः</string>
     <string name="time_session_elapsed">सत्रं व्यतीतम्</string>

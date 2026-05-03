@@ -168,8 +168,10 @@
     <string name="theme_dark">డార్క్ థీమ్</string>
     <string name="theme_desc">యాప్ కాంతి లేదా ముదురు రూపాన్ని ఎంచుకోండి</string>
     <string name="theme_light">లైట్ థీమ్</string>
+    <string name="theme_system">సిస్టమ్ థీమ్</string>
     <string name="theme_value_dark">dark</string>
     <string name="theme_value_light">light</string>
+    <string name="theme_value_system">system</string>
     <string name="time_section_elapsed">విభాగం ముగిసింది</string>
     <string name="time_section_remaining">విభాగం మిగిలి ఉంది</string>
     <string name="time_session_elapsed">సెషన్ ముగిసింది</string>

@@ -168,8 +168,10 @@
     <string name="theme_dark">डार्क थीम</string>
     <string name="theme_desc">App चें उजवाड वा काळें दिसप निवडात</string>
     <string name="theme_light">उजवाडाचो विशय</string>
+    <string name="theme_system">प्रणाली थीम</string>
     <string name="theme_value_dark">dark</string>
     <string name="theme_value_light">light</string>
+    <string name="theme_value_system">system</string>
     <string name="time_section_elapsed">विभाग गेलो</string>
     <string name="time_section_remaining">विभाग उरला</string>
     <string name="time_session_elapsed">सत्र गेलें</string>

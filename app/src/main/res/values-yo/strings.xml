@@ -168,8 +168,10 @@
     <string name="theme_dark">Akori Dudu</string>
     <string name="theme_desc">Yan imọlẹ tabi irisi dudu ti App naa</string>
     <string name="theme_light">Akori Imọlẹ</string>
+    <string name="theme_system">Akori eto</string>
     <string name="theme_value_dark">dark</string>
     <string name="theme_value_light">light</string>
+    <string name="theme_value_system">system</string>
     <string name="time_section_elapsed">Abala ti kọja</string>
     <string name="time_section_remaining">Abala ti o ku</string>
     <string name="time_session_elapsed">Ikoni ti kọja</string>

@@ -168,8 +168,10 @@
     <string name="theme_dark">Omulamwa Omuddugavu</string>
     <string name="theme_desc">Londa endabika enzirugavu oba enzirugavu eya App</string>
     <string name="theme_light">Omulamwa gw\'Ekitangaala</string>
+    <string name="theme_system">Omulamwa gw\'enkola</string>
     <string name="theme_value_dark">dark</string>
     <string name="theme_value_light">light</string>
+    <string name="theme_value_system">system</string>
     <string name="time_section_elapsed">Ekitundu kyayitawo</string>
     <string name="time_section_remaining">Ekitundu ekisigadde</string>
     <string name="time_session_elapsed">Olutuula lwayitawo</string>

@@ -168,8 +168,10 @@
     <string name="theme_dark">Umxholo omnyama</string>
     <string name="theme_desc">Khetha ukukhanya okanye inkangeleko emnyama ye-App</string>
     <string name="theme_light">Light Umxholo</string>
+    <string name="theme_system">Umxholo weNkqubo</string>
     <string name="theme_value_dark">dark</string>
     <string name="theme_value_light">light</string>
+    <string name="theme_value_system">system</string>
     <string name="time_section_elapsed">Icandelo liphelile</string>
     <string name="time_section_remaining">Icandelo eliseleyo</string>
     <string name="time_session_elapsed">Iphelile iseshoni</string>

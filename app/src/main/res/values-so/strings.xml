@@ -168,8 +168,10 @@
     <string name="theme_dark">Mawduuca Madow</string>
     <string name="theme_desc">Dooro iftiinka ama muuqaalka mugdiga ah ee App-ka</string>
     <string name="theme_light">Mawduuca Fudud</string>
+    <string name="theme_system">Mawduuca Nidaamka</string>
     <string name="theme_value_dark">dark</string>
     <string name="theme_value_light">light</string>
+    <string name="theme_value_system">system</string>
     <string name="time_section_elapsed">Qaybta ayaa dhacday</string>
     <string name="time_section_remaining">Qaybta hadhay</string>
     <string name="time_session_elapsed">Fadhigu wuu dhacay</string>

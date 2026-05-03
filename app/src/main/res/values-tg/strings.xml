@@ -168,8 +168,10 @@
     <string name="theme_dark">Мавзӯи торик</string>
     <string name="theme_desc">Намуди равшан ё торикии барномаро интихоб кунед</string>
     <string name="theme_light">Мавзӯи сабук</string>
+    <string name="theme_system">Мавзӯи система</string>
     <string name="theme_value_dark">dark</string>
     <string name="theme_value_light">light</string>
+    <string name="theme_value_system">system</string>
     <string name="time_section_elapsed">Бахш гузашт</string>
     <string name="time_section_remaining">Қисми боқимонда</string>
     <string name="time_session_elapsed">Сессия гузашт</string>

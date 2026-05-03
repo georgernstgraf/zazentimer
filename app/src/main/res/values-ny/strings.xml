@@ -168,8 +168,10 @@
     <string name="theme_dark">Mutu Wamdima</string>
     <string name="theme_desc">Sankhani mawonekedwe opepuka kapena akuda a App</string>
     <string name="theme_light">Mutu Wowala</string>
+    <string name="theme_system">System Theme</string>
     <string name="theme_value_dark">dark</string>
     <string name="theme_value_light">light</string>
+    <string name="theme_value_system">system</string>
     <string name="time_section_elapsed">Gawo latha</string>
     <string name="time_section_remaining">Gawo lotsala</string>
     <string name="time_session_elapsed">Gawo linatha</string>

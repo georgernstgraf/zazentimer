@@ -168,8 +168,10 @@
     <string name="theme_dark">Tutayaq Tema</string>
     <string name="theme_desc">Akllay Apppa k’anchay utaq yana rikch’ayninta</string>
     <string name="theme_light">Tema de Luz</string>
+    <string name="theme_system">Sistema nisqamanta Tema</string>
     <string name="theme_value_dark">dark</string>
     <string name="theme_value_light">light</string>
+    <string name="theme_value_system">system</string>
     <string name="time_section_elapsed">Sección pasasqa</string>
     <string name="time_section_remaining">Sección puchuq</string>
     <string name="time_session_elapsed">Sesión pasasqa</string>

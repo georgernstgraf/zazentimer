@@ -168,8 +168,10 @@
     <string name="theme_dark">Tema escuro</string>
     <string name="theme_desc">Escolla o aspecto claro ou escuro da aplicación</string>
     <string name="theme_light">Tema lixeiro</string>
+    <string name="theme_system">Tema do sistema</string>
     <string name="theme_value_dark">dark</string>
     <string name="theme_value_light">light</string>
+    <string name="theme_value_system">system</string>
     <string name="time_section_elapsed">Sección transcorrido</string>
     <string name="time_section_remaining">Sección restante</string>
     <string name="time_session_elapsed">Sesión transcorrido</string>

@@ -168,8 +168,10 @@
     <string name="theme_dark">Omutwe gw\'omwirima</string>
     <string name="theme_desc">Toorana oku App erikureebeka omu mushana nari omu mwirima</string>
     <string name="theme_light">Omutwe gw\'omushana</string>
+    <string name="theme_system">System Theme</string>
     <string name="theme_value_dark">dark</string>
     <string name="theme_value_light">light</string>
+    <string name="theme_value_system">system</string>
     <string name="time_section_elapsed">Ekicweka kyahwaho</string>
     <string name="time_section_remaining">Ekicweka ekisigaireho</string>
     <string name="time_session_elapsed">Orukiiko rwahwaho</string>

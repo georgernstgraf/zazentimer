@@ -168,8 +168,10 @@
     <string name="theme_dark">Temná téma</string>
     <string name="theme_desc">Vyberte si svetlý alebo tmavý vzhľad aplikácie</string>
     <string name="theme_light">Svetlá téma</string>
+    <string name="theme_system">Téma systému</string>
     <string name="theme_value_dark">dark</string>
     <string name="theme_value_light">light</string>
+    <string name="theme_value_system">system</string>
     <string name="time_section_elapsed">Sekcia uplynula</string>
     <string name="time_section_remaining">Zostáva sekcia</string>
     <string name="time_session_elapsed">Relácia uplynula</string>

@@ -168,8 +168,10 @@
     <string name="theme_dark">Tema skur</string>
     <string name="theme_desc">Agħżel dehra ċara jew skura tal-App</string>
     <string name="theme_light">Tema Dawl</string>
+    <string name="theme_system">Tema tas-Sistema</string>
     <string name="theme_value_dark">dark</string>
     <string name="theme_value_light">light</string>
+    <string name="theme_value_system">system</string>
     <string name="time_section_elapsed">Taqsima għaddiet</string>
     <string name="time_section_remaining">Taqsima li fadal</string>
     <string name="time_session_elapsed">Sessjoni għaddiet</string>

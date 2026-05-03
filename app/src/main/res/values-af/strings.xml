@@ -168,8 +168,10 @@
     <string name="theme_dark">Donker Tema</string>
     <string name="theme_desc">Kies ligte of donker voorkoms van die toepassing</string>
     <string name="theme_light">Ligte tema</string>
+    <string name="theme_system">Stelsel Tema</string>
     <string name="theme_value_dark">dark</string>
     <string name="theme_value_light">light</string>
+    <string name="theme_value_system">system</string>
     <string name="time_section_elapsed">Seksie het verloop</string>
     <string name="time_section_remaining">Afdeling oor</string>
     <string name="time_session_elapsed">Sessie het verloop</string>

@@ -168,8 +168,10 @@
     <string name="theme_dark">黑暗主題</string>
     <string name="theme_desc">選擇應用程式的淺色或深色外觀</string>
     <string name="theme_light">淺色主題</string>
+    <string name="theme_system">系統主題</string>
     <string name="theme_value_dark">dark</string>
     <string name="theme_value_light">light</string>
+    <string name="theme_value_system">system</string>
     <string name="time_section_elapsed">部分已過</string>
     <string name="time_section_remaining">剩餘部分</string>
     <string name="time_session_elapsed">會話已過</string>

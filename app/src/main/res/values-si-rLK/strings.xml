@@ -168,8 +168,10 @@
     <string name="theme_dark">අඳුරු තේමාව</string>
     <string name="theme_desc">යෙදුමේ ආලෝකය හෝ අඳුරු පෙනුම තෝරන්න</string>
     <string name="theme_light">සැහැල්ලු තේමාව</string>
+    <string name="theme_system">පද්ධති තේමාව</string>
     <string name="theme_value_dark">dark</string>
     <string name="theme_value_light">light</string>
+    <string name="theme_value_system">system</string>
     <string name="time_section_elapsed">කොටස අවසන් විය</string>
     <string name="time_section_remaining">ඉතිරි කොටස</string>
     <string name="time_session_elapsed">සැසිය අවසන් විය</string>

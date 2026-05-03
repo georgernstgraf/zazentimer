@@ -168,8 +168,10 @@
     <string name="theme_dark">Харанхуй сэдэв</string>
     <string name="theme_desc">Програмын цайвар эсвэл бараан харагдах байдлыг сонгоно уу</string>
     <string name="theme_light">Хөнгөн сэдэв</string>
+    <string name="theme_system">Системийн сэдэв</string>
     <string name="theme_value_dark">dark</string>
     <string name="theme_value_light">light</string>
+    <string name="theme_value_system">system</string>
     <string name="time_section_elapsed">Хэсэг дууслаа</string>
     <string name="time_section_remaining">Үлдсэн хэсэг</string>
     <string name="time_session_elapsed">Хурал дууслаа</string>

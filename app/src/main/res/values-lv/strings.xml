@@ -168,8 +168,10 @@
     <string name="theme_dark">Tumšā tēma</string>
     <string name="theme_desc">Izvēlieties lietotnes gaišo vai tumšo izskatu</string>
     <string name="theme_light">Gaismas tēma</string>
+    <string name="theme_system">Sistēmas tēma</string>
     <string name="theme_value_dark">dark</string>
     <string name="theme_value_light">light</string>
+    <string name="theme_value_system">system</string>
     <string name="time_section_elapsed">Sadaļa pagājusi</string>
     <string name="time_section_remaining">Atlikusi sadaļa</string>
     <string name="time_session_elapsed">Sesija pagājusi</string>

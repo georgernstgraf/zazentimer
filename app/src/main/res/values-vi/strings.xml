@@ -168,8 +168,10 @@
     <string name="theme_dark">Chủ đề tối</string>
     <string name="theme_desc">Chọn giao diện sáng hoặc tối của Ứng dụng</string>
     <string name="theme_light">Chủ đề nhẹ nhàng</string>
+    <string name="theme_system">Chủ đề hệ thống</string>
     <string name="theme_value_dark">dark</string>
     <string name="theme_value_light">light</string>
+    <string name="theme_value_system">system</string>
     <string name="time_section_elapsed">Phần đã trôi qua</string>
     <string name="time_section_remaining">Phần còn lại</string>
     <string name="time_session_elapsed">Phiên đã trôi qua</string>

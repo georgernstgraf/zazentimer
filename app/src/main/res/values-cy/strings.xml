@@ -168,8 +168,10 @@
     <string name="theme_dark">Thema Dywyll</string>
     <string name="theme_desc">Dewiswch ymddangosiad golau neu dywyll yr Ap</string>
     <string name="theme_light">Thema Ysgafn</string>
+    <string name="theme_system">Thema System</string>
     <string name="theme_value_dark">dark</string>
     <string name="theme_value_light">light</string>
+    <string name="theme_value_system">system</string>
     <string name="time_section_elapsed">Adran wedi mynd heibio</string>
     <string name="time_section_remaining">Adran yn weddill</string>
     <string name="time_session_elapsed">Sesiwn wedi mynd heibio</string>

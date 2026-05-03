@@ -168,8 +168,10 @@
     <string name="theme_dark">Tema peteng</string>
     <string name="theme_desc">Pilih tampilan cahya utawa peteng App</string>
     <string name="theme_light">Tema Cahya</string>
+    <string name="theme_system">System Theme</string>
     <string name="theme_value_dark">dark</string>
     <string name="theme_value_light">light</string>
+    <string name="theme_value_system">system</string>
     <string name="time_section_elapsed">Bagean liwati</string>
     <string name="time_section_remaining">Sisa bagean</string>
     <string name="time_session_elapsed">Sesi wis liwati</string>

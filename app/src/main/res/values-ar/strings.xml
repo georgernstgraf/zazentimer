@@ -168,8 +168,10 @@
     <string name="theme_dark">موضوع الظلام</string>
     <string name="theme_desc">اختر المظهر الفاتح أو الداكن للتطبيق</string>
     <string name="theme_light">موضوع الضوء</string>
+    <string name="theme_system">موضوع النظام</string>
     <string name="theme_value_dark">dark</string>
     <string name="theme_value_light">light</string>
+    <string name="theme_value_system">system</string>
     <string name="time_section_elapsed">انقضى القسم</string>
     <string name="time_section_remaining">القسم المتبقي</string>
     <string name="time_session_elapsed">انقضت الجلسة</string>

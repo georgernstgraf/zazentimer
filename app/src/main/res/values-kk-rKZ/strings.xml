@@ -168,8 +168,10 @@
     <string name="theme_dark">Қараңғы тақырып</string>
     <string name="theme_desc">Қолданбаның ашық немесе күңгірт көрінісін таңдаңыз</string>
     <string name="theme_light">Жеңіл тақырып</string>
+    <string name="theme_system">Жүйе тақырыбы</string>
     <string name="theme_value_dark">dark</string>
     <string name="theme_value_light">light</string>
+    <string name="theme_value_system">system</string>
     <string name="time_section_elapsed">Бөлім аяқталды</string>
     <string name="time_section_remaining">Бөлім қалды</string>
     <string name="time_session_elapsed">Сеанс аяқталды</string>

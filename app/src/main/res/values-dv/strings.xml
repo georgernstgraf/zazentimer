@@ -168,8 +168,10 @@
     <string name="theme_dark">ޑާކް ތީމް އެވެ</string>
     <string name="theme_desc">އެޕްގެ އަލި ނުވަތަ އަނދިރި ސިފައެއް ހޮވާށެވެ</string>
     <string name="theme_light">ލައިޓް ތީމް އެވެ</string>
+    <string name="theme_system">ސިސްޓަމް ތީމް</string>
     <string name="theme_value_dark">dark</string>
     <string name="theme_value_light">light</string>
+    <string name="theme_value_system">system</string>
     <string name="time_section_elapsed">ސެކްޝަން ފާއިތުވެއްޖެއެވެ</string>
     <string name="time_section_remaining">ބާކީ ބައި</string>
     <string name="time_session_elapsed">ސެޝަން ފާއިތުވެގެން ދިޔައެވެ</string>

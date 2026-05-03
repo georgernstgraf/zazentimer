@@ -168,8 +168,10 @@
     <string name="theme_dark">Téama Dorcha</string>
     <string name="theme_desc">Roghnaigh cuma éadrom nó dorcha an Aip</string>
     <string name="theme_light">Téama Solas</string>
+    <string name="theme_system">Téama an Chórais</string>
     <string name="theme_value_dark">dark</string>
     <string name="theme_value_light">light</string>
+    <string name="theme_value_system">system</string>
     <string name="time_section_elapsed">Alt imithe</string>
     <string name="time_section_remaining">Alt fágtha</string>
     <string name="time_session_elapsed">Seisiún caite</string>

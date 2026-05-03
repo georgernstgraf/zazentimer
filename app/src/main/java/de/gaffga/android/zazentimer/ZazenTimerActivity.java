@@ -63,7 +63,10 @@ public class ZazenTimerActivity extends AppCompatActivity implements MainFragmen
     public static final boolean PREF_DEFAULT_SHOW_ELAPSED_TIME = true;
     public static final boolean PREF_DEFAULT_SHOW_SESSION_EDIT_HELP_V13 = false;
     public static final int PREF_DEFAULT_SHOW_TIME_MODE = 0;
-    public static final String PREF_DEFAULT_THEME = "light";
+    public static final String PREF_DEFAULT_THEME = "system";
+    public static final String PREF_VALUE_THEME_DARK = "dark";
+    public static final String PREF_VALUE_THEME_LIGHT = "light";
+    public static final String PREF_VALUE_THEME_SYSTEM = "system";
     public static final int PREF_DEFAULT_VOLUME = 100;
     public static final String PREF_KEY_BRIGHTNESS = "brightness";
     public static final String PREF_KEY_CONVERTED_BELL_INDICES = "bell_indices_converted";
@@ -80,8 +83,6 @@ public class ZazenTimerActivity extends AppCompatActivity implements MainFragmen
     public static final String PREF_KEY_SHOW_TIME_MODE = "view_time_mode";
     public static final String PREF_KEY_THEME = "theme";
     public static final String PREF_KEY_VOLUME = "volume";
-    public static final String PREF_VALUE_THEME_DARK = "dark";
-    public static final String PREF_VALUE_THEME_LIGHT = "light";
     private static final String TAG = "ZMT_ZazenTimerActivity";
     private MeditationEndReceiver meditationEndReceiver;
     private SharedPreferences pref;
@@ -131,8 +132,16 @@ public class ZazenTimerActivity extends AppCompatActivity implements MainFragmen
     protected void onCreate(Bundle bundle) {
         Log.d(TAG, "onCreate");
         SharedPreferences preferences = getPreferences(this);
-        if (preferences.getString(PREF_KEY_THEME, "light").equals("dark")) {
+        String theme = preferences.getString(PREF_KEY_THEME, PREF_DEFAULT_THEME);
+        if (theme.equals(PREF_VALUE_THEME_DARK)) {
             setTheme(R.style.DarkZenTheme);
+        } else if (theme.equals(PREF_VALUE_THEME_SYSTEM)) {
+            int nightMode = getResources().getConfiguration().uiMode & android.content.res.Configuration.UI_MODE_NIGHT_MASK;
+            if (nightMode == android.content.res.Configuration.UI_MODE_NIGHT_YES) {
+                setTheme(R.style.DarkZenTheme);
+            } else {
+                setTheme(R.style.LightZenTheme);
+            }
         } else {
             setTheme(R.style.LightZenTheme);
         }
