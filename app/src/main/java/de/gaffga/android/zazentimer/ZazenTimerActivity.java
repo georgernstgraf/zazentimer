@@ -315,7 +315,7 @@ public class ZazenTimerActivity extends AppCompatActivity implements MainFragmen
                 + getString(R.string.about2) + "<br><br>"
                 + getString(R.string.about3);
         TextView textView = new TextView(this);
-        textView.setText(Html.fromHtml(message));
+        textView.setText(Html.fromHtml(message, Html.FROM_HTML_MODE_COMPACT));
         textView.setMovementMethod(LinkMovementMethod.getInstance());
         int pad = (int) (24 * getResources().getDisplayMetrics().density);
         textView.setPadding(pad, pad, 0, 0);
