@@ -3,9 +3,10 @@
 Current status as of 2026-05-03.
 
 ## Current Focus
-#91 closed: Session card description hides when empty, text vertically centered.
+Namespace refactored to `at.priv.graf.zazentimer`. Docs updated to match.
 
 ## Completed (this cycle)
+- [x] #82 Refactor namespace from `de.gaffga.android.zazentimer` to `at.priv.graf.zazentimer`
 - [x] #91 Hide session description when empty, center name vertically
 - [x] #81 Session image visibility — zen circle maintains minimum 40% of available space
 - [x] #81 Grip handles added to session cards (`item_session.xml` + `ic_drag_handle.xml`)
@@ -24,7 +25,6 @@ Current status as of 2026-05-03.
 - [x] #67 Epic: Translate App into 127 OOBE languages
 
 ## Pending
-- [ ] #82 Refactor namespace to `zazentimer.graf.priv.at`
 - [ ] #64 Play Store
 - [ ] SettingsTest.testRestore/testBackup CI failures (PreferenceFragmentCompat scroll issue)
 
@@ -37,4 +37,4 @@ Current status as of 2026-05-03.
 - None
 
 ## Next Session Suggestion
-Consider #82 (namespace refactor) or fixing the remaining CI test failures.
+Consider #64 (Play Store) or fixing the remaining CI test failures.

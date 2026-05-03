@@ -4,7 +4,7 @@ Coding patterns, naming rules, and style agreements for this project.
 Follow these without question. Do not deviate unless explicitly told.
 
 ## Naming
-- Java package structure: `de.gaffga.android.*`
+- Java package structure: `at.priv.graf.*`
 - Page Object classes for instrumented tests: `*Page.java` in `screens/` package (e.g., `MainPage.java`, `MeditationPage.java`)
 
 ## File Layout
