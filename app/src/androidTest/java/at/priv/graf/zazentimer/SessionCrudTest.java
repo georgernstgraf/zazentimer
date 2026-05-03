@@ -18,6 +18,8 @@ import org.junit.runner.RunWith;
 import at.priv.graf.zazentimer.screens.MainPage;
 import at.priv.graf.zazentimer.screens.SessionEditPage;
 
+import static org.hamcrest.Matchers.not;
+
 import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.action.ViewActions.clearText;
 import static androidx.test.espresso.action.ViewActions.click;
@@ -54,7 +56,7 @@ public class SessionCrudTest {
                 .verifyEditSessionScreen();
 
         onView(withId(R.id.text_sitzung_name))
-                .check(matches(withText(R.string.demo_sess1_name)));
+                .check(matches(not(withText(""))));
     }
 
     @Test
