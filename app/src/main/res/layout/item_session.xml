@@ -5,6 +5,14 @@
     android:layout_height="wrap_content"
     android:padding="12dp"
     android:background="@drawable/bg_session_item">
+    <ImageView
+        android:id="@+id/dragHandle"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:src="@drawable/ic_drag_handle"
+        android:contentDescription="@string/content_desc_drag_handle"
+        android:padding="4dp"
+        android:layout_gravity="center_vertical" />
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="0dp"

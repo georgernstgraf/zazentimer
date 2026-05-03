@@ -1,6 +1,6 @@
 # Architecture
 
-Living structural map of the system as of 2026-05-02.
+Living structural map of the system as of 2026-05-03.
 Overwritten when structural changes occur during a session.
 
 ## Overview
@@ -50,8 +50,10 @@ Overflow menu --[About]--> AlertDialog
 - **Sessions screen during meditation**: All interactions blocked (card selection, Start, Edit/Copy/Delete, FAB).
 
 ## Transitions
-- **MaterialSharedAxis X**: drill-down navigation (session edit, section edit)
-- **MaterialSharedAxis Y**: meditation screen entry/exit
+- **MaterialFadeThrough**: MainFragment enter/re-enter, SettingsFragment enter
+- **MaterialSharedAxis X**: drill-down navigation (SessionEditFragment enter/return, SectionEditFragment)
+- **MaterialSharedAxis Y**: MeditationFragment enter/return
+- Note: Fragment back-navigation plays MaterialFadeThrough re-enter transition on MainFragment. `onResume()` fires mid-transition before layout completes, requiring timing-independent approaches for any layout-sensitive logic.
 
 ## Business Objects (`bo/`)
 | Class | Table | Fields |
@@ -99,6 +101,8 @@ User presses Start (Sessions tab or Meditation tab)
 | `BellCollection` | `audio/` | Singleton: 8 built-in bells + custom bell scanning |
 | `TimerView` | `views/` | Custom circular arc timer widget with section visualization |
 | `SessionListAdapter` | `fragments/` | RecyclerView adapter for session cards with selection tracking |
+| `SessionTouchHelperCallback` | `fragments/` | ItemTouchHelper.Callback for long-press drag reorder (no swipe, no DB persistence) |
+| `MaxHeightRecyclerView` | `fragments/` | RecyclerView subclass that caps height in `onMeasure()` — used to enforce 60% maximum for session list, leaving 40% minimum for zen circle image |
 | `HiltTestRunner` | androidTest | Custom AndroidJUnitRunner that injects HiltTestApplication |
 
 ## Data Flows

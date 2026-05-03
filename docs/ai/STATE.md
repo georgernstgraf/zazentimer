@@ -3,12 +3,15 @@
 Current status as of 2026-05-03.
 
 ## Current Focus
-#90 fixed: About page line breaks restored by replacing `\n` with `<br>` for `Html.fromHtml()`.
+#81: Session image visibility (zen circle minimum 40%) and grip handles for drag reorder. Root cause identified and fixed — persistent `OnGlobalLayoutListener` with change guard corrects stale height cap caused by parent height changes during fragment transitions.
 
-## Completed (this session)
-- [x] #90 Fix missing line breaks on About page
-  - Replaced `"\n\n"` with `"<br><br>"` in `ZazenTimerActivity.showAboutScreen()`
-  - Replaced `\n\n` with `&lt;br&gt;&lt;br&gt;` in `about2` string across 137 locale files + base `strings.xml`
+## Completed (this cycle)
+- [x] #81 Session image visibility — zen circle maintains minimum 40% of available space
+- [x] #81 Grip handles added to session cards (`item_session.xml` + `ic_drag_handle.xml`)
+- [x] #81 Session card drag reorder (long-press via `SessionTouchHelperCallback`)
+- [x] #90 About page line breaks fixed (`\n` → `<br>` for `Html.fromHtml()`)
+- [x] #86 Center plus icon on Add Section FAB
+- [x] #87 System Theme option added as default
 
 ## Completed (previous sessions)
 - [x] #85 localeConfig for Android 13+ per-app language support
@@ -21,7 +24,6 @@ Current status as of 2026-05-03.
 
 ## Pending
 - [ ] #82 Refactor namespace to `zazentimer.graf.priv.at`
-- [ ] #81 Session image visibility + grip handles
 - [ ] #64 Play Store
 - [ ] SettingsTest.testRestore/testBackup CI failures (PreferenceFragmentCompat scroll issue)
 
@@ -34,4 +36,4 @@ Current status as of 2026-05-03.
 - None
 
 ## Next Session Suggestion
-Consider #82 (namespace refactor), #81 (session card UI), or fixing the remaining CI test failures.
+Consider #82 (namespace refactor) or fixing the remaining CI test failures. Issue #81 needs commit, push, and close.

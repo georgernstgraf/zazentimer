@@ -2,6 +2,7 @@ package de.gaffga.android.fragments;
 
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
+import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import android.app.Activity;
@@ -13,6 +14,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewTreeObserver;
 import android.widget.Button;
 import de.gaffga.android.base.SpinnerUtil;
 import com.google.android.material.transition.MaterialFadeThrough;
@@ -99,6 +101,37 @@ public class MainFragment extends Fragment {
             }
         );
         this.recyclerSessions.setAdapter(this.sessionListAdapter);
+        this.recyclerSessions.getViewTreeObserver().addOnGlobalLayoutListener(
+            new ViewTreeObserver.OnGlobalLayoutListener() {
+                @Override
+                public void onGlobalLayout() {
+                    if (recyclerSessions == null || butStart == null) return;
+                    View parent = (View) recyclerSessions.getParent();
+                    if (parent == null) return;
+                    int available = parent.getHeight() - butStart.getHeight();
+                    if (available <= 0) return;
+                    int maxRecyclerHeight = (int) (available * 0.60);
+                    MaxHeightRecyclerView rv = (MaxHeightRecyclerView) recyclerSessions;
+                    if (rv.getMaxHeight() != maxRecyclerHeight) {
+                        rv.setMaxHeight(maxRecyclerHeight);
+                    }
+                }
+            }
+        );
+        SessionTouchHelperCallback callback = new SessionTouchHelperCallback(
+            new SessionTouchHelperCallback.SessionTouchListener() {
+                @Override
+                public boolean onMove(int fromPosition, int toPosition) {
+                    if (fromPosition < 0 || fromPosition >= sessions.size()) return false;
+                    if (toPosition < 0 || toPosition >= sessions.size()) return false;
+                    Session moved = sessions.remove(fromPosition);
+                    sessions.add(toPosition, moved);
+                    sessionListAdapter.moveItem(fromPosition, toPosition);
+                    return true;
+                }
+            }
+        );
+        new ItemTouchHelper(callback).attachToRecyclerView(this.recyclerSessions);
         return inflate;
     }
 

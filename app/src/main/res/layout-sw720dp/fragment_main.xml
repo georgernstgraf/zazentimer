@@ -13,7 +13,7 @@
         android:layout_above="@+id/recycler_sessions"
         android:layout_centerHorizontal="true"
         style="@style/zenIcon"/>
-    <androidx.recyclerview.widget.RecyclerView
+    <de.gaffga.android.fragments.MaxHeightRecyclerView
         android:gravity="center"
         android:id="@+id/recycler_sessions"
         android:layout_width="match_parent"
@@ -29,7 +29,6 @@
         android:layout_width="match_parent"
         android:layout_height="80dp"
         android:layout_marginLeft="100dp"
-        android:layout_marginTop="40dp"
         android:layout_marginRight="100dp"
         android:layout_marginBottom="60dp"
         android:text="@string/but_start"

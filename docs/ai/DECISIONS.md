@@ -182,3 +182,15 @@ Each entry documents WHAT was decided and WHY.
 - **Reason**: Complete coverage of all languages available in Android device setup. MyMemory supports Kashmiri, Santali, and Tibetan which Google Translate does not.
 - **Considered**: Skipping unsupported languages (rejected — user requested coverage); using English placeholders (rejected — user wanted real translations).
 - **Tradeoff**: MyMemory translation quality may differ from Google Translate. The `retranslate.py` script now has a dual-translator dependency. Total locales: 136.
+
+## 2026-05-03: RecyclerView Height Capping via Custom onMeasure (#81)
+- **Choice**: Created `MaxHeightRecyclerView` (subclass of RecyclerView) that caps measured height in `onMeasure()` instead of using `post()` callbacks or `computeVerticalScrollRange()`.
+- **Reason**: `View.post()` does not wait for layout to complete — it races with fragment transitions, causing `computeVerticalScrollRange()` to return 0 or stale values. `onMeasure()` runs during every layout pass, making it immune to fragment transition timing (MaterialFadeThrough, MaterialSharedAxis).
+- **Considered**: `View.post()` with `computeVerticalScrollRange()` (rejected — race condition during transitions); `OnGlobalLayoutListener` only (rejected — fires once with transient parent heights); ConstraintLayout with percentage constraints (rejected — would require rewriting all 3 portrait layouts).
+- **Tradeoff**: Requires a custom view class and updating 3 portrait layout XMLs to use it. The `onMeasure` override reports a capped measured dimension to the parent, which works correctly with RelativeLayout positioning.
+
+## 2026-05-03: Persistent OnGlobalLayoutListener with Change Guard (#81)
+- **Choice**: The `OnGlobalLayoutListener` never removes itself and only calls `setMaxHeight()` when the computed value differs from the current `maxHeightPx` (checked via `getMaxHeight()`).
+- **Reason**: A one-shot listener computed `maxH=588` when the parent was temporarily at 1205px (keyboard up during fragment back-transition), then removed itself. When the parent expanded to 2038px, `maxH` stayed at 588 — only 32% of available instead of 60%. The persistent listener detects the parent height change on the next layout pass and corrects `maxH` to 1087 within the same transition frame. The change guard prevents infinite requestLayout loops.
+- **Considered**: Recalculating maxH in `onResume()` with a `post()` (rejected — same timing issues); setting maxH in `onMeasure()` based on current parent dimensions (rejected — no clean access to sibling button height).
+- **Tradeoff**: The listener fires on every global layout, which is slightly more overhead than a one-shot. The guard ensures it's a no-op when values are unchanged.

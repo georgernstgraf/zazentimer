@@ -5,6 +5,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.PopupMenu;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
@@ -37,6 +38,7 @@ public class SessionListAdapter extends RecyclerView.Adapter<SessionListAdapter.
         final TextView sessionDescription;
         final TextView sessionDuration;
         final ImageButton sessionOverflow;
+        final ImageView dragHandle;
 
         ViewHolder(View view) {
             super(view);
@@ -44,6 +46,7 @@ public class SessionListAdapter extends RecyclerView.Adapter<SessionListAdapter.
             sessionDescription = view.findViewById(R.id.sessionDescription);
             sessionDuration = view.findViewById(R.id.sessionDuration);
             sessionOverflow = view.findViewById(R.id.sessionOverflow);
+            dragHandle = view.findViewById(R.id.dragHandle);
         }
     }
 
@@ -152,6 +155,12 @@ public class SessionListAdapter extends RecyclerView.Adapter<SessionListAdapter.
 
     public void setInteractionsEnabled(boolean enabled) {
         this.interactionsEnabled = enabled;
+    }
+
+    public void moveItem(int fromPosition, int toPosition) {
+        SessionWithTimeInfo moved = items.remove(fromPosition);
+        items.add(toPosition, moved);
+        notifyItemMoved(fromPosition, toPosition);
     }
 
     public int getSelectedPosition() {

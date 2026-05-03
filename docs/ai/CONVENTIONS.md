@@ -122,3 +122,10 @@ Always run `./gradlew assembleDebug` after any translation changes.
 - Release APK signing uses GitHub Secrets (`RELEASE_KEYSTORE_BASE64`, `KEYSTORE_PASSWORD`, `KEY_ALIAS`, `KEY_PASSWORD`). Keystore must be decoded to `$RUNNER_TEMP/` using an absolute path (Gradle resolves relative paths against daemon working dir, not project dir).
 - The keystore and the private key are stored pgp-encrypted in georgs svn under private/
 - Three CI artifacts: `app-debug`, `app-release`, `test-results`.
+
+## RecyclerView Height Capping
+- When a RecyclerView's height must be dynamically capped (e.g., to ensure space for a sibling view), use a custom RecyclerView subclass with an `onMeasure()` override rather than `View.post()` callbacks or one-shot `OnGlobalLayoutListener`.
+- `onMeasure()` runs during every layout pass, making it immune to fragment transition timing (MaterialFadeThrough, MaterialSharedAxis) where lifecycle callbacks may fire before layout completes.
+- Cap value should be set once via a **persistent** `OnGlobalLayoutListener` that never removes itself. Guard updates with a value comparison (only call `setMaxHeight()` when the computed value differs from the current one) to prevent infinite `requestLayout()` loops.
+- The persistent listener automatically corrects stale caps caused by transient parent height changes (e.g., keyboard appearing/disappearing during fragment back-navigation).
+- Pattern: subclass RecyclerView, store `maxHeightPx` field, override `onMeasure()` to call `super.onMeasure()` then `setMeasuredDimension()` if `getMeasuredHeight() > maxHeightPx`; expose `setMaxHeight()`/`getMaxHeight()` methods for the listener.
