@@ -1,58 +1,63 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:scrollbarStyle="outsideOverlay"
-    android:orientation="vertical"
-    android:id="@+id/LinearLayout1"
-    android:padding="10dp"
-    android:fitsSystemWindows="true"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-    <TextView
-        android:id="@+id/textview_sitzung_name"
+
+    <RelativeLayout
+        android:scrollbarStyle="outsideOverlay"
+        android:orientation="vertical"
+        android:id="@+id/LinearLayout1"
+        android:padding="10dp"
+        android:fitsSystemWindows="true"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:text="@string/label_session_name"/>
-    <EditText
-        android:id="@+id/text_sitzung_name"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_below="@+id/textview_sitzung_name"/>
-    <TextView
-        android:id="@+id/textview_sitzung_description"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:text="@string/label_session_description"
-        android:layout_below="@+id/text_sitzung_name"/>
-    <EditText
-        android:id="@+id/text_sitzung_beschreibung"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_below="@+id/textview_sitzung_description"/>
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/list"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginBottom="10dp"
-        android:layout_below="@+id/text_sitzung_beschreibung"/>
+        android:layout_height="match_parent">
+        <TextView
+            android:id="@+id/textview_sitzung_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:text="@string/label_session_name"/>
+        <EditText
+            android:id="@+id/text_sitzung_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_below="@+id/textview_sitzung_name"/>
+        <TextView
+            android:id="@+id/textview_sitzung_description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:text="@string/label_session_description"
+            android:layout_below="@+id/text_sitzung_name"/>
+        <EditText
+            android:id="@+id/text_sitzung_beschreibung"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_below="@+id/textview_sitzung_description"/>
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="10dp"
+            android:layout_below="@+id/text_sitzung_beschreibung"/>
+    </RelativeLayout>
+
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/but_new_section"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp"
-        android:src="@drawable/ic_plus"
+        android:layout_margin="16dp"
+        app:srcCompat="@drawable/ic_plus"
         app:backgroundTint="?attr/colorAccent"
-        android:layout_alignBottom="@+id/list"
-        android:layout_alignEnd="@+id/list"
-        app:layout_anchor="@+id/list"/>
-</RelativeLayout>
+        app:layout_anchor="@id/list"
+        app:layout_anchorGravity="bottom|end"/>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
