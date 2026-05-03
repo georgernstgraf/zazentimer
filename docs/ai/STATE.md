@@ -3,9 +3,10 @@
 Current status as of 2026-05-03.
 
 ## Current Focus
-#81: Session image visibility (zen circle minimum 40%) and grip handles for drag reorder. Root cause identified and fixed — persistent `OnGlobalLayoutListener` with change guard corrects stale height cap caused by parent height changes during fragment transitions.
+#91 closed: Session card description hides when empty, text vertically centered.
 
 ## Completed (this cycle)
+- [x] #91 Hide session description when empty, center name vertically
 - [x] #81 Session image visibility — zen circle maintains minimum 40% of available space
 - [x] #81 Grip handles added to session cards (`item_session.xml` + `ic_drag_handle.xml`)
 - [x] #81 Session card drag reorder (long-press via `SessionTouchHelperCallback`)
@@ -36,4 +37,4 @@ Current status as of 2026-05-03.
 - None
 
 ## Next Session Suggestion
-Consider #82 (namespace refactor) or fixing the remaining CI test failures. Issue #81 needs commit, push, and close.
+Consider #82 (namespace refactor) or fixing the remaining CI test failures.

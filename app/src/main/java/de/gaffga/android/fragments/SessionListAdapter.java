@@ -15,6 +15,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
+import static android.view.View.GONE;
+import static android.view.View.VISIBLE;
+
 public class SessionListAdapter extends RecyclerView.Adapter<SessionListAdapter.ViewHolder> {
 
     private List<SessionWithTimeInfo> items = new ArrayList<>();
@@ -80,10 +83,13 @@ public class SessionListAdapter extends RecyclerView.Adapter<SessionListAdapter.
         holder.sessionName.setText(name);
         holder.sessionDuration.setText(formatDuration(item.getTotalTimeSeconds()));
 
-        if (item.getSession() != null && item.getSession().description != null) {
-            holder.sessionDescription.setText(item.getSession().description);
+        String desc = (item.getSession() != null && item.getSession().description != null)
+            ? item.getSession().description : "";
+        if (desc.trim().isEmpty()) {
+            holder.sessionDescription.setVisibility(GONE);
         } else {
-            holder.sessionDescription.setText("");
+            holder.sessionDescription.setVisibility(VISIBLE);
+            holder.sessionDescription.setText(desc);
         }
 
         holder.itemView.setSelected(position == selectedPosition);
