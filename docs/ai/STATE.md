@@ -3,22 +3,23 @@
 Current status as of 2026-05-02.
 
 ## Current Focus
-#83 and #84 completed. All instrumented tests automated. Retranslate tooling implemented.
+#85 and #89 completed. App now declares 136 locales via localeConfig. All rare languages covered.
 
 ## Completed (this session)
-- [x] #84 MeditationService IdlingResource — 2 meditation tests un-@Ignored, passing on API 29 + API 36 CI
-  - UI Automator for meditation phase interactions (bypasses Espresso looper-idle check)
-  - Data guard for CI fresh DB, forceStopMeditationForTest() cleanup
-  - Fixes for dialog button targeting with className(Button) selector
-- [x] #83 About page rewrite + retranslate tooling
-  - Rewrote about1/2/3 with clickable HTML links
-  - Implemented scripts/retranslate.py (--diff, --all, --dry-run)
-  - Created scripts/locales.json (127 locales) and scripts/keep_english.json
-  - Fixed 31 locales missing keep-english strings from old translate_batch9.py
-  - Propagated about string updates to all 127 locales
+- [x] #85 localeConfig for Android 13+ per-app language support
+  - Created `res/xml/locales_config.xml` with 128 locales (BCP 47 tags)
+  - Added `values-fil/strings.xml` (copy of `values-tl` for Filipino)
+  - Added `android:localeConfig="@xml/locales_config"` to AndroidManifest.xml
+- [x] #89 Rare language support (sub-issue of #85)
+  - Added 8 languages: Assamese, Kashmiri, Maithili, Dogri, Konkani, Santali, Dhivehi, Tibetan
+  - Updated `retranslate.py` with `MyMemoryTranslator` fallback for 3 languages
+  - Generated all 8 `values-XX/strings.xml` files (187 strings each)
+  - Total locales now: 136
 
 ## Completed (previous sessions)
-- [x] #38 Full UI test plan automation (22 tests, 10 classes)
+- [x] #84 MeditationService IdlingResource
+- [x] #83 About page rewrite + retranslate tooling
+- [x] #38 Full UI test plan automation
 - [x] #80 Fixed 0-tests issue on API 36 CI
 - [x] #67 Epic: Translate App into 127 OOBE languages
 

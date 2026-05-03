@@ -121,14 +121,20 @@ User presses Start (Sessions tab or Meditation tab)
 
 ### Source of Truth
 `app/src/main/res/values/strings.xml` is the canonical English source.
-All 127 locale files (`values-*/strings.xml`) are derivatives generated
+All 136 locale files (`values-*/strings.xml`) are derivatives generated
 from it via automated translation.
+
+### Per-App Language (Android 13+)
+`res/xml/locales_config.xml` declares all 136 locales via BCP 47 tags.
+`AndroidManifest.xml` references it via `android:localeConfig`.
+No in-app language picker — users select language via system settings on Android 13+.
+Pre-Android 13 devices use automatic Android resource resolution.
 
 ### Directory Structure
 ```
 app/src/main/res/
 ├── values/strings.xml          ← Canonical English source
-├── values-af/strings.xml       ← Afrikaans (127 languages)
+├── values-af/strings.xml       ← Afrikaans (136 languages)
 ├── values-zu/strings.xml       ← Zulu
 └── ...
 ```
@@ -136,8 +142,8 @@ app/src/main/res/
 ### Translation Tooling
 | File | Purpose |
 |------|---------|
-| `scripts/retranslate.py` | Incremental locale update from English source |
-| `scripts/locales.json` | Mapping of Android resource dirs → Google Translate codes |
+| `scripts/retranslate.py` | Incremental locale update from English source (Google Translate + MyMemory fallback) |
+| `scripts/locales.json` | Mapping of 136 Android resource dirs → translator codes (`gt_code` or `mymemory_code`) |
 | `scripts/keep_english.json` | List of string keys to copy verbatim (never translate) |
 | `.venv/` (gitignored) | Python venv with `deep-translator` dependency |
 

@@ -170,3 +170,15 @@ Each entry documents WHAT was decided and WHY.
 - **Reason**: The About page was outdated (referenced Facebook, old email). The retranslate script was documented in CONVENTIONS.md and ARCHITECTURE.md but never created — each translation batch was done by manually editing `translate_batch9.py`. A proper incremental script is essential for maintaining 127 locales as the app evolves.
 - **Considered**: Custom DialogFragment layout for About (rejected — simple AlertDialog suffices); keeping German-translated about strings (rejected — about page stays English-only with proper nouns and URLs).
 - **Tradeoff**: `AlertDialog.setView()` requires manual padding setup. The `retranslate.py` `--diff` mode only translates missing/changed strings, which means existing translations are never re-translated unless `--all` is used. This is intentional to minimize API calls but means poor translations persist until manually corrected.
+
+## 2026-05-02: LocaleConfig for Android 13+ Per-App Language (#85)
+- **Choice**: Added `res/xml/locales_config.xml` with 128 locales and `android:localeConfig` in manifest. No Java code changes. Also added `values-fil` (copy of `values-tl`) to close the Filipino/Tagalog gap.
+- **Reason**: Android 13+ users can select per-app language from system settings, and Play Store advertises supported languages. Android's resource resolution already handles locale selection on all API levels — the config is purely declarative.
+- **Considered**: Adding an in-app language picker via `AppCompatDelegate.setApplicationLocales()` (rejected — user requested manifest-only approach).
+- **Tradeoff**: Pre-Android 13 users must use system language (no in-app override). Manifest-only approach means zero code complexity.
+
+## 2026-05-02: Rare Language Support via MyMemory Fallback (#89)
+- **Choice**: Added 8 rare languages (Assamese, Kashmiri, Maithili, Dogri, Konkani, Santali, Dhivehi, Tibetan) using `MyMemoryTranslator` as fallback for 3 languages not supported by Google Translate.
+- **Reason**: Complete coverage of all languages available in Android device setup. MyMemory supports Kashmiri, Santali, and Tibetan which Google Translate does not.
+- **Considered**: Skipping unsupported languages (rejected — user requested coverage); using English placeholders (rejected — user wanted real translations).
+- **Tradeoff**: MyMemory translation quality may differ from Google Translate. The `retranslate.py` script now has a dual-translator dependency. Total locales: 136.
