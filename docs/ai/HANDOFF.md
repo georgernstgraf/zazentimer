@@ -4,18 +4,20 @@ Open tasks for next agent session.
 
 ## Active Issues
 
-1. [ ] **#115 — CI/CD pipeline overhaul** (priority: high). Main issue with 7 sub-issues. Planning is complete, all decisions documented in issue comments. Start with #117 (ci.yml rewrite) for quick impact.
+1. [ ] **#64 — Play Store**. Sub-issues #114 (AAB build) and #113 (privacy/legal) ready for implementation. Play Console account is verified. Service account setup needed for `release.yml`.
 
-2. [ ] **#64 — Play Store**. Sub-issues #114 (AAB build) and #113 (privacy/legal) ready for implementation. Play Console account is verified. Service account setup needed for #121.
+2. [ ] **#88 — Java → Kotlin migration** (Epic). Long-term effort, no immediate blockers.
 
 ## Key Context
-- VPS has Xvfb, KVM, all AVDs, and Android SDK already installed
-- ANDROID_HOME is NOT set — scripts must set it explicitly
-- VPS RAM is 3.8 GB physical + 8 GB swap — emulators run with 4096M using swap
-- API 35+ requires `am instrument` workaround (UTP bug)
-- `versionCode`/`versionName` are static in both `build.gradle` AND `AndroidManifest.xml` — AndroidManifest entries should be removed, build.gradle should read from Gradle properties
-- Nightly cron at 02:00 UTC (not 03:00 — conflict with openclaw sync on Sundays)
-- Docs (#120) must be updated AFTER implementation is complete
+- **#115 CI/CD pipeline overhaul is COMPLETE.** All 7 sub-issues (#116–#122) implemented.
+- 3-stage pipeline: Stage 1 (commit gate, local + GitHub Actions), Stage 2 (issue close gate, local with Xvfb), Stage 3 (nightly, VPS cron 02:00 UTC)
+- Tag-based releases: push `v*` tag → `release.yml` builds AAB + uploads to Play Console
+- GitHub Actions now runs only 2 jobs: `build` (AAB) + `unit-tests` (~4 min)
+- VPS has Xvfb, KVM, all AVDs, and Android SDK installed
+- ANDROID_HOME is NOT set — scripts set it explicitly via `export ANDROID_HOME=/opt/android-sdk`
 
 ## Decisions Made
-All decisions documented in issue comments on #115-#122. See DECISIONS.md for the three architectural decisions recorded.
+All decisions documented in DECISIONS.md. Key recent ones:
+- Three-stage pipeline with local gates (DECISIONS: #115)
+- Tag-based releases for Play Store (DECISIONS: #115)
+- Xvfb for headless instrumented tests on VPS (DECISIONS: #115)

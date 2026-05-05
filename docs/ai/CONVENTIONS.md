@@ -101,29 +101,22 @@ Always run `./gradlew assembleDebug` after any translation changes.
 ## Testing
 - Ensure standard `lint` and `./gradlew build` commands pass.
 - After deleting or renaming resource files (layouts, strings, drawables, IDs in `public.xml`), always run `./gradlew clean` before building and testing. Incremental builds can produce stale R.class entries that cause instrumented tests to fail with incorrect resource IDs.
-- **Always verify GitHub Actions passes after every push.** Run `gh run list --limit 3` and `gh run view <id>` to check. Do not assume CI is green.
+- **Always verify GitHub Actions passes after every push.** Run `gh run list --limit 3` and `gh run view <id>` to check. GitHub Actions runs Stage 1 only (build AAB + unit tests).
 
-### Four-Stage Test Pipeline (#93)
-- **Stage 1 — Build Only:** `./gradlew assembleDebug assembleRelease`. No tests. Use for rapid iteration.
-- **Stage 2 — Unit + Integration:** `./gradlew testDebugUnitTest`. JVM tests only, no emulator. Fast feedback (seconds).
-- **Stage 3 — CI Instrumented (headless):** Headless emulator with `headless=true`, excludes `@RequiresDisplay` tests. CI runs this on API 29–35.
-- **Stage 4 — Full (local only):** All tests on all APIs, no filtering. Requires emulator with display.
-- **Stage 3 = Commit-Gate:** Must pass before every push. CI runs headless instrumented tests on API 29–35. Optionally run locally with `headless=true` to verify before pushing.
-- **Stage 4 = Issue-Close-Gate:** Must pass on all supported API levels locally with a display emulator before closing any issue. Includes `@RequiresDisplay` tests. No CI job — local only.
+### Three-Stage Test Pipeline (#115)
+- **Stage 1 — Commit Gate (~4 min, local + GitHub Actions):** Build AAB + Unit/Integration Tests (JVM only). Runs locally before push AND on GitHub Actions for every push to main. GitHub Actions jobs: `build` (AAB) + `unit-tests`.
+- **Stage 2 — Issue Close Gate (~15 min, local):** Instrumented Tests on min API (29) + max API (35). Includes `@RequiresDisplay` tests. Script detects `$DISPLAY`: set → direct emulator (Desk), unset → start Xvfb (VPS). Run via `scripts/run-stage2.sh`.
+- **Stage 3 — Nightly Full Matrix (02:00 UTC, VPS cron):** All API levels (29-35), full test suite. Runs on VPS via cron. Auto-creates GitHub Issue on failure (label: `nightly-failure`). Run via `scripts/run-nightly.sh`.
 
 ### `@RequiresDisplay` Annotation
-- Annotate instrumented test methods (or classes) that require a real display with `@RequiresDisplay`.
-- The annotation lives in `at.priv.graf.zazentimer` package in the `androidTest` source set.
-- `HiltTestRunner` filters these tests when `headless=true` is passed as an instrumentation argument.
+- Annotate instrumented test methods that require a real display surface.
 - Currently annotated: `SettingsTest.testBackup`, `SettingsTest.testRestore`, `SectionEditTest.testBellSoundPlayback`.
-- When adding new instrumented tests that involve PreferenceFragmentCompat scrolling or audio playback, consider adding `@RequiresDisplay`.
-
-## Workflow
-- **Issue management:** Use the `issue-workflow` skill for all GitHub issue operations (start, commit, finish). Every commit must reference a GitHub issue number.
-- **Knowledge persistence:** Use the `knowledge-persistence` skill to update `docs/ai/` files after meaningful changes or when wrapping up a session.
+- All 3 tests pass under Xvfb (virtual display). The annotation remains as a safety marker.
 
 ## Git Workflow
-- **Trunk-based development.** Commit directly to `main`. No branches, no PRs.
+- **Issue management:** Use the `issue-workflow` skill for all GitHub issue operations (start, commit, finish). Every commit must reference a GitHub issue number.
+- **Knowledge persistence:** Use the `knowledge-persistence` skill to update `docs/ai/` files after meaningful changes or when wrapping up a session.
+- **Trunk-based development with tag-based releases.** Commit directly to `main`. No branches, no PRs. Push a `v*` tag (e.g. `v1.0.0`) to trigger `release.yml` which builds AAB + uploads to Play Console Internal Test Track.
 - Use descriptive commit messages referencing issue numbers (e.g. `fix: backup fails on Android 11+ (#18)`).
 
 ## Knowledge Persistence
@@ -131,16 +124,15 @@ Always run `./gradlew assembleDebug` after any translation changes.
 - Use the `knowledge-persistence` skill to update docs/ai/ files after meaningful changes.
 
 ## CI
-- Build command: `./gradlew build`
+- **Stage 1 CI** (`ci.yml`): Build AAB + unit tests. Triggers on push to main only. ~4 min.
 - JDK version: 17 (AGP 7.4+ requirement)
 - Keep GitHub Actions versions up to date (`actions/checkout@v4`, `actions/setup-java@v4`) to avoid Node.js deprecation warnings.
-- Release APK signing uses GitHub Secrets (`RELEASE_KEYSTORE_BASE64`, `KEYSTORE_PASSWORD`, `KEY_ALIAS`, `KEY_PASSWORD`). Keystore must be decoded to `$RUNNER_TEMP/` using an absolute path (Gradle resolves relative paths against daemon working dir, not project dir).
+- Release AAB signing uses GitHub Secrets (`RELEASE_KEYSTORE_BASE64`, `KEYSTORE_PASSWORD`, `KEY_ALIAS`, `KEY_PASSWORD`). Keystore must be decoded to `$RUNNER_TEMP/` using an absolute path.
 - The keystore and the private key are stored pgp-encrypted in georgs svn under private/
-- CI jobs: `build` (Stage 1), `unit-tests` (Stage 2), `test` (Stage 3 API 29), `test-max` (Stage 3 API 35).
-- API 35 `test-max` uses `am instrument` directly instead of `./gradlew connectedDebugAndroidTest` due to UTP bug (PITFALLS #44).
-- API 35 requires `svc power stayon true` + `KEYCODE_WAKEUP` before tests (PITFALLS #45).
-- Stage 4 (full tests) is local-only — no CI job. Run locally with display emulator before closing issues.
-- CI artifacts: `app-debug`, `app-release`, `unit-test-results`, `test-results`, `test-results-max`.
+- **Release workflow** (`release.yml`): Triggered by `v*` tags. Extracts version from tag, builds signed AAB, uploads to Play Console Internal Test Track. versionCode derived from tag automatically.
+- **Stage 3 Nightly** runs on VPS via cron at 02:00 UTC, NOT on GitHub Actions.
+- CI artifacts: `app-release-aab` (30 days), `unit-test-results` (14 days).
+- versionCode/versionName are injected from tags via `-PversionCode` and `-PversionName` Gradle properties. Fallback values in `build.gradle`: 33/"2.20".
 
 ## RecyclerView Height Capping
 - When a RecyclerView's height must be dynamically capped (e.g., to ensure space for a sibling view), use a custom RecyclerView subclass with an `onMeasure()` override rather than `View.post()` callbacks or one-shot `OnGlobalLayoutListener`.

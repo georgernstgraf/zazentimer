@@ -16,7 +16,7 @@ If `HANDOFF.md` contains open tasks, complete them before starting
 - **Knowledge persistence:** Use the `knowledge-persistence` skill to persist session context into `docs/ai/` files after meaningful changes or when wrapping up.
 
 ## Project-Specific Constraints
-- **Trunk-based development.** Commit directly to `main`. No branches, no PRs.
+- **Trunk-based development with tag-based releases.** Commit directly to `main`. No branches, no PRs. Push a `v*` tag to trigger release workflow.
 - Agent work is considered complete only if the application successfully starts in the emulator.
 - **The main agent must not create any code.** Its sole task is to orchestrate sub-agents that solve sub-issues. Delegate all implementation work to Task agents.
 

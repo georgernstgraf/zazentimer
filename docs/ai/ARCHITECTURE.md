@@ -1,6 +1,6 @@
 # Architecture
 
-Living structural map of the system as of 2026-05-03.
+Living structural map of the system as of 2026-05-06.
 Overwritten when structural changes occur during a session.
 
 ## Overview
@@ -103,8 +103,8 @@ User presses Start (Sessions tab or Meditation tab)
 | `SessionListAdapter` | `fragments/` | RecyclerView adapter for session cards with selection tracking |
 | `SessionTouchHelperCallback` | `fragments/` | ItemTouchHelper.Callback for long-press drag reorder (no swipe, no DB persistence) |
 | `MaxHeightRecyclerView` | `fragments/` | RecyclerView subclass that caps height in `onMeasure()` — used to enforce 60% maximum for session list, leaving 40% minimum for zen circle image |
-| `HiltTestRunner` | androidTest | Custom AndroidJUnitRunner that injects HiltTestApplication + filters `@RequiresDisplay` tests when `headless=true` |
-| `RequiresDisplay` | androidTest | Annotation for tests requiring a real display, filtered out in headless CI |
+| `HiltTestRunner` | androidTest | Custom AndroidJUnitRunner that injects HiltTestApplication + filters `@RequiresDisplay` tests when `headless=true` (legacy, kept for safety) |
+| `RequiresDisplay` | androidTest | Annotation for tests requiring a real display surface. All currently annotated tests pass under Xvfb. Kept as safety marker |
 
 ## Data Flows
 - **AlarmManager.setAlarmClock()** → SectionEndReceiver → MeditationService → Meditation.onSectionEnd() → Audio.playBell()
@@ -117,13 +117,13 @@ User presses Start (Sessions tab or Meditation tab)
 ## Commands
 | Command | Purpose | Pipeline Stage |
 |---------|---------|----------------|
-| `./gradlew assembleDebug assembleRelease` | Build APKs (no tests) | Stage 1 |
-| `./gradlew testDebugUnitTest` | JVM unit tests only | Stage 2 |
-| `./gradlew connectedDebugAndroidTest -Pandroid.testInstrumentationRunnerArguments.headless=true` | Instrumented tests, excludes `@RequiresDisplay` | Stage 3 |
-| `./gradlew connectedDebugAndroidTest` | All instrumented tests (no filtering) | Stage 4 |
+| `./gradlew assembleDebug assembleRelease` | Build APKs (no tests) | Stage 1 (local iteration) |
+| `./gradlew testDebugUnitTest` | JVM unit tests only | Stage 1 |
+| `scripts/run-stage2.sh` | Instrumented tests on min+max API, detects `$DISPLAY` for Xvfb | Stage 2 |
+| `scripts/run-nightly.sh` | Full matrix all APIs, VPS cron | Stage 3 |
 | `./gradlew assembleDebugAndroidTest` | Build test APK (compile androidTest sources) | — |
 | `adb install -r app/build/outputs/apk/debug/app-debug.apk` | Install debug APK | — |
-| `adb shell am instrument -w -e headless true at.priv.graf.zazentimer.test/at.priv.graf.zazentimer.HiltTestRunner` | Stage 3 via am instrument (API 35+) | Stage 3 |
+| `adb shell am instrument -w at.priv.graf.zazentimer.test/at.priv.graf.zazentimer.HiltTestRunner` | All instrumented tests via am instrument (API 35+) | Stage 2/3 |
 
 ## Translation Architecture
 
