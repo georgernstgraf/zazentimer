@@ -3,13 +3,15 @@
 Current status as of 2026-05-05.
 
 ## Current Focus
-#92 Backup WAL data loss fix shipped. Looking at next issue.
+#95 Stage 4 (full instrumented tests) passed on all API levels 29–35 locally. Ready to close.
 
 ## Completed (this cycle)
+- [x] #95 Stage 4 full test pass: 26/26 tests green on API 29, 30, 31, 32, 33, 34, 35 (local display emulator)
+- [x] #95 Installed system images + AVDs for API 30–34 (`google_apis;x86_64`)
+- [x] #95 CI verified green on all 9 jobs (build, unit-tests, test-29 through test-35)
 - [x] #94 Upgrade Espresso to 3.7.0, fix testRestore scrolling robustness
 - [x] #93 Four-stage test pipeline with @RequiresDisplay + headless filtering
 - [x] #92 Backup WAL data loss — close DB before copy, reopen after (all exit paths)
-- [x] CI verified green on all 4 jobs (build, unit-tests, test API 29, test-max API 35)
 
 ## Completed (previous sessions)
 - [x] #82 Refactor namespace from `de.gaffga.android.zazentimer` to `at.priv.graf.zazentimer`
@@ -33,7 +35,6 @@ Current status as of 2026-05-05.
 ## Known Issues
 - Gradle UTP runner fails to discover tests on API 35+ — worked around with `am instrument` in CI
 - `PreferenceFragmentCompat` scrolling unreliable in headless emulators (PITFALLS #51) — `@RequiresDisplay` annotation applied to affected tests
-- Stage 4 (full tests) cannot run on VPS — requires emulator with display
 
 ## Blockers
 - None

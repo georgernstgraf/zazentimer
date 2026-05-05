@@ -218,3 +218,15 @@ Each entry documents WHAT was decided and WHY.
 - **Reason**: Room uses WAL mode by default. Without closing, uncheckpointed WAL data is lost from the backup. `close()` forces a WAL checkpoint, merging all pending writes into the main `.db` file before it's copied into the ZIP.
 - **Considered**: Using `PRAGMA wal_checkpoint(TRUNCATE)` before copying (avoids closing the connection); copying `-wal` and `-shm` files into the backup ZIP alongside the main file.
 - **Tradeoff**: Database is briefly unavailable during backup. Safe because backup runs from Settings (timer cannot be active). Reopen in catch block ensures recovery on errors.
+
+## 2026-05-05: Test Gate Definitions (#95)
+- **Choice**: Defined Stage 3 as **Commit-Gate** and Stage 4 as **Issue-Close-Gate**. Stage 3 must pass before every push (CI runs headless instrumented tests on API 29–35). Stage 4 must pass on all supported API levels locally with a display emulator before closing any issue (includes `@RequiresDisplay` tests, no CI job).
+- **Reason**: Without explicit gate definitions, issues were being closed based on CI-only validation. Stage 3 tests (headless, excluding display-dependent tests) are a subset of Stage 4. Closing an issue requires the full set passing on every API level the app supports.
+- **Considered**: Using Stage 3 alone as close-gate (rejected — `@RequiresDisplay` tests would never run); adding Stage 4 to CI (rejected — requires display, too slow and expensive for CI).
+- **Tradeoff**: Stage 4 requires local execution with display emulator, which cannot be automated on a headless VPS. Developer must run manually before closing issues.
+
+## 2026-05-05: Full API Coverage for Stage 3 + Stage 4 (#95)
+- **Choice**: CI runs instrumented tests on all 7 supported API levels (29–35) sequentially via `needs:` chain. Local Stage 4 uses `google_apis;x86_64` images for all levels (API 35 uses `google_apis_playstore` for Play Store compatibility).
+- **Reason**: Previously only API 29 and API 35 had CI coverage. Gaps at API 30–34 meant regressions on those levels could go undetected. Local Stage 4 validated that all 26 tests pass on every API level — no failures, no skips.
+- **Considered**: Running CI tests in parallel (rejected — GitHub Actions single-runner resource constraints with KVM emulators); sampling only a subset of API levels (rejected — incomplete coverage).
+- **Tradeoff**: Sequential CI chain takes ~51 minutes. Each API level adds ~7 minutes. Local Stage 4 on all 7 levels takes ~55 minutes. The `avdmanager create avd` command fails for API 31 with "Package path is not valid" (PITFALLS #46) — must create AVD manually by copying config from adjacent API level.

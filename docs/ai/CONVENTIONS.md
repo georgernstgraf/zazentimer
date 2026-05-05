@@ -106,8 +106,10 @@ Always run `./gradlew assembleDebug` after any translation changes.
 ### Four-Stage Test Pipeline (#93)
 - **Stage 1 — Build Only:** `./gradlew assembleDebug assembleRelease`. No tests. Use for rapid iteration.
 - **Stage 2 — Unit + Integration:** `./gradlew testDebugUnitTest`. JVM tests only, no emulator. Fast feedback (seconds).
-- **Stage 3 — CI Instrumented (headless):** Headless emulator with `headless=true`, excludes `@RequiresDisplay` tests. CI runs this on API 29 (Gradle) and API 35 (`am instrument`).
-- **Stage 4 — Full (local only):** All tests on all APIs, no filtering. Gate for closing issues. Requires emulator with display.
+- **Stage 3 — CI Instrumented (headless):** Headless emulator with `headless=true`, excludes `@RequiresDisplay` tests. CI runs this on API 29–35.
+- **Stage 4 — Full (local only):** All tests on all APIs, no filtering. Requires emulator with display.
+- **Stage 3 = Commit-Gate:** Must pass before every push. CI runs headless instrumented tests on API 29–35. Optionally run locally with `headless=true` to verify before pushing.
+- **Stage 4 = Issue-Close-Gate:** Must pass on all supported API levels locally with a display emulator before closing any issue. Includes `@RequiresDisplay` tests. No CI job — local only.
 
 ### `@RequiresDisplay` Annotation
 - Annotate instrumented test methods (or classes) that require a real display with `@RequiresDisplay`.
