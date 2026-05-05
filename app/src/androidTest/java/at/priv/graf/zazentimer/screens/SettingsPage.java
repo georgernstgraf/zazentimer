@@ -7,9 +7,8 @@ import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
 
 import android.os.SystemClock;
-import android.view.View;
 
-import androidx.recyclerview.widget.RecyclerView;
+import androidx.test.espresso.NoMatchingViewException;
 import androidx.test.espresso.contrib.RecyclerViewActions;
 
 import at.priv.graf.zazentimer.R;
@@ -20,6 +19,14 @@ public class SettingsPage extends BasePage {
         try { Thread.sleep(1500); } catch (InterruptedException ignored) {}
     }
 
+    private void scrollPreferencesToTop() {
+        try {
+            onView(withId(android.R.id.list))
+                    .perform(RecyclerViewActions.scrollToPosition(0));
+            SystemClock.sleep(300);
+        } catch (Exception ignored) {}
+    }
+
     private void scrollPreferencesToBottom() {
         try {
             onView(withId(android.R.id.list))
@@ -28,20 +35,34 @@ public class SettingsPage extends BasePage {
         } catch (Exception ignored) {}
     }
 
-    public SettingsPage clickBackup() {
-        scrollPreferencesToBottom();
+    private boolean scrollToPreference(int textResId) {
+        scrollPreferencesToTop();
+        SystemClock.sleep(200);
+        for (int attempt = 0; attempt < 3; attempt++) {
+            try {
+                onView(withText(textResId)).perform(scrollTo());
+                return true;
+            } catch (NoMatchingViewException e) {
+                scrollPreferencesToBottom();
+                SystemClock.sleep(300);
+            }
+        }
         try {
-            onView(withText(R.string.pref_title_backup)).perform(scrollTo());
-        } catch (Exception ignored) {}
+            onView(withText(textResId)).perform(scrollTo());
+            return true;
+        } catch (Exception ignored) {
+            return false;
+        }
+    }
+
+    public SettingsPage clickBackup() {
+        scrollToPreference(R.string.pref_title_backup);
         onView(withText(R.string.pref_title_backup)).perform(click());
         return this;
     }
 
     public SettingsPage clickRestoreAndConfirm() {
-        scrollPreferencesToBottom();
-        try {
-            onView(withText(R.string.pref_title_restore)).perform(scrollTo());
-        } catch (Exception ignored) {}
+        scrollToPreference(R.string.pref_title_restore);
         onView(withText(R.string.pref_title_restore)).perform(click());
         SystemClock.sleep(300);
         onView(withText(R.string.ok)).perform(click());
