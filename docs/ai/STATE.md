@@ -3,15 +3,13 @@
 Current status as of 2026-05-05.
 
 ## Current Focus
-Four-stage test pipeline implemented (#93, #94). CI verification pending.
+#92 Backup WAL data loss fix shipped. Looking at next issue.
 
 ## Completed (this cycle)
 - [x] #94 Upgrade Espresso to 3.7.0, fix testRestore scrolling robustness
-- [x] #93 Create `@RequiresDisplay` annotation + HiltTestRunner headless filtering
-- [x] #93 Annotate display-required tests (testBackup, testRestore, testBellSoundPlayback)
-- [x] #93 Rework CI to 4-stage pipeline (build / unit-tests / instrumented-headless / full-local)
-- [x] #93 Fix API 35 CI: use `am instrument` instead of Gradle UTP + wake-up commands
-- [x] Updated knowledge files (DECISIONS, CONVENTIONS, STATE, HANDOFF)
+- [x] #93 Four-stage test pipeline with @RequiresDisplay + headless filtering
+- [x] #92 Backup WAL data loss — close DB before copy, reopen after (all exit paths)
+- [x] CI verified green on all 4 jobs (build, unit-tests, test API 29, test-max API 35)
 
 ## Completed (previous sessions)
 - [x] #82 Refactor namespace from `de.gaffga.android.zazentimer` to `at.priv.graf.zazentimer`
@@ -29,16 +27,16 @@ Four-stage test pipeline implemented (#93, #94). CI verification pending.
 
 ## Pending
 - [ ] #64 Play Store
-- [ ] Verify CI passes after #93/#94 pipeline changes (check `gh run list --limit 3`)
-- [ ] Close #94 and #93 once CI is green
+- [ ] #88 Java → Kotlin migration (Epic)
+- [ ] Unit test directory mismatch: `app/src/test/java/de/gaffga/.../audio/VolumeDimmingTest.java` still in old namespace path
 
 ## Known Issues
 - Gradle UTP runner fails to discover tests on API 35+ — worked around with `am instrument` in CI
 - `PreferenceFragmentCompat` scrolling unreliable in headless emulators (PITFALLS #51) — `@RequiresDisplay` annotation applied to affected tests
-- Unit test directory mismatch: `app/src/test/java/de/gaffga/.../audio/VolumeDimmingTest.java` declares package `at.priv.graf.zazentimer.audio` but file is still in old directory path
+- Stage 4 (full tests) cannot run on VPS — requires emulator with display
 
 ## Blockers
 - None
 
 ## Next Session Suggestion
-Verify CI is green for #93/#94. If green, close both issues. Then consider #64 (Play Store) or fixing the unit test directory mismatch.
+Consider #64 (Play Store) or #88 (Kotlin migration). Fix unit test directory mismatch at some point.

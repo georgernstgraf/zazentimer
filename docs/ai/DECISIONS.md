@@ -212,3 +212,9 @@ Each entry documents WHAT was decided and WHY.
 - **Reason**: Espresso 3.6.1 is incompatible with API 36 (Android 16) — all tests fail with `NoSuchMethodException: android.hardware.input.InputManager.getInstance[]`. The 3.7.0 release adds API 36 support.
 - **Considered**: Pinning to API 35 max (rejected — user wants API 36 compatibility for local testing).
 - **Tradeoff**: Espresso 3.7.0 is relatively new; if it introduces regressions on older APIs, they would surface in CI.
+
+## 2026-05-05: Backup WAL Data Loss Fix (#92)
+- **Choice**: Close database before copying in `doRealBackup()`, reopen after (all exit paths). Mirrors the existing pattern in `doRealRestore()`.
+- **Reason**: Room uses WAL mode by default. Without closing, uncheckpointed WAL data is lost from the backup. `close()` forces a WAL checkpoint, merging all pending writes into the main `.db` file before it's copied into the ZIP.
+- **Considered**: Using `PRAGMA wal_checkpoint(TRUNCATE)` before copying (avoids closing the connection); copying `-wal` and `-shm` files into the backup ZIP alongside the main file.
+- **Tradeoff**: Database is briefly unavailable during backup. Safe because backup runs from Settings (timer cannot be active). Reopen in catch block ensures recovery on errors.
