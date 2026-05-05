@@ -198,9 +198,11 @@ public class SettingsFragment extends PreferenceFragmentCompat {
         Log.d(TAG, "Backup to URI: " + uri);
         boolean failed = false;
         try {
+            dbOperations.close();
             OutputStream os = requireActivity().getContentResolver().openOutputStream(uri);
             if (os == null) {
                 Log.e(TAG, "Could not open output stream for URI");
+                dbOperations.reopen();
                 return false;
             }
             ZipOutputStream zos = new ZipOutputStream(os);
@@ -223,9 +225,11 @@ public class SettingsFragment extends PreferenceFragmentCompat {
                 }
             }
             zos.close();
+            dbOperations.reopen();
         } catch (Exception e) {
             Log.e(TAG, "IO/Error during backup", e);
             failed = true;
+            dbOperations.reopen();
         }
         return !failed;
     }
