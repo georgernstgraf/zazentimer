@@ -34,7 +34,6 @@ No active focus. All planned work complete. Next: #64 Play Store sub-issues or #
 ## Pending
 - [ ] #64 Play Store — #114 (AAB build), #113 (privacy/legal)
 - [ ] #88 Java → Kotlin migration (Epic)
-- [ ] Unit test directory mismatch: `app/src/test/java/de/gaffga/.../audio/VolumeDimmingTest.java` still in old namespace path
 
 ## Known Issues
 - Gradle UTP runner fails on API 35+ — workaround with `am instrument` documented in PITFALLS
