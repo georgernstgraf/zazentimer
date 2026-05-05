@@ -1,0 +1,276 @@
+#!/bin/bash
+set -euo pipefail
+
+export ANDROID_HOME=/opt/android-sdk
+export PATH=$PATH:$ANDROID_HOME/emulator:$ANDROID_HOME/platform-tools
+
+PROJECT_DIR=/home/georg/repos/georgernstgraf/zazentimer
+TODAY=$(date +%Y-%m-%d)
+LOG_FILE=$PROJECT_DIR/logs/nightly-${TODAY}.log
+
+XVFB_PID=""
+declare -A RESULTS
+FAILED_APIS=()
+ERROR_LOGS=()
+
+cleanup() {
+    if [ -n "${XVFB_PID:-}" ]; then
+        kill "$XVFB_PID" 2>/dev/null || true
+        wait "$XVFB_PID" 2>/dev/null || true
+    fi
+    adb devices | grep -q "emulator" && adb -s emulator-5554 emu kill 2>/dev/null || true
+}
+trap cleanup EXIT
+
+echo "=== Nightly Test Run — $TODAY ==="
+echo "Logging to $LOG_FILE"
+
+cd "$PROJECT_DIR"
+git fetch origin
+git reset --hard origin/main
+git clean -fdx
+
+if [ -z "${DISPLAY:-}" ]; then
+    echo "=== Starting Xvfb on :99 ==="
+    Xvfb :99 -screen 0 1080x1920x24 &
+    XVFB_PID=$!
+    export DISPLAY=:99
+    sleep 2
+    echo "Xvfb started (PID $XVFB_PID)"
+else
+    echo "=== DISPLAY=$DISPLAY — using existing display ==="
+fi
+
+wait_for_emulator() {
+    local serial="$1"
+    local timeout_sec="${2:-300}"
+    local elapsed=0
+    echo "Waiting for emulator $serial to boot..."
+    adb -s "$serial" wait-for-device
+    while [ $elapsed -lt $timeout_sec ]; do
+        local boot_done
+        boot_done=$(adb -s "$serial" shell getprop sys.boot_completed 2>/dev/null | tr -d '\r')
+        if [ "$boot_done" = "1" ]; then
+            echo "Emulator $serial booted (${elapsed}s)"
+            adb -s "$serial" shell svc power stayon true
+            adb -s "$serial" shell input keyevent KEYCODE_WAKEUP
+            return 0
+        fi
+        sleep 5
+        elapsed=$((elapsed + 5))
+    done
+    echo "ERROR: Emulator $serial did not boot within ${timeout_sec}s"
+    return 1
+}
+
+kill_emulator() {
+    local serial="$1"
+    echo "Killing emulator $serial..."
+    adb -s "$serial" emu kill 2>/dev/null || true
+    sleep 2
+}
+
+run_gradle_test() {
+    local api_level=$1
+    local serial="emulator-5554"
+    local avd_name="test_api${api_level}"
+    local result=0
+
+    echo ""
+    echo "========================================="
+    echo "  API $api_level — Starting emulator ($avd_name)"
+    echo "========================================="
+
+    local emulator_args=(-avd "$avd_name" -no-snapshot -gpu swiftshader_indirect -noaudio -no-boot-anim -memory 4096)
+    if [ "$api_level" -eq 35 ]; then
+        emulator_args+=(-target google_apis)
+    fi
+
+    $ANDROID_HOME/emulator/emulator "${emulator_args[@]}" &
+    sleep 2
+
+    if ! wait_for_emulator "$serial"; then
+        echo "FAIL: API $api_level emulator did not boot"
+        RESULTS[$api_level]=1
+        FAILED_APIS+=("$api_level")
+        ERROR_LOGS+=("API $api_level: Emulator failed to boot")
+        kill_emulator "$serial"
+        return
+    fi
+
+    echo ""
+    echo "========================================="
+    echo "  API $api_level — Running instrumented tests"
+    echo "========================================="
+
+    set +e
+    cd "$PROJECT_DIR"
+    ./gradlew connectedDebugAndroidTest --no-daemon
+    result=$?
+    set -e
+
+    if [ $result -ne 0 ]; then
+        echo "FAIL: API $api_level tests failed (exit $result)"
+        RESULTS[$api_level]=$result
+        FAILED_APIS+=("$api_level")
+        ERROR_LOGS+=("API $api_level: connectedDebugAndroidTest exit code $result")
+    else
+        echo "PASS: API $api_level"
+        RESULTS[$api_level]=0
+    fi
+
+    kill_emulator "$serial"
+}
+
+run_api35_instrument() {
+    local api_level=35
+    local serial="emulator-5554"
+    local result=0
+
+    echo ""
+    echo "========================================="
+    echo "  API 35 — Building APKs"
+    echo "========================================="
+    cd "$PROJECT_DIR"
+    set +e
+    ./gradlew assembleDebug assembleDebugAndroidTest --no-daemon
+    local build_result=$?
+    set -e
+
+    if [ $build_result -ne 0 ]; then
+        echo "FAIL: API 35 build failed"
+        RESULTS[35]=$build_result
+        FAILED_APIS+=("35")
+        ERROR_LOGS+=("API 35: Build failed (exit $build_result)")
+        return
+    fi
+
+    echo ""
+    echo "========================================="
+    echo "  API 35 — Starting emulator (test_api35)"
+    echo "========================================="
+
+    $ANDROID_HOME/emulator/emulator \
+        -avd test_api35 \
+        -no-snapshot \
+        -gpu swiftshader_indirect \
+        -noaudio \
+        -no-boot-anim \
+        -memory 4096 \
+        -target google_apis &
+    sleep 2
+
+    if ! wait_for_emulator "$serial"; then
+        echo "FAIL: API 35 emulator did not boot"
+        RESULTS[35]=1
+        FAILED_APIS+=("35")
+        ERROR_LOGS+=("API 35: Emulator failed to boot")
+        kill_emulator "$serial"
+        return
+    fi
+
+    echo ""
+    echo "========================================="
+    echo "  API 35 — Installing APKs"
+    echo "========================================="
+    set +e
+    adb -s "$serial" install -r app/build/outputs/apk/debug/app-debug.apk
+    local install_app=$?
+    adb -s "$serial" install -r app/build/outputs/apk/androidTest/debug/app-debug-androidTest.apk
+    local install_test=$?
+    set -e
+
+    if [ $install_app -ne 0 ] || [ $install_test -ne 0 ]; then
+        echo "FAIL: API 35 APK installation failed (app=$install_app, test=$install_test)"
+        RESULTS[35]=1
+        FAILED_APIS+=("35")
+        ERROR_LOGS+=("API 35: APK install failed (app=$install_app, test=$install_test)")
+        kill_emulator "$serial"
+        return
+    fi
+
+    echo ""
+    echo "========================================="
+    echo "  API 35 — Running instrumented tests"
+    echo "========================================="
+    set +e
+    adb -s "$serial" shell am instrument -w \
+        at.priv.graf.zazentimer.test/at.priv.graf.zazentimer.HiltTestRunner
+    result=$?
+    set -e
+
+    if [ $result -ne 0 ]; then
+        echo "FAIL: API 35 am instrument failed (exit $result)"
+        RESULTS[35]=$result
+        FAILED_APIS+=("35")
+        ERROR_LOGS+=("API 35: am instrument exit code $result")
+    else
+        echo "PASS: API 35"
+        RESULTS[35]=0
+    fi
+
+    kill_emulator "$serial"
+}
+
+for api in 29 30 31 32 33 34; do
+    run_gradle_test "$api"
+done
+
+run_api35_instrument
+
+echo ""
+echo "========================================="
+echo "  Nightly Test Summary — $TODAY"
+echo "========================================="
+for api in 29 30 31 32 33 34 35; do
+    status="PASS"
+    if [ "${RESULTS[$api]:-1}" -ne 0 ]; then
+        status="FAIL"
+    fi
+    echo "API $api: $status"
+done
+echo "========================================="
+
+if [ ${#FAILED_APIS[@]} -gt 0 ]; then
+    echo ""
+    echo "=== Creating GitHub Issue for failure ==="
+
+    cd "$PROJECT_DIR"
+
+    existing_issue=$(gh issue list --state open --label "nightly-failure" --limit 1 --json number,title --jq '.[0]' 2>/dev/null || echo "")
+
+    body=""
+    body+="**Nightly test failure on $TODAY**\n\n"
+    body+="## Failed API Levels\n\n"
+    for err in "${ERROR_LOGS[@]}"; do
+        body+="- $err\n"
+    done
+    body+="\n## All API Levels\n\n"
+    for api in 29 30 31 32 33 34 35; do
+        status="PASS"
+        if [ "${RESULTS[$api]:-1}" -ne 0 ]; then
+            status="FAIL"
+        fi
+        body+="- API $api: $status\n"
+    done
+    body+="\n---\n_Auto-generated by nightly cron job_"
+
+    if [ -n "$existing_issue" ] && [ "$existing_issue" != "null" ]; then
+        issue_number=$(echo "$existing_issue" | jq -r '.number')
+        echo "Found existing open nightly-failure issue #$issue_number — commenting"
+        gh issue comment "$issue_number" --body "$(echo -e "**Update $TODAY**\n\n${body}")"
+    else
+        echo "Creating new nightly-failure issue"
+        gh label create "nightly-failure" --color "FBCA04" --description "Automated nightly test failure" --force 2>/dev/null || true
+        gh issue create \
+            --title "Nightly test failure: $TODAY" \
+            --body "$(echo -e "$body")" \
+            --label "nightly-failure"
+    fi
+
+    exit 1
+fi
+
+echo ""
+echo "All API levels passed. No issue created."
+exit 0
