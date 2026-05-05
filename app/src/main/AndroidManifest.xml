@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    android:versionCode="33"
-    android:versionName="2.20"
     android:installLocation="auto"
     package="at.priv.graf.zazentimer">
     <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS"/>

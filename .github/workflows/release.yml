@@ -1,0 +1,68 @@
+name: Release to Play Store
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: 'true'
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Set up JDK 17
+      uses: actions/setup-java@v4
+      with:
+        java-version: '17'
+        distribution: 'temurin'
+
+    - name: Setup Android SDK
+      uses: android-actions/setup-android@v3
+
+    - name: Extract version from tag
+      id: version
+      run: |
+        TAG=${GITHUB_REF#refs/tags/v}
+        VERSION_NAME="$TAG"
+        VERSION_CODE=$(echo "$TAG" | awk -F. '{printf "%d%02d%02d", $1, $2, $3+0}')
+        echo "version_name=$VERSION_NAME" >> $GITHUB_OUTPUT
+        echo "version_code=$VERSION_CODE" >> $GITHUB_OUTPUT
+        echo "Version: $VERSION_NAME (code: $VERSION_CODE)"
+
+    - name: Decode keystore
+      run: echo "${{ secrets.RELEASE_KEYSTORE_BASE64 }}" | base64 -d > $RUNNER_TEMP/release.keystore
+
+    - name: Build Release AAB
+      run: ./gradlew bundleRelease --no-daemon \
+        -PversionCode=${{ steps.version.outputs.version_code }} \
+        -PversionName=${{ steps.version.outputs.version_name }} \
+        -Pandroid.injected.signing.store.file=$RUNNER_TEMP/release.keystore \
+        -Pandroid.injected.signing.store.password=${{ secrets.KEYSTORE_PASSWORD }} \
+        -Pandroid.injected.signing.key.alias=${{ secrets.KEY_ALIAS }} \
+        -Pandroid.injected.signing.key.password=${{ secrets.KEY_PASSWORD }}
+
+    - name: Cleanup keystore
+      if: always()
+      run: rm -f $RUNNER_TEMP/release.keystore
+
+    - name: Upload to Play Console
+      uses: r0adkll/upload-google-play@v1
+      with:
+        serviceAccountJsonPlainText: ${{ secrets.PLAY_SERVICE_ACCOUNT_JSON }}
+        packageName: at.priv.graf.zazentimer
+        releaseFiles: app/build/outputs/bundle/release/app-release.aab
+        track: internal
+        status: completed
+        whatsNewDirectory: distribution/whatsnew
+      continue-on-error: true
+
+    - name: Upload AAB artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: release-aab
+        path: app/build/outputs/bundle/release/app-release.aab
+        retention-days: 90
