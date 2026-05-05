@@ -219,14 +219,23 @@ Each entry documents WHAT was decided and WHY.
 - **Considered**: Using `PRAGMA wal_checkpoint(TRUNCATE)` before copying (avoids closing the connection); copying `-wal` and `-shm` files into the backup ZIP alongside the main file.
 - **Tradeoff**: Database is briefly unavailable during backup. Safe because backup runs from Settings (timer cannot be active). Reopen in catch block ensures recovery on errors.
 
-## 2026-05-05: Test Gate Definitions (#95)
-- **Choice**: Defined Stage 3 as **Commit-Gate** and Stage 4 as **Issue-Close-Gate**. Stage 3 must pass before every push (CI runs headless instrumented tests on API 29–35). Stage 4 must pass on all supported API levels locally with a display emulator before closing any issue (includes `@RequiresDisplay` tests, no CI job).
-- **Reason**: Without explicit gate definitions, issues were being closed based on CI-only validation. Stage 3 tests (headless, excluding display-dependent tests) are a subset of Stage 4. Closing an issue requires the full set passing on every API level the app supports.
-- **Considered**: Using Stage 3 alone as close-gate (rejected — `@RequiresDisplay` tests would never run); adding Stage 4 to CI (rejected — requires display, too slow and expensive for CI).
-- **Tradeoff**: Stage 4 requires local execution with display emulator, which cannot be automated on a headless VPS. Developer must run manually before closing issues.
+## 2026-05-06: Three-Stage Pipeline with Local Gates (#115)
+- **Choice**: Replace the 4-stage test pipeline with a 3-stage pipeline using locally-decidable gates instead of remote CI gates.
+  - Stage 1 (Commit Gate): Unit + Integration Tests (JVM only), ~2 min, runs locally + GitHub Actions on push
+  - Stage 2 (Issue Close Gate): Instrumented Tests on min (29) + max (35) API with Xvfb/display, ~15 min, runs locally
+  - Stage 3 (Nightly Safety-Net): Full matrix all APIs, VPS cron at 02:00 UTC, auto-creates GitHub Issue on failure
+- **Reason**: The old 52-min CI (7 API levels sequential on GitHub Actions) blocked rapid commits. Locally-decidable gates give faster feedback. Xvfb on VPS enables instrumented tests without physical display. Remote CI should not be a blocking gate.
+- **Considered**: Parallelizing CI jobs (cuts 52→11 min but still remote gate); decoupling instrumented tests entirely (no local verification); keeping 4-stage pipeline.
+- **Tradeoff**: Nightly failures are caught next day, not immediately. VPS has only 3.8 GB RAM (uses swap for 4 GB emulators). `testBellSoundPlayback` may still need `@RequiresDisplay` since `-noaudio` is retained.
 
-## 2026-05-05: Full API Coverage for Stage 3 + Stage 4 (#95)
-- **Choice**: CI runs instrumented tests on all 7 supported API levels (29–35) sequentially via `needs:` chain. Local Stage 4 uses `google_apis;x86_64` images for all levels (API 35 uses `google_apis_playstore` for Play Store compatibility).
-- **Reason**: Previously only API 29 and API 35 had CI coverage. Gaps at API 30–34 meant regressions on those levels could go undetected. Local Stage 4 validated that all 26 tests pass on every API level — no failures, no skips.
-- **Considered**: Running CI tests in parallel (rejected — GitHub Actions single-runner resource constraints with KVM emulators); sampling only a subset of API levels (rejected — incomplete coverage).
-- **Tradeoff**: Sequential CI chain takes ~51 minutes. Each API level adds ~7 minutes. Local Stage 4 on all 7 levels takes ~55 minutes. The `avdmanager create avd` command fails for API 31 with "Package path is not valid" (PITFALLS #46) — must create AVD manually by copying config from adjacent API level.
+## 2026-05-06: Tag-Based Releases for Play Store (#115)
+- **Choice**: Git tags (`v*`, e.g. `v1.0.0`) trigger `release.yml` workflow that builds AAB + uploads to Play Console Internal Test Track. `versionCode` derived from tag automatically. Debug-APK removed from CI.
+- **Reason**: Not every commit to main should go to Play Store. Tags provide explicit release points. AAB required by Google Play for new apps.
+- **Considered**: Manual release workflow; automatic release on every push; keeping debug APK in CI.
+- **Tradeoff**: Requires service account setup for Play Console API (from scratch). First upload must be manual via WebUI. `build.gradle` needs property-reading logic for dynamic versionCode.
+
+## 2026-05-06: Xvfb for Headless Instrumented Tests on VPS (#115)
+- **Choice**: Use Xvfb (already installed on VPS) to provide virtual display for instrumented tests. `$DISPLAY` env variable determines whether to start Xvfb (VPS) or use real display (Desk). Emulator runs without `-no-window` flag when using Xvfb.
+- **Reason**: `PreferenceFragmentCompat` scrolling fails without proper display surface (`-no-window`). Xvfb provides a virtual X11 display that enables correct layout computation. Already installed on VPS.
+- **Considered**: Keeping `-no-window` headless approach; using Robolectric instead of emulator; running tests only on Desk machine.
+- **Tradeoff**: `-noaudio` retained means `testBellSoundPlayback` may still fail. Emulator with display uses slightly more resources than headless.
