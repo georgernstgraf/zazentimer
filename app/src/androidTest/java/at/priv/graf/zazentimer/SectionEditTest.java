@@ -81,6 +81,7 @@ public class SectionEditTest {
         new SessionEditPage().verifyEditSessionScreen();
     }
 
+    @RequiresDisplay
     @Test
     public void testBellSoundPlayback() {
         new MainPage()
