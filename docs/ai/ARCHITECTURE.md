@@ -103,7 +103,8 @@ User presses Start (Sessions tab or Meditation tab)
 | `SessionListAdapter` | `fragments/` | RecyclerView adapter for session cards with selection tracking |
 | `SessionTouchHelperCallback` | `fragments/` | ItemTouchHelper.Callback for long-press drag reorder (no swipe, no DB persistence) |
 | `MaxHeightRecyclerView` | `fragments/` | RecyclerView subclass that caps height in `onMeasure()` — used to enforce 60% maximum for session list, leaving 40% minimum for zen circle image |
-| `HiltTestRunner` | androidTest | Custom AndroidJUnitRunner that injects HiltTestApplication |
+| `HiltTestRunner` | androidTest | Custom AndroidJUnitRunner that injects HiltTestApplication + filters `@RequiresDisplay` tests when `headless=true` |
+| `RequiresDisplay` | androidTest | Annotation for tests requiring a real display, filtered out in headless CI |
 
 ## Data Flows
 - **AlarmManager.setAlarmClock()** → SectionEndReceiver → MeditationService → Meditation.onSectionEnd() → Audio.playBell()
@@ -114,12 +115,15 @@ User presses Start (Sessions tab or Meditation tab)
 - **Navigation:** NavController.navigate() and popBackStack() from ZazenTimerActivity helper methods (showMeditationScreen, showSettingsScreen, showMainScreen, showSessionEditFragment).
 
 ## Commands
-| Command | Purpose |
-|---------|---------|
-| `./gradlew build` | Build + unit tests + lint |
-| `./gradlew assembleDebugAndroidTest` | Build test APK (compile androidTest sources) |
-| `./gradlew connectedDebugAndroidTest` | Instrumented tests on device/emulator |
-| `adb install -r app/build/outputs/apk/debug/app-debug.apk` | Install debug APK |
+| Command | Purpose | Pipeline Stage |
+|---------|---------|----------------|
+| `./gradlew assembleDebug assembleRelease` | Build APKs (no tests) | Stage 1 |
+| `./gradlew testDebugUnitTest` | JVM unit tests only | Stage 2 |
+| `./gradlew connectedDebugAndroidTest -Pandroid.testInstrumentationRunnerArguments.headless=true` | Instrumented tests, excludes `@RequiresDisplay` | Stage 3 |
+| `./gradlew connectedDebugAndroidTest` | All instrumented tests (no filtering) | Stage 4 |
+| `./gradlew assembleDebugAndroidTest` | Build test APK (compile androidTest sources) | — |
+| `adb install -r app/build/outputs/apk/debug/app-debug.apk` | Install debug APK | — |
+| `adb shell am instrument -w -e headless true at.priv.graf.zazentimer.test/at.priv.graf.zazentimer.HiltTestRunner` | Stage 3 via am instrument (API 35+) | Stage 3 |
 
 ## Translation Architecture
 

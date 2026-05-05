@@ -194,3 +194,21 @@ Each entry documents WHAT was decided and WHY.
 - **Reason**: A one-shot listener computed `maxH=588` when the parent was temporarily at 1205px (keyboard up during fragment back-transition), then removed itself. When the parent expanded to 2038px, `maxH` stayed at 588 — only 32% of available instead of 60%. The persistent listener detects the parent height change on the next layout pass and corrects `maxH` to 1087 within the same transition frame. The change guard prevents infinite requestLayout loops.
 - **Considered**: Recalculating maxH in `onResume()` with a `post()` (rejected — same timing issues); setting maxH in `onMeasure()` based on current parent dimensions (rejected — no clean access to sibling button height).
 - **Tradeoff**: The listener fires on every global layout, which is slightly more overhead than a one-shot. The guard ensures it's a no-op when values are unchanged.
+
+## 2026-05-05: Four-Stage Test Pipeline (#93)
+- **Choice**: Introduced a 4-stage test pipeline with `@RequiresDisplay` annotation for filtering display-dependent tests in headless CI environments.
+- **Reason**: Some instrumented tests require a real display (PreferenceFragmentCompat scrolling, audio playback interactions) and fail or are flaky on headless CI emulators. Without differentiation, CI was unreliable and masked genuinely broken tests. The 4 stages are: (1) Build Only, (2) Unit + Integration (JVM, no emulator), (3) CI Instrumented (headless emulator, excludes `@RequiresDisplay`), (4) Full (all tests, all APIs, local only).
+- **Considered**: 3-stage pipeline (build/headless/full) — rejected because unit tests deserve their own fast-feedback stage; config-file-based test exclusion — rejected in favor of annotation-based approach for compile-time safety and proximity to test code.
+- **Tradeoff**: `@RequiresDisplay` must be maintained on individual test methods as tests are added. The annotation lives in `androidTest` source set so it's only available to instrumented tests (not unit tests, which don't need it).
+
+## 2026-05-05: Headless Filtering via notAnnotation in HiltTestRunner (#93)
+- **Choice**: `HiltTestRunner.onCreate()` intercepts the `headless=true` instrumentation argument and injects `notAnnotation=RequiresDisplay` into the arguments bundle, leveraging `AndroidJUnitRunner`'s built-in annotation filtering.
+- **Reason**: No custom `Filter` class or test runner modification needed beyond `onCreate()`. The `notAnnotation` mechanism is the standard way Android's test runner excludes annotated tests.
+- **Considered**: Custom `Filter` class registered via `addListeners()`; Gradle-level filtering via `excludeAnnotation`; shell-side filtering.
+- **Tradeoff**: The `headless` argument must be passed explicitly (`-e headless true` for `am instrument`, `-Pandroid.testInstrumentationRunnerArguments.headless=true` for Gradle). Without it, all tests run (Stage 4 behavior).
+
+## 2026-05-05: Espresso 3.7.0 Upgrade (#94)
+- **Choice**: Upgraded Espresso from 3.6.1 to 3.7.0 with matching AndroidX test dependency upgrades (runner 1.7.0, rules 1.7.0, ext:junit 1.3.0, orchestrator 1.6.1).
+- **Reason**: Espresso 3.6.1 is incompatible with API 36 (Android 16) — all tests fail with `NoSuchMethodException: android.hardware.input.InputManager.getInstance[]`. The 3.7.0 release adds API 36 support.
+- **Considered**: Pinning to API 35 max (rejected — user wants API 36 compatibility for local testing).
+- **Tradeoff**: Espresso 3.7.0 is relatively new; if it introduces regressions on older APIs, they would surface in CI.

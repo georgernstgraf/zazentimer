@@ -103,6 +103,19 @@ Always run `./gradlew assembleDebug` after any translation changes.
 - After deleting or renaming resource files (layouts, strings, drawables, IDs in `public.xml`), always run `./gradlew clean` before building and testing. Incremental builds can produce stale R.class entries that cause instrumented tests to fail with incorrect resource IDs.
 - **Always verify GitHub Actions passes after every push.** Run `gh run list --limit 3` and `gh run view <id>` to check. Do not assume CI is green.
 
+### Four-Stage Test Pipeline (#93)
+- **Stage 1 — Build Only:** `./gradlew assembleDebug assembleRelease`. No tests. Use for rapid iteration.
+- **Stage 2 — Unit + Integration:** `./gradlew testDebugUnitTest`. JVM tests only, no emulator. Fast feedback (seconds).
+- **Stage 3 — CI Instrumented (headless):** Headless emulator with `headless=true`, excludes `@RequiresDisplay` tests. CI runs this on API 29 (Gradle) and API 35 (`am instrument`).
+- **Stage 4 — Full (local only):** All tests on all APIs, no filtering. Gate for closing issues. Requires emulator with display.
+
+### `@RequiresDisplay` Annotation
+- Annotate instrumented test methods (or classes) that require a real display with `@RequiresDisplay`.
+- The annotation lives in `at.priv.graf.zazentimer` package in the `androidTest` source set.
+- `HiltTestRunner` filters these tests when `headless=true` is passed as an instrumentation argument.
+- Currently annotated: `SettingsTest.testBackup`, `SettingsTest.testRestore`, `SectionEditTest.testBellSoundPlayback`.
+- When adding new instrumented tests that involve PreferenceFragmentCompat scrolling or audio playback, consider adding `@RequiresDisplay`.
+
 ## Workflow
 - **Issue management:** Use the `issue-workflow` skill for all GitHub issue operations (start, commit, finish). Every commit must reference a GitHub issue number.
 - **Knowledge persistence:** Use the `knowledge-persistence` skill to update `docs/ai/` files after meaningful changes or when wrapping up a session.
@@ -121,7 +134,11 @@ Always run `./gradlew assembleDebug` after any translation changes.
 - Keep GitHub Actions versions up to date (`actions/checkout@v4`, `actions/setup-java@v4`) to avoid Node.js deprecation warnings.
 - Release APK signing uses GitHub Secrets (`RELEASE_KEYSTORE_BASE64`, `KEYSTORE_PASSWORD`, `KEY_ALIAS`, `KEY_PASSWORD`). Keystore must be decoded to `$RUNNER_TEMP/` using an absolute path (Gradle resolves relative paths against daemon working dir, not project dir).
 - The keystore and the private key are stored pgp-encrypted in georgs svn under private/
-- Three CI artifacts: `app-debug`, `app-release`, `test-results`.
+- CI jobs: `build` (Stage 1), `unit-tests` (Stage 2), `test` (Stage 3 API 29), `test-max` (Stage 3 API 35).
+- API 35 `test-max` uses `am instrument` directly instead of `./gradlew connectedDebugAndroidTest` due to UTP bug (PITFALLS #44).
+- API 35 requires `svc power stayon true` + `KEYCODE_WAKEUP` before tests (PITFALLS #45).
+- Stage 4 (full tests) is local-only — no CI job. Run locally with display emulator before closing issues.
+- CI artifacts: `app-debug`, `app-release`, `unit-test-results`, `test-results`, `test-results-max`.
 
 ## RecyclerView Height Capping
 - When a RecyclerView's height must be dynamically capped (e.g., to ensure space for a sibling view), use a custom RecyclerView subclass with an `onMeasure()` override rather than `View.post()` callbacks or one-shot `OnGlobalLayoutListener`.
