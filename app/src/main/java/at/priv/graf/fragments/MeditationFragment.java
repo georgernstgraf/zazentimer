@@ -14,6 +14,7 @@ import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.app.AlertDialog;
+import androidx.navigation.Navigation;
 import com.google.android.material.transition.MaterialSharedAxis;
 import at.priv.graf.zazentimer.DbOperations;
 import at.priv.graf.zazentimer.R;
@@ -212,7 +213,7 @@ public class MeditationFragment extends Fragment {
                         viewModel.stopMeditation();
                     }
                     backPressedCallback.setEnabled(false);
-                    requireActivity().getOnBackPressedDispatcher().onBackPressed();
+                    Navigation.findNavController(requireView()).popBackStack();
                 })
                 .setNegativeButton(R.string.stop_meditation_cancel, (dialog, which) -> dialog.dismiss())
                 .setCancelable(true)

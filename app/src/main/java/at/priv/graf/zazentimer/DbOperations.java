@@ -12,6 +12,10 @@ import at.priv.graf.zazentimer.database.SessionEntity;
 import dagger.hilt.android.qualifiers.ApplicationContext;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.Callable;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 import javax.inject.Inject;
 import javax.inject.Singleton;
 
@@ -21,10 +25,12 @@ public class DbOperations {
     private AppDatabase appDb;
     private SessionDao sessionDao;
     private SectionDao sectionDao;
+    private ExecutorService executor;
 
     @Inject
     public DbOperations(@ApplicationContext Context context) {
         this.context = context.getApplicationContext();
+        this.executor = Executors.newSingleThreadExecutor();
         openDatabase();
     }
 
@@ -33,7 +39,6 @@ public class DbOperations {
                 AppDatabase.class, AppDatabase.DATABASE_NAME)
                 .addMigrations(AppDatabase.MIGRATION_1_2, AppDatabase.MIGRATION_2_3, AppDatabase.MIGRATION_3_4, AppDatabase.MIGRATION_4_5)
                 .addCallback(AppDatabase.ON_CREATE_CALLBACK)
-                .allowMainThreadQueries()
                 .build();
         this.sessionDao = appDb.sessionDao();
         this.sectionDao = appDb.sectionDao();
@@ -58,88 +63,121 @@ public class DbOperations {
     }
 
     public Session readSession(int id) {
-        SessionEntity entity = sessionDao.getSessionById(id);
-        return entity != null ? toBo(entity) : null;
+        return executeSync(() -> {
+            SessionEntity entity = sessionDao.getSessionById(id);
+            return entity != null ? toBo(entity) : null;
+        });
     }
 
     public void updateSession(Session session) {
-        sessionDao.update(toEntity(session));
+        SessionEntity entity = toEntity(session);
+        executor.execute(() -> sessionDao.update(entity));
     }
 
     public void deleteSession(int id) {
-        sessionDao.deleteById(id);
+        executor.execute(() -> sessionDao.deleteById(id));
     }
 
     public int duplicateSession(int sourceId, String newName) {
-        Session source = readSession(sourceId);
-        source.name = newName;
-        source.id = 0;
-        Section[] sections = readSections(sourceId);
-        insertSession(source);
-        for (Section section : sections) {
-            section.id = 0;
-            insertSection(source, section);
-        }
-        return source.id;
+        return executeSync(() -> {
+            Session source = readSession(sourceId);
+            source.name = newName;
+            source.id = 0;
+            Section[] sections = readSections(sourceId);
+            insertSession(source);
+            for (Section section : sections) {
+                section.id = 0;
+                insertSection(source, section);
+            }
+            return source.id;
+        });
     }
 
     public void deleteSection(long id) {
-        sectionDao.deleteById(id);
+        executor.execute(() -> sectionDao.deleteById(id));
     }
 
     public Section readSection(int id) {
-        SectionEntity entity = sectionDao.getSectionById(id);
-        return entity != null ? toBo(entity) : null;
+        return executeSync(() -> {
+            SectionEntity entity = sectionDao.getSectionById(id);
+            return entity != null ? toBo(entity) : null;
+        });
     }
 
     public void updateSection(Section section) {
-        sectionDao.update(toEntity(section));
+        SectionEntity entity = toEntity(section);
+        executor.execute(() -> sectionDao.update(entity));
     }
 
     public void switchPositions(long id1, long id2) {
-        SectionEntity s1 = sectionDao.getSectionById((int) id1);
-        SectionEntity s2 = sectionDao.getSectionById((int) id2);
-        if (s1 != null && s2 != null) {
-            int rank1 = s1.rank != null ? s1.rank : 0;
-            int rank2 = s2.rank != null ? s2.rank : 0;
-            sectionDao.updateRank((int) id1, rank2);
-            sectionDao.updateRank((int) id2, rank1);
-        }
+        executor.execute(() -> {
+            SectionEntity s1 = sectionDao.getSectionById((int) id1);
+            SectionEntity s2 = sectionDao.getSectionById((int) id2);
+            if (s1 != null && s2 != null) {
+                int rank1 = s1.rank != null ? s1.rank : 0;
+                int rank2 = s2.rank != null ? s2.rank : 0;
+                sectionDao.updateRank((int) id1, rank2);
+                sectionDao.updateRank((int) id2, rank1);
+            }
+        });
     }
 
     public void insertSection(Session session, Section section) {
-        if (section.rank == -1) {
-            Integer maxRank = sectionDao.getMaxRank(session.id);
-            section.rank = (maxRank != null ? maxRank : 0) + 1;
-        }
-        section.fkSession = session.id;
-        SectionEntity entity = toEntity(section);
-        long newId = sectionDao.insert(entity);
-        section.id = (int) newId;
+        executeSync(() -> {
+            if (section.rank == -1) {
+                Integer maxRank = sectionDao.getMaxRank(session.id);
+                section.rank = (maxRank != null ? maxRank : 0) + 1;
+            }
+            section.fkSession = session.id;
+            SectionEntity entity = toEntity(section);
+            long newId = sectionDao.insert(entity);
+            section.id = (int) newId;
+            return null;
+        });
     }
 
     public void insertSession(Session session) {
-        SessionEntity entity = toEntity(session);
-        long newId = sessionDao.insert(entity);
-        session.id = (int) newId;
+        executeSync(() -> {
+            SessionEntity entity = toEntity(session);
+            long newId = sessionDao.insert(entity);
+            session.id = (int) newId;
+            return null;
+        });
     }
 
     public Section[] readSections(int sessionId) {
-        List<SectionEntity> entities = sectionDao.getSectionsForSession(sessionId);
-        ArrayList<Section> result = new ArrayList<>();
-        for (SectionEntity entity : entities) {
-            result.add(toBo(entity));
-        }
-        return result.toArray(new Section[0]);
+        return executeSync(() -> {
+            List<SectionEntity> entities = sectionDao.getSectionsForSession(sessionId);
+            ArrayList<Section> result = new ArrayList<>();
+            for (SectionEntity entity : entities) {
+                result.add(toBo(entity));
+            }
+            return result.toArray(new Section[0]);
+        });
     }
 
     public Session[] readSessions() {
-        List<SessionEntity> entities = sessionDao.getAllSessions();
-        ArrayList<Session> result = new ArrayList<>();
-        for (SessionEntity entity : entities) {
-            result.add(toBo(entity));
+        return executeSync(() -> {
+            List<SessionEntity> entities = sessionDao.getAllSessions();
+            ArrayList<Session> result = new ArrayList<>();
+            for (SessionEntity entity : entities) {
+                result.add(toBo(entity));
+            }
+            return result.toArray(new Session[0]);
+        });
+    }
+
+    private <T> T executeSync(Callable<T> callable) {
+        try {
+            return executor.submit(callable).get();
+        } catch (ExecutionException e) {
+            Throwable cause = e.getCause();
+            if (cause instanceof RuntimeException) throw (RuntimeException) cause;
+            throw new RuntimeException(cause);
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+            throw new RuntimeException(e);
         }
-        return result.toArray(new Session[0]);
     }
 
     private static SessionEntity toEntity(Session bo) {

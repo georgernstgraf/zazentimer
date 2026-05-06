@@ -8,6 +8,7 @@ import android.app.Service;
 import android.content.Intent;
 import android.os.IBinder;
 import android.util.Log;
+import androidx.core.app.NotificationCompat;
 import at.priv.graf.zazentimer.DbOperations;
 import at.priv.graf.zazentimer.R;
 import at.priv.graf.zazentimer.bo.Session;
@@ -140,20 +141,18 @@ public class MeditationService extends Service {
         Intent intent = new Intent(this, (Class<?>) ZazenTimerActivity.class);
         intent.addFlags(536870912);
         intent.setClass(this, ZazenTimerActivity.class);
-        Notification.Builder builder;
         PendingIntent activity = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_IMMUTABLE);
         NotificationChannel channel = new NotificationChannel("zazen_timer_channel", "Meditation Timer", NotificationManager.IMPORTANCE_LOW);
         NotificationManager manager = getSystemService(NotificationManager.class);
         if (manager != null) {
             manager.createNotificationChannel(channel);
         }
-        builder = new Notification.Builder(getBaseContext(), "zazen_timer_channel");
-        builder.setContentTitle(string);
-        builder.setContentText(string2);
-        builder.setSmallIcon(i);
-        builder.setContentIntent(activity);
-        Notification build = builder.build();
-        build.flags |= 98;
-        return build;
+        return new NotificationCompat.Builder(getBaseContext(), "zazen_timer_channel")
+                .setContentTitle(string)
+                .setContentText(string2)
+                .setSmallIcon(i)
+                .setContentIntent(activity)
+                .setOngoing(true)
+                .build();
     }
 }
