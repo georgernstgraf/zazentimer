@@ -239,3 +239,9 @@ Each entry documents WHAT was decided and WHY.
 - **Reason**: `PreferenceFragmentCompat` scrolling fails without proper display surface (`-no-window`). Xvfb provides a virtual X11 display that enables correct layout computation. Already installed on VPS.
 - **Considered**: Keeping `-no-window` headless approach; using Robolectric instead of emulator; running tests only on Desk machine.
 - **Tradeoff**: `-noaudio` retained means `testBellSoundPlayback` may still fail. Emulator with display uses slightly more resources than headless.
+
+## 2026-05-06: Deprecated API Removal (#104)
+- **Choice**: Removed `allowMainThreadQueries()` (replaced with `ExecutorService`), migrated `Notification.Builder` to `NotificationCompat.Builder`, replaced deprecated `onBackPressed()` with `Navigation.popBackStack()`, removed redundant `package` attribute from AndroidManifest, replaced `lintOptions` with `lint` block, moved repos from `allprojects` to `dependencyResolutionManagement` in `settings.gradle`.
+- **Reason**: `allowMainThreadQueries()` is a Room anti-pattern that hides main-thread I/O. `Notification.Builder` is deprecated in favor of `NotificationCompat.Builder`. `onBackPressed()` is deprecated since API 33. `lintOptions` and `allprojects` are deprecated Gradle DSL. The `package` attribute in AndroidManifest is redundant with `namespace` in `build.gradle`.
+- **Considered**: Deferring Room fix to coroutines migration (#106); keeping `allowMainThreadQueries()` with a TODO.
+- **Tradeoff**: `ExecutorService.submit().get()` still blocks the calling thread (UI thread for reads), but Room queries run off-main-thread. Coroutines migration (#106) will make reads truly async later. Build config changes (`settings.gradle`, `lint`) are forward-compatible with AGP 9.x upgrade (#96).

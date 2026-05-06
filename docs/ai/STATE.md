@@ -6,14 +6,7 @@ Current status as of 2026-05-06.
 No active focus. All planned work complete. Next: #64 Play Store sub-issues or #88 Kotlin migration.
 
 ## Completed (this cycle)
-- [x] #115 CI/CD pipeline overhaul — ALL sub-issues complete
-  - [x] #122 Install/configure Xvfb on VPS
-  - [x] #119 Create Stage 2 test script with $DISPLAY detection
-  - [x] #118 Evaluate @RequiresDisplay obsolescence with Xvfb
-  - [x] #117 Rewrite ci.yml: Stage 1 only (build AAB + unit tests)
-  - [x] #121 Create release.yml: tag-triggered AAB + Play Console
-  - [x] #116 VPS cronjob for Stage 3 nightly (02:00 UTC)
-  - [x] #120 Update project docs to reflect 3-stage pipeline + tag-based releases
+- [x] #104 Fix deprecated API usages — all 6 fixes applied, build passes, instrumented tests pass on API 31-35
 
 ## Completed (previous sessions)
 - [x] #94 Upgrade Espresso to 3.7.0

@@ -9,12 +9,14 @@ Open tasks for next agent session.
 2. [ ] **#88 — Java → Kotlin migration** (Epic). Long-term effort, no immediate blockers.
 
 ## Key Context
+- **#104 Deprecated API fixes are COMPLETE.** All 6 fixes applied and verified.
 - **#115 CI/CD pipeline overhaul is COMPLETE.** All 7 sub-issues (#116–#122) implemented.
 - 3-stage pipeline: Stage 1 (commit gate, local + GitHub Actions), Stage 2 (issue close gate, local with Xvfb), Stage 3 (nightly, VPS cron 02:00 UTC)
 - Tag-based releases: push `v*` tag → `release.yml` builds AAB + uploads to Play Console
 - GitHub Actions now runs only 2 jobs: `build` (AAB) + `unit-tests` (~4 min)
 - VPS has Xvfb, KVM, all AVDs, and Android SDK installed
-- ANDROID_HOME is NOT set — scripts set it explicitly via `export ANDROID_HOME=/opt/android-sdk`
+- `ANDROID_HOME` and `ANDROID_SDK_ROOT` now set in `~/.profile` AND in test scripts
+- **`run-nightly.sh` destroys uncommitted changes** — always commit before running it
 
 ## Decisions Made
 All decisions documented in DECISIONS.md. Key recent ones:
