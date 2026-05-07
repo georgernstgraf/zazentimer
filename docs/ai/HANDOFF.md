@@ -9,6 +9,11 @@ Open tasks for next agent session.
 2. [ ] **#88 — Java → Kotlin migration** (Epic). Long-term effort, no immediate blockers.
 
 ## Key Context
+- **All nightly tests pass (API 29-35)** after 7 bug fixes from the #104 deprecated API changes.
+- **DbOperations `duplicateSession()` had a deadlock** — fixed by accessing DAOs directly inside `executeSync`.
+- **API 33+ tests use `am instrument`** instead of Gradle UTP due to `RootViewWithoutFocusException`.
+- **`am instrument` retry on focus errors** — API 33/34 intermittently lose window focus.
+- **SettingsPage uses `R.id.recycler_view`** — AndroidX PreferenceFragmentCompat uses RecyclerView not ListView.
 - **#104 Deprecated API fixes are COMPLETE.** All 6 fixes applied and verified.
 - **#115 CI/CD pipeline overhaul is COMPLETE.** All 7 sub-issues (#116–#122) implemented.
 - 3-stage pipeline: Stage 1 (commit gate, local + GitHub Actions), Stage 2 (issue close gate, local with Xvfb), Stage 3 (nightly, VPS cron 02:00 UTC)

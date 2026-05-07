@@ -3,14 +3,17 @@
 Current status as of 2026-05-07.
 
 ## Current Focus
-Running full nightly test suite after script hardening.
+No active focus. All nightly tests pass (API 29-35). Next: #64 Play Store sub-issues or #88 Kotlin migration.
 
 ## Completed (this cycle)
-- [x] Scripts hardened: `resolve_avd()` auto-detection, SDK path auto-detection, unit test step with fail-fast
-- [x] Removed `-target google_apis` from all emulator invocations (PITFALLS #73)
-- [x] Removed `@RequiresDisplay` annotations and `HiltTestRunner` headless filtering (Xvfb everywhere now)
-- [x] Added "Mandatory Pre-Flight Checks" to AGENTS.md, PITFALLS #78
-- [x] #104 Fix deprecated API usages — all 6 fixes applied, build passes, instrumented tests pass on API 31-35
+- [x] DbOperations single-thread executor deadlock fix — `duplicateSession()` now accesses DAOs directly inside `executeSync`
+- [x] Restored essential `SystemClock.sleep()` for popup/fragment/PreferenceFragment timing (overzealous removal in #109)
+- [x] SettingsPage uses `R.id.recycler_view` (not `android.R.id.list`) for AndroidX PreferenceFragmentCompat
+- [x] Close soft keyboard before `pressBack()` in SessionCrudTest
+- [x] Test scripts hardened: `resolve_avd()`, clean-state check, `dismiss_anr_dialog()`, SDK auto-detection
+- [x] API 33+ use `am instrument` instead of Gradle UTP (focus issues)
+- [x] `am instrument` retry on `RootViewWithoutFocusException`
+- [x] All nightly tests pass (API 29-35)
 
 ## Completed (previous sessions)
 - [x] #94 Upgrade Espresso to 3.7.0
