@@ -90,9 +90,7 @@ clean_device_packages() {
 	echo "Cleaning stale packages on $serial..."
 	for pkg in \
 		de.gaffga.android.zazentimer \
-		de.gaffga.android.zazentimer.test \
-		at.priv.graf.zazentimer \
-		at.priv.graf.zazentimer.test; do
+		de.gaffga.android.zazentimer.test; do
 		adb -s "$serial" uninstall "$pkg" >/dev/null 2>&1 || true
 	done
 }

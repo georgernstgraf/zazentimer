@@ -186,9 +186,7 @@ else
 		echo "Cleaning stale packages on $serial..."
 		for pkg in \
 			de.gaffga.android.zazentimer \
-			de.gaffga.android.zazentimer.test \
-			at.priv.graf.zazentimer \
-			at.priv.graf.zazentimer.test; do
+			de.gaffga.android.zazentimer.test; do
 			adb -s "$serial" uninstall "$pkg" >/dev/null 2>&1 || true
 		done
 	}
@@ -322,16 +320,20 @@ else
 		echo "  API $api_level — Running instrumented tests"
 		echo "========================================="
 		set +e
-		adb -s "$serial" shell am instrument -w \
-			at.priv.graf.zazentimer.test/at.priv.graf.zazentimer.HiltTestRunner
+		local instrument_output
+		instrument_output=$(adb -s "$serial" shell am instrument -w \
+			at.priv.graf.zazentimer.test/at.priv.graf.zazentimer.HiltTestRunner 2>&1)
 		result=$?
+		echo "$instrument_output"
 		set -e
 
-		if [ $result -ne 0 ]; then
-			echo "FAIL: API $api_level am instrument failed (exit $result)"
-			RESULTS[$api_level]=$result
+		local failures
+		failures=$(echo "$instrument_output" | grep -oP 'Failures:\s*\K\d+' || true)
+		if [ "$result" -ne 0 ] || [ "${failures:-0}" -ne 0 ]; then
+			echo "FAIL: API $api_level am instrument failed (exit=$result, failures=${failures:-unknown})"
+			RESULTS[$api_level]=1
 			FAILED_APIS+=("$api_level")
-			ERROR_LOGS+=("API $api_level: am instrument exit code $result")
+			ERROR_LOGS+=("API $api_level: am instrument exit=$result failures=${failures:-unknown}")
 		else
 			echo "PASS: API $api_level"
 			RESULTS[$api_level]=0
