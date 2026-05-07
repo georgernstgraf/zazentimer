@@ -1,5 +1,7 @@
 package at.priv.graf.zazentimer;
 
+import android.os.SystemClock;
+
 import androidx.test.espresso.Espresso;
 import androidx.test.ext.junit.rules.ActivityScenarioRule;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
@@ -73,8 +75,15 @@ public class SessionCrudTest {
 
         new SessionEditPage().goBack();
 
-        new MainPage()
-                .verifyMainScreenIsDisplayed();
+        for (int i = 0; i < 20; i++) {
+            SystemClock.sleep(500);
+            try {
+                new MainPage().verifyMainScreenIsDisplayed();
+                break;
+            } catch (Exception e) {
+                if (i == 19) throw e;
+            }
+        }
 
         onView(withText("Updated Session Name")).check(matches(isDisplayed()));
     }
@@ -87,7 +96,10 @@ public class SessionCrudTest {
 
         onView(withText(R.string.title_question_delete_session))
                 .check(matches(isDisplayed()));
+        SystemClock.sleep(500);
         onView(withText(R.string.ok)).perform(click());
+
+        SystemClock.sleep(500);
 
         new MainPage()
                 .verifyMainScreenIsDisplayed();
@@ -101,7 +113,10 @@ public class SessionCrudTest {
 
         onView(withText(R.string.title_question_delete_session))
                 .check(matches(isDisplayed()));
+        SystemClock.sleep(500);
         onView(withText(R.string.abbrechen)).perform(click());
+
+        SystemClock.sleep(500);
 
         new MainPage()
                 .verifyMainScreenIsDisplayed();

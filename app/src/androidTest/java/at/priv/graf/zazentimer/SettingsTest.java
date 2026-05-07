@@ -79,6 +79,8 @@ public class SettingsTest {
         onView(withText(R.string.theme)).perform(click());
         onView(withText(R.string.theme_dark)).perform(click());
 
+        SystemClock.sleep(2000);
+
         new SettingsPage();
     }
 
@@ -116,9 +118,12 @@ public class SettingsTest {
         onView(withText(R.string.pref_title_brightness))
                 .perform(click());
 
+        SystemClock.sleep(500);
+
         onView(isAssignableFrom(SeekBar.class))
                 .perform(setSeekBarProgress(50));
 
+        SystemClock.sleep(300);
         Espresso.pressBack();
     }
 

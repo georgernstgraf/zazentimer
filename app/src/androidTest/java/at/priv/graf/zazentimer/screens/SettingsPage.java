@@ -6,6 +6,8 @@ import static androidx.test.espresso.action.ViewActions.scrollTo;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
 
+import android.os.SystemClock;
+
 import androidx.test.espresso.NoMatchingViewException;
 import androidx.test.espresso.contrib.RecyclerViewActions;
 
@@ -14,6 +16,7 @@ import at.priv.graf.zazentimer.R;
 public class SettingsPage extends BasePage {
 
     public SettingsPage() {
+        SystemClock.sleep(1000);
         onView(withId(android.R.id.list)).check((view, noViewFoundException) -> {
             if (noViewFoundException != null) throw noViewFoundException;
         });
@@ -23,6 +26,7 @@ public class SettingsPage extends BasePage {
         try {
             onView(withId(android.R.id.list))
                     .perform(RecyclerViewActions.scrollToPosition(0));
+            SystemClock.sleep(300);
         } catch (Exception ignored) {}
     }
 
@@ -30,6 +34,7 @@ public class SettingsPage extends BasePage {
         try {
             onView(withId(android.R.id.list))
                     .perform(RecyclerViewActions.scrollToPosition(99));
+            SystemClock.sleep(500);
         } catch (Exception ignored) {}
     }
 
@@ -41,6 +46,7 @@ public class SettingsPage extends BasePage {
                 return true;
             } catch (NoMatchingViewException e) {
                 scrollPreferencesToBottom();
+                SystemClock.sleep(300);
             }
         }
         try {
@@ -60,6 +66,7 @@ public class SettingsPage extends BasePage {
     public SettingsPage clickRestoreAndConfirm() {
         scrollToPreference(R.string.pref_title_restore);
         onView(withText(R.string.pref_title_restore)).perform(click());
+        SystemClock.sleep(300);
         onView(withText(R.string.ok)).perform(click());
         return this;
     }

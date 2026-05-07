@@ -8,6 +8,8 @@ import static androidx.test.espresso.matcher.ViewMatchers.isSelected;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
 
+import android.os.SystemClock;
+
 import androidx.test.espresso.contrib.RecyclerViewActions;
 
 import at.priv.graf.zazentimer.R;
@@ -66,6 +68,7 @@ public class MainPage extends BasePage {
     public MainPage clickSessionOverflowAtPosition(int position) {
         onView(withId(R.id.recycler_sessions))
                 .perform(RecyclerViewActions.actionOnItemAtPosition(position, clickChildViewWithId(R.id.sessionOverflow)));
+        SystemClock.sleep(500);
         return this;
     }
 
