@@ -191,13 +191,13 @@ else
 		local serial="$1"
 		for attempt in 1 2 3; do
 			local anr_window
-			anr_window=$(adb -s "$serial" shell "dumpsys window windows" 2>/dev/null | grep -c "Application Error\|isn't responding\|is not responding")
-			if [ "$anr_window" -eq 0 ]; then
+			anr_window=$(adb -s "$serial" shell "dumpsys window windows" 2>/dev/null | grep -c "Application Error\|isn't responding\|is not responding" || true)
+			if [ "$anr_window" -eq 0 ] 2>/dev/null; then
 				return 0
 			fi
 			echo "ANR dialog detected on $serial (attempt $attempt) — dismissing..."
-			adb -s "$serial" shell input keyevent KEYCODE_DPAD_RIGHT 2>/dev/null
-			adb -s "$serial" shell input keyevent KEYCODE_ENTER 2>/dev/null
+			adb -s "$serial" shell input keyevent KEYCODE_DPAD_RIGHT 2>/dev/null || true
+			adb -s "$serial" shell input keyevent KEYCODE_ENTER 2>/dev/null || true
 			sleep 3
 		done
 	}
