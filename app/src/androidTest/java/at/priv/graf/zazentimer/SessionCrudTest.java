@@ -21,6 +21,7 @@ import at.priv.graf.zazentimer.screens.SessionEditPage;
 import static org.hamcrest.Matchers.not;
 
 import static androidx.test.espresso.Espresso.onView;
+import static androidx.test.espresso.Espresso.closeSoftKeyboard;
 import static androidx.test.espresso.action.ViewActions.clearText;
 import static androidx.test.espresso.action.ViewActions.click;
 import static androidx.test.espresso.action.ViewActions.typeText;
@@ -73,6 +74,7 @@ public class SessionCrudTest {
         onView(withId(R.id.text_sitzung_beschreibung))
                 .perform(clearText(), typeText("Updated Description"));
 
+        closeSoftKeyboard();
         new SessionEditPage().goBack();
 
         for (int i = 0; i < 20; i++) {
