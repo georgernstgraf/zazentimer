@@ -89,9 +89,7 @@ clean_device_packages() {
 		de.gaffga.android.zazentimer \
 		de.gaffga.android.zazentimer.test \
 		at.priv.graf.zazentimer \
-		at.priv.graf.zazentimer.test \
-		androidx.test.orchestrator \
-		androidx.test.services; do
+		at.priv.graf.zazentimer.test; do
 		adb -s "$serial" uninstall "$pkg" 2>/dev/null || true
 	done
 }

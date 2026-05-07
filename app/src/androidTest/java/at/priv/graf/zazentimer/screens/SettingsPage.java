@@ -17,14 +17,14 @@ public class SettingsPage extends BasePage {
 
     public SettingsPage() {
         SystemClock.sleep(1000);
-        onView(withId(android.R.id.list)).check((view, noViewFoundException) -> {
+        onView(withId(R.id.recycler_view)).check((view, noViewFoundException) -> {
             if (noViewFoundException != null) throw noViewFoundException;
         });
     }
 
     private void scrollPreferencesToTop() {
         try {
-            onView(withId(android.R.id.list))
+            onView(withId(R.id.recycler_view))
                     .perform(RecyclerViewActions.scrollToPosition(0));
             SystemClock.sleep(300);
         } catch (Exception ignored) {}
@@ -32,7 +32,7 @@ public class SettingsPage extends BasePage {
 
     private void scrollPreferencesToBottom() {
         try {
-            onView(withId(android.R.id.list))
+            onView(withId(R.id.recycler_view))
                     .perform(RecyclerViewActions.scrollToPosition(99));
             SystemClock.sleep(500);
         } catch (Exception ignored) {}
