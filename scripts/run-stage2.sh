@@ -90,21 +90,23 @@ clean_device_packages() {
 		de.gaffga.android.zazentimer.test \
 		at.priv.graf.zazentimer \
 		at.priv.graf.zazentimer.test; do
-		adb -s "$serial" uninstall "$pkg" 2>/dev/null || true
+		adb -s "$serial" uninstall "$pkg" >/dev/null 2>&1 || true
 	done
 }
 
 dismiss_anr_dialog() {
 	local serial="$1"
-	local anr_text
-	anr_text=$(adb -s "$serial" shell "dumpsys window windows" 2>/dev/null | grep -i "isn't responding\|is not responding\|Close app\|Wait" | head -1)
-	if [ -n "$anr_text" ]; then
-		echo "Dismissing ANR dialog on $serial..."
-		adb -s "$serial" shell input keyevent KEYCODE_DPAD_RIGHT 2>/dev/null
+	for attempt in 1 2 3; do
+		local anr_window
+		anr_window=$(adb -s "$serial" shell "dumpsys window windows" 2>/dev/null | grep -c "Application Error\|isn't responding\|is not responding")
+		if [ "$anr_window" -eq 0 ]; then
+			return 0
+		fi
+		echo "ANR dialog detected on $serial (attempt $attempt) — dismissing..."
 		adb -s "$serial" shell input keyevent KEYCODE_DPAD_RIGHT 2>/dev/null
 		adb -s "$serial" shell input keyevent KEYCODE_ENTER 2>/dev/null
-		sleep 2
-	fi
+		sleep 3
+	done
 }
 
 resolve_avd() {
