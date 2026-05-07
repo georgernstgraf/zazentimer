@@ -95,8 +95,8 @@ emulator -avd medium_phone_api35 &
 ## Clone and Build
 
 ```bash
-git clone https://github.com/georgernstgraf/puregg.git
-cd puregg
+git clone https://github.com/georgernstgraf/zazentimer.git
+cd zazentimer
 ```
 
 ### `local.properties`
@@ -138,41 +138,39 @@ adb install -r app/build/outputs/apk/debug/app-debug.apk
 ## Project Structure
 
 ```
-puregg/
+zazentimer/
 ├── app/
 │   ├── src/
 │   │   ├── main/
-│   │   │   ├── java/de/gaffga/android/           # Java source (60 files)
-│   │   │   │   ├── fragments/                     # 7 Fragments + adapters
-│   │   │   │   ├── zazentimer/                    # Core: Activity, DB, Service
-│   │   │   │   │   ├── bo/                        # Business objects (Session, Section)
-│   │   │   │   │   ├── audio/                     # Bell playback & volume
-│   │   │   │   │   ├── service/                   # Foreground service & timer
-│   │   │   │   │   ├── grpc/                      # JWT auth (prepared, unused)
-│   │   │   │   │   └── views/                     # Custom TimerView
-│   │   │   │   ├── base/                          # Utilities, settings
-│   │   │   │   ├── mapping/                       # Reflection-based ORM
-│   │   │   │   └── betterlist/                    # Custom drag-and-drop ListView
-│   │   │   ├── res/                               # Layouts, drawables, values
+│   │   │   ├── java/at/priv/graf/zazentimer/     # Java source (40 files)
+│   │   │   │   ├── fragments/                    # 7 Fragments + adapters
+│   │   │   │   ├── audio/                        # Bell playback & volume
+│   │   │   │   ├── bo/                           # Business objects (Session, Section)
+│   │   │   │   ├── database/                     # Room database + DAOs + Entities
+│   │   │   │   ├── di/                           # Hilt DI modules
+│   │   │   │   ├── grpc/                         # JWT auth (prepared, unused)
+│   │   │   │   ├── service/                      # Foreground service & timer
+│   │   │   │   └── views/                        # Custom TimerView
+│   │   │   ├── res/                              # Layouts, drawables, values
 │   │   │   └── AndroidManifest.xml
-│   │   └── androidTest/                           # Espresso instrumented tests
+│   │   └── androidTest/                          # Espresso instrumented tests
 │   └── build.gradle
-├── docs/ai/                                       # AI agent documentation
-├── gradle/wrapper/                                # Gradle wrapper
-├── build.gradle                                  # Root build file (AGP 7.4.2)
+├── docs/ai/                                      # AI agent documentation
+├── gradle/wrapper/                               # Gradle wrapper
+├── build.gradle                                  # Root build file (AGP 7.4.2, Hilt plugin)
 ├── settings.gradle                               # Single module: :app
 └── gradle.properties                             # AndroidX, Jetifier, JDK 17
 ```
 
 ## Key Architecture Facts
 
-- **1 Activity** (`ZazenTimerActivity`) hosts **7 Fragments** via manual `FragmentTransaction`
+- **1 Activity** (`ZazenTimerActivity`) hosts **7 Fragments** via Navigation Component (`nav_graph.xml`)
 - **Foreground Service** (`MeditationService`) keeps meditation alive across screen-off
 - **AlarmManager** (`setAlarmClock()`) triggers section transitions
-- **Database:** Raw SQLite via custom `SQLiteOpenHelper` + reflection-based `DbMapper`
-- **Language:** 100% Java, compiled with Java 17
-- **No DI framework** — manual instantiation
-- **No ViewModel/LiveData** — state held in Activity fields + Handler polling loop
+- **Database:** Room (`AppDatabase`, `SessionDao`, `SectionDao`) with `ExecutorService` for thread handling
+- **Language:** 100% Java, compiled with Java 17 (Kotlin migration planned: #88)
+- **DI:** Hilt (since #57)
+- **Architecture:** ViewModel + LiveData (since #57), MeditationService as foreground service
 
 ## Git Workflow
 
@@ -187,9 +185,10 @@ docs: update architecture documentation (#21)
 
 ## CI
 
-GitHub Actions runs on every push:
-- **Build job:** `./gradlew assembleDebug --no-daemon` on Ubuntu + JDK 17
-- **Test job:** `./gradlew connectedDebugAndroidTest --no-daemon` on API 29 emulator
+GitHub Actions runs on every push to main:
+- **Build job:** `./gradlew bundleRelease` (produces signed AAB)
+- **Unit Tests job:** `./gradlew testDebugUnitTest`
+- Instrumented tests run on VPS via 3-stage pipeline (see `scripts/`)
 
 Check CI status after pushing:
 ```bash
@@ -216,6 +215,7 @@ Agent-oriented documentation lives in `docs/ai/`:
 |---------|---------|
 | `./gradlew build` | Full build + unit tests |
 | `./gradlew assembleDebug` | Build debug APK only |
+| `./gradlew bundleRelease` | Build release AAB (signed on CI) |
 | `./gradlew test` | Run unit tests |
 | `./gradlew connectedDebugAndroidTest` | Run instrumented tests |
 | `./gradlew lint` | Run Android lint |
