@@ -11,6 +11,14 @@ Before starting any task, read the following files in order:
 
 If `HANDOFF.md` contains open tasks, complete them before starting
 
+## Mandatory Pre-Flight Checks
+Before running any emulator or test command:
+1. **Read `docs/ai/` knowledge files first** (per the bootstrap order above)
+2. **Check `$DISPLAY`** — if set, use it directly; only start Xvfb if unset
+3. **Use existing scripts** (`scripts/run-stage2.sh`, `scripts/run-nightly.sh`) — never manually reimplement emulator/gradle/test logic inline
+4. **Never use `-no-window`** with the Android emulator — use Xvfb or real `$DISPLAY` instead
+5. **Never use `-target google_apis`** — removed in emulator 36.5.10 (PITFALLS #73)
+
 ## Workflow Skills
 - **Issue management:** Use the `issue-workflow` skill for all GitHub issue operations (start, commit, finish).
 - **Knowledge persistence:** Use the `knowledge-persistence` skill to persist session context into `docs/ai/` files after meaningful changes or when wrapping up.

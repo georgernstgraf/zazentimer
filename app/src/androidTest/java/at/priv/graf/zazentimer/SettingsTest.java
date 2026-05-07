@@ -122,7 +122,6 @@ public class SettingsTest {
         Espresso.pressBack();
     }
 
-    @RequiresDisplay
     @Test
     public void testBackup() {
         Intents.init();
@@ -139,7 +138,6 @@ public class SettingsTest {
         }
     }
 
-    @RequiresDisplay
     @Test
     public void testRestore() {
         Intents.init();

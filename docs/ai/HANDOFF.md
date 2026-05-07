@@ -17,6 +17,9 @@ Open tasks for next agent session.
 - VPS has Xvfb, KVM, all AVDs, and Android SDK installed
 - `ANDROID_HOME` and `ANDROID_SDK_ROOT` now set in `~/.profile` AND in test scripts
 - **`run-nightly.sh` destroys uncommitted changes** — always commit before running it
+- **Scripts now use `resolve_avd()` for portable AVD detection** — works on both VPS (`test_apiN`) and dev machines (`Medium_Phone_API_N`)
+- **`@RequiresDisplay` / headless filtering removed** — Xvfb everywhere makes it unnecessary
+- **`-target google_apis` removed from all emulator commands** — flag removed in emulator 36.5.10
 
 ## Decisions Made
 All decisions documented in DECISIONS.md. Key recent ones:

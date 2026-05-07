@@ -1,16 +1,20 @@
 # Project State
 
-Current status as of 2026-05-06.
+Current status as of 2026-05-07.
 
 ## Current Focus
-No active focus. All planned work complete. Next: #64 Play Store sub-issues or #88 Kotlin migration.
+Running full nightly test suite after script hardening.
 
 ## Completed (this cycle)
+- [x] Scripts hardened: `resolve_avd()` auto-detection, SDK path auto-detection, unit test step with fail-fast
+- [x] Removed `-target google_apis` from all emulator invocations (PITFALLS #73)
+- [x] Removed `@RequiresDisplay` annotations and `HiltTestRunner` headless filtering (Xvfb everywhere now)
+- [x] Added "Mandatory Pre-Flight Checks" to AGENTS.md, PITFALLS #78
 - [x] #104 Fix deprecated API usages — all 6 fixes applied, build passes, instrumented tests pass on API 31-35
 
 ## Completed (previous sessions)
 - [x] #94 Upgrade Espresso to 3.7.0
-- [x] #93 Four-stage test pipeline with @RequiresDisplay + headless filtering
+- [x] #93 Four-stage test pipeline (headless filtering removed — Xvfb everywhere now)
 - [x] #92 Backup WAL data loss fix
 - [x] #82 Namespace refactor to at.priv.graf.zazentimer
 - [x] #91 Hide session description when empty
@@ -30,7 +34,7 @@ No active focus. All planned work complete. Next: #64 Play Store sub-issues or #
 
 ## Known Issues
 - Gradle UTP runner fails on API 35+ — workaround with `am instrument` documented in PITFALLS
-- `testBellSoundPlayback` may still fail under Xvfb since `-noaudio` is retained (annotation kept as safety marker)
+- `testBellSoundPlayback` may still fail under Xvfb since `-noaudio` is retained
 
 ## Blockers
 - None
