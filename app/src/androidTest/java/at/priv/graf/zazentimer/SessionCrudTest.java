@@ -1,7 +1,5 @@
 package at.priv.graf.zazentimer;
 
-import android.os.SystemClock;
-
 import androidx.test.espresso.Espresso;
 import androidx.test.ext.junit.rules.ActivityScenarioRule;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
@@ -73,19 +71,10 @@ public class SessionCrudTest {
         onView(withId(R.id.text_sitzung_beschreibung))
                 .perform(clearText(), typeText("Updated Description"));
 
-        // Trigger save by pressing back (triggers SessionEditFragment.onPause → saves)
-        Espresso.pressBack();
+        new SessionEditPage().goBack();
 
-        // Poll for main screen to become visible
-        for (int i = 0; i < 20; i++) {
-            SystemClock.sleep(500);
-            try {
-                new MainPage().verifyMainScreenIsDisplayed();
-                break;
-            } catch (Exception e) {
-                // Not yet on main screen, keep waiting
-            }
-        }
+        new MainPage()
+                .verifyMainScreenIsDisplayed();
 
         onView(withText("Updated Session Name")).check(matches(isDisplayed()));
     }
@@ -96,13 +85,9 @@ public class SessionCrudTest {
                 .verifyMainScreenIsDisplayed()
                 .clickSessionOverflowAction(0, R.string.menu_delete_session);
 
-        SystemClock.sleep(500);
-
         onView(withText(R.string.title_question_delete_session))
                 .check(matches(isDisplayed()));
         onView(withText(R.string.ok)).perform(click());
-
-        SystemClock.sleep(500);
 
         new MainPage()
                 .verifyMainScreenIsDisplayed();
@@ -114,13 +99,9 @@ public class SessionCrudTest {
                 .verifyMainScreenIsDisplayed()
                 .clickSessionOverflowAction(0, R.string.menu_delete_session);
 
-        SystemClock.sleep(500);
-
         onView(withText(R.string.title_question_delete_session))
                 .check(matches(isDisplayed()));
         onView(withText(R.string.abbrechen)).perform(click());
-
-        SystemClock.sleep(500);
 
         new MainPage()
                 .verifyMainScreenIsDisplayed();

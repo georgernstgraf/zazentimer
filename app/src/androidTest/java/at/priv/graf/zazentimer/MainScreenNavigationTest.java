@@ -10,8 +10,6 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import android.os.SystemClock;
-
 import at.priv.graf.zazentimer.screens.MainPage;
 import at.priv.graf.zazentimer.screens.MeditationPage;
 import at.priv.graf.zazentimer.screens.SessionEditPage;
@@ -87,8 +85,6 @@ public class MainScreenNavigationTest {
                 .verifySessionSelected(0);
 
         activityRule.getScenario().recreate();
-
-        SystemClock.sleep(500);
 
         new MainPage()
                 .verifyMainScreenIsDisplayed()

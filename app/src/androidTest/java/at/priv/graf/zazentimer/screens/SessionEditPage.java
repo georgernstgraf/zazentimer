@@ -9,8 +9,6 @@ import static androidx.test.espresso.contrib.RecyclerViewActions.actionOnItemAtP
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
 
-import android.os.SystemClock;
-
 import at.priv.graf.zazentimer.R;
 
 public class SessionEditPage extends BasePage {
@@ -49,7 +47,6 @@ public class SessionEditPage extends BasePage {
 
     public MainPage goBack() {
         pressBack();
-        SystemClock.sleep(800);
         return new MainPage();
     }
 }

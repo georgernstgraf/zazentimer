@@ -24,8 +24,6 @@ import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
 import static org.hamcrest.Matchers.containsString;
 
-import android.os.SystemClock;
-
 @HiltAndroidTest
 @RunWith(AndroidJUnit4.class)
 @LargeTest
@@ -49,9 +47,6 @@ public class DuplicateSessionTest {
         onView(withId(R.id.recycler_sessions))
                 .perform(actionOnItemAtPosition(0, clickChildViewWithId(R.id.sessionOverflow)));
 
-        // Wait for popup menu animation to complete
-        SystemClock.sleep(500);
-
         onView(withText(R.string.menu_copy_session))
                 .perform(click());
 
@@ -63,8 +58,6 @@ public class DuplicateSessionTest {
     public void testDuplicateSessionCreatesCopyWithPrefix() {
         onView(withId(R.id.recycler_sessions))
                 .perform(actionOnItemAtPosition(0, clickChildViewWithId(R.id.sessionOverflow)));
-
-        SystemClock.sleep(500);
 
         onView(withText(R.string.menu_copy_session))
                 .perform(click());

@@ -1,6 +1,5 @@
 package at.priv.graf.zazentimer.screens;
 
-import android.os.SystemClock;
 import android.view.View;
 
 import androidx.test.espresso.Espresso;
@@ -59,7 +58,6 @@ public abstract class BasePage {
      */
     public BasePage clickToolbarOverflowItem(int textResId) {
         openActionBarOverflowOrOptionsMenu(getInstrumentation().getTargetContext());
-        SystemClock.sleep(500);
         onView(withText(textResId)).perform(click());
         return this;
     }

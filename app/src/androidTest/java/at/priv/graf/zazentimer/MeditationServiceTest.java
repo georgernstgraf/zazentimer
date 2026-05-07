@@ -1,7 +1,6 @@
 package at.priv.graf.zazentimer;
 
 import android.content.SharedPreferences;
-import android.os.SystemClock;
 
 import androidx.test.espresso.IdlingRegistry;
 import androidx.test.ext.junit.rules.ActivityScenarioRule;
@@ -11,6 +10,8 @@ import androidx.test.platform.app.InstrumentationRegistry;
 import androidx.test.uiautomator.UiDevice;
 import androidx.test.uiautomator.UiObject;
 import androidx.test.uiautomator.UiSelector;
+import androidx.test.uiautomator.Until;
+import androidx.test.uiautomator.By;
 
 import dagger.hilt.android.testing.HiltAndroidRule;
 import dagger.hilt.android.testing.HiltAndroidTest;
@@ -29,6 +30,8 @@ import static org.junit.Assert.assertTrue;
 @RunWith(AndroidJUnit4.class)
 @LargeTest
 public class MeditationServiceTest {
+
+    private static final long UI_TIMEOUT = 5000;
 
     @Rule(order = 0)
     public HiltAndroidRule hiltRule = new HiltAndroidRule(this);
@@ -66,6 +69,10 @@ public class MeditationServiceTest {
         activityRule.getScenario().onActivity(activity ->
                 activity.forceStopMeditationForTest());
         IdlingRegistry.getInstance().unregister(meditationIdlingResource);
+    }
+
+    private void waitForStopButton() {
+        device.wait(Until.findObject(By.text("Stop")), UI_TIMEOUT);
     }
 
     private void clickStopButtonWithUiAutomator() {
@@ -110,6 +117,10 @@ public class MeditationServiceTest {
         return dialog.exists();
     }
 
+    private void waitForDialog(String titleText) {
+        device.wait(Until.findObject(By.text(titleText)), UI_TIMEOUT);
+    }
+
     @Test
     public void testStopMeditationConfirmation() {
         new MainPage()
@@ -119,23 +130,21 @@ public class MeditationServiceTest {
         activityRule.getScenario().onActivity(activity ->
                 activity.startMeditation());
 
-        SystemClock.sleep(4000);
+        waitForStopButton();
 
         clickStopButtonWithUiAutomator();
-        SystemClock.sleep(2000);
+        waitForDialog("Stop meditation?");
 
         assertTrue("Stop dialog should be visible",
                 isDialogVisible("Stop meditation?"));
 
         clickCancelDialog();
-        SystemClock.sleep(500);
+        waitForStopButton();
 
         clickStopButtonWithUiAutomator();
-        SystemClock.sleep(500);
+        waitForDialog("Stop meditation?");
 
         clickByTextContainsWithUiAutomator("Stop");
-
-        SystemClock.sleep(2000);
     }
 
     @Test
@@ -147,13 +156,11 @@ public class MeditationServiceTest {
         activityRule.getScenario().onActivity(activity ->
                 activity.startMeditation());
 
-        SystemClock.sleep(4000);
+        waitForStopButton();
 
         clickStopButtonWithUiAutomator();
-        SystemClock.sleep(1000);
+        waitForDialog("Stop meditation?");
 
         clickByTextContainsWithUiAutomator("Stop");
-
-        SystemClock.sleep(2000);
     }
 }
