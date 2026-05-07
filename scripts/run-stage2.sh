@@ -94,6 +94,19 @@ clean_device_packages() {
 	done
 }
 
+dismiss_anr_dialog() {
+	local serial="$1"
+	local anr_text
+	anr_text=$(adb -s "$serial" shell "dumpsys window windows" 2>/dev/null | grep -i "isn't responding\|is not responding\|Close app\|Wait" | head -1)
+	if [ -n "$anr_text" ]; then
+		echo "Dismissing ANR dialog on $serial..."
+		adb -s "$serial" shell input keyevent KEYCODE_DPAD_RIGHT 2>/dev/null
+		adb -s "$serial" shell input keyevent KEYCODE_DPAD_RIGHT 2>/dev/null
+		adb -s "$serial" shell input keyevent KEYCODE_ENTER 2>/dev/null
+		sleep 2
+	fi
+}
+
 resolve_avd() {
 	local api_level=$1
 	local avd_list
@@ -164,6 +177,8 @@ else
 		API29_RESULT=1
 	else
 		clean_device_packages "$API29_SERIAL"
+		dismiss_anr_dialog "$API29_SERIAL"
+		sleep 5
 
 		echo ""
 		echo "========================================="
@@ -210,6 +225,8 @@ else
 		API35_RESULT=1
 	else
 		clean_device_packages "$API35_SERIAL"
+		dismiss_anr_dialog "$API35_SERIAL"
+		sleep 5
 
 		echo ""
 		echo "========================================="

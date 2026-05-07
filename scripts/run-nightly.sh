@@ -148,6 +148,8 @@ else
 		fi
 
 		clean_device_packages "$serial"
+		dismiss_anr_dialog "$serial"
+		sleep 5
 
 		echo ""
 		echo "========================================="
@@ -183,6 +185,19 @@ else
 			at.priv.graf.zazentimer.test; do
 			adb -s "$serial" uninstall "$pkg" 2>/dev/null || true
 		done
+	}
+
+	dismiss_anr_dialog() {
+		local serial="$1"
+		local anr_text
+		anr_text=$(adb -s "$serial" shell "dumpsys window windows" 2>/dev/null | grep -i "isn't responding\|is not responding\|Close app\|Wait" | head -1)
+		if [ -n "$anr_text" ]; then
+			echo "Dismissing ANR dialog on $serial..."
+			adb -s "$serial" shell input keyevent KEYCODE_DPAD_RIGHT 2>/dev/null
+			adb -s "$serial" shell input keyevent KEYCODE_DPAD_RIGHT 2>/dev/null
+			adb -s "$serial" shell input keyevent KEYCODE_ENTER 2>/dev/null
+			sleep 2
+		fi
 	}
 
 	resolve_avd() {
@@ -268,6 +283,8 @@ else
 		fi
 
 		clean_device_packages "$serial"
+		dismiss_anr_dialog "$serial"
+		sleep 5
 
 		echo ""
 		echo "========================================="
