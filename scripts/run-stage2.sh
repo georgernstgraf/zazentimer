@@ -66,6 +66,9 @@ wait_for_emulator() {
 			echo "Emulator $serial booted (${elapsed}s)"
 			adb -s "$serial" shell svc power stayon true
 			adb -s "$serial" shell input keyevent KEYCODE_WAKEUP
+			adb -s "$serial" shell input keyevent KEYCODE_MENU
+			adb -s "$serial" shell input keyevent KEYCODE_HOME
+			sleep 5
 			return 0
 		fi
 		sleep 5
@@ -180,6 +183,9 @@ else
 	else
 		clean_device_packages "$API29_SERIAL"
 		dismiss_anr_dialog "$API29_SERIAL"
+		adb -s "$API29_SERIAL" shell svc power stayon true 2>/dev/null || true
+		adb -s "$API29_SERIAL" shell input keyevent KEYCODE_WAKEUP 2>/dev/null || true
+		adb -s "$API29_SERIAL" shell input keyevent KEYCODE_HOME 2>/dev/null || true
 		sleep 5
 
 		echo ""
@@ -228,6 +234,9 @@ else
 	else
 		clean_device_packages "$API35_SERIAL"
 		dismiss_anr_dialog "$API35_SERIAL"
+		adb -s "$API35_SERIAL" shell svc power stayon true 2>/dev/null || true
+		adb -s "$API35_SERIAL" shell input keyevent KEYCODE_WAKEUP 2>/dev/null || true
+		adb -s "$API35_SERIAL" shell input keyevent KEYCODE_HOME 2>/dev/null || true
 		sleep 5
 
 		echo ""
