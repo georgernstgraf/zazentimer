@@ -80,14 +80,25 @@ public class DbOperations {
 
     public int duplicateSession(int sourceId, String newName) {
         return executeSync(() -> {
-            Session source = readSession(sourceId);
+            SessionEntity sourceEntity = sessionDao.getSessionById(sourceId);
+            Session source = toBo(sourceEntity);
             source.name = newName;
             source.id = 0;
-            Section[] sections = readSections(sourceId);
-            insertSession(source);
-            for (Section section : sections) {
+            List<SectionEntity> sectionEntities = sectionDao.getSectionsForSession(sourceId);
+            SessionEntity newEntity = toEntity(source);
+            long newId = sessionDao.insert(newEntity);
+            source.id = (int) newId;
+            for (SectionEntity se : sectionEntities) {
+                Section section = toBo(se);
                 section.id = 0;
-                insertSection(source, section);
+                section.fkSession = source.id;
+                if (section.rank == -1) {
+                    Integer maxRank = sectionDao.getMaxRank(source.id);
+                    section.rank = (maxRank != null ? maxRank : 0) + 1;
+                }
+                SectionEntity sectionEntity = toEntity(section);
+                long sid = sectionDao.insert(sectionEntity);
+                section.id = (int) sid;
             }
             return source.id;
         });
