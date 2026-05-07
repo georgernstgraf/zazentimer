@@ -235,14 +235,14 @@ else
 		return 1
 	}
 
-	run_api35_instrument() {
-		local api_level=35
+	run_am_instrument_test() {
+		local api_level=$1
 		local serial="emulator-5554"
 		local result=0
 
 		echo ""
 		echo "========================================="
-		echo "  API 35 — Building APKs"
+		echo "  API $api_level — Building APKs"
 		echo "========================================="
 		cd "$PROJECT_DIR"
 		set +e
@@ -251,29 +251,29 @@ else
 		set -e
 
 		if [ $build_result -ne 0 ]; then
-			echo "FAIL: API 35 build failed"
-			RESULTS[35]=$build_result
-			FAILED_APIS+=("35")
-			ERROR_LOGS+=("API 35: Build failed (exit $build_result)")
+			echo "FAIL: API $api_level build failed"
+			RESULTS[$api_level]=$build_result
+			FAILED_APIS+=("$api_level")
+			ERROR_LOGS+=("API $api_level: Build failed (exit $build_result)")
 			return
 		fi
 
-		local avd35
-		avd35=$(resolve_avd 35) || {
-			echo "FAIL: Could not find AVD for API 35"
-			RESULTS[35]=1
-			FAILED_APIS+=("35")
-			ERROR_LOGS+=("API 35: No AVD found")
+		local avd_name
+		avd_name=$(resolve_avd "$api_level") || {
+			echo "FAIL: Could not find AVD for API $api_level"
+			RESULTS[$api_level]=1
+			FAILED_APIS+=("$api_level")
+			ERROR_LOGS+=("API $api_level: No AVD found")
 			return
 		}
 
 		echo ""
 		echo "========================================="
-		echo "  API 35 — Starting emulator ($avd35)"
+		echo "  API $api_level — Starting emulator ($avd_name)"
 		echo "========================================="
 
 		$ANDROID_HOME/emulator/emulator \
-			-avd "$avd35" \
+			-avd "$avd_name" \
 			-no-snapshot \
 			-gpu swiftshader_indirect \
 			-noaudio \
@@ -282,10 +282,10 @@ else
 		sleep 2
 
 		if ! wait_for_emulator "$serial"; then
-			echo "FAIL: API 35 emulator did not boot"
-			RESULTS[35]=1
-			FAILED_APIS+=("35")
-			ERROR_LOGS+=("API 35: Emulator failed to boot")
+			echo "FAIL: API $api_level emulator did not boot"
+			RESULTS[$api_level]=1
+			FAILED_APIS+=("$api_level")
+			ERROR_LOGS+=("API $api_level: Emulator failed to boot")
 			kill_emulator "$serial"
 			return
 		fi
@@ -299,7 +299,7 @@ else
 
 		echo ""
 		echo "========================================="
-		echo "  API 35 — Installing APKs"
+		echo "  API $api_level — Installing APKs"
 		echo "========================================="
 		set +e
 		adb -s "$serial" install -r app/build/outputs/apk/debug/app-debug.apk
@@ -309,17 +309,17 @@ else
 		set -e
 
 		if [ $install_app -ne 0 ] || [ $install_test -ne 0 ]; then
-			echo "FAIL: API 35 APK installation failed (app=$install_app, test=$install_test)"
-			RESULTS[35]=1
-			FAILED_APIS+=("35")
-			ERROR_LOGS+=("API 35: APK install failed (app=$install_app, test=$install_test)")
+			echo "FAIL: API $api_level APK installation failed (app=$install_app, test=$install_test)"
+			RESULTS[$api_level]=1
+			FAILED_APIS+=("$api_level")
+			ERROR_LOGS+=("API $api_level: APK install failed (app=$install_app, test=$install_test)")
 			kill_emulator "$serial"
 			return
 		fi
 
 		echo ""
 		echo "========================================="
-		echo "  API 35 — Running instrumented tests"
+		echo "  API $api_level — Running instrumented tests"
 		echo "========================================="
 		set +e
 		adb -s "$serial" shell am instrument -w \
@@ -328,23 +328,25 @@ else
 		set -e
 
 		if [ $result -ne 0 ]; then
-			echo "FAIL: API 35 am instrument failed (exit $result)"
-			RESULTS[35]=$result
-			FAILED_APIS+=("35")
-			ERROR_LOGS+=("API 35: am instrument exit code $result")
+			echo "FAIL: API $api_level am instrument failed (exit $result)"
+			RESULTS[$api_level]=$result
+			FAILED_APIS+=("$api_level")
+			ERROR_LOGS+=("API $api_level: am instrument exit code $result")
 		else
-			echo "PASS: API 35"
-			RESULTS[35]=0
+			echo "PASS: API $api_level"
+			RESULTS[$api_level]=0
 		fi
 
 		kill_emulator "$serial"
 	}
 
-	for api in 29 30 31 32 33 34; do
+	for api in 29 30 31 32; do
 		run_gradle_test "$api"
 	done
 
-	run_api35_instrument
+	for api in 33 34 35; do
+		run_am_instrument_test "$api"
+	done
 fi
 
 # ──────────────────────────────────────────────
