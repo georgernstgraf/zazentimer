@@ -147,6 +147,8 @@ else
 			return
 		fi
 
+		clean_device_packages "$serial"
+
 		echo ""
 		echo "========================================="
 		echo "  API $api_level — Running instrumented tests"
@@ -169,6 +171,20 @@ else
 		fi
 
 		kill_emulator "$serial"
+	}
+
+	clean_device_packages() {
+		local serial="$1"
+		echo "Cleaning stale packages on $serial..."
+		for pkg in \
+			de.gaffga.android.zazentimer \
+			de.gaffga.android.zazentimer.test \
+			at.priv.graf.zazentimer \
+			at.priv.graf.zazentimer.test \
+			androidx.test.orchestrator \
+			androidx.test.services; do
+			adb -s "$serial" uninstall "$pkg" 2>/dev/null || true
+		done
 	}
 
 	resolve_avd() {
@@ -252,6 +268,8 @@ else
 			kill_emulator "$serial"
 			return
 		fi
+
+		clean_device_packages "$serial"
 
 		echo ""
 		echo "========================================="

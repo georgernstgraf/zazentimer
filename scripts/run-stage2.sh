@@ -82,6 +82,20 @@ kill_emulator() {
 	sleep 2
 }
 
+clean_device_packages() {
+	local serial="$1"
+	echo "Cleaning stale packages on $serial..."
+	for pkg in \
+		de.gaffga.android.zazentimer \
+		de.gaffga.android.zazentimer.test \
+		at.priv.graf.zazentimer \
+		at.priv.graf.zazentimer.test \
+		androidx.test.orchestrator \
+		androidx.test.services; do
+		adb -s "$serial" uninstall "$pkg" 2>/dev/null || true
+	done
+}
+
 resolve_avd() {
 	local api_level=$1
 	local avd_list
@@ -151,6 +165,8 @@ else
 		echo "FAIL: API 29 emulator did not boot"
 		API29_RESULT=1
 	else
+		clean_device_packages "$API29_SERIAL"
+
 		echo ""
 		echo "========================================="
 		echo "  API 29 — Running instrumented tests"
@@ -195,6 +211,8 @@ else
 		echo "FAIL: API 35 emulator did not boot"
 		API35_RESULT=1
 	else
+		clean_device_packages "$API35_SERIAL"
+
 		echo ""
 		echo "========================================="
 		echo "  API 35 — Installing APKs"
