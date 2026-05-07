@@ -319,16 +319,35 @@ else
 		echo "========================================="
 		echo "  API $api_level — Running instrumented tests"
 		echo "========================================="
-		set +e
-		local instrument_output
-		instrument_output=$(adb -s "$serial" shell am instrument -w \
-			at.priv.graf.zazentimer.test/at.priv.graf.zazentimer.HiltTestRunner 2>&1)
-		result=$?
-		echo "$instrument_output"
-		set -e
 
-		local failures
-		failures=$(echo "$instrument_output" | grep -oP 'Failures:\s*\K\d+' || true)
+		local instrument_output
+		local failures=1
+		for test_attempt in 1 2; do
+			set +e
+			instrument_output=$(adb -s "$serial" shell am instrument -w \
+				at.priv.graf.zazentimer.test/at.priv.graf.zazentimer.HiltTestRunner 2>&1)
+			result=$?
+			echo "$instrument_output"
+			set -e
+
+			failures=$(echo "$instrument_output" | grep -oP 'Failures:\s*\K\d+' || true)
+			if [ "${failures:-0}" -eq 0 ] && [ "$result" -eq 0 ]; then
+				break
+			fi
+
+			local focus_errors
+			focus_errors=$(echo "$instrument_output" | grep -c "RootViewWithoutFocusException\|has-window-focus=false" || true)
+			if [ "$focus_errors" -gt 0 ] && [ "$test_attempt" -eq 1 ]; then
+				echo "Focus errors detected — retrying with wakeup..."
+				adb -s "$serial" shell svc power stayon true 2>/dev/null || true
+				adb -s "$serial" shell input keyevent KEYCODE_WAKEUP 2>/dev/null || true
+				adb -s "$serial" shell input keyevent KEYCODE_HOME 2>/dev/null || true
+				sleep 5
+			else
+				break
+			fi
+		done
+
 		if [ "$result" -ne 0 ] || [ "${failures:-0}" -ne 0 ]; then
 			echo "FAIL: API $api_level am instrument failed (exit=$result, failures=${failures:-unknown})"
 			RESULTS[$api_level]=1

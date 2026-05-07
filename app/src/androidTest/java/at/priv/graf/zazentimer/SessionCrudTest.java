@@ -45,6 +45,7 @@ public class SessionCrudTest {
     @Before
     public void init() {
         hiltRule.inject();
+        activityRule.getScenario().onActivity(ZazenTimerActivity::resetDatabaseForTest);
     }
 
     @Test
