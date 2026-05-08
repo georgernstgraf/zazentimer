@@ -361,26 +361,27 @@ public class ZazenTimerActivity extends AppCompatActivity implements MainFragmen
 
     @Override
     public boolean onOptionsItemSelected(MenuItem menuItem) {
-        switch (menuItem.getItemId()) {
-            case R.id.menu_settings:
-                showSettingsScreen();
-                return true;
-            case R.id.menu_privacy:
-                Log.d(TAG, "privacy");
-                showPrivacyScreen();
-                return true;
-            case R.id.menu_add_session:
-                MainFragment mf = findMainFragment();
-                if (mf != null) {
-                    mf.onFabNewSessionClicked();
-                }
-                return true;
-            case R.id.menu_about:
-                showAboutScreen();
-                return true;
-            case R.id.menu_session_edit_help:
-            default:
-                return super.onOptionsItemSelected(menuItem);
+        int id = menuItem.getItemId();
+        if (id == R.id.menu_settings) {
+            showSettingsScreen();
+            return true;
+        } else if (id == R.id.menu_privacy) {
+            Log.d(TAG, "privacy");
+            showPrivacyScreen();
+            return true;
+        } else if (id == R.id.menu_add_session) {
+            MainFragment mf = findMainFragment();
+            if (mf != null) {
+                mf.onFabNewSessionClicked();
+            }
+            return true;
+        } else if (id == R.id.menu_about) {
+            showAboutScreen();
+            return true;
+        } else if (id == R.id.menu_session_edit_help) {
+            return super.onOptionsItemSelected(menuItem);
+        } else {
+            return super.onOptionsItemSelected(menuItem);
         }
     }
 
