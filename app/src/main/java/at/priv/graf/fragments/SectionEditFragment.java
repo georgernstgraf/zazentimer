@@ -81,9 +81,9 @@ public class SectionEditFragment extends Fragment {
                     }
                     openInputStream.close();
                     openFileOutput.close();
-                    BellCollection.getInstance().init(getActivity());
+                    BellCollection.initialize(getActivity());
                     fillBellList();
-                    this.section.bellUri = BellCollection.getInstance().getUriForName(str).toString();
+                    this.section.bellUri = BellCollection.getUriForName(str).toString();
                     selectBell(this.section.bellUri);
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -147,7 +147,6 @@ public class SectionEditFragment extends Fragment {
     }
 
     private void fillDataFromViews() {
-        BellCollection.getInstance();
         this.section.bell = -2;
         Bell bell = (Bell) binding.selectGongSound.getSelectedItem();
         this.section.bellUri = bell.getUri().toString();
@@ -174,7 +173,7 @@ public class SectionEditFragment extends Fragment {
 
     private void fillBellList() {
         this.gongListAdapter = new GongListAdapter(getActivity(), R.id.selectGongSound, R.id.spinnerText1);
-        ArrayList<Bell> bellList = BellCollection.getInstance().getBellList();
+        ArrayList<Bell> bellList = BellCollection.getBellList();
         for (int i = 0; i < bellList.size(); i++) {
             this.gongListAdapter.add(bellList.get(i));
         }
@@ -182,7 +181,7 @@ public class SectionEditFragment extends Fragment {
     }
 
     private void selectBell(String str) {
-        ArrayList<Bell> bellList = BellCollection.getInstance().getBellList();
+        ArrayList<Bell> bellList = BellCollection.getBellList();
         for (int i = 0; i < bellList.size(); i++) {
             if (bellList.get(i).getUri().toString().equals(str)) {
                 binding.selectGongSound.setSelection(i);
@@ -281,7 +280,7 @@ public class SectionEditFragment extends Fragment {
         binding.playGong.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Bell bellForSection = BellCollection.getInstance().getBellForSection(SectionEditFragment.this.section);
+                Bell bellForSection = BellCollection.getBellForSection(SectionEditFragment.this.section);
                 if (bellForSection != null) {
                     SectionEditFragment.this.audio.playAbsVolume(bellForSection, SectionEditFragment.this.section.volume);
                 }
@@ -294,7 +293,7 @@ public class SectionEditFragment extends Fragment {
 
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i2, long j) {
-                Bell bell = BellCollection.getInstance().getBell(i2);
+                Bell bell = BellCollection.getBell(i2);
                 if (bell.getUri().toString().equals(SectionEditFragment.this.section.bellUri)) {
                     return;
                 }
@@ -316,7 +315,7 @@ public class SectionEditFragment extends Fragment {
             public void onStopTrackingTouch(SeekBar seekBar) {
                 int progress = seekBar.getProgress();
                 SectionEditFragment.this.section.volume = 100 - progress * 10;
-                if (BellCollection.getInstance().getBellForSection(SectionEditFragment.this.section) != null) {
+                if (BellCollection.getBellForSection(SectionEditFragment.this.section) != null) {
                     SectionEditFragment.this.audio.playAbsVolume(SectionEditFragment.this.section);
                 }
             }

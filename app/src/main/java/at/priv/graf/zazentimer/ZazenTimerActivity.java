@@ -156,7 +156,7 @@ public class ZazenTimerActivity extends AppCompatActivity implements MainFragmen
         this.handler = new Handler(Looper.getMainLooper());
         this.viewModel = new ViewModelProvider(this).get(MeditationViewModel.class);
         this.viewModel.setHandler(this.handler);
-        BellCollection.getInstance().init(this);
+        BellCollection.initialize(this);
         convertFromOldVersions();
         setContentView(R.layout.main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.my_toolbar);
@@ -177,7 +177,7 @@ public class ZazenTimerActivity extends AppCompatActivity implements MainFragmen
             createDemoSessions();
             preferences.edit().putBoolean(PREF_KEY_FIRST_START, false).apply();
         }
-        BellCollection.getInstance().init(this);
+        BellCollection.initialize(this);
     }
 
     private void observeViewModel() {
@@ -416,7 +416,7 @@ public class ZazenTimerActivity extends AppCompatActivity implements MainFragmen
         dbOperations.insertSession(session);
         Section section = new Section();
         section.bell = -2;
-        section.bellUri = BellCollection.getInstance().getBell(BellCollection.BELL_IDX_JAP_RHINBOWL_88).getUri().toString();
+        section.bellUri = BellCollection.getBell(BellCollection.BELL_IDX_JAP_RHINBOWL_88).getUri().toString();
         section.bellcount = 1;
         section.bellpause = 1;
         section.duration = 30;
@@ -425,7 +425,7 @@ public class ZazenTimerActivity extends AppCompatActivity implements MainFragmen
         dbOperations.insertSection(session, section);
         Section section2 = new Section();
         section2.bell = -2;
-        section2.bellUri = BellCollection.getInstance().getBell(BellCollection.BELL_IDX_JAP_RHINBOWL_107).getUri().toString();
+        section2.bellUri = BellCollection.getBell(BellCollection.BELL_IDX_JAP_RHINBOWL_107).getUri().toString();
         section2.bellcount = 2;
         section2.bellpause = 3;
         section2.duration = 900;
@@ -434,7 +434,7 @@ public class ZazenTimerActivity extends AppCompatActivity implements MainFragmen
         dbOperations.insertSection(session, section2);
         Section section3 = new Section();
         section3.bell = -2;
-        section3.bellUri = BellCollection.getInstance().getBell(BellCollection.BELL_IDX_JAP_RHINBOWL_88).getUri().toString();
+        section3.bellUri = BellCollection.getBell(BellCollection.BELL_IDX_JAP_RHINBOWL_88).getUri().toString();
         section3.bellcount = 2;
         section3.bellpause = 3;
         section3.duration = 300;
@@ -443,7 +443,7 @@ public class ZazenTimerActivity extends AppCompatActivity implements MainFragmen
         dbOperations.insertSection(session, section3);
         Section section4 = new Section();
         section4.bell = -2;
-        section4.bellUri = BellCollection.getInstance().getBell(BellCollection.BELL_IDX_JAP_RHINBOWL_107).getUri().toString();
+        section4.bellUri = BellCollection.getBell(BellCollection.BELL_IDX_JAP_RHINBOWL_107).getUri().toString();
         section4.bellcount = 2;
         section4.bellpause = 3;
         section4.duration = 900;
@@ -452,7 +452,7 @@ public class ZazenTimerActivity extends AppCompatActivity implements MainFragmen
         dbOperations.insertSection(session, section4);
         Section section5 = new Section();
         section5.bell = -2;
-        section5.bellUri = BellCollection.getInstance().getBell(BellCollection.BELL_IDX_JAP_RHINBOWL_88).getUri().toString();
+        section5.bellUri = BellCollection.getBell(BellCollection.BELL_IDX_JAP_RHINBOWL_88).getUri().toString();
         section5.bellcount = 2;
         section5.bellpause = 3;
         section5.duration = 300;
@@ -461,7 +461,7 @@ public class ZazenTimerActivity extends AppCompatActivity implements MainFragmen
         dbOperations.insertSection(session, section5);
         Section section6 = new Section();
         section6.bell = -2;
-        section6.bellUri = BellCollection.getInstance().getBell(BellCollection.BELL_IDX_JAP_RHINBOWL_107).getUri().toString();
+        section6.bellUri = BellCollection.getBell(BellCollection.BELL_IDX_JAP_RHINBOWL_107).getUri().toString();
         section6.bellcount = 2;
         section6.bellpause = 3;
         section6.duration = 900;
@@ -474,7 +474,7 @@ public class ZazenTimerActivity extends AppCompatActivity implements MainFragmen
         dbOperations.insertSession(session2);
         Section section7 = new Section();
         section7.bell = -2;
-        section7.bellUri = BellCollection.getInstance().getBell(BellCollection.BELL_IDX_TIB_RHINBOWL_230).getUri().toString();
+        section7.bellUri = BellCollection.getBell(BellCollection.BELL_IDX_TIB_RHINBOWL_230).getUri().toString();
         section7.bellcount = 1;
         section7.bellpause = 1;
         section7.duration = 5;
@@ -483,7 +483,7 @@ public class ZazenTimerActivity extends AppCompatActivity implements MainFragmen
         dbOperations.insertSection(session2, section7);
         Section section8 = new Section();
         section8.bell = -2;
-        section8.bellUri = BellCollection.getInstance().getBell(BellCollection.BELL_IDX_JAP_RHINBOWL_107).getUri().toString();
+        section8.bellUri = BellCollection.getBell(BellCollection.BELL_IDX_JAP_RHINBOWL_107).getUri().toString();
         section8.bellcount = 2;
         section8.bellpause = 3;
         section8.duration = 600;
@@ -608,19 +608,19 @@ public class ZazenTimerActivity extends AppCompatActivity implements MainFragmen
         for (Session session : dbOperations.readSessions()) {
             for (Section section : dbOperations.readSections(session.id)) {
                 if (section.bellUri == null || section.bellUri.trim().length() == 0) {
-                    Bell bell = BellCollection.getInstance().getBell(section.bell);
+                    Bell bell = BellCollection.getBell(section.bell);
                     if (bell != null) {
                         section.bellUri = bell.getUri().toString();
                         section.bell = -2;
                         dbOperations.updateSection(section);
                     } else {
-                        section.bellUri = BellCollection.getInstance().getDemoBell().getUri().toString();
+                        section.bellUri = BellCollection.getDemoBell().getUri().toString();
                         section.bell = -2;
                         dbOperations.updateSection(section);
                     }
                 } else if (section.bell == -1) {
                     section.bell = -2;
-                    section.bellUri = BellCollection.getInstance().getDemoBell().getUri().toString();
+                    section.bellUri = BellCollection.getDemoBell().getUri().toString();
                     dbOperations.updateSection(section);
                 }
             }

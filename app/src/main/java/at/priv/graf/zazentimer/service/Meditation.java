@@ -273,9 +273,9 @@ public class Meditation {
     }
 
     public void playBell(Section section) {
-        Bell bellForSection = BellCollection.getInstance().getBellForSection(section);
+        Bell bellForSection = BellCollection.getBellForSection(section);
         if (bellForSection == null) {
-            bellForSection = BellCollection.getInstance().getDemoBell();
+            bellForSection = BellCollection.getDemoBell();
         }
         boolean z = false;
         Iterator<Audio> it = this.audioObjects.iterator();
