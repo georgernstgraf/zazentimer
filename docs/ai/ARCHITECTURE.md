@@ -5,7 +5,9 @@ Overwritten when structural changes occur during a session.
 
 ## Overview
 Android meditation timer (ZazenTimer) targeting API 29-35.
-100% Java, AndroidX libraries, Hilt DI, Room database, Navigation Component, Material Motion transitions, Foreground Service for session lifecycle.
+100% Kotlin, AndroidX libraries, Hilt DI (KSP), Room database (KSP), Navigation Component, Material Motion transitions, Foreground Service for session lifecycle.
+Build: AGP 9.1.1, Gradle 9.x, Kotlin DSL, viewBinding.
+Source: `src/main/kotlin/` (app), `src/test/kotlin/` (unit tests), `src/androidTest/kotlin/` (instrumented tests).
 
 ## App Components
 | Component | Class | Role |
@@ -68,7 +70,10 @@ Overflow menu --[About]--> AlertDialog
 - **Migrations**: 1→2 (settings table), 2→3 (no-op), 3→4 (volume column), 4→5 (recreate tables with explicit NOT NULL)
 
 ## Build Config
-- `BuildConfig.GIT_HASH` — 7-character Git commit hash, injected at build time via `git rev-parse --short=7 HEAD` in `build.gradle`. Used in About dialog.
+- `BuildConfig.GIT_HASH` — 7-character Git commit hash, injected at build time via `git rev-parse --short=7 HEAD` in `build.gradle.kts`. Used in About dialog.
+- AGP 9.1.1, Gradle 9.x, Kotlin DSL, KSP (Room + Hilt), compileSdk 36, minSdk 29, Java 21.
+- ktlint 14.2.0 + detekt 1.23.8 (visibility-only in CI, enforcement deferred to #108).
+- No `kotlinOptions` block — AGP 9.x derives JVM target from `compileOptions`.
 
 ## Timer Architecture (Meditation Flow)
 ```
@@ -122,6 +127,8 @@ User presses Start (Sessions tab or Meditation tab)
 | `scripts/run-stage2.sh` | Instrumented tests on min+max API, detects `$DISPLAY` for Xvfb | Stage 2 |
 | `scripts/run-nightly.sh` | Full matrix all APIs, VPS cron | Stage 3 |
 | `./gradlew assembleDebugAndroidTest` | Build test APK (compile androidTest sources) | — |
+| `./gradlew ktlintCheck` | Kotlin lint (visibility-only, not enforced) | CI |
+| `./gradlew detekt` | Static code analysis (visibility-only, not enforced) | CI |
 | `adb install -r app/build/outputs/apk/debug/app-debug.apk` | Install debug APK | — |
 | `adb shell am instrument -w at.priv.graf.zazentimer.test/at.priv.graf.zazentimer.HiltTestRunner` | All instrumented tests via am instrument (API 35+) | Stage 2/3 |
 

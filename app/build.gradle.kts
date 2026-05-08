@@ -2,6 +2,8 @@ plugins {
     id("com.android.application")
     id("com.google.dagger.hilt.android")
     id("com.google.devtools.ksp")
+    id("org.jlleitschuh.gradle.ktlint")
+    id("io.gitlab.arturbosch.detekt")
 }
 
 android {
@@ -65,6 +67,16 @@ android {
     testOptions {
         execution = "ANDROIDX_TEST_ORCHESTRATOR"
     }
+}
+
+ktlint {
+    // Visibility only — enforcement deferred to #108
+    // CI handles non-failure via continue-on-error in ci.yml
+}
+
+detekt {
+    // Visibility only — enforcement deferred to #108
+    // CI handles non-failure via continue-on-error in ci.yml
 }
 
 tasks.withType<JavaCompile>().configureEach {

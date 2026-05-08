@@ -98,6 +98,33 @@ format specifiers in non-Latin scripts:
 ### Build Verification
 Always run `./gradlew assembleDebug` after any translation changes.
 
+## Kotlin Coding Conventions
+
+### Style
+- All source files in `src/main/kotlin/`, `src/test/kotlin/`, `src/androidTest/kotlin/`.
+- Use Kotlin idioms where they don't change behavior: `val` over `var`, `?.let {}` over `if (x != null)`, `when` over `if-else if` chains.
+- No `fun interface` — use regular interfaces to maintain Java compatibility if needed.
+- SAM conversion for single-method Java interfaces (e.g., `View.OnClickListener { ... }`).
+- Multi-method interfaces use `object : Interface { ... }` syntax.
+- BO classes: `data class` with `var` for Room entities. Auto-generated `toString()` includes all fields.
+- Singletons: Kotlin `object` (e.g., `BellCollection`, `Constants`).
+- Cross-thread fields: `@Volatile` annotation (equivalent to Java's `volatile`).
+
+### Null Safety
+- Avoid `!!` — use `?.` or `?:` with meaningful defaults.
+- Platform types from Java interop should be explicitly typed as nullable/non-null.
+- Use `lateinit var` for fields initialized after construction (e.g., viewBinding).
+
+### Configuration
+- No `kotlinOptions` block in `build.gradle.kts` — AGP 9.x derives JVM target from `compileOptions`.
+- No strict compiler options yet — deferred to #108.
+
+### Linting (visibility-only, enforcement deferred to #108)
+- ktlint 14.2.0: Run via `./gradlew ktlintCheck`. Format via `./gradlew ktlintFormat`.
+- detekt 1.23.8: Run via `./gradlew detekt`.
+- Both run in CI with `continue-on-error: true` — failures are visible but don't block builds.
+- Current codebase has many violations from the mechanical Java→Kotlin conversion. Clean up gradually.
+
 ## Testing
 - Ensure standard `lint` and `./gradlew build` commands pass.
 - After deleting or renaming resource files (layouts, strings, drawables, IDs in `public.xml`), always run `./gradlew clean` before building and testing. Incremental builds can produce stale R.class entries that cause instrumented tests to fail with incorrect resource IDs.

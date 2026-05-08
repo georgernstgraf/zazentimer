@@ -257,3 +257,28 @@ Each entry documents WHAT was decided and WHY.
 - **Reason**: `RootViewWithoutFocusException` is intermittent on Xvfb — not a code issue. Tests that DO get focus all pass, proving code correctness. A single retry after wakeup resolves the transient state without masking real failures.
 - **Considered**: Retrying multiple times (rejected — if focus fails twice, it's a real issue); ignoring focus errors (rejected — would hide real failures).
 - **Tradeoff**: Doubles the worst-case test time for affected API levels (one retry), but eliminates false negatives from transient focus loss.
+
+## 2026-05-08: Java → Kotlin Migration (#88)
+- **Choice**: Mechanical conversion of 41 Java files to Kotlin using Android Studio's converter with minimal manual cleanup. All files in `src/main/kotlin/`. Source sets updated for Kotlin. No refactorings, no deprecation fixes, no MenuProvider migration — all deferred to follow-up issues.
+- **Reason**: The codebase needed to be in Kotlin before any further modernizations (coroutines, compose). A big-bang mechanical conversion avoids the friction of a mixed Java/Kotlin codebase. Refactorings are separated into follow-up issues (#105–#111) to keep the migration auditable.
+- **Considered**: Incremental file-by-file conversion (rejected — mixed codebase adds complexity); full rewrite (rejected — too risky, no test safety net for that magnitude).
+- **Tradeoff**: Some converted code is non-idiomatic Kotlin (e.g., Java-style null checks, manual getters). This is intentional — #105 handles idiom cleanup separately. BO classes became `data class` with `var` fields, auto-generated `toString()`. BellCollection became Kotlin `object`. Constants extracted to dedicated `Constants.kt`. JwtCallCredentials (dead gRPC code) deleted.
+
+## 2026-05-08: AGP 9.x + Gradle 9.x Big-Bang Update (#96)
+- **Choice**: Upgraded directly from AGP 7.4/Gradle 7.5 to AGP 9.1.1/Gradle 9.x in one step, skipping AGP 8.x entirely. Simultaneously converted Groovy build scripts to Kotlin DSL (required by AGP 9.x).
+- **Reason**: AGP 9.x is the stable release line. Incrementally upgrading through 8.x would waste effort on intermediate versions. Kotlin DSL is the future of Gradle Android builds.
+- **Considered**: Incremental upgrade (AGP 7.4→8.0→8.5→9.0) — rejected as unnecessary busywork; staying on Java DSL — rejected (AGP 9.x strongly prefers Kotlin DSL).
+- **Tradeoff**: Big-bang increases risk surface (many variables change at once), but intermediate versions offer no rollback value — the project can always `git revert` to main.
+
+## 2026-05-08: KSP Migration (#98)
+- **Choice**: Migrated both Room and Hilt annotation processing from kapt to KSP. Removed `kotlin-kapt` plugin entirely.
+- **Reason**: KSP is the successor to kapt — faster, first-class Kotlin support, and the direction Google is moving all annotation processing.
+- **Considered**: Keeping kapt for Hilt (rejected — Hilt ≥2.51.1 supports KSP).
+- **Tradeoff**: `room.schemaLocation` must be configured via `ksp { arg(...) }` instead of `kapt { arguments { arg(...) } }`. Schema export enabled for migration validation.
+
+## 2026-05-08: ktlint + detekt Visibility-Only (#102)
+- **Choice**: Added ktlint 14.2.0 and detekt 1.23.8 as Gradle plugins with `continue-on-error: true` in CI. No enforcement yet.
+- **Reason**: The codebase just completed Kotlin conversion. Immediately failing builds on lint violations would be disruptive. Visibility-first approach lets the team see the lint output and address issues gradually in #108.
+- **Considered**: Enabling enforcement immediately (rejected — too many violations from mechanical conversion); skipping linting entirely (rejected — need baseline awareness).
+- **Tradeoff**: CI will show lint failures as warnings, not blockers. Enforcement deferred to #108 (post-88 follow-up). detekt 1.23.8 is latest stable (1.24.0 not yet released).
+- **Compiler options**: No `kotlinOptions` block needed — AGP 9.x derives JVM target from `compileOptions` (Java 21). No strict compiler options (`-Xexplicit-api=strict`, etc.) — deferred to #108.
