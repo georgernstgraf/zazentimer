@@ -135,68 +135,20 @@ class MeditationViewModel @Inject constructor(
             sessionId = prefs.getInt(ZazenTimerActivity.PREF_KEY_LAST_SESSION, -1)
         }
         if (sessionId == -1 || dbOperations == null) {
-            meditationState.setValue(
-                MeditationUiState(
-                    0, 0, 0, 0, 0, 0, 0,
-                    "", "", "",
-                    "",
-                    false, false
-                )
-            )
+            meditationState.setValue(SectionArcCalculator.emptyState())
             return
         }
         val session: Session? = dbOperations.readSession(sessionId)
         if (session == null) {
-            meditationState.setValue(
-                MeditationUiState(
-                    0, 0, 0, 0, 0, 0, 0,
-                    "", "", "",
-                    "",
-                    false, false
-                )
-            )
+            meditationState.setValue(SectionArcCalculator.emptyState())
             return
         }
         val sections: Array<Section>? = dbOperations.readSections(sessionId)
         if (sections == null || sections.isEmpty()) {
-            meditationState.setValue(
-                MeditationUiState(
-                    0, 0, 0, 0, 0, 0, 0,
-                    "", "", "",
-                    session.name ?: "",
-                    false, false
-                )
-            )
+            meditationState.setValue(SectionArcCalculator.emptyState(session.name ?: ""))
             return
         }
-        var totalSessionTime = 0
-        for (s in sections) {
-            totalSessionTime += s.duration
-        }
-        val currentStartSeconds = 0
-        val nextEndSeconds = if (sections.size > 1) sections[0].duration + sections[1].duration else totalSessionTime
-        val nextStartSeconds = sections[0].duration
-        val prevStartSeconds = 0
-        val currentSectionName = sections[0].name ?: ""
-        val nextSectionName = if (sections.size > 1) sections[1].name ?: "" else ""
-        val nextNextSectionName = if (sections.size > 2) sections[2].name ?: "" else ""
-        meditationState.setValue(
-            MeditationUiState(
-                currentStartSeconds,
-                totalSessionTime,
-                nextEndSeconds,
-                nextStartSeconds,
-                prevStartSeconds,
-                0,
-                0,
-                currentSectionName,
-                nextSectionName,
-                nextNextSectionName,
-                session.name ?: "",
-                false,
-                false
-            )
-        )
+        meditationState.setValue(SectionArcCalculator.computeIdleState(session, sections))
     }
 
     private fun pollMeditationState() {

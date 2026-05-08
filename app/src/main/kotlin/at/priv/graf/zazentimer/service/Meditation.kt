@@ -53,10 +53,7 @@ class Meditation(
         this.totalSessionTime = 0
         this.currentSectionIdx = -1
         this.currentSectionIdx = 0
-        this.totalSessionTime = 0
-        for (section in sections) {
-            this.totalSessionTime += section.duration
-        }
+        this.totalSessionTime = MeditationTimer.getTotalSessionTime(sections)
     }
 
     fun getSessionName(): String = sessionName
@@ -182,57 +179,31 @@ class Meditation(
 
     fun getTotalSessionTime(): Int = totalSessionTime
 
-    fun getCurrentSessionTime(): Int = getCurrentStartSeconds() + getSectionElapsedSeconds()
+    fun getCurrentSessionTime(): Int = MeditationTimer.getCurrentSessionTime(getCurrentStartSeconds(), getSectionElapsedSeconds())
 
     fun isPaused(): Boolean = paused
 
     fun isStopped(): Boolean = stopping
 
-    fun getCurrentStartSeconds(): Int {
-        var total = 0
-        for (i in 0..currentSectionIdx - 1) {
-            total += sections[i].duration
-        }
-        return total
-    }
+    fun getCurrentStartSeconds(): Int = MeditationTimer.getCurrentStartSeconds(sections, currentSectionIdx)
 
-    fun getNextEndSeconds(): Int {
-        var total = 0
-        var i = 0
-        while (i <= currentSectionIdx + 1 && i < sections.size) {
-            total += sections[i].duration
-            i++
-        }
-        return total
-    }
+    fun getNextEndSeconds(): Int = MeditationTimer.getNextEndSeconds(sections, currentSectionIdx)
 
-    fun getNextStartSeconds(): Int {
-        var total = 0
-        for (i in 0..currentSectionIdx) {
-            total += sections[i].duration
-        }
-        return total
-    }
+    fun getNextStartSeconds(): Int = MeditationTimer.getNextStartSeconds(sections, currentSectionIdx)
 
-    fun getPrevStartSeconds(): Int {
-        var total = 0
-        for (i in 0..currentSectionIdx - 2) {
-            total += sections[i].duration
-        }
-        return total
-    }
+    fun getPrevStartSeconds(): Int = MeditationTimer.getPrevStartSeconds(sections, currentSectionIdx)
 
     fun getNextSectionName(): String = if (currentSectionIdx < sections.size - 1) sections[currentSectionIdx + 1].name ?: "" else ""
 
     fun getNextNextSectionName(): String = if (currentSectionIdx < sections.size - 2) sections[currentSectionIdx + 2].name ?: "" else ""
 
     fun getSectionElapsedSeconds(): Int {
-        val round: Int = if (paused) {
+        val raw: Int = if (paused) {
             pauseSectionSeconds
         } else {
             Math.round(((System.currentTimeMillis() / 1000) - (sectionStartTime / 1000)).toFloat()) + pauseSectionSeconds
         }
-        return Math.min(round, getCurrentSection().duration)
+        return MeditationTimer.getSectionElapsedSeconds(raw, getCurrentSection().duration)
     }
 
     private fun releaseAudioObjects() {

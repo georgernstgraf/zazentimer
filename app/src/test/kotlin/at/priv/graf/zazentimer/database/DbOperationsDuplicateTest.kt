@@ -60,8 +60,8 @@ class DbOperationsDuplicateTest {
 
         val originalSections = dbOps.readSections(session.id)
         val copiedSections = dbOps.readSections(newId)
-        assertThat(copiedSections).hasSize(2)
-        assertThat(copiedSections).hasSize(originalSections.size)
+        assertThat(copiedSections.size).isEqualTo(2)
+        assertThat(copiedSections.size).isEqualTo(originalSections.size)
         assertThat(copiedSections[0].id).isNotEqualTo(originalSections[0].id)
         assertThat(copiedSections[0].name).isEqualTo("Section 1")
         assertThat(copiedSections[0].duration).isEqualTo(60)

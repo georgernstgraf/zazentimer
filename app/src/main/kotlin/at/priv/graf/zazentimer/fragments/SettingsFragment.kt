@@ -17,21 +17,15 @@ import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
 import at.priv.graf.zazentimer.R
 import at.priv.graf.zazentimer.ZazenTimerActivity
+import at.priv.graf.zazentimer.backup.BackupManager
 import at.priv.graf.zazentimer.database.AppDatabase
 import at.priv.graf.zazentimer.database.DbOperations
 import com.google.android.material.transition.MaterialFadeThrough
 import dagger.hilt.android.AndroidEntryPoint
 import java.io.File
-import java.io.FileInputStream
 import java.io.FileOutputStream
-import java.io.InputStream
-import java.io.OutputStream
-import java.util.Enumeration
 import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
-import java.util.zip.ZipEntry
-import java.util.zip.ZipFile
-import java.util.zip.ZipOutputStream
 import javax.inject.Inject
 
 @AndroidEntryPoint
@@ -42,6 +36,15 @@ class SettingsFragment : PreferenceFragmentCompat() {
 
     @Inject
     lateinit var dbOperations: DbOperations
+
+    private val backupManager: BackupManager by lazy {
+        BackupManager(
+            databaseFileProvider = { requireActivity().getDatabasePath(AppDatabase.DATABASE_NAME) },
+            filesDirProvider = { requireActivity().filesDir },
+            onCloseDatabase = { dbOperations.close() },
+            onReopenDatabase = { dbOperations.reopen() }
+        )
+    }
 
     private val backupLauncher: ActivityResultLauncher<Intent> = registerForActivityResult(
         ActivityResultContracts.StartActivityForResult()
@@ -155,7 +158,14 @@ class SettingsFragment : PreferenceFragmentCompat() {
 
     private fun doBackup(uri: Uri) {
         executor.execute {
-            val success = doRealBackup(uri)
+            val os = requireActivity().contentResolver.openOutputStream(uri)
+            val success = if (os != null) {
+                backupManager.backup(os)
+            } else {
+                Log.e(TAG, "Could not open output stream for URI")
+                dbOperations.reopen()
+                false
+            }
             uiHandler.post {
                 if (success) {
                     Toast.makeText(requireActivity(), R.string.backup_success_text, 0).show()
@@ -166,49 +176,30 @@ class SettingsFragment : PreferenceFragmentCompat() {
         }
     }
 
-    private fun doRealBackup(uri: Uri): Boolean {
-        Log.d(TAG, "Backup to URI: $uri")
-        var failed = false
-        try {
-            dbOperations.close()
-            val os = requireActivity().contentResolver.openOutputStream(uri)
-            if (os == null) {
-                Log.e(TAG, "Could not open output stream for URI")
-                dbOperations.reopen()
-                return false
-            }
-            val zos = ZipOutputStream(os)
-            val ze = ZipEntry("zentimer")
-            zos.putNextEntry(ze)
-            if (!sendFile(requireActivity().getDatabasePath("zentimer"), zos)) {
-                failed = true
-            }
-            zos.closeEntry()
-            val filesDir = requireActivity().filesDir
-            val listFiles = filesDir.listFiles { f -> f.name != "InstantRun" }
-            if (listFiles != null) {
-                for (file in listFiles) {
-                    val ze2 = ZipEntry(file.name)
-                    zos.putNextEntry(ze2)
-                    if (!sendFile(file, zos)) {
-                        failed = true
-                    }
-                    zos.closeEntry()
-                }
-            }
-            zos.close()
-            dbOperations.reopen()
-        } catch (e: Exception) {
-            Log.e(TAG, "IO/Error during backup", e)
-            failed = true
-            dbOperations.reopen()
-        }
-        return !failed
-    }
-
     private fun doRestore(uri: Uri) {
         executor.execute {
-            val result = doRealRestore(uri)
+            var result = 2
+            try {
+                val tempFile = File.createTempFile("restore", ".zip", requireActivity().cacheDir)
+                val `is` = requireActivity().contentResolver.openInputStream(uri)
+                if (`is` == null) {
+                    Log.e(TAG, "Could not open input stream for URI")
+                    result = 1
+                } else {
+                    val fos = FileOutputStream(tempFile)
+                    val buf = ByteArray(32768)
+                    var read: Int
+                    while ((`is`.read(buf).also { read = it }) > 0) {
+                        fos.write(buf, 0, read)
+                    }
+                    fos.close()
+                    `is`.close()
+                    result = backupManager.restore(tempFile)
+                    tempFile.delete()
+                }
+            } catch (e: Exception) {
+                Log.e(TAG, "Error restoring", e)
+            }
             uiHandler.post {
                 if (result == 0) {
                     Toast.makeText(requireActivity(), R.string.restore_success_text, 0).show()
@@ -218,83 +209,6 @@ class SettingsFragment : PreferenceFragmentCompat() {
                     Toast.makeText(requireActivity(), R.string.restore_error_text, 0).show()
                 }
             }
-        }
-    }
-
-    private fun doRealRestore(uri: Uri): Int {
-        Log.d(TAG, "Restore from URI: $uri")
-        var failed = false
-        try {
-            val tempFile = File.createTempFile("restore", ".zip", requireActivity().cacheDir)
-            val `is` = requireActivity().contentResolver.openInputStream(uri)
-            if (`is` == null) {
-                Log.e(TAG, "Could not open input stream for URI")
-                return 1
-            }
-            val fos = FileOutputStream(tempFile)
-            val buf = ByteArray(32768)
-            var read: Int
-            while ((`is`.read(buf).also { read = it }) > 0) {
-                fos.write(buf, 0, read)
-            }
-            fos.close()
-            `is`.close()
-            val zipFile = ZipFile(tempFile)
-            val entries: Enumeration<out ZipEntry> = zipFile.entries()
-            while (entries.hasMoreElements()) {
-                val entry = entries.nextElement()
-                if (entry.name == AppDatabase.DATABASE_NAME) {
-                    dbOperations.close()
-                    if (!receiveFile(zipFile.getInputStream(entry), requireActivity().getDatabasePath(AppDatabase.DATABASE_NAME))) {
-                        failed = true
-                    }
-                    dbOperations.reopen()
-                } else if (!receiveFile(zipFile.getInputStream(entry), File(requireActivity().filesDir, entry.name))) {
-                    failed = true
-                }
-            }
-            zipFile.close()
-            tempFile.delete()
-        } catch (e: Exception) {
-            Log.e(TAG, "Error restoring", e)
-            failed = true
-        }
-        return if (failed) 2 else 0
-    }
-
-    private fun receiveFile(inputStream: InputStream, file: File): Boolean {
-        Log.i(TAG, "receiving File from zip: " + file.name)
-        try {
-            val fileOutputStream = FileOutputStream(file)
-            val bArr = ByteArray(32768)
-            var read = inputStream.read(bArr)
-            while (read > 0) {
-                fileOutputStream.write(bArr, 0, read)
-                read = inputStream.read(bArr)
-            }
-            fileOutputStream.close()
-            return true
-        } catch (e: Exception) {
-            Log.e(TAG, "Error receiving file from zip archive", e)
-            return false
-        }
-    }
-
-    private fun sendFile(file: File, outputStream: OutputStream): Boolean {
-        Log.i(TAG, "sending File to zip: " + file.name)
-        try {
-            val fileInputStream = FileInputStream(file)
-            val bArr = ByteArray(32768)
-            var read = fileInputStream.read(bArr)
-            while (read > 0) {
-                outputStream.write(bArr, 0, read)
-                read = fileInputStream.read(bArr)
-            }
-            fileInputStream.close()
-            return true
-        } catch (e: Exception) {
-            Log.e(TAG, "Error sending file to zip archive", e)
-            return false
         }
     }
 
