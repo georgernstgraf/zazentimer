@@ -10,3 +10,4 @@ output/
 .DS_Store
 *crash*.txt
 .venv/
+schemas/

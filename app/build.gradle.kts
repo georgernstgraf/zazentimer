@@ -1,6 +1,7 @@
 plugins {
     id("com.android.application")
     id("com.google.dagger.hilt.android")
+    id("com.google.devtools.ksp")
 }
 
 android {
@@ -18,6 +19,10 @@ android {
         testInstrumentationRunnerArguments["clearPackageData"] = "true"
 
         buildConfigField("String", "GIT_HASH", "\"${providers.exec { commandLine("git", "rev-parse", "--short=7", "HEAD") }.standardOutput.asText.get().trim()}\"")
+
+        ksp {
+            arg("room.schemaLocation", "$projectDir/schemas")
+        }
     }
 
     buildTypes {
@@ -70,11 +75,11 @@ dependencies {
     implementation("androidx.navigation:navigation-fragment:2.9.7")
     implementation("androidx.navigation:navigation-ui:2.9.7")
     implementation("androidx.room:room-runtime:2.8.4")
-    annotationProcessor("androidx.room:room-compiler:2.8.4")
+    ksp("androidx.room:room-compiler:2.8.4")
     implementation("com.google.dagger:hilt-android:2.59.2")
-    annotationProcessor("com.google.dagger:hilt-compiler:2.59.2")
+    ksp("com.google.dagger:hilt-compiler:2.59.2")
     androidTestImplementation("com.google.dagger:hilt-android-testing:2.59.2")
-    androidTestAnnotationProcessor("com.google.dagger:hilt-compiler:2.59.2")
+    kspAndroidTest("com.google.dagger:hilt-compiler:2.59.2")
 
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.3.0")
