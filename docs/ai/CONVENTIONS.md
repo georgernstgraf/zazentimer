@@ -152,7 +152,7 @@ Always run `./gradlew assembleDebug` after any translation changes.
 
 ## CI
 - **Stage 1 CI** (`ci.yml`): Build AAB + unit tests. Triggers on push to main only. ~4 min.
-- JDK version: 17 (AGP 7.4+ requirement)
+- JDK version: 21
 - Keep GitHub Actions versions up to date (`actions/checkout@v4`, `actions/setup-java@v4`) to avoid Node.js deprecation warnings.
 - Release AAB signing uses GitHub Secrets (`RELEASE_KEYSTORE_BASE64`, `KEYSTORE_PASSWORD`, `KEY_ALIAS`, `KEY_PASSWORD`). Keystore must be decoded to `$RUNNER_TEMP/` using an absolute path.
 - The keystore and the private key are stored pgp-encrypted in georgs svn under private/
