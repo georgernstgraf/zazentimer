@@ -5,12 +5,12 @@ plugins {
 
 android {
     namespace = "at.priv.graf.zazentimer"
-    compileSdk = 34
+    compileSdk = 36
 
     defaultConfig {
         applicationId = "at.priv.graf.zazentimer"
         minSdk = 29
-        targetSdk = 34
+        targetSdk = 36
         versionCode = if (project.hasProperty("versionCode")) project.property("versionCode").toString().toInt() else 33
         versionName = if (project.hasProperty("versionName")) project.property("versionName").toString() else "2.20"
 
@@ -38,8 +38,15 @@ android {
     }
 
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_17
-        targetCompatibility = JavaVersion.VERSION_17
+        sourceCompatibility = JavaVersion.VERSION_21
+        targetCompatibility = JavaVersion.VERSION_21
+    }
+
+    sourceSets {
+        getByName("main") {
+            java.srcDir("src/main/java")
+            java.srcDir("src/main/kotlin")
+        }
     }
 
     testOptions {
@@ -52,10 +59,11 @@ tasks.withType<JavaCompile>().configureEach {
 }
 
 dependencies {
+    implementation("org.jetbrains.kotlin:kotlin-stdlib:2.3.21")
     implementation("androidx.appcompat:appcompat:1.7.1")
     implementation("androidx.preference:preference:1.2.1")
     implementation("com.google.android.material:material:1.13.0")
-    implementation("androidx.recyclerview:recyclerview:1.3.2")
+    implementation("androidx.recyclerview:recyclerview:1.4.0")
     implementation("androidx.lifecycle:lifecycle-viewmodel:2.10.0")
     implementation("androidx.lifecycle:lifecycle-livedata:2.10.0")
     implementation("androidx.lifecycle:lifecycle-service:2.10.0")
