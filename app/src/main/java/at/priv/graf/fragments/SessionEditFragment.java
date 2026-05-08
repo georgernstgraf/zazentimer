@@ -17,7 +17,7 @@ import android.view.ViewGroup;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
-import at.priv.graf.zazentimer.DbOperations;
+import at.priv.graf.zazentimer.database.DbOperations;
 import at.priv.graf.zazentimer.MessageView;
 import at.priv.graf.zazentimer.R;
 import at.priv.graf.zazentimer.ZazenTimerActivity;

@@ -3,7 +3,7 @@ package at.priv.graf.zazentimer.audio;
 import android.content.Context;
 import android.net.Uri;
 import androidx.annotation.Nullable;
-import at.priv.graf.zazentimer.Bell;
+import at.priv.graf.zazentimer.bo.Bell;
 import at.priv.graf.zazentimer.R;
 import at.priv.graf.zazentimer.bo.Section;
 import java.io.File;

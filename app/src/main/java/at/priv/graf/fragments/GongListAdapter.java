@@ -6,7 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
-import at.priv.graf.zazentimer.Bell;
+import at.priv.graf.zazentimer.bo.Bell;
 import at.priv.graf.zazentimer.R;
 
 public class GongListAdapter extends ArrayAdapter<Bell> {

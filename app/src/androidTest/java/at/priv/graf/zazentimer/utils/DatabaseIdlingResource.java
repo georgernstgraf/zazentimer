@@ -4,7 +4,7 @@ import androidx.test.espresso.IdlingResource;
 
 import java.util.concurrent.atomic.AtomicBoolean;
 
-import at.priv.graf.zazentimer.DbOperations;
+import at.priv.graf.zazentimer.database.DbOperations;
 
 public class DatabaseIdlingResource implements IdlingResource {
 

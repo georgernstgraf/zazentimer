@@ -11,7 +11,7 @@ import java.util.concurrent.Executors;
 import android.os.Build;
 import android.os.PowerManager;
 import android.util.Log;
-import at.priv.graf.zazentimer.Bell;
+import at.priv.graf.zazentimer.bo.Bell;
 import at.priv.graf.zazentimer.ZazenTimerActivity;
 import at.priv.graf.zazentimer.audio.Audio;
 import at.priv.graf.zazentimer.audio.BellCollection;

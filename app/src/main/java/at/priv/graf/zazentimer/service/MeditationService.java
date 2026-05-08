@@ -9,7 +9,7 @@ import android.content.Intent;
 import android.os.IBinder;
 import android.util.Log;
 import androidx.core.app.NotificationCompat;
-import at.priv.graf.zazentimer.DbOperations;
+import at.priv.graf.zazentimer.database.DbOperations;
 import at.priv.graf.zazentimer.R;
 import at.priv.graf.zazentimer.bo.Session;
 import at.priv.graf.zazentimer.ZazenTimerActivity;

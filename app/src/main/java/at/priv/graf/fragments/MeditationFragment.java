@@ -16,7 +16,7 @@ import android.widget.TextView;
 import android.app.AlertDialog;
 import androidx.navigation.Navigation;
 import com.google.android.material.transition.MaterialSharedAxis;
-import at.priv.graf.zazentimer.DbOperations;
+import at.priv.graf.zazentimer.database.DbOperations;
 import at.priv.graf.zazentimer.R;
 import at.priv.graf.zazentimer.ZazenTimerActivity;
 import at.priv.graf.zazentimer.bo.Section;

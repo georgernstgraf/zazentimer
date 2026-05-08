@@ -13,7 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
-import at.priv.graf.zazentimer.DbOperations;
+import at.priv.graf.zazentimer.database.DbOperations;
 import at.priv.graf.zazentimer.RunOnConnect;
 import at.priv.graf.zazentimer.ZazenTimerActivity;
 import dagger.hilt.android.lifecycle.HiltViewModel;

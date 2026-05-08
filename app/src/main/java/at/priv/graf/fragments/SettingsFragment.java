@@ -17,7 +17,7 @@ import androidx.preference.PreferenceFragmentCompat;
 import android.util.Log;
 import android.widget.Toast;
 import com.google.android.material.transition.MaterialFadeThrough;
-import at.priv.graf.zazentimer.DbOperations;
+import at.priv.graf.zazentimer.database.DbOperations;
 import at.priv.graf.zazentimer.R;
 import at.priv.graf.zazentimer.ZazenTimerActivity;
 import at.priv.graf.zazentimer.database.AppDatabase;

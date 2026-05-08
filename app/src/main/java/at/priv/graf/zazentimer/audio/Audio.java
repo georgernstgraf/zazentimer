@@ -6,7 +6,7 @@ import android.media.AudioAttributes;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.util.Log;
-import at.priv.graf.zazentimer.Bell;
+import at.priv.graf.zazentimer.bo.Bell;
 import at.priv.graf.zazentimer.bo.Section;
 
 public class Audio implements MediaPlayer.OnCompletionListener {
