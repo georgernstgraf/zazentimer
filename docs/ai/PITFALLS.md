@@ -83,3 +83,6 @@
 - **`am instrument` exit code is 0 even when tests fail.** Parse output for `Failures: N` to detect test failures.
 - **`am instrument` without orchestrator shares state between tests.** Each test class must call `resetDatabaseForTest()` in `@Before` if it modifies database state. `SessionCrudTest` was missing this call.
 - **Soft keyboard consumes pressBack().** After typing text, `Espresso.pressBack()` dismisses the keyboard instead of navigating back. Call `closeSoftKeyboard()` before `pressBack()`.
+- **`set -e` + `grep -c` kills scripts.** `grep -c` returns exit code 1 when no matches are found, which triggers `set -e` and terminates the script. Always use `grep -c ... || true` in scripts with `set -e`.
+- **`setsid` for process detachment from bash tool.** `nohup` does not survive the bash tool's timeout — the process tree gets killed when the tool times out. Use `setsid` to create a new session and fully detach from the parent process tree.
+- **`clean_device_packages()` must only remove old-namespace packages.** Only uninstall `de.gaffga.android.zazentimer` (legacy namespace). Do not remove current-namespace (`at.priv.graf.zazentimer`) or test framework packages (`androidx.test.orchestrator`, `androidx.test.services`).

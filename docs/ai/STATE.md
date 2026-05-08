@@ -1,6 +1,6 @@
 # Project State
 
-Current status as of 2026-05-07.
+Current status as of 2026-05-08.
 
 ## Current Focus
 No active focus. All nightly tests pass (API 29-35). Next: #64 Play Store sub-issues or #88 Kotlin migration.

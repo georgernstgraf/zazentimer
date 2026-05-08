@@ -245,3 +245,15 @@ Each entry documents WHAT was decided and WHY.
 - **Reason**: `allowMainThreadQueries()` is a Room anti-pattern that hides main-thread I/O. `Notification.Builder` is deprecated in favor of `NotificationCompat.Builder`. `onBackPressed()` is deprecated since API 33. `lintOptions` and `allprojects` are deprecated Gradle DSL. The `package` attribute in AndroidManifest is redundant with `namespace` in `build.gradle`.
 - **Considered**: Deferring Room fix to coroutines migration (#106); keeping `allowMainThreadQueries()` with a TODO.
 - **Tradeoff**: `ExecutorService.submit().get()` still blocks the calling thread (UI thread for reads), but Room queries run off-main-thread. Coroutines migration (#106) will make reads truly async later. Build config changes (`settings.gradle`, `lint`) are forward-compatible with AGP 9.x upgrade (#96).
+
+## 2026-05-07: Extending `am instrument` to API 33+
+- **Choice**: Use `adb shell am instrument` directly (instead of `./gradlew connectedDebugAndroidTest`) for all API levels 33 and above, not just 35+.
+- **Reason**: Gradle UTP causes `RootViewWithoutFocusException` (`has-window-focus=false`) on API 33 and 34 as well, not just 35+. The `am instrument` approach avoids UTP entirely and works reliably across all affected API levels.
+- **Considered**: Keeping `am instrument` only for API 35+ and using Gradle UTP for 33/34 (rejected — focus errors are intermittent but real on 33/34).
+- **Tradeoff**: No HTML test report for API 33+, but output parsing for `Failures: N` gives reliable pass/fail detection.
+
+## 2026-05-07: Retry Mechanism for Intermittent Focus Errors
+- **Choice**: Added a retry mechanism in test scripts: if `RootViewWithoutFocusException` is detected in `am instrument` output, wake up the emulator (`svc power stayon true` + `KEYCODE_WAKEUP` + `KEYCODE_HOME`) and retry the test run once.
+- **Reason**: `RootViewWithoutFocusException` is intermittent on Xvfb — not a code issue. Tests that DO get focus all pass, proving code correctness. A single retry after wakeup resolves the transient state without masking real failures.
+- **Considered**: Retrying multiple times (rejected — if focus fails twice, it's a real issue); ignoring focus errors (rejected — would hide real failures).
+- **Tradeoff**: Doubles the worst-case test time for affected API levels (one retry), but eliminates false negatives from transient focus loss.

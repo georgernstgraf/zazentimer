@@ -109,9 +109,9 @@ Always run `./gradlew assembleDebug` after any translation changes.
 - **Stage 3 — Nightly Full Matrix (02:00 UTC, VPS cron):** All API levels (29-35), full test suite. Runs on VPS via cron. Auto-creates GitHub Issue on failure (label: `nightly-failure`). Run via `scripts/run-nightly.sh`.
 
 ### `@RequiresDisplay` Annotation
-- Annotate instrumented test methods that require a real display surface.
-- Currently annotated: `SettingsTest.testBackup`, `SettingsTest.testRestore`, `SectionEditTest.testBellSoundPlayback`.
-- All 3 tests pass under Xvfb (virtual display). The annotation remains as a safety marker.
+- Annotation kept as inert safety marker in the `androidTest` source set. Not used on any test methods.
+- `@RequiresDisplay` annotations were removed from `SettingsTest.java` and `SectionEditTest.java` — Xvfb everywhere makes headless filtering unnecessary.
+- All display-dependent tests pass under Xvfb (virtual display).
 
 ## Git Workflow
 - **Issue management:** Use the `issue-workflow` skill for all GitHub issue operations (start, commit, finish). Every commit must reference a GitHub issue number.
