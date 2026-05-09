@@ -4,12 +4,12 @@ Open tasks for next agent session.
 
 ## Active Issues
 
-1. [ ] **#132 — Instrumentation script consolidation.** Script rewritten. Docs update in progress.
-2. [ ] **#64 — Play Store**. Sub-issues #114 (AAB build) and #113 (privacy/legal) ready for implementation.
+1. [ ] **#64 — Play Store**. Sub-issues #114 (AAB build) and #113 (privacy/legal) ready for implementation.
 
 ## Completed
 
-- [x] **#88 — Java → Kotlin migration** (Epic). All 7 phases + 8 follow-ups completed 2026-05-09. Sub-issue #132 in progress.
+- [x] **#88 — Java → Kotlin migration** (Epic). All 7 phases + 8 follow-ups completed 2026-05-09.
+- [x] **#132 — Instrumentation script consolidation**. Completed 2026-05-09.
 - [x] **#126 — Comprehensive unit & integration test suite** (157 tests). Completed 2026-05-09.
 
 ## Key Context

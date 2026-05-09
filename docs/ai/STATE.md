@@ -3,7 +3,7 @@
 Current status as of 2026-05-09.
 
 ## Current Focus
-#132 Instrumentation script consolidation in progress. Next: #64 Play Store.
+#132 instrumentation script consolidation complete. Next: #64 Play Store.
 
 ## Completed (this cycle)
 - [x] #88 Java → Kotlin migration — all 7 phases + 7 follow-ups complete
@@ -28,7 +28,7 @@ Current status as of 2026-05-09.
   - #129: Room integration tests (34 tests)
   - #130: Logic extraction + tests (57 tests, 3 new production classes)
   - #131: Framework-dependent tests (34 tests)
-- [ ] #132 Fail-fast + short mode for instrumented tests, auto-tag green builds, consolidate scripts (in progress)
+- [x] #132 Instrumentation script consolidation — `run-instrumentation.sh` with fail-fast default, `--continue-on-error`, `--api`, auto-tag
 
 ## Completed (previous sessions)
 - [x] #115 CI/CD pipeline overhaul (3-stage pipeline, tag-based releases)
@@ -41,7 +41,6 @@ Current status as of 2026-05-09.
 - [x] #38 Full UI test plan automation
 
 ## Pending
-- [ ] #132 Instrumentation script consolidation (in progress)
 - [ ] #64 Play Store — #114 (AAB build), #113 (privacy/legal)
 
 ## Known Issues
