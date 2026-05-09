@@ -28,6 +28,7 @@ import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.transition.MaterialSharedAxis
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
 import javax.inject.Inject
 
 @AndroidEntryPoint
@@ -213,7 +214,7 @@ class SessionEditFragment : Fragment() {
         session?.let { s ->
             s.name = binding.textSitzungName.text.toString()
             s.description = binding.textSitzungBeschreibung.text.toString()
-            lifecycleScope.launch {
+            runBlocking {
                 for (section in sectionsToUpdate) {
                     dbOperations.updateSection(section)
                 }

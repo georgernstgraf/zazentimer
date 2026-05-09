@@ -40,7 +40,9 @@ import at.priv.graf.zazentimer.fragments.MainFragment
 import at.priv.graf.zazentimer.service.MeditationService
 import at.priv.graf.zazentimer.service.MeditationViewModel
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 @AndroidEntryPoint
@@ -347,86 +349,88 @@ class ZazenTimerActivity :
     }
 
     private suspend fun createDemoSessions() {
-        val session = Session()
-        session.description = resources.getString(R.string.demo_sess1_description)
-        session.name = resources.getString(R.string.demo_sess1_name)
-        dbOperations.insertSession(session)
-        val section = Section()
-        section.bell = -2
-        section.bellUri = BellCollection.getBell(BellCollection.BELL_IDX_JAP_RHINBOWL_88)?.uri?.toString() ?: return
-        section.bellcount = 1
-        section.bellpause = 1
-        section.duration = 30
-        section.name = resources.getString(R.string.demo_sess1_sec1_name)
-        section.rank = 1
-        dbOperations.insertSection(session, section)
-        val section2 = Section()
-        section2.bell = -2
-        section2.bellUri = BellCollection.getBell(BellCollection.BELL_IDX_JAP_RHINBOWL_107)?.uri?.toString() ?: return
-        section2.bellcount = 2
-        section2.bellpause = 3
-        section2.duration = 900
-        section2.name = resources.getString(R.string.demo_sess1_sec2_name)
-        section2.rank = 2
-        dbOperations.insertSection(session, section2)
-        val section3 = Section()
-        section3.bell = -2
-        section3.bellUri = BellCollection.getBell(BellCollection.BELL_IDX_JAP_RHINBOWL_88)?.uri?.toString() ?: return
-        section3.bellcount = 2
-        section3.bellpause = 3
-        section3.duration = 300
-        section3.name = resources.getString(R.string.demo_sess1_sec3_name)
-        section3.rank = 3
-        dbOperations.insertSection(session, section3)
-        val section4 = Section()
-        section4.bell = -2
-        section4.bellUri = BellCollection.getBell(BellCollection.BELL_IDX_JAP_RHINBOWL_107)?.uri?.toString() ?: return
-        section4.bellcount = 2
-        section4.bellpause = 3
-        section4.duration = 900
-        section4.name = resources.getString(R.string.demo_sess1_sec4_name)
-        section4.rank = 4
-        dbOperations.insertSection(session, section4)
-        val section5 = Section()
-        section5.bell = -2
-        section5.bellUri = BellCollection.getBell(BellCollection.BELL_IDX_JAP_RHINBOWL_88)?.uri?.toString() ?: return
-        section5.bellcount = 2
-        section5.bellpause = 3
-        section5.duration = 300
-        section5.name = resources.getString(R.string.demo_sess1_sec5_name)
-        section5.rank = 5
-        dbOperations.insertSection(session, section5)
-        val section6 = Section()
-        section6.bell = -2
-        section6.bellUri = BellCollection.getBell(BellCollection.BELL_IDX_JAP_RHINBOWL_107)?.uri?.toString() ?: return
-        section6.bellcount = 2
-        section6.bellpause = 3
-        section6.duration = 900
-        section6.name = resources.getString(R.string.demo_sess1_sec6_name)
-        section6.rank = 6
-        dbOperations.insertSection(session, section6)
-        val session2 = Session()
-        session2.description = resources.getString(R.string.demo_sess2_description)
-        session2.name = resources.getString(R.string.demo_sess2_name)
-        dbOperations.insertSession(session2)
-        val section7 = Section()
-        section7.bell = -2
-        section7.bellUri = BellCollection.getBell(BellCollection.BELL_IDX_TIB_RHINBOWL_230)?.uri?.toString() ?: return
-        section7.bellcount = 1
-        section7.bellpause = 1
-        section7.duration = 5
-        section7.name = resources.getString(R.string.demo_sess1_sec1_name)
-        section7.rank = 1
-        dbOperations.insertSection(session2, section7)
-        val section8 = Section()
-        section8.bell = -2
-        section8.bellUri = BellCollection.getBell(BellCollection.BELL_IDX_JAP_RHINBOWL_107)?.uri?.toString() ?: return
-        section8.bellcount = 2
-        section8.bellpause = 3
-        section8.duration = 600
-        section8.name = resources.getString(R.string.demo_sess1_sec2_name)
-        section8.rank = 2
-        dbOperations.insertSection(session2, section8)
+        withContext(Dispatchers.IO) {
+            val session = Session()
+            session.description = resources.getString(R.string.demo_sess1_description)
+            session.name = resources.getString(R.string.demo_sess1_name)
+            dbOperations.insertSession(session)
+            val section = Section()
+            section.bell = -2
+            section.bellUri = BellCollection.getBell(BellCollection.BELL_IDX_JAP_RHINBOWL_88)?.uri?.toString() ?: return@withContext
+            section.bellcount = 1
+            section.bellpause = 1
+            section.duration = 30
+            section.name = resources.getString(R.string.demo_sess1_sec1_name)
+            section.rank = 1
+            dbOperations.insertSection(session, section)
+            val section2 = Section()
+            section2.bell = -2
+            section2.bellUri = BellCollection.getBell(BellCollection.BELL_IDX_JAP_RHINBOWL_107)?.uri?.toString() ?: return@withContext
+            section2.bellcount = 2
+            section2.bellpause = 3
+            section2.duration = 900
+            section2.name = resources.getString(R.string.demo_sess1_sec2_name)
+            section2.rank = 2
+            dbOperations.insertSection(session, section2)
+            val section3 = Section()
+            section3.bell = -2
+            section3.bellUri = BellCollection.getBell(BellCollection.BELL_IDX_JAP_RHINBOWL_88)?.uri?.toString() ?: return@withContext
+            section3.bellcount = 2
+            section3.bellpause = 3
+            section3.duration = 300
+            section3.name = resources.getString(R.string.demo_sess1_sec3_name)
+            section3.rank = 3
+            dbOperations.insertSection(session, section3)
+            val section4 = Section()
+            section4.bell = -2
+            section4.bellUri = BellCollection.getBell(BellCollection.BELL_IDX_JAP_RHINBOWL_107)?.uri?.toString() ?: return@withContext
+            section4.bellcount = 2
+            section4.bellpause = 3
+            section4.duration = 900
+            section4.name = resources.getString(R.string.demo_sess1_sec4_name)
+            section4.rank = 4
+            dbOperations.insertSection(session, section4)
+            val section5 = Section()
+            section5.bell = -2
+            section5.bellUri = BellCollection.getBell(BellCollection.BELL_IDX_JAP_RHINBOWL_88)?.uri?.toString() ?: return@withContext
+            section5.bellcount = 2
+            section5.bellpause = 3
+            section5.duration = 300
+            section5.name = resources.getString(R.string.demo_sess1_sec5_name)
+            section5.rank = 5
+            dbOperations.insertSection(session, section5)
+            val section6 = Section()
+            section6.bell = -2
+            section6.bellUri = BellCollection.getBell(BellCollection.BELL_IDX_JAP_RHINBOWL_107)?.uri?.toString() ?: return@withContext
+            section6.bellcount = 2
+            section6.bellpause = 3
+            section6.duration = 900
+            section6.name = resources.getString(R.string.demo_sess1_sec6_name)
+            section6.rank = 6
+            dbOperations.insertSection(session, section6)
+            val session2 = Session()
+            session2.description = resources.getString(R.string.demo_sess2_description)
+            session2.name = resources.getString(R.string.demo_sess2_name)
+            dbOperations.insertSession(session2)
+            val section7 = Section()
+            section7.bell = -2
+            section7.bellUri = BellCollection.getBell(BellCollection.BELL_IDX_TIB_RHINBOWL_230)?.uri?.toString() ?: return@withContext
+            section7.bellcount = 1
+            section7.bellpause = 1
+            section7.duration = 5
+            section7.name = resources.getString(R.string.demo_sess1_sec1_name)
+            section7.rank = 1
+            dbOperations.insertSection(session2, section7)
+            val section8 = Section()
+            section8.bell = -2
+            section8.bellUri = BellCollection.getBell(BellCollection.BELL_IDX_JAP_RHINBOWL_107)?.uri?.toString() ?: return@withContext
+            section8.bellcount = 2
+            section8.bellpause = 3
+            section8.duration = 600
+            section8.name = resources.getString(R.string.demo_sess1_sec2_name)
+            section8.rank = 2
+            dbOperations.insertSection(session2, section8)
+        }
     }
 
     override fun onStartPressed() {
@@ -600,18 +604,18 @@ class ZazenTimerActivity :
 
     fun resetDatabaseForTest() {
         lifecycleScope.launch {
-            val readSessions = dbOperations.readSessions()
-            for (i in readSessions.indices) {
-                for (section in dbOperations.readSections(readSessions[i].id)) {
-                    dbOperations.deleteSection(section.id.toLong())
+            withContext(Dispatchers.IO) {
+                val readSessions = dbOperations.readSessions()
+                for (i in readSessions.indices) {
+                    for (section in dbOperations.readSections(readSessions[i].id)) {
+                        dbOperations.deleteSection(section.id.toLong())
+                    }
+                    dbOperations.deleteSession(readSessions[i].id)
                 }
-                dbOperations.deleteSession(readSessions[i].id)
+                createDemoSessions()
             }
-            createDemoSessions()
-            runOnUiThread {
-                val f = this@ZazenTimerActivity.findMainFragment()
-                f?.updateSessionList()
-            }
+            val f = this@ZazenTimerActivity.findMainFragment()
+            f?.updateSessionList()
         }
     }
 

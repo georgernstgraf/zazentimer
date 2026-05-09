@@ -29,6 +29,7 @@ import at.priv.graf.zazentimer.databinding.FragmentEditSectionBinding
 import com.google.android.material.transition.MaterialSharedAxis
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
 import java.io.InputStream
 import javax.inject.Inject
 
@@ -153,11 +154,13 @@ class SectionEditFragment : Fragment() {
 
     override fun onPause() {
         super.onPause()
-        audio?.release()
+        runBlocking {
+            audio?.release()
+        }
         this.audio = null
         fillDataFromViews()
         section?.let { s ->
-            lifecycleScope.launch {
+            runBlocking {
                 dbOperations.updateSection(s)
             }
         }

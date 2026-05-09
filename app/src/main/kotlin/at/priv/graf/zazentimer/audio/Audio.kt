@@ -23,9 +23,11 @@ class Audio(
         Log.d(TAG, "New Audio Instance")
     }
 
-    fun release() {
+    suspend fun release() {
         Log.d(TAG, "Releasing Audio Instance")
-        stopAndRelease()
+        withContext(Dispatchers.IO) {
+            stopAndRelease()
+        }
     }
 
     private fun preparePlayer(

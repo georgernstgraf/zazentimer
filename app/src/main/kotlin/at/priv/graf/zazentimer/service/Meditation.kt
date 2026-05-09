@@ -210,7 +210,7 @@ class Meditation(
         return MeditationTimer.getSectionElapsedSeconds(raw, getCurrentSection().duration)
     }
 
-    private fun releaseAudioObjects() {
+    private suspend fun releaseAudioObjects() {
         val it = audioObjects.iterator()
         while (it.hasNext()) {
             it.next().release()

@@ -18,7 +18,15 @@ class MainPage {
     private val robot = ScreenRobot()
 
     fun verifyMainScreenIsDisplayed(): MainPage {
-        SystemClock.sleep(500)
+        // Wait for layout to complete and RecyclerView to have non-zero height
+        for (i in 0 until 10) {
+            try {
+                robot.checkElementIsDisplayed(R.id.recycler_sessions)
+                break
+            } catch (e: Exception) {
+                SystemClock.sleep(500)
+            }
+        }
         robot.checkElementIsDisplayed(R.id.my_toolbar)
         robot.checkElementIsDisplayed(R.id.but_start)
         robot.checkElementIsDisplayed(R.id.recycler_sessions)
