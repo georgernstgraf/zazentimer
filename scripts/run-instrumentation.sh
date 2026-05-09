@@ -414,15 +414,60 @@ else
         kill_emulator "$serial"
     }
 
-    for api in "${APIS_TO_RUN[@]}"; do
-        run_am_instrument_test "$api"
-
-        if [ "$CONTINUE_ON_ERROR" = false ] && [ "${RESULTS[$api]:-0}" -ne 0 ]; then
-            echo ""
-            echo "FAIL-FAST: Stopping at API $api due to failure"
-            break
+    run_api_test() {
+        local api=$1
+        local method=${2:-am_instrument}
+        if [ "$method" = "gradle" ]; then
+            run_gradle_test "$api"
+        else
+            run_am_instrument_test "$api"
         fi
-    done
+    }
+
+    # API 29-30: Gradle UTP (known stable)
+    # API 31-35: am instrument (avoids UTP RootViewWithoutFocusException)
+    run_api_test 29 "gradle"
+    if [ "$CONTINUE_ON_ERROR" = false ] && [ "${RESULTS[29]:-0}" -ne 0 ]; then
+        echo ""
+        echo "FAIL-FAST: Stopping at API 29"
+        return
+    fi
+    run_api_test 30 "gradle"
+    if [ "$CONTINUE_ON_ERROR" = false ] && [ "${RESULTS[30]:-0}" -ne 0 ]; then
+        echo ""
+        echo "FAIL-FAST: Stopping at API 30"
+        return
+    fi
+    run_api_test 31
+    if [ "$CONTINUE_ON_ERROR" = false ] && [ "${RESULTS[31]:-0}" -ne 0 ]; then
+        echo ""
+        echo "FAIL-FAST: Stopping at API 31"
+        return
+    fi
+    run_api_test 32
+    if [ "$CONTINUE_ON_ERROR" = false ] && [ "${RESULTS[32]:-0}" -ne 0 ]; then
+        echo ""
+        echo "FAIL-FAST: Stopping at API 32"
+        return
+    fi
+    run_api_test 33
+    if [ "$CONTINUE_ON_ERROR" = false ] && [ "${RESULTS[33]:-0}" -ne 0 ]; then
+        echo ""
+        echo "FAIL-FAST: Stopping at API 33"
+        return
+    fi
+    run_api_test 34
+    if [ "$CONTINUE_ON_ERROR" = false ] && [ "${RESULTS[34]:-0}" -ne 0 ]; then
+        echo ""
+        echo "FAIL-FAST: Stopping at API 34"
+        return
+    fi
+    run_api_test 35
+    if [ "$CONTINUE_ON_ERROR" = false ] && [ "${RESULTS[35]:-0}" -ne 0 ]; then
+        echo ""
+        echo "FAIL-FAST: Stopping at API 35"
+        return
+    fi
 fi
 
 # ──────────────────────────────────────────────
