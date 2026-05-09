@@ -15,6 +15,7 @@ import io.mockk.mockkConstructor
 import io.mockk.runs
 import io.mockk.unmockkAll
 import io.mockk.verify
+import kotlinx.coroutines.runBlocking
 import org.junit.After
 import org.junit.Before
 import org.junit.Test
@@ -66,7 +67,7 @@ class AudioTest {
         val bell = Bell(uri, "Test Bell")
 
         val audio = Audio(context)
-        audio.playAbsVolume(bell, 80)
+        runBlocking { audio.playAbsVolume(bell, 80) }
 
         assertThat(audio.isPlaying()).isTrue()
         verify { anyConstructed<MediaPlayer>().setVolume(0.8f, 0.8f) }
@@ -79,7 +80,7 @@ class AudioTest {
         val bell = Bell(uri, "Test Bell")
 
         val audio = Audio(context)
-        audio.playAbsVolume(bell, 100)
+        runBlocking { audio.playAbsVolume(bell, 100) }
 
         verify { anyConstructed<MediaPlayer>().setVolume(1.0f, 1.0f) }
     }
@@ -90,7 +91,7 @@ class AudioTest {
         val bell = Bell(uri, "Test Bell")
 
         val audio = Audio(context)
-        audio.playAbsVolume(bell, 0)
+        runBlocking { audio.playAbsVolume(bell, 0) }
 
         verify { anyConstructed<MediaPlayer>().setVolume(0.0f, 0.0f) }
     }
@@ -101,7 +102,7 @@ class AudioTest {
         val bell = Bell(uri, "Test Bell")
 
         val audio = Audio(context)
-        audio.playAbsVolume(bell, 50)
+        runBlocking { audio.playAbsVolume(bell, 50) }
 
         verify { anyConstructed<MediaPlayer>().setVolume(0.5f, 0.5f) }
     }
@@ -112,7 +113,7 @@ class AudioTest {
         val bell = Bell(uri, "Test Bell")
 
         val audio = Audio(context)
-        audio.playAbsVolume(bell, 100)
+        runBlocking { audio.playAbsVolume(bell, 100) }
 
         verify {
             anyConstructed<MediaPlayer>().setAudioAttributes(
@@ -130,7 +131,7 @@ class AudioTest {
         val bell = Bell(uri, "Test Bell")
 
         val audio = Audio(context)
-        audio.playAbsVolume(bell, 100)
+        runBlocking { audio.playAbsVolume(bell, 100) }
 
         verify { anyConstructed<MediaPlayer>().setDataSource(context, uri) }
         verify { anyConstructed<MediaPlayer>().prepare() }
@@ -139,7 +140,7 @@ class AudioTest {
     @Test
     fun playAbsVolume_nullBell_doesNotPlay() {
         val audio = Audio(context)
-        audio.playAbsVolume(null as Bell?, 100)
+        runBlocking { audio.playAbsVolume(null as Bell?, 100) }
 
         assertThat(audio.isPlaying()).isFalse()
     }
@@ -152,7 +153,7 @@ class AudioTest {
         val bell = Bell(uri, "Test Bell")
 
         val audio = Audio(context)
-        audio.playAbsVolume(bell, 100)
+        runBlocking { audio.playAbsVolume(bell, 100) }
 
         assertThat(audio.isPlaying()).isFalse()
     }
@@ -165,7 +166,7 @@ class AudioTest {
         section.bellUri = bell.uri.toString()
 
         val audio = Audio(context)
-        audio.playAbsVolume(section)
+        runBlocking { audio.playAbsVolume(section) }
 
         assertThat(audio.isPlaying()).isTrue()
         verify { anyConstructed<MediaPlayer>().setVolume(0.7f, 0.7f) }
@@ -178,7 +179,7 @@ class AudioTest {
         val bell = Bell(uri, "Test Bell")
 
         val audio = Audio(context)
-        audio.playAbsVolume(bell, 100)
+        runBlocking { audio.playAbsVolume(bell, 100) }
 
         audio.release()
 
@@ -199,7 +200,7 @@ class AudioTest {
         val bell = Bell(uri, "Test Bell")
 
         val audio = Audio(context)
-        audio.playAbsVolume(bell, 100)
+        runBlocking { audio.playAbsVolume(bell, 100) }
         assertThat(audio.isPlaying()).isTrue()
 
         val listeners = mutableListOf<MediaPlayer.OnCompletionListener>()
@@ -227,8 +228,10 @@ class AudioTest {
         val bell2 = Bell(uri2, "Bell 2")
 
         val audio = Audio(context)
-        audio.playAbsVolume(bell1, 100)
-        audio.playAbsVolume(bell2, 50)
+        runBlocking {
+            audio.playAbsVolume(bell1, 100)
+            audio.playAbsVolume(bell2, 50)
+        }
 
         verify { anyConstructed<MediaPlayer>().stop() }
         verify { anyConstructed<MediaPlayer>().reset() }
