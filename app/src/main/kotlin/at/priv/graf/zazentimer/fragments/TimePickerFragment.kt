@@ -36,40 +36,46 @@ class TimePickerFragment :
         this.onOkRunnable = runnable
     }
 
-    fun getSeconds(): Int = this.npSec!!.value
+    fun getSeconds(): Int = npSec?.value ?: seconds
 
     fun setSeconds(i: Int) {
         this.seconds = i
-        this.npSec?.setValue(i)
+        npSec?.value = i
     }
 
-    fun getMinutes(): Int = this.npMin!!.value
+    fun getMinutes(): Int = npMin?.value ?: minutes
 
     fun setMinutes(i: Int) {
         this.minutes = i
-        this.npMin?.setValue(i)
+        npMin?.value = i
     }
 
     override fun onCreateDialog(bundle: Bundle?): Dialog {
         val builder = AlertDialog.Builder(requireActivity())
-        this.view = this.activity!!.layoutInflater.inflate(R.layout.dialog_time_picker, null as ViewGroup?)
+        val act = activity ?: return super.onCreateDialog(bundle)
+        this.view = act.layoutInflater.inflate(R.layout.dialog_time_picker, null as ViewGroup?)
         builder.setView(this.view)
         builder.setPositiveButton(R.string.ok) { _: DialogInterface, _: Int ->
-            this@TimePickerFragment.seconds = this@TimePickerFragment.npSec!!.value
-            this@TimePickerFragment.minutes = this@TimePickerFragment.npMin!!.value
-            this@TimePickerFragment.onOkRunnable?.run()
+            npSec?.let { this@TimePickerFragment.seconds = it.value }
+            npMin?.let { this@TimePickerFragment.minutes = it.value }
+            onOkRunnable?.run()
         }
         builder.setNegativeButton(R.string.abbrechen) { _: DialogInterface, _: Int ->
         }
         val create = builder.create()
-        this.npMin = this.view!!.findViewById(R.id.pickerMinutes)
-        this.npSec = this.view!!.findViewById(R.id.pickerSeconds)
-        this.npMin!!.minValue = 0
-        this.npMin!!.maxValue = 120
-        this.npMin!!.value = this.minutes
-        this.npSec!!.minValue = 0
-        this.npSec!!.maxValue = 59
-        this.npSec!!.value = this.seconds
+        val v = this.view ?: return create
+        this.npMin = v.findViewById(R.id.pickerMinutes)
+        this.npSec = v.findViewById(R.id.pickerSeconds)
+        npMin?.let { picker ->
+            picker.minValue = 0
+            picker.maxValue = 120
+            picker.value = this.minutes
+        }
+        npSec?.let { picker ->
+            picker.minValue = 0
+            picker.maxValue = 59
+            picker.value = this.seconds
+        }
         return create
     }
 

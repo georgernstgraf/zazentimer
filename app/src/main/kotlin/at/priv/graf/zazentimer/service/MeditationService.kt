@@ -33,8 +33,9 @@ class MeditationService : Service() {
 
     override fun onBind(intent: Intent): IBinder {
         Log.d(TAG, "onBind")
-        binder = MeditationServiceBinder(this)
-        return binder!!
+        val b = MeditationServiceBinder(this)
+        binder = b
+        return b
     }
 
     override fun onUnbind(intent: Intent): Boolean {
@@ -50,9 +51,7 @@ class MeditationService : Service() {
     ): Int {
         Log.d(TAG, "onStartCommand: action=${intent?.action ?: "null"}")
         if (intent != null && ACTION_SECTION_ENDED == intent.action) {
-            if (runningMeditation != null) {
-                runningMeditation!!.onSectionEnd()
-            } else {
+            runningMeditation?.onSectionEnd() ?: run {
                 Log.w(TAG, "onStartCommand: section ended but no running meditation")
                 stopSelf()
             }
@@ -74,17 +73,18 @@ class MeditationService : Service() {
 
     fun pauseMeditation(): Boolean {
         Log.d(TAG, "pauseMeditation")
-        if (runningMeditation != null) {
-            runningMeditation!!.pause()
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
-                startForeground(1, createNotification(), ServiceInfo.FOREGROUND_SERVICE_TYPE_SPECIAL_USE)
-            } else {
-                startForeground(1, createNotification())
-            }
-            return runningMeditation!!.isPaused()
+        val meditation = runningMeditation ?: run {
+            Log.d(TAG, "pauseMeditation(): No meditation seems to be running!")
+            return true
         }
-        Log.d(TAG, "pauseMeditation(): No meditation seems to be running!")
-        return true
+        meditation.pause()
+        val notification = createNotification() ?: return true
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+            startForeground(1, notification, ServiceInfo.FOREGROUND_SERVICE_TYPE_SPECIAL_USE)
+        } else {
+            startForeground(1, notification)
+        }
+        return meditation.isPaused()
     }
 
     fun startMeditation(i: Int) {
@@ -96,11 +96,13 @@ class MeditationService : Service() {
         val session: Session = dbOperations.readSession(i) ?: return
         val sections = dbOperations.readSections(i) ?: return
         runningMeditation = Meditation(this, session.name ?: "", sections)
-        runningMeditation!!.start()
+        val meditation = runningMeditation ?: return
+        meditation.start()
+        val notification = createNotification() ?: return
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
-            startForeground(1, createNotification(), ServiceInfo.FOREGROUND_SERVICE_TYPE_SPECIAL_USE)
+            startForeground(1, notification, ServiceInfo.FOREGROUND_SERVICE_TYPE_SPECIAL_USE)
         } else {
-            startForeground(1, createNotification())
+            startForeground(1, notification)
         }
     }
 
@@ -117,11 +119,12 @@ class MeditationService : Service() {
 
     fun getRunningMeditation(): Meditation? = runningMeditation
 
-    private fun createNotification(): Notification {
+    private fun createNotification(): Notification? {
+        val meditation = runningMeditation ?: return null
         val icon: Int
         val title: String
         val text: String
-        if (!runningMeditation!!.isPaused()) {
+        if (!meditation.isPaused()) {
             icon = R.drawable.notify
             title = getString(R.string.notification_title)
             text = getString(R.string.notification_text)
@@ -150,8 +153,8 @@ class MeditationService : Service() {
     companion object {
         private const val NOTIFY_MEDITATION_RUNNING = 1
         private const val TAG = "ZMT_MeditationService"
-        const val ZAZENTIMER_SESSION_ENDED = "ZAZENTIMER_SESSION_ENDED"
-        const val ACTION_SECTION_ENDED = "ZAZENTIMER_SECTION_ENDED"
+        const val ZAZENTIMER_SESSION_ENDED: String = "ZAZENTIMER_SESSION_ENDED"
+        const val ACTION_SECTION_ENDED: String = "ZAZENTIMER_SECTION_ENDED"
 
         @Volatile
         private var isRunning = false

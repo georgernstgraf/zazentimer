@@ -52,9 +52,8 @@ class SectionEditFragment : Fragment() {
             ActivityResultContracts.StartActivityForResult(),
         ) { result ->
             if (result.resultCode != Activity.RESULT_OK || result.data == null) return@registerForActivityResult
-            val intent = result.data!!
-            val data = intent.data
-            if (data == null) return@registerForActivityResult
+            val intent = result.data ?: return@registerForActivityResult
+            val data = intent.data ?: return@registerForActivityResult
             var str = "bell_unnamed"
             if (data.scheme == "content") {
                 val query: Cursor? = requireActivity().contentResolver.query(data, null, null, null, null)
@@ -62,17 +61,20 @@ class SectionEditFragment : Fragment() {
                     val columnIndex = query.getColumnIndex("_display_name")
                     if (columnIndex >= 0) {
                         query.moveToFirst()
-                        str = "bell_" + query.getString(columnIndex)
+                        val colVal = query.getString(columnIndex) ?: ""
+                        str = "bell_$colVal"
                     } else {
-                        str = "bell_" + data.lastPathSegment
+                        val segment = data.lastPathSegment ?: ""
+                        str = "bell_$segment"
                     }
                 }
                 query?.close()
             } else {
-                str = "bell_" + data.lastPathSegment
+                data.lastPathSegment?.let { str = "bell_$it" }
             }
             try {
-                val openInputStream: InputStream = requireActivity().contentResolver.openInputStream(data)!!
+                val openInputStream: InputStream? = requireActivity().contentResolver.openInputStream(data)
+                if (openInputStream == null) return@registerForActivityResult
                 val openFileOutput = requireActivity().openFileOutput(str, 0)
                 val bArr = ByteArray(8192)
                 var read = openInputStream.read(bArr)
@@ -84,8 +86,10 @@ class SectionEditFragment : Fragment() {
                 openFileOutput.close()
                 BellCollection.initialize(requireActivity())
                 fillBellList()
-                this.section!!.bellUri = BellCollection.getUriForName(str).toString()
-                selectBell(this.section!!.bellUri)
+                section?.let { s ->
+                    s.bellUri = BellCollection.getUriForName(str).toString()
+                    selectBell(s.bellUri)
+                }
             } catch (e: Exception) {
                 e.printStackTrace()
             }
@@ -131,53 +135,59 @@ class SectionEditFragment : Fragment() {
         requireActivity().invalidateOptionsMenu()
         fillViewFromData()
         installListeners()
+        val s = section ?: return
         binding.bellGapScrollview.post {
-            val textView = this@SectionEditFragment.tvGaps[this@SectionEditFragment.section!!.bellpause - 1]!!
+            val idx = s.bellpause - 1
+            if (idx < 0 || idx >= tvGaps.size) return@post
+            val textView = tvGaps[idx] ?: return@post
             val rect = Rect()
             textView.getDrawingRect(rect)
-            this@SectionEditFragment.binding.bellGapScrollview.requestChildRectangleOnScreen(textView, rect, true)
+            binding.bellGapScrollview.requestChildRectangleOnScreen(textView, rect, true)
         }
     }
 
     override fun onPause() {
         super.onPause()
-        this.audio!!.release()
+        audio?.release()
         this.audio = null
         fillDataFromViews()
-        dbOperations.updateSection(this.section!!)
+        section?.let { dbOperations.updateSection(it) }
     }
 
     private fun fillDataFromViews() {
-        this.section!!.bell = -2
+        val s = section ?: return
+        s.bell = -2
         val bell = binding.selectGongSound.selectedItem as Bell
-        this.section!!.bellUri = bell.uri.toString()
-        this.section!!.volume = 100 - binding.sectionGongVolume.progress * 10
-        this.section!!.name = binding.sectionName.text.toString()
-        this.section!!.duration = (this.durationMinutes * 60) + this.durationSeconds
+        s.bellUri = bell.uri.toString()
+        s.volume = 100 - binding.sectionGongVolume.progress * 10
+        s.name = binding.sectionName.text.toString()
+        s.duration = (this.durationMinutes * 60) + this.durationSeconds
     }
 
     private fun fillViewFromData() {
-        setViewBellCount(this.section!!.bellcount)
-        setViewGap(this.section!!.bellpause)
+        val s = section ?: return
+        setViewBellCount(s.bellcount)
+        setViewGap(s.bellpause)
         binding.sectionGongVolume.max = 9
-        var step = (100 - this.section!!.volume) / 10
+        var step = (100 - s.volume) / 10
         step = Math.max(0, Math.min(9, step))
         binding.sectionGongVolume.progress = step
         updateDimLabel(step)
-        binding.sectionName.setText(this.section!!.name)
-        setDurationMinutes(this.section!!.duration / 60)
-        setDurationSeconds(this.section!!.duration % 60)
+        binding.sectionName.setText(s.name)
+        setDurationMinutes(s.duration / 60)
+        setDurationSeconds(s.duration % 60)
         fillBellList()
-        selectBell(this.section!!.bellUri)
+        selectBell(s.bellUri)
     }
 
     private fun fillBellList() {
         this.gongListAdapter = GongListAdapter(requireActivity(), R.id.selectGongSound, R.id.spinnerText1)
         val bellList = BellCollection.getBellList()
+        val adapter = this.gongListAdapter ?: return
         for (i in bellList.indices) {
-            this.gongListAdapter!!.add(bellList[i])
+            adapter.add(bellList[i])
         }
-        binding.selectGongSound.adapter = this.gongListAdapter as SpinnerAdapter
+        binding.selectGongSound.adapter = adapter as SpinnerAdapter
     }
 
     private fun selectBell(str: String?) {
@@ -212,51 +222,59 @@ class SectionEditFragment : Fragment() {
             val intent = Intent("android.intent.action.GET_CONTENT")
             intent.flags = 1
             intent.type = "audio/*"
-            bellPickerLauncher.launch(Intent.createChooser(intent, this@SectionEditFragment.resources.getString(R.string.select_audio)))
+            bellPickerLauncher.launch(Intent.createChooser(intent, resources.getString(R.string.select_audio)))
         }
         binding.bellcount1.setOnClickListener {
-            this@SectionEditFragment.section!!.bellcount = 1
-            this@SectionEditFragment.setViewBellCount(this@SectionEditFragment.section!!.bellcount)
+            section?.let { s ->
+                s.bellcount = 1
+                setViewBellCount(s.bellcount)
+            }
         }
         binding.bellcount2.setOnClickListener {
-            this@SectionEditFragment.section!!.bellcount = 2
-            this@SectionEditFragment.setViewBellCount(this@SectionEditFragment.section!!.bellcount)
+            section?.let { s ->
+                s.bellcount = 2
+                setViewBellCount(s.bellcount)
+            }
         }
         binding.bellcount3.setOnClickListener {
-            this@SectionEditFragment.section!!.bellcount = 3
-            this@SectionEditFragment.setViewBellCount(this@SectionEditFragment.section!!.bellcount)
+            section?.let { s ->
+                s.bellcount = 3
+                setViewBellCount(s.bellcount)
+            }
         }
         binding.bellcount4.setOnClickListener {
-            this@SectionEditFragment.section!!.bellcount = 4
-            this@SectionEditFragment.setViewBellCount(this@SectionEditFragment.section!!.bellcount)
+            section?.let { s ->
+                s.bellcount = 4
+                setViewBellCount(s.bellcount)
+            }
         }
         binding.bellcount5.setOnClickListener {
-            this@SectionEditFragment.section!!.bellcount = 5
-            this@SectionEditFragment.setViewBellCount(this@SectionEditFragment.section!!.bellcount)
+            section?.let { s ->
+                s.bellcount = 5
+                setViewBellCount(s.bellcount)
+            }
         }
         for (i in 0..14) {
-            this.tvGaps[i]!!.setOnClickListener { view ->
-                var i2 = 0
-                while (true) {
-                    if (i2 >= 15) {
+            tvGaps[i]?.setOnClickListener { view ->
+                val s = section ?: return@setOnClickListener
+                for (i2 in 0..14) {
+                    val gapView = tvGaps[i2]
+                    if (gapView != null && view.id == gapView.id) {
+                        s.bellpause = i2 + 1
                         break
                     }
-                    if (view.id == this@SectionEditFragment.tvGaps[i2]!!.id) {
-                        this@SectionEditFragment.section!!.bellpause = i2 + 1
-                        break
-                    }
-                    i2++
                 }
-                this@SectionEditFragment.setViewGap(this@SectionEditFragment.section!!.bellpause)
+                setViewGap(s.bellpause)
             }
         }
         binding.duration.setOnClickListener {
             this@SectionEditFragment.pickDuration()
         }
         binding.playGong.setOnClickListener {
-            val bellForSection = BellCollection.getBellForSection(this@SectionEditFragment.section!!)
-            if (bellForSection != null) {
-                this@SectionEditFragment.audio!!.playAbsVolume(bellForSection, this@SectionEditFragment.section!!.volume)
+            val s = section ?: return@setOnClickListener
+            val bellForSection = BellCollection.getBellForSection(s)
+            bellForSection?.let { bell ->
+                audio?.playAbsVolume(bell, s.volume)
             }
         }
         binding.selectGongSound.onItemSelectedListener =
@@ -270,12 +288,13 @@ class SectionEditFragment : Fragment() {
                     i2: Int,
                     j: Long,
                 ) {
-                    val bell = BellCollection.getBell(i2)!!
-                    if (bell.uri.toString() == this@SectionEditFragment.section!!.bellUri) {
+                    val s = section ?: return
+                    val bell = BellCollection.getBell(i2) ?: return
+                    if (bell.uri.toString() == s.bellUri) {
                         return
                     }
-                    this@SectionEditFragment.section!!.bellUri = bell.uri.toString()
-                    this@SectionEditFragment.section!!.bell = -2
+                    s.bellUri = bell.uri.toString()
+                    s.bell = -2
                 }
             }
         binding.sectionGongVolume.setOnSeekBarChangeListener(
@@ -292,10 +311,12 @@ class SectionEditFragment : Fragment() {
                 }
 
                 override fun onStopTrackingTouch(seekBar: SeekBar?) {
-                    val progress = seekBar!!.progress
-                    this@SectionEditFragment.section!!.volume = 100 - progress * 10
-                    if (BellCollection.getBellForSection(this@SectionEditFragment.section!!) != null) {
-                        this@SectionEditFragment.audio!!.playAbsVolume(this@SectionEditFragment.section!!)
+                    val s = section ?: return
+                    val progress = seekBar?.progress ?: return
+                    s.volume = 100 - progress * 10
+                    val bellForSection = BellCollection.getBellForSection(s)
+                    bellForSection?.let { bell ->
+                        audio?.playAbsVolume(s)
                     }
                 }
             },
@@ -311,11 +332,9 @@ class SectionEditFragment : Fragment() {
     }
 
     private fun setViewGap(i: Int) {
-        var i2 = 0
-        while (i2 < 15) {
-            val i3 = i2 + 1
-            this.tvGaps[i2]!!.isSelected = i3 == i
-            i2 = i3
+        for (i2 in 0..14) {
+            val gapView = tvGaps[i2] ?: continue
+            gapView.isSelected = (i2 + 1) == i
         }
     }
 
@@ -344,7 +363,7 @@ class SectionEditFragment : Fragment() {
 
     private fun updateDurationView() {
         _binding?.let { b ->
-            b.time.text = String.format("%02d", this.durationMinutes) + ":" + String.format("%02d", this.durationSeconds)
+            b.time.text = String.format("%02d:%02d", durationMinutes, durationSeconds)
         }
     }
 

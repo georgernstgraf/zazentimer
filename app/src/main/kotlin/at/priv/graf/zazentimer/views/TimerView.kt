@@ -197,24 +197,17 @@ class TimerView
             this.paintTimeInfoText.color = colorRingCurrent
             this.paintTimeInfoText.alpha = 255
             this.prefs = PreferenceManager.getDefaultSharedPreferences(context)
-            if (this.prefs!!.contains(ZazenTimerActivity.PREF_KEY_SHOW_ELAPSED_TIME)) {
-                if (this.prefs!!.getBoolean(ZazenTimerActivity.PREF_KEY_SHOW_ELAPSED_TIME, true)) {
-                    this.prefs!!
-                        .edit()
-                        .putInt(ZazenTimerActivity.PREF_KEY_SHOW_TIME_MODE, 0)
-                        .apply()
-                } else {
-                    this.prefs!!
-                        .edit()
-                        .putInt(ZazenTimerActivity.PREF_KEY_SHOW_TIME_MODE, 1)
-                        .apply()
+            prefs?.let { p ->
+                if (p.contains(ZazenTimerActivity.PREF_KEY_SHOW_ELAPSED_TIME)) {
+                    if (p.getBoolean(ZazenTimerActivity.PREF_KEY_SHOW_ELAPSED_TIME, true)) {
+                        p.edit().putInt(ZazenTimerActivity.PREF_KEY_SHOW_TIME_MODE, 0).apply()
+                    } else {
+                        p.edit().putInt(ZazenTimerActivity.PREF_KEY_SHOW_TIME_MODE, 1).apply()
+                    }
+                    p.edit().remove(ZazenTimerActivity.PREF_KEY_SHOW_ELAPSED_TIME).apply()
                 }
-                this.prefs!!
-                    .edit()
-                    .remove(ZazenTimerActivity.PREF_KEY_SHOW_ELAPSED_TIME)
-                    .apply()
+                this.showTimeMode = p.getInt(ZazenTimerActivity.PREF_KEY_SHOW_TIME_MODE, 0)
             }
-            this.showTimeMode = this.prefs!!.getInt(ZazenTimerActivity.PREF_KEY_SHOW_TIME_MODE, 0)
             this.timeTextAnimator = ValueAnimator()
             startTimeInfoFadeOut(7000)
             setOnClickListener {
@@ -222,7 +215,7 @@ class TimerView
                 if (showTimeMode > 3) {
                     showTimeMode = 0
                 }
-                prefs!!.edit().putInt(ZazenTimerActivity.PREF_KEY_SHOW_TIME_MODE, showTimeMode).apply()
+                prefs?.edit()?.putInt(ZazenTimerActivity.PREF_KEY_SHOW_TIME_MODE, showTimeMode)?.apply()
                 startTimeInfoFadeOut(3000)
             }
         }
@@ -243,7 +236,7 @@ class TimerView
             oldh: Int,
         ) {
             super.onSizeChanged(w, h, oldw, oldh)
-            Log.d(TAG, "resize: w=" + w + " h=" + h)
+            Log.d(TAG, "resize: w=$w h=$h")
             if (w >= h) {
                 this.deltaX = (w - h) / 2
                 this.deltaY = 0
@@ -481,7 +474,7 @@ class TimerView
                 paintTimeInfoText.alpha = ((timeTextAnimator.animatedValue as Float).toInt())
             }
             canvas.drawText(str2, timeInfoX, timeInfoY, paintTimeInfoText)
-            canvas.drawText(str, curTimeX, curTimeY, paint!!)
+            paint?.let { canvas.drawText(str, curTimeX, curTimeY, it) }
             canvas.drawText(currentSectionName, curSectionX, curSectionY, paintCurSection)
             canvas.drawText(nextSectionName, nextSectionX, nextSectionY, paintNextSection)
             canvas.drawText(newNextSectionName, newNextSectionX, newNextSectionY, paintNewNextSection)

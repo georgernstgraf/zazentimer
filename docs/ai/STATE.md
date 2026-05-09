@@ -35,7 +35,7 @@ No active focus. All planned work complete. Next: #64 Play Store sub-issues or f
 ## Pending
 - [ ] #64 Play Store — #114 (AAB build), #113 (privacy/legal)
 - [ ] #103: Proper edge-to-edge (remove opt-out)
-- [ ] #105: Idiomatic Kotlin refactorings
+- [x] #105: Idiomatic Kotlin refactorings — sealed class, 211 `!!` eliminated, scope functions, string interpolation
 - [ ] #106: Coroutines migration
 - [ ] #107: Predictive Back Gesture
 - [ ] #108: Strict Kotlin compiler options + enable ktlint/detekt enforcement

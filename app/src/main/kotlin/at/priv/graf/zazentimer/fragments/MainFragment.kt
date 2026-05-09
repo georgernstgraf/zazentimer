@@ -131,7 +131,7 @@ class MainFragment : Fragment() {
                         if (toPosition < 0 || toPosition >= sessions.size) return false
                         val moved = sessions.removeAt(fromPosition)
                         sessions.add(toPosition, moved)
-                        sessionListAdapter!!.moveItem(fromPosition, toPosition)
+                        sessionListAdapter?.moveItem(fromPosition, toPosition)
                         return true
                     }
                 },
@@ -175,7 +175,7 @@ class MainFragment : Fragment() {
         val newId =
             dbOperations.duplicateSession(
                 s.id,
-                getString(R.string.copy_prefix) + " " + s.name,
+                "${getString(R.string.copy_prefix)} ${s.name}",
             )
         updateSessionList()
         setSelectedSessionId(newId)

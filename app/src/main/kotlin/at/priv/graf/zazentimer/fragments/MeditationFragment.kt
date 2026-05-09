@@ -17,6 +17,7 @@ import at.priv.graf.zazentimer.ZazenTimerActivity
 import at.priv.graf.zazentimer.database.DbOperations
 import at.priv.graf.zazentimer.databinding.FragmentMeditationBinding
 import at.priv.graf.zazentimer.service.MeditationService
+import at.priv.graf.zazentimer.service.MeditationUiState
 import at.priv.graf.zazentimer.service.MeditationViewModel
 import com.google.android.material.transition.MaterialSharedAxis
 import dagger.hilt.android.AndroidEntryPoint
@@ -111,13 +112,15 @@ class MeditationFragment : Fragment() {
                     showStopConfirmationDialog()
                 }
             }
-        requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, backPressedCallback!!)
+        backPressedCallback?.let { callback ->
+            requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, callback)
+        }
 
-        viewModel!!.getMeditationState().observe(viewLifecycleOwner) { state ->
-            if (state == null || !state.running) {
-                meditationRunning = false
-                backPressedCallback?.isEnabled = false
-                if (state != null) {
+        viewModel?.getMeditationState()?.observe(viewLifecycleOwner) { state ->
+            when (state) {
+                is MeditationUiState.Idle -> {
+                    meditationRunning = false
+                    backPressedCallback?.isEnabled = false
                     _binding?.let { b ->
                         b.timerView.setCurrentStartSeconds(state.currentStartSeconds)
                         b.timerView.setNumTotalSeconds(state.totalSessionTime)
@@ -129,25 +132,43 @@ class MeditationFragment : Fragment() {
                         b.timerView.setSectionNamesNoAnim(state.currentSectionName, state.nextSectionName)
                         b.sessionNameText.text = state.sessionName
                     }
+                    showIdleState()
                 }
-                showIdleState()
-                return@observe
+                is MeditationUiState.Running -> {
+                    meditationRunning = true
+                    backPressedCallback?.isEnabled = true
+                    _binding?.let { b ->
+                        b.timerView.setCurrentStartSeconds(state.currentStartSeconds)
+                        b.timerView.setNumTotalSeconds(state.totalSessionTime)
+                        b.timerView.setNextEndSeconds(state.nextEndSeconds)
+                        b.timerView.setNextStartSeconds(state.nextStartSeconds)
+                        b.timerView.setPrevStartSeconds(state.prevStartSeconds)
+                        b.timerView.setSectionElapsedSeconds(state.sectionElapsedSeconds)
+                        b.timerView.setSessionElapsedSeconds(state.sessionElapsedSeconds)
+                        b.timerView.setSectionNames(state.currentSectionName, state.nextSectionName, state.nextNextSectionName)
+                        b.sessionNameText.text = state.sessionName
+                    }
+                    showRunningState()
+                    updateButtons()
+                }
+                is MeditationUiState.Paused -> {
+                    meditationRunning = true
+                    backPressedCallback?.isEnabled = true
+                    _binding?.let { b ->
+                        b.timerView.setCurrentStartSeconds(state.currentStartSeconds)
+                        b.timerView.setNumTotalSeconds(state.totalSessionTime)
+                        b.timerView.setNextEndSeconds(state.nextEndSeconds)
+                        b.timerView.setNextStartSeconds(state.nextStartSeconds)
+                        b.timerView.setPrevStartSeconds(state.prevStartSeconds)
+                        b.timerView.setSectionElapsedSeconds(state.sectionElapsedSeconds)
+                        b.timerView.setSessionElapsedSeconds(state.sessionElapsedSeconds)
+                        b.timerView.setSectionNamesNoAnim(state.currentSectionName, state.nextSectionName)
+                        b.sessionNameText.text = state.sessionName
+                    }
+                    showRunningState()
+                    updateButtons()
+                }
             }
-            meditationRunning = true
-            backPressedCallback?.isEnabled = true
-            _binding?.let { b ->
-                b.timerView.setCurrentStartSeconds(state.currentStartSeconds)
-                b.timerView.setNumTotalSeconds(state.totalSessionTime)
-                b.timerView.setNextEndSeconds(state.nextEndSeconds)
-                b.timerView.setNextStartSeconds(state.nextStartSeconds)
-                b.timerView.setPrevStartSeconds(state.prevStartSeconds)
-                b.timerView.setSectionElapsedSeconds(state.sectionElapsedSeconds)
-                b.timerView.setSessionElapsedSeconds(state.sessionElapsedSeconds)
-                b.timerView.setSectionNames(state.currentSectionName, state.nextSectionName, state.nextNextSectionName)
-                b.sessionNameText.text = state.sessionName
-            }
-            showRunningState()
-            updateButtons()
         }
     }
 
@@ -208,7 +229,7 @@ class MeditationFragment : Fragment() {
             )
             return
         }
-        if (viewModel != null && viewModel!!.isPaused()) {
+        if (viewModel?.isPaused() == true) {
             b.butPause.setImageDrawable(
                 ResourcesCompat.getDrawable(resources, R.drawable.ic_play_arrow_white_48dp, requireActivity().theme),
             )

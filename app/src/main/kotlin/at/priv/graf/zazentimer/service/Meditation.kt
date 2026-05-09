@@ -86,10 +86,8 @@ class Meditation(
         if (!paused) {
             pauseSectionSeconds = getSectionElapsedSeconds()
             paused = true
-            if (currentSectionEndIntent != null) {
-                alarmManager.cancel(currentSectionEndIntent!!)
+            currentSectionEndIntent?.let { alarmManager.cancel(it) }
                 currentSectionEndIntent = null
-            }
             if (Build.VERSION.SDK_INT < 23) {
                 releaseMeditationWakeLock()
                 return
@@ -116,10 +114,10 @@ class Meditation(
 
     private fun releaseMeditationWakeLock() {
         Log.d(TAG, "Releasing meditation wake lock")
-        if (meditationWakeLock != null) {
+        meditationWakeLock?.let { lock ->
             try {
-                if (meditationWakeLock!!.isHeld) {
-                    meditationWakeLock!!.release()
+                if (lock.isHeld) {
+                    lock.release()
                 }
             } catch (e: Exception) {
                 Log.d(TAG, "error releasing wake lock", e)
@@ -131,7 +129,7 @@ class Meditation(
         Log.d(TAG, "Creating meditation wake lock")
         val powerManager = meditationService.getSystemService(Context.POWER_SERVICE) as PowerManager
         meditationWakeLock = powerManager.newWakeLock(1, "MeditationWakeLock")
-        meditationWakeLock!!.acquire(((totalSessionTime + 120) * 1000).toLong())
+        meditationWakeLock?.acquire(((totalSessionTime + 120) * 1000).toLong())
     }
 
     private fun fireMeditationEnded() {
@@ -139,10 +137,8 @@ class Meditation(
     }
 
     private fun stopSectionTimer() {
-        if (currentSectionEndIntent != null) {
-            alarmManager.cancel(currentSectionEndIntent!!)
-            currentSectionEndIntent = null
-        }
+        currentSectionEndIntent?.let { alarmManager.cancel(it) }
+        currentSectionEndIntent = null
     }
 
     private fun startSectionTimer() {

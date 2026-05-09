@@ -36,24 +36,26 @@ class MessageView(
             Log.d(TAG, "message already visible")
             return
         }
-        this.messageParent = activity.findViewById(android.R.id.content) as ViewGroup
-        this.messageView = activity.layoutInflater.inflate(R.layout.message_view, this.messageParent, false) as ViewGroup
+        val parent = activity.findViewById(android.R.id.content) as? ViewGroup ?: return
+        this.messageParent = parent
+        val view = activity.layoutInflater.inflate(R.layout.message_view, parent, false) as? ViewGroup ?: return
+        this.messageView = view
         if (Build.VERSION.SDK_INT >= 21) {
-            this.messageView!!.elevation = 50.0f
+            view.elevation = 50.0f
         }
-        val textView = this.messageView!!.findViewById<TextView>(R.id.message_title)
-        val textView2 = this.messageView!!.findViewById<TextView>(R.id.message_text)
-        val button = this.messageView!!.findViewById<Button>(R.id.message_ok)
+        val textView = view.findViewById<TextView>(R.id.message_title)
+        val textView2 = view.findViewById<TextView>(R.id.message_text)
+        val button = view.findViewById<Button>(R.id.message_ok)
         textView.text = this.titleText
         textView2.text = this.contentText
-        this.messageView!!.alpha = 0.0f
+        view.alpha = 0.0f
         val objectAnimator = ObjectAnimator()
-        objectAnimator.target = this.messageView
+        objectAnimator.target = view
         objectAnimator.setPropertyName("alpha")
         objectAnimator.setFloatValues(0.0f, 1.0f)
         objectAnimator.duration = 500L
         objectAnimator.start()
-        this.messageParent!!.addView(this.messageView)
+        parent.addView(view)
         button.setOnClickListener {
             val objectAnimator2 = ObjectAnimator()
             objectAnimator2.target = this@MessageView.messageView
@@ -72,7 +74,7 @@ class MessageView(
                     }
 
                     override fun onAnimationEnd(animator: Animator) {
-                        this@MessageView.messageParent!!.removeView(this@MessageView.messageView)
+                        this@MessageView.messageParent?.removeView(this@MessageView.messageView)
                         this@MessageView.messageView = null
                         this@MessageView.onOkListener?.run()
                     }

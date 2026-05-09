@@ -50,8 +50,7 @@ class SettingsFragment : PreferenceFragmentCompat() {
             ActivityResultContracts.StartActivityForResult(),
         ) { result ->
             if (result.resultCode != Activity.RESULT_OK || result.data == null) return@registerForActivityResult
-            val uri = result.data!!.data
-            if (uri == null) return@registerForActivityResult
+            val uri = result.data?.data ?: return@registerForActivityResult
             requireActivity().contentResolver.takePersistableUriPermission(
                 uri,
                 Intent.FLAG_GRANT_READ_URI_PERMISSION or Intent.FLAG_GRANT_WRITE_URI_PERMISSION,
@@ -64,8 +63,7 @@ class SettingsFragment : PreferenceFragmentCompat() {
             ActivityResultContracts.StartActivityForResult(),
         ) { result ->
             if (result.resultCode != Activity.RESULT_OK || result.data == null) return@registerForActivityResult
-            val uri = result.data!!.data
-            if (uri == null) return@registerForActivityResult
+            val uri = result.data?.data ?: return@registerForActivityResult
             requireActivity().contentResolver.takePersistableUriPermission(
                 uri,
                 Intent.FLAG_GRANT_READ_URI_PERMISSION or Intent.FLAG_GRANT_WRITE_URI_PERMISSION,
@@ -84,7 +82,7 @@ class SettingsFragment : PreferenceFragmentCompat() {
     ) {
         setPreferencesFromResource(R.xml.preferences, rootKey)
 
-        findPreference<Preference>(ZazenTimerActivity.PREF_KEY_THEME)!!.setOnPreferenceChangeListener { _, _ ->
+        findPreference<Preference>(ZazenTimerActivity.PREF_KEY_THEME)?.setOnPreferenceChangeListener { _, _ ->
             requireActivity().runOnUiThread {
                 val intent = Intent(requireActivity(), ZazenTimerActivity::class.java)
                 intent.putExtra(ZazenTimerActivity.INTENT_DATA_SHOW_PREF_ON_START, true)
@@ -94,11 +92,11 @@ class SettingsFragment : PreferenceFragmentCompat() {
             true
         }
 
-        val checkBoxPreference3 = findPreference<CheckBoxPreference>(ZazenTimerActivity.PREF_KEY_MUTE_MODE_VIBRATE_SOUND)!!
-        val checkBoxPreference4 = findPreference<CheckBoxPreference>(ZazenTimerActivity.PREF_KEY_MUTE_MODE_VIBRATE)!!
-        val checkBoxPreference5 = findPreference<CheckBoxPreference>(ZazenTimerActivity.PREF_KEY_MUTE_MODE_NONE)!!
-        val checkBoxPreference6 = findPreference<CheckBoxPreference>(ZazenTimerActivity.PREF_KEY_KEEP_SCREEN_ON)!!
-        val brightnessPreference = findPreference<Preference>(ZazenTimerActivity.PREF_KEY_BRIGHTNESS)!!
+        val checkBoxPreference3 = findPreference<CheckBoxPreference>(ZazenTimerActivity.PREF_KEY_MUTE_MODE_VIBRATE_SOUND) ?: return
+        val checkBoxPreference4 = findPreference<CheckBoxPreference>(ZazenTimerActivity.PREF_KEY_MUTE_MODE_VIBRATE) ?: return
+        val checkBoxPreference5 = findPreference<CheckBoxPreference>(ZazenTimerActivity.PREF_KEY_MUTE_MODE_NONE) ?: return
+        val checkBoxPreference6 = findPreference<CheckBoxPreference>(ZazenTimerActivity.PREF_KEY_KEEP_SCREEN_ON) ?: return
+        val brightnessPreference = findPreference<Preference>(ZazenTimerActivity.PREF_KEY_BRIGHTNESS) ?: return
 
         checkBoxPreference3.setOnPreferenceChangeListener { _, obj ->
             if (!(obj as Boolean)) {
@@ -130,7 +128,7 @@ class SettingsFragment : PreferenceFragmentCompat() {
         }
         brightnessPreference.isEnabled = checkBoxPreference6.isChecked
 
-        val backupPref = findPreference<Preference>("backup_to_sd")!!
+        val backupPref = findPreference<Preference>("backup_to_sd") ?: return
         backupPref.isEnabled = true
         backupPref.setSummary(R.string.pref_sum_backup)
         backupPref.onPreferenceClickListener =
@@ -143,7 +141,7 @@ class SettingsFragment : PreferenceFragmentCompat() {
                 true
             }
 
-        val restorePref = findPreference<Preference>("restore_from_sd")!!
+        val restorePref = findPreference<Preference>("restore_from_sd") ?: return
         restorePref.isEnabled = true
         restorePref.setSummary(R.string.pref_sum_restore)
         restorePref.onPreferenceClickListener =
@@ -189,19 +187,19 @@ class SettingsFragment : PreferenceFragmentCompat() {
             var result = 2
             try {
                 val tempFile = File.createTempFile("restore", ".zip", requireActivity().cacheDir)
-                val `is` = requireActivity().contentResolver.openInputStream(uri)
-                if (`is` == null) {
+                val inputStream = requireActivity().contentResolver.openInputStream(uri)
+                if (inputStream == null) {
                     Log.e(TAG, "Could not open input stream for URI")
                     result = 1
                 } else {
                     val fos = FileOutputStream(tempFile)
                     val buf = ByteArray(32768)
                     var read: Int
-                    while ((`is`.read(buf).also { read = it }) > 0) {
+                    while ((inputStream.read(buf).also { read = it }) > 0) {
                         fos.write(buf, 0, read)
                     }
                     fos.close()
-                    `is`.close()
+                    inputStream.close()
                     result = backupManager.restore(tempFile)
                     tempFile.delete()
                 }

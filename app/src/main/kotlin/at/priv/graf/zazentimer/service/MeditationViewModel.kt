@@ -45,7 +45,7 @@ class MeditationViewModel
                         return
                     }
                     pollMeditationState()
-                    handler!!.postDelayed(this, 300L)
+                    handler?.postDelayed(this, 300L) ?: run { updateRunning = false }
                 }
             }
 
@@ -54,19 +54,19 @@ class MeditationViewModel
             emitIdleState()
         }
 
-        fun getMeditationState(): LiveData<MeditationUiState> = meditationState
+        public fun getMeditationState(): LiveData<MeditationUiState> = meditationState
 
-        fun getMeditationEnded(): LiveData<Boolean> = meditationEnded
+        public fun getMeditationEnded(): LiveData<Boolean> = meditationEnded
 
-        fun notifyMeditationEnded() {
+        public fun notifyMeditationEnded() {
             meditationEnded.setValue(true)
         }
 
-        fun consumeMeditationEnded() {
+        public fun consumeMeditationEnded() {
             meditationEnded.setValue(false)
         }
 
-        fun bindToService(
+        public fun bindToService(
             app: Application,
             h: Handler,
             callback: Runnable,
@@ -75,33 +75,39 @@ class MeditationViewModel
             if (this.serviceIntent == null) {
                 this.serviceIntent = Intent(app, MeditationService::class.java)
             }
-            if (this.serviceConnection == null) {
+            val conn = this.serviceConnection
+            if (conn == null) {
                 Log.d(TAG, "serviceConnection is null - making fresh connection service")
-                this.serviceConnection = ServCon(app)
-                this.serviceConnection!!.setRunOnConnect(RunOnConnect(h, callback))
-                app.bindService(this.serviceIntent!!, this.serviceConnection!!, Context.BIND_AUTO_CREATE)
+                val newConn = ServCon(app)
+                this.serviceConnection = newConn
+                newConn.setRunOnConnect(RunOnConnect(h, callback))
+                val intent = this.serviceIntent ?: return
+                app.bindService(intent, newConn, Context.BIND_AUTO_CREATE)
                 return
             }
-            if (this.serviceConnection!!.isBound()) {
+            if (conn.isBound()) {
                 Log.d(TAG, "service is already bound")
                 h.post(callback)
             } else {
                 Log.d(TAG, "service comm existing, but service not bound - rebinding")
-                app.bindService(this.serviceIntent!!, this.serviceConnection!!, Context.BIND_AUTO_CREATE)
+                val intent = this.serviceIntent ?: return
+                app.bindService(intent, conn, Context.BIND_AUTO_CREATE)
             }
         }
 
-        fun unbindFromService(app: Application) {
-            if (this.serviceConnection != null && this.serviceConnection!!.isBound()) {
-                try {
-                    app.unbindService(this.serviceConnection!!)
-                } catch (_: Exception) {
+        public fun unbindFromService(app: Application) {
+            serviceConnection?.let { conn ->
+                if (conn.isBound()) {
+                    try {
+                        app.unbindService(conn)
+                    } catch (_: Exception) {
+                    }
                 }
             }
             this.serviceConnection = null
         }
 
-        fun startMeditation(
+        public fun startMeditation(
             app: Application,
             sessionId: Int,
         ) {
@@ -125,29 +131,29 @@ class MeditationViewModel
             )
         }
 
-        fun startUpdateThread() {
+        public fun startUpdateThread() {
             if (this.handler == null) {
                 this.handler = Handler(Looper.getMainLooper())
             }
             stopUpdateThread()
             this.updateRunning = true
             this.timerViewInitialized = false
-            this.handler!!.postDelayed(this.updateRunnable, 300L)
+            this.handler?.postDelayed(this.updateRunnable, 300L)
         }
 
-        fun stopUpdateThread() {
+        public fun stopUpdateThread() {
             this.updateRunning = false
             this.handler?.removeCallbacks(this.updateRunnable)
             emitIdleState()
         }
 
-        fun emitIdleState() {
+        public fun emitIdleState() {
             var sessionId = this.selectedSessionId
             if (sessionId == -1) {
                 val prefs = ZazenTimerActivity.getPreferences(getApplication())
                 sessionId = prefs.getInt(ZazenTimerActivity.PREF_KEY_LAST_SESSION, -1)
             }
-            if (sessionId == -1 || dbOperations == null) {
+            if (sessionId == -1) {
                 meditationState.setValue(SectionArcCalculator.emptyState())
                 return
             }
@@ -165,67 +171,94 @@ class MeditationViewModel
         }
 
         private fun pollMeditationState() {
-            if (this.serviceConnection == null) {
-                return
-            }
-            val meditation = this.serviceConnection!!.getRunningMeditation() ?: return
+            val conn = serviceConnection ?: return
+            val meditation = conn.getRunningMeditation() ?: return
             if (meditation.getCurrentSection() == null) {
                 return
             }
+            val isPaused = meditation.isPaused()
             if (!this.timerViewInitialized) {
                 this.timerViewInitialized = true
-                val initState =
-                    MeditationUiState(
-                        0,
-                        meditation.getTotalSessionTime(),
-                        meditation.getNextEndSeconds(),
-                        meditation.getNextStartSeconds(),
-                        meditation.getPrevStartSeconds(),
-                        0,
-                        0,
-                        meditation.getCurrentSectionName(),
-                        meditation.getNextSectionName(),
-                        meditation.getNextNextSectionName(),
-                        meditation.getSessionName(),
-                        meditation.isPaused(),
-                        true,
-                    )
-                meditationState.setValue(initState)
+                val state =
+                    if (isPaused) {
+                        MeditationUiState.Paused(
+                            currentStartSeconds = 0,
+                            totalSessionTime = meditation.getTotalSessionTime(),
+                            nextEndSeconds = meditation.getNextEndSeconds(),
+                            nextStartSeconds = meditation.getNextStartSeconds(),
+                            prevStartSeconds = meditation.getPrevStartSeconds(),
+                            sectionElapsedSeconds = 0,
+                            sessionElapsedSeconds = 0,
+                            currentSectionName = meditation.getCurrentSectionName(),
+                            nextSectionName = meditation.getNextSectionName(),
+                            sessionName = meditation.getSessionName(),
+                            nextNextSectionName = meditation.getNextNextSectionName(),
+                        )
+                    } else {
+                        MeditationUiState.Running(
+                            currentStartSeconds = 0,
+                            totalSessionTime = meditation.getTotalSessionTime(),
+                            nextEndSeconds = meditation.getNextEndSeconds(),
+                            nextStartSeconds = meditation.getNextStartSeconds(),
+                            prevStartSeconds = meditation.getPrevStartSeconds(),
+                            sectionElapsedSeconds = 0,
+                            sessionElapsedSeconds = 0,
+                            currentSectionName = meditation.getCurrentSectionName(),
+                            nextSectionName = meditation.getNextSectionName(),
+                            sessionName = meditation.getSessionName(),
+                            nextNextSectionName = meditation.getNextNextSectionName(),
+                        )
+                    }
+                meditationState.setValue(state)
                 return
             }
             val state =
-                MeditationUiState(
-                    meditation.getCurrentStartSeconds(),
-                    meditation.getTotalSessionTime(),
-                    meditation.getNextEndSeconds(),
-                    meditation.getNextStartSeconds(),
-                    meditation.getPrevStartSeconds(),
-                    meditation.getSectionElapsedSeconds(),
-                    meditation.getCurrentSessionTime(),
-                    meditation.getCurrentSectionName(),
-                    meditation.getNextSectionName(),
-                    meditation.getNextNextSectionName(),
-                    meditation.getSessionName(),
-                    meditation.isPaused(),
-                    true,
-                )
+                if (isPaused) {
+                    MeditationUiState.Paused(
+                        currentStartSeconds = meditation.getCurrentStartSeconds(),
+                        totalSessionTime = meditation.getTotalSessionTime(),
+                        nextEndSeconds = meditation.getNextEndSeconds(),
+                        nextStartSeconds = meditation.getNextStartSeconds(),
+                        prevStartSeconds = meditation.getPrevStartSeconds(),
+                        sectionElapsedSeconds = meditation.getSectionElapsedSeconds(),
+                        sessionElapsedSeconds = meditation.getCurrentSessionTime(),
+                        currentSectionName = meditation.getCurrentSectionName(),
+                        nextSectionName = meditation.getNextSectionName(),
+                        sessionName = meditation.getSessionName(),
+                        nextNextSectionName = meditation.getNextNextSectionName(),
+                    )
+                } else {
+                    MeditationUiState.Running(
+                        currentStartSeconds = meditation.getCurrentStartSeconds(),
+                        totalSessionTime = meditation.getTotalSessionTime(),
+                        nextEndSeconds = meditation.getNextEndSeconds(),
+                        nextStartSeconds = meditation.getNextStartSeconds(),
+                        prevStartSeconds = meditation.getPrevStartSeconds(),
+                        sectionElapsedSeconds = meditation.getSectionElapsedSeconds(),
+                        sessionElapsedSeconds = meditation.getCurrentSessionTime(),
+                        currentSectionName = meditation.getCurrentSectionName(),
+                        nextSectionName = meditation.getNextSectionName(),
+                        sessionName = meditation.getSessionName(),
+                        nextNextSectionName = meditation.getNextNextSectionName(),
+                    )
+                }
             meditationState.setValue(state)
         }
 
-        fun pauseMeditation() {
+        public fun pauseMeditation() {
             serviceConnection?.pauseMeditation()
         }
 
-        fun stopMeditation() {
+        public fun stopMeditation() {
             serviceConnection?.stopMeditation()
         }
 
-        fun isPaused(): Boolean {
+        public fun isPaused(): Boolean {
             val meditation = serviceConnection?.getRunningMeditation() ?: return false
             return meditation.isPaused()
         }
 
-        fun acquireScreenWakeLock(
+        public fun acquireScreenWakeLock(
             app: Application,
             pref: SharedPreferences,
         ) {
@@ -238,15 +271,15 @@ class MeditationViewModel
             wakeLock = null
             wakeLock = powerManager.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, "ScreenOnWakeLock")
             val timeoutSeconds = totalSeconds + 60
-            wakeLock!!.acquire(timeoutSeconds * 1000L)
+            wakeLock?.acquire(timeoutSeconds * 1000L)
             Log.i(TAG, "Acquired WakeLock to keep screen on for $timeoutSeconds seconds")
         }
 
-        fun releaseScreenWakeLock() {
-            if (wakeLock != null) {
+        public fun releaseScreenWakeLock() {
+            wakeLock?.let { lock ->
                 try {
-                    if (wakeLock!!.isHeld) {
-                        wakeLock!!.release()
+                    if (lock.isHeld) {
+                        lock.release()
                     }
                 } catch (e: Exception) {
                     Log.d(TAG, "wakeLock release error", e)
@@ -256,22 +289,22 @@ class MeditationViewModel
             }
         }
 
-        fun getSelectedSessionId(): Int = selectedSessionId
+        public fun getSelectedSessionId(): Int = selectedSessionId
 
-        fun setSelectedSessionId(sessionId: Int) {
+        public fun setSelectedSessionId(sessionId: Int) {
             this.selectedSessionId = sessionId
         }
 
-        fun getServiceIntent(app: Application): Intent {
+        public fun getServiceIntent(app: Application): Intent {
             if (this.serviceIntent == null) {
                 this.serviceIntent = Intent(app, MeditationService::class.java)
             }
-            return this.serviceIntent!!
+            return this.serviceIntent ?: Intent(app, MeditationService::class.java)
         }
 
-        fun isServiceConnected(): Boolean = serviceConnection != null && serviceConnection!!.isBound()
+        public fun isServiceConnected(): Boolean = serviceConnection?.isBound() == true
 
-        fun setHandler(handler: Handler) {
+        public fun setHandler(handler: Handler) {
             this.handler = handler
         }
 

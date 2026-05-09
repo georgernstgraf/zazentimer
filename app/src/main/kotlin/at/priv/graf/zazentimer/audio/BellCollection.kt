@@ -47,12 +47,12 @@ object BellCollection {
     private fun getPredefinedBellUri(
         context: Context,
         i: Int,
-    ): Uri = Uri.parse("android.resource://" + context.packageName + "/" + i)
+    ): Uri = Uri.parse("android.resource://${context.packageName}/$i")
 
     private fun getCustomBellUri(
         context: Context,
         str: String,
-    ): Uri = Uri.parse("file://" + context.filesDir + "/" + str)
+    ): Uri = Uri.parse("file://${context.filesDir}/$str")
 
     @Nullable
     @JvmStatic
@@ -69,7 +69,7 @@ object BellCollection {
     fun getBellList(): ArrayList<Bell> = this.bells
 
     @JvmStatic
-    fun getDemoBell(): Bell? = getBell(this.demoBellName!!)
+    fun getDemoBell(): Bell? = demoBellName?.let { getBell(it) }
 
     @JvmStatic
     fun release() {

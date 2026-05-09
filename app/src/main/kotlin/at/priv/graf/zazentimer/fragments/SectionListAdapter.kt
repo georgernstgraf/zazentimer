@@ -54,24 +54,19 @@ class SectionListAdapter(
         val section = items[position]
 
         val name: String =
-            if (!section.name.isNullOrEmpty()) {
-                section.name!!
-            } else {
-                holder.itemView.context.getString(R.string.unnamed)
-            }
+            section.name?.takeIf { it.isNotEmpty() } ?: holder.itemView.context.getString(R.string.unnamed)
 
-        val durationStr = section.getDurationString() + ", "
+        val durationStr = "${section.getDurationString()}, "
         val info: String =
             if (section.bellcount == 1) {
-                durationStr + holder.itemView.context.getString(R.string.section_info_string_1_sg)
+                "$durationStr${holder.itemView.context.getString(R.string.section_info_string_1_sg)}"
             } else {
                 val partial =
-                    durationStr + String.format(holder.itemView.context.getString(R.string.section_info_string_1_pl), section.bellcount) +
-                        " "
+                    "$durationStr${String.format(holder.itemView.context.getString(R.string.section_info_string_1_pl), section.bellcount)} "
                 if (section.bellpause == 1) {
-                    partial + holder.itemView.context.getString(R.string.section_info_string_2_sg)
+                    "$partial${holder.itemView.context.getString(R.string.section_info_string_2_sg)}"
                 } else {
-                    partial + String.format(holder.itemView.context.getString(R.string.section_info_string_2_pl), section.bellpause)
+                    "$partial${String.format(holder.itemView.context.getString(R.string.section_info_string_2_pl), section.bellpause)}"
                 }
             }
 

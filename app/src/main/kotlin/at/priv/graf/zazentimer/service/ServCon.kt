@@ -23,7 +23,7 @@ class ServCon(
         }
     }
 
-    fun isBound(): Boolean = binder != null && binder?.getService() != null
+    fun isBound(): Boolean = binder?.getService() != null
 
     override fun onServiceDisconnected(componentName: ComponentName) {
         Log.d(TAG, "Service disconnected")
@@ -31,35 +31,39 @@ class ServCon(
     }
 
     fun startMeditation(i: Int) {
-        if (binder == null) {
+        val b = binder
+        if (b == null) {
             Log.d(TAG, "startMeditation(): No service bound!")
         } else {
-            binder!!.getService().startMeditation(i)
+            b.getService().startMeditation(i)
         }
     }
 
     fun pauseMeditation() {
-        if (binder == null) {
+        val b = binder
+        if (b == null) {
             Log.d(TAG, "pauseMeditation(): No service bound!")
         } else {
-            binder!!.getService().pauseMeditation()
+            b.getService().pauseMeditation()
         }
     }
 
     fun stopMeditation() {
-        if (binder == null) {
+        val b = binder
+        if (b == null) {
             Log.d(TAG, "stopMeditation(): No service bound!")
         } else {
-            binder!!.getService().stopMeditation()
+            b.getService().stopMeditation()
         }
     }
 
     fun getRunningMeditation(): Meditation? {
-        if (binder == null) {
+        val b = binder
+        if (b == null) {
             Log.d(TAG, "getRunningMeditation(): No service bound!")
             return null
         }
-        return binder!!.getService().getRunningMeditation()
+        return b.getService().getRunningMeditation()
     }
 
     fun setRunOnConnect(runOnConnect: RunOnConnect) {

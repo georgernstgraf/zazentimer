@@ -9,6 +9,7 @@ class SectionArcCalculatorTest {
     @Test
     fun emptyState_default_hasAllZerosAndEmpty() {
         val state = SectionArcCalculator.emptyState()
+        assertThat(state).isInstanceOf(MeditationUiState.Idle::class.java)
         assertThat(state.currentStartSeconds).isEqualTo(0)
         assertThat(state.totalSessionTime).isEqualTo(0)
         assertThat(state.nextEndSeconds).isEqualTo(0)
@@ -18,10 +19,7 @@ class SectionArcCalculatorTest {
         assertThat(state.sessionElapsedSeconds).isEqualTo(0)
         assertThat(state.currentSectionName).isEmpty()
         assertThat(state.nextSectionName).isEmpty()
-        assertThat(state.nextNextSectionName).isEmpty()
         assertThat(state.sessionName).isEmpty()
-        assertThat(state.paused).isFalse()
-        assertThat(state.running).isFalse()
     }
 
     @Test
@@ -37,6 +35,7 @@ class SectionArcCalculatorTest {
 
         val state = SectionArcCalculator.computeIdleState(session, sections)
 
+        assertThat(state).isInstanceOf(MeditationUiState.Idle::class.java)
         assertThat(state.currentStartSeconds).isEqualTo(0)
         assertThat(state.totalSessionTime).isEqualTo(600)
         assertThat(state.nextEndSeconds).isEqualTo(600)
@@ -46,10 +45,7 @@ class SectionArcCalculatorTest {
         assertThat(state.sessionElapsedSeconds).isEqualTo(0)
         assertThat(state.currentSectionName).isEqualTo("Zazen")
         assertThat(state.nextSectionName).isEmpty()
-        assertThat(state.nextNextSectionName).isEmpty()
         assertThat(state.sessionName).isEqualTo("Test")
-        assertThat(state.paused).isFalse()
-        assertThat(state.running).isFalse()
     }
 
     @Test
@@ -70,7 +66,6 @@ class SectionArcCalculatorTest {
         assertThat(state.prevStartSeconds).isEqualTo(0)
         assertThat(state.currentSectionName).isEqualTo("Zazen")
         assertThat(state.nextSectionName).isEqualTo("Kinhin")
-        assertThat(state.nextNextSectionName).isEmpty()
     }
 
     @Test
@@ -92,7 +87,6 @@ class SectionArcCalculatorTest {
         assertThat(state.prevStartSeconds).isEqualTo(0)
         assertThat(state.currentSectionName).isEqualTo("Zazen")
         assertThat(state.nextSectionName).isEqualTo("Kinhin")
-        assertThat(state.nextNextSectionName).isEqualTo("Zazen2")
     }
 
     @Test
@@ -108,7 +102,7 @@ class SectionArcCalculatorTest {
 
         val state = SectionArcCalculator.computeIdleState(session, sections)
 
-        assertThat(state.nextNextSectionName).isEqualTo("C")
+        assertThat(state).isInstanceOf(MeditationUiState.Idle::class.java)
     }
 
     @Test
@@ -149,14 +143,13 @@ class SectionArcCalculatorTest {
     }
 
     @Test
-    fun computeIdleState_notRunningAndNotPaused() {
+    fun computeIdleState_isIdleType() {
         val session = Session("S", "")
         val sections = arrayOf(Section("A", 100))
 
         val state = SectionArcCalculator.computeIdleState(session, sections)
 
-        assertThat(state.running).isFalse()
-        assertThat(state.paused).isFalse()
+        assertThat(state).isInstanceOf(MeditationUiState.Idle::class.java)
     }
 
     @Test

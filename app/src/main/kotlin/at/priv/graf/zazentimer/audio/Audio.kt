@@ -82,12 +82,12 @@ class Audio(
             stopAndRelease()
         }
         this.player = bell?.let { preparePlayer(it, volume) }
-        if (this.player != null) {
+        this.player?.let { p ->
             this.playing = true
             Log.d(TAG, "Start playing Bell")
-            this.player!!.isLooping = false
-            this.player!!.start()
-            this.player!!.setOnCompletionListener(this)
+            p.isLooping = false
+            p.start()
+            p.setOnCompletionListener(this)
             return
         }
         Log.e(TAG, "Could not preparePlayer")

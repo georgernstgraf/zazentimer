@@ -133,7 +133,7 @@ class SessionEditFragment : Fragment() {
                         fromPosition: Int,
                         toPosition: Int,
                     ): Boolean {
-                        adapter!!.moveItem(fromPosition, toPosition)
+                        adapter?.moveItem(fromPosition, toPosition) ?: return false
                         return true
                     }
                 },
@@ -167,18 +167,17 @@ class SessionEditFragment : Fragment() {
         super.onResume()
         Log.d(TAG, "sessionId=${this.sessionId}")
         this.session = dbOperations.readSession(this.sessionId)
-        if (this.session == null) {
+        val s = this.session
+        if (s == null) {
             Log.e(TAG, "session is NULL")
         } else {
             Log.i(TAG, "session found and valid")
+            binding.textSitzungName.setText(s.name)
+            binding.textSitzungBeschreibung.setText(s.description)
+            this.sections = dbOperations.readSections(s.id)
+            initSectionList()
         }
-        binding.textSitzungName.setText(this.session!!.name)
-        binding.textSitzungBeschreibung.setText(this.session!!.description)
         requireActivity().invalidateOptionsMenu()
-        this.sections = dbOperations.readSections(this.session!!.id)
-        initSectionList()
-        binding.textSitzungName.setText(this.session!!.name)
-        binding.textSitzungBeschreibung.setText(this.session!!.description)
         if (this.pref?.getBoolean(ZazenTimerActivity.PREF_KEY_SHOW_SESSION_EDIT_HELP_V13, false) == false) {
             showHelp13()
             this.pref
@@ -193,59 +192,68 @@ class SessionEditFragment : Fragment() {
             return
         }
         this.messageView = MessageView(requireActivity())
-        this.messageView!!.setTitle(getString(R.string.help_sectionlist_title))
-        this.messageView!!.setText(getString(R.string.help_sectionlist_text))
-        this.messageView!!.setOnOkListener(
-            Runnable {
-                this@SessionEditFragment.messageView = null
-            },
-        )
-        this.messageView!!.show()
+        messageView?.let { mv ->
+            mv.setTitle(getString(R.string.help_sectionlist_title))
+            mv.setText(getString(R.string.help_sectionlist_text))
+            mv.setOnOkListener(
+                Runnable {
+                    this@SessionEditFragment.messageView = null
+                },
+            )
+            mv.show()
+        }
     }
 
     override fun onPause() {
         super.onPause()
-        val items = adapter!!.getItems()
+        val items = adapter?.getItems() ?: return
         for (i in items.indices) {
             val section = items[i]
             section.rank = i + 1
             dbOperations.updateSection(section)
         }
-        this.session!!.name = binding.textSitzungName.text.toString()
-        this.session!!.description = binding.textSitzungBeschreibung.text.toString()
-        dbOperations.updateSession(this.session!!)
+        session?.let { s ->
+            s.name = binding.textSitzungName.text.toString()
+            s.description = binding.textSitzungBeschreibung.text.toString()
+            dbOperations.updateSession(s)
+        }
     }
 
     private fun deleteSectionAt(position: Int) {
-        val deletedSection = adapter!!.getItem(position)
+        val a = adapter ?: return
+        val s = session ?: return
+        val deletedSection = a.getItem(position)
         val deletedPosition = position
         dbOperations.deleteSection(deletedSection.id.toLong())
-        adapter!!.removeItem(position)
+        a.removeItem(position)
 
         Snackbar
-            .make(binding.list, "Deleted '" + deletedSection.toString() + "'", Snackbar.LENGTH_LONG)
+            .make(binding.list, "Deleted '$deletedSection'", Snackbar.LENGTH_LONG)
             .setAction("UNDO") {
-                dbOperations.insertSection(this@SessionEditFragment.session!!, deletedSection)
-                adapter!!.insertItem(deletedPosition, deletedSection)
+                dbOperations.insertSection(s, deletedSection)
+                a.insertItem(deletedPosition, deletedSection)
             }.show()
     }
 
     private fun duplicateSectionAt(position: Int) {
-        val source = adapter!!.getItem(position)
+        val a = adapter ?: return
+        val s = session ?: return
+        val source = a.getItem(position)
         val copy = Section(source.name ?: "", source.duration)
         copy.bell = source.bell
         copy.bellUri = source.bellUri
         copy.bellcount = source.bellcount
         copy.bellpause = source.bellpause
         copy.volume = source.volume
-        dbOperations.insertSection(this.session!!, copy)
-        sections = dbOperations.readSections(this.session!!.id)
+        dbOperations.insertSection(s, copy)
+        sections = dbOperations.readSections(s.id)
         initSectionList()
     }
 
     fun doCreateNewSection() {
+        val s = session ?: return
         val section = Section(resources.getString(R.string.default_section_name), 60)
-        dbOperations.insertSection(this.session!!, section)
+        dbOperations.insertSection(s, section)
         navigateToSectionEdit(section.id)
     }
 
