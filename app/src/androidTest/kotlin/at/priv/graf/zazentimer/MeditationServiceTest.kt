@@ -95,30 +95,48 @@ class MeditationServiceTest {
     }
 
     private fun clickByTextContainsWithUiAutomator(text: String) {
-        val button: UiObject =
-            device.findObject(
-                UiSelector()
-                    .textContains(text)
-                    .className("android.widget.Button"),
-            )
         try {
-            button.click()
-        } catch (e: Exception) {
-            throw RuntimeException("Failed to click text containing: $text", e)
+            val buttonById: UiObject =
+                device.findObject(
+                    UiSelector()
+                        .resourceId("android:id/button1"),
+                )
+            buttonById.click()
+        } catch (e1: Exception) {
+            val button: UiObject =
+                device.findObject(
+                    UiSelector()
+                        .textContains(text)
+                        .className("android.widget.Button"),
+                )
+            try {
+                button.click()
+            } catch (e2: Exception) {
+                throw RuntimeException("Failed to click text containing: $text", e2)
+            }
         }
     }
 
     private fun clickCancelDialog() {
-        val cancelButton: UiObject =
-            device.findObject(
-                UiSelector()
-                    .textContains("Cancel")
-                    .className("android.widget.Button"),
-            )
         try {
-            cancelButton.click()
-        } catch (e: Exception) {
-            throw RuntimeException("Failed to click Cancel", e)
+            val cancelById: UiObject =
+                device.findObject(
+                    UiSelector()
+                        .resourceId("android:id/button2"),
+                )
+            cancelById.click()
+        } catch (e1: Exception) {
+            val cancelButton: UiObject =
+                device.findObject(
+                    UiSelector()
+                        .textContains("Cancel")
+                        .className("android.widget.Button"),
+                )
+            try {
+                cancelButton.click()
+            } catch (e2: Exception) {
+                throw RuntimeException("Failed to click Cancel", e2)
+            }
         }
     }
 

@@ -44,7 +44,7 @@ class SessionCrudTest {
                 .putBoolean(ZazenTimerActivity.PREF_KEY_SHOW_SESSION_EDIT_HELP_V13, true)
                 .apply()
         }
-        SystemClock.sleep(2000)
+        SystemClock.sleep(3000)
     }
 
     @Test
