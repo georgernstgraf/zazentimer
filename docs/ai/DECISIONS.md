@@ -294,3 +294,15 @@ Each entry documents WHAT was decided and WHY.
 - **Reason**: Mechanical Java→Kotlin conversion (#88) produced non-idiomatic code with sentinel boolean fields, 215 `!!` forced unwraps, Java-style null checks, and string concatenation. The sealed class eliminates sentinel empty strings and makes state transitions explicit in `when` expressions.
 - **Considered**: Keeping `data class` with boolean fields (rejected — sentinel values are error-prone); using `fun interface` for callbacks (rejected — per decision, keep regular interfaces); converting all `String.format` to interpolation (rejected — locale-sensitive formatting must use `String.format`).
 - **Tradeoff**: Sealed class requires `when` branches in all consumers (3 files). `nextNextSectionName` is only available on `Running`/`Paused` subtypes, not on `Idle` — this is correct since idle state doesn't show next-next section names. The 4 remaining `!!` are all `_binding!!` in fragments — the recommended Android viewBinding pattern.
+
+## 2026-05-09: Edge-to-Edge + Styles + Compiler Options Bundle (#103 #108 #110)
+- **Choice**: Bundled three related issues into a single pass: (1) removed `windowOptOutEdgeToEdgeEnforcement` and called `enableEdgeToEdge()` via activity-ktx, (2) deleted 9 empty variant styles.xml files, moved themes to themes.xml, removed unused betterListView, (3) enabled `explicitApiWarning()`, ran `ktlintFormat` (81 files), enforced ktlint/detekt in CI.
+- **Reason**: All three issues touched `styles.xml` and `build.gradle.kts`. Bundling avoided merge conflicts and reduced CI cycles.
+- **Considered**: Separate commits per issue (rejected — styles.xml conflicts); separate PRs (rejected — trunk-based, no PRs).
+- **Tradeoff**: Large single diff (84 files, mostly ktlintFormat reformatting) harder to review. TimerView unchanged — layout handles system bar avoidance without code changes.
+
+## 2026-05-09: Coroutines Migration + Predictive Back (#106 #107)
+- **Choice**: Migrated all thread-based concurrency to Kotlin Coroutines. DAOs → `suspend fun`. DbOperations: removed ExecutorService and `executeSync()`, all public methods → `suspend`. ViewModel: Handler.postDelayed loop → `viewModelScope.launch { delay(300) }`. Meditation: own CoroutineScope(SupervisorJob + Dispatchers.Main). Service → LifecycleService for lifecycleScope. Predictive back: one manifest attribute `enableOnBackInvokedCallback=true`.
+- **Reason**: ExecutorService + Thread.sleep is error-prone, untestable, and PITFALLS #79 deadlock. Coroutines provide structured concurrency, cancellation, and cleaner async code. Navigation 2.9.7 handles predictive back automatically.
+- **Considered**: Flow<T> for DAOs (rejected — LiveData already serves as reactive layer); GlobalScope for Meditation (rejected — not lifecycle-aware, no structured concurrency); keeping Service instead of LifecycleService (rejected — need lifecycleScope).
+- **Tradeoff**: Service → LifecycleService adds `lifecycle-service` dependency. `runBlocking { delay(500) }` used for mute/unmute (main thread, short blocking, acceptable). Tests need `runBlocking {}` wrappers. Room schema export still `true` (was enabled in #98).

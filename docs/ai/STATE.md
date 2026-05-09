@@ -3,10 +3,10 @@
 Current status as of 2026-05-09.
 
 ## Current Focus
-No active focus. All planned work complete. Next: #64 Play Store sub-issues or follow-up issues (#103–#111).
+#88 Kotlin migration + all follow-ups complete. Next: #64 Play Store.
 
 ## Completed (this cycle)
-- [x] #88 Java → Kotlin migration — all 7 phases complete
+- [x] #88 Java → Kotlin migration — all 7 phases + 7 follow-ups complete
   - #96: AGP 9.1.1 + Gradle 9.x + Kotlin DSL
   - #97: ViewBinding migration
   - #98: KSP migration (Room 2.8.4 + Hilt 2.59.2)
@@ -14,8 +14,15 @@ No active focus. All planned work complete. Next: #64 Play Store sub-issues or f
   - #100: Test conversion (21 files)
   - #101: SDK 34 → 36
   - #102: Final cleanup (ktlint 14.2.0 + detekt 1.23.8 + docs)
+  - #103: Edge-to-edge (enableEdgeToEdge, activity-ktx)
+  - #105: Idiomatic Kotlin (215 `!!` → 4, sealed class UiState, scope functions, interpolation)
+  - #106: Coroutines (suspend DAOs, no ExecutorService/Thread.sleep remaining)
+  - #107: Predictive back (enableOnBackInvokedCallback=true)
+  - #108: Strict compiler options (explicitApiWarning, ktlint/detekt enforcement)
+  - #110: Styles cleanup (themes.xml, 9 empty variants deleted, betterListView removed)
+  - #111: Test infra (ScreenRobot delegation, dead code deleted, sleeps → IdlingResources)
 - [x] #124 Fix unit test directory namespace mismatch
-- [x] #126 Comprehensive unit & integration test suite (161 tests)
+- [x] #126 Comprehensive unit & integration test suite (157 tests)
   - #127: Test infrastructure (MockK, Robolectric, room-testing, Truth, coroutines-test)
   - #128: Pure logic tests (36 tests)
   - #129: Room integration tests (34 tests)
@@ -34,25 +41,16 @@ No active focus. All planned work complete. Next: #64 Play Store sub-issues or f
 
 ## Pending
 - [ ] #64 Play Store — #114 (AAB build), #113 (privacy/legal)
-- [ ] #103: Proper edge-to-edge (remove opt-out)
-- [x] #105: Idiomatic Kotlin refactorings — sealed class, 211 `!!` eliminated, scope functions, string interpolation
-- [ ] #106: Coroutines migration
-- [ ] #107: Predictive Back Gesture
-- [ ] #108: Strict Kotlin compiler options + enable ktlint/detekt enforcement
-- [ ] #110: styles.xml further cleanup (depends on #103)
-- [ ] #111: Test infrastructure consolidation
-- [ ] Enable Room schema export for migration testing
 
 ## Known Issues
 - Gradle UTP runner fails on API 35+ — workaround with `am instrument`
 - `testBellSoundPlayback` may still fail under Xvfb since `-noaudio` is retained
-- ktlint and detekt are visibility-only — enforcement deferred to #108
-- `exportSchema=false` prevents migration tests — follow-up needed
+- 6 SystemClock.sleep() remain in instrumented tests per PITFALLS #81
 
 ## Blockers
 - None
 
 ## Next Session Suggestion
-1. #103 Proper edge-to-edge (remove opt-out)
-2. #114 Switch build to AAB format (needed for Play Store)
-3. #113 Privacy policy + legal compliance
+1. #114 Switch build to AAB format (needed for Play Store)
+2. #113 Privacy policy + legal compliance
+3. Run nightly tests to verify coroutines migration on all API levels
