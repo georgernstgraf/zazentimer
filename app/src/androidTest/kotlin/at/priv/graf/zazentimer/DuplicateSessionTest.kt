@@ -58,6 +58,8 @@ class DuplicateSessionTest {
         onView(withText(R.string.menu_copy_session))
             .perform(click())
 
+        SystemClock.sleep(1000)
+
         onView(withText(containsString("Copy of")))
             .check(matches(isDisplayed()))
     }

@@ -141,7 +141,7 @@ class MeditationServiceTest {
             activity.startMeditation()
         }
 
-        SystemClock.sleep(500)
+        SystemClock.sleep(2000)
         waitForStopButton()
 
         clickStopButtonWithUiAutomator()
@@ -171,7 +171,7 @@ class MeditationServiceTest {
             activity.startMeditation()
         }
 
-        SystemClock.sleep(500)
+        SystemClock.sleep(2000)
         waitForStopButton()
 
         clickStopButtonWithUiAutomator()
