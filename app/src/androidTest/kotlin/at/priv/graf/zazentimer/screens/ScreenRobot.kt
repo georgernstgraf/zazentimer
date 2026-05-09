@@ -51,7 +51,11 @@ class ScreenRobot {
     fun onViewWithId(viewId: Int): ViewInteraction = Espresso.onView(ViewMatchers.withId(viewId))
 
     fun clickToolbarOverflowItem(textResId: Int): ScreenRobot {
-        openActionBarOverflowOrOptionsMenu(getInstrumentation().targetContext)
+        try {
+            onView(withContentDescription("More options")).perform(click())
+        } catch (e: Exception) {
+            openActionBarOverflowOrOptionsMenu(getInstrumentation().targetContext)
+        }
         // PITFALLS #81: popup menu animation not tracked by Espresso idle
         for (i in 0 until 10) {
             try {
