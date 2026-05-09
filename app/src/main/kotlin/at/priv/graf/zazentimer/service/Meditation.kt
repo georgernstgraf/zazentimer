@@ -9,10 +9,10 @@ import android.media.AudioManager
 import android.os.Build
 import android.os.PowerManager
 import android.util.Log
+import at.priv.graf.zazentimer.R
 import at.priv.graf.zazentimer.ZazenTimerActivity
 import at.priv.graf.zazentimer.audio.Audio
 import at.priv.graf.zazentimer.audio.BellCollection
-import at.priv.graf.zazentimer.bo.Bell
 import at.priv.graf.zazentimer.bo.Section
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -20,46 +20,38 @@ import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.cancel
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
-import java.util.HashSet
 
 class Meditation(
     private val meditationService: MeditationService,
     private val sessionName: String,
     private val sections: Array<Section>,
 ) {
-    private var alarmManager: AlarmManager = meditationService.getSystemService(Context.ALARM_SERVICE) as AlarmManager
+    private val scope = CoroutineScope(SupervisorJob() + Dispatchers.Main)
     private var currentSectionEndIntent: PendingIntent? = null
     private var currentSectionIdx: Int = 0
-    private var meditationWakeLock: PowerManager.WakeLock? = null
     private var oldRingerMode: Int = 0
     private var oldRingerVolume: Int = 0
     private var mutedRingerMode: Int = -1
+    private var meditationWakeLock: PowerManager.WakeLock? = null
     private var pauseSectionSeconds: Int = 0
+    private var sectionStartTime: Long = 0L
+    private var totalSessionTime: Int = 0
+    private val alarmManager: AlarmManager = meditationService.getSystemService(Context.ALARM_SERVICE) as AlarmManager
+    private val audioObjects = ArrayList<Audio>()
+    private val pref: SharedPreferences = ZazenTimerActivity.getPreferences(meditationService)
 
     @Volatile
     private var paused: Boolean = false
 
-    private val pref: SharedPreferences = ZazenTimerActivity.getPreferences(meditationService)
-    private var sectionStartTime: Long = 0
+    @Volatile
+    private var started: Boolean = false
 
     @Volatile
     private var stopping: Boolean = false
 
-    private var totalSessionTime: Int = 0
-    private var audioObjects: HashSet<Audio> = HashSet()
-    private var started: Boolean = false
-    private val scope = CoroutineScope(SupervisorJob() + Dispatchers.Main)
-
     init {
-        this.stopping = false
-        this.paused = false
-        this.totalSessionTime = 0
-        this.currentSectionIdx = -1
-        this.currentSectionIdx = 0
         this.totalSessionTime = MeditationTimer.getTotalSessionTime(sections)
     }
-
-    fun getSessionName(): String = sessionName
 
     suspend fun start() {
         if (started) {
@@ -177,7 +169,11 @@ class Meditation(
             startSectionTimer()
             return
         }
-        playBells(sections[currentSectionIdx]) { finishMeditation() }
+        playBells(sections[currentSectionIdx]) {
+            scope.launch {
+                finishMeditation()
+            }
+        }
     }
 
     fun getCurrentSection(): Section = sections[currentSectionIdx]
@@ -232,30 +228,7 @@ class Meditation(
         return false
     }
 
-    fun playBell(section: Section) {
-        var bellForSection: Bell? = BellCollection.getBellForSection(section)
-        if (bellForSection == null) {
-            bellForSection = BellCollection.getDemoBell()
-        }
-        var found = false
-        val it = audioObjects.iterator()
-        while (it.hasNext()) {
-            val next = it.next()
-            if (!next.isPlaying()) {
-                Log.d(TAG, "Found free Audio Object")
-                found = true
-                next.playAbsVolume(bellForSection, section.volume)
-                break
-            }
-        }
-        if (found) {
-            return
-        }
-        Log.d(TAG, "Created new Audio Object for new bell")
-        val audio = Audio(meditationService)
-        audio.playAbsVolume(bellForSection, section.volume)
-        audioObjects.add(audio)
-    }
+    fun getSessionName(): String = sessionName
 
     private suspend fun mutePhone() {
         Log.d(TAG, "muting Phone")
@@ -306,75 +279,39 @@ class Meditation(
             mutedRingerMode = -1
         }
     }
-        }
-    }
-
-    private suspend fun unmutePhone() {
-        Log.d(TAG, "unmuting Phone")
-        val vibrateSound = pref.getBoolean(ZazenTimerActivity.PREF_KEY_MUTE_MODE_VIBRATE_SOUND, false)
-        val vibrate = pref.getBoolean(ZazenTimerActivity.PREF_KEY_MUTE_MODE_VIBRATE, false)
-        val none = pref.getBoolean(ZazenTimerActivity.PREF_KEY_MUTE_MODE_NONE, true)
-        val audioManager = meditationService.getSystemService(Context.AUDIO_SERVICE) as AudioManager
-        if (!vibrateSound && (vibrate || none)) {
-            if (mutedRingerMode != -1) {
-                val currentMode = audioManager.ringerMode
-                if (currentMode != mutedRingerMode) {
-                    Log.d(TAG, "Ringer mode changed during meditation (was $mutedRingerMode, now $currentMode) — skipping restore")
-                    mutedRingerMode = -1
-                    return
-                }
-            }
-            Log.d(TAG, "unmuting: ring=$oldRingerVolume ringerMode=$oldRingerMode")
-            audioManager.ringerMode = oldRingerMode
-            delay(500)
-            if (oldRingerMode == 2) {
-                audioManager.setStreamVolume(2, oldRingerVolume, 0)
-            }
-            audioManager.ringerMode = oldRingerMode
-            mutedRingerMode = -1
-        }
-    }
 
     private fun playBells(
         section: Section,
-        onDone: Runnable?,
+        onDone: Runnable? = null,
     ) {
         scope.launch {
             Log.d(TAG, "Playing bells in coroutine")
-            var wakeLock: PowerManager.WakeLock? = null
             val powerManager = meditationService.getSystemService(Context.POWER_SERVICE) as PowerManager
-            wakeLock = powerManager.newWakeLock(26, "PlayBells")
+            val wakeLock = powerManager.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, "PlayBells")
             wakeLock.acquire((section.bellcount * 25 * 1000).toLong())
             Log.d(TAG, "WakeLock created for playing bells")
             for (i in 0 until section.bellcount) {
-                if (isStopped()) break
-                playBell(section)
+                if (stopping) break
+                val bell = BellCollection.getBellForSection(section)
+                if (bell != null) {
+                    val audio = Audio(meditationService)
+                    audio.playAbsVolume(bell, section.volume)
+                    delay(500) // Small overlap
+                    audio.release()
+                }
                 if (i < section.bellcount - 1) {
-                    for (j in 0 until section.bellpause * 2) {
-                        if (isStopped()) break
-                        delay(500)
-                    }
+                    delay((section.bellpause * 1000).toLong())
                 }
             }
-            Log.d(TAG, "waiting until the bells have finished playing")
-            while (isPlaying() && !isStopped()) {
-                delay(500)
+            if (wakeLock.isHeld) {
+                wakeLock.release()
             }
-            try {
-                if (wakeLock.isHeld) {
-                    wakeLock.release()
-                }
-            } catch (e: Exception) {
-                Log.d(TAG, "wakeLock release error", e)
-            }
-            Log.d(TAG, "WakeLock released for playing bells")
-            Log.d(TAG, "Done playing bells")
             onDone?.run()
         }
     }
 
     companion object {
-        private const val INTENT_SECTION_ENDED = "ZAZENTIMER_SECTION_ENDED"
+        const val INTENT_SECTION_ENDED: String = "at.priv.graf.zazentimer.ACTION_SECTION_ENDED"
         private const val TAG = "ZMT_Meditation"
     }
 }
