@@ -13,14 +13,13 @@ import android.util.Log
 import androidx.core.app.NotificationCompat
 import at.priv.graf.zazentimer.R
 import at.priv.graf.zazentimer.ZazenTimerActivity
-import at.priv.graf.zazentimer.database.DbOperations
 import at.priv.graf.zazentimer.bo.Session
+import at.priv.graf.zazentimer.database.DbOperations
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
 @AndroidEntryPoint
 class MeditationService : Service() {
-
     @Inject
     lateinit var dbOperations: DbOperations
 
@@ -44,7 +43,11 @@ class MeditationService : Service() {
         return super.onUnbind(intent)
     }
 
-    override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
+    override fun onStartCommand(
+        intent: Intent?,
+        flags: Int,
+        startId: Int,
+    ): Int {
         Log.d(TAG, "onStartCommand: action=${intent?.action ?: "null"}")
         if (intent != null && ACTION_SECTION_ENDED == intent.action) {
             if (runningMeditation != null) {
@@ -134,7 +137,8 @@ class MeditationService : Service() {
         val channel = NotificationChannel("zazen_timer_channel", "Meditation Timer", NotificationManager.IMPORTANCE_LOW)
         val manager = getSystemService(NotificationManager::class.java)
         manager?.createNotificationChannel(channel)
-        return NotificationCompat.Builder(baseContext, "zazen_timer_channel")
+        return NotificationCompat
+            .Builder(baseContext, "zazen_timer_channel")
             .setContentTitle(title)
             .setContentText(text)
             .setSmallIcon(icon)

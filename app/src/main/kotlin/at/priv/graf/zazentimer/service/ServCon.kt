@@ -6,12 +6,16 @@ import android.content.ServiceConnection
 import android.os.IBinder
 import android.util.Log
 
-class ServCon(context: Context) : ServiceConnection {
-
+class ServCon(
+    context: Context,
+) : ServiceConnection {
     private var binder: MeditationServiceBinder? = null
     private var runOnConnect: RunOnConnect? = null
 
-    override fun onServiceConnected(componentName: ComponentName, iBinder: IBinder) {
+    override fun onServiceConnected(
+        componentName: ComponentName,
+        iBinder: IBinder,
+    ) {
         Log.d(TAG, "Service connected")
         binder = iBinder as MeditationServiceBinder
         runOnConnect?.let {

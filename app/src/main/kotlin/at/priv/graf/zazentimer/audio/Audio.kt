@@ -9,8 +9,9 @@ import android.util.Log
 import at.priv.graf.zazentimer.bo.Bell
 import at.priv.graf.zazentimer.bo.Section
 
-class Audio(private val context: Context) : MediaPlayer.OnCompletionListener {
-
+class Audio(
+    private val context: Context,
+) : MediaPlayer.OnCompletionListener {
     @Volatile
     private var playing: Boolean = false
     private var player: MediaPlayer? = null
@@ -25,16 +26,20 @@ class Audio(private val context: Context) : MediaPlayer.OnCompletionListener {
         stopAndRelease()
     }
 
-    private fun preparePlayer(bell: Bell, volume: Int): MediaPlayer? {
+    private fun preparePlayer(
+        bell: Bell,
+        volume: Int,
+    ): MediaPlayer? {
         Log.d(TAG, "preparing Audio Player")
         val uri: Uri = bell.uri
         val mediaPlayer = MediaPlayer()
         try {
             mediaPlayer.setAudioAttributes(
-                AudioAttributes.Builder()
+                AudioAttributes
+                    .Builder()
                     .setUsage(AudioAttributes.USAGE_ALARM)
                     .setContentType(AudioAttributes.CONTENT_TYPE_SONIFICATION)
-                    .build()
+                    .build(),
             )
             mediaPlayer.setDataSource(this.context, uri)
             mediaPlayer.prepare()
@@ -69,7 +74,10 @@ class Audio(private val context: Context) : MediaPlayer.OnCompletionListener {
         playAbsVolume(BellCollection.getBellForSection(section), section.volume)
     }
 
-    fun playAbsVolume(bell: Bell?, volume: Int) {
+    fun playAbsVolume(
+        bell: Bell?,
+        volume: Int,
+    ) {
         if (this.player != null) {
             stopAndRelease()
         }
@@ -85,9 +93,7 @@ class Audio(private val context: Context) : MediaPlayer.OnCompletionListener {
         Log.e(TAG, "Could not preparePlayer")
     }
 
-    fun isPlaying(): Boolean {
-        return this.playing
-    }
+    fun isPlaying(): Boolean = this.playing
 
     fun getStreamVolume(): Int {
         val streamMaxVolume = this.manager.getStreamMaxVolume(AudioManager.STREAM_ALARM)

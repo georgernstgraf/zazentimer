@@ -7,11 +7,9 @@ import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.action.ViewActions.typeText
 import androidx.test.espresso.contrib.RecyclerViewActions.actionOnItemAtPosition
 import androidx.test.espresso.matcher.ViewMatchers.withId
-
 import at.priv.graf.zazentimer.R
 
 class SessionEditPage : BasePage() {
-
     fun verifyEditSessionScreen(): SessionEditPage {
         checkElementIsDisplayed(R.id.text_sitzung_name)
         checkElementIsDisplayed(R.id.but_new_section)

@@ -8,8 +8,15 @@ import androidx.room.PrimaryKey
 
 @Entity(
     tableName = "sections",
-    foreignKeys = [ForeignKey(entity = SessionEntity::class, parentColumns = ["_id"], childColumns = ["fk_session"], onDelete = ForeignKey.CASCADE)],
-    indices = [Index("fk_session")]
+    foreignKeys = [
+        ForeignKey(
+            entity = SessionEntity::class,
+            parentColumns = ["_id"],
+            childColumns = ["fk_session"],
+            onDelete = ForeignKey.CASCADE,
+        ),
+    ],
+    indices = [Index("fk_session")],
 )
 data class SectionEntity(
     @PrimaryKey(autoGenerate = true)
@@ -23,5 +30,5 @@ data class SectionEntity(
     var bellcount: Int? = null,
     var bellpause: Int? = null,
     var belluri: String? = null,
-    var volume: Int? = null
+    var volume: Int? = null,
 )

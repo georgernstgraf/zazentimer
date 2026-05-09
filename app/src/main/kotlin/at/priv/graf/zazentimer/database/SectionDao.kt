@@ -26,5 +26,8 @@ interface SectionDao {
     fun getMaxRank(sessionId: Int): Int?
 
     @Query("UPDATE sections SET rank = :rank WHERE _id = :sectionId")
-    fun updateRank(sectionId: Int, rank: Int)
+    fun updateRank(
+        sectionId: Int,
+        rank: Int,
+    )
 }

@@ -1,26 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- App themes -->
-    <style name="DarkZenTheme" parent="@style/Theme.AppCompat.NoActionBar">
-        <item name="android:windowOptOutEdgeToEdgeEnforcement">true</item>
-        <item name="betterListView">@style/betterListView</item>
-        <item name="timerViewStyle">@style/timerViewStyleDark</item>
-        <item name="zenIconSrc">@drawable/zenkreis2wt</item>
-    </style>
-    <style name="LightZenTheme" parent="@style/Theme.AppCompat.Light.NoActionBar">
-        <item name="android:windowOptOutEdgeToEdgeEnforcement">true</item>
-        <item name="betterListView">@style/betterListView</item>
-        <item name="timerViewStyle">@style/timerViewStyleLight</item>
-        <item name="zenIconSrc">@drawable/zenkreis2bk</item>
-    </style>
-
-    <!-- Custom attr styles referenced by themes -->
-    <style name="betterListView" parent="@style/Widget.BetterListView">
-        <item name="backgroundColor">?attr/colorPrimary</item>
-    </style>
-    <style name="Widget.BetterListView" parent="@style/Widget.AppCompat.ListView">
-        <item name="backgroundColor">?attr/colorPrimary</item>
-    </style>
     <style name="timerViewStyleDark" parent="">
         <item name="colorMarkerLine">@color/colorDarkMarkerLine</item>
         <item name="colorMarkerTriangle">@color/colorDarkMarkerTriangle</item>
@@ -38,7 +17,6 @@
         <item name="remainingSectionsColor">@color/colorRemainingSections</item>
     </style>
 
-    <!-- Layout styles -->
     <style name="zenIcon" parent="">
         <item name="android:src">?attr/zenIconSrc</item>
     </style>

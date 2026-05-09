@@ -4,11 +4,9 @@ import android.app.AlertDialog
 import android.app.NotificationManager
 import android.content.BroadcastReceiver
 import android.content.Context
-import android.content.DialogInterface
 import android.content.Intent
 import android.content.IntentFilter
 import android.content.SharedPreferences
-import android.content.pm.ResolveInfo
 import android.os.Build
 import android.os.Bundle
 import android.os.Handler
@@ -23,10 +21,10 @@ import android.view.WindowManager
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
+import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.core.content.ContextCompat
-import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
@@ -34,7 +32,6 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.NavigationUI
 import androidx.preference.PreferenceManager
 import at.priv.graf.zazentimer.audio.BellCollection
-import at.priv.graf.zazentimer.bo.Bell
 import at.priv.graf.zazentimer.bo.Section
 import at.priv.graf.zazentimer.bo.Session
 import at.priv.graf.zazentimer.database.DbOperations
@@ -45,8 +42,9 @@ import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
 @AndroidEntryPoint
-class ZazenTimerActivity : AppCompatActivity(), MainFragment.OnFragmentInteractionListener {
-
+class ZazenTimerActivity :
+    AppCompatActivity(),
+    MainFragment.OnFragmentInteractionListener {
     private var meditationEndReceiver: MeditationEndReceiver? = null
     private var pref: SharedPreferences? = null
     private val intentAllowMuting: Intent = Intent("android.settings.NOTIFICATION_POLICY_ACCESS_SETTINGS")
@@ -68,8 +66,9 @@ class ZazenTimerActivity : AppCompatActivity(), MainFragment.OnFragmentInteracti
 
     private fun getNavController(): NavController? {
         if (navController == null) {
-            val navHostFragment = supportFragmentManager
-                .findFragmentById(R.id.nav_host_fragment) as? NavHostFragment
+            val navHostFragment =
+                supportFragmentManager
+                    .findFragmentById(R.id.nav_host_fragment) as? NavHostFragment
             if (navHostFragment != null) {
                 navController = navHostFragment.navController
             }
@@ -78,9 +77,12 @@ class ZazenTimerActivity : AppCompatActivity(), MainFragment.OnFragmentInteracti
     }
 
     private class MeditationEndReceiver(
-        private val activity: ZazenTimerActivity
+        private val activity: ZazenTimerActivity,
     ) : BroadcastReceiver() {
-        override fun onReceive(context: Context, intent: Intent) {
+        override fun onReceive(
+            context: Context,
+            intent: Intent,
+        ) {
             this.activity.serviceMeditationEndNotify()
         }
     }
@@ -102,6 +104,7 @@ class ZazenTimerActivity : AppCompatActivity(), MainFragment.OnFragmentInteracti
             setTheme(R.style.LightZenTheme)
         }
         super.onCreate(bundle)
+        enableEdgeToEdge()
         if (bundle == null) {
             this.created = true
         }
@@ -120,9 +123,11 @@ class ZazenTimerActivity : AppCompatActivity(), MainFragment.OnFragmentInteracti
         zenIndicator = findViewById(R.id.zenIndicator)
         val nc = getNavController()
         if (nc != null) {
-            appBarConfiguration = AppBarConfiguration.Builder(
-                R.id.mainFragment
-            ).build()
+            appBarConfiguration =
+                AppBarConfiguration
+                    .Builder(
+                        R.id.mainFragment,
+                    ).build()
             NavigationUI.setupActionBarWithNavController(this, nc, appBarConfiguration!!)
         }
         observeViewModel()
@@ -166,25 +171,34 @@ class ZazenTimerActivity : AppCompatActivity(), MainFragment.OnFragmentInteracti
         zenIndicator?.visibility = if (MeditationService.isServiceRunning()) View.VISIBLE else View.GONE
         Log.d(TAG, "onResume")
         this.appRunning = true
-        ContextCompat.registerReceiver(this, this.meditationEndReceiver, IntentFilter(MeditationService.ZAZENTIMER_SESSION_ENDED), ContextCompat.RECEIVER_NOT_EXPORTED)
+        ContextCompat.registerReceiver(
+            this,
+            this.meditationEndReceiver,
+            IntentFilter(MeditationService.ZAZENTIMER_SESSION_ENDED),
+            ContextCompat.RECEIVER_NOT_EXPORTED,
+        )
         if (MeditationService.isServiceRunning()) {
             Log.d(TAG, "MeditationService currently running")
-            viewModel!!.bindToService(applicationContext as android.app.Application, this.handler!!, Runnable {
-                if ((viewModel!!.isServiceConnected() && viewModel!!.isPaused()) || viewModel!!.isServiceConnected()) {
-                    Log.d(TAG, "A Meditation is currently running")
-                    runOnUiThread {
-                        if (created) {
-                            showMeditationScreen()
+            viewModel!!.bindToService(
+                applicationContext as android.app.Application,
+                this.handler!!,
+                Runnable {
+                    if ((viewModel!!.isServiceConnected() && viewModel!!.isPaused()) || viewModel!!.isServiceConnected()) {
+                        Log.d(TAG, "A Meditation is currently running")
+                        runOnUiThread {
+                            if (created) {
+                                showMeditationScreen()
+                            }
+                            viewModel!!.startUpdateThread()
                         }
-                        viewModel!!.startUpdateThread()
+                    } else {
+                        Log.d(TAG, "No Meditation is currently running")
+                        runOnUiThread {
+                            showMainScreen()
+                        }
                     }
-                } else {
-                    Log.d(TAG, "No Meditation is currently running")
-                    runOnUiThread {
-                        showMainScreen()
-                    }
-                }
-            })
+                },
+            )
             return
         }
         Log.d(TAG, "No MeditationService is currently running")
@@ -198,9 +212,10 @@ class ZazenTimerActivity : AppCompatActivity(), MainFragment.OnFragmentInteracti
 
     override fun onSupportNavigateUp(): Boolean {
         val nc = getNavController()
-        if (nc != null && nc.currentDestination != null
-            && nc.currentDestination!!.id == R.id.meditationFragment
-            && MeditationService.isServiceRunning()
+        if (nc != null &&
+            nc.currentDestination != null &&
+            nc.currentDestination!!.id == R.id.meditationFragment &&
+            MeditationService.isServiceRunning()
         ) {
             return true
         }
@@ -223,8 +238,9 @@ class ZazenTimerActivity : AppCompatActivity(), MainFragment.OnFragmentInteracti
 
     fun showMeditationScreen() {
         val nc = getNavController()
-        if (nc != null && nc.currentDestination != null
-            && nc.currentDestination!!.id != R.id.meditationFragment
+        if (nc != null &&
+            nc.currentDestination != null &&
+            nc.currentDestination!!.id != R.id.meditationFragment
         ) {
             nc.navigate(R.id.action_mainFragment_to_meditationFragment)
         }
@@ -243,26 +259,37 @@ class ZazenTimerActivity : AppCompatActivity(), MainFragment.OnFragmentInteracti
     }
 
     fun showPrivacyScreen() {
-        AlertDialog.Builder(this).setTitle(R.string.privacy_title).setMessage(R.string.privacy_message).setPositiveButton(R.string.privacy_ok) { dialogInterface, _ ->
-            dialogInterface.dismiss()
-        }.create().show()
+        AlertDialog
+            .Builder(
+                this,
+            ).setTitle(
+                R.string.privacy_title,
+            ).setMessage(R.string.privacy_message)
+            .setPositiveButton(R.string.privacy_ok) { dialogInterface, _ ->
+                dialogInterface.dismiss()
+            }.create()
+            .show()
     }
 
     fun showAboutScreen() {
-        val message = ("Commit: " + BuildConfig.GIT_HASH + "<br><br>"
-            + getString(R.string.about1) + "<br><br>"
-            + getString(R.string.about2) + "<br><br>"
-            + getString(R.string.about3))
+        val message = (
+            "Commit: " + BuildConfig.GIT_HASH + "<br><br>" +
+                getString(R.string.about1) + "<br><br>" +
+                getString(R.string.about2) + "<br><br>" +
+                getString(R.string.about3)
+        )
         val textView = TextView(this)
         textView.text = Html.fromHtml(message, Html.FROM_HTML_MODE_COMPACT)
         textView.movementMethod = LinkMovementMethod.getInstance()
         val pad = (24 * resources.displayMetrics.density).toInt()
         textView.setPadding(pad, pad, 0, 0)
-        AlertDialog.Builder(this)
+        AlertDialog
+            .Builder(this)
             .setTitle(R.string.caption_zazen_meditation)
             .setView(textView)
             .setPositiveButton(R.string.privacy_ok) { dialog, _ -> dialog.dismiss() }
-            .create().show()
+            .create()
+            .show()
     }
 
     fun startMeditation() {
@@ -313,8 +340,9 @@ class ZazenTimerActivity : AppCompatActivity(), MainFragment.OnFragmentInteracti
     override fun onPrepareOptionsMenu(menu: Menu): Boolean {
         menu.clear()
         val nc = getNavController()
-        if (nc != null && nc.currentDestination != null
-            && nc.currentDestination!!.id == R.id.mainFragment
+        if (nc != null &&
+            nc.currentDestination != null &&
+            nc.currentDestination!!.id == R.id.mainFragment
         ) {
             menuInflater.inflate(R.menu.main_menu, menu)
         }
@@ -447,27 +475,41 @@ class ZazenTimerActivity : AppCompatActivity(), MainFragment.OnFragmentInteracti
     }
 
     private fun showMessageAllowMute(intent: Intent) {
-        AlertDialog.Builder(this).setTitle(R.string.title_mute_perm_request).setMessage(R.string.test_mute_perm_request).setIcon(R.drawable.icon).setPositiveButton(R.string.ok) { _, _ ->
-            try {
-                this@ZazenTimerActivity.runOnUiThread {
-                    try {
-                        this@ZazenTimerActivity.startActivity(intent)
-                    } catch (unused: Exception) {
+        AlertDialog
+            .Builder(
+                this,
+            ).setTitle(
+                R.string.title_mute_perm_request,
+            ).setMessage(R.string.test_mute_perm_request)
+            .setIcon(R.drawable.icon)
+            .setPositiveButton(R.string.ok) { _, _ ->
+                try {
+                    this@ZazenTimerActivity.runOnUiThread {
+                        try {
+                            this@ZazenTimerActivity.startActivity(intent)
+                        } catch (unused: Exception) {
+                            this@ZazenTimerActivity.showMessageNoMuteSettings()
+                        }
+                    }
+                } catch (unused: Exception) {
+                    this@ZazenTimerActivity.runOnUiThread {
                         this@ZazenTimerActivity.showMessageNoMuteSettings()
                     }
                 }
-            } catch (unused: Exception) {
-                this@ZazenTimerActivity.runOnUiThread {
-                    this@ZazenTimerActivity.showMessageNoMuteSettings()
-                }
-            }
-        }.setNegativeButton(R.string.abbrechen) { _, _ ->
-        }.show()
+            }.setNegativeButton(R.string.abbrechen) { _, _ ->
+            }.show()
     }
 
     fun showMessageNoMuteSettings() {
-        AlertDialog.Builder(this).setTitle(R.string.title_mute_perm_request).setMessage(R.string.text_no_notify_access_settings).setIcon(R.drawable.icon).setPositiveButton(R.string.ok) { _, _ ->
-        }.show()
+        AlertDialog
+            .Builder(
+                this,
+            ).setTitle(
+                R.string.title_mute_perm_request,
+            ).setMessage(R.string.text_no_notify_access_settings)
+            .setIcon(R.drawable.icon)
+            .setPositiveButton(R.string.ok) { _, _ ->
+            }.show()
     }
 
     private fun isCallable(intent: Intent): Boolean {
@@ -492,7 +534,10 @@ class ZazenTimerActivity : AppCompatActivity(), MainFragment.OnFragmentInteracti
         this.pref = getPreferences(this)
         if (!this.pref!!.getBoolean(PREF_KEY_CONVERTED_FROM_DB, false)) {
             Log.d(TAG, "marking settings as converted from DB to preferences...")
-            this.pref!!.edit().putBoolean(PREF_KEY_CONVERTED_FROM_DB, true).apply()
+            this.pref!!
+                .edit()
+                .putBoolean(PREF_KEY_CONVERTED_FROM_DB, true)
+                .apply()
             Log.d(TAG, "done converting settings")
         }
         if (!this.pref!!.getBoolean(PREF_KEY_CONVERTED_BELL_INDICES, false)) {
@@ -502,9 +547,27 @@ class ZazenTimerActivity : AppCompatActivity(), MainFragment.OnFragmentInteracti
         }
         if (this.pref!!.contains(PREF_KEY_PHONE_OFF)) {
             if (this.pref!!.getBoolean(PREF_KEY_PHONE_OFF, true)) {
-                this.pref!!.edit().putBoolean(PREF_KEY_MUTE_MODE_VIBRATE_SOUND, false).putBoolean(PREF_KEY_MUTE_MODE_VIBRATE, false).putBoolean(PREF_KEY_MUTE_MODE_NONE, true).remove(PREF_KEY_PHONE_OFF).apply()
+                this.pref!!
+                    .edit()
+                    .putBoolean(
+                        PREF_KEY_MUTE_MODE_VIBRATE_SOUND,
+                        false,
+                    ).putBoolean(PREF_KEY_MUTE_MODE_VIBRATE, false)
+                    .putBoolean(PREF_KEY_MUTE_MODE_NONE, true)
+                    .remove(PREF_KEY_PHONE_OFF)
+                    .apply()
             } else {
-                this.pref!!.edit().putBoolean(PREF_KEY_MUTE_MODE_VIBRATE_SOUND, true).putBoolean(PREF_KEY_MUTE_MODE_VIBRATE, false).putBoolean(PREF_KEY_MUTE_MODE_NONE, false).remove(PREF_KEY_PHONE_OFF).apply()
+                this.pref!!
+                    .edit()
+                    .putBoolean(
+                        PREF_KEY_MUTE_MODE_VIBRATE_SOUND,
+                        true,
+                    ).putBoolean(
+                        PREF_KEY_MUTE_MODE_VIBRATE,
+                        false,
+                    ).putBoolean(PREF_KEY_MUTE_MODE_NONE, false)
+                    .remove(PREF_KEY_PHONE_OFF)
+                    .apply()
             }
         }
     }
@@ -534,7 +597,15 @@ class ZazenTimerActivity : AppCompatActivity(), MainFragment.OnFragmentInteracti
     }
 
     fun resetSettingsForTest() {
-        getPreferences(this).edit().putBoolean(PREF_KEY_MUTE_MODE_VIBRATE_SOUND, false).putBoolean(PREF_KEY_MUTE_MODE_VIBRATE, false).putBoolean(PREF_KEY_MUTE_MODE_NONE, true).apply()
+        getPreferences(
+            this,
+        ).edit()
+            .putBoolean(
+                PREF_KEY_MUTE_MODE_VIBRATE_SOUND,
+                false,
+            ).putBoolean(PREF_KEY_MUTE_MODE_VIBRATE, false)
+            .putBoolean(PREF_KEY_MUTE_MODE_NONE, true)
+            .apply()
     }
 
     fun resetDatabaseForTest() {
@@ -589,9 +660,7 @@ class ZazenTimerActivity : AppCompatActivity(), MainFragment.OnFragmentInteracti
         const val PREF_KEY_VOLUME: String = "volume"
 
         @JvmStatic
-        fun getPreferences(context: Context): SharedPreferences {
-            return PreferenceManager.getDefaultSharedPreferences(context)
-        }
+        fun getPreferences(context: Context): SharedPreferences = PreferenceManager.getDefaultSharedPreferences(context)
 
         private const val TAG = "ZMT_ZazenTimerActivity"
     }

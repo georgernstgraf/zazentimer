@@ -1,33 +1,27 @@
 package at.priv.graf.zazentimer
 
+import androidx.test.espresso.Espresso.onView
+import androidx.test.espresso.action.ViewActions.click
+import androidx.test.espresso.assertion.ViewAssertions.matches
+import androidx.test.espresso.matcher.ViewMatchers.withId
+import androidx.test.espresso.matcher.ViewMatchers.withText
 import androidx.test.ext.junit.rules.ActivityScenarioRule
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.filters.LargeTest
-
+import at.priv.graf.zazentimer.screens.MainPage
+import at.priv.graf.zazentimer.screens.SectionEditPage
+import at.priv.graf.zazentimer.screens.SessionEditPage
 import dagger.hilt.android.testing.HiltAndroidRule
 import dagger.hilt.android.testing.HiltAndroidTest
-
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
 
-import at.priv.graf.zazentimer.screens.MainPage
-import at.priv.graf.zazentimer.screens.SessionEditPage
-import at.priv.graf.zazentimer.screens.SectionEditPage
-
-import androidx.test.espresso.Espresso.onView
-import androidx.test.espresso.action.ViewActions.click
-import androidx.test.espresso.assertion.ViewAssertions.matches
-import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
-import androidx.test.espresso.matcher.ViewMatchers.withId
-import androidx.test.espresso.matcher.ViewMatchers.withText
-
 @HiltAndroidTest
 @RunWith(AndroidJUnit4::class)
 @LargeTest
 class SectionEditTest {
-
     @get:Rule(order = 0)
     val hiltRule = HiltAndroidRule(this)
 
@@ -45,8 +39,9 @@ class SectionEditTest {
             .verifyMainScreenIsDisplayed()
             .clickSessionOverflowAction(0, R.string.menu_edit_session)
 
-        val sessionEditPage = SessionEditPage()
-            .verifyEditSessionScreen()
+        val sessionEditPage =
+            SessionEditPage()
+                .verifyEditSessionScreen()
 
         val sectionEditPage = sessionEditPage.clickAddSection()
 
@@ -89,8 +84,9 @@ class SectionEditTest {
             .verifyEditSessionScreen()
             .clickSectionAtPosition(0)
 
-        val sectionEditPage = SectionEditPage()
-            .verifySectionEditScreen()
+        val sectionEditPage =
+            SectionEditPage()
+                .verifySectionEditScreen()
 
         sectionEditPage.clickPlayBell()
 

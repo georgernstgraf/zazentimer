@@ -3,6 +3,9 @@ package at.priv.graf.zazentimer
 import androidx.test.ext.junit.rules.ActivityScenarioRule
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.filters.LargeTest
+import at.priv.graf.zazentimer.screens.MainPage
+import at.priv.graf.zazentimer.screens.MeditationPage
+import at.priv.graf.zazentimer.screens.SessionEditPage
 import dagger.hilt.android.testing.HiltAndroidRule
 import dagger.hilt.android.testing.HiltAndroidTest
 import org.junit.Before
@@ -10,15 +13,10 @@ import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
 
-import at.priv.graf.zazentimer.screens.MainPage
-import at.priv.graf.zazentimer.screens.MeditationPage
-import at.priv.graf.zazentimer.screens.SessionEditPage
-
 @HiltAndroidTest
 @RunWith(AndroidJUnit4::class)
 @LargeTest
 class MainScreenNavigationTest {
-
     @get:Rule(order = 0)
     val hiltRule = HiltAndroidRule(this)
 
@@ -56,12 +54,14 @@ class MainScreenNavigationTest {
             activity.showMeditationScreen()
         }
 
-        val meditationPage = MeditationPage()
-            .verifyMeditationScreenIsDisplayed()
-            .verifyPauseButtonDisplayed()
-            .verifyStopButtonDisplayed()
+        val meditationPage =
+            MeditationPage()
+                .verifyMeditationScreenIsDisplayed()
+                .verifyPauseButtonDisplayed()
+                .verifyStopButtonDisplayed()
 
-        meditationPage.goBack()
+        meditationPage
+            .goBack()
             .verifyMainScreenIsDisplayed()
     }
 

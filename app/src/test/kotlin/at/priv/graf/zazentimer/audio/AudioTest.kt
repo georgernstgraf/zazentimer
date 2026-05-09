@@ -5,7 +5,6 @@ import android.media.AudioAttributes
 import android.media.AudioManager
 import android.media.MediaPlayer
 import android.net.Uri
-import androidx.test.ext.junit.runners.AndroidJUnit4
 import at.priv.graf.zazentimer.bo.Bell
 import at.priv.graf.zazentimer.bo.Section
 import com.google.common.truth.Truth.assertThat
@@ -13,7 +12,6 @@ import io.mockk.every
 import io.mockk.just
 import io.mockk.mockk
 import io.mockk.mockkConstructor
-import io.mockk.mockkStatic
 import io.mockk.runs
 import io.mockk.unmockkAll
 import io.mockk.verify
@@ -22,14 +20,12 @@ import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.robolectric.RobolectricTestRunner
-import org.robolectric.annotation.Config
-import org.robolectric.Shadows.shadowOf
 import org.robolectric.RuntimeEnvironment
+import org.robolectric.annotation.Config
 
 @RunWith(RobolectricTestRunner::class)
 @Config(sdk = [29])
 class AudioTest {
-
     private lateinit var context: Context
     private lateinit var audioManager: AudioManager
     private lateinit var mediaPlayer: MediaPlayer
@@ -123,7 +119,7 @@ class AudioTest {
                 match { attrs ->
                     attrs.usage == AudioAttributes.USAGE_ALARM &&
                         attrs.contentType == AudioAttributes.CONTENT_TYPE_SONIFICATION
-                }
+                },
             )
         }
     }

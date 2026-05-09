@@ -7,7 +7,6 @@ import org.junit.Test
 import java.lang.reflect.Method
 
 class DbOperationsMappingTest {
-
     private val companion: Class<*> = DbOperations.Companion::class.java
 
     private fun sessionToEntity(session: Session): SessionEntity {
@@ -92,18 +91,19 @@ class DbOperationsMappingTest {
 
     @Test
     fun toEntity_section_mapsAllFields() {
-        val section = Section(
-            id = 5,
-            fkSession = 10,
-            name = "Zazen",
-            duration = 1800,
-            bell = 3,
-            rank = 2,
-            bellcount = 2,
-            bellpause = 5,
-            bellUri = "content://audio/bell.mp3",
-            volume = 75
-        )
+        val section =
+            Section(
+                id = 5,
+                fkSession = 10,
+                name = "Zazen",
+                duration = 1800,
+                bell = 3,
+                rank = 2,
+                bellcount = 2,
+                bellpause = 5,
+                bellUri = "content://audio/bell.mp3",
+                volume = 75,
+            )
         val entity = sectionToEntity(section)
         assertThat(entity._id).isEqualTo(5)
         assertThat(entity.fk_session).isEqualTo(10)
@@ -126,18 +126,19 @@ class DbOperationsMappingTest {
 
     @Test
     fun toBo_sectionEntity_mapsAllFields() {
-        val entity = SectionEntity(
-            _id = 5,
-            fk_session = 10,
-            name = "Kinhin",
-            duration = 300,
-            bell = 1,
-            rank = 3,
-            bellcount = 3,
-            bellpause = 10,
-            belluri = "content://audio/bell2.mp3",
-            volume = 50
-        )
+        val entity =
+            SectionEntity(
+                _id = 5,
+                fk_session = 10,
+                name = "Kinhin",
+                duration = 300,
+                bell = 1,
+                rank = 3,
+                bellcount = 3,
+                bellpause = 10,
+                belluri = "content://audio/bell2.mp3",
+                volume = 50,
+            )
         val bo = sectionToBo(entity)
         assertThat(bo.id).isEqualTo(5)
         assertThat(bo.fkSession).isEqualTo(10)
@@ -191,18 +192,19 @@ class DbOperationsMappingTest {
 
     @Test
     fun roundTrip_section_toEntity_toBo_preservesFields() {
-        val original = Section(
-            id = 42,
-            fkSession = 7,
-            name = "Zazen",
-            duration = 2400,
-            bell = 2,
-            rank = 1,
-            bellcount = 3,
-            bellpause = 15,
-            bellUri = "uri",
-            volume = 80
-        )
+        val original =
+            Section(
+                id = 42,
+                fkSession = 7,
+                name = "Zazen",
+                duration = 2400,
+                bell = 2,
+                rank = 1,
+                bellcount = 3,
+                bellpause = 15,
+                bellUri = "uri",
+                volume = 80,
+            )
         val entity = sectionToEntity(original)
         val roundTripped = sectionToBo(entity)
         assertThat(roundTripped.id).isEqualTo(42)

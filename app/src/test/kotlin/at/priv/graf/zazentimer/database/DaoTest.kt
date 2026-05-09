@@ -21,9 +21,11 @@ class DaoTest {
     @Before
     fun setUp() {
         val context = ApplicationProvider.getApplicationContext<Context>()
-        db = Room.inMemoryDatabaseBuilder(context, AppDatabase::class.java)
-            .allowMainThreadQueries()
-            .build()
+        db =
+            Room
+                .inMemoryDatabaseBuilder(context, AppDatabase::class.java)
+                .allowMainThreadQueries()
+                .build()
         sessionDao = db.sessionDao()
         sectionDao = db.sectionDao()
     }
@@ -101,8 +103,8 @@ class DaoTest {
                 name = "Section 1",
                 duration = 300,
                 bell = 0,
-                rank = 1
-            )
+                rank = 1,
+            ),
         )
 
         val sections = sectionDao.getSectionsForSession(sessionId.toInt())
@@ -113,15 +115,16 @@ class DaoTest {
     @Test
     fun sectionDao_getById() {
         val sessionId = sessionDao.insert(SessionEntity(name = "S", description = ""))
-        val id = sectionDao.insert(
-            SectionEntity(
-                fk_session = sessionId.toInt(),
-                name = "By ID",
-                duration = 60,
-                bell = 0,
-                rank = 1
+        val id =
+            sectionDao.insert(
+                SectionEntity(
+                    fk_session = sessionId.toInt(),
+                    name = "By ID",
+                    duration = 60,
+                    bell = 0,
+                    rank = 1,
+                ),
             )
-        )
 
         val result = sectionDao.getSectionById(id.toInt())
         assertThat(result).isNotNull()
@@ -150,8 +153,8 @@ class DaoTest {
                 name = "S1",
                 duration = 60,
                 bell = 0,
-                rank = 1
-            )
+                rank = 1,
+            ),
         )
         sectionDao.insert(
             SectionEntity(
@@ -159,8 +162,8 @@ class DaoTest {
                 name = "S2",
                 duration = 120,
                 bell = 0,
-                rank = 3
-            )
+                rank = 3,
+            ),
         )
         sectionDao.insert(
             SectionEntity(
@@ -168,8 +171,8 @@ class DaoTest {
                 name = "S3",
                 duration = 180,
                 bell = 0,
-                rank = 2
-            )
+                rank = 2,
+            ),
         )
 
         assertThat(sectionDao.getMaxRank(sessionId.toInt())).isEqualTo(3)
@@ -178,15 +181,16 @@ class DaoTest {
     @Test
     fun sectionDao_update() {
         val sessionId = sessionDao.insert(SessionEntity(name = "S", description = ""))
-        val id = sectionDao.insert(
-            SectionEntity(
-                fk_session = sessionId.toInt(),
-                name = "Old",
-                duration = 60,
-                bell = 0,
-                rank = 1
+        val id =
+            sectionDao.insert(
+                SectionEntity(
+                    fk_session = sessionId.toInt(),
+                    name = "Old",
+                    duration = 60,
+                    bell = 0,
+                    rank = 1,
+                ),
             )
-        )
 
         sectionDao.update(
             SectionEntity(
@@ -195,8 +199,8 @@ class DaoTest {
                 name = "Updated",
                 duration = 120,
                 bell = 1,
-                rank = 1
-            )
+                rank = 1,
+            ),
         )
 
         val result = sectionDao.getSectionById(id.toInt())
@@ -208,15 +212,16 @@ class DaoTest {
     @Test
     fun sectionDao_updateRank() {
         val sessionId = sessionDao.insert(SessionEntity(name = "S", description = ""))
-        val id = sectionDao.insert(
-            SectionEntity(
-                fk_session = sessionId.toInt(),
-                name = "S1",
-                duration = 60,
-                bell = 0,
-                rank = 1
+        val id =
+            sectionDao.insert(
+                SectionEntity(
+                    fk_session = sessionId.toInt(),
+                    name = "S1",
+                    duration = 60,
+                    bell = 0,
+                    rank = 1,
+                ),
             )
-        )
 
         sectionDao.updateRank(id.toInt(), 5)
 
@@ -226,15 +231,16 @@ class DaoTest {
     @Test
     fun sectionDao_delete() {
         val sessionId = sessionDao.insert(SessionEntity(name = "S", description = ""))
-        val id = sectionDao.insert(
-            SectionEntity(
-                fk_session = sessionId.toInt(),
-                name = "Del",
-                duration = 60,
-                bell = 0,
-                rank = 1
+        val id =
+            sectionDao.insert(
+                SectionEntity(
+                    fk_session = sessionId.toInt(),
+                    name = "Del",
+                    duration = 60,
+                    bell = 0,
+                    rank = 1,
+                ),
             )
-        )
 
         sectionDao.deleteById(id)
 
@@ -250,8 +256,8 @@ class DaoTest {
                 name = "Third",
                 duration = 180,
                 bell = 0,
-                rank = 3
-            )
+                rank = 3,
+            ),
         )
         sectionDao.insert(
             SectionEntity(
@@ -259,8 +265,8 @@ class DaoTest {
                 name = "First",
                 duration = 60,
                 bell = 0,
-                rank = 1
-            )
+                rank = 1,
+            ),
         )
         sectionDao.insert(
             SectionEntity(
@@ -268,8 +274,8 @@ class DaoTest {
                 name = "Second",
                 duration = 120,
                 bell = 0,
-                rank = 2
-            )
+                rank = 2,
+            ),
         )
 
         val sections = sectionDao.getSectionsForSession(sessionId.toInt())
@@ -288,8 +294,8 @@ class DaoTest {
                 name = "S1",
                 duration = 60,
                 bell = 0,
-                rank = 1
-            )
+                rank = 1,
+            ),
         )
         sectionDao.insert(
             SectionEntity(
@@ -297,8 +303,8 @@ class DaoTest {
                 name = "S2",
                 duration = 120,
                 bell = 0,
-                rank = 2
-            )
+                rank = 2,
+            ),
         )
 
         sessionDao.deleteById(sessionId.toInt())

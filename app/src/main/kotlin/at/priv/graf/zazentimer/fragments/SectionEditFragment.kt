@@ -5,7 +5,6 @@ import android.content.Intent
 import android.content.SharedPreferences
 import android.database.Cursor
 import android.graphics.Rect
-import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -33,7 +32,6 @@ import javax.inject.Inject
 
 @AndroidEntryPoint
 class SectionEditFragment : Fragment() {
-
     private var audio: Audio? = null
     private var _binding: FragmentEditSectionBinding? = null
     private val binding get() = _binding!!
@@ -49,48 +47,49 @@ class SectionEditFragment : Fragment() {
     @Inject
     lateinit var dbOperations: DbOperations
 
-    private val bellPickerLauncher: ActivityResultLauncher<Intent> = registerForActivityResult(
-        ActivityResultContracts.StartActivityForResult()
-    ) { result ->
-        if (result.resultCode != Activity.RESULT_OK || result.data == null) return@registerForActivityResult
-        val intent = result.data!!
-        val data = intent.data
-        if (data == null) return@registerForActivityResult
-        var str = "bell_unnamed"
-        if (data.scheme == "content") {
-            val query: Cursor? = requireActivity().contentResolver.query(data, null, null, null, null)
-            if (query != null && query.count != 0) {
-                val columnIndex = query.getColumnIndex("_display_name")
-                if (columnIndex >= 0) {
-                    query.moveToFirst()
-                    str = "bell_" + query.getString(columnIndex)
-                } else {
-                    str = "bell_" + data.lastPathSegment
+    private val bellPickerLauncher: ActivityResultLauncher<Intent> =
+        registerForActivityResult(
+            ActivityResultContracts.StartActivityForResult(),
+        ) { result ->
+            if (result.resultCode != Activity.RESULT_OK || result.data == null) return@registerForActivityResult
+            val intent = result.data!!
+            val data = intent.data
+            if (data == null) return@registerForActivityResult
+            var str = "bell_unnamed"
+            if (data.scheme == "content") {
+                val query: Cursor? = requireActivity().contentResolver.query(data, null, null, null, null)
+                if (query != null && query.count != 0) {
+                    val columnIndex = query.getColumnIndex("_display_name")
+                    if (columnIndex >= 0) {
+                        query.moveToFirst()
+                        str = "bell_" + query.getString(columnIndex)
+                    } else {
+                        str = "bell_" + data.lastPathSegment
+                    }
                 }
+                query?.close()
+            } else {
+                str = "bell_" + data.lastPathSegment
             }
-            query?.close()
-        } else {
-            str = "bell_" + data.lastPathSegment
-        }
-        try {
-            val openInputStream: InputStream = requireActivity().contentResolver.openInputStream(data)!!
-            val openFileOutput = requireActivity().openFileOutput(str, 0)
-            val bArr = ByteArray(8192)
-            var read = openInputStream.read(bArr)
-            while (read > 0) {
-                openFileOutput.write(bArr, 0, read)
-                read = openInputStream.read(bArr)
+            try {
+                val openInputStream: InputStream = requireActivity().contentResolver.openInputStream(data)!!
+                val openFileOutput = requireActivity().openFileOutput(str, 0)
+                val bArr = ByteArray(8192)
+                var read = openInputStream.read(bArr)
+                while (read > 0) {
+                    openFileOutput.write(bArr, 0, read)
+                    read = openInputStream.read(bArr)
+                }
+                openInputStream.close()
+                openFileOutput.close()
+                BellCollection.initialize(requireActivity())
+                fillBellList()
+                this.section!!.bellUri = BellCollection.getUriForName(str).toString()
+                selectBell(this.section!!.bellUri)
+            } catch (e: Exception) {
+                e.printStackTrace()
             }
-            openInputStream.close()
-            openFileOutput.close()
-            BellCollection.initialize(requireActivity())
-            fillBellList()
-            this.section!!.bellUri = BellCollection.getUriForName(str).toString()
-            selectBell(this.section!!.bellUri)
-        } catch (e: Exception) {
-            e.printStackTrace()
         }
-    }
 
     override fun onCreate(bundle: Bundle?) {
         super.onCreate(bundle)
@@ -108,7 +107,11 @@ class SectionEditFragment : Fragment() {
         bundle.putInt("sectionId", this.sectionId)
     }
 
-    override fun onCreateView(layoutInflater: LayoutInflater, viewGroup: ViewGroup?, bundle: Bundle?): View {
+    override fun onCreateView(
+        layoutInflater: LayoutInflater,
+        viewGroup: ViewGroup?,
+        bundle: Bundle?,
+    ): View {
         Log.d(TAG, "onCreateView")
         _binding = FragmentEditSectionBinding.inflate(layoutInflater, viewGroup, false)
         this.pref = ZazenTimerActivity.getPreferences(requireActivity())
@@ -256,35 +259,47 @@ class SectionEditFragment : Fragment() {
                 this@SectionEditFragment.audio!!.playAbsVolume(bellForSection, this@SectionEditFragment.section!!.volume)
             }
         }
-        binding.selectGongSound.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onNothingSelected(adapterView: AdapterView<*>?) {
-            }
-
-            override fun onItemSelected(adapterView: AdapterView<*>?, view: View?, i2: Int, j: Long) {
-                val bell = BellCollection.getBell(i2)!!
-                if (bell.uri.toString() == this@SectionEditFragment.section!!.bellUri) {
-                    return
+        binding.selectGongSound.onItemSelectedListener =
+            object : AdapterView.OnItemSelectedListener {
+                override fun onNothingSelected(adapterView: AdapterView<*>?) {
                 }
-                this@SectionEditFragment.section!!.bellUri = bell.uri.toString()
-                this@SectionEditFragment.section!!.bell = -2
-            }
-        }
-        binding.sectionGongVolume.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
-            override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
-                this@SectionEditFragment.updateDimLabel(progress)
-            }
 
-            override fun onStartTrackingTouch(seekBar: SeekBar?) {
-            }
-
-            override fun onStopTrackingTouch(seekBar: SeekBar?) {
-                val progress = seekBar!!.progress
-                this@SectionEditFragment.section!!.volume = 100 - progress * 10
-                if (BellCollection.getBellForSection(this@SectionEditFragment.section!!) != null) {
-                    this@SectionEditFragment.audio!!.playAbsVolume(this@SectionEditFragment.section!!)
+                override fun onItemSelected(
+                    adapterView: AdapterView<*>?,
+                    view: View?,
+                    i2: Int,
+                    j: Long,
+                ) {
+                    val bell = BellCollection.getBell(i2)!!
+                    if (bell.uri.toString() == this@SectionEditFragment.section!!.bellUri) {
+                        return
+                    }
+                    this@SectionEditFragment.section!!.bellUri = bell.uri.toString()
+                    this@SectionEditFragment.section!!.bell = -2
                 }
             }
-        })
+        binding.sectionGongVolume.setOnSeekBarChangeListener(
+            object : SeekBar.OnSeekBarChangeListener {
+                override fun onProgressChanged(
+                    seekBar: SeekBar?,
+                    progress: Int,
+                    fromUser: Boolean,
+                ) {
+                    this@SectionEditFragment.updateDimLabel(progress)
+                }
+
+                override fun onStartTrackingTouch(seekBar: SeekBar?) {
+                }
+
+                override fun onStopTrackingTouch(seekBar: SeekBar?) {
+                    val progress = seekBar!!.progress
+                    this@SectionEditFragment.section!!.volume = 100 - progress * 10
+                    if (BellCollection.getBellForSection(this@SectionEditFragment.section!!) != null) {
+                        this@SectionEditFragment.audio!!.playAbsVolume(this@SectionEditFragment.section!!)
+                    }
+                }
+            },
+        )
     }
 
     private fun setViewBellCount(i: Int) {
@@ -308,10 +323,12 @@ class SectionEditFragment : Fragment() {
         val timePickerFragment = TimePickerFragment()
         timePickerFragment.setMinutes(this.durationMinutes)
         timePickerFragment.setSeconds(this.durationSeconds)
-        timePickerFragment.setOnOkListener(Runnable {
-            this@SectionEditFragment.setDurationMinutes(timePickerFragment.getMinutes())
-            this@SectionEditFragment.setDurationSeconds(timePickerFragment.getSeconds())
-        })
+        timePickerFragment.setOnOkListener(
+            Runnable {
+                this@SectionEditFragment.setDurationMinutes(timePickerFragment.getMinutes())
+                this@SectionEditFragment.setDurationSeconds(timePickerFragment.getSeconds())
+            },
+        )
         timePickerFragment.show(parentFragmentManager, "timePicker")
     }
 

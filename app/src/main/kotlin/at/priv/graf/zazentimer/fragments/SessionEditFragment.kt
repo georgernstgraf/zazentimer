@@ -30,7 +30,6 @@ import javax.inject.Inject
 
 @AndroidEntryPoint
 class SessionEditFragment : Fragment() {
-
     private var _binding: FragmentEditSessionBinding? = null
     private val binding get() = _binding!!
 
@@ -58,21 +57,33 @@ class SessionEditFragment : Fragment() {
         }
     }
 
-    override fun onViewCreated(@NonNull view: View, @Nullable savedInstanceState: Bundle?) {
+    override fun onViewCreated(
+        @NonNull view: View,
+        @Nullable savedInstanceState: Bundle?,
+    ) {
         super.onViewCreated(view, savedInstanceState)
-        requireActivity().addMenuProvider(object : androidx.core.view.MenuProvider {
-            override fun onCreateMenu(@NonNull menu: Menu, @NonNull menuInflater: MenuInflater) {
-                menuInflater.inflate(R.menu.session_edit_menu, menu)
-            }
-
-            override fun onMenuItemSelected(@NonNull menuItem: MenuItem): Boolean {
-                if (menuItem.itemId == R.id.menu_session_edit_help) {
-                    showHelp13()
-                    return true
+        requireActivity().addMenuProvider(
+            object : androidx.core.view.MenuProvider {
+                override fun onCreateMenu(
+                    @NonNull menu: Menu,
+                    @NonNull menuInflater: MenuInflater,
+                ) {
+                    menuInflater.inflate(R.menu.session_edit_menu, menu)
                 }
-                return false
-            }
-        }, viewLifecycleOwner, androidx.lifecycle.Lifecycle.State.RESUMED)
+
+                override fun onMenuItemSelected(
+                    @NonNull menuItem: MenuItem,
+                ): Boolean {
+                    if (menuItem.itemId == R.id.menu_session_edit_help) {
+                        showHelp13()
+                        return true
+                    }
+                    return false
+                }
+            },
+            viewLifecycleOwner,
+            androidx.lifecycle.Lifecycle.State.RESUMED,
+        )
     }
 
     override fun onAttach(context: Context) {
@@ -81,43 +92,52 @@ class SessionEditFragment : Fragment() {
     }
 
     @Nullable
-    override fun onCreateView(layoutInflater: LayoutInflater, viewGroup: ViewGroup?, bundle: Bundle?): View {
+    override fun onCreateView(
+        layoutInflater: LayoutInflater,
+        viewGroup: ViewGroup?,
+        bundle: Bundle?,
+    ): View {
         Log.d(TAG, "onCreateView")
         _binding = FragmentEditSessionBinding.inflate(layoutInflater, viewGroup, false)
         this.pref = ZazenTimerActivity.getPreferences(requireActivity())
 
-        adapter = SectionListAdapter(
-            object : SectionListAdapter.OnItemClickListener {
-                override fun onItemClick(section: Section) {
-                    this@SessionEditFragment.navigateToSectionEdit(section.id)
-                }
-            },
-            object : SectionListAdapter.OnSectionActionListener {
-                override fun onDeleteSection(position: Int) {
-                    deleteSectionAt(position)
-                }
+        adapter =
+            SectionListAdapter(
+                object : SectionListAdapter.OnItemClickListener {
+                    override fun onItemClick(section: Section) {
+                        this@SessionEditFragment.navigateToSectionEdit(section.id)
+                    }
+                },
+                object : SectionListAdapter.OnSectionActionListener {
+                    override fun onDeleteSection(position: Int) {
+                        deleteSectionAt(position)
+                    }
 
-                override fun onDuplicateSection(position: Int) {
-                    duplicateSectionAt(position)
-                }
-            }
-        )
+                    override fun onDuplicateSection(position: Int) {
+                        duplicateSectionAt(position)
+                    }
+                },
+            )
 
         binding.list.layoutManager = LinearLayoutManager(activity)
         binding.list.adapter = adapter
 
-        val callback = SectionTouchHelperCallback(
-            object : SectionTouchHelperCallback.SectionTouchListener {
-                override fun onSwipe(position: Int) {
-                    deleteSectionAt(position)
-                }
+        val callback =
+            SectionTouchHelperCallback(
+                object : SectionTouchHelperCallback.SectionTouchListener {
+                    override fun onSwipe(position: Int) {
+                        deleteSectionAt(position)
+                    }
 
-                override fun onMove(fromPosition: Int, toPosition: Int): Boolean {
-                    adapter!!.moveItem(fromPosition, toPosition)
-                    return true
-                }
-            }
-        )
+                    override fun onMove(
+                        fromPosition: Int,
+                        toPosition: Int,
+                    ): Boolean {
+                        adapter!!.moveItem(fromPosition, toPosition)
+                        return true
+                    }
+                },
+            )
         ItemTouchHelper(callback).attachToRecyclerView(binding.list)
 
         binding.butNewSection.setOnClickListener {
@@ -161,7 +181,10 @@ class SessionEditFragment : Fragment() {
         binding.textSitzungBeschreibung.setText(this.session!!.description)
         if (this.pref?.getBoolean(ZazenTimerActivity.PREF_KEY_SHOW_SESSION_EDIT_HELP_V13, false) == false) {
             showHelp13()
-            this.pref?.edit()?.putBoolean(ZazenTimerActivity.PREF_KEY_SHOW_SESSION_EDIT_HELP_V13, true)?.apply()
+            this.pref
+                ?.edit()
+                ?.putBoolean(ZazenTimerActivity.PREF_KEY_SHOW_SESSION_EDIT_HELP_V13, true)
+                ?.apply()
         }
     }
 
@@ -172,9 +195,11 @@ class SessionEditFragment : Fragment() {
         this.messageView = MessageView(requireActivity())
         this.messageView!!.setTitle(getString(R.string.help_sectionlist_title))
         this.messageView!!.setText(getString(R.string.help_sectionlist_text))
-        this.messageView!!.setOnOkListener(Runnable {
-            this@SessionEditFragment.messageView = null
-        })
+        this.messageView!!.setOnOkListener(
+            Runnable {
+                this@SessionEditFragment.messageView = null
+            },
+        )
         this.messageView!!.show()
     }
 
@@ -197,12 +222,12 @@ class SessionEditFragment : Fragment() {
         dbOperations.deleteSection(deletedSection.id.toLong())
         adapter!!.removeItem(position)
 
-        Snackbar.make(binding.list, "Deleted '" + deletedSection.toString() + "'", Snackbar.LENGTH_LONG)
+        Snackbar
+            .make(binding.list, "Deleted '" + deletedSection.toString() + "'", Snackbar.LENGTH_LONG)
             .setAction("UNDO") {
                 dbOperations.insertSection(this@SessionEditFragment.session!!, deletedSection)
                 adapter!!.insertItem(deletedPosition, deletedSection)
-            }
-            .show()
+            }.show()
     }
 
     private fun duplicateSectionAt(position: Int) {

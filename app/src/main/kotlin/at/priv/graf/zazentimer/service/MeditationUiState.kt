@@ -13,5 +13,5 @@ data class MeditationUiState(
     @JvmField val nextNextSectionName: String,
     @JvmField val sessionName: String,
     @JvmField val paused: Boolean,
-    @JvmField val running: Boolean
+    @JvmField val running: Boolean,
 )

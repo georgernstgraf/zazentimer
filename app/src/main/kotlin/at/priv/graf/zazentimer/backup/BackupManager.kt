@@ -14,9 +14,8 @@ class BackupManager(
     private val databaseFileProvider: () -> File,
     private val filesDirProvider: () -> File,
     private val onCloseDatabase: () -> Unit,
-    private val onReopenDatabase: () -> Unit
+    private val onReopenDatabase: () -> Unit,
 ) {
-
     fun backup(outputStream: OutputStream): Boolean {
         var failed = false
         try {
@@ -79,7 +78,10 @@ class BackupManager(
     }
 
     companion object {
-        internal fun sendFile(file: File, outputStream: OutputStream): Boolean {
+        internal fun sendFile(
+            file: File,
+            outputStream: OutputStream,
+        ): Boolean {
             try {
                 val fis = FileInputStream(file)
                 val buf = ByteArray(32768)
@@ -95,7 +97,10 @@ class BackupManager(
             }
         }
 
-        internal fun receiveFile(inputStream: InputStream, file: File): Boolean {
+        internal fun receiveFile(
+            inputStream: InputStream,
+            file: File,
+        ): Boolean {
             try {
                 val fos = FileOutputStream(file)
                 val buf = ByteArray(32768)

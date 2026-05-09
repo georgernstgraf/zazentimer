@@ -13,9 +13,8 @@ data class Section(
     @JvmField var id: Int = 0,
     @JvmField var name: String? = null,
     @JvmField var rank: Int = -1,
-    @JvmField var volume: Int = 100
+    @JvmField var volume: Int = 100,
 ) : Serializable {
-
     constructor(name: String, duration: Int) : this(
         bell = -2,
         bellcount = 1,
@@ -23,7 +22,7 @@ data class Section(
         name = name,
         duration = duration,
         rank = -1,
-        volume = 100
+        volume = 100,
     )
 
     fun getDurationString(): String = String.format(Locale.US, "%02d:%02d", duration / 60, duration % 60)

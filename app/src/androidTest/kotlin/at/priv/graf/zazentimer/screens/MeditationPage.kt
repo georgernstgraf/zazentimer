@@ -3,7 +3,6 @@ package at.priv.graf.zazentimer.screens
 import at.priv.graf.zazentimer.R
 
 class MeditationPage : BasePage() {
-
     fun verifyMeditationScreenIsDisplayed(): MeditationPage {
         checkElementIsDisplayed(R.id.but_pause)
         checkElementIsDisplayed(R.id.but_stop)

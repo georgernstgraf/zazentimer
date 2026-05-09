@@ -30,7 +30,6 @@ import javax.inject.Inject
 
 @AndroidEntryPoint
 class SettingsFragment : PreferenceFragmentCompat() {
-
     private val executor: ExecutorService = Executors.newSingleThreadExecutor()
     private val uiHandler: Handler = Handler(Looper.getMainLooper())
 
@@ -42,40 +41,47 @@ class SettingsFragment : PreferenceFragmentCompat() {
             databaseFileProvider = { requireActivity().getDatabasePath(AppDatabase.DATABASE_NAME) },
             filesDirProvider = { requireActivity().filesDir },
             onCloseDatabase = { dbOperations.close() },
-            onReopenDatabase = { dbOperations.reopen() }
+            onReopenDatabase = { dbOperations.reopen() },
         )
     }
 
-    private val backupLauncher: ActivityResultLauncher<Intent> = registerForActivityResult(
-        ActivityResultContracts.StartActivityForResult()
-    ) { result ->
-        if (result.resultCode != Activity.RESULT_OK || result.data == null) return@registerForActivityResult
-        val uri = result.data!!.data
-        if (uri == null) return@registerForActivityResult
-        requireActivity().contentResolver.takePersistableUriPermission(
-            uri, Intent.FLAG_GRANT_READ_URI_PERMISSION or Intent.FLAG_GRANT_WRITE_URI_PERMISSION
-        )
-        doBackup(uri)
-    }
+    private val backupLauncher: ActivityResultLauncher<Intent> =
+        registerForActivityResult(
+            ActivityResultContracts.StartActivityForResult(),
+        ) { result ->
+            if (result.resultCode != Activity.RESULT_OK || result.data == null) return@registerForActivityResult
+            val uri = result.data!!.data
+            if (uri == null) return@registerForActivityResult
+            requireActivity().contentResolver.takePersistableUriPermission(
+                uri,
+                Intent.FLAG_GRANT_READ_URI_PERMISSION or Intent.FLAG_GRANT_WRITE_URI_PERMISSION,
+            )
+            doBackup(uri)
+        }
 
-    private val restoreLauncher: ActivityResultLauncher<Intent> = registerForActivityResult(
-        ActivityResultContracts.StartActivityForResult()
-    ) { result ->
-        if (result.resultCode != Activity.RESULT_OK || result.data == null) return@registerForActivityResult
-        val uri = result.data!!.data
-        if (uri == null) return@registerForActivityResult
-        requireActivity().contentResolver.takePersistableUriPermission(
-            uri, Intent.FLAG_GRANT_READ_URI_PERMISSION or Intent.FLAG_GRANT_WRITE_URI_PERMISSION
-        )
-        doRestore(uri)
-    }
+    private val restoreLauncher: ActivityResultLauncher<Intent> =
+        registerForActivityResult(
+            ActivityResultContracts.StartActivityForResult(),
+        ) { result ->
+            if (result.resultCode != Activity.RESULT_OK || result.data == null) return@registerForActivityResult
+            val uri = result.data!!.data
+            if (uri == null) return@registerForActivityResult
+            requireActivity().contentResolver.takePersistableUriPermission(
+                uri,
+                Intent.FLAG_GRANT_READ_URI_PERMISSION or Intent.FLAG_GRANT_WRITE_URI_PERMISSION,
+            )
+            doRestore(uri)
+        }
 
     override fun onCreate(bundle: Bundle?) {
         super.onCreate(bundle)
         enterTransition = MaterialFadeThrough()
     }
 
-    override fun onCreatePreferences(bundle: Bundle?, rootKey: String?) {
+    override fun onCreatePreferences(
+        bundle: Bundle?,
+        rootKey: String?,
+    ) {
         setPreferencesFromResource(R.xml.preferences, rootKey)
 
         findPreference<Preference>(ZazenTimerActivity.PREF_KEY_THEME)!!.setOnPreferenceChangeListener { _, _ ->
@@ -127,45 +133,47 @@ class SettingsFragment : PreferenceFragmentCompat() {
         val backupPref = findPreference<Preference>("backup_to_sd")!!
         backupPref.isEnabled = true
         backupPref.setSummary(R.string.pref_sum_backup)
-        backupPref.onPreferenceClickListener = Preference.OnPreferenceClickListener {
-            val intent = Intent(Intent.ACTION_CREATE_DOCUMENT)
-            intent.addCategory(Intent.CATEGORY_OPENABLE)
-            intent.type = "application/zip"
-            intent.putExtra(Intent.EXTRA_TITLE, "zazentimer_backup.zip")
-            backupLauncher.launch(intent)
-            true
-        }
+        backupPref.onPreferenceClickListener =
+            Preference.OnPreferenceClickListener {
+                val intent = Intent(Intent.ACTION_CREATE_DOCUMENT)
+                intent.addCategory(Intent.CATEGORY_OPENABLE)
+                intent.type = "application/zip"
+                intent.putExtra(Intent.EXTRA_TITLE, "zazentimer_backup.zip")
+                backupLauncher.launch(intent)
+                true
+            }
 
         val restorePref = findPreference<Preference>("restore_from_sd")!!
         restorePref.isEnabled = true
         restorePref.setSummary(R.string.pref_sum_restore)
-        restorePref.onPreferenceClickListener = Preference.OnPreferenceClickListener {
-            AlertDialog.Builder(requireActivity())
-                .setTitle(R.string.restore_really_title)
-                .setMessage(R.string.restore_really_text)
-                .setPositiveButton(R.string.ok) { _: DialogInterface, _: Int ->
-                    val intent = Intent(Intent.ACTION_OPEN_DOCUMENT)
-                    intent.addCategory(Intent.CATEGORY_OPENABLE)
-                    intent.type = "application/zip"
-                    restoreLauncher.launch(intent)
-                }
-                .setNegativeButton(R.string.abbrechen) { _: DialogInterface, _: Int ->
-                }
-                .show()
-            true
-        }
+        restorePref.onPreferenceClickListener =
+            Preference.OnPreferenceClickListener {
+                AlertDialog
+                    .Builder(requireActivity())
+                    .setTitle(R.string.restore_really_title)
+                    .setMessage(R.string.restore_really_text)
+                    .setPositiveButton(R.string.ok) { _: DialogInterface, _: Int ->
+                        val intent = Intent(Intent.ACTION_OPEN_DOCUMENT)
+                        intent.addCategory(Intent.CATEGORY_OPENABLE)
+                        intent.type = "application/zip"
+                        restoreLauncher.launch(intent)
+                    }.setNegativeButton(R.string.abbrechen) { _: DialogInterface, _: Int ->
+                    }.show()
+                true
+            }
     }
 
     private fun doBackup(uri: Uri) {
         executor.execute {
             val os = requireActivity().contentResolver.openOutputStream(uri)
-            val success = if (os != null) {
-                backupManager.backup(os)
-            } else {
-                Log.e(TAG, "Could not open output stream for URI")
-                dbOperations.reopen()
-                false
-            }
+            val success =
+                if (os != null) {
+                    backupManager.backup(os)
+                } else {
+                    Log.e(TAG, "Could not open output stream for URI")
+                    dbOperations.reopen()
+                    false
+                }
             uiHandler.post {
                 if (success) {
                     Toast.makeText(requireActivity(), R.string.backup_success_text, 0).show()

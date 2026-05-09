@@ -7,8 +7,10 @@ import android.os.Build
 import android.util.Log
 
 class SectionEndReceiver : BroadcastReceiver() {
-
-    override fun onReceive(context: Context, intent: Intent) {
+    override fun onReceive(
+        context: Context,
+        intent: Intent,
+    ) {
         Log.d(TAG, "onReceive: action=${intent.action}")
         val serviceIntent = Intent(context, MeditationService::class.java)
         serviceIntent.action = MeditationService.ACTION_SECTION_ENDED

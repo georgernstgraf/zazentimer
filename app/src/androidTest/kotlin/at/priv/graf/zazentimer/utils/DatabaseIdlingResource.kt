@@ -3,8 +3,9 @@ package at.priv.graf.zazentimer.utils
 import androidx.test.espresso.IdlingResource
 import java.util.concurrent.atomic.AtomicBoolean
 
-class DatabaseIdlingResource(private val dbOperations: at.priv.graf.zazentimer.database.DbOperations) : IdlingResource {
-
+class DatabaseIdlingResource(
+    private val dbOperations: at.priv.graf.zazentimer.database.DbOperations,
+) : IdlingResource {
     @Volatile
     private var resourceCallback: IdlingResource.ResourceCallback? = null
     private val isIdle = AtomicBoolean(true)

@@ -2,14 +2,11 @@ package at.priv.graf.zazentimer.fragments
 
 import android.app.AlertDialog
 import android.content.Context
-import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageButton
-import android.widget.TextView
 import androidx.activity.OnBackPressedCallback
 import androidx.core.content.res.ResourcesCompat
 import androidx.fragment.app.Fragment
@@ -20,16 +17,13 @@ import at.priv.graf.zazentimer.ZazenTimerActivity
 import at.priv.graf.zazentimer.database.DbOperations
 import at.priv.graf.zazentimer.databinding.FragmentMeditationBinding
 import at.priv.graf.zazentimer.service.MeditationService
-import at.priv.graf.zazentimer.service.MeditationUiState
 import at.priv.graf.zazentimer.service.MeditationViewModel
-import at.priv.graf.zazentimer.views.TimerView
 import com.google.android.material.transition.MaterialSharedAxis
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
 @AndroidEntryPoint
 class MeditationFragment : Fragment() {
-
     private var _binding: FragmentMeditationBinding? = null
     private val binding get() = _binding!!
 
@@ -48,7 +42,11 @@ class MeditationFragment : Fragment() {
         returnTransition = MaterialSharedAxis(MaterialSharedAxis.Y, false)
     }
 
-    override fun onCreateView(layoutInflater: LayoutInflater, viewGroup: ViewGroup?, bundle: Bundle?): View {
+    override fun onCreateView(
+        layoutInflater: LayoutInflater,
+        viewGroup: ViewGroup?,
+        bundle: Bundle?,
+    ): View {
         _binding = FragmentMeditationBinding.inflate(layoutInflater, viewGroup, false)
 
         binding.butStop.setOnClickListener {
@@ -100,15 +98,19 @@ class MeditationFragment : Fragment() {
         this.mAttached = false
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+    override fun onViewCreated(
+        view: View,
+        savedInstanceState: Bundle?,
+    ) {
         super.onViewCreated(view, savedInstanceState)
         viewModel = ViewModelProvider(requireActivity()).get(MeditationViewModel::class.java)
 
-        backPressedCallback = object : OnBackPressedCallback(false) {
-            override fun handleOnBackPressed() {
-                showStopConfirmationDialog()
+        backPressedCallback =
+            object : OnBackPressedCallback(false) {
+                override fun handleOnBackPressed() {
+                    showStopConfirmationDialog()
+                }
             }
-        }
         requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, backPressedCallback!!)
 
         viewModel!!.getMeditationState().observe(viewLifecycleOwner) { state ->
@@ -156,7 +158,7 @@ class MeditationFragment : Fragment() {
             b.butStop.isEnabled = false
             b.butStop.alpha = 0.4f
             b.butPause.setImageDrawable(
-                ResourcesCompat.getDrawable(resources, R.drawable.ic_play_arrow_white_48dp, requireActivity().theme)
+                ResourcesCompat.getDrawable(resources, R.drawable.ic_play_arrow_white_48dp, requireActivity().theme),
             )
         }
     }
@@ -184,15 +186,15 @@ class MeditationFragment : Fragment() {
     }
 
     private fun showStopConfirmationDialog() {
-        AlertDialog.Builder(requireContext())
+        AlertDialog
+            .Builder(requireContext())
             .setTitle(R.string.stop_meditation_title)
             .setMessage(R.string.stop_meditation_message)
             .setPositiveButton(R.string.stop_meditation_stop) { _, _ ->
                 viewModel?.stopMeditation()
                 backPressedCallback?.isEnabled = false
                 Navigation.findNavController(requireView()).popBackStack()
-            }
-            .setNegativeButton(R.string.stop_meditation_cancel) { dialog, _ -> dialog.dismiss() }
+            }.setNegativeButton(R.string.stop_meditation_cancel) { dialog, _ -> dialog.dismiss() }
             .setCancelable(true)
             .show()
     }
@@ -202,17 +204,17 @@ class MeditationFragment : Fragment() {
         if (activity == null) return
         if (!meditationRunning) {
             b.butPause.setImageDrawable(
-                ResourcesCompat.getDrawable(resources, R.drawable.ic_play_arrow_white_48dp, requireActivity().theme)
+                ResourcesCompat.getDrawable(resources, R.drawable.ic_play_arrow_white_48dp, requireActivity().theme),
             )
             return
         }
         if (viewModel != null && viewModel!!.isPaused()) {
             b.butPause.setImageDrawable(
-                ResourcesCompat.getDrawable(resources, R.drawable.ic_play_arrow_white_48dp, requireActivity().theme)
+                ResourcesCompat.getDrawable(resources, R.drawable.ic_play_arrow_white_48dp, requireActivity().theme),
             )
         } else {
             b.butPause.setImageDrawable(
-                ResourcesCompat.getDrawable(resources, R.drawable.ic_pause_white_48dp, requireActivity().theme)
+                ResourcesCompat.getDrawable(resources, R.drawable.ic_pause_white_48dp, requireActivity().theme),
             )
         }
     }

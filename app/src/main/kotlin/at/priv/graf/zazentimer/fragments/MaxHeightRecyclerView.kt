@@ -5,7 +5,6 @@ import android.util.AttributeSet
 import androidx.recyclerview.widget.RecyclerView
 
 class MaxHeightRecyclerView : RecyclerView {
-
     private var maxHeightPx: Int = Integer.MAX_VALUE
 
     constructor(context: Context) : super(context)
@@ -21,7 +20,10 @@ class MaxHeightRecyclerView : RecyclerView {
 
     fun getMaxHeight(): Int = maxHeightPx
 
-    override fun onMeasure(widthSpec: Int, heightSpec: Int) {
+    override fun onMeasure(
+        widthSpec: Int,
+        heightSpec: Int,
+    ) {
         super.onMeasure(widthSpec, heightSpec)
         if (getMeasuredHeight() > maxHeightPx) {
             setMeasuredDimension(getMeasuredWidth(), maxHeightPx)

@@ -10,7 +10,6 @@ import java.util.zip.ZipEntry
 import java.util.zip.ZipOutputStream
 
 class BackupManagerTest {
-
     private lateinit var tempDir: File
     private lateinit var databaseDir: File
     private lateinit var filesDir: File
@@ -27,12 +26,13 @@ class BackupManagerTest {
         databaseFile = File(databaseDir, "zentimer")
         closeCalled = false
         reopenCalled = false
-        backupManager = BackupManager(
-            databaseFileProvider = { databaseFile },
-            filesDirProvider = { filesDir },
-            onCloseDatabase = { closeCalled = true },
-            onReopenDatabase = { reopenCalled = true }
-        )
+        backupManager =
+            BackupManager(
+                databaseFileProvider = { databaseFile },
+                filesDirProvider = { filesDir },
+                onCloseDatabase = { closeCalled = true },
+                onReopenDatabase = { reopenCalled = true },
+            )
     }
 
     @After
@@ -64,9 +64,10 @@ class BackupManagerTest {
         val result = backupManager.backup(FileOutputStream(backupFile))
 
         assertThat(result).isTrue()
-        val entries = java.util.zip.ZipFile(backupFile).use { zf ->
-            zf.entries().toList().map { it.name }
-        }
+        val entries =
+            java.util.zip.ZipFile(backupFile).use { zf ->
+                zf.entries().toList().map { it.name }
+            }
         assertThat(entries).containsExactly("zentimer", "prefs1", "prefs2")
     }
 
@@ -80,9 +81,10 @@ class BackupManagerTest {
 
         backupManager.backup(FileOutputStream(backupFile))
 
-        val entries = java.util.zip.ZipFile(backupFile).use { zf ->
-            zf.entries().toList().map { it.name }
-        }
+        val entries =
+            java.util.zip.ZipFile(backupFile).use { zf ->
+                zf.entries().toList().map { it.name }
+            }
         assertThat(entries).containsExactly("zentimer", "goodfile")
     }
 

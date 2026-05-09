@@ -1,16 +1,13 @@
 package at.priv.graf.zazentimer.screens
 
-import org.hamcrest.Matchers.containsString
-
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
 import androidx.test.espresso.matcher.ViewMatchers.withText
-
 import at.priv.graf.zazentimer.R
+import org.hamcrest.Matchers.containsString
 
 class AboutPage : BasePage() {
-
     fun verifyAboutScreen(): AboutPage {
         onView(withText(R.string.caption_zazen_meditation)).check(matches(isDisplayed()))
         return this

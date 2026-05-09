@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="DarkZenTheme" parent="@style/Theme.AppCompat.NoActionBar">
+        <item name="timerViewStyle">@style/timerViewStyleDark</item>
+        <item name="zenIconSrc">@drawable/zenkreis2wt</item>
+    </style>
+    <style name="LightZenTheme" parent="@style/Theme.AppCompat.Light.NoActionBar">
+        <item name="timerViewStyle">@style/timerViewStyleLight</item>
+        <item name="zenIconSrc">@drawable/zenkreis2bk</item>
+    </style>
+</resources>

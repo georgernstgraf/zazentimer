@@ -5,14 +5,14 @@ import android.animation.ObjectAnimator
 import android.app.Activity
 import android.os.Build
 import android.util.Log
-import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
 import at.priv.graf.zazentimer.R
 
-class MessageView(private val activity: Activity) {
-
+class MessageView(
+    private val activity: Activity,
+) {
     private var contentText: String? = null
     private var messageParent: ViewGroup? = null
     private var messageView: ViewGroup? = null
@@ -60,22 +60,24 @@ class MessageView(private val activity: Activity) {
             objectAnimator2.setPropertyName("alpha")
             objectAnimator2.setFloatValues(1.0f, 0.0f)
             objectAnimator2.duration = 500L
-            objectAnimator2.addListener(object : Animator.AnimatorListener {
-                override fun onAnimationCancel(animator: Animator) {
-                }
+            objectAnimator2.addListener(
+                object : Animator.AnimatorListener {
+                    override fun onAnimationCancel(animator: Animator) {
+                    }
 
-                override fun onAnimationRepeat(animator: Animator) {
-                }
+                    override fun onAnimationRepeat(animator: Animator) {
+                    }
 
-                override fun onAnimationStart(animator: Animator) {
-                }
+                    override fun onAnimationStart(animator: Animator) {
+                    }
 
-                override fun onAnimationEnd(animator: Animator) {
-                    this@MessageView.messageParent!!.removeView(this@MessageView.messageView)
-                    this@MessageView.messageView = null
-                    this@MessageView.onOkListener?.run()
-                }
-            })
+                    override fun onAnimationEnd(animator: Animator) {
+                        this@MessageView.messageParent!!.removeView(this@MessageView.messageView)
+                        this@MessageView.messageView = null
+                        this@MessageView.onOkListener?.run()
+                    }
+                },
+            )
             objectAnimator2.start()
         }
     }

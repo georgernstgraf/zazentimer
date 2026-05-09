@@ -4,7 +4,6 @@ import com.google.common.truth.Truth.assertThat
 import org.junit.Test
 
 class SectionTest {
-
     @Test
     fun getDurationString_zeroSeconds_returns00_00() {
         val section = Section(duration = 0)

@@ -21,9 +21,8 @@ import java.util.concurrent.Executors
 class Meditation(
     private val meditationService: MeditationService,
     private val sessionName: String,
-    private val sections: Array<Section>
+    private val sections: Array<Section>,
 ) {
-
     private var alarmManager: AlarmManager = meditationService.getSystemService(Context.ALARM_SERVICE) as AlarmManager
     private var currentSectionEndIntent: PendingIntent? = null
     private var currentSectionIdx: Int = 0
@@ -150,11 +149,13 @@ class Meditation(
         val section = sections[currentSectionIdx]
         sectionStartTime = System.currentTimeMillis()
         val triggerTime = sectionStartTime + ((section.duration - pauseSectionSeconds) * 1000L)
-        val pendingIntent = PendingIntent.getBroadcast(
-            meditationService, 0,
-            Intent(INTENT_SECTION_ENDED).setClass(meditationService, SectionEndReceiver::class.java),
-            PendingIntent.FLAG_IMMUTABLE
-        )
+        val pendingIntent =
+            PendingIntent.getBroadcast(
+                meditationService,
+                0,
+                Intent(INTENT_SECTION_ENDED).setClass(meditationService, SectionEndReceiver::class.java),
+                PendingIntent.FLAG_IMMUTABLE,
+            )
         currentSectionEndIntent = pendingIntent
         val alarmClockInfo = AlarmManager.AlarmClockInfo(triggerTime, pendingIntent)
         alarmManager.setAlarmClock(alarmClockInfo, pendingIntent)
@@ -198,11 +199,12 @@ class Meditation(
     fun getNextNextSectionName(): String = if (currentSectionIdx < sections.size - 2) sections[currentSectionIdx + 2].name ?: "" else ""
 
     fun getSectionElapsedSeconds(): Int {
-        val raw: Int = if (paused) {
-            pauseSectionSeconds
-        } else {
-            Math.round(((System.currentTimeMillis() / 1000) - (sectionStartTime / 1000)).toFloat()) + pauseSectionSeconds
-        }
+        val raw: Int =
+            if (paused) {
+                pauseSectionSeconds
+            } else {
+                Math.round(((System.currentTimeMillis() / 1000) - (sectionStartTime / 1000)).toFloat()) + pauseSectionSeconds
+            }
         return MeditationTimer.getSectionElapsedSeconds(raw, getCurrentSection().duration)
     }
 
@@ -305,7 +307,10 @@ class Meditation(
         }
     }
 
-    private fun playBells(section: Section, onDone: Runnable?) {
+    private fun playBells(
+        section: Section,
+        onDone: Runnable?,
+    ) {
         bellExecutor.execute {
             Log.d(TAG, "Playing bells in background thread")
             var wakeLock: PowerManager.WakeLock? = null

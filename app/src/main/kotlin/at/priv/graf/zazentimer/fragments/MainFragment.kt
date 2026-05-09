@@ -17,7 +17,6 @@ import androidx.recyclerview.widget.RecyclerView
 import at.priv.graf.zazentimer.R
 import at.priv.graf.zazentimer.ZazenTimerActivity
 import at.priv.graf.zazentimer.base.SpinnerUtil
-import at.priv.graf.zazentimer.bo.Section
 import at.priv.graf.zazentimer.bo.Session
 import at.priv.graf.zazentimer.database.DbOperations
 import at.priv.graf.zazentimer.databinding.FragmentMainBinding
@@ -28,7 +27,6 @@ import javax.inject.Inject
 
 @AndroidEntryPoint
 class MainFragment : Fragment() {
-
     private var _binding: FragmentMainBinding? = null
     private val binding get() = _binding!!
 
@@ -59,7 +57,11 @@ class MainFragment : Fragment() {
         Log.d(TAG, "onCreate")
     }
 
-    override fun onCreateView(layoutInflater: LayoutInflater, viewGroup: ViewGroup?, bundle: Bundle?): View {
+    override fun onCreateView(
+        layoutInflater: LayoutInflater,
+        viewGroup: ViewGroup?,
+        bundle: Bundle?,
+    ): View {
         Log.d(TAG, "onCreateView")
         _binding = FragmentMainBinding.inflate(layoutInflater, viewGroup, false)
 
@@ -69,29 +71,37 @@ class MainFragment : Fragment() {
 
         (binding.recyclerSessions as RecyclerView).layoutManager = LinearLayoutManager(this.contextRef)
 
-        this.sessionListAdapter = SessionListAdapter(
-            object : SessionListAdapter.OnItemClickListener {
-                override fun onItemClick(position: Int, session: SessionWithTimeInfo) {
-                    if (!interactionsEnabled) return
-                    val s = sessions[position]
-                    this@MainFragment.selectedSessionId = s.id
-                    this@MainFragment.pref?.edit()?.putInt(ZazenTimerActivity.PREF_KEY_LAST_SESSION, s.id)?.apply()
-                }
-            },
-            object : SessionListAdapter.OnSessionActionListener {
-                override fun onEditSession(position: Int) {
-                    this@MainFragment.onCardEditSession(position)
-                }
+        this.sessionListAdapter =
+            SessionListAdapter(
+                object : SessionListAdapter.OnItemClickListener {
+                    override fun onItemClick(
+                        position: Int,
+                        session: SessionWithTimeInfo,
+                    ) {
+                        if (!interactionsEnabled) return
+                        val s = sessions[position]
+                        this@MainFragment.selectedSessionId = s.id
+                        this@MainFragment
+                            .pref
+                            ?.edit()
+                            ?.putInt(ZazenTimerActivity.PREF_KEY_LAST_SESSION, s.id)
+                            ?.apply()
+                    }
+                },
+                object : SessionListAdapter.OnSessionActionListener {
+                    override fun onEditSession(position: Int) {
+                        this@MainFragment.onCardEditSession(position)
+                    }
 
-                override fun onCopySession(position: Int) {
-                    this@MainFragment.onCardCopySession(position)
-                }
+                    override fun onCopySession(position: Int) {
+                        this@MainFragment.onCardCopySession(position)
+                    }
 
-                override fun onDeleteSession(position: Int) {
-                    this@MainFragment.onCardDeleteSession(position)
-                }
-            }
-        )
+                    override fun onDeleteSession(position: Int) {
+                        this@MainFragment.onCardDeleteSession(position)
+                    }
+                },
+            )
         (binding.recyclerSessions as RecyclerView).adapter = this.sessionListAdapter
 
         binding.recyclerSessions.viewTreeObserver.addOnGlobalLayoutListener(
@@ -107,21 +117,25 @@ class MainFragment : Fragment() {
                         rv.setMaxHeight(maxRecyclerHeight)
                     }
                 }
-            }
+            },
         )
 
-        val callback = SessionTouchHelperCallback(
-            object : SessionTouchHelperCallback.SessionTouchListener {
-                override fun onMove(fromPosition: Int, toPosition: Int): Boolean {
-                    if (fromPosition < 0 || fromPosition >= sessions.size) return false
-                    if (toPosition < 0 || toPosition >= sessions.size) return false
-                    val moved = sessions.removeAt(fromPosition)
-                    sessions.add(toPosition, moved)
-                    sessionListAdapter!!.moveItem(fromPosition, toPosition)
-                    return true
-                }
-            }
-        )
+        val callback =
+            SessionTouchHelperCallback(
+                object : SessionTouchHelperCallback.SessionTouchListener {
+                    override fun onMove(
+                        fromPosition: Int,
+                        toPosition: Int,
+                    ): Boolean {
+                        if (fromPosition < 0 || fromPosition >= sessions.size) return false
+                        if (toPosition < 0 || toPosition >= sessions.size) return false
+                        val moved = sessions.removeAt(fromPosition)
+                        sessions.add(toPosition, moved)
+                        sessionListAdapter!!.moveItem(fromPosition, toPosition)
+                        return true
+                    }
+                },
+            )
         ItemTouchHelper(callback).attachToRecyclerView(binding.recyclerSessions as RecyclerView)
 
         return binding.root
@@ -158,8 +172,11 @@ class MainFragment : Fragment() {
         if (!interactionsEnabled) return
         if (position < 0 || position >= sessions.size) return
         val s = sessions[position]
-        val newId = dbOperations.duplicateSession(s.id,
-            getString(R.string.copy_prefix) + " " + s.name)
+        val newId =
+            dbOperations.duplicateSession(
+                s.id,
+                getString(R.string.copy_prefix) + " " + s.name,
+            )
         updateSessionList()
         setSelectedSessionId(newId)
     }
@@ -168,25 +185,23 @@ class MainFragment : Fragment() {
         if (!interactionsEnabled) return
         if (position < 0 || position >= sessions.size) return
         val s = sessions[position]
-        AlertDialog.Builder(requireContext())
+        AlertDialog
+            .Builder(requireContext())
             .setTitle(R.string.title_question_delete_session)
             .setMessage(R.string.text_question_delete_session)
             .setPositiveButton(R.string.ok) { _, _ ->
                 dbOperations.deleteSession(s.id)
                 updateSessionList()
                 selectLastSession()
-            }
-            .setNegativeButton(R.string.abbrechen) { _, _ ->
-            }
-            .create()
+            }.setNegativeButton(R.string.abbrechen) { _, _ ->
+            }.create()
             .show()
     }
 
     private fun navigateToSessionEdit(sessionId: Int) {
         val args = Bundle()
         args.putInt("sessionId", sessionId)
-        Navigation.findNavController(requireView()).navigate(
-            R.id.action_mainFragment_to_sessionEditFragment, args)
+        Navigation.findNavController(requireView()).navigate(R.id.action_mainFragment_to_sessionEditFragment, args)
     }
 
     override fun onAttach(context: Context) {

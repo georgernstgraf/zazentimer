@@ -12,22 +12,28 @@ import at.priv.graf.zazentimer.bo.Bell
 class GongListAdapter(
     context: Context,
     i: Int,
-    i2: Int
+    i2: Int,
 ) : ArrayAdapter<Bell>(context, i, i2) {
-
     private val context: Context = context
 
-    override fun getView(i: Int, view: View?, viewGroup: ViewGroup): View {
-        return getMyView(i, R.layout.spinner_single_item)
-    }
+    override fun getView(
+        i: Int,
+        view: View?,
+        viewGroup: ViewGroup,
+    ): View = getMyView(i, R.layout.spinner_single_item)
 
-    private fun getMyView(i: Int, i2: Int): View {
+    private fun getMyView(
+        i: Int,
+        i2: Int,
+    ): View {
         val inflate = LayoutInflater.from(this.context).inflate(i2, null as ViewGroup?)
         (inflate.findViewById<TextView>(R.id.spinnerText1)).text = getItem(i)!!.getName()
         return inflate
     }
 
-    override fun getDropDownView(i: Int, view: View?, viewGroup: ViewGroup): View {
-        return getMyView(i, R.layout.spinner_popup_single_item)
-    }
+    override fun getDropDownView(
+        i: Int,
+        view: View?,
+        viewGroup: ViewGroup,
+    ): View = getMyView(i, R.layout.spinner_popup_single_item)
 }

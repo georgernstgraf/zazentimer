@@ -5,5 +5,5 @@ object Constants {
     const val BELL_ID_OLD_CUSTOM_BELL = -1
 
     @JvmField
-    var DEBUG = false
+    var debug = false
 }

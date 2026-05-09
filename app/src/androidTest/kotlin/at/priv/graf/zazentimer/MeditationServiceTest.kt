@@ -1,37 +1,32 @@
 package at.priv.graf.zazentimer
 
 import android.content.SharedPreferences
-
 import androidx.test.espresso.IdlingRegistry
 import androidx.test.ext.junit.rules.ActivityScenarioRule
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.filters.LargeTest
 import androidx.test.platform.app.InstrumentationRegistry
+import androidx.test.uiautomator.By
 import androidx.test.uiautomator.UiDevice
 import androidx.test.uiautomator.UiObject
 import androidx.test.uiautomator.UiSelector
 import androidx.test.uiautomator.Until
-import androidx.test.uiautomator.By
-
+import at.priv.graf.zazentimer.screens.MainPage
+import at.priv.graf.zazentimer.utils.MeditationServiceIdlingResource
 import dagger.hilt.android.testing.HiltAndroidRule
 import dagger.hilt.android.testing.HiltAndroidTest
 import org.junit.After
+import org.junit.Assert.assertTrue
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
 
-import at.priv.graf.zazentimer.screens.MainPage
-import at.priv.graf.zazentimer.utils.MeditationServiceIdlingResource
-
-import org.junit.Assert.assertTrue
-
 @HiltAndroidTest
 @RunWith(AndroidJUnit4::class)
 @LargeTest
 class MeditationServiceTest {
-
-    private val UI_TIMEOUT: Long = 5000
+    private val uiTimeout = 5000L
 
     @get:Rule(order = 0)
     val hiltRule = HiltAndroidRule(this)
@@ -49,14 +44,15 @@ class MeditationServiceTest {
         device = UiDevice.getInstance(InstrumentationRegistry.getInstrumentation())
         activityRule.scenario.onActivity { activity ->
             val pref: SharedPreferences = ZazenTimerActivity.getPreferences(activity)
-            pref.edit()
+            pref
+                .edit()
                 .putBoolean("mute_mode_none", false)
                 .putBoolean("mute_mode_vibrate", false)
                 .putBoolean("mute_mode_vibrate_sound", true)
                 .apply()
-            if (activity.dbOperations.readSessions().isEmpty()
-                || activity.dbOperations.readSections(
-                    activity.dbOperations.readSessions()[0].id).isEmpty()) {
+            if (activity.dbOperations.readSessions().isEmpty() ||
+                activity.dbOperations.readSections(activity.dbOperations.readSessions()[0].id).isEmpty()
+            ) {
                 activity.resetDatabaseForTest()
             }
         }
@@ -71,7 +67,7 @@ class MeditationServiceTest {
     }
 
     private fun waitForStopButton() {
-        device.wait(Until.findObject(By.text("Stop")), UI_TIMEOUT)
+        device.wait(Until.findObject(By.text("Stop")), uiTimeout)
     }
 
     private fun clickStopButtonWithUiAutomator() {
@@ -79,8 +75,11 @@ class MeditationServiceTest {
         try {
             stopButton.click()
         } catch (e: Exception) {
-            val stopButtonById: UiObject = device.findObject(UiSelector()
-                .resourceId("at.priv.graf.zazentimer:id/but_stop"))
+            val stopButtonById: UiObject =
+                device.findObject(
+                    UiSelector()
+                        .resourceId("at.priv.graf.zazentimer:id/but_stop"),
+                )
             try {
                 stopButtonById.click()
             } catch (e2: Exception) {
@@ -90,9 +89,12 @@ class MeditationServiceTest {
     }
 
     private fun clickByTextContainsWithUiAutomator(text: String) {
-        val button: UiObject = device.findObject(UiSelector()
-            .textContains(text)
-            .className("android.widget.Button"))
+        val button: UiObject =
+            device.findObject(
+                UiSelector()
+                    .textContains(text)
+                    .className("android.widget.Button"),
+            )
         try {
             button.click()
         } catch (e: Exception) {
@@ -101,9 +103,12 @@ class MeditationServiceTest {
     }
 
     private fun clickCancelDialog() {
-        val cancelButton: UiObject = device.findObject(UiSelector()
-            .textContains("Cancel")
-            .className("android.widget.Button"))
+        val cancelButton: UiObject =
+            device.findObject(
+                UiSelector()
+                    .textContains("Cancel")
+                    .className("android.widget.Button"),
+            )
         try {
             cancelButton.click()
         } catch (e: Exception) {
@@ -117,7 +122,7 @@ class MeditationServiceTest {
     }
 
     private fun waitForDialog(titleText: String) {
-        device.wait(Until.findObject(By.text(titleText)), UI_TIMEOUT)
+        device.wait(Until.findObject(By.text(titleText)), uiTimeout)
     }
 
     @Test
@@ -135,8 +140,10 @@ class MeditationServiceTest {
         clickStopButtonWithUiAutomator()
         waitForDialog("Stop meditation?")
 
-        assertTrue("Stop dialog should be visible",
-            isDialogVisible("Stop meditation?"))
+        assertTrue(
+            "Stop dialog should be visible",
+            isDialogVisible("Stop meditation?"),
+        )
 
         clickCancelDialog()
         waitForStopButton()

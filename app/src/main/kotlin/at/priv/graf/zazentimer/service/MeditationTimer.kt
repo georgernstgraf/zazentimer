@@ -4,8 +4,10 @@ import at.priv.graf.zazentimer.bo.Section
 import kotlin.math.min
 
 object MeditationTimer {
-
-    fun getCurrentStartSeconds(sections: Array<Section>, currentSectionIndex: Int): Int {
+    fun getCurrentStartSeconds(
+        sections: Array<Section>,
+        currentSectionIndex: Int,
+    ): Int {
         var total = 0
         for (i in 0 until currentSectionIndex) {
             total += sections[i].duration
@@ -13,7 +15,10 @@ object MeditationTimer {
         return total
     }
 
-    fun getNextEndSeconds(sections: Array<Section>, currentSectionIndex: Int): Int {
+    fun getNextEndSeconds(
+        sections: Array<Section>,
+        currentSectionIndex: Int,
+    ): Int {
         var total = 0
         var i = 0
         while (i <= currentSectionIndex + 1 && i < sections.size) {
@@ -23,7 +28,10 @@ object MeditationTimer {
         return total
     }
 
-    fun getNextStartSeconds(sections: Array<Section>, currentSectionIndex: Int): Int {
+    fun getNextStartSeconds(
+        sections: Array<Section>,
+        currentSectionIndex: Int,
+    ): Int {
         var total = 0
         for (i in 0..currentSectionIndex) {
             total += sections[i].duration
@@ -31,7 +39,10 @@ object MeditationTimer {
         return total
     }
 
-    fun getPrevStartSeconds(sections: Array<Section>, currentSectionIndex: Int): Int {
+    fun getPrevStartSeconds(
+        sections: Array<Section>,
+        currentSectionIndex: Int,
+    ): Int {
         var total = 0
         for (i in 0..currentSectionIndex - 2) {
             total += sections[i].duration
@@ -47,11 +58,13 @@ object MeditationTimer {
         return total
     }
 
-    fun getSectionElapsedSeconds(elapsedSeconds: Int, sectionDuration: Int): Int {
-        return min(elapsedSeconds, sectionDuration)
-    }
+    fun getSectionElapsedSeconds(
+        elapsedSeconds: Int,
+        sectionDuration: Int,
+    ): Int = min(elapsedSeconds, sectionDuration)
 
-    fun getCurrentSessionTime(currentStartSeconds: Int, sectionElapsedSeconds: Int): Int {
-        return currentStartSeconds + sectionElapsedSeconds
-    }
+    fun getCurrentSessionTime(
+        currentStartSeconds: Int,
+        sectionElapsedSeconds: Int,
+    ): Int = currentStartSeconds + sectionElapsedSeconds
 }

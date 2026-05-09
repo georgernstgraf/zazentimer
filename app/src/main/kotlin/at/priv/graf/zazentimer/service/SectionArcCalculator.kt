@@ -4,8 +4,10 @@ import at.priv.graf.zazentimer.bo.Section
 import at.priv.graf.zazentimer.bo.Session
 
 object SectionArcCalculator {
-
-    fun computeIdleState(session: Session, sections: Array<Section>): MeditationUiState {
+    fun computeIdleState(
+        session: Session,
+        sections: Array<Section>,
+    ): MeditationUiState {
         val totalSessionTime = MeditationTimer.getTotalSessionTime(sections)
         val currentStartSeconds = 0
         val nextEndSeconds = if (sections.size > 1) sections[0].duration + sections[1].duration else totalSessionTime
@@ -27,7 +29,7 @@ object SectionArcCalculator {
             nextNextSectionName,
             session.name ?: "",
             false,
-            false
+            false,
         )
     }
 

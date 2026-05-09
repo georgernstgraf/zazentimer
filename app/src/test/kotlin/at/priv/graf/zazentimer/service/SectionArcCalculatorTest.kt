@@ -6,7 +6,6 @@ import com.google.common.truth.Truth.assertThat
 import org.junit.Test
 
 class SectionArcCalculatorTest {
-
     @Test
     fun emptyState_default_hasAllZerosAndEmpty() {
         val state = SectionArcCalculator.emptyState()
@@ -56,10 +55,11 @@ class SectionArcCalculatorTest {
     @Test
     fun computeIdleState_twoSections_correctBoundaries() {
         val session = Session("Session", "")
-        val sections = arrayOf(
-            Section("Zazen", 600),
-            Section("Kinhin", 300)
-        )
+        val sections =
+            arrayOf(
+                Section("Zazen", 600),
+                Section("Kinhin", 300),
+            )
 
         val state = SectionArcCalculator.computeIdleState(session, sections)
 
@@ -76,11 +76,12 @@ class SectionArcCalculatorTest {
     @Test
     fun computeIdleState_threeSections_correctBoundaries() {
         val session = Session("Three Part", "desc")
-        val sections = arrayOf(
-            Section("Zazen", 600),
-            Section("Kinhin", 300),
-            Section("Zazen2", 600)
-        )
+        val sections =
+            arrayOf(
+                Section("Zazen", 600),
+                Section("Kinhin", 300),
+                Section("Zazen2", 600),
+            )
 
         val state = SectionArcCalculator.computeIdleState(session, sections)
 
@@ -97,12 +98,13 @@ class SectionArcCalculatorTest {
     @Test
     fun computeIdleState_fourSections_nextNextOnlyShowsThird() {
         val session = Session("Four Part", "")
-        val sections = arrayOf(
-            Section("A", 100),
-            Section("B", 200),
-            Section("C", 300),
-            Section("D", 400)
-        )
+        val sections =
+            arrayOf(
+                Section("A", 100),
+                Section("B", 200),
+                Section("C", 300),
+                Section("D", 400),
+            )
 
         val state = SectionArcCalculator.computeIdleState(session, sections)
 
@@ -112,10 +114,11 @@ class SectionArcCalculatorTest {
     @Test
     fun computeIdleState_zeroDurationSection_totalIncludesZero() {
         val session = Session("Zero", "")
-        val sections = arrayOf(
-            Section("Empty", 0),
-            Section("Full", 300)
-        )
+        val sections =
+            arrayOf(
+                Section("Empty", 0),
+                Section("Full", 300),
+            )
 
         val state = SectionArcCalculator.computeIdleState(session, sections)
 
@@ -170,12 +173,13 @@ class SectionArcCalculatorTest {
     @Test
     fun computeIdleState_varyingDurations_totalIsSum() {
         val session = Session("S", "")
-        val sections = arrayOf(
-            Section("A", 60),
-            Section("B", 120),
-            Section("C", 180),
-            Section("D", 240)
-        )
+        val sections =
+            arrayOf(
+                Section("A", 60),
+                Section("B", 120),
+                Section("C", 180),
+                Section("D", 240),
+            )
 
         val state = SectionArcCalculator.computeIdleState(session, sections)
 

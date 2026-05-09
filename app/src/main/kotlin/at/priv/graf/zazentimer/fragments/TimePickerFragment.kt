@@ -14,8 +14,9 @@ import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.DialogFragment
 import at.priv.graf.zazentimer.R
 
-class TimePickerFragment : DialogFragment(), TimePickerDialog.OnTimeSetListener {
-
+class TimePickerFragment :
+    DialogFragment(),
+    TimePickerDialog.OnTimeSetListener {
     private var activity: Activity? = null
     private var minutes: Int = 0
     private var npMin: NumberPicker? = null
@@ -24,7 +25,11 @@ class TimePickerFragment : DialogFragment(), TimePickerDialog.OnTimeSetListener 
     private var seconds: Int = 0
     private var view: View? = null
 
-    override fun onTimeSet(timePicker: TimePicker, i: Int, i2: Int) {
+    override fun onTimeSet(
+        timePicker: TimePicker,
+        i: Int,
+        i2: Int,
+    ) {
     }
 
     fun setOnOkListener(runnable: Runnable) {

@@ -11,5 +11,5 @@ data class SessionEntity(
     @field:NonNull
     var name: String = "",
     @field:NonNull
-    var description: String = ""
+    var description: String = "",
 )

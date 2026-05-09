@@ -4,7 +4,6 @@ import org.junit.Assert.assertEquals
 import org.junit.Test
 
 class VolumeDimmingTest {
-
     @Test
     fun dimmingZero_mapsToFullVolume() {
         val dimming = 0

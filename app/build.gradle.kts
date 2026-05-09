@@ -20,7 +20,11 @@ android {
         testInstrumentationRunner = "at.priv.graf.zazentimer.HiltTestRunner"
         testInstrumentationRunnerArguments["clearPackageData"] = "true"
 
-        buildConfigField("String", "GIT_HASH", "\"${providers.exec { commandLine("git", "rev-parse", "--short=7", "HEAD") }.standardOutput.asText.get().trim()}\"")
+        buildConfigField(
+            "String",
+            "GIT_HASH",
+            "\"${providers.exec { commandLine("git", "rev-parse", "--short=7", "HEAD") }.standardOutput.asText.get().trim()}\"",
+        )
 
         ksp {
             arg("room.schemaLocation", "$projectDir/schemas")
@@ -71,16 +75,17 @@ android {
             isIncludeAndroidResources = true
         }
     }
+
+    kotlin {
+        explicitApiWarning()
+    }
 }
 
 ktlint {
-    // Visibility only — enforcement deferred to #108
-    // CI handles non-failure via continue-on-error in ci.yml
+    version.set("1.6.0")
 }
 
 detekt {
-    // Visibility only — enforcement deferred to #108
-    // CI handles non-failure via continue-on-error in ci.yml
 }
 
 tasks.withType<JavaCompile>().configureEach {
@@ -90,6 +95,7 @@ tasks.withType<JavaCompile>().configureEach {
 dependencies {
     implementation("org.jetbrains.kotlin:kotlin-stdlib:2.3.21")
     implementation("androidx.appcompat:appcompat:1.7.1")
+    implementation("androidx.activity:activity-ktx:1.10.1")
     implementation("androidx.preference:preference:1.2.1")
     implementation("com.google.android.material:material:1.13.0")
     implementation("androidx.recyclerview:recyclerview:1.4.0")

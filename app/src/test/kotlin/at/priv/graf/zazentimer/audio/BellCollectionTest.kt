@@ -1,6 +1,7 @@
 package at.priv.graf.zazentimer.audio
 
-import androidx.test.ext.junit.runners.AndroidJUnit4
+import android.content.Context
+import at.priv.graf.zazentimer.bo.Section
 import com.google.common.truth.Truth.assertThat
 import org.junit.After
 import org.junit.Before
@@ -9,13 +10,10 @@ import org.junit.runner.RunWith
 import org.robolectric.RobolectricTestRunner
 import org.robolectric.RuntimeEnvironment
 import org.robolectric.annotation.Config
-import android.content.Context
-import at.priv.graf.zazentimer.bo.Section
 
 @RunWith(RobolectricTestRunner::class)
 @Config(sdk = [29])
 class BellCollectionTest {
-
     private lateinit var context: Context
 
     @Before

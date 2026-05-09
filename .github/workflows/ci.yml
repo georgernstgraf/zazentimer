@@ -81,9 +81,7 @@ jobs:
       uses: android-actions/setup-android@v3
 
     - name: Run ktlint
-      continue-on-error: true
       run: ./gradlew ktlintCheck --no-daemon
 
     - name: Run detekt
-      continue-on-error: true
       run: ./gradlew detekt --no-daemon

@@ -124,8 +124,6 @@
     </attr> -->
     <attr name="behavior_skipCollapsed" format="boolean">
     </attr>
-    <attr name="betterListView" format="reference">
-    </attr>
     <attr name="borderWidth" format="dimension">
     </attr>
     <attr name="borderlessButtonStyle" format="reference">

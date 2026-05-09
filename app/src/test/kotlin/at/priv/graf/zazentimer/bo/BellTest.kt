@@ -8,7 +8,6 @@ import org.robolectric.RobolectricTestRunner
 
 @RunWith(RobolectricTestRunner::class)
 class BellTest {
-
     @Test
     fun getName_withBellPrefix_stripsPrefix() {
         val bell = Bell(Uri.parse("content://audio/bell.mp3"), "bell_Tibetan")

@@ -3,9 +3,9 @@ package at.priv.graf.zazentimer.utils
 import androidx.test.espresso.IdlingResource
 
 class MeditationServiceIdlingResource : IdlingResource {
-
     @Volatile
     private var resourceCallback: IdlingResource.ResourceCallback? = null
+
     @Volatile
     private var isIdle = true
 

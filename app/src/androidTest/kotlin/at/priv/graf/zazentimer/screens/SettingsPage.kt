@@ -2,19 +2,16 @@ package at.priv.graf.zazentimer.screens
 
 import android.os.SystemClock
 import androidx.recyclerview.widget.RecyclerView
-import androidx.test.espresso.NoMatchingViewException
-import androidx.test.espresso.contrib.RecyclerViewActions
-
 import androidx.test.espresso.Espresso.onView
+import androidx.test.espresso.NoMatchingViewException
 import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.action.ViewActions.scrollTo
+import androidx.test.espresso.contrib.RecyclerViewActions
 import androidx.test.espresso.matcher.ViewMatchers.withId
 import androidx.test.espresso.matcher.ViewMatchers.withText
-
 import at.priv.graf.zazentimer.R
 
 class SettingsPage : BasePage() {
-
     init {
         SystemClock.sleep(1000)
         onView(withId(R.id.recycler_view)).check { _, noViewFoundException ->
@@ -27,7 +24,8 @@ class SettingsPage : BasePage() {
             onView(withId(R.id.recycler_view))
                 .perform(RecyclerViewActions.scrollToPosition<RecyclerView.ViewHolder>(0))
             SystemClock.sleep(300)
-        } catch (_: Exception) {}
+        } catch (_: Exception) {
+        }
     }
 
     private fun scrollPreferencesToBottom() {
@@ -35,7 +33,8 @@ class SettingsPage : BasePage() {
             onView(withId(R.id.recycler_view))
                 .perform(RecyclerViewActions.scrollToPosition<RecyclerView.ViewHolder>(99))
             SystemClock.sleep(500)
-        } catch (_: Exception) {}
+        } catch (_: Exception) {
+        }
     }
 
     private fun scrollToPreference(textResId: Int): Boolean {
