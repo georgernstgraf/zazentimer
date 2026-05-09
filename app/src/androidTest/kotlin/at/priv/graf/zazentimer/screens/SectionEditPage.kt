@@ -3,7 +3,6 @@ package at.priv.graf.zazentimer.screens
 import android.view.View
 import android.widget.SeekBar
 import androidx.test.espresso.Espresso.onView
-import androidx.test.espresso.Espresso.pressBack
 import androidx.test.espresso.UiController
 import androidx.test.espresso.action.ViewActions
 import androidx.test.espresso.action.ViewActions.replaceText
@@ -12,10 +11,12 @@ import androidx.test.espresso.matcher.ViewMatchers.withId
 import at.priv.graf.zazentimer.R
 import org.hamcrest.Matcher
 
-class SectionEditPage : BasePage() {
+class SectionEditPage {
+    private val robot = ScreenRobot()
+
     fun verifySectionEditScreen(): SectionEditPage {
-        checkElementIsDisplayed(R.id.play_gong)
-        checkElementIsDisplayed(R.id.sectionGongVolume)
+        robot.checkElementIsDisplayed(R.id.play_gong)
+        robot.checkElementIsDisplayed(R.id.sectionGongVolume)
         return this
     }
 
@@ -25,7 +26,7 @@ class SectionEditPage : BasePage() {
     }
 
     fun tapDurationPicker(): SectionEditPage {
-        clickOnView(R.id.duration)
+        robot.clickOnView(R.id.duration)
         return this
     }
 
@@ -39,7 +40,7 @@ class SectionEditPage : BasePage() {
                 5 -> R.id.bellcount5
                 else -> R.id.bellcount1
             }
-        clickOnView(id)
+        robot.clickOnView(id)
         return this
     }
 
@@ -64,7 +65,7 @@ class SectionEditPage : BasePage() {
                 else -> R.id.gap1
             }
         onView(withId(id)).perform(ViewActions.scrollTo())
-        clickOnView(id)
+        robot.clickOnView(id)
         return this
     }
 
@@ -89,12 +90,12 @@ class SectionEditPage : BasePage() {
     }
 
     fun clickPlayBell(): SectionEditPage {
-        clickOnView(R.id.play_gong)
+        robot.clickOnView(R.id.play_gong)
         return this
     }
 
     fun goBack(): SessionEditPage {
-        pressBack()
+        robot.pressBack()
         return SessionEditPage()
     }
 }

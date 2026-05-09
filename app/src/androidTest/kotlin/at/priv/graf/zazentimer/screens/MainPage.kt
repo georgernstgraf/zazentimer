@@ -14,11 +14,13 @@ import androidx.test.espresso.matcher.ViewMatchers.withText
 import at.priv.graf.zazentimer.R
 import org.hamcrest.Matcher
 
-class MainPage : BasePage() {
+class MainPage {
+    private val robot = ScreenRobot()
+
     fun verifyMainScreenIsDisplayed(): MainPage {
-        checkElementIsDisplayed(R.id.my_toolbar)
-        checkElementIsDisplayed(R.id.but_start)
-        checkElementIsDisplayed(R.id.recycler_sessions)
+        robot.checkElementIsDisplayed(R.id.my_toolbar)
+        robot.checkElementIsDisplayed(R.id.but_start)
+        robot.checkElementIsDisplayed(R.id.recycler_sessions)
         return this
     }
 
@@ -35,7 +37,7 @@ class MainPage : BasePage() {
     }
 
     fun clickStartMeditation(): MeditationPage {
-        clickOnView(R.id.but_start)
+        robot.clickOnView(R.id.but_start)
         return MeditationPage()
     }
 
@@ -68,8 +70,12 @@ class MainPage : BasePage() {
     fun clickSessionOverflowAtPosition(position: Int): MainPage {
         onView(withId(R.id.recycler_sessions))
             .perform(
-                RecyclerViewActions.actionOnItemAtPosition<RecyclerView.ViewHolder>(position, clickChildViewWithId(R.id.sessionOverflow)),
+                RecyclerViewActions.actionOnItemAtPosition<RecyclerView.ViewHolder>(
+                    position,
+                    ScreenRobot.clickChildViewWithId(R.id.sessionOverflow),
+                ),
             )
+        // PITFALLS #81: popup menu animation not tracked by Espresso idle
         SystemClock.sleep(500)
         return this
     }
@@ -83,8 +89,8 @@ class MainPage : BasePage() {
         return this
     }
 
-    override fun clickToolbarOverflowItem(textResId: Int): MainPage {
-        super.clickToolbarOverflowItem(textResId)
+    fun clickToolbarOverflowItem(textResId: Int): MainPage {
+        robot.clickToolbarOverflowItem(textResId)
         return this
     }
 }

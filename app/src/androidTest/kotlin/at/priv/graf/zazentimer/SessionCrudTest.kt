@@ -1,7 +1,7 @@
 package at.priv.graf.zazentimer
 
-import android.os.SystemClock
 import androidx.test.espresso.Espresso.closeSoftKeyboard
+import androidx.test.espresso.Espresso.onIdle
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.action.ViewActions.clearText
 import androidx.test.espresso.action.ViewActions.click
@@ -69,15 +69,7 @@ class SessionCrudTest {
         closeSoftKeyboard()
         SessionEditPage().goBack()
 
-        for (i in 0 until 20) {
-            SystemClock.sleep(500)
-            try {
-                MainPage().verifyMainScreenIsDisplayed()
-                break
-            } catch (e: Exception) {
-                if (i == 19) throw e
-            }
-        }
+        onIdle()
 
         onView(withText("Updated Session Name")).check(matches(isDisplayed()))
     }
@@ -90,10 +82,9 @@ class SessionCrudTest {
 
         onView(withText(R.string.title_question_delete_session))
             .check(matches(isDisplayed()))
-        SystemClock.sleep(500)
         onView(withText(R.string.ok)).perform(click())
 
-        SystemClock.sleep(500)
+        onIdle()
 
         MainPage()
             .verifyMainScreenIsDisplayed()
@@ -107,10 +98,9 @@ class SessionCrudTest {
 
         onView(withText(R.string.title_question_delete_session))
             .check(matches(isDisplayed()))
-        SystemClock.sleep(500)
         onView(withText(R.string.abbrechen)).perform(click())
 
-        SystemClock.sleep(500)
+        onIdle()
 
         MainPage()
             .verifyMainScreenIsDisplayed()

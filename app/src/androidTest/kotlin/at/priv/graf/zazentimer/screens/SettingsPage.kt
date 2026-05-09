@@ -2,6 +2,7 @@ package at.priv.graf.zazentimer.screens
 
 import android.os.SystemClock
 import androidx.recyclerview.widget.RecyclerView
+import androidx.test.espresso.Espresso.onIdle
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.NoMatchingViewException
 import androidx.test.espresso.action.ViewActions.click
@@ -11,8 +12,11 @@ import androidx.test.espresso.matcher.ViewMatchers.withId
 import androidx.test.espresso.matcher.ViewMatchers.withText
 import at.priv.graf.zazentimer.R
 
-class SettingsPage : BasePage() {
+class SettingsPage {
+    private val robot = ScreenRobot()
+
     init {
+        // PITFALLS #81: PreferenceFragment RecyclerView initialization not tracked by Espresso idle
         SystemClock.sleep(1000)
         onView(withId(R.id.recycler_view)).check { _, noViewFoundException ->
             if (noViewFoundException != null) throw noViewFoundException
@@ -23,6 +27,7 @@ class SettingsPage : BasePage() {
         try {
             onView(withId(R.id.recycler_view))
                 .perform(RecyclerViewActions.scrollToPosition<RecyclerView.ViewHolder>(0))
+            // PITFALLS #81: PreferenceFragment scrolling not tracked by Espresso idle
             SystemClock.sleep(300)
         } catch (_: Exception) {
         }
@@ -32,6 +37,7 @@ class SettingsPage : BasePage() {
         try {
             onView(withId(R.id.recycler_view))
                 .perform(RecyclerViewActions.scrollToPosition<RecyclerView.ViewHolder>(99))
+            // PITFALLS #81: PreferenceFragment scrolling not tracked by Espresso idle
             SystemClock.sleep(500)
         } catch (_: Exception) {
         }
@@ -45,6 +51,7 @@ class SettingsPage : BasePage() {
                 return true
             } catch (e: NoMatchingViewException) {
                 scrollPreferencesToBottom()
+                // PITFALLS #81: PreferenceFragment scrolling not tracked by Espresso idle
                 SystemClock.sleep(300)
             }
         }
@@ -65,13 +72,13 @@ class SettingsPage : BasePage() {
     fun clickRestoreAndConfirm(): SettingsPage {
         scrollToPreference(R.string.pref_title_restore)
         onView(withText(R.string.pref_title_restore)).perform(click())
-        SystemClock.sleep(300)
+        onIdle()
         onView(withText(R.string.ok)).perform(click())
         return this
     }
 
     fun goBack(): MainPage {
-        pressBack()
+        robot.pressBack()
         return MainPage()
     }
 }

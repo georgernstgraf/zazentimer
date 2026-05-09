@@ -69,7 +69,7 @@ class SettingsTest {
         onView(withText(R.string.theme)).perform(click())
         onView(withText(R.string.theme_dark)).perform(click())
 
-        SystemClock.sleep(2000)
+        Espresso.onIdle()
 
         SettingsPage()
     }
@@ -108,12 +108,12 @@ class SettingsTest {
         onView(withText(R.string.pref_title_brightness))
             .perform(click())
 
-        SystemClock.sleep(500)
+        Espresso.onIdle()
 
         onView(isAssignableFrom(SeekBar::class.java))
             .perform(setSeekBarProgress(50))
 
-        SystemClock.sleep(300)
+        Espresso.onIdle()
         Espresso.pressBack()
     }
 

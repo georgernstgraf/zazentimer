@@ -22,25 +22,28 @@ import org.hamcrest.Description
 import org.hamcrest.Matcher
 import org.hamcrest.TypeSafeMatcher
 
-abstract class BasePage {
-    fun checkElementIsDisplayed(viewId: Int) {
+class ScreenRobot {
+    fun checkElementIsDisplayed(viewId: Int): ScreenRobot {
         onViewWithId(viewId).check(matches(isDisplayed()))
+        return this
     }
 
-    fun clickOnView(viewId: Int) {
+    fun clickOnView(viewId: Int): ScreenRobot {
         onViewWithId(viewId).perform(click())
+        return this
     }
 
-    protected fun onViewWithId(viewId: Int): ViewInteraction = Espresso.onView(ViewMatchers.withId(viewId))
+    fun onViewWithId(viewId: Int): ViewInteraction = Espresso.onView(ViewMatchers.withId(viewId))
 
-    open fun clickToolbarOverflowItem(textResId: Int): BasePage {
+    fun clickToolbarOverflowItem(textResId: Int): ScreenRobot {
         openActionBarOverflowOrOptionsMenu(getInstrumentation().targetContext)
+        // PITFALLS #81: popup menu animation not tracked by Espresso idle
         SystemClock.sleep(500)
         onView(withText(textResId)).perform(click())
         return this
     }
 
-    open fun clickDialogButton(textId: Int): BasePage {
+    fun clickDialogButton(textId: Int): ScreenRobot {
         onView(withText(textId)).perform(click())
         return this
     }
@@ -48,7 +51,7 @@ abstract class BasePage {
     fun assertRecyclerViewItemCount(
         recyclerViewId: Int,
         expectedCount: Int,
-    ): BasePage {
+    ): ScreenRobot {
         onView(withId(recyclerViewId)).check(matches(RecyclerViewItemCountMatcher(expectedCount)))
         return this
     }
@@ -56,7 +59,7 @@ abstract class BasePage {
     fun scrollToRecyclerViewPosition(
         recyclerViewId: Int,
         position: Int,
-    ): BasePage {
+    ): ScreenRobot {
         onView(withId(recyclerViewId))
             .perform(RecyclerViewActions.scrollToPosition<RecyclerView.ViewHolder>(position))
         return this

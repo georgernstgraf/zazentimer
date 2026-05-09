@@ -2,17 +2,18 @@ package at.priv.graf.zazentimer.screens
 
 import androidx.recyclerview.widget.RecyclerView
 import androidx.test.espresso.Espresso.onView
-import androidx.test.espresso.Espresso.pressBack
 import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.action.ViewActions.typeText
 import androidx.test.espresso.contrib.RecyclerViewActions.actionOnItemAtPosition
 import androidx.test.espresso.matcher.ViewMatchers.withId
 import at.priv.graf.zazentimer.R
 
-class SessionEditPage : BasePage() {
+class SessionEditPage {
+    private val robot = ScreenRobot()
+
     fun verifyEditSessionScreen(): SessionEditPage {
-        checkElementIsDisplayed(R.id.text_sitzung_name)
-        checkElementIsDisplayed(R.id.but_new_section)
+        robot.checkElementIsDisplayed(R.id.text_sitzung_name)
+        robot.checkElementIsDisplayed(R.id.but_new_section)
         return this
     }
 
@@ -27,7 +28,7 @@ class SessionEditPage : BasePage() {
     }
 
     fun clickAddSection(): SectionEditPage {
-        clickOnView(R.id.but_new_section)
+        robot.clickOnView(R.id.but_new_section)
         return SectionEditPage()
     }
 
@@ -38,12 +39,12 @@ class SessionEditPage : BasePage() {
     }
 
     fun verifySectionCount(count: Int): SessionEditPage {
-        assertRecyclerViewItemCount(R.id.list, count)
+        robot.assertRecyclerViewItemCount(R.id.list, count)
         return this
     }
 
     fun goBack(): MainPage {
-        pressBack()
+        robot.pressBack()
         return MainPage()
     }
 }

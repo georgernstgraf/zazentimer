@@ -7,7 +7,9 @@ import androidx.test.espresso.matcher.ViewMatchers.withText
 import at.priv.graf.zazentimer.R
 import org.hamcrest.Matchers.containsString
 
-class AboutPage : BasePage() {
+class AboutPage {
+    private val robot = ScreenRobot()
+
     fun verifyAboutScreen(): AboutPage {
         onView(withText(R.string.caption_zazen_meditation)).check(matches(isDisplayed()))
         return this
@@ -19,7 +21,7 @@ class AboutPage : BasePage() {
     }
 
     fun clickOk(): MainPage {
-        clickDialogButton(R.string.privacy_ok)
+        robot.clickDialogButton(R.string.privacy_ok)
         return MainPage()
     }
 }
