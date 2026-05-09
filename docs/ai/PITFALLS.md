@@ -95,3 +95,7 @@
 - **KSP with AGP 9.x requires `android.disallowKotlinSourceSets=false` in gradle.properties.** AGP 9.x disallows Kotlin source sets by default, but KSP registers its generated source directories via Kotlin source sets. Without this flag, the build fails with a source set configuration error.
 - **`java.srcDirs()` (plural) is deprecated in AGP 9.x.** Use `java.srcDir()` (singular) per-directory when adding source directories to sourceSets. The plural form triggers deprecation warnings.
 - **KSP version for Kotlin 2.2.x uses old format (`2.2.10-2.0.2`).** For Kotlin 2.3.x+, KSP uses simplified versioning (e.g., `2.3.7`). Match KSP version to the embedded Kotlin compiler version in AGP, not the kotlin-stdlib dependency version.
+- **DbOperations `toEntity`/`toBo` are private companion methods.** Unit tests must use Java reflection (`method.isAccessible = true`) to test field mapping. Making them public would expose internal details.
+- **Audio creates MediaPlayer inline (`MediaPlayer()`).** Cannot inject a mock. Use `mockkConstructor(MediaPlayer::class)` with `every { anyConstructed<MediaPlayer>().* }` to intercept creation.
+- **BellCollection is a Kotlin `object` singleton.** Call `BellCollection.release()` in `@After` to reset state between tests, or tests will pollute each other.
+- **Room `exportSchema=false` prevents migration testing.** `MigrationTestHelper` requires schema JSON files generated during compilation. Enable `exportSchema = true` in `@Database` annotation and configure `room.schemaLocation` in KSP args to enable migration tests.

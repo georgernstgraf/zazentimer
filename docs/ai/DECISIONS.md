@@ -282,3 +282,9 @@ Each entry documents WHAT was decided and WHY.
 - **Considered**: Enabling enforcement immediately (rejected — too many violations from mechanical conversion); skipping linting entirely (rejected — need baseline awareness).
 - **Tradeoff**: CI will show lint failures as warnings, not blockers. Enforcement deferred to #108 (post-88 follow-up). detekt 1.23.8 is latest stable (1.24.0 not yet released).
 - **Compiler options**: No `kotlinOptions` block needed — AGP 9.x derives JVM target from `compileOptions` (Java 21). No strict compiler options (`-Xexplicit-api=strict`, etc.) — deferred to #108.
+
+## 2026-05-09: Comprehensive Unit & Integration Test Suite (#126)
+- **Choice**: Added 161 unit/integration tests across 12 test files, covering pure logic, Room integration, and framework-dependent classes. Extracted 3 pure production classes (MeditationTimer, SectionArcCalculator, BackupManager) from Android-framework-dependent classes to enable testing.
+- **Reason**: The codebase had ~3,800 lines of testable business logic with zero unit test coverage (1 test file / 7 arithmetic-only tests). Core logic (timer calculations, data operations, backup/restore) had no safety net. Bugs in these areas are hardest to catch via instrumented tests and most painful when they occur.
+- **Considered**: Writing only instrumented tests; testing without extraction (requires Robolectric for everything); deferring entirely.
+- **Tradeoff**: Extracted classes add indirection but no behavioral changes. Private companion methods in DbOperations require reflection in tests. `exportSchema=false` prevents migration testing (follow-up needed). Audio MediaPlayer created inline requires `mockkConstructor` pattern.

@@ -129,6 +129,24 @@ Always run `./gradlew assembleDebug` after any translation changes.
 - Ensure standard `lint` and `./gradlew build` commands pass.
 - After deleting or renaming resource files (layouts, strings, drawables, IDs in `public.xml`), always run `./gradlew clean` before building and testing. Incremental builds can produce stale R.class entries that cause instrumented tests to fail with incorrect resource IDs.
 - **Always verify GitHub Actions passes after every push.** Run `gh run list --limit 3` and `gh run view <id>` to check. GitHub Actions runs Stage 1 only (build AAB + unit tests).
+- Run unit tests locally: `./gradlew testDebugUnitTest --no-daemon`
+
+### Unit Test Stack (#127)
+- **MockK 1.14.4** for Kotlin mocking (`every`, `verify`, `just Runs`, `mockkConstructor`)
+- **Robolectric 4.14.1** for Android framework stubs on JVM (`@RunWith(AndroidJUnit4::class)`, `@Config(sdk = [29])`)
+- **Truth 1.4.4** for fluent assertions (`assertThat(actual).isEqualTo(expected)`)
+- **room-testing 2.8.4** for in-memory Room DB integration tests
+- **kotlinx-coroutines-test 1.10.2** for coroutine testing
+- `testOptions.unitTests.isReturnDefaultValues = true` — Android framework methods return defaults instead of throwing
+- `testOptions.unitTests.isIncludeAndroidResources = true` — Robolectric can access resources
+- `robolectric.properties`: `sdk=29` (matches minSdk)
+
+### Unit Test Patterns (#126)
+- **Pure logic tests** (no mocking): Section, SpinnerUtil, Bell, DbOperations mapping — use plain JUnit 4 + Truth
+- **Room integration tests**: `Room.inMemoryDatabaseBuilder()` with `allowMainThreadQueries()`, use Robolectric for Context
+- **Framework-dependent tests**: `mockkConstructor(MediaPlayer::class)` for inline-created objects, Robolectric for Context/Resources singletons
+- **DbOperations companion methods** (`toEntity`/`toBo`) are private — tests use Java reflection to access them
+- **Logic extraction pattern**: When business logic is buried in Android-framework-dependent classes, extract to a pure class with no Android deps, then test the pure class. Examples: MeditationTimer, SectionArcCalculator, BackupManager.
 
 ### Three-Stage Test Pipeline (#115)
 - **Stage 1 — Commit Gate (~4 min, local + GitHub Actions):** Build AAB + Unit/Integration Tests (JVM only). Runs locally before push AND on GitHub Actions for every push to main. GitHub Actions jobs: `build` (AAB) + `unit-tests`.
