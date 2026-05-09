@@ -13,11 +13,18 @@ import androidx.annotation.NonNull
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.viewModelScope
 import at.priv.graf.zazentimer.ZazenTimerActivity
 import at.priv.graf.zazentimer.bo.Section
 import at.priv.graf.zazentimer.bo.Session
 import at.priv.graf.zazentimer.database.DbOperations
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.isActive
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 @HiltViewModel
@@ -37,17 +44,7 @@ class MeditationViewModel
         private var updateRunning = false
         private var selectedSessionId = -1
         private var timerViewInitialized = false
-
-        private val updateRunnable: Runnable =
-            object : Runnable {
-                override fun run() {
-                    if (!updateRunning) {
-                        return
-                    }
-                    pollMeditationState()
-                    handler?.postDelayed(this, 300L) ?: run { updateRunning = false }
-                }
-            }
+        private var updateJob: Job? = null
 
         init {
             meditationEnded.setValue(false)
@@ -138,36 +135,49 @@ class MeditationViewModel
             stopUpdateThread()
             this.updateRunning = true
             this.timerViewInitialized = false
-            this.handler?.postDelayed(this.updateRunnable, 300L)
+            startUpdateJob()
         }
 
         public fun stopUpdateThread() {
             this.updateRunning = false
-            this.handler?.removeCallbacks(this.updateRunnable)
+            updateJob?.cancel()
+            updateJob = null
             emitIdleState()
         }
 
         public fun emitIdleState() {
-            var sessionId = this.selectedSessionId
-            if (sessionId == -1) {
-                val prefs = ZazenTimerActivity.getPreferences(getApplication())
-                sessionId = prefs.getInt(ZazenTimerActivity.PREF_KEY_LAST_SESSION, -1)
+            viewModelScope.launch {
+                var sessionId = this@MeditationViewModel.selectedSessionId
+                if (sessionId == -1) {
+                    val prefs = ZazenTimerActivity.getPreferences(getApplication())
+                    sessionId = prefs.getInt(ZazenTimerActivity.PREF_KEY_LAST_SESSION, -1)
+                }
+                if (sessionId == -1) {
+                    meditationState.setValue(SectionArcCalculator.emptyState())
+                    return@launch
+                }
+                val session: Session? = dbOperations.readSession(sessionId)
+                if (session == null) {
+                    meditationState.setValue(SectionArcCalculator.emptyState())
+                    return@launch
+                }
+                val sections: Array<Section> = dbOperations.readSections(sessionId)
+                if (sections.isEmpty()) {
+                    meditationState.setValue(SectionArcCalculator.emptyState(session.name ?: ""))
+                    return@launch
+                }
+                meditationState.setValue(SectionArcCalculator.computeIdleState(session, sections))
             }
-            if (sessionId == -1) {
-                meditationState.setValue(SectionArcCalculator.emptyState())
-                return
+        }
+
+        private fun startUpdateJob() {
+            updateJob?.cancel()
+            updateJob = viewModelScope.launch {
+                while (isActive) {
+                    pollMeditationState()
+                    delay(300)
+                }
             }
-            val session: Session? = dbOperations.readSession(sessionId)
-            if (session == null) {
-                meditationState.setValue(SectionArcCalculator.emptyState())
-                return
-            }
-            val sections: Array<Section>? = dbOperations.readSections(sessionId)
-            if (sections == null || sections.isEmpty()) {
-                meditationState.setValue(SectionArcCalculator.emptyState(session.name ?: ""))
-                return
-            }
-            meditationState.setValue(SectionArcCalculator.computeIdleState(session, sections))
         }
 
         private fun pollMeditationState() {
@@ -267,12 +277,14 @@ class MeditationViewModel
                 return
             }
             val powerManager = app.getSystemService(Context.POWER_SERVICE) as PowerManager
-            val totalSeconds = dbOperations.readSections(selectedSessionId).sumOf { it.duration }
-            wakeLock = null
-            wakeLock = powerManager.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, "ScreenOnWakeLock")
-            val timeoutSeconds = totalSeconds + 60
-            wakeLock?.acquire(timeoutSeconds * 1000L)
-            Log.i(TAG, "Acquired WakeLock to keep screen on for $timeoutSeconds seconds")
+            viewModelScope.launch {
+                val totalSeconds = dbOperations.readSections(selectedSessionId).sumOf { it.duration }
+                wakeLock = null
+                wakeLock = powerManager.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, "ScreenOnWakeLock")
+                val timeoutSeconds = totalSeconds + 60
+                wakeLock?.acquire(timeoutSeconds * 1000L)
+                Log.i(TAG, "Acquired WakeLock to keep screen on for $timeoutSeconds seconds")
+            }
         }
 
         public fun releaseScreenWakeLock() {

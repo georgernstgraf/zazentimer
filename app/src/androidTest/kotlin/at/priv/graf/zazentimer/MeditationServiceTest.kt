@@ -15,6 +15,7 @@ import at.priv.graf.zazentimer.screens.MainPage
 import at.priv.graf.zazentimer.utils.MeditationServiceIdlingResource
 import dagger.hilt.android.testing.HiltAndroidRule
 import dagger.hilt.android.testing.HiltAndroidTest
+import kotlinx.coroutines.runBlocking
 import org.junit.After
 import org.junit.Assert.assertTrue
 import org.junit.Before
@@ -50,8 +51,11 @@ class MeditationServiceTest {
                 .putBoolean("mute_mode_vibrate", false)
                 .putBoolean("mute_mode_vibrate_sound", true)
                 .apply()
-            if (activity.dbOperations.readSessions().isEmpty() ||
-                activity.dbOperations.readSections(activity.dbOperations.readSessions()[0].id).isEmpty()
+            if (runBlocking { activity.dbOperations.readSessions().isEmpty() } ||
+                runBlocking {
+                    val sessions = activity.dbOperations.readSessions()
+                    sessions.isEmpty() || activity.dbOperations.readSections(sessions[0].id).isEmpty()
+                }
             ) {
                 activity.resetDatabaseForTest()
             }

@@ -5,13 +5,12 @@ import android.content.DialogInterface
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
 import android.util.Log
 import android.widget.Toast
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AlertDialog
+import androidx.lifecycle.lifecycleScope
 import androidx.preference.CheckBoxPreference
 import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
@@ -22,17 +21,13 @@ import at.priv.graf.zazentimer.database.AppDatabase
 import at.priv.graf.zazentimer.database.DbOperations
 import com.google.android.material.transition.MaterialFadeThrough
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
 import java.io.File
 import java.io.FileOutputStream
-import java.util.concurrent.ExecutorService
-import java.util.concurrent.Executors
 import javax.inject.Inject
 
 @AndroidEntryPoint
 class SettingsFragment : PreferenceFragmentCompat() {
-    private val executor: ExecutorService = Executors.newSingleThreadExecutor()
-    private val uiHandler: Handler = Handler(Looper.getMainLooper())
-
     @Inject
     lateinit var dbOperations: DbOperations
 
@@ -162,7 +157,7 @@ class SettingsFragment : PreferenceFragmentCompat() {
     }
 
     private fun doBackup(uri: Uri) {
-        executor.execute {
+        lifecycleScope.launch {
             val os = requireActivity().contentResolver.openOutputStream(uri)
             val success =
                 if (os != null) {
@@ -172,18 +167,16 @@ class SettingsFragment : PreferenceFragmentCompat() {
                     dbOperations.reopen()
                     false
                 }
-            uiHandler.post {
-                if (success) {
-                    Toast.makeText(requireActivity(), R.string.backup_success_text, 0).show()
-                } else {
-                    Toast.makeText(requireActivity(), R.string.backup_error_text, 0).show()
-                }
+            if (success) {
+                Toast.makeText(requireActivity(), R.string.backup_success_text, 0).show()
+            } else {
+                Toast.makeText(requireActivity(), R.string.backup_error_text, 0).show()
             }
         }
     }
 
     private fun doRestore(uri: Uri) {
-        executor.execute {
+        lifecycleScope.launch {
             var result = 2
             try {
                 val tempFile = File.createTempFile("restore", ".zip", requireActivity().cacheDir)
@@ -206,14 +199,12 @@ class SettingsFragment : PreferenceFragmentCompat() {
             } catch (e: Exception) {
                 Log.e(TAG, "Error restoring", e)
             }
-            uiHandler.post {
-                if (result == 0) {
-                    Toast.makeText(requireActivity(), R.string.restore_success_text, 0).show()
-                } else if (result == 1) {
-                    Toast.makeText(requireActivity(), R.string.restore_backup_not_found, 0).show()
-                } else if (result == 2) {
-                    Toast.makeText(requireActivity(), R.string.restore_error_text, 0).show()
-                }
+            if (result == 0) {
+                Toast.makeText(requireActivity(), R.string.restore_success_text, 0).show()
+            } else if (result == 1) {
+                Toast.makeText(requireActivity(), R.string.restore_backup_not_found, 0).show()
+            } else if (result == 2) {
+                Toast.makeText(requireActivity(), R.string.restore_error_text, 0).show()
             }
         }
     }

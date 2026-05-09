@@ -13,6 +13,7 @@ import android.view.ViewGroup
 import androidx.annotation.NonNull
 import androidx.annotation.Nullable
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -26,6 +27,7 @@ import at.priv.graf.zazentimer.views.MessageView
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.transition.MaterialSharedAxis
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @AndroidEntryPoint
@@ -166,16 +168,18 @@ class SessionEditFragment : Fragment() {
     override fun onResume() {
         super.onResume()
         Log.d(TAG, "sessionId=${this.sessionId}")
-        this.session = dbOperations.readSession(this.sessionId)
-        val s = this.session
-        if (s == null) {
-            Log.e(TAG, "session is NULL")
-        } else {
-            Log.i(TAG, "session found and valid")
-            binding.textSitzungName.setText(s.name)
-            binding.textSitzungBeschreibung.setText(s.description)
-            this.sections = dbOperations.readSections(s.id)
-            initSectionList()
+        lifecycleScope.launch {
+            this@SessionEditFragment.session = dbOperations.readSession(this@SessionEditFragment.sessionId)
+            val s = this@SessionEditFragment.session
+            if (s == null) {
+                Log.e(TAG, "session is NULL")
+            } else {
+                Log.i(TAG, "session found and valid")
+                binding.textSitzungName.setText(s.name)
+                binding.textSitzungBeschreibung.setText(s.description)
+                this@SessionEditFragment.sections = dbOperations.readSections(s.id)
+                initSectionList()
+            }
         }
         requireActivity().invalidateOptionsMenu()
         if (this.pref?.getBoolean(ZazenTimerActivity.PREF_KEY_SHOW_SESSION_EDIT_HELP_V13, false) == false) {
@@ -207,15 +211,21 @@ class SessionEditFragment : Fragment() {
     override fun onPause() {
         super.onPause()
         val items = adapter?.getItems() ?: return
+        val sectionsToUpdate = ArrayList<Section>()
         for (i in items.indices) {
             val section = items[i]
             section.rank = i + 1
-            dbOperations.updateSection(section)
+            sectionsToUpdate.add(section)
         }
         session?.let { s ->
             s.name = binding.textSitzungName.text.toString()
             s.description = binding.textSitzungBeschreibung.text.toString()
-            dbOperations.updateSession(s)
+            lifecycleScope.launch {
+                for (section in sectionsToUpdate) {
+                    dbOperations.updateSection(section)
+                }
+                dbOperations.updateSession(s)
+            }
         }
     }
 
@@ -224,14 +234,18 @@ class SessionEditFragment : Fragment() {
         val s = session ?: return
         val deletedSection = a.getItem(position)
         val deletedPosition = position
-        dbOperations.deleteSection(deletedSection.id.toLong())
+        lifecycleScope.launch {
+            dbOperations.deleteSection(deletedSection.id.toLong())
+        }
         a.removeItem(position)
 
         Snackbar
             .make(binding.list, "Deleted '$deletedSection'", Snackbar.LENGTH_LONG)
             .setAction("UNDO") {
-                dbOperations.insertSection(s, deletedSection)
-                a.insertItem(deletedPosition, deletedSection)
+                lifecycleScope.launch {
+                    dbOperations.insertSection(s, deletedSection)
+                    a.insertItem(deletedPosition, deletedSection)
+                }
             }.show()
     }
 
@@ -245,16 +259,20 @@ class SessionEditFragment : Fragment() {
         copy.bellcount = source.bellcount
         copy.bellpause = source.bellpause
         copy.volume = source.volume
-        dbOperations.insertSection(s, copy)
-        sections = dbOperations.readSections(s.id)
-        initSectionList()
+        lifecycleScope.launch {
+            dbOperations.insertSection(s, copy)
+            sections = dbOperations.readSections(s.id)
+            initSectionList()
+        }
     }
 
     fun doCreateNewSection() {
         val s = session ?: return
         val section = Section(resources.getString(R.string.default_section_name), 60)
-        dbOperations.insertSection(s, section)
-        navigateToSectionEdit(section.id)
+        lifecycleScope.launch {
+            dbOperations.insertSection(s, section)
+            navigateToSectionEdit(section.id)
+        }
     }
 
     private fun navigateToSectionEdit(sectionId: Int) {

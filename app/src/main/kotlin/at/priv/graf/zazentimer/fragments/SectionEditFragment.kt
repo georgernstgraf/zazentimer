@@ -17,6 +17,7 @@ import android.widget.TextView
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
 import at.priv.graf.zazentimer.R
 import at.priv.graf.zazentimer.ZazenTimerActivity
 import at.priv.graf.zazentimer.audio.Audio
@@ -27,6 +28,7 @@ import at.priv.graf.zazentimer.database.DbOperations
 import at.priv.graf.zazentimer.databinding.FragmentEditSectionBinding
 import com.google.android.material.transition.MaterialSharedAxis
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
 import java.io.InputStream
 import javax.inject.Inject
 
@@ -130,19 +132,21 @@ class SectionEditFragment : Fragment() {
 
     override fun onResume() {
         super.onResume()
-        this.section = dbOperations.readSection(this.sectionId)
-        this.audio = Audio(requireActivity())
-        requireActivity().invalidateOptionsMenu()
-        fillViewFromData()
-        installListeners()
-        val s = section ?: return
-        binding.bellGapScrollview.post {
-            val idx = s.bellpause - 1
-            if (idx < 0 || idx >= tvGaps.size) return@post
-            val textView = tvGaps[idx] ?: return@post
-            val rect = Rect()
-            textView.getDrawingRect(rect)
-            binding.bellGapScrollview.requestChildRectangleOnScreen(textView, rect, true)
+        lifecycleScope.launch {
+            this@SectionEditFragment.section = dbOperations.readSection(this@SectionEditFragment.sectionId)
+            this@SectionEditFragment.audio = Audio(requireActivity())
+            requireActivity().invalidateOptionsMenu()
+            fillViewFromData()
+            installListeners()
+            val s = section ?: return@launch
+            binding.bellGapScrollview.post {
+                val idx = s.bellpause - 1
+                if (idx < 0 || idx >= tvGaps.size) return@post
+                val textView = tvGaps[idx] ?: return@post
+                val rect = Rect()
+                textView.getDrawingRect(rect)
+                binding.bellGapScrollview.requestChildRectangleOnScreen(textView, rect, true)
+            }
         }
     }
 
@@ -151,7 +155,11 @@ class SectionEditFragment : Fragment() {
         audio?.release()
         this.audio = null
         fillDataFromViews()
-        section?.let { dbOperations.updateSection(it) }
+        section?.let { s ->
+            lifecycleScope.launch {
+                dbOperations.updateSection(s)
+            }
+        }
     }
 
     private fun fillDataFromViews() {

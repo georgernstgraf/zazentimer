@@ -14,9 +14,15 @@ import at.priv.graf.zazentimer.audio.Audio
 import at.priv.graf.zazentimer.audio.BellCollection
 import at.priv.graf.zazentimer.bo.Bell
 import at.priv.graf.zazentimer.bo.Section
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.SupervisorJob
+import kotlinx.coroutines.cancel
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.isActive
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
 import java.util.HashSet
-import java.util.concurrent.ExecutorService
-import java.util.concurrent.Executors
 
 class Meditation(
     private val meditationService: MeditationService,
@@ -44,7 +50,7 @@ class Meditation(
     private var totalSessionTime: Int = 0
     private var audioObjects: HashSet<Audio> = HashSet()
     private var started: Boolean = false
-    private val bellExecutor: ExecutorService = Executors.newSingleThreadExecutor()
+    private val scope = CoroutineScope(SupervisorJob() + Dispatchers.Main)
 
     init {
         this.stopping = false
@@ -87,7 +93,7 @@ class Meditation(
             pauseSectionSeconds = getSectionElapsedSeconds()
             paused = true
             currentSectionEndIntent?.let { alarmManager.cancel(it) }
-                currentSectionEndIntent = null
+               	currentSectionEndIntent = null
             if (Build.VERSION.SDK_INT < 23) {
                 releaseMeditationWakeLock()
                 return
@@ -110,6 +116,10 @@ class Meditation(
             releaseMeditationWakeLock()
         }
         fireMeditationEnded()
+    }
+
+    fun release() {
+        scope.cancel()
     }
 
     private fun releaseMeditationWakeLock() {
@@ -263,10 +273,7 @@ class Meditation(
                 oldRingerMode = audioManager.ringerMode
                 oldRingerVolume = audioManager.getStreamVolume(2)
                 audioManager.ringerMode = 0
-                try {
-                    Thread.sleep(500L)
-                } catch (_: InterruptedException) {
-                }
+                kotlinx.coroutines.runBlocking { delay(500) }
                 audioManager.setStreamVolume(2, 0, 0)
                 audioManager.ringerMode = 0
                 mutedRingerMode = audioManager.ringerMode
@@ -291,10 +298,7 @@ class Meditation(
             }
             Log.d(TAG, "unmuting: ring=$oldRingerVolume ringerMode=$oldRingerMode")
             audioManager.ringerMode = oldRingerMode
-            try {
-                Thread.sleep(500L)
-            } catch (_: InterruptedException) {
-            }
+            kotlinx.coroutines.runBlocking { delay(500) }
             if (oldRingerMode == 2) {
                 audioManager.setStreamVolume(2, oldRingerVolume, 0)
             }
@@ -307,8 +311,8 @@ class Meditation(
         section: Section,
         onDone: Runnable?,
     ) {
-        bellExecutor.execute {
-            Log.d(TAG, "Playing bells in background thread")
+        scope.launch {
+            Log.d(TAG, "Playing bells in coroutine")
             var wakeLock: PowerManager.WakeLock? = null
             val powerManager = meditationService.getSystemService(Context.POWER_SERVICE) as PowerManager
             wakeLock = powerManager.newWakeLock(26, "PlayBells")
@@ -320,19 +324,13 @@ class Meditation(
                 if (i < section.bellcount - 1) {
                     for (j in 0 until section.bellpause * 2) {
                         if (isStopped()) break
-                        try {
-                            Thread.sleep(500L)
-                        } catch (_: InterruptedException) {
-                        }
+                        delay(500)
                     }
                 }
             }
             Log.d(TAG, "waiting until the bells have finished playing")
             while (isPlaying() && !isStopped()) {
-                try {
-                    Thread.sleep(500L)
-                } catch (_: InterruptedException) {
-                }
+                delay(500)
             }
             try {
                 if (wakeLock.isHeld) {

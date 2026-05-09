@@ -5,10 +5,6 @@ import androidx.room.Room
 import at.priv.graf.zazentimer.bo.Section
 import at.priv.graf.zazentimer.bo.Session
 import dagger.hilt.android.qualifiers.ApplicationContext
-import java.util.concurrent.Callable
-import java.util.concurrent.ExecutionException
-import java.util.concurrent.ExecutorService
-import java.util.concurrent.Executors
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -22,7 +18,6 @@ class DbOperations
         private var appDb: AppDatabase? = null
         private var sessionDao: SessionDao? = null
         private var sectionDao: SectionDao? = null
-        private val executor: ExecutorService = Executors.newSingleThreadExecutor()
 
         init {
             openDatabase()
@@ -63,146 +58,120 @@ class DbOperations
 
         fun isConnected(): Boolean = appDb?.isOpen == true
 
-        fun readSession(id: Int): Session? =
-            executeSync {
-                val dao = sessionDao ?: return@executeSync null
-                val entity = dao.getSessionById(id)
-                entity?.let { toBo(it) }
-            }
+        suspend fun readSession(id: Int): Session? {
+            val dao = sessionDao ?: return null
+            val entity = dao.getSessionById(id)
+            return entity?.let { toBo(it) }
+        }
 
-        fun updateSession(session: Session) {
+        suspend fun updateSession(session: Session) {
             val entity = toEntity(session)
-            executor.execute { sessionDao?.update(entity) }
+            sessionDao?.update(entity)
         }
 
-        fun deleteSession(id: Int) {
-            executor.execute { sessionDao?.deleteById(id) }
+        suspend fun deleteSession(id: Int) {
+            sessionDao?.deleteById(id)
         }
 
-        fun duplicateSession(
+        suspend fun duplicateSession(
             sourceId: Int,
             newName: String,
-        ): Int =
-            executeSync {
-                val sDao = sessionDao ?: return@executeSync -1
-                val secDao = sectionDao ?: return@executeSync -1
-                val sourceEntity = sDao.getSessionById(sourceId) ?: return@executeSync -1
-                val source = toBo(sourceEntity)
-                source.name = newName
-                source.id = 0
-                val sectionEntities = secDao.getSectionsForSession(sourceId)
-                val newEntity = toEntity(source)
-                val newId = sDao.insert(newEntity)
-                source.id = newId.toInt()
-                for (se in sectionEntities) {
-                    val section = toBo(se)
-                    section.id = 0
-                    section.fkSession = source.id
-                    if (section.rank == -1) {
-                        val maxRank = secDao.getMaxRank(source.id)
-                        section.rank = (maxRank ?: 0) + 1
-                    }
-                    val sectionEntity = toEntity(section)
-                    val sid = secDao.insert(sectionEntity)
-                    section.id = sid.toInt()
+        ): Int {
+            val sDao = sessionDao ?: return -1
+            val secDao = sectionDao ?: return -1
+            val sourceEntity = sDao.getSessionById(sourceId) ?: return -1
+            val source = toBo(sourceEntity)
+            source.name = newName
+            source.id = 0
+            val sectionEntities = secDao.getSectionsForSession(sourceId)
+            val newEntity = toEntity(source)
+            val newId = sDao.insert(newEntity)
+            source.id = newId.toInt()
+            for (se in sectionEntities) {
+                val section = toBo(se)
+                section.id = 0
+                section.fkSession = source.id
+                if (section.rank == -1) {
+                    val maxRank = secDao.getMaxRank(source.id)
+                    section.rank = (maxRank ?: 0) + 1
                 }
-                source.id
+                val sectionEntity = toEntity(section)
+                val sid = secDao.insert(sectionEntity)
+                section.id = sid.toInt()
             }
-
-        fun deleteSection(id: Long) {
-            executor.execute { sectionDao?.deleteById(id) }
+            return source.id
         }
 
-        fun readSection(id: Int): Section? =
-            executeSync {
-                val dao = sectionDao ?: return@executeSync null
-                val entity = dao.getSectionById(id)
-                entity?.let { toBo(it) }
-            }
+        suspend fun deleteSection(id: Long) {
+            sectionDao?.deleteById(id)
+        }
 
-        fun updateSection(section: Section) {
+        suspend fun readSection(id: Int): Section? {
+            val dao = sectionDao ?: return null
+            val entity = dao.getSectionById(id)
+            return entity?.let { toBo(it) }
+        }
+
+        suspend fun updateSection(section: Section) {
             val entity = toEntity(section)
-            executor.execute { sectionDao?.update(entity) }
+            sectionDao?.update(entity)
         }
 
-        fun switchPositions(
+        suspend fun switchPositions(
             id1: Long,
             id2: Long,
         ) {
-            executor.execute {
-                val dao = sectionDao ?: return@execute
-                val s1 = dao.getSectionById(id1.toInt())
-                val s2 = dao.getSectionById(id2.toInt())
-                if (s1 != null && s2 != null) {
-                    val rank1 = s1.rank ?: 0
-                    val rank2 = s2.rank ?: 0
-                    dao.updateRank(id1.toInt(), rank2)
-                    dao.updateRank(id2.toInt(), rank1)
-                }
+            val dao = sectionDao ?: return
+            val s1 = dao.getSectionById(id1.toInt())
+            val s2 = dao.getSectionById(id2.toInt())
+            if (s1 != null && s2 != null) {
+                val rank1 = s1.rank ?: 0
+                val rank2 = s2.rank ?: 0
+                dao.updateRank(id1.toInt(), rank2)
+                dao.updateRank(id2.toInt(), rank1)
             }
         }
 
-        fun insertSection(
+        suspend fun insertSection(
             session: Session,
             section: Section,
         ) {
-            executeSync {
-                val dao = sectionDao ?: return@executeSync null
-                if (section.rank == -1) {
-                    val maxRank = dao.getMaxRank(session.id)
-                    section.rank = (maxRank ?: 0) + 1
-                }
-                section.fkSession = session.id
-                val entity = toEntity(section)
-                val newId = dao.insert(entity)
-                section.id = newId.toInt()
-                null
+            val dao = sectionDao ?: return
+            if (section.rank == -1) {
+                val maxRank = dao.getMaxRank(session.id)
+                section.rank = (maxRank ?: 0) + 1
             }
+            section.fkSession = session.id
+            val entity = toEntity(section)
+            val newId = dao.insert(entity)
+            section.id = newId.toInt()
         }
 
-        fun insertSession(session: Session) {
-            executeSync {
-                val dao = sessionDao ?: return@executeSync null
-                val entity = toEntity(session)
-                val newId = dao.insert(entity)
-                session.id = newId.toInt()
-                null
-            }
+        suspend fun insertSession(session: Session) {
+            val dao = sessionDao ?: return
+            val entity = toEntity(session)
+            val newId = dao.insert(entity)
+            session.id = newId.toInt()
         }
 
-        fun readSections(sessionId: Int): Array<Section> =
-            executeSync {
-                val dao = sectionDao ?: return@executeSync emptyArray<Section>()
-                val entities = dao.getSectionsForSession(sessionId)
-                val result = ArrayList<Section>()
-                for (entity in entities) {
-                    result.add(toBo(entity))
-                }
-                result.toTypedArray()
+        suspend fun readSections(sessionId: Int): Array<Section> {
+            val dao = sectionDao ?: return emptyArray()
+            val entities = dao.getSectionsForSession(sessionId)
+            val result = ArrayList<Section>()
+            for (entity in entities) {
+                result.add(toBo(entity))
             }
+            return result.toTypedArray()
+        }
 
-        fun readSessions(): Array<Session> =
-            executeSync {
-                val dao = sessionDao ?: return@executeSync emptyArray<Session>()
-                val entities = dao.getAllSessions()
-                val result = ArrayList<Session>()
-                for (entity in entities) {
-                    result.add(toBo(entity))
-                }
-                result.toTypedArray()
+        suspend fun readSessions(): Array<Session> {
+            val dao = sessionDao ?: return emptyArray()
+            val entities = dao.getAllSessions()
+            val result = ArrayList<Session>()
+            for (entity in entities) {
+                result.add(toBo(entity))
             }
-
-        private fun <T> executeSync(callable: Callable<T>): T {
-            try {
-                return executor.submit(callable).get()
-            } catch (e: ExecutionException) {
-                val cause = e.cause
-                if (cause is RuntimeException) throw cause
-                throw RuntimeException(cause)
-            } catch (e: InterruptedException) {
-                Thread.currentThread().interrupt()
-                throw RuntimeException(e)
-            }
+            return result.toTypedArray()
         }
 
         companion object {

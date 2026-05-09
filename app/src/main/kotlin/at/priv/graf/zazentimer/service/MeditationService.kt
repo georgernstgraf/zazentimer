@@ -4,22 +4,24 @@ import android.app.Notification
 import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.app.PendingIntent
-import android.app.Service
 import android.content.Intent
 import android.content.pm.ServiceInfo
 import android.os.Build
 import android.os.IBinder
 import android.util.Log
 import androidx.core.app.NotificationCompat
+import androidx.lifecycle.LifecycleService
+import androidx.lifecycle.lifecycleScope
 import at.priv.graf.zazentimer.R
 import at.priv.graf.zazentimer.ZazenTimerActivity
 import at.priv.graf.zazentimer.bo.Session
 import at.priv.graf.zazentimer.database.DbOperations
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @AndroidEntryPoint
-class MeditationService : Service() {
+class MeditationService : LifecycleService() {
     @Inject
     lateinit var dbOperations: DbOperations
 
@@ -93,16 +95,19 @@ class MeditationService : Service() {
             Log.d(TAG, "startMeditation(): Meditation seems to be already running!")
             return
         }
-        val session: Session = dbOperations.readSession(i) ?: return
-        val sections = dbOperations.readSections(i) ?: return
-        runningMeditation = Meditation(this, session.name ?: "", sections)
-        val meditation = runningMeditation ?: return
-        meditation.start()
-        val notification = createNotification() ?: return
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
-            startForeground(1, notification, ServiceInfo.FOREGROUND_SERVICE_TYPE_SPECIAL_USE)
-        } else {
-            startForeground(1, notification)
+        lifecycleScope.launch {
+            val session: Session = dbOperations.readSession(i) ?: return@launch
+            val sections = dbOperations.readSections(i)
+            if (sections.isEmpty()) return@launch
+            runningMeditation = Meditation(this@MeditationService, session.name ?: "", sections)
+            val meditation = runningMeditation ?: return@launch
+            meditation.start()
+            val notification = createNotification() ?: return@launch
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+                startForeground(1, notification, ServiceInfo.FOREGROUND_SERVICE_TYPE_SPECIAL_USE)
+            } else {
+                startForeground(1, notification)
+            }
         }
     }
 
@@ -110,6 +115,7 @@ class MeditationService : Service() {
         Log.d(TAG, "onMeditationEnd")
         isRunning = false
         stopForeground(STOP_FOREGROUND_REMOVE)
+        runningMeditation?.release()
         runningMeditation = null
         val intent = Intent()
         intent.action = ZAZENTIMER_SESSION_ENDED

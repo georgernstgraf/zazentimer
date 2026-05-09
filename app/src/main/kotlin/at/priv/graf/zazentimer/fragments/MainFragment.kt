@@ -10,6 +10,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.ViewTreeObserver
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -23,6 +24,7 @@ import at.priv.graf.zazentimer.databinding.FragmentMainBinding
 import at.priv.graf.zazentimer.service.MeditationService
 import com.google.android.material.transition.MaterialFadeThrough
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @AndroidEntryPoint
@@ -155,10 +157,12 @@ class MainFragment : Fragment() {
         val session = Session()
         session.name = ""
         session.description = ""
-        dbOperations.insertSession(session)
-        updateSessionList()
-        setSelectedSessionId(session.id)
-        navigateToSessionEdit(session.id)
+        lifecycleScope.launch {
+            dbOperations.insertSession(session)
+            updateSessionList()
+            setSelectedSessionId(session.id)
+            navigateToSessionEdit(session.id)
+        }
     }
 
     private fun onCardEditSession(position: Int) {
@@ -172,13 +176,15 @@ class MainFragment : Fragment() {
         if (!interactionsEnabled) return
         if (position < 0 || position >= sessions.size) return
         val s = sessions[position]
-        val newId =
-            dbOperations.duplicateSession(
-                s.id,
-                "${getString(R.string.copy_prefix)} ${s.name}",
-            )
-        updateSessionList()
-        setSelectedSessionId(newId)
+        lifecycleScope.launch {
+            val newId =
+                dbOperations.duplicateSession(
+                    s.id,
+                    "${getString(R.string.copy_prefix)} ${s.name}",
+                )
+            updateSessionList()
+            setSelectedSessionId(newId)
+        }
     }
 
     private fun onCardDeleteSession(position: Int) {
@@ -190,9 +196,11 @@ class MainFragment : Fragment() {
             .setTitle(R.string.title_question_delete_session)
             .setMessage(R.string.text_question_delete_session)
             .setPositiveButton(R.string.ok) { _, _ ->
-                dbOperations.deleteSession(s.id)
-                updateSessionList()
-                selectLastSession()
+                lifecycleScope.launch {
+                    dbOperations.deleteSession(s.id)
+                    updateSessionList()
+                    selectLastSession()
+                }
             }.setNegativeButton(R.string.abbrechen) { _, _ ->
             }.create()
             .show()
@@ -260,18 +268,20 @@ class MainFragment : Fragment() {
     }
 
     fun updateSessionList() {
-        val readSessions = dbOperations.readSessions()
-        val arrayList = ArrayList<SessionWithTimeInfo>()
-        this.sessions.clear()
-        for (session in readSessions) {
-            var total = 0
-            for (section in dbOperations.readSections(session.id)) {
-                total += section.duration
+        lifecycleScope.launch {
+            val readSessions = dbOperations.readSessions()
+            val arrayList = ArrayList<SessionWithTimeInfo>()
+            this@MainFragment.sessions.clear()
+            for (session in readSessions) {
+                var total = 0
+                for (section in dbOperations.readSections(session.id)) {
+                    total += section.duration
+                }
+                arrayList.add(SessionWithTimeInfo(session, total))
+                this@MainFragment.sessions.add(session)
             }
-            arrayList.add(SessionWithTimeInfo(session, total))
-            this.sessions.add(session)
+            this@MainFragment.sessionListAdapter?.setSessions(arrayList)
         }
-        this.sessionListAdapter?.setSessions(arrayList)
     }
 
     fun selectLastSession() {

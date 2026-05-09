@@ -26,6 +26,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
@@ -39,6 +40,7 @@ import at.priv.graf.zazentimer.fragments.MainFragment
 import at.priv.graf.zazentimer.service.MeditationService
 import at.priv.graf.zazentimer.service.MeditationViewModel
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @AndroidEntryPoint
@@ -129,7 +131,7 @@ class ZazenTimerActivity :
         observeViewModel()
         if (preferences.getBoolean(PREF_KEY_FIRST_START, true)) {
             Log.d(TAG, "This is the first run - create demo sessions")
-            createDemoSessions()
+            lifecycleScope.launch { createDemoSessions() }
             preferences.edit().putBoolean(PREF_KEY_FIRST_START, false).apply()
         }
         BellCollection.initialize(this)
@@ -344,7 +346,7 @@ class ZazenTimerActivity :
         return navHost?.childFragmentManager?.primaryNavigationFragment as? MainFragment
     }
 
-    private fun createDemoSessions() {
+    private suspend fun createDemoSessions() {
         val session = Session()
         session.description = resources.getString(R.string.demo_sess1_description)
         session.name = resources.getString(R.string.demo_sess1_name)
@@ -428,35 +430,37 @@ class ZazenTimerActivity :
     }
 
     override fun onStartPressed() {
-        if (dbOperations.readSections(getSelectedSessionId()).isEmpty()) {
-            if (getSelectedSessionId() == -1) {
-                Toast.makeText(this, R.string.no_session_exists, 0).show()
-                return
-            } else {
-                Toast.makeText(this, R.string.no_sections_in_session, 0).show()
-                return
+        lifecycleScope.launch {
+            if (dbOperations.readSections(getSelectedSessionId()).isEmpty()) {
+                if (getSelectedSessionId() == -1) {
+                    Toast.makeText(this@ZazenTimerActivity, R.string.no_session_exists, 0).show()
+                    return@launch
+                } else {
+                    Toast.makeText(this@ZazenTimerActivity, R.string.no_sections_in_session, 0).show()
+                    return@launch
+                }
             }
-        }
-        val preferences = this.pref ?: return
-        if (preferences.getBoolean(PREF_KEY_MUTE_MODE_NONE, true) || preferences.getBoolean(PREF_KEY_MUTE_MODE_VIBRATE, false)) {
-            if (Build.VERSION.SDK_INT >= 23) {
-                val notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
-                if (!notificationManager.isNotificationPolicyAccessGranted()) {
-                    if (isCallable(this.intentAllowMuting)) {
-                        showMessageAllowMute(this.intentAllowMuting)
-                        return
-                    } else {
-                        showMessageNoMuteSettings()
-                        return
+            val preferences = this@ZazenTimerActivity.pref ?: return@launch
+            if (preferences.getBoolean(PREF_KEY_MUTE_MODE_NONE, true) || preferences.getBoolean(PREF_KEY_MUTE_MODE_VIBRATE, false)) {
+                if (Build.VERSION.SDK_INT >= 23) {
+                    val notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+                    if (!notificationManager.isNotificationPolicyAccessGranted()) {
+                        if (isCallable(this@ZazenTimerActivity.intentAllowMuting)) {
+                            showMessageAllowMute(this@ZazenTimerActivity.intentAllowMuting)
+                            return@launch
+                        } else {
+                            showMessageNoMuteSettings()
+                            return@launch
+                        }
                     }
+                    startMeditation()
+                    return@launch
                 }
                 startMeditation()
-                return
+                return@launch
             }
             startMeditation()
-            return
         }
-        startMeditation()
     }
 
     private fun showMessageAllowMute(intent: Intent) {
@@ -528,7 +532,7 @@ class ZazenTimerActivity :
         }
         if (!preferences.getBoolean(PREF_KEY_CONVERTED_BELL_INDICES, false)) {
             Log.d(TAG, "converting Bell Indices to URIs...")
-            convertBellIndices()
+            lifecycleScope.launch { convertBellIndices() }
             Log.d(TAG, "done converting Bell Indices")
         }
         if (preferences.contains(PREF_KEY_PHONE_OFF)) {
@@ -558,7 +562,7 @@ class ZazenTimerActivity :
         }
     }
 
-    private fun convertBellIndices() {
+    private suspend fun convertBellIndices() {
         for (session in dbOperations.readSessions()) {
             for (section in dbOperations.readSections(session.id)) {
                 val bellUri = section.bellUri
@@ -595,17 +599,19 @@ class ZazenTimerActivity :
     }
 
     fun resetDatabaseForTest() {
-        val readSessions = dbOperations.readSessions()
-        for (i in readSessions.indices) {
-            for (section in dbOperations.readSections(readSessions[i].id)) {
-                dbOperations.deleteSection(section.id.toLong())
+        lifecycleScope.launch {
+            val readSessions = dbOperations.readSessions()
+            for (i in readSessions.indices) {
+                for (section in dbOperations.readSections(readSessions[i].id)) {
+                    dbOperations.deleteSection(section.id.toLong())
+                }
+                dbOperations.deleteSession(readSessions[i].id)
             }
-            dbOperations.deleteSession(readSessions[i].id)
-        }
-        createDemoSessions()
-        runOnUiThread {
-            val f = this@ZazenTimerActivity.findMainFragment()
-            f?.updateSessionList()
+            createDemoSessions()
+            runOnUiThread {
+                val f = this@ZazenTimerActivity.findMainFragment()
+                f?.updateSessionList()
+            }
         }
     }
 

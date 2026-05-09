@@ -11,6 +11,7 @@ import androidx.activity.OnBackPressedCallback
 import androidx.core.content.res.ResourcesCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.Navigation
 import at.priv.graf.zazentimer.R
 import at.priv.graf.zazentimer.ZazenTimerActivity
@@ -21,6 +22,7 @@ import at.priv.graf.zazentimer.service.MeditationUiState
 import at.priv.graf.zazentimer.service.MeditationViewModel
 import com.google.android.material.transition.MaterialSharedAxis
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @AndroidEntryPoint
@@ -198,12 +200,14 @@ class MeditationFragment : Fragment() {
         if (sessionId == -1) {
             return
         }
-        if (dbOperations.readSections(sessionId).isEmpty()) {
-            return
+        lifecycleScope.launch {
+            if (dbOperations.readSections(sessionId).isEmpty()) {
+                return@launch
+            }
+            viewModel?.setSelectedSessionId(sessionId)
+            val activity = activity as? ZazenTimerActivity
+            activity?.startMeditation()
         }
-        viewModel?.setSelectedSessionId(sessionId)
-        val activity = activity as? ZazenTimerActivity
-        activity?.startMeditation()
     }
 
     private fun showStopConfirmationDialog() {
