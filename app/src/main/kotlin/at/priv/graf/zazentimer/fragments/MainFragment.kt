@@ -157,11 +157,11 @@ class MainFragment : Fragment() {
         val session = Session()
         session.name = ""
         session.description = ""
-        navigateToSessionEdit(session.id)
         lifecycleScope.launch {
             dbOperations.insertSession(session)
             updateSessionList()
             setSelectedSessionId(session.id)
+            navigateToSessionEdit(session.id)
         }
     }
 

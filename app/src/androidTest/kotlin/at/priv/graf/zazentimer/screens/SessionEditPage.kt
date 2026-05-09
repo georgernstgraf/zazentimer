@@ -31,7 +31,7 @@ class SessionEditPage {
 
     fun clickAddSection(): SectionEditPage {
         robot.clickOnView(R.id.but_new_section)
-        SystemClock.sleep(500)
+        SystemClock.sleep(1500)
         return SectionEditPage()
     }
 
@@ -48,6 +48,7 @@ class SessionEditPage {
 
     fun goBack(): MainPage {
         robot.pressBack()
+        SystemClock.sleep(500)
         return MainPage()
     }
 }

@@ -1,5 +1,6 @@
 package at.priv.graf.zazentimer
 
+import android.os.SystemClock
 import androidx.test.espresso.Espresso.closeSoftKeyboard
 import androidx.test.espresso.Espresso.onIdle
 import androidx.test.espresso.Espresso.onView
@@ -37,6 +38,7 @@ class SessionCrudTest {
     fun init() {
         hiltRule.inject()
         activityRule.scenario.onActivity(ZazenTimerActivity::resetDatabaseForTest)
+        SystemClock.sleep(2000)
     }
 
     @Test

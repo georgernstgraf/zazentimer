@@ -426,11 +426,13 @@ echo "Display: $([ "$IS_REAL_DISPLAY" = true ] && echo 'real' || echo 'Xvfb')"
 echo ""
 echo "Unit Tests: $([ $UNIT_RESULT -eq 0 ] && echo 'PASS' || echo 'FAIL')"
 for api in "${APIS_TO_RUN[@]}"; do
-    status="PASS"
-    if [ "${RESULTS[$api]:-1}" -ne 0 ]; then
-        status="FAIL"
+    if [ -z "${RESULTS[$api]+isset}" ]; then
+        echo "API $api:    SKIPPED"
+    elif [ "${RESULTS[$api]}" -ne 0 ]; then
+        echo "API $api:    FAIL"
+    else
+        echo "API $api:    PASS"
     fi
-    echo "API $api:    $status"
 done
 echo "========================================="
 
