@@ -283,7 +283,9 @@ class SectionEditFragment : Fragment() {
             val s = section ?: return@setOnClickListener
             val bellForSection = BellCollection.getBellForSection(s)
             bellForSection?.let { bell ->
-                audio?.playAbsVolume(bell, s.volume)
+                lifecycleScope.launch {
+                    audio?.playAbsVolume(bell, s.volume)
+                }
             }
         }
         binding.selectGongSound.onItemSelectedListener =
@@ -325,7 +327,9 @@ class SectionEditFragment : Fragment() {
                     s.volume = 100 - progress * 10
                     val bellForSection = BellCollection.getBellForSection(s)
                     bellForSection?.let { bell ->
-                        audio?.playAbsVolume(s)
+                        lifecycleScope.launch {
+                            audio?.playAbsVolume(s)
+                        }
                     }
                 }
             },

@@ -8,6 +8,8 @@ import android.net.Uri
 import android.util.Log
 import at.priv.graf.zazentimer.bo.Bell
 import at.priv.graf.zazentimer.bo.Section
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 
 class Audio(
     private val context: Context,
@@ -70,18 +72,20 @@ class Audio(
         }
     }
 
-    fun playAbsVolume(section: Section) {
+    suspend fun playAbsVolume(section: Section) {
         playAbsVolume(BellCollection.getBellForSection(section), section.volume)
     }
 
-    fun playAbsVolume(
+    suspend fun playAbsVolume(
         bell: Bell?,
         volume: Int,
     ) {
         if (this.player != null) {
             stopAndRelease()
         }
-        this.player = bell?.let { preparePlayer(it, volume) }
+        this.player = withContext(Dispatchers.IO) {
+            bell?.let { preparePlayer(it, volume) }
+        }
         this.player?.let { p ->
             this.playing = true
             Log.d(TAG, "Start playing Bell")
