@@ -247,9 +247,13 @@ else
         clean_device_packages "$serial"
         dismiss_anr_dialog "$serial"
         adb -s "$serial" shell svc power stayon true 2>/dev/null || true
+        adb -s "$serial" shell am force-stop com.google.android.apps.nexuslauncher 2>/dev/null || true
         adb -s "$serial" shell input keyevent KEYCODE_WAKEUP 2>/dev/null || true
         adb -s "$serial" shell input keyevent KEYCODE_HOME 2>/dev/null || true
         sleep 5
+        adb -s "$serial" shell settings put global window_animation_scale 0.0 2>/dev/null || true
+        adb -s "$serial" shell settings put global transition_animation_scale 0.0 2>/dev/null || true
+        adb -s "$serial" shell settings put global animator_duration_scale 0.0 2>/dev/null || true
 
         echo ""
         echo "========================================="
@@ -333,9 +337,13 @@ else
         clean_device_packages "$serial"
         dismiss_anr_dialog "$serial"
         adb -s "$serial" shell svc power stayon true 2>/dev/null || true
+        adb -s "$serial" shell am force-stop com.google.android.apps.nexuslauncher 2>/dev/null || true
         adb -s "$serial" shell input keyevent KEYCODE_WAKEUP 2>/dev/null || true
         adb -s "$serial" shell input keyevent KEYCODE_HOME 2>/dev/null || true
         sleep 5
+        adb -s "$serial" shell settings put global window_animation_scale 0.0 2>/dev/null || true
+        adb -s "$serial" shell settings put global transition_animation_scale 0.0 2>/dev/null || true
+        adb -s "$serial" shell settings put global animator_duration_scale 0.0 2>/dev/null || true
 
         echo ""
         echo "========================================="
