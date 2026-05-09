@@ -32,8 +32,6 @@ class MainFragment : Fragment() {
     private var _binding: FragmentMainBinding? = null
     private val binding get() = _binding!!
 
-    private var contextRef: Context? = null
-    private var mAttached: Boolean = false
     private var mListener: OnFragmentInteractionListener? = null
     private var pref: SharedPreferences? = null
     private var sessionListAdapter: SessionListAdapter? = null
@@ -50,7 +48,6 @@ class MainFragment : Fragment() {
 
     init {
         Log.d(TAG, "Constructor")
-        this.mAttached = false
     }
 
     override fun onCreate(bundle: Bundle?) {
@@ -58,6 +55,20 @@ class MainFragment : Fragment() {
         enterTransition = MaterialFadeThrough()
         Log.d(TAG, "onCreate")
     }
+
+    private val globalLayoutListener =
+        ViewTreeObserver.OnGlobalLayoutListener {
+            _binding?.let { b ->
+                val parent = b.recyclerSessions.parent as? View ?: return@let
+                val available = parent.height - b.butStart.height
+                if (available <= 0) return@let
+                val maxRecyclerHeight = (available * 0.60).toInt()
+                val rv = b.recyclerSessions as MaxHeightRecyclerView
+                if (rv.getMaxHeight() != maxRecyclerHeight) {
+                    rv.setMaxHeight(maxRecyclerHeight)
+                }
+            }
+        }
 
     override fun onCreateView(
         layoutInflater: LayoutInflater,
@@ -71,7 +82,7 @@ class MainFragment : Fragment() {
             this@MainFragment.mListener?.onStartPressed()
         }
 
-        (binding.recyclerSessions as RecyclerView).layoutManager = LinearLayoutManager(this.contextRef)
+        (binding.recyclerSessions as RecyclerView).layoutManager = LinearLayoutManager(requireContext())
 
         this.sessionListAdapter =
             SessionListAdapter(
@@ -106,21 +117,7 @@ class MainFragment : Fragment() {
             )
         (binding.recyclerSessions as RecyclerView).adapter = this.sessionListAdapter
 
-        binding.recyclerSessions.viewTreeObserver.addOnGlobalLayoutListener(
-            object : ViewTreeObserver.OnGlobalLayoutListener {
-                override fun onGlobalLayout() {
-                    if (_binding == null) return
-                    val parent = binding.recyclerSessions.parent as? View ?: return
-                    val available = parent.height - binding.butStart.height
-                    if (available <= 0) return
-                    val maxRecyclerHeight = (available * 0.60).toInt()
-                    val rv = binding.recyclerSessions as MaxHeightRecyclerView
-                    if (rv.getMaxHeight() != maxRecyclerHeight) {
-                        rv.setMaxHeight(maxRecyclerHeight)
-                    }
-                }
-            },
-        )
+        binding.recyclerSessions.viewTreeObserver.addOnGlobalLayoutListener(globalLayoutListener)
 
         val callback =
             SessionTouchHelperCallback(
@@ -144,6 +141,7 @@ class MainFragment : Fragment() {
     }
 
     override fun onDestroyView() {
+        binding.recyclerSessions.viewTreeObserver.removeOnGlobalLayoutListener(globalLayoutListener)
         super.onDestroyView()
         _binding = null
     }
@@ -182,6 +180,7 @@ class MainFragment : Fragment() {
                     s.id,
                     "${getString(R.string.copy_prefix)} ${s.name}",
                 )
+            if (!isAdded) return@launch
             updateSessionList()
             setSelectedSessionId(newId)
         }
@@ -198,6 +197,7 @@ class MainFragment : Fragment() {
             .setPositiveButton(R.string.ok) { _, _ ->
                 lifecycleScope.launch {
                     dbOperations.deleteSession(s.id)
+                    if (!isAdded) return@launch
                     updateSessionList()
                     selectLastSession()
                 }
@@ -222,9 +222,7 @@ class MainFragment : Fragment() {
         if (context == null) {
             return
         }
-        this.mAttached = true
         this.pref = ZazenTimerActivity.getPreferences(context)
-        this.contextRef = context
         if (context is OnFragmentInteractionListener) {
             this.mListener = context
             return
@@ -236,7 +234,6 @@ class MainFragment : Fragment() {
         super.onDetach()
         Log.d(TAG, "onDetach")
         this.mListener = null
-        this.mAttached = false
     }
 
     override fun onResume() {
@@ -260,6 +257,7 @@ class MainFragment : Fragment() {
     fun updateSessionList(restoreSelectionId: Int = -1) {
         lifecycleScope.launch {
             val readSessions = dbOperations.readSessions()
+            if (!isAdded) return@launch
             val arrayList = ArrayList<SessionWithTimeInfo>()
             this@MainFragment.sessions.clear()
             for (session in readSessions) {

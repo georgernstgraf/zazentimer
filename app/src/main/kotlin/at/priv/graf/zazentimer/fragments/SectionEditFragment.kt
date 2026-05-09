@@ -86,7 +86,7 @@ class SectionEditFragment : Fragment() {
                 }
                 openInputStream.close()
                 openFileOutput.close()
-                BellCollection.initialize(requireActivity())
+                BellCollection.initialize(requireContext())
                 fillBellList()
                 section?.let { s ->
                     s.bellUri = BellCollection.getUriForName(str).toString()
@@ -120,7 +120,7 @@ class SectionEditFragment : Fragment() {
     ): View {
         Log.d(TAG, "onCreateView")
         _binding = FragmentEditSectionBinding.inflate(layoutInflater, viewGroup, false)
-        this.pref = ZazenTimerActivity.getPreferences(requireActivity())
+        this.pref = ZazenTimerActivity.getPreferences(requireContext())
         getViewComponents()
         return binding.root
     }
@@ -134,7 +134,8 @@ class SectionEditFragment : Fragment() {
         super.onResume()
         lifecycleScope.launch {
             this@SectionEditFragment.section = dbOperations.readSection(this@SectionEditFragment.sectionId)
-            this@SectionEditFragment.audio = Audio(requireActivity())
+            if (!isAdded) return@launch
+            this@SectionEditFragment.audio = Audio(requireContext())
             requireActivity().invalidateOptionsMenu()
             fillViewFromData()
             installListeners()
@@ -189,7 +190,7 @@ class SectionEditFragment : Fragment() {
     }
 
     private fun fillBellList() {
-        this.gongListAdapter = GongListAdapter(requireActivity(), R.id.selectGongSound, R.id.spinnerText1)
+        this.gongListAdapter = GongListAdapter(requireContext(), R.id.selectGongSound, R.id.spinnerText1)
         val bellList = BellCollection.getBellList()
         val adapter = this.gongListAdapter ?: return
         for (i in bellList.indices) {

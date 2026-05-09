@@ -19,9 +19,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.cancel
 import kotlinx.coroutines.delay
-import kotlinx.coroutines.isActive
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.runBlocking
 import java.util.HashSet
 
 class Meditation(
@@ -63,7 +61,7 @@ class Meditation(
 
     fun getSessionName(): String = sessionName
 
-    fun start() {
+    suspend fun start() {
         if (started) {
             Log.d(TAG, "start(): Meditation already started!")
             return
@@ -80,7 +78,9 @@ class Meditation(
         if (!started) {
             Log.d(TAG, "stop(): Meditation not yet started!")
         } else {
-            finishMeditation()
+            scope.launch {
+                finishMeditation()
+            }
         }
     }
 
@@ -93,7 +93,7 @@ class Meditation(
             pauseSectionSeconds = getSectionElapsedSeconds()
             paused = true
             currentSectionEndIntent?.let { alarmManager.cancel(it) }
-               	currentSectionEndIntent = null
+            currentSectionEndIntent = null
             if (Build.VERSION.SDK_INT < 23) {
                 releaseMeditationWakeLock()
                 return
@@ -107,7 +107,7 @@ class Meditation(
         }
     }
 
-    fun finishMeditation() {
+    private suspend fun finishMeditation() {
         stopping = true
         stopSectionTimer()
         releaseAudioObjects()
@@ -257,7 +257,7 @@ class Meditation(
         audioObjects.add(audio)
     }
 
-    private fun mutePhone() {
+    private suspend fun mutePhone() {
         Log.d(TAG, "muting Phone")
         val vibrateSound = pref.getBoolean(ZazenTimerActivity.PREF_KEY_MUTE_MODE_VIBRATE_SOUND, false)
         val vibrate = pref.getBoolean(ZazenTimerActivity.PREF_KEY_MUTE_MODE_VIBRATE, false)
@@ -273,7 +273,7 @@ class Meditation(
                 oldRingerMode = audioManager.ringerMode
                 oldRingerVolume = audioManager.getStreamVolume(2)
                 audioManager.ringerMode = 0
-                kotlinx.coroutines.runBlocking { delay(500) }
+                delay(500)
                 audioManager.setStreamVolume(2, 0, 0)
                 audioManager.ringerMode = 0
                 mutedRingerMode = audioManager.ringerMode
@@ -281,7 +281,7 @@ class Meditation(
         }
     }
 
-    private fun unmutePhone() {
+    private suspend fun unmutePhone() {
         Log.d(TAG, "unmuting Phone")
         val vibrateSound = pref.getBoolean(ZazenTimerActivity.PREF_KEY_MUTE_MODE_VIBRATE_SOUND, false)
         val vibrate = pref.getBoolean(ZazenTimerActivity.PREF_KEY_MUTE_MODE_VIBRATE, false)
@@ -298,7 +298,35 @@ class Meditation(
             }
             Log.d(TAG, "unmuting: ring=$oldRingerVolume ringerMode=$oldRingerMode")
             audioManager.ringerMode = oldRingerMode
-            kotlinx.coroutines.runBlocking { delay(500) }
+            delay(500)
+            if (oldRingerMode == 2) {
+                audioManager.setStreamVolume(2, oldRingerVolume, 0)
+            }
+            audioManager.ringerMode = oldRingerMode
+            mutedRingerMode = -1
+        }
+    }
+        }
+    }
+
+    private suspend fun unmutePhone() {
+        Log.d(TAG, "unmuting Phone")
+        val vibrateSound = pref.getBoolean(ZazenTimerActivity.PREF_KEY_MUTE_MODE_VIBRATE_SOUND, false)
+        val vibrate = pref.getBoolean(ZazenTimerActivity.PREF_KEY_MUTE_MODE_VIBRATE, false)
+        val none = pref.getBoolean(ZazenTimerActivity.PREF_KEY_MUTE_MODE_NONE, true)
+        val audioManager = meditationService.getSystemService(Context.AUDIO_SERVICE) as AudioManager
+        if (!vibrateSound && (vibrate || none)) {
+            if (mutedRingerMode != -1) {
+                val currentMode = audioManager.ringerMode
+                if (currentMode != mutedRingerMode) {
+                    Log.d(TAG, "Ringer mode changed during meditation (was $mutedRingerMode, now $currentMode) — skipping restore")
+                    mutedRingerMode = -1
+                    return
+                }
+            }
+            Log.d(TAG, "unmuting: ring=$oldRingerVolume ringerMode=$oldRingerMode")
+            audioManager.ringerMode = oldRingerMode
+            delay(500)
             if (oldRingerMode == 2) {
                 audioManager.setStreamVolume(2, oldRingerVolume, 0)
             }

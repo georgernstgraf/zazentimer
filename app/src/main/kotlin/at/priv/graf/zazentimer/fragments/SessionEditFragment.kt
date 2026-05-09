@@ -45,9 +45,6 @@ class SessionEditFragment : Fragment() {
     @Inject
     lateinit var dbOperations: DbOperations
 
-    private fun handleAttach(context: Context?) {
-    }
-
     override fun onCreate(bundle: Bundle?) {
         super.onCreate(bundle)
         enterTransition = MaterialSharedAxis(MaterialSharedAxis.X, true)
@@ -88,11 +85,6 @@ class SessionEditFragment : Fragment() {
         )
     }
 
-    override fun onAttach(context: Context) {
-        super.onAttach(context)
-        handleAttach(context)
-    }
-
     @Nullable
     override fun onCreateView(
         layoutInflater: LayoutInflater,
@@ -101,7 +93,7 @@ class SessionEditFragment : Fragment() {
     ): View {
         Log.d(TAG, "onCreateView")
         _binding = FragmentEditSessionBinding.inflate(layoutInflater, viewGroup, false)
-        this.pref = ZazenTimerActivity.getPreferences(requireActivity())
+        this.pref = ZazenTimerActivity.getPreferences(requireContext())
 
         adapter =
             SectionListAdapter(
@@ -121,7 +113,7 @@ class SessionEditFragment : Fragment() {
                 },
             )
 
-        binding.list.layoutManager = LinearLayoutManager(activity)
+        binding.list.layoutManager = LinearLayoutManager(requireContext())
         binding.list.adapter = adapter
 
         val callback =
@@ -170,6 +162,7 @@ class SessionEditFragment : Fragment() {
         Log.d(TAG, "sessionId=${this.sessionId}")
         lifecycleScope.launch {
             this@SessionEditFragment.session = dbOperations.readSession(this@SessionEditFragment.sessionId)
+            if (!isAdded) return@launch
             val s = this@SessionEditFragment.session
             if (s == null) {
                 Log.e(TAG, "session is NULL")

@@ -30,8 +30,6 @@ class MeditationFragment : Fragment() {
     private var _binding: FragmentMeditationBinding? = null
     private val binding get() = _binding!!
 
-    private var contextRef: Context? = null
-    private var mAttached: Boolean = false
     private var viewModel: MeditationViewModel? = null
     private var meditationRunning: Boolean = false
     private var backPressedCallback: OnBackPressedCallback? = null
@@ -86,19 +84,6 @@ class MeditationFragment : Fragment() {
         if (!MeditationService.isServiceRunning()) {
             showIdleState()
         }
-    }
-
-    override fun onAttach(context: Context) {
-        super.onAttach(context)
-        Log.d(TAG, "onAttach (Context)")
-        this.contextRef = context
-        this.mAttached = true
-    }
-
-    override fun onDetach() {
-        Log.d(TAG, "onDetach")
-        super.onDetach()
-        this.mAttached = false
     }
 
     override fun onViewCreated(
@@ -218,7 +203,9 @@ class MeditationFragment : Fragment() {
             .setPositiveButton(R.string.stop_meditation_stop) { _, _ ->
                 viewModel?.stopMeditation()
                 backPressedCallback?.isEnabled = false
-                Navigation.findNavController(requireView()).popBackStack()
+                if (isAdded) {
+                    Navigation.findNavController(requireView()).popBackStack()
+                }
             }.setNegativeButton(R.string.stop_meditation_cancel) { dialog, _ -> dialog.dismiss() }
             .setCancelable(true)
             .show()
@@ -226,20 +213,20 @@ class MeditationFragment : Fragment() {
 
     fun updateButtons() {
         val b = _binding ?: return
-        if (activity == null) return
+        if (!isAdded) return
         if (!meditationRunning) {
             b.butPause.setImageDrawable(
-                ResourcesCompat.getDrawable(resources, R.drawable.ic_play_arrow_white_48dp, requireActivity().theme),
+                ResourcesCompat.getDrawable(resources, R.drawable.ic_play_arrow_white_48dp, requireContext().theme),
             )
             return
         }
         if (viewModel?.isPaused() == true) {
             b.butPause.setImageDrawable(
-                ResourcesCompat.getDrawable(resources, R.drawable.ic_play_arrow_white_48dp, requireActivity().theme),
+                ResourcesCompat.getDrawable(resources, R.drawable.ic_play_arrow_white_48dp, requireContext().theme),
             )
         } else {
             b.butPause.setImageDrawable(
-                ResourcesCompat.getDrawable(resources, R.drawable.ic_pause_white_48dp, requireActivity().theme),
+                ResourcesCompat.getDrawable(resources, R.drawable.ic_pause_white_48dp, requireContext().theme),
             )
         }
     }
