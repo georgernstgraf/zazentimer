@@ -18,7 +18,7 @@ class MainPage {
     private val robot = ScreenRobot()
 
     fun verifyMainScreenIsDisplayed(): MainPage {
-        SystemClock.sleep(500)
+        SystemClock.sleep(1000)
         robot.checkElementIsDisplayed(R.id.my_toolbar)
         robot.checkElementIsDisplayed(R.id.but_start)
         robot.checkElementIsDisplayed(R.id.recycler_sessions)

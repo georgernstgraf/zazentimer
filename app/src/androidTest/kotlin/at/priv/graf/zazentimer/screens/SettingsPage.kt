@@ -65,6 +65,7 @@ class SettingsPage {
 
     fun clickBackup(): SettingsPage {
         scrollToPreference(R.string.pref_title_backup)
+        SystemClock.sleep(500)
         onView(withText(R.string.pref_title_backup)).perform(click())
         return this
     }
