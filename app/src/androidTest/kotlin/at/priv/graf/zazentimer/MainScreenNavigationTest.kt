@@ -1,5 +1,6 @@
 package at.priv.graf.zazentimer
 
+import android.os.SystemClock
 import androidx.test.ext.junit.rules.ActivityScenarioRule
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.filters.LargeTest
@@ -26,6 +27,8 @@ class MainScreenNavigationTest {
     @Before
     fun init() {
         hiltRule.inject()
+        activityRule.scenario.onActivity(ZazenTimerActivity::resetDatabaseForTest)
+        SystemClock.sleep(2000)
     }
 
     @Test

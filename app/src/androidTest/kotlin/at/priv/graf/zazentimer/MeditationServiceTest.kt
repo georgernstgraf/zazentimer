@@ -1,6 +1,7 @@
 package at.priv.graf.zazentimer
 
 import android.content.SharedPreferences
+import android.os.SystemClock
 import androidx.test.espresso.IdlingRegistry
 import androidx.test.ext.junit.rules.ActivityScenarioRule
 import androidx.test.ext.junit.runners.AndroidJUnit4
@@ -60,6 +61,7 @@ class MeditationServiceTest {
                 activity.resetDatabaseForTest()
             }
         }
+        SystemClock.sleep(2000)
     }
 
     @After
@@ -71,11 +73,11 @@ class MeditationServiceTest {
     }
 
     private fun waitForStopButton() {
-        device.wait(Until.findObject(By.text("Stop")), uiTimeout)
+        device.wait(Until.findObject(By.desc("Stop")), uiTimeout)
     }
 
     private fun clickStopButtonWithUiAutomator() {
-        val stopButton: UiObject = device.findObject(UiSelector().text("Stop"))
+        val stopButton: UiObject = device.findObject(UiSelector().description("Stop"))
         try {
             stopButton.click()
         } catch (e: Exception) {
@@ -139,6 +141,7 @@ class MeditationServiceTest {
             activity.startMeditation()
         }
 
+        SystemClock.sleep(500)
         waitForStopButton()
 
         clickStopButtonWithUiAutomator()
@@ -168,6 +171,7 @@ class MeditationServiceTest {
             activity.startMeditation()
         }
 
+        SystemClock.sleep(500)
         waitForStopButton()
 
         clickStopButtonWithUiAutomator()

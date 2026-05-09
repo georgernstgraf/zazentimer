@@ -86,6 +86,7 @@ class MainPage {
     ): MainPage {
         clickSessionOverflowAtPosition(position)
         onView(withText(textResId)).perform(click())
+        SystemClock.sleep(1000)
         return this
     }
 

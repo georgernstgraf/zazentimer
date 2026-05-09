@@ -1,5 +1,6 @@
 package at.priv.graf.zazentimer
 
+import android.os.SystemClock
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.assertion.ViewAssertions.matches
@@ -31,6 +32,8 @@ class SectionEditTest {
     @Before
     fun init() {
         hiltRule.inject()
+        activityRule.scenario.onActivity(ZazenTimerActivity::resetDatabaseForTest)
+        SystemClock.sleep(2000)
     }
 
     @Test

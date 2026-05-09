@@ -36,6 +36,7 @@
             android:layout_margin="8dp"
             android:src="@drawable/ic_pause_white_48dp"
             android:text="@string/but_pause"
+            android:contentDescription="@string/but_pause"
             android:drawableTop="@android:drawable/ic_media_pause"/>
         <ImageButton
             android:enabled="true"
@@ -45,6 +46,7 @@
             android:layout_height="60dp"
             android:layout_margin="8dp"
             android:src="@drawable/ic_stop_white_48dp"
+            android:contentDescription="@string/but_stop"
             android:text="@string/but_stop"/>
     </LinearLayout>
 </LinearLayout>

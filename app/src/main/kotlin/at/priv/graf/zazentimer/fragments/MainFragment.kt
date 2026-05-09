@@ -157,11 +157,11 @@ class MainFragment : Fragment() {
         val session = Session()
         session.name = ""
         session.description = ""
+        navigateToSessionEdit(session.id)
         lifecycleScope.launch {
             dbOperations.insertSession(session)
             updateSessionList()
             setSelectedSessionId(session.id)
-            navigateToSessionEdit(session.id)
         }
     }
 
@@ -245,18 +245,8 @@ class MainFragment : Fragment() {
         updateSessionInteractions()
         Log.d(TAG, "onResume")
         requireActivity().invalidateOptionsMenu()
-        updateSessionList()
-        val i = this.pref?.getInt(ZazenTimerActivity.PREF_KEY_LAST_SESSION, -1) ?: -1
-        if (i == -1) {
-            return
-        }
-        val positionById = SpinnerUtil.getPositionById(this.sessions, i)
-        if (positionById == -1) {
-            return
-        }
-        Log.d(TAG, "LAST_SELECTED_SESSION was idx=$positionById id=$i")
-        this.selectedSessionId = i
-        this.sessionListAdapter?.setSelectedPosition(positionById)
+        val lastId = this.pref?.getInt(ZazenTimerActivity.PREF_KEY_LAST_SESSION, -1) ?: -1
+        updateSessionList(lastId)
     }
 
     private fun updateSessionInteractions() {
@@ -267,7 +257,7 @@ class MainFragment : Fragment() {
         sessionListAdapter?.setInteractionsEnabled(interactionsEnabled)
     }
 
-    fun updateSessionList() {
+    fun updateSessionList(restoreSelectionId: Int = -1) {
         lifecycleScope.launch {
             val readSessions = dbOperations.readSessions()
             val arrayList = ArrayList<SessionWithTimeInfo>()
@@ -281,6 +271,14 @@ class MainFragment : Fragment() {
                 this@MainFragment.sessions.add(session)
             }
             this@MainFragment.sessionListAdapter?.setSessions(arrayList)
+            if (restoreSelectionId != -1) {
+                val positionById = SpinnerUtil.getPositionById(this@MainFragment.sessions, restoreSelectionId)
+                if (positionById != -1) {
+                    Log.d(TAG, "LAST_SELECTED_SESSION was idx=$positionById id=$restoreSelectionId")
+                    this@MainFragment.selectedSessionId = restoreSelectionId
+                    this@MainFragment.sessionListAdapter?.setSelectedPosition(positionById)
+                }
+            }
         }
     }
 
