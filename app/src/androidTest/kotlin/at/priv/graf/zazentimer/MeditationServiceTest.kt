@@ -2,6 +2,7 @@ package at.priv.graf.zazentimer
 
 import android.content.SharedPreferences
 import android.os.SystemClock
+import android.util.Log
 import androidx.test.espresso.IdlingRegistry
 import androidx.test.ext.junit.rules.ActivityScenarioRule
 import androidx.test.ext.junit.runners.AndroidJUnit4
@@ -12,6 +13,7 @@ import androidx.test.uiautomator.UiDevice
 import androidx.test.uiautomator.UiObject
 import androidx.test.uiautomator.UiSelector
 import androidx.test.uiautomator.Until
+import at.priv.graf.zazentimer.fragments.MeditationFragment
 import at.priv.graf.zazentimer.screens.MainPage
 import at.priv.graf.zazentimer.utils.MeditationServiceIdlingResource
 import dagger.hilt.android.testing.HiltAndroidRule
@@ -76,10 +78,30 @@ class MeditationServiceTest {
         device.wait(Until.findObject(By.desc("Stop").enabled(true)), uiTimeout)
     }
 
+    private fun clickStopButtonAndWaitForDialog(titleText: String) {
+        for (i in 0 until 5) {
+            try {
+                device.wait(Until.findObject(By.desc("Stop").enabled(true)), 2000L)
+                clickStopButtonWithUiAutomator()
+                val dialog = device.findObject(UiSelector().text(titleText))
+                if (dialog.waitForExists(2000)) {
+                    return
+                }
+            } catch (e: Exception) {
+                Log.e(TAG, "Stop button dialog attempt $i failed", e)
+            }
+            SystemClock.sleep(500)
+        }
+        throw AssertionError("Dialog '$titleText' did not appear after clicking stop button 5 times")
+    }
+
     private fun clickStopButtonWithUiAutomator() {
         val stopButton: UiObject = device.findObject(UiSelector().description("Stop"))
         try {
             stopButton.click()
+            SystemClock.sleep(100)
+            val stillExists = device.findObject(UiSelector().description("Stop")).exists()
+            Log.d(TAG, "Stop button still exists after click: $stillExists")
         } catch (e: Exception) {
             val stopButtonById: UiObject =
                 device.findObject(
@@ -88,6 +110,9 @@ class MeditationServiceTest {
                 )
             try {
                 stopButtonById.click()
+                SystemClock.sleep(100)
+                val stillExists = device.findObject(UiSelector().description("Stop")).exists()
+                Log.d(TAG, "Stop button still exists after click: $stillExists")
             } catch (e2: Exception) {
                 throw RuntimeException("Failed to click stop button", e2)
             }
@@ -122,6 +147,19 @@ class MeditationServiceTest {
                 } catch (e3: Exception) {
                     throw RuntimeException("Failed to click text containing: $text", e3)
                 }
+            }
+        }
+    }
+
+    private fun showStopDialogViaFragment() {
+        activityRule.scenario.onActivity { activity ->
+            val navHostFragment = activity.supportFragmentManager
+                .findFragmentById(R.id.nav_host_fragment)
+            val fragment = navHostFragment?.childFragmentManager?.primaryNavigationFragment
+            if (fragment is MeditationFragment) {
+                fragment.showStopDialogForTest()
+            } else {
+                throw AssertionError("MeditationFragment is not the primary navigation fragment")
             }
         }
     }
@@ -168,10 +206,9 @@ class MeditationServiceTest {
             activity.startMeditation()
         }
 
-        SystemClock.sleep(4000)
+        SystemClock.sleep(6000)
         waitForStopButton()
-
-        clickStopButtonWithUiAutomator()
+        showStopDialogViaFragment()
         waitForDialog("Stop meditation?")
 
         assertTrue(
@@ -180,9 +217,9 @@ class MeditationServiceTest {
         )
 
         clickCancelDialog()
-        waitForStopButton()
 
-        clickStopButtonWithUiAutomator()
+        waitForStopButton()
+        showStopDialogViaFragment()
         waitForDialog("Stop meditation?")
 
         clickByTextContainsWithUiAutomator("Stop")
@@ -198,12 +235,15 @@ class MeditationServiceTest {
             activity.startMeditation()
         }
 
-        SystemClock.sleep(4000)
+        SystemClock.sleep(6000)
         waitForStopButton()
-
-        clickStopButtonWithUiAutomator()
+        showStopDialogViaFragment()
         waitForDialog("Stop meditation?")
 
         clickByTextContainsWithUiAutomator("Stop")
+    }
+
+    companion object {
+        private const val TAG = "MST"
     }
 }

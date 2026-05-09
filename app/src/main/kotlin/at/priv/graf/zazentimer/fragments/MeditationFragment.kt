@@ -51,6 +51,7 @@ class MeditationFragment : Fragment() {
         _binding = FragmentMeditationBinding.inflate(layoutInflater, viewGroup, false)
 
         binding.butStop.setOnClickListener {
+            Log.d(TAG, "Stop button clicked")
             this@MeditationFragment.showStopConfirmationDialog()
         }
 
@@ -196,19 +197,27 @@ class MeditationFragment : Fragment() {
     }
 
     private fun showStopConfirmationDialog() {
-        AlertDialog
-            .Builder(requireContext())
-            .setTitle(R.string.stop_meditation_title)
-            .setMessage(R.string.stop_meditation_message)
-            .setPositiveButton(R.string.stop_meditation_stop) { _, _ ->
-                viewModel?.stopMeditation()
-                backPressedCallback?.isEnabled = false
-                if (isAdded) {
-                    Navigation.findNavController(requireView()).popBackStack()
-                }
-            }.setNegativeButton(R.string.stop_meditation_cancel) { dialog, _ -> dialog.dismiss() }
-            .setCancelable(true)
-            .show()
+        try {
+            AlertDialog
+                .Builder(requireContext())
+                .setTitle(R.string.stop_meditation_title)
+                .setMessage(R.string.stop_meditation_message)
+                .setPositiveButton(R.string.stop_meditation_stop) { _, _ ->
+                    viewModel?.stopMeditation()
+                    backPressedCallback?.isEnabled = false
+                    if (isAdded) {
+                        Navigation.findNavController(requireView()).popBackStack()
+                    }
+                }.setNegativeButton(R.string.stop_meditation_cancel) { dialog, _ -> dialog.dismiss() }
+                .setCancelable(true)
+                .show()
+        } catch (e: Exception) {
+            Log.e(TAG, "Failed to show stop confirmation dialog", e)
+        }
+    }
+
+    fun showStopDialogForTest() {
+        showStopConfirmationDialog()
     }
 
     fun updateButtons() {

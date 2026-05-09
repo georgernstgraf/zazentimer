@@ -31,6 +31,21 @@ class MeditationService : LifecycleService() {
     override fun onCreate() {
         super.onCreate()
         isRunning = true
+        val channel = NotificationChannel("zazen_timer_channel", "Meditation Timer", NotificationManager.IMPORTANCE_LOW)
+        val manager = getSystemService(NotificationManager::class.java)
+        manager?.createNotificationChannel(channel)
+        val notification = NotificationCompat
+            .Builder(baseContext, "zazen_timer_channel")
+            .setContentTitle(getString(R.string.notification_title))
+            .setContentText(getString(R.string.notification_text))
+            .setSmallIcon(R.drawable.notify)
+            .setOngoing(true)
+            .build()
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+            startForeground(1, notification, ServiceInfo.FOREGROUND_SERVICE_TYPE_SPECIAL_USE)
+        } else {
+            startForeground(1, notification)
+        }
     }
 
     override fun onBind(intent: Intent): IBinder {

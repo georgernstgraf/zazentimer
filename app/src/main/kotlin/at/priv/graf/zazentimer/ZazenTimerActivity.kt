@@ -66,6 +66,25 @@ class ZazenTimerActivity :
 
     internal fun forceStopMeditationForTest() {
         viewModel?.stopUpdateThread()
+        try {
+            viewModel?.stopMeditation()
+        } catch (_: Exception) {
+        }
+        try {
+            viewModel?.unbindFromService(applicationContext as android.app.Application)
+        } catch (_: Exception) {
+        }
+        try {
+            val intent = viewModel?.getServiceIntent(applicationContext as android.app.Application)
+            if (intent != null) {
+                stopService(intent)
+            }
+        } catch (_: Exception) {
+        }
+        try {
+            showMainScreen()
+        } catch (_: Exception) {
+        }
     }
 
     private fun getNavController(): NavController? {

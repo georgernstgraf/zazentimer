@@ -128,22 +128,24 @@ class MeditationViewModel
             )
         }
 
-        public fun startUpdateThread() {
-            if (this.handler == null) {
-                this.handler = Handler(Looper.getMainLooper())
-            }
-            stopUpdateThread()
-            this.updateRunning = true
-            this.timerViewInitialized = false
-            startUpdateJob()
+    public fun startUpdateThread() {
+        if (this.handler == null) {
+            this.handler = Handler(Looper.getMainLooper())
         }
+        stopUpdateThread(emitIdle = false)
+        this.updateRunning = true
+        this.timerViewInitialized = false
+        startUpdateJob()
+    }
 
-        public fun stopUpdateThread() {
-            this.updateRunning = false
-            updateJob?.cancel()
-            updateJob = null
+    public fun stopUpdateThread(emitIdle: Boolean = true) {
+        this.updateRunning = false
+        updateJob?.cancel()
+        updateJob = null
+        if (emitIdle) {
             emitIdleState()
         }
+    }
 
         public fun emitIdleState() {
             viewModelScope.launch {
