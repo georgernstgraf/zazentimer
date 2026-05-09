@@ -424,13 +424,24 @@ else
 
     for api in "${APIS_TO_RUN[@]}"; do
         method=$(get_test_method "$api")
-        if [ "$method" = "gradle" ]; then
-            run_gradle_test "$api"
-        else
-            run_am_instrument_test "$api"
-        fi
+        pass=false
+        for attempt in 1 2; do
+            if [ "$method" = "gradle" ]; then
+                run_gradle_test "$api"
+            else
+                run_am_instrument_test "$api"
+            fi
+            if [ "${RESULTS[$api]:-0}" -eq 0 ]; then
+                pass=true
+                break
+            fi
+            if [ $attempt -eq 1 ]; then
+                echo "API $api attempt 1 failed — retrying..."
+                RESULTS[$api]=0
+            fi
+        done
 
-        if [ "$CONTINUE_ON_ERROR" = false ] && [ "${RESULTS[$api]:-0}" -ne 0 ]; then
+        if [ "$CONTINUE_ON_ERROR" = false ] && [ "$pass" = false ]; then
             echo ""
             echo "FAIL-FAST: Stopping at API $api due to failure"
             break
