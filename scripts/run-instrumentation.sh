@@ -2,12 +2,17 @@
 set -euo pipefail
 
 CONTINUE_ON_ERROR=false
+IGNORE_DIRTY_GIT=false
 TARGET_APIS=()
 
 while [[ $# -gt 0 ]]; do
     case "$1" in
     --continue-on-error)
         CONTINUE_ON_ERROR=true
+        shift
+        ;;
+    --ignore-dirty-git)
+        IGNORE_DIRTY_GIT=true
         shift
         ;;
     --api)
@@ -19,7 +24,7 @@ while [[ $# -gt 0 ]]; do
         shift 2
         ;;
     *)
-        echo "Usage: $0 [--continue-on-error] [--api <level>[,<level>...]]"
+        echo "Usage: $0 [--continue-on-error] [--ignore-dirty-git] [--api <level>[,<level>...]]"
         exit 1
         ;;
     esac
@@ -71,13 +76,17 @@ echo "Logging to $LOG_FILE"
 
 cd "$PROJECT_DIR"
 
-if [ -n "$(git status --porcelain)" ]; then
-    echo "ERROR: Git repository is not clean. Commit or stash changes before running."
-    git status --short
-    exit 1
-fi
+if [ "$IGNORE_DIRTY_GIT" = false ]; then
+    if [ -n "$(git status --porcelain)" ]; then
+        echo "ERROR: Git repository is not clean. Commit or stash changes before running."
+        git status --short
+        exit 1
+    fi
 
-git fetch origin && git pull --ff-only origin main
+    git fetch origin && git pull --ff-only origin main
+else
+    echo "=== WARNING: --ignore-dirty-git enabled — skipping git clean check and pull ==="
+fi
 
 if [ -z "${DISPLAY:-}" ]; then
     echo "=== Starting Xvfb on :99 ==="
