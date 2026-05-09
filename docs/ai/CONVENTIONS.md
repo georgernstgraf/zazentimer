@@ -119,11 +119,10 @@ Always run `./gradlew assembleDebug` after any translation changes.
 - No `kotlinOptions` block in `build.gradle.kts` — AGP 9.x derives JVM target from `compileOptions`.
 - No strict compiler options yet — deferred to #108.
 
-### Linting (visibility-only, enforcement deferred to #108)
+### Linting
 - ktlint 14.2.0: Run via `./gradlew ktlintCheck`. Format via `./gradlew ktlintFormat`.
 - detekt 1.23.8: Run via `./gradlew detekt`.
-- Both run in CI with `continue-on-error: true` — failures are visible but don't block builds.
-- Current codebase has many violations from the mechanical Java→Kotlin conversion. Clean up gradually.
+- Both enforced in CI (block builds on failure).
 
 ## Testing
 - Ensure standard `lint` and `./gradlew build` commands pass.
@@ -148,15 +147,14 @@ Always run `./gradlew assembleDebug` after any translation changes.
 - **DbOperations companion methods** (`toEntity`/`toBo`) are private — tests use Java reflection to access them
 - **Logic extraction pattern**: When business logic is buried in Android-framework-dependent classes, extract to a pure class with no Android deps, then test the pure class. Examples: MeditationTimer, SectionArcCalculator, BackupManager.
 
-### Three-Stage Test Pipeline (#115)
+### Two-Stage Test Pipeline (#132)
 - **Stage 1 — Commit Gate (~4 min, local + GitHub Actions):** Build AAB + Unit/Integration Tests (JVM only). Runs locally before push AND on GitHub Actions for every push to main. GitHub Actions jobs: `build` (AAB) + `unit-tests`.
-- **Stage 2 — Issue Close Gate (~15 min, local):** Instrumented Tests on min API (29) + max API (35). Includes `@RequiresDisplay` tests. Script detects `$DISPLAY`: set → direct emulator (Desk), unset → start Xvfb (VPS). Run via `scripts/run-stage2.sh`.
-- **Stage 3 — Nightly Full Matrix (02:00 UTC, VPS cron):** All API levels (29-35), full test suite. Runs on VPS via cron. Auto-creates GitHub Issue on failure (label: `nightly-failure`). Run via `scripts/run-nightly.sh`.
+- **Stage 2 — Instrumented Tests (local, manually invoked):** `scripts/run-instrumentation.sh`. Default: fail-fast (stops on first failure). `--continue-on-error`: full matrix all API levels (29-35). `--api <level>`: targeted run. Auto-tags `tested-YYYY-MM-DD` on full green runs with real display only.
 
 ### `@RequiresDisplay` Annotation
 - Annotation kept as inert safety marker in the `androidTest` source set. Not used on any test methods.
 - `@RequiresDisplay` annotations were removed from `SettingsTest.java` and `SectionEditTest.java` — Xvfb everywhere makes headless filtering unnecessary.
-- All display-dependent tests pass under Xvfb (virtual display).
+- Results may be unreliable under Xvfb; auto-tag only on real display.
 
 ## Git Workflow
 - **Issue management:** Use the `issue-workflow` skill for all GitHub issue operations (start, commit, finish). Every commit must reference a GitHub issue number.
@@ -175,7 +173,7 @@ Always run `./gradlew assembleDebug` after any translation changes.
 - Release AAB signing uses GitHub Secrets (`RELEASE_KEYSTORE_BASE64`, `KEYSTORE_PASSWORD`, `KEY_ALIAS`, `KEY_PASSWORD`). Keystore must be decoded to `$RUNNER_TEMP/` using an absolute path.
 - The keystore and the private key are stored pgp-encrypted in georgs svn under private/
 - **Release workflow** (`release.yml`): Triggered by `v*` tags. Extracts version from tag, builds signed AAB, uploads to Play Console Internal Test Track. versionCode derived from tag automatically.
-- **Stage 3 Nightly** runs on VPS via cron at 02:00 UTC, NOT on GitHub Actions.
+- **Stage 2 Instrumented** runs locally via `scripts/run-instrumentation.sh`, NOT on GitHub Actions.
 - CI artifacts: `app-release-aab` (30 days), `unit-test-results` (14 days).
 - versionCode/versionName are injected from tags via `-PversionCode` and `-PversionName` Gradle properties. Fallback values in `build.gradle`: 33/"2.20".
 

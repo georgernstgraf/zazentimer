@@ -306,3 +306,10 @@ Each entry documents WHAT was decided and WHY.
 - **Reason**: ExecutorService + Thread.sleep is error-prone, untestable, and PITFALLS #79 deadlock. Coroutines provide structured concurrency, cancellation, and cleaner async code. Navigation 2.9.7 handles predictive back automatically.
 - **Considered**: Flow<T> for DAOs (rejected — LiveData already serves as reactive layer); GlobalScope for Meditation (rejected — not lifecycle-aware, no structured concurrency); keeping Service instead of LifecycleService (rejected — need lifecycleScope).
 - **Tradeoff**: Service → LifecycleService adds `lifecycle-service` dependency. `runBlocking { delay(500) }` used for mute/unmute (main thread, short blocking, acceptable). Tests need `runBlocking {}` wrappers. Room schema export still `true` (was enabled in #98).
+
+## 2026-05-09: Instrumentation Script Consolidation (#132)
+- **Choice**: Consolidate `run-nightly.sh` and `run-stage2.sh` into a single `run-instrumentation.sh` with three modes: fail-fast (default), `--continue-on-error` (full matrix), `--api <levels>` (targeted).
+- **Reason**: Cron job removed; script is now manually invoked. Agent needs fail-fast for iterative fix loop. Targeted `--api` saves ~80 min when only one level fails.
+- **Xvfb retained**: Script still detects `$DISPLAY` and starts Xvfb if unset, but tracks `IS_REAL_DISPLAY`. Auto-tag (`tested-YYYY-MM-DD`) only on real display with zero failures and no `--api` switch.
+- **Auto-tag guards**: (1) exit code 0, (2) `IS_REAL_DISPLAY=true`, (3) no `--api` switch provided, (4) zero failures. All four conditions must be met.
+- **GitHub issue auto-creation removed**: Script prints summary only. Agent/developer handles follow-up.

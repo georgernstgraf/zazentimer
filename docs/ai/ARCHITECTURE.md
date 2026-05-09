@@ -72,7 +72,7 @@ Overflow menu --[About]--> AlertDialog
 ## Build Config
 - `BuildConfig.GIT_HASH` — 7-character Git commit hash, injected at build time via `git rev-parse --short=7 HEAD` in `build.gradle.kts`. Used in About dialog.
 - AGP 9.1.1, Gradle 9.x, Kotlin DSL, KSP (Room + Hilt), compileSdk 36, minSdk 29, Java 21.
-- ktlint 14.2.0 + detekt 1.23.8 (visibility-only in CI, enforcement deferred to #108).
+- ktlint 14.2.0 + detekt 1.23.8 (enforced in CI, block builds on failure).
 - No `kotlinOptions` block — AGP 9.x derives JVM target from `compileOptions`.
 
 ## Timer Architecture (Meditation Flow)
@@ -109,7 +109,7 @@ User presses Start (Sessions tab or Meditation tab)
 | `SessionTouchHelperCallback` | `fragments/` | ItemTouchHelper.Callback for long-press drag reorder (no swipe, no DB persistence) |
 | `MaxHeightRecyclerView` | `fragments/` | RecyclerView subclass that caps height in `onMeasure()` — used to enforce 60% maximum for session list, leaving 40% minimum for zen circle image |
 | `HiltTestRunner` | androidTest | Custom AndroidJUnitRunner that injects HiltTestApplication + filters `@RequiresDisplay` tests when `headless=true` (legacy, kept for safety) |
-| `RequiresDisplay` | androidTest | Annotation for tests requiring a real display surface. All currently annotated tests pass under Xvfb. Kept as safety marker |
+| `RequiresDisplay` | androidTest | Annotation for tests requiring a real display surface. Kept as safety marker. Results may be unreliable under Xvfb. |
 
 ## Data Flows
 - **AlarmManager.setAlarmClock()** → SectionEndReceiver → MeditationService → Meditation.onSectionEnd() → Audio.playBell()
@@ -124,8 +124,9 @@ User presses Start (Sessions tab or Meditation tab)
 |---------|---------|----------------|
 | `./gradlew assembleDebug assembleRelease` | Build APKs (no tests) | Stage 1 (local iteration) |
 | `./gradlew testDebugUnitTest` | JVM unit tests only | Stage 1 |
-| `scripts/run-stage2.sh` | Instrumented tests on min+max API, detects `$DISPLAY` for Xvfb | Stage 2 |
-| `scripts/run-nightly.sh` | Full matrix all APIs, VPS cron | Stage 3 |
+| `scripts/run-instrumentation.sh` | Fail-fast: unit + API 29-35, stop on first failure (default) | Stage 2 |
+| `scripts/run-instrumentation.sh --continue-on-error` | Full matrix: unit + API 29-35, collect all failures | Stage 2 |
+| `scripts/run-instrumentation.sh --api 32` | Targeted: unit + specific API level(s) | Stage 2 |
 | `./gradlew assembleDebugAndroidTest` | Build test APK (compile androidTest sources) | — |
 | `./gradlew ktlintCheck` | Kotlin lint (visibility-only, not enforced) | CI |
 | `./gradlew detekt` | Static code analysis (visibility-only, not enforced) | CI |
