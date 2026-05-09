@@ -4,6 +4,8 @@ import android.content.Intent
 import android.content.SharedPreferences
 import android.os.SystemClock
 import android.view.MotionEvent
+import androidx.test.uiautomator.UiDevice
+import androidx.test.uiautomator.UiSelector
 import android.widget.SeekBar
 import androidx.preference.PreferenceManager
 import androidx.test.espresso.Espresso
@@ -43,9 +45,12 @@ class SettingsTest {
     @get:Rule(order = 1)
     val activityRule = ActivityScenarioRule(ZazenTimerActivity::class.java)
 
+    private lateinit var device: UiDevice
+
     @Before
     fun init() {
         hiltRule.inject()
+        device = UiDevice.getInstance(InstrumentationRegistry.getInstrumentation())
     }
 
     @Test
@@ -66,8 +71,8 @@ class SettingsTest {
             .clickToolbarOverflowItem(R.string.menu_settings)
         SettingsPage()
 
-        onView(withText(R.string.theme)).perform(click())
-        onView(withText(R.string.theme_dark)).perform(click())
+        clickPreferenceByText(R.string.theme)
+        clickPreferenceByText(R.string.theme_dark)
 
         Espresso.onIdle()
 
@@ -81,15 +86,13 @@ class SettingsTest {
             .clickToolbarOverflowItem(R.string.menu_settings)
         SettingsPage()
 
-        onView(withText(R.string.pref_mute_mode_vibrate_sound))
-            .perform(scrollTo(), click())
+        clickPreferenceByText(R.string.pref_mute_mode_vibrate_sound)
 
         val prefs = getPrefs()
         assertTrue(prefs.getBoolean("mute_mode_vibrate_sound", false))
         assertFalse(prefs.getBoolean("mute_mode_none", true))
 
-        onView(withText(R.string.pref_mute_mode_none))
-            .perform(scrollTo(), click())
+        clickPreferenceByText(R.string.pref_mute_mode_none)
 
         assertTrue(prefs.getBoolean("mute_mode_none", false))
         assertFalse(prefs.getBoolean("mute_mode_vibrate_sound", true))
@@ -102,11 +105,9 @@ class SettingsTest {
             .clickToolbarOverflowItem(R.string.menu_settings)
         SettingsPage()
 
-        onView(withText(R.string.checkbox_keep_screen_on))
-            .perform(scrollTo(), click())
+        clickPreferenceByText(R.string.checkbox_keep_screen_on)
 
-        onView(withText(R.string.pref_title_brightness))
-            .perform(click())
+        clickPreferenceByText(R.string.pref_title_brightness)
 
         Espresso.onIdle()
 
@@ -146,6 +147,15 @@ class SettingsTest {
             intended(hasAction(Intent.ACTION_OPEN_DOCUMENT))
         } finally {
             Intents.release()
+        }
+    }
+
+    private fun clickPreferenceByText(textResId: Int) {
+        val text = InstrumentationRegistry.getInstrumentation().targetContext.getString(textResId)
+        try {
+            onView(withText(textResId)).perform(scrollTo(), click())
+        } catch (e: Exception) {
+            device.findObject(UiSelector().text(text)).click()
         }
     }
 
