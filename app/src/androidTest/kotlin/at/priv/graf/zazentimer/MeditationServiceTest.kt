@@ -73,7 +73,7 @@ class MeditationServiceTest {
     }
 
     private fun waitForStopButton() {
-        device.wait(Until.findObject(By.desc("Stop")), uiTimeout)
+        device.wait(Until.findObject(By.desc("Stop").enabled(true)), uiTimeout)
     }
 
     private fun clickStopButtonWithUiAutomator() {

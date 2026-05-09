@@ -313,3 +313,15 @@ Each entry documents WHAT was decided and WHY.
 - **Xvfb retained**: Script still detects `$DISPLAY` and starts Xvfb if unset, but tracks `IS_REAL_DISPLAY`. Auto-tag (`tested-YYYY-MM-DD`) only on real display with zero failures and no `--api` switch.
 - **Auto-tag guards**: (1) exit code 0, (2) `IS_REAL_DISPLAY=true`, (3) no `--api` switch provided, (4) zero failures. All four conditions must be met.
 - **GitHub issue auto-creation removed**: Script prints summary only. Agent/developer handles follow-up.
+
+## 2026-05-09: Instrumentation Test Fail-Fast
+- **Choice**: Enabled `orchestrator.failFast=true` in `app/build.gradle.kts` and updated `run-instrumentation.sh` to report skipped APIs correctly.
+- **Reason**: To accelerate the iterative fix loop by stopping on the first failure per API level, saving time during development and CI debugging.
+- **Considered**: Continuing on error (default for full matrix); manual test filtering.
+- **Tradeoff**: One failing test masks others in the same run, but this is desired for the "fix and re-run" workflow.
+
+## 2026-05-09: ImageButton Accessibility for Tests
+- **Choice**: Added `android:contentDescription` to all interactive `ImageButton` views (`but_stop`, `but_pause`).
+- **Reason**: To enable reliable UI Automator finding by description (`By.desc()`), which is more robust than finding by drawable resource, index, or text (which ImageButtons lack).
+- **Considered**: Finding by resource ID (sometimes fails in UI Automator if namespace mapping is complex); finding by coordinates.
+- **Tradeoff**: Adds minimal overhead to layouts but improves both testability and accessibility.

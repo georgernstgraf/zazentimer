@@ -77,9 +77,7 @@ class SessionCrudTest {
         closeSoftKeyboard()
         SessionEditPage().goBack()
 
-        onIdle()
-
-        onView(withText("Updated Session Name")).check(matches(isDisplayed()))
+        MainPage().verifySessionNameVisible("Updated Session Name")
     }
 
     @Test

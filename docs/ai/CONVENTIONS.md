@@ -129,6 +129,10 @@ Always run `./gradlew assembleDebug` after any translation changes.
 - After deleting or renaming resource files (layouts, strings, drawables, IDs in `public.xml`), always run `./gradlew clean` before building and testing. Incremental builds can produce stale R.class entries that cause instrumented tests to fail with incorrect resource IDs.
 - **Always verify GitHub Actions passes after every push.** Run `gh run list --limit 3` and `gh run view <id>` to check. GitHub Actions runs Stage 1 only (build AAB + unit tests).
 - Run unit tests locally: `./gradlew testDebugUnitTest --no-daemon`
+- **Suppress help dialogs in instrumentation tests** by setting `PREF_KEY_SHOW_SESSION_EDIT_HELP_V13` to `true` in `@Before`.
+- **Use `android:id/button1` and `button2`** for dialog button clicks to handle `AppCompatButton` used in standard Android dialogs.
+- **MainFragment selection restoration** must happen inside the `updateSessionList()` coroutine to ensure the adapter has data before selection is applied.
+- **Include `SystemClock.sleep()` in Page Objects** to account for Material Motion fragment transitions and async data loading in `verify*ScreenIsDisplayed()` methods.
 
 ### Unit Test Stack (#127)
 - **MockK 1.14.4** for Kotlin mocking (`every`, `verify`, `just Runs`, `mockkConstructor`)

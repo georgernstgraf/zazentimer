@@ -1,28 +1,18 @@
 # Handoff
 
-Open tasks for next agent session.
+## Current Branch
+`main` (Trunk-based development)
 
-## Active Issues
+## Context
+We are in the middle of an iterative fix loop for instrumentation tests. Most API 29 failures are resolved. Remaining failures are due to subtle coroutine/async races that simple sleeps haven't fully eliminated.
 
-1. [ ] **#64 — Play Store**. Sub-issues #114 (AAB build) and #113 (privacy/legal) ready for implementation.
+## Open Tasks
+1. [ ] **Fix `MeditationServiceTest` flakiness**: The test sometimes fails because it clicks the "Stop" button before the service has bound and the fragment has transitioned to the "Running" state (where the button is enabled and has alpha 1.0).
+   - *Plan*: Implement a helper that waits for `ViewMatchers.isEnabled()` or checks the alpha via UI Automator before clicking.
+2. [ ] **Fix `SessionCrudTest.testUpdateSessionMetadata` race**: The test types a new name, goes back, and immediately checks the list. Since `onPause` in `SessionEditFragment` triggers an async DB save via coroutine, and `onResume` in `MainFragment` reads the DB via coroutine, they race.
+   - *Plan*: Add a small sleep or implement a `CountingIdlingResource` for the DB operations, or simply wait for the text to appear with a longer timeout.
+3. [ ] **Verify Full Matrix**: Once API 29 is 100% green, run `scripts/run-instrumentation.sh` for all APIs (29-35) to verify the fixes hold across versions.
 
-## Completed
-
-- [x] **#88 — Java → Kotlin migration** (Epic). All 7 phases + 8 follow-ups completed 2026-05-09.
-- [x] **#132 — Instrumentation script consolidation**. Completed 2026-05-09.
-- [x] **#126 — Comprehensive unit & integration test suite** (157 tests). Completed 2026-05-09.
-
-## Key Context
-- **Zero Java files remain** — 100% Kotlin codebase
-- **Zero ExecutorService/Thread.sleep/.get()** in production code — all coroutines
-- **MeditationUiState is sealed class** (Idle/Running/Paused)
-- **4 `!!` remain** — all safe `_binding!!` in fragments
-- **ScreenRobot** delegation pattern replaces BasePage inheritance
-- **enableEdgeToEdge()** called in Activity, activity-ktx added
-- **Predictive back** enabled via manifest attribute
-- **ktlint + detekt enforced** in CI (not just visibility)
-- **explicitApiWarning()** enabled — switch to strict `explicitApi()` after all declarations annotated
-- 2-stage pipeline: Stage 1 (commit gate, CI), Stage 2 (instrumented tests, `run-instrumentation.sh`)
-- Tag-based releases: push `v*` tag → `release.yml` → AAB + Play Console
-- **`run-instrumentation.sh` requires clean git** — commit or stash before running
-- **`-target google_apis` removed** — flag removed in emulator 36.5.10
+## Success Criteria
+- `scripts/run-instrumentation.sh` returns exit code 0 on a full run with real display.
+- Tag `tested-2026-05-09` is automatically created and pushed.

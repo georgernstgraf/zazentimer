@@ -91,6 +91,20 @@ class MainPage {
         return this
     }
 
+    fun verifySessionNameVisible(name: String): MainPage {
+        // Give some time for async DB save to complete and list to refresh
+        for (i in 0 until 5) {
+            try {
+                onView(withText(name)).check(matches(isDisplayed()))
+                return this
+            } catch (e: Exception) {
+                SystemClock.sleep(500)
+            }
+        }
+        onView(withText(name)).check(matches(isDisplayed()))
+        return this
+    }
+
     fun clickToolbarOverflowItem(textResId: Int): MainPage {
         robot.clickToolbarOverflowItem(textResId)
         return this
