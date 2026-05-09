@@ -7,7 +7,6 @@ import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.action.ViewActions.typeText
 import androidx.test.espresso.contrib.RecyclerViewActions.actionOnItemAtPosition
 import androidx.test.espresso.matcher.ViewMatchers.withId
-import androidx.test.espresso.matcher.ViewMatchers.withText
 import at.priv.graf.zazentimer.R
 
 class SessionEditPage {
@@ -17,11 +16,6 @@ class SessionEditPage {
         SystemClock.sleep(1000)
         robot.checkElementIsDisplayed(R.id.text_sitzung_name)
         robot.checkElementIsDisplayed(R.id.but_new_section)
-        try {
-            onView(withText(R.string.ok)).perform(click())
-            SystemClock.sleep(500)
-        } catch (_: Exception) {
-        }
         return this
     }
 

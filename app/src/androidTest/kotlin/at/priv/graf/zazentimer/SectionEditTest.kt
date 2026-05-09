@@ -32,7 +32,13 @@ class SectionEditTest {
     @Before
     fun init() {
         hiltRule.inject()
-        activityRule.scenario.onActivity(ZazenTimerActivity::resetDatabaseForTest)
+        activityRule.scenario.onActivity { activity ->
+            activity.resetDatabaseForTest()
+            ZazenTimerActivity.getPreferences(activity)
+                .edit()
+                .putBoolean(ZazenTimerActivity.PREF_KEY_SHOW_SESSION_EDIT_HELP_V13, true)
+                .apply()
+        }
         SystemClock.sleep(2000)
     }
 

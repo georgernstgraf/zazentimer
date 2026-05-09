@@ -19,7 +19,7 @@ android {
 
         testInstrumentationRunner = "at.priv.graf.zazentimer.HiltTestRunner"
         testInstrumentationRunnerArguments["clearPackageData"] = "true"
-        testInstrumentationRunnerArguments["failFast"] = "true"
+        testInstrumentationRunnerArguments["orchestrator.failFast"] = "true"
 
         buildConfigField(
             "String",
