@@ -103,7 +103,7 @@ fi
 if [ ${#TARGET_APIS[@]} -gt 0 ]; then
     APIS_TO_RUN=("${TARGET_APIS[@]}")
 else
-    APIS_TO_RUN=(29 30 31 32 33 34 35)
+    APIS_TO_RUN=(35 34 33 32 31 30 29)
 fi
 
 # ──────────────────────────────────────────────
