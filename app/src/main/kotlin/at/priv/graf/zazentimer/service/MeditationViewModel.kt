@@ -185,9 +185,6 @@ class MeditationViewModel
         private fun pollMeditationState() {
             val conn = serviceConnection ?: return
             val meditation = conn.getRunningMeditation() ?: return
-            if (meditation.getCurrentSection() == null) {
-                return
-            }
             val isPaused = meditation.isPaused()
             if (!this.timerViewInitialized) {
                 this.timerViewInitialized = true

@@ -18,14 +18,29 @@ import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
 import androidx.test.espresso.matcher.ViewMatchers.withId
 import androidx.test.espresso.matcher.ViewMatchers.withText
 import androidx.test.platform.app.InstrumentationRegistry.getInstrumentation
+import androidx.test.espresso.matcher.ViewMatchers.withEffectiveVisibility
+import androidx.test.espresso.matcher.ViewMatchers.Visibility
+import org.hamcrest.Matchers.allOf
 import org.hamcrest.Description
 import org.hamcrest.Matcher
 import org.hamcrest.TypeSafeMatcher
 
 class ScreenRobot {
     fun checkElementIsDisplayed(viewId: Int): ScreenRobot {
-        onViewWithId(viewId).check(matches(isDisplayed()))
+        onViewWithId(viewId).check(matches(allOf(withEffectiveVisibility(Visibility.VISIBLE), hasNonZeroHeight())))
         return this
+    }
+
+    private fun hasNonZeroHeight(): Matcher<View> {
+        return object : TypeSafeMatcher<View>() {
+            override fun describeTo(description: Description) {
+                description.appendText("view has non-zero height")
+            }
+
+            override fun matchesSafely(view: View): Boolean {
+                return view.height > 0
+            }
+        }
     }
 
     fun clickOnView(viewId: Int): ScreenRobot {
@@ -38,7 +53,14 @@ class ScreenRobot {
     fun clickToolbarOverflowItem(textResId: Int): ScreenRobot {
         openActionBarOverflowOrOptionsMenu(getInstrumentation().targetContext)
         // PITFALLS #81: popup menu animation not tracked by Espresso idle
-        SystemClock.sleep(500)
+        for (i in 0 until 10) {
+            try {
+                onView(withText(textResId)).check(matches(isDisplayed()))
+                break
+            } catch (e: Exception) {
+                SystemClock.sleep(500)
+            }
+        }
         onView(withText(textResId)).perform(click())
         return this
     }

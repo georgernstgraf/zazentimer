@@ -77,9 +77,8 @@ android {
         }
     }
 
-    kotlin {
-        explicitApiWarning()
-    }
+    // Removed explicitApiWarning() as it is unnecessary for an application
+    // and causes hundreds of non-idiomatic warnings.
 }
 
 ktlint {
