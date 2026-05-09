@@ -11,3 +11,4 @@ output/
 *crash*.txt
 .venv/
 schemas/
+logs/
