@@ -179,9 +179,10 @@ class AudioTest {
         val bell = Bell(uri, "Test Bell")
 
         val audio = Audio(context)
-        runBlocking { audio.playAbsVolume(bell, 100) }
-
-        audio.release()
+        runBlocking {
+            audio.playAbsVolume(bell, 100)
+            audio.release()
+        }
 
         verify { anyConstructed<MediaPlayer>().stop() }
         verify { anyConstructed<MediaPlayer>().reset() }
@@ -191,7 +192,7 @@ class AudioTest {
     @Test
     fun release_whenNoPlayer_doesNotThrow() {
         val audio = Audio(context)
-        audio.release()
+        runBlocking { audio.release() }
     }
 
     @Test
