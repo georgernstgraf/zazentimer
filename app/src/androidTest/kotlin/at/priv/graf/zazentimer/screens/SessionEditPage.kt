@@ -48,7 +48,7 @@ class SessionEditPage {
 
     fun goBack(): MainPage {
         robot.pressBack()
-        SystemClock.sleep(2000)
+        SystemClock.sleep(3000)
         return MainPage()
     }
 }

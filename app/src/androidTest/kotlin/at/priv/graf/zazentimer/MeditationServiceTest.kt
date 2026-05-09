@@ -103,16 +103,25 @@ class MeditationServiceTest {
                 )
             buttonById.click()
         } catch (e1: Exception) {
-            val button: UiObject =
-                device.findObject(
-                    UiSelector()
-                        .textContains(text)
-                        .className("android.widget.Button"),
-                )
             try {
-                button.click()
+                val byText: UiObject =
+                    device.findObject(
+                        UiSelector()
+                            .textContains(text),
+                    )
+                byText.click()
             } catch (e2: Exception) {
-                throw RuntimeException("Failed to click text containing: $text", e2)
+                try {
+                    val byClass: UiObject =
+                        device.findObject(
+                            UiSelector()
+                                .textContains(text)
+                                .className("android.widget.Button"),
+                        )
+                    byClass.click()
+                } catch (e3: Exception) {
+                    throw RuntimeException("Failed to click text containing: $text", e3)
+                }
             }
         }
     }
@@ -159,7 +168,7 @@ class MeditationServiceTest {
             activity.startMeditation()
         }
 
-        SystemClock.sleep(2000)
+        SystemClock.sleep(4000)
         waitForStopButton()
 
         clickStopButtonWithUiAutomator()
@@ -189,7 +198,7 @@ class MeditationServiceTest {
             activity.startMeditation()
         }
 
-        SystemClock.sleep(2000)
+        SystemClock.sleep(4000)
         waitForStopButton()
 
         clickStopButtonWithUiAutomator()
