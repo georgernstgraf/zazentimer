@@ -404,11 +404,7 @@ else
     }
 
     for api in "${APIS_TO_RUN[@]}"; do
-        if [ "$api" -le 32 ]; then
-            run_gradle_test "$api"
-        else
-            run_am_instrument_test "$api"
-        fi
+        run_am_instrument_test "$api"
 
         if [ "$CONTINUE_ON_ERROR" = false ] && [ "${RESULTS[$api]:-0}" -ne 0 ]; then
             echo ""
