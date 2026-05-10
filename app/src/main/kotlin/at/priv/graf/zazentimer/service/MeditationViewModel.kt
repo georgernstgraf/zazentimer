@@ -33,23 +33,28 @@ class MeditationViewModel
     constructor(
         @NonNull application: Application,
         private val dbOperations: DbOperations,
+        private val meditationRepository: MeditationRepository,
     ) : AndroidViewModel(application) {
-        private val meditationState = MutableLiveData<MeditationUiState>()
         private val meditationEnded = MutableLiveData<Boolean>()
 
         private var serviceConnection: ServCon? = null
         private var handler: Handler? = null
         private var wakeLock: PowerManager.WakeLock? = null
         private var serviceIntent: Intent? = null
-        private var updateRunning = false
         private var selectedSessionId = -1
         private var timerViewInitialized = false
-        private var updateJob: Job? = null
 
         init {
             meditationEnded.setValue(false)
+            viewModelScope.launch {
+                meditationRepository.meditationState.collect { state ->
+                    meditationState.setValue(state)
+                }
+            }
             emitIdleState()
         }
+
+        private val meditationState = MutableLiveData<MeditationUiState>()
 
         public fun getMeditationState(): LiveData<MeditationUiState> = meditationState
 
@@ -129,19 +134,10 @@ class MeditationViewModel
         }
 
     public fun startUpdateThread() {
-        if (this.handler == null) {
-            this.handler = Handler(Looper.getMainLooper())
-        }
-        stopUpdateThread(emitIdle = false)
-        this.updateRunning = true
         this.timerViewInitialized = false
-        startUpdateJob()
     }
 
     public fun stopUpdateThread(emitIdle: Boolean = true) {
-        this.updateRunning = false
-        updateJob?.cancel()
-        updateJob = null
         if (emitIdle) {
             emitIdleState()
         }
@@ -149,6 +145,9 @@ class MeditationViewModel
 
         public fun emitIdleState() {
             viewModelScope.launch {
+                if (meditationRepository.meditationState.value !is MeditationUiState.Idle) {
+                    return@launch
+                }
                 var sessionId = this@MeditationViewModel.selectedSessionId
                 if (sessionId == -1) {
                     val prefs = ZazenTimerActivity.getPreferences(getApplication())
@@ -170,88 +169,6 @@ class MeditationViewModel
                 }
                 meditationState.setValue(SectionArcCalculator.computeIdleState(session, sections))
             }
-        }
-
-        private fun startUpdateJob() {
-            updateJob?.cancel()
-            updateJob = viewModelScope.launch {
-                while (isActive) {
-                    pollMeditationState()
-                    delay(300)
-                }
-            }
-        }
-
-        private fun pollMeditationState() {
-            val conn = serviceConnection ?: return
-            val meditation = conn.getRunningMeditation() ?: return
-            val isPaused = meditation.isPaused()
-            if (!this.timerViewInitialized) {
-                this.timerViewInitialized = true
-                val state =
-                    if (isPaused) {
-                        MeditationUiState.Paused(
-                            currentStartSeconds = 0,
-                            totalSessionTime = meditation.getTotalSessionTime(),
-                            nextEndSeconds = meditation.getNextEndSeconds(),
-                            nextStartSeconds = meditation.getNextStartSeconds(),
-                            prevStartSeconds = meditation.getPrevStartSeconds(),
-                            sectionElapsedSeconds = 0,
-                            sessionElapsedSeconds = 0,
-                            currentSectionName = meditation.getCurrentSectionName(),
-                            nextSectionName = meditation.getNextSectionName(),
-                            sessionName = meditation.getSessionName(),
-                            nextNextSectionName = meditation.getNextNextSectionName(),
-                        )
-                    } else {
-                        MeditationUiState.Running(
-                            currentStartSeconds = 0,
-                            totalSessionTime = meditation.getTotalSessionTime(),
-                            nextEndSeconds = meditation.getNextEndSeconds(),
-                            nextStartSeconds = meditation.getNextStartSeconds(),
-                            prevStartSeconds = meditation.getPrevStartSeconds(),
-                            sectionElapsedSeconds = 0,
-                            sessionElapsedSeconds = 0,
-                            currentSectionName = meditation.getCurrentSectionName(),
-                            nextSectionName = meditation.getNextSectionName(),
-                            sessionName = meditation.getSessionName(),
-                            nextNextSectionName = meditation.getNextNextSectionName(),
-                        )
-                    }
-                meditationState.setValue(state)
-                return
-            }
-            val state =
-                if (isPaused) {
-                    MeditationUiState.Paused(
-                        currentStartSeconds = meditation.getCurrentStartSeconds(),
-                        totalSessionTime = meditation.getTotalSessionTime(),
-                        nextEndSeconds = meditation.getNextEndSeconds(),
-                        nextStartSeconds = meditation.getNextStartSeconds(),
-                        prevStartSeconds = meditation.getPrevStartSeconds(),
-                        sectionElapsedSeconds = meditation.getSectionElapsedSeconds(),
-                        sessionElapsedSeconds = meditation.getCurrentSessionTime(),
-                        currentSectionName = meditation.getCurrentSectionName(),
-                        nextSectionName = meditation.getNextSectionName(),
-                        sessionName = meditation.getSessionName(),
-                        nextNextSectionName = meditation.getNextNextSectionName(),
-                    )
-                } else {
-                    MeditationUiState.Running(
-                        currentStartSeconds = meditation.getCurrentStartSeconds(),
-                        totalSessionTime = meditation.getTotalSessionTime(),
-                        nextEndSeconds = meditation.getNextEndSeconds(),
-                        nextStartSeconds = meditation.getNextStartSeconds(),
-                        prevStartSeconds = meditation.getPrevStartSeconds(),
-                        sectionElapsedSeconds = meditation.getSectionElapsedSeconds(),
-                        sessionElapsedSeconds = meditation.getCurrentSessionTime(),
-                        currentSectionName = meditation.getCurrentSectionName(),
-                        nextSectionName = meditation.getNextSectionName(),
-                        sessionName = meditation.getSessionName(),
-                        nextNextSectionName = meditation.getNextNextSectionName(),
-                    )
-                }
-            meditationState.setValue(state)
         }
 
         public fun pauseMeditation() {
@@ -321,7 +238,6 @@ class MeditationViewModel
 
         override fun onCleared() {
             super.onCleared()
-            stopUpdateThread()
             releaseScreenWakeLock()
         }
 

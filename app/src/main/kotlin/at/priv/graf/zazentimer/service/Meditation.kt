@@ -16,17 +16,21 @@ import at.priv.graf.zazentimer.audio.BellCollection
 import at.priv.graf.zazentimer.bo.Section
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
 import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.cancel
 import kotlinx.coroutines.delay
+import kotlinx.coroutines.isActive
 import kotlinx.coroutines.launch
 
 class Meditation(
     private val meditationService: MeditationService,
+    private val repository: MeditationRepository,
     private val sessionName: String,
     private val sections: Array<Section>,
 ) {
     private val scope = CoroutineScope(SupervisorJob() + Dispatchers.Main)
+    private val clock = repository.clock
     private var currentSectionEndIntent: PendingIntent? = null
     private var currentSectionIdx: Int = 0
     private var oldRingerMode: Int = 0
@@ -39,6 +43,7 @@ class Meditation(
     private val alarmManager: AlarmManager = meditationService.getSystemService(Context.ALARM_SERVICE) as AlarmManager
     private val audioObjects = ArrayList<Audio>()
     private val pref: SharedPreferences = ZazenTimerActivity.getPreferences(meditationService)
+    private var tickerJob: Job? = null
 
     @Volatile
     private var paused: Boolean = false
@@ -61,9 +66,26 @@ class Meditation(
         started = true
         mutePhone()
         startSectionTimer()
+        startTicker()
+        repository.onMeditationStarted(this)
         if (Build.VERSION.SDK_INT < 23) {
             createMeditationWakeLock()
         }
+    }
+
+    private fun startTicker() {
+        tickerJob?.cancel()
+        tickerJob = scope.launch {
+            while (isActive) {
+                repository.onMeditationUpdated()
+                delay(1000)
+            }
+        }
+    }
+
+    private fun stopTicker() {
+        tickerJob?.cancel()
+        tickerJob = null
     }
 
     fun stop() {
@@ -84,8 +106,10 @@ class Meditation(
         if (!paused) {
             pauseSectionSeconds = getSectionElapsedSeconds()
             paused = true
+            stopTicker()
             currentSectionEndIntent?.let { alarmManager.cancel(it) }
             currentSectionEndIntent = null
+            repository.onMeditationUpdated()
             if (Build.VERSION.SDK_INT < 23) {
                 releaseMeditationWakeLock()
                 return
@@ -94,6 +118,8 @@ class Meditation(
         }
         paused = false
         startSectionTimer()
+        startTicker()
+        repository.onMeditationUpdated()
         if (Build.VERSION.SDK_INT < 23) {
             createMeditationWakeLock()
         }
@@ -101,16 +127,19 @@ class Meditation(
 
     private suspend fun finishMeditation() {
         stopping = true
+        stopTicker()
         stopSectionTimer()
         releaseAudioObjects()
         unmutePhone()
         if (Build.VERSION.SDK_INT < 23) {
             releaseMeditationWakeLock()
         }
+        repository.onMeditationStopped()
         fireMeditationEnded()
     }
 
     fun release() {
+        stopTicker()
         scope.cancel()
     }
 
@@ -138,14 +167,9 @@ class Meditation(
         meditationService.onMeditationEnd()
     }
 
-    private fun stopSectionTimer() {
-        currentSectionEndIntent?.let { alarmManager.cancel(it) }
-        currentSectionEndIntent = null
-    }
-
     private fun startSectionTimer() {
         val section = sections[currentSectionIdx]
-        sectionStartTime = System.currentTimeMillis()
+        sectionStartTime = clock.now()
         val triggerTime = sectionStartTime + ((section.duration - pauseSectionSeconds) * 1000L)
         val pendingIntent =
             PendingIntent.getBroadcast(
@@ -167,6 +191,7 @@ class Meditation(
             currentSectionIdx++
             pauseSectionSeconds = 0
             startSectionTimer()
+            repository.onMeditationUpdated()
             return
         }
         playBells(sections[currentSectionIdx]) {
@@ -205,9 +230,14 @@ class Meditation(
             if (paused) {
                 pauseSectionSeconds
             } else {
-                Math.round(((System.currentTimeMillis() / 1000) - (sectionStartTime / 1000)).toFloat()) + pauseSectionSeconds
+                Math.round(((clock.now() / 1000) - (sectionStartTime / 1000)).toFloat()) + pauseSectionSeconds
             }
         return MeditationTimer.getSectionElapsedSeconds(raw, getCurrentSection().duration)
+    }
+
+    private fun stopSectionTimer() {
+        currentSectionEndIntent?.let { alarmManager.cancel(it) }
+        currentSectionEndIntent = null
     }
 
     private suspend fun releaseAudioObjects() {

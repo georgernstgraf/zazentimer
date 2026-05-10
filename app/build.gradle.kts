@@ -133,5 +133,6 @@ dependencies {
     androidTestImplementation("androidx.test:runner:1.7.0")
     androidTestImplementation("androidx.test:rules:1.7.0")
     androidTestImplementation("androidx.test.uiautomator:uiautomator:2.3.0")
+    implementation("androidx.test.espresso:espresso-idling-resource:3.7.0")
     androidTestUtil("androidx.test:orchestrator:1.6.1")
 }

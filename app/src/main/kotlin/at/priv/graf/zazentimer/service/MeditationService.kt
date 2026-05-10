@@ -23,7 +23,7 @@ import javax.inject.Inject
 @AndroidEntryPoint
 class MeditationService : LifecycleService() {
     @Inject
-    lateinit var dbOperations: DbOperations
+    lateinit var meditationRepository: MeditationRepository
 
     private var binder: IBinder? = null
     private var runningMeditation: Meditation? = null
@@ -111,10 +111,10 @@ class MeditationService : LifecycleService() {
             return
         }
         lifecycleScope.launch {
-            val session: Session = dbOperations.readSession(i) ?: return@launch
-            val sections = dbOperations.readSections(i)
+            val session = meditationRepository.readSession(i) ?: return@launch
+            val sections = meditationRepository.readSections(i)
             if (sections.isEmpty()) return@launch
-            runningMeditation = Meditation(this@MeditationService, session.name ?: "", sections)
+            runningMeditation = Meditation(this@MeditationService, meditationRepository, session.name ?: "", sections)
             val meditation = runningMeditation ?: return@launch
             meditation.start()
             val notification = createNotification() ?: return@launch
