@@ -120,22 +120,17 @@ class MeditationServiceTest {
     // Helper removed to test UI button click properly
 
     private fun clickCancelDialog() {
-        androidx.test.espresso.Espresso.onView(
-            androidx.test.espresso.matcher.ViewMatchers.withId(android.R.id.button2)
-        ).perform(androidx.test.espresso.action.ViewActions.click())
+        val cancelBtn = device.findObject(androidx.test.uiautomator.UiSelector().resourceId("android:id/button2"))
+        if (cancelBtn.exists()) {
+            cancelBtn.click()
+        } else {
+            val cancelText = device.findObject(androidx.test.uiautomator.UiSelector().textMatches("(?i)cancel|abbrechen"))
+            if (cancelText.exists()) cancelText.click()
+        }
     }
 
     private fun isDialogVisible(titleText: String): Boolean {
-        try {
-            androidx.test.espresso.Espresso.onView(
-                androidx.test.espresso.matcher.ViewMatchers.withText(titleText)
-            ).check(androidx.test.espresso.assertion.ViewAssertions.matches(
-                androidx.test.espresso.matcher.ViewMatchers.isDisplayed()
-            ))
-            return true
-        } catch (e: Throwable) {
-            return false
-        }
+        return device.hasObject(androidx.test.uiautomator.By.text(titleText))
     }
 
     private fun waitForDialog(titleText: String) {
