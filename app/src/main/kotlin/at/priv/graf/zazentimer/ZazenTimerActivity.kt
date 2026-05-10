@@ -181,13 +181,13 @@ class ZazenTimerActivity :
         observeViewModel()
         if (preferences.getBoolean(PREF_KEY_FIRST_START, true)) {
             Log.d(TAG, "This is the first run - create demo sessions")
+            preferences.edit().putBoolean(PREF_KEY_FIRST_START, false).apply()
             lifecycleScope.launch {
                 DemoSessionCreator(dbOperations, resources).createDemoSessions()
                 withContext(Dispatchers.Main) {
                     findMainFragment()?.updateSessionList()
                 }
             }
-            preferences.edit().putBoolean(PREF_KEY_FIRST_START, false).apply()
         }
         BellCollection.initialize(this)
     }
@@ -532,8 +532,10 @@ class ZazenTimerActivity :
             }
         }
         val f = this@ZazenTimerActivity.findMainFragment()
-        kotlinx.coroutines.runBlocking(Dispatchers.Main) {
-            f?.suspendUpdateSessionList()
+        kotlinx.coroutines.runBlocking {
+            withContext(Dispatchers.Main) {
+                f?.suspendUpdateSessionList()
+            }
         }
     }
 

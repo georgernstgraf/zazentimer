@@ -70,7 +70,7 @@ android {
     }
 
     testOptions {
-        execution = "HOST"
+        execution = "ANDROIDX_TEST_ORCHESTRATOR"
         unitTests {
             isReturnDefaultValues = true
             isIncludeAndroidResources = true

@@ -122,7 +122,7 @@ echo "========================================="
 cd "$PROJECT_DIR"
 mkdir -p app/build/test-results/testDebugUnitTest/binary
 set +e
-./gradlew test --no-daemon
+./gradlew test
 UNIT_RESULT=$?
 set -e
 
@@ -281,7 +281,7 @@ else
 
         set +e
         cd "$PROJECT_DIR"
-        ./gradlew connectedDebugAndroidTest --no-daemon
+        ./gradlew connectedDebugAndroidTest
         result=$?
         set -e
 
@@ -309,7 +309,7 @@ else
         echo "========================================="
         cd "$PROJECT_DIR"
         set +e
-        ./gradlew assembleDebug assembleDebugAndroidTest --no-daemon
+        ./gradlew assembleDebug assembleDebugAndroidTest
         local build_result=$?
         set -e
 
