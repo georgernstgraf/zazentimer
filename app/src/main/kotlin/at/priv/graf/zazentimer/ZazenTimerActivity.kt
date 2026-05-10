@@ -636,7 +636,7 @@ class ZazenTimerActivity :
         }
         val f = this@ZazenTimerActivity.findMainFragment()
         f?.updateSessionList()
-        SystemClock.sleep(1000)
+        Thread.sleep(1000)
     }
 
     companion object {
