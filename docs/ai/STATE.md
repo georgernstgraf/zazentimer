@@ -3,23 +3,24 @@
 Current status as of 2026-05-10.
 
 ## Current Focus
-Enhancing testability and state management (Issue #137) to eliminate test flakiness.
+Test infrastructure modernization (#136) and state management refactoring (#137) are complete. Next: verify instrumentation tests pass with new architecture.
 
 ## Completed (this cycle)
-- [x] Introduced `ZazenClock` for time abstraction.
-- [x] Created `MeditationRepository` as single source of truth for timer state.
-- [x] Refactored `Meditation.kt` and `MeditationService` to use repository.
-- [x] Removed UI-driven polling logic from `MeditationViewModel`.
-- [x] Integrated `CountingIdlingResource` into `DbOperations` for Espresso synchronization.
-- [x] Fixed Hilt dependency injection for the new components.
+- [x] #137 — Introduced `ZazenClock`, `MeditationRepository`, `CountingIdlingResource`; removed UI polling
+- [x] #138 — Moved API levels to `gradle.properties`
+- [x] #139 — Enabled `java-test-fixtures`, moved shared test utils to `src/testFixtures/`
+- [x] #140 — Created `DevicePreFlightRule` in `HiltTestRunner.onStart()`
+- [x] #141 — Updated `docs/ai/` with test infrastructure decisions and architecture map
+- [x] #136 — Parent issue closed
 
 ## Pending
-- [ ] Verify fix for #135 (MeditationServiceTest races) using the new architecture.
-- [ ] Verify fix for `SessionCrudTest` races using the new DB idling.
-- [ ] Modernize test infrastructure (GMD/Fixtures) - Issue #136.
+- [ ] #135 — Verify instrumentation test fixes
+- [ ] #133 — Downgrade minSdk to 23
+- [ ] #64 — Play Store release
+- [ ] Pre-existing detekt violations (~30 issues across main source set)
 
 ## Blockers
 None.
 
 ## Next Session Suggestion
-Run the full instrumentation test suite via `scripts/run-instrumentation.sh` to confirm that the architectural changes have eliminated the races in `MeditationServiceTest` and `SessionCrudTest`.
+Run `scripts/run-instrumentation.sh` to confirm the architectural refactoring (#137) and test infrastructure modernization (#136) have eliminated the races in `MeditationServiceTest` and `SessionCrudTest` (#135).

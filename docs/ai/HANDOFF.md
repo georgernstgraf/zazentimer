@@ -4,13 +4,13 @@
 `main` (Trunk-based development)
 
 ## Context
-We have completed the core architectural refactoring of #137. State management is now handled via `MeditationRepository`, UI polling has been removed, and DB operations are synchronized with Espresso via `CountingIdlingResource`.
+Issues #137 (State Management) and #136 (Test Infrastructure Modernization) are complete. ktlint, compile, and unit tests all pass. Pre-existing detekt violations in `main` source set remain unresolved but are unrelated to our changes.
 
 ## Open Tasks
-1. [ ] **Verify fixes for #135 and SessionCrudTest**: Run `scripts/run-instrumentation.sh` to confirm races are gone.
-2. [ ] **#136 — Architecture: Modernize test infrastructure**: Modernize GMD/Fixtures.
-3. [ ] **#133 — Downgrade minSdk**: Requires creating AVDs for API 21-28.
-4. [ ] **#64 — Play Store**: Sub-issues #114 (AAB build) and #113 (privacy/legal).
+1. [ ] **#135 — Fix remaining test races**: Verify `MeditationServiceTest` and `SessionCrudTest` pass with new architecture. Run `scripts/run-instrumentation.sh`.
+2. [ ] **#133 — Downgrade minSdk to 23**: Requires creating AVDs for API 21-28 and resolving compat issues.
+3. [ ] **#64 — Play Store**: Sub-issues #114 (AAB build) and #113 (privacy/legal).
+4. [ ] **Pre-existing detekt violations**: ~30 detekt issues across `main` source set (`DbOperations`, `Meditation`, `TimerView`, etc.) cause CI failure. Create a dedicated issue for this.
 
 ## Success Criteria
 - `scripts/run-instrumentation.sh` returns exit code 0 on a full run with real display.
