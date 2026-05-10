@@ -12,6 +12,24 @@ ZazenTimer is an Android application for timing meditation sessions. It uses a f
 - **DbOperations**: Room database wrapper with built-in `IdlingResource` for test synchronization.
 - **ZazenClock**: Abstraction for system time to facilitate deterministic testing.
 
+## Test Infrastructure
+- **Test Source Sets**:
+  - `src/test/` — JVM unit tests with Robolectric
+  - `src/androidTest/` — Instrumented tests (emulator/device)
+  - `src/testFixtures/` — Shared test utilities (ScreenRobot, MeditationServiceIdlingResource, DevicePreFlightRule) via `java-test-fixtures` plugin
+- **Test Runner**:
+  - `HiltTestRunner` — Custom `AndroidJUnitRunner` injecting `HiltTestApplication`, with `DevicePreFlightRule.execute()` called in `onStart()` for self-healing tests
+  - `scripts/run-instrumentation.sh` — Orchestrates full test matrix: unit tests + per-API-level instrumented tests (API 29-35)
+- **Execution Strategy**:
+  - API 29-30: Gradle `connectedDebugAndroidTest` runner
+  - API 31-35: Manual `am instrument` (bypasses UTP bug on API 35+)
+  - API level source of truth: `zazentimer.test.apis` in `gradle.properties`
+  - Gradle runner threshold: `zazentimer.test.gradleMaxApi` in `gradle.properties`
+- **Idling Resources**:
+  - `IdlingResourceManager` (prod source) — `CountingIdlingResource` for DB operations
+  - `MeditationServiceIdlingResource` (testFixtures) — Custom `IdlingResource` for service binding state
+- **Self-Healing**: `DevicePreFlightRule` in `HiltTestRunner.onStart()` ensures screen is awake, unlocked, and animations disabled before any test runs
+
 ## Data Flows
 - **User Actions** → `MeditationViewModel` → `MeditationService` → `Meditation` logic.
 - **Meditation Logic** → `MeditationRepository` → `StateFlow` updates.
