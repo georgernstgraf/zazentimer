@@ -19,7 +19,7 @@ class MainPage {
 
     fun verifyMainScreenIsDisplayed(): MainPage {
         // Wait for layout to complete and RecyclerView to have non-zero height
-        for (i in 0 until 10) {
+        for (i in 0 until 20) {
             try {
                 robot.checkElementIsDisplayed(R.id.recycler_sessions)
                 break

@@ -148,8 +148,12 @@ class MeditationServiceTest {
 
     @Test
     fun testStopMeditationConfirmation() {
+        var demoSessionName = "Zazen and Kinhin"
+        activityRule.scenario.onActivity { demoSessionName = it.getString(R.string.demo_sess1_name) }
+
         MainPage()
             .verifyMainScreenIsDisplayed()
+            .verifySessionNameVisible(demoSessionName)
             .selectSessionByPosition(0)
 
         activityRule.scenario.onActivity { activity ->
@@ -175,8 +179,12 @@ class MeditationServiceTest {
 
     @Test
     fun testTimerCountdown() {
+        var demoSessionName = "Zazen and Kinhin"
+        activityRule.scenario.onActivity { demoSessionName = it.getString(R.string.demo_sess1_name) }
+
         MainPage()
             .verifyMainScreenIsDisplayed()
+            .verifySessionNameVisible(demoSessionName)
             .selectSessionByPosition(0)
 
         activityRule.scenario.onActivity { activity ->

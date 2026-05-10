@@ -30,7 +30,7 @@ import org.hamcrest.TypeSafeMatcher
 
 class ScreenRobot {
     fun checkElementIsDisplayed(viewId: Int): ScreenRobot {
-        for (i in 0 until 10) {
+        for (i in 0 until 20) {
             try {
                 onViewWithId(viewId).check(matches(allOf(withEffectiveVisibility(Visibility.VISIBLE), hasNonZeroHeight())))
                 return this
