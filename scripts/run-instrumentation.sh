@@ -100,10 +100,14 @@ else
     echo "=== DISPLAY=$DISPLAY — using existing display ==="
 fi
 
+DEFAULT_APIS_STRING=$(grep "^zazentimer.test.apis=" "$PROJECT_DIR/gradle.properties" | cut -d'=' -f2)
+IFS=',' read -ra DEFAULT_APIS <<<"$DEFAULT_APIS_STRING"
+GRADLE_MAX_API=$(grep "^zazentimer.test.gradleMaxApi=" "$PROJECT_DIR/gradle.properties" | cut -d'=' -f2)
+
 if [ ${#TARGET_APIS[@]} -gt 0 ]; then
     APIS_TO_RUN=("${TARGET_APIS[@]}")
 else
-    APIS_TO_RUN=(35 34 33 32 31 30 29)
+    APIS_TO_RUN=("${DEFAULT_APIS[@]}")
 fi
 
 # ──────────────────────────────────────────────
@@ -416,10 +420,11 @@ else
 
     get_test_method() {
         local api=$1
-        case $api in
-        29 | 30) echo "gradle" ;;
-        *) echo "am_instrument" ;;
-        esac
+        if [ "$api" -le "$GRADLE_MAX_API" ]; then
+            echo "gradle"
+        else
+            echo "am_instrument"
+        fi
     }
 
     for api in "${APIS_TO_RUN[@]}"; do
