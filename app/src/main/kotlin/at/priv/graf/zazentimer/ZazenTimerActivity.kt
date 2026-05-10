@@ -1,5 +1,6 @@
 package at.priv.graf.zazentimer
 
+import android.Manifest
 import android.app.AlertDialog
 import android.app.NotificationManager
 import android.content.ActivityNotFoundException
@@ -24,9 +25,12 @@ import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.core.content.ContextCompat
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.NavController
@@ -62,6 +66,13 @@ class ZazenTimerActivity :
     private var navController: NavController? = null
     private var appBarConfiguration: AppBarConfiguration? = null
     private var zenIndicator: ImageView? = null
+
+    private val notificationPermissionLauncher =
+        registerForActivityResult(
+            ActivityResultContracts.RequestPermission(),
+        ) { _ ->
+            startMeditation()
+        }
 
     @Inject
     lateinit var dbOperations: DbOperations
@@ -110,14 +121,14 @@ class ZazenTimerActivity :
         }
     }
 
-    override fun onCreate(bundle: Bundle?) {
-        Log.d(TAG, "onCreate")
+    private fun applyTheme() {
         val preferences = getPreferences(this)
         val theme = preferences.getString(PREF_KEY_THEME, PREF_DEFAULT_THEME)
         if (theme == PREF_VALUE_THEME_DARK) {
             setTheme(R.style.DarkZenTheme)
         } else if (theme == PREF_VALUE_THEME_SYSTEM) {
-            val nightMode = resources.configuration.uiMode and android.content.res.Configuration.UI_MODE_NIGHT_MASK
+            val nightMode =
+                resources.configuration.uiMode and android.content.res.Configuration.UI_MODE_NIGHT_MASK
             if (nightMode == android.content.res.Configuration.UI_MODE_NIGHT_YES) {
                 setTheme(R.style.DarkZenTheme)
             } else {
@@ -126,6 +137,12 @@ class ZazenTimerActivity :
         } else {
             setTheme(R.style.LightZenTheme)
         }
+    }
+
+    override fun onCreate(bundle: Bundle?) {
+        Log.d(TAG, "onCreate")
+        val preferences = getPreferences(this)
+        applyTheme()
         super.onCreate(bundle)
         enableEdgeToEdge()
         if (bundle == null) {
@@ -143,7 +160,14 @@ class ZazenTimerActivity :
         }
         setContentView(R.layout.main)
         val toolbar = findViewById<Toolbar>(R.id.my_toolbar)
-        toolbar?.let { setSupportActionBar(it) }
+        toolbar?.let {
+            setSupportActionBar(it)
+            ViewCompat.setOnApplyWindowInsetsListener(it) { v, insets ->
+                val statusBarInsets = insets.getInsets(WindowInsetsCompat.Type.statusBars())
+                v.setPadding(0, statusBarInsets.top, 0, 0)
+                insets
+            }
+        }
         zenIndicator = findViewById(R.id.zenIndicator)
         val nc = getNavController()
         if (nc != null) {
@@ -378,6 +402,16 @@ class ZazenTimerActivity :
     }
 
     override fun onStartPressed() {
+        if (
+            Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU &&
+            ContextCompat.checkSelfPermission(
+                this,
+                Manifest.permission.POST_NOTIFICATIONS,
+            ) != PackageManager.PERMISSION_GRANTED
+        ) {
+            notificationPermissionLauncher.launch(Manifest.permission.POST_NOTIFICATIONS)
+            return
+        }
         lifecycleScope.launch {
             if (dbOperations.readSections(getSelectedSessionId()).isEmpty()) {
                 if (getSelectedSessionId() == -1) {

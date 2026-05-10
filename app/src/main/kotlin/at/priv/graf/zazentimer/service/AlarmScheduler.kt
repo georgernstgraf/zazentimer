@@ -4,6 +4,7 @@ import android.app.AlarmManager
 import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
+import android.os.Build
 import android.util.Log
 import at.priv.graf.zazentimer.bo.Section
 
@@ -33,6 +34,11 @@ class AlarmScheduler(
                 PendingIntent.FLAG_IMMUTABLE,
             )
         pendingIntent = pi
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+            if (!alarmManager.canScheduleExactAlarms()) {
+                Log.e(TAG, "Cannot schedule exact alarms -- permission denied")
+            }
+        }
         val alarmClockInfo = AlarmManager.AlarmClockInfo(triggerTime, pi)
         alarmManager.setAlarmClock(alarmClockInfo, pi)
         Log.d(TAG, "Started AlarmClock for next section: triggerTime=$triggerTime")

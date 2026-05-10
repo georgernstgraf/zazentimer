@@ -6,6 +6,7 @@ import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.media.AudioManager
+import android.os.Build
 import android.os.PowerManager
 import android.util.Log
 import at.priv.graf.zazentimer.ZazenTimerActivity
@@ -145,6 +146,11 @@ class Meditation(
                 PendingIntent.FLAG_IMMUTABLE,
             )
         currentSectionEndIntent = pendingIntent
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+            if (!alarmManager.canScheduleExactAlarms()) {
+                Log.e(TAG, "Cannot schedule exact alarms -- permission denied")
+            }
+        }
         val alarmClockInfo = AlarmManager.AlarmClockInfo(triggerTime, pendingIntent)
         alarmManager.setAlarmClock(alarmClockInfo, pendingIntent)
         Log.d(TAG, "Started AlarmClock for next section: triggerTime=$triggerTime")

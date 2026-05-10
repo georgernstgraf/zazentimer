@@ -1,6 +1,7 @@
 package at.priv.graf.zazentimer
 
 import android.content.SharedPreferences
+import android.os.Build
 import android.os.SystemClock
 import android.util.Log
 import androidx.test.espresso.IdlingRegistry
@@ -41,6 +42,11 @@ class MeditationServiceTest {
     @Before
     fun init() {
         hiltRule.inject()
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            InstrumentationRegistry.getInstrumentation().uiAutomation.executeShellCommand(
+                "pm grant at.priv.graf.zazentimer android.permission.POST_NOTIFICATIONS",
+            )
+        }
         IdlingRegistry.getInstance().register(meditationIdlingResource)
         device = UiDevice.getInstance(InstrumentationRegistry.getInstrumentation())
         activityRule.scenario.onActivity { activity ->
