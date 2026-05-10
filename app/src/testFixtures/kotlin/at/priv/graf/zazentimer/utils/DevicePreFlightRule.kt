@@ -20,11 +20,11 @@ class DevicePreFlightRule : TestRule {
 
     companion object {
         fun execute() {
-            val device = UiDevice.getInstance(InstrumentationRegistry.getInstrumentation())
-            device.wakeUp()
-            device.pressMenu()
-            device.pressHome()
             try {
+                val device = UiDevice.getInstance(InstrumentationRegistry.getInstrumentation())
+                device.wakeUp()
+                device.pressMenu()
+                device.pressHome()
                 device.executeShellCommand("settings put global window_animation_scale 0.0")
                 device.executeShellCommand("settings put global transition_animation_scale 0.0")
                 device.executeShellCommand("settings put global animator_duration_scale 0.0")

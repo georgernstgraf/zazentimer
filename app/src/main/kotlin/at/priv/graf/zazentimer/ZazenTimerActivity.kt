@@ -530,10 +530,10 @@ class ZazenTimerActivity :
                 }
                 DemoSessionCreator(dbOperations, resources).createDemoSessions()
             }
-            withContext(Dispatchers.Main) {
-                val f = this@ZazenTimerActivity.findMainFragment()
-                f?.suspendUpdateSessionList()
-            }
+        }
+        val f = this@ZazenTimerActivity.findMainFragment()
+        kotlinx.coroutines.runBlocking {
+            f?.suspendUpdateSessionList()
         }
     }
 

@@ -118,6 +118,7 @@ echo "========================================="
 echo "  Unit Tests"
 echo "========================================="
 cd "$PROJECT_DIR"
+mkdir -p app/build/test-results/testDebugUnitTest/binary
 set +e
 ./gradlew test --no-daemon
 UNIT_RESULT=$?
