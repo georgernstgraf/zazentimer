@@ -256,26 +256,30 @@ class MainFragment : Fragment() {
 
     fun updateSessionList(restoreSelectionId: Int = -1) {
         lifecycleScope.launch {
-            val readSessions = dbOperations.readSessions()
-            if (!isAdded) return@launch
-            val arrayList = ArrayList<SessionWithTimeInfo>()
-            this@MainFragment.sessions.clear()
-            for (session in readSessions) {
-                var total = 0
-                for (section in dbOperations.readSections(session.id)) {
-                    total += section.duration
-                }
-                arrayList.add(SessionWithTimeInfo(session, total))
-                this@MainFragment.sessions.add(session)
+            suspendUpdateSessionList(restoreSelectionId)
+        }
+    }
+
+    suspend fun suspendUpdateSessionList(restoreSelectionId: Int = -1) {
+        val readSessions = dbOperations.readSessions()
+        if (!isAdded) return
+        val arrayList = ArrayList<SessionWithTimeInfo>()
+        this@MainFragment.sessions.clear()
+        for (session in readSessions) {
+            var total = 0
+            for (section in dbOperations.readSections(session.id)) {
+                total += section.duration
             }
-            this@MainFragment.sessionListAdapter?.setSessions(arrayList)
-            if (restoreSelectionId != -1) {
-                val positionById = SpinnerUtil.getPositionById(this@MainFragment.sessions, restoreSelectionId)
-                if (positionById != -1) {
-                    Log.d(TAG, "LAST_SELECTED_SESSION was idx=$positionById id=$restoreSelectionId")
-                    this@MainFragment.selectedSessionId = restoreSelectionId
-                    this@MainFragment.sessionListAdapter?.setSelectedPosition(positionById)
-                }
+            arrayList.add(SessionWithTimeInfo(session, total))
+            this@MainFragment.sessions.add(session)
+        }
+        this@MainFragment.sessionListAdapter?.setSessions(arrayList)
+        if (restoreSelectionId != -1) {
+            val positionById = SpinnerUtil.getPositionById(this@MainFragment.sessions, restoreSelectionId)
+            if (positionById != -1) {
+                Log.d(TAG, "LAST_SELECTED_SESSION was idx=$positionById id=$restoreSelectionId")
+                this@MainFragment.selectedSessionId = restoreSelectionId
+                this@MainFragment.sessionListAdapter?.setSelectedPosition(positionById)
             }
         }
     }

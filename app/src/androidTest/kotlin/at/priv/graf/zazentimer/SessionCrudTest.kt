@@ -37,13 +37,15 @@ class SessionCrudTest {
     @Before
     fun init() {
         hiltRule.inject()
+        var activityRef: ZazenTimerActivity? = null
         activityRule.scenario.onActivity { activity ->
-            activity.resetDatabaseForTest()
+            activityRef = activity
             ZazenTimerActivity.getPreferences(activity)
                 .edit()
                 .putBoolean(ZazenTimerActivity.PREF_KEY_SHOW_SESSION_EDIT_HELP_V13, true)
                 .apply()
         }
+        activityRef?.resetDatabaseForTest()
         SystemClock.sleep(3000)
     }
 

@@ -34,7 +34,9 @@ class DuplicateSessionTest {
     @Before
     fun init() {
         hiltRule.inject()
-        activityRule.scenario.onActivity(ZazenTimerActivity::resetDatabaseForTest)
+        var activityRef: ZazenTimerActivity? = null
+        activityRule.scenario.onActivity { activityRef = it }
+        activityRef?.resetDatabaseForTest()
         SystemClock.sleep(2000)
     }
 

@@ -36,6 +36,7 @@ class SessionEditPage {
     }
 
     fun clickSectionAtPosition(pos: Int): SessionEditPage {
+        robot.waitForRecyclerViewToBePopulated(R.id.list)
         for (i in 0 until 10) {
             try {
                 onView(withId(R.id.list))

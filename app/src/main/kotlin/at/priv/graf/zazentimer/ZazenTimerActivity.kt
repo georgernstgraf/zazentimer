@@ -638,10 +638,10 @@ class ZazenTimerActivity :
                 }
                 createDemoSessions()
             }
-        }
-        runOnUiThread {
-            val f = this@ZazenTimerActivity.findMainFragment()
-            f?.updateSessionList()
+            withContext(Dispatchers.Main) {
+                val f = this@ZazenTimerActivity.findMainFragment()
+                f?.suspendUpdateSessionList()
+            }
         }
     }
 

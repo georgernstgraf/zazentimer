@@ -112,6 +112,19 @@ class ScreenRobot {
         return this
     }
 
+    fun waitForRecyclerViewToBePopulated(recyclerViewId: Int): ScreenRobot {
+        for (i in 0 until 20) {
+            try {
+                onView(withId(recyclerViewId)).check(matches(RecyclerViewPopulatedMatcher()))
+                return this
+            } catch (e: Throwable) {
+                SystemClock.sleep(500)
+            }
+        }
+        onView(withId(recyclerViewId)).check(matches(RecyclerViewPopulatedMatcher()))
+        return this
+    }
+
     fun scrollToRecyclerViewPosition(
         recyclerViewId: Int,
         position: Int,
@@ -152,6 +165,19 @@ class ScreenRobot {
         override fun matchesSafely(item: View): Boolean {
             if (item is RecyclerView) {
                 return item.adapter != null && item.adapter!!.itemCount == expectedCount
+            }
+            return false
+        }
+    }
+
+    private class RecyclerViewPopulatedMatcher : TypeSafeMatcher<View>() {
+        override fun describeTo(description: Description) {
+            description.appendText("RecyclerView with item count > 0")
+        }
+
+        override fun matchesSafely(item: View): Boolean {
+            if (item is RecyclerView) {
+                return item.adapter != null && item.adapter!!.itemCount > 0
             }
             return false
         }
