@@ -40,6 +40,8 @@ class MeditationViewModel
         private var selectedSessionId = -1
         private var timerViewInitialized = false
 
+        private val meditationState = MutableLiveData<MeditationUiState>()
+
         init {
             meditationEnded.setValue(false)
             viewModelScope.launch {
@@ -49,8 +51,6 @@ class MeditationViewModel
             }
             emitIdleState()
         }
-
-        private val meditationState = MutableLiveData<MeditationUiState>()
 
         public fun getMeditationState(): LiveData<MeditationUiState> = meditationState
 
