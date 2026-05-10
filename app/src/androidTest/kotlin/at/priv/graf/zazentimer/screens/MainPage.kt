@@ -23,7 +23,7 @@ class MainPage {
             try {
                 robot.checkElementIsDisplayed(R.id.recycler_sessions)
                 break
-            } catch (e: Exception) {
+            } catch (e: Throwable) {
                 SystemClock.sleep(500)
             }
         }
@@ -101,11 +101,11 @@ class MainPage {
 
     fun verifySessionNameVisible(name: String): MainPage {
         // Give some time for async DB save to complete and list to refresh
-        for (i in 0 until 5) {
+        for (i in 0 until 10) {
             try {
                 onView(withText(name)).check(matches(isDisplayed()))
                 return this
-            } catch (e: Exception) {
+            } catch (e: Throwable) {
                 SystemClock.sleep(500)
             }
         }

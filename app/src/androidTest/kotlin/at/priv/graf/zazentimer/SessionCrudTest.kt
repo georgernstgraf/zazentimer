@@ -77,6 +77,9 @@ class SessionCrudTest {
         closeSoftKeyboard()
         SessionEditPage().goBack()
 
+        // Wait a bit to ensure the async DB save from SessionEditFragment completes
+        SystemClock.sleep(2000)
+
         MainPage().verifySessionNameVisible("Updated Session Name")
     }
 

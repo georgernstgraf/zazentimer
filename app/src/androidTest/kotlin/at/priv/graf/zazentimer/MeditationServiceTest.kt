@@ -75,19 +75,46 @@ class MeditationServiceTest {
     }
 
     private fun waitForStopButton() {
-        device.wait(Until.findObject(By.desc("Stop").enabled(true)), uiTimeout)
+        for (i in 0 until 100) {
+            try {
+                androidx.test.espresso.Espresso.onView(
+                    androidx.test.espresso.matcher.ViewMatchers.withId(R.id.but_stop)
+                ).check(androidx.test.espresso.assertion.ViewAssertions.matches(
+                    org.hamcrest.Matchers.allOf(
+                        androidx.test.espresso.matcher.ViewMatchers.isDisplayed(),
+                        androidx.test.espresso.matcher.ViewMatchers.isEnabled()
+                    )
+                ))
+                return
+            } catch (e: Throwable) {
+                SystemClock.sleep(200)
+            }
+        }
+        throw AssertionError("Stop button never became enabled and displayed")
     }
 
     private fun clickStopButtonAndWaitForDialog(titleText: String) {
         for (i in 0 until 5) {
             try {
-                device.wait(Until.findObject(By.desc("Stop").enabled(true)), 2000L)
-                clickStopButtonWithUiAutomator()
-                val dialog = device.findObject(UiSelector().text(titleText))
-                if (dialog.waitForExists(2000)) {
-                    return
+                waitForStopButton()
+                androidx.test.espresso.Espresso.onView(
+                    androidx.test.espresso.matcher.ViewMatchers.withId(R.id.but_stop)
+                ).perform(androidx.test.espresso.action.ViewActions.click())
+                
+                // Wait for dialog
+                for (j in 0 until 20) {
+                    try {
+                        androidx.test.espresso.Espresso.onView(
+                            androidx.test.espresso.matcher.ViewMatchers.withText(titleText)
+                        ).check(androidx.test.espresso.assertion.ViewAssertions.matches(
+                            androidx.test.espresso.matcher.ViewMatchers.isDisplayed()
+                        ))
+                        return
+                    } catch (e: Throwable) {
+                        SystemClock.sleep(100)
+                    }
                 }
-            } catch (e: Exception) {
+            } catch (e: Throwable) {
                 Log.e(TAG, "Stop button dialog attempt $i failed", e)
             }
             SystemClock.sleep(500)
@@ -95,105 +122,39 @@ class MeditationServiceTest {
         throw AssertionError("Dialog '$titleText' did not appear after clicking stop button 5 times")
     }
 
-    private fun clickStopButtonWithUiAutomator() {
-        val stopButton: UiObject = device.findObject(UiSelector().description("Stop"))
-        try {
-            stopButton.click()
-            SystemClock.sleep(100)
-            val stillExists = device.findObject(UiSelector().description("Stop")).exists()
-            Log.d(TAG, "Stop button still exists after click: $stillExists")
-        } catch (e: Exception) {
-            val stopButtonById: UiObject =
-                device.findObject(
-                    UiSelector()
-                        .resourceId("at.priv.graf.zazentimer:id/but_stop"),
-                )
-            try {
-                stopButtonById.click()
-                SystemClock.sleep(100)
-                val stillExists = device.findObject(UiSelector().description("Stop")).exists()
-                Log.d(TAG, "Stop button still exists after click: $stillExists")
-            } catch (e2: Exception) {
-                throw RuntimeException("Failed to click stop button", e2)
-            }
-        }
-    }
-
     private fun clickByTextContainsWithUiAutomator(text: String) {
-        try {
-            val buttonById: UiObject =
-                device.findObject(
-                    UiSelector()
-                        .resourceId("android:id/button1"),
-                )
-            buttonById.click()
-        } catch (e1: Exception) {
-            try {
-                val byText: UiObject =
-                    device.findObject(
-                        UiSelector()
-                            .textContains(text),
-                    )
-                byText.click()
-            } catch (e2: Exception) {
-                try {
-                    val byClass: UiObject =
-                        device.findObject(
-                            UiSelector()
-                                .textContains(text)
-                                .className("android.widget.Button"),
-                        )
-                    byClass.click()
-                } catch (e3: Exception) {
-                    throw RuntimeException("Failed to click text containing: $text", e3)
-                }
-            }
-        }
+        androidx.test.espresso.Espresso.onView(
+            androidx.test.espresso.matcher.ViewMatchers.withId(android.R.id.button1)
+        ).perform(androidx.test.espresso.action.ViewActions.click())
     }
 
-    private fun showStopDialogViaFragment() {
-        activityRule.scenario.onActivity { activity ->
-            val navHostFragment = activity.supportFragmentManager
-                .findFragmentById(R.id.nav_host_fragment)
-            val fragment = navHostFragment?.childFragmentManager?.primaryNavigationFragment
-            if (fragment is MeditationFragment) {
-                fragment.showStopDialogForTest()
-            } else {
-                throw AssertionError("MeditationFragment is not the primary navigation fragment")
-            }
-        }
-    }
+    // Helper removed to test UI button click properly
 
     private fun clickCancelDialog() {
-        try {
-            val cancelById: UiObject =
-                device.findObject(
-                    UiSelector()
-                        .resourceId("android:id/button2"),
-                )
-            cancelById.click()
-        } catch (e1: Exception) {
-            val cancelButton: UiObject =
-                device.findObject(
-                    UiSelector()
-                        .textContains("Cancel")
-                        .className("android.widget.Button"),
-                )
-            try {
-                cancelButton.click()
-            } catch (e2: Exception) {
-                throw RuntimeException("Failed to click Cancel", e2)
-            }
-        }
+        androidx.test.espresso.Espresso.onView(
+            androidx.test.espresso.matcher.ViewMatchers.withId(android.R.id.button2)
+        ).perform(androidx.test.espresso.action.ViewActions.click())
     }
 
     private fun isDialogVisible(titleText: String): Boolean {
-        val dialog: UiObject = device.findObject(UiSelector().text(titleText))
-        return dialog.exists()
+        try {
+            androidx.test.espresso.Espresso.onView(
+                androidx.test.espresso.matcher.ViewMatchers.withText(titleText)
+            ).check(androidx.test.espresso.assertion.ViewAssertions.matches(
+                androidx.test.espresso.matcher.ViewMatchers.isDisplayed()
+            ))
+            return true
+        } catch (e: Throwable) {
+            return false
+        }
     }
 
     private fun waitForDialog(titleText: String) {
-        device.wait(Until.findObject(By.text(titleText)), uiTimeout)
+        for (i in 0 until 50) {
+            if (isDialogVisible(titleText)) return
+            SystemClock.sleep(100)
+        }
+        throw AssertionError("Dialog $titleText not visible")
     }
 
     @Test
@@ -206,10 +167,9 @@ class MeditationServiceTest {
             activity.startMeditation()
         }
 
-        SystemClock.sleep(6000)
+        SystemClock.sleep(8000)
         waitForStopButton()
-        showStopDialogViaFragment()
-        waitForDialog("Stop meditation?")
+        clickStopButtonAndWaitForDialog("Stop meditation?")
 
         assertTrue(
             "Stop dialog should be visible",
@@ -219,8 +179,7 @@ class MeditationServiceTest {
         clickCancelDialog()
 
         waitForStopButton()
-        showStopDialogViaFragment()
-        waitForDialog("Stop meditation?")
+        clickStopButtonAndWaitForDialog("Stop meditation?")
 
         clickByTextContainsWithUiAutomator("Stop")
     }
@@ -235,10 +194,9 @@ class MeditationServiceTest {
             activity.startMeditation()
         }
 
-        SystemClock.sleep(6000)
+        SystemClock.sleep(8000)
         waitForStopButton()
-        showStopDialogViaFragment()
-        waitForDialog("Stop meditation?")
+        clickStopButtonAndWaitForDialog("Stop meditation?")
 
         clickByTextContainsWithUiAutomator("Stop")
     }

@@ -622,7 +622,7 @@ class ZazenTimerActivity :
     }
 
     fun resetDatabaseForTest() {
-        lifecycleScope.launch {
+        kotlinx.coroutines.runBlocking {
             withContext(Dispatchers.IO) {
                 val readSessions = dbOperations.readSessions()
                 for (i in readSessions.indices) {
@@ -633,9 +633,9 @@ class ZazenTimerActivity :
                 }
                 createDemoSessions()
             }
-            val f = this@ZazenTimerActivity.findMainFragment()
-            f?.updateSessionList()
         }
+        val f = this@ZazenTimerActivity.findMainFragment()
+        f?.updateSessionList()
     }
 
     companion object {
