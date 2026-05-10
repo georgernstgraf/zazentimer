@@ -639,8 +639,10 @@ class ZazenTimerActivity :
                 createDemoSessions()
             }
         }
-        val f = this@ZazenTimerActivity.findMainFragment()
-        f?.updateSessionList()
+        runOnUiThread {
+            val f = this@ZazenTimerActivity.findMainFragment()
+            f?.updateSessionList()
+        }
     }
 
     companion object {

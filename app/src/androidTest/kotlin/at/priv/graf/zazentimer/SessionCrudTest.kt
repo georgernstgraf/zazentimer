@@ -62,12 +62,26 @@ class SessionCrudTest {
 
     @Test
     fun testUpdateSessionMetadata() {
+        var demoSessionName = "Zazen and Kinhin"
+        activityRule.scenario.onActivity { demoSessionName = it.getString(R.string.demo_sess1_name) }
+
         MainPage()
             .verifyMainScreenIsDisplayed()
+            .verifySessionNameVisible(demoSessionName)
             .clickSessionOverflowAction(0, R.string.menu_edit_session)
 
         SessionEditPage()
             .verifyEditSessionScreen()
+
+        // Wait for async session load to complete and populate fields
+        for (i in 0 until 10) {
+            try {
+                onView(withId(R.id.text_sitzung_name)).check(matches(withText(demoSessionName)))
+                break
+            } catch (e: Throwable) {
+                SystemClock.sleep(500)
+            }
+        }
 
         onView(withId(R.id.text_sitzung_name))
             .perform(clearText(), typeText("Updated Session Name"))

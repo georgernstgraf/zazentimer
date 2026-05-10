@@ -36,9 +36,16 @@ class SessionEditPage {
     }
 
     fun clickSectionAtPosition(pos: Int): SessionEditPage {
-        onView(withId(R.id.list))
-            .perform(actionOnItemAtPosition<RecyclerView.ViewHolder>(pos, click()))
-        return this
+        for (i in 0 until 10) {
+            try {
+                onView(withId(R.id.list))
+                    .perform(actionOnItemAtPosition<RecyclerView.ViewHolder>(pos, click()))
+                return this
+            } catch (e: Throwable) {
+                SystemClock.sleep(500)
+            }
+        }
+        throw AssertionError("Could not click section at position $pos")
     }
 
     fun verifySectionCount(count: Int): SessionEditPage {
