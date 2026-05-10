@@ -152,7 +152,12 @@ class ZazenTimerActivity :
         observeViewModel()
         if (preferences.getBoolean(PREF_KEY_FIRST_START, true)) {
             Log.d(TAG, "This is the first run - create demo sessions")
-            lifecycleScope.launch { createDemoSessions() }
+            lifecycleScope.launch {
+                createDemoSessions()
+                withContext(Dispatchers.Main) {
+                    findMainFragment()?.updateSessionList()
+                }
+            }
             preferences.edit().putBoolean(PREF_KEY_FIRST_START, false).apply()
         }
         BellCollection.initialize(this)
@@ -636,7 +641,6 @@ class ZazenTimerActivity :
         }
         val f = this@ZazenTimerActivity.findMainFragment()
         f?.updateSessionList()
-        Thread.sleep(1000)
     }
 
     companion object {
