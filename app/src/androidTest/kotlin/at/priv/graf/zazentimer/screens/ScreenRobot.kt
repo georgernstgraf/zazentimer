@@ -20,6 +20,7 @@ import androidx.test.espresso.matcher.ViewMatchers.withId
 import androidx.test.espresso.matcher.ViewMatchers.withText
 import androidx.test.platform.app.InstrumentationRegistry.getInstrumentation
 import androidx.test.espresso.matcher.ViewMatchers.withEffectiveVisibility
+import androidx.test.uiautomator.UiDevice
 import androidx.test.espresso.matcher.ViewMatchers.Visibility
 import org.hamcrest.Matchers.allOf
 import org.hamcrest.Description
@@ -28,6 +29,14 @@ import org.hamcrest.TypeSafeMatcher
 
 class ScreenRobot {
     fun checkElementIsDisplayed(viewId: Int): ScreenRobot {
+        for (i in 0 until 10) {
+            try {
+                onViewWithId(viewId).check(matches(allOf(withEffectiveVisibility(Visibility.VISIBLE), hasNonZeroHeight())))
+                return this
+            } catch (e: Throwable) {
+                SystemClock.sleep(500)
+            }
+        }
         onViewWithId(viewId).check(matches(allOf(withEffectiveVisibility(Visibility.VISIBLE), hasNonZeroHeight())))
         return this
     }
@@ -53,7 +62,13 @@ class ScreenRobot {
 
     fun clickToolbarOverflowItem(textResId: Int): ScreenRobot {
         try {
-            onView(withContentDescription("More options")).perform(click())
+            val device = UiDevice.getInstance(getInstrumentation())
+            val overflowButton = device.findObject(UiSelector().descriptionContains("More options"))
+            if (overflowButton.exists()) {
+                overflowButton.click()
+            } else {
+                openActionBarOverflowOrOptionsMenu(getInstrumentation().targetContext)
+            }
         } catch (e: Exception) {
             openActionBarOverflowOrOptionsMenu(getInstrumentation().targetContext)
         }
