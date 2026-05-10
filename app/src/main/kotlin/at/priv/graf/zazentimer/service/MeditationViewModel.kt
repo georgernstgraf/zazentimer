@@ -118,12 +118,11 @@ class MeditationViewModel
             } else {
                 app.startService(this.serviceIntent)
             }
-            val conn = this.serviceConnection
             bindToService(
                 app,
                 this.handler ?: Handler(Looper.getMainLooper()),
                 Runnable {
-                    conn?.startMeditation(sessionId)
+                    serviceConnection?.startMeditation(sessionId)
                 },
             )
         }

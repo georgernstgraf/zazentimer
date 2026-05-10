@@ -76,6 +76,8 @@ class SectionEditTest {
             .verifySectionEditScreen()
             .tapDurationPicker()
 
+        SystemClock.sleep(1000)
+
         onView(withId(android.R.id.button1)).perform(click())
 
         SectionEditPage()

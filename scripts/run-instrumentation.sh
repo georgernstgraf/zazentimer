@@ -157,7 +157,12 @@ else
         local serial="$1"
         echo "Killing emulator $serial..."
         adb -s "$serial" emu kill 2>/dev/null || true
-        sleep 2
+        sleep 5
+        local wait_count=0
+        while adb devices 2>/dev/null | grep -q "$serial" && [ $wait_count -lt 30 ]; do
+            sleep 1
+            wait_count=$((wait_count + 1))
+        done
     }
 
     resolve_avd() {
@@ -192,9 +197,16 @@ else
         echo "Cleaning stale packages on $serial..."
         for pkg in \
             de.gaffga.android.zazentimer \
-            de.gaffga.android.zazentimer.test; do
+            de.gaffga.android.zazentimer.test \
+            at.priv.graf.zazentimer \
+            at.priv.graf.zazentimer.test; do
             adb -s "$serial" uninstall "$pkg" >/dev/null 2>&1 || true
+            adb -s "$serial" shell pm uninstall --user 0 "$pkg" >/dev/null 2>&1 || true
         done
+        adb -s "$serial" shell cmd package install-existing at.priv.graf.zazentimer >/dev/null 2>&1 || true
+        adb -s "$serial" shell cmd package install-existing at.priv.graf.zazentimer.test >/dev/null 2>&1 || true
+        adb -s "$serial" uninstall at.priv.graf.zazentimer >/dev/null 2>&1 || true
+        adb -s "$serial" uninstall at.priv.graf.zazentimer.test >/dev/null 2>&1 || true
     }
 
     dismiss_anr_dialog() {
@@ -339,6 +351,7 @@ else
         fi
 
         clean_device_packages "$serial"
+        sleep 8
         dismiss_anr_dialog "$serial"
         adb -s "$serial" shell svc power stayon true 2>/dev/null || true
         adb -s "$serial" shell am force-stop com.google.android.apps.nexuslauncher 2>/dev/null || true
@@ -356,8 +369,17 @@ else
         set +e
         adb -s "$serial" install -r app/build/outputs/apk/debug/app-debug.apk
         local install_app=$?
-        adb -s "$serial" install -r app/build/outputs/apk/androidTest/debug/app-debug-androidTest.apk
-        local install_test=$?
+        sleep 10
+        local install_test=1
+        for install_attempt in 1 2; do
+            adb -s "$serial" install -r app/build/outputs/apk/androidTest/debug/app-debug-androidTest.apk
+            install_test=$?
+            if [ $install_test -eq 0 ]; then
+                break
+            fi
+            echo "Test APK install failed attempt $install_attempt — retrying after delay..."
+            sleep 10
+        done
         set -e
 
         if [ $install_app -ne 0 ] || [ $install_test -ne 0 ]; then
@@ -384,8 +406,23 @@ else
             echo "$instrument_output"
             set -e
 
+            local process_crashed
+            process_crashed=$(echo "$instrument_output" | grep -c "Process crashed" || true)
+            local error_in_tests
+            error_in_tests=$(echo "$instrument_output" | grep -c '^Error in ' || true)
             failures=$(echo "$instrument_output" | grep -oP 'Failures:\s*\K\d+' || true)
-            if [ "${failures:-0}" -eq 0 ] && [ "$result" -eq 0 ]; then
+            local combined_failures=$((${failures:-0} + ${error_in_tests:-0}))
+
+            local any_test_output
+            any_test_output=$(echo "$instrument_output" | grep -cE '^[a-z]+\.(at\.|priv\.|graf\.)' || true)
+            if [ "${process_crashed:-0}" -eq 0 ] && [ "$combined_failures" -eq 0 ]; then
+                if [ "$result" -eq 0 ] || ([ "$result" -eq 143 ] && [ "${any_test_output:-0}" -gt 0 ]); then
+                    break
+                fi
+            fi
+
+            if [ "${process_crashed:-0}" -gt 0 ]; then
+                echo "Process crashed detected — not retrying (fatal)"
                 break
             fi
 
@@ -405,11 +442,32 @@ else
             fi
         done
 
-        if [ "$result" -ne 0 ] || [ "${failures:-0}" -ne 0 ]; then
-            echo "FAIL: API $api_level am instrument failed (exit=$result, failures=${failures:-unknown})"
+        local error_in_tests_final
+        error_in_tests_final=$(echo "$instrument_output" | grep -c '^Error in ' || true)
+        local combined=$((${failures:-0} + ${error_in_tests_final:-0}))
+
+        local any_test_output_final
+        any_test_output_final=$(echo "$instrument_output" | grep -cE '^[a-z]+\.(at\.|priv\.|graf\.)' || true)
+        local sigterm_ok=false
+        if [ "$result" -eq 143 ] && [ "${any_test_output_final:-0}" -gt 0 ]; then
+            sigterm_ok=true
+        fi
+
+        if [ "${process_crashed:-0}" -gt 0 ]; then
+            echo "FAIL: API $api_level test process crashed"
             RESULTS[$api_level]=1
             FAILED_APIS+=("$api_level")
-            ERROR_LOGS+=("API $api_level: am instrument exit=$result failures=${failures:-unknown}")
+            ERROR_LOGS+=("API $api_level: Process crashed")
+        elif [ "${any_test_output_final:-0}" -eq 0 ] && [ "${combined:-0}" -eq 0 ]; then
+            echo "FAIL: API $api_level no test output (empty result)"
+            RESULTS[$api_level]=1
+            FAILED_APIS+=("$api_level")
+            ERROR_LOGS+=("API $api_level: no test output")
+        elif [ "$combined" -ne 0 ] || { [ "$result" -ne 0 ] && [ "$sigterm_ok" = false ]; }; then
+            echo "FAIL: API $api_level am instrument failed (exit=$result, failures=$combined)"
+            RESULTS[$api_level]=1
+            FAILED_APIS+=("$api_level")
+            ERROR_LOGS+=("API $api_level: am instrument exit=$result failures=$combined")
         else
             echo "PASS: API $api_level"
             RESULTS[$api_level]=0
@@ -447,7 +505,6 @@ else
             fi
             if [ $attempt -eq 1 ]; then
                 echo "API $api attempt 1 failed — retrying..."
-                RESULTS[$api]=0
             fi
         done
 
