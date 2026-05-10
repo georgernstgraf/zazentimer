@@ -21,6 +21,7 @@ import androidx.test.espresso.matcher.ViewMatchers.withText
 import androidx.test.platform.app.InstrumentationRegistry.getInstrumentation
 import androidx.test.espresso.matcher.ViewMatchers.withEffectiveVisibility
 import androidx.test.uiautomator.UiDevice
+import androidx.test.uiautomator.UiSelector
 import androidx.test.espresso.matcher.ViewMatchers.Visibility
 import org.hamcrest.Matchers.allOf
 import org.hamcrest.Description
@@ -64,14 +65,27 @@ class ScreenRobot {
         try {
             val device = UiDevice.getInstance(getInstrumentation())
             val overflowButton = device.findObject(UiSelector().descriptionContains("More options"))
-            if (overflowButton.exists()) {
+            if (overflowButton.waitForExists(2000)) {
                 overflowButton.click()
+                SystemClock.sleep(1000)
             } else {
                 openActionBarOverflowOrOptionsMenu(getInstrumentation().targetContext)
             }
         } catch (e: Exception) {
             openActionBarOverflowOrOptionsMenu(getInstrumentation().targetContext)
         }
+        
+        val context = getInstrumentation().targetContext
+        val menuText = context.getString(textResId)
+        
+        // Try UI Automator first for the menu item
+        val device = UiDevice.getInstance(getInstrumentation())
+        val menuItem = device.findObject(UiSelector().text(menuText))
+        if (menuItem.waitForExists(2000)) {
+            menuItem.click()
+            return this
+        }
+
         // PITFALLS #81: popup menu animation not tracked by Espresso idle
         for (i in 0 until 10) {
             try {
