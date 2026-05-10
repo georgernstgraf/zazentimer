@@ -40,9 +40,16 @@ class MainPage {
     }
 
     fun selectSessionByPosition(position: Int): MainPage {
-        onView(withId(R.id.recycler_sessions))
-            .perform(RecyclerViewActions.actionOnItemAtPosition<RecyclerView.ViewHolder>(position, click()))
-        return this
+        for (i in 0 until 10) {
+            try {
+                onView(withId(R.id.recycler_sessions))
+                    .perform(RecyclerViewActions.actionOnItemAtPosition<RecyclerView.ViewHolder>(position, click()))
+                return this
+            } catch (e: Throwable) {
+                SystemClock.sleep(500)
+            }
+        }
+        throw AssertionError("Could not click session at position $position")
     }
 
     fun clickStartMeditation(): MeditationPage {
