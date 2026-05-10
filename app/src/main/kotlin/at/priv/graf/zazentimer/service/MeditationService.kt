@@ -14,8 +14,6 @@ import androidx.lifecycle.LifecycleService
 import androidx.lifecycle.lifecycleScope
 import at.priv.graf.zazentimer.R
 import at.priv.graf.zazentimer.ZazenTimerActivity
-import at.priv.graf.zazentimer.bo.Session
-import at.priv.graf.zazentimer.database.DbOperations
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -34,13 +32,14 @@ class MeditationService : LifecycleService() {
         val channel = NotificationChannel("zazen_timer_channel", "Meditation Timer", NotificationManager.IMPORTANCE_LOW)
         val manager = getSystemService(NotificationManager::class.java)
         manager?.createNotificationChannel(channel)
-        val notification = NotificationCompat
-            .Builder(baseContext, "zazen_timer_channel")
-            .setContentTitle(getString(R.string.notification_title))
-            .setContentText(getString(R.string.notification_text))
-            .setSmallIcon(R.drawable.notify)
-            .setOngoing(true)
-            .build()
+        val notification =
+            NotificationCompat
+                .Builder(baseContext, "zazen_timer_channel")
+                .setContentTitle(getString(R.string.notification_title))
+                .setContentText(getString(R.string.notification_text))
+                .setSmallIcon(R.drawable.notify)
+                .setOngoing(true)
+                .build()
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
             startForeground(1, notification, ServiceInfo.FOREGROUND_SERVICE_TYPE_SPECIAL_USE)
         } else {
@@ -90,10 +89,11 @@ class MeditationService : LifecycleService() {
 
     fun pauseMeditation(): Boolean {
         Log.d(TAG, "pauseMeditation")
-        val meditation = runningMeditation ?: run {
-            Log.d(TAG, "pauseMeditation(): No meditation seems to be running!")
-            return true
-        }
+        val meditation =
+            runningMeditation ?: run {
+                Log.d(TAG, "pauseMeditation(): No meditation seems to be running!")
+                return true
+            }
         meditation.pause()
         val notification = createNotification() ?: return true
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {

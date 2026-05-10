@@ -85,9 +85,10 @@ class Audio(
         if (this.player != null) {
             stopAndRelease()
         }
-        this.player = withContext(Dispatchers.IO) {
-            bell?.let { preparePlayer(it, volume) }
-        }
+        this.player =
+            withContext(Dispatchers.IO) {
+                bell?.let { preparePlayer(it, volume) }
+            }
         this.player?.let { p ->
             this.playing = true
             Log.d(TAG, "Start playing Bell")

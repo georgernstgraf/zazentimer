@@ -19,12 +19,7 @@ import at.priv.graf.zazentimer.bo.Section
 import at.priv.graf.zazentimer.bo.Session
 import at.priv.graf.zazentimer.database.DbOperations
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.Job
-import kotlinx.coroutines.isActive
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 @HiltViewModel
@@ -133,15 +128,15 @@ class MeditationViewModel
             )
         }
 
-    public fun startUpdateThread() {
-        this.timerViewInitialized = false
-    }
-
-    public fun stopUpdateThread(emitIdle: Boolean = true) {
-        if (emitIdle) {
-            emitIdleState()
+        public fun startUpdateThread() {
+            this.timerViewInitialized = false
         }
-    }
+
+        public fun stopUpdateThread(emitIdle: Boolean = true) {
+            if (emitIdle) {
+                emitIdleState()
+            }
+        }
 
         public fun emitIdleState() {
             viewModelScope.launch {

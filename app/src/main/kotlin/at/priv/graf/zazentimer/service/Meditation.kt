@@ -9,7 +9,6 @@ import android.media.AudioManager
 import android.os.Build
 import android.os.PowerManager
 import android.util.Log
-import at.priv.graf.zazentimer.R
 import at.priv.graf.zazentimer.ZazenTimerActivity
 import at.priv.graf.zazentimer.audio.Audio
 import at.priv.graf.zazentimer.audio.BellCollection
@@ -75,12 +74,13 @@ class Meditation(
 
     private fun startTicker() {
         tickerJob?.cancel()
-        tickerJob = scope.launch {
-            while (isActive) {
-                repository.onMeditationUpdated()
-                delay(1000)
+        tickerJob =
+            scope.launch {
+                while (isActive) {
+                    repository.onMeditationUpdated()
+                    delay(1000)
+                }
             }
-        }
     }
 
     private fun stopTicker() {

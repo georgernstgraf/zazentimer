@@ -6,8 +6,6 @@ import at.priv.graf.zazentimer.bo.Section
 import at.priv.graf.zazentimer.bo.Session
 import at.priv.graf.zazentimer.service.IdlingResourceManager
 import dagger.hilt.android.qualifiers.ApplicationContext
-import kotlinx.coroutines.withContext
-import kotlinx.coroutines.Dispatchers
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -70,64 +68,71 @@ class DbOperations
 
         fun isConnected(): Boolean = appDb?.isOpen == true
 
-        suspend fun readSession(id: Int): Session? = withIdling {
-            val dao = sessionDao ?: return@withIdling null
-            val entity = dao.getSessionById(id)
-            entity?.let { toBo(it) }
-        }
+        suspend fun readSession(id: Int): Session? =
+            withIdling {
+                val dao = sessionDao ?: return@withIdling null
+                val entity = dao.getSessionById(id)
+                entity?.let { toBo(it) }
+            }
 
-        suspend fun updateSession(session: Session) = withIdling {
-            val entity = toEntity(session)
-            sessionDao?.update(entity)
-        }
+        suspend fun updateSession(session: Session) =
+            withIdling {
+                val entity = toEntity(session)
+                sessionDao?.update(entity)
+            }
 
-        suspend fun deleteSession(id: Int) = withIdling {
-            sessionDao?.deleteById(id)
-        }
+        suspend fun deleteSession(id: Int) =
+            withIdling {
+                sessionDao?.deleteById(id)
+            }
 
         suspend fun duplicateSession(
             sourceId: Int,
             newName: String,
-        ): Int = withIdling {
-            val sDao = sessionDao ?: return@withIdling -1
-            val secDao = sectionDao ?: return@withIdling -1
-            val sourceEntity = sDao.getSessionById(sourceId) ?: return@withIdling -1
-            val source = toBo(sourceEntity)
-            source.name = newName
-            source.id = 0
-            val sectionEntities = secDao.getSectionsForSession(sourceId)
-            val newEntity = toEntity(source)
-            val newId = sDao.insert(newEntity)
-            source.id = newId.toInt()
-            for (se in sectionEntities) {
-                val section = toBo(se)
-                section.id = 0
-                section.fkSession = source.id
-                if (section.rank == -1) {
-                    val maxRank = secDao.getMaxRank(source.id)
-                    section.rank = (maxRank ?: 0) + 1
+        ): Int =
+            withIdling {
+                val sDao = sessionDao ?: return@withIdling -1
+                val secDao = sectionDao ?: return@withIdling -1
+                val sourceEntity = sDao.getSessionById(sourceId) ?: return@withIdling -1
+                val source = toBo(sourceEntity)
+                source.name = newName
+                source.id = 0
+                val sectionEntities = secDao.getSectionsForSession(sourceId)
+                val newEntity = toEntity(source)
+                val newId = sDao.insert(newEntity)
+                source.id = newId.toInt()
+                for (se in sectionEntities) {
+                    val section = toBo(se)
+                    section.id = 0
+                    section.fkSession = source.id
+                    if (section.rank == -1) {
+                        val maxRank = secDao.getMaxRank(source.id)
+                        section.rank = (maxRank ?: 0) + 1
+                    }
+                    val sectionEntity = toEntity(section)
+                    val sid = secDao.insert(sectionEntity)
+                    section.id = sid.toInt()
                 }
-                val sectionEntity = toEntity(section)
-                val sid = secDao.insert(sectionEntity)
-                section.id = sid.toInt()
+                source.id
             }
-            source.id
-        }
 
-        suspend fun deleteSection(id: Long) = withIdling {
-            sectionDao?.deleteById(id)
-        }
+        suspend fun deleteSection(id: Long) =
+            withIdling {
+                sectionDao?.deleteById(id)
+            }
 
-        suspend fun readSection(id: Int): Section? = withIdling {
-            val dao = sectionDao ?: return@withIdling null
-            val entity = dao.getSectionById(id)
-            entity?.let { toBo(it) }
-        }
+        suspend fun readSection(id: Int): Section? =
+            withIdling {
+                val dao = sectionDao ?: return@withIdling null
+                val entity = dao.getSectionById(id)
+                entity?.let { toBo(it) }
+            }
 
-        suspend fun updateSection(section: Section) = withIdling {
-            val entity = toEntity(section)
-            sectionDao?.update(entity)
-        }
+        suspend fun updateSection(section: Section) =
+            withIdling {
+                val entity = toEntity(section)
+                sectionDao?.update(entity)
+            }
 
         suspend fun switchPositions(
             id1: Long,
@@ -159,32 +164,35 @@ class DbOperations
             section.id = newId.toInt()
         }
 
-        suspend fun insertSession(session: Session) = withIdling {
-            val dao = sessionDao ?: return@withIdling
-            val entity = toEntity(session)
-            val newId = dao.insert(entity)
-            session.id = newId.toInt()
-        }
-
-        suspend fun readSections(sessionId: Int): Array<Section> = withIdling {
-            val dao = sectionDao ?: return@withIdling emptyArray()
-            val entities = dao.getSectionsForSession(sessionId)
-            val result = ArrayList<Section>()
-            for (entity in entities) {
-                result.add(toBo(entity))
+        suspend fun insertSession(session: Session) =
+            withIdling {
+                val dao = sessionDao ?: return@withIdling
+                val entity = toEntity(session)
+                val newId = dao.insert(entity)
+                session.id = newId.toInt()
             }
-            result.toTypedArray()
-        }
 
-        suspend fun readSessions(): Array<Session> = withIdling {
-            val dao = sessionDao ?: return@withIdling emptyArray()
-            val entities = dao.getAllSessions()
-            val result = ArrayList<Session>()
-            for (entity in entities) {
-                result.add(toBo(entity))
+        suspend fun readSections(sessionId: Int): Array<Section> =
+            withIdling {
+                val dao = sectionDao ?: return@withIdling emptyArray()
+                val entities = dao.getSectionsForSession(sessionId)
+                val result = ArrayList<Section>()
+                for (entity in entities) {
+                    result.add(toBo(entity))
+                }
+                result.toTypedArray()
             }
-            result.toTypedArray()
-        }
+
+        suspend fun readSessions(): Array<Session> =
+            withIdling {
+                val dao = sessionDao ?: return@withIdling emptyArray()
+                val entities = dao.getAllSessions()
+                val result = ArrayList<Session>()
+                for (entity in entities) {
+                    result.add(toBo(entity))
+                }
+                result.toTypedArray()
+            }
 
         companion object {
             private fun toEntity(bo: Session): SessionEntity {

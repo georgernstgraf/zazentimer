@@ -293,10 +293,11 @@ class ZazenTimerActivity :
     }
 
     fun showAboutScreen() {
-        val message = "Commit: ${BuildConfig.GIT_HASH}<br><br>" +
-            "${getString(R.string.about1)}<br><br>" +
-            "${getString(R.string.about2)}<br><br>" +
-            "${getString(R.string.about3)}"
+        val message =
+            "Commit: ${BuildConfig.GIT_HASH}<br><br>" +
+                "${getString(R.string.about1)}<br><br>" +
+                "${getString(R.string.about2)}<br><br>" +
+                "${getString(R.string.about3)}"
         val textView = TextView(this)
         textView.text = Html.fromHtml(message, Html.FROM_HTML_MODE_COMPACT)
         textView.movementMethod = LinkMovementMethod.getInstance()

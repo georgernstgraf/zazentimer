@@ -40,7 +40,8 @@ class SessionCrudTest {
         var activityRef: ZazenTimerActivity? = null
         activityRule.scenario.onActivity { activity ->
             activityRef = activity
-            ZazenTimerActivity.getPreferences(activity)
+            ZazenTimerActivity
+                .getPreferences(activity)
                 .edit()
                 .putBoolean(ZazenTimerActivity.PREF_KEY_SHOW_SESSION_EDIT_HELP_V13, true)
                 .apply()

@@ -4,8 +4,6 @@ import android.content.Intent
 import android.content.SharedPreferences
 import android.os.SystemClock
 import android.view.MotionEvent
-import androidx.test.uiautomator.UiDevice
-import androidx.test.uiautomator.UiSelector
 import android.widget.SeekBar
 import androidx.preference.PreferenceManager
 import androidx.test.espresso.Espresso
@@ -23,6 +21,8 @@ import androidx.test.ext.junit.rules.ActivityScenarioRule
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.filters.LargeTest
 import androidx.test.platform.app.InstrumentationRegistry
+import androidx.test.uiautomator.UiDevice
+import androidx.test.uiautomator.UiSelector
 import at.priv.graf.zazentimer.screens.MainPage
 import at.priv.graf.zazentimer.screens.SettingsPage
 import dagger.hilt.android.testing.HiltAndroidRule

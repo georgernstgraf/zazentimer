@@ -10,10 +10,7 @@ import androidx.test.filters.LargeTest
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.uiautomator.By
 import androidx.test.uiautomator.UiDevice
-import androidx.test.uiautomator.UiObject
 import androidx.test.uiautomator.UiSelector
-import androidx.test.uiautomator.Until
-import at.priv.graf.zazentimer.fragments.MeditationFragment
 import at.priv.graf.zazentimer.screens.MainPage
 import at.priv.graf.zazentimer.utils.MeditationServiceIdlingResource
 import dagger.hilt.android.testing.HiltAndroidRule
@@ -90,11 +87,21 @@ class MeditationServiceTest {
         for (i in 0 until 5) {
             try {
                 waitForStopButton()
-                val stopBtn = device.findObject(androidx.test.uiautomator.UiSelector().resourceId("at.priv.graf.zazentimer:id/but_stop"))
+                val stopBtn =
+                    device.findObject(
+                        androidx.test.uiautomator
+                            .UiSelector()
+                            .resourceId("at.priv.graf.zazentimer:id/but_stop"),
+                    )
                 if (stopBtn.exists()) {
                     stopBtn.click()
                 } else {
-                    val stopDesc = device.findObject(androidx.test.uiautomator.UiSelector().description("Stop"))
+                    val stopDesc =
+                        device.findObject(
+                            androidx.test.uiautomator
+                                .UiSelector()
+                                .description("Stop"),
+                        )
                     if (stopDesc.exists()) stopDesc.click()
                 }
 
@@ -112,26 +119,43 @@ class MeditationServiceTest {
     }
 
     private fun clickByTextContainsWithUiAutomator(text: String) {
-        androidx.test.espresso.Espresso.onView(
-            androidx.test.espresso.matcher.ViewMatchers.withId(android.R.id.button1)
-        ).perform(androidx.test.espresso.action.ViewActions.click())
+        androidx.test.espresso.Espresso
+            .onView(
+                androidx.test.espresso.matcher.ViewMatchers
+                    .withId(android.R.id.button1),
+            ).perform(
+                androidx.test.espresso.action.ViewActions
+                    .click(),
+            )
     }
 
     // Helper removed to test UI button click properly
 
     private fun clickCancelDialog() {
-        val cancelBtn = device.findObject(androidx.test.uiautomator.UiSelector().resourceId("android:id/button2"))
+        val cancelBtn =
+            device.findObject(
+                androidx.test.uiautomator
+                    .UiSelector()
+                    .resourceId("android:id/button2"),
+            )
         if (cancelBtn.exists()) {
             cancelBtn.click()
         } else {
-            val cancelText = device.findObject(androidx.test.uiautomator.UiSelector().textMatches("(?i)cancel|abbrechen"))
+            val cancelText =
+                device.findObject(
+                    androidx.test.uiautomator
+                        .UiSelector()
+                        .textMatches("(?i)cancel|abbrechen"),
+                )
             if (cancelText.exists()) cancelText.click()
         }
     }
 
-    private fun isDialogVisible(titleText: String): Boolean {
-        return device.hasObject(androidx.test.uiautomator.By.text(titleText))
-    }
+    private fun isDialogVisible(titleText: String): Boolean =
+        device.hasObject(
+            androidx.test.uiautomator.By
+                .text(titleText),
+        )
 
     private fun waitForDialog(titleText: String) {
         for (i in 0 until 50) {
