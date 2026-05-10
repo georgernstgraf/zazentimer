@@ -418,6 +418,11 @@ else
         kill_emulator "$serial"
     }
 
+    # Note: The Gradle test runner is used for API ≤ zazentimer.test.gradleMaxApi (currently 30).
+    # For higher APIs (≥ 31) we use am instrument because PreFlightRule is applied in
+    # HiltTestRunner.onStart(), which integrates seamlessly with the am instrument path.
+    # If desired, the threshold can be raised to 32 to use Gradle runner + PreFlightRule
+    # on API 31-32 by setting zazentimer.test.gradleMaxApi=32 in gradle.properties.
     get_test_method() {
         local api=$1
         if [ "$api" -le "$GRADLE_MAX_API" ]; then
