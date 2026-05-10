@@ -8,6 +8,7 @@ import androidx.test.espresso.action.ViewActions.typeText
 import androidx.test.espresso.contrib.RecyclerViewActions.actionOnItemAtPosition
 import androidx.test.espresso.matcher.ViewMatchers.withId
 import at.priv.graf.zazentimer.R
+import at.priv.graf.zazentimer.utils.ScreenRobot
 
 class SessionEditPage {
     private val robot = ScreenRobot()

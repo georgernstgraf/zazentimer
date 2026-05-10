@@ -11,6 +11,7 @@ import androidx.test.espresso.contrib.RecyclerViewActions
 import androidx.test.espresso.matcher.ViewMatchers.withId
 import androidx.test.espresso.matcher.ViewMatchers.withText
 import at.priv.graf.zazentimer.R
+import at.priv.graf.zazentimer.utils.ScreenRobot
 
 class SettingsPage {
     private val robot = ScreenRobot()

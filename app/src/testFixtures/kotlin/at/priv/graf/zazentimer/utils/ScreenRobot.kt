@@ -1,4 +1,4 @@
-package at.priv.graf.zazentimer.screens
+package at.priv.graf.zazentimer.utils
 
 import android.os.SystemClock
 import android.view.View
@@ -74,10 +74,10 @@ class ScreenRobot {
         } catch (e: Exception) {
             openActionBarOverflowOrOptionsMenu(getInstrumentation().targetContext)
         }
-        
+
         val context = getInstrumentation().targetContext
         val menuText = context.getString(textResId)
-        
+
         // Try UI Automator first for the menu item
         val device = UiDevice.getInstance(getInstrumentation())
         val menuItem = device.findObject(UiSelector().text(menuText))

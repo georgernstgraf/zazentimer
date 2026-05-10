@@ -79,6 +79,10 @@ android {
 
     // Removed explicitApiWarning() as it is unnecessary for an application
     // and causes hundreds of non-idiomatic warnings.
+
+    testFixtures {
+        enable = true
+    }
 }
 
 ktlint {
@@ -135,4 +139,12 @@ dependencies {
     androidTestImplementation("androidx.test.uiautomator:uiautomator:2.3.0")
     implementation("androidx.test.espresso:espresso-idling-resource:3.7.0")
     androidTestUtil("androidx.test:orchestrator:1.6.1")
+
+    testFixturesImplementation("androidx.test.espresso:espresso-core:3.7.0")
+    testFixturesImplementation("androidx.test.espresso:espresso-contrib:3.7.0")
+    testFixturesImplementation("androidx.test.uiautomator:uiautomator:2.3.0")
+    testFixturesImplementation("androidx.recyclerview:recyclerview:1.4.0")
+
+    testImplementation(testFixtures(project(":app")))
+    androidTestImplementation(testFixtures(project(":app")))
 }

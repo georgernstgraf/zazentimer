@@ -10,6 +10,7 @@ import androidx.test.espresso.action.ViewActions.replaceText
 import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
 import androidx.test.espresso.matcher.ViewMatchers.withId
 import at.priv.graf.zazentimer.R
+import at.priv.graf.zazentimer.utils.ScreenRobot
 import org.hamcrest.Matcher
 
 class SectionEditPage {

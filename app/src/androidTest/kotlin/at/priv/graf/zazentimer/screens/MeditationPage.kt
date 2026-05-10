@@ -2,6 +2,7 @@ package at.priv.graf.zazentimer.screens
 
 import android.os.SystemClock
 import at.priv.graf.zazentimer.R
+import at.priv.graf.zazentimer.utils.ScreenRobot
 
 class MeditationPage {
     private val robot = ScreenRobot()
