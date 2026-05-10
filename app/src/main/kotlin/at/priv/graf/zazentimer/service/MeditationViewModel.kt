@@ -22,6 +22,7 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
+@Suppress("TooManyFunctions")
 @HiltViewModel
 class MeditationViewModel
     @Inject
@@ -72,13 +73,13 @@ class MeditationViewModel
             if (this.serviceIntent == null) {
                 this.serviceIntent = Intent(app, MeditationService::class.java)
             }
+            val intent = this.serviceIntent ?: return
             val conn = this.serviceConnection
             if (conn == null) {
                 Log.d(TAG, "serviceConnection is null - making fresh connection service")
-                val newConn = ServCon(app)
+                val newConn = ServCon()
                 this.serviceConnection = newConn
                 newConn.setRunOnConnect(RunOnConnect(h, callback))
-                val intent = this.serviceIntent ?: return
                 app.bindService(intent, newConn, Context.BIND_AUTO_CREATE)
                 return
             }
@@ -87,7 +88,6 @@ class MeditationViewModel
                 h.post(callback)
             } else {
                 Log.d(TAG, "service comm existing, but service not bound - rebinding")
-                val intent = this.serviceIntent ?: return
                 app.bindService(intent, conn, Context.BIND_AUTO_CREATE)
             }
         }
@@ -192,8 +192,8 @@ class MeditationViewModel
                 val totalSeconds = dbOperations.readSections(selectedSessionId).sumOf { it.duration }
                 wakeLock = null
                 wakeLock = powerManager.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, "ScreenOnWakeLock")
-                val timeoutSeconds = totalSeconds + 60
-                wakeLock?.acquire(timeoutSeconds * 1000L)
+                val timeoutSeconds = totalSeconds + WAKELOCK_TIMEOUT_BUFFER_SECONDS
+                wakeLock?.acquire(timeoutSeconds * MILLIS_PER_SECOND)
                 Log.i(TAG, "Acquired WakeLock to keep screen on for $timeoutSeconds seconds")
             }
         }
@@ -204,7 +204,7 @@ class MeditationViewModel
                     if (lock.isHeld) {
                         lock.release()
                     }
-                } catch (e: Exception) {
+                } catch (e: IllegalArgumentException) {
                     Log.d(TAG, "wakeLock release error", e)
                 }
                 wakeLock = null
@@ -238,5 +238,7 @@ class MeditationViewModel
 
         companion object {
             private const val TAG = "ZMT_MeditationViewModel"
+            private const val WAKELOCK_TIMEOUT_BUFFER_SECONDS = 60
+            private const val MILLIS_PER_SECOND = 1000L
         }
     }

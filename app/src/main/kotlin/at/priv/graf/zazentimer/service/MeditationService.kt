@@ -18,6 +18,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
+@Suppress("TooManyFunctions")
 @AndroidEntryPoint
 class MeditationService : LifecycleService() {
     @Inject
@@ -89,19 +90,23 @@ class MeditationService : LifecycleService() {
 
     fun pauseMeditation(): Boolean {
         Log.d(TAG, "pauseMeditation")
-        val meditation =
-            runningMeditation ?: run {
-                Log.d(TAG, "pauseMeditation(): No meditation seems to be running!")
-                return true
+        val meditation = runningMeditation
+        var result = true
+        if (meditation != null) {
+            meditation.pause()
+            val notification = createNotification()
+            if (notification != null) {
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+                    startForeground(1, notification, ServiceInfo.FOREGROUND_SERVICE_TYPE_SPECIAL_USE)
+                } else {
+                    startForeground(1, notification)
+                }
+                result = meditation.isPaused()
             }
-        meditation.pause()
-        val notification = createNotification() ?: return true
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
-            startForeground(1, notification, ServiceInfo.FOREGROUND_SERVICE_TYPE_SPECIAL_USE)
         } else {
-            startForeground(1, notification)
+            Log.d(TAG, "pauseMeditation(): No meditation seems to be running!")
         }
-        return meditation.isPaused()
+        return result
     }
 
     fun startMeditation(i: Int) {
@@ -155,7 +160,7 @@ class MeditationService : LifecycleService() {
             text = getString(R.string.notification_text_paused)
         }
         val intent = Intent(this, ZazenTimerActivity::class.java)
-        intent.addFlags(536870912)
+        intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP)
         intent.setClass(this, ZazenTimerActivity::class.java)
         val activity = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_IMMUTABLE)
         val channel = NotificationChannel("zazen_timer_channel", "Meditation Timer", NotificationManager.IMPORTANCE_LOW)
@@ -172,7 +177,6 @@ class MeditationService : LifecycleService() {
     }
 
     companion object {
-        private const val NOTIFY_MEDITATION_RUNNING = 1
         private const val TAG = "ZMT_MeditationService"
         const val ZAZENTIMER_SESSION_ENDED: String = "ZAZENTIMER_SESSION_ENDED"
         const val ACTION_SECTION_ENDED: String = "ZAZENTIMER_SECTION_ENDED"

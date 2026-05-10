@@ -15,7 +15,7 @@ class MessageView(
 ) {
     private var contentText: String? = null
     private var messageParent: ViewGroup? = null
-    private var messageView: ViewGroup? = null
+    private var messageViewContainer: ViewGroup? = null
     private var onOkListener: Runnable? = null
     private var titleText: String? = null
 
@@ -32,16 +32,17 @@ class MessageView(
     }
 
     fun show() {
-        if (this.messageView != null) {
+        if (this.messageViewContainer != null) {
             Log.d(TAG, "message already visible")
             return
         }
-        val parent = activity.findViewById(android.R.id.content) as? ViewGroup ?: return
+        val parent = activity.findViewById(android.R.id.content) as? ViewGroup
+        val view = parent?.let { activity.layoutInflater.inflate(R.layout.message_view, it, false) as? ViewGroup }
+        if (parent == null || view == null) return
         this.messageParent = parent
-        val view = activity.layoutInflater.inflate(R.layout.message_view, parent, false) as? ViewGroup ?: return
-        this.messageView = view
-        if (Build.VERSION.SDK_INT >= 21) {
-            view.elevation = 50.0f
+        this.messageViewContainer = view
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            view.elevation = ELEVATION_DP
         }
         val textView = view.findViewById<TextView>(R.id.message_title)
         val textView2 = view.findViewById<TextView>(R.id.message_text)
@@ -53,29 +54,34 @@ class MessageView(
         objectAnimator.target = view
         objectAnimator.setPropertyName("alpha")
         objectAnimator.setFloatValues(0.0f, 1.0f)
-        objectAnimator.duration = 500L
+        objectAnimator.duration = ANIM_DURATION_MS
         objectAnimator.start()
         parent.addView(view)
         button.setOnClickListener {
             val objectAnimator2 = ObjectAnimator()
-            objectAnimator2.target = this@MessageView.messageView
+            objectAnimator2.target = this@MessageView.messageViewContainer
             objectAnimator2.setPropertyName("alpha")
             objectAnimator2.setFloatValues(1.0f, 0.0f)
-            objectAnimator2.duration = 500L
+            objectAnimator2.duration = ANIM_DURATION_MS
             objectAnimator2.addListener(
                 object : Animator.AnimatorListener {
                     override fun onAnimationCancel(animator: Animator) {
+                        // no-op: animation lifecycle
                     }
 
                     override fun onAnimationRepeat(animator: Animator) {
+                        // no-op: animation lifecycle
                     }
 
                     override fun onAnimationStart(animator: Animator) {
+                        // no-op: animation lifecycle
                     }
 
                     override fun onAnimationEnd(animator: Animator) {
-                        this@MessageView.messageParent?.removeView(this@MessageView.messageView)
-                        this@MessageView.messageView = null
+                        this@MessageView.messageParent?.removeView(
+                            this@MessageView.messageViewContainer,
+                        )
+                        this@MessageView.messageViewContainer = null
                         this@MessageView.onOkListener?.run()
                     }
                 },
@@ -86,5 +92,7 @@ class MessageView(
 
     companion object {
         private const val TAG = "ZMT_MessageView"
+        private const val ELEVATION_DP = 50.0f
+        private const val ANIM_DURATION_MS = 500L
     }
 }

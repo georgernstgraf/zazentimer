@@ -27,5 +27,8 @@ object SectionArcCalculator {
         )
     }
 
-    public fun emptyState(sessionName: String = ""): MeditationUiState.Idle = MeditationUiState.Idle(sessionName = sessionName)
+    public fun emptyState(sessionName: String = ""): MeditationUiState.Idle =
+        MeditationUiState.Idle(
+            sessionName = sessionName,
+        )
 }

@@ -18,6 +18,7 @@ import androidx.room.PrimaryKey
     ],
     indices = [Index("fk_session")],
 )
+@Suppress("ConstructorParameterNaming")
 data class SectionEntity(
     @PrimaryKey(autoGenerate = true)
     var _id: Int = 0,

@@ -10,6 +10,7 @@ import at.priv.graf.zazentimer.bo.Bell
 import at.priv.graf.zazentimer.bo.Section
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
+import java.io.IOException
 
 class Audio(
     private val context: Context,
@@ -37,6 +38,7 @@ class Audio(
         Log.d(TAG, "preparing Audio Player")
         val uri: Uri = bell.uri
         val mediaPlayer = MediaPlayer()
+        var result: MediaPlayer? = null
         try {
             mediaPlayer.setAudioAttributes(
                 AudioAttributes
@@ -47,13 +49,17 @@ class Audio(
             )
             mediaPlayer.setDataSource(this.context, uri)
             mediaPlayer.prepare()
-            val f = volume / 100.0f
+            val f = volume / VOLUME_SCALE
             mediaPlayer.setVolume(f, f)
-            return mediaPlayer
-        } catch (e: Exception) {
+            result = mediaPlayer
+        } catch (e: IOException) {
             Log.e(TAG, "Error creating MediaPlayer", e)
-            return null
+        } catch (e: IllegalStateException) {
+            Log.e(TAG, "Error creating MediaPlayer", e)
+        } catch (e: SecurityException) {
+            Log.e(TAG, "Error creating MediaPlayer", e)
         }
+        return result
     }
 
     private fun stopAndRelease() {
@@ -62,12 +68,12 @@ class Audio(
             try {
                 p.stop()
                 p.reset()
-            } catch (e: Exception) {
+            } catch (e: IllegalStateException) {
                 Log.d(TAG, e.message ?: "")
             }
             try {
                 p.release()
-            } catch (e: Exception) {
+            } catch (e: IllegalStateException) {
                 Log.d(TAG, e.message ?: "")
             }
             this.player = null
@@ -105,7 +111,7 @@ class Audio(
     fun getStreamVolume(): Int {
         val streamMaxVolume = this.manager.getStreamMaxVolume(AudioManager.STREAM_ALARM)
         val streamVolume = this.manager.getStreamVolume(AudioManager.STREAM_ALARM).toFloat()
-        val round = Math.round((100.0f * streamVolume) / streamMaxVolume)
+        val round = Math.round((VOLUME_SCALE * streamVolume) / streamMaxVolume)
         Log.d(TAG, "getStreamVolume: vol=$streamVolume max=$streamMaxVolume = $round")
         return round
     }
@@ -118,5 +124,7 @@ class Audio(
 
     companion object {
         private const val TAG = "ZMT_Audio"
+
+        private const val VOLUME_SCALE = 100.0f
     }
 }

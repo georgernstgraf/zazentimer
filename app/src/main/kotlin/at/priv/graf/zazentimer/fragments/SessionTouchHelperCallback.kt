@@ -32,6 +32,7 @@ class SessionTouchHelperCallback(
         @NonNull viewHolder: RecyclerView.ViewHolder,
         direction: Int,
     ) {
+        // no-op: drag-only mode
     }
 
     override fun isLongPressDragEnabled(): Boolean = true

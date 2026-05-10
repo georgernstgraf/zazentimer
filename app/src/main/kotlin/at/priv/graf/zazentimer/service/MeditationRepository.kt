@@ -3,9 +3,6 @@ package at.priv.graf.zazentimer.service
 import at.priv.graf.zazentimer.bo.Section
 import at.priv.graf.zazentimer.bo.Session
 import at.priv.graf.zazentimer.database.DbOperations
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -19,8 +16,6 @@ class MeditationRepository
         private val dbOperations: DbOperations,
         val clock: ZazenClock,
     ) {
-        private val scope = CoroutineScope(SupervisorJob() + Dispatchers.Main)
-
         private val _meditationState = MutableStateFlow<MeditationUiState>(MeditationUiState.Idle())
         val meditationState: StateFlow<MeditationUiState> = _meditationState.asStateFlow()
 

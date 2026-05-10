@@ -7,6 +7,7 @@ import androidx.room.RoomDatabase
 import androidx.room.migration.Migration
 import androidx.sqlite.db.SupportSQLiteDatabase
 
+@Suppress("MagicNumber")
 @Database(entities = [SessionEntity::class, SectionEntity::class], version = 5, exportSchema = false)
 abstract class AppDatabase : RoomDatabase() {
     abstract fun sessionDao(): SessionDao
@@ -16,31 +17,56 @@ abstract class AppDatabase : RoomDatabase() {
     companion object {
         const val DATABASE_NAME = "zentimer"
 
+        const val VERSION_1 = 1
+        const val VERSION_2 = 2
+        const val VERSION_3 = 3
+        const val VERSION_4 = 4
+        const val VERSION_5 = 5
+
+        const val DEFAULT_VOLUME = 100
+
         val MIGRATION_1_2 =
-            object : Migration(1, 2) {
+            object : Migration(VERSION_1, VERSION_2) {
                 override fun migrate(
                     @NonNull db: SupportSQLiteDatabase,
                 ) {
                     db.execSQL(
-                        "CREATE TABLE IF NOT EXISTS settings(_id INTEGER PRIMARY KEY AUTOINCREMENT, param TEXT NOT NULL, value TEXT NOT NULL, def TEXT NOT NULL)",
+                        "CREATE TABLE IF NOT EXISTS settings(" +
+                            "_id INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                            "param TEXT NOT NULL, " +
+                            "value TEXT NOT NULL, " +
+                            "def TEXT NOT NULL)",
                     )
-                    db.execSQL("INSERT OR IGNORE INTO settings(param,value,def) VALUES('B_PHONE_OFF_DURING_MEDITATION', '1', '1')")
-                    db.execSQL("INSERT OR IGNORE INTO settings(param,value,def) VALUES('B_NOTIFICATIONS_OFF_DURING_MEDITATION', '1', '1')")
-                    db.execSQL("INSERT OR IGNORE INTO settings(param,value,def) VALUES('I_LAST_SELECTED_SESSION', '-1', '-1')")
-                    db.execSQL("INSERT OR IGNORE INTO settings(param,value,def) VALUES('I_BELL_VOLUME', '20', '20')")
+                    db.execSQL(
+                        "INSERT OR IGNORE INTO settings(param,value,def) " +
+                            "VALUES('B_PHONE_OFF_DURING_MEDITATION', '1', '1')",
+                    )
+                    db.execSQL(
+                        "INSERT OR IGNORE INTO settings(param,value,def) " +
+                            "VALUES('B_NOTIFICATIONS_OFF_DURING_MEDITATION', '1', '1')",
+                    )
+                    db.execSQL(
+                        "INSERT OR IGNORE INTO settings(param,value,def) " +
+                            "VALUES('I_LAST_SELECTED_SESSION', '-1', '-1')",
+                    )
+                    db.execSQL(
+                        "INSERT OR IGNORE INTO settings(param,value,def) " +
+                            "VALUES('I_BELL_VOLUME', '20', '20')",
+                    )
                 }
             }
 
         val MIGRATION_2_3 =
-            object : Migration(2, 3) {
+            object : Migration(VERSION_2, VERSION_3) {
                 override fun migrate(
                     @NonNull db: SupportSQLiteDatabase,
                 ) {
+                    // No-op: placeholder migration, no schema changes needed
                 }
             }
 
         val MIGRATION_3_4 =
-            object : Migration(3, 4) {
+            object : Migration(VERSION_3, VERSION_4) {
                 override fun migrate(
                     @NonNull db: SupportSQLiteDatabase,
                 ) {
@@ -55,47 +81,84 @@ abstract class AppDatabase : RoomDatabase() {
                     }
                     cursor.close()
                     if (!hasVolume) {
-                        db.execSQL("ALTER TABLE sections ADD COLUMN volume INTEGER DEFAULT 100")
+                        db.execSQL(
+                            "ALTER TABLE sections ADD COLUMN volume " +
+                                "INTEGER DEFAULT $DEFAULT_VOLUME",
+                        )
                     }
 
                     db.execSQL(
-                        "CREATE TABLE sessions_new (_id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT NOT NULL, description TEXT NOT NULL)",
+                        "CREATE TABLE sessions_new (" +
+                            "_id INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                            "name TEXT NOT NULL, " +
+                            "description TEXT NOT NULL)",
                     )
                     db.execSQL("INSERT INTO sessions_new SELECT * FROM sessions")
                     db.execSQL("DROP TABLE sessions")
                     db.execSQL("ALTER TABLE sessions_new RENAME TO sessions")
 
                     db.execSQL(
-                        "CREATE TABLE sections_new (_id INTEGER PRIMARY KEY AUTOINCREMENT, fk_session INTEGER NOT NULL, name TEXT NOT NULL, duration INTEGER NOT NULL, bell INTEGER NOT NULL, rank INTEGER, bellcount INTEGER, bellpause INTEGER, belluri TEXT, volume INTEGER DEFAULT 100, FOREIGN KEY (fk_session) REFERENCES sessions(_id) ON DELETE CASCADE)",
+                        "CREATE TABLE sections_new (" +
+                            "_id INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                            "fk_session INTEGER NOT NULL, " +
+                            "name TEXT NOT NULL, " +
+                            "duration INTEGER NOT NULL, " +
+                            "bell INTEGER NOT NULL, " +
+                            "rank INTEGER, " +
+                            "bellcount INTEGER, " +
+                            "bellpause INTEGER, " +
+                            "belluri TEXT, " +
+                            "volume INTEGER DEFAULT $DEFAULT_VOLUME, " +
+                            "FOREIGN KEY (fk_session) REFERENCES sessions(_id) ON DELETE CASCADE)",
                     )
                     db.execSQL("INSERT INTO sections_new SELECT * FROM sections")
                     db.execSQL("DROP TABLE sections")
                     db.execSQL("ALTER TABLE sections_new RENAME TO sections")
 
-                    db.execSQL("CREATE INDEX IF NOT EXISTS index_sections_fk_session ON sections(fk_session)")
+                    db.execSQL(
+                        "CREATE INDEX IF NOT EXISTS index_sections_fk_session " +
+                            "ON sections(fk_session)",
+                    )
                 }
             }
 
         val MIGRATION_4_5 =
-            object : Migration(4, 5) {
+            object : Migration(VERSION_4, VERSION_5) {
                 override fun migrate(
                     @NonNull db: SupportSQLiteDatabase,
                 ) {
                     db.execSQL(
-                        "CREATE TABLE sessions_new (_id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, name TEXT NOT NULL, description TEXT NOT NULL)",
+                        "CREATE TABLE sessions_new (" +
+                            "_id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, " +
+                            "name TEXT NOT NULL, " +
+                            "description TEXT NOT NULL)",
                     )
                     db.execSQL("INSERT INTO sessions_new SELECT * FROM sessions")
                     db.execSQL("DROP TABLE sessions")
                     db.execSQL("ALTER TABLE sessions_new RENAME TO sessions")
 
                     db.execSQL(
-                        "CREATE TABLE sections_new (_id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, fk_session INTEGER NOT NULL, name TEXT NOT NULL, duration INTEGER NOT NULL, bell INTEGER NOT NULL, rank INTEGER, bellcount INTEGER, bellpause INTEGER, belluri TEXT, volume INTEGER DEFAULT 100, FOREIGN KEY (fk_session) REFERENCES sessions(_id) ON DELETE CASCADE)",
+                        "CREATE TABLE sections_new (" +
+                            "_id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, " +
+                            "fk_session INTEGER NOT NULL, " +
+                            "name TEXT NOT NULL, " +
+                            "duration INTEGER NOT NULL, " +
+                            "bell INTEGER NOT NULL, " +
+                            "rank INTEGER, " +
+                            "bellcount INTEGER, " +
+                            "bellpause INTEGER, " +
+                            "belluri TEXT, " +
+                            "volume INTEGER DEFAULT $DEFAULT_VOLUME, " +
+                            "FOREIGN KEY (fk_session) REFERENCES sessions(_id) ON DELETE CASCADE)",
                     )
                     db.execSQL("INSERT INTO sections_new SELECT * FROM sections")
                     db.execSQL("DROP TABLE sections")
                     db.execSQL("ALTER TABLE sections_new RENAME TO sections")
 
-                    db.execSQL("CREATE INDEX IF NOT EXISTS index_sections_fk_session ON sections(fk_session)")
+                    db.execSQL(
+                        "CREATE INDEX IF NOT EXISTS index_sections_fk_session " +
+                            "ON sections(fk_session)",
+                    )
                 }
             }
 
@@ -106,12 +169,28 @@ abstract class AppDatabase : RoomDatabase() {
                 ) {
                     super.onCreate(db)
                     db.execSQL(
-                        "CREATE TABLE IF NOT EXISTS settings(_id INTEGER PRIMARY KEY AUTOINCREMENT, param TEXT NOT NULL, value TEXT NOT NULL, def TEXT NOT NULL)",
+                        "CREATE TABLE IF NOT EXISTS settings(" +
+                            "_id INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                            "param TEXT NOT NULL, " +
+                            "value TEXT NOT NULL, " +
+                            "def TEXT NOT NULL)",
                     )
-                    db.execSQL("INSERT OR IGNORE INTO settings(param,value,def) VALUES('B_PHONE_OFF_DURING_MEDITATION', '1', '1')")
-                    db.execSQL("INSERT OR IGNORE INTO settings(param,value,def) VALUES('B_NOTIFICATIONS_OFF_DURING_MEDITATION', '1', '1')")
-                    db.execSQL("INSERT OR IGNORE INTO settings(param,value,def) VALUES('I_LAST_SELECTED_SESSION', '-1', '-1')")
-                    db.execSQL("INSERT OR IGNORE INTO settings(param,value,def) VALUES('I_BELL_VOLUME', '20', '20')")
+                    db.execSQL(
+                        "INSERT OR IGNORE INTO settings(param,value,def) " +
+                            "VALUES('B_PHONE_OFF_DURING_MEDITATION', '1', '1')",
+                    )
+                    db.execSQL(
+                        "INSERT OR IGNORE INTO settings(param,value,def) " +
+                            "VALUES('B_NOTIFICATIONS_OFF_DURING_MEDITATION', '1', '1')",
+                    )
+                    db.execSQL(
+                        "INSERT OR IGNORE INTO settings(param,value,def) " +
+                            "VALUES('I_LAST_SELECTED_SESSION', '-1', '-1')",
+                    )
+                    db.execSQL(
+                        "INSERT OR IGNORE INTO settings(param,value,def) " +
+                            "VALUES('I_BELL_VOLUME', '20', '20')",
+                    )
                 }
             }
     }

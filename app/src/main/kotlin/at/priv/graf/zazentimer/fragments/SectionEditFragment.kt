@@ -30,7 +30,9 @@ import com.google.android.material.transition.MaterialSharedAxis
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
+import java.io.IOException
 import java.io.InputStream
+import java.util.Locale
 import javax.inject.Inject
 
 @AndroidEntryPoint
@@ -45,7 +47,7 @@ class SectionEditFragment : Fragment() {
     private var pref: SharedPreferences? = null
     private var section: Section? = null
     private var sectionId: Int = 0
-    private var tvGaps: Array<TextView?> = arrayOfNulls(15)
+    private var tvGaps: Array<TextView?> = arrayOfNulls(GAP_ARRAY_SIZE)
 
     @Inject
     lateinit var dbOperations: DbOperations
@@ -79,7 +81,7 @@ class SectionEditFragment : Fragment() {
                 val openInputStream: InputStream? = requireActivity().contentResolver.openInputStream(data)
                 if (openInputStream == null) return@registerForActivityResult
                 val openFileOutput = requireActivity().openFileOutput(str, 0)
-                val bArr = ByteArray(8192)
+                val bArr = ByteArray(BUFFER_SIZE)
                 var read = openInputStream.read(bArr)
                 while (read > 0) {
                     openFileOutput.write(bArr, 0, read)
@@ -93,7 +95,7 @@ class SectionEditFragment : Fragment() {
                     s.bellUri = BellCollection.getUriForName(str).toString()
                     selectBell(s.bellUri)
                 }
-            } catch (e: Exception) {
+            } catch (e: IOException) {
                 e.printStackTrace()
             }
         }
@@ -166,207 +168,6 @@ class SectionEditFragment : Fragment() {
         }
     }
 
-    private fun fillDataFromViews() {
-        val s = section ?: return
-        s.bell = -2
-        val bell = binding.selectGongSound.selectedItem as Bell
-        s.bellUri = bell.uri.toString()
-        s.volume = 100 - binding.sectionGongVolume.progress * 10
-        s.name = binding.sectionName.text.toString()
-        s.duration = (this.durationMinutes * 60) + this.durationSeconds
-    }
-
-    private fun fillViewFromData() {
-        val s = section ?: return
-        setViewBellCount(s.bellcount)
-        setViewGap(s.bellpause)
-        binding.sectionGongVolume.max = 9
-        var step = (100 - s.volume) / 10
-        step = Math.max(0, Math.min(9, step))
-        binding.sectionGongVolume.progress = step
-        updateDimLabel(step)
-        binding.sectionName.setText(s.name)
-        setDurationMinutes(s.duration / 60)
-        setDurationSeconds(s.duration % 60)
-        fillBellList()
-        selectBell(s.bellUri)
-    }
-
-    private fun fillBellList() {
-        this.gongListAdapter = GongListAdapter(requireContext(), R.id.selectGongSound, R.id.spinnerText1)
-        val bellList = BellCollection.getBellList()
-        val adapter = this.gongListAdapter ?: return
-        for (i in bellList.indices) {
-            adapter.add(bellList[i])
-        }
-        binding.selectGongSound.adapter = adapter as SpinnerAdapter
-    }
-
-    private fun selectBell(str: String?) {
-        val bellList = BellCollection.getBellList()
-        for (i in bellList.indices) {
-            if (bellList[i].uri.toString() == str) {
-                binding.selectGongSound.setSelection(i)
-            }
-        }
-    }
-
-    private fun getViewComponents() {
-        this.tvGaps[0] = binding.gap1
-        this.tvGaps[1] = binding.gap2
-        this.tvGaps[2] = binding.gap3
-        this.tvGaps[3] = binding.gap4
-        this.tvGaps[4] = binding.gap5
-        this.tvGaps[5] = binding.gap6
-        this.tvGaps[6] = binding.gap7
-        this.tvGaps[7] = binding.gap8
-        this.tvGaps[8] = binding.gap9
-        this.tvGaps[9] = binding.gap10
-        this.tvGaps[10] = binding.gap11
-        this.tvGaps[11] = binding.gap12
-        this.tvGaps[12] = binding.gap13
-        this.tvGaps[13] = binding.gap14
-        this.tvGaps[14] = binding.gap15
-    }
-
-    protected fun installListeners() {
-        binding.addcustombell.setOnClickListener {
-            val intent = Intent("android.intent.action.GET_CONTENT")
-            intent.flags = 1
-            intent.type = "audio/*"
-            bellPickerLauncher.launch(Intent.createChooser(intent, resources.getString(R.string.select_audio)))
-        }
-        binding.bellcount1.setOnClickListener {
-            section?.let { s ->
-                s.bellcount = 1
-                setViewBellCount(s.bellcount)
-            }
-        }
-        binding.bellcount2.setOnClickListener {
-            section?.let { s ->
-                s.bellcount = 2
-                setViewBellCount(s.bellcount)
-            }
-        }
-        binding.bellcount3.setOnClickListener {
-            section?.let { s ->
-                s.bellcount = 3
-                setViewBellCount(s.bellcount)
-            }
-        }
-        binding.bellcount4.setOnClickListener {
-            section?.let { s ->
-                s.bellcount = 4
-                setViewBellCount(s.bellcount)
-            }
-        }
-        binding.bellcount5.setOnClickListener {
-            section?.let { s ->
-                s.bellcount = 5
-                setViewBellCount(s.bellcount)
-            }
-        }
-        for (i in 0..14) {
-            tvGaps[i]?.setOnClickListener { view ->
-                val s = section ?: return@setOnClickListener
-                for (i2 in 0..14) {
-                    val gapView = tvGaps[i2]
-                    if (gapView != null && view.id == gapView.id) {
-                        s.bellpause = i2 + 1
-                        break
-                    }
-                }
-                setViewGap(s.bellpause)
-            }
-        }
-        binding.duration.setOnClickListener {
-            this@SectionEditFragment.pickDuration()
-        }
-        binding.playGong.setOnClickListener {
-            val s = section ?: return@setOnClickListener
-            val bellForSection = BellCollection.getBellForSection(s)
-            bellForSection?.let { bell ->
-                lifecycleScope.launch {
-                    audio?.playAbsVolume(bell, s.volume)
-                }
-            }
-        }
-        binding.selectGongSound.onItemSelectedListener =
-            object : AdapterView.OnItemSelectedListener {
-                override fun onNothingSelected(adapterView: AdapterView<*>?) {
-                }
-
-                override fun onItemSelected(
-                    adapterView: AdapterView<*>?,
-                    view: View?,
-                    i2: Int,
-                    j: Long,
-                ) {
-                    val s = section ?: return
-                    val bell = BellCollection.getBell(i2) ?: return
-                    if (bell.uri.toString() == s.bellUri) {
-                        return
-                    }
-                    s.bellUri = bell.uri.toString()
-                    s.bell = -2
-                }
-            }
-        binding.sectionGongVolume.setOnSeekBarChangeListener(
-            object : SeekBar.OnSeekBarChangeListener {
-                override fun onProgressChanged(
-                    seekBar: SeekBar?,
-                    progress: Int,
-                    fromUser: Boolean,
-                ) {
-                    this@SectionEditFragment.updateDimLabel(progress)
-                }
-
-                override fun onStartTrackingTouch(seekBar: SeekBar?) {
-                }
-
-                override fun onStopTrackingTouch(seekBar: SeekBar?) {
-                    val s = section ?: return
-                    val progress = seekBar?.progress ?: return
-                    s.volume = 100 - progress * 10
-                    val bellForSection = BellCollection.getBellForSection(s)
-                    bellForSection?.let { bell ->
-                        lifecycleScope.launch {
-                            audio?.playAbsVolume(s)
-                        }
-                    }
-                }
-            },
-        )
-    }
-
-    private fun setViewBellCount(i: Int) {
-        binding.bellcount1.isSelected = i >= 1
-        binding.bellcount2.isSelected = i >= 2
-        binding.bellcount3.isSelected = i >= 3
-        binding.bellcount4.isSelected = i >= 4
-        binding.bellcount5.isSelected = i >= 5
-    }
-
-    private fun setViewGap(i: Int) {
-        for (i2 in 0..14) {
-            val gapView = tvGaps[i2] ?: continue
-            gapView.isSelected = (i2 + 1) == i
-        }
-    }
-
-    private fun pickDuration() {
-        val timePickerFragment = TimePickerFragment()
-        timePickerFragment.setMinutes(this.durationMinutes)
-        timePickerFragment.setSeconds(this.durationSeconds)
-        timePickerFragment.setOnOkListener(
-            Runnable {
-                this@SectionEditFragment.setDurationMinutes(timePickerFragment.getMinutes())
-                this@SectionEditFragment.setDurationSeconds(timePickerFragment.getSeconds())
-            },
-        )
-        timePickerFragment.show(parentFragmentManager, "timePicker")
-    }
-
     fun setDurationSeconds(i: Int) {
         this.durationSeconds = i
         updateDurationView()
@@ -377,27 +178,264 @@ class SectionEditFragment : Fragment() {
         updateDurationView()
     }
 
-    private fun updateDurationView() {
-        _binding?.let { b ->
-            b.time.text = String.format("%02d:%02d", durationMinutes, durationSeconds)
-        }
-    }
-
     fun setSectionId(i: Int) {
         this.sectionId = i
     }
 
-    private fun updateDimLabel(step: Int) {
-        _binding?.let { b ->
-            if (step == 0) {
-                b.dimBellLabel.setText(R.string.dim_bell_label_off)
-            } else {
-                b.dimBellLabel.text = getString(R.string.dim_bell_label_format, step)
-            }
-        }
-    }
-
+    @Suppress("TooManyFunctions")
     companion object {
         private const val TAG = "ZMT_SectionEdit"
+        private const val BUFFER_SIZE = 8192
+        private const val SECONDS_PER_MINUTE = 60
+        private const val VOLUME_MAX = 100
+        private const val VOLUME_STEP_SIZE = 10
+        private const val VOLUME_MAX_STEP = 9
+        private const val MIN_VOLUME_STEP = 0
+        private const val GAP_COUNT = 14
+        private const val GAP_ARRAY_SIZE = 15
+        private const val BELL_UNSET = -2
+
+        private fun SectionEditFragment.fillDataFromViews() {
+            val s = section ?: return
+            s.bell = BELL_UNSET
+            val bell = binding.selectGongSound.selectedItem as Bell
+            s.bellUri = bell.uri.toString()
+            s.volume = VOLUME_MAX - binding.sectionGongVolume.progress * VOLUME_STEP_SIZE
+            s.name = binding.sectionName.text.toString()
+            s.duration = (this.durationMinutes * SECONDS_PER_MINUTE) + this.durationSeconds
+        }
+
+        private fun SectionEditFragment.fillViewFromData() {
+            val s = section ?: return
+            setViewBellCount(s.bellcount)
+            setViewGap(s.bellpause)
+            binding.sectionGongVolume.max = VOLUME_MAX_STEP
+            var step = (VOLUME_MAX - s.volume) / VOLUME_STEP_SIZE
+            step = Math.max(MIN_VOLUME_STEP, Math.min(VOLUME_MAX_STEP, step))
+            binding.sectionGongVolume.progress = step
+            updateDimLabel(step)
+            binding.sectionName.setText(s.name)
+            setDurationMinutes(s.duration / SECONDS_PER_MINUTE)
+            setDurationSeconds(s.duration % SECONDS_PER_MINUTE)
+            fillBellList()
+            selectBell(s.bellUri)
+        }
+
+        private fun SectionEditFragment.getViewComponents() {
+            val gaps =
+                arrayOf(
+                    binding.gap1,
+                    binding.gap2,
+                    binding.gap3,
+                    binding.gap4,
+                    binding.gap5,
+                    binding.gap6,
+                    binding.gap7,
+                    binding.gap8,
+                    binding.gap9,
+                    binding.gap10,
+                    binding.gap11,
+                    binding.gap12,
+                    binding.gap13,
+                    binding.gap14,
+                    binding.gap15,
+                )
+            for (i in gaps.indices) {
+                this.tvGaps[i] = gaps[i]
+            }
+        }
+
+        private fun SectionEditFragment.installListeners() {
+            installCustomBellListener()
+            installBellCountListeners()
+            installGapListeners()
+            installPlayGongListener()
+            installBellSelectionListener()
+            installVolumeSliderListener()
+        }
+
+        private fun SectionEditFragment.installCustomBellListener() {
+            binding.addcustombell.setOnClickListener {
+                val intent = Intent("android.intent.action.GET_CONTENT")
+                intent.flags = 1
+                intent.type = "audio/*"
+                bellPickerLauncher.launch(Intent.createChooser(intent, resources.getString(R.string.select_audio)))
+            }
+        }
+
+        private fun SectionEditFragment.installBellCountListeners() {
+            val bellViews =
+                arrayOf(
+                    binding.bellcount1,
+                    binding.bellcount2,
+                    binding.bellcount3,
+                    binding.bellcount4,
+                    binding.bellcount5,
+                )
+            for (idx in bellViews.indices) {
+                val count = idx + 1
+                bellViews[idx].setOnClickListener {
+                    section?.bellcount = count
+                    section?.let { setViewBellCount(it.bellcount) }
+                }
+            }
+        }
+
+        private fun SectionEditFragment.installGapListeners() {
+            for (i in 0..GAP_COUNT) {
+                tvGaps[i]?.setOnClickListener { view ->
+                    val s = section ?: return@setOnClickListener
+                    for (i2 in 0..GAP_COUNT) {
+                        val gapView = tvGaps[i2]
+                        if (gapView != null && view.id == gapView.id) {
+                            s.bellpause = i2 + 1
+                            break
+                        }
+                    }
+                    setViewGap(s.bellpause)
+                }
+            }
+        }
+
+        private fun SectionEditFragment.installPlayGongListener() {
+            binding.duration.setOnClickListener {
+                pickDuration()
+            }
+            binding.playGong.setOnClickListener {
+                val s = section ?: return@setOnClickListener
+                val bellForSection = BellCollection.getBellForSection(s)
+                bellForSection?.let { bell ->
+                    lifecycleScope.launch {
+                        audio?.playAbsVolume(bell, s.volume)
+                    }
+                }
+            }
+        }
+
+        private fun SectionEditFragment.installBellSelectionListener() {
+            binding.selectGongSound.onItemSelectedListener =
+                object : AdapterView.OnItemSelectedListener {
+                    override fun onNothingSelected(adapterView: AdapterView<*>?) {
+                        // no-op: required by interface
+                    }
+
+                    override fun onItemSelected(
+                        adapterView: AdapterView<*>?,
+                        view: View?,
+                        i2: Int,
+                        j: Long,
+                    ) {
+                        section?.let { s ->
+                            BellCollection.getBell(i2)?.let { bell ->
+                                if (bell.uri.toString() != s.bellUri) {
+                                    s.bellUri = bell.uri.toString()
+                                    s.bell = BELL_UNSET
+                                }
+                            }
+                        }
+                    }
+                }
+        }
+
+        private fun SectionEditFragment.installVolumeSliderListener() {
+            binding.sectionGongVolume.setOnSeekBarChangeListener(
+                object : SeekBar.OnSeekBarChangeListener {
+                    override fun onProgressChanged(
+                        seekBar: SeekBar?,
+                        progress: Int,
+                        fromUser: Boolean,
+                    ) {
+                        updateDimLabel(progress)
+                    }
+
+                    override fun onStartTrackingTouch(seekBar: SeekBar?) {
+                        // no-op: required by interface
+                    }
+
+                    override fun onStopTrackingTouch(seekBar: SeekBar?) {
+                        val s = section ?: return
+                        val progress = seekBar?.progress ?: return
+                        s.volume = VOLUME_MAX - progress * VOLUME_STEP_SIZE
+                        val bellForSection = BellCollection.getBellForSection(s)
+                        bellForSection?.let { bell ->
+                            lifecycleScope.launch {
+                                audio?.playAbsVolume(s)
+                            }
+                        }
+                    }
+                },
+            )
+        }
+
+        private fun SectionEditFragment.setViewBellCount(count: Int) {
+            val bellViews =
+                arrayOf(
+                    binding.bellcount1,
+                    binding.bellcount2,
+                    binding.bellcount3,
+                    binding.bellcount4,
+                    binding.bellcount5,
+                )
+            for (idx in bellViews.indices) {
+                bellViews[idx].isSelected = count >= (idx + 1)
+            }
+        }
+
+        private fun SectionEditFragment.setViewGap(gapIndex: Int) {
+            for (i2 in 0..GAP_COUNT) {
+                val gapView = tvGaps[i2] ?: continue
+                gapView.isSelected = (i2 + 1) == gapIndex
+            }
+        }
+
+        private fun SectionEditFragment.pickDuration() {
+            val timePickerFragment = TimePickerFragment()
+            timePickerFragment.setMinutes(this.durationMinutes)
+            timePickerFragment.setSeconds(this.durationSeconds)
+            timePickerFragment.setOnOkListener(
+                Runnable {
+                    setDurationMinutes(timePickerFragment.getMinutes())
+                    setDurationSeconds(timePickerFragment.getSeconds())
+                },
+            )
+            timePickerFragment.show(parentFragmentManager, "timePicker")
+        }
+
+        private fun SectionEditFragment.updateDurationView() {
+            _binding?.let { b ->
+                b.time.text =
+                    String.format(Locale.getDefault(), "%02d:%02d", durationMinutes, durationSeconds)
+            }
+        }
+
+        private fun SectionEditFragment.updateDimLabel(step: Int) {
+            _binding?.let { b ->
+                if (step == 0) {
+                    b.dimBellLabel.setText(R.string.dim_bell_label_off)
+                } else {
+                    b.dimBellLabel.text = getString(R.string.dim_bell_label_format, step)
+                }
+            }
+        }
+
+        private fun SectionEditFragment.fillBellList() {
+            this.gongListAdapter =
+                GongListAdapter(requireContext(), R.id.selectGongSound, R.id.spinnerText1)
+            val bellList = BellCollection.getBellList()
+            val adapter = this.gongListAdapter ?: return
+            for (i in bellList.indices) {
+                adapter.add(bellList[i])
+            }
+            binding.selectGongSound.adapter = adapter as SpinnerAdapter
+        }
+
+        private fun SectionEditFragment.selectBell(str: String?) {
+            val bellList = BellCollection.getBellList()
+            for (i in bellList.indices) {
+                if (bellList[i].uri.toString() == str) {
+                    binding.selectGongSound.setSelection(i)
+                }
+            }
+        }
     }
 }

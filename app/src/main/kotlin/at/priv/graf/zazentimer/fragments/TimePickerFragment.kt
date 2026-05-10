@@ -30,6 +30,7 @@ class TimePickerFragment :
         i: Int,
         i2: Int,
     ) {
+        // no-op: placeholder
     }
 
     fun setOnOkListener(runnable: Runnable) {
@@ -51,8 +52,8 @@ class TimePickerFragment :
     }
 
     override fun onCreateDialog(bundle: Bundle?): Dialog {
-        val builder = AlertDialog.Builder(requireActivity())
         val act = activity ?: return super.onCreateDialog(bundle)
+        val builder = AlertDialog.Builder(requireActivity())
         this.view = act.layoutInflater.inflate(R.layout.dialog_time_picker, null as ViewGroup?)
         builder.setView(this.view)
         builder.setPositiveButton(R.string.ok) { _: DialogInterface, _: Int ->
@@ -63,18 +64,19 @@ class TimePickerFragment :
         builder.setNegativeButton(R.string.abbrechen) { _: DialogInterface, _: Int ->
         }
         val create = builder.create()
-        val v = this.view ?: return create
-        this.npMin = v.findViewById(R.id.pickerMinutes)
-        this.npSec = v.findViewById(R.id.pickerSeconds)
-        npMin?.let { picker ->
-            picker.minValue = 0
-            picker.maxValue = 120
-            picker.value = this.minutes
-        }
-        npSec?.let { picker ->
-            picker.minValue = 0
-            picker.maxValue = 59
-            picker.value = this.seconds
+        this.view?.let { v ->
+            this.npMin = v.findViewById(R.id.pickerMinutes)
+            this.npSec = v.findViewById(R.id.pickerSeconds)
+            npMin?.let { picker ->
+                picker.minValue = MIN_VALUE
+                picker.maxValue = MAX_MINUTES
+                picker.value = this.minutes
+            }
+            npSec?.let { picker ->
+                picker.minValue = MIN_VALUE
+                picker.maxValue = MAX_SECONDS
+                picker.value = this.seconds
+            }
         }
         return create
     }
@@ -82,5 +84,11 @@ class TimePickerFragment :
     override fun onAttach(context: Context) {
         super.onAttach(context)
         this.activity = context as Activity
+    }
+
+    companion object {
+        private const val MIN_VALUE = 0
+        private const val MAX_MINUTES = 120
+        private const val MAX_SECONDS = 59
     }
 }

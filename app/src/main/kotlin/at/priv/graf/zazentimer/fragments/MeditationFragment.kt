@@ -19,6 +19,7 @@ import at.priv.graf.zazentimer.databinding.FragmentMeditationBinding
 import at.priv.graf.zazentimer.service.MeditationService
 import at.priv.graf.zazentimer.service.MeditationUiState
 import at.priv.graf.zazentimer.service.MeditationViewModel
+import at.priv.graf.zazentimer.views.TimerView
 import com.google.android.material.transition.MaterialSharedAxis
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
@@ -32,6 +33,8 @@ class MeditationFragment : Fragment() {
     private var viewModel: MeditationViewModel? = null
     private var meditationRunning: Boolean = false
     private var backPressedCallback: OnBackPressedCallback? = null
+
+    private val buttonStateUpdater by lazy { ButtonStateUpdater() }
 
     @Inject
     lateinit var dbOperations: DbOperations
@@ -57,7 +60,7 @@ class MeditationFragment : Fragment() {
         binding.butPause.setOnClickListener {
             if (this@MeditationFragment.meditationRunning) {
                 this@MeditationFragment.viewModel?.pauseMeditation()
-                this@MeditationFragment.updateButtons()
+                this@MeditationFragment.buttonStateUpdater.update()
             } else {
                 this@MeditationFragment.startMeditationFromIdle()
             }
@@ -67,7 +70,7 @@ class MeditationFragment : Fragment() {
             showIdleState()
         } else {
             showRunningState()
-            updateButtons()
+            buttonStateUpdater.update()
         }
 
         return binding.root
@@ -92,7 +95,6 @@ class MeditationFragment : Fragment() {
     ) {
         super.onViewCreated(view, savedInstanceState)
         viewModel = ViewModelProvider(requireActivity()).get(MeditationViewModel::class.java)
-
         backPressedCallback =
             object : OnBackPressedCallback(false) {
                 override fun handleOnBackPressed() {
@@ -102,58 +104,44 @@ class MeditationFragment : Fragment() {
         backPressedCallback?.let { callback ->
             requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, callback)
         }
+        observeMeditationState()
+    }
 
+    private fun observeMeditationState() {
         viewModel?.getMeditationState()?.observe(viewLifecycleOwner) { state ->
-            when (state) {
-                is MeditationUiState.Idle -> {
-                    meditationRunning = false
-                    backPressedCallback?.isEnabled = false
-                    _binding?.let { b ->
-                        b.timerView.setCurrentStartSeconds(state.currentStartSeconds)
-                        b.timerView.setNumTotalSeconds(state.totalSessionTime)
-                        b.timerView.setNextEndSeconds(state.nextEndSeconds)
-                        b.timerView.setNextStartSeconds(state.nextStartSeconds)
-                        b.timerView.setPrevStartSeconds(state.prevStartSeconds)
-                        b.timerView.setSectionElapsedSeconds(state.sectionElapsedSeconds)
-                        b.timerView.setSessionElapsedSeconds(state.sessionElapsedSeconds)
-                        b.timerView.setSectionNamesNoAnim(state.currentSectionName, state.nextSectionName)
-                        b.sessionNameText.text = state.sessionName
-                    }
-                    showIdleState()
+            meditationRunning = state !is MeditationUiState.Idle
+            backPressedCallback?.isEnabled = state !is MeditationUiState.Idle
+            _binding?.let { b ->
+                b.timerView.animateProperty(TimerView.PROP_CURRENT_START_SECONDS, state.currentStartSeconds)
+                b.timerView.animateProperty(TimerView.PROP_SESSION_TOTAL_SECONDS, state.totalSessionTime)
+                b.timerView.animateProperty(TimerView.PROP_NEXT_END_SECONDS, state.nextEndSeconds)
+                b.timerView.animateProperty(TimerView.PROP_NEXT_START_SECONDS, state.nextStartSeconds)
+                b.timerView.animateProperty(TimerView.PROP_PREV_START_SECONDS, state.prevStartSeconds)
+                b.timerView.setSectionElapsedSeconds(state.sectionElapsedSeconds)
+                b.timerView.animateProperty(TimerView.PROP_SESSION_ELAPSED_SECONDS, state.sessionElapsedSeconds)
+                b.sessionNameText.text = state.sessionName
+                when (state) {
+                    is MeditationUiState.Running ->
+                        b.timerView.setSectionNames(
+                            state.currentSectionName,
+                            state.nextSectionName,
+                        )
+                    else ->
+                        b.timerView.setSectionNamesNoAnim(
+                            state.currentSectionName,
+                            state.nextSectionName,
+                        )
                 }
+            }
+            when (state) {
+                is MeditationUiState.Idle -> showIdleState()
                 is MeditationUiState.Running -> {
-                    meditationRunning = true
-                    backPressedCallback?.isEnabled = true
-                    _binding?.let { b ->
-                        b.timerView.setCurrentStartSeconds(state.currentStartSeconds)
-                        b.timerView.setNumTotalSeconds(state.totalSessionTime)
-                        b.timerView.setNextEndSeconds(state.nextEndSeconds)
-                        b.timerView.setNextStartSeconds(state.nextStartSeconds)
-                        b.timerView.setPrevStartSeconds(state.prevStartSeconds)
-                        b.timerView.setSectionElapsedSeconds(state.sectionElapsedSeconds)
-                        b.timerView.setSessionElapsedSeconds(state.sessionElapsedSeconds)
-                        b.timerView.setSectionNames(state.currentSectionName, state.nextSectionName, state.nextNextSectionName)
-                        b.sessionNameText.text = state.sessionName
-                    }
                     showRunningState()
-                    updateButtons()
+                    buttonStateUpdater.update()
                 }
                 is MeditationUiState.Paused -> {
-                    meditationRunning = true
-                    backPressedCallback?.isEnabled = true
-                    _binding?.let { b ->
-                        b.timerView.setCurrentStartSeconds(state.currentStartSeconds)
-                        b.timerView.setNumTotalSeconds(state.totalSessionTime)
-                        b.timerView.setNextEndSeconds(state.nextEndSeconds)
-                        b.timerView.setNextStartSeconds(state.nextStartSeconds)
-                        b.timerView.setPrevStartSeconds(state.prevStartSeconds)
-                        b.timerView.setSectionElapsedSeconds(state.sectionElapsedSeconds)
-                        b.timerView.setSessionElapsedSeconds(state.sessionElapsedSeconds)
-                        b.timerView.setSectionNamesNoAnim(state.currentSectionName, state.nextSectionName)
-                        b.sessionNameText.text = state.sessionName
-                    }
                     showRunningState()
-                    updateButtons()
+                    buttonStateUpdater.update()
                 }
             }
         }
@@ -164,7 +152,7 @@ class MeditationFragment : Fragment() {
         _binding?.let { b ->
             b.butStop.visibility = View.VISIBLE
             b.butStop.isEnabled = false
-            b.butStop.alpha = 0.4f
+            b.butStop.alpha = DISABLED_ALPHA
             b.butPause.setImageDrawable(
                 ResourcesCompat.getDrawable(resources, R.drawable.ic_play_arrow_white_48dp, requireActivity().theme),
             )
@@ -210,36 +198,29 @@ class MeditationFragment : Fragment() {
                 }.setNegativeButton(R.string.stop_meditation_cancel) { dialog, _ -> dialog.dismiss() }
                 .setCancelable(true)
                 .show()
-        } catch (e: Exception) {
+        } catch (e: IllegalStateException) {
             Log.e(TAG, "Failed to show stop confirmation dialog", e)
         }
     }
 
-    fun showStopDialogForTest() {
-        showStopConfirmationDialog()
-    }
-
-    fun updateButtons() {
-        val b = _binding ?: return
-        if (!isAdded) return
-        if (!meditationRunning) {
+    private inner class ButtonStateUpdater {
+        fun update() {
+            val b = _binding ?: return
+            if (!isAdded) return
+            val drawableId =
+                if (!meditationRunning || viewModel?.isPaused() == true) {
+                    R.drawable.ic_play_arrow_white_48dp
+                } else {
+                    R.drawable.ic_pause_white_48dp
+                }
             b.butPause.setImageDrawable(
-                ResourcesCompat.getDrawable(resources, R.drawable.ic_play_arrow_white_48dp, requireContext().theme),
-            )
-            return
-        }
-        if (viewModel?.isPaused() == true) {
-            b.butPause.setImageDrawable(
-                ResourcesCompat.getDrawable(resources, R.drawable.ic_play_arrow_white_48dp, requireContext().theme),
-            )
-        } else {
-            b.butPause.setImageDrawable(
-                ResourcesCompat.getDrawable(resources, R.drawable.ic_pause_white_48dp, requireContext().theme),
+                ResourcesCompat.getDrawable(resources, drawableId, requireContext().theme),
             )
         }
     }
 
     companion object {
         private const val TAG = "ZMT_MeditationFragment"
+        private const val DISABLED_ALPHA = 0.4f
     }
 }

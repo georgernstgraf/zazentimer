@@ -61,12 +61,15 @@ class SectionListAdapter(
             if (section.bellcount == 1) {
                 "$durationStr${holder.itemView.context.getString(R.string.section_info_string_1_sg)}"
             } else {
-                val partial =
-                    "$durationStr${String.format(holder.itemView.context.getString(R.string.section_info_string_1_pl), section.bellcount)} "
+                val countFormat =
+                    holder.itemView.context.getString(R.string.section_info_string_1_pl)
+                val partial = "$durationStr${String.format(countFormat, section.bellcount)} "
                 if (section.bellpause == 1) {
                     "$partial${holder.itemView.context.getString(R.string.section_info_string_2_sg)}"
                 } else {
-                    "$partial${String.format(holder.itemView.context.getString(R.string.section_info_string_2_pl), section.bellpause)}"
+                    val pauseFormat =
+                        holder.itemView.context.getString(R.string.section_info_string_2_pl)
+                    "$partial${String.format(pauseFormat, section.bellpause)}"
                 }
             }
 
@@ -84,18 +87,18 @@ class SectionListAdapter(
                 object : PopupMenu.OnMenuItemClickListener {
                     override fun onMenuItemClick(menuItem: MenuItem): Boolean {
                         val pos = holder.bindingAdapterPosition
-                        if (pos == RecyclerView.NO_POSITION || actionListener == null) {
-                            return false
+                        if (pos == RecyclerView.NO_POSITION || actionListener == null) return false
+                        return when (menuItem.itemId) {
+                            R.id.card_action_delete_section -> {
+                                actionListener.onDeleteSection(pos)
+                                true
+                            }
+                            R.id.card_action_duplicate_section -> {
+                                actionListener.onDuplicateSection(pos)
+                                true
+                            }
+                            else -> false
                         }
-                        val id = menuItem.itemId
-                        if (id == R.id.card_action_delete_section) {
-                            actionListener.onDeleteSection(pos)
-                            return true
-                        } else if (id == R.id.card_action_duplicate_section) {
-                            actionListener.onDuplicateSection(pos)
-                            return true
-                        }
-                        return false
                     }
                 },
             )

@@ -24,6 +24,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 import java.io.File
 import java.io.FileOutputStream
+import java.io.IOException
 import javax.inject.Inject
 
 @AndroidEntryPoint
@@ -76,7 +77,13 @@ class SettingsFragment : PreferenceFragmentCompat() {
         rootKey: String?,
     ) {
         setPreferencesFromResource(R.xml.preferences, rootKey)
+        setupThemePreference()
+        setupMuteModePreferences()
+        setupBrightnessPreference()
+        setupBackupPreferences()
+    }
 
+    private fun setupThemePreference() {
         findPreference<Preference>(ZazenTimerActivity.PREF_KEY_THEME)?.setOnPreferenceChangeListener { _, _ ->
             requireActivity().runOnUiThread {
                 val intent = Intent(requireActivity(), ZazenTimerActivity::class.java)
@@ -86,44 +93,64 @@ class SettingsFragment : PreferenceFragmentCompat() {
             }
             true
         }
+    }
 
-        val checkBoxPreference3 = findPreference<CheckBoxPreference>(ZazenTimerActivity.PREF_KEY_MUTE_MODE_VIBRATE_SOUND) ?: return
-        val checkBoxPreference4 = findPreference<CheckBoxPreference>(ZazenTimerActivity.PREF_KEY_MUTE_MODE_VIBRATE) ?: return
-        val checkBoxPreference5 = findPreference<CheckBoxPreference>(ZazenTimerActivity.PREF_KEY_MUTE_MODE_NONE) ?: return
-        val checkBoxPreference6 = findPreference<CheckBoxPreference>(ZazenTimerActivity.PREF_KEY_KEEP_SCREEN_ON) ?: return
-        val brightnessPreference = findPreference<Preference>(ZazenTimerActivity.PREF_KEY_BRIGHTNESS) ?: return
+    private fun setupMuteModePreferences() {
+        val vibSoundPref =
+            findPreference<CheckBoxPreference>(ZazenTimerActivity.PREF_KEY_MUTE_MODE_VIBRATE_SOUND)
+        val vibPref =
+            findPreference<CheckBoxPreference>(ZazenTimerActivity.PREF_KEY_MUTE_MODE_VIBRATE)
+        val nonePref =
+            findPreference<CheckBoxPreference>(ZazenTimerActivity.PREF_KEY_MUTE_MODE_NONE)
+        if (vibSoundPref == null || vibPref == null || nonePref == null) return
+        val checkVibSound = vibSoundPref
+        val checkVib = vibPref
+        val checkNone = nonePref
 
-        checkBoxPreference3.setOnPreferenceChangeListener { _, obj ->
+        checkVibSound.setOnPreferenceChangeListener { _, obj ->
             if (!(obj as Boolean)) {
-                return@setOnPreferenceChangeListener checkBoxPreference4.isChecked || checkBoxPreference5.isChecked
+                return@setOnPreferenceChangeListener checkVib.isChecked || checkNone.isChecked
             }
-            checkBoxPreference4.isChecked = false
-            checkBoxPreference5.isChecked = false
+            checkVib.isChecked = false
+            checkNone.isChecked = false
             true
         }
-        checkBoxPreference4.setOnPreferenceChangeListener { _, obj ->
+        checkVib.setOnPreferenceChangeListener { _, obj ->
             if (!(obj as Boolean)) {
-                return@setOnPreferenceChangeListener checkBoxPreference3.isChecked || checkBoxPreference5.isChecked
+                return@setOnPreferenceChangeListener checkVibSound.isChecked || checkNone.isChecked
             }
-            checkBoxPreference3.isChecked = false
-            checkBoxPreference5.isChecked = false
+            checkVibSound.isChecked = false
+            checkNone.isChecked = false
             true
         }
-        checkBoxPreference5.setOnPreferenceChangeListener { _, obj ->
+        checkNone.setOnPreferenceChangeListener { _, obj ->
             if (!(obj as Boolean)) {
-                return@setOnPreferenceChangeListener checkBoxPreference3.isChecked || checkBoxPreference4.isChecked
+                return@setOnPreferenceChangeListener checkVibSound.isChecked || checkVib.isChecked
             }
-            checkBoxPreference3.isChecked = false
-            checkBoxPreference4.isChecked = false
+            checkVibSound.isChecked = false
+            checkVib.isChecked = false
             true
         }
-        checkBoxPreference6.setOnPreferenceChangeListener { _, obj ->
-            brightnessPreference.isEnabled = obj as Boolean
-            true
-        }
-        brightnessPreference.isEnabled = checkBoxPreference6.isChecked
+    }
 
-        val backupPref = findPreference<Preference>("backup_to_sd") ?: return
+    private fun setupBrightnessPreference() {
+        val keepScreenOnPref =
+            findPreference<CheckBoxPreference>(ZazenTimerActivity.PREF_KEY_KEEP_SCREEN_ON)
+        val brightnessPref =
+            findPreference<Preference>(ZazenTimerActivity.PREF_KEY_BRIGHTNESS)
+        val checkKeepScreenOn = keepScreenOnPref ?: return
+        val checkBrightness = brightnessPref ?: return
+
+        checkKeepScreenOn.setOnPreferenceChangeListener { _, obj ->
+            checkBrightness.isEnabled = obj as Boolean
+            true
+        }
+        checkBrightness.isEnabled = checkKeepScreenOn.isChecked
+    }
+
+    private fun setupBackupPreferences() {
+        val backupPref =
+            findPreference<Preference>("backup_to_sd") ?: return
         backupPref.isEnabled = true
         backupPref.setSummary(R.string.pref_sum_backup)
         backupPref.onPreferenceClickListener =
@@ -136,7 +163,8 @@ class SettingsFragment : PreferenceFragmentCompat() {
                 true
             }
 
-        val restorePref = findPreference<Preference>("restore_from_sd") ?: return
+        val restorePref =
+            findPreference<Preference>("restore_from_sd") ?: return
         restorePref.isEnabled = true
         restorePref.setSummary(R.string.pref_sum_restore)
         restorePref.onPreferenceClickListener =
@@ -186,7 +214,7 @@ class SettingsFragment : PreferenceFragmentCompat() {
                     result = 1
                 } else {
                     val fos = FileOutputStream(tempFile)
-                    val buf = ByteArray(32768)
+                    val buf = ByteArray(BUFFER_SIZE)
                     var read: Int
                     while ((inputStream.read(buf).also { read = it }) > 0) {
                         fos.write(buf, 0, read)
@@ -196,7 +224,7 @@ class SettingsFragment : PreferenceFragmentCompat() {
                     result = backupManager.restore(tempFile)
                     tempFile.delete()
                 }
-            } catch (e: Exception) {
+            } catch (e: IOException) {
                 Log.e(TAG, "Error restoring", e)
             }
             if (result == 0) {
@@ -211,5 +239,6 @@ class SettingsFragment : PreferenceFragmentCompat() {
 
     companion object {
         private const val TAG = "ZMT_SettingsFragment"
+        private const val BUFFER_SIZE = 32768
     }
 }

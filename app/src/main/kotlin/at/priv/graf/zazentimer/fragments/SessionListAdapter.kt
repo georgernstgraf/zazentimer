@@ -101,21 +101,22 @@ class SessionListAdapter(
                 object : PopupMenu.OnMenuItemClickListener {
                     override fun onMenuItemClick(menuItem: MenuItem): Boolean {
                         val pos = holder.bindingAdapterPosition
-                        if (pos == RecyclerView.NO_POSITION || actionListener == null) {
-                            return false
+                        if (pos == RecyclerView.NO_POSITION || actionListener == null) return false
+                        return when (menuItem.itemId) {
+                            R.id.card_action_edit -> {
+                                actionListener.onEditSession(pos)
+                                true
+                            }
+                            R.id.card_action_copy -> {
+                                actionListener.onCopySession(pos)
+                                true
+                            }
+                            R.id.card_action_delete -> {
+                                actionListener.onDeleteSession(pos)
+                                true
+                            }
+                            else -> false
                         }
-                        val id = menuItem.itemId
-                        if (id == R.id.card_action_edit) {
-                            actionListener.onEditSession(pos)
-                            return true
-                        } else if (id == R.id.card_action_copy) {
-                            actionListener.onCopySession(pos)
-                            return true
-                        } else if (id == R.id.card_action_delete) {
-                            actionListener.onDeleteSession(pos)
-                            return true
-                        }
-                        return false
                     }
                 },
             )
@@ -165,5 +166,14 @@ class SessionListAdapter(
     }
 
     private fun formatDuration(totalSeconds: Int): String =
-        String.format(java.util.Locale.getDefault(), "%02d:%02d", totalSeconds / 60, totalSeconds % 60)
+        String.format(
+            java.util.Locale.getDefault(),
+            "%02d:%02d",
+            totalSeconds / SECONDS_PER_MINUTE,
+            totalSeconds % SECONDS_PER_MINUTE,
+        )
+
+    companion object {
+        private const val SECONDS_PER_MINUTE = 60
+    }
 }

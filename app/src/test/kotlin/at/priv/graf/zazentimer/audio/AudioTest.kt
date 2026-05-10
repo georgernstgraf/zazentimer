@@ -147,7 +147,7 @@ class AudioTest {
 
     @Test
     fun playAbsVolume_mediaPlayerFailure_handledGracefully() {
-        every { anyConstructed<MediaPlayer>().prepare() } throws RuntimeException("prepare failed")
+        every { anyConstructed<MediaPlayer>().prepare() } throws java.io.IOException("prepare failed")
 
         val uri = Uri.parse("android.resource://at.priv.graf.zazentimer/1234")
         val bell = Bell(uri, "Test Bell")

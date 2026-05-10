@@ -4,7 +4,7 @@ import java.io.Serializable
 import java.util.Locale
 
 data class Section(
-    @JvmField var bell: Int = -2,
+    @JvmField var bell: Int = DEFAULT_BELL,
     @JvmField var bellUri: String? = null,
     @JvmField var bellcount: Int = 0,
     @JvmField var bellpause: Int = 0,
@@ -16,7 +16,7 @@ data class Section(
     @JvmField var volume: Int = 100,
 ) : Serializable {
     constructor(name: String, duration: Int) : this(
-        bell = -2,
+        bell = DEFAULT_BELL,
         bellcount = 1,
         bellpause = 1,
         name = name,
@@ -25,5 +25,19 @@ data class Section(
         volume = 100,
     )
 
-    fun getDurationString(): String = String.format(Locale.US, "%02d:%02d", duration / 60, duration % 60)
+    fun getDurationString(): String =
+        String.format(
+            Locale.US,
+            "%02d:%02d",
+            duration / SECONDS_PER_MINUTE,
+            duration % SECONDS_PER_MINUTE,
+        )
+
+    companion object {
+        private const val serialVersionUID = 1L
+
+        private const val DEFAULT_BELL = -2
+
+        private const val SECONDS_PER_MINUTE = 60
+    }
 }

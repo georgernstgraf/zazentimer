@@ -6,7 +6,6 @@ import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.media.AudioManager
-import android.os.Build
 import android.os.PowerManager
 import android.util.Log
 import at.priv.graf.zazentimer.ZazenTimerActivity
@@ -22,6 +21,7 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.isActive
 import kotlinx.coroutines.launch
 
+@Suppress("TooManyFunctions")
 class Meditation(
     private val meditationService: MeditationService,
     private val repository: MeditationRepository,
@@ -35,7 +35,6 @@ class Meditation(
     private var oldRingerMode: Int = 0
     private var oldRingerVolume: Int = 0
     private var mutedRingerMode: Int = -1
-    private var meditationWakeLock: PowerManager.WakeLock? = null
     private var pauseSectionSeconds: Int = 0
     private var sectionStartTime: Long = 0L
     private var totalSessionTime: Int = 0
@@ -67,9 +66,6 @@ class Meditation(
         startSectionTimer()
         startTicker()
         repository.onMeditationStarted(this)
-        if (Build.VERSION.SDK_INT < 23) {
-            createMeditationWakeLock()
-        }
     }
 
     private fun startTicker() {
@@ -78,7 +74,7 @@ class Meditation(
             scope.launch {
                 while (isActive) {
                     repository.onMeditationUpdated()
-                    delay(1000)
+                    delay(TICKER_INTERVAL_MS)
                 }
             }
     }
@@ -110,18 +106,11 @@ class Meditation(
             currentSectionEndIntent?.let { alarmManager.cancel(it) }
             currentSectionEndIntent = null
             repository.onMeditationUpdated()
-            if (Build.VERSION.SDK_INT < 23) {
-                releaseMeditationWakeLock()
-                return
-            }
-            return
-        }
-        paused = false
-        startSectionTimer()
-        startTicker()
-        repository.onMeditationUpdated()
-        if (Build.VERSION.SDK_INT < 23) {
-            createMeditationWakeLock()
+        } else {
+            paused = false
+            startSectionTimer()
+            startTicker()
+            repository.onMeditationUpdated()
         }
     }
 
@@ -131,9 +120,6 @@ class Meditation(
         stopSectionTimer()
         releaseAudioObjects()
         unmutePhone()
-        if (Build.VERSION.SDK_INT < 23) {
-            releaseMeditationWakeLock()
-        }
         repository.onMeditationStopped()
         fireMeditationEnded()
     }
@@ -143,26 +129,6 @@ class Meditation(
         scope.cancel()
     }
 
-    private fun releaseMeditationWakeLock() {
-        Log.d(TAG, "Releasing meditation wake lock")
-        meditationWakeLock?.let { lock ->
-            try {
-                if (lock.isHeld) {
-                    lock.release()
-                }
-            } catch (e: Exception) {
-                Log.d(TAG, "error releasing wake lock", e)
-            }
-        }
-    }
-
-    private fun createMeditationWakeLock() {
-        Log.d(TAG, "Creating meditation wake lock")
-        val powerManager = meditationService.getSystemService(Context.POWER_SERVICE) as PowerManager
-        meditationWakeLock = powerManager.newWakeLock(1, "MeditationWakeLock")
-        meditationWakeLock?.acquire(((totalSessionTime + 120) * 1000).toLong())
-    }
-
     private fun fireMeditationEnded() {
         meditationService.onMeditationEnd()
     }
@@ -170,7 +136,7 @@ class Meditation(
     private fun startSectionTimer() {
         val section = sections[currentSectionIdx]
         sectionStartTime = clock.now()
-        val triggerTime = sectionStartTime + ((section.duration - pauseSectionSeconds) * 1000L)
+        val triggerTime = sectionStartTime + ((section.duration - pauseSectionSeconds) * MS_PER_SECOND)
         val pendingIntent =
             PendingIntent.getBroadcast(
                 meditationService,
@@ -207,7 +173,11 @@ class Meditation(
 
     fun getTotalSessionTime(): Int = totalSessionTime
 
-    fun getCurrentSessionTime(): Int = MeditationTimer.getCurrentSessionTime(getCurrentStartSeconds(), getSectionElapsedSeconds())
+    fun getCurrentSessionTime(): Int =
+        MeditationTimer.getCurrentSessionTime(
+            getCurrentStartSeconds(),
+            getSectionElapsedSeconds(),
+        )
 
     fun isPaused(): Boolean = paused
 
@@ -221,16 +191,31 @@ class Meditation(
 
     fun getPrevStartSeconds(): Int = MeditationTimer.getPrevStartSeconds(sections, currentSectionIdx)
 
-    fun getNextSectionName(): String = if (currentSectionIdx < sections.size - 1) sections[currentSectionIdx + 1].name ?: "" else ""
+    fun getNextSectionName(): String =
+        if (currentSectionIdx < sections.size - 1) {
+            sections[currentSectionIdx + 1].name ?: ""
+        } else {
+            ""
+        }
 
-    fun getNextNextSectionName(): String = if (currentSectionIdx < sections.size - 2) sections[currentSectionIdx + 2].name ?: "" else ""
+    fun getNextNextSectionName(): String =
+        if (currentSectionIdx < sections.size - 2) {
+            sections[currentSectionIdx + 2].name ?: ""
+        } else {
+            ""
+        }
 
     fun getSectionElapsedSeconds(): Int {
         val raw: Int =
             if (paused) {
                 pauseSectionSeconds
             } else {
-                Math.round(((clock.now() / 1000) - (sectionStartTime / 1000)).toFloat()) + pauseSectionSeconds
+                Math.round(
+                    (
+                        (clock.now() / MS_PER_SECOND) -
+                            (sectionStartTime / MS_PER_SECOND)
+                    ).toFloat(),
+                ) + pauseSectionSeconds
             }
         return MeditationTimer.getSectionElapsedSeconds(raw, getCurrentSection().duration)
     }
@@ -276,7 +261,7 @@ class Meditation(
                 oldRingerMode = audioManager.ringerMode
                 oldRingerVolume = audioManager.getStreamVolume(2)
                 audioManager.ringerMode = 0
-                delay(500)
+                delay(RINGER_MODE_DELAY_MS)
                 audioManager.setStreamVolume(2, 0, 0)
                 audioManager.ringerMode = 0
                 mutedRingerMode = audioManager.ringerMode
@@ -294,14 +279,18 @@ class Meditation(
             if (mutedRingerMode != -1) {
                 val currentMode = audioManager.ringerMode
                 if (currentMode != mutedRingerMode) {
-                    Log.d(TAG, "Ringer mode changed during meditation (was $mutedRingerMode, now $currentMode) — skipping restore")
+                    Log.d(
+                        TAG,
+                        "Ringer mode changed during meditation " +
+                            "(was $mutedRingerMode, now $currentMode) — skipping restore",
+                    )
                     mutedRingerMode = -1
                     return
                 }
             }
             Log.d(TAG, "unmuting: ring=$oldRingerVolume ringerMode=$oldRingerMode")
             audioManager.ringerMode = oldRingerMode
-            delay(500)
+            delay(RINGER_MODE_DELAY_MS)
             if (oldRingerMode == 2) {
                 audioManager.setStreamVolume(2, oldRingerVolume, 0)
             }
@@ -318,7 +307,7 @@ class Meditation(
             Log.d(TAG, "Playing bells in coroutine")
             val powerManager = meditationService.getSystemService(Context.POWER_SERVICE) as PowerManager
             val wakeLock = powerManager.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, "PlayBells")
-            wakeLock.acquire((section.bellcount * 25 * 1000).toLong())
+            wakeLock.acquire(section.bellcount * BELL_WAKE_LOCK_MULTIPLIER * MS_PER_SECOND)
             Log.d(TAG, "WakeLock created for playing bells")
             for (i in 0 until section.bellcount) {
                 if (stopping) break
@@ -326,11 +315,11 @@ class Meditation(
                 if (bell != null) {
                     val audio = Audio(meditationService)
                     audio.playAbsVolume(bell, section.volume)
-                    delay(500) // Small overlap
+                    delay(BELL_OVERLAP_MS)
                     audio.release()
                 }
                 if (i < section.bellcount - 1) {
-                    delay((section.bellpause * 1000).toLong())
+                    delay(section.bellpause * MS_PER_SECOND)
                 }
             }
             if (wakeLock.isHeld) {
@@ -343,5 +332,10 @@ class Meditation(
     companion object {
         const val INTENT_SECTION_ENDED: String = "at.priv.graf.zazentimer.ACTION_SECTION_ENDED"
         private const val TAG = "ZMT_Meditation"
+        private const val TICKER_INTERVAL_MS = 1000L
+        private const val MS_PER_SECOND = 1000L
+        private const val RINGER_MODE_DELAY_MS = 500L
+        private const val BELL_WAKE_LOCK_MULTIPLIER = 25
+        private const val BELL_OVERLAP_MS = 500L
     }
 }

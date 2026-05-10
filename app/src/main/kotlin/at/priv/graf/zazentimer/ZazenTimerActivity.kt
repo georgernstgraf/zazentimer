@@ -2,11 +2,13 @@ package at.priv.graf.zazentimer
 
 import android.app.AlertDialog
 import android.app.NotificationManager
+import android.content.ActivityNotFoundException
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
 import android.content.SharedPreferences
+import android.content.pm.PackageManager
 import android.os.Build
 import android.os.Bundle
 import android.os.Handler
@@ -33,9 +35,8 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.NavigationUI
 import androidx.preference.PreferenceManager
 import at.priv.graf.zazentimer.audio.BellCollection
-import at.priv.graf.zazentimer.bo.Section
-import at.priv.graf.zazentimer.bo.Session
 import at.priv.graf.zazentimer.database.DbOperations
+import at.priv.graf.zazentimer.database.DemoSessionCreator
 import at.priv.graf.zazentimer.fragments.MainFragment
 import at.priv.graf.zazentimer.service.MeditationService
 import at.priv.graf.zazentimer.service.MeditationViewModel
@@ -46,6 +47,7 @@ import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 @AndroidEntryPoint
+@Suppress("TooManyFunctions")
 class ZazenTimerActivity :
     AppCompatActivity(),
     MainFragment.OnFragmentInteractionListener {
@@ -135,7 +137,10 @@ class ZazenTimerActivity :
         this.viewModel = ViewModelProvider(this).get(MeditationViewModel::class.java)
         this.viewModel?.setHandler(this.handler ?: Handler(Looper.getMainLooper()))
         BellCollection.initialize(this)
-        convertFromOldVersions()
+        this.pref = getPreferences(this)
+        this.pref?.let { prefs ->
+            MigrationHelper(dbOperations, prefs, lifecycleScope).convertFromOldVersions()
+        }
         setContentView(R.layout.main)
         val toolbar = findViewById<Toolbar>(R.id.my_toolbar)
         toolbar?.let { setSupportActionBar(it) }
@@ -153,7 +158,7 @@ class ZazenTimerActivity :
         if (preferences.getBoolean(PREF_KEY_FIRST_START, true)) {
             Log.d(TAG, "This is the first run - create demo sessions")
             lifecycleScope.launch {
-                createDemoSessions()
+                DemoSessionCreator(dbOperations, resources).createDemoSessions()
                 withContext(Dispatchers.Main) {
                     findMainFragment()?.updateSessionList()
                 }
@@ -244,12 +249,12 @@ class ZazenTimerActivity :
         ) {
             return true
         }
-        if (nc != null) {
-            appBarConfiguration?.let { config ->
-                return NavigationUI.navigateUp(nc, config)
-            }
+        return if (nc != null) {
+            appBarConfiguration?.let { config -> NavigationUI.navigateUp(nc, config) }
+                ?: super.onSupportNavigateUp()
+        } else {
+            super.onSupportNavigateUp()
         }
-        return super.onSupportNavigateUp()
     }
 
     fun isMeditationScreenShown(): Boolean {
@@ -301,7 +306,7 @@ class ZazenTimerActivity :
         val textView = TextView(this)
         textView.text = Html.fromHtml(message, Html.FROM_HTML_MODE_COMPACT)
         textView.movementMethod = LinkMovementMethod.getInstance()
-        val pad = (24 * resources.displayMetrics.density).toInt()
+        val pad = (ABOUT_PADDING_DP * resources.displayMetrics.density).toInt()
         textView.setPadding(pad, pad, 0, 0)
         AlertDialog
             .Builder(this)
@@ -322,7 +327,7 @@ class ZazenTimerActivity :
         if (keepScreenOn) {
             window.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
             val attributes = window.attributes
-            attributes.screenBrightness = preferences.getInt(PREF_KEY_BRIGHTNESS, 0) / 100.0f
+            attributes.screenBrightness = preferences.getInt(PREF_KEY_BRIGHTNESS, 0) / BRIGHTNESS_DIVISOR
             window.attributes = attributes
         } else {
             window.clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
@@ -336,28 +341,27 @@ class ZazenTimerActivity :
         zenIndicator?.visibility = View.VISIBLE
     }
 
-    override fun onOptionsItemSelected(menuItem: MenuItem): Boolean {
-        val id = menuItem.itemId
-        if (id == R.id.menu_settings) {
-            showSettingsScreen()
-            return true
-        } else if (id == R.id.menu_privacy) {
-            Log.d(TAG, "privacy")
-            showPrivacyScreen()
-            return true
-        } else if (id == R.id.menu_add_session) {
-            val mf = findMainFragment()
-            mf?.onFabNewSessionClicked()
-            return true
-        } else if (id == R.id.menu_about) {
-            showAboutScreen()
-            return true
-        } else if (id == R.id.menu_session_edit_help) {
-            return super.onOptionsItemSelected(menuItem)
-        } else {
-            return super.onOptionsItemSelected(menuItem)
+    override fun onOptionsItemSelected(menuItem: MenuItem): Boolean =
+        when (menuItem.itemId) {
+            R.id.menu_settings -> {
+                showSettingsScreen()
+                true
+            }
+            R.id.menu_privacy -> {
+                Log.d(TAG, "privacy")
+                showPrivacyScreen()
+                true
+            }
+            R.id.menu_add_session -> {
+                findMainFragment()?.onFabNewSessionClicked()
+                true
+            }
+            R.id.menu_about -> {
+                showAboutScreen()
+                true
+            }
+            else -> super.onOptionsItemSelected(menuItem)
         }
-    }
 
     override fun onPrepareOptionsMenu(menu: Menu): Boolean {
         menu.clear()
@@ -373,91 +377,6 @@ class ZazenTimerActivity :
         return navHost?.childFragmentManager?.primaryNavigationFragment as? MainFragment
     }
 
-    private suspend fun createDemoSessions() {
-        withContext(Dispatchers.IO) {
-            val session = Session()
-            session.description = resources.getString(R.string.demo_sess1_description)
-            session.name = resources.getString(R.string.demo_sess1_name)
-            dbOperations.insertSession(session)
-            val section = Section()
-            section.bell = -2
-            section.bellUri = BellCollection.getBell(BellCollection.BELL_IDX_JAP_RHINBOWL_88)?.uri?.toString() ?: return@withContext
-            section.bellcount = 1
-            section.bellpause = 1
-            section.duration = 30
-            section.name = resources.getString(R.string.demo_sess1_sec1_name)
-            section.rank = 1
-            dbOperations.insertSection(session, section)
-            val section2 = Section()
-            section2.bell = -2
-            section2.bellUri = BellCollection.getBell(BellCollection.BELL_IDX_JAP_RHINBOWL_107)?.uri?.toString() ?: return@withContext
-            section2.bellcount = 2
-            section2.bellpause = 3
-            section2.duration = 900
-            section2.name = resources.getString(R.string.demo_sess1_sec2_name)
-            section2.rank = 2
-            dbOperations.insertSection(session, section2)
-            val section3 = Section()
-            section3.bell = -2
-            section3.bellUri = BellCollection.getBell(BellCollection.BELL_IDX_JAP_RHINBOWL_88)?.uri?.toString() ?: return@withContext
-            section3.bellcount = 2
-            section3.bellpause = 3
-            section3.duration = 300
-            section3.name = resources.getString(R.string.demo_sess1_sec3_name)
-            section3.rank = 3
-            dbOperations.insertSection(session, section3)
-            val section4 = Section()
-            section4.bell = -2
-            section4.bellUri = BellCollection.getBell(BellCollection.BELL_IDX_JAP_RHINBOWL_107)?.uri?.toString() ?: return@withContext
-            section4.bellcount = 2
-            section4.bellpause = 3
-            section4.duration = 900
-            section4.name = resources.getString(R.string.demo_sess1_sec4_name)
-            section4.rank = 4
-            dbOperations.insertSection(session, section4)
-            val section5 = Section()
-            section5.bell = -2
-            section5.bellUri = BellCollection.getBell(BellCollection.BELL_IDX_JAP_RHINBOWL_88)?.uri?.toString() ?: return@withContext
-            section5.bellcount = 2
-            section5.bellpause = 3
-            section5.duration = 300
-            section5.name = resources.getString(R.string.demo_sess1_sec5_name)
-            section5.rank = 5
-            dbOperations.insertSection(session, section5)
-            val section6 = Section()
-            section6.bell = -2
-            section6.bellUri = BellCollection.getBell(BellCollection.BELL_IDX_JAP_RHINBOWL_107)?.uri?.toString() ?: return@withContext
-            section6.bellcount = 2
-            section6.bellpause = 3
-            section6.duration = 900
-            section6.name = resources.getString(R.string.demo_sess1_sec6_name)
-            section6.rank = 6
-            dbOperations.insertSection(session, section6)
-            val session2 = Session()
-            session2.description = resources.getString(R.string.demo_sess2_description)
-            session2.name = resources.getString(R.string.demo_sess2_name)
-            dbOperations.insertSession(session2)
-            val section7 = Section()
-            section7.bell = -2
-            section7.bellUri = BellCollection.getBell(BellCollection.BELL_IDX_TIB_RHINBOWL_230)?.uri?.toString() ?: return@withContext
-            section7.bellcount = 1
-            section7.bellpause = 1
-            section7.duration = 5
-            section7.name = resources.getString(R.string.demo_sess1_sec1_name)
-            section7.rank = 1
-            dbOperations.insertSection(session2, section7)
-            val section8 = Section()
-            section8.bell = -2
-            section8.bellUri = BellCollection.getBell(BellCollection.BELL_IDX_JAP_RHINBOWL_107)?.uri?.toString() ?: return@withContext
-            section8.bellcount = 2
-            section8.bellpause = 3
-            section8.duration = 600
-            section8.name = resources.getString(R.string.demo_sess1_sec2_name)
-            section8.rank = 2
-            dbOperations.insertSection(session2, section8)
-        }
-    }
-
     override fun onStartPressed() {
         lifecycleScope.launch {
             if (dbOperations.readSections(getSelectedSessionId()).isEmpty()) {
@@ -470,8 +389,11 @@ class ZazenTimerActivity :
                 }
             }
             val preferences = this@ZazenTimerActivity.pref ?: return@launch
-            if (preferences.getBoolean(PREF_KEY_MUTE_MODE_NONE, true) || preferences.getBoolean(PREF_KEY_MUTE_MODE_VIBRATE, false)) {
-                if (Build.VERSION.SDK_INT >= 23) {
+            if (
+                preferences.getBoolean(PREF_KEY_MUTE_MODE_NONE, true) ||
+                preferences.getBoolean(PREF_KEY_MUTE_MODE_VIBRATE, false)
+            ) {
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                     val notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
                     if (!notificationManager.isNotificationPolicyAccessGranted()) {
                         if (isCallable(this@ZazenTimerActivity.intentAllowMuting)) {
@@ -505,11 +427,13 @@ class ZazenTimerActivity :
                     this@ZazenTimerActivity.runOnUiThread {
                         try {
                             this@ZazenTimerActivity.startActivity(intent)
-                        } catch (unused: Exception) {
+                        } catch (e: ActivityNotFoundException) {
+                            Log.e(TAG, "Mute permission error", e)
                             this@ZazenTimerActivity.showMessageNoMuteSettings()
                         }
                     }
-                } catch (unused: Exception) {
+                } catch (e: IllegalStateException) {
+                    Log.e(TAG, "Mute permission error", e)
                     this@ZazenTimerActivity.runOnUiThread {
                         this@ZazenTimerActivity.showMessageNoMuteSettings()
                     }
@@ -531,7 +455,7 @@ class ZazenTimerActivity :
     }
 
     private fun isCallable(intent: Intent): Boolean {
-        val queryIntentActivities = packageManager.queryIntentActivities(intent, 65536)
+        val queryIntentActivities = packageManager.queryIntentActivities(intent, PackageManager.MATCH_DEFAULT_ONLY)
         return queryIntentActivities.isNotEmpty()
     }
 
@@ -546,73 +470,6 @@ class ZazenTimerActivity :
             return f.getSelectedSessionId()
         }
         return viewModel?.getSelectedSessionId() ?: -1
-    }
-
-    private fun convertFromOldVersions() {
-        this.pref = getPreferences(this)
-        val preferences = this.pref ?: return
-        if (!preferences.getBoolean(PREF_KEY_CONVERTED_FROM_DB, false)) {
-            Log.d(TAG, "marking settings as converted from DB to preferences...")
-            preferences
-                .edit()
-                .putBoolean(PREF_KEY_CONVERTED_FROM_DB, true)
-                .apply()
-            Log.d(TAG, "done converting settings")
-        }
-        if (!preferences.getBoolean(PREF_KEY_CONVERTED_BELL_INDICES, false)) {
-            Log.d(TAG, "converting Bell Indices to URIs...")
-            lifecycleScope.launch { convertBellIndices() }
-            Log.d(TAG, "done converting Bell Indices")
-        }
-        if (preferences.contains(PREF_KEY_PHONE_OFF)) {
-            if (preferences.getBoolean(PREF_KEY_PHONE_OFF, true)) {
-                preferences
-                    .edit()
-                    .putBoolean(
-                        PREF_KEY_MUTE_MODE_VIBRATE_SOUND,
-                        false,
-                    ).putBoolean(PREF_KEY_MUTE_MODE_VIBRATE, false)
-                    .putBoolean(PREF_KEY_MUTE_MODE_NONE, true)
-                    .remove(PREF_KEY_PHONE_OFF)
-                    .apply()
-            } else {
-                preferences
-                    .edit()
-                    .putBoolean(
-                        PREF_KEY_MUTE_MODE_VIBRATE_SOUND,
-                        true,
-                    ).putBoolean(
-                        PREF_KEY_MUTE_MODE_VIBRATE,
-                        false,
-                    ).putBoolean(PREF_KEY_MUTE_MODE_NONE, false)
-                    .remove(PREF_KEY_PHONE_OFF)
-                    .apply()
-            }
-        }
-    }
-
-    private suspend fun convertBellIndices() {
-        for (session in dbOperations.readSessions()) {
-            for (section in dbOperations.readSections(session.id)) {
-                val bellUri = section.bellUri
-                if (bellUri == null || bellUri.trim().isEmpty()) {
-                    val bell = BellCollection.getBell(section.bell)
-                    if (bell != null) {
-                        section.bellUri = bell.uri.toString()
-                        section.bell = -2
-                        dbOperations.updateSection(section)
-                    } else {
-                        section.bellUri = BellCollection.getDemoBell()?.uri?.toString() ?: continue
-                        section.bell = -2
-                        dbOperations.updateSection(section)
-                    }
-                } else if (section.bell == -1) {
-                    section.bell = -2
-                    section.bellUri = BellCollection.getDemoBell()?.uri?.toString() ?: continue
-                    dbOperations.updateSection(section)
-                }
-            }
-        }
     }
 
     fun resetSettingsForTest() {
@@ -637,7 +494,7 @@ class ZazenTimerActivity :
                     }
                     dbOperations.deleteSession(readSessions[i].id)
                 }
-                createDemoSessions()
+                DemoSessionCreator(dbOperations, resources).createDemoSessions()
             }
             withContext(Dispatchers.Main) {
                 val f = this@ZazenTimerActivity.findMainFragment()
@@ -686,5 +543,7 @@ class ZazenTimerActivity :
         fun getPreferences(context: Context): SharedPreferences = PreferenceManager.getDefaultSharedPreferences(context)
 
         private const val TAG = "ZMT_ZazenTimerActivity"
+        private const val ABOUT_PADDING_DP = 24
+        private const val BRIGHTNESS_DIVISOR = 100.0f
     }
 }

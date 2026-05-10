@@ -10,6 +10,7 @@ import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
+@Suppress("TooManyFunctions")
 class DbOperations
     @Inject
     constructor(
@@ -72,12 +73,12 @@ class DbOperations
             withIdling {
                 val dao = sessionDao ?: return@withIdling null
                 val entity = dao.getSessionById(id)
-                entity?.let { toBo(it) }
+                entity?.let { EntityMapper.toBo(it) }
             }
 
         suspend fun updateSession(session: Session) =
             withIdling {
-                val entity = toEntity(session)
+                val entity = EntityMapper.toEntity(session)
                 sessionDao?.update(entity)
             }
 
@@ -94,22 +95,22 @@ class DbOperations
                 val sDao = sessionDao ?: return@withIdling -1
                 val secDao = sectionDao ?: return@withIdling -1
                 val sourceEntity = sDao.getSessionById(sourceId) ?: return@withIdling -1
-                val source = toBo(sourceEntity)
+                val source = EntityMapper.toBo(sourceEntity)
                 source.name = newName
                 source.id = 0
                 val sectionEntities = secDao.getSectionsForSession(sourceId)
-                val newEntity = toEntity(source)
+                val newEntity = EntityMapper.toEntity(source)
                 val newId = sDao.insert(newEntity)
                 source.id = newId.toInt()
                 for (se in sectionEntities) {
-                    val section = toBo(se)
+                    val section = EntityMapper.toBo(se)
                     section.id = 0
                     section.fkSession = source.id
                     if (section.rank == -1) {
                         val maxRank = secDao.getMaxRank(source.id)
                         section.rank = (maxRank ?: 0) + 1
                     }
-                    val sectionEntity = toEntity(section)
+                    val sectionEntity = EntityMapper.toEntity(section)
                     val sid = secDao.insert(sectionEntity)
                     section.id = sid.toInt()
                 }
@@ -125,12 +126,12 @@ class DbOperations
             withIdling {
                 val dao = sectionDao ?: return@withIdling null
                 val entity = dao.getSectionById(id)
-                entity?.let { toBo(it) }
+                entity?.let { EntityMapper.toBo(it) }
             }
 
         suspend fun updateSection(section: Section) =
             withIdling {
-                val entity = toEntity(section)
+                val entity = EntityMapper.toEntity(section)
                 sectionDao?.update(entity)
             }
 
@@ -159,7 +160,7 @@ class DbOperations
                 section.rank = (maxRank ?: 0) + 1
             }
             section.fkSession = session.id
-            val entity = toEntity(section)
+            val entity = EntityMapper.toEntity(section)
             val newId = dao.insert(entity)
             section.id = newId.toInt()
         }
@@ -167,7 +168,7 @@ class DbOperations
         suspend fun insertSession(session: Session) =
             withIdling {
                 val dao = sessionDao ?: return@withIdling
-                val entity = toEntity(session)
+                val entity = EntityMapper.toEntity(session)
                 val newId = dao.insert(entity)
                 session.id = newId.toInt()
             }
@@ -178,7 +179,7 @@ class DbOperations
                 val entities = dao.getSectionsForSession(sessionId)
                 val result = ArrayList<Section>()
                 for (entity in entities) {
-                    result.add(toBo(entity))
+                    result.add(EntityMapper.toBo(entity))
                 }
                 result.toTypedArray()
             }
@@ -189,56 +190,8 @@ class DbOperations
                 val entities = dao.getAllSessions()
                 val result = ArrayList<Session>()
                 for (entity in entities) {
-                    result.add(toBo(entity))
+                    result.add(EntityMapper.toBo(entity))
                 }
                 result.toTypedArray()
             }
-
-        companion object {
-            private fun toEntity(bo: Session): SessionEntity {
-                val entity = SessionEntity()
-                entity._id = bo.id
-                entity.name = bo.name ?: ""
-                entity.description = bo.description ?: ""
-                return entity
-            }
-
-            private fun toBo(entity: SessionEntity): Session {
-                val bo = Session()
-                bo.id = entity._id
-                bo.name = entity.name
-                bo.description = entity.description
-                return bo
-            }
-
-            private fun toEntity(bo: Section): SectionEntity {
-                val entity = SectionEntity()
-                entity._id = bo.id
-                entity.fk_session = bo.fkSession
-                entity.name = bo.name ?: ""
-                entity.duration = bo.duration
-                entity.bell = bo.bell
-                entity.rank = bo.rank
-                entity.bellcount = bo.bellcount
-                entity.bellpause = bo.bellpause
-                entity.belluri = bo.bellUri
-                entity.volume = bo.volume
-                return entity
-            }
-
-            private fun toBo(entity: SectionEntity): Section {
-                val bo = Section()
-                bo.id = entity._id
-                bo.fkSession = entity.fk_session
-                bo.name = entity.name
-                bo.duration = entity.duration
-                bo.bell = entity.bell
-                bo.rank = entity.rank ?: -1
-                bo.bellcount = entity.bellcount ?: 1
-                bo.bellpause = entity.bellpause ?: 1
-                bo.bellUri = entity.belluri
-                bo.volume = entity.volume ?: 100
-                return bo
-            }
-        }
     }

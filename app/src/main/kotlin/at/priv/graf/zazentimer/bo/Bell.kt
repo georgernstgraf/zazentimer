@@ -4,7 +4,11 @@ import android.net.Uri
 
 data class Bell(
     var uri: Uri,
-    private var _name: String,
+    private var bellName: String,
 ) {
-    fun getName(): String = if (_name.startsWith("bell_")) _name.substring(5) else _name
+    companion object {
+        private const val BELL_PREFIX_LENGTH = 5
+    }
+
+    fun getName(): String = if (bellName.startsWith("bell_")) bellName.substring(BELL_PREFIX_LENGTH) else bellName
 }

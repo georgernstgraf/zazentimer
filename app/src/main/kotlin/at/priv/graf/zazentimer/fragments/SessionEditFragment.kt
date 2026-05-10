@@ -74,7 +74,7 @@ class SessionEditFragment : Fragment() {
                     @NonNull menuItem: MenuItem,
                 ): Boolean {
                     if (menuItem.itemId == R.id.menu_session_edit_help) {
-                        showHelp13()
+                        editHelper.showHelp13()
                         return true
                     }
                     return false
@@ -99,7 +99,7 @@ class SessionEditFragment : Fragment() {
             SectionListAdapter(
                 object : SectionListAdapter.OnItemClickListener {
                     override fun onItemClick(section: Section) {
-                        this@SessionEditFragment.navigateToSectionEdit(section.id)
+                        this@SessionEditFragment.editHelper.navigateToSectionEdit(section.id)
                     }
                 },
                 object : SectionListAdapter.OnSectionActionListener {
@@ -135,7 +135,7 @@ class SessionEditFragment : Fragment() {
         ItemTouchHelper(callback).attachToRecyclerView(binding.list)
 
         binding.butNewSection.setOnClickListener {
-            this@SessionEditFragment.doCreateNewSection()
+            editHelper.doCreateNewSection()
         }
         return binding.root
     }
@@ -147,14 +147,6 @@ class SessionEditFragment : Fragment() {
 
     override fun onSaveInstanceState(bundle: Bundle) {
         bundle.putInt("sessionId", this.sessionId)
-    }
-
-    fun setSessionId(i: Int) {
-        this.sessionId = i
-    }
-
-    private fun initSectionList() {
-        adapter?.setItems(this.sections?.toList() ?: emptyList())
     }
 
     override fun onResume() {
@@ -171,33 +163,16 @@ class SessionEditFragment : Fragment() {
                 binding.textSitzungName.setText(s.name)
                 binding.textSitzungBeschreibung.setText(s.description)
                 this@SessionEditFragment.sections = dbOperations.readSections(s.id)
-                initSectionList()
+                editHelper.initSectionList()
             }
         }
         requireActivity().invalidateOptionsMenu()
         if (this.pref?.getBoolean(ZazenTimerActivity.PREF_KEY_SHOW_SESSION_EDIT_HELP_V13, false) == false) {
-            showHelp13()
+            editHelper.showHelp13()
             this.pref
                 ?.edit()
                 ?.putBoolean(ZazenTimerActivity.PREF_KEY_SHOW_SESSION_EDIT_HELP_V13, true)
                 ?.apply()
-        }
-    }
-
-    private fun showHelp13() {
-        if (this.messageView != null) {
-            return
-        }
-        this.messageView = MessageView(requireActivity())
-        messageView?.let { mv ->
-            mv.setTitle(getString(R.string.help_sectionlist_title))
-            mv.setText(getString(R.string.help_sectionlist_text))
-            mv.setOnOkListener(
-                Runnable {
-                    this@SessionEditFragment.messageView = null
-                },
-            )
-            mv.show()
         }
     }
 
@@ -255,26 +230,58 @@ class SessionEditFragment : Fragment() {
         lifecycleScope.launch {
             dbOperations.insertSection(s, copy)
             sections = dbOperations.readSections(s.id)
-            initSectionList()
+            editHelper.initSectionList()
         }
     }
 
-    fun doCreateNewSection() {
-        val s = session ?: return
-        val section = Section(resources.getString(R.string.default_section_name), 60)
-        lifecycleScope.launch {
-            dbOperations.insertSection(s, section)
-            navigateToSectionEdit(section.id)
-        }
-    }
+    private val editHelper by lazy { SessionEditNavigationHelper() }
 
-    private fun navigateToSectionEdit(sectionId: Int) {
-        val args = Bundle()
-        args.putInt("sectionId", sectionId)
-        Navigation.findNavController(requireView()).navigate(R.id.action_sessionEditFragment_to_sectionEditFragment, args)
+    private inner class SessionEditNavigationHelper {
+        fun initSectionList() {
+            adapter?.setItems(sections?.toList() ?: emptyList())
+        }
+
+        fun showHelp13() {
+            if (messageView != null) {
+                return
+            }
+            messageView = MessageView(requireActivity())
+            messageView?.let { mv ->
+                mv.setTitle(getString(R.string.help_sectionlist_title))
+                mv.setText(getString(R.string.help_sectionlist_text))
+                mv.setOnOkListener(
+                    Runnable {
+                        messageView = null
+                    },
+                )
+                mv.show()
+            }
+        }
+
+        fun doCreateNewSection() {
+            val s = session ?: return
+            val section =
+                Section(
+                    resources.getString(R.string.default_section_name),
+                    DEFAULT_SECTION_DURATION_SECONDS,
+                )
+            lifecycleScope.launch {
+                dbOperations.insertSection(s, section)
+                navigateToSectionEdit(section.id)
+            }
+        }
+
+        fun navigateToSectionEdit(sectionId: Int) {
+            val args = Bundle()
+            args.putInt("sectionId", sectionId)
+            Navigation
+                .findNavController(requireView())
+                .navigate(R.id.action_sessionEditFragment_to_sectionEditFragment, args)
+        }
     }
 
     companion object {
         private const val TAG = "ZMT_SessionEditFragment"
+        private const val DEFAULT_SECTION_DURATION_SECONDS = 60
     }
 }

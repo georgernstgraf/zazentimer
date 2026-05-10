@@ -4,88 +4,61 @@ import at.priv.graf.zazentimer.bo.Section
 import at.priv.graf.zazentimer.bo.Session
 import com.google.common.truth.Truth.assertThat
 import org.junit.Test
-import java.lang.reflect.Method
 
 class DbOperationsMappingTest {
-    private val companion: Class<*> = DbOperations.Companion::class.java
-
-    private fun sessionToEntity(session: Session): SessionEntity {
-        val method: Method = companion.getDeclaredMethod("toEntity", Session::class.java)
-        method.isAccessible = true
-        return method.invoke(DbOperations.Companion, session) as SessionEntity
-    }
-
-    private fun sessionToBo(entity: SessionEntity): Session {
-        val method: Method = companion.getDeclaredMethod("toBo", SessionEntity::class.java)
-        method.isAccessible = true
-        return method.invoke(DbOperations.Companion, entity) as Session
-    }
-
-    private fun sectionToEntity(section: Section): SectionEntity {
-        val method: Method = companion.getDeclaredMethod("toEntity", Section::class.java)
-        method.isAccessible = true
-        return method.invoke(DbOperations.Companion, section) as SectionEntity
-    }
-
-    private fun sectionToBo(entity: SectionEntity): Section {
-        val method: Method = companion.getDeclaredMethod("toBo", SectionEntity::class.java)
-        method.isAccessible = true
-        return method.invoke(DbOperations.Companion, entity) as Section
-    }
-
     @Test
     fun toEntity_session_mapsId() {
         val session = Session(id = 42, name = "Test")
-        val entity = sessionToEntity(session)
+        val entity = EntityMapper.toEntity(session)
         assertThat(entity._id).isEqualTo(42)
     }
 
     @Test
     fun toEntity_session_mapsName() {
         val session = Session(id = 1, name = "Test")
-        val entity = sessionToEntity(session)
+        val entity = EntityMapper.toEntity(session)
         assertThat(entity.name).isEqualTo("Test")
     }
 
     @Test
     fun toEntity_session_mapsDescription() {
         val session = Session(id = 1, name = "Test", description = "Desc")
-        val entity = sessionToEntity(session)
+        val entity = EntityMapper.toEntity(session)
         assertThat(entity.description).isEqualTo("Desc")
     }
 
     @Test
     fun toEntity_session_nullName_becomesEmptyString() {
         val session = Session(id = 1, name = null)
-        val entity = sessionToEntity(session)
+        val entity = EntityMapper.toEntity(session)
         assertThat(entity.name).isEmpty()
     }
 
     @Test
     fun toEntity_session_nullDescription_becomesEmptyString() {
         val session = Session(id = 1, name = "Test", description = null)
-        val entity = sessionToEntity(session)
+        val entity = EntityMapper.toEntity(session)
         assertThat(entity.description).isEmpty()
     }
 
     @Test
     fun toBo_sessionEntity_mapsId() {
         val entity = SessionEntity(_id = 7, name = "Hello", description = "World")
-        val bo = sessionToBo(entity)
+        val bo = EntityMapper.toBo(entity)
         assertThat(bo.id).isEqualTo(7)
     }
 
     @Test
     fun toBo_sessionEntity_mapsName() {
         val entity = SessionEntity(_id = 1, name = "Hello", description = "")
-        val bo = sessionToBo(entity)
+        val bo = EntityMapper.toBo(entity)
         assertThat(bo.name).isEqualTo("Hello")
     }
 
     @Test
     fun toBo_sessionEntity_mapsDescription() {
         val entity = SessionEntity(_id = 1, name = "", description = "World")
-        val bo = sessionToBo(entity)
+        val bo = EntityMapper.toBo(entity)
         assertThat(bo.description).isEqualTo("World")
     }
 
@@ -104,7 +77,7 @@ class DbOperationsMappingTest {
                 bellUri = "content://audio/bell.mp3",
                 volume = 75,
             )
-        val entity = sectionToEntity(section)
+        val entity = EntityMapper.toEntity(section)
         assertThat(entity._id).isEqualTo(5)
         assertThat(entity.fk_session).isEqualTo(10)
         assertThat(entity.name).isEqualTo("Zazen")
@@ -120,7 +93,7 @@ class DbOperationsMappingTest {
     @Test
     fun toEntity_section_nullName_becomesEmptyString() {
         val section = Section(id = 1, name = null)
-        val entity = sectionToEntity(section)
+        val entity = EntityMapper.toEntity(section)
         assertThat(entity.name).isEmpty()
     }
 
@@ -139,7 +112,7 @@ class DbOperationsMappingTest {
                 belluri = "content://audio/bell2.mp3",
                 volume = 50,
             )
-        val bo = sectionToBo(entity)
+        val bo = EntityMapper.toBo(entity)
         assertThat(bo.id).isEqualTo(5)
         assertThat(bo.fkSession).isEqualTo(10)
         assertThat(bo.name).isEqualTo("Kinhin")
@@ -155,36 +128,36 @@ class DbOperationsMappingTest {
     @Test
     fun toBo_sectionEntity_nullRank_defaultsToMinusOne() {
         val entity = SectionEntity(_id = 1, rank = null)
-        val bo = sectionToBo(entity)
+        val bo = EntityMapper.toBo(entity)
         assertThat(bo.rank).isEqualTo(-1)
     }
 
     @Test
     fun toBo_sectionEntity_nullBellcount_defaultsToOne() {
         val entity = SectionEntity(_id = 1, bellcount = null)
-        val bo = sectionToBo(entity)
+        val bo = EntityMapper.toBo(entity)
         assertThat(bo.bellcount).isEqualTo(1)
     }
 
     @Test
     fun toBo_sectionEntity_nullBellpause_defaultsToOne() {
         val entity = SectionEntity(_id = 1, bellpause = null)
-        val bo = sectionToBo(entity)
+        val bo = EntityMapper.toBo(entity)
         assertThat(bo.bellpause).isEqualTo(1)
     }
 
     @Test
     fun toBo_sectionEntity_nullVolume_defaultsTo100() {
         val entity = SectionEntity(_id = 1, volume = null)
-        val bo = sectionToBo(entity)
+        val bo = EntityMapper.toBo(entity)
         assertThat(bo.volume).isEqualTo(100)
     }
 
     @Test
     fun roundTrip_session_toEntity_toBo_preservesFields() {
         val original = Session(id = 99, name = "Sesshin", description = "Retreat")
-        val entity = sessionToEntity(original)
-        val roundTripped = sessionToBo(entity)
+        val entity = EntityMapper.toEntity(original)
+        val roundTripped = EntityMapper.toBo(entity)
         assertThat(roundTripped.id).isEqualTo(99)
         assertThat(roundTripped.name).isEqualTo("Sesshin")
         assertThat(roundTripped.description).isEqualTo("Retreat")
@@ -205,8 +178,8 @@ class DbOperationsMappingTest {
                 bellUri = "uri",
                 volume = 80,
             )
-        val entity = sectionToEntity(original)
-        val roundTripped = sectionToBo(entity)
+        val entity = EntityMapper.toEntity(original)
+        val roundTripped = EntityMapper.toBo(entity)
         assertThat(roundTripped.id).isEqualTo(42)
         assertThat(roundTripped.fkSession).isEqualTo(7)
         assertThat(roundTripped.name).isEqualTo("Zazen")
