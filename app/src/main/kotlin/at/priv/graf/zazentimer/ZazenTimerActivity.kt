@@ -532,7 +532,7 @@ class ZazenTimerActivity :
             }
         }
         val f = this@ZazenTimerActivity.findMainFragment()
-        kotlinx.coroutines.runBlocking {
+        kotlinx.coroutines.runBlocking(Dispatchers.Main) {
             f?.suspendUpdateSessionList()
         }
     }

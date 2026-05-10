@@ -65,7 +65,9 @@ cleanup() {
         kill "$XVFB_PID" 2>/dev/null || true
         wait "$XVFB_PID" 2>/dev/null || true
     fi
-    adb devices | grep -q "emulator" && adb -s emulator-5554 emu kill 2>/dev/null || true
+    for emu_serial in $(adb devices 2>/dev/null | grep -oP 'emulator-\d+' || true); do
+        adb -s "$emu_serial" emu kill 2>/dev/null || true
+    done
 }
 trap cleanup EXIT
 
@@ -249,7 +251,7 @@ else
             -gpu swiftshader_indirect \
             -noaudio \
             -no-boot-anim \
-            -memory 4096 &
+            -memory 2048 &
         sleep 2
 
         if ! wait_for_emulator "$serial"; then
@@ -339,7 +341,7 @@ else
             -gpu swiftshader_indirect \
             -noaudio \
             -no-boot-anim \
-            -memory 4096 &
+            -memory 2048 &
         sleep 2
 
         if ! wait_for_emulator "$serial"; then
