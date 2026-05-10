@@ -75,20 +75,13 @@ class MeditationServiceTest {
     }
 
     private fun waitForStopButton() {
-        for (i in 0 until 100) {
-            try {
-                androidx.test.espresso.Espresso.onView(
-                    androidx.test.espresso.matcher.ViewMatchers.withId(R.id.but_stop)
-                ).check(androidx.test.espresso.assertion.ViewAssertions.matches(
-                    org.hamcrest.Matchers.allOf(
-                        androidx.test.espresso.matcher.ViewMatchers.isDisplayed(),
-                        androidx.test.espresso.matcher.ViewMatchers.isEnabled()
-                    )
-                ))
+        val stopButtonById = By.res("at.priv.graf.zazentimer", "but_stop").enabled(true)
+        val stopButtonByDesc = By.desc("Stop").enabled(true)
+        for (i in 0 until 50) {
+            if (device.hasObject(stopButtonById) || device.hasObject(stopButtonByDesc)) {
                 return
-            } catch (e: Throwable) {
-                SystemClock.sleep(200)
             }
+            SystemClock.sleep(200)
         }
         throw AssertionError("Stop button never became enabled and displayed")
     }
@@ -97,22 +90,18 @@ class MeditationServiceTest {
         for (i in 0 until 5) {
             try {
                 waitForStopButton()
-                androidx.test.espresso.Espresso.onView(
-                    androidx.test.espresso.matcher.ViewMatchers.withId(R.id.but_stop)
-                ).perform(androidx.test.espresso.action.ViewActions.click())
-                
+                val stopBtn = device.findObject(androidx.test.uiautomator.UiSelector().resourceId("at.priv.graf.zazentimer:id/but_stop"))
+                if (stopBtn.exists()) {
+                    stopBtn.click()
+                } else {
+                    val stopDesc = device.findObject(androidx.test.uiautomator.UiSelector().description("Stop"))
+                    if (stopDesc.exists()) stopDesc.click()
+                }
+
                 // Wait for dialog
                 for (j in 0 until 20) {
-                    try {
-                        androidx.test.espresso.Espresso.onView(
-                            androidx.test.espresso.matcher.ViewMatchers.withText(titleText)
-                        ).check(androidx.test.espresso.assertion.ViewAssertions.matches(
-                            androidx.test.espresso.matcher.ViewMatchers.isDisplayed()
-                        ))
-                        return
-                    } catch (e: Throwable) {
-                        SystemClock.sleep(100)
-                    }
+                    if (isDialogVisible(titleText)) return
+                    SystemClock.sleep(100)
                 }
             } catch (e: Throwable) {
                 Log.e(TAG, "Stop button dialog attempt $i failed", e)
