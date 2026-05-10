@@ -13,19 +13,18 @@ import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.contrib.RecyclerViewActions
 import androidx.test.espresso.matcher.ViewMatchers
+import androidx.test.espresso.matcher.ViewMatchers.Visibility
 import androidx.test.espresso.matcher.ViewMatchers.isAssignableFrom
 import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
-import androidx.test.espresso.matcher.ViewMatchers.withContentDescription
+import androidx.test.espresso.matcher.ViewMatchers.withEffectiveVisibility
 import androidx.test.espresso.matcher.ViewMatchers.withId
 import androidx.test.espresso.matcher.ViewMatchers.withText
 import androidx.test.platform.app.InstrumentationRegistry.getInstrumentation
-import androidx.test.espresso.matcher.ViewMatchers.withEffectiveVisibility
 import androidx.test.uiautomator.UiDevice
 import androidx.test.uiautomator.UiSelector
-import androidx.test.espresso.matcher.ViewMatchers.Visibility
-import org.hamcrest.Matchers.allOf
 import org.hamcrest.Description
 import org.hamcrest.Matcher
+import org.hamcrest.Matchers.allOf
 import org.hamcrest.TypeSafeMatcher
 
 class ScreenRobot {
@@ -42,17 +41,14 @@ class ScreenRobot {
         return this
     }
 
-    private fun hasNonZeroHeight(): Matcher<View> {
-        return object : TypeSafeMatcher<View>() {
+    private fun hasNonZeroHeight(): Matcher<View> =
+        object : TypeSafeMatcher<View>() {
             override fun describeTo(description: Description) {
                 description.appendText("view has non-zero height")
             }
 
-            override fun matchesSafely(view: View): Boolean {
-                return view.height > 0
-            }
+            override fun matchesSafely(view: View): Boolean = view.height > 0
         }
-    }
 
     fun clickOnView(viewId: Int): ScreenRobot {
         onViewWithId(viewId).perform(click())
