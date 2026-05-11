@@ -205,7 +205,7 @@ class ZazenTimerActivity :
                 val attributes = window.attributes
                 attributes.screenBrightness = -1.0f
                 window.attributes = attributes
-                vm.releaseScreenWakeLock()
+                vm.wakeLockManager.release()
                 if (appRunning) {
                     showMainScreen()
                 }
@@ -358,7 +358,7 @@ class ZazenTimerActivity :
         }
         val vm = viewModel ?: return
         vm.setSelectedSessionId(getSelectedSessionId())
-        vm.acquireScreenWakeLock(applicationContext as android.app.Application, preferences)
+        vm.wakeLockManager.acquire(preferences, vm.getSelectedSessionId())
         vm.startMeditation(applicationContext as android.app.Application, getSelectedSessionId())
         showMeditationScreen()
         vm.startUpdateThread()

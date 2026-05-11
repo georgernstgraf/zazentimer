@@ -3,11 +3,9 @@ package at.priv.graf.zazentimer.service
 import android.app.Application
 import android.content.Context
 import android.content.Intent
-import android.content.SharedPreferences
 import android.os.Build
 import android.os.Handler
 import android.os.Looper
-import android.os.PowerManager
 import android.util.Log
 import androidx.annotation.NonNull
 import androidx.lifecycle.AndroidViewModel
@@ -30,12 +28,12 @@ class MeditationViewModel
         @NonNull application: Application,
         private val dbOperations: DbOperations,
         private val meditationRepository: MeditationRepository,
+        val wakeLockManager: WakeLockManager,
     ) : AndroidViewModel(application) {
         private val meditationEnded = MutableLiveData<Boolean>()
 
         private var serviceConnection: ServCon? = null
         private var handler: Handler? = null
-        private var wakeLock: PowerManager.WakeLock? = null
         private var serviceIntent: Intent? = null
         private var selectedSessionId = -1
         private var timerViewInitialized = false
@@ -178,39 +176,6 @@ class MeditationViewModel
             return meditation.isPaused()
         }
 
-        public fun acquireScreenWakeLock(
-            app: Application,
-            pref: SharedPreferences,
-        ) {
-            val keepScreenOn = pref.getBoolean(ZazenTimerActivity.PREF_KEY_KEEP_SCREEN_ON, false)
-            if (!keepScreenOn) {
-                return
-            }
-            val powerManager = app.getSystemService(Context.POWER_SERVICE) as PowerManager
-            viewModelScope.launch {
-                val totalSeconds = dbOperations.readSections(selectedSessionId).sumOf { it.duration }
-                wakeLock = null
-                wakeLock = powerManager.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, "ScreenOnWakeLock")
-                val timeoutSeconds = totalSeconds + WAKELOCK_TIMEOUT_BUFFER_SECONDS
-                wakeLock?.acquire(timeoutSeconds * MILLIS_PER_SECOND)
-                Log.i(TAG, "Acquired WakeLock to keep screen on for $timeoutSeconds seconds")
-            }
-        }
-
-        public fun releaseScreenWakeLock() {
-            wakeLock?.let { lock ->
-                try {
-                    if (lock.isHeld) {
-                        lock.release()
-                    }
-                } catch (e: IllegalArgumentException) {
-                    Log.d(TAG, "wakeLock release error", e)
-                }
-                wakeLock = null
-                Log.i(TAG, "ScreenOn-WakeLock released")
-            }
-        }
-
         public fun getSelectedSessionId(): Int = selectedSessionId
 
         public fun setSelectedSessionId(sessionId: Int) {
@@ -232,12 +197,10 @@ class MeditationViewModel
 
         override fun onCleared() {
             super.onCleared()
-            releaseScreenWakeLock()
+            wakeLockManager.release()
         }
 
         companion object {
             private const val TAG = "ZMT_MeditationViewModel"
-            private const val WAKELOCK_TIMEOUT_BUFFER_SECONDS = 60
-            private const val MILLIS_PER_SECOND = 1000L
         }
     }

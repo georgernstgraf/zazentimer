@@ -9,11 +9,11 @@ import android.util.Log
 import at.priv.graf.zazentimer.bo.Section
 
 class AlarmScheduler(
-    private val meditationService: MeditationService,
+    private val context: Context,
     private val clock: ZazenClock,
 ) {
     private val alarmManager: AlarmManager =
-        meditationService.getSystemService(Context.ALARM_SERVICE) as AlarmManager
+        context.getSystemService(Context.ALARM_SERVICE) as AlarmManager
     var sectionStartTime: Long = 0L
         private set
     private var pendingIntent: PendingIntent? = null
@@ -27,10 +27,10 @@ class AlarmScheduler(
             sectionStartTime + ((section.duration - pauseSectionSeconds) * MS_PER_SECOND)
         val pi =
             PendingIntent.getBroadcast(
-                meditationService,
+                context,
                 0,
                 Intent(Meditation.INTENT_SECTION_ENDED)
-                    .setClass(meditationService, SectionEndReceiver::class.java),
+                    .setClass(context, SectionEndReceiver::class.java),
                 PendingIntent.FLAG_IMMUTABLE,
             )
         pendingIntent = pi

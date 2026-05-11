@@ -12,7 +12,7 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 class BellPlayer(
-    private val meditationService: MeditationService,
+    private val context: Context,
     private val dispatchers: CoroutineDispatchers = CoroutineDispatchers(),
 ) {
     private val scope = CoroutineScope(SupervisorJob() + dispatchers.main)
@@ -26,7 +26,7 @@ class BellPlayer(
         scope.launch {
             Log.d(TAG, "Playing bells in coroutine")
             val powerManager =
-                meditationService.getSystemService(Context.POWER_SERVICE) as PowerManager
+                context.getSystemService(Context.POWER_SERVICE) as PowerManager
             val wakeLock =
                 powerManager.newWakeLock(
                     PowerManager.PARTIAL_WAKE_LOCK,
@@ -40,7 +40,7 @@ class BellPlayer(
                 if (stoppingCheck()) break
                 val bell = BellCollection.getBellForSection(section)
                 if (bell != null) {
-                    val audio = Audio(meditationService)
+                    val audio = Audio(context)
                     audio.playAbsVolume(bell, section.volume)
                     delay(BELL_OVERLAP_MS)
                     audio.release()

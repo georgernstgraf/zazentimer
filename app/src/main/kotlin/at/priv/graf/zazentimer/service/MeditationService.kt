@@ -27,6 +27,9 @@ class MeditationService : LifecycleService() {
     @Inject
     lateinit var coroutineDispatchers: CoroutineDispatchers
 
+    @Inject
+    lateinit var clock: ZazenClock
+
     private var binder: IBinder? = null
     private var runningMeditation: Meditation? = null
 
@@ -129,6 +132,12 @@ class MeditationService : LifecycleService() {
                     session.name ?: "",
                     sections,
                     coroutineDispatchers,
+                    AudioStateManager(
+                        this@MeditationService,
+                        ZazenTimerActivity.getPreferences(this@MeditationService),
+                    ),
+                    AlarmScheduler(this@MeditationService, clock),
+                    BellPlayer(this@MeditationService, coroutineDispatchers),
                 )
             val meditation = runningMeditation ?: return@launch
             meditation.start()
