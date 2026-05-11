@@ -511,6 +511,14 @@ else
             fi
         done
 
+        if [ "$pass" = true ]; then
+            _new_failed=()
+            for _f in "${FAILED_APIS[@]}"; do
+                [ "$_f" != "$api" ] && _new_failed+=("$_f")
+            done
+            FAILED_APIS=("${_new_failed[@]}")
+        fi
+
         if [ "$CONTINUE_ON_ERROR" = false ] && [ "$pass" = false ]; then
             echo ""
             echo "FAIL-FAST: Stopping at API $api due to failure"
