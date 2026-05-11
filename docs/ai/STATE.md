@@ -3,22 +3,20 @@
 Current status as of 2026-05-11.
 
 ## Current Focus
-#135 completed — all 8 API levels (36→29) pass 24/24 instrumented tests. Auto-tag `tested-2026-05-11` created and pushed.
+#148 completed — added 38 new unit tests covering extracted service classes and Room migrations.
 
 ## Completed (this cycle)
+- [x] #148 — Added test coverage for extracted services and Room migrations
+  - MigrationTest.kt: 10 tests validating all Room migration paths (1→2→3→4→5)
+  - WakeLockManagerTest.kt: 6 tests for WakeLock acquisition and preference gating
+  - AlarmSchedulerTest.kt: 7 tests for alarm scheduling and cancellation
+  - AudioStateManagerTest.kt: 8 tests for mute/unmute and external change detection
+  - BellPlayerTest.kt: 7 tests for WakeLock lifecycle, onDone callback, null bell handling
 - [x] #142 — Fixed all 337 detekt violations; `./gradlew detekt` exits 0; CI unblocked
 - [x] #143 — Added POST_NOTIFICATIONS permission, edge-to-edge insets, exact alarm check
 - [x] #144 — Added API 36 to `zazentimer.test.apis`, created AVDs for API 29-36
 - [x] #135 — All 8 API levels (36,35,34,33,32,31,30,29) pass 24/24 instrumented tests
 - [x] Extracted 10 helper classes: DemoSessionCreator, MigrationHelper, WakeLockManager, MeditationServiceState, EntityMapper, AudioStateManager, AlarmScheduler, BellPlayer, TimerAnimator/AnimationRunner
-- [x] Removed dead `Build.VERSION.SDK_INT < 23` code paths (minSdk=29)
-- [x] Fixed MeditationViewModel LiveData declaration order (NPE on API 36)
-- [x] Fixed MeditationViewModel serviceConnection null capture
-- [x] Fixed resetDatabaseForTest() Dispatchers.Main deadlock
-- [x] Fixed DevicePreFlightRule try-catch scope
-- [x] Fixed run-instrumentation.sh: process crash detection, empty output, APK install retry, emulator cleanup, memory reduction
-- [x] Fixed auto-tag bug: FAILED_APIS not cleared on retry success
-- [x] Fixed TestDispatchersModule: missing kotlinx-coroutines-test androidTest dep, missing ZazenClock binding, Hilt @TestInstallIn requires replaces with all bindings re-provided
 
 ## Pending
 - [ ] #133 — Downgrade minSdk to 23
@@ -28,4 +26,4 @@ Current status as of 2026-05-11.
 - None
 
 ## Next Session Suggestion
-Proceed with #133 (minSdk downgrade to 23) or #64 (Play Store release). All test infrastructure is green and auto-tag is verified working.
+Proceed with #133 (minSdk downgrade to 23) or #64 (Play Store release). All 206 unit tests and full API matrix (29-36) pass.
