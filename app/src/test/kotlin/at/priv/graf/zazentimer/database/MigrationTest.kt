@@ -57,7 +57,9 @@ class MigrationTest {
                             db: SupportSQLiteDatabase,
                             oldVersion: Int,
                             newVersion: Int,
-                        ) {}
+                        ) {
+                            // no-op: migration tested via explicit runMigrations()
+                        }
                     },
                 ).build(),
         )

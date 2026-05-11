@@ -12,7 +12,7 @@ android {
 
     defaultConfig {
         applicationId = "at.priv.graf.zazentimer"
-        minSdk = 29
+        minSdk = 23
         targetSdk = 36
         versionCode = if (project.hasProperty("versionCode")) project.property("versionCode").toString().toInt() else 33
         versionName = if (project.hasProperty("versionName")) project.property("versionName").toString() else "2.20"

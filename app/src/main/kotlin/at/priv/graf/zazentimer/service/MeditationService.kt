@@ -36,9 +36,7 @@ class MeditationService : LifecycleService() {
     override fun onCreate() {
         super.onCreate()
         isRunning = true
-        val channel = NotificationChannel("zazen_timer_channel", "Meditation Timer", NotificationManager.IMPORTANCE_LOW)
-        val manager = getSystemService(NotificationManager::class.java)
-        manager?.createNotificationChannel(channel)
+        createNotificationChannel()
         val notification =
             NotificationCompat
                 .Builder(baseContext, "zazen_timer_channel")
@@ -47,11 +45,7 @@ class MeditationService : LifecycleService() {
                 .setSmallIcon(R.drawable.notify)
                 .setOngoing(true)
                 .build()
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
-            startForeground(1, notification, ServiceInfo.FOREGROUND_SERVICE_TYPE_SPECIAL_USE)
-        } else {
-            startForeground(1, notification)
-        }
+        startForegroundCompat(1, notification)
     }
 
     override fun onBind(intent: Intent): IBinder {
@@ -102,11 +96,7 @@ class MeditationService : LifecycleService() {
             meditation.pause()
             val notification = createNotification()
             if (notification != null) {
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
-                    startForeground(1, notification, ServiceInfo.FOREGROUND_SERVICE_TYPE_SPECIAL_USE)
-                } else {
-                    startForeground(1, notification)
-                }
+                startForegroundCompat(1, notification)
                 result = meditation.isPaused()
             }
         } else {
@@ -142,18 +132,19 @@ class MeditationService : LifecycleService() {
             val meditation = runningMeditation ?: return@launch
             meditation.start()
             val notification = createNotification() ?: return@launch
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
-                startForeground(1, notification, ServiceInfo.FOREGROUND_SERVICE_TYPE_SPECIAL_USE)
-            } else {
-                startForeground(1, notification)
-            }
+            startForegroundCompat(1, notification)
         }
     }
 
     fun onMeditationEnd() {
         Log.d(TAG, "onMeditationEnd")
         isRunning = false
-        stopForeground(STOP_FOREGROUND_REMOVE)
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            stopForeground(STOP_FOREGROUND_REMOVE)
+        } else {
+            @Suppress("DEPRECATION")
+            stopForeground(true)
+        }
         runningMeditation?.release()
         runningMeditation = null
         val intent = Intent()
@@ -182,9 +173,7 @@ class MeditationService : LifecycleService() {
         intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP)
         intent.setClass(this, ZazenTimerActivity::class.java)
         val activity = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_IMMUTABLE)
-        val channel = NotificationChannel("zazen_timer_channel", "Meditation Timer", NotificationManager.IMPORTANCE_LOW)
-        val manager = getSystemService(NotificationManager::class.java)
-        manager?.createNotificationChannel(channel)
+        createNotificationChannel()
         return NotificationCompat
             .Builder(baseContext, "zazen_timer_channel")
             .setContentTitle(title)
@@ -193,6 +182,26 @@ class MeditationService : LifecycleService() {
             .setContentIntent(activity)
             .setOngoing(true)
             .build()
+    }
+
+    private fun createNotificationChannel() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            val channel = NotificationChannel(
+                "zazen_timer_channel",
+                "Meditation Timer",
+                NotificationManager.IMPORTANCE_LOW,
+            )
+            val manager = getSystemService(NotificationManager::class.java)
+            manager?.createNotificationChannel(channel)
+        }
+    }
+
+    private fun startForegroundCompat(id: Int, notification: Notification) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.UPSIDE_DOWN_CAKE) {
+            startForeground(id, notification, ServiceInfo.FOREGROUND_SERVICE_TYPE_SPECIAL_USE)
+        } else {
+            startForeground(id, notification)
+        }
     }
 
     companion object {

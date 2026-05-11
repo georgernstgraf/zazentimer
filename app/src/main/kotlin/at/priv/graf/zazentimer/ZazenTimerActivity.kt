@@ -14,7 +14,7 @@ import android.os.Build
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
-import android.text.Html
+import androidx.core.text.HtmlCompat
 import android.text.method.LinkMovementMethod
 import android.util.Log
 import android.view.Menu
@@ -328,7 +328,7 @@ class ZazenTimerActivity :
                 "${getString(R.string.about2)}<br><br>" +
                 "${getString(R.string.about3)}"
         val textView = TextView(this)
-        textView.text = Html.fromHtml(message, Html.FROM_HTML_MODE_COMPACT)
+        textView.text = HtmlCompat.fromHtml(message, HtmlCompat.FROM_HTML_MODE_COMPACT)
         textView.movementMethod = LinkMovementMethod.getInstance()
         val pad = (ABOUT_PADDING_DP * resources.displayMetrics.density).toInt()
         textView.setPadding(pad, pad, 0, 0)

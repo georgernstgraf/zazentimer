@@ -5,6 +5,7 @@ import android.media.AudioAttributes
 import android.media.AudioManager
 import android.media.MediaPlayer
 import android.net.Uri
+import android.os.Build
 import android.util.Log
 import at.priv.graf.zazentimer.bo.Bell
 import at.priv.graf.zazentimer.bo.Section
@@ -40,13 +41,18 @@ class Audio(
         val mediaPlayer = MediaPlayer()
         var result: MediaPlayer? = null
         try {
-            mediaPlayer.setAudioAttributes(
-                AudioAttributes
-                    .Builder()
-                    .setUsage(AudioAttributes.USAGE_ALARM)
-                    .setContentType(AudioAttributes.CONTENT_TYPE_SONIFICATION)
-                    .build(),
-            )
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                mediaPlayer.setAudioAttributes(
+                    AudioAttributes
+                        .Builder()
+                        .setUsage(AudioAttributes.USAGE_ALARM)
+                        .setContentType(AudioAttributes.CONTENT_TYPE_SONIFICATION)
+                        .build(),
+                )
+            } else {
+                @Suppress("DEPRECATION")
+                mediaPlayer.setAudioStreamType(AudioManager.STREAM_ALARM)
+            }
             mediaPlayer.setDataSource(this.context, uri)
             mediaPlayer.prepare()
             val f = volume / VOLUME_SCALE
