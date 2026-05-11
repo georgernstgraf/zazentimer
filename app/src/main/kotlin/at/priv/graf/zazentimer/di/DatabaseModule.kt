@@ -1,5 +1,6 @@
 package at.priv.graf.zazentimer.di
 
+import at.priv.graf.zazentimer.service.CoroutineDispatchers
 import at.priv.graf.zazentimer.service.SystemClock
 import at.priv.graf.zazentimer.service.ZazenClock
 import dagger.Module
@@ -14,4 +15,8 @@ class DatabaseModule {
     @Provides
     @Singleton
     fun provideZazenClock(): ZazenClock = SystemClock()
+
+    @Provides
+    @Singleton
+    fun provideCoroutineDispatchers(): CoroutineDispatchers = CoroutineDispatchers()
 }

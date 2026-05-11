@@ -7,13 +7,15 @@ import at.priv.graf.zazentimer.audio.Audio
 import at.priv.graf.zazentimer.audio.BellCollection
 import at.priv.graf.zazentimer.bo.Section
 import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 class BellPlayer(
     private val meditationService: MeditationService,
-    private val scope: CoroutineScope,
+    private val dispatchers: CoroutineDispatchers = CoroutineDispatchers(),
 ) {
+    private val scope = CoroutineScope(SupervisorJob() + dispatchers.main)
     private val audioObjects = ArrayList<Audio>()
 
     fun playBells(

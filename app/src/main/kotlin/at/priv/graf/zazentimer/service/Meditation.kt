@@ -14,7 +14,6 @@ import at.priv.graf.zazentimer.audio.Audio
 import at.priv.graf.zazentimer.audio.BellCollection
 import at.priv.graf.zazentimer.bo.Section
 import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.cancel
@@ -28,8 +27,9 @@ class Meditation(
     private val repository: MeditationRepository,
     private val sessionName: String,
     private val sections: Array<Section>,
+    private val dispatchers: CoroutineDispatchers = CoroutineDispatchers(),
 ) {
-    private val scope = CoroutineScope(SupervisorJob() + Dispatchers.Main)
+    private val scope = CoroutineScope(SupervisorJob() + dispatchers.main)
     private val clock = repository.clock
     private var currentSectionEndIntent: PendingIntent? = null
     private var currentSectionIdx: Int = 0

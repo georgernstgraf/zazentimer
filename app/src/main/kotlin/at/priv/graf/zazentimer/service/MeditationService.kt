@@ -24,6 +24,9 @@ class MeditationService : LifecycleService() {
     @Inject
     lateinit var meditationRepository: MeditationRepository
 
+    @Inject
+    lateinit var coroutineDispatchers: CoroutineDispatchers
+
     private var binder: IBinder? = null
     private var runningMeditation: Meditation? = null
 
@@ -119,7 +122,14 @@ class MeditationService : LifecycleService() {
             val session = meditationRepository.readSession(i) ?: return@launch
             val sections = meditationRepository.readSections(i)
             if (sections.isEmpty()) return@launch
-            runningMeditation = Meditation(this@MeditationService, meditationRepository, session.name ?: "", sections)
+            runningMeditation =
+                Meditation(
+                    this@MeditationService,
+                    meditationRepository,
+                    session.name ?: "",
+                    sections,
+                    coroutineDispatchers,
+                )
             val meditation = runningMeditation ?: return@launch
             meditation.start()
             val notification = createNotification() ?: return@launch
