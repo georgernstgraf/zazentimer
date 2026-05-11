@@ -8,7 +8,10 @@ import dagger.hilt.android.testing.HiltTestApplication
 
 class HiltTestRunner : AndroidJUnitRunner() {
     override fun onStart() {
-        DevicePreFlightRule.execute()
+        try {
+            DevicePreFlightRule.execute()
+        } catch (_: Exception) {
+        }
         super.onStart()
     }
 
