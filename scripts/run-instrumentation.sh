@@ -249,7 +249,7 @@ else
             -avd "$avd_name" \
             -no-snapshot \
             -gpu swiftshader_indirect \
-            -noaudio \
+            $([ "$IS_REAL_DISPLAY" = false ] && echo "-noaudio") \
             -no-boot-anim \
             -memory 2048 &
         sleep 2
@@ -339,7 +339,7 @@ else
             -avd "$avd_name" \
             -no-snapshot \
             -gpu swiftshader_indirect \
-            -noaudio \
+            $([ "$IS_REAL_DISPLAY" = false ] && echo "-noaudio") \
             -no-boot-anim \
             -memory 2048 &
         sleep 2

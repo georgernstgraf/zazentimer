@@ -18,8 +18,6 @@ android {
         versionName = if (project.hasProperty("versionName")) project.property("versionName").toString() else "2.20"
 
         testInstrumentationRunner = "at.priv.graf.zazentimer.HiltTestRunner"
-        testInstrumentationRunnerArguments["clearPackageData"] = "true"
-        testInstrumentationRunnerArguments["orchestrator.failFast"] = "true"
 
         buildConfigField(
             "String",
@@ -138,7 +136,6 @@ dependencies {
     androidTestImplementation("androidx.test:rules:1.7.0")
     androidTestImplementation("androidx.test.uiautomator:uiautomator:2.3.0")
     implementation("androidx.test.espresso:espresso-idling-resource:3.7.0")
-    androidTestUtil("androidx.test:orchestrator:1.6.1")
 
     testFixturesImplementation("androidx.test.espresso:espresso-core:3.7.0")
     testFixturesImplementation("androidx.test.espresso:espresso-contrib:3.7.0")

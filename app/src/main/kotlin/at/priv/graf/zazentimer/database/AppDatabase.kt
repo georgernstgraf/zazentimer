@@ -8,7 +8,7 @@ import androidx.room.migration.Migration
 import androidx.sqlite.db.SupportSQLiteDatabase
 
 @Suppress("MagicNumber")
-@Database(entities = [SessionEntity::class, SectionEntity::class], version = 5, exportSchema = false)
+@Database(entities = [SessionEntity::class, SectionEntity::class], version = 5, exportSchema = true)
 abstract class AppDatabase : RoomDatabase() {
     abstract fun sessionDao(): SessionDao
 
