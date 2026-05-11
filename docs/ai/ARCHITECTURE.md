@@ -1,6 +1,6 @@
 # Architecture
 
-Living structural map of the system as of 2026-05-10.
+Living structural map of the system as of 2026-05-11.
 
 ## Overview
 ZazenTimer is an Android application for timing meditation sessions. It uses a foreground service for background timing and a Repository-based architecture to synchronize state between the UI and the service.
@@ -12,6 +12,17 @@ ZazenTimer is an Android application for timing meditation sessions. It uses a f
 - **DbOperations**: Room database wrapper with built-in `IdlingResource` for test synchronization.
 - **ZazenClock**: Abstraction for system time to facilitate deterministic testing.
 
+## Extracted Helpers (2026-05-11, #142)
+- **DemoSessionCreator** (`database/`) — Creates demo sessions on first launch; extracted from ZazenTimerActivity
+- **MigrationHelper** — Handles old-version data conversion (bell indices, settings); extracted from ZazenTimerActivity
+- **WakeLockManager** (`service/`) — Manages screen wake lock lifecycle; extracted from MeditationViewModel
+- **MeditationServiceState** (`service/`) — Static helper for `isServiceRunning()`; extracted from MeditationService
+- **EntityMapper** (`database/`) — Maps between BO and Entity types for Room; extracted from DbOperations
+- **AudioStateManager** (`service/`) — Handles ringer mode mute/unmute during meditation; extracted from Meditation
+- **AlarmScheduler** (`service/`) — Schedules/cancels exact alarms for section transitions; extracted from Meditation
+- **BellPlayer** (`service/`) — Manages MediaPlayer lifecycle for bell playback; extracted from Meditation
+- **TimerAnimator + AnimationRunner** (`views/`) — Animation state machine; extracted from TimerView
+
 ## Test Infrastructure
 - **Test Source Sets**:
   - `src/test/` — JVM unit tests with Robolectric
@@ -19,12 +30,12 @@ ZazenTimer is an Android application for timing meditation sessions. It uses a f
   - `src/testFixtures/` — Shared test utilities (ScreenRobot, MeditationServiceIdlingResource, DevicePreFlightRule) via `java-test-fixtures` plugin
 - **Test Runner**:
   - `HiltTestRunner` — Custom `AndroidJUnitRunner` injecting `HiltTestApplication`, with `DevicePreFlightRule.execute()` called in `onStart()` for self-healing tests
-  - `scripts/run-instrumentation.sh` — Orchestrates full test matrix: unit tests + per-API-level instrumented tests (API 29-35)
+  - `scripts/run-instrumentation.sh` — Orchestrates full test matrix: unit tests + per-API-level instrumented tests (API 29-36)
 - **Execution Strategy**:
   - API 29-30: Gradle `connectedDebugAndroidTest` runner
-  - API 31-35: Manual `am instrument` (bypasses UTP bug on API 35+)
+  - API 31-36: Manual `am instrument` (bypasses UTP bug on API 31+)
   - API level source of truth: `zazentimer.test.apis` in `gradle.properties`
-  - Gradle runner threshold: `zazentimer.test.gradleMaxApi` in `gradle.properties`
+  - Gradle runner threshold: `zazentimer.test.gradleMaxApi=30` in `gradle.properties`
 - **Idling Resources**:
   - `IdlingResourceManager` (prod source) — `CountingIdlingResource` for DB operations
   - `MeditationServiceIdlingResource` (testFixtures) — Custom `IdlingResource` for service binding state
