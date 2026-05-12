@@ -1,42 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="abbrechen">Cancel</string>
-    <string name="abc_action_bar_home_description">Navigate home</string>
-    <string name="abc_action_bar_home_description_format">%1$s, %2$s</string>
-    <string name="abc_action_bar_home_subtitle_description_format">%1$s, %2$s, %3$s</string>
-    <string name="abc_action_bar_up_description">Navigate up</string>
-    <string name="abc_action_menu_overflow_description">More options</string>
-    <string name="abc_action_mode_done">Done</string>
-    <string name="abc_activity_chooser_view_see_all">See all</string>
-    <string name="abc_activitychooserview_choose_application">Choose an app</string>
-    <string name="abc_capital_off">OFF</string>
-    <string name="abc_capital_on">ON</string>
-    <string name="abc_font_family_body_1_material">sans-serif</string>
-    <string name="abc_font_family_body_2_material">sans-serif-medium</string>
-    <string name="abc_font_family_button_material">sans-serif-medium</string>
-    <string name="abc_font_family_caption_material">sans-serif</string>
-    <string name="abc_font_family_display_1_material">sans-serif</string>
-    <string name="abc_font_family_display_2_material">sans-serif</string>
-    <string name="abc_font_family_display_3_material">sans-serif</string>
-    <string name="abc_font_family_display_4_material">sans-serif-light</string>
-    <string name="abc_font_family_headline_material">sans-serif</string>
-    <string name="abc_font_family_menu_material">sans-serif</string>
-    <string name="abc_font_family_subhead_material">sans-serif</string>
-    <string name="abc_font_family_title_material">sans-serif-medium</string>
-    <string name="abc_search_hint">Search…</string>
-    <string name="abc_searchview_description_clear">Clear query</string>
-    <string name="abc_searchview_description_query">Search query</string>
-    <string name="abc_searchview_description_search">Search</string>
-    <string name="abc_searchview_description_submit">Submit query</string>
-    <string name="abc_searchview_description_voice">Voice search</string>
-    <string name="abc_shareactionprovider_share_with">Share with</string>
-    <string name="abc_shareactionprovider_share_with_application">Share with %s</string>
-    <string name="abc_toolbar_collapse_description">Collapse</string>
     <string name="about1">Zazen Meditation Timer — A simple meditation timer with customizable sections, bell sounds, and session management.</string>
     <string name="about2">Originally created by Stefan Gaffga. Currently maintained by Georg Graf.&lt;br&gt;&lt;br&gt;Thanks to Winfried of &lt;a href="http://www.meditationsuhren.de"&gt;http://www.meditationsuhren.de&lt;/a&gt; for providing such great Bell Sounds!</string>
     <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues"&gt;Report issues on GitHub&lt;/a&gt;</string>
     <string name="app_description">This application lets the user define a set of meditation sessions and provides a timer with visual and audible feedback when a part or the whole meditation is over.</string>
-    <string name="app_name">Zazen Meditation Timer</string>
+    <string name="app_name" translatable="false">Zazen Meditation Timer</string>
     <string name="appbar_scrolling_view_behavior">android.support.design.widget.AppBarLayout$ScrollingViewBehavior</string>
     <string name="backup_error_text">Sorry, an Error occurred while saving.</string>
     <string name="backup_no_permission">Could not create backup due to missing permissions.</string>
@@ -59,7 +28,7 @@
     <string name="but_start">Start Meditation</string>
     <string name="but_stop">Stop</string>
     <string name="caption_zazen_meditation">Zazen Meditation</string>
-    <string name="character_counter_pattern">%1$d / %2$d</string>
+    <string name="character_counter_pattern" translatable="false">%1$d / %2$d</string>
     <string name="checkbox_keep_screen_on">Keep screen on</string>
     <string name="checkbox_no_server_messages">Show News</string>
     <string name="checkbox_phone_off">Mute Phone</string>
@@ -169,9 +138,9 @@
     <string name="theme_desc">Choose the app appearance</string>
     <string name="theme_light">Light Theme</string>
     <string name="theme_system">System Theme</string>
-    <string name="theme_value_dark">dark</string>
-    <string name="theme_value_light">light</string>
-    <string name="theme_value_system">system</string>
+    <string name="theme_value_dark" translatable="false">dark</string>
+    <string name="theme_value_light" translatable="false">light</string>
+    <string name="theme_value_system" translatable="false">system</string>
     <string name="time_section_elapsed">Section elapsed</string>
     <string name="time_section_remaining">Section remaining</string>
     <string name="time_session_elapsed">Session elapsed</string>
@@ -189,4 +158,12 @@
     <string name="title_dim_bell">Dim Bell</string>
     <string name="dim_bell_label_off">Not dimmed</string>
     <string name="dim_bell_label_format">Dimmed: %1$d0%%</string>
+    <string name="section_deleted">Deleted \'%s\'</string>
+    <string name="action_undo">Undo</string>
+    <string name="notification_channel_name">Meditation Timer</string>
+    <string name="nav_label_sessions">Sessions</string>
+    <string name="nav_label_meditation">Meditation</string>
+    <string name="nav_label_edit_session">Edit Session</string>
+    <string name="nav_label_edit_section">Edit Section</string>
+    <string name="nav_label_settings">Settings</string>
 </resources>
