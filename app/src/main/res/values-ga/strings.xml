@@ -1,29 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="abbrechen">Cealaigh</string>
-    <string name="about1">Zazen Meditation Timer — A simple meditation timer with customizable sections, bell sounds, and session management.</string>
-    <string name="about2">Originally created by Stefan Gaffga. Currently maintained by Georg Graf.&lt;br&gt;&lt;br&gt;Thanks to Winfried of &lt;a href="http://www.meditationsuhren.de"&gt;http://www.meditationsuhren.de&lt;/a&gt; for providing such great Bell Sounds!</string>
-    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues"&gt;Report issues on GitHub&lt;/a&gt;</string>
-    <string name="app_description">This application lets the user define a set of meditation sessions and provides a timer with visual and audible feedback when a part or the whole meditation is over.</string>
+    <string name="about1">Uaineadóir Machnaimh Zazen - Uaineadóir machnaimh simplí le rannóga inoiriúnaithe, fuaimeanna cloigíní, agus bainistíocht seisiúin.</string>
+    <string name="about2">Stefan Gaffga a chruthaigh ar dtús. Georg Graf á chothabháil faoi láthair.&lt;br&gt;&lt;br&gt;Buíochas le Winfried ó &lt;a href="http://www.meditationsuhren.de"&gt;http://www.meditationsuhren.de&lt;/a&gt; as Bell Sounds iontacha a sholáthar!</string>
+    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues"&gt;Tuairiscigh saincheisteanna ar GitHub&lt;/a&gt;</string>
+    <string name="app_description">Ligeann an feidhmchlár seo don úsáideoir sraith seisiún machnaimh a shainiú agus soláthraíonn sé an t-amadóir le haiseolas amhairc agus inchloiste nuair a bhíonn deireadh le cuid den mhachnamh nó den mhachnamh iomlán.</string>
     <string name="app_name">Zazen Meditation Timer</string>
     <string name="appbar_scrolling_view_behavior">android.support.design.widget.AppBarLayout$ScrollingViewBehavior</string>
     <string name="backup_error_text">Ár leithscéal, tharla earráid agus an shábháil.</string>
     <string name="backup_no_permission">Níorbh fhéidir cúltaca a chruthú de bharr ceadanna a bheith in easnamh.</string>
     <string name="backup_not_createable">Earráid agus comhad cúltaca á chruthú.</string>
     <string name="backup_success_text">Cúltaca cruthaithe go rathúil!</string>
-    <string name="bell_name_1">High Tone</string>
-    <string name="bell_name_2">Low Tone</string>
-    <string name="bell_name_3">Jap. Rhinbowl Dharma, 107mm</string>
-    <string name="bell_name_4">Jap. Rhinbowl Dharma, 88mm (black, glazed)</string>
-    <string name="bell_name_5">Jap. Rhinbowl Shomyo, 90mm</string>
+    <string name="bell_name_1">Ton Ard</string>
+    <string name="bell_name_2">Ton Íseal</string>
+    <string name="bell_name_3">Jap. Dharma srónbheannach, 107mm</string>
+    <string name="bell_name_4">Jap. Dharma srónbheannach, 88mm (dubh, gloinithe)</string>
+    <string name="bell_name_5">Jap. srónbheannach Shomyo, 90mm</string>
     <string name="bell_name_6">Jap. Rhinbowl Tang, 164mm</string>
-    <string name="bell_name_7">Tib. Bowl, 230mm</string>
-    <string name="bell_name_8">Jap. Rhinbowl, 97mm</string>
+    <string name="bell_name_7">Tib. Babhla, 230mm</string>
+    <string name="bell_name_8">Jap. srónbheannach, 97mm</string>
     <string name="bell_pause">bearna cloig (soic)</string>
     <string name="bell_user">Cuir Bell leis...</string>
     <string name="bottom_nav_meditation">Machnamh</string>
     <string name="bottom_nav_sessions">Seisiúin</string>
-    <string name="bottom_sheet_behavior">android.support.design.widget.BottomSheetBehavior</string>
+    <string name="bottom_sheet_behavior">android.support.design.widget.BottomSheetBehaviour</string>
     <string name="but_pause">Sos</string>
     <string name="but_start">Tosaigh Meditation</string>
     <string name="but_stop">Stop</string>
@@ -56,7 +56,7 @@
     <string name="desc_no_server_messages">Taispeáin Nuacht go huathoibríoch nuair a thosaíonn App</string>
     <string name="error_checking_for_server_messages">Earráid agus teachtaireachtaí nua á bhfáil.</string>
     <string name="gong_type">Fuaim Gong</string>
-    <string name="help_sectionlist_text">Anseo is féidir leat inneachar do Sheisiúin a ainmniú, cur síos a dhéanamh air agus é a chur in eagar.\n\n REORDERING\n Chun na míreanna a athordú, brúigh fada ar mhír agus \n tarraing chuig a shuíomh nua é. right.\n\n EDIT\n Chun alt a chur in eagar, ná déan ach teagmháil leis uair amháin.\n\n ADD\n Chun alt nua a chur leis, brúigh an cnaipe +.</string>
+    <string name="help_sectionlist_text">Anseo is féidir leat ábhar do Sheisiúin a ainmniú, cur síos a dhéanamh air agus eagarthóireacht a dhéanamh air.\n\nATHORDÚ\nChun na míreanna a athordú, brúigh fada ar mhír agus\ntarraing chuig a phost nua é.\n\nSCRÍOBHÁIL\nChun mír a scriosadh, bog é ar dheis.\n\nEagar\nChun alt a chur in eagar, ná déan teagmháil leis uair amháin.\n\nADD\nChun rannán nua a chur leis, brúigh an cnaipe +.</string>
     <string name="help_sectionlist_title">Cuir Seisiún in Eagar</string>
     <string name="label_section_name">Ainm alt</string>
     <string name="label_session_description">Cur síos ar an Seisiún</string>
@@ -65,7 +65,7 @@
     <string name="menu_copy_session">Seisiún Dúblach</string>
     <string name="menu_delete_section">Scrios Alt</string>
     <string name="menu_delete_session">Scrios Seisiún</string>
-    <string name="menu_duplicate_section">Rannóg Dhúblach</string>
+    <string name="menu_duplicate_section">Alt Dúblach</string>
     <string name="menu_edit_session">Cuir Seisiún in Eagar</string>
     <string name="menu_help">Cabhrú</string>
     <string name="menu_add_session">Cuir Seisiún leis</string>
@@ -74,7 +74,7 @@
     <string name="menu_settings">Socruithe</string>
     <string name="minuten">Nóiméad</string>
     <string name="no_new_server_messages">Níl aon teachtaireachtaí nua ar fáil.</string>
-    <string name="no_sections_in_session">Ní féidir Meditation a thosú: Níl aon Rannóga sa Seisiún roghnaithe.</string>
+    <string name="no_sections_in_session">Ní féidir tús a chur le Machnamh: Níl aon Rannóga sa Seisiún roghnaithe.</string>
     <string name="no_session_exists">Níl aon seisiún is féidir a thosú. Cruthaigh ceann ar dtús.</string>
     <string name="notification_text">Tá Zazen Meditation ar siúl faoi láthair</string>
     <string name="notification_text_paused">Zazen Meditation ar sos</string>
@@ -122,7 +122,7 @@
     <string name="section_info_string_2_sg">gach Dara</string>
     <string name="sekunden">Soicind</string>
     <string name="select_audio">Roghnaigh comhad fuaime</string>
-    <string name="service_description">A reatha Zazen Meditation</string>
+    <string name="service_description">A Zazen Meditation ag rith</string>
     <string name="content_desc_drag_handle">Tarraing chun athordú</string>
     <string name="content_desc_section_actions">Gníomhartha alt</string>
     <string name="content_desc_session_actions">Gníomhartha seisiúin</string>
@@ -130,12 +130,12 @@
     <string name="status_bar_notification_info_overflow">999+</string>
     <string name="test_mute_perm_request">Níl cead ag an aip do ghuthán a bhalbhú faoi láthair. Oscail na socruithe chun é seo a athrú?</string>
     <string name="text_cant_mute">Ní cheadaíonn do ghuthán don Aip seo balbhú. Díchumasaigh balbhú sna Socruithe Aipeanna seo nó ceadaigh balbhú i do Shocruithe Fóin.</string>
-    <string name="text_no_notify_access_settings">Is cosúil nach bhfuil na socruithe caighdeánacha ag d\'Fhón chun balbhú a cheadú. Féach de láimh le haghaidh an tSocraithe \&amp;quot;Ná Cur Isteach Rochtana\&amp;quot; agus cumasaigh é.</string>
+    <string name="text_no_notify_access_settings">Is cosúil nach bhfuil na socruithe caighdeánacha ag d\'Fhón chun balbhú a cheadú. Breathnaigh de láimh le do thoil ar an socrú \"Ná Cuir Isteach ar Rochtain\" agus cumasaigh é.</string>
     <string name="text_no_sections">Níl aon Rannóg sainithe.</string>
     <string name="text_question_delete_session">An bhfuil fonn ort an Seisiún roghnaithe a scriosadh?</string>
     <string name="theme">Téama</string>
     <string name="theme_dark">Téama Dorcha</string>
-    <string name="theme_desc">Roghnaigh cuma éadrom nó dorcha an Aip</string>
+    <string name="theme_desc">Roghnaigh an chuma app</string>
     <string name="theme_light">Téama Solas</string>
     <string name="theme_system">Téama an Chórais</string>
     <string name="theme_value_dark">dark</string>
@@ -157,5 +157,13 @@
     <string name="pref_desc_bell_volume">Rialaíonn sé toirt an tsrutha aláraim le haghaidh fuaimeanna cloigíní</string>
     <string name="title_dim_bell">Dim Bell</string>
     <string name="dim_bell_label_off">Gan maolú</string>
-    <string name="dim_bell_label_format">Tosaithe: %1$d0%%</string>
+    <string name="dim_bell_label_format">Dimmed: %1$d0%%</string>
+    <string name="section_deleted">Scriosta \'%s\'</string>
+    <string name="action_undo">Cealaigh</string>
+    <string name="notification_channel_name">Uaineadóir Machnaimh</string>
+    <string name="nav_label_sessions">Seisiúin</string>
+    <string name="nav_label_meditation">Machnamh</string>
+    <string name="nav_label_edit_session">Cuir Seisiún in Eagar</string>
+    <string name="nav_label_edit_section">Cuir Alt in Eagar</string>
+    <string name="nav_label_settings">Socruithe</string>
 </resources>

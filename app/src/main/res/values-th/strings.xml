@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="abbrechen">ยกเลิก</string>
-    <string name="about1">Zazen Meditation Timer — A simple meditation timer with customizable sections, bell sounds, and session management.</string>
-    <string name="about2">Originally created by Stefan Gaffga. Currently maintained by Georg Graf.&lt;br&gt;&lt;br&gt;Thanks to Winfried of &lt;a href="http://www.meditationsuhren.de"&gt;http://www.meditationsuhren.de&lt;/a&gt; for providing such great Bell Sounds!</string>
-    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues"&gt;Report issues on GitHub&lt;/a&gt;</string>
-    <string name="app_description">This application lets the user define a set of meditation sessions and provides a timer with visual and audible feedback when a part or the whole meditation is over.</string>
+    <string name="about1">เครื่องจับเวลาการทำสมาธิแบบซาเซ็น — เครื่องจับเวลาการทำสมาธิแบบง่ายๆ พร้อมส่วนที่ปรับแต่งได้ เสียงกระดิ่ง และการจัดการเซสชั่น</string>
+    <string name="about2">สร้างสรรค์โดย Stefan Gaffga ปัจจุบันดูแลโดย Georg Graf&lt;br&gt;&lt;br&gt;ขอขอบคุณ Winfried แห่ง &lt;a href="http://www.meditationsuhren.de"&gt;http://www.meditationsuhren.de&lt;/a&gt; ที่ให้เสียงกระดิ่งอันยอดเยี่ยมเช่นนี้!</string>
+    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues"&gt;รายงานปัญหาบน GitHub&lt;/a&gt;</string>
+    <string name="app_description">แอปพลิเคชั่นนี้ช่วยให้ผู้ใช้กำหนดชุดเซสชันการทำสมาธิ และให้ตัวจับเวลาพร้อมการตอบสนองด้วยภาพและเสียงเมื่อการทำสมาธิส่วนหนึ่งหรือทั้งหมดสิ้นสุดลง</string>
     <string name="app_name">Zazen Meditation Timer</string>
     <string name="appbar_scrolling_view_behavior">android.support.design.widget.AppBarLayout$ScrollingViewBehavior</string>
     <string name="backup_error_text">ขออภัย เกิดข้อผิดพลาดขณะบันทึก</string>
     <string name="backup_no_permission">ไม่สามารถสร้างข้อมูลสำรองได้เนื่องจากสิทธิ์ขาดหายไป</string>
     <string name="backup_not_createable">เกิดข้อผิดพลาดในการสร้างไฟล์สำรอง</string>
     <string name="backup_success_text">สร้างข้อมูลสำรองเรียบร้อยแล้ว!</string>
-    <string name="bell_name_1">High Tone</string>
-    <string name="bell_name_2">Low Tone</string>
-    <string name="bell_name_3">Jap. Rhinbowl Dharma, 107mm</string>
-    <string name="bell_name_4">Jap. Rhinbowl Dharma, 88mm (black, glazed)</string>
-    <string name="bell_name_5">Jap. Rhinbowl Shomyo, 90mm</string>
-    <string name="bell_name_6">Jap. Rhinbowl Tang, 164mm</string>
-    <string name="bell_name_7">Tib. Bowl, 230mm</string>
-    <string name="bell_name_8">Jap. Rhinbowl, 97mm</string>
+    <string name="bell_name_1">ไฮโทน</string>
+    <string name="bell_name_2">เสียงต่ำ</string>
+    <string name="bell_name_3">ญี่ปุ่น ธรรมะไรน์โบว์ 107มม</string>
+    <string name="bell_name_4">ญี่ปุ่น Rhinbowl Dharma 88 มม. (สีดำ เคลือบ)</string>
+    <string name="bell_name_5">ญี่ปุ่น Rhinbowl โชเมียว 90มม</string>
+    <string name="bell_name_6">ญี่ปุ่น ถังน้ำ Rhinbowl 164 มม</string>
+    <string name="bell_name_7">ทิบ. ชาม 230มม</string>
+    <string name="bell_name_8">ญี่ปุ่น ไรน์โบว์ล 97มม</string>
     <string name="bell_pause">ช่องว่างระฆัง (วินาที)</string>
     <string name="bell_user">เพิ่มเบลล์...</string>
     <string name="bottom_nav_meditation">การทำสมาธิ</string>
@@ -36,7 +36,7 @@
     <string name="copy_prefix">สำเนาของ</string>
     <string name="crash_dialog_comment_prompt">ทางเลือก: การกระทำใดที่ทำให้เกิดข้อผิดพลาด</string>
     <string name="crash_dialog_ok_toast">ขอบคุณมากสำหรับความช่วยเหลือของคุณ!</string>
-    <string name="crash_dialog_text">ฉันขอโทษที่มีข้อผิดพลาดเกิดขึ้นคุณสามารถช่วยฉันค้นหาและแก้ไขปัญหานี้ได้โดยส่งรายงานข้อบกพร่องนี้และอาจให้รายละเอียดเพิ่มเติมเกี่ยวกับสิ่งที่คุณทำ</string>
+    <string name="crash_dialog_text">ฉันขอโทษที่มีข้อผิดพลาดเกิดขึ้น คุณสามารถช่วยฉันค้นหาและแก้ไขปัญหานี้ได้โดยส่งรายงานข้อบกพร่องนี้และอาจให้รายละเอียดเพิ่มเติมเกี่ยวกับสิ่งที่คุณทำ</string>
     <string name="crash_dialog_title">เครื่องจับเวลาการทำสมาธิซาเซ็น</string>
     <string name="crash_toast_text">ขออภัย - เกิดข้อผิดพลาดภายใน!</string>
     <string name="crash_user_email_label">ทางเลือก: ที่อยู่อีเมลของคุณสำหรับคำถามหรือข้อมูลอัปเดตเกี่ยวกับปัญหานี้</string>
@@ -56,7 +56,7 @@
     <string name="desc_no_server_messages">แสดงข่าวโดยอัตโนมัติเมื่อแอปเริ่มทำงาน</string>
     <string name="error_checking_for_server_messages">เกิดข้อผิดพลาดในการเรียกข้อความใหม่</string>
     <string name="gong_type">ฆ้องซาวด์</string>
-    <string name="help_sectionlist_text">ที่นี่คุณสามารถตั้งชื่อ อธิบาย และแก้ไขเนื้อหาของเซสชันของคุณได้\n\n การจัดลำดับใหม่\n หากต้องการเรียงลำดับรายการใหม่ ให้กดรายการค้างไว้แล้ว\n ลากไปยังตำแหน่งใหม่\n\n การลบ\n หากต้องการลบรายการ ให้ย้ายไปทางขวา\n\n แก้ไข\n หากต้องการแก้ไขส่วน เพียงแตะหนึ่งครั้ง\n\n เพิ่ม\n หากต้องการเพิ่มส่วนใหม่ ให้กดปุ่ม +</string>
+    <string name="help_sectionlist_text">ที่นี่คุณสามารถตั้งชื่อ อธิบาย และแก้ไขเนื้อหาของเซสชันของคุณได้\n\nกำลังจัดลำดับใหม่\nหากต้องการเรียงลำดับรายการใหม่ ให้กดรายการค้างไว้และ\nลากไปยังตำแหน่งใหม่\n\nกำลังลบ\nหากต้องการลบรายการ ให้เลื่อนไปทางขวา\n\nแก้ไข\nหากต้องการแก้ไขส่วน เพียงแตะหนึ่งครั้ง\n\nเพิ่ม\nหากต้องการเพิ่มส่วนใหม่ ให้กดปุ่ม +</string>
     <string name="help_sectionlist_title">แก้ไขเซสชัน</string>
     <string name="label_section_name">ชื่อส่วน</string>
     <string name="label_session_description">คำอธิบายเซสชัน</string>
@@ -74,8 +74,8 @@
     <string name="menu_settings">การตั้งค่า</string>
     <string name="minuten">นาที</string>
     <string name="no_new_server_messages">ไม่มีข้อความใหม่</string>
-    <string name="no_sections_in_session">ไม่สามารถเริ่มการทำสมาธิได้: เซสชันที่เลือกไม่มีส่วนใดๆ</string>
-    <string name="no_session_exists">ไม่มีเซสชั่นที่สามารถเริ่มต้นได้โปรดสร้างหนึ่งรายการก่อน</string>
+    <string name="no_sections_in_session">ไม่สามารถ\'เริ่มการทำสมาธิ: เซสชันที่เลือกไม่มีส่วนใด ๆ</string>
+    <string name="no_session_exists">ไม่มีเซสชันที่สามารถเริ่มต้นได้ โปรดสร้างหนึ่งรายการก่อน</string>
     <string name="notification_text">การทำสมาธิแบบซาเซ็นกำลังดำเนินอยู่</string>
     <string name="notification_text_paused">การทำสมาธิแบบซาเซ็นหยุดชั่วคราว</string>
     <string name="notification_title">การทำสมาธิแบบซาเซ็น</string>
@@ -112,7 +112,7 @@
     <string name="restore_backup_not_found">ไม่พบไฟล์สำรอง</string>
     <string name="restore_error_text">เกิดข้อผิดพลาดในการกู้คืนจากข้อมูลสำรอง</string>
     <string name="restore_no_permission">ไม่สามารถกู้คืนได้เนื่องจากขาดสิทธิ์</string>
-    <string name="restore_really_text">สิ่งนี้จะแทนที่เซสชันทั้งหมดของคุณด้วยเซสชันที่อยู่ในการสำรองข้อมูล!(ไม่มีการเลิกทำ!)</string>
+    <string name="restore_really_text">สิ่งนี้จะแทนที่เซสชันทั้งหมดของคุณด้วยเซสชันที่อยู่ในการสำรองข้อมูล! (ไม่มีการเลิกทำ!)</string>
     <string name="restore_really_title">กู้คืนข้อมูลได้จริงหรือ?</string>
     <string name="restore_success_text">กู้คืนข้อมูลสำเร็จ</string>
     <string name="search_menu_title">ค้นหา</string>
@@ -128,14 +128,14 @@
     <string name="content_desc_session_actions">การกระทำของเซสชัน</string>
     <string name="session_list_unnamed_entry">เซสชันที่ไม่มีชื่อ</string>
     <string name="status_bar_notification_info_overflow">999+</string>
-    <string name="test_mute_perm_request">ขณะนี้แอปไม่ได้รับอนุญาตให้ปิดเสียงโทรศัพท์ของคุณเปิดการตั้งค่าเพื่อเปลี่ยนแปลงสิ่งนี้ใช่ไหม</string>
-    <string name="text_cant_mute">โทรศัพท์ของคุณไม่อนุญาตให้แอปนี้ปิดเสียงปิดเสียงในการตั้งค่าแอปนี้หรืออนุญาตให้ปิดเสียงในการตั้งค่าโทรศัพท์ของคุณ</string>
-    <string name="text_no_notify_access_settings">ดูเหมือนว่าโทรศัพท์ของคุณไม่มีการตั้งค่ามาตรฐานเพื่อให้สามารถปิดเสียงได้โปรดดูการตั้งค่า \&amp;quot;ห้ามรบกวนการเข้าถึง\&amp;quot; ด้วยตนเองและเปิดใช้งาน</string>
+    <string name="test_mute_perm_request">ขณะนี้แอปไม่ได้รับอนุญาตให้ปิดเสียงโทรศัพท์ของคุณ เปิดการตั้งค่าเพื่อเปลี่ยนแปลงสิ่งนี้ใช่ไหม</string>
+    <string name="text_cant_mute">โทรศัพท์ของคุณไม่อนุญาตให้แอปนี้ปิดเสียง ปิดเสียงในการตั้งค่าแอปนี้หรืออนุญาตให้ปิดเสียงในการตั้งค่าโทรศัพท์ของคุณ</string>
+    <string name="text_no_notify_access_settings">ดูเหมือนว่าโทรศัพท์ของคุณไม่มีการตั้งค่ามาตรฐานเพื่อให้สามารถปิดเสียงได้ โปรดดูด้วยตนเองสำหรับการตั้งค่า \"ห้ามรบกวนการเข้าถึง\" และเปิดใช้งาน</string>
     <string name="text_no_sections">ไม่มีการกำหนดส่วน</string>
     <string name="text_question_delete_session">ลบเซสชันที่เลือกจริงหรือ</string>
     <string name="theme">ธีม</string>
     <string name="theme_dark">ธีมสีเข้ม</string>
-    <string name="theme_desc">เลือกรูปลักษณ์ที่สว่างหรือมืดของแอป</string>
+    <string name="theme_desc">เลือกรูปลักษณ์ของแอพ</string>
     <string name="theme_light">ธีมแสง</string>
     <string name="theme_system">ธีมของระบบ</string>
     <string name="theme_value_dark">dark</string>
@@ -147,15 +147,23 @@
     <string name="time_session_remaining">เซสชันที่เหลืออยู่</string>
     <string name="title_mute_perm_request">ขาดการอนุญาต</string>
     <string name="title_question_delete_session">ลบเซสชันใช่ไหม</string>
-    <string name="title_volume_bells">ระดับเสียงระฆัง</string>
+    <string name="title_volume_bells">ปริมาณระฆัง</string>
     <string name="unnamed">ไม่มีชื่อ</string>
     <string name="stop_meditation_title">หยุดนั่งสมาธิ?</string>
     <string name="stop_meditation_message">เซสชั่นการทำสมาธิของคุณยังคงดำเนินอยู่</string>
     <string name="stop_meditation_stop">หยุด</string>
     <string name="stop_meditation_cancel">ยกเลิก</string>
-    <string name="pref_title_bell_volume">ระดับเสียงระฆัง</string>
+    <string name="pref_title_bell_volume">ปริมาณระฆัง</string>
     <string name="pref_desc_bell_volume">ควบคุมระดับเสียงการเตือนสำหรับเสียงระฆัง</string>
     <string name="title_dim_bell">ดิม เบลล์</string>
     <string name="dim_bell_label_off">ไม่หรี่แสง</string>
-    <string name="dim_bell_label_format">จางลง: %1$d0%%</string>
+    <string name="dim_bell_label_format">จาง: %1$d0%%</string>
+    <string name="section_deleted">ลบแล้ว \'%s\'</string>
+    <string name="action_undo">เลิกทำ</string>
+    <string name="notification_channel_name">จับเวลาการทำสมาธิ</string>
+    <string name="nav_label_sessions">เซสชัน</string>
+    <string name="nav_label_meditation">การทำสมาธิ</string>
+    <string name="nav_label_edit_session">แก้ไขเซสชัน</string>
+    <string name="nav_label_edit_section">แก้ไขมาตรา</string>
+    <string name="nav_label_settings">การตั้งค่า</string>
 </resources>

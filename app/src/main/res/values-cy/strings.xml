@@ -1,29 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="abbrechen">Canslo</string>
-    <string name="about1">Zazen Meditation Timer — A simple meditation timer with customizable sections, bell sounds, and session management.</string>
-    <string name="about2">Originally created by Stefan Gaffga. Currently maintained by Georg Graf.&lt;br&gt;&lt;br&gt;Thanks to Winfried of &lt;a href="http://www.meditationsuhren.de"&gt;http://www.meditationsuhren.de&lt;/a&gt; for providing such great Bell Sounds!</string>
-    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues"&gt;Report issues on GitHub&lt;/a&gt;</string>
-    <string name="app_description">This application lets the user define a set of meditation sessions and provides a timer with visual and audible feedback when a part or the whole meditation is over.</string>
+    <string name="about1">Amserydd Myfyrdod Zazen - Amserydd myfyrdod syml gydag adrannau y gellir eu haddasu, synau\'r gloch, a rheoli sesiynau.</string>
+    <string name="about2">Crëwyd yn wreiddiol gan Stefan Gaffga. Georg Graf sy\'n ei chynnal ar hyn o bryd.&lt;br&gt;&lt;br&gt;Diolch i Winfried o &lt;a href="http://www.meditationsuhren.de"&gt;http://www.meditationsuhren.de&lt;/a&gt; am ddarparu Seiniau Clychau mor wych!</string>
+    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues"&gt;Adrodd materion ar GitHub&lt;/a&gt;</string>
+    <string name="app_description">Mae\'r cymhwysiad hwn yn gadael i\'r defnyddiwr ddiffinio set o sesiynau myfyrio ac yn darparu amserydd gydag adborth gweledol a chlywadwy pan fydd rhan neu\'r cyfan o\'r myfyrdod drosodd.</string>
     <string name="app_name">Zazen Meditation Timer</string>
     <string name="appbar_scrolling_view_behavior">android.support.design.widget.AppBarLayout$ScrollingViewBehavior</string>
     <string name="backup_error_text">Mae\'n ddrwg gennym, bu Gwall wrth gadw.</string>
     <string name="backup_no_permission">Methu creu copi wrth gefn oherwydd caniatadau coll.</string>
     <string name="backup_not_createable">Gwall wrth greu ffeil wrth gefn.</string>
     <string name="backup_success_text">Crëwyd copi wrth gefn yn llwyddiannus!</string>
-    <string name="bell_name_1">High Tone</string>
-    <string name="bell_name_2">Low Tone</string>
-    <string name="bell_name_3">Jap. Rhinbowl Dharma, 107mm</string>
-    <string name="bell_name_4">Jap. Rhinbowl Dharma, 88mm (black, glazed)</string>
+    <string name="bell_name_1">Tôn Uchel</string>
+    <string name="bell_name_2">Tôn Isel</string>
+    <string name="bell_name_3">Jap. Dharma Rhinbowl, 107mm</string>
+    <string name="bell_name_4">Jap. Dharma Rhinbowl, 88mm (du, gwydrog)</string>
     <string name="bell_name_5">Jap. Rhinbowl Shomyo, 90mm</string>
     <string name="bell_name_6">Jap. Rhinbowl Tang, 164mm</string>
-    <string name="bell_name_7">Tib. Bowl, 230mm</string>
+    <string name="bell_name_7">Tib. Powlen, 230mm</string>
     <string name="bell_name_8">Jap. Rhinbowl, 97mm</string>
     <string name="bell_pause">Bwlch cloch (eiliad)</string>
     <string name="bell_user">Ychwanegu Cloch...</string>
     <string name="bottom_nav_meditation">Myfyrdod</string>
     <string name="bottom_nav_sessions">Sesiynau</string>
-    <string name="bottom_sheet_behavior">android.support.design.widget.BottomSheetBehavior</string>
+    <string name="bottom_sheet_behavior">android.support.design.widget.BottomSheetBehaviour</string>
     <string name="but_pause">Oedwch</string>
     <string name="but_start">Dechrau Myfyrdod</string>
     <string name="but_stop">Stopio</string>
@@ -56,11 +56,11 @@
     <string name="desc_no_server_messages">Dangos Newyddion yn awtomatig pan fydd App yn cychwyn</string>
     <string name="error_checking_for_server_messages">Gwall wrth nôl negeseuon newydd.</string>
     <string name="gong_type">Sain Gong</string>
-    <string name="help_sectionlist_text">Yma gallwch enwi, disgrifio a golygu cynnwys eich Sesiwn.\n\n REORDERING\n I aildrefnu\'r eitemau, pwyswch yn hir ar eitem a\n llusgwch hi i\'w safle newydd.\n\nDILEU, symudwch i ddileu\'r eitem, symudwch i ddileu\'r eitem. right.\n\n EDIT\n I olygu adran, cyffyrddwch ag ef unwaith.\n\n ADD\n I ychwanegu adran newydd, pwyswch y botwm +.</string>
+    <string name="help_sectionlist_text">Yma gallwch enwi, disgrifio a golygu cynnwys eich Sesiwn.\n\nAILDREFNU\nI ail-archebu\'r eitemau, pwyswch yn hir ar eitem a\nllusgwch ef i\'w safle newydd.\n\nDILEU\nI ddileu eitem, symudwch hi i\'r dde.\n\nGOLYGU\nI olygu adran, dim ond cyffwrdd ag ef unwaith.\n\nYCHWANEGU\nI ychwanegu adran newydd, pwyswch y botwm +.</string>
     <string name="help_sectionlist_title">Golygu Sesiwn</string>
     <string name="label_section_name">Enw adran</string>
     <string name="label_session_description">Disgrifiad o\'r Sesiwn</string>
-    <string name="label_session_name">Enw\'r Sesiwn</string>
+    <string name="label_session_name">Enw Sesiwn</string>
     <string name="menu_about">Am...</string>
     <string name="menu_copy_session">Sesiwn ddyblyg</string>
     <string name="menu_delete_section">Dileu Adran</string>
@@ -74,7 +74,7 @@
     <string name="menu_settings">Gosodiadau</string>
     <string name="minuten">Munudau</string>
     <string name="no_new_server_messages">Dim negeseuon newydd ar gael.</string>
-    <string name="no_sections_in_session">Methu dechrau Myfyrdod: Nid oes gan y Sesiwn a ddewiswyd unrhyw Adrannau.</string>
+    <string name="no_sections_in_session">Methu dechrau Myfyrdod: Nid oes unrhyw Adrannau yn y Sesiwn a ddewiswyd.</string>
     <string name="no_session_exists">Nid oes unrhyw sesiwn y gellir ei dechrau. Crëwch un yn gyntaf.</string>
     <string name="notification_text">Mae Zazen Meditation yn rhedeg ar hyn o bryd</string>
     <string name="notification_text_paused">Zazen Meditation seibio</string>
@@ -118,7 +118,7 @@
     <string name="search_menu_title">Chwiliwch</string>
     <string name="section_info_string_1_pl">%1$d Clychau</string>
     <string name="section_info_string_1_sg">1 Cloch</string>
-    <string name="section_info_string_2_pl">bob %1$d Eiliad</string>
+    <string name="section_info_string_2_pl">bob %1$d eiliad</string>
     <string name="section_info_string_2_sg">bob eiliad</string>
     <string name="sekunden">Eiliadau</string>
     <string name="select_audio">Dewiswch ffeil sain</string>
@@ -130,12 +130,12 @@
     <string name="status_bar_notification_info_overflow">999+</string>
     <string name="test_mute_perm_request">Ar hyn o bryd ni chaniateir i\'r Ap dewi eich ffôn. Agorwch y gosodiadau i newid hyn?</string>
     <string name="text_cant_mute">Nid yw eich Ffôn yn caniatáu i\'r Ap hwn ei dewi. Analluogi tewi yn y Gosodiadau Apiau hyn neu ganiatáu tewi yn eich Gosodiadau Ffonau.</string>
-    <string name="text_no_notify_access_settings">Nid yw\'n ymddangos bod gan eich Ffôn y gosodiadau safonol i ganiatáu tewi. Edrychwch â llaw am y Gosodiad \&amp;quot;Peidiwch ag Aflonyddu Mynediad\&amp;quot; a\'i alluogi.</string>
+    <string name="text_no_notify_access_settings">Nid yw\'n ymddangos bod gan eich Ffôn y gosodiadau safonol i ganiatáu tewi. Edrychwch â llaw am y Gosodiad \"Peidiwch ag Aflonyddu Mynediad\" a\'i alluogi.</string>
     <string name="text_no_sections">Dim Adrannau wedi\'u diffinio.</string>
     <string name="text_question_delete_session">Dileu\'r Sesiwn a ddewiswyd mewn gwirionedd?</string>
     <string name="theme">Thema</string>
     <string name="theme_dark">Thema Dywyll</string>
-    <string name="theme_desc">Dewiswch ymddangosiad golau neu dywyll yr Ap</string>
+    <string name="theme_desc">Dewiswch ymddangosiad yr app</string>
     <string name="theme_light">Thema Ysgafn</string>
     <string name="theme_system">Thema System</string>
     <string name="theme_value_dark">dark</string>
@@ -158,4 +158,12 @@
     <string name="title_dim_bell">Dim Bell</string>
     <string name="dim_bell_label_off">Heb ei bylu</string>
     <string name="dim_bell_label_format">Wedi pylu: %1$d0%%</string>
+    <string name="section_deleted">Wedi dileu \'%s\'</string>
+    <string name="action_undo">Dadwneud</string>
+    <string name="notification_channel_name">Amserydd Myfyrdod</string>
+    <string name="nav_label_sessions">Sesiynau</string>
+    <string name="nav_label_meditation">Myfyrdod</string>
+    <string name="nav_label_edit_session">Golygu Sesiwn</string>
+    <string name="nav_label_edit_section">Adran Golygu</string>
+    <string name="nav_label_settings">Gosodiadau</string>
 </resources>

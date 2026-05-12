@@ -1,29 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="abbrechen">निरसयतु</string>
-    <string name="about1">Zazen Meditation Timer — A simple meditation timer with customizable sections, bell sounds, and session management.</string>
-    <string name="about2">Originally created by Stefan Gaffga. Currently maintained by Georg Graf.&lt;br&gt;&lt;br&gt;Thanks to Winfried of &lt;a href="http://www.meditationsuhren.de"&gt;http://www.meditationsuhren.de&lt;/a&gt; for providing such great Bell Sounds!</string>
-    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues"&gt;Report issues on GitHub&lt;/a&gt;</string>
-    <string name="app_description">This application lets the user define a set of meditation sessions and provides a timer with visual and audible feedback when a part or the whole meditation is over.</string>
+    <string name="about1">Zazen Meditation Timer — अनुकूलनीयखण्डाः, घण्टाध्वनिः, सत्रप्रबन्धनं च सहितः सरलः ध्यानसमयनिर्धारकः ।</string>
+    <string name="about2">मूलतः Stefan Gaffga इत्यनेन निर्मितम् । सम्प्रति Georg Graf द्वारा परिपालितम्।&lt;br&gt;&lt;br&gt;एतादृशान् महान् Bell Sounds प्रदातुं &lt;a href="http://www.meditationsuhren.de"&gt;http://www.meditationsuhren.de&lt;/a&gt; इत्यस्य Winfried इत्यस्य धन्यवादः!</string>
+    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues"&gt;GitHub इत्यत्र समस्यानां प्रतिवेदनं&lt;/a&gt;</string>
+    <string name="app_description">एतत् अनुप्रयोगं उपयोक्तारं ध्यानसत्रस्य समुच्चयं परिभाषितुं शक्नोति तथा च यदा कश्चन भागः अथवा सम्पूर्णं ध्यानं समाप्तं भवति तदा दृश्यश्रव्यप्रतिक्रिया सह समयनिर्धारकं प्रदाति</string>
     <string name="app_name">Zazen Meditation Timer</string>
-    <string name="appbar_scrolling_view_behavior">android.support.design.widget.AppBarLayout$ScrollingViewBehavior</string>
+    <string name="appbar_scrolling_view_behavior">android.support.design.widget.AppBarLayout $ स्क्रॉल दृश्यव्यवहार</string>
     <string name="backup_error_text">क्षम्यतां, रक्षणकाले त्रुटिः अभवत् ।</string>
     <string name="backup_no_permission">अनुमतानाम् अभावात् बैकअप निर्मातुं न शक्तवान् ।</string>
     <string name="backup_not_createable">बैकअप सञ्चिकां निर्मातुं त्रुटिः।</string>
     <string name="backup_success_text">बैकअप सफलतया निर्मितम्!</string>
-    <string name="bell_name_1">High Tone</string>
-    <string name="bell_name_2">Low Tone</string>
-    <string name="bell_name_3">Jap. Rhinbowl Dharma, 107mm</string>
-    <string name="bell_name_4">Jap. Rhinbowl Dharma, 88mm (black, glazed)</string>
-    <string name="bell_name_5">Jap. Rhinbowl Shomyo, 90mm</string>
-    <string name="bell_name_6">Jap. Rhinbowl Tang, 164mm</string>
-    <string name="bell_name_7">Tib. Bowl, 230mm</string>
-    <string name="bell_name_8">Jap. Rhinbowl, 97mm</string>
+    <string name="bell_name_1">उच्च स्वर</string>
+    <string name="bell_name_2">निम्न स्वर</string>
+    <string name="bell_name_3">जप । राइनबोल धर्म, १०७मि.मी</string>
+    <string name="bell_name_4">जप । स्फटिक धर्म, ८८मिमी (काला, ग्लेज्ड) २.</string>
+    <string name="bell_name_5">जप । Rhinbowl Shomyo, 90 मिमी</string>
+    <string name="bell_name_6">जप । राइनबोल तांग, 164मिमी</string>
+    <string name="bell_name_7">तिब्. कटोरा, 230मिमी</string>
+    <string name="bell_name_8">जप । राइनबोल, 97 मिमी</string>
     <string name="bell_pause">घण्टा अन्तराल (सेक) २.</string>
     <string name="bell_user">Add Bell...</string>
     <string name="bottom_nav_meditation">ध्यानं</string>
     <string name="bottom_nav_sessions">सत्रम्</string>
-    <string name="bottom_sheet_behavior">android.support.design.widget.BottomSheetBehavior</string>
+    <string name="bottom_sheet_behavior">android.समर्थन.डिजाइन.विजेट.नीचपत्रव्यवहार</string>
     <string name="but_pause">विराम</string>
     <string name="but_start">ध्यानं आरभत</string>
     <string name="but_stop">विरमतु</string>
@@ -74,7 +74,7 @@
     <string name="menu_settings">सेटिंग्स्</string>
     <string name="minuten">पन्चनिमेषः</string>
     <string name="no_new_server_messages">न नूतनाः सन्देशाः उपलभ्यन्ते।</string>
-    <string name="no_sections_in_session">ध्यानं आरभ्यतुं न शक्यते: चयनितसत्रे किमपि खण्डं नास्ति।</string>
+    <string name="no_sections_in_session">ध्यानं आरभुं न शक्नोति\': चयनितसत्रे किमपि खण्डं नास्ति।</string>
     <string name="no_session_exists">न कश्चित् सत्रः आरभ्यतुं शक्यते। कृपया प्रथमं एकं रचयतु।</string>
     <string name="notification_text">सम्प्रति एकं ज़ाजेन् मेडिटेशनं प्रचलति</string>
     <string name="notification_text_paused">ज़ाजेन् मेडिटेशन विरामं कृतवान्</string>
@@ -89,7 +89,7 @@
     <string name="pref_mute_mode_none_desc">दूरभाषस्य सूचनानां च कृते रिंगटोनः नास्ति तथा च स्पन्दनं नास्ति</string>
     <string name="pref_mute_mode_pref">Ring tone तथा Notifications इत्यस्य विषये सेटिंग्स्</string>
     <string name="pref_mute_mode_vibrate">केवलं स्पन्दनम्</string>
-    <string name="pref_mute_mode_vibrate_desc">केवलं दूरभाषा-कौलानां सूचनानां च कृते स्पन्दनं करोति (एण्ड्रॉयड् 7 (Nougat) इत्यत्र कार्यं न करोति - Silence सेटिंग् इव व्यवहारं करोति)</string>
+    <string name="pref_mute_mode_vibrate_desc">केवलं दूरभाषकॉलस्य सूचनानां च कृते स्पन्दनं करोति (एण्ड्रॉयड् 7 (Nougat) इत्यत्र कार्यं न करोति - Silence सेटिंग् इव व्यवहारं करोति)</string>
     <string name="pref_mute_mode_vibrate_sound">रिंग टोन तथा विब्रेशन</string>
     <string name="pref_mute_mode_vibrate_sound_desc">Ring tone तथा Vibration वादयन्तु</string>
     <string name="pref_muting">सेटिंग्स् म्यूट् कुर्वन्तु</string>
@@ -130,12 +130,12 @@
     <string name="status_bar_notification_info_overflow">९९९+</string>
     <string name="test_mute_perm_request">सम्प्रति App इत्यनेन भवतः दूरभाषं म्यूट् कर्तुं अनुमतिः नास्ति। एतत् परिवर्तयितुं सेटिङ्ग्स् उद्घाटयन्तु?</string>
     <string name="text_cant_mute">भवतः Phone इत्यनेन एतत् App म्यूट् कर्तुं न अनुमन्यते। अस्मिन् Apps Settings मध्ये म्यूटिंग् निष्क्रियं कुर्वन्तु अथवा स्वस्य Phones Settings मध्ये म्यूटिंग् अनुमन्यताम्।</string>
-    <string name="text_no_notify_access_settings">भवतः Phone इत्यत्र म्यूटिंग् इत्यस्य अनुमतिं दातुं मानकसेटिंग्स् नास्ति इति दृश्यते । कृपया \&amp;quot;प्रवेशं न बाधयतु\&amp;quot; सेटिंग् मैन्युअल् रूपेण अन्विष्य तत् सक्षमं कुर्वन्तु ।</string>
+    <string name="text_no_notify_access_settings">भवतः Phone इत्यत्र म्यूटिंग् इत्यस्य अनुमतिं दातुं मानकसेटिंग्स् नास्ति इति दृश्यते । कृपया \"Do not Disturb Access\" सेटिंग् मैन्युअल् रूपेण पश्यन्तु तथा च सक्षमं कुर्वन्तु ।</string>
     <string name="text_no_sections">न Sections परिभाषितम्।</string>
     <string name="text_question_delete_session">वास्तवमेव चयनितं Session विलोपनं कुर्वन्तु?</string>
     <string name="theme">विषयवस्तु</string>
     <string name="theme_dark">अन्धकार विषय</string>
-    <string name="theme_desc">App इत्यस्य हल्कं वा अन्धकारमयं वा रूपं चिनोतु</string>
+    <string name="theme_desc">एप् स्वरूपं चिनोतु</string>
     <string name="theme_light">प्रकाश विषयः</string>
     <string name="theme_system">प्रणाली विषयः</string>
     <string name="theme_value_dark">dark</string>
@@ -157,5 +157,13 @@
     <string name="pref_desc_bell_volume">घण्टाध्वनिषु अलार्मधारा-आयतनं नियन्त्रयति</string>
     <string name="title_dim_bell">मन्द बेल</string>
     <string name="dim_bell_label_off">न मन्दः</string>
-    <string name="dim_bell_label_format">मन्दः : %1$d0%%</string>
+    <string name="dim_bell_label_format">मन्दः %1$d0%% .</string>
+    <string name="section_deleted">विलोपितम् __1%s\' .</string>
+    <string name="action_undo">पूर्ववत</string>
+    <string name="notification_channel_name">ध्यान टाइमर</string>
+    <string name="nav_label_sessions">सत्रम्</string>
+    <string name="nav_label_meditation">ध्यानं</string>
+    <string name="nav_label_edit_session">सम्पादन सत्र</string>
+    <string name="nav_label_edit_section">सम्पादन खण्ड</string>
+    <string name="nav_label_settings">सेटिंग्स्</string>
 </resources>

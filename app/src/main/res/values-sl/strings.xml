@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="abbrechen">Prekliči</string>
-    <string name="about1">Zazen Meditation Timer — A simple meditation timer with customizable sections, bell sounds, and session management.</string>
-    <string name="about2">Originally created by Stefan Gaffga. Currently maintained by Georg Graf.&lt;br&gt;&lt;br&gt;Thanks to Winfried of &lt;a href="http://www.meditationsuhren.de"&gt;http://www.meditationsuhren.de&lt;/a&gt; for providing such great Bell Sounds!</string>
-    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues"&gt;Report issues on GitHub&lt;/a&gt;</string>
-    <string name="app_description">This application lets the user define a set of meditation sessions and provides a timer with visual and audible feedback when a part or the whole meditation is over.</string>
+    <string name="about1">Časovnik za meditacijo Zazen — preprost časovnik za meditacijo s prilagodljivimi razdelki, zvoki zvonca in upravljanjem sej.</string>
+    <string name="about2">Prvotno ustvaril Stefan Gaffga. Trenutno vzdržuje Georg Graf.&lt;br&gt;&lt;br&gt;Zahvala Winfriedu iz &lt;a href="http://www.meditationsuhren.de"&gt;http://www.meditationsuhren.de&lt;/a&gt; za zagotavljanje tako odličnih zvončkov!</string>
+    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues"&gt;Prijavite težave na GitHub&lt;/a&gt;</string>
+    <string name="app_description">Ta aplikacija omogoča uporabniku, da določi niz meditacijskih sej in zagotavlja časovnik z vizualnimi in zvočnimi povratnimi informacijami, ko je del ali celotna meditacija končana.</string>
     <string name="app_name">Zazen Meditation Timer</string>
     <string name="appbar_scrolling_view_behavior">android.support.design.widget.AppBarLayout$ScrollingViewBehavior</string>
     <string name="backup_error_text">Žal je med shranjevanjem prišlo do napake.</string>
     <string name="backup_no_permission">Ni bilo mogoče ustvariti varnostne kopije zaradi manjkajočih dovoljenj.</string>
     <string name="backup_not_createable">Napaka pri ustvarjanju datoteke varnostne kopije.</string>
     <string name="backup_success_text">Varnostna kopija je uspešno ustvarjena!</string>
-    <string name="bell_name_1">High Tone</string>
-    <string name="bell_name_2">Low Tone</string>
-    <string name="bell_name_3">Jap. Rhinbowl Dharma, 107mm</string>
-    <string name="bell_name_4">Jap. Rhinbowl Dharma, 88mm (black, glazed)</string>
-    <string name="bell_name_5">Jap. Rhinbowl Shomyo, 90mm</string>
-    <string name="bell_name_6">Jap. Rhinbowl Tang, 164mm</string>
-    <string name="bell_name_7">Tib. Bowl, 230mm</string>
-    <string name="bell_name_8">Jap. Rhinbowl, 97mm</string>
+    <string name="bell_name_1">Visok ton</string>
+    <string name="bell_name_2">Nizek ton</string>
+    <string name="bell_name_3">Japonka Rhinbowl Dharma, 107 mm</string>
+    <string name="bell_name_4">Japonka Rhinbowl Dharma, 88 mm (črna, glazirana)</string>
+    <string name="bell_name_5">Japonka Rhinbowl Shomyo, 90 mm</string>
+    <string name="bell_name_6">Japonka Rhinbowl Tang, 164 mm</string>
+    <string name="bell_name_7">tib. Posoda, 230 mm</string>
+    <string name="bell_name_8">Japonka Rhinbowl, 97 mm</string>
     <string name="bell_pause">Vrzel zvonca (s)</string>
     <string name="bell_user">Dodaj zvonec ...</string>
     <string name="bottom_nav_meditation">Meditacija</string>
@@ -56,7 +56,7 @@
     <string name="desc_no_server_messages">Samodejno prikaži novice, ko se aplikacija zažene</string>
     <string name="error_checking_for_server_messages">Napaka pri pridobivanju novih sporočil.</string>
     <string name="gong_type">Zvok gonga</string>
-    <string name="help_sectionlist_text">Tukaj lahko poimenujete, opišete in uredite vsebino vaše seje.\n\n PREUREDITEV\n Če želite preurediti elemente, dolgo pritisnite na element in\n ga povlecite na novo mesto.\n\n IZBRISANJE\n Če želite izbrisati element, ga premaknite na desno.\n\n UREDI\n Če želite urediti razdelek, se ga samo enkrat dotaknite.\n\n DODAJ\n Če želite dodati nov razdelek, pritisnite gumb +.</string>
+    <string name="help_sectionlist_text">Tukaj lahko poimenujete, opisujete in urejate vsebino svoje seje.\n\nPRENAROČANJE\nČe želite prerazvrstiti predmete, dolgo pritisnite na predmet in\npovlecite na nov položaj.\n\nIZBRISANJE\nČe želite izbrisati element, ga premaknite v desno.\n\nUREJANJE\nČe želite urediti razdelek, se ga enkrat dotaknite.\n\nDODAJ\nČe želite dodati nov razdelek, pritisnite gumb +.</string>
     <string name="help_sectionlist_title">Uredi sejo</string>
     <string name="label_section_name">Ime razdelka</string>
     <string name="label_session_description">Opis seje</string>
@@ -74,7 +74,7 @@
     <string name="menu_settings">nastavitve</string>
     <string name="minuten">minute</string>
     <string name="no_new_server_messages">Ni novih sporočil.</string>
-    <string name="no_sections_in_session">Meditacije ni mogoče začeti: izbrana seja nima nobenih odsekov.</string>
+    <string name="no_sections_in_session">Meditacije ni mogoče\'začeti: izbrana seja nima nobenih razdelkov.</string>
     <string name="no_session_exists">Nobene seje ni mogoče začeti. Najprej ga ustvarite.</string>
     <string name="notification_text">Trenutno poteka meditacija Zazen</string>
     <string name="notification_text_paused">Meditacija Zazen je zaustavljena</string>
@@ -99,7 +99,7 @@
     <string name="pref_sum_ejecting">Kartica SD se izvrže</string>
     <string name="pref_sum_nofs">Na kartici SD ni datotečnega sistema</string>
     <string name="pref_sum_read_only">Kartica SD je samo za branje</string>
-    <string name="pref_sum_removed">Ni kartice SD</string>
+    <string name="pref_sum_removed">Kartica SD ni prisotna</string>
     <string name="pref_sum_restore">Obnovite svoje seje in zvoke po meri iz varnostne kopije kartice SD</string>
     <string name="pref_sum_shared">SD-kartica je v skupni rabi</string>
     <string name="pref_title_backup">Ustvari varnostno kopijo</string>
@@ -116,7 +116,7 @@
     <string name="restore_really_title">Res obnoviti podatke?</string>
     <string name="restore_success_text">Obnovitev podatkov je uspela</string>
     <string name="search_menu_title">Iskanje</string>
-    <string name="section_info_string_1_pl">%1$d Zvonovi</string>
+    <string name="section_info_string_1_pl">%1$d Zvončki</string>
     <string name="section_info_string_1_sg">1 zvonec</string>
     <string name="section_info_string_2_pl">vsakih %1$d sekund</string>
     <string name="section_info_string_2_sg">vsako sekundo</string>
@@ -128,14 +128,14 @@
     <string name="content_desc_session_actions">Dejanja seje</string>
     <string name="session_list_unnamed_entry">Neimenovana seja</string>
     <string name="status_bar_notification_info_overflow">999+</string>
-    <string name="test_mute_perm_request">Aplikacija trenutno ne sme utišati zvoka vašega telefona. Odpreti nastavitve, če želite to spremeniti?</string>
+    <string name="test_mute_perm_request">Aplikaciji trenutno ni dovoljeno utišati zvoka vašega telefona. Odpreti nastavitve, če želite to spremeniti?</string>
     <string name="text_cant_mute">Vaš telefon tej aplikaciji ne dovoli izklopa zvoka. Onemogočite izklop zvoka v teh nastavitvah aplikacij ali dovolite izklop zvoka v nastavitvah telefona.</string>
-    <string name="text_no_notify_access_settings">Zdi se, da vaša naprava nima standardnih nastavitev za izklop zvoka. Ročno poiščite nastavitev \&amp;quot;Ne moti dostopa\&amp;quot; in jo omogočite.</string>
+    <string name="text_no_notify_access_settings">Zdi se, da vaša naprava nima standardnih nastavitev za izklop zvoka. Ročno poiščite nastavitev \"Dostop do Ne moti\" in jo omogočite.</string>
     <string name="text_no_sections">Ni določenih razdelkov.</string>
-    <string name="text_question_delete_session">Ali res želite izbrisati izbrano sejo?</string>
+    <string name="text_question_delete_session">Res želite izbrisati izbrano sejo?</string>
     <string name="theme">Tema</string>
     <string name="theme_dark">Temna tema</string>
-    <string name="theme_desc">Izberite svetel ali temen videz aplikacije</string>
+    <string name="theme_desc">Izberite videz aplikacije</string>
     <string name="theme_light">Svetla tema</string>
     <string name="theme_system">Sistemska tema</string>
     <string name="theme_value_dark">dark</string>
@@ -158,4 +158,12 @@
     <string name="title_dim_bell">Dim Bell</string>
     <string name="dim_bell_label_off">Ni zatemnjeno</string>
     <string name="dim_bell_label_format">Zatemnjeno: %1$d0%%</string>
+    <string name="section_deleted">Izbrisano \'%s\'</string>
+    <string name="action_undo">Razveljavi</string>
+    <string name="notification_channel_name">Časovnik za meditacijo</string>
+    <string name="nav_label_sessions">Seje</string>
+    <string name="nav_label_meditation">Meditacija</string>
+    <string name="nav_label_edit_session">Uredi sejo</string>
+    <string name="nav_label_edit_section">Uredi razdelek</string>
+    <string name="nav_label_settings">nastavitve</string>
 </resources>

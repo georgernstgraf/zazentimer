@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="abbrechen">Kanselahin</string>
-    <string name="about1">Zazen Meditation Timer — A simple meditation timer with customizable sections, bell sounds, and session management.</string>
-    <string name="about2">Originally created by Stefan Gaffga. Currently maintained by Georg Graf.&lt;br&gt;&lt;br&gt;Thanks to Winfried of &lt;a href="http://www.meditationsuhren.de"&gt;http://www.meditationsuhren.de&lt;/a&gt; for providing such great Bell Sounds!</string>
-    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues"&gt;Report issues on GitHub&lt;/a&gt;</string>
-    <string name="app_description">This application lets the user define a set of meditation sessions and provides a timer with visual and audible feedback when a part or the whole meditation is over.</string>
+    <string name="about1">Zazen Meditation Timer — Isang simpleng meditation timer na may mga nako-customize na seksyon, tunog ng kampana, at pamamahala ng session.</string>
+    <string name="about2">Orihinal na nilikha ni Stefan Gaffga. Kasalukuyang pinapanatili ni Georg Graf.&lt;br&gt;&lt;br&gt;Salamat kay Winfried ng &lt;a href="http://www.meditationsuhren.de"&gt;http://www.meditationsuhren.de&lt;/a&gt; para sa pagbibigay ng napakagandang Bell Sounds!</string>
+    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues"&gt;Mag-ulat ng mga isyu sa GitHub&lt;/a&gt;</string>
+    <string name="app_description">Ang application na ito ay nagbibigay-daan sa gumagamit na tukuyin ang isang hanay ng mga sesyon ng pagmumuni-muni at nagbibigay ng isang timer na may visual at naririnig na feedback kapag ang isang bahagi o ang buong pagmumuni-muni ay tapos na.</string>
     <string name="app_name">Zazen Meditation Timer</string>
     <string name="appbar_scrolling_view_behavior">android.support.design.widget.AppBarLayout$ScrollingViewBehavior</string>
     <string name="backup_error_text">Paumanhin, may naganap na Error habang nagse-save.</string>
     <string name="backup_no_permission">Hindi makagawa ng backup dahil sa mga nawawalang pahintulot.</string>
     <string name="backup_not_createable">Error sa paggawa ng backup na file.</string>
     <string name="backup_success_text">Matagumpay na nagawa ang backup!</string>
-    <string name="bell_name_1">High Tone</string>
-    <string name="bell_name_2">Low Tone</string>
+    <string name="bell_name_1">Mataas na Tono</string>
+    <string name="bell_name_2">Mababang Tono</string>
     <string name="bell_name_3">Jap. Rhinbowl Dharma, 107mm</string>
-    <string name="bell_name_4">Jap. Rhinbowl Dharma, 88mm (black, glazed)</string>
+    <string name="bell_name_4">Jap. Rhinbowl Dharma, 88mm (itim, makintab)</string>
     <string name="bell_name_5">Jap. Rhinbowl Shomyo, 90mm</string>
     <string name="bell_name_6">Jap. Rhinbowl Tang, 164mm</string>
-    <string name="bell_name_7">Tib. Bowl, 230mm</string>
+    <string name="bell_name_7">Tib. Mangkok, 230mm</string>
     <string name="bell_name_8">Jap. Rhinbowl, 97mm</string>
     <string name="bell_pause">Bell gap (seg)</string>
     <string name="bell_user">Idagdag ang Bell...</string>
@@ -36,7 +36,7 @@
     <string name="copy_prefix">Kopya ng</string>
     <string name="crash_dialog_comment_prompt">Opsyonal: Aling pagkilos ang naging sanhi ng error?</string>
     <string name="crash_dialog_ok_toast">Maraming salamat sa iyong tulong!</string>
-    <string name="crash_dialog_text">Ikinalulungkot ko, na may nangyaring error. Matutulungan mo akong mahanap at ayusin ang isyung ito sa pamamagitan ng pagpapadala ng ulat sa bug na ito at marahil ng higit pang mga detalye sa ginawa mo.</string>
+    <string name="crash_dialog_text">Ikinalulungkot ko, na may nangyaring error. Matutulungan mo akong mahanap at ayusin ang isyung ito sa pamamagitan ng pagpapadala ng ulat sa bug na ito at marahil ng higit pang mga detalye sa kung ano ang iyong ginawa.</string>
     <string name="crash_dialog_title">Zazen Meditation Timer</string>
     <string name="crash_toast_text">Paumanhin - may naganap na panloob na Error!</string>
     <string name="crash_user_email_label">Opsyonal: Ang iyong eMail-Address para sa mga tanong o update sa isyung ito.</string>
@@ -51,12 +51,12 @@
     <string name="demo_sess1_sec6_name">Zazen 3</string>
     <string name="demo_sess2_description">Araw-araw na pagmumuni-muni</string>
     <string name="demo_sess2_name">Zazen lang</string>
-    <string name="desc_get_messages">Kung ang mga awtomatikong mensahe ay hindi pinagana, maaari mong tingnan ang balita dito.</string>
+    <string name="desc_get_messages">Kung hindi pinagana ang mga awtomatikong mensahe, maaari mong tingnan ang balita dito.</string>
     <string name="desc_keep_screen_on">Pinapanatiling naka-on ang screen sa panahon ng meditation</string>
     <string name="desc_no_server_messages">Awtomatikong ipakita ang Balita kapag nagsimula ang App</string>
     <string name="error_checking_for_server_messages">Error sa pagkuha ng mga bagong mensahe.</string>
     <string name="gong_type">Tunog ng Gong</string>
-    <string name="help_sectionlist_text">Dito maaari mong pangalanan, ilarawan at i-edit ang mga nilalaman ng iyong Session.\n\n REORDERING\n Upang muling ayusin ang mga item, pindutin nang matagal ang isang item at\n i-drag ito sa bago nitong posisyon.\n\n DELETING\n Para tanggalin ang isang item, ilipat ito sa kanan.\n\n EDIT\n Upang mag-edit ng isang seksyon, pindutin lang ito nang isang beses.\n\n\n\n MAGDAGDAG ng bagong seksyon\n.</string>
+    <string name="help_sectionlist_text">Dito maaari mong pangalanan, ilarawan at i-edit ang mga nilalaman ng iyong Session.\n\nREORDERING\nUpang muling ayusin ang mga item, pindutin nang matagal ang isang item at\ni-drag ito sa bago nitong posisyon.\n\nPAGBUBURA\nUpang tanggalin ang isang item, ilipat ito sa kanan.\n\nI-EDIT\nUpang mag-edit ng isang seksyon, pindutin lamang ito nang isang beses.\n\nADD\nUpang magdagdag ng bagong seksyon, pindutin ang + button.</string>
     <string name="help_sectionlist_title">I-edit ang Session</string>
     <string name="label_section_name">Pangalan ng seksyon</string>
     <string name="label_session_description">Paglalarawan ng Sesyon</string>
@@ -74,7 +74,7 @@
     <string name="menu_settings">Mga setting</string>
     <string name="minuten">Mga minuto</string>
     <string name="no_new_server_messages">Walang available na mga bagong mensahe.</string>
-    <string name="no_sections_in_session">Hindi masimulan ang Meditation: Ang napiling Session ay walang anumang Seksyon.</string>
+    <string name="no_sections_in_session">Can\'t start Meditation: Ang napiling Session ay walang anumang Seksyon.</string>
     <string name="no_session_exists">Walang session na maaaring simulan. Mangyaring lumikha muna ng isa.</string>
     <string name="notification_text">Kasalukuyang tumatakbo ang Zazen Meditation</string>
     <string name="notification_text_paused">Naka-pause ang Zazen Meditation</string>
@@ -114,11 +114,11 @@
     <string name="restore_no_permission">Hindi maibalik dahil sa nawawalang pahintulot.</string>
     <string name="restore_really_text">Papalitan nito ang lahat ng iyong Session ng mga nasa Backup! (Walang I-undo!)</string>
     <string name="restore_really_title">Talagang ibalik ang data?</string>
-    <string name="restore_success_text">Matagumpay ang Pagbabalik ng Data</string>
+    <string name="restore_success_text">Matagumpay ang Pag-restore ng Data</string>
     <string name="search_menu_title">Maghanap</string>
     <string name="section_info_string_1_pl">%1$d Mga kampana</string>
-    <string name="section_info_string_1_sg">1 kampana</string>
-    <string name="section_info_string_2_pl">bawat %1$d Segundo</string>
+    <string name="section_info_string_1_sg">1 Kampana</string>
+    <string name="section_info_string_2_pl">tuwing %1$d Segundo</string>
     <string name="section_info_string_2_sg">bawat Segundo</string>
     <string name="sekunden">Mga segundo</string>
     <string name="select_audio">Piliin ang sound file</string>
@@ -130,12 +130,12 @@
     <string name="status_bar_notification_info_overflow">999+</string>
     <string name="test_mute_perm_request">Ang App ay kasalukuyang hindi pinapayagang i-mute ang iyong telepono. Buksan ang mga setting para baguhin ito?</string>
     <string name="text_cant_mute">Hindi pinapayagan ng iyong Telepono ang App na ito na i-mute ito. Huwag paganahin ang pag-mute sa Mga Setting ng Apps na ito o payagan ang pag-mute sa iyong Mga Setting ng Mga Telepono.</string>
-    <string name="text_no_notify_access_settings">Mukhang walang mga karaniwang setting ang iyong Telepono upang payagan ang pag-mute. Pakihanap nang manu-mano ang Setting ng \"Huwag Istorbohin ang Pag-access\" at paganahin ito.</string>
+    <string name="text_no_notify_access_settings">Mukhang walang mga karaniwang setting ang iyong Telepono upang payagan ang pag-mute. Pakihanap nang manu-mano ang \"Huwag Istorbohin ang Access\" Setting at paganahin ito.</string>
     <string name="text_no_sections">Walang tinukoy na Seksyon.</string>
     <string name="text_question_delete_session">Talagang tanggalin ang napiling Session?</string>
     <string name="theme">Tema</string>
     <string name="theme_dark">Madilim na Tema</string>
-    <string name="theme_desc">Pumili ng maliwanag o madilim na hitsura ng App</string>
+    <string name="theme_desc">Piliin ang hitsura ng app</string>
     <string name="theme_light">Banayad na Tema</string>
     <string name="theme_system">Tema ng System</string>
     <string name="theme_value_dark">dark</string>
@@ -158,4 +158,12 @@
     <string name="title_dim_bell">Dim Bell</string>
     <string name="dim_bell_label_off">Hindi dimmed</string>
     <string name="dim_bell_label_format">Dimmed: %1$d0%%</string>
+    <string name="section_deleted">Tinanggal \'%s\'</string>
+    <string name="action_undo">I-undo</string>
+    <string name="notification_channel_name">Timer ng Pagninilay</string>
+    <string name="nav_label_sessions">Mga session</string>
+    <string name="nav_label_meditation">Pagninilay</string>
+    <string name="nav_label_edit_session">I-edit ang Session</string>
+    <string name="nav_label_edit_section">I-edit ang Seksyon</string>
+    <string name="nav_label_settings">Mga setting</string>
 </resources>

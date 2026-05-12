@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="abbrechen">Hủy bỏ</string>
-    <string name="about1">Zazen Meditation Timer — A simple meditation timer with customizable sections, bell sounds, and session management.</string>
-    <string name="about2">Originally created by Stefan Gaffga. Currently maintained by Georg Graf.&lt;br&gt;&lt;br&gt;Thanks to Winfried of &lt;a href="http://www.meditationsuhren.de"&gt;http://www.meditationsuhren.de&lt;/a&gt; for providing such great Bell Sounds!</string>
-    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues"&gt;Report issues on GitHub&lt;/a&gt;</string>
-    <string name="app_description">This application lets the user define a set of meditation sessions and provides a timer with visual and audible feedback when a part or the whole meditation is over.</string>
+    <string name="about1">Đồng hồ bấm giờ thiền Zazen - Đồng hồ hẹn giờ thiền đơn giản với các phần có thể tùy chỉnh, âm thanh chuông và quản lý phiên.</string>
+    <string name="about2">Ban đầu được tạo ra bởi Stefan Gaffga. Hiện được duy trì bởi Georg Graf.&lt;br&gt;&lt;br&gt;Cảm ơn Winfried của &lt;a href="http://www.meditessuhren.de"&gt;http://www.meditessuhren.de&lt;/a&gt; vì đã cung cấp Âm thanh chuông tuyệt vời như vậy!</string>
+    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues"&gt;Báo cáo sự cố trên GitHub&lt;/a&gt;</string>
+    <string name="app_description">Ứng dụng này cho phép người dùng xác định một tập hợp các buổi thiền và cung cấp bộ đếm thời gian với phản hồi bằng hình ảnh và âm thanh khi một phần hoặc toàn bộ buổi thiền kết thúc.</string>
     <string name="app_name">Zazen Meditation Timer</string>
     <string name="appbar_scrolling_view_behavior">android.support.design.widget.AppBarLayout$ScrollingViewBehavior</string>
     <string name="backup_error_text">Rất tiếc, đã xảy ra lỗi khi lưu.</string>
     <string name="backup_no_permission">Không thể tạo bản sao lưu do thiếu quyền.</string>
     <string name="backup_not_createable">Lỗi tạo tập tin sao lưu.</string>
     <string name="backup_success_text">Sao lưu được tạo thành công!</string>
-    <string name="bell_name_1">High Tone</string>
-    <string name="bell_name_2">Low Tone</string>
-    <string name="bell_name_3">Jap. Rhinbowl Dharma, 107mm</string>
-    <string name="bell_name_4">Jap. Rhinbowl Dharma, 88mm (black, glazed)</string>
-    <string name="bell_name_5">Jap. Rhinbowl Shomyo, 90mm</string>
-    <string name="bell_name_6">Jap. Rhinbowl Tang, 164mm</string>
-    <string name="bell_name_7">Tib. Bowl, 230mm</string>
-    <string name="bell_name_8">Jap. Rhinbowl, 97mm</string>
+    <string name="bell_name_1">Âm cao</string>
+    <string name="bell_name_2">Âm thấp</string>
+    <string name="bell_name_3">Nhật Bản. Pháp Tỳ Hưu, 107mm</string>
+    <string name="bell_name_4">Nhật Bản. Rhinbow Dharma, 88mm (đen, tráng men)</string>
+    <string name="bell_name_5">Nhật Bản. Thô giác Shomyo, 90mm</string>
+    <string name="bell_name_6">Nhật Bản. Rhinbowl Tang, 164mm</string>
+    <string name="bell_name_7">Tib. Bát, 230mm</string>
+    <string name="bell_name_8">Nhật Bản. Thình giác, 97mm</string>
     <string name="bell_pause">Khoảng cách chuông (giây)</string>
     <string name="bell_user">Thêm chuông...</string>
     <string name="bottom_nav_meditation">Thiền</string>
@@ -36,13 +36,13 @@
     <string name="copy_prefix">Bản sao của</string>
     <string name="crash_dialog_comment_prompt">Tùy chọn: Hành động nào đã gây ra lỗi?</string>
     <string name="crash_dialog_ok_toast">Cảm ơn bạn rất nhiều vì sự giúp đỡ của bạn!</string>
-    <string name="crash_dialog_text">Tôi rất tiếc, đã xảy ra lỗi.Bạn có thể giúp tôi tìm và khắc phục sự cố này bằng cách gửi báo cáo lỗi này và thậm chí có thể biết thêm chi tiết về những gì bạn đã làm.</string>
+    <string name="crash_dialog_text">Tôi rất tiếc, đã xảy ra lỗi. Bạn có thể giúp tôi tìm và khắc phục sự cố này bằng cách gửi báo cáo lỗi này và thậm chí có thể biết thêm chi tiết về những gì bạn đã làm.</string>
     <string name="crash_dialog_title">Hẹn giờ thiền Zazen</string>
     <string name="crash_toast_text">Xin lỗi - đã xảy ra lỗi nội bộ!</string>
     <string name="crash_user_email_label">Tùy chọn: Địa chỉ email của bạn nếu có câu hỏi hoặc cập nhật về vấn đề này.</string>
     <string name="default_section_name">Vô danh</string>
     <string name="demo_sess1_description">thiền tối chủ nhật</string>
-    <string name="demo_sess1_name">Zazen and Kinhin</string>
+    <string name="demo_sess1_name">Tọa thiền và Kinhin</string>
     <string name="demo_sess1_sec1_name">Sự chuẩn bị</string>
     <string name="demo_sess1_sec2_name">Tọa thiền 1</string>
     <string name="demo_sess1_sec3_name">Kinhin 1</string>
@@ -56,7 +56,7 @@
     <string name="desc_no_server_messages">Tự động hiển thị Tin tức khi ứng dụng khởi động</string>
     <string name="error_checking_for_server_messages">Lỗi khi tìm nạp tin nhắn mới.</string>
     <string name="gong_type">Tiếng cồng chiêng</string>
-    <string name="help_sectionlist_text">Tại đây, bạn có thể đặt tên, mô tả và chỉnh sửa nội dung Phiên của mình.\n\n SẮP XẾP LẠI\n Để sắp xếp lại các mục, nhấn và giữ một mục và\n kéo mục đó đến vị trí mới.\n\n XÓA\n Để xóa một mục, hãy di chuyển mục đó sang bên phải.\n\n EDIT\n Để chỉnh sửa một mục, chỉ cần chạm vào mục đó một lần.\n\n THÊM\n Để thêm một mục mới, hãy nhấn nút +.</string>
+    <string name="help_sectionlist_text">Tại đây bạn có thể đặt tên, mô tả và chỉnh sửa nội dung Phiên của mình.\n\nĐẶT HÀNG LẠI\nĐể sắp xếp lại các mục, hãy nhấn và giữ một mục\nkéo nó đến vị trí mới.\n\nXÓA\nĐể xóa một mục, hãy di chuyển nó sang bên phải.\n\nBIÊN TẬP\nĐể chỉnh sửa một phần, chỉ cần chạm vào phần đó một lần.\n\nTHÊM VÀO\nĐể thêm phần mới, nhấn nút +.</string>
     <string name="help_sectionlist_title">Chỉnh sửa phiên</string>
     <string name="label_section_name">Tên phần</string>
     <string name="label_session_description">Mô tả phiên</string>
@@ -74,8 +74,8 @@
     <string name="menu_settings">Cài đặt</string>
     <string name="minuten">Phút</string>
     <string name="no_new_server_messages">Không có tin nhắn mới.</string>
-    <string name="no_sections_in_session">Không thể bắt đầu Thiền: Phiên đã chọn không có Phần nào.</string>
-    <string name="no_session_exists">Không có phiên nào có thể được bắt đầu.Vui lòng tạo một cái trước.</string>
+    <string name="no_sections_in_session">Không thể\'t bắt đầu Thiền: Phiên đã chọn không có bất kỳ Phần nào.</string>
+    <string name="no_session_exists">Không có phiên nào có thể được bắt đầu. Vui lòng tạo một cái trước.</string>
     <string name="notification_text">Thiền Zazen hiện đang chạy</string>
     <string name="notification_text_paused">Thiền Zazen đã tạm dừng</string>
     <string name="notification_title">Thiền tọa thiền</string>
@@ -112,13 +112,13 @@
     <string name="restore_backup_not_found">Không tìm thấy tập tin sao lưu</string>
     <string name="restore_error_text">Lỗi khôi phục từ bản sao lưu</string>
     <string name="restore_no_permission">Không thể khôi phục do thiếu quyền.</string>
-    <string name="restore_really_text">Thao tác này sẽ thay thế tất cả các Phiên của bạn bằng các phiên trong Bản sao lưu!(Không hoàn tác!)</string>
+    <string name="restore_really_text">Thao tác này sẽ thay thế tất cả các Phiên của bạn bằng các phiên trong Bản sao lưu! (Không hoàn tác!)</string>
     <string name="restore_really_title">Thực sự khôi phục dữ liệu?</string>
     <string name="restore_success_text">Khôi phục dữ liệu thành công</string>
     <string name="search_menu_title">Tìm kiếm</string>
-    <string name="section_info_string_1_pl">Chuông %1$d</string>
+    <string name="section_info_string_1_pl">%1$d Chuông</string>
     <string name="section_info_string_1_sg">1 chuông</string>
-    <string name="section_info_string_2_pl">mỗi %1$d Giây</string>
+    <string name="section_info_string_2_pl">mỗi %1$d giây</string>
     <string name="section_info_string_2_sg">mỗi giây</string>
     <string name="sekunden">Giây</string>
     <string name="select_audio">Chọn tập tin âm thanh</string>
@@ -128,14 +128,14 @@
     <string name="content_desc_session_actions">Hành động phiên</string>
     <string name="session_list_unnamed_entry">Phiên chưa đặt tên</string>
     <string name="status_bar_notification_info_overflow">999+</string>
-    <string name="test_mute_perm_request">Ứng dụng hiện không được phép tắt tiếng điện thoại của bạn.Mở cài đặt để thay đổi điều này?</string>
-    <string name="text_cant_mute">Điện thoại của bạn không cho phép Ứng dụng này tắt tiếng.Tắt tính năng tắt tiếng trong Cài đặt ứng dụng này hoặc cho phép tắt tiếng trong Cài đặt điện thoại của bạn.</string>
-    <string name="text_no_notify_access_settings">Điện thoại của bạn dường như không có cài đặt tiêu chuẩn để cho phép tắt tiếng.Vui lòng xem thủ công cài đặt \&amp;quot;Không làm phiền quyền truy cập\&amp;quot; và bật nó.</string>
+    <string name="test_mute_perm_request">Ứng dụng hiện không được phép tắt tiếng điện thoại của bạn. Mở cài đặt để thay đổi điều này?</string>
+    <string name="text_cant_mute">Điện thoại của bạn không cho phép Ứng dụng này tắt tiếng. Tắt tính năng tắt tiếng trong Cài đặt ứng dụng này hoặc cho phép tắt tiếng trong Cài đặt điện thoại của bạn.</string>
+    <string name="text_no_notify_access_settings">Điện thoại của bạn dường như không có cài đặt tiêu chuẩn để cho phép tắt tiếng. Vui lòng xem thủ công cài đặt \"Truy cập không làm phiền\" và bật nó.</string>
     <string name="text_no_sections">Không có phần nào được xác định.</string>
     <string name="text_question_delete_session">Thực sự xóa Phiên đã chọn?</string>
     <string name="theme">chủ đề</string>
     <string name="theme_dark">Chủ đề tối</string>
-    <string name="theme_desc">Chọn giao diện sáng hoặc tối của Ứng dụng</string>
+    <string name="theme_desc">Chọn giao diện ứng dụng</string>
     <string name="theme_light">Chủ đề nhẹ nhàng</string>
     <string name="theme_system">Chủ đề hệ thống</string>
     <string name="theme_value_dark">dark</string>
@@ -157,5 +157,13 @@
     <string name="pref_desc_bell_volume">Kiểm soát âm lượng luồng báo động cho âm thanh chuông</string>
     <string name="title_dim_bell">Chuông mờ</string>
     <string name="dim_bell_label_off">Không bị mờ</string>
-    <string name="dim_bell_label_format">Đã làm mờ: %1$d0%%</string>
+    <string name="dim_bell_label_format">Mờ đi: %1$d0%%</string>
+    <string name="section_deleted">Đã xóa \'_00_\'</string>
+    <string name="action_undo">Hoàn tác</string>
+    <string name="notification_channel_name">Hẹn giờ thiền</string>
+    <string name="nav_label_sessions">Phiên</string>
+    <string name="nav_label_meditation">Thiền</string>
+    <string name="nav_label_edit_session">Chỉnh sửa phiên</string>
+    <string name="nav_label_edit_section">Chỉnh sửa phần</string>
+    <string name="nav_label_settings">Cài đặt</string>
 </resources>

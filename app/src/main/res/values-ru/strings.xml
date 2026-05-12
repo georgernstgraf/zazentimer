@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="abbrechen">Отмена</string>
-    <string name="about1">Zazen Meditation Timer — A simple meditation timer with customizable sections, bell sounds, and session management.</string>
-    <string name="about2">Originally created by Stefan Gaffga. Currently maintained by Georg Graf.&lt;br&gt;&lt;br&gt;Thanks to Winfried of &lt;a href="http://www.meditationsuhren.de"&gt;http://www.meditationsuhren.de&lt;/a&gt; for providing such great Bell Sounds!</string>
-    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues"&gt;Report issues on GitHub&lt;/a&gt;</string>
-    <string name="app_description">This application lets the user define a set of meditation sessions and provides a timer with visual and audible feedback when a part or the whole meditation is over.</string>
+    <string name="about1">Таймер медитации Zazen — простой таймер медитации с настраиваемыми разделами, звуками звонков и управлением сеансами.</string>
+    <string name="about2">Первоначально созданный Стефаном Гаффгой. В настоящее время поддерживается Георгом Графом.&lt;br&gt;&lt;br&gt;Спасибо Винфриду из &lt;a href="http://www.meditationsuhren.de"&gt;http://www.meditationsuhren.de&lt;/a&gt; за предоставление таких великолепных звуков колоколов!</string>
+    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues"&gt;Сообщить о проблемах на GitHub&lt;/a&gt;</string>
+    <string name="app_description">Это приложение позволяет пользователю определить набор сеансов медитации и предоставляет таймер с визуальной и звуковой обратной связью, когда часть или вся медитация завершена.</string>
     <string name="app_name">Zazen Meditation Timer</string>
     <string name="appbar_scrolling_view_behavior">android.support.design.widget.AppBarLayout$ScrollingViewBehavior</string>
     <string name="backup_error_text">Извините, при сохранении произошла ошибка.</string>
     <string name="backup_no_permission">Не удалось создать резервную копию из-за отсутствия разрешений.</string>
     <string name="backup_not_createable">Ошибка создания файла резервной копии.</string>
     <string name="backup_success_text">Резервная копия успешно создана!</string>
-    <string name="bell_name_1">High Tone</string>
-    <string name="bell_name_2">Low Tone</string>
-    <string name="bell_name_3">Jap. Rhinbowl Dharma, 107mm</string>
-    <string name="bell_name_4">Jap. Rhinbowl Dharma, 88mm (black, glazed)</string>
-    <string name="bell_name_5">Jap. Rhinbowl Shomyo, 90mm</string>
-    <string name="bell_name_6">Jap. Rhinbowl Tang, 164mm</string>
-    <string name="bell_name_7">Tib. Bowl, 230mm</string>
-    <string name="bell_name_8">Jap. Rhinbowl, 97mm</string>
+    <string name="bell_name_1">Высокий тон</string>
+    <string name="bell_name_2">Низкий тон</string>
+    <string name="bell_name_3">Яп. Ринбоул Дхарма, 107 мм</string>
+    <string name="bell_name_4">Яп. Rhinbowl Dharma, 88мм (черный, глазурованный)</string>
+    <string name="bell_name_5">Яп. Ринбоул Сёмё, 90 мм</string>
+    <string name="bell_name_6">Яп. Ринбоул Тан, 164 мм</string>
+    <string name="bell_name_7">Тиб. Чаша, 230мм</string>
+    <string name="bell_name_8">Яп. Ринбоул, 97мм</string>
     <string name="bell_pause">Разрыв колокола (сек)</string>
     <string name="bell_user">Добавьте Белла...</string>
     <string name="bottom_nav_meditation">Медитация</string>
@@ -26,7 +26,7 @@
     <string name="bottom_sheet_behavior">android.support.design.widget.BottomSheetBehavior</string>
     <string name="but_pause">Пауза</string>
     <string name="but_start">Начать медитацию</string>
-    <string name="but_stop">Стоп</string>
+    <string name="but_stop">Останавливаться</string>
     <string name="caption_zazen_meditation">Дзадзэн-медитация</string>
     <string name="character_counter_pattern">%1$d / %2$d</string>
     <string name="checkbox_keep_screen_on">Не отключать экран</string>
@@ -36,7 +36,7 @@
     <string name="copy_prefix">Копия</string>
     <string name="crash_dialog_comment_prompt">Необязательно: какое действие вызвало ошибку?</string>
     <string name="crash_dialog_ok_toast">Большое спасибо за вашу помощь!</string>
-    <string name="crash_dialog_text">Сожалеем, что произошла ошибка.Вы можете помочь мне найти и устранить эту проблему, отправив этот отчет об ошибке и, возможно, даже более подробную информацию о том, что вы сделали.</string>
+    <string name="crash_dialog_text">Сожалеем, что произошла ошибка. Вы можете помочь мне найти и устранить эту проблему, отправив этот отчет об ошибке и, возможно, даже более подробную информацию о том, что вы сделали.</string>
     <string name="crash_dialog_title">Таймер для медитации дзадзэн</string>
     <string name="crash_toast_text">Извините, произошла внутренняя ошибка!</string>
     <string name="crash_user_email_label">Необязательно: ваш адрес электронной почты для вопросов или обновлений по этому вопросу.</string>
@@ -56,7 +56,7 @@
     <string name="desc_no_server_messages">Автоматически показывать новости при запуске приложения</string>
     <string name="error_checking_for_server_messages">Ошибка получения новых сообщений.</string>
     <string name="gong_type">Звук гонга</string>
-    <string name="help_sectionlist_text">Здесь вы можете назвать, описать и отредактировать содержимое вашего сеанса.\n\n ИЗМЕНЕНИЕ ПОРЯДКА\n Чтобы изменить порядок элементов, нажмите и удерживайте элемент и\n перетащите его в новое положение.\n\n УДАЛЕНИЕ\n Чтобы удалить элемент, переместите его вправо.\n\n РЕДАКТИРОВАТЬ\n Чтобы отредактировать раздел, просто коснитесь его один раз.\n\n ДОБАВИТЬ\n Чтобы добавить новый раздел, нажмите кнопку +.</string>
+    <string name="help_sectionlist_text">Здесь вы можете назвать, описать и отредактировать содержимое вашей сессии.\n\nПЕРЕПОРЯДОК\nЧтобы изменить порядок элементов, нажмите и удерживайте элемент и\nперетащите его в новое положение.\n\nУДАЛЕНИЕ\nЧтобы удалить элемент, переместите его вправо.\n\nРЕДАКТИРОВАТЬ\nЧтобы отредактировать раздел, просто коснитесь его один раз.\n\nДОБАВЛЯТЬ\nЧтобы добавить новый раздел, нажмите кнопку +.</string>
     <string name="help_sectionlist_title">Редактировать сеанс</string>
     <string name="label_section_name">Название раздела</string>
     <string name="label_session_description">Описание сеанса</string>
@@ -74,14 +74,14 @@
     <string name="menu_settings">Настройки</string>
     <string name="minuten">Минуты</string>
     <string name="no_new_server_messages">Новых сообщений нет.</string>
-    <string name="no_sections_in_session">Невозможно начать медитацию: выбранный сеанс не имеет разделов.</string>
-    <string name="no_session_exists">Нет сеанса, который можно было бы запустить.Пожалуйста, сначала создайте его.</string>
+    <string name="no_sections_in_session">Не могу\'т начать медитацию: выбранный сеанс не имеет разделов.</string>
+    <string name="no_session_exists">Нет сеанса, который можно было бы запустить. Пожалуйста, сначала создайте его.</string>
     <string name="notification_text">В настоящее время идет медитация Дзадзэн.</string>
     <string name="notification_text_paused">Дзадзэн-медитация приостановлена</string>
     <string name="notification_title">Дзадзэн-медитация</string>
     <string name="notification_title_paused">Дзадзэн-медитация (пауза)</string>
     <string name="num_bells">Колокольчик</string>
-    <string name="ok">ОК</string>
+    <string name="ok">ХОРОШО</string>
     <string name="pref_desc_brightness">Яркость дисплея во время медитации</string>
     <string name="pref_get_messages">Проверьте наличие новых сообщений прямо сейчас</string>
     <string name="pref_mute_mode">Мелодия звонка и уведомления</string>
@@ -106,19 +106,19 @@
     <string name="pref_title_brightness">Яркость</string>
     <string name="pref_title_restore">Восстановление из резервной копии</string>
     <string name="privacy_message">Это приложение не собирает никаких личных данных, оно также не использует IP-адреса или любые другие данные, связанные с технологиями, а также не собирает, не обрабатывает и не использует их каким-либо образом.</string>
-    <string name="privacy_ok">ОК</string>
+    <string name="privacy_ok">ХОРОШО</string>
     <string name="privacy_title">Информация о конфиденциальности</string>
     <string name="really_stop">Действительно прекратить медитацию?</string>
     <string name="restore_backup_not_found">Файл резервной копии не найден</string>
     <string name="restore_error_text">Ошибка восстановления из резервной копии</string>
     <string name="restore_no_permission">Не удалось восстановить из-за отсутствия разрешения.</string>
-    <string name="restore_really_text">Это заменит все ваши сеансы на те, которые находятся в резервной копии!(Нет отмены!)</string>
+    <string name="restore_really_text">Это заменит все ваши сеансы на те, которые находятся в резервной копии! (Нет отмены!)</string>
     <string name="restore_really_title">Реально восстановить данные?</string>
     <string name="restore_success_text">Восстановление данных успешно</string>
     <string name="search_menu_title">Поиск</string>
-    <string name="section_info_string_1_pl">%1$d колокольчики</string>
+    <string name="section_info_string_1_pl">%1$d Колокола</string>
     <string name="section_info_string_1_sg">1 колокол</string>
-    <string name="section_info_string_2_pl">каждые %1$d секунды</string>
+    <string name="section_info_string_2_pl">каждые %1$d секунд</string>
     <string name="section_info_string_2_sg">каждую секунду</string>
     <string name="sekunden">Секунды</string>
     <string name="select_audio">Выбрать звуковой файл</string>
@@ -128,14 +128,14 @@
     <string name="content_desc_session_actions">Действия сеанса</string>
     <string name="session_list_unnamed_entry">Безымянная сессия</string>
     <string name="status_bar_notification_info_overflow">999+</string>
-    <string name="test_mute_perm_request">В настоящее время приложению не разрешено отключать звук на вашем телефоне.Открыть настройки, чтобы это изменить?</string>
-    <string name="text_cant_mute">Ваш телефон не позволяет этому приложению отключать звук.Отключите звук в настройках приложений или разрешите его в настройках телефона.</string>
-    <string name="text_no_notify_access_settings">Похоже, что в вашем телефоне нет стандартных настроек, позволяющих отключить звук.Пожалуйста, найдите вручную настройку «Не беспокоить доступ» и включите ее.</string>
+    <string name="test_mute_perm_request">В настоящее время приложению не разрешено отключать звук на вашем телефоне. Открыть настройки, чтобы это изменить?</string>
+    <string name="text_cant_mute">Ваш телефон не позволяет этому приложению отключать звук. Отключите звук в настройках приложений или разрешите его в настройках телефона.</string>
+    <string name="text_no_notify_access_settings">Похоже, что в вашем телефоне нет стандартных настроек, позволяющих отключить звук. Найдите вручную настройку \"Не беспокоить доступ\" и включите ее.</string>
     <string name="text_no_sections">Разделы не определены.</string>
     <string name="text_question_delete_session">Действительно удалить выбранную сессию?</string>
     <string name="theme">Тема</string>
     <string name="theme_dark">Темная тема</string>
-    <string name="theme_desc">Выберите светлый или темный внешний вид приложения.</string>
+    <string name="theme_desc">Выберите внешний вид приложения</string>
     <string name="theme_light">Светлая тема</string>
     <string name="theme_system">Системная тема</string>
     <string name="theme_value_dark">dark</string>
@@ -151,11 +151,19 @@
     <string name="unnamed">Безымянный</string>
     <string name="stop_meditation_title">Прекратить медитацию?</string>
     <string name="stop_meditation_message">Ваш сеанс медитации все еще продолжается.</string>
-    <string name="stop_meditation_stop">Стоп</string>
+    <string name="stop_meditation_stop">Останавливаться</string>
     <string name="stop_meditation_cancel">Отмена</string>
     <string name="pref_title_bell_volume">Громкость звонка</string>
     <string name="pref_desc_bell_volume">Управляет громкостью потока сигналов тревоги для звуков звонка</string>
     <string name="title_dim_bell">Дим Белл</string>
     <string name="dim_bell_label_off">Не затемнен</string>
-    <string name="dim_bell_label_format">Затемнено: %1$d0%%</string>
+    <string name="dim_bell_label_format">Затемнен: %1$d0%%</string>
+    <string name="section_deleted">Удален \'%s\'</string>
+    <string name="action_undo">Отменить</string>
+    <string name="notification_channel_name">Таймер медитации</string>
+    <string name="nav_label_sessions">Сессии</string>
+    <string name="nav_label_meditation">Медитация</string>
+    <string name="nav_label_edit_session">Редактировать сеанс</string>
+    <string name="nav_label_edit_section">Редактировать раздел</string>
+    <string name="nav_label_settings">Настройки</string>
 </resources>

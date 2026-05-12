@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="abbrechen">Cancella</string>
-    <string name="about1">Zazen Meditation Timer — A simple meditation timer with customizable sections, bell sounds, and session management.</string>
-    <string name="about2">Originally created by Stefan Gaffga. Currently maintained by Georg Graf.&lt;br&gt;&lt;br&gt;Thanks to Winfried of &lt;a href="http://www.meditationsuhren.de"&gt;http://www.meditationsuhren.de&lt;/a&gt; for providing such great Bell Sounds!</string>
-    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues"&gt;Report issues on GitHub&lt;/a&gt;</string>
-    <string name="app_description">This application lets the user define a set of meditation sessions and provides a timer with visual and audible feedback when a part or the whole meditation is over.</string>
+    <string name="about1">Zazen Meditation Timer - Un timer di meditazione simplice cù sezioni persunalizabili, soni di campane è gestione di sessione.</string>
+    <string name="about2">Originariamente creatu da Stefan Gaffga. Attualmente mantenutu da Georg Graf.&lt;br&gt;&lt;br&gt;Grazie à Winfried di &lt;a href="http://www.meditationsuhren.de"&gt;http://www.meditationsuhren.de&lt;/a&gt; per avè furnitu tali grandi Bell Sounds!</string>
+    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues"&gt;Riporta i prublemi nantu à GitHub&lt;/a&gt;</string>
+    <string name="app_description">Questa applicazione permette à l\'utilizatore di definisce un inseme di sessioni di meditazione è furnisce un timer cù feedback visuale è audible quandu una parte o tutta a meditazione hè finita.</string>
     <string name="app_name">Zazen Meditation Timer</string>
     <string name="appbar_scrolling_view_behavior">android.support.design.widget.AppBarLayout$ScrollingViewBehavior</string>
     <string name="backup_error_text">Scusate, un Errore hè accadutu durante a salvezza.</string>
     <string name="backup_no_permission">Ùn pudia micca creà una copia di salvezza per via di i permessi mancanti.</string>
     <string name="backup_not_createable">Errore durante a creazione di u schedariu di salvezza.</string>
     <string name="backup_success_text">Backup creatu cun successu!</string>
-    <string name="bell_name_1">High Tone</string>
-    <string name="bell_name_2">Low Tone</string>
-    <string name="bell_name_3">Jap. Rhinbowl Dharma, 107mm</string>
-    <string name="bell_name_4">Jap. Rhinbowl Dharma, 88mm (black, glazed)</string>
-    <string name="bell_name_5">Jap. Rhinbowl Shomyo, 90mm</string>
-    <string name="bell_name_6">Jap. Rhinbowl Tang, 164mm</string>
-    <string name="bell_name_7">Tib. Bowl, 230mm</string>
-    <string name="bell_name_8">Jap. Rhinbowl, 97mm</string>
+    <string name="bell_name_1">Tonu Altu</string>
+    <string name="bell_name_2">Tonu bassu</string>
+    <string name="bell_name_3">Ghjappu. Rhinbowl Dharma, 107 mm</string>
+    <string name="bell_name_4">Ghjappu. Rhinbowl Dharma, 88 mm (neru, smaltu)</string>
+    <string name="bell_name_5">Ghjappu. Rhinbowl Shomyo, 90 mm</string>
+    <string name="bell_name_6">Ghjappu. Rhinbowl Tang, 164 mm</string>
+    <string name="bell_name_7">Tib. Tazza, 230 mm</string>
+    <string name="bell_name_8">Ghjappu. Rhinbowl, 97 mm</string>
     <string name="bell_pause">Bell gap (sec)</string>
     <string name="bell_user">Aghjunghjite Bell...</string>
     <string name="bottom_nav_meditation">Meditazione</string>
@@ -56,7 +56,7 @@
     <string name="desc_no_server_messages">Mostra automaticamente News quandu App principia</string>
     <string name="error_checking_for_server_messages">Errore à piglià novi messagi.</string>
     <string name="gong_type">Gong Sound</string>
-    <string name="help_sectionlist_text">Quì pudete nome, descriverà è edità u cuntenutu di a vostra Sessione.\n\n REORDERING\n Per riordinà l\'articuli, appughjà longu un articulu è\n trascinallu in a so nova pusizione.\n\n DELETING\n Per sguassà l\'elementu right.\n\n EDIT\n Per edità una rùbbrica, basta tuccà una volta.\n\n ADD\n Per aghjunghje una nova rùbbrica, appughjà u buttone +.</string>
+    <string name="help_sectionlist_text">Quì pudete nome, descriverà è edità u cuntenutu di a vostra Sessione.\n\nREORDINE\nPer riordinà l\'articuli, appughjà longu nantu à un articulu è\ntrascinallu à a so nova pusizione.\n\nELIMINA\nPer sguassà un articulu, movete à a diritta.\n\nEDIT\nPer edità una sezione, basta tuccà una volta.\n\nADD\nPer aghjunghje una nova sezione, appughjà u buttone +.</string>
     <string name="help_sectionlist_title">Edit Session</string>
     <string name="label_section_name">Nome di a sezione</string>
     <string name="label_session_description">Descrizzione di a sessione</string>
@@ -74,7 +74,7 @@
     <string name="menu_settings">Settings</string>
     <string name="minuten">Minuti</string>
     <string name="no_new_server_messages">Nisun messagiu novu dispunibule.</string>
-    <string name="no_sections_in_session">Ùn pò micca inizià a Meditazione: A Sessione selezziunata ùn hà micca Sezioni.</string>
+    <string name="no_sections_in_session">Ùn pò micca principià a Meditazione: A Sessione selezziunata ùn hà micca Sezioni.</string>
     <string name="no_session_exists">Ùn ci hè micca sessione chì pò esse cuminciatu. Per piacè creane unu prima.</string>
     <string name="notification_text">Una meditazione Zazen hè attualmente in corso</string>
     <string name="notification_text_paused">A meditazione di Zazen si fermò</string>
@@ -88,13 +88,13 @@
     <string name="pref_mute_mode_none">Silenziu</string>
     <string name="pref_mute_mode_none_desc">Nisun tonu di suoneria è senza vibrazione per e telefonate è Notificazioni</string>
     <string name="pref_mute_mode_pref">Configurazioni riguardanti Ringtone è Notificazioni</string>
-    <string name="pref_mute_mode_vibrate">Solu Vibrazione</string>
-    <string name="pref_mute_mode_vibrate_desc">Vibra solu per e telefonate è e Notificazioni (Ùn funziona micca in Android 7 (Nougat) - si cumporta cum\'è l\'impostazione Silence)</string>
+    <string name="pref_mute_mode_vibrate">Solu Vibrazioni</string>
+    <string name="pref_mute_mode_vibrate_desc">Vibra solu per e telefonate è Notificazioni (Ùn funziona micca in Android 7 (Nougat) - cumporta cum\'è l\'impostazione Silence)</string>
     <string name="pref_mute_mode_vibrate_sound">Tone è vibrazione</string>
     <string name="pref_mute_mode_vibrate_sound_desc">Ghjucà à suoneria è vibrazione</string>
     <string name="pref_muting">Mute Settings</string>
     <string name="pref_sum_backup">Salvà una copia di salvezza di e vostre Sessioni è Soni à a vostra SD-Card.</string>
-    <string name="pref_sum_bad_removal">A carta SD hè stata sguassata senza esse smontata prima.</string>
+    <string name="pref_sum_bad_removal">A carta SD hè stata eliminata senza esse smontata prima.</string>
     <string name="pref_sum_checking">SD-Card hè verificatu in u mumentu</string>
     <string name="pref_sum_ejecting">A carta SD hè stata espulsa</string>
     <string name="pref_sum_nofs">Nisun Filesystem in SD-Card</string>
@@ -105,7 +105,7 @@
     <string name="pref_title_backup">Crea una copia di salvezza</string>
     <string name="pref_title_brightness">Luminosità</string>
     <string name="pref_title_restore">Risturà da a copia di salvezza</string>
-    <string name="privacy_message">Stu App ùn raccoglie ogni dati persunali - hè dinù ùn aduprà IP-Addresses o ogni altra dati ticnoluggìa dâ-riguardanti, nè si culliga, prucessu o aduprà ogni in ogni modu.</string>
+    <string name="privacy_message">Stu App ùn raccoglie ogni dati persunali - hè dinù ùn aduprà IP-Addresses o ogni altra dati ticnoluggìa dâ-riguardanti, nè ùn cullà, prucessu o aduprà ogni in ogni modu.</string>
     <string name="privacy_ok">OK</string>
     <string name="privacy_title">Informazioni di privacy</string>
     <string name="really_stop">Veramente ferma a meditazione?</string>
@@ -113,7 +113,7 @@
     <string name="restore_error_text">Errore di risturà da a copia di salvezza</string>
     <string name="restore_no_permission">Ùn pudia micca ripristinà a causa di u permessu mancante.</string>
     <string name="restore_really_text">Questu hà da rimpiazzà tutte e vostre Sessioni cù quelle in u Backup! (Non annullate!)</string>
-    <string name="restore_really_title">Da veru risturà dati?</string>
+    <string name="restore_really_title">Ripristina veramente i dati?</string>
     <string name="restore_success_text">Risturà Dati successu</string>
     <string name="search_menu_title">Ricerca</string>
     <string name="section_info_string_1_pl">%1$d Campane</string>
@@ -130,23 +130,23 @@
     <string name="status_bar_notification_info_overflow">999+</string>
     <string name="test_mute_perm_request">L\'App hè attualmente micca permessa di mute u vostru telefunu. Aprite i paràmetri per cambià questu?</string>
     <string name="text_cant_mute">U vostru Phone ùn permette stu App à mute lu. Disattivà u silenziu in i paràmetri di l\'applicazioni o permette u silenziu in i paràmetri di u vostru telefuninu.</string>
-    <string name="text_no_notify_access_settings">U vostru telefunu ùn pare micca avè i paràmetri standard per permette di muting. Per piacè cercate manualmente l\'Configurazione &amp;quot;Ùn Disturb Access&amp;quot; è attivate.</string>
+    <string name="text_no_notify_access_settings">U vostru telefunu ùn pare micca avè i paràmetri standard per permette di muting. Per piacè cercate manualmente l\'impostazione \"Do Not Disturb Access\" è attivate.</string>
     <string name="text_no_sections">Nisuna Sezione definita.</string>
     <string name="text_question_delete_session">Daveru sguassà a Sessione selezziunata?</string>
     <string name="theme">Tema</string>
     <string name="theme_dark">Tema scuru</string>
-    <string name="theme_desc">Scegli l\'aspettu chjaru o scuru di l\'App</string>
+    <string name="theme_desc">Sceglite l\'apparenza di l\'app</string>
     <string name="theme_light">Tema di luce</string>
     <string name="theme_system">Tema di u sistema</string>
     <string name="theme_value_dark">dark</string>
     <string name="theme_value_light">light</string>
     <string name="theme_value_system">system</string>
-    <string name="time_section_elapsed">A seccione hè passata</string>
+    <string name="time_section_elapsed">A sezione hè passata</string>
     <string name="time_section_remaining">Sezione restante</string>
     <string name="time_session_elapsed">A sessione hè passata</string>
     <string name="time_session_remaining">Session restante</string>
     <string name="title_mute_perm_request">Permissione mancante</string>
-    <string name="title_question_delete_session">Eliminate a sessione ?</string>
+    <string name="title_question_delete_session">Sguassà a sessione ?</string>
     <string name="title_volume_bells">Volume di campana</string>
     <string name="unnamed">Senza nome</string>
     <string name="stop_meditation_title">Ferma a meditazione?</string>
@@ -158,4 +158,12 @@
     <string name="title_dim_bell">Dim Bell</string>
     <string name="dim_bell_label_off">Ùn dimmed</string>
     <string name="dim_bell_label_format">Dimmed: %1$d0%%</string>
+    <string name="section_deleted">Sguassatu \'%s\'</string>
+    <string name="action_undo">Annulla</string>
+    <string name="notification_channel_name">Timer di meditazione</string>
+    <string name="nav_label_sessions">Sessioni</string>
+    <string name="nav_label_meditation">Meditazione</string>
+    <string name="nav_label_edit_session">Edit Session</string>
+    <string name="nav_label_edit_section">Edit Section</string>
+    <string name="nav_label_settings">Settings</string>
 </resources>

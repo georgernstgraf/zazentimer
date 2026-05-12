@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="abbrechen">Anile</string>
-    <string name="about1">Zazen Meditation Timer — A simple meditation timer with customizable sections, bell sounds, and session management.</string>
-    <string name="about2">Originally created by Stefan Gaffga. Currently maintained by Georg Graf.&lt;br&gt;&lt;br&gt;Thanks to Winfried of &lt;a href="http://www.meditationsuhren.de"&gt;http://www.meditationsuhren.de&lt;/a&gt; for providing such great Bell Sounds!</string>
-    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues"&gt;Report issues on GitHub&lt;/a&gt;</string>
-    <string name="app_description">This application lets the user define a set of meditation sessions and provides a timer with visual and audible feedback when a part or the whole meditation is over.</string>
+    <string name="about1">Zazen Meditation Timer — Yon senp revèy meditasyon ak seksyon personnalisable, son klòch, ak jesyon sesyon.</string>
+    <string name="about2">Originally kreye pa Stefan Gaffga. Aktyèlman konsève pa Georg Graf.&lt;br&gt;&lt;br&gt;Mèsi a Winfried nan &lt;a href="http://www.meditationsuhren.de"&gt;http://www.meditationsuhren.de&lt;/a&gt; pou bay gwo son Bell!</string>
+    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues"&gt;Rapòte pwoblèm sou GitHub&lt;/a&gt;</string>
+    <string name="app_description">Aplikasyon sa a pèmèt itilizatè a defini yon seri sesyon meditasyon epi li bay yon revèy ak fidbak vizyèl ak oditif lè yon pati oswa tout meditasyon an fini.</string>
     <string name="app_name">Zazen Meditation Timer</string>
     <string name="appbar_scrolling_view_behavior">android.support.design.widget.AppBarLayout$ScrollingViewBehavior</string>
     <string name="backup_error_text">Padon, yon Erè ki te fèt pandan y ap sove.</string>
     <string name="backup_no_permission">Pa t \'kapab kreye backup akòz otorizasyon ki manke.</string>
     <string name="backup_not_createable">Erè nan kreye dosye backup.</string>
     <string name="backup_success_text">Sovgad kreye avèk siksè!</string>
-    <string name="bell_name_1">High Tone</string>
-    <string name="bell_name_2">Low Tone</string>
+    <string name="bell_name_1">Ton Segondè</string>
+    <string name="bell_name_2">Ton ki ba</string>
     <string name="bell_name_3">Jap. Rhinbowl Dharma, 107mm</string>
-    <string name="bell_name_4">Jap. Rhinbowl Dharma, 88mm (black, glazed)</string>
+    <string name="bell_name_4">Jap. Rhinbowl Dharma, 88mm (nwa, lustres)</string>
     <string name="bell_name_5">Jap. Rhinbowl Shomyo, 90mm</string>
     <string name="bell_name_6">Jap. Rhinbowl Tang, 164mm</string>
-    <string name="bell_name_7">Tib. Bowl, 230mm</string>
+    <string name="bell_name_7">Tib. Bòl, 230mm</string>
     <string name="bell_name_8">Jap. Rhinbowl, 97mm</string>
     <string name="bell_pause">Gap klòch (seg)</string>
     <string name="bell_user">Ajoute Bell...</string>
@@ -34,7 +34,7 @@
     <string name="checkbox_phone_off">Telefòn bèbè</string>
     <string name="checkbox_phone_off_desc">Bète tout son telefòn yo.</string>
     <string name="copy_prefix">Kopi de</string>
-    <string name="crash_dialog_comment_prompt">Opsyonèl: Ki aksyon ki te lakòz erè a?</string>
+    <string name="crash_dialog_comment_prompt">Si ou vle: Ki aksyon ki te lakòz erè a?</string>
     <string name="crash_dialog_ok_toast">Mèsi anpil pou èd ou!</string>
     <string name="crash_dialog_text">Mwen regrèt, ke yon erè te rive. Ou ka ede m jwenn ak rezoud pwoblèm sa a lè w voye rapò sou ensèk sa a e petèt menm plis detay sou sa ou te fè.</string>
     <string name="crash_dialog_title">Revèy meditasyon Zazen</string>
@@ -56,7 +56,7 @@
     <string name="desc_no_server_messages">Montre Nouvèl otomatikman lè Aplikasyon an kòmanse</string>
     <string name="error_checking_for_server_messages">Erè lè w ap chèche nouvo mesaj.</string>
     <string name="gong_type">Son Gong</string>
-    <string name="help_sectionlist_text">Isit la ou ka nonmen, dekri ak modifye sa ki nan Sesyon ou a.\n\n REORDING\n Pou rekòmande atik yo, peze yon tan long sou yon atik epi\n trennen li nan nouvo pozisyon li.\n\n DELETING\n Pou efase yon atik la dwat.\n\n EDIT\n Pou modifye yon seksyon, jis manyen li yon fwa.\n\n ADD\n Pou ajoute yon nouvo seksyon, peze bouton an +.</string>
+    <string name="help_sectionlist_text">Isit la ou ka nonmen, dekri ak modifye sa ki nan Sesyon ou a.\n\nREKÒDMAN\nPou rekòmande atik yo, peze lontan sou yon atik ak\ntrennen li nan nouvo pozisyon li.\n\nEFASE\nPou efase yon atik, deplase li sou bò dwat la.\n\nEDITE\nPou modifye yon seksyon, jis manyen li yon fwa.\n\nADD\nPou ajoute yon nouvo seksyon, peze bouton an +.</string>
     <string name="help_sectionlist_title">Edit Sesyon</string>
     <string name="label_section_name">Non seksyon</string>
     <string name="label_session_description">Deskripsyon sesyon</string>
@@ -74,7 +74,7 @@
     <string name="menu_settings">Anviwònman</string>
     <string name="minuten">Minit</string>
     <string name="no_new_server_messages">Pa gen nouvo mesaj ki disponib.</string>
-    <string name="no_sections_in_session">Pa ka kòmanse Meditasyon: Sesyon yo chwazi a pa gen okenn Seksyon.</string>
+    <string name="no_sections_in_session">Ka\'pa kòmanse Meditasyon: Sesyon yo chwazi a pa gen okenn Seksyon.</string>
     <string name="no_session_exists">Pa gen okenn sesyon ki ka kòmanse. Tanpri kreye youn an premye.</string>
     <string name="notification_text">Yon meditasyon Zazen ap kouri kounye a</string>
     <string name="notification_text_paused">Zazen meditasyon ti fer poz</string>
@@ -89,18 +89,18 @@
     <string name="pref_mute_mode_none_desc">Pa gen sonnen ak pa gen okenn vibrasyon pou apèl nan telefòn ak Notifikasyon</string>
     <string name="pref_mute_mode_pref">Anviwònman konsènan Sonnerie ak Notifikasyon</string>
     <string name="pref_mute_mode_vibrate">Se sèlman Vibration</string>
-    <string name="pref_mute_mode_vibrate_desc">Vibre sèlman pou apèl telefòn yo ak Notifikasyon (pa travay sou Android 7 (Nougat) - konpòte li tankou anviwònman an silans)</string>
+    <string name="pref_mute_mode_vibrate_desc">Vibre sèlman pou apèl nan telefòn ak Notifikasyon (pa travay sou Android 7 (Nougat) - konpòte li tankou anviwònman an silans)</string>
     <string name="pref_mute_mode_vibrate_sound">Sonnerie ak Vibration</string>
-    <string name="pref_mute_mode_vibrate_sound_desc">Jwe sonri ak Vibration</string>
+    <string name="pref_mute_mode_vibrate_sound_desc">Jwe ton sonn ak Vibration</string>
     <string name="pref_muting">Anviwònman bèbè</string>
     <string name="pref_sum_backup">Sove yon sovgad Sesyon ak Son ou yo sou Kat SD ou a.</string>
     <string name="pref_sum_bad_removal">Kat SD te retire san yo pa demonte anvan.</string>
-    <string name="pref_sum_checking">SD-Card ap tcheke kounye a</string>
+    <string name="pref_sum_checking">SD-Card ap tcheke nan moman sa a</string>
     <string name="pref_sum_ejecting">SD-Kat ap ekspilse</string>
     <string name="pref_sum_nofs">Pa gen Filesystem sou SD-Card</string>
-    <string name="pref_sum_read_only">SD-Card se li sèlman</string>
+    <string name="pref_sum_read_only">SD-Kat se li sèlman</string>
     <string name="pref_sum_removed">Pa gen kat SD prezan</string>
-    <string name="pref_sum_restore">Retabli Sesyon ou yo ak Son Custom ki soti nan sovgad SD-Card la</string>
+    <string name="pref_sum_restore">Retabli sesyon ou yo ak son koutim ki soti nan sovgad SD-Card la</string>
     <string name="pref_sum_shared">Kat SD pataje</string>
     <string name="pref_title_backup">Kreye sovgad</string>
     <string name="pref_title_brightness">Klète</string>
@@ -109,7 +109,7 @@
     <string name="privacy_ok">OK</string>
     <string name="privacy_title">Enfòmasyon sou enfòmasyon prive</string>
     <string name="really_stop">Vrèman sispann meditasyon an?</string>
-    <string name="restore_backup_not_found">Fichye sovgad pa jwenn</string>
+    <string name="restore_backup_not_found">File backup pa jwenn</string>
     <string name="restore_error_text">Erè retabli soti nan sovgad</string>
     <string name="restore_no_permission">Pa t \'kapab retabli akòz pèmisyon ki manke.</string>
     <string name="restore_really_text">Sa a pral ranplase tout Sesyon ou yo ak sa yo ki nan Sovgad la! (Pa gen defèt!)</string>
@@ -130,12 +130,12 @@
     <string name="status_bar_notification_info_overflow">999+</string>
     <string name="test_mute_perm_request">Kounye a, aplikasyon an pa pèmèt pou fèmen telefòn ou an. Louvri paramèt pou chanje sa?</string>
     <string name="text_cant_mute">Telefòn ou a pa pèmèt aplikasyon sa a pou fèmen li. Enfim silenn nan Anviwònman Apps sa a oswa pèmèt silenn nan Anviwònman Telefòn ou yo.</string>
-    <string name="text_no_notify_access_settings">Telefòn ou a pa sanble gen paramèt estanda pou pèmèt silenn. Tanpri gade manyèlman pou Anviwònman \&amp;quot;Pa Deranje Aksè\&amp;quot; epi aktive li.</string>
+    <string name="text_no_notify_access_settings">Telefòn ou a pa sanble gen paramèt estanda pou pèmèt silenn. Tanpri gade manyèlman pou Anviwònman \"Pa Deranje Aksè\" epi aktive li.</string>
     <string name="text_no_sections">Pa gen seksyon defini.</string>
     <string name="text_question_delete_session">Vrèman efase Sesyon chwazi a?</string>
     <string name="theme">Tèm</string>
     <string name="theme_dark">Tèm nwa</string>
-    <string name="theme_desc">Chwazi aparans limyè oswa nwa nan aplikasyon an</string>
+    <string name="theme_desc">Chwazi aparans aplikasyon an</string>
     <string name="theme_light">Tèm limyè</string>
     <string name="theme_system">Tèm sistèm</string>
     <string name="theme_value_dark">dark</string>
@@ -147,15 +147,23 @@
     <string name="time_session_remaining">Sesyon ki rete</string>
     <string name="title_mute_perm_request">Pèmisyon ki manke</string>
     <string name="title_question_delete_session">Efase sesyon?</string>
-    <string name="title_volume_bells">Bell Volim</string>
+    <string name="title_volume_bells">Volim Bell</string>
     <string name="unnamed">San non</string>
     <string name="stop_meditation_title">Sispann meditasyon?</string>
     <string name="stop_meditation_message">Sesyon meditasyon ou toujou ap kouri.</string>
     <string name="stop_meditation_stop">Sispann</string>
     <string name="stop_meditation_cancel">Anile</string>
-    <string name="pref_title_bell_volume">Bell Volim</string>
+    <string name="pref_title_bell_volume">Volim Bell</string>
     <string name="pref_desc_bell_volume">Kontwole volim kouran alam pou son klòch</string>
     <string name="title_dim_bell">Dim Bell</string>
     <string name="dim_bell_label_off">Pa dimmed</string>
     <string name="dim_bell_label_format">Dimmed: %1$d0%%</string>
+    <string name="section_deleted">Efase \'%s\'</string>
+    <string name="action_undo">Defèt</string>
+    <string name="notification_channel_name">Revèy meditasyon</string>
+    <string name="nav_label_sessions">Sesyon yo</string>
+    <string name="nav_label_meditation">Meditasyon</string>
+    <string name="nav_label_edit_session">Edit Sesyon</string>
+    <string name="nav_label_edit_section">Edit Seksyon</string>
+    <string name="nav_label_settings">Anviwònman</string>
 </resources>

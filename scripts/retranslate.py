@@ -103,12 +103,16 @@ def escape_apostrophes(text):
 
 
 def translate_value(name, value, gt_code=None, mymemory_code=None):
-    translator = None
-    if mymemory_code:
-        translator = MyMemoryTranslator(source="en-GB", target=mymemory_code)
-    elif gt_code:
-        translator = GoogleTranslator(source="en", target=gt_code)
-    else:
+    try:
+        translator = None
+        if mymemory_code:
+            translator = MyMemoryTranslator(source="en-GB", target=mymemory_code)
+        elif gt_code:
+            translator = GoogleTranslator(source="en", target=gt_code)
+        else:
+            return value
+    except Exception as e:
+        print(f"      TRANSLATE FAIL: {e}")
         return value
 
     if name in SPLIT_BY_NEWLINE:

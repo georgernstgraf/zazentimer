@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="abbrechen">Баш тарту</string>
-    <string name="about1">Zazen Meditation Timer — A simple meditation timer with customizable sections, bell sounds, and session management.</string>
-    <string name="about2">Originally created by Stefan Gaffga. Currently maintained by Georg Graf.&lt;br&gt;&lt;br&gt;Thanks to Winfried of &lt;a href="http://www.meditationsuhren.de"&gt;http://www.meditationsuhren.de&lt;/a&gt; for providing such great Bell Sounds!</string>
-    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues"&gt;Report issues on GitHub&lt;/a&gt;</string>
-    <string name="app_description">This application lets the user define a set of meditation sessions and provides a timer with visual and audible feedback when a part or the whole meditation is over.</string>
+    <string name="about1">Zazen Meditation Timer - көйләнә торган бүлекләр, кыңгырау тавышлары, сессия белән идарә итү белән гади уйлану таймеры.</string>
+    <string name="about2">Башта Стефан Гаффа тарафыннан ясалган. Хәзерге вакытта Георг Граф тарафыннан саклана.</string>
+    <string name="about3">&lt;a href = "https://github.com/georgernstgraf/zazentimer/issues"&gt; GitHub\'та проблемалар турында хәбәр итү &lt;/a&gt;</string>
+    <string name="app_description">Бу кушымта кулланучыга уйлану сессияләре җыелмасын билгеләргә мөмкинлек бирә һәм өлеш яки бөтен уйлану беткәч визуаль һәм ишетелә торган таймер белән тәэмин итә.</string>
     <string name="app_name">Zazen Meditation Timer</string>
     <string name="appbar_scrolling_view_behavior">android.support.design.widget.AppBarLayout $ ScrollingViewBehavior</string>
     <string name="backup_error_text">Гафу итегез, саклаганда хата килеп чыкты.</string>
     <string name="backup_no_permission">Рөхсәт юкка чыгу аркасында резерв булдыра алмады.</string>
     <string name="backup_not_createable">Резерв файл ясауда хата.</string>
     <string name="backup_success_text">Резервлау уңышлы булдырылды!</string>
-    <string name="bell_name_1">High Tone</string>
-    <string name="bell_name_2">Low Tone</string>
-    <string name="bell_name_3">Jap. Rhinbowl Dharma, 107mm</string>
-    <string name="bell_name_4">Jap. Rhinbowl Dharma, 88mm (black, glazed)</string>
-    <string name="bell_name_5">Jap. Rhinbowl Shomyo, 90mm</string>
-    <string name="bell_name_6">Jap. Rhinbowl Tang, 164mm</string>
-    <string name="bell_name_7">Tib. Bowl, 230mm</string>
-    <string name="bell_name_8">Jap. Rhinbowl, 97mm</string>
+    <string name="bell_name_1">Highгары тон</string>
+    <string name="bell_name_2">Түбән тон</string>
+    <string name="bell_name_3">Яп. Rhinbowl Dharma, 107 мм</string>
+    <string name="bell_name_4">Яп. Rhinbowl Dharma, 88 мм (кара, пыяла)</string>
+    <string name="bell_name_5">Яп. Rhinbowl Shomyo, 90 мм</string>
+    <string name="bell_name_6">Яп. Rhinbowl Tang, 164 мм</string>
+    <string name="bell_name_7">Тиб. Касә, 230 мм</string>
+    <string name="bell_name_8">Яп. Райнбул, 97 мм</string>
     <string name="bell_pause">Кыңгырау аермасы (сек)</string>
     <string name="bell_user">Кыңгырау өстә ...</string>
     <string name="bottom_nav_meditation">Уйлану</string>
@@ -56,7 +56,7 @@
     <string name="desc_no_server_messages">Кушымта башлангач, яңалыкларны автоматик рәвештә күрсәтегез</string>
     <string name="error_checking_for_server_messages">Яңа хәбәрләр алуда хата.</string>
     <string name="gong_type">Гонг Саунд</string>
-    <string name="help_sectionlist_text">Монда сез сессиянең эчтәлеген атый, тасвирлый һәм үзгәртә аласыз.\n\nРекорд\nПредметларны тәртипкә китерү өчен, әйбергә озак басыгыз һәм\nаны яңа позициясенә тарт.\n\nСүндерү\nБер әйберне бетерү өчен аны уңга күчерегез.\n\nТөзәтегез\nБүлекне редакцияләү өчен бер тапкыр гына кагылыгыз.\n\nКушымта\nЯңа бүлек өстәү өчен + төймәсенә басыгыз.</string>
+    <string name="help_sectionlist_text">Монда сез сессиянең эчтәлеген атый, тасвирлый һәм үзгәртә аласыз.\n\nРекорд\nПредметларны тәртипкә китерү өчен, әйбергә озак басыгыз һәм\nаны яңа позициясенә тарт.\n\nСүндерү\nБер әйберне бетерү өчен аны уңга күчерегез.\n\nТөзәтегез\nБүлекне редакцияләү өчен, аңа бер тапкыр гына кагылыгыз.\n\nКушымта\nЯңа бүлек өстәү өчен + төймәсенә басыгыз.</string>
     <string name="help_sectionlist_title">Сессияне үзгәртү</string>
     <string name="label_section_name">Бүлек исеме</string>
     <string name="label_session_description">Сессия тасвирламасы</string>
@@ -74,7 +74,7 @@
     <string name="menu_settings">Көйләүләр</string>
     <string name="minuten">Минутлар</string>
     <string name="no_new_server_messages">Яңа хәбәрләр юк.</string>
-    <string name="no_sections_in_session">Медитация башлый алмый: Сайланган Сессиянең бүлекләре юк.</string>
+    <string name="no_sections_in_session">Медитацияне башлап җибәрә алмый: Сайланган сессиядә бүлекләр юк.</string>
     <string name="no_session_exists">Башлап була торган сессия юк. Зинһар, башта булдырыгыз.</string>
     <string name="notification_text">Хәзерге вакытта Zazen Meditation эшли</string>
     <string name="notification_text_paused">Зазен Медитация туктады</string>
@@ -100,7 +100,7 @@
     <string name="pref_sum_nofs">SD-картада файл системасы юк</string>
     <string name="pref_sum_read_only">SD-карта бары тик уку өчен генә</string>
     <string name="pref_sum_removed">SD-карта юк</string>
-    <string name="pref_sum_restore">SD-Card резервыннан сессияләрегезне һәм махсус тавышларны торгызыгыз</string>
+    <string name="pref_sum_restore">SD-карталар резервыннан сессияләрегезне һәм махсус тавышларны торгызыгыз</string>
     <string name="pref_sum_shared">SD-Card уртак</string>
     <string name="pref_title_backup">Резерв ясау</string>
     <string name="pref_title_brightness">Яктылык</string>
@@ -124,18 +124,18 @@
     <string name="select_audio">Тавыш файлын сайлагыз</string>
     <string name="service_description">Зазен Медитациясе</string>
     <string name="content_desc_drag_handle">Тәртипкә тарту</string>
-    <string name="content_desc_section_actions">Бүлек чаралары</string>
+    <string name="content_desc_section_actions">Бүлек эшләре</string>
     <string name="content_desc_session_actions">Сессия чаралары</string>
     <string name="session_list_unnamed_entry">Исемсез сессия</string>
     <string name="status_bar_notification_info_overflow">999+</string>
     <string name="test_mute_perm_request">Кушымта хәзерге вакытта телефоныгызны телсез калдырырга рөхсәт ителми. Моны үзгәртү өчен көйләүләрне ачыгыз?</string>
     <string name="text_cant_mute">Сезнең Телефон бу кушымтаны тавышсыз калдырырга рөхсәт итми. Бу кушымталар көйләүләрендә сүндерүне сүндерегез яки Телефон көйләүләрендә тавышны рөхсәт итегез.</string>
-    <string name="text_no_notify_access_settings">Сезнең Телефонда сүндерү өчен стандарт көйләүләр юк кебек. Зинһар, кул белән карагыз \ &amp;quot;Рөхсәтне бозмагыз \&amp;quot; көйләү һәм аны эшләтеп җибәрү.</string>
+    <string name="text_no_notify_access_settings">Сезнең Телефонда сүндерү өчен стандарт көйләүләр юк кебек. Зинһар, \" өчен кул белән карагыз, Access\"ны бозмагыз.</string>
     <string name="text_no_sections">Бүлекләр билгеләнмәгән.</string>
     <string name="text_question_delete_session">Сайланган сессияне чыннан да бетерәсезме?</string>
     <string name="theme">Тема</string>
     <string name="theme_dark">Караңгы тема</string>
-    <string name="theme_desc">Кушымтаның җиңел яки караңгы күренешен сайлагыз</string>
+    <string name="theme_desc">Кушымта күренешен сайлагыз</string>
     <string name="theme_light">Якты тема</string>
     <string name="theme_system">Система темасы</string>
     <string name="theme_value_dark">dark</string>
@@ -158,4 +158,12 @@
     <string name="title_dim_bell">Дим Белл</string>
     <string name="dim_bell_label_off">Караңгы түгел</string>
     <string name="dim_bell_label_format">Караңгы: %1$d0%%</string>
+    <string name="section_deleted">Бетерелгән \'%s\'</string>
+    <string name="action_undo">Кире кайтару</string>
+    <string name="notification_channel_name">Уйлану таймеры</string>
+    <string name="nav_label_sessions">Сессияләр</string>
+    <string name="nav_label_meditation">Уйлану</string>
+    <string name="nav_label_edit_session">Сессияне үзгәртү</string>
+    <string name="nav_label_edit_section">Бүлекне үзгәртү</string>
+    <string name="nav_label_settings">Көйләүләр</string>
 </resources>

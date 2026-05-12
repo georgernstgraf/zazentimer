@@ -1,26 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="abbrechen">بىكار قىلىش</string>
-    <string name="about1">Zazen Meditation Timer — A simple meditation timer with customizable sections, bell sounds, and session management.</string>
-    <string name="about2">Originally created by Stefan Gaffga. Currently maintained by Georg Graf.&lt;br&gt;&lt;br&gt;Thanks to Winfried of &lt;a href="http://www.meditationsuhren.de"&gt;http://www.meditationsuhren.de&lt;/a&gt; for providing such great Bell Sounds!</string>
-    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues"&gt;Report issues on GitHub&lt;/a&gt;</string>
-    <string name="app_description">This application lets the user define a set of meditation sessions and provides a timer with visual and audible feedback when a part or the whole meditation is over.</string>
+    <string name="about1">Zazen Meditation Timer - خاسلاشتۇرۇلغان بۆلەكلەر ، قوڭغۇراق ئاۋازى ۋە يىغىن باشقۇرۇش بىلەن ئاددىي بولغان ئويلىنىش ۋاقتى.</string>
+    <string name="about2">ئەسلىدە ستېفان گافگا ئىجاد قىلغان. ھازىر جورج گراف تەرىپىدىن قوغدىلىدۇ. &lt;br&gt; &lt;br&gt; &lt;a href = "http://www.meditationsuhren.de"&gt; http://www.meditationsuhren.de &lt;/a&gt; نىڭ Winfried غا رەھمەت</string>
+    <string name="about3">&lt;a href = "https://github.com/georgernstgraf/zazentimer/issues"&gt; GitHub دىكى مەسىلىلەرنى دوكلات قىلىش &lt;/a&gt;</string>
+    <string name="app_description">بۇ پروگرامما ئىشلەتكۈچىلەرگە بىر يۈرۈش ئويلىنىش يىغىنلىرىنى ئېنىقلاپ بېرىدۇ ھەمدە بىر بۆلەك ياكى پۈتۈن ئويلىنىش ئاخىرلاشقاندا كۆرۈش ۋە ئاڭلاش ئىنكاسى بىلەن ۋاقىت تەمىنلەيدۇ.</string>
     <string name="app_name">Zazen Meditation Timer</string>
     <string name="appbar_scrolling_view_behavior">android.support.design.widget.AppBarLayout $ ScrollingViewBehavior</string>
     <string name="backup_error_text">كەچۈرۈڭ ، ساقلاش جەريانىدا خاتالىق كۆرۈلدى.</string>
     <string name="backup_no_permission">ئىجازەت يوقالغانلىقتىن زاپاسلىيالمىدى.</string>
     <string name="backup_not_createable">زاپاس ھۆججەت قۇرۇشتا خاتالىق.</string>
     <string name="backup_success_text">زاپاسلاش مۇۋەپپەقىيەتلىك قۇرۇلدى!</string>
-    <string name="bell_name_1">High Tone</string>
-    <string name="bell_name_2">Low Tone</string>
+    <string name="bell_name_1">يۇقىرى ئاۋاز</string>
+    <string name="bell_name_2">تۆۋەن ئاۋاز</string>
     <string name="bell_name_3">Jap. Rhinbowl Dharma, 107mm</string>
-    <string name="bell_name_4">Jap. Rhinbowl Dharma, 88mm (black, glazed)</string>
+    <string name="bell_name_4">Jap. كەركىدان دارما ، 88 مىللىمېتىر (قارا ، سىرلانغان)</string>
     <string name="bell_name_5">Jap. Rhinbowl Shomyo, 90mm</string>
     <string name="bell_name_6">Jap. Rhinbowl Tang, 164mm</string>
-    <string name="bell_name_7">Tib. Bowl, 230mm</string>
+    <string name="bell_name_7">تىب. قاچا ، 230mm</string>
     <string name="bell_name_8">Jap. Rhinbowl, 97mm</string>
     <string name="bell_pause">قوڭغۇراق پەرقى (سېكۇنت)</string>
-    <string name="bell_user">قوڭغۇراق قوشۇڭ ...</string>
+    <string name="bell_user">قوڭغۇراقنى قوش ...</string>
     <string name="bottom_nav_meditation">Meditation</string>
     <string name="bottom_nav_sessions">يىغىن</string>
     <string name="bottom_sheet_behavior">android.support.design.widget.BottomSheetBehavior</string>
@@ -56,7 +56,7 @@
     <string name="desc_no_server_messages">ئەپ قوزغالغاندا خەۋەرلەرنى ئاپتوماتىك كۆرسىتىدۇ</string>
     <string name="error_checking_for_server_messages">يېڭى ئۇچۇرلارنى ئېلىشتا خاتالىق.</string>
     <string name="gong_type">Gong Sound</string>
-    <string name="help_sectionlist_text">بۇ يەردە سىز يىغىننىڭ مەزمۇنىغا ئىسىم قويالايسىز ، تەسۋىرلىيەلەيسىز ۋە تەھرىرلىيەلەيسىز.\n\nREORDERING\nتۈرلەرنى رەتلەش ئۈچۈن ، بىر تۈرنى ئۇزۇن بېسىڭ\nئۇنى يېڭى ئورۇنغا سۆرەپ كىرىڭ.\n\nDELETING\nبىر نەرسىنى ئۆچۈرۈش ئۈچۈن ئۇنى ئوڭغا يۆتكەڭ.\n\nEDIT\nبىر بۆلەكنى تەھرىرلەش ئۈچۈن بىر قېتىم چېكىڭ.\n\nADD\nيېڭى بۆلەك قوشۇش ئۈچۈن + كۇنۇپكىسىنى بېسىڭ.</string>
+    <string name="help_sectionlist_text">بۇ يەردە سىز يىغىننىڭ مەزمۇنىغا ئىسىم قويالايسىز ، تەسۋىرلىيەلەيسىز ۋە تەھرىرلىيەلەيسىز.\n\nREORDERING\nتۈرلەرنى رەتلەش ئۈچۈن ، بىر نەرسىنى ئۇزۇن بېسىڭ ۋە\nئۇنى يېڭى ئورۇنغا سۆرەپ كىرىڭ.\n\nDELETING\nبىر نەرسىنى ئۆچۈرۈش ئۈچۈن ئۇنى ئوڭغا يۆتكەڭ.\n\nEDIT\nبىر بۆلەكنى تەھرىرلەش ئۈچۈن بىر قېتىم چېكىڭ.\n\nADD\nيېڭى بۆلەك قوشۇش ئۈچۈن + كۇنۇپكىسىنى بېسىڭ.</string>
     <string name="help_sectionlist_title">يىغىننى تەھرىرلەش</string>
     <string name="label_section_name">بۆلەك ئىسمى</string>
     <string name="label_session_description">يىغىن چۈشەندۈرۈشى</string>
@@ -74,7 +74,7 @@
     <string name="menu_settings">تەڭشەك</string>
     <string name="minuten">مىنۇت</string>
     <string name="no_new_server_messages">يېڭى ئۇچۇر يوق.</string>
-    <string name="no_sections_in_session">ئويلىنىشنى باشلىيالمايدۇ: تاللانغان يىغىندا ھېچقانداق بۆلەك يوق.</string>
+    <string name="no_sections_in_session">Can\'t باشلاشنى ئويلاش: تاللانغان يىغىننىڭ ھېچقانداق بۆلۈمى يوق.</string>
     <string name="no_session_exists">باشلىغىلى بولىدىغان يىغىن يوق. ئالدى بىلەن بىرنى قۇرۇڭ.</string>
     <string name="notification_text">ھازىر Zazen Meditation ئىجرا بولۇۋاتىدۇ</string>
     <string name="notification_text_paused">Zazen Meditation توختاپ قالدى</string>
@@ -93,10 +93,10 @@
     <string name="pref_mute_mode_vibrate_sound">ئۈزۈك ئاۋازى ۋە تەۋرىنىش</string>
     <string name="pref_mute_mode_vibrate_sound_desc">ئۈزۈك ئاۋازى ۋە تەۋرىنىشنى ئويناڭ</string>
     <string name="pref_muting">Mute Settings</string>
-    <string name="pref_sum_backup">يىغىن ۋە ئاۋازلىرىڭىزنى زاپاسلاپ SD كارتىڭىزغا ساقلىۋېلىڭ.</string>
+    <string name="pref_sum_backup">يىغىن ۋە ئاۋازلىرىڭىزنى زاپاسلاپ SD كارتىڭىزغا ساقلاڭ.</string>
     <string name="pref_sum_bad_removal">SD كارتا ئالدى بىلەن تىزىملىتىلماي ئېلىۋېتىلدى.</string>
     <string name="pref_sum_checking">SD-Card ھازىر تەكشۈرۈلۈۋاتىدۇ</string>
-    <string name="pref_sum_ejecting">SD- كارتا چىقىرىلىۋاتىدۇ</string>
+    <string name="pref_sum_ejecting">SD- كارتا چىقىرىۋېتىلدى</string>
     <string name="pref_sum_nofs">SD- كارتا ھۆججەت سىستېمىسى يوق</string>
     <string name="pref_sum_read_only">SD- كارتا ئوقۇشقىلا بولىدۇ</string>
     <string name="pref_sum_removed">SD كارتا يوق</string>
@@ -116,7 +116,7 @@
     <string name="restore_really_title">سانلىق مەلۇماتنى ئەسلىگە كەلتۈرەمسىز؟</string>
     <string name="restore_success_text">سانلىق مەلۇمات ئەسلىگە كەلتۈرۈلدى</string>
     <string name="search_menu_title">ئىزدەش</string>
-    <string name="section_info_string_1_pl">%1$d Bells</string>
+    <string name="section_info_string_1_pl">%1$d قوڭغۇراق</string>
     <string name="section_info_string_1_sg">1 Bell</string>
     <string name="section_info_string_2_pl">ھەر %1$d سېكۇنت</string>
     <string name="section_info_string_2_sg">ھەر سېكۇنت</string>
@@ -129,13 +129,13 @@
     <string name="session_list_unnamed_entry">نامسىز يىغىن</string>
     <string name="status_bar_notification_info_overflow">999+</string>
     <string name="test_mute_perm_request">بۇ ئەپنىڭ ھازىر تېلېفونىڭىزنى ئۈنسىز قىلىشىغا يول قويۇلمايدۇ. بۇنى ئۆزگەرتىش ئۈچۈن تەڭشەكلەرنى ئېچىڭ؟</string>
-    <string name="text_cant_mute">تېلېفونىڭىز بۇ ئەپنىڭ ئۈن-تىنسىز بولۇشىغا يول قويمايدۇ. بۇ ئەپ تەڭشىكىدىكى ئاۋازنى چەكلەشنى چەكلەڭ ياكى تېلېفون تەڭشىكىڭىزدە ئاۋاز بېرىشكە يول قويۇڭ.</string>
-    <string name="text_no_notify_access_settings">تېلېفونىڭىزدا ئاۋاز بېرىشكە رۇخسەت قىلىدىغان ئۆلچەملىك تەڭشەكلەر يوقتەك قىلىدۇ. \ &amp;quot;زىيارەتنى قالايمىقانلاشتۇرماڭ \&amp;quot; تەڭشىكىنى قولدا ئىزدەڭ ۋە قوزغىتىڭ.</string>
+    <string name="text_cant_mute">تېلېفونىڭىز بۇ ئەپنىڭ ئۈنسىز بولۇشىغا يول قويمايدۇ. بۇ ئەپ تەڭشىكىدىكى ئاۋازنى چەكلەشنى چەكلەڭ ياكى تېلېفون تەڭشىكىڭىزدە ئاۋاز بېرىشكە يول قويۇڭ.</string>
+    <string name="text_no_notify_access_settings">تېلېفونىڭىزدا ئاۋاز بېرىشكە رۇخسەت قىلىدىغان ئۆلچەملىك تەڭشەكلەر يوقتەك قىلىدۇ. \" قولدا ئىزدەڭ زىيارەتنى قالايمىقانلاشتۇرماڭ\" تەڭشەش ۋە ئۇنى قوزغىتىڭ.</string>
     <string name="text_no_sections">ھېچقانداق بۆلەك ئېنىقلانمىدى.</string>
     <string name="text_question_delete_session">تاللانغان يىغىننى راستىنلا ئۆچۈرەمسىز؟</string>
     <string name="theme">باشتېما</string>
     <string name="theme_dark">قاراڭغۇ تېما</string>
-    <string name="theme_desc">ئەپنىڭ سۇس ياكى قاراڭغۇ كۆرۈنۈشىنى تاللاڭ</string>
+    <string name="theme_desc">ئەپ كۆرۈنۈشىنى تاللاڭ</string>
     <string name="theme_light">Light Theme</string>
     <string name="theme_system">سىستېما ئۇسلۇبى</string>
     <string name="theme_value_dark">dark</string>
@@ -150,12 +150,20 @@
     <string name="title_volume_bells">قوڭغۇراق ئاۋازى</string>
     <string name="unnamed">نامسىز</string>
     <string name="stop_meditation_title">ئويلىنىشنى توختىتىڭ؟</string>
-    <string name="stop_meditation_message">سىزنىڭ ئويلىنىش ۋاقتىڭىز داۋاملىشىۋاتىدۇ.</string>
+    <string name="stop_meditation_message">سىزنىڭ ئويلىنىش ۋاقتىڭىز يەنىلا داۋاملىشىۋاتىدۇ.</string>
     <string name="stop_meditation_stop">توختاڭ</string>
     <string name="stop_meditation_cancel">بىكار قىلىش</string>
     <string name="pref_title_bell_volume">قوڭغۇراق ئاۋازى</string>
     <string name="pref_desc_bell_volume">قوڭغۇراق ئاۋازىنىڭ سىگنال ئېقىمىنى كونترول قىلىدۇ</string>
     <string name="title_dim_bell">Dim Bell</string>
     <string name="dim_bell_label_off">سۇس ئەمەس</string>
-    <string name="dim_bell_label_format">Dimmed: %1$d0%%</string>
+    <string name="dim_bell_label_format">ۋاقىت: %1$d0%%</string>
+    <string name="section_deleted">ئۆچۈرۈلگەن \'%s\'</string>
+    <string name="action_undo">ئەمەلدىن قالدۇرۇش</string>
+    <string name="notification_channel_name">Meditation Timer</string>
+    <string name="nav_label_sessions">يىغىن</string>
+    <string name="nav_label_meditation">Meditation</string>
+    <string name="nav_label_edit_session">يىغىننى تەھرىرلەش</string>
+    <string name="nav_label_edit_section">بۆلەكنى تەھرىرلەش</string>
+    <string name="nav_label_settings">تەڭشەك</string>
 </resources>

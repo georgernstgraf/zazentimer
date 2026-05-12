@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="abbrechen">לְבַטֵל</string>
-    <string name="about1">Zazen Meditation Timer — A simple meditation timer with customizable sections, bell sounds, and session management.</string>
-    <string name="about2">Originally created by Stefan Gaffga. Currently maintained by Georg Graf.&lt;br&gt;&lt;br&gt;Thanks to Winfried of &lt;a href="http://www.meditationsuhren.de"&gt;http://www.meditationsuhren.de&lt;/a&gt; for providing such great Bell Sounds!</string>
-    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues"&gt;Report issues on GitHub&lt;/a&gt;</string>
-    <string name="app_description">This application lets the user define a set of meditation sessions and provides a timer with visual and audible feedback when a part or the whole meditation is over.</string>
+    <string name="about1">טיימר מדיטציה של Zazen - טיימר מדיטציה פשוט עם קטעים הניתנים להתאמה אישית, צלילי פעמון וניהול הפעלות.</string>
+    <string name="about2">נוצר במקור על ידי Stefan Gaffga. כרגע מתוחזק על ידי Georg Graf.&lt;br&gt;&lt;br&gt;תודה ל-Winfried מ&lt;a href="http://www.meditationsuhren.de"&gt;http://www.meditationsuhren.de&lt;/a&gt; על כך שסיפק צלילי פעמון מעולים כל כך!</string>
+    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues"&gt;דווח על בעיות ב-GitHub&lt;/a&gt;</string>
+    <string name="app_description">אפליקציה זו מאפשרת למשתמש להגדיר קבוצה של מפגשי מדיטציה ומספקת טיימר עם משוב חזותי ונשמע כאשר חלק או כל המדיטציה נגמרו.</string>
     <string name="app_name">Zazen Meditation Timer</string>
     <string name="appbar_scrolling_view_behavior">android.support.design.widget.AppBarLayout$ScrollingViewBehavior</string>
     <string name="backup_error_text">מצטערים, אירעה שגיאה במהלך השמירה.</string>
     <string name="backup_no_permission">לא ניתן ליצור גיבוי עקב הרשאות חסרות.</string>
     <string name="backup_not_createable">שגיאה ביצירת קובץ גיבוי.</string>
     <string name="backup_success_text">הגיבוי נוצר בהצלחה!</string>
-    <string name="bell_name_1">High Tone</string>
-    <string name="bell_name_2">Low Tone</string>
-    <string name="bell_name_3">Jap. Rhinbowl Dharma, 107mm</string>
-    <string name="bell_name_4">Jap. Rhinbowl Dharma, 88mm (black, glazed)</string>
-    <string name="bell_name_5">Jap. Rhinbowl Shomyo, 90mm</string>
-    <string name="bell_name_6">Jap. Rhinbowl Tang, 164mm</string>
-    <string name="bell_name_7">Tib. Bowl, 230mm</string>
-    <string name="bell_name_8">Jap. Rhinbowl, 97mm</string>
+    <string name="bell_name_1">טון גבוה</string>
+    <string name="bell_name_2">טון נמוך</string>
+    <string name="bell_name_3">יפן. Rhinbowl Dharma, 107 מ"מ</string>
+    <string name="bell_name_4">יפן. Rhinbowl Dharma, 88 מ"מ (שחור, מזוגג)</string>
+    <string name="bell_name_5">יפן. Rhinbowl Shomyo, 90 מ"מ</string>
+    <string name="bell_name_6">יפן. Rhinbowl Tang, 164 מ"מ</string>
+    <string name="bell_name_7">טיב. קערה, 230 מ"מ</string>
+    <string name="bell_name_8">יפן. Rhinbowl, 97 מ"מ</string>
     <string name="bell_pause">פער פעמונים (שנייה)</string>
     <string name="bell_user">הוסף פעמון...</string>
     <string name="bottom_nav_meditation">מֶדִיטָצִיָה</string>
@@ -36,13 +36,13 @@
     <string name="copy_prefix">עותק של</string>
     <string name="crash_dialog_comment_prompt">אופציונלי: איזו פעולה גרמה לשגיאה?</string>
     <string name="crash_dialog_ok_toast">תודה רבה על עזרתך!</string>
-    <string name="crash_dialog_text">אני מצטער, קרתה שגיאה.אתה יכול לעזור לי למצוא ולתקן בעיה זו על ידי שליחת דוח באג זה ואולי אפילו פרטים נוספים על מה שעשית.</string>
+    <string name="crash_dialog_text">אני מצטער, קרתה שגיאה. אתה יכול לעזור לי למצוא ולתקן בעיה זו על ידי שליחת דוח באג זה ואולי אפילו פרטים נוספים על מה שעשית.</string>
     <string name="crash_dialog_title">טיימר מדיטציית Zazen</string>
     <string name="crash_toast_text">מצטערים - אירעה שגיאה פנימית!</string>
     <string name="crash_user_email_label">אופציונלי: כתובת האימייל שלך לשאלות או עדכונים בנושא זה.</string>
     <string name="default_section_name">ללא שם</string>
     <string name="demo_sess1_description">מדיטציית יום ראשון בערב</string>
-    <string name="demo_sess1_name">זזן וקינהין</string>
+    <string name="demo_sess1_name">זאזן וקינהין</string>
     <string name="demo_sess1_sec1_name">הֲכָנָה</string>
     <string name="demo_sess1_sec2_name">זזן 1</string>
     <string name="demo_sess1_sec3_name">קינהין 1</string>
@@ -51,12 +51,12 @@
     <string name="demo_sess1_sec6_name">זזן 3</string>
     <string name="demo_sess2_description">מדיטציה יומית</string>
     <string name="demo_sess2_name">רק זאזן</string>
-    <string name="desc_get_messages">אם הודעות אוטומטיות מושבתות, אתה יכול לבדוק אם יש חדשות כאן.</string>
+    <string name="desc_get_messages">אם ההודעות האוטומטיות מושבתות, אתה יכול לבדוק אם יש חדשות כאן.</string>
     <string name="desc_keep_screen_on">שומר על המסך דולק במהלך המדיטציה</string>
     <string name="desc_no_server_messages">הצג חדשות באופן אוטומטי כאשר האפליקציה מתחילה</string>
     <string name="error_checking_for_server_messages">שגיאה באחזור הודעות חדשות.</string>
     <string name="gong_type">סאונד גונג</string>
-    <string name="help_sectionlist_text">כאן אתה יכול לתת שם, לתאר ולערוך את התוכן של הפגישה שלך.\n\n הזמנה מחדש\n כדי לסדר מחדש את הפריטים, לחץ לחיצה ארוכה על פריט ו\n גרור אותו למיקומו החדש.\n\n מחיקה\n כדי למחוק פריט, הזז אותו ימינה.\n\n ערוך\n כדי לערוך קטע, פשוט גע בו על כפתור הוסף פעם אחת.\n\n כדי להוסיף קטע חדש.\n\n</string>
+    <string name="help_sectionlist_text">כאן תוכל לתת שם, לתאר ולערוך את התוכן של הפגישה שלך.\n\nהזמנה מחדש\nכדי לסדר מחדש את הפריטים, לחץ לחיצה ארוכה על פריט ו\nגרור אותו למיקומו החדש.\n\nמחיקה\nכדי למחוק פריט, הזז אותו ימינה.\n\nלַעֲרוֹך\nכדי לערוך קטע, פשוט גע בו פעם אחת.\n\nלְהוֹסִיף\nכדי להוסיף קטע חדש, לחץ על הלחצן +.</string>
     <string name="help_sectionlist_title">ערוך הפעלה</string>
     <string name="label_section_name">שם המדור</string>
     <string name="label_session_description">תיאור המושב</string>
@@ -74,8 +74,8 @@
     <string name="menu_settings">הגדרות</string>
     <string name="minuten">פּרוֹטוֹקוֹל</string>
     <string name="no_new_server_messages">אין הודעות חדשות זמינות.</string>
-    <string name="no_sections_in_session">לא ניתן להתחיל מדיטציה: למפגש שנבחר אין קטעים.</string>
-    <string name="no_session_exists">אין מפגש שניתן להתחיל.נא ליצור אחד קודם.</string>
+    <string name="no_sections_in_session">לא יכול להתחיל מדיטציה: למפגש שנבחר אין קטעים.</string>
+    <string name="no_session_exists">אין מפגש שניתן להתחיל. נא ליצור אחד קודם.</string>
     <string name="notification_text">מדיטציית Zazen פועלת כעת</string>
     <string name="notification_text_paused">מדיטציית זאזן עצרה</string>
     <string name="notification_title">מדיטציית זאזן</string>
@@ -94,7 +94,7 @@
     <string name="pref_mute_mode_vibrate_sound_desc">השמעת צלצול ורטט</string>
     <string name="pref_muting">הגדרות השתקה</string>
     <string name="pref_sum_backup">שמור גיבוי של ההפעלות והצלילים שלך בכרטיס ה-SD שלך.</string>
-    <string name="pref_sum_bad_removal">כרטיס SD הוסר מבלי להסיר אותו קודם.</string>
+    <string name="pref_sum_bad_removal">כרטיס SD הוסר מבלי לבטל את הטעינה תחילה.</string>
     <string name="pref_sum_checking">כרטיס SD נבדק כרגע</string>
     <string name="pref_sum_ejecting">כרטיס SD נפלט</string>
     <string name="pref_sum_nofs">אין מערכת קבצים בכרטיס SD</string>
@@ -112,7 +112,7 @@
     <string name="restore_backup_not_found">קובץ הגיבוי לא נמצא</string>
     <string name="restore_error_text">שגיאה בשחזור מגיבוי</string>
     <string name="restore_no_permission">לא ניתן לשחזר עקב הרשאה חסרה.</string>
-    <string name="restore_really_text">זה יחליף את כל ההפעלות שלך באלו שבגיבוי!(אין ביטול!)</string>
+    <string name="restore_really_text">זה יחליף את כל ההפעלות שלך באלו שבגיבוי! (אין ביטול!)</string>
     <string name="restore_really_title">באמת לשחזר נתונים?</string>
     <string name="restore_success_text">שחזור הנתונים הצליח</string>
     <string name="search_menu_title">לְחַפֵּשׂ</string>
@@ -128,16 +128,16 @@
     <string name="content_desc_session_actions">פעולות מושב</string>
     <string name="session_list_unnamed_entry">הפעלה ללא שם</string>
     <string name="status_bar_notification_info_overflow">999+</string>
-    <string name="test_mute_perm_request">האפליקציה אינה מורשית כרגע להשתיק את הטלפון שלך.לפתוח את ההגדרות כדי לשנות את זה?</string>
-    <string name="text_cant_mute">הטלפון שלך לא מאפשר לאפליקציה הזו להשתיק אותה.השבת את ההשתקה בהגדרות האפליקציות הזה או אפשר השתקה בהגדרות הטלפונים שלך.</string>
-    <string name="text_no_notify_access_settings">נראה שלטלפון שלך אין את ההגדרות הסטנדרטיות לאפשר השתקה.חפש ידנית את ההגדרה \&amp;quot;נא לא להפריע גישה\&amp;quot; והפעל אותה.</string>
+    <string name="test_mute_perm_request">האפליקציה אינה מורשית כרגע להשתיק את הטלפון שלך. לפתוח את ההגדרות כדי לשנות את זה?</string>
+    <string name="text_cant_mute">הטלפון שלך לא מאפשר לאפליקציה הזו להשתיק אותה. השבת את ההשתקה בהגדרות האפליקציות הזה או אפשר השתקה בהגדרות הטלפונים שלך.</string>
+    <string name="text_no_notify_access_settings">נראה שלטלפון שלך אין את ההגדרות הסטנדרטיות לאפשר השתקה. אנא חפש ידנית את ההגדרה \"אל תפריע גישה\" והפעל אותה.</string>
     <string name="text_no_sections">לא הוגדרו סעיפים.</string>
     <string name="text_question_delete_session">האם באמת למחוק את ההפעלה שנבחרה?</string>
     <string name="theme">נוֹשֵׂא</string>
     <string name="theme_dark">נושא אפל</string>
-    <string name="theme_desc">בחר מראה בהיר או כהה של האפליקציה</string>
+    <string name="theme_desc">בחר את מראה האפליקציה</string>
     <string name="theme_light">נושא קל</string>
-    <string name="theme_system">System Theme</string>
+    <string name="theme_system">ערכת נושא של המערכת</string>
     <string name="theme_value_dark">dark</string>
     <string name="theme_value_light">light</string>
     <string name="theme_value_system">system</string>
@@ -145,7 +145,7 @@
     <string name="time_section_remaining">קטע שנותר</string>
     <string name="time_session_elapsed">הסשן חלף</string>
     <string name="time_session_remaining">נותרה מושב</string>
-    <string name="title_mute_perm_request">חסר הרשאה</string>
+    <string name="title_mute_perm_request">הרשאה חסרה</string>
     <string name="title_question_delete_session">למחוק הפעלה?</string>
     <string name="title_volume_bells">נפח פעמון</string>
     <string name="unnamed">ללא שם</string>
@@ -157,5 +157,13 @@
     <string name="pref_desc_bell_volume">שולט בעוצמת זרם האזעקה עבור צלילי פעמון</string>
     <string name="title_dim_bell">עמום בל</string>
     <string name="dim_bell_label_off">לא מעועם</string>
-    <string name="dim_bell_label_format">מעומעם: %1$d0%%</string>
+    <string name="dim_bell_label_format">מעומע: %1$d0%%</string>
+    <string name="section_deleted">נמחק \'%s\'</string>
+    <string name="action_undo">לְבַטֵל</string>
+    <string name="notification_channel_name">טיימר מדיטציה</string>
+    <string name="nav_label_sessions">הפעלות</string>
+    <string name="nav_label_meditation">מֶדִיטָצִיָה</string>
+    <string name="nav_label_edit_session">ערוך הפעלה</string>
+    <string name="nav_label_edit_section">ערוך מדור</string>
+    <string name="nav_label_settings">הגדרות</string>
 </resources>

@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="abbrechen">Kureka</string>
-    <string name="about1">Zazen Meditation Timer — A simple meditation timer with customizable sections, bell sounds, and session management.</string>
-    <string name="about2">Originally created by Stefan Gaffga. Currently maintained by Georg Graf.&lt;br&gt;&lt;br&gt;Thanks to Winfried of &lt;a href="http://www.meditationsuhren.de"&gt;http://www.meditationsuhren.de&lt;/a&gt; for providing such great Bell Sounds!</string>
-    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues"&gt;Report issues on GitHub&lt;/a&gt;</string>
-    <string name="app_description">This application lets the user define a set of meditation sessions and provides a timer with visual and audible feedback when a part or the whole meditation is over.</string>
+    <string name="about1">Igihe cyo Gutekereza Zazen - Igihe cyoroshye cyo gutekereza hamwe nibice byihariye, amajwi yinzogera, hamwe nubuyobozi bwamasomo.</string>
+    <string name="about2">Mubyambere byakozwe na Stefan Gaffga. Kugeza ubu bikomezwa na Georg Graf. &lt;br&gt;</string>
+    <string name="about3">&lt;a href = "https://github.com/georgernstgraf/zazentimer/issues"&gt; Raporo y\'ibibazo kuri GitHub &lt;/a&gt;</string>
+    <string name="app_description">Iyi porogaramu ituma uyikoresha asobanura urutonde rwibitekerezo kandi agatanga igihe hamwe nibitekerezo byumvikana kandi byumvikana mugihe igice cyangwa gutekereza byose birangiye.</string>
     <string name="app_name">Zazen Meditation Timer</string>
     <string name="appbar_scrolling_view_behavior">android.support.design.widget.AppBarLayout $ ScrollingViewBehavior</string>
     <string name="backup_error_text">Ihangane, Ikosa ryabaye mugihe cyo kuzigama.</string>
     <string name="backup_no_permission">Ntushobora gukora backup kubera kubura uruhushya.</string>
     <string name="backup_not_createable">Ikosa ryo gukora dosiye yububiko.</string>
     <string name="backup_success_text">Ububiko bwakorewe neza!</string>
-    <string name="bell_name_1">High Tone</string>
-    <string name="bell_name_2">Low Tone</string>
+    <string name="bell_name_1">Ijwi Ryinshi</string>
+    <string name="bell_name_2">Ijwi Rito</string>
     <string name="bell_name_3">Jap. Rhinbowl Dharma, 107mm</string>
-    <string name="bell_name_4">Jap. Rhinbowl Dharma, 88mm (black, glazed)</string>
+    <string name="bell_name_4">Jap. Rhinbowl Dharma, 88mm (umukara, usize)</string>
     <string name="bell_name_5">Jap. Rhinbowl Shomyo, 90mm</string>
     <string name="bell_name_6">Jap. Rhinbowl Tang, 164mm</string>
-    <string name="bell_name_7">Tib. Bowl, 230mm</string>
-    <string name="bell_name_8">Jap. Rhinbowl, 97mm</string>
+    <string name="bell_name_7">Tib. Igikombe, 230mm</string>
+    <string name="bell_name_8">Jap. Inkeri, 97mm</string>
     <string name="bell_pause">Icyuho cy\'inzogera (amasegonda)</string>
     <string name="bell_user">Ongeraho inzogera ...</string>
     <string name="bottom_nav_meditation">Gutekereza</string>
@@ -39,9 +39,9 @@
     <string name="crash_dialog_text">Mumbabarire, ko habaye ikosa. Urashobora kumfasha kubona no gukemura iki kibazo wohereje iyi raporo ya bug kandi birashoboka ndetse nibindi bisobanuro kubyo wakoze.</string>
     <string name="crash_dialog_title">Igihe cyo Gutekereza Zazen</string>
     <string name="crash_toast_text">Ihangane - Ikosa ryimbere ryabaye!</string>
-    <string name="crash_user_email_label">Ibyifuzo: Imeri yawe-Aderesi kubibazo cyangwa ibishya kuri iki kibazo.</string>
+    <string name="crash_user_email_label">Ibyifuzo: E-imeri yawe-aderesi kubibazo cyangwa ibishya kuri iki kibazo.</string>
     <string name="default_section_name">Amazina</string>
-    <string name="demo_sess1_description">Gutekereza ku cyumweru nimugoroba</string>
+    <string name="demo_sess1_description">Ku cyumweru nimugoroba</string>
     <string name="demo_sess1_name">Zazen na Kinhin</string>
     <string name="demo_sess1_sec1_name">Kwitegura</string>
     <string name="demo_sess1_sec2_name">Zazen 1</string>
@@ -56,7 +56,7 @@
     <string name="desc_no_server_messages">Mu buryo bwikora werekane Amakuru iyo Porogaramu itangiye</string>
     <string name="error_checking_for_server_messages">Ikosa ryo kuzana ubutumwa bushya.</string>
     <string name="gong_type">Ijwi rya Gong</string>
-    <string name="help_sectionlist_text">Hano urashobora kuvuga izina, gusobanura no guhindura ibikubiye mu Isomo ryawe.\n\n REORDERING\n Kugirango uhindure ibintu, kanda cyane ku kintu hanyuma\n uyikweze kumwanya mushya.\n\n DELETING\n Kugira ngo usibe ikintu, iyimure iburyo.</string>
+    <string name="help_sectionlist_text">Hano urashobora kuvuga izina, gusobanura no guhindura ibikubiye mu Isomo ryawe.\n\nKWANDIKA\nKugirango uhindure ibintu, kanda ndende ku kintu na\nkurura ku mwanya wacyo mushya.\n\nDELETING\nGusiba ikintu, iyimure iburyo.\n\nEDIT\nGuhindura igice, koraho rimwe gusa.\n\nADD\nOngeraho igice gishya, kanda kuri buto.</string>
     <string name="help_sectionlist_title">Hindura Isomo</string>
     <string name="label_section_name">Izina ry\'igice</string>
     <string name="label_session_description">Ibisobanuro</string>
@@ -74,7 +74,7 @@
     <string name="menu_settings">Igenamiterere</string>
     <string name="minuten">Iminota</string>
     <string name="no_new_server_messages">Nta butumwa bushya buboneka.</string>
-    <string name="no_sections_in_session">Ntushobora gutangira Gutekereza: Ihitamo ryatoranijwe ntirigira Igice.</string>
+    <string name="no_sections_in_session">Ntushobora__ Gutangira Gutekereza: Isomo ryatoranijwe ntirigira Igice.</string>
     <string name="no_session_exists">Nta somo rishobora gutangira. Nyamuneka kora mbere.</string>
     <string name="notification_text">Gutekereza kwa Zazen kurubu birakorwa</string>
     <string name="notification_text_paused">Gutekereza kwa Zazen byarahagaze</string>
@@ -100,10 +100,10 @@
     <string name="pref_sum_nofs">Nta Filesystem kuri SD-Ikarita</string>
     <string name="pref_sum_read_only">SD-Ikarita irasomwa gusa</string>
     <string name="pref_sum_removed">Nta SD-Ikarita ihari</string>
-    <string name="pref_sum_restore">Ongera usubiremo amasomo yawe hamwe n\'amajwi yihariye uhereye kuri SD-Ikarita</string>
+    <string name="pref_sum_restore">Ongera usubize amasomo yawe hamwe nijwi ryihariye uhereye kuri SD-Ikarita</string>
     <string name="pref_sum_shared">SD-Ikarita irasangiwe</string>
     <string name="pref_title_backup">Kora Ububiko</string>
-    <string name="pref_title_brightness">Umucyo</string>
+    <string name="pref_title_brightness">Ubucyo</string>
     <string name="pref_title_restore">Kugarura muri Backup</string>
     <string name="privacy_message">Iyi Porogaramu ntabwo ikusanya amakuru yihariye - ntabwo ikoresha IP-Aderesi cyangwa andi makuru yose ajyanye n’ikoranabuhanga, cyangwa ntikusanya, gutunganya cyangwa gukoresha ikintu icyo ari cyo cyose.</string>
     <string name="privacy_ok">Nibyo</string>
@@ -118,7 +118,7 @@
     <string name="search_menu_title">Shakisha</string>
     <string name="section_info_string_1_pl">%1$d Inzogera</string>
     <string name="section_info_string_1_sg">1 Inzogera</string>
-    <string name="section_info_string_2_pl">buri %1$d Amasegonda</string>
+    <string name="section_info_string_2_pl">buri masegonda</string>
     <string name="section_info_string_2_sg">buri Isegonda</string>
     <string name="sekunden">Amasegonda</string>
     <string name="select_audio">Hitamo dosiye yijwi</string>
@@ -135,7 +135,7 @@
     <string name="text_question_delete_session">Mubyukuri gusiba Isomo ryatoranijwe?</string>
     <string name="theme">Insanganyamatsiko</string>
     <string name="theme_dark">Insanganyamatsiko Yijimye</string>
-    <string name="theme_desc">Hitamo urumuri cyangwa umwijima ugaragara wa Porogaramu</string>
+    <string name="theme_desc">Hitamo isura ya porogaramu</string>
     <string name="theme_light">Umucyo</string>
     <string name="theme_system">Insanganyamatsiko ya Sisitemu</string>
     <string name="theme_value_dark">dark</string>
@@ -157,5 +157,13 @@
     <string name="pref_desc_bell_volume">Igenzura amajwi yo gutabaza amajwi yinzogera</string>
     <string name="title_dim_bell">Dim Bell</string>
     <string name="dim_bell_label_off">Ntabwo yijimye</string>
-    <string name="dim_bell_label_format">Dimmed: %1$d0 %%</string>
+    <string name="dim_bell_label_format">Dimmed: %1$d0%%</string>
+    <string name="section_deleted">Gusiba \'%s\'</string>
+    <string name="action_undo">Kuraho</string>
+    <string name="notification_channel_name">Igihe cyo Gutekereza</string>
+    <string name="nav_label_sessions">Amasomo</string>
+    <string name="nav_label_meditation">Gutekereza</string>
+    <string name="nav_label_edit_session">Hindura Isomo</string>
+    <string name="nav_label_edit_section">Hindura Igice</string>
+    <string name="nav_label_settings">Igenamiterere</string>
 </resources>

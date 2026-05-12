@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="abbrechen">Jooji</string>
-    <string name="about1">Zazen Meditation Timer — A simple meditation timer with customizable sections, bell sounds, and session management.</string>
-    <string name="about2">Originally created by Stefan Gaffga. Currently maintained by Georg Graf.&lt;br&gt;&lt;br&gt;Thanks to Winfried of &lt;a href="http://www.meditationsuhren.de"&gt;http://www.meditationsuhren.de&lt;/a&gt; for providing such great Bell Sounds!</string>
-    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues"&gt;Report issues on GitHub&lt;/a&gt;</string>
-    <string name="app_description">This application lets the user define a set of meditation sessions and provides a timer with visual and audible feedback when a part or the whole meditation is over.</string>
+    <string name="about1">Saacadaha Meditation Timer-ka fudud ee waqtiga meditation oo leh qaybo la beddeli karo, dhawaqa gambaleelka, iyo maaraynta kalfadhiga.</string>
+    <string name="about2">Asal ahaan waxaa abuuray Stefan Gaffga. Hadda waxaa gacanta ku haya Georg Graf.&lt;br&gt;&lt;br&gt;Winfried ayaa ku mahadsan tii &lt;a href="http://www.meditationsuhren.de"&gt;http://www.meditationsuhren.de&lt;/a&gt; si ay u bixiso dhawaaqyada gambaleelka oo kale!</string>
+    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues"&gt;ka warbixi arrimaha GitHub&lt;/a&gt;</string>
+    <string name="app_description">Codsigan wuxuu u oggolaanayaa isticmaaluhu inuu qeexo kalfadhiyo ka fiirsi oo wuxuu siiyaa saacadeeyaha jawaab celin muuqaal iyo maqal ah marka qayb ama dhammaan ka fiirsashadu dhammaato.</string>
     <string name="app_name">Zazen Meditation Timer</string>
-    <string name="appbar_scrolling_view_behavior">android.support.design.widget.AppBarLayout$ScrollingViewHavior</string>
+    <string name="appbar_scrolling_view_behavior">android.support.design.widget.AppBarLayout$Scrolling ViewBehavior</string>
     <string name="backup_error_text">Waan ka xunahay, khalad ayaa dhacay markii la kaydinayay</string>
     <string name="backup_no_permission">Lama abuuri karo kaabta sababtoo ah ogolaanshaha maqan</string>
     <string name="backup_not_createable">Khalad abuurista faylka kaydinta</string>
     <string name="backup_success_text">Kaabta ayaa loo sameeyay si guul leh!</string>
-    <string name="bell_name_1">High Tone</string>
-    <string name="bell_name_2">Low Tone</string>
-    <string name="bell_name_3">Jap. Rhinbowl Dharma, 107mm</string>
-    <string name="bell_name_4">Jap. Rhinbowl Dharma, 88mm (black, glazed)</string>
-    <string name="bell_name_5">Jap. Rhinbowl Shomyo, 90mm</string>
-    <string name="bell_name_6">Jap. Rhinbowl Tang, 164mm</string>
-    <string name="bell_name_7">Tib. Bowl, 230mm</string>
-    <string name="bell_name_8">Jap. Rhinbowl, 97mm</string>
+    <string name="bell_name_1">Cod sare</string>
+    <string name="bell_name_2">Cod hoose</string>
+    <string name="bell_name_3">Jap Rhinbowl Dharma, 107mm</string>
+    <string name="bell_name_4">Jap Rhinbowl Dharma, 88mm (madow, dhalaalaysa)</string>
+    <string name="bell_name_5">Jap Rhinbowl Shomyo, 90mm</string>
+    <string name="bell_name_6">Jap Rhinbowl Tang, 164mm</string>
+    <string name="bell_name_7">Tib. Makiinada, 230mm</string>
+    <string name="bell_name_8">Jap Rhinbowl, 97mm</string>
     <string name="bell_pause">Farqiga dawanka (sek</string>
     <string name="bell_user">Kudar dawan...</string>
     <string name="bottom_nav_meditation">Ka fiirsashada</string>
@@ -31,13 +31,13 @@
     <string name="character_counter_pattern">%1$d / %2$d</string>
     <string name="checkbox_keep_screen_on">Shaashada ha shid</string>
     <string name="checkbox_no_server_messages">Show News</string>
-    <string name="checkbox_phone_off">Aamus teleefanka</string>
+    <string name="checkbox_phone_off">Codka xidh teleefan</string>
     <string name="checkbox_phone_off_desc">Xidh dhammaan dhawaaqyada telefoonka</string>
     <string name="copy_prefix">Nuqul ka mid ah</string>
     <string name="crash_dialog_comment_prompt">Ikhtiyaar: Ficilkee keenay khaladka?</string>
     <string name="crash_dialog_ok_toast">Aad baad ugu mahadsantahay caawimadaada!</string>
     <string name="crash_dialog_text">Waan ka xumahay, in khalad dhacay Waxaad iga caawin kartaa sidii aan u heli lahaa oo aan u xallin lahaa arrintan adiga oo soo diraya warbixintan cayayaanka iyo laga yaabee xitaa faahfaahin dheeraad ah oo ku saabsan waxaad samaysay.</string>
-    <string name="crash_dialog_title">Saacadaha Meditation ee Zazen</string>
+    <string name="crash_dialog_title">Waqtiga Meditation ee Zazen</string>
     <string name="crash_toast_text">Waan ka xunahay - khalad gudaha ah ayaa dhacay!</string>
     <string name="crash_user_email_label">Ikhtiyaar: Ciwaanka emailkaaga wixii su\'aalo ah ama cusbooneysiin ah oo arrintan ku saabsan.</string>
     <string name="default_section_name">Aan la magacaabin</string>
@@ -53,11 +53,11 @@
     <string name="demo_sess2_name">Zazen kaliya</string>
     <string name="desc_get_messages">Haddii fariimaha tooska ah ay naafo yihiin, waxaad ka hubin kartaa warka halkan.</string>
     <string name="desc_keep_screen_on">Waxay ku ilaalisaa shaashadda inta lagu jiro fekerka</string>
-    <string name="desc_no_server_messages">Toos u tus wararka marka Appku bilaabmo</string>
+    <string name="desc_no_server_messages">Si toos ah u tus wararka marka Appku bilaabmo</string>
     <string name="error_checking_for_server_messages">Khalad keenista fariimaha cusub</string>
     <string name="gong_type">Gong Sound</string>
-    <string name="help_sectionlist_text">Halkan waxaad ku magacaabi kartaa, sharaxi kartaa oo wax ka beddeli kartaa waxa ku jira Kulankaaga. midig.\n\n EDIT\n Si aad u saxdo qayb, kaliya hal mar taabo.</string>
-    <string name="help_sectionlist_title">Wax ka beddel kulanka</string>
+    <string name="help_sectionlist_text">Halkan waxaad ku magacaabi kartaa, ku sifayn kartaa oo wax ka beddeli kartaa waxa ku jira Kulankaaga.\n\nDib u habeyn\nSi aad alaabta dib ugu habayso, dheeree shay iyo\nu jiid meesheeda cusub.\n\nTirtiridda\nSi aad shay u tirtirto, u dhaqaaq dhanka midig.\n\nWax ka bedel\nSi aad u saxdo qayb, kaliya hal mar taabo.\n\nKU dar\nSi aad ugu darto qayb cusub, taabo badhanka +</string>
+    <string name="help_sectionlist_title">Tafatir Kulanka</string>
     <string name="label_section_name">Magaca qaybta</string>
     <string name="label_session_description">Sharaxaada Casharka</string>
     <string name="label_session_name">Magaca Kulanka</string>
@@ -66,7 +66,7 @@
     <string name="menu_delete_section">Tirtir Qaybta</string>
     <string name="menu_delete_session">Tirtir Kulanka</string>
     <string name="menu_duplicate_section">Qaybta nuqul</string>
-    <string name="menu_edit_session">Wax ka beddel kulanka</string>
+    <string name="menu_edit_session">Tafatir Kulanka</string>
     <string name="menu_help">Caawin</string>
     <string name="menu_add_session">Ku dar Casharka</string>
     <string name="menu_new_session">Kulan Cusub</string>
@@ -74,7 +74,7 @@
     <string name="menu_settings">Dejinta</string>
     <string name="minuten">Daqiiqado</string>
     <string name="no_new_server_messages">Fariimo cusub ma jiraan.</string>
-    <string name="no_sections_in_session">Ma bilaabi karo Meditation: Kulanka la doortay ma laha wax qaybo ah.</string>
+    <string name="no_sections_in_session">Ma bilaabi karaa \'t Meditation: Fadhiga la doortay ma laha wax qaybo ah.</string>
     <string name="no_session_exists">Ma jiro fadhi la bilaabi karo. Fadlan mid samee marka hore</string>
     <string name="notification_text">A Zazen Meditation hadda wuu socdaa</string>
     <string name="notification_text_paused">Dareenka Zazen ayaa hakad galay</string>
@@ -87,7 +87,7 @@
     <string name="pref_mute_mode">Codka garaaca iyo Ogeysiinta</string>
     <string name="pref_mute_mode_none">Aamusnaanta</string>
     <string name="pref_mute_mode_none_desc">Ma jiro codka garaaca iyo gariir la\'aanta wicitaanada taleefanka iyo Ogeysiinta</string>
-    <string name="pref_mute_mode_pref">Dejinta ku saabsan dhawaaqa garaaca iyo Ogeysiinta</string>
+    <string name="pref_mute_mode_pref">Dejinta ku saabsan codka dhawaaqa iyo Ogeysiinta</string>
     <string name="pref_mute_mode_vibrate">Kaliya Gariir</string>
     <string name="pref_mute_mode_vibrate_desc">Kaliya gariir wicitaanada taleefanka iyo Ogeysiisyada (kuma shaqeeyo Android 7 (Nougat) - wuxuu u dhaqmaa sida dejinta aamusnaanta)</string>
     <string name="pref_mute_mode_vibrate_sound">Codka garaaca iyo gariirka</string>
@@ -97,7 +97,7 @@
     <string name="pref_sum_bad_removal">Kaarka SD waa la saaray iyadoo aan marka hore la dajin.</string>
     <string name="pref_sum_checking">Kaarka SD-ka waa la hubinayaa hadda</string>
     <string name="pref_sum_ejecting">Kaadhka SD waa la saarayaa</string>
-    <string name="pref_sum_nofs">Ma jiro Nidaam-faylal ku jira Kaadhka SD</string>
+    <string name="pref_sum_nofs">Nidaam faylal ah kuma jiro kaadhka SD</string>
     <string name="pref_sum_read_only">Kaarka SD-ka waa akhris-kaliya</string>
     <string name="pref_sum_removed">Ma jiro kaadhka SD</string>
     <string name="pref_sum_restore">Ku soo celi fadhiyadaada iyo dhawaaqaaga gaarka ah ee kaadhka SD-ka kaabta</string>
@@ -118,7 +118,7 @@
     <string name="search_menu_title">Raadi</string>
     <string name="section_info_string_1_pl">%1$d Gambaleelka</string>
     <string name="section_info_string_1_sg">1 Gambaleelka</string>
-    <string name="section_info_string_2_pl">ilbiriqsi kasta %1$d</string>
+    <string name="section_info_string_2_pl">%1$d ilbiriqsi kasta</string>
     <string name="section_info_string_2_sg">Ilbiriqsi kasta</string>
     <string name="sekunden">Ilbiriqsi</string>
     <string name="select_audio">Dooro faylka codka</string>
@@ -129,13 +129,13 @@
     <string name="session_list_unnamed_entry">Fadhi aan la magacaabin</string>
     <string name="status_bar_notification_info_overflow">999+</string>
     <string name="test_mute_perm_request">App-ka hadda looma oggola inuu aamusiyo taleefankaaga. Fur setinka si aad tan u bedesho?</string>
-    <string name="text_cant_mute">Taleefankaagu uma ogola Appkan inuu damiyo Dami aamusinta Settings Apps ama u ogolow in la aamusiyo Settings Phones kaaga.</string>
-    <string name="text_no_notify_access_settings">Taleefankaagu uma eka inuu leeyahay jaangooyooyinka caadiga ah si loogu oggolaado aamusnaanta. Fadlan gacanta ka raadi \&amp;quot;Ha carqaladayn gelitaanka&amp;quot; Dejinta oo awood u yeelo.</string>
+    <string name="text_cant_mute">Taleefankaagu ma ogola in App-kan uu xidho. Dami aamusinta Settings Apps ama u ogolow in la aamusiyo Settings Phones kaaga.</string>
+    <string name="text_no_notify_access_settings">Taleefankaagu uma eka inuu leeyahay jaangooyooyinka caadiga ah si loogu oggolaado aamusnaanta. Fadlan gacanta ku raadi \"Ha carqaladayn Helitaanka\" Dejinta oo karti u yeela.</string>
     <string name="text_no_sections">Ma jiraan qaybo la qeexay.</string>
     <string name="text_question_delete_session">Runtii ma tirtirtaa Fadhiga la doortay?</string>
     <string name="theme">Dulucda</string>
     <string name="theme_dark">Mawduuca Madow</string>
-    <string name="theme_desc">Dooro iftiinka ama muuqaalka mugdiga ah ee App-ka</string>
+    <string name="theme_desc">Dooro muuqaalka abka</string>
     <string name="theme_light">Mawduuca Fudud</string>
     <string name="theme_system">Mawduuca Nidaamka</string>
     <string name="theme_value_dark">dark</string>
@@ -157,5 +157,13 @@
     <string name="pref_desc_bell_volume">Waxay xakamaysaa codka qaylo-dhaanta dhawaaqa gambaleelka</string>
     <string name="title_dim_bell">Dim Bell</string>
     <string name="dim_bell_label_off">Ma dhayalsan</string>
-    <string name="dim_bell_label_format">La jarjaray: %1$d0%%</string>
+    <string name="dim_bell_label_format">La dhimay: %1$d0%%</string>
+    <string name="section_deleted">La tirtiray \'%s\'</string>
+    <string name="action_undo">Ka noqo</string>
+    <string name="notification_channel_name">Saacadaha Meditation</string>
+    <string name="nav_label_sessions">Fadhiyo</string>
+    <string name="nav_label_meditation">Ka fiirsashada</string>
+    <string name="nav_label_edit_session">Tafatir Kulanka</string>
+    <string name="nav_label_edit_section">Qaybta wax ka beddel</string>
+    <string name="nav_label_settings">Dejinta</string>
 </resources>

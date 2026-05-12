@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="abbrechen">రద్దు చేయి</string>
-    <string name="about1">Zazen Meditation Timer — A simple meditation timer with customizable sections, bell sounds, and session management.</string>
-    <string name="about2">Originally created by Stefan Gaffga. Currently maintained by Georg Graf.&lt;br&gt;&lt;br&gt;Thanks to Winfried of &lt;a href="http://www.meditationsuhren.de"&gt;http://www.meditationsuhren.de&lt;/a&gt; for providing such great Bell Sounds!</string>
-    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues"&gt;Report issues on GitHub&lt;/a&gt;</string>
-    <string name="app_description">This application lets the user define a set of meditation sessions and provides a timer with visual and audible feedback when a part or the whole meditation is over.</string>
+    <string name="about1">జాజెన్ మెడిటేషన్ టైమర్ — అనుకూలీకరించదగిన విభాగాలు, బెల్ శబ్దాలు మరియు సెషన్ నిర్వహణతో కూడిన సాధారణ ధ్యాన టైమర్.</string>
+    <string name="about2">నిజానికి స్టీఫన్ గఫ్గా రూపొందించారు. ప్రస్తుతం జార్జ్ గ్రాఫ్ నిర్వహిస్తున్నారు.&lt;br&gt;&lt;br&gt;ఇంత గొప్ప బెల్ సౌండ్‌లను అందించినందుకు &lt;a href="http://www.meditationsuhren.de"&gt;http://www.meditationsuhren.de&lt;/a&gt;కి చెందిన విన్‌ఫ్రైడ్‌కి ధన్యవాదాలు!</string>
+    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues"&gt;GitHubలో సమస్యలను నివేదించండి&lt;/a&gt;</string>
+    <string name="app_description">ఈ అప్లికేషన్ మెడిటేషన్ సెషన్‌ల సెట్‌ని నిర్వచించడానికి వినియోగదారుని అనుమతిస్తుంది మరియు ఒక భాగం లేదా మొత్తం ధ్యానం ముగిసినప్పుడు దృశ్య మరియు వినగల అభిప్రాయాన్ని కలిగి ఉండే టైమర్‌ను అందిస్తుంది.</string>
     <string name="app_name">Zazen Meditation Timer</string>
     <string name="appbar_scrolling_view_behavior">android.support.design.widget.AppBarLayout$ScrollingViewBehavior</string>
     <string name="backup_error_text">క్షమించండి, సేవ్ చేస్తున్నప్పుడు లోపం సంభవించింది.</string>
     <string name="backup_no_permission">అనుమతులు లేకపోవడం వల్ల బ్యాకప్‌ని సృష్టించడం సాధ్యపడలేదు.</string>
     <string name="backup_not_createable">బ్యాకప్ ఫైల్‌ని సృష్టించడంలో ఎర్రర్ ఏర్పడింది.</string>
     <string name="backup_success_text">బ్యాకప్ విజయవంతంగా సృష్టించబడింది!</string>
-    <string name="bell_name_1">High Tone</string>
-    <string name="bell_name_2">Low Tone</string>
-    <string name="bell_name_3">Jap. Rhinbowl Dharma, 107mm</string>
-    <string name="bell_name_4">Jap. Rhinbowl Dharma, 88mm (black, glazed)</string>
-    <string name="bell_name_5">Jap. Rhinbowl Shomyo, 90mm</string>
-    <string name="bell_name_6">Jap. Rhinbowl Tang, 164mm</string>
-    <string name="bell_name_7">Tib. Bowl, 230mm</string>
-    <string name="bell_name_8">Jap. Rhinbowl, 97mm</string>
+    <string name="bell_name_1">అధిక టోన్</string>
+    <string name="bell_name_2">తక్కువ టోన్</string>
+    <string name="bell_name_3">జాప్ రిన్‌బౌల్ ధర్మ, 107మి.మీ</string>
+    <string name="bell_name_4">జాప్ రైన్‌బౌల్ ధర్మ, 88 మిమీ (నలుపు, మెరుస్తున్నది)</string>
+    <string name="bell_name_5">జాప్ రిన్‌బౌల్ షోమ్యో, 90 మి.మీ</string>
+    <string name="bell_name_6">జాప్ రిన్‌బౌల్ టాంగ్, 164 మి.మీ</string>
+    <string name="bell_name_7">టిబ్ బౌల్, 230 మి.మీ</string>
+    <string name="bell_name_8">జాప్ రిన్‌బౌల్, 97 మి.మీ</string>
     <string name="bell_pause">బెల్ గ్యాప్ (సెకను)</string>
     <string name="bell_user">బెల్ జోడించండి...</string>
     <string name="bottom_nav_meditation">ధ్యానం</string>
@@ -36,7 +36,7 @@
     <string name="copy_prefix">యొక్క కాపీ</string>
     <string name="crash_dialog_comment_prompt">ఐచ్ఛికం: ఏ చర్య లోపానికి కారణమైంది?</string>
     <string name="crash_dialog_ok_toast">మీ సహాయానికి చాలా ధన్యవాదాలు!</string>
-    <string name="crash_dialog_text">క్షమించండి, పొరపాటు జరిగింది. మీరు ఈ బగ్ నివేదికను పంపడం ద్వారా మరియు మీరు చేసిన దానికి సంబంధించిన మరిన్ని వివరాలను పంపడం ద్వారా ఈ సమస్యను కనుగొని పరిష్కరించడంలో నాకు సహాయపడగలరు.</string>
+    <string name="crash_dialog_text">క్షమించండి, పొరపాటు జరిగింది. మీరు ఈ బగ్ నివేదికను పంపడం ద్వారా మరియు మీరు చేసిన దానికి సంబంధించిన మరిన్ని వివరాలను పంపడం ద్వారా ఈ సమస్యను కనుగొనడంలో మరియు పరిష్కరించడంలో నాకు సహాయపడగలరు.</string>
     <string name="crash_dialog_title">జాజెన్ మెడిటేషన్ టైమర్</string>
     <string name="crash_toast_text">క్షమించండి - అంతర్గత లోపం సంభవించింది!</string>
     <string name="crash_user_email_label">ఐచ్ఛికం: ఈ సమస్యపై ప్రశ్నలు లేదా నవీకరణల కోసం మీ ఇమెయిల్-చిరునామా.</string>
@@ -56,7 +56,7 @@
     <string name="desc_no_server_messages">యాప్ ప్రారంభించినప్పుడు స్వయంచాలకంగా వార్తలను చూపుతుంది</string>
     <string name="error_checking_for_server_messages">కొత్త సందేశాలను పొందడంలో లోపం ఏర్పడింది.</string>
     <string name="gong_type">గాంగ్ సౌండ్</string>
-    <string name="help_sectionlist_text">ఇక్కడ మీరు మీ సెషన్‌లోని కంటెంట్‌లకు పేరు పెట్టవచ్చు, వివరించవచ్చు మరియు సవరించవచ్చు.\n\n రీఆర్డర్\n ఐటెమ్‌లను రీఆర్డర్ చేయడానికి, ఒక ఐటెమ్‌పై ఎక్కువసేపు ప్రెస్ చేసి,\n దాన్ని దాని కొత్త స్థానానికి లాగండి.\n\n తొలగించడం\n ఒక అంశాన్ని తొలగించడానికి, దాన్ని కుడివైపుకి తరలించండి.\n\n ఎడిట్ చేయడానికి, దాన్ని ఎడిట్ చేయడానికి,\n\n బటన్‌ను ఒకసారి నొక్కండి.\n\n విభాగాన్ని సవరించడానికి,\n\n బటన్‌ను ఒకసారి నొక్కండి.</string>
+    <string name="help_sectionlist_text">ఇక్కడ మీరు మీ సెషన్ యొక్క కంటెంట్‌లకు పేరు పెట్టవచ్చు, వివరించవచ్చు మరియు సవరించవచ్చు.\n\nక్రమాన్ని మార్చడం\nఐటెమ్‌లను మళ్లీ ఆర్డర్ చేయడానికి, ఒక ఐటెమ్‌పై ఎక్కువసేపు నొక్కండి మరియు\nదాని కొత్త స్థానానికి లాగండి.\n\nతొలగిస్తోంది\nఒక అంశాన్ని తొలగించడానికి, దానిని కుడివైపుకు తరలించండి.\n\nసవరించు\nవిభాగాన్ని సవరించడానికి, దాన్ని ఒకసారి తాకండి.\n\nజోడించు\nకొత్త విభాగాన్ని జోడించడానికి, + బటన్‌ను నొక్కండి.</string>
     <string name="help_sectionlist_title">సెషన్‌ని సవరించండి</string>
     <string name="label_section_name">విభాగం పేరు</string>
     <string name="label_session_description">సెషన్ వివరణ</string>
@@ -74,7 +74,7 @@
     <string name="menu_settings">సెట్టింగ్‌లు</string>
     <string name="minuten">నిమిషాలు</string>
     <string name="no_new_server_messages">కొత్త సందేశాలు ఏవీ అందుబాటులో లేవు.</string>
-    <string name="no_sections_in_session">ధ్యానం ప్రారంభించడం సాధ్యం కాదు: ఎంచుకున్న సెషన్‌లో ఏ విభాగాలు లేవు.</string>
+    <string name="no_sections_in_session">ధ్యానం\'ని ప్రారంభించలేము: ఎంచుకున్న సెషన్‌లో ఏ విభాగాలు లేవు.</string>
     <string name="no_session_exists">ప్రారంభించగలిగే సెషన్ ఏదీ లేదు. దయచేసి ముందుగా ఒకదాన్ని సృష్టించండి.</string>
     <string name="notification_text">జాజెన్ ధ్యానం ప్రస్తుతం నడుస్తోంది</string>
     <string name="notification_text_paused">జాజెన్ ధ్యానం పాజ్ చేయబడింది</string>
@@ -130,12 +130,12 @@
     <string name="status_bar_notification_info_overflow">999+</string>
     <string name="test_mute_perm_request">యాప్‌కి ప్రస్తుతం మీ ఫోన్‌ని మ్యూట్ చేయడానికి అనుమతి లేదు. దీన్ని మార్చడానికి సెట్టింగ్‌లను తెరవాలా?</string>
     <string name="text_cant_mute">దీన్ని మ్యూట్ చేయడానికి మీ ఫోన్ ఈ యాప్‌ని అనుమతించదు. ఈ యాప్‌ల సెట్టింగ్‌లలో మ్యూట్ చేయడాన్ని నిలిపివేయండి లేదా మీ ఫోన్ సెట్టింగ్‌లలో మ్యూట్ చేయడాన్ని అనుమతించండి.</string>
-    <string name="text_no_notify_access_settings">మ్యూట్‌ని అనుమతించడానికి మీ ఫోన్‌లో ప్రామాణిక సెట్టింగ్‌లు ఉన్నట్లు కనిపించడం లేదు. దయచేసి \"యాక్సెస్‌కి అంతరాయం కలిగించవద్దు\" సెట్టింగ్ కోసం మాన్యువల్‌గా చూసి, దాన్ని ప్రారంభించండి.</string>
+    <string name="text_no_notify_access_settings">మ్యూట్‌ని అనుమతించడానికి మీ ఫోన్‌లో ప్రామాణిక సెట్టింగ్‌లు ఉన్నట్లు కనిపించడం లేదు. దయచేసి \"అంతరాయం కలిగించవద్దు \" సెట్టింగ్ కోసం మాన్యువల్‌గా చూడండి మరియు దాన్ని ప్రారంభించండి.</string>
     <string name="text_no_sections">ఏ విభాగాలు నిర్వచించబడలేదు.</string>
     <string name="text_question_delete_session">ఎంచుకున్న సెషన్‌ని నిజంగా తొలగించాలా?</string>
     <string name="theme">థీమ్</string>
     <string name="theme_dark">డార్క్ థీమ్</string>
-    <string name="theme_desc">యాప్ కాంతి లేదా ముదురు రూపాన్ని ఎంచుకోండి</string>
+    <string name="theme_desc">యాప్ రూపాన్ని ఎంచుకోండి</string>
     <string name="theme_light">లైట్ థీమ్</string>
     <string name="theme_system">సిస్టమ్ థీమ్</string>
     <string name="theme_value_dark">dark</string>
@@ -158,4 +158,12 @@
     <string name="title_dim_bell">డిమ్ బెల్</string>
     <string name="dim_bell_label_off">మసకబారలేదు</string>
     <string name="dim_bell_label_format">మసకబారింది: %1$d0%%</string>
+    <string name="section_deleted">తొలగించబడింది __1_%s__\'</string>
+    <string name="action_undo">అన్డు</string>
+    <string name="notification_channel_name">ధ్యానం టైమర్</string>
+    <string name="nav_label_sessions">సెషన్స్</string>
+    <string name="nav_label_meditation">ధ్యానం</string>
+    <string name="nav_label_edit_session">సెషన్‌ని సవరించండి</string>
+    <string name="nav_label_edit_section">విభాగాన్ని సవరించండి</string>
+    <string name="nav_label_settings">సెట్టింగ్‌లు</string>
 </resources>

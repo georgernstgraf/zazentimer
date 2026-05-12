@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="abbrechen">રદ કરો</string>
-    <string name="about1">Zazen Meditation Timer — A simple meditation timer with customizable sections, bell sounds, and session management.</string>
-    <string name="about2">Originally created by Stefan Gaffga. Currently maintained by Georg Graf.&lt;br&gt;&lt;br&gt;Thanks to Winfried of &lt;a href="http://www.meditationsuhren.de"&gt;http://www.meditationsuhren.de&lt;/a&gt; for providing such great Bell Sounds!</string>
-    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues"&gt;Report issues on GitHub&lt;/a&gt;</string>
-    <string name="app_description">This application lets the user define a set of meditation sessions and provides a timer with visual and audible feedback when a part or the whole meditation is over.</string>
+    <string name="about1">ઝેઝેન મેડિટેશન ટાઈમર — કસ્ટમાઇઝ કરી શકાય તેવા વિભાગો, ઘંટડીના અવાજો અને સત્ર વ્યવસ્થાપન સાથેનું એક સરળ ધ્યાન ટાઈમર.</string>
+    <string name="about2">મૂળ સ્ટીફન ગફ્ગા દ્વારા બનાવવામાં આવ્યું હતું. હાલમાં જ્યોર્જ ગ્રાફ દ્વારા જાળવવામાં આવે છે.&lt;br&gt;&lt;br&gt;આવા મહાન બેલ સાઉન્ડ્સ પ્રદાન કરવા બદલ &lt;a href="http://www.meditationsuhren.de"&gt;http://www.meditationsuhren.de&lt;/a&gt; ના વિનફ્રાઇડનો આભાર!</string>
+    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues"&gt;GitHub પર સમસ્યાઓની જાણ કરો&lt;/a&gt;</string>
+    <string name="app_description">આ એપ્લિકેશન વપરાશકર્તાને ધ્યાન સત્રોના સમૂહને વ્યાખ્યાયિત કરવા દે છે અને જ્યારે કોઈ ભાગ અથવા સંપૂર્ણ ધ્યાન સમાપ્ત થઈ જાય ત્યારે દ્રશ્ય અને શ્રાવ્ય પ્રતિસાદ સાથે ટાઈમર પ્રદાન કરે છે.</string>
     <string name="app_name">Zazen Meditation Timer</string>
     <string name="appbar_scrolling_view_behavior">android.support.design.widget.AppBarLayout$ScrollingViewBehavior</string>
     <string name="backup_error_text">માફ કરશો, સાચવતી વખતે એક ભૂલ આવી.</string>
     <string name="backup_no_permission">ખૂટતી પરવાનગીઓને કારણે બેકઅપ બનાવી શકાયું નથી.</string>
     <string name="backup_not_createable">બેકઅપ ફાઇલ બનાવવામાં ભૂલ.</string>
     <string name="backup_success_text">બેકઅપ સફળતાપૂર્વક બનાવવામાં આવ્યું!</string>
-    <string name="bell_name_1">High Tone</string>
-    <string name="bell_name_2">Low Tone</string>
-    <string name="bell_name_3">Jap. Rhinbowl Dharma, 107mm</string>
-    <string name="bell_name_4">Jap. Rhinbowl Dharma, 88mm (black, glazed)</string>
-    <string name="bell_name_5">Jap. Rhinbowl Shomyo, 90mm</string>
-    <string name="bell_name_6">Jap. Rhinbowl Tang, 164mm</string>
-    <string name="bell_name_7">Tib. Bowl, 230mm</string>
-    <string name="bell_name_8">Jap. Rhinbowl, 97mm</string>
+    <string name="bell_name_1">ઉચ્ચ ટોન</string>
+    <string name="bell_name_2">લો ટોન</string>
+    <string name="bell_name_3">જપ. રિનબાઉલ ધર્મ, 107 મીમી</string>
+    <string name="bell_name_4">જપ. રિનબાઉલ ધર્મ, 88 મીમી (કાળો, ચમકદાર)</string>
+    <string name="bell_name_5">જપ. Rhinbowl Shomyo, 90mm</string>
+    <string name="bell_name_6">જપ. Rhinbowl Tang, 164mm</string>
+    <string name="bell_name_7">ટીબ. બાઉલ, 230 મીમી</string>
+    <string name="bell_name_8">જપ. Rhinbowl, 97mm</string>
     <string name="bell_pause">બેલ ગેપ (સેકન્ડ)</string>
     <string name="bell_user">બેલ ઉમેરો...</string>
     <string name="bottom_nav_meditation">ધ્યાન</string>
@@ -32,7 +32,7 @@
     <string name="checkbox_keep_screen_on">સ્ક્રીન ચાલુ રાખો</string>
     <string name="checkbox_no_server_messages">સમાચાર બતાવો</string>
     <string name="checkbox_phone_off">ફોન મ્યૂટ કરો</string>
-    <string name="checkbox_phone_off_desc">બધા ફોન અવાજો મ્યૂટ કરો.</string>
+    <string name="checkbox_phone_off_desc">ફોનના તમામ અવાજો મ્યૂટ કરો.</string>
     <string name="copy_prefix">ની નકલ</string>
     <string name="crash_dialog_comment_prompt">વૈકલ્પિક: કઈ ક્રિયાને કારણે ભૂલ થઈ?</string>
     <string name="crash_dialog_ok_toast">તમારી મદદ માટે ખૂબ ખૂબ આભાર!</string>
@@ -56,7 +56,7 @@
     <string name="desc_no_server_messages">જ્યારે એપ્લિકેશન શરૂ થાય ત્યારે આપમેળે સમાચાર બતાવો</string>
     <string name="error_checking_for_server_messages">નવા સંદેશાઓ લાવવામાં ભૂલ.</string>
     <string name="gong_type">ગોંગ સાઉન્ડ</string>
-    <string name="help_sectionlist_text">અહીં તમે તમારા સત્રની સામગ્રીને નામ, વર્ણન અને સંપાદિત કરી શકો છો.\n\n પુનઃક્રમાંકિત\n આઇટમને ફરીથી ગોઠવવા માટે, આઇટમ પર લાંબો સમય દબાવો અને\n તેને તેના નવા સ્થાન પર ખેંચો.\n\n કાઢી નાખવું\n આઇટમ કાઢી નાખવા માટે, તેને જમણી બાજુએ ખસેડો.\n\n સંપાદિત કરો\n વિભાગને સંપાદિત કરવા માટે, ફક્ત એક વાર તેને સ્પર્શ કરો.</string>
+    <string name="help_sectionlist_text">અહીં તમે તમારા સત્રની સામગ્રીનું નામ, વર્ણન અને સંપાદન કરી શકો છો.\n\nફરીથી ગોઠવી રહ્યું છે\nવસ્તુઓને ફરીથી ગોઠવવા માટે, આઇટમ પર લાંબો સમય દબાવો અને\nતેને તેની નવી સ્થિતિમાં ખેંચો.\n\nકાઢી રહ્યું છે\nઆઇટમ કાઢી નાખવા માટે, તેને જમણી બાજુએ ખસેડો.\n\nસંપાદિત કરો\nવિભાગને સંપાદિત કરવા માટે, ફક્ત તેને એકવાર સ્પર્શ કરો.\n\nઉમેરો\nનવો વિભાગ ઉમેરવા માટે, + બટન દબાવો.</string>
     <string name="help_sectionlist_title">સત્ર સંપાદિત કરો</string>
     <string name="label_section_name">વિભાગનું નામ</string>
     <string name="label_session_description">સત્ર વર્ણન</string>
@@ -74,7 +74,7 @@
     <string name="menu_settings">સેટિંગ્સ</string>
     <string name="minuten">મિનિટ</string>
     <string name="no_new_server_messages">કોઈ નવા સંદેશા ઉપલબ્ધ નથી.</string>
-    <string name="no_sections_in_session">ધ્યાન શરૂ કરી શકાતું નથી: પસંદ કરેલ સત્રમાં કોઈ વિભાગો નથી.</string>
+    <string name="no_sections_in_session">ધ્યાન શરૂ કરી શકાતું નથી: પસંદ કરેલ સત્રમાં કોઈ વિભાગ નથી.</string>
     <string name="no_session_exists">શરૂ કરી શકાય તેવું કોઈ સત્ર નથી. કૃપા કરીને પહેલા એક બનાવો.</string>
     <string name="notification_text">ઝાઝેન મેડિટેશન હાલમાં ચાલી રહ્યું છે</string>
     <string name="notification_text_paused">ઝાઝેન ધ્યાન થોભાવ્યું</string>
@@ -118,7 +118,7 @@
     <string name="search_menu_title">શોધો</string>
     <string name="section_info_string_1_pl">%1$d બેલ્સ</string>
     <string name="section_info_string_1_sg">1 બેલ</string>
-    <string name="section_info_string_2_pl">દરેક %1$d સેકન્ડ</string>
+    <string name="section_info_string_2_pl">દર %1$d સેકન્ડે</string>
     <string name="section_info_string_2_sg">દરેક સેકન્ડ</string>
     <string name="sekunden">સેકન્ડ</string>
     <string name="select_audio">ધ્વનિ ફાઇલ પસંદ કરો</string>
@@ -130,12 +130,12 @@
     <string name="status_bar_notification_info_overflow">999+</string>
     <string name="test_mute_perm_request">એપ્લિકેશનને હાલમાં તમારા ફોનને મ્યૂટ કરવાની મંજૂરી નથી. આ બદલવા માટે સેટિંગ્સ ખોલો?</string>
     <string name="text_cant_mute">તમારો ફોન આ એપને તેને મ્યૂટ કરવાની મંજૂરી આપતો નથી. આ એપ્લિકેશન સેટિંગ્સમાં મ્યૂટને અક્ષમ કરો અથવા તમારા ફોન સેટિંગ્સમાં મ્યૂટ કરવાની મંજૂરી આપો.</string>
-    <string name="text_no_notify_access_settings">તમારા ફોનમાં મ્યૂટ કરવાની મંજૂરી આપવા માટે માનક સેટિંગ્સ હોય તેવું લાગતું નથી. કૃપા કરીને \&amp;quot;Do\'t disturb Access\&amp;quot; સેટિંગ માટે મેન્યુઅલી જુઓ અને તેને સક્ષમ કરો.</string>
+    <string name="text_no_notify_access_settings">તમારા ફોનમાં મ્યૂટ કરવાની મંજૂરી આપવા માટે માનક સેટિંગ્સ હોય તેવું લાગતું નથી. કૃપા કરીને \"Do Not Disturb Access\" સેટિંગ માટે મેન્યુઅલી જુઓ અને તેને સક્ષમ કરો.</string>
     <string name="text_no_sections">કોઈ વિભાગો વ્યાખ્યાયિત નથી.</string>
     <string name="text_question_delete_session">ખરેખર પસંદ કરેલ સત્ર કાઢી નાખીએ?</string>
     <string name="theme">થીમ</string>
     <string name="theme_dark">ડાર્ક થીમ</string>
-    <string name="theme_desc">એપ્લિકેશનનો પ્રકાશ અથવા ઘાટો દેખાવ પસંદ કરો</string>
+    <string name="theme_desc">એપ્લિકેશન દેખાવ પસંદ કરો</string>
     <string name="theme_light">લાઇટ થીમ</string>
     <string name="theme_system">સિસ્ટમ થીમ</string>
     <string name="theme_value_dark">dark</string>
@@ -158,4 +158,12 @@
     <string name="title_dim_bell">મંદ બેલ</string>
     <string name="dim_bell_label_off">ઝાંખું નથી</string>
     <string name="dim_bell_label_format">મંદ: %1$d0%%</string>
+    <string name="section_deleted">કાઢી નાખેલ \'_%s_2__</string>
+    <string name="action_undo">પૂર્વવત્ કરો</string>
+    <string name="notification_channel_name">ધ્યાન ટાઈમર</string>
+    <string name="nav_label_sessions">સત્રો</string>
+    <string name="nav_label_meditation">ધ્યાન</string>
+    <string name="nav_label_edit_session">સત્ર સંપાદિત કરો</string>
+    <string name="nav_label_edit_section">વિભાગ સંપાદિત કરો</string>
+    <string name="nav_label_settings">સેટિંગ્સ</string>
 </resources>

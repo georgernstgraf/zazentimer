@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="abbrechen">Cancelar</string>
-    <string name="about1">Zazen Meditation Timer — A simple meditation timer with customizable sections, bell sounds, and session management.</string>
-    <string name="about2">Originally created by Stefan Gaffga. Currently maintained by Georg Graf.&lt;br&gt;&lt;br&gt;Thanks to Winfried of &lt;a href="http://www.meditationsuhren.de"&gt;http://www.meditationsuhren.de&lt;/a&gt; for providing such great Bell Sounds!</string>
-    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues"&gt;Report issues on GitHub&lt;/a&gt;</string>
-    <string name="app_description">This application lets the user define a set of meditation sessions and provides a timer with visual and audible feedback when a part or the whole meditation is over.</string>
+    <string name="about1">Temporizador de meditación Zazen: un temporizador de meditación sinxelo con seccións personalizables, sons de campá e xestión de sesións.</string>
+    <string name="about2">Creado orixinalmente por Stefan Gaffga. Actualmente mantendo por Georg Graf.&lt;br&gt;&lt;br&gt;Grazas a Winfried de &lt;a href="http://www.meditationsuhren.de"&gt;http://www.meditationsuhren.de&lt;/a&gt; por ofrecer uns sons de campá tan xeniais!</string>
+    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues"&gt;Informar de problemas en GitHub&lt;/a&gt;</string>
+    <string name="app_description">Esta aplicación permítelle ao usuario definir un conxunto de sesións de meditación e proporciona un temporizador con comentarios visuales e audibles cando unha parte ou toda a meditación rematou.</string>
     <string name="app_name">Zazen Meditation Timer</string>
     <string name="appbar_scrolling_view_behavior">android.support.design.widget.AppBarLayout$ScrollingViewBehavior</string>
     <string name="backup_error_text">Produciuse un erro ao gardar.</string>
     <string name="backup_no_permission">Non se puido crear a copia de seguranza porque faltan permisos.</string>
     <string name="backup_not_createable">Produciuse un erro ao crear o ficheiro de copia de seguranza.</string>
     <string name="backup_success_text">Copia de seguranza creada correctamente!</string>
-    <string name="bell_name_1">High Tone</string>
-    <string name="bell_name_2">Low Tone</string>
-    <string name="bell_name_3">Jap. Rhinbowl Dharma, 107mm</string>
-    <string name="bell_name_4">Jap. Rhinbowl Dharma, 88mm (black, glazed)</string>
-    <string name="bell_name_5">Jap. Rhinbowl Shomyo, 90mm</string>
-    <string name="bell_name_6">Jap. Rhinbowl Tang, 164mm</string>
-    <string name="bell_name_7">Tib. Bowl, 230mm</string>
-    <string name="bell_name_8">Jap. Rhinbowl, 97mm</string>
+    <string name="bell_name_1">Ton alto</string>
+    <string name="bell_name_2">Ton baixo</string>
+    <string name="bell_name_3">Xapón. Rhinbowl Dharma, 107 mm</string>
+    <string name="bell_name_4">Xapón. Rhinbowl Dharma, 88 mm (negro, esmaltado)</string>
+    <string name="bell_name_5">Xapón. Rhinbowl Shomyo, 90 mm</string>
+    <string name="bell_name_6">Xapón. Tanga Rhinbowl, 164 mm</string>
+    <string name="bell_name_7">Tib. Bol, 230 mm</string>
+    <string name="bell_name_8">Xapón. Rhinbowl, 97 mm</string>
     <string name="bell_pause">Intervalo de campá (s)</string>
     <string name="bell_user">Engadir Bell...</string>
     <string name="bottom_nav_meditation">Meditación</string>
@@ -56,7 +56,7 @@
     <string name="desc_no_server_messages">Mostrar automaticamente noticias cando se inicie a aplicación</string>
     <string name="error_checking_for_server_messages">Produciuse un erro ao obter novas mensaxes.</string>
     <string name="gong_type">Son Gong</string>
-    <string name="help_sectionlist_text">Aquí pode nomear, describir e editar o contido da súa sesión.\n\n REORDENACIÓN\n Para reordenar os elementos, prema durante moito tempo un elemento e\n arrástreo á súa nova posición.\n\n ELIMINACIÓN\n Para borralo, móveo a un elemento dereita.\n\n EDITAR\n Para editar unha sección, só tes que tocala unha vez.\n\n ENGADIR\n Para engadir unha nova sección, preme o botón +.</string>
+    <string name="help_sectionlist_text">Aquí podes nomear, describir e editar o contido da túa sesión.\n\nREORDENACIÓN\nPara reordenar os elementos, prema durante moito tempo sobre un elemento e\narrástralo á súa nova posición.\n\nELIMINANDO\nPara eliminar un elemento, móveo cara á dereita.\n\nEDITAR\nPara editar unha sección, só tes que tócala unha vez.\n\nENGADIR\nPara engadir unha nova sección, prema o botón +.</string>
     <string name="help_sectionlist_title">Editar sesión</string>
     <string name="label_section_name">Nome da sección</string>
     <string name="label_session_description">Descrición da sesión</string>
@@ -74,7 +74,7 @@
     <string name="menu_settings">Configuración</string>
     <string name="minuten">Minutos</string>
     <string name="no_new_server_messages">Non hai mensaxes novas dispoñibles.</string>
-    <string name="no_sections_in_session">Non se pode iniciar a meditación: a sesión seleccionada non ten ningunha sección.</string>
+    <string name="no_sections_in_session">Non se pode \' iniciar a meditación: a sesión seleccionada non ten ningunha sección.</string>
     <string name="no_session_exists">Non hai sesión que se poida iniciar. Crea un primeiro.</string>
     <string name="notification_text">Actualmente está en marcha unha meditación Zazen</string>
     <string name="notification_text_paused">A meditación Zazen fixo unha pausa</string>
@@ -93,7 +93,7 @@
     <string name="pref_mute_mode_vibrate_sound">Ton de chamada e vibración</string>
     <string name="pref_mute_mode_vibrate_sound_desc">Xoga o ton de chamada e a vibración</string>
     <string name="pref_muting">Configuración de silencio</string>
-    <string name="pref_sum_backup">Garda unha copia de seguridade das túas sesións e sons na túa tarxeta SD.</string>
+    <string name="pref_sum_backup">Garda unha copia de seguranza das túas sesións e sons na túa tarxeta SD.</string>
     <string name="pref_sum_bad_removal">Quitouse a tarxeta SD sen desmontar antes.</string>
     <string name="pref_sum_checking">Estase comprobando a tarxeta SD neste momento</string>
     <string name="pref_sum_ejecting">Estase expulsando a tarxeta SD</string>
@@ -105,7 +105,7 @@
     <string name="pref_title_backup">Crear copia de seguranza</string>
     <string name="pref_title_brightness">Brillo</string>
     <string name="pref_title_restore">Restaurar desde a copia de seguranza</string>
-    <string name="privacy_message">Esta aplicación non recolle ningún dato persoal; tampouco usa enderezos IP nin ningún outro dato relacionado coa tecnoloxía, nin recolle, procesa nin utiliza ningún de ningún xeito.</string>
+    <string name="privacy_message">Esta aplicación non recolle ningún dato persoal; tampouco utiliza enderezos IP nin ningún outro dato relacionado coa tecnoloxía, nin recolle, procesa nin utiliza ningún de ningún xeito.</string>
     <string name="privacy_ok">OK</string>
     <string name="privacy_title">Información de privacidade</string>
     <string name="really_stop">De verdade parar a meditación?</string>
@@ -130,12 +130,12 @@
     <string name="status_bar_notification_info_overflow">999+</string>
     <string name="test_mute_perm_request">Actualmente, a aplicación non ten permiso para silenciar o teu teléfono. Queres abrir a configuración para cambiar isto?</string>
     <string name="text_cant_mute">O teu teléfono non permite que esta aplicación o silencie. Desactiva o silencio na configuración desta aplicación ou permite o silencio na configuración do teu teléfono.</string>
-    <string name="text_no_notify_access_settings">Parece que o teu teléfono non ten a configuración estándar para permitir o silencio. Busca manualmente a configuración \&amp;quot;Non molestar ao acceso\&amp;quot; e actívaa.</string>
+    <string name="text_no_notify_access_settings">O teu teléfono non parece ter a configuración estándar para permitir o silencio. Busca manualmente a configuración \"Non molestar o acceso\" e actívaa.</string>
     <string name="text_no_sections">Non hai seccións definidas.</string>
     <string name="text_question_delete_session">Eliminar realmente a sesión seleccionada?</string>
     <string name="theme">Tema</string>
     <string name="theme_dark">Tema escuro</string>
-    <string name="theme_desc">Escolla o aspecto claro ou escuro da aplicación</string>
+    <string name="theme_desc">Escolla o aspecto da aplicación</string>
     <string name="theme_light">Tema lixeiro</string>
     <string name="theme_system">Tema do sistema</string>
     <string name="theme_value_dark">dark</string>
@@ -158,4 +158,12 @@
     <string name="title_dim_bell">Dim Bell</string>
     <string name="dim_bell_label_off">Non escurecido</string>
     <string name="dim_bell_label_format">Atenuado: %1$d0%%</string>
+    <string name="section_deleted">Eliminado \'%s\'</string>
+    <string name="action_undo">Desfacer</string>
+    <string name="notification_channel_name">Temporizador de meditación</string>
+    <string name="nav_label_sessions">Sesións</string>
+    <string name="nav_label_meditation">Meditación</string>
+    <string name="nav_label_edit_session">Editar sesión</string>
+    <string name="nav_label_edit_section">Sección Editar</string>
+    <string name="nav_label_settings">Configuración</string>
 </resources>

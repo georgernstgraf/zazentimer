@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="abbrechen">Zrušit</string>
-    <string name="about1">Zazen Meditation Timer — A simple meditation timer with customizable sections, bell sounds, and session management.</string>
-    <string name="about2">Originally created by Stefan Gaffga. Currently maintained by Georg Graf.&lt;br&gt;&lt;br&gt;Thanks to Winfried of &lt;a href="http://www.meditationsuhren.de"&gt;http://www.meditationsuhren.de&lt;/a&gt; for providing such great Bell Sounds!</string>
-    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues"&gt;Report issues on GitHub&lt;/a&gt;</string>
-    <string name="app_description">This application lets the user define a set of meditation sessions and provides a timer with visual and audible feedback when a part or the whole meditation is over.</string>
+    <string name="about1">Zazen Meditation Timer — Jednoduchý meditační časovač s přizpůsobitelnými sekcemi, zvuky zvonku a správou relací.</string>
+    <string name="about2">Původně vytvořil Stefan Gaffga. Aktuálně spravuje Georg Graf.&lt;br&gt;&lt;br&gt;Děkuji Winfriedovi z &lt;a href="http://www.meditationsuhren.de"&gt;http://www.meditationsuhren.de&lt;/a&gt; za poskytnutí tak skvělých zvuků zvonu!</string>
+    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues"&gt;Nahlásit problémy na GitHubu&lt;/a&gt;</string>
+    <string name="app_description">Tato aplikace umožňuje uživateli definovat sadu meditačních sezení a poskytuje časovač s vizuální a zvukovou zpětnou vazbou, když část nebo celá meditace skončí.</string>
     <string name="app_name">Zazen Meditation Timer</string>
     <string name="appbar_scrolling_view_behavior">android.support.design.widget.AppBarLayout$ScrollingViewBehavior</string>
     <string name="backup_error_text">Omlouváme se, při ukládání došlo k chybě.</string>
     <string name="backup_no_permission">Zálohu nelze vytvořit kvůli chybějícím oprávněním.</string>
     <string name="backup_not_createable">Chyba při vytváření záložního souboru.</string>
     <string name="backup_success_text">Záloha byla úspěšně vytvořena!</string>
-    <string name="bell_name_1">High Tone</string>
-    <string name="bell_name_2">Low Tone</string>
-    <string name="bell_name_3">Jap. Rhinbowl Dharma, 107mm</string>
-    <string name="bell_name_4">Jap. Rhinbowl Dharma, 88mm (black, glazed)</string>
-    <string name="bell_name_5">Jap. Rhinbowl Shomyo, 90mm</string>
-    <string name="bell_name_6">Jap. Rhinbowl Tang, 164mm</string>
-    <string name="bell_name_7">Tib. Bowl, 230mm</string>
-    <string name="bell_name_8">Jap. Rhinbowl, 97mm</string>
+    <string name="bell_name_1">Vysoký tón</string>
+    <string name="bell_name_2">Nízký tón</string>
+    <string name="bell_name_3">jap. Rhinbowl Dharma, 107 mm</string>
+    <string name="bell_name_4">jap. Rhinbowl Dharma, 88 mm (černá, glazovaná)</string>
+    <string name="bell_name_5">jap. Nosorožec Shomyo, 90 mm</string>
+    <string name="bell_name_6">jap. Rhinbowl Tang, 164 mm</string>
+    <string name="bell_name_7">Tib. Miska, 230 mm</string>
+    <string name="bell_name_8">jap. Nádržka, 97 mm</string>
     <string name="bell_pause">Zvonová mezera (s)</string>
     <string name="bell_user">Přidat Bell...</string>
     <string name="bottom_nav_meditation">Rozjímání</string>
@@ -56,7 +56,7 @@
     <string name="desc_no_server_messages">Automaticky zobrazovat zprávy při spuštění aplikace</string>
     <string name="error_checking_for_server_messages">Chyba při načítání nových zpráv.</string>
     <string name="gong_type">Zvuk gongu</string>
-    <string name="help_sectionlist_text">Zde můžete pojmenovat, popsat a upravit obsah své relace.\n\n REORDERING\n Chcete-li změnit pořadí položek, dlouze stiskněte položku a\n ji přetáhněte do nové pozice.\n\n DELETING\n Chcete-li položku odstranit,_PH_EDIT_PH_PH9 přesuňte ji doprava._PH3__ přetáhněte ji doprava. Chcete-li sekci upravit, stačí se jí jednou dotknout.\n\n ADD\n Chcete-li přidat novou sekci, stiskněte tlačítko +.</string>
+    <string name="help_sectionlist_text">Zde můžete pojmenovat, popsat a upravit obsah své relace.\n\nZMĚNA OBJEDNÁVKY\nChcete-li změnit pořadí položek, dlouze stiskněte položku a\npřetáhněte jej do nové polohy.\n\nSMAZÁNÍ\nChcete-li položku odstranit, přesuňte ji doprava.\n\nUPRAVIT\nChcete-li upravit sekci, stačí se jí dotknout.\n\nPŘIDAT\nChcete-li přidat novou sekci, stiskněte tlačítko +.</string>
     <string name="help_sectionlist_title">Upravit relaci</string>
     <string name="label_section_name">Název sekce</string>
     <string name="label_session_description">Popis relace</string>
@@ -74,7 +74,7 @@
     <string name="menu_settings">Nastavení</string>
     <string name="minuten">Zápis</string>
     <string name="no_new_server_messages">Nejsou k dispozici žádné nové zprávy.</string>
-    <string name="no_sections_in_session">Nelze spustit meditaci: Vybraná relace nemá žádné sekce.</string>
+    <string name="no_sections_in_session">Can\'t spustit meditaci: Vybraná relace nemá žádné sekce.</string>
     <string name="no_session_exists">Neexistuje žádná relace, kterou lze spustit. Nejprve si ji prosím vytvořte.</string>
     <string name="notification_text">V současné době probíhá zazenová meditace</string>
     <string name="notification_text_paused">Zazenová meditace se zastavila</string>
@@ -89,14 +89,14 @@
     <string name="pref_mute_mode_none_desc">Žádný vyzváněcí tón a žádné vibrace pro telefonní hovory a oznámení</string>
     <string name="pref_mute_mode_pref">Nastavení týkající se vyzváněcího tónu a upozornění</string>
     <string name="pref_mute_mode_vibrate">Pouze vibrace</string>
-    <string name="pref_mute_mode_vibrate_desc">Vibrovat pouze pro telefonní hovory a oznámení (nefunguje na Android 7 (Nougat) - chová se jako nastavení Ticho)</string>
+    <string name="pref_mute_mode_vibrate_desc">Vibrovat pouze pro telefonní hovory a oznámení (nefunguje na Android 7 (Nougat) – chová se jako nastavení Ticho)</string>
     <string name="pref_mute_mode_vibrate_sound">Vyzváněcí tón a vibrace</string>
-    <string name="pref_mute_mode_vibrate_sound_desc">Přehrajte vyzváněcí tón a vibrace</string>
+    <string name="pref_mute_mode_vibrate_sound_desc">Přehrát vyzváněcí tón a vibrace</string>
     <string name="pref_muting">Nastavení ztlumení</string>
     <string name="pref_sum_backup">Uložte si zálohu svých relací a zvuků na kartu SD.</string>
     <string name="pref_sum_bad_removal">SD karta byla vyjmuta, aniž by byla nejprve odpojena.</string>
     <string name="pref_sum_checking">V tuto chvíli probíhá kontrola SD karty</string>
-    <string name="pref_sum_ejecting">SD karta se vysouvá</string>
+    <string name="pref_sum_ejecting">Karta SD se vysouvá</string>
     <string name="pref_sum_nofs">Žádný souborový systém na SD kartě</string>
     <string name="pref_sum_read_only">SD karta je pouze pro čtení</string>
     <string name="pref_sum_removed">Není přítomna SD karta</string>
@@ -116,7 +116,7 @@
     <string name="restore_really_title">Opravdu obnovit data?</string>
     <string name="restore_success_text">Obnovení dat bylo úspěšné</string>
     <string name="search_menu_title">Vyhledávání</string>
-    <string name="section_info_string_1_pl">%1$d zvonky</string>
+    <string name="section_info_string_1_pl">%1$d Zvony</string>
     <string name="section_info_string_1_sg">1 zvonek</string>
     <string name="section_info_string_2_pl">každých %1$d sekund</string>
     <string name="section_info_string_2_sg">každou sekundu</string>
@@ -135,7 +135,7 @@
     <string name="text_question_delete_session">Opravdu smazat vybranou relaci?</string>
     <string name="theme">Téma</string>
     <string name="theme_dark">Temné téma</string>
-    <string name="theme_desc">Vyberte si světlý nebo tmavý vzhled aplikace</string>
+    <string name="theme_desc">Vyberte vzhled aplikace</string>
     <string name="theme_light">Světlé téma</string>
     <string name="theme_system">Systémové téma</string>
     <string name="theme_value_dark">dark</string>
@@ -158,4 +158,12 @@
     <string name="title_dim_bell">Dim Bell</string>
     <string name="dim_bell_label_off">Není zatemněno</string>
     <string name="dim_bell_label_format">Ztlumeno: %1$d0%%</string>
+    <string name="section_deleted">Smazáno \'%s\'</string>
+    <string name="action_undo">Vrátit zpět</string>
+    <string name="notification_channel_name">Meditační časovač</string>
+    <string name="nav_label_sessions">Relace</string>
+    <string name="nav_label_meditation">Rozjímání</string>
+    <string name="nav_label_edit_session">Upravit relaci</string>
+    <string name="nav_label_edit_section">Upravit sekci</string>
+    <string name="nav_label_settings">Nastavení</string>
 </resources>

@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="abbrechen">ሰርዝ</string>
-    <string name="about1">Zazen Meditation Timer — A simple meditation timer with customizable sections, bell sounds, and session management.</string>
-    <string name="about2">Originally created by Stefan Gaffga. Currently maintained by Georg Graf.&lt;br&gt;&lt;br&gt;Thanks to Winfried of &lt;a href="http://www.meditationsuhren.de"&gt;http://www.meditationsuhren.de&lt;/a&gt; for providing such great Bell Sounds!</string>
-    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues"&gt;Report issues on GitHub&lt;/a&gt;</string>
-    <string name="app_description">This application lets the user define a set of meditation sessions and provides a timer with visual and audible feedback when a part or the whole meditation is over.</string>
+    <string name="about1">የዛዘን ሜዲቴሽን ሰዓት ቆጣሪ - ሊበጁ የሚችሉ ክፍሎች፣ የደወል ድምፆች እና የክፍለ-ጊዜ አስተዳደር ያለው ቀላል የሜዲቴሽን ጊዜ ቆጣሪ።</string>
+    <string name="about2">መጀመሪያ የተፈጠረው በ Stefan Gaffga ነው። በአሁኑ ጊዜ በGeorg Graf ተጠብቆ የሚገኘው።&lt;br&gt;&lt;br&gt;ይህን የመሰለ ምርጥ የቤል ድምጽ ስላቀረበ የ&lt;a href="http://www.meditationsuhren.de"&gt;http://www.meditationsuhren.de&lt;/a&gt; ዊንፍሪድ እናመሰግናለን!</string>
+    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues"&gt;በGitHub ላይ ያሉ ችግሮችን ሪፖርት አድርግ&lt;/a&gt;</string>
+    <string name="app_description">ይህ መተግበሪያ ተጠቃሚው የሜዲቴሽን ክፍለ ጊዜዎችን እንዲገልጽ ያስችለዋል እና አንድ ክፍል ወይም አጠቃላይ ማሰላሰል ሲያልቅ ጊዜ ቆጣሪን በእይታ እና በሚሰማ ግብረመልስ ይሰጣል።</string>
     <string name="app_name">Zazen Meditation Timer</string>
     <string name="appbar_scrolling_view_behavior">android.support.design.widget.AppBarLayout$ማሸብለል እይታ ባህሪ</string>
-    <string name="backup_error_text">ይቅርታ፣ በማስቀመጥ ላይ ሳለ ስህተት ተፈጥሯል።</string>
+    <string name="backup_error_text">ይቅርታ፣ በማስቀመጥ ላይ ስህተት ተፈጥሯል።</string>
     <string name="backup_no_permission">በጎደሉ ፈቃዶች ምክንያት ምትኬን መፍጠር አልተቻለም።</string>
     <string name="backup_not_createable">የምትኬ ፋይል መፍጠር ላይ ስህተት።</string>
     <string name="backup_success_text">ምትኬ በተሳካ ሁኔታ ተፈጥሯል!</string>
-    <string name="bell_name_1">High Tone</string>
-    <string name="bell_name_2">Low Tone</string>
-    <string name="bell_name_3">Jap. Rhinbowl Dharma, 107mm</string>
-    <string name="bell_name_4">Jap. Rhinbowl Dharma, 88mm (black, glazed)</string>
-    <string name="bell_name_5">Jap. Rhinbowl Shomyo, 90mm</string>
-    <string name="bell_name_6">Jap. Rhinbowl Tang, 164mm</string>
-    <string name="bell_name_7">Tib. Bowl, 230mm</string>
-    <string name="bell_name_8">Jap. Rhinbowl, 97mm</string>
+    <string name="bell_name_1">ከፍተኛ ድምጽ</string>
+    <string name="bell_name_2">ዝቅተኛ ድምጽ</string>
+    <string name="bell_name_3">ጃፕ Rhinbowl Dharma, 107 ሚሜ</string>
+    <string name="bell_name_4">ጃፕ Rhinbowl Dharma፣ 88 ሚሜ (ጥቁር፣ አንጸባራቂ)</string>
+    <string name="bell_name_5">ጃፕ Rhinbowl Shomyo, 90 ሚሜ</string>
+    <string name="bell_name_6">ጃፕ Rhinbowl Tang, 164 ሚሜ</string>
+    <string name="bell_name_7">ቲብ. ጎድጓዳ ሳህን, 230 ሚሜ</string>
+    <string name="bell_name_8">ጃፕ ራይንቦውል ፣ 97 ሚሜ</string>
     <string name="bell_pause">የደወል ክፍተት (ሰከንድ)</string>
     <string name="bell_user">ደወል አክል...</string>
     <string name="bottom_nav_meditation">ማሰላሰል</string>
@@ -56,7 +56,7 @@
     <string name="desc_no_server_messages">መተግበሪያ ሲጀምር ዜናን በራስ-ሰር አሳይ</string>
     <string name="error_checking_for_server_messages">አዲስ መልዕክቶችን ማምጣት ላይ ስህተት።</string>
     <string name="gong_type">ጎንግ ድምፅ</string>
-    <string name="help_sectionlist_text">እዚህ የክፍለ-ጊዜዎን ይዘቶች መሰየም፣ መግለጽ እና ማረም ይችላሉ።\n\n መልሶ ማደራጀት\n ንጥሎቹን እንደገና ለመደርደር አንድን ንጥል በረጅሙ ተጭነው\n ወደ አዲሱ ቦታው ይጎትቱት።</string>
+    <string name="help_sectionlist_text">እዚህ የክፍለ ጊዜዎን ይዘቶች መሰየም፣ መግለጽ እና ማርትዕ ይችላሉ።\n\nእንደገና ማዘዝ\nንጥሎቹን እንደገና ለመደርደር አንድን ንጥል በረጅሙ ይጫኑ እና\nወደ አዲሱ ቦታው ይጎትቱት።\n\nበመሰረዝ ላይ\nአንድን ንጥል ለመሰረዝ ወደ ቀኝ ያንቀሳቅሱት።\n\nአርትዕ\nአንድን ክፍል ለማርትዕ አንድ ጊዜ ብቻ ይንኩት።\n\nአክል\nአዲስ ክፍል ለመጨመር የ+ ቁልፍን ይጫኑ።</string>
     <string name="help_sectionlist_title">ክፍለ ጊዜን ያርትዑ</string>
     <string name="label_section_name">የክፍል ስም</string>
     <string name="label_session_description">የክፍለ ጊዜ መግለጫ</string>
@@ -74,7 +74,7 @@
     <string name="menu_settings">ቅንብሮች</string>
     <string name="minuten">ደቂቃዎች</string>
     <string name="no_new_server_messages">ምንም አዲስ መልዕክቶች አይገኙም።</string>
-    <string name="no_sections_in_session">ማሰላሰል መጀመር አልተቻለም፡ የተመረጠው ክፍለ ጊዜ ምንም ክፍሎች የሉትም።</string>
+    <string name="no_sections_in_session">ማሰላሰል መጀመር እችላለሁ፡ የተመረጠው ክፍለ ጊዜ ምንም ክፍሎች የሉትም።</string>
     <string name="no_session_exists">ሊጀመር የሚችል ክፍለ ጊዜ የለም። እባክዎ መጀመሪያ አንድ ይፍጠሩ።</string>
     <string name="notification_text">የዛዘን ሜዲቴሽን በአሁኑ ጊዜ እየሰራ ነው።</string>
     <string name="notification_text_paused">የዛዘን ማሰላሰል ባለበት ቆሟል</string>
@@ -83,7 +83,7 @@
     <string name="num_bells">የደወል ብዛት</string>
     <string name="ok">እሺ</string>
     <string name="pref_desc_brightness">በማሰላሰል ጊዜ የማሳያ ብሩህነት</string>
-    <string name="pref_get_messages">አዳዲስ መልዕክቶችን አሁን ያረጋግጡ</string>
+    <string name="pref_get_messages">አዲስ መልዕክቶችን አሁን ያረጋግጡ</string>
     <string name="pref_mute_mode">የደወል ቅላጼ እና ማሳወቂያዎች</string>
     <string name="pref_mute_mode_none">ዝምታ</string>
     <string name="pref_mute_mode_none_desc">ምንም የስልክ ጥሪ ድምፅ እና ምንም ንዝረት የለም የስልክ ጥሪዎች እና ማሳወቂያዎች</string>
@@ -118,7 +118,7 @@
     <string name="search_menu_title">ፈልግ</string>
     <string name="section_info_string_1_pl">%1$d ደወሎች</string>
     <string name="section_info_string_1_sg">1 ደወል</string>
-    <string name="section_info_string_2_pl">በየ %1$d ሴኮንድ</string>
+    <string name="section_info_string_2_pl">በየ%1$d ሰከንድ</string>
     <string name="section_info_string_2_sg">በየሰከንዱ</string>
     <string name="sekunden">ሰከንዶች</string>
     <string name="select_audio">የድምጽ ፋይል ይምረጡ</string>
@@ -129,13 +129,13 @@
     <string name="session_list_unnamed_entry">ያልተሰየመ ክፍለ ጊዜ</string>
     <string name="status_bar_notification_info_overflow">999+</string>
     <string name="test_mute_perm_request">መተግበሪያው በአሁኑ ጊዜ ስልክዎን ድምጸ-ከል ማድረግ አይፈቀድለትም። ይህንን ለመቀየር ቅንብሩን ይክፈቱ?</string>
-    <string name="text_cant_mute">ስልክዎ ይህ መተግበሪያ ድምጸ-ከል እንዲያደርግ አይፈቅድም። በዚህ የመተግበሪያዎች ቅንብሮች ውስጥ ድምጸ-ከልን ያሰናክሉ ወይም በስልኮችዎ ውስጥ ድምጸ-ከል ያድርጉ።</string>
-    <string name="text_no_notify_access_settings">ስልክዎ ድምጸ-ከል ማድረግን ለመፍቀድ መደበኛ ቅንብሮች ያለው አይመስልም። እባኮትን እራስዎ የ \&amp;quot;አትረብሽ መዳረሻ\&amp;quot; ማቀናበርን ይፈልጉ እና ያነቃቁት።</string>
+    <string name="text_cant_mute">ስልክህ ይህ መተግበሪያ ድምጸ-ከል እንዲያደርግ አይፈቅድም። በዚህ የመተግበሪያዎች ቅንብሮች ውስጥ ድምጸ-ከልን ያሰናክሉ ወይም በስልኮችዎ ውስጥ ድምጸ-ከል ያድርጉ።</string>
+    <string name="text_no_notify_access_settings">ስልክዎ ድምጸ-ከል ማድረግን ለመፍቀድ መደበኛ ቅንብሮች ያለው አይመስልም። እባኮትን \"አትረብሽ መዳረሻ\" ማዋቀሩን እራስዎ ይፈልጉ እና ያነቃቁት።</string>
     <string name="text_no_sections">ምንም ክፍሎች አልተገለጹም።</string>
     <string name="text_question_delete_session">የተመረጠው ክፍለ ጊዜ ይሰረዝ?</string>
     <string name="theme">ጭብጥ</string>
     <string name="theme_dark">ጨለማ ጭብጥ</string>
-    <string name="theme_desc">የመተግበሪያውን ብርሃን ወይም ጨለማ ገጽታ ይምረጡ</string>
+    <string name="theme_desc">የመተግበሪያውን ገጽታ ይምረጡ</string>
     <string name="theme_light">የብርሃን ጭብጥ</string>
     <string name="theme_system">የስርዓት ጭብጥ</string>
     <string name="theme_value_dark">dark</string>
@@ -157,5 +157,13 @@
     <string name="pref_desc_bell_volume">ለደወል ድምፆች የማንቂያ ዥረቱን መጠን ይቆጣጠራል</string>
     <string name="title_dim_bell">ዲም ቤል</string>
     <string name="dim_bell_label_off">አልደበዘዘም።</string>
-    <string name="dim_bell_label_format">የደበዘዘ፡ %1$d0%%</string>
+    <string name="dim_bell_label_format">ደብዛዛ፡ %1$d0%%</string>
+    <string name="section_deleted">ተሰርዟል \'%s\'</string>
+    <string name="action_undo">ቀልብስ</string>
+    <string name="notification_channel_name">የማሰላሰል ጊዜ ቆጣሪ</string>
+    <string name="nav_label_sessions">ክፍለ-ጊዜዎች</string>
+    <string name="nav_label_meditation">ማሰላሰል</string>
+    <string name="nav_label_edit_session">ክፍለ ጊዜን ያርትዑ</string>
+    <string name="nav_label_edit_section">ክፍል አርትዕ</string>
+    <string name="nav_label_settings">ቅንብሮች</string>
 </resources>

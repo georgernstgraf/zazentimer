@@ -1,29 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="abbrechen">Kagbuo</string>
-    <string name="about1">Zazen Meditation Timer — A simple meditation timer with customizable sections, bell sounds, and session management.</string>
-    <string name="about2">Originally created by Stefan Gaffga. Currently maintained by Georg Graf.&lt;br&gt;&lt;br&gt;Thanks to Winfried of &lt;a href="http://www.meditationsuhren.de"&gt;http://www.meditationsuhren.de&lt;/a&gt; for providing such great Bell Sounds!</string>
-    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues"&gt;Report issues on GitHub&lt;/a&gt;</string>
-    <string name="app_description">This application lets the user define a set of meditation sessions and provides a timer with visual and audible feedback when a part or the whole meditation is over.</string>
+    <string name="about1">Oge ntụgharị uche Zazen - Oge ntụgharị uche dị mfe nwere ngalaba nwere ike ịhazi ya, ụda mgbịrịgba na njikwa nnọkọ.</string>
+    <string name="about2">Mbụ e kere site Stefan Gaffga. Ugbu a Georg Graf na-elekọta ya.&lt;br&gt;&lt;br&gt;Daalụ Winfried nke &lt;a href="http://www.meditationsuhren.de"&gt;http://www.meditationsuhren.de&lt;/a&gt; maka ịnye nnukwu ụda Bell!</string>
+    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues"&gt;Kọsa okwu na GitHub&lt;/a&gt;</string>
+    <string name="app_description">Ngwa a na-ahapụ onye ọrụ ka ọ kọwapụta otu nnọkọ ntụgharị uche wee na-enye ngụ oge nzaghachi anya na nke a na-anụ mgbe akụkụ ma ọ bụ ntụgharị uche dum gwụchara.</string>
     <string name="app_name">Zazen Meditation Timer</string>
-    <string name="appbar_scrolling_view_behavior">android.support.design.widget.AppBarLayout$ScrollingViewBehavior</string>
+    <string name="appbar_scrolling_view_behavior">android.support.design.widget.AppBarLayout$ScrollingNlele Omume</string>
     <string name="backup_error_text">Ndo, mperi mere mgbe ị na-echekwa.</string>
     <string name="backup_no_permission">Enweghị ike ịmepụta ndabere n\'ihi ikike efu.</string>
     <string name="backup_not_createable">Njehie ịmepụta faịlụ ndabere.</string>
     <string name="backup_success_text">Emebere ndabere nke ọma!</string>
-    <string name="bell_name_1">High Tone</string>
-    <string name="bell_name_2">Low Tone</string>
+    <string name="bell_name_1">Ụda dị elu</string>
+    <string name="bell_name_2">Ụda dị ala</string>
     <string name="bell_name_3">Jap. Rhinbowl Dharma, 107mm</string>
-    <string name="bell_name_4">Jap. Rhinbowl Dharma, 88mm (black, glazed)</string>
+    <string name="bell_name_4">Jap. Rhinbowl Dharma, 88mm (oji, glazed)</string>
     <string name="bell_name_5">Jap. Rhinbowl Shomyo, 90mm</string>
     <string name="bell_name_6">Jap. Rhinbowl Tang, 164mm</string>
-    <string name="bell_name_7">Tib. Bowl, 230mm</string>
+    <string name="bell_name_7">Tib. nnukwu efere, 230 mm</string>
     <string name="bell_name_8">Jap. Rhinbowl, 97mm</string>
     <string name="bell_pause">Oghere mgbịrịgba (skeji)</string>
     <string name="bell_user">Tinye mgbịrịgba...</string>
     <string name="bottom_nav_meditation">Ntụgharị uche</string>
     <string name="bottom_nav_sessions">Oge</string>
-    <string name="bottom_sheet_behavior">android.support.design.widget.BottomSheetBehavior</string>
+    <string name="bottom_sheet_behavior">android.support.design.widget.BottomSheet Omume</string>
     <string name="but_pause">Kwụsịtụ</string>
     <string name="but_start">Malite ntụgharị uche</string>
     <string name="but_stop">Kwụsị</string>
@@ -36,10 +36,10 @@
     <string name="copy_prefix">oyiri nke</string>
     <string name="crash_dialog_comment_prompt">Nhọrọ: Kedu ihe kpatara njehie ahụ?</string>
     <string name="crash_dialog_ok_toast">Daalụ nke ukwuu maka enyemaka gị!</string>
-    <string name="crash_dialog_text">Ọ dị m nwute, na mperi emela. Ị nwere ike inyere m aka ịchọta na dozie nsogbu a site na izipu akụkọ ahụhụ a na ikekwe ọbụna nkọwa ndị ọzọ na ihe ị mere.</string>
+    <string name="crash_dialog_text">Ọ dị m nwute, na mperi emela. Ị nwere ike inyere m aka ịchọta na idozi nsogbu a site na izipu akụkọ ahụhụ a na ikekwe ọbụna nkọwa ndị ọzọ na ihe ị mere.</string>
     <string name="crash_dialog_title">Oge ntụgharị uche Zazen</string>
     <string name="crash_toast_text">Ndo - mperi ime ime emela!</string>
-    <string name="crash_user_email_label">Nhọrọ: Adreesị-eMail gị maka ajụjụ ma ọ bụ mmelite na mbipụta a.</string>
+    <string name="crash_user_email_label">Nhọrọ: Adreesị-eMail gị maka ajụjụ ma ọ bụ mmelite na okwu a.</string>
     <string name="default_section_name">Akpọghị aha</string>
     <string name="demo_sess1_description">Ntụgharị uche mgbede Sọnde</string>
     <string name="demo_sess1_name">Zazen na Kinhin</string>
@@ -56,7 +56,7 @@
     <string name="desc_no_server_messages">Gosi akụkọ na-akpaghị aka mgbe ngwa malitere</string>
     <string name="error_checking_for_server_messages">Njehie ị weta ozi ọhụrụ.</string>
     <string name="gong_type">Gong ụda</string>
-    <string name="help_sectionlist_text">N\'ebe a, ị nwere ike ịkpọ aha, kọwaa na dezie ọdịnaya nke Oge gị.\n\n NA-atụgharị\n Ka ịtọgharịa ihe ndị ahụ, ogologo pịa ihe na\n dọkpụrụ ya gaa n\'ọnọdụ ọhụrụ ya.\n\n NA-ehichapụ\n Ka ihichapụ ihe, bugharịa ya n\'aka nri.\n\n Dezie\n Iji dezie ngalaba, naanị metụ ya aka otu ugboro.\n\n gbakwunye\n Ka ịgbakwunye ngalaba ọhụrụ, pịa bọtịnụ +.</string>
+    <string name="help_sectionlist_text">N\'ebe a, ị nwere ike ịkpọ aha, kọwaa na dezie ọdịnaya nke Oge gị.\n\nNA-atụgharị\nKa ịtọgharịa ihe ndị ahụ, ogologo pịa ihe na\ndọkpụrụ ya gaa n\'ọnọdụ ọhụrụ ya.\n\nNA-ehichapụ\nKa ihichapụ ihe, bugharịa ya n\'aka nri.\n\nDezie\nIji dezie ngalaba, naanị metụ ya aka otu ugboro.\n\ngbakwunye\nKa ịgbakwunye ngalaba ọhụrụ, pịa bọtịnụ +.</string>
     <string name="help_sectionlist_title">Dezie Oge</string>
     <string name="label_section_name">Aha ngalaba</string>
     <string name="label_session_description">Nkọwa Oge</string>
@@ -74,7 +74,7 @@
     <string name="menu_settings">Ntọala</string>
     <string name="minuten">Nkeji</string>
     <string name="no_new_server_messages">Enweghị ozi ọhụrụ dị.</string>
-    <string name="no_sections_in_session">Enweghị ike ịmalite ntụgharị uche: Oge ahọpụtara enweghị ngalaba ọ bụla.</string>
+    <string name="no_sections_in_session">Nwere ike\'t ịmalite ntụgharị uche: Oge ahọpụtara enweghị ngalaba ọ bụla.</string>
     <string name="no_session_exists">Enweghị nnọkọ enwere ike ịmalite. Biko buru ụzọ mepụta otu.</string>
     <string name="notification_text">Ntụgharị uche Zazen na-agba ọsọ ugbu a</string>
     <string name="notification_text_paused">Ntụgharị uche Zazen kwụsịrị</string>
@@ -100,12 +100,12 @@
     <string name="pref_sum_nofs">Enweghị sistemụ faịlụ na kaadị SD</string>
     <string name="pref_sum_read_only">Kaadị SD bụ naanị ọgụgụ</string>
     <string name="pref_sum_removed">Enweghị kaadị SD dị</string>
-    <string name="pref_sum_restore">Weghachite oge gị na ụda omenala site na nkwado kaadị SD</string>
+    <string name="pref_sum_restore">Weghachite nnọkọ gị na ụda omenala site na nkwado kaadị SD</string>
     <string name="pref_sum_shared">A na-ekekọrịta kaadị SD</string>
     <string name="pref_title_backup">Mepụta ndabere</string>
     <string name="pref_title_brightness">Icha ọkụ</string>
     <string name="pref_title_restore">Weghachi na ndabere</string>
-    <string name="privacy_message">Ngwa a anaghị anakọta data nkeonwe ọ bụla - ọ naghị eji adreesị IP ma ọ bụ data metụtara teknụzụ ọ bụla, ọ naghị anakọta, hazie ma ọ bụ jiri nke ọ bụla n\'ụzọ ọ bụla.</string>
+    <string name="privacy_message">Ngwa a anaghị anakọta data nkeonwe ọ bụla - ọ naghịkwa eji adreesị IP ma ọ bụ data metụtara teknụzụ ọ bụla, ọ naghị anakọta, hazie ma ọ bụ jiri nke ọ bụla n\'ụzọ ọ bụla.</string>
     <string name="privacy_ok">Ọ DỊ MMA</string>
     <string name="privacy_title">Ozi nzuzo</string>
     <string name="really_stop">N\'ezie kwụsị ntụgharị uche?</string>
@@ -118,7 +118,7 @@
     <string name="search_menu_title">Chọọ</string>
     <string name="section_info_string_1_pl">%1$d Mgbịrịgba</string>
     <string name="section_info_string_1_sg">1 Mgbịrịgba</string>
-    <string name="section_info_string_2_pl">ọ bụla %1$d Sekọnd</string>
+    <string name="section_info_string_2_pl">Sekọnd %1$d ọ bụla</string>
     <string name="section_info_string_2_sg">nke abụọ ọ bụla</string>
     <string name="sekunden">Sekọnd</string>
     <string name="select_audio">Họrọ faịlụ ụda</string>
@@ -129,13 +129,13 @@
     <string name="session_list_unnamed_entry">Oge akpọghị aha</string>
     <string name="status_bar_notification_info_overflow">999+</string>
     <string name="test_mute_perm_request">Achọghị ngwa ugbu a ka o mechie ekwentị gị. Mepee ntọala ka ịgbanwe nke a?</string>
-    <string name="text_cant_mute">Ekwentị gị anaghị ekwe ka ngwa a mebie ya. Gbanyụọ ogbi n\'ime ngwa ngwa a ma ọ bụ kwe ka mbelata na ntọala ekwentị gị.</string>
-    <string name="text_no_notify_access_settings">Ekwentị gị eyighị ka ọ nwere ntọala ọkọlọtọ iji kwe ka mpụ. Biko jiri aka gị chọọ ebe ị ga-esi na-ewepụta ihe &amp;quot;Edola akpata ọgba aghara&amp;quot; ma mee ya.</string>
+    <string name="text_cant_mute">Ekwentị gị anaghị ekwe ka ngwa a mebie ya. Gbanyụọ mkpọmkpọ ebe na Ntọala ngwa a ma ọ bụ kwe ka mbelata na Ntọala ekwentị gị.</string>
+    <string name="text_no_notify_access_settings">Ekwentị gị eyighị ka ọ nwere ntọala ọkọlọtọ iji kwe ka mpụ. Biko jiri aka gị chọọ nhazi \"Edola nsogbu nweta\" ma mee ya.</string>
     <string name="text_no_sections">Enweghị ngalaba akọwapụtara.</string>
     <string name="text_question_delete_session">Hichapụ n\'ezie nnọkọ ahọpụtara?</string>
     <string name="theme">Isiokwu</string>
     <string name="theme_dark">Isiokwu gbara ọchịchịrị</string>
-    <string name="theme_desc">Họrọ ìhè ma ọ bụ ọchịchịrị nke ngwa</string>
+    <string name="theme_desc">Họrọ ọdịdị ngwa ahụ</string>
     <string name="theme_light">Gburugburu Ọkụ</string>
     <string name="theme_system">Isiokwu Sistemu</string>
     <string name="theme_value_dark">dark</string>
@@ -147,15 +147,23 @@
     <string name="time_session_remaining">Oge fọdụrụ</string>
     <string name="title_mute_perm_request">Ikikere efu</string>
     <string name="title_question_delete_session">Hichapụ Oge?</string>
-    <string name="title_volume_bells">Mgbidi olu</string>
+    <string name="title_volume_bells">Olu olu</string>
     <string name="unnamed">Akpọghị aha</string>
     <string name="stop_meditation_title">Kwụsị ntụgharị uche?</string>
     <string name="stop_meditation_message">Oge ntụgharị uche gị ka na-aga n\'ihu.</string>
     <string name="stop_meditation_stop">Kwụsị</string>
     <string name="stop_meditation_cancel">Kagbuo</string>
-    <string name="pref_title_bell_volume">Mgbidi olu</string>
+    <string name="pref_title_bell_volume">Olu olu</string>
     <string name="pref_desc_bell_volume">Na-achịkwa olu iyi mkpu maka ụda mgbịrịgba</string>
     <string name="title_dim_bell">Dim Bell</string>
     <string name="dim_bell_label_off">Adịghị atụgharị</string>
-    <string name="dim_bell_label_format">Agbachiri: %1$d0%%</string>
+    <string name="dim_bell_label_format">Emechiri: %1$d0%%</string>
+    <string name="section_deleted">ehichapụrụ \'%s\'</string>
+    <string name="action_undo">Megharịa</string>
+    <string name="notification_channel_name">Oge ntụgharị uche</string>
+    <string name="nav_label_sessions">Oge</string>
+    <string name="nav_label_meditation">Ntụgharị uche</string>
+    <string name="nav_label_edit_session">Dezie Oge</string>
+    <string name="nav_label_edit_section">Dezie ngalaba</string>
+    <string name="nav_label_settings">Ntọala</string>
 </resources>

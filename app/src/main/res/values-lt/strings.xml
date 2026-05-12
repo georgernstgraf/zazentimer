@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="abbrechen">Atšaukti</string>
-    <string name="about1">Zazen Meditation Timer — A simple meditation timer with customizable sections, bell sounds, and session management.</string>
-    <string name="about2">Originally created by Stefan Gaffga. Currently maintained by Georg Graf.&lt;br&gt;&lt;br&gt;Thanks to Winfried of &lt;a href="http://www.meditationsuhren.de"&gt;http://www.meditationsuhren.de&lt;/a&gt; for providing such great Bell Sounds!</string>
-    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues"&gt;Report issues on GitHub&lt;/a&gt;</string>
-    <string name="app_description">This application lets the user define a set of meditation sessions and provides a timer with visual and audible feedback when a part or the whole meditation is over.</string>
+    <string name="about1">„Zazen“ meditacijos laikmatis – paprastas meditacijos laikmatis su tinkinamais skyriais, skambučio garsais ir seansų valdymu.</string>
+    <string name="about2">Iš pradžių sukūrė Stefan Gaffga. Šiuo metu prižiūri Georgas Grafas.&lt;br&gt;&lt;br&gt;Ačiū Winfriedui iš &lt;a href="http://www.meditationsuhren.de"&gt;http://www.meditationsuhren.de&lt;/a&gt;, kad suteikė tokius puikius varpelio garsus!</string>
+    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues"&gt;Pranešti apie „GitHub“ problemas&lt;/a&gt;</string>
+    <string name="app_description">Ši programa leidžia vartotojui nustatyti meditacijos seansų rinkinį ir pateikia laikmatį su vaizdiniu ir garsiniu grįžtamuoju ryšiu, kai baigiasi dalis arba visa meditacija.</string>
     <string name="app_name">Zazen Meditation Timer</string>
     <string name="appbar_scrolling_view_behavior">android.support.design.widget.AppBarLayout$ScrollingViewBehavior</string>
     <string name="backup_error_text">Atsiprašome, išsaugant įvyko klaida.</string>
     <string name="backup_no_permission">Nepavyko sukurti atsarginės kopijos, nes trūksta leidimų.</string>
     <string name="backup_not_createable">Kuriant atsarginės kopijos failą įvyko klaida.</string>
     <string name="backup_success_text">Atsarginė kopija sukurta sėkmingai!</string>
-    <string name="bell_name_1">High Tone</string>
-    <string name="bell_name_2">Low Tone</string>
-    <string name="bell_name_3">Jap. Rhinbowl Dharma, 107mm</string>
-    <string name="bell_name_4">Jap. Rhinbowl Dharma, 88mm (black, glazed)</string>
-    <string name="bell_name_5">Jap. Rhinbowl Shomyo, 90mm</string>
-    <string name="bell_name_6">Jap. Rhinbowl Tang, 164mm</string>
-    <string name="bell_name_7">Tib. Bowl, 230mm</string>
-    <string name="bell_name_8">Jap. Rhinbowl, 97mm</string>
+    <string name="bell_name_1">Aukštas tonas</string>
+    <string name="bell_name_2">Žemas tonas</string>
+    <string name="bell_name_3">Jap. Rhinbowl Dharma, 107 mm</string>
+    <string name="bell_name_4">Jap. Rhinbowl Dharma, 88mm (juodas, glazūruotas)</string>
+    <string name="bell_name_5">Jap. Rhinbowl Shomyo, 90 mm</string>
+    <string name="bell_name_6">Jap. Rhinbowl Tang, 164 mm</string>
+    <string name="bell_name_7">Tib. Dubuo, 230 mm</string>
+    <string name="bell_name_8">Jap. Rhinbow, 97mm</string>
     <string name="bell_pause">Varpelio tarpas (sek.)</string>
     <string name="bell_user">Pridėti varpelį...</string>
     <string name="bottom_nav_meditation">Meditacija</string>
@@ -56,7 +56,7 @@
     <string name="desc_no_server_messages">Automatiškai rodyti naujienas, kai programa paleidžiama</string>
     <string name="error_checking_for_server_messages">Gaunant naujus pranešimus įvyko klaida.</string>
     <string name="gong_type">Gongo garsas</string>
-    <string name="help_sectionlist_text">Čia galite pavadinti, apibūdinti ir redaguoti savo seanso turinį.\n\n PARDUOTI\n Norėdami pertvarkyti elementus, ilgai paspauskite elementą ir \n vilkite jį į naują vietą.\n\n IŠTRINIMAS\n, jei norite ištrinti elementą 6⦈ dešinėn.\n\n REDAGUOTI\n Norėdami redaguoti skyrių, tiesiog palieskite jį vieną kartą.\n\n ADD\n Norėdami pridėti naują skyrių, paspauskite mygtuką +.</string>
+    <string name="help_sectionlist_text">Čia galite pavadinti, apibūdinti ir redaguoti savo seanso turinį.\n\nPAKARTOTOJI UŽSAKYMAS\nNorėdami pertvarkyti prekes, ilgai paspauskite prekę ir\nvilkite jį į naują vietą.\n\nIŠTRINAMAS\nNorėdami ištrinti elementą, perkelkite jį į dešinę.\n\nREDAGUOTI\nNorėdami redaguoti skyrių, tiesiog palieskite ją vieną kartą.\n\nPRIDĖTI\nNorėdami pridėti naują skyrių, paspauskite mygtuką +.</string>
     <string name="help_sectionlist_title">Redaguoti sesiją</string>
     <string name="label_section_name">Skyriaus pavadinimas</string>
     <string name="label_session_description">Sesijos aprašymas</string>
@@ -74,7 +74,7 @@
     <string name="menu_settings">Nustatymai</string>
     <string name="minuten">Minutės</string>
     <string name="no_new_server_messages">Naujų pranešimų nėra.</string>
-    <string name="no_sections_in_session">Nepavyksta pradėti meditacijos: pasirinkta sesija neturi skyrių.</string>
+    <string name="no_sections_in_session">Negaliu\'paleisti meditacijos: pasirinkta sesija neturi skyrių.</string>
     <string name="no_session_exists">Nėra seanso, kurį būtų galima pradėti. Pirmiausia sukurkite vieną.</string>
     <string name="notification_text">Šiuo metu vyksta Zazen meditacija</string>
     <string name="notification_text_paused">Zazeno meditacija pristabdyta</string>
@@ -116,7 +116,7 @@
     <string name="restore_really_title">Tikrai atkurti duomenis?</string>
     <string name="restore_success_text">Duomenų atkūrimas sėkmingai atliktas</string>
     <string name="search_menu_title">Ieškoti</string>
-    <string name="section_info_string_1_pl">%1$d Varpeliai</string>
+    <string name="section_info_string_1_pl">%1$d Varpai</string>
     <string name="section_info_string_1_sg">1 varpelis</string>
     <string name="section_info_string_2_pl">kas %1$d sekundes</string>
     <string name="section_info_string_2_sg">kas sekundę</string>
@@ -129,13 +129,13 @@
     <string name="session_list_unnamed_entry">Sesija be vardo</string>
     <string name="status_bar_notification_info_overflow">999+</string>
     <string name="test_mute_perm_request">Šiuo metu programai neleidžiama nutildyti jūsų telefono. Atidaryti nustatymus, kad tai pakeistumėte?</string>
-    <string name="text_cant_mute">Jūsų telefonas neleidžia šiai programai jo nutildyti. Išjunkite nutildymą šiame Programų nustatymuose arba leiskite nutildyti savo Telefonų nustatymuose.</string>
-    <string name="text_no_notify_access_settings">Atrodo, kad jūsų telefone nėra standartinių nutildymo nustatymų. Rankiniu būdu ieškokite \&amp;quot;Netrukdymo prieigos\&amp;quot; nustatymo ir įgalinkite jį.</string>
+    <string name="text_cant_mute">Jūsų telefonas neleidžia šiai programai jo nutildyti. Išjunkite nutildymą programos nustatymuose arba leiskite nutildyti savo telefonų nustatymuose.</string>
+    <string name="text_no_notify_access_settings">Atrodo, kad jūsų telefone nėra standartinių nutildymo nustatymų. Rankiniu būdu ieškokite \"Netrukdymo prieigos\" nustatymo ir įgalinkite jį.</string>
     <string name="text_no_sections">Nėra apibrėžtų skyrių.</string>
     <string name="text_question_delete_session">Tikrai ištrinti pasirinktą seansą?</string>
     <string name="theme">tema</string>
     <string name="theme_dark">Tamsi tema</string>
-    <string name="theme_desc">Pasirinkite šviesią arba tamsią programos išvaizdą</string>
+    <string name="theme_desc">Pasirinkite programos išvaizdą</string>
     <string name="theme_light">Šviesos tema</string>
     <string name="theme_system">Sistemos tema</string>
     <string name="theme_value_dark">dark</string>
@@ -157,5 +157,13 @@
     <string name="pref_desc_bell_volume">Valdo varpelio garsų signalo srauto garsumą</string>
     <string name="title_dim_bell">Pritemęs varpelis</string>
     <string name="dim_bell_label_off">Nepritemdytas</string>
-    <string name="dim_bell_label_format">Pritemdyta: %1$d0 %%</string>
+    <string name="dim_bell_label_format">Pritemdyta: %1$d0%%</string>
+    <string name="section_deleted">Ištrinta \'%s\'</string>
+    <string name="action_undo">Anuliuoti</string>
+    <string name="notification_channel_name">Meditacijos laikmatis</string>
+    <string name="nav_label_sessions">Sesijos</string>
+    <string name="nav_label_meditation">Meditacija</string>
+    <string name="nav_label_edit_session">Redaguoti sesiją</string>
+    <string name="nav_label_edit_section">Redaguoti skyrių</string>
+    <string name="nav_label_settings">Nustatymai</string>
 </resources>

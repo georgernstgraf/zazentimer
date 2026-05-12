@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="abbrechen">გაუქმება</string>
-    <string name="about1">Zazen Meditation Timer — A simple meditation timer with customizable sections, bell sounds, and session management.</string>
-    <string name="about2">Originally created by Stefan Gaffga. Currently maintained by Georg Graf.&lt;br&gt;&lt;br&gt;Thanks to Winfried of &lt;a href="http://www.meditationsuhren.de"&gt;http://www.meditationsuhren.de&lt;/a&gt; for providing such great Bell Sounds!</string>
-    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues"&gt;Report issues on GitHub&lt;/a&gt;</string>
-    <string name="app_description">This application lets the user define a set of meditation sessions and provides a timer with visual and audible feedback when a part or the whole meditation is over.</string>
+    <string name="about1">Zazen Meditation Timer — მარტივი მედიტაციის ტაიმერი კონფიგურირებადი სექციებით, ზარის ხმებით და სესიის მენეჯმენტით.</string>
+    <string name="about2">თავდაპირველად შეიქმნა სტეფან გაფგას მიერ. ამჟამად ინახება გეორგ გრაფის მიერ.&lt;br&gt;&lt;br&gt;მადლობა უინფრიდს &lt;a href="http://www.meditationsuhren.de"&gt;http://www.meditationsuhren.de&lt;/a&gt;-დან ასეთი შესანიშნავი ზარის ხმების მოწოდებისთვის!</string>
+    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues"&gt;შეატყობინეთ პრობლემები GitHub-ზე&lt;/a&gt;</string>
+    <string name="app_description">ეს აპლიკაცია საშუალებას აძლევს მომხმარებელს განსაზღვროს მედიტაციის სესიების ნაკრები და აძლევს ტაიმერს ვიზუალური და ხმოვანი გამოხმაურებით, როდესაც მედიტაციის ნაწილი ან მთელი მედიტაცია დასრულდება.</string>
     <string name="app_name">Zazen Meditation Timer</string>
     <string name="appbar_scrolling_view_behavior">android.support.design.widget.AppBarLayout$ScrollingViewBehavior</string>
     <string name="backup_error_text">უკაცრავად, შენახვისას მოხდა შეცდომა.</string>
     <string name="backup_no_permission">სარეზერვო ასლის შექმნა ვერ მოხერხდა ნებართვების გამოტოვების გამო.</string>
     <string name="backup_not_createable">სარეზერვო ფაილის შექმნისას მოხდა შეცდომა.</string>
     <string name="backup_success_text">სარეზერვო ასლი წარმატებით შეიქმნა!</string>
-    <string name="bell_name_1">High Tone</string>
-    <string name="bell_name_2">Low Tone</string>
-    <string name="bell_name_3">Jap. Rhinbowl Dharma, 107mm</string>
-    <string name="bell_name_4">Jap. Rhinbowl Dharma, 88mm (black, glazed)</string>
-    <string name="bell_name_5">Jap. Rhinbowl Shomyo, 90mm</string>
-    <string name="bell_name_6">Jap. Rhinbowl Tang, 164mm</string>
-    <string name="bell_name_7">Tib. Bowl, 230mm</string>
-    <string name="bell_name_8">Jap. Rhinbowl, 97mm</string>
+    <string name="bell_name_1">მაღალი ტონი</string>
+    <string name="bell_name_2">დაბალი ტონი</string>
+    <string name="bell_name_3">იაპ. Rhinbowl Dharma, 107 მმ</string>
+    <string name="bell_name_4">იაპ. Rhinbowl Dharma, 88 მმ (შავი, მოჭიქული)</string>
+    <string name="bell_name_5">იაპ. Rhinbowl Shomyo, 90 მმ</string>
+    <string name="bell_name_6">იაპ. Rhinbowl Tang, 164 მმ</string>
+    <string name="bell_name_7">ტიბ. თასი, 230 მმ</string>
+    <string name="bell_name_8">იაპ. Rhinbowl, 97 მმ</string>
     <string name="bell_pause">ზარის უფსკრული (წმ)</string>
     <string name="bell_user">ზარის დამატება...</string>
     <string name="bottom_nav_meditation">მედიტაცია</string>
@@ -56,7 +56,7 @@
     <string name="desc_no_server_messages">ახალი ამბების ავტომატურად ჩვენება აპის დაწყებისას</string>
     <string name="error_checking_for_server_messages">შეცდომა ახალი შეტყობინებების მიღებისას.</string>
     <string name="gong_type">გონგის ხმა</string>
-    <string name="help_sectionlist_text">აქ შეგიძლიათ დაასახელოთ, აღწეროთ და დაარედაქტიროთ თქვენი სესიის შიგთავსი.\n\n ხელახლა შეკვეთა\n ერთეულების ხელახლა დასალაგებლად, დიდხანს დააჭირეთ ერთეულს და\n გადაიტანეთ მის ახალ პოზიციაზე.\n\n წაშლა\n ელემენტის წასაშლელად გადაიტანეთ იგი მარჯვნივ.\n\n რედაქტირება\n განყოფილების რედაქტირებისთვის, უბრალოდ დააჭირეთ ღილაკს AD\n ერთხელ.</string>
+    <string name="help_sectionlist_text">აქ შეგიძლიათ დაასახელოთ, აღწეროთ და შეცვალოთ თქვენი სესიის შინაარსი.\n\nხელახლა შეკვეთა\nნივთების ხელახლა შეკვეთისთვის, დიდხანს დააჭირეთ ერთ ნივთს და\nგადაიტანეთ იგი ახალ პოზიციაზე.\n\nწაშლა\nელემენტის წასაშლელად გადაიტანეთ იგი მარჯვნივ.\n\nრედაქტირება\nგანყოფილების რედაქტირებისთვის, უბრალოდ შეეხეთ მას ერთხელ.\n\nდამატება\nახალი განყოფილების დასამატებლად დააჭირეთ ღილაკს +.</string>
     <string name="help_sectionlist_title">სესიის რედაქტირება</string>
     <string name="label_section_name">განყოფილების სახელი</string>
     <string name="label_session_description">სესიის აღწერა</string>
@@ -74,7 +74,7 @@
     <string name="menu_settings">პარამეტრები</string>
     <string name="minuten">წუთები</string>
     <string name="no_new_server_messages">ახალი შეტყობინებები არ არის ხელმისაწვდომი.</string>
-    <string name="no_sections_in_session">მედიტაციის დაწყება შეუძლებელია: არჩეულ სესიას არ აქვს სექციები.</string>
+    <string name="no_sections_in_session">ვერ\'მედიტაციის დაწყება: არჩეულ სესიას არ აქვს სექციები.</string>
     <string name="no_session_exists">არ არსებობს სესიის დაწყება. გთხოვთ, ჯერ შექმენით ერთი.</string>
     <string name="notification_text">ამჟამად მიმდინარეობს ზაზენის მედიტაცია</string>
     <string name="notification_text_paused">ზაზენის მედიტაცია შეჩერდა</string>
@@ -130,12 +130,12 @@
     <string name="status_bar_notification_info_overflow">999+</string>
     <string name="test_mute_perm_request">აპს ამჟამად არ აქვს თქვენი ტელეფონის დადუმების უფლება. გახსენით პარამეტრები ამის შესაცვლელად?</string>
     <string name="text_cant_mute">თქვენი ტელეფონი არ აძლევს ამ აპს მისი დადუმების უფლებას. გამორთეთ დადუმება ამ აპების პარამეტრებში ან ნება დართოთ დადუმება თქვენი ტელეფონების პარამეტრებში.</string>
-    <string name="text_no_notify_access_settings">როგორც ჩანს, თქვენს ტელეფონს არ აქვს სტანდარტული პარამეტრები დადუმების დასაშვებად. გთხოვთ, ხელით მოძებნოთ \&amp;quot;არ შემაწუხოთ წვდომა\&amp;quot; პარამეტრი და ჩართოთ იგი.</string>
+    <string name="text_no_notify_access_settings">როგორც ჩანს, თქვენს ტელეფონს არ აქვს სტანდარტული პარამეტრები დადუმების დასაშვებად. გთხოვთ, ხელით მოძებნოთ \"არ შემაწუხოთ წვდომა\" პარამეტრი და ჩართოთ იგი.</string>
     <string name="text_no_sections">სექციები არ არის განსაზღვრული.</string>
     <string name="text_question_delete_session">ნამდვილად წაიშლება არჩეული სესია?</string>
     <string name="theme">თემა</string>
     <string name="theme_dark">მუქი თემა</string>
-    <string name="theme_desc">აირჩიეთ აპის ღია ან მუქი გარეგნობა</string>
+    <string name="theme_desc">აირჩიეთ აპლიკაციის გარეგნობა</string>
     <string name="theme_light">მსუბუქი თემა</string>
     <string name="theme_system">სისტემის თემა</string>
     <string name="theme_value_dark">dark</string>
@@ -157,5 +157,13 @@
     <string name="pref_desc_bell_volume">აკონტროლებს განგაშის ნაკადის ხმას ზარის ხმებისთვის</string>
     <string name="title_dim_bell">დიმ ბელი</string>
     <string name="dim_bell_label_off">არ ჩამქრალი</string>
-    <string name="dim_bell_label_format">ჩაბნელებული: %1$d0%%</string>
+    <string name="dim_bell_label_format">ჩამქრალი: %1$d0%%</string>
+    <string name="section_deleted">წაშლილია \'%s\'</string>
+    <string name="action_undo">გაუქმება</string>
+    <string name="notification_channel_name">მედიტაციის ტაიმერი</string>
+    <string name="nav_label_sessions">სესიები</string>
+    <string name="nav_label_meditation">მედიტაცია</string>
+    <string name="nav_label_edit_session">სესიის რედაქტირება</string>
+    <string name="nav_label_edit_section">განყოფილების რედაქტირება</string>
+    <string name="nav_label_settings">პარამეტრები</string>
 </resources>

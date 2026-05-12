@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="abbrechen">Utzi</string>
-    <string name="about1">Zazen Meditation Timer — A simple meditation timer with customizable sections, bell sounds, and session management.</string>
-    <string name="about2">Originally created by Stefan Gaffga. Currently maintained by Georg Graf.&lt;br&gt;&lt;br&gt;Thanks to Winfried of &lt;a href="http://www.meditationsuhren.de"&gt;http://www.meditationsuhren.de&lt;/a&gt; for providing such great Bell Sounds!</string>
-    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues"&gt;Report issues on GitHub&lt;/a&gt;</string>
-    <string name="app_description">This application lets the user define a set of meditation sessions and provides a timer with visual and audible feedback when a part or the whole meditation is over.</string>
+    <string name="about1">Zazen Meditation Timer - Meditazio-tenporizadore sinplea atal pertsonalizagarriak, kanpai-soinuak eta saioen kudeaketa dituena.</string>
+    <string name="about2">Jatorriz Stefan Gaffgak sortu zuen. Gaur egun Georg Graf-ek mantentzen du.&lt;br&gt;&lt;br&gt;Eskerrik asko &lt;a href="http://www.meditationsuhren.de"&gt;http://www.meditationsuhren.de&lt;/a&gt;-ko Winfried-i, Kanpai Soinu bikainak eskaintzeagatik!</string>
+    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues"&gt;Eman arazoen berri GitHub-en&lt;/a&gt;</string>
+    <string name="app_description">Aplikazio honek meditazio-saio multzo bat definitzen uzten dio erabiltzaileari eta tenporizadore bat eskaintzen du ikusmen eta entzunezko feedbacka duen meditazio zati bat edo osoa amaitzen denean.</string>
     <string name="app_name">Zazen Meditation Timer</string>
     <string name="appbar_scrolling_view_behavior">android.support.design.widget.AppBarLayout$ScrollingViewBehavior</string>
     <string name="backup_error_text">Errore bat gertatu da gordetzean.</string>
     <string name="backup_no_permission">Ezin izan da babeskopia sortu baimenak falta direlako.</string>
     <string name="backup_not_createable">Errore bat gertatu da babeskopia fitxategia sortzean.</string>
     <string name="backup_success_text">Babeskopia behar bezala sortu da!</string>
-    <string name="bell_name_1">High Tone</string>
-    <string name="bell_name_2">Low Tone</string>
-    <string name="bell_name_3">Jap. Rhinbowl Dharma, 107mm</string>
-    <string name="bell_name_4">Jap. Rhinbowl Dharma, 88mm (black, glazed)</string>
-    <string name="bell_name_5">Jap. Rhinbowl Shomyo, 90mm</string>
-    <string name="bell_name_6">Jap. Rhinbowl Tang, 164mm</string>
-    <string name="bell_name_7">Tib. Bowl, 230mm</string>
-    <string name="bell_name_8">Jap. Rhinbowl, 97mm</string>
+    <string name="bell_name_1">Tonu altua</string>
+    <string name="bell_name_2">Tonu baxua</string>
+    <string name="bell_name_3">Jap. Rhinbowl Dharma, 107 mm</string>
+    <string name="bell_name_4">Jap. Rhinbowl Dharma, 88 mm (beltza, beiratua)</string>
+    <string name="bell_name_5">Jap. Rhinbowl Shomyo, 90 mm</string>
+    <string name="bell_name_6">Jap. Rhinbowl Tanga, 164 mm</string>
+    <string name="bell_name_7">Tib. Bola, 230 mm</string>
+    <string name="bell_name_8">Jap. Rhinbowl, 97 mm</string>
     <string name="bell_pause">Kanpai tartea (seg)</string>
     <string name="bell_user">Gehitu Bell...</string>
     <string name="bottom_nav_meditation">Meditazioa</string>
@@ -32,7 +32,7 @@
     <string name="checkbox_keep_screen_on">Mantendu pantaila piztuta</string>
     <string name="checkbox_no_server_messages">Erakutsi Albisteak</string>
     <string name="checkbox_phone_off">Isilarazi telefonoa</string>
-    <string name="checkbox_phone_off_desc">Ezkutatu telefonoaren soinu guztiak.</string>
+    <string name="checkbox_phone_off_desc">Isilarazi telefonoaren soinu guztiak.</string>
     <string name="copy_prefix">-ren kopia</string>
     <string name="crash_dialog_comment_prompt">Aukerakoa: zein ekintzak eragin du errorea?</string>
     <string name="crash_dialog_ok_toast">Mila esker zure laguntzagatik!</string>
@@ -56,7 +56,7 @@
     <string name="desc_no_server_messages">Erakutsi automatikoki Albisteak aplikazioa hasten denean</string>
     <string name="error_checking_for_server_messages">Errore bat gertatu da mezu berriak eskuratzean.</string>
     <string name="gong_type">Gong Soinua</string>
-    <string name="help_sectionlist_text">Hemen zure Saioaren edukia izendatu, deskribatu eta editatu dezakezu.\n\n ORDENAKETA\n Elementuak berrantolatzeko, sakatu luze elementu bat eta\n arrastatu bere posizio berrira.\n\n EZABATZEA\n Eraman ezazu elementu batera ezabatzeko eskuinera.\n\n EDITAR\n Atal bat editatzeko, ukitu behin bakarrik.\n\n GEHITU\n Atal berri bat gehitzeko, sakatu + botoia.</string>
+    <string name="help_sectionlist_text">Hemen zure Saioaren edukiak izendatu, deskribatu eta edita ditzakezu.\n\nERREORDENATZEA\nElementuak berrantolatzeko, sakatu luze elementu bat eta\narrastatu bere posizio berrira.\n\nEZABATZEN\nElementu bat ezabatzeko, mugitu eskuinera.\n\nEDIZIOA\nAtal bat editatzeko, ukitu behin.\n\nGEHITU\nAtal berri bat gehitzeko, sakatu + botoia.</string>
     <string name="help_sectionlist_title">Editatu saioa</string>
     <string name="label_section_name">Atalaren izena</string>
     <string name="label_session_description">Saioaren deskribapena</string>
@@ -74,7 +74,7 @@
     <string name="menu_settings">Ezarpenak</string>
     <string name="minuten">Minutuak</string>
     <string name="no_new_server_messages">Ez dago mezu berririk eskuragarri.</string>
-    <string name="no_sections_in_session">Ezin da meditazioa hasi: hautatutako saioak ez du atalik.</string>
+    <string name="no_sections_in_session">Ezin \'meditazioa hasi: hautatutako saioak ez du atalik.</string>
     <string name="no_session_exists">Ez dago hasi daitekeen saiorik. Mesedez, sortu lehenengo bat.</string>
     <string name="notification_text">Zazen Meditazio bat martxan dago</string>
     <string name="notification_text_paused">Zazen Meditazioa eten egin zen</string>
@@ -82,7 +82,7 @@
     <string name="notification_title_paused">Zazen meditazioa (pausatua)</string>
     <string name="num_bells">Kanpai zenbaketa</string>
     <string name="ok">Ados</string>
-    <string name="pref_desc_brightness">Pantailaren distira meditazioan</string>
+    <string name="pref_desc_brightness">Pantailaren distira meditazioan zehar</string>
     <string name="pref_get_messages">Begiratu orain mezu berriak dauden</string>
     <string name="pref_mute_mode">Dei-tonua eta jakinarazpenak</string>
     <string name="pref_mute_mode_none">Isiltasuna</string>
@@ -97,10 +97,10 @@
     <string name="pref_sum_bad_removal">SD txartela kendu da lehenik desmuntatu gabe.</string>
     <string name="pref_sum_checking">SD-txartela egiaztatzen ari da une honetan</string>
     <string name="pref_sum_ejecting">SD-txartela kanporatzen ari da</string>
-    <string name="pref_sum_nofs">Ez dago fitxategi-sistemarik SD txartelean</string>
+    <string name="pref_sum_nofs">Ez dago fitxategi-sistemarik SD-txartelean</string>
     <string name="pref_sum_read_only">SD txartela irakurtzeko soilik da</string>
     <string name="pref_sum_removed">Ez dago SD txartelik</string>
-    <string name="pref_sum_restore">Leheneratu zure saioak eta soinu pertsonalizatuak SD txartelaren babeskopiatik</string>
+    <string name="pref_sum_restore">Leheneratu zure saioak eta soinu pertsonalizatuak SD-txarteleko babeskopiatik</string>
     <string name="pref_sum_shared">SD txartela partekatzen da</string>
     <string name="pref_title_backup">Sortu babeskopia</string>
     <string name="pref_title_brightness">Distira</string>
@@ -130,13 +130,13 @@
     <string name="status_bar_notification_info_overflow">999+</string>
     <string name="test_mute_perm_request">Une honetan aplikazioak ezin du zure telefonoa isilarazteko baimenik. Hau aldatzeko ezarpenak ireki nahi dituzu?</string>
     <string name="text_cant_mute">Zure telefonoak ez du onartzen aplikazio hau isilarazteko. Desgaitu isiltzea aplikazioen ezarpenetan edo baimendu telefonoaren ezarpenetan.</string>
-    <string name="text_no_notify_access_settings">Badirudi zure telefonoak ez duela isilarazteko ezarpen estandarrak. Mesedez, bilatu eskuz \&amp;quot;Ez molestatu sarbidea\&amp;quot; ezarpena eta gaitu.</string>
+    <string name="text_no_notify_access_settings">Ez dirudi zure telefonoak ez duela isilarazteko ezarpen estandarrak. Mesedez, bilatu eskuz \"Ez molestatu sarbidea\" Ezarpena eta gaitu.</string>
     <string name="text_no_sections">Ez dago atalik definitu.</string>
     <string name="text_question_delete_session">Benetan ezabatu nahi duzu hautatutako saioa?</string>
     <string name="theme">Gaia</string>
     <string name="theme_dark">Gai iluna</string>
-    <string name="theme_desc">Aukeratu aplikazioaren itxura argia edo iluna</string>
-    <string name="theme_light">Gai Argia</string>
+    <string name="theme_desc">Aukeratu aplikazioaren itxura</string>
+    <string name="theme_light">Argia Gaia</string>
     <string name="theme_system">Sistemaren gaia</string>
     <string name="theme_value_dark">dark</string>
     <string name="theme_value_light">light</string>
@@ -157,5 +157,13 @@
     <string name="pref_desc_bell_volume">Kanpai-soinuen alarma-korrontearen bolumena kontrolatzen du</string>
     <string name="title_dim_bell">Dim Bell</string>
     <string name="dim_bell_label_off">Ez ilundu</string>
-    <string name="dim_bell_label_format">Ilundua: %1$d%%</string>
+    <string name="dim_bell_label_format">Ilunduta: %1$d0%%</string>
+    <string name="section_deleted">Ezabatu \'%s\'</string>
+    <string name="action_undo">Desegin</string>
+    <string name="notification_channel_name">Meditazio tenporizadorea</string>
+    <string name="nav_label_sessions">Saioak</string>
+    <string name="nav_label_meditation">Meditazioa</string>
+    <string name="nav_label_edit_session">Editatu saioa</string>
+    <string name="nav_label_edit_section">Editatu Atala</string>
+    <string name="nav_label_settings">Ezarpenak</string>
 </resources>

@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="abbrechen">रद्द</string>
-    <string name="about1">Zazen Meditation Timer — A simple meditation timer with customizable sections, bell sounds, and session management.</string>
-    <string name="about2">Originally created by Stefan Gaffga. Currently maintained by Georg Graf.&lt;br&gt;&lt;br&gt;Thanks to Winfried of &lt;a href="http://www.meditationsuhren.de"&gt;http://www.meditationsuhren.de&lt;/a&gt; for providing such great Bell Sounds!</string>
-    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues"&gt;Report issues on GitHub&lt;/a&gt;</string>
-    <string name="app_description">This application lets the user define a set of meditation sessions and provides a timer with visual and audible feedback when a part or the whole meditation is over.</string>
+    <string name="about1">Zazen ध्यान टाइमर — अनुकूलन योग्य खंड, घंटी के आवाज, आरू सत्र प्रबंधन के साथ एक सरल ध्यान टाइमर |</string>
+    <string name="about2">मूल रूप से स्टीफन गफगा द्वारा निर्मित। वर्तमान में जॉर्ज ग्राफ द्वारा रखरखाव कयल गेल अछि.&lt;br&gt;&lt;br&gt;एतेक बढ़िया बेल साउंड्स उपलब्ध कराबय लेल &lt;a href="http://www.meditationsuhren.de"&gt;http://www.meditationsuhren.de&lt;/a&gt; के विनफ्राइड के धन्यवाद !</string>
+    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues"&gt;गिटहब पर मुद्दा रिपोर्ट करू&lt;/a&gt;</string>
+    <string name="app_description">इ एप्लीकेशन उपयोगकर्ता कें ध्यान सत्रक कें एकटा सेट परिभाषित करय कें सुविधा देयत छै आ जखन कोनों भाग या पूरा ध्यान समाप्त भ जायत छै तखन दृश्य आ श्रव्य प्रतिक्रिया कें साथ एकटा टाइमर प्रदान करयत छै.</string>
     <string name="app_name">Zazen Meditation Timer</string>
     <string name="appbar_scrolling_view_behavior">android.support.design.widget.AppBarLayout $ स्क्रॉल दृश्यव्यवहार</string>
     <string name="backup_error_text">क्षमा करू, सहेजैत काल एकटा त्रुटि भेल.</string>
     <string name="backup_no_permission">अनुमति गायब क कारण बैकअप नहि बना सकल.</string>
     <string name="backup_not_createable">बैकअप फाइल बनेबा मे त्रुटि।</string>
     <string name="backup_success_text">बैकअप सफलतापूर्वक बनाओल गेल!</string>
-    <string name="bell_name_1">High Tone</string>
-    <string name="bell_name_2">Low Tone</string>
-    <string name="bell_name_3">Jap. Rhinbowl Dharma, 107mm</string>
-    <string name="bell_name_4">Jap. Rhinbowl Dharma, 88mm (black, glazed)</string>
-    <string name="bell_name_5">Jap. Rhinbowl Shomyo, 90mm</string>
-    <string name="bell_name_6">Jap. Rhinbowl Tang, 164mm</string>
-    <string name="bell_name_7">Tib. Bowl, 230mm</string>
-    <string name="bell_name_8">Jap. Rhinbowl, 97mm</string>
+    <string name="bell_name_1">उच्च स्वर</string>
+    <string name="bell_name_2">कम स्वर</string>
+    <string name="bell_name_3">जप। स्फटिक धर्म, 107 मिमी</string>
+    <string name="bell_name_4">जप। स्फटिक धर्म, 88 मिमी (काला, ग्लेज़ेड)</string>
+    <string name="bell_name_5">जप। स्फटिक शोम्यो, 90 मिमी</string>
+    <string name="bell_name_6">जप। स्फटिक तांग, 164 मिमी</string>
+    <string name="bell_name_7">टिब। कटोरा, 230 मिमी</string>
+    <string name="bell_name_8">जप। स्फटिक, 97 मिमी</string>
     <string name="bell_pause">घंटी अंतराल (सेकंड) 1।</string>
     <string name="bell_user">बेल जोड़ू...</string>
     <string name="bottom_nav_meditation">ध्यान-समाधि</string>
@@ -36,7 +36,7 @@
     <string name="copy_prefix">के प्रतिलिपि</string>
     <string name="crash_dialog_comment_prompt">वैकल्पिक: कोन क्रिया मे त्रुटि भेल?</string>
     <string name="crash_dialog_ok_toast">अपनेक सहयोग के लेल बहुत बहुत धन्यवाद!</string>
-    <string name="crash_dialog_text">हमरा क्षमा करब, जे कोनो त्रुटि भ\' गेल अछि। अहां एहि बग रिपोर्ट आओर शायद अहां जे केलहुं ताहि पर आओर बेसी विवरण भेज क एहि समस्या के खोजय आओर ठीक करय मे मदद करि सकय छी.</string>
+    <string name="crash_dialog_text">हमरा क्षमा करब, जे कोनो त्रुटि भ\' गेल अछि। अहां एहि बग रिपोर्ट आओर शायद अहां जे केलहुं ओकर आओर विवरण भेज क एहि समस्या के खोजय आओर ठीक करय मे मदद करि सकय छी.</string>
     <string name="crash_dialog_title">ज़ाज़ेन ध्यान टाइमर</string>
     <string name="crash_toast_text">क्षमा करब - एकटा आंतरिक त्रुटि भेल अछि!</string>
     <string name="crash_user_email_label">वैकल्पिक: अइ मुद्दा पर सवाल या अपडेट कें लेल अहां कें ईमेल-पता.</string>
@@ -73,7 +73,7 @@
     <string name="menu_privacy">गोपनीयता...</string>
     <string name="menu_settings">सेटिंग्स</string>
     <string name="minuten">मिनट</string>
-    <string name="no_new_server_messages">कोनो नव संदेश उपलब्ध नहि अछि।</string>
+    <string name="no_new_server_messages">कोनो नव संदेश उपलब्ध नहि।</string>
     <string name="no_sections_in_session">ध्यान शुरू नै क सकैत छी: चयनित सत्र मे कोनो खंड नहि अछि।</string>
     <string name="no_session_exists">कोनो एहन सत्र नहि अछि जे शुरू भ सकैत अछि। कृपया पहिने एकटा बनाउ।</string>
     <string name="notification_text">एखन एकटा ज़ाज़ेन मेडिटेशन चल रहल अछि</string>
@@ -132,10 +132,10 @@
     <string name="text_cant_mute">अहाँक फोन एहि App के म्यूट नै करय दैत अछि | एहि ऐप्स सेटिंग्स मे म्यूटिंग अक्षम करू या अपन फोन सेटिंग्स मे म्यूटिंग क अनुमति दियौ ।</string>
     <string name="text_no_notify_access_settings">अहां के फोन मे म्यूटिंग के अनुमति देबय लेल मानक सेटिंग नहिं बुझाइत अछि. कृपया मैन्युअल रूप सँ \"पहुंच केँ परेशान नहि करू\" सेटिंग केँ देखू आओर एकरा सक्षम करू.</string>
     <string name="text_no_sections">कोनो खंड परिभाषित नहि।</string>
-    <string name="text_question_delete_session">सचमुच चयनित सत्र मेटा दियौक?</string>
+    <string name="text_question_delete_session">सच मे चुनल गेल सत्र मेटा दियौक?</string>
     <string name="theme">बिसय</string>
     <string name="theme_dark">डार्क थीम</string>
-    <string name="theme_desc">ऐप के हल्का या गहरे रंग के रूप चुनें |</string>
+    <string name="theme_desc">ऐप के रूप चुनें</string>
     <string name="theme_light">प्रकाश विषय</string>
     <string name="theme_system">सिस्टम थीम</string>
     <string name="theme_value_dark">dark</string>
@@ -143,7 +143,7 @@
     <string name="theme_value_system">system</string>
     <string name="time_section_elapsed">खंड बीत गेल</string>
     <string name="time_section_remaining">खण्ड शेष</string>
-    <string name="time_session_elapsed">सत्र बीत गेल</string>
+    <string name="time_session_elapsed">सत्र बीति गेल</string>
     <string name="time_session_remaining">सत्र शेष अछि</string>
     <string name="title_mute_perm_request">अनुमति गायब अछि</string>
     <string name="title_question_delete_session">सत्र मेटाउ?</string>
@@ -158,4 +158,12 @@
     <string name="title_dim_bell">मंद घंटी</string>
     <string name="dim_bell_label_off">मद्धिम नहि</string>
     <string name="dim_bell_label_format">मंद: %1$d0%%।</string>
+    <string name="section_deleted">मेटा देल गेल \'%s\'</string>
+    <string name="action_undo">पूर्ववत करू</string>
+    <string name="notification_channel_name">ध्यान टाइमर</string>
+    <string name="nav_label_sessions">सत्र</string>
+    <string name="nav_label_meditation">ध्यान-समाधि</string>
+    <string name="nav_label_edit_session">संपादन सत्र</string>
+    <string name="nav_label_edit_section">संपादन खंड</string>
+    <string name="nav_label_settings">सेटिंग्स</string>
 </resources>

@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="abbrechen">বাতিল কৰক</string>
-    <string name="about1">Zazen Meditation Timer — A simple meditation timer with customizable sections, bell sounds, and session management.</string>
-    <string name="about2">Originally created by Stefan Gaffga. Currently maintained by Georg Graf.&lt;br&gt;&lt;br&gt;Thanks to Winfried of &lt;a href="http://www.meditationsuhren.de"&gt;http://www.meditationsuhren.de&lt;/a&gt; for providing such great Bell Sounds!</string>
-    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues"&gt;Report issues on GitHub&lt;/a&gt;</string>
-    <string name="app_description">This application lets the user define a set of meditation sessions and provides a timer with visual and audible feedback when a part or the whole meditation is over.</string>
+    <string name="about1">Zazen ধ্যান টাইমাৰ — স্বনিৰ্বাচিত অংশ, ঘণ্টাৰ শব্দ, আৰু অধিবেশন ব্যৱস্থাপনাৰ সৈতে এটা সহজ ধ্যান টাইমাৰ।</string>
+    <string name="about2">মূলতঃ ষ্টেফান গাফগাৰ দ্বাৰা সৃষ্টি কৰা হৈছে। বৰ্তমান Georg Graf দ্বাৰা ৰক্ষণাবেক্ষণ কৰা হৈছে।&lt;br&gt;&lt;br&gt;এনে মহান বেল শব্দ প্ৰদান কৰাৰ বাবে &lt;a href="http://www.meditationsuhren.de"&gt;http://www.meditationsuhren.de&lt;/a&gt; ৰ Winfried লৈ ধন্যবাদ!</string>
+    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues"&gt;GitHub ত সমস্যাসমূহ প্ৰতিবেদন কৰক&lt;/a&gt;</string>
+    <string name="app_description">এই এপ্লিকেচনে ব্যৱহাৰকাৰীক ধ্যান অধিবেশনৰ এটা গোট সংজ্ঞায়িত কৰিবলৈ দিয়ে আৰু এটা অংশ বা গোটেই ধ্যান শেষ হ\'লে দৃশ্যমান আৰু শ্ৰৱণযোগ্য প্ৰতিক্ৰিয়াৰ সৈতে এটা টাইমাৰ প্ৰদান কৰে।</string>
     <string name="app_name">Zazen Meditation Timer</string>
     <string name="appbar_scrolling_view_behavior">android.support.design.widget.AppBarLayout$স্ক্ৰলিংভিউবিহেভিয়াৰ</string>
     <string name="backup_error_text">ক্ষমা কৰিব, সংৰক্ষণ কৰাৰ সময়ত এটা ত্ৰুটি হৈছে।</string>
     <string name="backup_no_permission">অনুপস্থিত অনুমতিৰ বাবে বেকআপ সৃষ্টি কৰিব পৰা নগ\'ল।</string>
     <string name="backup_not_createable">বেকআপ ফাইল সৃষ্টি কৰাত ত্ৰুটি।</string>
     <string name="backup_success_text">বেকআপ সফলতাৰে সৃষ্টি কৰা হৈছে!</string>
-    <string name="bell_name_1">High Tone</string>
-    <string name="bell_name_2">Low Tone</string>
-    <string name="bell_name_3">Jap. Rhinbowl Dharma, 107mm</string>
-    <string name="bell_name_4">Jap. Rhinbowl Dharma, 88mm (black, glazed)</string>
-    <string name="bell_name_5">Jap. Rhinbowl Shomyo, 90mm</string>
-    <string name="bell_name_6">Jap. Rhinbowl Tang, 164mm</string>
-    <string name="bell_name_7">Tib. Bowl, 230mm</string>
-    <string name="bell_name_8">Jap. Rhinbowl, 97mm</string>
+    <string name="bell_name_1">হাই টোন</string>
+    <string name="bell_name_2">লো টোন</string>
+    <string name="bell_name_3">জাপ। ৰাইনবোল ধৰ্ম, ১০৭মিমি</string>
+    <string name="bell_name_4">জাপ। ৰাইনবোল ধৰ্ম, ৮৮মিমি (ক\'লা, গ্লেজযুক্ত)</string>
+    <string name="bell_name_5">জাপ। ৰাইনবাউল শ্বোম্যো, ৯০মিমি</string>
+    <string name="bell_name_6">জাপ। ৰাইনবাউল টাং, ১৬৪মিমি</string>
+    <string name="bell_name_7">টিব। বাটি, ২৩০মিমি</string>
+    <string name="bell_name_8">জাপ। ৰাইনবোল, ৯৭মিমি</string>
     <string name="bell_pause">বেল ফাঁক (ছেকেণ্ড)</string>
     <string name="bell_user">যোগ কৰক Bell...</string>
     <string name="bottom_nav_meditation">ধ্যান</string>
@@ -135,7 +135,7 @@
     <string name="text_question_delete_session">সঁচাকৈয়ে নিৰ্বাচিত অধিবেশনটো মচি পেলাওক?</string>
     <string name="theme">বিষয়বস্তু</string>
     <string name="theme_dark">ডাৰ্ক থিম</string>
-    <string name="theme_desc">App ৰ পোহৰ বা গাঢ় ৰূপ বাছক</string>
+    <string name="theme_desc">এপৰ ৰূপ বাছক</string>
     <string name="theme_light">পোহৰৰ থিম</string>
     <string name="theme_system">চিস্টেম থিম</string>
     <string name="theme_value_dark">dark</string>
@@ -158,4 +158,12 @@
     <string name="title_dim_bell">ডিম বেল</string>
     <string name="dim_bell_label_off">ডিম কৰা হোৱা নাই</string>
     <string name="dim_bell_label_format">ডিমড: __০__০__১__</string>
+    <string name="section_deleted">মচি পেলোৱা হৈছে __1%s\'</string>
+    <string name="action_undo">পূৰ্বৱৰ্তী অৱস্থালৈ ঘূৰাই আনিব</string>
+    <string name="notification_channel_name">ধ্যান টাইমাৰ</string>
+    <string name="nav_label_sessions">অধিবেশন</string>
+    <string name="nav_label_meditation">ধ্যান</string>
+    <string name="nav_label_edit_session">সম্পাদনা অধিবেশন</string>
+    <string name="nav_label_edit_section">সম্পাদনা অংশ</string>
+    <string name="nav_label_settings">ছেটিংছ</string>
 </resources>

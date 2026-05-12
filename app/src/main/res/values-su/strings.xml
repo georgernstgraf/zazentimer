@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="abbrechen">Ngabolaykeun</string>
-    <string name="about1">Zazen Meditation Timer — A simple meditation timer with customizable sections, bell sounds, and session management.</string>
-    <string name="about2">Originally created by Stefan Gaffga. Currently maintained by Georg Graf.&lt;br&gt;&lt;br&gt;Thanks to Winfried of &lt;a href="http://www.meditationsuhren.de"&gt;http://www.meditationsuhren.de&lt;/a&gt; for providing such great Bell Sounds!</string>
-    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues"&gt;Report issues on GitHub&lt;/a&gt;</string>
-    <string name="app_description">This application lets the user define a set of meditation sessions and provides a timer with visual and audible feedback when a part or the whole meditation is over.</string>
+    <string name="about1">Timer Meditasi Zazen - Timer meditasi saderhana sareng bagian anu disesuaikan, sora bel, sareng manajemén sési.</string>
+    <string name="about2">Asalna dijieun ku Stefan Gaffga. Ayeuna dijaga ku Georg Graf.&lt;br&gt;&lt;br&gt;Hatur nuhun ka Winfried tina &lt;a href="http://www.meditationsuhren.de"&gt;http://www.meditationsuhren.de&lt;/a&gt; pikeun nyayogikeun Bell Sora anu saé!</string>
+    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues"&gt;Laporkeun masalah dina GitHub&lt;/a&gt;</string>
+    <string name="app_description">Aplikasi ieu ngamungkinkeun pamaké pikeun nangtukeun sakumpulan sesi meditasi sareng nyayogikeun waktos sareng tanggapan visual sareng karungu nalika sabagian atanapi sadayana semedi parantos réngsé.</string>
     <string name="app_name">Zazen Meditation Timer</string>
     <string name="appbar_scrolling_view_behavior">android.support.design.widget.AppBarLayout$ScrollingViewBehavior</string>
     <string name="backup_error_text">Punten, aya Kasalahan nalika nyimpen.</string>
     <string name="backup_no_permission">Teu bisa nyieun cadangan alatan idin leungit.</string>
     <string name="backup_not_createable">Kasalahan nyieun payel cadangan.</string>
     <string name="backup_success_text">Cadangan suksés dijieun!</string>
-    <string name="bell_name_1">High Tone</string>
-    <string name="bell_name_2">Low Tone</string>
-    <string name="bell_name_3">Jap. Rhinbowl Dharma, 107mm</string>
-    <string name="bell_name_4">Jap. Rhinbowl Dharma, 88mm (black, glazed)</string>
-    <string name="bell_name_5">Jap. Rhinbowl Shomyo, 90mm</string>
+    <string name="bell_name_1">Nada Luhur</string>
+    <string name="bell_name_2">Nada Lemah</string>
+    <string name="bell_name_3">Jap. Badak Darma, 107mm</string>
+    <string name="bell_name_4">Jap. Rhinbowl Dharma, 88mm (hideung, gilap)</string>
+    <string name="bell_name_5">Jap. Badak Shomyo, 90mm</string>
     <string name="bell_name_6">Jap. Rhinbowl Tang, 164mm</string>
-    <string name="bell_name_7">Tib. Bowl, 230mm</string>
-    <string name="bell_name_8">Jap. Rhinbowl, 97mm</string>
+    <string name="bell_name_7">Tib. Mangkuk, 230 mm</string>
+    <string name="bell_name_8">Jap. Rhinbowl, 97 mm</string>
     <string name="bell_pause">celah bel (detik)</string>
     <string name="bell_user">Tambahkeun Bell ...</string>
     <string name="bottom_nav_meditation">Semedi</string>
@@ -27,7 +27,7 @@
     <string name="but_pause">Reureuh</string>
     <string name="but_start">Mimitian Meditasi</string>
     <string name="but_stop">Eureun</string>
-    <string name="caption_zazen_meditation">Meditasi Zazen</string>
+    <string name="caption_zazen_meditation">Zazen Meditasi</string>
     <string name="character_counter_pattern">%1$d / %2$d</string>
     <string name="checkbox_keep_screen_on">Tetep layar hurung</string>
     <string name="checkbox_no_server_messages">Témbongkeun News</string>
@@ -56,7 +56,7 @@
     <string name="desc_no_server_messages">Témbongkeun News sacara otomatis nalika App dimimitian</string>
     <string name="error_checking_for_server_messages">Kasalahan nyokot pesen anyar.</string>
     <string name="gong_type">Gong Sora</string>
-    <string name="help_sectionlist_text">Di dieu anjeun bisa ngaranan, ngajelaskeun jeung ngédit eusi Sesi anjeun.\n\n REORDERING\n Pikeun nyusun ulang item, pencét lila dina hiji item terus\n sered ka posisi anyarna.\n\n DELETING\n Pikeun mupus hiji item. katuhu.\n\n EDIT\n Pikeun ngedit hiji bagian, cukup toél sakali.\n\n ADD\n Pikeun nambahkeun bagian anyar, pencét tombol +.</string>
+    <string name="help_sectionlist_text">Di dieu anjeun tiasa nami, ngajelaskeun sareng ngédit eusi Sidang anjeun.\n\nREORDERING\nPikeun nyusun ulang item, pencét panjang dina hiji item sareng\nsered ka posisi anyarna.\n\nNGAHAPUS\nPikeun mupus hiji item, pindahkeun ka katuhu.\n\nEDIT\nPikeun ngédit hiji bagian, cukup toél sakali.\n\nTAMBAHAN\nPikeun nambahkeun bagian anyar, pencét tombol +.</string>
     <string name="help_sectionlist_title">Édit Sesi</string>
     <string name="label_section_name">Ngaran bagian</string>
     <string name="label_session_description">Pedaran sési</string>
@@ -74,11 +74,11 @@
     <string name="menu_settings">Setélan</string>
     <string name="minuten">Menit</string>
     <string name="no_new_server_messages">Taya talatah anyar sadia.</string>
-    <string name="no_sections_in_session">Teu tiasa ngamimitian Semedi: Sesi anu dipilih henteu ngagaduhan Bagian.</string>
-    <string name="no_session_exists">Teu aya sési anu tiasa ngamimitian. Mangga jieun heula.</string>
-    <string name="notification_text">Meditasi Zazen ayeuna dijalankeun</string>
+    <string name="no_sections_in_session">Can\'t ngamimitian Semedi: Sesi anu dipilih henteu ngagaduhan Bagian.</string>
+    <string name="no_session_exists">Henteu aya sési anu tiasa ngamimitian. Mangga jieun heula.</string>
+    <string name="notification_text">Meditasi Zazen ayeuna nuju jalan</string>
     <string name="notification_text_paused">Zazen Meditation direureuhkeun</string>
-    <string name="notification_title">Meditasi Zazen</string>
+    <string name="notification_title">Zazen Meditasi</string>
     <string name="notification_title_paused">Meditasi Zazen (direureuhkeun)</string>
     <string name="num_bells">Jumlah bel</string>
     <string name="ok">OKÉ</string>
@@ -100,9 +100,9 @@
     <string name="pref_sum_nofs">Taya Filesystem on SD-Card</string>
     <string name="pref_sum_read_only">SD-Card ngan ukur dibaca</string>
     <string name="pref_sum_removed">Taya SD-Card hadir</string>
-    <string name="pref_sum_restore">Mulangkeun Sesi sareng Sora Adat anjeun tina Cadangan SD-Card</string>
+    <string name="pref_sum_restore">Mulangkeun Sesi anjeun sareng Sora Adat tina Cadangan SD-Card</string>
     <string name="pref_sum_shared">SD-Card dibagikeun</string>
-    <string name="pref_title_backup">Jieun Cadangan</string>
+    <string name="pref_title_backup">Jieun Nyadangkeun</string>
     <string name="pref_title_brightness">Caang</string>
     <string name="pref_title_restore">Mulangkeun tina Cadangan</string>
     <string name="privacy_message">Aplikasi ieu henteu ngumpulkeun data pribadi - éta ogé henteu nganggo IP-Alamat atanapi data anu aya hubunganana sareng téknologi sanés, sareng henteu ngumpulkeun, ngolah atanapi nganggo naon waé.</string>
@@ -130,12 +130,12 @@
     <string name="status_bar_notification_info_overflow">999+</string>
     <string name="test_mute_perm_request">App ayeuna teu diidinan ngajempékeun telepon anjeun. Buka setélan pikeun ngarobah ieu?</string>
     <string name="text_cant_mute">Telepon anjeun henteu ngijinkeun Aplikasi ieu ngajempékeunana. Nonaktipkeun muting dina Setélan Aplikasi ieu atanapi ngantepkeun muting dina Setélan Telepon anjeun.</string>
-    <string name="text_no_notify_access_settings">Telepon anjeun sigana henteu gaduh setélan standar pikeun ngawenangkeun muting. Mangga tingali sacara manual pikeun Setelan \&amp;quot;Ulah Ganggu Aksés\&amp;quot; sareng aktipkeun.</string>
+    <string name="text_no_notify_access_settings">Telepon anjeun sigana henteu gaduh setélan standar pikeun ngawenangkeun muting. Mangga tingali sacara manual pikeun \"Ulah Ganggu Aksés\" Setélan tur aktipkeun.</string>
     <string name="text_no_sections">Taya Bagéan diartikeun.</string>
     <string name="text_question_delete_session">Leres ngahapus Sesi anu dipilih?</string>
     <string name="theme">Téma</string>
     <string name="theme_dark">Téma Poék</string>
-    <string name="theme_desc">Pilih tampilan anu terang atanapi poék tina App</string>
+    <string name="theme_desc">Pilih tampilan aplikasi</string>
     <string name="theme_light">Téma Cahaya</string>
     <string name="theme_system">Téma Sistim</string>
     <string name="theme_value_dark">dark</string>
@@ -155,7 +155,15 @@
     <string name="stop_meditation_cancel">Ngabolaykeun</string>
     <string name="pref_title_bell_volume">Volume Bel</string>
     <string name="pref_desc_bell_volume">Ngadalikeun volume aliran alarem pikeun sora bel</string>
-    <string name="title_dim_bell">Dim Bell</string>
+    <string name="title_dim_bell">Bel taram</string>
     <string name="dim_bell_label_off">Teu diredup</string>
     <string name="dim_bell_label_format">Taram: %1$d0%%</string>
+    <string name="section_deleted">Dipupus \'%s\'</string>
+    <string name="action_undo">Ngabolaykeun</string>
+    <string name="notification_channel_name">Timer semedi</string>
+    <string name="nav_label_sessions">sési</string>
+    <string name="nav_label_meditation">Semedi</string>
+    <string name="nav_label_edit_session">Édit Sesi</string>
+    <string name="nav_label_edit_section">Edit Bagian</string>
+    <string name="nav_label_settings">Setélan</string>
 </resources>

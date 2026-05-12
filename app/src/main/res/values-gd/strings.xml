@@ -1,29 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="abbrechen">Sguir dheth</string>
-    <string name="about1">Zazen Meditation Timer — A simple meditation timer with customizable sections, bell sounds, and session management.</string>
-    <string name="about2">Originally created by Stefan Gaffga. Currently maintained by Georg Graf.&lt;br&gt;&lt;br&gt;Thanks to Winfried of &lt;a href="http://www.meditationsuhren.de"&gt;http://www.meditationsuhren.de&lt;/a&gt; for providing such great Bell Sounds!</string>
-    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues"&gt;Report issues on GitHub&lt;/a&gt;</string>
-    <string name="app_description">This application lets the user define a set of meditation sessions and provides a timer with visual and audible feedback when a part or the whole meditation is over.</string>
+    <string name="about1">Zazen Meditation Timer - Timer meòrachaidh sìmplidh le earrannan gnàthaichte, fuaimean clag, agus riaghladh seisean.</string>
+    <string name="about2">Chaidh a chruthachadh an toiseach le Stefan Gaffga. Air a chumail suas le Georg Graf an-dràsta.&lt;br&gt;&lt;br&gt;Taing do Winfried bho &lt;a href="http://www.meditationsuhren.de"&gt;http://www.meditationsuhren.de&lt;/a&gt; airson Bell Sounds cho math a thoirt seachad!</string>
+    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues"&gt;Dèan aithris air cùisean air GitHub&lt;/a&gt;</string>
+    <string name="app_description">Leigidh an aplacaid seo leis an neach-cleachdaidh seata de sheiseanan meòrachaidh a mhìneachadh agus bheir e fios air ais lèirsinneach is cluinntinn dha timer nuair a bhios pàirt no am meòrachadh gu lèir seachad.</string>
     <string name="app_name">Zazen Meditation Timer</string>
     <string name="appbar_scrolling_view_behavior">android.support.design.widget.AppBarLayout$ScrollingViewBehavior</string>
     <string name="backup_error_text">Duilich, thachair mearachd fhad \'s a bha sinn a\' sàbhaladh.</string>
     <string name="backup_no_permission">Cha b\' urrainn dhuinn lethbhreac-glèidhidh a chruthachadh air sgàth \'s gu bheil ceadan a dhìth.</string>
     <string name="backup_not_createable">Thachair mearachd le cruthachadh an fhaidhle cùl-taic.</string>
     <string name="backup_success_text">Cùl-taic air a chruthachadh gu soirbheachail!</string>
-    <string name="bell_name_1">High Tone</string>
-    <string name="bell_name_2">Low Tone</string>
+    <string name="bell_name_1">Tòn Àrd</string>
+    <string name="bell_name_2">Tòn Ìosal</string>
     <string name="bell_name_3">Jap. Rhinbowl Dharma, 107mm</string>
-    <string name="bell_name_4">Jap. Rhinbowl Dharma, 88mm (black, glazed)</string>
+    <string name="bell_name_4">Jap. Rhinbowl Dharma, 88mm (dubh, glainne)</string>
     <string name="bell_name_5">Jap. Rhinbowl Shomyo, 90mm</string>
     <string name="bell_name_6">Jap. Rhinbowl Tang, 164mm</string>
-    <string name="bell_name_7">Tib. Bowl, 230mm</string>
-    <string name="bell_name_8">Jap. Rhinbowl, 97mm</string>
+    <string name="bell_name_7">Tib. bobhla, 230mm</string>
+    <string name="bell_name_8">Jap. bogha-frois, 97mm</string>
     <string name="bell_pause">Beàrn clag (diog)</string>
     <string name="bell_user">Cuir Bell ris...</string>
     <string name="bottom_nav_meditation">Meòrachadh</string>
     <string name="bottom_nav_sessions">Seiseanan</string>
-    <string name="bottom_sheet_behavior">android.support.design.widget.BottomSheetBehavior</string>
+    <string name="bottom_sheet_behavior">android.support.design.widget.BottomSheetBehaviour</string>
     <string name="but_pause">Stad</string>
     <string name="but_start">Tòisich meditation</string>
     <string name="but_stop">Stad</string>
@@ -56,7 +56,7 @@
     <string name="desc_no_server_messages">Seall Naidheachdan gu fèin-ghluasadach nuair a thòisicheas App</string>
     <string name="error_checking_for_server_messages">Thachair mearachd a\' faighinn teachdaireachdan ùra.</string>
     <string name="gong_type">Fuaim Gong</string>
-    <string name="help_sectionlist_text">An seo faodaidh tu susbaint an t-Seisein agad ainmeachadh, cunntas a thoirt air agus a dheasachadh.\n\n ATH-LEASACHADH\n Gus na stuthan ath-òrdachadh, brùth fada air rud agus\n slaod e dhan t-suidheachadh ùr aige.\n\n DEARBHACHADH\n Gus nì a sguabadh às, gluais e air an taobh dheas.\n\n DEARBHACHADH\n Gus earrann a dheasachadh, dìreach suathadh e aon turas.\n\n ADD\n Gus earrann ùr a chur ris, brùth air a\' phutan +.</string>
+    <string name="help_sectionlist_text">An seo faodaidh tu susbaint an t-Seisein agad ainmeachadh, cunntas a thoirt air agus a dheasachadh.\n\nATH-LEASACHADH\nGus na stuthan ath-òrdachadh, brùth fada air rud agus\nslaod e dhan t-suidheachadh ùr aige.\n\nDEARBHACHADH\nGus nì a sguabadh às, gluais e air an taobh dheas.\n\nDEARBHACHADH\nGus earrann a dheasachadh, dìreach suathadh e aon turas.\n\nADD\nGus earrann ùr a chur ris, brùth air a’ phutan +.</string>
     <string name="help_sectionlist_title">Deasaich Seisean</string>
     <string name="label_section_name">Ainm na roinne</string>
     <string name="label_session_description">Tuairisgeul an t-Seisein</string>
@@ -74,7 +74,7 @@
     <string name="menu_settings">Suidhichidhean</string>
     <string name="minuten">Mionaidean</string>
     <string name="no_new_server_messages">Chan eil teachdaireachdan ùra rim faighinn.</string>
-    <string name="no_sections_in_session">Chan urrainn dhomh meòrachadh a thòiseachadh: Chan eil Roinnean sam bith aig an t-Seisean a thagh thu.</string>
+    <string name="no_sections_in_session">Chan urrainn \' tòiseachadh Meditation: Chan eil Roinnean sam bith aig an t-Seisean taghte.</string>
     <string name="no_session_exists">Chan eil seisean ann a ghabhas tòiseachadh. Feuch an cruthaich thu fear an toiseach.</string>
     <string name="notification_text">Tha Zazen Meditation a’ ruith an-dràsta</string>
     <string name="notification_text_paused">Stad Zazen Meditation</string>
@@ -130,12 +130,12 @@
     <string name="status_bar_notification_info_overflow">999+</string>
     <string name="test_mute_perm_request">Chan eil cead aig an App am fòn agad a chuir dheth an-dràsta. Fosgail na roghainnean gus seo atharrachadh?</string>
     <string name="text_cant_mute">Cha leig am Fòn agad leis an aplacaid seo a thomadh. Cuir dheth muting anns na roghainnean Apps seo no leig le gluasad anns na roghainnean fòn agad.</string>
-    <string name="text_no_notify_access_settings">Chan eil e coltach gu bheil na roghainnean àbhaisteach aig an fhòn agad gus leigeil le gluasad. Seall le làimh airson an t-suidheachaidh \&amp;quot;Na cuir dragh air inntrigeadh\&amp;quot; agus cuir an comas e.</string>
+    <string name="text_no_notify_access_settings">Chan eil e coltach gu bheil na roghainnean àbhaisteach aig an fhòn agad gus leigeil le gluasad. Feuch an toir thu sùil le làimh airson an suidheachadh \"Na cuir dragh air ruigsinneachd\" agus cuir an comas e.</string>
     <string name="text_no_sections">Chan eil roinnean air am mìneachadh.</string>
     <string name="text_question_delete_session">Dìreach sguab às an t-Seisean a thagh thu?</string>
     <string name="theme">Cuspair</string>
     <string name="theme_dark">Cuspair Dorcha</string>
-    <string name="theme_desc">Tagh coltas aotrom no dorcha an App</string>
+    <string name="theme_desc">Tagh coltas an aplacaid</string>
     <string name="theme_light">Cuspair Solais</string>
     <string name="theme_system">Cuspair an t-siostam</string>
     <string name="theme_value_dark">dark</string>
@@ -158,4 +158,12 @@
     <string name="title_dim_bell">Dim Bell</string>
     <string name="dim_bell_label_off">Gun lasachadh</string>
     <string name="dim_bell_label_format">Meudachadh: %1$d0%%</string>
+    <string name="section_deleted">Air a sguabadh às \'%s\'</string>
+    <string name="action_undo">Neo-dhèanamh</string>
+    <string name="notification_channel_name">Uaireadair meòrachaidh</string>
+    <string name="nav_label_sessions">Seiseanan</string>
+    <string name="nav_label_meditation">Meòrachadh</string>
+    <string name="nav_label_edit_session">Deasaich Seisean</string>
+    <string name="nav_label_edit_section">Deasaich Earrann</string>
+    <string name="nav_label_settings">Suidhichidhean</string>
 </resources>

@@ -1,29 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="abbrechen">ꯀꯛꯄ</string>
-    <string name="about1">Zazen Meditation Timer — A simple meditation timer with customizable sections, bell sounds, and session management.</string>
-    <string name="about2">Originally created by Stefan Gaffga. Currently maintained by Georg Graf.&lt;br&gt;&lt;br&gt;Thanks to Winfried of &lt;a href="http://www.meditationsuhren.de"&gt;http://www.meditationsuhren.de&lt;/a&gt; for providing such great Bell Sounds!</string>
-    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues"&gt;Report issues on GitHub&lt;/a&gt;</string>
-    <string name="app_description">This application lets the user define a set of meditation sessions and provides a timer with visual and audible feedback when a part or the whole meditation is over.</string>
+    <string name="about1">ꯖꯥꯖꯦꯟ ꯃꯦꯗꯤꯇꯦꯁꯟ ꯇꯥꯏꯃꯔ — ꯀꯁ꯭ꯇꯃꯔꯁꯤꯡꯅꯥ ꯁꯦꯝꯕꯥ ꯁꯦꯛꯁꯅꯁꯤꯡ, ꯕꯦꯂꯒꯤ ꯈꯣꯟꯖꯦꯂꯁꯤꯡ, ꯑꯃꯁꯨꯡ ꯁꯦꯁꯟ ꯃꯦꯅꯦꯖꯃꯦꯟꯇꯒꯥ ꯂꯣꯌꯅꯅꯥ ꯏꯆꯝ ꯆꯝꯕꯥ ꯃꯦꯗꯤꯇꯦꯁꯟ ꯇꯥꯏꯃꯔ ꯑꯃꯅꯤ꯫</string>
+    <string name="about2">ꯑꯍꯥꯅꯕꯗꯥ ꯁ꯭ꯇꯦꯐꯦꯟ ꯒꯥꯐꯒꯥꯅꯥ ꯁꯦꯃꯈꯤꯕꯅꯤ꯫ ꯍꯧꯖꯤꯛ ꯖꯤꯑꯣꯔꯒ ꯒ꯭ꯔꯥꯐꯅꯥ ꯁꯦꯃꯒꯠꯂꯤ꯫&lt;br&gt;&lt;br&gt;ꯑꯁꯨꯛ ꯌꯥꯝꯅꯥ ꯑꯆꯧꯕꯥ ꯕꯦꯜ ꯁꯥꯎꯟꯗꯁꯤꯡ ꯄꯤꯕꯒꯤꯗꯃꯛ &lt;a href="http://www.meditationsuhren.de"&gt;http://www.meditationsuhren.de&lt;/a&gt;ꯒꯤ ꯋꯤꯅꯐ꯭ꯔꯦꯗꯄꯨ ꯊꯥꯒꯠꯆꯔꯤ!</string>
+    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues"&gt;ꯒꯤꯇꯍꯕꯇꯥ ꯏꯁꯨꯁꯤꯡ ꯔꯤꯄꯣꯔꯠ ꯇꯧꯕꯥ&lt;/a&gt;</string>
+    <string name="app_description">ꯑꯦꯞꯂꯤꯀꯦꯁꯟ ꯑꯁꯤꯅꯥ ꯌꯨꯖꯔꯗꯥ ꯃꯦꯗꯤꯇꯦꯁꯟ ꯁꯦꯁꯅꯁꯤꯡꯒꯤ ꯁꯦꯠ ꯑꯃꯥ ꯗꯤꯐꯥꯏꯟ ꯇꯧꯕꯥ ꯌꯥꯍꯜꯂꯤ ꯑꯃꯁꯨꯡ ꯁꯔꯨꯛ ꯑꯃꯥ ꯅꯠꯠꯔꯒꯥ ꯃꯦꯗꯤꯇꯦꯁꯟ ꯄꯨꯝꯅꯃꯛ ꯂꯣꯏꯔꯕꯥ ꯃꯇꯃꯗꯥ ꯚꯤꯖꯨꯑꯦꯜ ꯑꯃꯁꯨꯡ ꯑꯣꯗꯤꯕꯜ ꯐꯤꯗꯕꯦꯛ ꯌꯥꯑꯣꯕꯥ ꯇꯥꯏꯃꯔ ꯑꯃꯥ ꯄꯤꯔꯤ꯫</string>
     <string name="app_name">Zazen Meditation Timer</string>
-    <string name="appbar_scrolling_view_behavior">android.support.design.widget.AppBarLayout$ScrollingViewBehavior</string>
+    <string name="appbar_scrolling_view_behavior">android.support.design.widget.AppBarLayout$ꯁ꯭ꯛꯔꯣꯂꯤꯡꯚꯤꯎꯕꯤꯍꯦꯕꯤꯌꯔ</string>
     <string name="backup_error_text">ꯁꯣꯌꯗꯅꯥ, ꯁꯦꯚ ꯇꯧꯔꯤꯉꯩꯗꯥ Error ꯑꯃꯥ ꯊꯣꯀꯈꯤ꯫</string>
     <string name="backup_no_permission">ꯑꯌꯥꯕꯥ ꯃꯥꯡꯈꯤꯕꯅꯥ ꯃꯔꯝ ꯑꯣꯏꯗꯨꯅꯥ ꯕꯦꯀꯑꯞ ꯁꯦꯝꯕꯥ ꯉꯃꯈꯤꯗꯦ꯫</string>
     <string name="backup_not_createable">ꯕꯦꯀꯑꯞ ꯐꯥꯏꯜ ꯁꯦꯝꯕꯗꯥ ꯑꯁꯣꯌꯕꯥ ꯂꯩꯔꯦ꯫</string>
     <string name="backup_success_text">ꯕꯦꯀꯑꯞ ꯃꯥꯌ ꯄꯥꯛꯅꯥ ꯁꯦꯃꯈꯤ!</string>
-    <string name="bell_name_1">High Tone</string>
-    <string name="bell_name_2">Low Tone</string>
-    <string name="bell_name_3">Jap. Rhinbowl Dharma, 107mm</string>
-    <string name="bell_name_4">Jap. Rhinbowl Dharma, 88mm (black, glazed)</string>
-    <string name="bell_name_5">Jap. Rhinbowl Shomyo, 90mm</string>
-    <string name="bell_name_6">Jap. Rhinbowl Tang, 164mm</string>
-    <string name="bell_name_7">Tib. Bowl, 230mm</string>
-    <string name="bell_name_8">Jap. Rhinbowl, 97mm</string>
+    <string name="bell_name_1">ꯍꯥꯏ ꯇꯣꯟ꯫</string>
+    <string name="bell_name_2">ꯂꯣ ꯇꯣꯟ꯫</string>
+    <string name="bell_name_3">ꯖꯥꯞ. ꯔꯥꯏꯅꯕꯣꯜ ꯙꯔꯝ, ꯱꯰꯷ꯃꯤ.ꯃꯤ</string>
+    <string name="bell_name_4">ꯖꯥꯞ. ꯔꯥꯏꯅꯕꯣꯜ ꯙꯔꯝ, ꯸꯸ꯃꯤꯃꯤ (ꯕ꯭ꯂꯦꯛ, ꯒ꯭ꯂꯦꯖ)</string>
+    <string name="bell_name_5">ꯖꯥꯞ. ꯔꯥꯏꯅꯕꯣꯜ ꯁꯣꯝꯌꯣ, ꯹꯰ꯃꯤ.ꯃꯤ</string>
+    <string name="bell_name_6">ꯖꯥꯞ. ꯔꯥꯏꯅꯕꯣꯜ ꯇꯥꯡ, ꯱꯶꯴ꯃꯤ.ꯃꯤ</string>
+    <string name="bell_name_7">ꯇꯤꯕ. ꯕꯣꯜ, ꯲꯳꯰ꯃꯤ.ꯃꯤ</string>
+    <string name="bell_name_8">ꯖꯥꯞ. ꯔꯥꯏꯅꯕꯣꯜ, ꯹꯷ꯃꯤ.ꯃꯤ</string>
     <string name="bell_pause">ꯕꯦꯜ ꯒꯦꯞ (ꯁꯦꯀꯦꯟꯗ) ꯴.</string>
     <string name="bell_user">ꯕꯦꯜ ꯍꯥꯄꯆꯤꯅꯕꯥ...</string>
     <string name="bottom_nav_meditation">ꯙꯌꯥꯟ ꯇꯧꯕ</string>
     <string name="bottom_nav_sessions">ꯁꯦꯁꯅꯁꯤꯡ ꯄꯥꯡꯊꯣꯀꯄꯥ꯫</string>
-    <string name="bottom_sheet_behavior">android.support.design.widget.BottomSheetBehavior</string>
+    <string name="bottom_sheet_behavior">android.support.design.widget.BottomSheetBehavior.ꯒꯤ ꯃꯇꯥꯡꯗꯥ ꯋꯥꯐꯝ ꯀꯌꯥ ꯊꯃꯈꯤ꯫</string>
     <string name="but_pause">ꯉꯩꯍꯥꯛ ꯂꯦꯞꯄ</string>
     <string name="but_start">ꯃꯦꯗꯤꯇꯦꯁꯟ ꯍꯧꯕꯥ꯫</string>
     <string name="but_stop">ꯂꯦꯞꯄ</string>
@@ -74,7 +74,7 @@
     <string name="menu_settings">ꯁꯦꯇꯤꯡꯁꯤꯡ꯫</string>
     <string name="minuten">ꯑꯄꯤꯛꯀꯁꯤꯡ</string>
     <string name="no_new_server_messages">ꯑꯅꯧꯕꯥ ꯄꯥꯎꯖꯦꯜ ꯑꯃꯠꯇꯥ ꯐꯪꯗꯦ꯫</string>
-    <string name="no_sections_in_session">ꯃꯦꯗꯤꯇꯦꯁꯟ ꯍꯧꯕꯥ ꯉꯃꯗꯦ: ꯈꯅꯒꯠꯂꯕꯥ ꯁꯦꯁꯟ ꯑꯗꯨꯗꯥ ꯁꯦꯛꯁꯟ ꯑꯃꯠꯇꯥ ꯂꯩꯇꯦ꯫</string>
+    <string name="no_sections_in_session">ꯃꯦꯗꯤꯇꯦꯁꯟ ꯍꯧꯕꯥ ꯉꯃꯗꯦ\': ꯈꯅꯒꯠꯂꯕꯥ ꯁꯦꯁꯟ ꯑꯗꯨꯗꯥ ꯁꯦꯛꯁꯟ ꯑꯃꯠꯇꯥ ꯂꯩꯇꯦ꯫</string>
     <string name="no_session_exists">ꯍꯧꯗꯣꯀꯄꯥ ꯌꯥꯕꯥ ꯁꯦꯁꯟ ꯑꯃꯠꯇꯥ ꯂꯩꯇꯦ꯫ ꯆꯥꯅꯕꯤꯗꯨꯅꯥ ꯑꯍꯥꯅꯕꯗꯥ ꯑꯃꯥ ꯁꯦꯝꯃꯨ꯫</string>
     <string name="notification_text">ꯍꯧꯖꯤꯛ ꯖꯥꯖꯦꯟ ꯃꯦꯗꯤꯇꯦꯁꯟ ꯑꯃꯥ ꯆꯠꯊꯔꯤ꯫</string>
     <string name="notification_text_paused">ꯖꯥꯖꯦꯟ ꯃꯦꯗꯤꯇꯦꯁꯟ ꯑꯗꯨ ꯂꯦꯄꯈꯤ꯫</string>
@@ -116,9 +116,9 @@
     <string name="restore_really_title">ꯇꯁꯦꯡꯅꯥ ꯗꯦꯇꯥ ꯔꯤꯁ꯭ꯇꯣꯔ ꯇꯧꯕꯥ?</string>
     <string name="restore_success_text">ꯗꯦꯇꯥ ꯔꯤꯁ꯭ꯇꯣꯔ ꯇꯧꯕꯥ ꯃꯥꯌ ꯄꯥꯛꯂꯦ꯫</string>
     <string name="search_menu_title">ꯊꯤꯕ</string>
-    <string name="section_info_string_1_pl">%1$d ꯕꯦꯂꯁꯤꯡ꯫</string>
+    <string name="section_info_string_1_pl">__꯰__ ꯕꯦꯂꯁꯤꯡ꯫</string>
     <string name="section_info_string_1_sg">꯱ ꯕꯦꯜ꯫</string>
-    <string name="section_info_string_2_pl">%1$d ꯁꯦꯀꯦꯟꯗ ꯈꯨꯗꯤꯡꯒꯤ꯫</string>
+    <string name="section_info_string_2_pl">__꯰__ ꯁꯦꯀꯦꯟꯗ ꯈꯨꯗꯤꯡꯒꯤ꯫</string>
     <string name="section_info_string_2_sg">ꯁꯦꯀꯦꯟꯗ ꯈꯨꯗꯤꯡꯒꯤ꯫</string>
     <string name="sekunden">ꯁꯦꯀꯦꯟꯗ ꯈꯔꯒꯤ ꯃꯅꯨꯡꯗꯥ꯫</string>
     <string name="select_audio">ꯁꯥꯎꯟꯗ ꯐꯥꯏꯜ ꯈꯜꯂꯨ꯫</string>
@@ -129,15 +129,15 @@
     <string name="session_list_unnamed_entry">ꯃꯃꯤꯡ ꯂꯩꯔꯕꯥ ꯁꯦꯁꯟ꯫</string>
     <string name="status_bar_notification_info_overflow">꯹꯹꯹+ ꯑꯣꯏꯈꯤ꯫</string>
     <string name="test_mute_perm_request">ꯍꯧꯖꯤꯛꯀꯤ ꯑꯣꯏꯅꯥ ꯑꯦꯞ ꯑꯁꯤꯅꯥ ꯅꯍꯥꯛꯀꯤ ꯐꯣꯟ ꯑꯗꯨ ꯃ꯭ꯌꯨꯠ ꯇꯧꯕꯥ ꯌꯥꯍꯜꯂꯣꯏ꯫ ꯃꯁꯤ ꯍꯣꯡꯗꯣꯛꯅꯕꯥ ꯁꯦꯇꯤꯡꯁꯤꯡ ꯍꯥꯡꯗꯣꯀꯎ?</string>
-    <string name="text_cant_mute">ꯅꯍꯥꯛꯀꯤ ꯐꯣꯟ ꯑꯁꯤꯅꯥ App ꯑꯁꯤ ꯃ꯭ꯌꯨꯠ ꯇꯧꯕꯥ ꯌꯥꯍꯜꯂꯣꯏ꯫ ꯑꯦꯄꯁ ꯁꯦꯇꯤꯡꯁꯤꯡ ꯑꯁꯤꯗꯥ ꯃ꯭ꯌꯨꯇꯤꯡ ꯗꯤꯁꯦꯕꯜ ꯇꯧ ꯅꯠꯠꯔꯒꯥ ꯅꯍꯥꯛꯀꯤ ꯐꯣꯅꯁꯤꯡꯒꯤ ꯁꯦꯇꯤꯡꯁꯤꯡꯗꯥ ꯃ꯭ꯌꯨꯇꯤꯡ ꯇꯧꯕꯥ ꯌꯥꯍꯜꯂꯨ꯫</string>
-    <string name="text_no_notify_access_settings">ꯅꯍꯥꯛꯀꯤ ꯐꯣꯟ ꯑꯗꯨꯗꯥ ꯃ꯭ꯌꯨꯇꯤꯡ ꯇꯧꯕꯥ ꯌꯥꯅꯕꯥ ꯁ꯭ꯇꯦꯟꯗꯔꯗ ꯁꯦꯇꯤꯡꯁꯤꯡ ꯂꯩꯕꯥ ꯎꯕꯥ ꯐꯪꯗꯦ꯫ ꯆꯥꯅꯕꯤꯗꯨꯅꯥ \&amp;quot;ꯑꯦꯛꯁꯦꯁꯇꯥ ꯑꯀꯥꯌꯕꯥ ꯄꯤꯔꯣꯏꯗꯕꯅꯤ\&amp;quot; ꯁꯦꯇꯤꯡ ꯑꯗꯨ ꯃꯦꯟꯌꯨꯑꯦꯜ ꯑꯣꯏꯅꯥ ꯌꯦꯡꯎ ꯑꯃꯁꯨꯡ ꯃꯁꯤ ꯏꯅꯦꯕꯜ ꯇꯧꯔꯣ.</string>
+    <string name="text_cant_mute">ꯅꯍꯥꯛꯀꯤ ꯐꯣꯟ ꯑꯁꯤꯅꯥ App ꯑꯁꯤ ꯃ꯭ꯌꯨꯠ ꯇꯧꯕꯥ ꯌꯥꯍꯜꯂꯣꯏ꯫ ꯑꯦꯄꯁ ꯁꯦꯇꯤꯡꯁ ꯑꯁꯤꯗꯥ ꯃ꯭ꯌꯨꯇꯤꯡ ꯗꯤꯁꯦꯕꯜ ꯇꯧ ꯅꯠꯠꯔꯒꯥ ꯅꯍꯥꯛꯀꯤ ꯐꯣꯟ ꯁꯦꯇꯤꯡꯁꯤꯡꯗꯥ ꯃ꯭ꯌꯨꯇꯤꯡ ꯇꯧꯕꯥ ꯌꯥꯍꯜꯂꯨ꯫</string>
+    <string name="text_no_notify_access_settings">ꯅꯍꯥꯛꯀꯤ ꯐꯣꯟ ꯑꯗꯨꯗꯥ ꯃ꯭ꯌꯨꯇꯤꯡ ꯇꯧꯕꯥ ꯌꯥꯅꯕꯥ ꯁ꯭ꯇꯦꯟꯗꯔꯗ ꯁꯦꯇꯤꯡꯁꯤꯡ ꯂꯩꯕꯥ ꯎꯕꯥ ꯐꯪꯗꯦ꯫ ꯆꯥꯅꯕꯤꯗꯨꯅꯥ \"ꯑꯦꯛꯁꯦꯁ ꯗꯤꯁ꯭ꯇꯔꯕ ꯇꯧꯔꯣꯏꯗꯕꯅꯤ\" ꯁꯦꯇꯤꯡ ꯑꯗꯨ ꯃꯦꯟꯌꯨꯑꯦꯜ ꯑꯣꯏꯅꯥ ꯌꯦꯡꯕꯤꯌꯨ ꯑꯃꯁꯨꯡ ꯃꯁꯤ ꯏꯅꯦꯕꯜ ꯇꯧꯕꯤꯌꯨ.</string>
     <string name="text_no_sections">ꯁꯦꯛꯁꯟ ꯑꯃꯠꯇꯥ ꯂꯦꯄꯊꯣꯛꯇꯦ꯫</string>
     <string name="text_question_delete_session">ꯈꯅꯒꯠꯂꯕꯥ ꯁꯦꯁꯟ ꯑꯗꯨ ꯇꯁꯦꯡꯅꯥ ꯃꯨꯠꯊꯠꯄꯥ?</string>
     <string name="theme">ꯍꯤꯔꯝ</string>
     <string name="theme_dark">ꯗꯥꯔꯛ ꯊꯤꯝ꯫</string>
-    <string name="theme_desc">ꯑꯦꯞ ꯑꯁꯤꯒꯤ ꯃꯉꯥꯜ ꯅꯠꯠꯔꯒꯥ ꯑꯃꯝꯕꯥ ꯃꯑꯣꯡ ꯈꯅꯕꯤꯌꯨ꯫</string>
+    <string name="theme_desc">ꯑꯦꯄꯀꯤ ꯃꯑꯣꯡ ꯃꯇꯧ ꯑꯗꯨ ꯈꯜꯂꯨ꯫</string>
     <string name="theme_light">ꯂꯥꯏꯠ ꯊꯤꯝ꯫</string>
-    <string name="theme_system">System Theme</string>
+    <string name="theme_system">ꯁꯤꯁ꯭ꯇꯦꯝ ꯊꯤꯝ꯫</string>
     <string name="theme_value_dark">dark</string>
     <string name="theme_value_light">light</string>
     <string name="theme_value_system">system</string>
@@ -157,5 +157,13 @@
     <string name="pref_desc_bell_volume">ꯕꯦꯂꯒꯤ ꯈꯣꯟꯖꯦꯂꯒꯤꯗꯃꯛ ꯑꯦꯂꯥꯔꯝ ꯁ꯭ꯠꯔꯤꯝ ꯚꯣꯜꯌꯨꯝ ꯀꯟꯠꯔꯣꯜ ꯇꯧꯏ꯫</string>
     <string name="title_dim_bell">ꯗꯤꯝ ꯕꯦꯜ꯫</string>
     <string name="dim_bell_label_off">ꯗꯤꯝ ꯇꯧꯗꯕꯥ꯫</string>
-    <string name="dim_bell_label_format">ꯗꯤꯃꯗ ꯇꯧꯕꯥ: %1$d0%%</string>
+    <string name="dim_bell_label_format">ꯗꯤꯃꯗ ꯇꯧꯕꯥ: __꯰__꯰__꯱__</string>
+    <string name="section_deleted">ꯃꯨꯠꯊꯠꯈ꯭ꯔꯦ __꯱____꯰____꯲__</string>
+    <string name="action_undo">ꯑꯟꯗꯣ ꯇꯧꯕꯥ꯫</string>
+    <string name="notification_channel_name">ꯃꯦꯗꯤꯇꯦꯁꯟ ꯇꯥꯏꯃꯔ꯫</string>
+    <string name="nav_label_sessions">ꯁꯦꯁꯅꯁꯤꯡ ꯄꯥꯡꯊꯣꯀꯄꯥ꯫</string>
+    <string name="nav_label_meditation">ꯙꯌꯥꯟ ꯇꯧꯕ</string>
+    <string name="nav_label_edit_session">ꯁꯦꯁꯟ ꯑꯦꯗꯤꯠ ꯇꯧꯕꯥ꯫</string>
+    <string name="nav_label_edit_section">ꯁꯦꯛꯁꯟ ꯑꯗꯨ ꯑꯦꯗꯤꯠ ꯇꯧꯕꯥ꯫</string>
+    <string name="nav_label_settings">ꯁꯦꯇꯤꯡꯁꯤꯡ꯫</string>
 </resources>

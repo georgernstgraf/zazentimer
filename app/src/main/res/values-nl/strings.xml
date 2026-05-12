@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="abbrechen">Annuleren</string>
-    <string name="about1">Zazen Meditation Timer — A simple meditation timer with customizable sections, bell sounds, and session management.</string>
-    <string name="about2">Originally created by Stefan Gaffga. Currently maintained by Georg Graf.&lt;br&gt;&lt;br&gt;Thanks to Winfried of &lt;a href="http://www.meditationsuhren.de"&gt;http://www.meditationsuhren.de&lt;/a&gt; for providing such great Bell Sounds!</string>
-    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues"&gt;Report issues on GitHub&lt;/a&gt;</string>
-    <string name="app_description">This application lets the user define a set of meditation sessions and provides a timer with visual and audible feedback when a part or the whole meditation is over.</string>
+    <string name="about1">Zazen-meditatietimer - Een eenvoudige meditatietimer met aanpasbare secties, belgeluiden en sessiebeheer.</string>
+    <string name="about2">Oorspronkelijk gemaakt door Stefan Gaffga. Momenteel onderhouden door Georg Graf.&lt;br&gt;&lt;br&gt;Dank aan Winfried van &lt;a href="http://www.meditationsuhren.de"&gt;http://www.meditationsuhren.de&lt;/a&gt; voor het leveren van zulke geweldige belgeluiden!</string>
+    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues"&gt;Rapporteer problemen op GitHub&lt;/a&gt;</string>
+    <string name="app_description">Deze applicatie laat de gebruiker een reeks meditatiesessies definiëren en biedt een timer met visuele en hoorbare feedback wanneer een deel of de hele meditatie voorbij is.</string>
     <string name="app_name">Zazen Meditation Timer</string>
     <string name="appbar_scrolling_view_behavior">android.support.design.widget.AppBarLayout$ScrollingViewBehavior</string>
     <string name="backup_error_text">Sorry, er is een fout opgetreden tijdens het opslaan.</string>
     <string name="backup_no_permission">Kan geen back-up maken vanwege ontbrekende machtigingen.</string>
     <string name="backup_not_createable">Fout bij het maken van een back-upbestand.</string>
     <string name="backup_success_text">Back-up is succesvol gemaakt!</string>
-    <string name="bell_name_1">High Tone</string>
-    <string name="bell_name_2">Low Tone</string>
-    <string name="bell_name_3">Jap. Rhinbowl Dharma, 107mm</string>
-    <string name="bell_name_4">Jap. Rhinbowl Dharma, 88mm (black, glazed)</string>
-    <string name="bell_name_5">Jap. Rhinbowl Shomyo, 90mm</string>
-    <string name="bell_name_6">Jap. Rhinbowl Tang, 164mm</string>
-    <string name="bell_name_7">Tib. Bowl, 230mm</string>
-    <string name="bell_name_8">Jap. Rhinbowl, 97mm</string>
+    <string name="bell_name_1">Hoge toon</string>
+    <string name="bell_name_2">Lage toon</string>
+    <string name="bell_name_3">Jap. Rhinbowl Dharma, 107 mm</string>
+    <string name="bell_name_4">Jap. Rhinbowl Dharma, 88 mm (zwart, geglazuurd)</string>
+    <string name="bell_name_5">Jap. Rhinbowl Shomyo, 90 mm</string>
+    <string name="bell_name_6">Jap. Rhinbowl-tang, 164 mm</string>
+    <string name="bell_name_7">Tib. Kom, 230 mm</string>
+    <string name="bell_name_8">Jap. Rijnkom, 97 mm</string>
     <string name="bell_pause">Belafstand (sec)</string>
     <string name="bell_user">Bel toevoegen...</string>
     <string name="bottom_nav_meditation">Meditatie</string>
@@ -36,7 +36,7 @@
     <string name="copy_prefix">Kopie van</string>
     <string name="crash_dialog_comment_prompt">Optioneel: Welke actie heeft de fout veroorzaakt?</string>
     <string name="crash_dialog_ok_toast">Hartelijk dank voor uw hulp!</string>
-    <string name="crash_dialog_text">Het spijt me, er is een fout opgetreden.Je kunt me helpen dit probleem te vinden en op te lossen door dit bugrapport en misschien zelfs meer details over wat je hebt gedaan te sturen.</string>
+    <string name="crash_dialog_text">Het spijt me, er is een fout opgetreden. Je kunt me helpen dit probleem te vinden en op te lossen door dit bugrapport en misschien zelfs meer details over wat je hebt gedaan te sturen.</string>
     <string name="crash_dialog_title">Zazen-meditatietimer</string>
     <string name="crash_toast_text">Sorry - er is een interne fout opgetreden!</string>
     <string name="crash_user_email_label">Optioneel: uw e-mailadres voor vragen of updates over dit onderwerp.</string>
@@ -56,7 +56,7 @@
     <string name="desc_no_server_messages">Toon automatisch nieuws wanneer de app start</string>
     <string name="error_checking_for_server_messages">Fout bij het ophalen van nieuwe berichten.</string>
     <string name="gong_type">Gong-geluid</string>
-    <string name="help_sectionlist_text">Hier kunt u de inhoud van uw sessie een naam geven, beschrijven en bewerken.\n\n HERORDEN\n Om de volgorde van de items te wijzigen, drukt u lang op een item en\n sleept u het naar de nieuwe positie.\n\n VERWIJDEREN\n Om een item te verwijderen, verplaatst u het naar rechts.\n\n BEWERKEN\n Om een sectie te bewerken, raakt u deze eenmaal aan.\n\nTOEVOEGEN\n Om een nieuwe sectie toe te voegen, drukt u op de knop +.</string>
+    <string name="help_sectionlist_text">Hier kunt u de inhoud van uw sessie een naam geven, beschrijven en bewerken.\n\nHERORDEN\nOm de items opnieuw te ordenen, drukt u lang op een item en\nsleep het naar de nieuwe positie.\n\nVERWIJDEREN\nOm een ​​item te verwijderen, verplaatst u het naar rechts.\n\nBEWERKING\nOm een ​​sectie te bewerken, hoeft u deze slechts één keer aan te raken.\n\nTOEVOEGEN\nOm een ​​nieuwe sectie toe te voegen, drukt u op de knop +.</string>
     <string name="help_sectionlist_title">Sessie bewerken</string>
     <string name="label_section_name">Sectienaam</string>
     <string name="label_session_description">Sessiebeschrijving</string>
@@ -70,12 +70,12 @@
     <string name="menu_help">Hulp</string>
     <string name="menu_add_session">Sessie toevoegen</string>
     <string name="menu_new_session">Nieuwe sessie</string>
-    <string name="menu_privacy">Privacy...</string>
+    <string name="menu_privacy">Privé...</string>
     <string name="menu_settings">Instellingen</string>
     <string name="minuten">Notulen</string>
     <string name="no_new_server_messages">Geen nieuwe berichten beschikbaar.</string>
-    <string name="no_sections_in_session">Kan meditatie niet starten: de geselecteerde sessie heeft geen secties.</string>
-    <string name="no_session_exists">Er is geen sessie die kan worden gestart.Maak er eerst een aan.</string>
+    <string name="no_sections_in_session">Kan\'meditatie niet starten: de geselecteerde sessie heeft geen secties.</string>
+    <string name="no_session_exists">Er is geen sessie die kan worden gestart. Maak er eerst een aan.</string>
     <string name="notification_text">Er loopt momenteel een Zazen-meditatie</string>
     <string name="notification_text_paused">Zazen-meditatie onderbroken</string>
     <string name="notification_title">Zazen-meditatie</string>
@@ -112,7 +112,7 @@
     <string name="restore_backup_not_found">Back-upbestand niet gevonden</string>
     <string name="restore_error_text">Fout bij herstellen vanuit back-up</string>
     <string name="restore_no_permission">Kan niet herstellen vanwege ontbrekende toestemming.</string>
-    <string name="restore_really_text">Hierdoor worden al uw sessies vervangen door die in de back-up!(Niet ongedaan maken!)</string>
+    <string name="restore_really_text">Hierdoor worden al uw sessies vervangen door die in de back-up! (Niet ongedaan maken!)</string>
     <string name="restore_really_title">Gegevens echt herstellen?</string>
     <string name="restore_success_text">Gegevensherstel succesvol</string>
     <string name="search_menu_title">Zoekopdracht</string>
@@ -128,14 +128,14 @@
     <string name="content_desc_session_actions">Sessieacties</string>
     <string name="session_list_unnamed_entry">Naamloze sessie</string>
     <string name="status_bar_notification_info_overflow">999+</string>
-    <string name="test_mute_perm_request">De app mag uw telefoon momenteel niet dempen.Open de instellingen om dit te wijzigen?</string>
-    <string name="text_cant_mute">Uw telefoon staat niet toe dat deze app het geluid dempt.Schakel het dempen uit in deze Apps-instellingen of sta het dempen toe in uw Telefooninstellingen.</string>
-    <string name="text_no_notify_access_settings">Het lijkt erop dat uw telefoon niet over de standaardinstellingen beschikt om dempen toe te staan.Zoek handmatig naar de instelling \"Toegang niet storen\" en schakel deze in.</string>
+    <string name="test_mute_perm_request">De app mag uw telefoon momenteel niet dempen. Open de instellingen om dit te wijzigen?</string>
+    <string name="text_cant_mute">Uw telefoon staat niet toe dat deze app het geluid dempt. Schakel het dempen uit in deze Apps-instellingen of sta het dempen toe in uw Telefooninstellingen.</string>
+    <string name="text_no_notify_access_settings">Het lijkt erop dat uw telefoon niet over de standaardinstellingen beschikt om dempen toe te staan. Zoek handmatig naar de instelling \"Toegang niet storen\" en schakel deze in.</string>
     <string name="text_no_sections">Geen secties gedefinieerd.</string>
     <string name="text_question_delete_session">De geselecteerde sessie echt verwijderen?</string>
     <string name="theme">Thema</string>
     <string name="theme_dark">Donker thema</string>
-    <string name="theme_desc">Kies een lichte of donkere weergave van de app</string>
+    <string name="theme_desc">Kies het uiterlijk van de app</string>
     <string name="theme_light">Licht thema</string>
     <string name="theme_system">Systeem Thema</string>
     <string name="theme_value_dark">dark</string>
@@ -158,4 +158,12 @@
     <string name="title_dim_bell">Dim bel</string>
     <string name="dim_bell_label_off">Niet gedimd</string>
     <string name="dim_bell_label_format">Gedimd: %1$d0%%</string>
+    <string name="section_deleted">Verwijderd \'%s\'</string>
+    <string name="action_undo">Ongedaan maken</string>
+    <string name="notification_channel_name">Meditatietimer</string>
+    <string name="nav_label_sessions">Sessies</string>
+    <string name="nav_label_meditation">Meditatie</string>
+    <string name="nav_label_edit_session">Sessie bewerken</string>
+    <string name="nav_label_edit_section">Sectie bewerken</string>
+    <string name="nav_label_settings">Instellingen</string>
 </resources>

@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="abbrechen">Откажи</string>
-    <string name="about1">Zazen Meditation Timer — A simple meditation timer with customizable sections, bell sounds, and session management.</string>
-    <string name="about2">Originally created by Stefan Gaffga. Currently maintained by Georg Graf.&lt;br&gt;&lt;br&gt;Thanks to Winfried of &lt;a href="http://www.meditationsuhren.de"&gt;http://www.meditationsuhren.de&lt;/a&gt; for providing such great Bell Sounds!</string>
-    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues"&gt;Report issues on GitHub&lt;/a&gt;</string>
-    <string name="app_description">This application lets the user define a set of meditation sessions and provides a timer with visual and audible feedback when a part or the whole meditation is over.</string>
+    <string name="about1">Зазен тајмер за медитација — Едноставен тајмер за медитација со приспособливи делови, звуци на ѕвончиња и управување со сесии.</string>
+    <string name="about2">Првично создаден од Стефан Гафга. Моментално го одржува Георг Граф.&lt;br&gt;&lt;br&gt;Благодарност до Винфрид од &lt;a href="http://www.meditationsuhren.de"&gt;http://www.meditationsuhren.de&lt;/a&gt; за обезбедувањето на толку одлични звуци на Бел!</string>
+    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues"&gt;Пријавете проблеми на GitHub&lt;/a&gt;</string>
+    <string name="app_description">Оваа апликација му овозможува на корисникот да дефинира сет на сесии за медитација и обезбедува тајмер со визуелни и звучни повратни информации кога ќе заврши дел или целата медитација.</string>
     <string name="app_name">Zazen Meditation Timer</string>
     <string name="appbar_scrolling_view_behavior">android.support.design.widget.AppBarLayout$ScrollingViewBehavior</string>
     <string name="backup_error_text">Извинете, се појави грешка при зачувувањето.</string>
     <string name="backup_no_permission">Не може да се создаде резервна копија поради недостиг на дозволи.</string>
     <string name="backup_not_createable">Грешка при креирањето резервна датотека.</string>
     <string name="backup_success_text">Бекапот е направен успешно!</string>
-    <string name="bell_name_1">High Tone</string>
-    <string name="bell_name_2">Low Tone</string>
-    <string name="bell_name_3">Jap. Rhinbowl Dharma, 107mm</string>
-    <string name="bell_name_4">Jap. Rhinbowl Dharma, 88mm (black, glazed)</string>
-    <string name="bell_name_5">Jap. Rhinbowl Shomyo, 90mm</string>
-    <string name="bell_name_6">Jap. Rhinbowl Tang, 164mm</string>
-    <string name="bell_name_7">Tib. Bowl, 230mm</string>
-    <string name="bell_name_8">Jap. Rhinbowl, 97mm</string>
+    <string name="bell_name_1">Висок тон</string>
+    <string name="bell_name_2">Низок тон</string>
+    <string name="bell_name_3">Јап. Ринбоул Дарма, 107 мм</string>
+    <string name="bell_name_4">Јап. Rhinbowl Dharma, 88mm (црна, застаклена)</string>
+    <string name="bell_name_5">Јап. Rhinbowl Shomyo, 90 мм</string>
+    <string name="bell_name_6">Јап. Rhinbowl Tang, 164 mm</string>
+    <string name="bell_name_7">Тиб. Сад, 230 мм</string>
+    <string name="bell_name_8">Јап. Ринбоул, 97 мм</string>
     <string name="bell_pause">Јаз во ѕвончето (сек)</string>
     <string name="bell_user">Додај Бел...</string>
     <string name="bottom_nav_meditation">Медитација</string>
@@ -56,14 +56,14 @@
     <string name="desc_no_server_messages">Автоматски прикажувај вести кога започнува апликацијата</string>
     <string name="error_checking_for_server_messages">Грешка при преземањето нови пораки.</string>
     <string name="gong_type">Гонг звук</string>
-    <string name="help_sectionlist_text">Овде можете да ја именувате, опишувате и уредувате содржината на вашата сесија.\n\n REORDERING\n За повторно да ги подредите ставките, долго притискајте на ставка и\n повлечете ја на нејзината нова позиција.\n\n DELETING⦅ to it an the6 десно.\n\n EDIT\n За да уредите дел, само допрете го еднаш.\n\n ADD\n За да додадете нов дел, притиснете го копчето +.</string>
+    <string name="help_sectionlist_text">Овде можете да ги именувате, опишувате и уредувате содржините на вашата сесија.\n\nПРЕПОРАЧУВАЊЕ\nЗа да ги прередите ставките, долго притиснете на ставка и\nповлечете го на новата позиција.\n\nБРИШЕЊЕ\nЗа да избришете ставка, преместете ја надесно.\n\nУРЕДИ\nЗа да уредите дел, само допрете го еднаш.\n\nДОДАЈ\nЗа да додадете нов дел, притиснете го копчето +.</string>
     <string name="help_sectionlist_title">Уредување на сесија</string>
     <string name="label_section_name">Име на делот</string>
     <string name="label_session_description">Опис на сесијата</string>
     <string name="label_session_name">Име на сесија</string>
     <string name="menu_about">За...</string>
     <string name="menu_copy_session">Дупликат сесија</string>
-    <string name="menu_delete_section">Избриши дел</string>
+    <string name="menu_delete_section">Избриши го делот</string>
     <string name="menu_delete_session">Избриши сесија</string>
     <string name="menu_duplicate_section">Дупликат дел</string>
     <string name="menu_edit_session">Уредување на сесија</string>
@@ -74,7 +74,7 @@
     <string name="menu_settings">Поставки</string>
     <string name="minuten">Минути</string>
     <string name="no_new_server_messages">Нема достапни нови пораки.</string>
-    <string name="no_sections_in_session">Не може да се започне медитација: избраната сесија нема никакви секции.</string>
+    <string name="no_sections_in_session">Не може\'не да започне медитација: Избраната сесија нема никакви секции.</string>
     <string name="no_session_exists">Не постои сесија што може да се започне. Прво креирајте еден.</string>
     <string name="notification_text">Во моментов е во тек медитација на Зазен</string>
     <string name="notification_text_paused">Зазен Медитацијата прекина</string>
@@ -130,12 +130,12 @@
     <string name="status_bar_notification_info_overflow">999+</string>
     <string name="test_mute_perm_request">Апликацијата во моментов не смее да го исклучи звукот на вашиот телефон. Да се ​​отворат поставките за да се промени ова?</string>
     <string name="text_cant_mute">Вашиот телефон не дозволува оваа апликација да го исклучи звукот. Оневозможете го исклучувањето на звукот во поставките за апликациите или дозволете го исклучувањето на звукот во поставките за телефони.</string>
-    <string name="text_no_notify_access_settings">Изгледа дека вашиот телефон нема стандардни поставки за да дозволи исклучување на звукот. Побарајте рачно за поставката „Не вознемирувај пристап“ и овозможете ја.</string>
+    <string name="text_no_notify_access_settings">Изгледа дека вашиот телефон нема стандардни поставки за да дозволи исклучување на звукот. Побарајте рачно поставката \"Не вознемирувај пристап\" и овозможете ја.</string>
     <string name="text_no_sections">Не се дефинирани делови.</string>
     <string name="text_question_delete_session">Дали навистина да се избрише избраната сесија?</string>
     <string name="theme">Тема</string>
     <string name="theme_dark">Темна тема</string>
-    <string name="theme_desc">Изберете светол или темен изглед на апликацијата</string>
+    <string name="theme_desc">Изберете го изгледот на апликацијата</string>
     <string name="theme_light">Светла тема</string>
     <string name="theme_system">Системска тема</string>
     <string name="theme_value_dark">dark</string>
@@ -158,4 +158,12 @@
     <string name="title_dim_bell">Дим Бел</string>
     <string name="dim_bell_label_off">Не затемнети</string>
     <string name="dim_bell_label_format">Затемнет: %1$d0%%</string>
+    <string name="section_deleted">Избришано \'%s\'</string>
+    <string name="action_undo">Врати</string>
+    <string name="notification_channel_name">Тајмер за медитација</string>
+    <string name="nav_label_sessions">Сесии</string>
+    <string name="nav_label_meditation">Медитација</string>
+    <string name="nav_label_edit_session">Уредување на сесија</string>
+    <string name="nav_label_edit_section">Уреди дел</string>
+    <string name="nav_label_settings">Поставки</string>
 </resources>

@@ -1,31 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="abbrechen">Болдырмау</string>
-    <string name="about1">Zazen Meditation Timer — A simple meditation timer with customizable sections, bell sounds, and session management.</string>
-    <string name="about2">Originally created by Stefan Gaffga. Currently maintained by Georg Graf.&lt;br&gt;&lt;br&gt;Thanks to Winfried of &lt;a href="http://www.meditationsuhren.de"&gt;http://www.meditationsuhren.de&lt;/a&gt; for providing such great Bell Sounds!</string>
+    <string name="about1">Zazen медитация таймері - теңшелетін бөлімдері, қоңырау дыбыстары және сеансты басқаруы бар қарапайым медитация таймері.</string>
+    <string name="about2">Бастапқыда Стефан Гаффга жасаған. Қазіргі уақытта Георг Граф қолдау көрсетеді.&lt;br&gt;&lt;br&gt;Осындай керемет қоңырау дыбыстарын ұсынғаны үшін &lt;a href="http://www.meditationsuhren.de"&gt;http://www.meditationsuhren.de&lt;/a&gt; сайтындағы Винфридке рахмет!</string>
     <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues"&gt;Report issues on GitHub&lt;/a&gt;</string>
-    <string name="app_description">This application lets the user define a set of meditation sessions and provides a timer with visual and audible feedback when a part or the whole meditation is over.</string>
+    <string name="app_description">Бұл қолданба пайдаланушыға медитация сеанстарының жинағын анықтауға мүмкіндік береді және медитацияның бір бөлігі немесе толық аяқталған кезде көрнекі және дыбыстық кері байланысы бар таймерді қамтамасыз етеді.</string>
     <string name="app_name">Zazen Meditation Timer</string>
     <string name="appbar_scrolling_view_behavior">android.support.design.widget.AppBarLayout$ScrollingViewBehavior</string>
     <string name="backup_error_text">Кешіріңіз, сақтау кезінде қате орын алды.</string>
     <string name="backup_no_permission">Рұқсаттардың болмауына байланысты сақтық көшірме жасау мүмкін болмады.</string>
     <string name="backup_not_createable">Сақтық көшірме файлын жасау қатесі.</string>
     <string name="backup_success_text">Сақтық көшірме сәтті жасалды!</string>
-    <string name="bell_name_1">High Tone</string>
-    <string name="bell_name_2">Low Tone</string>
-    <string name="bell_name_3">Jap. Rhinbowl Dharma, 107mm</string>
-    <string name="bell_name_4">Jap. Rhinbowl Dharma, 88mm (black, glazed)</string>
-    <string name="bell_name_5">Jap. Rhinbowl Shomyo, 90mm</string>
-    <string name="bell_name_6">Jap. Rhinbowl Tang, 164mm</string>
-    <string name="bell_name_7">Tib. Bowl, 230mm</string>
-    <string name="bell_name_8">Jap. Rhinbowl, 97mm</string>
+    <string name="bell_name_1">Жоғары тон</string>
+    <string name="bell_name_2">Төмен тон</string>
+    <string name="bell_name_3">жапон. Ринбоул Дхарма, 107 мм</string>
+    <string name="bell_name_4">жапон. Rhinbowl Dharma, 88 мм (қара, жылтыратылған)</string>
+    <string name="bell_name_5">жапон. Ринбоул Шомё, 90 мм</string>
+    <string name="bell_name_6">жапон. Rhinbowl Tang, 164 мм</string>
+    <string name="bell_name_7">Tib. Ыдыс, 230 мм</string>
+    <string name="bell_name_8">жапон. Ринбоул, 97 мм</string>
     <string name="bell_pause">Қоңырау аралығы (сек)</string>
     <string name="bell_user">Қоңырау қосу...</string>
     <string name="bottom_nav_meditation">Медитация</string>
     <string name="bottom_nav_sessions">Сеанстар</string>
     <string name="bottom_sheet_behavior">android.support.design.widget.BottomSheetBehavior</string>
     <string name="but_pause">Кідірту</string>
-    <string name="but_start">Медитацияны бастау</string>
+    <string name="but_start">Медитацияны бастаңыз</string>
     <string name="but_stop">Тоқта</string>
     <string name="caption_zazen_meditation">Зазен медитациясы</string>
     <string name="character_counter_pattern">%1$d / %2$d</string>
@@ -56,7 +56,7 @@
     <string name="desc_no_server_messages">Қолданба іске қосылғанда Жаңалықтар автоматты түрде көрсетіледі</string>
     <string name="error_checking_for_server_messages">Жаңа хабарларды алу қатесі.</string>
     <string name="gong_type">Гонг дыбысы</string>
-    <string name="help_sectionlist_text">Мұнда сеанстың мазмұнына ат қоюға, сипаттауға және өңдеуге болады.\n\n РЕТТЕУ\n Элементтердің ретін өзгерту үшін элементті ұзақ басып,\n оны жаңа орнына сүйреп апарыңыз. оңға.\n\n ӨҢДЕУ\n Бөлімді өңдеу үшін оны бір рет түртіңіз.\n\n ҚОСУ\n Жаңа бөлім қосу үшін + түймесін басыңыз.</string>
+    <string name="help_sectionlist_text">Мұнда сіз Сеанстың мазмұнын атауға, сипаттауға және өңдеуге болады.\n\nҚАЙТА РЕТТЕУ\nЭлементтердің ретін өзгерту үшін элементті ұзақ басыңыз және\nоны жаңа орнына сүйреңіз.\n\nЖОЮ\nЭлементті жою үшін оны оңға жылжытыңыз.\n\nӨҢДЕУ\nБөлімді өңдеу үшін оны бір рет түртіңіз.\n\nҚОСУ\nЖаңа бөлім қосу үшін + түймесін басыңыз.</string>
     <string name="help_sectionlist_title">Сеансты өңдеу</string>
     <string name="label_section_name">Бөлім атауы</string>
     <string name="label_session_description">Сеанс сипаттамасы</string>
@@ -74,7 +74,7 @@
     <string name="menu_settings">Параметрлер</string>
     <string name="minuten">Минут</string>
     <string name="no_new_server_messages">Жаңа хабарлар жоқ.</string>
-    <string name="no_sections_in_session">Медитацияны бастау мүмкін емес\': Таңдалған сеанста бөлімдер жоқ.</string>
+    <string name="no_sections_in_session">Медитацияны бастау мүмкін емес: таңдалған сеанста бөлімдер жоқ.</string>
     <string name="no_session_exists">Басталуы мүмкін сеанс жоқ. Алдымен біреуін жасаңыз.</string>
     <string name="notification_text">Қазіргі уақытта Zazen медитациясы жұмыс істеп тұр</string>
     <string name="notification_text_paused">Зазен медитациясы үзілді</string>
@@ -105,9 +105,9 @@
     <string name="pref_title_backup">Сақтық көшірме жасау</string>
     <string name="pref_title_brightness">Жарықтық</string>
     <string name="pref_title_restore">Сақтық көшірмеден қалпына келтіру</string>
-    <string name="privacy_message">Бұл қолданба ешқандай жеке деректерді жинамайды - ол сондай-ақ IP мекенжайларын немесе технологияға қатысты басқа деректерді пайдаланбайды, сондай-ақ ешбір жолмен жинамайды, өңдемейді немесе пайдаланбайды.</string>
+    <string name="privacy_message">Бұл қолданба ешқандай жеке деректерді жинамайды - ол сондай-ақ IP мекенжайларын немесе басқа технологияға қатысты деректерді пайдаланбайды, сондай-ақ ешбір жолмен жинамайды, өңдемейді немесе пайдаланбайды.</string>
     <string name="privacy_ok">Жарайды</string>
-    <string name="privacy_title">Құпиялық туралы ақпарат</string>
+    <string name="privacy_title">Құпиялық ақпарат</string>
     <string name="really_stop">Медитацияны шынымен тоқтатасыз ба?</string>
     <string name="restore_backup_not_found">Сақтық көшірме файлы табылмады</string>
     <string name="restore_error_text">Сақтық көшірмеден қалпына келтіру қатесі</string>
@@ -135,7 +135,7 @@
     <string name="text_question_delete_session">Таңдалған сеанс шынымен жойылсын ба?</string>
     <string name="theme">Тақырып</string>
     <string name="theme_dark">Қараңғы тақырып</string>
-    <string name="theme_desc">Қолданбаның ашық немесе күңгірт көрінісін таңдаңыз</string>
+    <string name="theme_desc">Қолданбаның сыртқы түрін таңдаңыз</string>
     <string name="theme_light">Жеңіл тақырып</string>
     <string name="theme_system">Жүйе тақырыбы</string>
     <string name="theme_value_dark">dark</string>
@@ -158,4 +158,12 @@
     <string name="title_dim_bell">Dim Bell</string>
     <string name="dim_bell_label_off">Күңгірттелмеген</string>
     <string name="dim_bell_label_format">Күңгірттенген: %1$d0%%</string>
+    <string name="section_deleted">Жойылған \'%s\'</string>
+    <string name="action_undo">Болдырмау</string>
+    <string name="notification_channel_name">Медитация таймері</string>
+    <string name="nav_label_sessions">Сеанстар</string>
+    <string name="nav_label_meditation">Медитация</string>
+    <string name="nav_label_edit_session">Сеансты өңдеу</string>
+    <string name="nav_label_edit_section">Бөлімді өңдеу</string>
+    <string name="nav_label_settings">Параметрлер</string>
 </resources>

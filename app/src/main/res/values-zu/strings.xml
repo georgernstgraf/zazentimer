@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="abbrechen">Khansela</string>
-    <string name="about1">Zazen Meditation Timer — A simple meditation timer with customizable sections, bell sounds, and session management.</string>
-    <string name="about2">Originally created by Stefan Gaffga. Currently maintained by Georg Graf.&lt;br&gt;&lt;br&gt;Thanks to Winfried of &lt;a href="http://www.meditationsuhren.de"&gt;http://www.meditationsuhren.de&lt;/a&gt; for providing such great Bell Sounds!</string>
-    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues"&gt;Report issues on GitHub&lt;/a&gt;</string>
-    <string name="app_description">This application lets the user define a set of meditation sessions and provides a timer with visual and audible feedback when a part or the whole meditation is over.</string>
+    <string name="about1">I-Zazen Meditation Timer - Isibali-sikhathi esilula sokuzindla esinezigaba ezenziwe ngokwezifiso, imisindo yensimbi, nokuphathwa kweseshini.</string>
+    <string name="about2">Idalwe nguStefan Gaffga. Okwamanje inakekelwa u-Georg Graf.&lt;br&gt;&lt;br&gt;Siyabonga ku-Winfried we-&lt;a href="http://www.meditationsuhren.de"&gt;http://www.meditationsuhren.de&lt;/a&gt; ngokuhlinzeka ngemisindo ye-Bell emihle kangaka!</string>
+    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues"&gt;Bika izinkinga ku-GitHub&lt;/a&gt;</string>
+    <string name="app_description">Lolu hlelo lokusebenza luvumela umsebenzisi ukuthi achaze isethi yezikhathi zokuzindla futhi lunikeze isibali sikhathi ngempendulo ebonakalayo nezwakalayo uma ingxenye noma ukuzindla konke sekuphelile.</string>
     <string name="app_name">Zazen Meditation Timer</string>
     <string name="appbar_scrolling_view_behavior">android.support.design.widget.AppBarLayout$ScrollingViewBehavior</string>
     <string name="backup_error_text">Uxolo, kwenzeke iphutha ngenkathi ilondoloza.</string>
     <string name="backup_no_permission">Ayikwazanga ukudala ikhophi yasenqolobaneni ngenxa yezimvume ezingekho.</string>
     <string name="backup_not_createable">Iphutha lokudala ifayela eliyisipele.</string>
     <string name="backup_success_text">Isipele sidalwe ngempumelelo!</string>
-    <string name="bell_name_1">High Tone</string>
-    <string name="bell_name_2">Low Tone</string>
-    <string name="bell_name_3">Jap. Rhinbowl Dharma, 107mm</string>
-    <string name="bell_name_4">Jap. Rhinbowl Dharma, 88mm (black, glazed)</string>
-    <string name="bell_name_5">Jap. Rhinbowl Shomyo, 90mm</string>
-    <string name="bell_name_6">Jap. Rhinbowl Tang, 164mm</string>
-    <string name="bell_name_7">Tib. Bowl, 230mm</string>
-    <string name="bell_name_8">Jap. Rhinbowl, 97mm</string>
+    <string name="bell_name_1">Iphimbo Eliphezulu</string>
+    <string name="bell_name_2">Ithoni Ephansi</string>
+    <string name="bell_name_3">I-Jap. I-Rhinbowl Dharma, 107mm</string>
+    <string name="bell_name_4">I-Jap. I-Rhinbowl Dharma, 88mm (emnyama, ecwebezelayo)</string>
+    <string name="bell_name_5">I-Jap. I-Rhinbowl Shomyo, 90mm</string>
+    <string name="bell_name_6">I-Jap. I-Rhinbowl Tang, 164mm</string>
+    <string name="bell_name_7">Thib. Ibhodlela, 230mm</string>
+    <string name="bell_name_8">I-Jap. I-Rhinbowl, 97mm</string>
     <string name="bell_pause">Igebe lensimbi (isekhondi)</string>
     <string name="bell_user">Engeza iBell...</string>
     <string name="bottom_nav_meditation">Ukuzindla</string>
@@ -35,7 +35,7 @@
     <string name="checkbox_phone_off_desc">Thulisa yonke imisindo yefoni.</string>
     <string name="copy_prefix">Ikhophi ye</string>
     <string name="crash_dialog_comment_prompt">Ongakukhetha: Yisiphi isenzo esidale iphutha?</string>
-    <string name="crash_dialog_ok_toast">Siyabonga kakhulu ngosizo lwakho!</string>
+    <string name="crash_dialog_ok_toast">Ngiyabonga kakhulu ngosizo lwakho!</string>
     <string name="crash_dialog_text">Ngiyaxolisa, kwenzeke iphutha. Ungangisiza ngithole futhi ngilungise le nkinga ngokuthumela lo mbiko wesiphazamisi futhi mhlawumbe nemininingwane eyengeziwe ngalokho okwenzile.</string>
     <string name="crash_dialog_title">I-Zazen Meditation Timer</string>
     <string name="crash_toast_text">Uxolo - kwenzeke iphutha langaphakathi!</string>
@@ -56,7 +56,7 @@
     <string name="desc_no_server_messages">Bonisa ngokuzenzakalelayo Izindaba uma uhlelo lokusebenza luqala</string>
     <string name="error_checking_for_server_messages">Iphutha ekulandeni imilayezo emisha.</string>
     <string name="gong_type">I-Gong Sound</string>
-    <string name="help_sectionlist_text">Lapha ungakwazi ukusho, ukuchaza futhi uhlele okuqukethwe kweSeshini yakho.\n\n UKUHLELA KABUSHA\n Ukuze uhlele kabusha izinto, cindezela isikhathi eside entweni bese\n uyidonsele endaweni yayo entsha.\n\n UKUSUSA\n Ukuze ususe into, iyihambise kwesokudla.\n\n HLELA\n Ukuze uhlele ingxenye, vele uyithinte kanye.\n\n Ukwengeza inkinobho entsha.\n\n Ukwengeza inkinobho entsha.\n\n</string>
+    <string name="help_sectionlist_text">Lapha ungakwazi ukusho, ukuchaza futhi uhlele okuqukethwe kweSeshini yakho.\n\nUKUHLELWA KABUSHA\nUkuze uhlele kabusha izinto, cindezela isikhathi eside entweni futhi\nidonsele endaweni yayo entsha.\n\nUKUSUSA\nUkuze ususe into, yihambise kwesokudla.\n\nHLELA\nUkuze uhlele isigaba, vele usithinte kanye.\n\nENGEZA\nUkwengeza isigaba esisha, cindezela inkinobho ethi +.</string>
     <string name="help_sectionlist_title">Hlela Iseshini</string>
     <string name="label_section_name">Igama lesigaba</string>
     <string name="label_session_description">Incazelo Yeseshini</string>
@@ -74,7 +74,7 @@
     <string name="menu_settings">Izilungiselelo</string>
     <string name="minuten">Amaminithi</string>
     <string name="no_new_server_messages">Ayikho imilayezo emisha etholakalayo.</string>
-    <string name="no_sections_in_session">Ayikwazi ukuqala Ukuzindla: Iseshini ekhethiwe ayinazo Izigaba.</string>
+    <string name="no_sections_in_session">Ayikwazi\'ukuqala Ukuzindla: Iseshini ekhethiwe ayinazo Izigaba.</string>
     <string name="no_session_exists">Ayikho iseshini engaqalwa. Sicela udale eyodwa kuqala.</string>
     <string name="notification_text">Ukuzindla kwe-Zazen kuyasebenza okwamanje</string>
     <string name="notification_text_paused">Ukuzindla kwe-Zazen kumisiwe</string>
@@ -93,19 +93,19 @@
     <string name="pref_mute_mode_vibrate_sound">Ithoni yokukhala nokudlidliza</string>
     <string name="pref_mute_mode_vibrate_sound_desc">Dlala ithoni yokukhala nokudlidliza</string>
     <string name="pref_muting">Thulisa Izilungiselelo</string>
-    <string name="pref_sum_backup">Londoloza isipele Sezikhathi zakho Nemisindo ku-SD-Card yakho.</string>
+    <string name="pref_sum_backup">Londoloza ikhophi yasenqolobaneni Yezikhathi zakho Nemisindo ekhadini lakho le-SD.</string>
     <string name="pref_sum_bad_removal">Ikhadi le-SD likhishiwe ngaphandle kokwehliswa kuqala.</string>
     <string name="pref_sum_checking">I-SD-Card iyahlolwa okwamanje</string>
     <string name="pref_sum_ejecting">Ikhadi le-SD liyakhishwa</string>
     <string name="pref_sum_nofs">Alukho uhlelo lwefayela ekhadini le-SD</string>
     <string name="pref_sum_read_only">Ikhadi le-SD elokufunda kuphela</string>
     <string name="pref_sum_removed">Alikho ikhadi le-SD elikhona</string>
-    <string name="pref_sum_restore">Buyisela Izikhathi zakho Nemisindo Yangokwezifiso kusukela kusipele sekhadi le-SD</string>
+    <string name="pref_sum_restore">Buyisela Izikhathi Nemisindo Yakho Ngokwezifiso Kusuka Kusipele Sekhadi Le-SD</string>
     <string name="pref_sum_shared">I-SD-Card yabiwe</string>
     <string name="pref_title_backup">Dala Isipele</string>
     <string name="pref_title_brightness">Ukukhanya</string>
     <string name="pref_title_restore">Buyisela kokuthi Ukwenza Ikhophi Yasenqolobaneni</string>
-    <string name="privacy_message">Lolu hlelo lokusebenza aluqoqi idatha yomuntu siqu - futhi alusebenzisi i-IP-Addresses nanoma iyiphi enye idatha ehlobene nobuchwepheshe, futhi aluqoqi, lucubungula noma lusebenzise noma iyiphi nganoma iyiphi indlela.</string>
+    <string name="privacy_message">Lolu hlelo lokusebenza aluqoqi idatha yomuntu siqu - futhi alusebenzisi ama-IP-Addresses nanoma iyiphi enye idatha ehlobene nobuchwepheshe, futhi aluqoqi, lucubungula noma lusebenzise noma iyiphi nganoma iyiphi indlela.</string>
     <string name="privacy_ok">KULUNGILE</string>
     <string name="privacy_title">Ulwazi Lobumfihlo</string>
     <string name="really_stop">Yeka ngempela ukuzindla?</string>
@@ -130,12 +130,12 @@
     <string name="status_bar_notification_info_overflow">999+</string>
     <string name="test_mute_perm_request">Uhlelo lokusebenza okwamanje aluvunyelwe ukuthulisa ifoni yakho. Vula izilungiselelo ukuze ushintshe lokhu?</string>
     <string name="text_cant_mute">Ifoni yakho ayivumeli lolu hlelo lokusebenza ukuthi luyithulise. Khubaza ukuthulisa kulezi zilungiselelo zezinhlelo zokusebenza noma vumela ukuthulisa kuzilungiselelo zefoni yakho.</string>
-    <string name="text_no_notify_access_settings">Ifoni yakho ayibonakali inezilungiselelo ezijwayelekile zokuvumela ukuthuliswa. Sicela ubheke mathupha Isilungiselelo \"Ungaphazamisi Ukufinyelela\" bese usivula amandla.</string>
+    <string name="text_no_notify_access_settings">Ifoni yakho ayibonakali inezilungiselelo ezijwayelekile zokuvumela ukuthuliswa. Sicela ubheke ngokwakho \"Isilungiselelo Sokungaphazamisi Ukufinyelela\" bese usivula.</string>
     <string name="text_no_sections">Azikho Izigaba ezichaziwe.</string>
     <string name="text_question_delete_session">Susa ngempela Iseshini ekhethiwe?</string>
     <string name="theme">Itimu</string>
     <string name="theme_dark">Itimu Emnyama</string>
-    <string name="theme_desc">Khetha ukubukeka okukhanyayo noma okumnyama kohlelo lokusebenza</string>
+    <string name="theme_desc">Khetha ukubukeka kohlelo lokusebenza</string>
     <string name="theme_light">Itimu Ekhanyayo</string>
     <string name="theme_system">Itimu Yesistimu</string>
     <string name="theme_value_dark">dark</string>
@@ -158,4 +158,12 @@
     <string name="title_dim_bell">Dim Bell</string>
     <string name="dim_bell_label_off">Ayifiphaziwe</string>
     <string name="dim_bell_label_format">Kufiphalisiwe: %1$d0%%</string>
+    <string name="section_deleted">Kususiwe _____%s2__</string>
+    <string name="action_undo">Hlehlisa</string>
+    <string name="notification_channel_name">Isikhathi Sokuzindla</string>
+    <string name="nav_label_sessions">Amaseshini</string>
+    <string name="nav_label_meditation">Ukuzindla</string>
+    <string name="nav_label_edit_session">Hlela Iseshini</string>
+    <string name="nav_label_edit_section">Hlela Isigaba</string>
+    <string name="nav_label_settings">Izilungiselelo</string>
 </resources>

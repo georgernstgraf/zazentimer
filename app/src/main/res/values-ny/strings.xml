@@ -1,25 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="abbrechen">Letsani</string>
-    <string name="about1">Zazen Meditation Timer — A simple meditation timer with customizable sections, bell sounds, and session management.</string>
-    <string name="about2">Originally created by Stefan Gaffga. Currently maintained by Georg Graf.&lt;br&gt;&lt;br&gt;Thanks to Winfried of &lt;a href="http://www.meditationsuhren.de"&gt;http://www.meditationsuhren.de&lt;/a&gt; for providing such great Bell Sounds!</string>
-    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues"&gt;Report issues on GitHub&lt;/a&gt;</string>
-    <string name="app_description">This application lets the user define a set of meditation sessions and provides a timer with visual and audible feedback when a part or the whole meditation is over.</string>
+    <string name="about1">Zazen Meditation Timer - Nthawi yosavuta yosinkhasinkha yokhala ndi magawo omwe mungasinthidwe, mabelu akumveka, komanso kasamalidwe ka gawo.</string>
+    <string name="about2">Poyamba adapangidwa ndi Stefan Gaffga. Pano ikusamalidwa ndi a Georg Graf.&lt;br&gt;&lt;br&gt;Zikomo kwa Winfried wa &lt;a href="http://www.meditationsuhren.de"&gt;http://www.meditationsuhren.de&lt;/a&gt; popereka Maphokoso abwino kwambiri a Bell!</string>
+    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues"&gt;Nenani za zovuta pa GitHub&lt;/a&gt;</string>
+    <string name="app_description">Pulogalamuyi imalola wogwiritsa kufotokozera magawo osinkhasinkha ndikupereka chowerengera chowonera komanso chomveka pamene gawo kapena kusinkhasinkha konse kwatha.</string>
     <string name="app_name">Zazen Meditation Timer</string>
     <string name="appbar_scrolling_view_behavior">android.support.design.widget.AppBarLayout$ScrollingViewBehavior</string>
     <string name="backup_error_text">Pepani, pachitika vuto posunga.</string>
     <string name="backup_no_permission">Sitinathe kupanga zosunga zobwezeretsera chifukwa chosowa zilolezo.</string>
     <string name="backup_not_createable">Vuto popanga fayilo yosunga zobwezeretsera.</string>
     <string name="backup_success_text">Zosunga zosunga zobwezeretsera zidapangidwa bwino!</string>
-    <string name="bell_name_1">High Tone</string>
-    <string name="bell_name_2">Low Tone</string>
+    <string name="bell_name_1">Kamvekedwe kapamwamba</string>
+    <string name="bell_name_2">Mawu Ochepa</string>
     <string name="bell_name_3">Jap. Rhinbowl Dharma, 107mm</string>
-    <string name="bell_name_4">Jap. Rhinbowl Dharma, 88mm (black, glazed)</string>
+    <string name="bell_name_4">Jap. Rhinbowl Dharma, 88mm (wakuda, wonyezimira)</string>
     <string name="bell_name_5">Jap. Rhinbowl Shomyo, 90mm</string>
     <string name="bell_name_6">Jap. Rhinbowl Tang, 164mm</string>
-    <string name="bell_name_7">Tib. Bowl, 230mm</string>
+    <string name="bell_name_7">Tib. Kutalika, 230 mm</string>
     <string name="bell_name_8">Jap. Rhinbowl, 97mm</string>
-    <string name="bell_pause">Bell gap (sec)</string>
+    <string name="bell_pause">Bell gap (mphindikati)</string>
     <string name="bell_user">Onjezani Bell...</string>
     <string name="bottom_nav_meditation">Kusinkhasinkha</string>
     <string name="bottom_nav_sessions">Magawo</string>
@@ -36,7 +36,7 @@
     <string name="copy_prefix">Kopi ya</string>
     <string name="crash_dialog_comment_prompt">Mwachidziwitso: Ndizochitika ziti zomwe zidayambitsa cholakwikacho?</string>
     <string name="crash_dialog_ok_toast">Zikomo kwambiri chifukwa cha thandizo lanu!</string>
-    <string name="crash_dialog_text">Pepani, cholakwika chachitika. Mutha kundithandiza kupeza ndi kukonza vutoli potumiza lipoti la cholakwikacho komanso mwinanso zambiri pazomwe mudachita.</string>
+    <string name="crash_dialog_text">Pepani, cholakwika chachitika. Mutha kundithandiza kupeza ndikukonza vutoli potumiza lipoti la cholakwikacho komanso mwinanso zambiri pazomwe mudachita.</string>
     <string name="crash_dialog_title">Zazen Kusinkhasinkha Timer</string>
     <string name="crash_toast_text">Pepani - cholakwika chamkati chachitika!</string>
     <string name="crash_user_email_label">Zosankha: Imelo-Adilesi yanu yamafunso kapena zosintha pankhaniyi.</string>
@@ -56,7 +56,7 @@
     <string name="desc_no_server_messages">Onetsani zokha News pomwe App iyamba</string>
     <string name="error_checking_for_server_messages">Vuto potenga mauthenga atsopano.</string>
     <string name="gong_type">Gong Sound</string>
-    <string name="help_sectionlist_text">Apa mutha kutchula, kufotokoza ndi kusintha zomwe zili mu Gawo lanu.\n\n KUKONZAnso zinthuzo\n Kuti mukonzenso zinthuzo, dinani kwanthawi yayitali chinthu ndi\n kuchikokera kumalo ake atsopano.\n\n KUFUTA\n Kuchotsa chinthucho kumanja.\n\n EDIT\n Kuti musinthe gawo, ingogwirani kamodzi.\n\n ADD\n Kuti muwonjezere gawo latsopano, dinani batani +.</string>
+    <string name="help_sectionlist_text">Apa mutha kutchula, kufotokoza ndikusintha zomwe zili mu Gawo lanu.\n\nKUKONZAnso\nKuti mukonzenso zinthuzo, dinani kwanthawi yayitali chinthu ndi\nkokerani kumalo ake atsopano.\n\nKUFUTA\nKuti mufufute chinthu, chisunthireni kumanja.\n\nKONDANI\nKuti musinthe gawo, ingokhudzani kamodzi.\n\nADD\nKuti muwonjezere gawo latsopano, dinani batani +.</string>
     <string name="help_sectionlist_title">Sinthani Gawo</string>
     <string name="label_section_name">Dzina lachigawo</string>
     <string name="label_session_description">Kufotokozera Gawo</string>
@@ -74,7 +74,7 @@
     <string name="menu_settings">Zokonda</string>
     <string name="minuten">Mphindi</string>
     <string name="no_new_server_messages">Palibe mauthenga atsopano.</string>
-    <string name="no_sections_in_session">Sangathe\'kuyamba Kusinkhasinkha: Gawo losankhidwa liribe Gawo lililonse.</string>
+    <string name="no_sections_in_session">Sitingathe\'kuyamba Kusinkhasinkha: Gawo losankhidwa liribe Magawo aliwonse.</string>
     <string name="no_session_exists">Palibe gawo lomwe lingayambike. Chonde pangani imodzi kaye.</string>
     <string name="notification_text">Kusinkhasinkha kwa Zazen kukuyenda</string>
     <string name="notification_text_paused">Kusinkhasinkha kwa Zazen kunayima kaye</string>
@@ -88,19 +88,19 @@
     <string name="pref_mute_mode_none">Chete</string>
     <string name="pref_mute_mode_none_desc">Palibe kamvekedwe ka mphete komanso kugwedezeka kwa mafoni ndi Zidziwitso</string>
     <string name="pref_mute_mode_pref">Zokonda zokhudzana ndi kamvekedwe ka mphete ndi Zidziwitso</string>
-    <string name="pref_mute_mode_vibrate">Kugwedera kokha</string>
+    <string name="pref_mute_mode_vibrate">Kugwedezeka Kokha</string>
     <string name="pref_mute_mode_vibrate_desc">Kungonjenjemera pama foni ndi Zidziwitso (Sizigwira ntchito pa Android 7 (Nougat) - zimakhala ngati Silence setting)</string>
     <string name="pref_mute_mode_vibrate_sound">Kamvekedwe ka mphete ndi Vibration</string>
     <string name="pref_mute_mode_vibrate_sound_desc">Sewerani kamvekedwe ka mphete ndi kugwedezeka</string>
     <string name="pref_muting">Tsegulani Zokonda</string>
     <string name="pref_sum_backup">Sungani zosunga zobwezeretsera za Magawo ndi Mawu anu ku SD-Card yanu.</string>
-    <string name="pref_sum_bad_removal">Khadi la SD lidachotsedwa popanda kutsitsa koyamba.</string>
+    <string name="pref_sum_bad_removal">SD Card idachotsedwa popanda kutsitsa koyamba.</string>
     <string name="pref_sum_checking">SD-Card ikuyang\'aniridwa pakadali pano</string>
     <string name="pref_sum_ejecting">SD-Card ikuchotsedwa</string>
     <string name="pref_sum_nofs">Palibe Filesystem pa SD-Card</string>
-    <string name="pref_sum_read_only">SD-Card ndiyowerengedwa-yokha</string>
+    <string name="pref_sum_read_only">SD-Card ndi yowerenga-pokha</string>
     <string name="pref_sum_removed">Palibe SD-Card yomwe ilipo</string>
-    <string name="pref_sum_restore">Bwezeretsani Magawo Anu ndi Zomveka Mwamakonda anu kuchokera ku SD-Card Backup</string>
+    <string name="pref_sum_restore">Bwezeretsani Magawo Anu ndi Zomveka Mwamakonda kuchokera ku SD-Card Backup</string>
     <string name="pref_sum_shared">SD-Card imagawidwa</string>
     <string name="pref_title_backup">Pangani zosunga zobwezeretsera</string>
     <string name="pref_title_brightness">Kuwala</string>
@@ -108,17 +108,17 @@
     <string name="privacy_message">Pulogalamuyi simasonkhanitsa zidziwitso zaumwini - siigwiritsanso ntchito ma IP-Address kapena data ina iliyonse yokhudzana ndiukadaulo, komanso sisonkhanitsa, kukonza kapena kugwiritsa ntchito mwanjira ina iliyonse.</string>
     <string name="privacy_ok">Chabwino</string>
     <string name="privacy_title">Zambiri Zazinsinsi</string>
-    <string name="really_stop">Kodi kusiya kusinkhasinkha?</string>
+    <string name="really_stop">Zoona kusiya kusinkhasinkha?</string>
     <string name="restore_backup_not_found">Fayilo yosunga zosunga zobwezeretsera sinapezeke</string>
     <string name="restore_error_text">Cholakwika pakubwezeretsa kuchokera ku Backup</string>
     <string name="restore_no_permission">Sitinathe kubwezeretsa chifukwa chosowa chilolezo.</string>
-    <string name="restore_really_text">Izi zidzalowa m\'malo mwa Magawo anu onse ndi omwe ali mu Zosunga Zosungirako! (Palibe Kusintha!)</string>
+    <string name="restore_really_text">Izi zidzalowa m\'malo mwa Magawo anu onse ndi omwe ali mu Zosungirako! (Palibe Kusintha!)</string>
     <string name="restore_really_title">Bwezeretsanidi deta?</string>
     <string name="restore_success_text">Kubwezeretsa Data kwapambana</string>
     <string name="search_menu_title">Sakani</string>
     <string name="section_info_string_1_pl">%1$d Mabelu</string>
     <string name="section_info_string_1_sg">1 Bell</string>
-    <string name="section_info_string_2_pl">%1$d Masekondi aliwonse</string>
+    <string name="section_info_string_2_pl">Masekondi %1$d aliwonse</string>
     <string name="section_info_string_2_sg">Sekondi iliyonse</string>
     <string name="sekunden">Masekondi</string>
     <string name="select_audio">Sankhani fayilo yamawu</string>
@@ -129,19 +129,19 @@
     <string name="session_list_unnamed_entry">Gawo Losatchulidwa</string>
     <string name="status_bar_notification_info_overflow">999+</string>
     <string name="test_mute_perm_request">Pulogalamuyi ndiyosaloledwa kuyimitsa foni yanu. Tsegulani zokonda kuti musinthe izi?</string>
-    <string name="text_cant_mute">Foni yanu siyilola kuti Pulogalamuyi iziyimitsa. Letsani kusalankhula mu Zochunira za Mapulogalamuwa kapena lolani kusalankhula mu Zochunira Zamafoni anu.</string>
-    <string name="text_no_notify_access_settings">Foni yanu ikuwoneka kuti ilibe zoikamo zomwe zimalola kuti musinthe. Chonde yang\'anani pamanja \"Musasokoneze Kufikira\" Kukhazikitsa ndikuyatsa.</string>
+    <string name="text_cant_mute">Foni yanu siyilola kuti Pulogalamuyi iziyimitsa. Letsani kusalankhula mu Zochunira za Mapulogalamuwa kapena lolani kuti mutsegule mu Zochunira Zamafoni anu.</string>
+    <string name="text_no_notify_access_settings">Foni yanu ikuwoneka kuti ilibe zoikamo zomwe zimalola kuti musinthe. Chonde yang\'anani pawokha \"Makonda Osasokoneza\" ndikuyatsa.</string>
     <string name="text_no_sections">Palibe Magawo ofotokozedwa.</string>
     <string name="text_question_delete_session">Chotsanidi Gawo losankhidwa?</string>
     <string name="theme">Mutu</string>
     <string name="theme_dark">Mutu Wamdima</string>
-    <string name="theme_desc">Sankhani mawonekedwe opepuka kapena akuda a App</string>
+    <string name="theme_desc">Sankhani mawonekedwe a pulogalamuyi</string>
     <string name="theme_light">Mutu Wowala</string>
     <string name="theme_system">System Theme</string>
     <string name="theme_value_dark">dark</string>
     <string name="theme_value_light">light</string>
     <string name="theme_value_system">system</string>
-    <string name="time_section_elapsed">Gawo latha</string>
+    <string name="time_section_elapsed">Gawo linatha</string>
     <string name="time_section_remaining">Gawo lotsala</string>
     <string name="time_session_elapsed">Gawo linatha</string>
     <string name="time_session_remaining">Gawo latsala</string>
@@ -157,5 +157,13 @@
     <string name="pref_desc_bell_volume">Imawongolera voliyumu ya alamu ya mabelu</string>
     <string name="title_dim_bell">Dim Bell</string>
     <string name="dim_bell_label_off">Osachepera</string>
-    <string name="dim_bell_label_format">Kuchepetsa: %1$d0%%</string>
+    <string name="dim_bell_label_format">Yazimitsidwa: %1$d0%%</string>
+    <string name="section_deleted">Zachotsedwa _____%s\'</string>
+    <string name="action_undo">Bwezerani</string>
+    <string name="notification_channel_name">Kusinkhasinkha Timer</string>
+    <string name="nav_label_sessions">Magawo</string>
+    <string name="nav_label_meditation">Kusinkhasinkha</string>
+    <string name="nav_label_edit_session">Sinthani Gawo</string>
+    <string name="nav_label_edit_section">Sinthani Gawo</string>
+    <string name="nav_label_settings">Zokonda</string>
 </resources>

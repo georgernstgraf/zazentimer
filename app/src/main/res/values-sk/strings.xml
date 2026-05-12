@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="abbrechen">Zrušiť</string>
-    <string name="about1">Zazen Meditation Timer — A simple meditation timer with customizable sections, bell sounds, and session management.</string>
-    <string name="about2">Originally created by Stefan Gaffga. Currently maintained by Georg Graf.&lt;br&gt;&lt;br&gt;Thanks to Winfried of &lt;a href="http://www.meditationsuhren.de"&gt;http://www.meditationsuhren.de&lt;/a&gt; for providing such great Bell Sounds!</string>
-    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues"&gt;Report issues on GitHub&lt;/a&gt;</string>
-    <string name="app_description">This application lets the user define a set of meditation sessions and provides a timer with visual and audible feedback when a part or the whole meditation is over.</string>
+    <string name="about1">Zazen Meditation Timer — Jednoduchý meditačný časovač s prispôsobiteľnými sekciami, zvukmi zvončeka a správou relácií.</string>
+    <string name="about2">Pôvodne vytvoril Stefan Gaffga. V súčasnosti spravuje Georg Graf.&lt;br&gt;&lt;br&gt;Vďaka Winfriedovi z &lt;a href="http://www.meditationsuhren.de"&gt;http://www.meditationsuhren.de&lt;/a&gt; za poskytnutie takých skvelých zvukov zvonu!</string>
+    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues"&gt;Nahlásenie problémov na GitHub&lt;/a&gt;</string>
+    <string name="app_description">Táto aplikácia umožňuje používateľovi definovať súbor meditačných sedení a poskytuje časovač s vizuálnou a zvukovou spätnou väzbou, keď sa časť alebo celá meditácia skončí.</string>
     <string name="app_name">Zazen Meditation Timer</string>
     <string name="appbar_scrolling_view_behavior">android.support.design.widget.AppBarLayout$ScrollingViewBehavior</string>
     <string name="backup_error_text">Ľutujeme, pri ukladaní sa vyskytla chyba.</string>
     <string name="backup_no_permission">Zálohu sa nepodarilo vytvoriť pre chýbajúce povolenia.</string>
     <string name="backup_not_createable">Chyba pri vytváraní záložného súboru.</string>
-    <string name="backup_success_text">Záloha bola úspešne vytvorená!</string>
-    <string name="bell_name_1">High Tone</string>
-    <string name="bell_name_2">Low Tone</string>
-    <string name="bell_name_3">Jap. Rhinbowl Dharma, 107mm</string>
-    <string name="bell_name_4">Jap. Rhinbowl Dharma, 88mm (black, glazed)</string>
-    <string name="bell_name_5">Jap. Rhinbowl Shomyo, 90mm</string>
-    <string name="bell_name_6">Jap. Rhinbowl Tang, 164mm</string>
-    <string name="bell_name_7">Tib. Bowl, 230mm</string>
-    <string name="bell_name_8">Jap. Rhinbowl, 97mm</string>
+    <string name="backup_success_text">Backup created successfully!</string>
+    <string name="bell_name_1">Vysoký tón</string>
+    <string name="bell_name_2">Nízky tón</string>
+    <string name="bell_name_3">jap. Rhinbowl Dharma, 107 mm</string>
+    <string name="bell_name_4">jap. Rhinbowl Dharma, 88 mm (čierna, glazovaná)</string>
+    <string name="bell_name_5">jap. Nádoba Shomyo, 90 mm</string>
+    <string name="bell_name_6">jap. Rinbowl Tang, 164 mm</string>
+    <string name="bell_name_7">Tib. Miska, 230 mm</string>
+    <string name="bell_name_8">jap. Nádoba, 97 mm</string>
     <string name="bell_pause">Zvonová medzera (s)</string>
     <string name="bell_user">Pridať Bell...</string>
     <string name="bottom_nav_meditation">Meditácia</string>
@@ -36,7 +36,7 @@
     <string name="copy_prefix">Kópia z</string>
     <string name="crash_dialog_comment_prompt">Voliteľné: Ktorá akcia spôsobila chybu?</string>
     <string name="crash_dialog_ok_toast">Ďakujeme veľmi pekne za vašu pomoc!</string>
-    <string name="crash_dialog_text">Je mi ľúto, vyskytla sa chyba.Môžete mi pomôcť nájsť a vyriešiť tento problém odoslaním tohto hlásenia o chybe a možno aj ďalších podrobností o tom, čo ste urobili.</string>
+    <string name="crash_dialog_text">Je mi ľúto, vyskytla sa chyba. Môžete mi pomôcť nájsť a vyriešiť tento problém odoslaním tohto hlásenia o chybe a možno aj ďalších podrobností o tom, čo ste urobili.</string>
     <string name="crash_dialog_title">Časovač zazenovej meditácie</string>
     <string name="crash_toast_text">Ľutujeme, vyskytla sa interná chyba!</string>
     <string name="crash_user_email_label">Voliteľné: Vaša e-mailová adresa pre otázky alebo aktualizácie týkajúce sa tohto problému.</string>
@@ -51,12 +51,12 @@
     <string name="demo_sess1_sec6_name">Zazen 3</string>
     <string name="demo_sess2_description">Denná meditácia</string>
     <string name="demo_sess2_name">Iba zazen</string>
-    <string name="desc_get_messages">Ak sú automatické správy vypnuté, novinky si môžete pozrieť tu.</string>
+    <string name="desc_get_messages">If automatic messages are disabled, you can check for news here.</string>
     <string name="desc_keep_screen_on">Počas meditácie ponechá obrazovku zapnutú</string>
     <string name="desc_no_server_messages">Automaticky zobraziť správy pri spustení aplikácie</string>
     <string name="error_checking_for_server_messages">Chyba pri načítavaní nových správ.</string>
     <string name="gong_type">Zvuk gongu</string>
-    <string name="help_sectionlist_text">Tu môžete pomenovať, popísať a upraviť obsah svojej relácie.\n\n ZMENA PORIADKU\n Ak chcete zmeniť poradie položiek, dlho stlačte položku a\n presuňte ju na nové miesto.\n\n ODSTRAŇOVANIE\n Ak chcete položku odstrániť, presuňte ju doprava.\n\n UPRAVIŤ\n Ak chcete sekciu upraviť, stačí sa jej raz dotknúť.\n\n PRIDAŤ novú sekciu\n Ak chcete pridať novú sekciu, presuňte ju doprava.</string>
+    <string name="help_sectionlist_text">Tu môžete pomenovať, popísať a upraviť obsah svojej relácie.\n\nREORDERING\nAk chcete zmeniť poradie položiek, dlho stlačte položku a\npresuňte ho do novej polohy.\n\nVYMAZANIE\nAk chcete odstrániť položku, presuňte ju doprava.\n\nUPRAVIŤ\nAk chcete upraviť sekciu, stačí sa jej raz dotknúť.\n\nPRIDAŤ\nAk chcete pridať novú sekciu, stlačte tlačidlo +.</string>
     <string name="help_sectionlist_title">Upraviť reláciu</string>
     <string name="label_section_name">Názov sekcie</string>
     <string name="label_session_description">Popis relácie</string>
@@ -74,11 +74,11 @@
     <string name="menu_settings">Nastavenia</string>
     <string name="minuten">Minúty</string>
     <string name="no_new_server_messages">Nie sú k dispozícii žiadne nové správy.</string>
-    <string name="no_sections_in_session">Meditáciu nemožno spustiť: Vybraná relácia nemá žiadne sekcie.</string>
-    <string name="no_session_exists">Neexistuje žiadna relácia, ktorú by bolo možné spustiť.Najprv si ho vytvorte.</string>
+    <string name="no_sections_in_session">Can\'t začať meditáciu: Zvolená relácia nemá žiadne sekcie.</string>
+    <string name="no_session_exists">Neexistuje žiadna relácia, ktorú by bolo možné spustiť. Najprv si ho vytvorte.</string>
     <string name="notification_text">Momentálne prebieha zazenová meditácia</string>
     <string name="notification_text_paused">Zazenová meditácia sa zastavila</string>
-    <string name="notification_title">Zazenová meditácia</string>
+    <string name="notification_title">Zazen Meditation</string>
     <string name="notification_title_paused">Meditácia zazenu (pozastavená)</string>
     <string name="num_bells">Počet zvončekov</string>
     <string name="ok">OK</string>
@@ -102,7 +102,7 @@
     <string name="pref_sum_removed">Nie je prítomná karta SD</string>
     <string name="pref_sum_restore">Obnovte svoje relácie a vlastné zvuky zo zálohy SD karty</string>
     <string name="pref_sum_shared">SD karta je zdieľaná</string>
-    <string name="pref_title_backup">Vytvorte zálohu</string>
+    <string name="pref_title_backup">Vytvoriť zálohu</string>
     <string name="pref_title_brightness">Jas</string>
     <string name="pref_title_restore">Obnoviť zo zálohy</string>
     <string name="privacy_message">Táto aplikácia nezhromažďuje žiadne osobné údaje – nepoužíva ani IP adresy ani žiadne iné údaje súvisiace s technológiami, ani ich žiadnym spôsobom nezhromažďuje, nespracúva ani nepoužíva.</string>
@@ -112,11 +112,11 @@
     <string name="restore_backup_not_found">Záložný súbor sa nenašiel</string>
     <string name="restore_error_text">Chyba pri obnovovaní zo zálohy</string>
     <string name="restore_no_permission">Nepodarilo sa obnoviť z dôvodu chýbajúceho povolenia.</string>
-    <string name="restore_really_text">Toto nahradí všetky vaše relácie tými, ktoré sú v zálohe!(Nie je možné vrátiť späť!)</string>
+    <string name="restore_really_text">Toto nahradí všetky vaše relácie tými, ktoré sú v zálohe! (Nie je možné vrátiť späť!)</string>
     <string name="restore_really_title">Naozaj obnoviť údaje?</string>
     <string name="restore_success_text">Obnovenie údajov bolo úspešné</string>
     <string name="search_menu_title">Hľadať</string>
-    <string name="section_info_string_1_pl">%1$d zvončeky</string>
+    <string name="section_info_string_1_pl">%1$d Zvončeky</string>
     <string name="section_info_string_1_sg">1 zvonček</string>
     <string name="section_info_string_2_pl">každých %1$d sekúnd</string>
     <string name="section_info_string_2_sg">každú sekundu</string>
@@ -128,14 +128,14 @@
     <string name="content_desc_session_actions">Akcie relácie</string>
     <string name="session_list_unnamed_entry">Nepomenovaná relácia</string>
     <string name="status_bar_notification_info_overflow">999+</string>
-    <string name="test_mute_perm_request">Aplikácia momentálne nemá povolené stlmiť váš telefón.Chcete to zmeniť v nastaveniach?</string>
-    <string name="text_cant_mute">Váš telefón neumožňuje tejto aplikácii stlmiť ho.Zakážte stlmenie v týchto nastaveniach aplikácií alebo povoľte stlmenie v nastaveniach telefónov.</string>
-    <string name="text_no_notify_access_settings">Zdá sa, že váš telefón nemá štandardné nastavenia umožňujúce stlmenie zvuku.Vyhľadajte manuálne nastavenie \&amp;quot;Nerušiť prístup\&amp;quot; a povoľte ho.</string>
+    <string name="test_mute_perm_request">Aplikácia momentálne nemá povolené stlmiť váš telefón. Chcete to zmeniť v nastaveniach?</string>
+    <string name="text_cant_mute">Váš telefón neumožňuje tejto aplikácii stlmiť ho. Zakážte stlmenie v týchto nastaveniach aplikácií alebo povoľte stlmenie v nastaveniach telefónov.</string>
+    <string name="text_no_notify_access_settings">Zdá sa, že váš telefón nemá štandardné nastavenia umožňujúce stlmenie zvuku. Ručne vyhľadajte nastavenie \"Nerušiť prístup\" a povoľte ho.</string>
     <string name="text_no_sections">Nie sú definované žiadne sekcie.</string>
     <string name="text_question_delete_session">Naozaj odstrániť vybratú reláciu?</string>
     <string name="theme">Téma</string>
-    <string name="theme_dark">Temná téma</string>
-    <string name="theme_desc">Vyberte si svetlý alebo tmavý vzhľad aplikácie</string>
+    <string name="theme_dark">Tmavá téma</string>
+    <string name="theme_desc">Vyberte vzhľad aplikácie</string>
     <string name="theme_light">Svetlá téma</string>
     <string name="theme_system">Téma systému</string>
     <string name="theme_value_dark">dark</string>
@@ -158,4 +158,12 @@
     <string name="title_dim_bell">Dim Bell</string>
     <string name="dim_bell_label_off">Nie je stlmené</string>
     <string name="dim_bell_label_format">Stmavené: %1$d0%%</string>
+    <string name="section_deleted">Odstránené \'%s\'</string>
+    <string name="action_undo">Vrátiť späť</string>
+    <string name="notification_channel_name">Meditačný časovač</string>
+    <string name="nav_label_sessions">Relácie</string>
+    <string name="nav_label_meditation">Meditácia</string>
+    <string name="nav_label_edit_session">Upraviť reláciu</string>
+    <string name="nav_label_edit_section">Upraviť sekciu</string>
+    <string name="nav_label_settings">Nastavenia</string>
 </resources>

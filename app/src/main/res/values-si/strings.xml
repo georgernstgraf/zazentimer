@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="abbrechen">අවලංගු කරන්න</string>
-    <string name="about1">Zazen Meditation Timer — A simple meditation timer with customizable sections, bell sounds, and session management.</string>
-    <string name="about2">Originally created by Stefan Gaffga. Currently maintained by Georg Graf.&lt;br&gt;&lt;br&gt;Thanks to Winfried of &lt;a href="http://www.meditationsuhren.de"&gt;http://www.meditationsuhren.de&lt;/a&gt; for providing such great Bell Sounds!</string>
-    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues"&gt;Report issues on GitHub&lt;/a&gt;</string>
-    <string name="app_description">This application lets the user define a set of meditation sessions and provides a timer with visual and audible feedback when a part or the whole meditation is over.</string>
+    <string name="about1">Zazen Meditation Timer — අභිරුචිකරණය කළ හැකි කොටස්, සීනු ශබ්ද සහ සැසි කළමනාකරණය සහිත සරල භාවනා කාල ගණකයක්.</string>
+    <string name="about2">මුලින් නිර්මාණය කළේ Stefan Gaffga විසිනි. දැනට ජෝර්ජ් ග්‍රැෆ් විසින් නඩත්තු කරනු ලැබේ.&lt;br&gt;&lt;br&gt;මෙවැනි විශිෂ්ට බෙල් ශබ්ද ලබා දීම සඳහා &lt;a href="http://www.meditationsuhren.de"&gt;http://www.meditationsuhren.de&lt;/a&gt; හි Winfried වෙත ස්තූතියි!</string>
+    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues"&gt;GitHub හි ගැටළු වාර්තා කරන්න&lt;/a&gt;</string>
+    <string name="app_description">මෙම යෙදුම පරිශීලකයාට භාවනා සැසි මාලාවක් නිර්වචනය කිරීමට ඉඩ දෙන අතර කොටසක් හෝ සම්පූර්ණ භාවනාව අවසන් වූ විට දෘශ්‍ය සහ ශ්‍රවණ ප්‍රතිපෝෂණ සහිත ටයිමරයක් සපයයි.</string>
     <string name="app_name">Zazen Meditation Timer</string>
     <string name="appbar_scrolling_view_behavior">android.support.design.widget.AppBarLayout$ScrollingViewBehavior</string>
     <string name="backup_error_text">සමාවන්න, සුරැකීමේදී දෝෂයක් සිදු විය.</string>
     <string name="backup_no_permission">අවසර නැති නිසා උපස්ථයක් තැනීමට නොහැකි විය.</string>
     <string name="backup_not_createable">උපස්ථ ගොනුව සෑදීමේ දෝෂයකි.</string>
     <string name="backup_success_text">උපස්ථය සාර්ථකව සාදන ලදී!</string>
-    <string name="bell_name_1">High Tone</string>
-    <string name="bell_name_2">Low Tone</string>
-    <string name="bell_name_3">Jap. Rhinbowl Dharma, 107mm</string>
-    <string name="bell_name_4">Jap. Rhinbowl Dharma, 88mm (black, glazed)</string>
-    <string name="bell_name_5">Jap. Rhinbowl Shomyo, 90mm</string>
-    <string name="bell_name_6">Jap. Rhinbowl Tang, 164mm</string>
-    <string name="bell_name_7">Tib. Bowl, 230mm</string>
-    <string name="bell_name_8">Jap. Rhinbowl, 97mm</string>
+    <string name="bell_name_1">ඉහළ ස්වරය</string>
+    <string name="bell_name_2">අඩු ස්වරය</string>
+    <string name="bell_name_3">ජැප් රින්බෝල් ධර්ම, 107 මි.මී</string>
+    <string name="bell_name_4">ජැප් රින්බෝල් ධර්ම, 88mm (කළු, ඔප දැමූ)</string>
+    <string name="bell_name_5">ජැප් Rhinbowl Shomyo, 90 මි.මී</string>
+    <string name="bell_name_6">ජැප් Rhinbowl Tang, 164 මි.මී</string>
+    <string name="bell_name_7">ටිබ් බඳුන, 230 මි.මී</string>
+    <string name="bell_name_8">ජැප් රින්බෝල්, 97 මි.මී</string>
     <string name="bell_pause">බෙල් පරතරය (තත්පර)</string>
     <string name="bell_user">බෙල් එකතු කරන්න...</string>
     <string name="bottom_nav_meditation">භාවනාව</string>
@@ -56,7 +56,7 @@
     <string name="desc_no_server_messages">යෙදුම ආරම්භ වූ විට ස්වයංක්‍රීයව පුවත් පෙන්වන්න</string>
     <string name="error_checking_for_server_messages">නව පණිවිඩ ලබා ගැනීමේ දෝෂයකි.</string>
     <string name="gong_type">ගොං ශබ්දය</string>
-    <string name="help_sectionlist_text">මෙහිදී ඔබට ඔබේ සැසියේ අන්තර්ගතය නම් කිරීමට, විස්තර කිරීමට සහ සංස්කරණය කිරීමට හැකිය.\n\n නැවත ඇණවුම් කිරීම\n අයිතම නැවත ඇණවුම් කිරීමට, අයිතමයක් මත දිගු ඔබා\n එය එහි නව ස්ථානයට ඇදගෙන යන්න.\n\n මකා දැමීම\n අයිතමයක් මැකීමට, එය දකුණට ගෙන යන්න.\n\n EDIT\n කොටසක් සංස්කරණය කිරීමට, D\n\n බොත්තම එක් වරක් ඔබන්න.\n\n බොත්තම ඔබන්න.</string>
+    <string name="help_sectionlist_text">මෙහිදී ඔබට ඔබගේ සැසියේ අන්තර්ගතය නම් කිරීමට, විස්තර කිරීමට සහ සංස්කරණය කිරීමට හැකිය.\n\nනැවත සකස් කිරීම\nඅයිතම නැවත ඇණවුම් කිරීමට, අයිතමයක් මත දිගු ඔබන්න සහ\nඑය එහි නව ස්ථානයට ඇද දමන්න.\n\nමකා දැමීම\nඅයිතමයක් මැකීමට, එය දකුණට ගෙන යන්න.\n\nසංස්කරණය කරන්න\nකොටසක් සංස්කරණය කිරීමට, එය එක් වරක් ස්පර්ශ කරන්න.\n\nඑකතු කරන්න\nනව කොටසක් එක් කිරීමට, + බොත්තම ඔබන්න.</string>
     <string name="help_sectionlist_title">සැසිය සංස්කරණය කරන්න</string>
     <string name="label_section_name">කොටසේ නම</string>
     <string name="label_session_description">සැසි විස්තරය</string>
@@ -74,7 +74,7 @@
     <string name="menu_settings">සැකසීම්</string>
     <string name="minuten">මිනිත්තු</string>
     <string name="no_new_server_messages">නව පණිවිඩ නොමැත.</string>
-    <string name="no_sections_in_session">භාවනාව ආරම්භ කළ නොහැක: තෝරාගත් සැසියට අංශ කිසිවක් නොමැත.</string>
+    <string name="no_sections_in_session">භාවනාව\'ආරම්භ කළ නොහැක: තෝරාගත් සැසියට අංශ කිසිවක් නොමැත.</string>
     <string name="no_session_exists">ආරම්භ කළ හැකි සැසියක් නොමැත. කරුණාකර පළමුව එකක් සාදන්න.</string>
     <string name="notification_text">Zazen භාවනාවක් දැනට ක්‍රියාත්මක වේ</string>
     <string name="notification_text_paused">Zazen භාවනාව නතර කළා</string>
@@ -130,12 +130,12 @@
     <string name="status_bar_notification_info_overflow">999+</string>
     <string name="test_mute_perm_request">යෙදුමට දැනට ඔබගේ දුරකථනය නිශ්ශබ්ද කිරීමට අවසර නැත. මෙය වෙනස් කිරීමට සැකසීම් විවෘත කරන්නද?</string>
     <string name="text_cant_mute">ඔබගේ දුරකථනය මෙම යෙදුමට එය නිශ්ශබ්ද කිරීමට ඉඩ නොදේ. මෙම යෙදුම් සැකසීම් තුළ නිශ්ශබ්ද කිරීම අබල කරන්න හෝ ඔබේ දුරකථන සැකසීම් තුළ නිහඬ කිරීමට ඉඩ දෙන්න.</string>
-    <string name="text_no_notify_access_settings">නිශ්ශබ්ද කිරීමට ඉඩ දීමට ඔබගේ දුරකථනයේ සම්මත සැකසුම් ඇති බවක් නොපෙනේ. කරුණාකර \"ප්‍රවේශයට බාධා නොකරන්න\" සැකසීම සඳහා හස්තීයව බලා එය සබල කරන්න.</string>
+    <string name="text_no_notify_access_settings">නිශ්ශබ්ද කිරීමට ඉඩ දීමට ඔබගේ දුරකථනයේ සම්මත සැකසුම් ඇති බවක් නොපෙනේ. කරුණාකර \"Do not Disturb Access\" සැකසීම සඳහා හස්තීයව බලා එය සබල කරන්න.</string>
     <string name="text_no_sections">කොටස් නිර්වචනය කර නොමැත.</string>
     <string name="text_question_delete_session">තෝරාගත් සැසිය ඇත්තටම මකන්නද?</string>
     <string name="theme">තේමාව</string>
     <string name="theme_dark">අඳුරු තේමාව</string>
-    <string name="theme_desc">යෙදුමේ ආලෝකය හෝ අඳුරු පෙනුම තෝරන්න</string>
+    <string name="theme_desc">යෙදුමේ පෙනුම තෝරන්න</string>
     <string name="theme_light">සැහැල්ලු තේමාව</string>
     <string name="theme_system">පද්ධති තේමාව</string>
     <string name="theme_value_dark">dark</string>
@@ -157,5 +157,13 @@
     <string name="pref_desc_bell_volume">සීනු ශබ්ද සඳහා එලාම් ප්‍රවාහ පරිමාව පාලනය කරයි</string>
     <string name="title_dim_bell">ඩිම් බෙල්</string>
     <string name="dim_bell_label_off">අඳුරු නොවේ</string>
-    <string name="dim_bell_label_format">අඳුරු: %1$d0%%</string>
+    <string name="dim_bell_label_format">අඳුරු විය: %1$d0%%</string>
+    <string name="section_deleted">මකා දමන ලදී \'__%s_2__</string>
+    <string name="action_undo">අහෝසි කරන්න</string>
+    <string name="notification_channel_name">භාවනා ටයිමර්</string>
+    <string name="nav_label_sessions">සැසි</string>
+    <string name="nav_label_meditation">භාවනාව</string>
+    <string name="nav_label_edit_session">සැසිය සංස්කරණය කරන්න</string>
+    <string name="nav_label_edit_section">කොටස සංස්කරණය කරන්න</string>
+    <string name="nav_label_settings">සැකසීම්</string>
 </resources>

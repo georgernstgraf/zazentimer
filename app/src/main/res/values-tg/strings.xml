@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="abbrechen">Бекор кардан</string>
-    <string name="about1">Zazen Meditation Timer — A simple meditation timer with customizable sections, bell sounds, and session management.</string>
-    <string name="about2">Originally created by Stefan Gaffga. Currently maintained by Georg Graf.&lt;br&gt;&lt;br&gt;Thanks to Winfried of &lt;a href="http://www.meditationsuhren.de"&gt;http://www.meditationsuhren.de&lt;/a&gt; for providing such great Bell Sounds!</string>
-    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues"&gt;Report issues on GitHub&lt;/a&gt;</string>
-    <string name="app_description">This application lets the user define a set of meditation sessions and provides a timer with visual and audible feedback when a part or the whole meditation is over.</string>
+    <string name="about1">Timer Meditation Zazen - Вақтсанҷи оддии медитатсия бо бахшҳои танзимшаванда, садоҳои занг ва идоракунии сессия.</string>
+    <string name="about2">Аввалан аз ҷониби Стефан Гаффга офарида шудааст. Айни замон аз ҷониби Георг Граф нигоҳдорӣ мешавад.&lt;br&gt;&lt;br&gt;Ташаккур ба Винфрид аз &lt;a href="http://www.meditationsuhren.de"&gt;http://www.meditationsuhren.de&lt;/a&gt; барои пешниҳоди чунин садоҳои олии занг!</string>
+    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues"&gt;Масъалаҳоро дар GitHub гузориш диҳед&lt;/a&gt;</string>
+    <string name="app_description">Ин барнома ба корбар имкон медиҳад, ки маҷмӯи сеансҳои мулоҳизаро муайян кунад ва ҳангоми ба итмом расидани як қисм ё тамоми медитатсия таймерро бо фикру мулоҳизаҳои визуалӣ ва садоӣ таъмин кунад.</string>
     <string name="app_name">Zazen Meditation Timer</string>
     <string name="appbar_scrolling_view_behavior">android.support.design.widget.AppBarLayout$ScrollingViewBehavior</string>
     <string name="backup_error_text">Бубахшед, ҳангоми захиракунӣ хатогӣ рӯй дод.</string>
     <string name="backup_no_permission">Бо сабаби набудани иҷозатҳо нусхаи эҳтиётӣ эҷод карда натавонист.</string>
     <string name="backup_not_createable">Хатогии эҷоди файли эҳтиётӣ.</string>
     <string name="backup_success_text">Нусхаи эҳтиётӣ бомуваффақият сохта шуд!</string>
-    <string name="bell_name_1">High Tone</string>
-    <string name="bell_name_2">Low Tone</string>
-    <string name="bell_name_3">Jap. Rhinbowl Dharma, 107mm</string>
-    <string name="bell_name_4">Jap. Rhinbowl Dharma, 88mm (black, glazed)</string>
-    <string name="bell_name_5">Jap. Rhinbowl Shomyo, 90mm</string>
-    <string name="bell_name_6">Jap. Rhinbowl Tang, 164mm</string>
-    <string name="bell_name_7">Tib. Bowl, 230mm</string>
-    <string name="bell_name_8">Jap. Rhinbowl, 97mm</string>
+    <string name="bell_name_1">Оҳанги баланд</string>
+    <string name="bell_name_2">Оҳанги паст</string>
+    <string name="bell_name_3">Япония. Ринбоул Дхарма, 107мм</string>
+    <string name="bell_name_4">Япония. Rhinbowl Dharma, 88мм (сиёҳ, шишабандӣ)</string>
+    <string name="bell_name_5">Япония. Rhinbowl Shomyo, 90мм</string>
+    <string name="bell_name_6">Япония. Ринбоул Танг, 164мм</string>
+    <string name="bell_name_7">Тиб. Коса, 230мм</string>
+    <string name="bell_name_8">Япония. Ринбоул, 97мм</string>
     <string name="bell_pause">Фосилаи занг (сония)</string>
     <string name="bell_user">Илова кардани Белл...</string>
     <string name="bottom_nav_meditation">Медитация</string>
@@ -36,7 +36,7 @@
     <string name="copy_prefix">Нусхаи</string>
     <string name="crash_dialog_comment_prompt">Ихтиёрӣ: Кадом амал боиси хатогӣ шуд?</string>
     <string name="crash_dialog_ok_toast">Ташаккури зиёд барои кӯмакатон!</string>
-    <string name="crash_dialog_text">Бубахшед, ки хатогӣ рӯй дод. Шумо метавонед ба ман тавассути ирсоли ин гузориши хатогӣ ва шояд тафсилоти бештар дар бораи корҳое, ки кардаед, ба ман дар дарёфт ва ислоҳи ин масъала кумак кунед.</string>
+    <string name="crash_dialog_text">Бубахшед, ки хатогӣ рӯй дод. Шумо метавонед ба ман тавассути фиристодани ин гузориши хатогӣ ва шояд тафсилоти бештар дар бораи корҳое, ки кардаед, ба ман дар пайдо ва ислоҳи ин масъала кӯмак кунед.</string>
     <string name="crash_dialog_title">Вақтсанҷи медитатсия Зазен</string>
     <string name="crash_toast_text">Бубахшед - хатои дохилӣ рух дод!</string>
     <string name="crash_user_email_label">Ихтиёрӣ: Суроғаи почтаи электронии шумо барои саволҳо ё навсозиҳо оид ба ин масъала.</string>
@@ -56,7 +56,7 @@
     <string name="desc_no_server_messages">Вақте ки барнома оғоз мешавад, Ахборро ба таври худкор нишон диҳед</string>
     <string name="error_checking_for_server_messages">Хатогӣ ҳангоми гирифтани паёмҳои нав.</string>
     <string name="gong_type">Садои гонг</string>
-    <string name="help_sectionlist_text">Дар ин ҷо шумо метавонед мундариҷаи ҷаласаи худро номгузорӣ, тавсиф ва таҳрир кунед.\n\nТАРТИБ КАРДАН\nБарои аз нав фармоиш додани ашё, дарозии ашёро пахш кунед ва\nонро ба мавқеи нави худ кашед.\n\nТОҶИКИСТОН\nБарои нест кардани ашё, онро ба рост ҳаракат кунед.\n\nТАХРИР\nБарои таҳрир кардани бахш, танҳо як маротиба онро ламс кунед.\n\nИЛОВА\nБарои илова кардани қисмати нав, тугмаи + -ро пахш кунед.</string>
+    <string name="help_sectionlist_text">Дар ин ҷо шумо метавонед мундариҷаи сессияи худро номгузорӣ, тавсиф ва таҳрир кунед.\n\nТАРТИБ КАРДАН\nБарои аз нав фармоиш додани ашё, дарозии ашёро пахш кунед ва\nонро ба мавқеи нави худ кашед.\n\nТОҶИКИСТОН\nБарои нест кардани ашё, онро ба рост ҳаракат кунед.\n\nТАХРИР\nБарои таҳрир кардани бахш, танҳо як маротиба онро ламс кунед.\n\nИЛОВА\nБарои илова кардани қисмати нав, тугмаи + -ро пахш кунед.</string>
     <string name="help_sectionlist_title">Таҳрири сессия</string>
     <string name="label_section_name">Номи бахш</string>
     <string name="label_session_description">Тавсифи сессия</string>
@@ -74,9 +74,9 @@
     <string name="menu_settings">Танзимотҳо</string>
     <string name="minuten">Дакикахо</string>
     <string name="no_new_server_messages">Паёмҳои нав дастрас нестанд.</string>
-    <string name="no_sections_in_session">Мулоҳизаро оғоз кардан мумкин нест: Ҷаласаи интихобшуда ягон бахш надорад.</string>
+    <string name="no_sections_in_session">Мулоҳизаро оғоз карда наметавонам: Ҷаласаи интихобшуда ягон бахш надорад.</string>
     <string name="no_session_exists">Ягон сессияе нест, ки оғоз шавад. Лутфан аввал якеро эҷод кунед.</string>
-    <string name="notification_text">Дар айни замон як медитацияи Zazen кор мекунад</string>
+    <string name="notification_text">Дар айни замон медитацияи Zazen кор мекунад</string>
     <string name="notification_text_paused">Зазен медитация таваққуф кард</string>
     <string name="notification_title">Медитацияи Зазен</string>
     <string name="notification_title_paused">Медитацияи Зазен (таваффақ)</string>
@@ -93,14 +93,14 @@
     <string name="pref_mute_mode_vibrate_sound">Оҳанги занг ва ларзиш</string>
     <string name="pref_mute_mode_vibrate_sound_desc">Оҳанги занг ва ларзишро бозӣ кунед</string>
     <string name="pref_muting">Танзимоти хомӯш</string>
-    <string name="pref_sum_backup">Нусхаи эҳтиётии ҷаласаҳо ва садоҳои худро дар корти SD-и худ захира кунед.</string>
+    <string name="pref_sum_backup">Нусхаи эҳтиётии сессияҳо ва садоҳои худро дар корти SD-и худ захира кунед.</string>
     <string name="pref_sum_bad_removal">Корти SD бидуни ҷудо кардани аввал хориҷ карда шуд.</string>
     <string name="pref_sum_checking">Дар айни замон корти SD тафтиш карда мешавад</string>
     <string name="pref_sum_ejecting">SD-корт хориҷ карда мешавад</string>
     <string name="pref_sum_nofs">Системаи файлӣ дар корти SD нест</string>
     <string name="pref_sum_read_only">SD-корт танҳо барои хондан аст</string>
     <string name="pref_sum_removed">SD-корт мавҷуд нест</string>
-    <string name="pref_sum_restore">Ҷаласаҳо ва садоҳои фармоишии худро аз нусхаи эҳтиётии SD-корт барқарор кунед</string>
+    <string name="pref_sum_restore">Сессияҳо ва садоҳои фармоишии худро аз нусхаи эҳтиётии SD-корт барқарор кунед</string>
     <string name="pref_sum_shared">SD-корт муштарак аст</string>
     <string name="pref_title_backup">Эҷоди нусхабардорӣ</string>
     <string name="pref_title_brightness">Равшанӣ</string>
@@ -116,26 +116,26 @@
     <string name="restore_really_title">Дар ҳақиқат маълумот барқарор карда мешавад?</string>
     <string name="restore_success_text">Барқарорсозии маълумот бомуваффақият</string>
     <string name="search_menu_title">Ҷустуҷӯ</string>
-    <string name="section_info_string_1_pl">%1$d Зангҳо</string>
+    <string name="section_info_string_1_pl">%1$d Зангулахо</string>
     <string name="section_info_string_1_sg">1 занг</string>
     <string name="section_info_string_2_pl">ҳар %1$d сония</string>
     <string name="section_info_string_2_sg">ҳар сония</string>
     <string name="sekunden">Сонияхо</string>
     <string name="select_audio">Файли садоиро интихоб кунед</string>
-    <string name="service_description">Медитацияи даврони Зазен</string>
+    <string name="service_description">Медитацияи иҷрошудаи Zazen</string>
     <string name="content_desc_drag_handle">Барои аз нав тартиб додан кашола кунед</string>
     <string name="content_desc_section_actions">Амалҳои бахш</string>
     <string name="content_desc_session_actions">Амалҳои сессия</string>
     <string name="session_list_unnamed_entry">Сессияи беном</string>
     <string name="status_bar_notification_info_overflow">999+</string>
     <string name="test_mute_perm_request">Дар айни замон ба барнома иҷозат дода нашудааст, ки телефони шуморо хомӯш кунад. Барои тағир додани ин танзимотро кушоед?</string>
-    <string name="text_cant_mute">Телефони шумо ба ин барнома иҷозат намедиҳад, ки онро хомӯш кунад. Хомӯш карданро дар ин Танзимоти Барномаҳо ғайрифаъол кунед ё хомӯширо дар Танзимоти телефонҳои худ иҷозат диҳед.</string>
-    <string name="text_no_notify_access_settings">Чунин ба назар мерасад, ки телефони шумо танзимоти стандартӣ барои иҷозати хомӯш кардани хомӯшӣ надорад. Лутфан танзимоти \&amp;quot;Дастрасӣ халал нарасонед\&amp;quot;-ро дастӣ ҷустуҷӯ кунед ва онро фаъол созед.</string>
+    <string name="text_cant_mute">Телефони шумо ба ин барнома иҷозат намедиҳад, ки онро хомӯш кунад. Хомӯш карданро дар ин Танзимоти Барномаҳо хомӯш кунед ё дар Танзимоти телефонҳои худ хомӯширо иҷозат диҳед.</string>
+    <string name="text_no_notify_access_settings">Чунин ба назар мерасад, ки телефони шумо танзимоти стандартӣ барои иҷозати хомӯш кардани хомӯшӣ надорад. Лутфан танзимоти \"Дастрасӣ халал нарасонед\"-ро дастӣ ҷустуҷӯ кунед ва онро фаъол созед.</string>
     <string name="text_no_sections">Қисмҳо муайян карда нашудаанд.</string>
     <string name="text_question_delete_session">Дар ҳақиқат Сессияи интихобшударо нест кунед?</string>
     <string name="theme">Мавзӯъ</string>
     <string name="theme_dark">Мавзӯи торик</string>
-    <string name="theme_desc">Намуди равшан ё торикии барномаро интихоб кунед</string>
+    <string name="theme_desc">Намуди барномаро интихоб кунед</string>
     <string name="theme_light">Мавзӯи сабук</string>
     <string name="theme_system">Мавзӯи система</string>
     <string name="theme_value_dark">dark</string>
@@ -158,4 +158,12 @@
     <string name="title_dim_bell">Дим Белл</string>
     <string name="dim_bell_label_off">Хӯрда нашудааст</string>
     <string name="dim_bell_label_format">Торик: %1$d0%%</string>
+    <string name="section_deleted">Ҳазфшуда \'%s\'</string>
+    <string name="action_undo">Бекор кардан</string>
+    <string name="notification_channel_name">Вақтсанҷи медитатсия</string>
+    <string name="nav_label_sessions">Сеансхо</string>
+    <string name="nav_label_meditation">Медитация</string>
+    <string name="nav_label_edit_session">Таҳрири сессия</string>
+    <string name="nav_label_edit_section">Бахши таҳрир</string>
+    <string name="nav_label_settings">Танзимотҳо</string>
 </resources>

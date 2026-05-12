@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="abbrechen">Annulla</string>
-    <string name="about1">Zazen Meditation Timer — A simple meditation timer with customizable sections, bell sounds, and session management.</string>
-    <string name="about2">Originally created by Stefan Gaffga. Currently maintained by Georg Graf.&lt;br&gt;&lt;br&gt;Thanks to Winfried of &lt;a href="http://www.meditationsuhren.de"&gt;http://www.meditationsuhren.de&lt;/a&gt; for providing such great Bell Sounds!</string>
-    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues"&gt;Report issues on GitHub&lt;/a&gt;</string>
-    <string name="app_description">This application lets the user define a set of meditation sessions and provides a timer with visual and audible feedback when a part or the whole meditation is over.</string>
+    <string name="abbrechen">Cancellare</string>
+    <string name="about1">Timer per la meditazione Zazen: un semplice timer per la meditazione con sezioni personalizzabili, suoni della campana e gestione delle sessioni.</string>
+    <string name="about2">Originariamente creato da Stefan Gaffga. Attualmente gestito da Georg Graf.&lt;br&gt;&lt;br&gt;Grazie a Winfried di &lt;a href="http://www.meditationsuhren.de"&gt;http://www.meditationsuhren.de&lt;/a&gt; per aver fornito suoni di campane così fantastici!</string>
+    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues"&gt;Segnala problemi su GitHub&lt;/a&gt;</string>
+    <string name="app_description">Questa applicazione consente all\'utente di definire una serie di sessioni di meditazione e fornisce un timer con feedback visivo e acustico quando una parte o l\'intera meditazione è terminata.</string>
     <string name="app_name">Zazen Meditation Timer</string>
     <string name="appbar_scrolling_view_behavior">android.support.design.widget.AppBarLayout$ScrollingViewBehavior</string>
     <string name="backup_error_text">Siamo spiacenti, si è verificato un errore durante il salvataggio.</string>
     <string name="backup_no_permission">Impossibile creare il backup a causa di autorizzazioni mancanti.</string>
     <string name="backup_not_createable">Errore durante la creazione del file di backup.</string>
     <string name="backup_success_text">Backup creato con successo!</string>
-    <string name="bell_name_1">High Tone</string>
-    <string name="bell_name_2">Low Tone</string>
-    <string name="bell_name_3">Jap. Rhinbowl Dharma, 107mm</string>
-    <string name="bell_name_4">Jap. Rhinbowl Dharma, 88mm (black, glazed)</string>
-    <string name="bell_name_5">Jap. Rhinbowl Shomyo, 90mm</string>
-    <string name="bell_name_6">Jap. Rhinbowl Tang, 164mm</string>
-    <string name="bell_name_7">Tib. Bowl, 230mm</string>
-    <string name="bell_name_8">Jap. Rhinbowl, 97mm</string>
+    <string name="bell_name_1">Tono alto</string>
+    <string name="bell_name_2">Tono basso</string>
+    <string name="bell_name_3">giapponese. Rinbow Dharma, 107 mm</string>
+    <string name="bell_name_4">giapponese. Rhinbowl Dharma, 88 mm (nero, smaltato)</string>
+    <string name="bell_name_5">giapponese. Rinbow Shomyo, 90 mm</string>
+    <string name="bell_name_6">giapponese. Codolo della ciotola del rinculo, 164 mm</string>
+    <string name="bell_name_7">Tib. Ciotola, 230 mm</string>
+    <string name="bell_name_8">giapponese. Rinbow, 97mm</string>
     <string name="bell_pause">Distanza tra le campane (sec)</string>
     <string name="bell_user">Aggiungi campanello...</string>
     <string name="bottom_nav_meditation">Meditazione</string>
@@ -36,7 +36,7 @@
     <string name="copy_prefix">Copia di</string>
     <string name="crash_dialog_comment_prompt">Facoltativo: quale azione ha causato l\'errore?</string>
     <string name="crash_dialog_ok_toast">Grazie mille per il tuo aiuto!</string>
-    <string name="crash_dialog_text">Mi dispiace, si è verificato un errore.Puoi aiutarmi a trovare e risolvere questo problema inviando questa segnalazione di bug e forse anche ulteriori dettagli su ciò che hai fatto.</string>
+    <string name="crash_dialog_text">Mi dispiace, si è verificato un errore. Puoi aiutarmi a trovare e risolvere questo problema inviando questa segnalazione di bug e forse anche ulteriori dettagli su ciò che hai fatto.</string>
     <string name="crash_dialog_title">Temporizzatore per la meditazione Zazen</string>
     <string name="crash_toast_text">Siamo spiacenti, si è verificato un errore interno!</string>
     <string name="crash_user_email_label">Facoltativo: il tuo indirizzo e-mail per domande o aggiornamenti su questo problema.</string>
@@ -56,12 +56,12 @@
     <string name="desc_no_server_messages">Mostra automaticamente le notizie all\'avvio dell\'app</string>
     <string name="error_checking_for_server_messages">Errore durante il recupero dei nuovi messaggi.</string>
     <string name="gong_type">Suono del Gong</string>
-    <string name="help_sectionlist_text">Qui puoi nominare, descrivere e modificare il contenuto della tua sessione.\n\n RIORDINAMENTO\n Per riordinare gli elementi, premi a lungo su un elemento e\n trascinalo nella sua nuova posizione.\n\n ELIMINA\n Per eliminare un elemento, spostalo a destra.\n\n MODIFICA\n Per modificare una sezione, toccala una volta.\n\n AGGIUNGI\n Per aggiungere una nuova sezione, premi il pulsante +.</string>
+    <string name="help_sectionlist_text">Qui puoi nominare, descrivere e modificare i contenuti della tua Sessione.\n\nRIORDINAMENTO\nPer riordinare gli articoli, premere a lungo su un articolo e\ntrascinarlo nella sua nuova posizione.\n\nELIMINAZIONE\nPer eliminare un elemento, spostalo a destra.\n\nMODIFICARE\nPer modificare una sezione, basta toccarla una volta.\n\nAGGIUNGERE\nPer aggiungere una nuova sezione, premere il pulsante +.</string>
     <string name="help_sectionlist_title">Modifica sessione</string>
     <string name="label_section_name">Nome della sezione</string>
     <string name="label_session_description">Descrizione della sessione</string>
     <string name="label_session_name">Nome della sessione</string>
-    <string name="menu_about">A proposito...</string>
+    <string name="menu_about">Di...</string>
     <string name="menu_copy_session">Sessione duplicata</string>
     <string name="menu_delete_section">Elimina sezione</string>
     <string name="menu_delete_session">Elimina sessione</string>
@@ -74,14 +74,14 @@
     <string name="menu_settings">Impostazioni</string>
     <string name="minuten">Minuti</string>
     <string name="no_new_server_messages">Nessun nuovo messaggio disponibile.</string>
-    <string name="no_sections_in_session">Impossibile avviare la meditazione: la sessione selezionata non ha sezioni.</string>
-    <string name="no_session_exists">Non è possibile avviare alcuna sessione.Per favore creane uno prima.</string>
+    <string name="no_sections_in_session">Impossibile\'avviare la meditazione: la sessione selezionata non ha sezioni.</string>
+    <string name="no_session_exists">Non è possibile avviare alcuna sessione. Per favore creane uno prima.</string>
     <string name="notification_text">Attualmente è in corso una meditazione Zazen</string>
     <string name="notification_text_paused">La Meditazione Zazen è stata sospesa</string>
     <string name="notification_title">Meditazione Zazen</string>
     <string name="notification_title_paused">Meditazione Zazen (in pausa)</string>
     <string name="num_bells">Conteggio delle campane</string>
-    <string name="ok">Va bene</string>
+    <string name="ok">OK</string>
     <string name="pref_desc_brightness">Luminosità del display durante la meditazione</string>
     <string name="pref_get_messages">Controlla subito la presenza di nuovi messaggi</string>
     <string name="pref_mute_mode">Suoneria e notifiche</string>
@@ -106,17 +106,17 @@
     <string name="pref_title_brightness">Luminosità</string>
     <string name="pref_title_restore">Ripristina dal backup</string>
     <string name="privacy_message">Questa App non raccoglie dati personali, inoltre non utilizza indirizzi IP o altri dati relativi alla tecnologia, né raccoglie, elabora o utilizza alcuno in alcun modo.</string>
-    <string name="privacy_ok">Va bene</string>
+    <string name="privacy_ok">OK</string>
     <string name="privacy_title">Informativa sulla privacy</string>
     <string name="really_stop">Interrompere davvero la meditazione?</string>
     <string name="restore_backup_not_found">File di backup non trovato</string>
     <string name="restore_error_text">Errore durante il ripristino dal backup</string>
     <string name="restore_no_permission">Impossibile ripristinare a causa della mancanza dell\'autorizzazione.</string>
-    <string name="restore_really_text">Questo sostituirà tutte le tue sessioni con quelle nel backup!(Non annullare!)</string>
+    <string name="restore_really_text">Questo sostituirà tutte le tue sessioni con quelle nel backup! (Non annullare!)</string>
     <string name="restore_really_title">Ripristinare davvero i dati?</string>
     <string name="restore_success_text">Ripristino dati riuscito</string>
-    <string name="search_menu_title">Cerca</string>
-    <string name="section_info_string_1_pl">%1$d campanelli</string>
+    <string name="search_menu_title">Ricerca</string>
+    <string name="section_info_string_1_pl">%1$d Campane</string>
     <string name="section_info_string_1_sg">1 campana</string>
     <string name="section_info_string_2_pl">ogni %1$d secondi</string>
     <string name="section_info_string_2_sg">ogni secondo</string>
@@ -128,14 +128,14 @@
     <string name="content_desc_session_actions">Azioni della sessione</string>
     <string name="session_list_unnamed_entry">Sessione senza nome</string>
     <string name="status_bar_notification_info_overflow">999+</string>
-    <string name="test_mute_perm_request">Al momento l\'App non è autorizzata a disattivare l\'audio del telefono.Aprire le impostazioni per modificarlo?</string>
-    <string name="text_cant_mute">Il tuo telefono non consente a questa app di disattivarlo.Disabilita la disattivazione dell\'audio nelle Impostazioni dell\'app o consenti la disattivazione dell\'audio nelle Impostazioni del tuo telefono.</string>
-    <string name="text_no_notify_access_settings">Il tuo telefono non sembra avere le impostazioni standard per consentire la disattivazione dell\'audio.Cerca manualmente l\'impostazione \"Accesso non disturbare\" e abilitala.</string>
+    <string name="test_mute_perm_request">Al momento l\'App non è autorizzata a disattivare l\'audio del telefono. Aprire le impostazioni per modificarlo?</string>
+    <string name="text_cant_mute">Il tuo telefono non consente a questa app di disattivarlo. Disabilita la disattivazione dell\'audio nelle Impostazioni dell\'app o consenti la disattivazione dell\'audio nelle Impostazioni del tuo telefono.</string>
+    <string name="text_no_notify_access_settings">Il tuo telefono non sembra avere le impostazioni standard per consentire la disattivazione dell\'audio. Cerca manualmente l\'impostazione \"Accesso non disturbare\" e attivala.</string>
     <string name="text_no_sections">Nessuna sezione definita.</string>
     <string name="text_question_delete_session">Eliminare davvero la sessione selezionata?</string>
     <string name="theme">Tema</string>
     <string name="theme_dark">Tema oscuro</string>
-    <string name="theme_desc">Scegli l\'aspetto chiaro o scuro dell\'app</string>
+    <string name="theme_desc">Scegli l\'aspetto dell\'app</string>
     <string name="theme_light">Tema leggero</string>
     <string name="theme_system">Tema del sistema</string>
     <string name="theme_value_dark">dark</string>
@@ -152,10 +152,18 @@
     <string name="stop_meditation_title">Smettere di meditare?</string>
     <string name="stop_meditation_message">La tua sessione di meditazione è ancora in corso.</string>
     <string name="stop_meditation_stop">Fermare</string>
-    <string name="stop_meditation_cancel">Annulla</string>
+    <string name="stop_meditation_cancel">Cancellare</string>
     <string name="pref_title_bell_volume">Volume della campana</string>
     <string name="pref_desc_bell_volume">Controlla il volume del flusso di allarme per i suoni della campana</string>
     <string name="title_dim_bell">Campana debole</string>
     <string name="dim_bell_label_off">Non oscurato</string>
     <string name="dim_bell_label_format">Oscurato: %1$d0%%</string>
+    <string name="section_deleted">Eliminato \'%s\'</string>
+    <string name="action_undo">Disfare</string>
+    <string name="notification_channel_name">Temporizzatore della meditazione</string>
+    <string name="nav_label_sessions">Sessioni</string>
+    <string name="nav_label_meditation">Meditazione</string>
+    <string name="nav_label_edit_session">Modifica sessione</string>
+    <string name="nav_label_edit_section">Modifica sezione</string>
+    <string name="nav_label_settings">Impostazioni</string>
 </resources>

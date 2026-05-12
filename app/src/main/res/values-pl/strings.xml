@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="abbrechen">Anulować</string>
-    <string name="about1">Zazen Meditation Timer — A simple meditation timer with customizable sections, bell sounds, and session management.</string>
-    <string name="about2">Originally created by Stefan Gaffga. Currently maintained by Georg Graf.&lt;br&gt;&lt;br&gt;Thanks to Winfried of &lt;a href="http://www.meditationsuhren.de"&gt;http://www.meditationsuhren.de&lt;/a&gt; for providing such great Bell Sounds!</string>
-    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues"&gt;Report issues on GitHub&lt;/a&gt;</string>
-    <string name="app_description">This application lets the user define a set of meditation sessions and provides a timer with visual and audible feedback when a part or the whole meditation is over.</string>
+    <string name="about1">Zegar do medytacji Zazen — prosty licznik do medytacji z konfigurowalnymi sekcjami, dźwiękami dzwonka i zarządzaniem sesjami.</string>
+    <string name="about2">Oryginalnie stworzony przez Stefana Gaffgę. Obecnie prowadzony przez Georga Grafa.&lt;br&gt;&lt;br&gt;Podziękowania dla Winfrieda z &lt;a href="http://www.meditationsuhren.de"&gt;http://www.meditationsuhren.de&lt;/a&gt; za udostępnienie tak wspaniałych dźwięków dzwonka!</string>
+    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues"&gt;Zgłoś problemy w GitHub&lt;/a&gt;</string>
+    <string name="app_description">Ta aplikacja pozwala użytkownikowi zdefiniować zestaw sesji medytacyjnych i zapewnia zegar z wizualną i dźwiękową informacją zwrotną po zakończeniu części lub całej medytacji.</string>
     <string name="app_name">Zazen Meditation Timer</string>
     <string name="appbar_scrolling_view_behavior">android.support.design.widget.AppBarLayout$ScrollingViewBehavior</string>
     <string name="backup_error_text">Przepraszamy, wystąpił błąd podczas zapisywania.</string>
     <string name="backup_no_permission">Nie można utworzyć kopii zapasowej z powodu brakujących uprawnień.</string>
     <string name="backup_not_createable">Błąd podczas tworzenia pliku kopii zapasowej.</string>
     <string name="backup_success_text">Kopia zapasowa została utworzona pomyślnie!</string>
-    <string name="bell_name_1">High Tone</string>
-    <string name="bell_name_2">Low Tone</string>
+    <string name="bell_name_1">Wysoki ton</string>
+    <string name="bell_name_2">Niski ton</string>
     <string name="bell_name_3">Jap. Rhinbowl Dharma, 107mm</string>
-    <string name="bell_name_4">Jap. Rhinbowl Dharma, 88mm (black, glazed)</string>
-    <string name="bell_name_5">Jap. Rhinbowl Shomyo, 90mm</string>
-    <string name="bell_name_6">Jap. Rhinbowl Tang, 164mm</string>
-    <string name="bell_name_7">Tib. Bowl, 230mm</string>
-    <string name="bell_name_8">Jap. Rhinbowl, 97mm</string>
+    <string name="bell_name_4">Jap. Rhinbowl Dharma, 88mm (czarny, szkliwiony)</string>
+    <string name="bell_name_5">Japoński. Rhinbowl Shomyo, 90mm</string>
+    <string name="bell_name_6">Jap. Trzpień Rhinbowl, 164 mm</string>
+    <string name="bell_name_7">Tyb. Miska, 230mm</string>
+    <string name="bell_name_8">Jap. Rhinebowla, 97mm</string>
     <string name="bell_pause">Szczelina dzwonka (sek)</string>
     <string name="bell_user">Dodaj dzwonek...</string>
     <string name="bottom_nav_meditation">Medytacja</string>
@@ -36,7 +36,7 @@
     <string name="copy_prefix">Kopia</string>
     <string name="crash_dialog_comment_prompt">Opcjonalnie: Które działanie spowodowało błąd?</string>
     <string name="crash_dialog_ok_toast">Dziękuję bardzo za pomoc!</string>
-    <string name="crash_dialog_text">Przepraszamy, wystąpił błąd.Możesz pomóc mi znaleźć i rozwiązać ten problem, wysyłając ten raport o błędzie i może nawet więcej szczegółów na temat tego, co zrobiłeś.</string>
+    <string name="crash_dialog_text">Przepraszamy, wystąpił błąd. Możesz pomóc mi znaleźć i rozwiązać ten problem, wysyłając ten raport o błędzie i może nawet więcej szczegółów na temat tego, co zrobiłeś.</string>
     <string name="crash_dialog_title">Minutnik medytacji Zazen</string>
     <string name="crash_toast_text">Przepraszamy - wystąpił błąd wewnętrzny!</string>
     <string name="crash_user_email_label">Opcjonalnie: Twój adres e-mail do pytań lub aktualizacji na ten temat.</string>
@@ -56,7 +56,7 @@
     <string name="desc_no_server_messages">Automatycznie pokazuj wiadomości po uruchomieniu aplikacji</string>
     <string name="error_checking_for_server_messages">Błąd podczas pobierania nowych wiadomości.</string>
     <string name="gong_type">Dźwięk Gongu</string>
-    <string name="help_sectionlist_text">Tutaj możesz nazwać, opisać i edytować zawartość swojej Sesji.\n\n ZMIANA ZAMÓWIENIA\n Aby zmienić kolejność elementów, naciśnij długo element i\n przeciągnij go w nowe miejsce.\n\n USUWANIE\n Aby usunąć element, przesuń go w prawo.\n\n EDYTUJ\n Aby edytować sekcję, kliknij ją tylko raz.\n\n DODAJ\n Aby dodać nową sekcję, naciśnij przycisk +.</string>
+    <string name="help_sectionlist_text">Tutaj możesz nazwać, opisać i edytować zawartość swojej Sesji.\n\nZAMÓWIENIE\nAby zmienić kolejność elementów, naciśnij długo element i\nprzeciągnij go w nowe miejsce.\n\nUSUWANIE\nAby usunąć element, przesuń go w prawo.\n\nREDAGOWAĆ\nAby edytować sekcję, kliknij ją raz.\n\nDODAĆ\nAby dodać nową sekcję, naciśnij przycisk +.</string>
     <string name="help_sectionlist_title">Edytuj sesję</string>
     <string name="label_section_name">Nazwa sekcji</string>
     <string name="label_session_description">Opis sesji</string>
@@ -75,7 +75,7 @@
     <string name="minuten">Protokół</string>
     <string name="no_new_server_messages">Brak nowych wiadomości.</string>
     <string name="no_sections_in_session">Nie można rozpocząć medytacji: Wybrana sesja nie ma żadnych sekcji.</string>
-    <string name="no_session_exists">Nie ma sesji, którą można rozpocząć.Najpierw utwórz taki.</string>
+    <string name="no_session_exists">Nie ma sesji, którą można rozpocząć. Najpierw utwórz taki.</string>
     <string name="notification_text">Obecnie trwa medytacja Zazen</string>
     <string name="notification_text_paused">Medytacja Zazen została wstrzymana</string>
     <string name="notification_title">Medytacja Zazen</string>
@@ -83,7 +83,7 @@
     <string name="num_bells">Liczba dzwonków</string>
     <string name="ok">OK</string>
     <string name="pref_desc_brightness">Jasność wyświetlacza podczas medytacji</string>
-    <string name="pref_get_messages">Sprawdź teraz, czy są nowe Wiadomości</string>
+    <string name="pref_get_messages">Sprawdź teraz nowe wiadomości</string>
     <string name="pref_mute_mode">Dźwięk dzwonka i powiadomienia</string>
     <string name="pref_mute_mode_none">Cisza</string>
     <string name="pref_mute_mode_none_desc">Brak sygnału dzwonka i wibracji w przypadku połączeń telefonicznych i powiadomień</string>
@@ -105,18 +105,18 @@
     <string name="pref_title_backup">Utwórz kopię zapasową</string>
     <string name="pref_title_brightness">Jasność</string>
     <string name="pref_title_restore">Przywróć z kopii zapasowej</string>
-    <string name="privacy_message">This App does not collect any personal data - it also does not use IP-Addresses or any other technology-related data, nor does it collect, process or use any in any way.</string>
+    <string name="privacy_message">Ta aplikacja nie gromadzi żadnych danych osobowych - nie wykorzystuje również adresów IP ani żadnych innych danych związanych z technologią, ani nie gromadzi, nie przetwarza ani nie wykorzystuje ich w żaden sposób.</string>
     <string name="privacy_ok">OK</string>
-    <string name="privacy_title">Privacy Information</string>
+    <string name="privacy_title">Informacje o prywatności</string>
     <string name="really_stop">Naprawdę przerwać medytację?</string>
     <string name="restore_backup_not_found">Nie znaleziono pliku kopii zapasowej</string>
     <string name="restore_error_text">Błąd przywracania z kopii zapasowej</string>
     <string name="restore_no_permission">Nie można przywrócić z powodu braku uprawnień.</string>
-    <string name="restore_really_text">Spowoduje to zastąpienie wszystkich sesji sesjami z kopii zapasowej!(Bez cofania!)</string>
+    <string name="restore_really_text">Spowoduje to zastąpienie wszystkich sesji sesjami z kopii zapasowej! (Bez cofania!)</string>
     <string name="restore_really_title">Naprawdę przywrócić dane?</string>
     <string name="restore_success_text">Przywracanie danych powiodło się</string>
     <string name="search_menu_title">Szukaj</string>
-    <string name="section_info_string_1_pl">%1$d Dzwonki</string>
+    <string name="section_info_string_1_pl">%1$d Dzwony</string>
     <string name="section_info_string_1_sg">1 Dzwonek</string>
     <string name="section_info_string_2_pl">co %1$d sekund</string>
     <string name="section_info_string_2_sg">co sekundę</string>
@@ -128,14 +128,14 @@
     <string name="content_desc_session_actions">Działania sesyjne</string>
     <string name="session_list_unnamed_entry">Nienazwana sesja</string>
     <string name="status_bar_notification_info_overflow">999+</string>
-    <string name="test_mute_perm_request">Aplikacja nie może obecnie wyciszyć telefonu.Otworzyć ustawienia, aby to zmienić?</string>
-    <string name="text_cant_mute">Twój telefon nie pozwala tej aplikacji na wyciszenie.Wyłącz wyciszenie w ustawieniach aplikacji lub zezwól na wyciszenie w ustawieniach telefonu.</string>
-    <string name="text_no_notify_access_settings">Wygląda na to, że Twój telefon nie ma standardowych ustawień umożliwiających wyciszenie.Wyszukaj ręcznie ustawienie „Nie przeszkadzać” i włącz je.</string>
+    <string name="test_mute_perm_request">Aplikacja nie może obecnie wyciszyć telefonu. Otworzyć ustawienia, aby to zmienić?</string>
+    <string name="text_cant_mute">Twój telefon nie pozwala tej aplikacji na wyciszenie. Wyłącz wyciszenie w ustawieniach aplikacji lub zezwól na wyciszenie w ustawieniach telefonu.</string>
+    <string name="text_no_notify_access_settings">Wygląda na to, że Twój telefon nie ma standardowych ustawień umożliwiających wyciszenie. Wyszukaj ręcznie ustawienie \"Nie przeszkadzać\" i włącz je.</string>
     <string name="text_no_sections">Brak zdefiniowanych sekcji.</string>
     <string name="text_question_delete_session">Czy naprawdę usunąć wybraną sesję?</string>
     <string name="theme">Temat</string>
     <string name="theme_dark">Ciemny motyw</string>
-    <string name="theme_desc">Wybierz jasny lub ciemny wygląd aplikacji</string>
+    <string name="theme_desc">Wybierz wygląd aplikacji</string>
     <string name="theme_light">Lekki motyw</string>
     <string name="theme_system">Temat systemu</string>
     <string name="theme_value_dark">dark</string>
@@ -158,4 +158,12 @@
     <string name="title_dim_bell">Ciemny dzwonek</string>
     <string name="dim_bell_label_off">Nie przyciemniony</string>
     <string name="dim_bell_label_format">Przyciemniony: %1$d0%%</string>
+    <string name="section_deleted">Usunięto \'%s\'</string>
+    <string name="action_undo">Anulować</string>
+    <string name="notification_channel_name">Minutnik medytacji</string>
+    <string name="nav_label_sessions">Sesje</string>
+    <string name="nav_label_meditation">Medytacja</string>
+    <string name="nav_label_edit_session">Edytuj sesję</string>
+    <string name="nav_label_edit_section">Edytuj sekcję</string>
+    <string name="nav_label_settings">Ustawienia</string>
 </resources>

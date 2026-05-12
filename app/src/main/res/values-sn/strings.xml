@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="abbrechen">Cancel</string>
-    <string name="about1">Zazen Meditation Timer — A simple meditation timer with customizable sections, bell sounds, and session management.</string>
-    <string name="about2">Originally created by Stefan Gaffga. Currently maintained by Georg Graf.&lt;br&gt;&lt;br&gt;Thanks to Winfried of &lt;a href="http://www.meditationsuhren.de"&gt;http://www.meditationsuhren.de&lt;/a&gt; for providing such great Bell Sounds!</string>
-    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues"&gt;Report issues on GitHub&lt;/a&gt;</string>
-    <string name="app_description">This application lets the user define a set of meditation sessions and provides a timer with visual and audible feedback when a part or the whole meditation is over.</string>
+    <string name="about1">Zazen Meditation Timer - Yakareruka yekufungisisa timer ine customizable zvikamu, bhero ruzha, uye musangano manejimendi.</string>
+    <string name="about2">Pakutanga yakagadzirwa naStefan Gaffga. Parizvino inochengetwa naGeorg Graf.&lt;br&gt;&lt;br&gt;Tinotenda Winfried we&lt;a href="http://www.meditationsuhren.de"&gt;http://www.meditationsuhren.de&lt;/a&gt; nekupa Manzwi eBell anoyevedza kudaro!</string>
+    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues"&gt;Mhan\'ara nyaya paGitHub&lt;/a&gt;</string>
+    <string name="app_description">Ichi chishandiso chinobvumira mushandisi kutsanangura seti yekufungisisa seti uye inopa timer ine inooneka uye inonzwika mhinduro kana chikamu kana kufungisisa kwese kwapera.</string>
     <string name="app_name">Zazen Meditation Timer</string>
     <string name="appbar_scrolling_view_behavior">android.support.design.widget.AppBarLayout$ScrollingViewBehavior</string>
     <string name="backup_error_text">Tine urombo, paitika chikanganiso panguva yekuchengeta.</string>
     <string name="backup_no_permission">Hatina kukwanisa kugadzira backup nekuda kwekushaikwa kwemvumo.</string>
     <string name="backup_not_createable">Pane kukanganisa kugadzira faira rekuchengetedza.</string>
-    <string name="backup_success_text">Backup yakagadzirwa zvinobudirira!</string>
+    <string name="backup_success_text">Backup yakagadzirwa zvakabudirira!</string>
     <string name="bell_name_1">High Tone</string>
     <string name="bell_name_2">Low Tone</string>
     <string name="bell_name_3">Jap. Rhinbowl Dharma, 107mm</string>
-    <string name="bell_name_4">Jap. Rhinbowl Dharma, 88mm (black, glazed)</string>
+    <string name="bell_name_4">Jap. Rhinbowl Dharma, 88mm (yakasviba, yakapenya)</string>
     <string name="bell_name_5">Jap. Rhinbowl Shomyo, 90mm</string>
     <string name="bell_name_6">Jap. Rhinbowl Tang, 164mm</string>
     <string name="bell_name_7">Tib. Bowl, 230mm</string>
@@ -36,7 +36,7 @@
     <string name="copy_prefix">Copy of</string>
     <string name="crash_dialog_comment_prompt">Sarudzo: Ndechipi chiito chakonzera kukanganisa?</string>
     <string name="crash_dialog_ok_toast">Ndinokutendai zvikuru nerubatsiro rwenyu!</string>
-    <string name="crash_dialog_text">Ndine urombo kuti pane chikanganiso chakaitika. Unogona kundibatsira kutsvaga nekugadzirisa nyaya iyi nekutumira iyi bug report uye pamwe zvimwe zvakatowanda pane zvawakaita.</string>
+    <string name="crash_dialog_text">Ndine urombo kuti pane chikanganiso chakaitika. Munokwanisa kundibatsira kutsvaga nekugadzirisa nyaya iyi nekutumira iyi bug report uye pamwe zvimwe zvakawanda pane zvawakaita.</string>
     <string name="crash_dialog_title">Zazen Kufungisisa Timer</string>
     <string name="crash_toast_text">Tine urombo - Pane Chikanganiso chemukati chakaitika!</string>
     <string name="crash_user_email_label">Sarudzo: Yako Email-Kero yemibvunzo kana zvigadziriso panyaya iyi.</string>
@@ -69,12 +69,12 @@
     <string name="menu_edit_session">Edit Session</string>
     <string name="menu_help">Help</string>
     <string name="menu_add_session">Wedzera Session</string>
-    <string name="menu_new_session">Chikamu Chitsva</string>
+    <string name="menu_new_session">New Session</string>
     <string name="menu_privacy">Zvakavanzika...</string>
     <string name="menu_settings">Settings</string>
     <string name="minuten">Maminitsi</string>
     <string name="no_new_server_messages">Hapana mameseji matsva aripo.</string>
-    <string name="no_sections_in_session">Haikwanise kutanga Kufungisisa: Chikamu chakasarudzwa hachina Zvikamu.</string>
+    <string name="no_sections_in_session">Haikwanise\' kutanga Kufungisisa: Chikamu chakasarudzwa hachina Zvikamu.</string>
     <string name="no_session_exists">Hapana musangano ungatangwa. Ndapota gadzira imwe kutanga.</string>
     <string name="notification_text">Kufungisisa kweZazen kuri kushanda parizvino</string>
     <string name="notification_text_paused">Kufungisisa kweZazen kwakambomira</string>
@@ -94,14 +94,14 @@
     <string name="pref_mute_mode_vibrate_sound_desc">Tamba Ring toni uye Vibration</string>
     <string name="pref_muting">Mute Settings</string>
     <string name="pref_sum_backup">Chengetedza backup yeMasesheni ako uye Manzwi kune yako SD-Kadhi.</string>
-    <string name="pref_sum_bad_removal">Kadhi reSD rakabviswa risina kubviswa kutanga.</string>
+    <string name="pref_sum_bad_removal">Kadhi reSD rakabviswa pasina kuburitswa pekutanga.</string>
     <string name="pref_sum_checking">SD-Kadhi iri kuongororwa panguva ino</string>
-    <string name="pref_sum_ejecting">SD-Kadhi riri kuraswa</string>
+    <string name="pref_sum_ejecting">SD-Kadhi iri kuraswa</string>
     <string name="pref_sum_nofs">Hapana Filesystem pane SD-Kadhi</string>
     <string name="pref_sum_read_only">SD-Kadhi inoverengwa-chete</string>
     <string name="pref_sum_removed">Hapana SD-Kadhi iripo</string>
     <string name="pref_sum_restore">Dzosera yako Sessions uye Tsika Ruzha kubva kuSD-Kadhi Backup</string>
-    <string name="pref_sum_shared">SD-Kadhi yakagovaniswa</string>
+    <string name="pref_sum_shared">SD-Kadhi rakagovaniswa</string>
     <string name="pref_title_backup">Gadzira Backup</string>
     <string name="pref_title_brightness">Kupenya</string>
     <string name="pref_title_restore">Dzosera kubva kuBackup</string>
@@ -112,36 +112,36 @@
     <string name="restore_backup_not_found">Backup File haina kuwanikwa</string>
     <string name="restore_error_text">Kutadza kudzoreredza kubva kuBackup</string>
     <string name="restore_no_permission">Hatina kukwanisa kudzoreredza nekuda kwekushaikwa kwemvumo.</string>
-    <string name="restore_really_text">Izvi zvinotsiva ese maSesheni ako neayo ari muBackup! (Hapana Kudzosa!)</string>
+    <string name="restore_really_text">Izvi zvichatsiva Sessions ako ese neayo ari muBackup! (Hapana Kudzosa!)</string>
     <string name="restore_really_title">Kudzosa data zvechokwadi?</string>
     <string name="restore_success_text">Kudzosa Data kwabudirira</string>
     <string name="search_menu_title">Search</string>
     <string name="section_info_string_1_pl">%1$d Mabhero</string>
     <string name="section_info_string_1_sg">1 Bell</string>
-    <string name="section_info_string_2_pl">ose %1$d Masekonzi</string>
+    <string name="section_info_string_2_pl">Masekonzi %1$d ese</string>
     <string name="section_info_string_2_sg">Sekondi imwe neimwe</string>
     <string name="sekunden">Sekondi</string>
     <string name="select_audio">Sarudza faira renzwi</string>
     <string name="service_description">A kumhanya Zazen Kufungisisa</string>
-    <string name="content_desc_drag_handle">Dhonza kuronga patsva</string>
+    <string name="content_desc_drag_handle">Dhonza kurongazve</string>
     <string name="content_desc_section_actions">Zviito zvechikamu</string>
     <string name="content_desc_session_actions">Zviito zveSession</string>
     <string name="session_list_unnamed_entry">Zvisina Kutaurwa Session</string>
     <string name="status_bar_notification_info_overflow">999+</string>
     <string name="test_mute_perm_request">Iyo App parizvino haibvumidzwe kunyararidza foni yako. Vhura zvigadziriso kuti uchinje izvi?</string>
-    <string name="text_cant_mute">Foni yako haitenderi App iyi kuidzima. Dzima kunyarara mune izvi Zvirongwa zveMapurogiramu kana kubvumira kunyarara muMafoni ako Settings.</string>
-    <string name="text_no_notify_access_settings">Foni yako haiite kunge iine mwero marongero ekubvumidza kunyarara. Ndokumbira utarise nemaoko \&amp;quot;Usavhiringa Access\&amp;quot; Setting uye woigonesa.</string>
+    <string name="text_cant_mute">Foni yako haitenderi iyi App kuidzima. Dzima kunyarara mune izvi Zvirongwa zveMapurogiramu kana kubvumira kunyarara muMafoni ako Settings.</string>
+    <string name="text_no_notify_access_settings">Foni yako haiite kunge iine mwero marongero ekubvumidza kunyarara. Ndokumbira utarise nemaoko \"Do not Disturb Access\" Setting woigonesa.</string>
     <string name="text_no_sections">Hapana Zvikamu zvinotsanangurwa.</string>
     <string name="text_question_delete_session">Kudzima Session yakasarudzwa zvechokwadi?</string>
     <string name="theme">Theme</string>
     <string name="theme_dark">Rima Theme</string>
-    <string name="theme_desc">Sarudza chiedza kana rima chitarisiko cheApp</string>
+    <string name="theme_desc">Sarudza chimiro cheapp</string>
     <string name="theme_light">Chiedza Theme</string>
     <string name="theme_system">System Theme</string>
     <string name="theme_value_dark">dark</string>
     <string name="theme_value_light">light</string>
     <string name="theme_value_system">system</string>
-    <string name="time_section_elapsed">Chikamu chakapfuura</string>
+    <string name="time_section_elapsed">Chikamu chakapera</string>
     <string name="time_section_remaining">Chikamu chasara</string>
     <string name="time_session_elapsed">Session yakapera</string>
     <string name="time_session_remaining">Session yasara</string>
@@ -156,6 +156,14 @@
     <string name="pref_title_bell_volume">Bell Vhoriyamu</string>
     <string name="pref_desc_bell_volume">Inodzora vhoriyamu yekuyerera kwearamu yekurira kwebhero</string>
     <string name="title_dim_bell">Dim Bell</string>
-    <string name="dim_bell_label_off">Kwete kudzima</string>
+    <string name="dim_bell_label_off">Haina kudzima</string>
     <string name="dim_bell_label_format">Dimed: %1$d0%%</string>
+    <string name="section_deleted">Dzakadzimwa _____%s\'</string>
+    <string name="action_undo">Undo</string>
+    <string name="notification_channel_name">Kufungisisa Timer</string>
+    <string name="nav_label_sessions">Zvidzidzo</string>
+    <string name="nav_label_meditation">Kufungisisa</string>
+    <string name="nav_label_edit_session">Edit Session</string>
+    <string name="nav_label_edit_section">Edit Chikamu</string>
+    <string name="nav_label_settings">Settings</string>
 </resources>

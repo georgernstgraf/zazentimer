@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="abbrechen">Hætta við</string>
-    <string name="about1">Zazen Meditation Timer — A simple meditation timer with customizable sections, bell sounds, and session management.</string>
-    <string name="about2">Originally created by Stefan Gaffga. Currently maintained by Georg Graf.&lt;br&gt;&lt;br&gt;Thanks to Winfried of &lt;a href="http://www.meditationsuhren.de"&gt;http://www.meditationsuhren.de&lt;/a&gt; for providing such great Bell Sounds!</string>
-    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues"&gt;Report issues on GitHub&lt;/a&gt;</string>
-    <string name="app_description">This application lets the user define a set of meditation sessions and provides a timer with visual and audible feedback when a part or the whole meditation is over.</string>
+    <string name="about1">Zazen hugleiðslutímamælir - Einfaldur hugleiðslutímamælir með sérsniðnum hlutum, bjölluhljóðum og lotustjórnun.</string>
+    <string name="about2">Upphaflega búið til af Stefan Gaffga. Núverandi viðhaldið af Georg Graf.&lt;br&gt;&lt;br&gt;Þökk sé Winfried frá &lt;a href="http://www.meditationsuhren.de"&gt;http://www.meditationsuhren.de&lt;/a&gt; fyrir að veita svo frábæra bjölluhljóð!</string>
+    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues"&gt;Tilkynna vandamál á GitHub&lt;/a&gt;</string>
+    <string name="app_description">Þetta forrit gerir notandanum kleift að skilgreina sett af hugleiðslulotum og veitir tímamæli með sjónrænum og heyranlegum endurgjöf þegar hluta eða allri hugleiðslu er lokið.</string>
     <string name="app_name">Zazen Meditation Timer</string>
     <string name="appbar_scrolling_view_behavior">android.support.design.widget.AppBarLayout$ScrollingViewBehavior</string>
     <string name="backup_error_text">Því miður kom upp villa við vistun.</string>
     <string name="backup_no_permission">Gat ekki búið til öryggisafrit vegna heimilda sem vantar.</string>
     <string name="backup_not_createable">Villa við að búa til öryggisafrit.</string>
     <string name="backup_success_text">Afrit búin til!</string>
-    <string name="bell_name_1">High Tone</string>
-    <string name="bell_name_2">Low Tone</string>
-    <string name="bell_name_3">Jap. Rhinbowl Dharma, 107mm</string>
-    <string name="bell_name_4">Jap. Rhinbowl Dharma, 88mm (black, glazed)</string>
+    <string name="bell_name_1">Hár tónn</string>
+    <string name="bell_name_2">Lágur tónn</string>
+    <string name="bell_name_3">Jap. Rhinbowl Dharma, 107 mm</string>
+    <string name="bell_name_4">Jap. Rhinbowl Dharma, 88 mm (svartur, gljáður)</string>
     <string name="bell_name_5">Jap. Rhinbowl Shomyo, 90mm</string>
-    <string name="bell_name_6">Jap. Rhinbowl Tang, 164mm</string>
-    <string name="bell_name_7">Tib. Bowl, 230mm</string>
+    <string name="bell_name_6">Jap. Rhinbowl Tang, 164 mm</string>
+    <string name="bell_name_7">Tib. Skál, 230 mm</string>
     <string name="bell_name_8">Jap. Rhinbowl, 97mm</string>
     <string name="bell_pause">Bjöllubil (sek)</string>
     <string name="bell_user">Bæta við bjöllu...</string>
@@ -25,7 +25,7 @@
     <string name="bottom_nav_sessions">Fundir</string>
     <string name="bottom_sheet_behavior">android.support.design.widget.BottomSheetBehavior</string>
     <string name="but_pause">Gera hlé</string>
-    <string name="but_start">Byrjaðu á hugleiðslu</string>
+    <string name="but_start">Byrjaðu hugleiðslu</string>
     <string name="but_stop">Hættu</string>
     <string name="caption_zazen_meditation">Zazen hugleiðsla</string>
     <string name="character_counter_pattern">%1$d / %2$d</string>
@@ -56,7 +56,7 @@
     <string name="desc_no_server_messages">Sýna fréttir sjálfkrafa þegar forritið byrjar</string>
     <string name="error_checking_for_server_messages">Villa við að sækja ný skilaboð.</string>
     <string name="gong_type">Gong hljóð</string>
-    <string name="help_sectionlist_text">Hér getur þú nefnt, lýst og breytt innihaldi lotunnar þinnar.\n\n ENDURRÖÐUN\n Til að endurraða hlutunum skaltu ýta lengi á hlut og\n draga hann á nýjan stað.\n\n EYÐA\n Til að eyða hlut skaltu færa það til hægri.\n\n Breyta\n Til að breyta hluta skaltu bara snerta hann einu sinni.\n\n hnappinn ADD.\n\n</string>
+    <string name="help_sectionlist_text">Hér getur þú nefnt, lýst og breytt innihaldi lotunnar þinnar.\n\nENDURRÖÐUN\nTil að endurraða hlutunum skaltu ýta lengi á hlut og\ndraga það í nýja stöðu.\n\nEYÐIR\nTil að eyða hlut skaltu færa hann til hægri.\n\nEDIT\nTil að breyta hluta skaltu bara snerta hann einu sinni.\n\nADD\nTil að bæta við nýjum hluta skaltu ýta á + hnappinn.</string>
     <string name="help_sectionlist_title">Breyta fundi</string>
     <string name="label_section_name">Heiti hluta</string>
     <string name="label_session_description">Lýsing á fundi</string>
@@ -74,8 +74,8 @@
     <string name="menu_settings">Stillingar</string>
     <string name="minuten">Fundargerð</string>
     <string name="no_new_server_messages">Engin ný skilaboð í boði.</string>
-    <string name="no_sections_in_session">Get ekki hafið hugleiðslu: Valin lota hefur enga hluta.</string>
-    <string name="no_session_exists">There is no session that can be started. Vinsamlegast búðu til einn fyrst.</string>
+    <string name="no_sections_in_session">Get\' ekki hafið hugleiðslu: Valin lota hefur enga hluta.</string>
+    <string name="no_session_exists">Það er engin fundur sem hægt er að hefja. Vinsamlegast búðu til einn fyrst.</string>
     <string name="notification_text">Zazen hugleiðsla er í gangi</string>
     <string name="notification_text_paused">Zazen hugleiðsla gerði hlé</string>
     <string name="notification_title">Zazen hugleiðsla</string>
@@ -108,7 +108,7 @@
     <string name="privacy_message">Þetta app safnar engum persónulegum gögnum - það notar heldur ekki IP-tölur eða önnur tæknitengd gögn, né safnar, vinnur eða notar nein á nokkurn hátt.</string>
     <string name="privacy_ok">Allt í lagi</string>
     <string name="privacy_title">Upplýsingar um persónuvernd</string>
-    <string name="really_stop">Í alvöru hætta hugleiðslunni?</string>
+    <string name="really_stop">Really stop the meditation?</string>
     <string name="restore_backup_not_found">Öryggisskrá fannst ekki</string>
     <string name="restore_error_text">Villa við að endurheimta úr öryggisafriti</string>
     <string name="restore_no_permission">Gat ekki endurheimt vegna þess að heimild vantaði.</string>
@@ -130,12 +130,12 @@
     <string name="status_bar_notification_info_overflow">999+</string>
     <string name="test_mute_perm_request">Sem stendur er forritinu ekki heimilt að slökkva á símanum þínum. Opna stillingar til að breyta þessu?</string>
     <string name="text_cant_mute">Síminn þinn leyfir þessu forriti ekki að slökkva á því. Slökktu á þöggun í þessum forritastillingum eða leyfðu þöggun í símastillingunum þínum.</string>
-    <string name="text_no_notify_access_settings">Síminn þinn virðist ekki hafa staðlaðar stillingar til að leyfa þöggun. Vinsamlega leitaðu handvirkt að \&amp;quot;Ekki trufla aðgang\&amp;quot; stillinguna og virkjaðu hana.</string>
+    <string name="text_no_notify_access_settings">Síminn þinn virðist ekki hafa staðlaðar stillingar til að leyfa þöggun. Vinsamlegast leitaðu handvirkt að \"Ekki trufla aðgang\" stillingu og virkjaðu hana.</string>
     <string name="text_no_sections">Engir hlutar skilgreindir.</string>
     <string name="text_question_delete_session">Viltu virkilega eyða valda lotunni?</string>
     <string name="theme">Þema</string>
     <string name="theme_dark">Myrkt þema</string>
-    <string name="theme_desc">Veldu ljós eða dökkt útlit appsins</string>
+    <string name="theme_desc">Veldu útlit appsins</string>
     <string name="theme_light">Létt þema</string>
     <string name="theme_system">Kerfisþema</string>
     <string name="theme_value_dark">dark</string>
@@ -155,7 +155,15 @@
     <string name="stop_meditation_cancel">Hætta við</string>
     <string name="pref_title_bell_volume">Bjöllumagn</string>
     <string name="pref_desc_bell_volume">Stjórnar hljóðstyrk viðvörunarstraumsins fyrir bjölluhljóð</string>
-    <string name="title_dim_bell">Dim bjalla</string>
+    <string name="title_dim_bell">Dimma Bell</string>
     <string name="dim_bell_label_off">Ekki dimmt</string>
     <string name="dim_bell_label_format">Dimmt: %1$d0%%</string>
+    <string name="section_deleted">Eytt \'%s\'</string>
+    <string name="action_undo">Afturkalla</string>
+    <string name="notification_channel_name">Hugleiðslutími</string>
+    <string name="nav_label_sessions">Fundir</string>
+    <string name="nav_label_meditation">Hugleiðsla</string>
+    <string name="nav_label_edit_session">Breyta fundi</string>
+    <string name="nav_label_edit_section">Breyta kafla</string>
+    <string name="nav_label_settings">Stillingar</string>
 </resources>

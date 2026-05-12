@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="abbrechen">Tso tseg</string>
-    <string name="about1">Zazen Meditation Timer — A simple meditation timer with customizable sections, bell sounds, and session management.</string>
-    <string name="about2">Originally created by Stefan Gaffga. Currently maintained by Georg Graf.&lt;br&gt;&lt;br&gt;Thanks to Winfried of &lt;a href="http://www.meditationsuhren.de"&gt;http://www.meditationsuhren.de&lt;/a&gt; for providing such great Bell Sounds!</string>
-    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues"&gt;Report issues on GitHub&lt;/a&gt;</string>
-    <string name="app_description">This application lets the user define a set of meditation sessions and provides a timer with visual and audible feedback when a part or the whole meditation is over.</string>
+    <string name="about1">Zazen Meditation Timer - Ib qho yooj yim kev xav timer nrog cov ntu uas hloov tau, suab nrov, thiab kev tswj xyuas.</string>
+    <string name="about2">Keeb kwm tsim los ntawm Stefan Gaffga. Tam sim no khaws cia los ntawm Georg Graf.&lt;br&gt;&lt;br&gt;Ua tsaug rau Winfried ntawm &lt;a href="http://www.meditationsuhren.de"&gt;http://www.meditationsuhren.de&lt;/a&gt; rau kev muab lub suab zoo li tswb!</string>
+    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues"&gt; Qhia teeb meem ntawm GitHub&lt;/a&gt;</string>
+    <string name="app_description">Daim ntawv thov no tso cai rau tus neeg siv txhais cov txheej txheem kev xav thiab muab lub sijhawm nrog cov lus pom thiab mloog tau thaum ib feem lossis tag nrho kev xav tau dhau los.</string>
     <string name="app_name">Zazen Meditation Timer</string>
     <string name="appbar_scrolling_view_behavior">android.support.design.widget.AppBarLayout$ScrollingViewBehavior</string>
     <string name="backup_error_text">Thov txim, qhov yuam kev tshwm sim thaum txuag.</string>
     <string name="backup_no_permission">Tsis tuaj yeem tsim thaub qab vim tsis muaj kev tso cai.</string>
     <string name="backup_not_createable">Yuam kev tsim cov ntaub ntawv thaub qab.</string>
     <string name="backup_success_text">Backup tsim tiav!</string>
-    <string name="bell_name_1">High Tone</string>
+    <string name="bell_name_1">Siab Tone</string>
     <string name="bell_name_2">Low Tone</string>
-    <string name="bell_name_3">Jap. Rhinbowl Dharma, 107mm</string>
-    <string name="bell_name_4">Jap. Rhinbowl Dharma, 88mm (black, glazed)</string>
-    <string name="bell_name_5">Jap. Rhinbowl Shomyo, 90mm</string>
-    <string name="bell_name_6">Jap. Rhinbowl Tang, 164mm</string>
-    <string name="bell_name_7">Tib. Bowl, 230mm</string>
-    <string name="bell_name_8">Jap. Rhinbowl, 97mm</string>
+    <string name="bell_name_3">Nyiv. Rhinbowl Dharma, 107 hli</string>
+    <string name="bell_name_4">Nyiv. Rhinbowl Dharma, 88mm (dub, glazed)</string>
+    <string name="bell_name_5">Nyiv. Rhinbowl Shomyo, 90mm</string>
+    <string name="bell_name_6">Nyiv. Rhinbowl Tang, 164 hli</string>
+    <string name="bell_name_7">Tib. Loj, 230mm</string>
+    <string name="bell_name_8">Nyiv. luj, 97mm</string>
     <string name="bell_pause">Tswb gap (sec)</string>
     <string name="bell_user">Ntxiv Tswb...</string>
     <string name="bottom_nav_meditation">Kev xav</string>
@@ -35,8 +35,8 @@
     <string name="checkbox_phone_off_desc">Mute txhua lub suab hauv xov tooj.</string>
     <string name="copy_prefix">Luam ntawm</string>
     <string name="crash_dialog_comment_prompt">Yeem: Qhov kev txiav txim twg ua rau qhov yuam kev?</string>
-    <string name="crash_dialog_ok_toast">Ua tsaug ntau rau koj txoj kev pab!</string>
-    <string name="crash_dialog_text">Kuv thov txim, qhov yuam kev tau tshwm sim. Koj tuaj yeem pab kuv nrhiav thiab kho qhov teeb meem no los ntawm kev xa daim ntawv qhia txog kab mob no thiab tej zaum tseem muaj cov ntsiab lus ntxiv ntawm qhov koj tau ua.</string>
+    <string name="crash_dialog_ok_toast">Ua tsaug ntau rau koj kev pab!</string>
+    <string name="crash_dialog_text">Kuv thov txim, qhov yuam kev tau tshwm sim. Koj tuaj yeem pab kuv nrhiav thiab kho qhov teeb meem no los ntawm kev xa daim ntawv qhia txog kab mob no thiab tej zaum cov ntsiab lus ntxiv ntawm qhov koj tau ua.</string>
     <string name="crash_dialog_title">Zazen Meditation Timer</string>
     <string name="crash_toast_text">Thov txim - qhov yuam kev sab hauv tau tshwm sim!</string>
     <string name="crash_user_email_label">Yeem: Koj tus email-chaw nyob rau cov lus nug lossis hloov tshiab ntawm qhov teeb meem no.</string>
@@ -56,8 +56,8 @@
     <string name="desc_no_server_messages">Cia li qhia Xov Xwm thaum App pib</string>
     <string name="error_checking_for_server_messages">yuam kev mus nqa cov lus tshiab.</string>
     <string name="gong_type">Gong Suab</string>
-    <string name="help_sectionlist_text">Ntawm no koj tuaj yeem sau npe, piav qhia thiab kho cov ntsiab lus ntawm koj qhov Kev Sib Tham.\n\n REORDERING\n Txhawm rau rov xaj cov khoom, nias ntev rau ib yam khoom thiab\n luag nws mus rau nws txoj hauj lwm tshiab.\n\n DELETING\n Txhawm rau rho tawm ib yam khoom, txav mus rau sab xis.\n\n Kho kom raug\n Txhawm rau kho ib ntu, tsuas yog kov nws ib zaug.\n\n Ntxiv\n Txhawm rau ntxiv ntu tshiab, nias lub pob +.</string>
-    <string name="help_sectionlist_title">Kho Session</string>
+    <string name="help_sectionlist_text">Ntawm no koj tuaj yeem sau npe, piav qhia thiab kho cov ntsiab lus ntawm koj qhov Kev Sib Tham.\n\nREORDERING\nTxhawm rau rov xaj cov khoom, nias ntev rau ib yam khoom thiab\nluag nws mus rau nws txoj hauj lwm tshiab.\n\nDELETING\nTxhawm rau rho tawm ib yam khoom, txav mus rau sab xis.\n\nKho kom raug\nTxhawm rau kho ib ntu, tsuas yog kov nws ib zaug.\n\nNtxiv\nTxhawm rau ntxiv ntu tshiab, nias lub pob +.</string>
+    <string name="help_sectionlist_title">Kho kom raug Session</string>
     <string name="label_section_name">Tshooj npe</string>
     <string name="label_session_description">Session Description</string>
     <string name="label_session_name">Lub npe ntu</string>
@@ -66,7 +66,7 @@
     <string name="menu_delete_section">Rho tawm Tshooj</string>
     <string name="menu_delete_session">Rho tawm Session</string>
     <string name="menu_duplicate_section">Duplicate seem</string>
-    <string name="menu_edit_session">Kho Session</string>
+    <string name="menu_edit_session">Kho kom raug Session</string>
     <string name="menu_help">Pab</string>
     <string name="menu_add_session">Ntxiv Session</string>
     <string name="menu_new_session">Session tshiab</string>
@@ -74,10 +74,10 @@
     <string name="menu_settings">Chaw</string>
     <string name="minuten">feeb</string>
     <string name="no_new_server_messages">Tsis muaj cov lus tshiab muaj.</string>
-    <string name="no_sections_in_session">Tsis tuaj yeem pib Meditation: Lub Session xaiv tsis muaj ib ntu.</string>
+    <string name="no_sections_in_session">Can\'t pib Meditation: Lub Session xaiv tsis muaj ib seem.</string>
     <string name="no_session_exists">Tsis muaj kev sib kho uas tuaj yeem pib. Thov tsim ib qho ua ntej.</string>
     <string name="notification_text">Lub Zazen Meditation tab tom ua haujlwm tam sim no</string>
-    <string name="notification_text_paused">Zazen Meditation nres</string>
+    <string name="notification_text_paused">Zazen Meditation paused</string>
     <string name="notification_title">Zazen Meditation</string>
     <string name="notification_title_paused">Zazen Meditation (pased)</string>
     <string name="num_bells">Tswb suav</string>
@@ -112,11 +112,11 @@
     <string name="restore_backup_not_found">Tsis pom cov ntaub ntawv thaub qab</string>
     <string name="restore_error_text">Yuam kev rov qab los ntawm thaub qab</string>
     <string name="restore_no_permission">Tsis tuaj yeem rov qab tau vim tsis muaj kev tso cai.</string>
-    <string name="restore_really_text">Qhov no yuav hloov tag nrho koj Sessions nrog cov uas nyob hauv thaub qab! (Tsis yog Undo!)</string>
+    <string name="restore_really_text">Qhov no yuav hloov tag nrho koj Sessions nrog cov uas nyob rau hauv Backup! (Tsis yog Undo!)</string>
     <string name="restore_really_title">Restore tiag tiag cov ntaub ntawv?</string>
     <string name="restore_success_text">Data Restore ua tiav</string>
     <string name="search_menu_title">Nrhiav</string>
-    <string name="section_info_string_1_pl">%1$d Tswb</string>
+    <string name="section_info_string_1_pl">%1$d Cov</string>
     <string name="section_info_string_1_sg">1 Tswb</string>
     <string name="section_info_string_2_pl">txhua %1$d Seconds</string>
     <string name="section_info_string_2_sg">txhua thib ob</string>
@@ -127,15 +127,15 @@
     <string name="content_desc_section_actions">Tshooj ua</string>
     <string name="content_desc_session_actions">Kev ua yeeb yam</string>
     <string name="session_list_unnamed_entry">Tsis muaj npe Session</string>
-    <string name="status_bar_notification_info_overflow">999+</string>
+    <string name="status_bar_notification_info_overflow">999+ ib</string>
     <string name="test_mute_perm_request">Lub App tam sim no tsis tso cai rau mute koj lub xov tooj. Qhib cov chaw los hloov qhov no?</string>
-    <string name="text_cant_mute">Koj lub xov tooj tsis tso cai rau lub App no ​​mute nws. Disable muting nyob rau hauv no Apps Settings los yog tso cai muting nyob rau hauv koj lub xov tooj Settings.</string>
-    <string name="text_no_notify_access_settings">Koj lub xov tooj zoo li tsis muaj cov qauv teeb tsa kom tso cai rau muting. Thov saib manually rau \&amp;quot;Do not Disturb Access\&amp;quot; Teem thiab qhib nws.</string>
+    <string name="text_cant_mute">Koj lub xov tooj tsis tso cai rau lub App no ​​mute nws. Disable muting nyob rau hauv no Apps Chaw los yog tso cai muting nyob rau hauv koj lub xov tooj Settings.</string>
+    <string name="text_no_notify_access_settings">Koj lub xov tooj zoo li tsis muaj cov qauv teeb tsa kom tso cai rau muting. Thov saib manually rau \"Do not Disturb Access\" Chaw thiab pab nws.</string>
     <string name="text_no_sections">Tsis muaj seem txhais.</string>
-    <string name="text_question_delete_session">Tiag rho lub Session xaiv?</string>
+    <string name="text_question_delete_session">Tiag rho tawm Session xaiv?</string>
     <string name="theme">Ntsiab lus</string>
     <string name="theme_dark">Tsaus Ntsiab</string>
-    <string name="theme_desc">Xaiv lub teeb lossis tsaus nti ntawm App</string>
+    <string name="theme_desc">Xaiv lub app tsos</string>
     <string name="theme_light">Lub ntsiab lus</string>
     <string name="theme_system">Lub ntsiab lus</string>
     <string name="theme_value_dark">dark</string>
@@ -145,7 +145,7 @@
     <string name="time_section_remaining">seem seem</string>
     <string name="time_session_elapsed">Kev sib tham dhau mus</string>
     <string name="time_session_remaining">Session tseem tshuav</string>
-    <string name="title_mute_perm_request">Tso cai ploj lawm</string>
+    <string name="title_mute_perm_request">Kev tso cai ploj lawm</string>
     <string name="title_question_delete_session">Rho tawm Session?</string>
     <string name="title_volume_bells">Tswb Volume</string>
     <string name="unnamed">Tsis muaj npe</string>
@@ -158,4 +158,12 @@
     <string name="title_dim_bell">Dim Tswb</string>
     <string name="dim_bell_label_off">Tsis dimmed</string>
     <string name="dim_bell_label_format">Dimmed: %1$d0%%</string>
+    <string name="section_deleted">Rho tawm ___\'__0_2__</string>
+    <string name="action_undo">Tshem tawm</string>
+    <string name="notification_channel_name">Meditation Timer</string>
+    <string name="nav_label_sessions">Kev sib tham</string>
+    <string name="nav_label_meditation">Kev xav</string>
+    <string name="nav_label_edit_session">Kho kom raug Session</string>
+    <string name="nav_label_edit_section">Kho kom raug seem</string>
+    <string name="nav_label_settings">Chaw</string>
 </resources>

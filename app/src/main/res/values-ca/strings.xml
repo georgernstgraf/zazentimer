@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="abbrechen">Cancel·la</string>
-    <string name="about1">Zazen Meditation Timer — A simple meditation timer with customizable sections, bell sounds, and session management.</string>
-    <string name="about2">Originally created by Stefan Gaffga. Currently maintained by Georg Graf.&lt;br&gt;&lt;br&gt;Thanks to Winfried of &lt;a href="http://www.meditationsuhren.de"&gt;http://www.meditationsuhren.de&lt;/a&gt; for providing such great Bell Sounds!</string>
-    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues"&gt;Report issues on GitHub&lt;/a&gt;</string>
-    <string name="app_description">This application lets the user define a set of meditation sessions and provides a timer with visual and audible feedback when a part or the whole meditation is over.</string>
+    <string name="about1">Temporitzador de meditació Zazen: un temporitzador de meditació senzill amb seccions personalitzables, sons de campana i gestió de sessions.</string>
+    <string name="about2">Creat originalment per Stefan Gaffga. Actualment el manté Georg Graf.&lt;br&gt;&lt;br&gt;Gràcies a Winfried de &lt;a href="http://www.meditationsuhren.de"&gt;http://www.meditationsuhren.de&lt;/a&gt; per oferir uns sons de campanes tan fantàstics!</string>
+    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues"&gt;Informa de problemes a GitHub&lt;/a&gt;</string>
+    <string name="app_description">Aquesta aplicació permet a l\'usuari definir un conjunt de sessions de meditació i proporciona un temporitzador amb retroalimentació visual i audible quan una part o tota la meditació ha acabat.</string>
     <string name="app_name">Zazen Meditation Timer</string>
     <string name="appbar_scrolling_view_behavior">android.support.design.widget.AppBarLayout$ScrollingViewBehavior</string>
     <string name="backup_error_text">Ho sentim, s\'ha produït un error en desar.</string>
     <string name="backup_no_permission">No s\'ha pogut crear una còpia de seguretat perquè falten permisos.</string>
     <string name="backup_not_createable">S\'ha produït un error en crear el fitxer de còpia de seguretat.</string>
     <string name="backup_success_text">Còpia de seguretat creada correctament!</string>
-    <string name="bell_name_1">High Tone</string>
-    <string name="bell_name_2">Low Tone</string>
-    <string name="bell_name_3">Jap. Rhinbowl Dharma, 107mm</string>
-    <string name="bell_name_4">Jap. Rhinbowl Dharma, 88mm (black, glazed)</string>
-    <string name="bell_name_5">Jap. Rhinbowl Shomyo, 90mm</string>
-    <string name="bell_name_6">Jap. Rhinbowl Tang, 164mm</string>
-    <string name="bell_name_7">Tib. Bowl, 230mm</string>
-    <string name="bell_name_8">Jap. Rhinbowl, 97mm</string>
+    <string name="bell_name_1">To alt</string>
+    <string name="bell_name_2">To baix</string>
+    <string name="bell_name_3">Jap. Rhinbowl Dharma, 107 mm</string>
+    <string name="bell_name_4">Jap. Rhinbowl Dharma, 88 mm (negre, esmaltat)</string>
+    <string name="bell_name_5">Jap. Rhinbowl Shomyo, 90 mm</string>
+    <string name="bell_name_6">Jap. Tang Rhinbowl, 164 mm</string>
+    <string name="bell_name_7">Tib. Bol, 230 mm</string>
+    <string name="bell_name_8">Jap. Rhinbowl, 97 mm</string>
     <string name="bell_pause">Interrupció de campana (s)</string>
     <string name="bell_user">Afegeix una campana...</string>
     <string name="bottom_nav_meditation">Meditació</string>
@@ -56,7 +56,7 @@
     <string name="desc_no_server_messages">Mostra automàticament Notícies quan s\'iniciï l\'aplicació</string>
     <string name="error_checking_for_server_messages">S\'ha produït un error en obtenir missatges nous.</string>
     <string name="gong_type">So Gong</string>
-    <string name="help_sectionlist_text">Aquí podeu anomenar, descriure i editar el contingut de la vostra sessió.\n\n REORDENAR\n Per reordenar els elements, premeu llargament un element i\n arrossegueu-lo a la seva nova posició.\n\n SUPRESIÓ\n Per suprimir-lo, moveu-lo a un element. dreta.\n\n EDITAR\n Per editar una secció, només cal que la toqueu una vegada.\n\n AFEGIR\n Per afegir una secció nova, premeu el botó +.</string>
+    <string name="help_sectionlist_text">Aquí podeu anomenar, descriure i editar el contingut de la vostra sessió.\n\nREORDENAR\nPer reordenar els elements, premeu llargament un element i\narrossegueu-lo a la seva nova posició.\n\nELIMINAR\nPer suprimir un element, moveu-lo cap a la dreta.\n\nEDITAR\nPer editar una secció, només cal tocar-la una vegada.\n\nAFEGIR\nPer afegir una secció nova, premeu el botó +.</string>
     <string name="help_sectionlist_title">Edita la sessió</string>
     <string name="label_section_name">Nom de la secció</string>
     <string name="label_session_description">Descripció de la sessió</string>
@@ -74,7 +74,7 @@
     <string name="menu_settings">Configuració</string>
     <string name="minuten">Minuts</string>
     <string name="no_new_server_messages">No hi ha missatges nous disponibles.</string>
-    <string name="no_sections_in_session">No es pot iniciar la meditació: la sessió seleccionada no té cap secció.</string>
+    <string name="no_sections_in_session">No es pot \' iniciar la meditació: la sessió seleccionada no té cap secció.</string>
     <string name="no_session_exists">No hi ha sessió que es pugui iniciar. Creeu-ne un primer.</string>
     <string name="notification_text">Actualment s\'està executant una meditació Zazen</string>
     <string name="notification_text_paused">La meditació Zazen es va aturar</string>
@@ -135,7 +135,7 @@
     <string name="text_question_delete_session">Vols suprimir realment la sessió seleccionada?</string>
     <string name="theme">Tema</string>
     <string name="theme_dark">Tema fosc</string>
-    <string name="theme_desc">Trieu l\'aspecte clar o fosc de l\'aplicació</string>
+    <string name="theme_desc">Trieu l\'aparença de l\'aplicació</string>
     <string name="theme_light">Tema lleuger</string>
     <string name="theme_system">Tema del sistema</string>
     <string name="theme_value_dark">dark</string>
@@ -158,4 +158,12 @@
     <string name="title_dim_bell">Dim Bell</string>
     <string name="dim_bell_label_off">No enfosquit</string>
     <string name="dim_bell_label_format">Atenuat: %1$d0%%</string>
+    <string name="section_deleted">Suprimit \'%s\'</string>
+    <string name="action_undo">Desfer</string>
+    <string name="notification_channel_name">Temporitzador de meditació</string>
+    <string name="nav_label_sessions">Sessions</string>
+    <string name="nav_label_meditation">Meditació</string>
+    <string name="nav_label_edit_session">Edita la sessió</string>
+    <string name="nav_label_edit_section">Secció d\'edició</string>
+    <string name="nav_label_settings">Configuració</string>
 </resources>

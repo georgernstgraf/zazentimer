@@ -1,25 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="abbrechen">रद्द</string>
-    <string name="about1">Zazen Meditation Timer — A simple meditation timer with customizable sections, bell sounds, and session management.</string>
-    <string name="about2">Originally created by Stefan Gaffga. Currently maintained by Georg Graf.&lt;br&gt;&lt;br&gt;Thanks to Winfried of &lt;a href="http://www.meditationsuhren.de"&gt;http://www.meditationsuhren.de&lt;/a&gt; for providing such great Bell Sounds!</string>
-    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues"&gt;Report issues on GitHub&lt;/a&gt;</string>
-    <string name="app_description">This application lets the user define a set of meditation sessions and provides a timer with visual and audible feedback when a part or the whole meditation is over.</string>
+    <string name="about1">Zazen Meditation Timer — सानुकूल करपाक येवपी विभाग, घंटी आवाज, आनी सत्र वेवस्थापन आशिल्लो एक सादो ध्यान टाइमर.</string>
+    <string name="about2">मुळांत स्टीफन गॅफगा हाणें तयार केल्लें. सद्या जॉर्ज ग्राफ हांणी सांबाळ्ळां.&lt;br&gt;&lt;br&gt;इतले व्हडले बेल साउंड्स दिवपा खातीर &lt;a href="http://www.meditationsuhren.de"&gt;http://www.meditationsuhren.de&lt;/a&gt; च्या विनफ्रीडाक आभार!</string>
+    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues"&gt;GitHub चेर समस्यांचो अहवाल दिवप&lt;/a&gt;</string>
+    <string name="app_description">हो ऍप्लिकेशन वापरप्याक ध्यान सत्रांचो संच व्याख्या करूंक दिता आनी एक भाग वा पुराय ध्यान सोंपतकच दृश्य आनी श्रव्य प्रतिसादा सयत टाइमर पुरवण करता.</string>
     <string name="app_name">Zazen Meditation Timer</string>
     <string name="appbar_scrolling_view_behavior">android.support.design.widget.AppBarLayout $ स्क्रोलिंगदृश्यवर्तन</string>
     <string name="backup_error_text">माफ करात, जतनाय करतना एक त्रुटी जाल्या.</string>
     <string name="backup_no_permission">गळून पडल्ल्या परवानगींक लागून बॅकअप तयार करूंक शकलो ना.</string>
     <string name="backup_not_createable">बॅकअप फायल तयार करतना त्रुटी.</string>
     <string name="backup_success_text">बॅकअप यशस्वीपणान तयार जाला!</string>
-    <string name="bell_name_1">High Tone</string>
-    <string name="bell_name_2">Low Tone</string>
-    <string name="bell_name_3">Jap. Rhinbowl Dharma, 107mm</string>
-    <string name="bell_name_4">Jap. Rhinbowl Dharma, 88mm (black, glazed)</string>
-    <string name="bell_name_5">Jap. Rhinbowl Shomyo, 90mm</string>
-    <string name="bell_name_6">Jap. Rhinbowl Tang, 164mm</string>
-    <string name="bell_name_7">Tib. Bowl, 230mm</string>
-    <string name="bell_name_8">Jap. Rhinbowl, 97mm</string>
-    <string name="bell_pause">घंटी अंतर (सेकंद) 1 .</string>
+    <string name="bell_name_1">उच्च स्वर</string>
+    <string name="bell_name_2">लो टोन</string>
+    <string name="bell_name_3">जॅप. स्फटिक धर्म, 107 मिमी</string>
+    <string name="bell_name_4">जॅप. स्फटिक धर्म, 88 मिमी (काला, ग्लेज़ेड)</string>
+    <string name="bell_name_5">जॅप. स्फटिक शोम्यो, 90 मिमी</string>
+    <string name="bell_name_6">जॅप. स्फटिक तांग, 164 मिमी</string>
+    <string name="bell_name_7">टिब. बावल, 230 मिमी</string>
+    <string name="bell_name_8">जॅप. स्फटिक, 97 मिमी</string>
+    <string name="bell_pause">घंटी अंतर (सेकंद) 1.1.</string>
     <string name="bell_user">जोडचें बेल...</string>
     <string name="bottom_nav_meditation">साधना</string>
     <string name="bottom_nav_sessions">सत्रां जालीं</string>
@@ -41,7 +41,7 @@
     <string name="crash_toast_text">माफ करात - एक अंतर्गत त्रुटी जाल्या!</string>
     <string name="crash_user_email_label">पर्यायी: ह्या प्रस्नाचेर प्रस्न वा अद्ययावत करपा खातीर तुमचो ईमेल-पत्तो.</string>
     <string name="default_section_name">नांव नाशिल्लें</string>
-    <string name="demo_sess1_description">आयतारा सांजवेळार ध्यान</string>
+    <string name="demo_sess1_description">आयतारा सांजवेळा ध्यान</string>
     <string name="demo_sess1_name">ज़ाझेन आनी किन्हीन हांणी केला</string>
     <string name="demo_sess1_sec1_name">तयारी</string>
     <string name="demo_sess1_sec2_name">ज़ाझेन 1. हें नांव</string>
@@ -50,7 +50,7 @@
     <string name="demo_sess1_sec5_name">किन्हिन 3</string>
     <string name="demo_sess1_sec6_name">ज़ाझेन 3</string>
     <string name="demo_sess2_description">दैनिक ध्यान करप</string>
-    <string name="demo_sess2_name">फकत ज़ाझेन</string>
+    <string name="demo_sess2_name">फकत झाझेन</string>
     <string name="desc_get_messages">स्वयंचलित संदेश अक्षम केल्यार, तुमी हांगा खबरो तपासूंक शकतात.</string>
     <string name="desc_keep_screen_on">ध्यान करतना पडदो चालू दवरता</string>
     <string name="desc_no_server_messages">App सुरू जातकच आपोआप News दाखोवचो</string>
@@ -89,7 +89,7 @@
     <string name="pref_mute_mode_none_desc">फोन कॉल आनी नोटिफिकेशनां खातीर रिंग टोन ना आनी वाइब्रेशन ना</string>
     <string name="pref_mute_mode_pref">रिंग टोन आनी अधिसुचोवण्यो संबंदीत सेटिंग्ज</string>
     <string name="pref_mute_mode_vibrate">फकत कंपन</string>
-    <string name="pref_mute_mode_vibrate_desc">फकत फोन कॉल आनी अधिसुचोवण्यां खातीर वाइब्रेट करता (Android 7 (Nougat) चेर काम करीना - Silence सेटिंगा सारकें वागता)</string>
+    <string name="pref_mute_mode_vibrate_desc">फकत फोन कॉल आनी अधिसुचोवण्यां खातीर वाइब्रेट (Android 7 (Nougat) चेर काम करीना - Silence सेटिंगा सारकें वागता)</string>
     <string name="pref_mute_mode_vibrate_sound">रिंग टोन आनी वाइब्रेशन</string>
     <string name="pref_mute_mode_vibrate_sound_desc">रिंग टोन आनी वाइब्रेशन वाजोवप</string>
     <string name="pref_muting">सेटिंग्ज म्यूट करात</string>
@@ -114,7 +114,7 @@
     <string name="restore_no_permission">परवानगी गमाल्ल्यान परतून मेळोवंक शकलो ना.</string>
     <string name="restore_really_text">हाका लागून तुमचे सगळे सत्र बॅकअपांतल्या सत्रांनी बदलतले! (ना पूर्ववत करप!)</string>
     <string name="restore_really_title">खरेंच डेटा परतून मेळोवप?</string>
-    <string name="restore_success_text">डेटा पुनर्स्थापना यशस्वी</string>
+    <string name="restore_success_text">डेटा पुनर्स्थापना यशस्वी जालें</string>
     <string name="search_menu_title">सोद</string>
     <string name="section_info_string_1_pl">%1$d घंटयो</string>
     <string name="section_info_string_1_sg">१ घंटी</string>
@@ -135,7 +135,7 @@
     <string name="text_question_delete_session">खरेंच निवडिल्लें सत्र काडून उडोवप?</string>
     <string name="theme">माथाळो</string>
     <string name="theme_dark">डार्क थीम</string>
-    <string name="theme_desc">App चें उजवाड वा काळें दिसप निवडात</string>
+    <string name="theme_desc">अॅप दिसप निवडात</string>
     <string name="theme_light">उजवाडाचो विशय</string>
     <string name="theme_system">प्रणाली थीम</string>
     <string name="theme_value_dark">dark</string>
@@ -158,4 +158,12 @@
     <string name="title_dim_bell">मंद बेल</string>
     <string name="dim_bell_label_off">मंद जावंक ना</string>
     <string name="dim_bell_label_format">मंद: %1$d0%% 1.</string>
+    <string name="section_deleted">काडून उडयले \'%s\' .</string>
+    <string name="action_undo">पूर्ववत करचें</string>
+    <string name="notification_channel_name">ध्यान टाइमर</string>
+    <string name="nav_label_sessions">सत्रां जालीं</string>
+    <string name="nav_label_meditation">साधना</string>
+    <string name="nav_label_edit_session">संपादन सत्र</string>
+    <string name="nav_label_edit_section">संपादन विभाग</string>
+    <string name="nav_label_settings">सेटिंग्ज</string>
 </resources>

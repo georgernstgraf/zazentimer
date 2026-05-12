@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="abbrechen">रद्द करा</string>
-    <string name="about1">Zazen Meditation Timer — A simple meditation timer with customizable sections, bell sounds, and session management.</string>
-    <string name="about2">Originally created by Stefan Gaffga. Currently maintained by Georg Graf.&lt;br&gt;&lt;br&gt;Thanks to Winfried of &lt;a href="http://www.meditationsuhren.de"&gt;http://www.meditationsuhren.de&lt;/a&gt; for providing such great Bell Sounds!</string>
-    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues"&gt;Report issues on GitHub&lt;/a&gt;</string>
-    <string name="app_description">This application lets the user define a set of meditation sessions and provides a timer with visual and audible feedback when a part or the whole meditation is over.</string>
+    <string name="about1">Zazen ध्यान टाइमर — सानुकूल करण्यायोग्य विभाग, घंटा आवाज आणि सत्र व्यवस्थापनासह एक साधा ध्यान टाइमर.</string>
+    <string name="about2">मूलतः स्टीफन गफ्गा यांनी तयार केले. सध्या जॉर्ज ग्राफने देखरेख केली आहे.&lt;br&gt;&lt;br&gt;इतके उत्तम बेल साउंड प्रदान केल्याबद्दल &lt;a href="http://www.meditationsuhren.de"&gt;http://www.meditationsuhren.de&lt;/a&gt; च्या Winfried चे आभार!</string>
+    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues"&gt;GitHub वर समस्या नोंदवा&lt;/a&gt;</string>
+    <string name="app_description">हा अनुप्रयोग वापरकर्त्यास ध्यान सत्रांचा संच परिभाषित करू देतो आणि एक भाग किंवा संपूर्ण ध्यान पूर्ण झाल्यावर व्हिज्युअल आणि श्रवणीय अभिप्रायासह टाइमर प्रदान करतो.</string>
     <string name="app_name">Zazen Meditation Timer</string>
     <string name="appbar_scrolling_view_behavior">android.support.design.widget.AppBarLayout$ScrollingViewBehavior</string>
     <string name="backup_error_text">क्षमस्व, सेव्ह करताना एरर आली.</string>
     <string name="backup_no_permission">गहाळ परवानग्यांमुळे बॅकअप तयार करू शकलो नाही.</string>
     <string name="backup_not_createable">बॅकअप फाइल तयार करताना त्रुटी.</string>
     <string name="backup_success_text">बॅकअप यशस्वीरित्या तयार झाला!</string>
-    <string name="bell_name_1">High Tone</string>
-    <string name="bell_name_2">Low Tone</string>
-    <string name="bell_name_3">Jap. Rhinbowl Dharma, 107mm</string>
-    <string name="bell_name_4">Jap. Rhinbowl Dharma, 88mm (black, glazed)</string>
-    <string name="bell_name_5">Jap. Rhinbowl Shomyo, 90mm</string>
-    <string name="bell_name_6">Jap. Rhinbowl Tang, 164mm</string>
-    <string name="bell_name_7">Tib. Bowl, 230mm</string>
-    <string name="bell_name_8">Jap. Rhinbowl, 97mm</string>
+    <string name="bell_name_1">उच्च टोन</string>
+    <string name="bell_name_2">कमी टोन</string>
+    <string name="bell_name_3">जप. रिनबोल धर्म, 107 मिमी</string>
+    <string name="bell_name_4">जप. रिनबोल धर्म, 88 मिमी (काळा, चमकदार)</string>
+    <string name="bell_name_5">जप. Rhinbowl Shomyo, 90mm</string>
+    <string name="bell_name_6">जप. Rhinbowl Tang, 164mm</string>
+    <string name="bell_name_7">टिब. वाडगा, 230 मिमी</string>
+    <string name="bell_name_8">जप. रिनबोल, 97 मिमी</string>
     <string name="bell_pause">बेल अंतर (से)</string>
     <string name="bell_user">बेल जोडा...</string>
     <string name="bottom_nav_meditation">ध्यान</string>
@@ -56,7 +56,7 @@
     <string name="desc_no_server_messages">ॲप सुरू झाल्यावर आपोआप बातम्या दाखवा</string>
     <string name="error_checking_for_server_messages">नवीन संदेश आणताना त्रुटी.</string>
     <string name="gong_type">गोंग आवाज</string>
-    <string name="help_sectionlist_text">येथे तुम्ही तुमच्या सत्राची सामग्री नाव देऊ शकता, वर्णन करू शकता आणि संपादित करू शकता.\n\n REORDERING\n आयटम पुनर्क्रमित करण्यासाठी, आयटमवर दीर्घकाळ दाबा आणि\n त्यास त्याच्या नवीन स्थानावर ड्रॅग करा.\n\n हटवण्यासाठी\n\n हटवण्यासाठी⦅6 वर हलवा. उजवीकडे.\n\n EDIT\n विभाग संपादित करण्यासाठी, फक्त एकदा स्पर्श करा.\n\n ADD\n नवीन विभाग जोडण्यासाठी, + बटण दाबा.</string>
+    <string name="help_sectionlist_text">येथे तुम्ही तुमच्या सत्रातील सामग्रीचे नाव, वर्णन आणि संपादन करू शकता.\n\nपुनर्क्रमण\nआयटम पुनर्क्रमित करण्यासाठी, आयटमवर दीर्घकाळ दाबा आणि\nत्याला त्याच्या नवीन स्थानावर ड्रॅग करा.\n\nहटवत आहे\nआयटम हटवण्यासाठी, तो उजवीकडे हलवा.\n\nसंपादित करा\nविभाग संपादित करण्यासाठी, फक्त एकदा स्पर्श करा.\n\nजोडा\nनवीन विभाग जोडण्यासाठी, + बटण दाबा.</string>
     <string name="help_sectionlist_title">सत्र संपादित करा</string>
     <string name="label_section_name">विभागाचे नाव</string>
     <string name="label_session_description">सत्र वर्णन</string>
@@ -74,7 +74,7 @@
     <string name="menu_settings">सेटिंग्ज</string>
     <string name="minuten">मिनिटे</string>
     <string name="no_new_server_messages">कोणतेही नवीन संदेश उपलब्ध नाहीत.</string>
-    <string name="no_sections_in_session">\' ध्यान सुरू करू शकत नाही: निवडलेल्या सत्रामध्ये कोणतेही विभाग नाहीत.</string>
+    <string name="no_sections_in_session">ध्यान सुरू करू शकत नाही: निवडलेल्या सत्रात कोणतेही विभाग नाहीत.</string>
     <string name="no_session_exists">असे कोणतेही सत्र सुरू होऊ शकत नाही. कृपया प्रथम एक तयार करा.</string>
     <string name="notification_text">झझेन ध्यान सध्या चालू आहे</string>
     <string name="notification_text_paused">झाझेन ध्यान विराम दिला</string>
@@ -118,7 +118,7 @@
     <string name="search_menu_title">शोधा</string>
     <string name="section_info_string_1_pl">%1$d घंटा</string>
     <string name="section_info_string_1_sg">1 बेल</string>
-    <string name="section_info_string_2_pl">प्रत्येक %1$d सेकंद</string>
+    <string name="section_info_string_2_pl">प्रत्येक %1$d सेकंदांनी</string>
     <string name="section_info_string_2_sg">प्रत्येक सेकंद</string>
     <string name="sekunden">सेकंद</string>
     <string name="select_audio">ध्वनी फाइल निवडा</string>
@@ -127,15 +127,15 @@
     <string name="content_desc_section_actions">विभाग क्रिया</string>
     <string name="content_desc_session_actions">सत्र क्रिया</string>
     <string name="session_list_unnamed_entry">अनामित सत्र</string>
-    <string name="status_bar_notification_info_overflow">999+</string>
+    <string name="status_bar_notification_info_overflow">९९९+</string>
     <string name="test_mute_perm_request">ॲपला सध्या तुमचा फोन म्यूट करण्याची परवानगी नाही. हे बदलण्यासाठी सेटिंग्ज उघडायचे?</string>
     <string name="text_cant_mute">तुमचा फोन या ॲपला ते निःशब्द करू देत नाही. या ॲप्स सेटिंग्जमध्ये म्यूट करणे अक्षम करा किंवा तुमच्या फोन सेटिंग्जमध्ये म्यूट करण्याची अनुमती द्या.</string>
-    <string name="text_no_notify_access_settings">निःशब्द करण्याची परवानगी देण्यासाठी तुमच्या फोनमध्ये मानक सेटिंग्ज आहेत असे दिसत नाही. कृपया \" Do not disturb Access\" सेटिंगसाठी व्यक्तिचलितपणे पहा आणि ते सक्षम करा.</string>
+    <string name="text_no_notify_access_settings">निःशब्द करण्याची परवानगी देण्यासाठी तुमच्या फोनमध्ये मानक सेटिंग्ज आहेत असे दिसत नाही. कृपया \"प्रवेश व्यत्यय आणू नका\" सेटिंगसाठी व्यक्तिचलितपणे पहा आणि ते सक्षम करा.</string>
     <string name="text_no_sections">कोणतेही विभाग परिभाषित केलेले नाहीत.</string>
     <string name="text_question_delete_session">निवडलेले सत्र खरोखर हटवायचे?</string>
     <string name="theme">थीम</string>
     <string name="theme_dark">गडद थीम</string>
-    <string name="theme_desc">ॲपचे हलके किंवा गडद स्वरूप निवडा</string>
+    <string name="theme_desc">ॲपचे स्वरूप निवडा</string>
     <string name="theme_light">हलकी थीम</string>
     <string name="theme_system">सिस्टम थीम</string>
     <string name="theme_value_dark">dark</string>
@@ -155,7 +155,15 @@
     <string name="stop_meditation_cancel">रद्द करा</string>
     <string name="pref_title_bell_volume">बेल आवाज</string>
     <string name="pref_desc_bell_volume">बेल आवाजासाठी अलार्म प्रवाह आवाज नियंत्रित करते</string>
-    <string name="title_dim_bell">मंद बेल</string>
+    <string name="title_dim_bell">मंद घंटा</string>
     <string name="dim_bell_label_off">मंद नाही</string>
     <string name="dim_bell_label_format">मंद: %1$d0%%</string>
+    <string name="section_deleted">\'_%s_2__ हटविले</string>
+    <string name="action_undo">पूर्ववत करा</string>
+    <string name="notification_channel_name">ध्यान टाइमर</string>
+    <string name="nav_label_sessions">सत्रे</string>
+    <string name="nav_label_meditation">ध्यान</string>
+    <string name="nav_label_edit_session">सत्र संपादित करा</string>
+    <string name="nav_label_edit_section">विभाग संपादित करा</string>
+    <string name="nav_label_settings">सेटिंग्ज</string>
 </resources>

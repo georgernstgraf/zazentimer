@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="abbrechen">Tühista</string>
-    <string name="about1">Zazen Meditation Timer — A simple meditation timer with customizable sections, bell sounds, and session management.</string>
-    <string name="about2">Originally created by Stefan Gaffga. Currently maintained by Georg Graf.&lt;br&gt;&lt;br&gt;Thanks to Winfried of &lt;a href="http://www.meditationsuhren.de"&gt;http://www.meditationsuhren.de&lt;/a&gt; for providing such great Bell Sounds!</string>
-    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues"&gt;Report issues on GitHub&lt;/a&gt;</string>
-    <string name="app_description">This application lets the user define a set of meditation sessions and provides a timer with visual and audible feedback when a part or the whole meditation is over.</string>
+    <string name="about1">Zazeni meditatsioonitaimer – lihtne meditatsioonitaimer koos kohandatavate jaotiste, kellahelide ja seansihaldusega.</string>
+    <string name="about2">Algselt lõi Stefan Gaffga. Praegu haldab Georg Graf.&lt;br&gt;&lt;br&gt;Täname Winfriedi saidilt &lt;a href="http://www.meditationsuhren.de"&gt;http://www.meditationsuhren.de&lt;/a&gt; nii suurepäraste kellahelide pakkumise eest!</string>
+    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues"&gt;GitHubi probleemidest teatamine&lt;/a&gt;</string>
+    <string name="app_description">See rakendus võimaldab kasutajal määrata meditatsiooniseansside komplekti ja annab taimeri visuaalse ja kuuldava tagasisidega, kui meditatsiooni osa või kogu meditatsioon on läbi.</string>
     <string name="app_name">Zazen Meditation Timer</string>
     <string name="appbar_scrolling_view_behavior">android.support.design.widget.AppBarLayout$ScrollingViewBehavior</string>
     <string name="backup_error_text">Kahjuks ilmnes salvestamisel viga.</string>
     <string name="backup_no_permission">Puuduvate õiguste tõttu ei saanud varukoopiat luua.</string>
     <string name="backup_not_createable">Viga varukoopiafaili loomisel.</string>
     <string name="backup_success_text">Varundamine õnnestus!</string>
-    <string name="bell_name_1">High Tone</string>
-    <string name="bell_name_2">Low Tone</string>
-    <string name="bell_name_3">Jap. Rhinbowl Dharma, 107mm</string>
-    <string name="bell_name_4">Jap. Rhinbowl Dharma, 88mm (black, glazed)</string>
-    <string name="bell_name_5">Jap. Rhinbowl Shomyo, 90mm</string>
-    <string name="bell_name_6">Jap. Rhinbowl Tang, 164mm</string>
-    <string name="bell_name_7">Tib. Bowl, 230mm</string>
-    <string name="bell_name_8">Jap. Rhinbowl, 97mm</string>
+    <string name="bell_name_1">Kõrge toon</string>
+    <string name="bell_name_2">Madal toon</string>
+    <string name="bell_name_3">jaap. Rhinbowl Dharma, 107 mm</string>
+    <string name="bell_name_4">jaap. Rhinbowl Dharma, 88mm (must, klaasitud)</string>
+    <string name="bell_name_5">jaap. Rhinbowl Shomyo, 90 mm</string>
+    <string name="bell_name_6">jaap. Rhinbowl Tang, 164 mm</string>
+    <string name="bell_name_7">Tib. Kauss, 230 mm</string>
+    <string name="bell_name_8">jaap. Rhinbowl, 97mm</string>
     <string name="bell_pause">Kella vahe (s)</string>
     <string name="bell_user">Lisa kelluke...</string>
     <string name="bottom_nav_meditation">Meditatsioon</string>
@@ -56,7 +56,7 @@
     <string name="desc_no_server_messages">Rakenduse käivitumisel kuvatakse automaatselt uudised</string>
     <string name="error_checking_for_server_messages">Viga uute sõnumite toomisel.</string>
     <string name="gong_type">Gongi heli</string>
-    <string name="help_sectionlist_text">Siin saate oma seansi sisu nimetada, kirjeldada ja redigeerida.\n\n ÜMBERKORRALDAMINE\n Üksuste ümberjärjestamiseks vajutage üksusel pikalt ja\n lohistage see uude kohta.\n\n KUSTUTAMINE\n Kustuta see üksusesse 6⦈. paremale.\n\n EDIT\n Jaotise muutmiseks puudutage seda lihtsalt üks kord.\n\n ADD\n Uue jaotise lisamiseks vajutage nuppu +.</string>
+    <string name="help_sectionlist_text">Siin saate nimetada, kirjeldada ja muuta oma seansi sisu.\n\nÜMBERTELLIMINE\nKaupade ümberjärjestamiseks vajutage pikalt üksusel ja\nlohistage see uude kohta.\n\nKUSTUTAMINE\nÜksuse kustutamiseks liigutage seda paremale.\n\nEDIT\nJaotise muutmiseks puudutage seda lihtsalt üks kord.\n\nLISA\nUue jaotise lisamiseks vajutage nuppu +.</string>
     <string name="help_sectionlist_title">Redigeeri seanssi</string>
     <string name="label_section_name">Sektsiooni nimi</string>
     <string name="label_session_description">Seansi kirjeldus</string>
@@ -74,7 +74,7 @@
     <string name="menu_settings">Seaded</string>
     <string name="minuten">Minutid</string>
     <string name="no_new_server_messages">Uusi sõnumeid pole saadaval.</string>
-    <string name="no_sections_in_session">Meditatsiooni ei saa alustada: valitud seansil pole ühtegi jaotist.</string>
+    <string name="no_sections_in_session">Meditatsiooni ei saa\' alustada: valitud seansil ei ole ühtegi jaotist.</string>
     <string name="no_session_exists">Pole ühtegi seanssi, mida saaks alustada. Looge esmalt üks.</string>
     <string name="notification_text">Praegu on käimas Zazeni meditatsioon</string>
     <string name="notification_text_paused">Zazeni meditatsioon peatus</string>
@@ -130,12 +130,12 @@
     <string name="status_bar_notification_info_overflow">999+</string>
     <string name="test_mute_perm_request">Rakendusel ei ole praegu lubatud teie telefoni vaigistada. Kas avada selle muutmiseks seaded?</string>
     <string name="text_cant_mute">Teie telefon ei luba sellel rakendusel seda vaigistada. Keelake vaigistamine selles rakenduste seadetes või lubage vaigistamine telefoni seadetes.</string>
-    <string name="text_no_notify_access_settings">Näib, et teie telefonil ei ole vaigistamise lubamiseks standardsätteid. Otsige käsitsi seadet \&amp;quot;Ära sega juurdepääsu\&amp;quot; ja lubage see.</string>
+    <string name="text_no_notify_access_settings">Näib, et teie telefonil ei ole vaigistamise lubamiseks standardsätteid. Otsige käsitsi seadet \"Ära sega juurdepääsu\" ja lubage see.</string>
     <string name="text_no_sections">Sektsioone pole määratletud.</string>
     <string name="text_question_delete_session">Kas tõesti kustutada valitud seanss?</string>
     <string name="theme">Teema</string>
     <string name="theme_dark">Tume teema</string>
-    <string name="theme_desc">Valige rakenduse hele või tume välimus</string>
+    <string name="theme_desc">Valige rakenduse välimus</string>
     <string name="theme_light">Valguse teema</string>
     <string name="theme_system">Süsteemi teema</string>
     <string name="theme_value_dark">dark</string>
@@ -158,4 +158,12 @@
     <string name="title_dim_bell">Hämar Bell</string>
     <string name="dim_bell_label_off">Ei ole hämardatud</string>
     <string name="dim_bell_label_format">Tumendatud: %1$d0%%</string>
+    <string name="section_deleted">Kustutatud \'%s\'</string>
+    <string name="action_undo">Võta tagasi</string>
+    <string name="notification_channel_name">Meditatsiooni taimer</string>
+    <string name="nav_label_sessions">Seansid</string>
+    <string name="nav_label_meditation">Meditatsioon</string>
+    <string name="nav_label_edit_session">Redigeeri seanssi</string>
+    <string name="nav_label_edit_section">Redigeeri jaotist</string>
+    <string name="nav_label_settings">Seaded</string>
 </resources>

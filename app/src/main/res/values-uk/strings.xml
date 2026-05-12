@@ -1,25 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="abbrechen">Скасувати</string>
-    <string name="about1">Zazen Meditation Timer — A simple meditation timer with customizable sections, bell sounds, and session management.</string>
-    <string name="about2">Originally created by Stefan Gaffga. Currently maintained by Georg Graf.&lt;br&gt;&lt;br&gt;Thanks to Winfried of &lt;a href="http://www.meditationsuhren.de"&gt;http://www.meditationsuhren.de&lt;/a&gt; for providing such great Bell Sounds!</string>
-    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues"&gt;Report issues on GitHub&lt;/a&gt;</string>
-    <string name="app_description">This application lets the user define a set of meditation sessions and provides a timer with visual and audible feedback when a part or the whole meditation is over.</string>
+    <string name="about1">Таймер медитації Zazen — простий таймер медитації з настроюваними розділами, звуками дзвоників і керуванням сеансом.</string>
+    <string name="about2">Спочатку створений Stefan Gaffga. Зараз підтримується Георгом Графом.&lt;br&gt;&lt;br&gt;Дякую Вінфріду з &lt;a href="http://www.meditationsuhren.de"&gt;http://www.meditationsuhren.de&lt;/a&gt; за надання таких чудових звуків дзвоників!</string>
+    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues"&gt;Повідомити про проблеми на GitHub&lt;/a&gt;</string>
+    <string name="app_description">Ця програма дозволяє користувачеві визначати набір сеансів медитації та надає таймер із візуальним і звуковим відгуком, коли частина чи вся медитація закінчена.</string>
     <string name="app_name">Zazen Meditation Timer</string>
     <string name="appbar_scrolling_view_behavior">android.support.design.widget.AppBarLayout$ScrollingViewBehavior</string>
     <string name="backup_error_text">На жаль, під час збереження сталася помилка.</string>
     <string name="backup_no_permission">Не вдалося створити резервну копію через відсутність дозволів.</string>
     <string name="backup_not_createable">Помилка створення файлу резервної копії.</string>
     <string name="backup_success_text">Резервну копію успішно створено!</string>
-    <string name="bell_name_1">High Tone</string>
-    <string name="bell_name_2">Low Tone</string>
-    <string name="bell_name_3">Jap. Rhinbowl Dharma, 107mm</string>
-    <string name="bell_name_4">Jap. Rhinbowl Dharma, 88mm (black, glazed)</string>
-    <string name="bell_name_5">Jap. Rhinbowl Shomyo, 90mm</string>
-    <string name="bell_name_6">Jap. Rhinbowl Tang, 164mm</string>
-    <string name="bell_name_7">Tib. Bowl, 230mm</string>
-    <string name="bell_name_8">Jap. Rhinbowl, 97mm</string>
-    <string name="bell_pause">Розрив дзвона (с)</string>
+    <string name="bell_name_1">Високий тон</string>
+    <string name="bell_name_2">Низький тон</string>
+    <string name="bell_name_3">японець Rhinbowl Dharma, 107 мм</string>
+    <string name="bell_name_4">японець Rhinbowl Dharma, 88 мм (чорна, глазурована)</string>
+    <string name="bell_name_5">японець Rhinbowl Shomyo, 90 мм</string>
+    <string name="bell_name_6">японець Rhinbowl Tang, 164 мм</string>
+    <string name="bell_name_7">тиб. Чаша 230 мм</string>
+    <string name="bell_name_8">японець Чаша для носа, 97 мм</string>
+    <string name="bell_pause">Дзвоновий зазор (с)</string>
     <string name="bell_user">Додати дзвіночок...</string>
     <string name="bottom_nav_meditation">Медитація</string>
     <string name="bottom_nav_sessions">Сеанси</string>
@@ -30,13 +30,13 @@
     <string name="caption_zazen_meditation">Дзадзен медитація</string>
     <string name="character_counter_pattern">%1$d / %2$d</string>
     <string name="checkbox_keep_screen_on">Тримайте екран увімкненим</string>
-    <string name="checkbox_no_server_messages">Показати Новини</string>
+    <string name="checkbox_no_server_messages">Показати новини</string>
     <string name="checkbox_phone_off">Вимкнути телефон</string>
     <string name="checkbox_phone_off_desc">Вимкнути всі звуки телефону.</string>
     <string name="copy_prefix">Копія</string>
-    <string name="crash_dialog_comment_prompt">Додатково: яка дія спричинила помилку?</string>
-    <string name="crash_dialog_ok_toast">Дуже дякую за допомогу!</string>
-    <string name="crash_dialog_text">Вибачте, сталася помилка.Ви можете допомогти мені знайти та вирішити цю проблему, надіславши цей звіт про помилку та, можливо, навіть більше інформації про те, що ви зробили.</string>
+    <string name="crash_dialog_comment_prompt">Необов’язково: яка дія спричинила помилку?</string>
+    <string name="crash_dialog_ok_toast">Дуже дякую за вашу допомогу!</string>
+    <string name="crash_dialog_text">Вибачте, сталася помилка. Ви можете допомогти мені знайти та вирішити цю проблему, надіславши цей звіт про помилку та, можливо, навіть більше інформації про те, що ви зробили.</string>
     <string name="crash_dialog_title">Таймер медитації дзадзен</string>
     <string name="crash_toast_text">Вибачте - сталася внутрішня помилка!</string>
     <string name="crash_user_email_label">Додатково: Ваша адреса електронної пошти для запитань або оновлень щодо цієї проблеми.</string>
@@ -56,7 +56,7 @@
     <string name="desc_no_server_messages">Автоматично показувати новини під час запуску програми</string>
     <string name="error_checking_for_server_messages">Помилка отримання нових повідомлень.</string>
     <string name="gong_type">Звук Гонг</string>
-    <string name="help_sectionlist_text">Тут ви можете називати, описувати та редагувати вміст вашого сеансу.\n\n ПЕРЕПОРЯДОК\n Щоб змінити порядок елементів, утримуйте елемент і\n перетягніть його на нове місце.\n\n ВИДАЛЕННЯ\n Щоб видалити елемент, перемістіть його праворуч.\n\n РЕДАГУВАТИ\n Щоб редагувати розділ, просто торкніться його один раз.\n\n ДОДАТИ\n Щоб додати новий розділ, натисніть кнопку +.</string>
+    <string name="help_sectionlist_text">Тут ви можете називати, описувати та редагувати вміст вашої сесії.\n\nПЕРЕЗАМОВЛЕННЯ\nЩоб змінити порядок елементів, натисніть і утримуйте елемент\nперетягніть його в нове положення.\n\nВИДАЛЕННЯ\nЩоб видалити елемент, перемістіть його вправо.\n\nРЕДАГУВАТИ\nЩоб редагувати розділ, просто торкніться його один раз.\n\nДОДАТИ\nЩоб додати новий розділ, натисніть кнопку +.</string>
     <string name="help_sectionlist_title">Редагувати сеанс</string>
     <string name="label_section_name">Назва розділу</string>
     <string name="label_session_description">Опис сеансу</string>
@@ -74,8 +74,8 @@
     <string name="menu_settings">Налаштування</string>
     <string name="minuten">хвилин</string>
     <string name="no_new_server_messages">Немає нових повідомлень.</string>
-    <string name="no_sections_in_session">Не вдається розпочати медитацію: вибраний сеанс не має розділів.</string>
-    <string name="no_session_exists">Немає жодного сеансу, який можна розпочати.Спочатку створіть один.</string>
+    <string name="no_sections_in_session">Не можу\' розпочати медитацію: вибраний сеанс не має розділів.</string>
+    <string name="no_session_exists">Немає жодного сеансу, який можна розпочати. Спочатку створіть один.</string>
     <string name="notification_text">Зараз триває медитація дзадзен</string>
     <string name="notification_text_paused">Дзадзен-медитація призупинена</string>
     <string name="notification_title">Дзадзен медитація</string>
@@ -105,20 +105,20 @@
     <string name="pref_title_backup">Створити резервну копію</string>
     <string name="pref_title_brightness">Яскравість</string>
     <string name="pref_title_restore">Відновити з резервної копії</string>
-    <string name="privacy_message">Ця програма не збирає жодних особистих даних — вона також не використовує IP-адреси чи будь-які інші дані, пов’язані з технологією, а також не збирає, не обробляє та не використовує жодним чином.</string>
+    <string name="privacy_message">Ця програма не збирає жодних особистих даних – вона також не використовує IP-адреси чи будь-які інші дані, пов’язані з технологіями, а також не збирає, не обробляє та не використовує жодним чином.</string>
     <string name="privacy_ok">добре</string>
     <string name="privacy_title">Інформація про конфіденційність</string>
     <string name="really_stop">Справді припинити медитацію?</string>
     <string name="restore_backup_not_found">Файл резервної копії не знайдено</string>
     <string name="restore_error_text">Помилка відновлення з резервної копії</string>
     <string name="restore_no_permission">Не вдалося відновити через відсутність дозволу.</string>
-    <string name="restore_really_text">Це замінить усі ваші сеанси на ті, які є в резервній копії!(Без скасування!)</string>
+    <string name="restore_really_text">Це замінить усі ваші сеанси на ті, які є в резервній копії! (Без скасування!)</string>
     <string name="restore_really_title">Справді відновити дані?</string>
     <string name="restore_success_text">Відновлення даних успішне</string>
     <string name="search_menu_title">Пошук</string>
-    <string name="section_info_string_1_pl">%1$d дзвіночки</string>
+    <string name="section_info_string_1_pl">%1$d Дзвіночки</string>
     <string name="section_info_string_1_sg">1 дзвоник</string>
-    <string name="section_info_string_2_pl">кожні %1$d секунди</string>
+    <string name="section_info_string_2_pl">кожні %1$d секунд</string>
     <string name="section_info_string_2_sg">кожну секунду</string>
     <string name="sekunden">секунд</string>
     <string name="select_audio">Виберіть звуковий файл</string>
@@ -128,14 +128,14 @@
     <string name="content_desc_session_actions">Дії сеансу</string>
     <string name="session_list_unnamed_entry">Сеанс без назви</string>
     <string name="status_bar_notification_info_overflow">999+</string>
-    <string name="test_mute_perm_request">Додатку наразі заборонено вимикати звук вашого телефону.Відкрити налаштування, щоб змінити це?</string>
-    <string name="text_cant_mute">Ваш телефон не дозволяє цій програмі вимикати звук.Вимкніть вимкнення звуку в налаштуваннях додатків або дозвольте вимкнення звуку в налаштуваннях телефону.</string>
-    <string name="text_no_notify_access_settings">Схоже, що на вашому телефоні немає стандартних налаштувань для вимкнення звуку.Знайдіть вручну параметр \&amp;quot;Не турбувати доступ\&amp;quot; і ввімкніть його.</string>
+    <string name="test_mute_perm_request">Додатку наразі заборонено вимикати звук вашого телефону. Відкрити налаштування, щоб змінити це?</string>
+    <string name="text_cant_mute">Ваш телефон не дозволяє цій програмі вимикати звук. Вимкніть вимкнення звуку в налаштуваннях додатків або дозвольте вимкнення звуку в налаштуваннях телефону.</string>
+    <string name="text_no_notify_access_settings">Схоже, що на вашому телефоні немає стандартних налаштувань для вимкнення звуку. Знайдіть вручну параметр \"Доступ до режиму «Не турбувати»\" та ввімкніть його.</string>
     <string name="text_no_sections">Немає розділів.</string>
     <string name="text_question_delete_session">Справді видалити вибраний сеанс?</string>
     <string name="theme">Тема</string>
     <string name="theme_dark">Темна тема</string>
-    <string name="theme_desc">Виберіть світлий або темний вигляд програми</string>
+    <string name="theme_desc">Виберіть зовнішній вигляд програми</string>
     <string name="theme_light">Світла тема</string>
     <string name="theme_system">Тема системи</string>
     <string name="theme_value_dark">dark</string>
@@ -158,4 +158,12 @@
     <string name="title_dim_bell">Dim Bell</string>
     <string name="dim_bell_label_off">Не затемнена</string>
     <string name="dim_bell_label_format">Затемнено: %1$d0%%</string>
+    <string name="section_deleted">Видалено \'%s\'</string>
+    <string name="action_undo">Скасувати</string>
+    <string name="notification_channel_name">Таймер медитації</string>
+    <string name="nav_label_sessions">Сеанси</string>
+    <string name="nav_label_meditation">Медитація</string>
+    <string name="nav_label_edit_session">Редагувати сеанс</string>
+    <string name="nav_label_edit_section">Редагувати розділ</string>
+    <string name="nav_label_settings">Налаштування</string>
 </resources>

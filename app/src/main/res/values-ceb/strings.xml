@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="abbrechen">Pagkanselar</string>
-    <string name="about1">Zazen Meditation Timer — A simple meditation timer with customizable sections, bell sounds, and session management.</string>
-    <string name="about2">Originally created by Stefan Gaffga. Currently maintained by Georg Graf.&lt;br&gt;&lt;br&gt;Thanks to Winfried of &lt;a href="http://www.meditationsuhren.de"&gt;http://www.meditationsuhren.de&lt;/a&gt; for providing such great Bell Sounds!</string>
-    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues"&gt;Report issues on GitHub&lt;/a&gt;</string>
-    <string name="app_description">This application lets the user define a set of meditation sessions and provides a timer with visual and audible feedback when a part or the whole meditation is over.</string>
+    <string name="about1">Zazen Meditation Timer - Usa ka yano nga meditation timer nga adunay napasadya nga mga seksyon, tunog sa kampana, ug pagdumala sa sesyon.</string>
+    <string name="about2">Orihinal nga gihimo ni Stefan Gaffga. Kasamtangang gimentinar ni Georg Graf.&lt;br&gt;&lt;br&gt;Salamat kang Winfried sa &lt;a href="http://www.meditationsuhren.de"&gt;http://www.meditationsuhren.de&lt;/a&gt; sa paghatag ug ingon ka nindot nga Bell Sounds!</string>
+    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues"&gt;I-report ang mga isyu sa GitHub&lt;/a&gt;</string>
+    <string name="app_description">Gitugotan sa kini nga aplikasyon ang tiggamit nga mahibal-an ang usa ka hugpong sa mga sesyon sa pagpamalandong ug naghatag usa ka timer nga adunay biswal ug madungog nga feedback kung ang usa ka bahin o ang tibuuk nga pagpamalandong nahuman na.</string>
     <string name="app_name">Zazen Meditation Timer</string>
     <string name="appbar_scrolling_view_behavior">android.support.design.widget.AppBarLayout$ScrollingViewBehavior</string>
     <string name="backup_error_text">Sorry, naay Error nga nahitabo samtang nagtipig.</string>
     <string name="backup_no_permission">Dili makahimo og backup tungod sa pagkawala sa mga permiso.</string>
     <string name="backup_not_createable">Sayop sa paghimo og backup file.</string>
     <string name="backup_success_text">Malampuson nga nahimo ang backup!</string>
-    <string name="bell_name_1">High Tone</string>
-    <string name="bell_name_2">Low Tone</string>
+    <string name="bell_name_1">Taas nga Tono</string>
+    <string name="bell_name_2">Ubos nga Tono</string>
     <string name="bell_name_3">Jap. Rhinbowl Dharma, 107mm</string>
-    <string name="bell_name_4">Jap. Rhinbowl Dharma, 88mm (black, glazed)</string>
+    <string name="bell_name_4">Jap. Rhinbowl Dharma, 88mm (itom, sinaw)</string>
     <string name="bell_name_5">Jap. Rhinbowl Shomyo, 90mm</string>
     <string name="bell_name_6">Jap. Rhinbowl Tang, 164mm</string>
-    <string name="bell_name_7">Tib. Bowl, 230mm</string>
+    <string name="bell_name_7">Tib. Mangkok, 230mm</string>
     <string name="bell_name_8">Jap. Rhinbowl, 97mm</string>
     <string name="bell_pause">Bell gap (seg)</string>
     <string name="bell_user">Idugang ang Bell...</string>
@@ -56,7 +56,7 @@
     <string name="desc_no_server_messages">Awtomatikong ipakita ang Balita kung magsugod ang App</string>
     <string name="error_checking_for_server_messages">Error sa pagkuha sa bag-ong mga mensahe.</string>
     <string name="gong_type">Tingog sa Gong</string>
-    <string name="help_sectionlist_text">Dinhi mahimo nimong nganlan, ihulagway ug i-edit ang mga sulud sa imong Sesyon.\n\n PAG-REORDER\n Aron mahan-ay pag-usab ang mga butang, pugngi ug dugay ang usa ka butang ug\n i-drag kini sa bag-ong posisyon niini.\n\n PAGPAPAS\n Aron mapapas ang usa ka butang, ibalhin kini sa tuo.\n\n EDIT\n Aron ma-edit ang usa ka seksyon, hikapa lang kini kausa.\n\n ADD\n Aron makadugang ug bag-ong seksyon, pindota ang + button.</string>
+    <string name="help_sectionlist_text">Dinhi mahimo nimong nganlan, ihulagway ug i-edit ang mga sulud sa imong Sesyon.\n\nPAG-REORDER\nAron mahan-ay pag-usab ang mga butang, pugngi ug dugay ang usa ka butang ug\ni-drag kini sa bag-ong posisyon niini.\n\nPAGPAPAS\nAron mapapas ang usa ka butang, ibalhin kini sa tuo.\n\nEDIT\nAron ma-edit ang usa ka seksyon, hikapa lang kini kausa.\n\nADD\nAron makadugang ug bag-ong seksyon, pindota ang + button.</string>
     <string name="help_sectionlist_title">I-edit ang Sesyon</string>
     <string name="label_section_name">Ngalan sa seksyon</string>
     <string name="label_session_description">Deskripsyon sa Sesyon</string>
@@ -74,7 +74,7 @@
     <string name="menu_settings">Mga setting</string>
     <string name="minuten">Mga minuto</string>
     <string name="no_new_server_messages">Walay bag-ong mga mensahe nga magamit.</string>
-    <string name="no_sections_in_session">Dili makasugod sa Pagpamalandong: Ang pinili nga Sesyon walay mga Seksyon.</string>
+    <string name="no_sections_in_session">Dili ba makasugod sa Pagpamalandong: Ang pinili nga Sesyon walay mga Seksyon.</string>
     <string name="no_session_exists">Walay sesyon nga masugdan. Palihug paghimo una og usa.</string>
     <string name="notification_text">Usa ka Zazen Meditation ang nagdagan karon</string>
     <string name="notification_text_paused">Ang Zazen Meditation mihunong</string>
@@ -94,7 +94,7 @@
     <string name="pref_mute_mode_vibrate_sound_desc">I-play ang Ring tone ug Vibration</string>
     <string name="pref_muting">Mga setting sa mute</string>
     <string name="pref_sum_backup">Pagtipig og backup sa imong Sessions ug Sounds sa imong SD-Card.</string>
-    <string name="pref_sum_bad_removal">Gitangtang ang SD Card nga wala una i-unmount.</string>
+    <string name="pref_sum_bad_removal">Gikuha ang SD Card nga wala una i-unmount.</string>
     <string name="pref_sum_checking">Ang SD-Card gisusi sa pagkakaron</string>
     <string name="pref_sum_ejecting">Ang SD-Card gitangtang</string>
     <string name="pref_sum_nofs">Walay Filesystem sa SD-Card</string>
@@ -105,7 +105,7 @@
     <string name="pref_title_backup">Paghimo og Backup</string>
     <string name="pref_title_brightness">Kahayag</string>
     <string name="pref_title_restore">Iuli gikan sa Backup</string>
-    <string name="privacy_message">Kini nga App wala mangolekta og bisan unsang personal nga datos - wala usab kini naggamit sa mga IP-Address o bisan unsang ubang datos nga may kalabutan sa teknolohiya, ni kini nagkolekta, nagproseso o naggamit sa bisan unsang paagi.</string>
+    <string name="privacy_message">Kini nga App wala mangolekta og bisan unsang personal nga datos - wala usab kini naggamit sa mga IP-Address o bisan unsang uban nga datos nga may kalabutan sa teknolohiya, ni kini nagkolekta, nagproseso o naggamit sa bisan unsang paagi.</string>
     <string name="privacy_ok">OK ra</string>
     <string name="privacy_title">Impormasyon sa Pagkapribado</string>
     <string name="really_stop">Hunonga gyud ang pamalandong?</string>
@@ -129,13 +129,13 @@
     <string name="session_list_unnamed_entry">Wala Ngalan nga Sesyon</string>
     <string name="status_bar_notification_info_overflow">999+</string>
     <string name="test_mute_perm_request">Ang App sa pagkakaron dili gitugutan nga mute sa imong telepono. Ablihi ang mga setting aron mabag-o kini?</string>
-    <string name="text_cant_mute">Ang imong Telepono wala magtugot niini nga App nga mute niini. I-disable ang muting niining Apps Settings o tugoti ang muting sa imong Phones Settings.</string>
-    <string name="text_no_notify_access_settings">Ang imong Telepono morag walay standard nga mga setting aron tugotan ang muting. Palihog pangitaa sa mano-mano ang \&amp;quot;Ayaw Pagsamok Pag-access\&amp;quot; nga Setting ug i-enable kini.</string>
+    <string name="text_cant_mute">Ang imong Telepono dili motugot niini nga App nga mute niini. I-disable ang muting niining Apps Settings o tugoti ang muting sa imong Phones Settings.</string>
+    <string name="text_no_notify_access_settings">Ang imong Telepono morag walay standard nga mga setting aron tugotan ang muting. Palihug pangitaa sa kamut ang \"Ayaw Pagsamok Pag-access\" Setting ug i-enable kini.</string>
     <string name="text_no_sections">Walay mga Seksyon nga gihubit.</string>
     <string name="text_question_delete_session">I-delete gyud ang pinili nga Session?</string>
     <string name="theme">Tema</string>
     <string name="theme_dark">Mangitngit nga Tema</string>
-    <string name="theme_desc">Pilia ang kahayag o ngitngit nga panagway sa App</string>
+    <string name="theme_desc">Pilia ang hitsura sa app</string>
     <string name="theme_light">Kahayag nga Tema</string>
     <string name="theme_system">Sistema nga Tema</string>
     <string name="theme_value_dark">dark</string>
@@ -147,15 +147,23 @@
     <string name="time_session_remaining">Ang nahabilin nga sesyon</string>
     <string name="title_mute_perm_request">Nawala nga Permiso</string>
     <string name="title_question_delete_session">I-delete ang Sesyon?</string>
-    <string name="title_volume_bells">Tomo sa kampana</string>
+    <string name="title_volume_bells">Tomo sa Kampana</string>
     <string name="unnamed">Wala nganli</string>
     <string name="stop_meditation_title">Hunonga ang pagpamalandong?</string>
-    <string name="stop_meditation_message">Nagdagan pa ang imong sesyon sa pagpamalandong.</string>
+    <string name="stop_meditation_message">Ang imong sesyon sa pagpamalandong nagpadayon gihapon.</string>
     <string name="stop_meditation_stop">Hunong</string>
     <string name="stop_meditation_cancel">Pagkanselar</string>
-    <string name="pref_title_bell_volume">Tomo sa kampana</string>
+    <string name="pref_title_bell_volume">Tomo sa Kampana</string>
     <string name="pref_desc_bell_volume">Gikontrol ang gidaghanon sa stream sa alarma alang sa mga tunog sa kampana</string>
     <string name="title_dim_bell">Dim Bell</string>
     <string name="dim_bell_label_off">Dili mangitngit</string>
-    <string name="dim_bell_label_format">Gipakunhod: %1$d0%%</string>
+    <string name="dim_bell_label_format">Gipangitngit: %1$d0%%</string>
+    <string name="section_deleted">Gipapas \'%s\'</string>
+    <string name="action_undo">I-undo</string>
+    <string name="notification_channel_name">Timer sa Pagpamalandong</string>
+    <string name="nav_label_sessions">Mga sesyon</string>
+    <string name="nav_label_meditation">Pagpamalandong</string>
+    <string name="nav_label_edit_session">I-edit ang Sesyon</string>
+    <string name="nav_label_edit_section">Usba ang Seksyon</string>
+    <string name="nav_label_settings">Mga setting</string>
 </resources>

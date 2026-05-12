@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="abbrechen">İptal etmek</string>
-    <string name="about1">Zazen Meditation Timer — A simple meditation timer with customizable sections, bell sounds, and session management.</string>
-    <string name="about2">Originally created by Stefan Gaffga. Currently maintained by Georg Graf.&lt;br&gt;&lt;br&gt;Thanks to Winfried of &lt;a href="http://www.meditationsuhren.de"&gt;http://www.meditationsuhren.de&lt;/a&gt; for providing such great Bell Sounds!</string>
-    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues"&gt;Report issues on GitHub&lt;/a&gt;</string>
-    <string name="app_description">This application lets the user define a set of meditation sessions and provides a timer with visual and audible feedback when a part or the whole meditation is over.</string>
+    <string name="about1">Zazen Meditasyon Zamanlayıcısı — Özelleştirilebilir bölümlere, zil seslerine ve oturum yönetimine sahip basit bir meditasyon zamanlayıcısı.</string>
+    <string name="about2">Orijinal olarak Stefan Gaffga tarafından yaratılmıştır. Şu anda Georg Graf tarafından sürdürülmektedir.&lt;br&gt;&lt;br&gt;Böylesine harika Zil Sesleri sağladığı için &lt;a href="http://www.meditationsuhren.de"&gt;http://www.meditationsuhren.de&lt;/a&gt; adresinden Winfried\'e teşekkür ederiz!</string>
+    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues"&gt;GitHub\'daki sorunları bildirin&lt;/a&gt;</string>
+    <string name="app_description">Bu uygulama, kullanıcının bir dizi meditasyon seansı tanımlamasına olanak tanır ve meditasyonun bir kısmı veya tamamı bittiğinde görsel ve işitsel geri bildirim sağlayan bir zamanlayıcı sağlar.</string>
     <string name="app_name">Zazen Meditation Timer</string>
     <string name="appbar_scrolling_view_behavior">android.support.design.widget.AppBarLayout$ScrollingViewBehavior</string>
     <string name="backup_error_text">Üzgünüz, kaydederken bir hata oluştu.</string>
     <string name="backup_no_permission">Eksik izinler nedeniyle yedekleme oluşturulamadı.</string>
     <string name="backup_not_createable">Yedekleme dosyası oluşturulurken hata oluştu.</string>
     <string name="backup_success_text">Yedekleme başarıyla oluşturuldu!</string>
-    <string name="bell_name_1">High Tone</string>
-    <string name="bell_name_2">Low Tone</string>
-    <string name="bell_name_3">Jap. Rhinbowl Dharma, 107mm</string>
-    <string name="bell_name_4">Jap. Rhinbowl Dharma, 88mm (black, glazed)</string>
-    <string name="bell_name_5">Jap. Rhinbowl Shomyo, 90mm</string>
-    <string name="bell_name_6">Jap. Rhinbowl Tang, 164mm</string>
-    <string name="bell_name_7">Tib. Bowl, 230mm</string>
-    <string name="bell_name_8">Jap. Rhinbowl, 97mm</string>
+    <string name="bell_name_1">Yüksek Ton</string>
+    <string name="bell_name_2">Düşük Ton</string>
+    <string name="bell_name_3">Japon. Rhinbowl Dharma, 107mm</string>
+    <string name="bell_name_4">Japon. Rhinbowl Dharma, 88mm (siyah, sırlı)</string>
+    <string name="bell_name_5">Japon. Rhinbowl Shomyo, 90mm</string>
+    <string name="bell_name_6">Japon. Rhinbowl Tang, 164mm</string>
+    <string name="bell_name_7">Tib. Kase, 230mm</string>
+    <string name="bell_name_8">Japon. Gergedan, 97mm</string>
     <string name="bell_pause">Zil aralığı (sn)</string>
     <string name="bell_user">Bell\'i ekle...</string>
     <string name="bottom_nav_meditation">Meditasyon</string>
@@ -36,7 +36,7 @@
     <string name="copy_prefix">Kopyası</string>
     <string name="crash_dialog_comment_prompt">İsteğe bağlı: Hangi eylem hataya neden oldu?</string>
     <string name="crash_dialog_ok_toast">Yardımınız için çok teşekkür ederim!</string>
-    <string name="crash_dialog_text">Üzgünüm, bir hata oluştu.Bu hata raporunu ve belki de yaptığınız şeyle ilgili daha fazla ayrıntıyı göndererek bu sorunu bulmama ve düzeltmeme yardımcı olabilirsiniz.</string>
+    <string name="crash_dialog_text">Üzgünüm, bir hata oluştu. Bu hata raporunu ve belki de yaptığınız şeyle ilgili daha fazla ayrıntıyı göndererek bu sorunu bulmama ve düzeltmeme yardımcı olabilirsiniz.</string>
     <string name="crash_dialog_title">Zazen Meditasyon Zamanlayıcısı</string>
     <string name="crash_toast_text">Üzgünüz - dahili bir hata oluştu!</string>
     <string name="crash_user_email_label">İsteğe bağlı: Bu konuyla ilgili sorularınız veya güncellemeler için e-posta adresiniz.</string>
@@ -56,7 +56,7 @@
     <string name="desc_no_server_messages">Uygulama başladığında Haberleri otomatik olarak göster</string>
     <string name="error_checking_for_server_messages">Yeni iletiler alınırken hata oluştu.</string>
     <string name="gong_type">Gong Sesi</string>
-    <string name="help_sectionlist_text">Burada Oturumunuzun içeriğini adlandırabilir, açıklayabilir ve düzenleyebilirsiniz.\n\n YENİDEN SIRALAMA\n Öğeleri yeniden sıralamak için, bir öğeye uzun basın ve\n onu yeni konumuna sürükleyin.\n\n SİLİNME\n Bir öğeyi silmek için sağa taşıyın.\n\n DÜZENLE\n Bir bölümü düzenlemek için ona bir kez dokunmanız yeterlidir.\n\n EKLE\n Yeni bir bölüm eklemek için + düğmesine basın.</string>
+    <string name="help_sectionlist_text">Burada Oturumunuzun içeriğini adlandırabilir, açıklayabilir ve düzenleyebilirsiniz.\n\nYENİDEN SİPARİŞ\nÖğeleri yeniden sıralamak için öğeye uzun basın ve\nyeni konumuna sürükleyin.\n\nSİLİYORUZ\nBir öğeyi silmek için sağa taşıyın.\n\nDÜZENLEMEK\nBir bölümü düzenlemek için bölüme bir kez dokunmanız yeterlidir.\n\nEKLEMEK\nYeni bir bölüm eklemek için + düğmesine basın.</string>
     <string name="help_sectionlist_title">Oturumu Düzenle</string>
     <string name="label_section_name">Bölüm adı</string>
     <string name="label_session_description">Oturum Açıklaması</string>
@@ -74,8 +74,8 @@
     <string name="menu_settings">Ayarlar</string>
     <string name="minuten">dakika</string>
     <string name="no_new_server_messages">Yeni mesaj yok.</string>
-    <string name="no_sections_in_session">Meditasyon başlatılamıyor: Seçilen Oturumda Bölüm yok.</string>
-    <string name="no_session_exists">Başlatılabilecek bir oturum yok.Lütfen önce bir tane oluşturun.</string>
+    <string name="no_sections_in_session">Meditasyon başlatılamıyor: Seçilen Oturumda herhangi bir Bölüm yok.</string>
+    <string name="no_session_exists">Başlatılabilecek bir oturum yok. Lütfen önce bir tane oluşturun.</string>
     <string name="notification_text">Şu anda bir Zazen Meditasyonu yürütülüyor</string>
     <string name="notification_text_paused">Zazen Meditasyonu duraklatıldı</string>
     <string name="notification_title">Zazen Meditasyonu</string>
@@ -105,18 +105,18 @@
     <string name="pref_title_backup">Yedekleme Oluştur</string>
     <string name="pref_title_brightness">Parlaklık</string>
     <string name="pref_title_restore">Yedeklemeden Geri Yükle</string>
-    <string name="privacy_message">This App does not collect any personal data - it also does not use IP-Addresses or any other technology-related data, nor does it collect, process or use any in any way.</string>
-    <string name="privacy_ok">OK</string>
-    <string name="privacy_title">Privacy Information</string>
+    <string name="privacy_message">Bu Uygulama herhangi bir kişisel veri toplamaz - aynı zamanda IP Adreslerini veya teknolojiyle ilgili diğer verileri kullanmaz veya herhangi bir şekilde toplamaz, işlemez veya kullanmaz.</string>
+    <string name="privacy_ok">TAMAM</string>
+    <string name="privacy_title">Gizlilik Bilgileri</string>
     <string name="really_stop">Meditasyon gerçekten durdurulsun mu?</string>
     <string name="restore_backup_not_found">Yedekleme Dosyası bulunamadı</string>
     <string name="restore_error_text">Yedeklemeden geri yükleme hatası</string>
     <string name="restore_no_permission">Eksik izin nedeniyle geri yüklenemedi.</string>
-    <string name="restore_really_text">Bu, tüm Oturumlarınızı Yedeklemedeki oturumlarla değiştirecektir!(Geri Almak Yok!)</string>
+    <string name="restore_really_text">Bu, tüm Oturumlarınızı Yedeklemedeki oturumlarla değiştirecektir! (Geri Almak Yok!)</string>
     <string name="restore_really_title">Veriler gerçekten geri yüklensin mi?</string>
     <string name="restore_success_text">Veri Geri Yükleme başarılı</string>
-    <string name="search_menu_title">Ara</string>
-    <string name="section_info_string_1_pl">%1$d Zil</string>
+    <string name="search_menu_title">Aramak</string>
+    <string name="section_info_string_1_pl">%1$d Çanlar</string>
     <string name="section_info_string_1_sg">1 Zil</string>
     <string name="section_info_string_2_pl">her %1$d Saniyede bir</string>
     <string name="section_info_string_2_sg">her saniye</string>
@@ -128,14 +128,14 @@
     <string name="content_desc_session_actions">Oturum eylemleri</string>
     <string name="session_list_unnamed_entry">Adsız Oturum</string>
     <string name="status_bar_notification_info_overflow">999+</string>
-    <string name="test_mute_perm_request">Uygulamanın şu anda telefonunuzu sessize almasına izin verilmiyor.Bunu değiştirmek için ayarlar açılsın mı?</string>
-    <string name="text_cant_mute">Telefonunuz bu Uygulamanın onu sessize almasına izin vermiyor.Bu Uygulama Ayarlarında sessize almayı devre dışı bırakın veya Telefon Ayarlarınızda sessize almaya izin verin.</string>
-    <string name="text_no_notify_access_settings">Cihazınızın sessize alınmasına izin verecek standart ayarlara sahip olmadığı görülüyor.Lütfen manuel olarak \"Erişimi Rahatsız Etmeyin\" Ayarını arayın ve etkinleştirin.</string>
+    <string name="test_mute_perm_request">Uygulamanın şu anda telefonunuzu sessize almasına izin verilmiyor. Bunu değiştirmek için ayarlar açılsın mı?</string>
+    <string name="text_cant_mute">Telefonunuz bu Uygulamanın onu sessize almasına izin vermiyor. Bu Uygulama Ayarlarında sessize almayı devre dışı bırakın veya Telefon Ayarlarınızda sessize almaya izin verin.</string>
+    <string name="text_no_notify_access_settings">Cihazınızın sessize alınmasına izin verecek standart ayarlara sahip olmadığı görülüyor. Lütfen \"Rahatsız Etmeyin Erişimi\" Ayarını manuel olarak arayın ve etkinleştirin.</string>
     <string name="text_no_sections">Tanımlanmış Bölüm yok.</string>
     <string name="text_question_delete_session">Seçilen Oturum gerçekten silinsin mi?</string>
     <string name="theme">Tema</string>
     <string name="theme_dark">Koyu Tema</string>
-    <string name="theme_desc">Uygulamanın açık veya koyu görünümünü seçin</string>
+    <string name="theme_desc">Uygulama görünümünü seçin</string>
     <string name="theme_light">Işık Teması</string>
     <string name="theme_system">Sistem Teması</string>
     <string name="theme_value_dark">dark</string>
@@ -157,5 +157,13 @@
     <string name="pref_desc_bell_volume">Zil sesleri için alarm akış ses düzeyini kontrol eder</string>
     <string name="title_dim_bell">Loş Zil</string>
     <string name="dim_bell_label_off">Soluk değil</string>
-    <string name="dim_bell_label_format">Karartılmış: %1$d0%%</string>
+    <string name="dim_bell_label_format">Soluklaştırılmış: %1$d0%%</string>
+    <string name="section_deleted">Silindi \'%s\'</string>
+    <string name="action_undo">Geri al</string>
+    <string name="notification_channel_name">Meditasyon Zamanlayıcısı</string>
+    <string name="nav_label_sessions">Oturumlar</string>
+    <string name="nav_label_meditation">Meditasyon</string>
+    <string name="nav_label_edit_session">Oturumu Düzenle</string>
+    <string name="nav_label_edit_section">Bölümü Düzenle</string>
+    <string name="nav_label_settings">Ayarlar</string>
 </resources>

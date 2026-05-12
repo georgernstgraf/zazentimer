@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="abbrechen">Ματαίωση</string>
-    <string name="about1">Zazen Meditation Timer — A simple meditation timer with customizable sections, bell sounds, and session management.</string>
-    <string name="about2">Originally created by Stefan Gaffga. Currently maintained by Georg Graf.&lt;br&gt;&lt;br&gt;Thanks to Winfried of &lt;a href="http://www.meditationsuhren.de"&gt;http://www.meditationsuhren.de&lt;/a&gt; for providing such great Bell Sounds!</string>
-    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues"&gt;Report issues on GitHub&lt;/a&gt;</string>
-    <string name="app_description">This application lets the user define a set of meditation sessions and provides a timer with visual and audible feedback when a part or the whole meditation is over.</string>
+    <string name="about1">Zazen Meditation Timer — Ένα απλό χρονόμετρο διαλογισμού με προσαρμόσιμες ενότητες, ήχους κουδουνιού και διαχείριση συνεδρίας.</string>
+    <string name="about2">Δημιουργήθηκε αρχικά από τον Stefan Gaffga. Αυτήν τη στιγμή συντηρείται από τον Georg Graf.&lt;br&gt;&lt;br&gt;Ευχαριστούμε τον Winfried του &lt;a href="http://www.meditationsuhren.de"&gt;http://www.meditationsuhren.de&lt;/a&gt; για την παροχή τόσο σπουδαίων Bell Sounds!</string>
+    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues"&gt;Αναφορά ζητημάτων στο GitHub&lt;/a&gt;</string>
+    <string name="app_description">Αυτή η εφαρμογή επιτρέπει στον χρήστη να ορίσει ένα σύνολο συνεδριών διαλογισμού και παρέχει ένα χρονόμετρο με οπτική και ακουστική ανατροφοδότηση όταν τελειώσει ένα μέρος ή ολόκληρος ο διαλογισμός.</string>
     <string name="app_name">Zazen Meditation Timer</string>
     <string name="appbar_scrolling_view_behavior">android.support.design.widget.AppBarLayout$ScrollingViewBehavior</string>
     <string name="backup_error_text">Λυπούμαστε, παρουσιάστηκε σφάλμα κατά την αποθήκευση.</string>
     <string name="backup_no_permission">Δεν ήταν δυνατή η δημιουργία αντιγράφων ασφαλείας λόγω έλλειψης δικαιωμάτων.</string>
     <string name="backup_not_createable">Σφάλμα δημιουργίας αντιγράφου ασφαλείας.</string>
     <string name="backup_success_text">Το αντίγραφο ασφαλείας δημιουργήθηκε με επιτυχία!</string>
-    <string name="bell_name_1">High Tone</string>
-    <string name="bell_name_2">Low Tone</string>
-    <string name="bell_name_3">Jap. Rhinbowl Dharma, 107mm</string>
-    <string name="bell_name_4">Jap. Rhinbowl Dharma, 88mm (black, glazed)</string>
-    <string name="bell_name_5">Jap. Rhinbowl Shomyo, 90mm</string>
-    <string name="bell_name_6">Jap. Rhinbowl Tang, 164mm</string>
-    <string name="bell_name_7">Tib. Bowl, 230mm</string>
-    <string name="bell_name_8">Jap. Rhinbowl, 97mm</string>
+    <string name="bell_name_1">Υψηλός τόνος</string>
+    <string name="bell_name_2">Χαμηλός τόνος</string>
+    <string name="bell_name_3">Ιάπωνες. Rhinbowl Dharma, 107 χλστ</string>
+    <string name="bell_name_4">Ιάπωνες. Rhinbowl Dharma, 88mm (μαύρο, τζάμι)</string>
+    <string name="bell_name_5">Ιάπωνες. Rhinbowl Shomyo, 90mm</string>
+    <string name="bell_name_6">Ιάπωνες. Rhinbowl Tang, 164mm</string>
+    <string name="bell_name_7">Tib. Μπολ, 230 χλστ</string>
+    <string name="bell_name_8">Ιάπωνες. Rhinbowl, 97mm</string>
     <string name="bell_pause">Διάκενο κουδουνιού (δευτ.)</string>
     <string name="bell_user">Προσθήκη Bell...</string>
     <string name="bottom_nav_meditation">Στοχασμός</string>
@@ -56,7 +56,7 @@
     <string name="desc_no_server_messages">Αυτόματη εμφάνιση Ειδήσεων κατά την έναρξη της εφαρμογής</string>
     <string name="error_checking_for_server_messages">Σφάλμα κατά την ανάκτηση νέων μηνυμάτων.</string>
     <string name="gong_type">Ήχος Γκονγκ</string>
-    <string name="help_sectionlist_text">Εδώ μπορείτε να ονομάσετε, να περιγράψετε και να επεξεργαστείτε τα περιεχόμενα της Συνεδρίας σας.\n\n REORDERING\n Για να αναδιατάξετε τα στοιχεία, πατήστε παρατεταμένα ένα στοιχείο και\n σύρετέ το στη νέα του θέση.\n\n DELETING\n, Για να το διαγράψετεPH_8 σε αυτό. EDIT\n Για να επεξεργαστείτε μια ενότητα, απλώς αγγίξτε την μία φορά.\n\n ADD\n Για να προσθέσετε μια νέα ενότητα, πατήστε το κουμπί +.</string>
+    <string name="help_sectionlist_text">Εδώ μπορείτε να ονομάσετε, να περιγράψετε και να επεξεργαστείτε τα περιεχόμενα της Συνεδρίας σας.\n\nΑΝΑΠΑΡΑΓΓΕΛΙΑ\nΓια να αναδιατάξετε τα στοιχεία, πατήστε παρατεταμένα σε ένα αντικείμενο και\nσύρετέ το στη νέα του θέση.\n\nΔΙΑΓΡΑΦΗ\nΓια να διαγράψετε ένα στοιχείο, μετακινήστε το προς τα δεξιά.\n\nΕΚΔΙΔΩ\nΓια να επεξεργαστείτε μια ενότητα, απλώς αγγίξτε την μία φορά.\n\nΠΡΟΣΘΕΤΩ\nΓια να προσθέσετε μια νέα ενότητα, πατήστε το κουμπί +.</string>
     <string name="help_sectionlist_title">Επεξεργασία συνεδρίας</string>
     <string name="label_section_name">Όνομα ενότητας</string>
     <string name="label_session_description">Περιγραφή συνεδρίας</string>
@@ -74,7 +74,7 @@
     <string name="menu_settings">Ρυθμίσεις</string>
     <string name="minuten">Πρακτικά</string>
     <string name="no_new_server_messages">Δεν υπάρχουν διαθέσιμα νέα μηνύματα.</string>
-    <string name="no_sections_in_session">Δεν είναι δυνατή η έναρξη του διαλογισμού: Η επιλεγμένη συνεδρία δεν έχει ενότητες.</string>
+    <string name="no_sections_in_session">Δεν μπορώ\'να ξεκινήσω τον διαλογισμό: Η επιλεγμένη περίοδος σύνδεσης δεν έχει ενότητες.</string>
     <string name="no_session_exists">Δεν υπάρχει συνεδρία που να μπορεί να ξεκινήσει. Δημιουργήστε πρώτα ένα.</string>
     <string name="notification_text">Αυτή τη στιγμή εκτελείται ένας διαλογισμός Zazen</string>
     <string name="notification_text_paused">Ο διαλογισμός Zazen σταμάτησε</string>
@@ -118,7 +118,7 @@
     <string name="search_menu_title">Ερευνα</string>
     <string name="section_info_string_1_pl">%1$d Καμπάνες</string>
     <string name="section_info_string_1_sg">1 Κουδούνι</string>
-    <string name="section_info_string_2_pl">κάθε %1$d δευτερόλεπτα</string>
+    <string name="section_info_string_2_pl">κάθε %1$d Δευτερόλεπτα</string>
     <string name="section_info_string_2_sg">κάθε δευτερόλεπτο</string>
     <string name="sekunden">Δευτερόλεπτα</string>
     <string name="select_audio">Επιλέξτε αρχείο ήχου</string>
@@ -130,12 +130,12 @@
     <string name="status_bar_notification_info_overflow">999+</string>
     <string name="test_mute_perm_request">Η εφαρμογή δεν επιτρέπεται προς το παρόν να κάνει σίγαση του τηλεφώνου σας. Ανοίξτε τις ρυθμίσεις για να το αλλάξετε;</string>
     <string name="text_cant_mute">Το τηλέφωνό σας δεν επιτρέπει σε αυτήν την εφαρμογή τη σίγαση. Απενεργοποιήστε τη σίγαση σε αυτές τις Ρυθμίσεις εφαρμογών ή επιτρέψτε τη σίγαση στις Ρυθμίσεις τηλεφώνου σας.</string>
-    <string name="text_no_notify_access_settings">Το τηλέφωνό σας δεν φαίνεται να έχει τις τυπικές ρυθμίσεις που επιτρέπουν τη σίγαση. Αναζητήστε μη αυτόματα τη ρύθμιση \"Μην ενοχλείτε την πρόσβαση\" και ενεργοποιήστε την.</string>
+    <string name="text_no_notify_access_settings">Το τηλέφωνό σας δεν φαίνεται να έχει τις τυπικές ρυθμίσεις που επιτρέπουν τη σίγαση. Αναζητήστε μη αυτόματα τη ρύθμιση \"Do not Disturb Access\" και ενεργοποιήστε την.</string>
     <string name="text_no_sections">Δεν έχουν οριστεί τμήματα.</string>
     <string name="text_question_delete_session">Να διαγραφεί πραγματικά η επιλεγμένη περίοδος σύνδεσης;</string>
     <string name="theme">Θέμα</string>
     <string name="theme_dark">Σκοτεινό θέμα</string>
-    <string name="theme_desc">Επιλέξτε ανοιχτόχρωμη ή σκοτεινή εμφάνιση της εφαρμογής</string>
+    <string name="theme_desc">Επιλέξτε την εμφάνιση της εφαρμογής</string>
     <string name="theme_light">Ελαφρύ θέμα</string>
     <string name="theme_system">Θέμα συστήματος</string>
     <string name="theme_value_dark">dark</string>
@@ -158,4 +158,12 @@
     <string name="title_dim_bell">Ντιμ Μπελ</string>
     <string name="dim_bell_label_off">Όχι θαμπωμένο</string>
     <string name="dim_bell_label_format">Θαμπό: %1$d0%%</string>
+    <string name="section_deleted">Διαγράφηκε \'%s\'</string>
+    <string name="action_undo">Ξεκάνω</string>
+    <string name="notification_channel_name">Χρονόμετρο διαλογισμού</string>
+    <string name="nav_label_sessions">Συνεδρίες</string>
+    <string name="nav_label_meditation">Στοχασμός</string>
+    <string name="nav_label_edit_session">Επεξεργασία συνεδρίας</string>
+    <string name="nav_label_edit_section">Επεξεργασία ενότητας</string>
+    <string name="nav_label_settings">Ρυθμίσεις</string>
 </resources>

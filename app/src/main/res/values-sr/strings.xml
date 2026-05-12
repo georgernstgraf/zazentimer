@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="abbrechen">Откажи</string>
-    <string name="about1">Zazen Meditation Timer — A simple meditation timer with customizable sections, bell sounds, and session management.</string>
-    <string name="about2">Originally created by Stefan Gaffga. Currently maintained by Georg Graf.&lt;br&gt;&lt;br&gt;Thanks to Winfried of &lt;a href="http://www.meditationsuhren.de"&gt;http://www.meditationsuhren.de&lt;/a&gt; for providing such great Bell Sounds!</string>
-    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues"&gt;Report issues on GitHub&lt;/a&gt;</string>
-    <string name="app_description">This application lets the user define a set of meditation sessions and provides a timer with visual and audible feedback when a part or the whole meditation is over.</string>
+    <string name="about1">Зазен тајмер за медитацију — Једноставан тајмер за медитацију са прилагодљивим одељцима, звуцима звона и управљањем сесијом.</string>
+    <string name="about2">Оригинално креирао Стефан Гаффга. Тренутно одржава Георг Граф.&lt;бр&gt;&lt;бр&gt;Хвала Винфриду са &lt;а хреф="хттп://ввв.медитатионсухрен.де"&gt;хттп://ввв.медитатионсухрен.де&lt;/а&gt; за пружање тако сјајних звукова звона!</string>
+    <string name="about3">&lt;а хреф="хттпс://гитхуб.цом/георгернстграф/зазентимер/иссуес"&gt;Пријавите проблеме на ГитХуб-у&lt;/а&gt;</string>
+    <string name="app_description">Ова апликација омогућава кориснику да дефинише скуп сесија медитације и обезбеђује тајмер са визуелним и звучним повратним информацијама када се део или цела медитација заврши.</string>
     <string name="app_name">Zazen Meditation Timer</string>
     <string name="appbar_scrolling_view_behavior">андроид.суппорт.десигн.видгет.АппБарЛаиоут$СцроллингВиевБехавиор</string>
     <string name="backup_error_text">Жао нам је, дошло је до грешке при чувању.</string>
     <string name="backup_no_permission">Није могуће направити резервну копију због недостајућих дозвола.</string>
     <string name="backup_not_createable">Грешка при прављењу датотеке резервне копије.</string>
     <string name="backup_success_text">Резервна копија је успешно направљена!</string>
-    <string name="bell_name_1">High Tone</string>
-    <string name="bell_name_2">Low Tone</string>
-    <string name="bell_name_3">Jap. Rhinbowl Dharma, 107mm</string>
-    <string name="bell_name_4">Jap. Rhinbowl Dharma, 88mm (black, glazed)</string>
-    <string name="bell_name_5">Jap. Rhinbowl Shomyo, 90mm</string>
-    <string name="bell_name_6">Jap. Rhinbowl Tang, 164mm</string>
-    <string name="bell_name_7">Tib. Bowl, 230mm</string>
-    <string name="bell_name_8">Jap. Rhinbowl, 97mm</string>
+    <string name="bell_name_1">Хигх Тоне</string>
+    <string name="bell_name_2">Лов Тоне</string>
+    <string name="bell_name_3">Јап. Рхинбовл Дхарма, 107 мм</string>
+    <string name="bell_name_4">Јап. Рхинбовл Дхарма, 88 мм (црна, застакљена)</string>
+    <string name="bell_name_5">Јап. Рхинбовл Схомио, 90 мм</string>
+    <string name="bell_name_6">Јап. Рхинбовл Танг, 164 мм</string>
+    <string name="bell_name_7">Тиб. Посуда, 230 мм</string>
+    <string name="bell_name_8">Јап. Рхинбовл, 97 мм</string>
     <string name="bell_pause">Размак звона (сек)</string>
     <string name="bell_user">Додај звоно...</string>
     <string name="bottom_nav_meditation">Медитација</string>
@@ -56,7 +56,7 @@
     <string name="desc_no_server_messages">Аутоматски прикажи вести када се апликација покрене</string>
     <string name="error_checking_for_server_messages">Грешка при преузимању нових порука.</string>
     <string name="gong_type">Гонг Соунд</string>
-    <string name="help_sectionlist_text">Овде можете да именујете, опишете и уредите садржај своје сесије.\n\n ПРЕНАРЕДЈАЊЕ\n Да бисте променили редослед ставки, дуго притисните на ставку и \n превуците је на нову позицију.\n\n БРИСАЊЕ\n да бисте је избрисали, померите је на њу десно.\n\n ЕДИТ\n Да бисте изменили одељак, само га додирните једном.\n\n ДОДАЈ\n Да бисте додали нови одељак, притисните дугме +.</string>
+    <string name="help_sectionlist_text">Овде можете именовати, описати и уредити садржај ваше сесије.\n\nРЕОРДЕРИНГ\nДа бисте променили редослед ставки, дуго притисните на ставку и\nпревуците га на нову позицију.\n\nБРИСАЊЕ\nДа бисте избрисали ставку, померите је удесно.\n\nЕДИТ\nДа бисте изменили одељак, само га једном додирните.\n\nАДД\nДа бисте додали нови одељак, притисните дугме +.</string>
     <string name="help_sectionlist_title">Уреди сесију</string>
     <string name="label_section_name">Назив секције</string>
     <string name="label_session_description">Опис сесије</string>
@@ -65,7 +65,7 @@
     <string name="menu_copy_session">Дуплицирана сесија</string>
     <string name="menu_delete_section">Избриши одељак</string>
     <string name="menu_delete_session">Избриши сесију</string>
-    <string name="menu_duplicate_section">Дуплирани одељак</string>
+    <string name="menu_duplicate_section">Дупликат одељка</string>
     <string name="menu_edit_session">Уреди сесију</string>
     <string name="menu_help">Помоћ</string>
     <string name="menu_add_session">Додај сесију</string>
@@ -74,9 +74,9 @@
     <string name="menu_settings">Подешавања</string>
     <string name="minuten">Минуте</string>
     <string name="no_new_server_messages">Нема доступних нових порука.</string>
-    <string name="no_sections_in_session">Не могу започети медитацију: Изабрана сесија нема ниједан одељак.</string>
+    <string name="no_sections_in_session">Не могу\'да започети медитацију: Изабрана сесија нема ниједан одељак.</string>
     <string name="no_session_exists">Не постоји сесија која се може започети. Прво направите један.</string>
-    <string name="notification_text">Тренутно је у току Зазен медитација</string>
+    <string name="notification_text">Зазен медитација је тренутно у току</string>
     <string name="notification_text_paused">Зазен медитација је паузирана</string>
     <string name="notification_title">Зазен медитација</string>
     <string name="notification_title_paused">Зазен медитација (пауза)</string>
@@ -92,7 +92,7 @@
     <string name="pref_mute_mode_vibrate_desc">Вибрирај само за телефонске позиве и обавештења (не ради на Андроид 7 (Ноугат) – понаша се као подешавање Тишина)</string>
     <string name="pref_mute_mode_vibrate_sound">Тон звона и вибрација</string>
     <string name="pref_mute_mode_vibrate_sound_desc">Пустите мелодију звона и вибрацију</string>
-    <string name="pref_muting">Искључите подешавања</string>
+    <string name="pref_muting">Муте Сеттингс</string>
     <string name="pref_sum_backup">Сачувајте резервну копију својих сесија и звукова на СД картици.</string>
     <string name="pref_sum_bad_removal">СД картица је уклоњена без претходног искључивања.</string>
     <string name="pref_sum_checking">СД-картица се тренутно проверава</string>
@@ -104,7 +104,7 @@
     <string name="pref_sum_shared">СД-картица се дели</string>
     <string name="pref_title_backup">Направите резервну копију</string>
     <string name="pref_title_brightness">Осветљеност</string>
-    <string name="pref_title_restore">Вратите из резервне копије</string>
+    <string name="pref_title_restore">Restore from Backup</string>
     <string name="privacy_message">Ова апликација не прикупља никакве личне податке - такође не користи ИП адресе или било које друге податке у вези са технологијом, нити прикупља, обрађује или користи било које на било који начин.</string>
     <string name="privacy_ok">ОК</string>
     <string name="privacy_title">Информације о приватности</string>
@@ -130,12 +130,12 @@
     <string name="status_bar_notification_info_overflow">999+</string>
     <string name="test_mute_perm_request">Апликацији тренутно није дозвољено да искључи звук на вашем телефону. Отворите подешавања да бисте ово променили?</string>
     <string name="text_cant_mute">Ваш телефон не дозвољава овој апликацији да искључи звук. Онемогућите утишавање у овим подешавањима апликација или дозволите искључење звука у подешавањима телефона.</string>
-    <string name="text_no_notify_access_settings">Изгледа да ваш телефон нема стандардна подешавања за омогућавање искључивања звука. Потражите ручно поставку „Не узнемиравај приступ“ и омогућите је.</string>
+    <string name="text_no_notify_access_settings">Изгледа да ваш телефон нема стандардна подешавања за омогућавање искључивања звука. Потражите ручно поставку \"Приступ Не ометај\" и омогућите је.</string>
     <string name="text_no_sections">Нема дефинисаних секција.</string>
     <string name="text_question_delete_session">Да ли заиста желите да избришете изабрану сесију?</string>
     <string name="theme">Тема</string>
     <string name="theme_dark">Дарк Тхеме</string>
-    <string name="theme_desc">Изаберите светли или тамни изглед апликације</string>
+    <string name="theme_desc">Изаберите изглед апликације</string>
     <string name="theme_light">Лигхт Тхеме</string>
     <string name="theme_system">Системска тема</string>
     <string name="theme_value_dark">dark</string>
@@ -158,4 +158,12 @@
     <string name="title_dim_bell">Дим Белл</string>
     <string name="dim_bell_label_off">Није затамњено</string>
     <string name="dim_bell_label_format">Затамњено: %1$d0%%</string>
+    <string name="section_deleted">Избрисано \'%s\'</string>
+    <string name="action_undo">Поништи</string>
+    <string name="notification_channel_name">Тајмер за медитацију</string>
+    <string name="nav_label_sessions">Сесије</string>
+    <string name="nav_label_meditation">Медитација</string>
+    <string name="nav_label_edit_session">Уреди сесију</string>
+    <string name="nav_label_edit_section">Уреди одељак</string>
+    <string name="nav_label_settings">Подешавања</string>
 </resources>

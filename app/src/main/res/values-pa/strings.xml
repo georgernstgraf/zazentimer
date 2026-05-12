@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="abbrechen">ਰੱਦ ਕਰੋ</string>
-    <string name="about1">Zazen Meditation Timer — A simple meditation timer with customizable sections, bell sounds, and session management.</string>
-    <string name="about2">Originally created by Stefan Gaffga. Currently maintained by Georg Graf.&lt;br&gt;&lt;br&gt;Thanks to Winfried of &lt;a href="http://www.meditationsuhren.de"&gt;http://www.meditationsuhren.de&lt;/a&gt; for providing such great Bell Sounds!</string>
-    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues"&gt;Report issues on GitHub&lt;/a&gt;</string>
-    <string name="app_description">This application lets the user define a set of meditation sessions and provides a timer with visual and audible feedback when a part or the whole meditation is over.</string>
+    <string name="about1">ਜ਼ਜ਼ੇਨ ਮੈਡੀਟੇਸ਼ਨ ਟਾਈਮਰ - ਅਨੁਕੂਲਿਤ ਭਾਗਾਂ, ਘੰਟੀ ਦੀਆਂ ਆਵਾਜ਼ਾਂ, ਅਤੇ ਸੈਸ਼ਨ ਪ੍ਰਬੰਧਨ ਦੇ ਨਾਲ ਇੱਕ ਸਧਾਰਨ ਧਿਆਨ ਟਾਈਮਰ।</string>
+    <string name="about2">ਅਸਲ ਵਿੱਚ ਸਟੀਫਨ ਗਫਗਾ ਦੁਆਰਾ ਬਣਾਇਆ ਗਿਆ। ਵਰਤਮਾਨ ਵਿੱਚ Georg Graf ਦੁਆਰਾ ਸੰਭਾਲਿਆ ਜਾਂਦਾ ਹੈ।&lt;br&gt;&lt;br&gt;ਅਜਿਹੀਆਂ ਸ਼ਾਨਦਾਰ ਘੰਟੀਆਂ ਦੀਆਂ ਆਵਾਜ਼ਾਂ ਪ੍ਰਦਾਨ ਕਰਨ ਲਈ &lt;a href="http://www.meditationsuhren.de"&gt;http://www.meditationsuhren.de&lt;/a&gt; ਦੇ ਵਿਨਫ੍ਰਿਡ ਦਾ ਧੰਨਵਾਦ!</string>
+    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues"&gt;GitHub \'ਤੇ ਸਮੱਸਿਆਵਾਂ ਦੀ ਰਿਪੋਰਟ ਕਰੋ&lt;/a&gt;</string>
+    <string name="app_description">ਇਹ ਐਪਲੀਕੇਸ਼ਨ ਉਪਭੋਗਤਾ ਨੂੰ ਧਿਆਨ ਸੈਸ਼ਨਾਂ ਦੇ ਇੱਕ ਸਮੂਹ ਨੂੰ ਪਰਿਭਾਸ਼ਿਤ ਕਰਨ ਦਿੰਦੀ ਹੈ ਅਤੇ ਇੱਕ ਭਾਗ ਜਾਂ ਪੂਰਾ ਧਿਆਨ ਖਤਮ ਹੋਣ \'ਤੇ ਵਿਜ਼ੂਅਲ ਅਤੇ ਸੁਣਨਯੋਗ ਫੀਡਬੈਕ ਦੇ ਨਾਲ ਟਾਈਮਰ ਪ੍ਰਦਾਨ ਕਰਦੀ ਹੈ।</string>
     <string name="app_name">Zazen Meditation Timer</string>
     <string name="appbar_scrolling_view_behavior">android.support.design.widget.AppBarLayout$ScrollingViewBehavior</string>
     <string name="backup_error_text">ਮਾਫ਼ ਕਰਨਾ, ਸੇਵ ਕਰਨ ਦੌਰਾਨ ਇੱਕ ਤਰੁੱਟੀ ਆਈ ਹੈ।</string>
     <string name="backup_no_permission">ਗੁੰਮ ਇਜਾਜ਼ਤਾਂ ਕਾਰਨ ਬੈਕਅੱਪ ਨਹੀਂ ਬਣਾਇਆ ਜਾ ਸਕਿਆ।</string>
     <string name="backup_not_createable">ਬੈਕਅੱਪ ਫ਼ਾਈਲ ਬਣਾਉਣ ਵਿੱਚ ਗੜਬੜ ਹੋਈ।</string>
     <string name="backup_success_text">ਬੈਕਅੱਪ ਸਫਲਤਾਪੂਰਵਕ ਬਣਾਇਆ ਗਿਆ!</string>
-    <string name="bell_name_1">High Tone</string>
-    <string name="bell_name_2">Low Tone</string>
-    <string name="bell_name_3">Jap. Rhinbowl Dharma, 107mm</string>
-    <string name="bell_name_4">Jap. Rhinbowl Dharma, 88mm (black, glazed)</string>
-    <string name="bell_name_5">Jap. Rhinbowl Shomyo, 90mm</string>
-    <string name="bell_name_6">Jap. Rhinbowl Tang, 164mm</string>
-    <string name="bell_name_7">Tib. Bowl, 230mm</string>
-    <string name="bell_name_8">Jap. Rhinbowl, 97mm</string>
+    <string name="bell_name_1">ਉੱਚ ਟੋਨ</string>
+    <string name="bell_name_2">ਘੱਟ ਟੋਨ</string>
+    <string name="bell_name_3">ਜਪ. ਰਿਨਬੋਲ ਧਰਮ, 107mm</string>
+    <string name="bell_name_4">ਜਪ. ਰਿਨਬੋਲ ਧਰਮ, 88mm (ਕਾਲਾ, ਚਮਕਦਾਰ)</string>
+    <string name="bell_name_5">ਜਪ. Rhinbowl Shomyo, 90mm</string>
+    <string name="bell_name_6">ਜਪ. Rhinbowl Tang, 164mm</string>
+    <string name="bell_name_7">ਟਿਬ. ਕਟੋਰਾ, 230mm</string>
+    <string name="bell_name_8">ਜਪ. ਰਿਨਬੋਲ, 97mm</string>
     <string name="bell_pause">ਘੰਟੀ ਦਾ ਅੰਤਰ (ਸੈਕੰਡ)</string>
     <string name="bell_user">ਘੰਟੀ ਸ਼ਾਮਲ ਕਰੋ...</string>
     <string name="bottom_nav_meditation">ਧਿਆਨ</string>
@@ -29,7 +29,7 @@
     <string name="but_stop">ਰੂਕੋ</string>
     <string name="caption_zazen_meditation">ਜ਼ਜ਼ੇਨ ਧਿਆਨ</string>
     <string name="character_counter_pattern">%1$d / %2$d</string>
-    <string name="checkbox_keep_screen_on">ਸਕ੍ਰੀਨ ਚਾਲੂ ਰੱਖੋ</string>
+    <string name="checkbox_keep_screen_on">ਸਕ੍ਰੀਨ ਨੂੰ ਚਾਲੂ ਰੱਖੋ</string>
     <string name="checkbox_no_server_messages">ਖ਼ਬਰਾਂ ਦਿਖਾਓ</string>
     <string name="checkbox_phone_off">ਫ਼ੋਨ ਮਿਊਟ ਕਰੋ</string>
     <string name="checkbox_phone_off_desc">ਫ਼ੋਨ ਦੀਆਂ ਸਾਰੀਆਂ ਆਵਾਜ਼ਾਂ ਨੂੰ ਮਿਊਟ ਕਰੋ।</string>
@@ -39,7 +39,7 @@
     <string name="crash_dialog_text">ਮੈਨੂੰ ਅਫ਼ਸੋਸ ਹੈ ਕਿ ਇੱਕ ਗਲਤੀ ਹੋ ਗਈ ਹੈ। ਤੁਸੀਂ ਇਸ ਬੱਗ ਰਿਪੋਰਟ ਅਤੇ ਹੋ ਸਕਦਾ ਹੈ ਕਿ ਤੁਸੀਂ ਕੀ ਕੀਤਾ ਹੈ ਇਸ ਬਾਰੇ ਹੋਰ ਵੇਰਵੇ ਭੇਜ ਕੇ ਇਸ ਸਮੱਸਿਆ ਨੂੰ ਲੱਭਣ ਅਤੇ ਠੀਕ ਕਰਨ ਵਿੱਚ ਮੇਰੀ ਮਦਦ ਕਰ ਸਕਦੇ ਹੋ।</string>
     <string name="crash_dialog_title">ਜ਼ਜ਼ੇਨ ਮੈਡੀਟੇਸ਼ਨ ਟਾਈਮਰ</string>
     <string name="crash_toast_text">ਮਾਫ਼ ਕਰਨਾ - ਇੱਕ ਅੰਦਰੂਨੀ ਗੜਬੜ ਹੋ ਗਈ ਹੈ!</string>
-    <string name="crash_user_email_label">ਵਿਕਲਪਿਕ: ਇਸ ਮੁੱਦੇ \u0027ਤੇ ਸਵਾਲਾਂ ਜਾਂ ਅਪਡੇਟਾਂ ਲਈ ਤੁਹਾਡਾ ਈ-ਮੇਲ ਪਤਾ।</string>
+    <string name="crash_user_email_label">ਵਿਕਲਪਿਕ: ਇਸ ਮੁੱਦੇ \'ਤੇ ਸਵਾਲਾਂ ਜਾਂ ਅਪਡੇਟਾਂ ਲਈ ਤੁਹਾਡਾ ਈ-ਮੇਲ ਪਤਾ।</string>
     <string name="default_section_name">ਬੇਨਾਮ</string>
     <string name="demo_sess1_description">ਐਤਵਾਰ ਸ਼ਾਮ ਦਾ ਸਿਮਰਨ</string>
     <string name="demo_sess1_name">ਜ਼ਜ਼ੇਨ ਅਤੇ ਕਿਨਹਿਨ</string>
@@ -53,10 +53,10 @@
     <string name="demo_sess2_name">ਜ਼ਜ਼ੇਨ ਹੀ</string>
     <string name="desc_get_messages">ਜੇਕਰ ਆਟੋਮੈਟਿਕ ਸੁਨੇਹੇ ਅਸਮਰੱਥ ਹਨ, ਤਾਂ ਤੁਸੀਂ ਇੱਥੇ ਖ਼ਬਰਾਂ ਦੀ ਜਾਂਚ ਕਰ ਸਕਦੇ ਹੋ।</string>
     <string name="desc_keep_screen_on">ਮੈਡੀਟੇਸ਼ਨ ਦੌਰਾਨ ਸਕਰੀਨ ਨੂੰ ਚਾਲੂ ਰੱਖਦਾ ਹੈ</string>
-    <string name="desc_no_server_messages">ਐਪ ਸ਼ੁਰੂ ਹੋਣ \u0027ਤੇ ਸਵੈਚਲਿਤ ਤੌਰ \u0027ਤੇ ਖਬਰਾਂ ਦਿਖਾਓ</string>
+    <string name="desc_no_server_messages">ਐਪ ਸ਼ੁਰੂ ਹੋਣ \'ਤੇ ਸਵੈਚਲਿਤ ਤੌਰ \'ਤੇ ਖਬਰਾਂ ਦਿਖਾਓ</string>
     <string name="error_checking_for_server_messages">ਨਵੇਂ ਸੁਨੇਹੇ ਪ੍ਰਾਪਤ ਕਰਨ ਵਿੱਚ ਤਰੁੱਟੀ।</string>
     <string name="gong_type">ਗੋਂਗ ਸਾਊਂਡ</string>
-    <string name="help_sectionlist_text">ਇੱਥੇ ਤੁਸੀਂ ਆਪਣੇ ਸੈਸ਼ਨ ਦੀਆਂ ਸਮੱਗਰੀਆਂ ਨੂੰ ਨਾਮ ਦੇ ਸਕਦੇ ਹੋ, ਵਰਣਨ ਕਰ ਸਕਦੇ ਹੋ ਅਤੇ ਸੰਪਾਦਿਤ ਕਰ ਸਕਦੇ ਹੋ।\n\n ਮੁੜ-ਕ੍ਰਮਬੱਧ\n ਆਈਟਮਾਂ ਨੂੰ ਮੁੜ ਕ੍ਰਮਬੱਧ ਕਰਨ ਲਈ, ਇੱਕ ਆਈਟਮ \u0027ਤੇ ਦੇਰ ਤੱਕ ਦਬਾਓ ਅਤੇ\n ਇਸਨੂੰ ਇਸਦੀ ਨਵੀਂ ਸਥਿਤੀ \u0027ਤੇ ਘਸੀਟੋ।\n\n ਮਿਟਾਉਣਾ\n ਕਿਸੇ ਆਈਟਮ ਨੂੰ ਮਿਟਾਉਣ ਲਈ, ਇਸਨੂੰ ਸੱਜੇ ਪਾਸੇ ਲੈ ਜਾਓ।\n\n ਸੰਪਾਦਿਤ ਕਰੋ\n ਇੱਕ ਭਾਗ ਨੂੰ ਸੰਪਾਦਿਤ ਕਰਨ ਲਈ, ਇੱਕ ਵਾਰ ਨਵਾਂ AD ਬਟਨ ਦਬਾਓ।</string>
+    <string name="help_sectionlist_text">ਇੱਥੇ ਤੁਸੀਂ ਆਪਣੇ ਸੈਸ਼ਨ ਦੀ ਸਮੱਗਰੀ ਦਾ ਨਾਮ, ਵਰਣਨ ਅਤੇ ਸੰਪਾਦਨ ਕਰ ਸਕਦੇ ਹੋ।\n\nਮੁੜ-ਕ੍ਰਮਬੱਧ ਕੀਤਾ ਜਾ ਰਿਹਾ ਹੈ\nਆਈਟਮਾਂ ਨੂੰ ਮੁੜ ਕ੍ਰਮਬੱਧ ਕਰਨ ਲਈ, ਇੱਕ ਆਈਟਮ \'ਤੇ ਦੇਰ ਤੱਕ ਦਬਾਓ ਅਤੇ\nਇਸ ਨੂੰ ਇਸਦੀ ਨਵੀਂ ਸਥਿਤੀ \'ਤੇ ਖਿੱਚੋ।\n\nਮਿਟਾਇਆ ਜਾ ਰਿਹਾ ਹੈ\nਕਿਸੇ ਆਈਟਮ ਨੂੰ ਮਿਟਾਉਣ ਲਈ, ਇਸਨੂੰ ਸੱਜੇ ਪਾਸੇ ਲੈ ਜਾਓ।\n\nਸੰਪਾਦਿਤ ਕਰੋ\nਕਿਸੇ ਸੈਕਸ਼ਨ ਨੂੰ ਸੰਪਾਦਿਤ ਕਰਨ ਲਈ, ਇਸਨੂੰ ਇੱਕ ਵਾਰ ਛੂਹੋ।\n\nADD\nਇੱਕ ਨਵਾਂ ਭਾਗ ਜੋੜਨ ਲਈ, + ਬਟਨ ਦਬਾਓ।</string>
     <string name="help_sectionlist_title">ਸੈਸ਼ਨ ਦਾ ਸੰਪਾਦਨ ਕਰੋ</string>
     <string name="label_section_name">ਸੈਕਸ਼ਨ ਦਾ ਨਾਮ</string>
     <string name="label_session_description">ਸੈਸ਼ਨ ਦਾ ਵੇਰਵਾ</string>
@@ -74,7 +74,7 @@
     <string name="menu_settings">ਸੈਟਿੰਗਾਂ</string>
     <string name="minuten">ਮਿੰਟ</string>
     <string name="no_new_server_messages">ਕੋਈ ਨਵਾਂ ਸੁਨੇਹਾ ਉਪਲਬਧ ਨਹੀਂ ਹੈ।</string>
-    <string name="no_sections_in_session">ਮੈਡੀਟੇਸ਼ਨ ਸ਼ੁਰੂ ਨਹੀਂ ਕਰ ਸਕਦਾ: ਚੁਣੇ ਗਏ ਸੈਸ਼ਨ ਵਿੱਚ ਕੋਈ ਭਾਗ ਨਹੀਂ ਹਨ।</string>
+    <string name="no_sections_in_session">ਮੈਡੀਟੇਸ਼ਨ ਸ਼ੁਰੂ ਨਹੀਂ ਕੀਤਾ ਜਾ ਸਕਦਾ: ਚੁਣੇ ਗਏ ਸੈਸ਼ਨ ਵਿੱਚ ਕੋਈ ਭਾਗ ਨਹੀਂ ਹਨ।</string>
     <string name="no_session_exists">ਅਜਿਹਾ ਕੋਈ ਸੈਸ਼ਨ ਨਹੀਂ ਹੈ ਜਿਸ ਨੂੰ ਸ਼ੁਰੂ ਕੀਤਾ ਜਾ ਸਕੇ। ਕਿਰਪਾ ਕਰਕੇ ਪਹਿਲਾਂ ਇੱਕ ਬਣਾਓ।</string>
     <string name="notification_text">ਇੱਕ ਜ਼ਜ਼ਨ ਮੈਡੀਟੇਸ਼ਨ ਇਸ ਸਮੇਂ ਚੱਲ ਰਿਹਾ ਹੈ</string>
     <string name="notification_text_paused">ਜ਼ਜ਼ੇਨ ਧਿਆਨ ਰੋਕਿਆ ਗਿਆ</string>
@@ -89,7 +89,7 @@
     <string name="pref_mute_mode_none_desc">ਫ਼ੋਨ ਕਾਲਾਂ ਅਤੇ ਸੂਚਨਾਵਾਂ ਲਈ ਕੋਈ ਰਿੰਗ ਟੋਨ ਅਤੇ ਕੋਈ ਵਾਈਬ੍ਰੇਸ਼ਨ ਨਹੀਂ</string>
     <string name="pref_mute_mode_pref">ਰਿੰਗ ਟੋਨ ਅਤੇ ਸੂਚਨਾਵਾਂ ਸੰਬੰਧੀ ਸੈਟਿੰਗਾਂ</string>
     <string name="pref_mute_mode_vibrate">ਸਿਰਫ਼ ਵਾਈਬ੍ਰੇਸ਼ਨ</string>
-    <string name="pref_mute_mode_vibrate_desc">ਸਿਰਫ਼ ਫ਼ੋਨ ਕਾਲਾਂ ਅਤੇ ਸੂਚਨਾਵਾਂ ਲਈ ਵਾਈਬ੍ਰੇਟ ਕਰੋ (ਐਂਡਰਾਇਡ 7 (ਨੌਗਟ) \u0027ਤੇ ਕੰਮ ਨਹੀਂ ਕਰਦਾ - ਚੁੱਪ ਸੈਟਿੰਗ ਵਾਂਗ ਵਿਹਾਰ ਕਰਦਾ ਹੈ)</string>
+    <string name="pref_mute_mode_vibrate_desc">ਸਿਰਫ਼ ਫ਼ੋਨ ਕਾਲਾਂ ਅਤੇ ਸੂਚਨਾਵਾਂ ਲਈ ਵਾਈਬ੍ਰੇਟ ਕਰੋ (ਐਂਡਰਾਇਡ 7 (ਨੌਗਟ) \'ਤੇ ਕੰਮ ਨਹੀਂ ਕਰਦਾ - ਚੁੱਪ ਸੈਟਿੰਗ ਵਾਂਗ ਵਿਹਾਰ ਕਰਦਾ ਹੈ)</string>
     <string name="pref_mute_mode_vibrate_sound">ਰਿੰਗ ਟੋਨ ਅਤੇ ਵਾਈਬ੍ਰੇਸ਼ਨ</string>
     <string name="pref_mute_mode_vibrate_sound_desc">ਰਿੰਗ ਟੋਨ ਅਤੇ ਵਾਈਬ੍ਰੇਸ਼ਨ ਚਲਾਓ</string>
     <string name="pref_muting">ਮਿਊਟ ਸੈਟਿੰਗਾਂ</string>
@@ -97,7 +97,7 @@
     <string name="pref_sum_bad_removal">SD ਕਾਰਡ ਨੂੰ ਪਹਿਲਾਂ ਅਨਮਾਊਂਟ ਕੀਤੇ ਬਿਨਾਂ ਹਟਾ ਦਿੱਤਾ ਗਿਆ ਸੀ।</string>
     <string name="pref_sum_checking">ਇਸ ਸਮੇਂ SD-ਕਾਰਡ ਦੀ ਜਾਂਚ ਕੀਤੀ ਜਾ ਰਹੀ ਹੈ</string>
     <string name="pref_sum_ejecting">SD-ਕਾਰਡ ਨੂੰ ਬਾਹਰ ਕੱਢਿਆ ਜਾ ਰਿਹਾ ਹੈ</string>
-    <string name="pref_sum_nofs">SD-ਕਾਰਡ \u0027ਤੇ ਕੋਈ ਫਾਈਲ ਸਿਸਟਮ ਨਹੀਂ ਹੈ</string>
+    <string name="pref_sum_nofs">SD-ਕਾਰਡ \'ਤੇ ਕੋਈ ਫਾਈਲ ਸਿਸਟਮ ਨਹੀਂ ਹੈ</string>
     <string name="pref_sum_read_only">SD-ਕਾਰਡ ਸਿਰਫ਼ ਪੜ੍ਹਨ ਲਈ ਹੈ</string>
     <string name="pref_sum_removed">ਕੋਈ SD-ਕਾਰਡ ਮੌਜੂਦ ਨਹੀਂ ਹੈ</string>
     <string name="pref_sum_restore">SD-ਕਾਰਡ ਬੈਕਅੱਪ ਤੋਂ ਆਪਣੇ ਸੈਸ਼ਨਾਂ ਅਤੇ ਕਸਟਮ ਆਵਾਜ਼ਾਂ ਨੂੰ ਰੀਸਟੋਰ ਕਰੋ</string>
@@ -130,12 +130,12 @@
     <string name="status_bar_notification_info_overflow">999+</string>
     <string name="test_mute_perm_request">ਐਪ ਨੂੰ ਫਿਲਹਾਲ ਤੁਹਾਡੇ ਫ਼ੋਨ ਨੂੰ ਮਿਊਟ ਕਰਨ ਦੀ ਇਜਾਜ਼ਤ ਨਹੀਂ ਹੈ। ਇਸ ਨੂੰ ਬਦਲਣ ਲਈ ਸੈਟਿੰਗਾਂ ਖੋਲ੍ਹੋ?</string>
     <string name="text_cant_mute">ਤੁਹਾਡਾ ਫ਼ੋਨ ਇਸ ਐਪ ਨੂੰ ਇਸਨੂੰ ਮਿਊਟ ਕਰਨ ਦੀ ਇਜਾਜ਼ਤ ਨਹੀਂ ਦਿੰਦਾ ਹੈ। ਇਸ ਐਪਸ ਸੈਟਿੰਗਾਂ ਵਿੱਚ ਮਿਊਟਿੰਗ ਨੂੰ ਅਸਮਰੱਥ ਕਰੋ ਜਾਂ ਆਪਣੀਆਂ ਫ਼ੋਨ ਸੈਟਿੰਗਾਂ ਵਿੱਚ ਮਿਊਟ ਕਰਨ ਦੀ ਇਜਾਜ਼ਤ ਦਿਓ।</string>
-    <string name="text_no_notify_access_settings">ਤੁਹਾਡੇ ਫ਼ੋਨ ਵਿੱਚ ਮਿਊਟ ਕਰਨ ਦੀ ਇਜਾਜ਼ਤ ਦੇਣ ਲਈ ਮਿਆਰੀ ਸੈਟਿੰਗਾਂ ਨਹੀਂ ਹਨ। ਕਿਰਪਾ ਕਰਕੇ \"ਐਕਸੈਸ ਨੂੰ ਪਰੇਸ਼ਾਨ ਨਾ ਕਰੋ\" ਸੈਟਿੰਗ ਲਈ ਹੱਥੀਂ ਦੇਖੋ ਅਤੇ ਇਸਨੂੰ ਸਮਰੱਥ ਕਰੋ।</string>
+    <string name="text_no_notify_access_settings">ਤੁਹਾਡੇ ਫ਼ੋਨ ਵਿੱਚ ਮਿਊਟ ਕਰਨ ਦੀ ਇਜਾਜ਼ਤ ਦੇਣ ਲਈ ਮਿਆਰੀ ਸੈਟਿੰਗਾਂ ਨਹੀਂ ਹਨ। ਕਿਰਪਾ ਕਰਕੇ \"Do Not Disturb Access\" ਸੈਟਿੰਗ ਲਈ ਹੱਥੀਂ ਦੇਖੋ ਅਤੇ ਇਸਨੂੰ ਸਮਰੱਥ ਕਰੋ।</string>
     <string name="text_no_sections">ਕੋਈ ਸੈਕਸ਼ਨ ਪਰਿਭਾਸ਼ਿਤ ਨਹੀਂ।</string>
     <string name="text_question_delete_session">ਕੀ ਸੱਚਮੁੱਚ ਚੁਣੇ ਸੈਸ਼ਨ ਨੂੰ ਮਿਟਾਉਣਾ ਹੈ?</string>
     <string name="theme">ਥੀਮ</string>
     <string name="theme_dark">ਗੂੜ੍ਹਾ ਥੀਮ</string>
-    <string name="theme_desc">ਐਪ ਦਾ ਹਲਕਾ ਜਾਂ ਗੂੜ੍ਹਾ ਦਿੱਖ ਚੁਣੋ</string>
+    <string name="theme_desc">ਐਪ ਦੀ ਦਿੱਖ ਚੁਣੋ</string>
     <string name="theme_light">ਹਲਕਾ ਥੀਮ</string>
     <string name="theme_system">ਸਿਸਟਮ ਥੀਮ</string>
     <string name="theme_value_dark">dark</string>
@@ -149,7 +149,7 @@
     <string name="title_question_delete_session">ਕੀ ਸੈਸ਼ਨ ਮਿਟਾਉਣਾ ਹੈ?</string>
     <string name="title_volume_bells">ਘੰਟੀ ਵਾਲੀਅਮ</string>
     <string name="unnamed">ਬੇਨਾਮ</string>
-    <string name="stop_meditation_title">ਸਿਮਰਨ ਬੰਦ ਕਰੋ?</string>
+    <string name="stop_meditation_title">ਧਿਆਨ ਕਰਨਾ ਬੰਦ ਕਰੋ?</string>
     <string name="stop_meditation_message">ਤੁਹਾਡਾ ਧਿਆਨ ਸੈਸ਼ਨ ਅਜੇ ਵੀ ਚੱਲ ਰਿਹਾ ਹੈ।</string>
     <string name="stop_meditation_stop">ਰੂਕੋ</string>
     <string name="stop_meditation_cancel">ਰੱਦ ਕਰੋ</string>
@@ -158,4 +158,12 @@
     <string name="title_dim_bell">ਮੱਧਮ ਘੰਟੀ</string>
     <string name="dim_bell_label_off">ਮੱਧਮ ਨਹੀਂ ਹੋਇਆ</string>
     <string name="dim_bell_label_format">ਮੱਧਮ: %1$d0%%</string>
+    <string name="section_deleted">ਮਿਟਾਇਆ ਗਿਆ \'_%s_2__</string>
+    <string name="action_undo">ਅਣਡੂ</string>
+    <string name="notification_channel_name">ਮੈਡੀਟੇਸ਼ਨ ਟਾਈਮਰ</string>
+    <string name="nav_label_sessions">ਸੈਸ਼ਨ</string>
+    <string name="nav_label_meditation">ਧਿਆਨ</string>
+    <string name="nav_label_edit_session">ਸੈਸ਼ਨ ਦਾ ਸੰਪਾਦਨ ਕਰੋ</string>
+    <string name="nav_label_edit_section">ਸੈਕਸ਼ਨ ਦਾ ਸੰਪਾਦਨ ਕਰੋ</string>
+    <string name="nav_label_settings">ਸੈਟਿੰਗਾਂ</string>
 </resources>

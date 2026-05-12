@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="abbrechen">okusazaamu</string>
-    <string name="about1">Zazen Meditation Timer — A simple meditation timer with customizable sections, bell sounds, and session management.</string>
-    <string name="about2">Originally created by Stefan Gaffga. Currently maintained by Georg Graf.&lt;br&gt;&lt;br&gt;Thanks to Winfried of &lt;a href="http://www.meditationsuhren.de"&gt;http://www.meditationsuhren.de&lt;/a&gt; for providing such great Bell Sounds!</string>
-    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues"&gt;Report issues on GitHub&lt;/a&gt;</string>
-    <string name="app_description">This application lets the user define a set of meditation sessions and provides a timer with visual and audible feedback when a part or the whole meditation is over.</string>
+    <string name="about1">Zazen Meditation Timer — Ekipima eky’okufumiitiriza eky’angu nga kiriko ebitundu ebisobola okulongoosebwa, amaloboozi g’akagombe, n’okuddukanya olutuula.</string>
+    <string name="about2">Yasooka kutondebwawo Stefan Gaffga. Mu kiseera kino eddaabirizibwa Georg Graf.&lt;br&gt;&lt;br&gt;Webale Winfried owa &lt;a href="http://www.meditationsuhren.de"&gt;http://www.meditationsuhren.de&lt;/a&gt; olw\'okuwa amaloboozi ga Bell amalungi bwe gatyo!</string>
+    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues"&gt;Oloopa ensonga ku GitHub&lt;/a&gt;</string>
+    <string name="app_description">Enkola eno ereka omukozesa okunnyonnyola ekibinja ky’ebiseera by’okufumiitiriza era n’ewa ekiseera ekigere n’ebiddibwamu ebirabika n’ebiwulikika ng’ekitundu oba okufumiitiriza kwonna kuwedde.</string>
     <string name="app_name">Zazen Meditation Timer</string>
-    <string name="appbar_scrolling_view_behavior">android.support.design.widget.AppBarLayout$Enneeyisa y\'okulaba okutambula</string>
+    <string name="appbar_scrolling_view_behavior">android.support.design.widget.AppBarLayout$Enneeyisa y\'okulaba</string>
     <string name="backup_error_text">Bambi, Ensobi ebaddewo nga otereka.</string>
     <string name="backup_no_permission">Teyasobodde kutondawo backup olw\'olukusa olubula.</string>
     <string name="backup_not_createable">Ensobi mu kutondawo fayiro ya backup.</string>
     <string name="backup_success_text">Backup yatondeddwa bulungi!</string>
-    <string name="bell_name_1">High Tone</string>
-    <string name="bell_name_2">Low Tone</string>
-    <string name="bell_name_3">Jap. Rhinbowl Dharma, 107mm</string>
-    <string name="bell_name_4">Jap. Rhinbowl Dharma, 88mm (black, glazed)</string>
-    <string name="bell_name_5">Jap. Rhinbowl Shomyo, 90mm</string>
-    <string name="bell_name_6">Jap. Rhinbowl Tang, 164mm</string>
-    <string name="bell_name_7">Tib. Bowl, 230mm</string>
-    <string name="bell_name_8">Jap. Rhinbowl, 97mm</string>
+    <string name="bell_name_1">Tone eya waggulu</string>
+    <string name="bell_name_2">Tone eya wansi</string>
+    <string name="bell_name_3">Jap. Rhinbowl Dharma, mmita 107</string>
+    <string name="bell_name_4">Jap. Rhinbowl Dharma, mm 88 (eddugavu, eriko endabirwamu)</string>
+    <string name="bell_name_5">Jap. Shomyo ya Rhinbowl, mmita 90</string>
+    <string name="bell_name_6">Jap. Tang ya Rhinbowl, mmita 164</string>
+    <string name="bell_name_7">Tib. Ebbakuli, mm 230</string>
+    <string name="bell_name_8">Jap. Rhinbowl, mmita 97</string>
     <string name="bell_pause">Ekituli ky’akagombe (sec) .</string>
     <string name="bell_user">Yongera ku Bell...</string>
     <string name="bottom_nav_meditation">Okufumiitiriza</string>
@@ -56,7 +56,7 @@
     <string name="desc_no_server_messages">Laga Amawulire mu ngeri ey\'otoma nga App etandika</string>
     <string name="error_checking_for_server_messages">Ensobi mu kuleeta obubaka obupya.</string>
     <string name="gong_type">Eddoboozi lya Gong</string>
-    <string name="help_sectionlist_text">Wano osobola okutuuma amannya, okunnyonnyola n’okulongoosa ebirimu mu Session yo.\n\n REORDERING\n Okuddamu okusengeka ebintu, nyweza ekintu ekiwanvu era\n kikutte mu kifo kyakyo ekipya.\n\n DELETING\n Okusazaamu ekintu, kitwale ku ku ddyo.\n\n EDIT\n Okulongoosa ekitundu, kikwatako omulundi gumu gwokka.\n\n ADD\n Okugattako ekitundu ekipya, nyweza bbaatuuni +.</string>
+    <string name="help_sectionlist_text">Wano osobola okutuuma amannya, okunnyonnyola n’okulongoosa ebirimu mu Session yo.\n\nOKUDDAMU OKUKOLA\nOkuddamu okusengeka ebintu, nyweza ekintu ekiwanvu era\ngikutte mu kifo kyayo ekipya.\n\nOKUSAZAWO\nOkusazaamu ekintu, kitwale ku ddyo.\n\nOKUGOLOLA\nOkulongoosa ekitundu, kikwatako omulundi gumu gwokka.\n\nOKWONGERAKO\nOkwongerako ekitundu ekipya, nyweza bbaatuuni +.</string>
     <string name="help_sectionlist_title">Edit Olutuula</string>
     <string name="label_section_name">Erinnya ly’ekitundu</string>
     <string name="label_session_description">Ennyonyola y\'Olutuula</string>
@@ -64,14 +64,14 @@
     <string name="menu_about">Ku...</string>
     <string name="menu_copy_session">Olukungana lw’Okuddiŋŋana</string>
     <string name="menu_delete_section">Ssazaamu Ekitundu</string>
-    <string name="menu_delete_session">Okusazaamu Olutuula</string>
+    <string name="menu_delete_session">Ssazaamu Olutuula</string>
     <string name="menu_duplicate_section">Ekitundu ekikoppa</string>
     <string name="menu_edit_session">Edit Olutuula</string>
     <string name="menu_help">Okuyamba</string>
     <string name="menu_add_session">Yongera ku Lutuula</string>
     <string name="menu_new_session">Olukungana Olupya</string>
     <string name="menu_privacy">Kyaama...</string>
-    <string name="menu_settings">Ensengeka</string>
+    <string name="menu_settings">Enteekateeka</string>
     <string name="minuten">Dakikka</string>
     <string name="no_new_server_messages">Tewali bubaka bupya bufunibwa.</string>
     <string name="no_sections_in_session">Can\'t start Meditation: Session erongooseddwa terina Sections yonna.</string>
@@ -111,7 +111,7 @@
     <string name="really_stop">Ddala mulekere awo okufumiitiriza?</string>
     <string name="restore_backup_not_found">Fayiro ya Backup tezuuliddwa</string>
     <string name="restore_error_text">Ensobi mu kuzzaawo okuva mu Backup</string>
-    <string name="restore_no_permission">Teyasobodde kuzzaawo olw\'olukusa olwabuze.</string>
+    <string name="restore_no_permission">Teyasobodde kuzzaawo olw\'olukusa olubula.</string>
     <string name="restore_really_text">Kino kijja kukyusa Sessions zo zonna n\'ezo eziri mu Backup! (Tewali Kuzzaawo!)</string>
     <string name="restore_really_title">Ddala okuzzaawo data?</string>
     <string name="restore_success_text">Data Restore efunye obuwanguzi</string>
@@ -130,12 +130,12 @@
     <string name="status_bar_notification_info_overflow">999+</string>
     <string name="test_mute_perm_request">Mu kiseera kino App tekkirizibwa kusirisa ssimu yo. Ggulawo ensengeka okukyusa kino?</string>
     <string name="text_cant_mute">Essimu yo tekkiriza App eno kugisirisa. Lemesa okusirisa mu Apps Settings eno oba kiriza okusirisa mu Phones Settings zo.</string>
-    <string name="text_no_notify_access_settings">Essimu yo erabika terina standard settings ezisobozesa okusirisa. Nsaba onoonye mu ngalo Ensengeka ya \&amp;quot;Totaataaganya Kuyingira\&amp;quot; era ogisobozesa.</string>
+    <string name="text_no_notify_access_settings">Essimu yo erabika terina standard settings ezisobozesa okusirisa. Nsaba onoonye mu ngalo Ensengeka ya \"Totaataaganya Kuyingira\" era ogisobozesa.</string>
     <string name="text_no_sections">Tewali Bitundu bitegeezeddwa.</string>
     <string name="text_question_delete_session">Ddala sazaamu Session erongooseddwa?</string>
     <string name="theme">Omulamwa</string>
     <string name="theme_dark">Omulamwa Omuddugavu</string>
-    <string name="theme_desc">Londa endabika enzirugavu oba enzirugavu eya App</string>
+    <string name="theme_desc">Londa endabika ya app</string>
     <string name="theme_light">Omulamwa gw\'Ekitangaala</string>
     <string name="theme_system">Omulamwa gw\'enkola</string>
     <string name="theme_value_dark">dark</string>
@@ -158,4 +158,12 @@
     <string name="title_dim_bell">Dim Bell</string>
     <string name="dim_bell_label_off">Si kizikiddwa</string>
     <string name="dim_bell_label_format">Ekizikiddwa: %1$d0%%</string>
+    <string name="section_deleted">Esaziddwamu \'%s\' .</string>
+    <string name="action_undo">Okuzzaawo</string>
+    <string name="notification_channel_name">Ekiseera ky’okufumiitiriza</string>
+    <string name="nav_label_sessions">Entuula</string>
+    <string name="nav_label_meditation">Okufumiitiriza</string>
+    <string name="nav_label_edit_session">Edit Olutuula</string>
+    <string name="nav_label_edit_section">Ekitundu kya Edit</string>
+    <string name="nav_label_settings">Enteekateeka</string>
 </resources>

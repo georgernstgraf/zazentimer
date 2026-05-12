@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="abbrechen">Whakakore</string>
-    <string name="about1">Zazen Meditation Timer — A simple meditation timer with customizable sections, bell sounds, and session management.</string>
-    <string name="about2">Originally created by Stefan Gaffga. Currently maintained by Georg Graf.&lt;br&gt;&lt;br&gt;Thanks to Winfried of &lt;a href="http://www.meditationsuhren.de"&gt;http://www.meditationsuhren.de&lt;/a&gt; for providing such great Bell Sounds!</string>
-    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues"&gt;Report issues on GitHub&lt;/a&gt;</string>
-    <string name="app_description">This application lets the user define a set of meditation sessions and provides a timer with visual and audible feedback when a part or the whole meditation is over.</string>
+    <string name="about1">Zazen Meditation Timer - He taima whakaaroaro ngawari me nga waahanga whakarite, tangi pere, me te whakahaere i nga huihuinga.</string>
+    <string name="about2">I hanga tuatahi e Stefan Gaffga. Ko Georg Graf kei te tiaki i tenei wa.&lt;br&gt;&lt;br&gt;Nga mihi ki a Winfried o &lt;a href="http://www.meditationsuhren.de"&gt;http://www.meditationsuhren.de&lt;/a&gt; mo te tuku oro Bell tino pai!</string>
+    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues"&gt;Pūrongo take ki GitHub&lt;/a&gt;</string>
+    <string name="app_description">Ma tenei tono ka taea e te kaiwhakamahi te tautuhi i te huinga o nga waahi whakaaroaro me te whakarato i te taima me nga urupare ataata me te whakarongo ka mutu tetahi waahanga, te katoa o te whakaaroaro.</string>
     <string name="app_name">Zazen Meditation Timer</string>
     <string name="appbar_scrolling_view_behavior">android.support.design.widget.AppBarLayout$ScrollingViewBehavior</string>
     <string name="backup_error_text">Aroha mai, i puta he Hapa i te wa e tiaki ana.</string>
     <string name="backup_no_permission">Kāore i taea te hanga pūrua nā te ngaro o ngā whakaaetanga.</string>
     <string name="backup_not_createable">Hapa te hanga kōnae pūrua.</string>
-    <string name="backup_success_text">I pai te hanga o te tārua!</string>
-    <string name="bell_name_1">High Tone</string>
-    <string name="bell_name_2">Low Tone</string>
-    <string name="bell_name_3">Jap. Rhinbowl Dharma, 107mm</string>
-    <string name="bell_name_4">Jap. Rhinbowl Dharma, 88mm (black, glazed)</string>
-    <string name="bell_name_5">Jap. Rhinbowl Shomyo, 90mm</string>
-    <string name="bell_name_6">Jap. Rhinbowl Tang, 164mm</string>
-    <string name="bell_name_7">Tib. Bowl, 230mm</string>
-    <string name="bell_name_8">Jap. Rhinbowl, 97mm</string>
+    <string name="backup_success_text">I angitu te hanga o te tārua!</string>
+    <string name="bell_name_1">Tone teitei</string>
+    <string name="bell_name_2">Oro iti</string>
+    <string name="bell_name_3">Tap. Rhinbowl Dharma, 107mm</string>
+    <string name="bell_name_4">Tap. Rhinbowl Dharma, 88mm (pango, kanapa)</string>
+    <string name="bell_name_5">Tap. Rhinbowl Shomyo, 90mm</string>
+    <string name="bell_name_6">Tap. Rhinbowl Tang, 164mm</string>
+    <string name="bell_name_7">Tib. Peera, 230mm</string>
+    <string name="bell_name_8">Tap. Rhinbow, 97mm</string>
     <string name="bell_pause">Aputa pere (hekona)</string>
     <string name="bell_user">Tāpiri Pere...</string>
     <string name="bottom_nav_meditation">Whakaaroaro</string>
@@ -29,7 +29,7 @@
     <string name="but_stop">Kati</string>
     <string name="caption_zazen_meditation">Zazen Whakaaroaro</string>
     <string name="character_counter_pattern">%1$d / %2$d</string>
-    <string name="checkbox_keep_screen_on">Kia mau tonu te mata</string>
+    <string name="checkbox_keep_screen_on">Kia mau te mata</string>
     <string name="checkbox_no_server_messages">Whakaatu Rongo</string>
     <string name="checkbox_phone_off">Wahangu Waea</string>
     <string name="checkbox_phone_off_desc">Wahangu nga oro waea katoa.</string>
@@ -45,8 +45,8 @@
     <string name="demo_sess1_name">Ko Zazen raua ko Kinhin</string>
     <string name="demo_sess1_sec1_name">Whakaritenga</string>
     <string name="demo_sess1_sec2_name">Tarana 1</string>
-    <string name="demo_sess1_sec3_name">Kino 1</string>
-    <string name="demo_sess1_sec4_name">Tarana 2</string>
+    <string name="demo_sess1_sec3_name">Kinina 1</string>
+    <string name="demo_sess1_sec4_name">Takena 2</string>
     <string name="demo_sess1_sec5_name">Kinina 3</string>
     <string name="demo_sess1_sec6_name">Tarana 3</string>
     <string name="demo_sess2_description">Te whakaaroaro i ia ra</string>
@@ -55,8 +55,8 @@
     <string name="desc_keep_screen_on">Ka mau tonu te mata i te wa e whakaaroaro ana</string>
     <string name="desc_no_server_messages">Whakaatu Aunoa i nga Panui ka timata te Taupānga</string>
     <string name="error_checking_for_server_messages">Hapa te tiki karere hou.</string>
-    <string name="gong_type">Gong Tangi</string>
-    <string name="help_sectionlist_text">I konei ka taea e koe te whakaingoa, te whakaahua me te whakatika i nga mea o to Wātū.\n\n REORDERING\n Ki te whakaraupapa ano i nga taonga, pehia roa i runga i tetahi mea ka\n toia ki tona waahi hou.\n\n WHAKAMAHI\n, neke ki te muku i tetahi mea. matau.\n\n EDIT\n Ki te whakatika i tetahi waahanga, pa noa ki te kotahi.\n\n ADD\n Hei taapiri i tetahi waahanga hou, pehia te paatene +.</string>
+    <string name="gong_type">Oro Gong</string>
+    <string name="help_sectionlist_text">I konei ka taea e koe te whakaingoa, te whakaahua me te whakatika i nga korero o to Wātū.\n\nWHAKATOKANGA\nHei whakarite ano i nga taonga, pehia roa i runga i tetahi mea me te\ntoia ki tona turanga hou.\n\nTE MUMU\nHei muku i tetahi mea, nukuhia ki te taha matau.\n\nEDITA\nHei whakatika i tetahi waahanga, pa noa kia kotahi.\n\nTāpiri\nHei taapiri i tetahi waahanga hou, pehia te paatene +.</string>
     <string name="help_sectionlist_title">Whakatika Wātū</string>
     <string name="label_section_name">Ingoa wahanga</string>
     <string name="label_session_description">Whakaahuatanga Wātū</string>
@@ -74,23 +74,23 @@
     <string name="menu_settings">Tautuhinga</string>
     <string name="minuten">Nga meneti</string>
     <string name="no_new_server_messages">Karekau he karere hou e waatea ana.</string>
-    <string name="no_sections_in_session">Can\'t tīmata Whakaaroaro: Ko te Wātū kua tohua kāore he Wāhanga.</string>
+    <string name="no_sections_in_session">Ka taea\'t timata te Whakaaroaro: Karekau he Wāhanga o te Wātū kua tohua.</string>
     <string name="no_session_exists">Karekau he huihuinga ka taea te timata. Hangaia tetahi i te tuatahi.</string>
     <string name="notification_text">He Zazen Meditation kei te whakahaere i tenei wa</string>
     <string name="notification_text_paused">Ka okioki a Zazen Whakaaroaro</string>
     <string name="notification_title">Zazen Whakaaroaro</string>
-    <string name="notification_title_paused">Te Whakaaroaro Zazen (kua okioki)</string>
+    <string name="notification_title_paused">Whakaaroaro Zazen (kua okioki)</string>
     <string name="num_bells">Tatau pere</string>
     <string name="ok">pai</string>
     <string name="pref_desc_brightness">Te Maama o te Whakaatu i te wa e whakaaroaro ana</string>
     <string name="pref_get_messages">Tirohia mo nga Karere hou inaianei</string>
-    <string name="pref_mute_mode">Oro tangi me nga Whakamōhiotanga</string>
+    <string name="pref_mute_mode">Tangi tangi me nga Whakamōhiotanga</string>
     <string name="pref_mute_mode_none">Wahangu</string>
     <string name="pref_mute_mode_none_desc">Kaore he oro tangi me te wiri mo nga waea waea me nga Panui</string>
-    <string name="pref_mute_mode_pref">Tautuhinga e pa ana ki te oro tangi me nga Whakamōhiotanga</string>
+    <string name="pref_mute_mode_pref">Tautuhinga e pa ana ki te tangi oro me nga Whakamōhiotanga</string>
     <string name="pref_mute_mode_vibrate">Wiri anake</string>
     <string name="pref_mute_mode_vibrate_desc">Wiri noa mo nga waea waea me nga Whakamōhiotanga (Kare e mahi i runga i te Android 7 (Nougat) - he rite te ahua ki te tautuhinga Wahangu)</string>
-    <string name="pref_mute_mode_vibrate_sound">Ringtone me te Wiri</string>
+    <string name="pref_mute_mode_vibrate_sound">Te tangi me te Wiri</string>
     <string name="pref_mute_mode_vibrate_sound_desc">Whakatangihia te Ringtone me te Wiri</string>
     <string name="pref_muting">Tautuhinga Wahangu</string>
     <string name="pref_sum_backup">Tiakina he taapiri o o Wātū me o Oro ki to Kaari SD.</string>
@@ -100,12 +100,12 @@
     <string name="pref_sum_nofs">Karekau he punaha konae kei runga i te kaari SD</string>
     <string name="pref_sum_read_only">He panui-anake te Kaari SD</string>
     <string name="pref_sum_removed">Karekau he Kaari SD</string>
-    <string name="pref_sum_restore">Whakahokia o Wātū me o Oro Ritenga mai i te Pūrua SD-Card</string>
+    <string name="pref_sum_restore">Whakaorangia o Wātū me o Oro Ritenga mai i te Pūrua SD-Card</string>
     <string name="pref_sum_shared">Ka tohatohahia te kaari SD</string>
     <string name="pref_title_backup">Waihanga Pūrua</string>
     <string name="pref_title_brightness">Tirohanga</string>
     <string name="pref_title_restore">Whakaora mai i te Pūrua</string>
-    <string name="privacy_message">Kaore tenei Taupānga e kohi i nga raraunga whaiaro - kaore hoki i te whakamahi i nga IP-Wāhitau me etahi atu raraunga e pa ana ki te hangarau, kaore hoki e kohikohi, e tukatuka, e whakamahi ana ranei i tetahi huarahi.</string>
+    <string name="privacy_message">Kaore tenei Taupānga e kohi i nga raraunga whaiaro - kaore ano i te whakamahi i nga IP-Wāhitau me etahi atu raraunga e pa ana ki te hangarau, kaore hoki e kohikohi, e tukatuka, e whakamahi ranei i tetahi huarahi.</string>
     <string name="privacy_ok">pai</string>
     <string name="privacy_title">Mōhiohio Tūmataitinga</string>
     <string name="really_stop">Tino mutu te whakaaroaro?</string>
@@ -129,13 +129,13 @@
     <string name="session_list_unnamed_entry">Wātū Kore Ingoa</string>
     <string name="status_bar_notification_info_overflow">999+</string>
     <string name="test_mute_perm_request">I tenei wa kaore e whakaaetia te App ki te wahangu i to waea. Whakatuwheratia nga tautuhinga hei huri i tenei?</string>
-    <string name="text_cant_mute">Kaore to Waea e tuku i tenei App ki te wahangu. Monokia te wahangu i roto i enei Tautuhinga Taupānga, me whakaae ranei te wahangu ki o Tautuhinga Waea.</string>
-    <string name="text_no_notify_access_settings">Ko te ahua karekau o to Waea i nga tautuhinga paerewa hei tuku i te wahangu. Titiro koa ki te \"Kaua e whakakorikoria te Uru\" Tautuhinga ka taea.</string>
+    <string name="text_cant_mute">Kaore to Waea e tuku i tenei App ki te wahangu. Monokia te wahangu i roto i tenei Tautuhinga Taupānga, me whakaae ranei te wahangu ki o Tautuhinga Waea.</string>
+    <string name="text_no_notify_access_settings">Ko te ahua karekau o to Waea i nga tautuhinga paerewa hei tuku i te wahangu. Tena koa tirohia a ringa mo te \"Kaua e Whakararuraru i te Uru\" Tautuhinga ka taea.</string>
     <string name="text_no_sections">Kaore he waahanga kua tautuhia.</string>
-    <string name="text_question_delete_session">Tino mukua te Wātū kua tohua?</string>
+    <string name="text_question_delete_session">Me mukua te Wātū kua tohua?</string>
     <string name="theme">Kaupapa</string>
     <string name="theme_dark">Kaupapa pouri</string>
-    <string name="theme_desc">Kōwhiria te ahua marama, pouri ranei o te App</string>
+    <string name="theme_desc">Kōwhirihia te ahua o te taupānga</string>
     <string name="theme_light">Kaupapa Maama</string>
     <string name="theme_system">Kaupapa Pūnaha</string>
     <string name="theme_value_dark">dark</string>
@@ -157,5 +157,13 @@
     <string name="pref_desc_bell_volume">Ka whakahaere i te rōrahi awa whakaoho mo nga tangi pere</string>
     <string name="title_dim_bell">Pere atarua</string>
     <string name="dim_bell_label_off">Kaore i te atarua</string>
-    <string name="dim_bell_label_format">Kua atarua: %1$d0%%</string>
+    <string name="dim_bell_label_format">Kua pouri: %1$d0%%</string>
+    <string name="section_deleted">Kua mukua \'%s\'</string>
+    <string name="action_undo">Wetekina</string>
+    <string name="notification_channel_name">Matama Whakaaroaro</string>
+    <string name="nav_label_sessions">Wātū</string>
+    <string name="nav_label_meditation">Whakaaroaro</string>
+    <string name="nav_label_edit_session">Whakatika Wātū</string>
+    <string name="nav_label_edit_section">Whakatika Wāhanga</string>
+    <string name="nav_label_settings">Tautuhinga</string>
 </resources>

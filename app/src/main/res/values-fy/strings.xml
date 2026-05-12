@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="abbrechen">Ofbrekke</string>
-    <string name="about1">Zazen Meditation Timer — A simple meditation timer with customizable sections, bell sounds, and session management.</string>
-    <string name="about2">Originally created by Stefan Gaffga. Currently maintained by Georg Graf.&lt;br&gt;&lt;br&gt;Thanks to Winfried of &lt;a href="http://www.meditationsuhren.de"&gt;http://www.meditationsuhren.de&lt;/a&gt; for providing such great Bell Sounds!</string>
-    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues"&gt;Report issues on GitHub&lt;/a&gt;</string>
-    <string name="app_description">This application lets the user define a set of meditation sessions and provides a timer with visual and audible feedback when a part or the whole meditation is over.</string>
+    <string name="about1">Zazen Meditaasje Timer - In ienfâldige meditaasje timer mei oanpasbere seksjes, bel lûden, en sesje behear.</string>
+    <string name="about2">Oarspronklik makke troch Stefan Gaffga. Op it stuit ûnderhâlden troch Georg Graf.&lt;br&gt;&lt;br&gt;Mei tank oan Winfried fan &lt;a href="http://www.meditationsuhren.de"&gt;http://www.meditationsuhren.de&lt;/a&gt; foar it leverjen fan sokke geweldige Bell Sounds!</string>
+    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues"&gt;Rapportearje problemen op GitHub&lt;/a&gt;</string>
+    <string name="app_description">Dizze applikaasje lit de brûker in set meditaasje-sesjes definiearje en leveret in timer mei fisuele en harkbere feedback as in diel of de heule meditaasje foarby is.</string>
     <string name="app_name">Zazen Meditation Timer</string>
     <string name="appbar_scrolling_view_behavior">android.support.design.widget.AppBarLayout$ScrollingViewBehavior</string>
     <string name="backup_error_text">Sorry, der is in flater bard by it opslaan.</string>
     <string name="backup_no_permission">Koe gjin reservekopy meitsje fanwegen ûntbrekkende tagongsrjochten.</string>
     <string name="backup_not_createable">Flater by it meitsjen fan reservekopybestân.</string>
     <string name="backup_success_text">Reservekopy makke mei súkses!</string>
-    <string name="bell_name_1">High Tone</string>
+    <string name="bell_name_1">Hege toan</string>
     <string name="bell_name_2">Low Tone</string>
-    <string name="bell_name_3">Jap. Rhinbowl Dharma, 107mm</string>
-    <string name="bell_name_4">Jap. Rhinbowl Dharma, 88mm (black, glazed)</string>
-    <string name="bell_name_5">Jap. Rhinbowl Shomyo, 90mm</string>
-    <string name="bell_name_6">Jap. Rhinbowl Tang, 164mm</string>
-    <string name="bell_name_7">Tib. Bowl, 230mm</string>
-    <string name="bell_name_8">Jap. Rhinbowl, 97mm</string>
+    <string name="bell_name_3">Jap. Rhinbowl Dharma, 107 mm</string>
+    <string name="bell_name_4">Jap. Rhinbowl Dharma, 88 mm (swart, glêzen)</string>
+    <string name="bell_name_5">Jap. Rhinbowl Shomyo, 90 mm</string>
+    <string name="bell_name_6">Jap. Rhinbowl Tang, 164 mm</string>
+    <string name="bell_name_7">Tib. Bakke, 230 mm</string>
+    <string name="bell_name_8">Jap. Rhinbowl, 97 mm</string>
     <string name="bell_pause">Bell gap (sek)</string>
     <string name="bell_user">Bel taheakje...</string>
     <string name="bottom_nav_meditation">Meditaasje</string>
@@ -41,7 +41,7 @@
     <string name="crash_toast_text">Sorry - der is in ynterne flater bard!</string>
     <string name="crash_user_email_label">Opsjoneel: Jo e-postadres foar fragen of updates oer dit probleem.</string>
     <string name="default_section_name">Gjin namme</string>
-    <string name="demo_sess1_description">Snein jûn meditaasje</string>
+    <string name="demo_sess1_description">Sneintejûn meditaasje</string>
     <string name="demo_sess1_name">Zazen en Kinhin</string>
     <string name="demo_sess1_sec1_name">Tarieding</string>
     <string name="demo_sess1_sec2_name">Zazen 1</string>
@@ -50,16 +50,16 @@
     <string name="demo_sess1_sec5_name">Kinne 3</string>
     <string name="demo_sess1_sec6_name">Zazen 3</string>
     <string name="demo_sess2_description">Deistige meditaasje</string>
-    <string name="demo_sess2_name">Allinnich Zazen</string>
+    <string name="demo_sess2_name">Zazen allinne</string>
     <string name="desc_get_messages">As automatyske berjochten útskeakele binne, kinne jo hjir op nijs kontrolearje.</string>
     <string name="desc_keep_screen_on">Hâldt it skerm oan by de meditaasje</string>
     <string name="desc_no_server_messages">Nijs automatysk sjen litte as de app begjint</string>
     <string name="error_checking_for_server_messages">Flater by it opheljen fan nije berjochten.</string>
     <string name="gong_type">Gong Sound</string>
-    <string name="help_sectionlist_text">Hjir kinne jo de ynhâld fan jo sesje neame, beskriuwe en bewurkje.\n\n REORDERING\n Om de items opnij te bestellen, druk lang op in item en \n sleep it nei de nije posysje. rjochts.\n\n BEWERKEN\n Om in seksje te bewurkjen, tikje it ien kear oan.\n\n ADD\n Om in nije seksje ta te foegjen, druk op de + knop.</string>
+    <string name="help_sectionlist_text">Hjir kinne jo de ynhâld fan jo sesje neame, beskriuwe en bewurkje.\n\nREORDERING\nOm opnij oarderje de items, lang druk op in item en\nsleep it nei syn nije posysje.\n\nDELETE\nOm in item te wiskjen, ferpleatse it nei rjochts.\n\nBEWERKE\nOm in seksje te bewurkjen, tikje it ien kear oan.\n\nADD\nOm in nije seksje ta te foegjen, druk op de + knop.</string>
     <string name="help_sectionlist_title">Sesje bewurkje</string>
     <string name="label_section_name">Seksje namme</string>
-    <string name="label_session_description">Sesjebeskriuwing</string>
+    <string name="label_session_description">Sesje Beskriuwing</string>
     <string name="label_session_name">Sesje Namme</string>
     <string name="menu_about">Oer...</string>
     <string name="menu_copy_session">Duplikaat sesje</string>
@@ -74,12 +74,12 @@
     <string name="menu_settings">Ynstellings</string>
     <string name="minuten">Minuten</string>
     <string name="no_new_server_messages">Gjin nije berjochten beskikber.</string>
-    <string name="no_sections_in_session">Kin meditaasje net begjinne: de selektearre sesje hat gjin seksjes.</string>
+    <string name="no_sections_in_session">Kin \'t meditaasje begjinne: De selekteare sesje hat gjin seksjes.</string>
     <string name="no_session_exists">Der is gjin sesje dat kin wurde begûn. Meitsje asjebleaft earst ien.</string>
     <string name="notification_text">In Zazen-meditaasje rint op it stuit</string>
     <string name="notification_text_paused">Zazen Meditaasje stoppe</string>
     <string name="notification_title">Zazen Meditaasje</string>
-    <string name="notification_title_paused">Zazen-meditaasje (pauze)</string>
+    <string name="notification_title_paused">Zazen Meditaasje (pauze)</string>
     <string name="num_bells">Bell telle</string>
     <string name="ok">OK</string>
     <string name="pref_desc_brightness">Helderheid fan \'e werjefte tidens meditaasje</string>
@@ -98,7 +98,7 @@
     <string name="pref_sum_checking">SD-kaart wurdt op it stuit kontrolearre</string>
     <string name="pref_sum_ejecting">SD-kaart wurdt útstutsen</string>
     <string name="pref_sum_nofs">Gjin triemsysteem op SD-kaart</string>
-    <string name="pref_sum_read_only">SD-kaart is allinnich-lês</string>
+    <string name="pref_sum_read_only">SD-kaart is allinnich-lêzen</string>
     <string name="pref_sum_removed">Gjin SD-Card oanwêzich</string>
     <string name="pref_sum_restore">Weromsette jo sesjes en oanpaste lûden fanút de SD-kaart-reservekopy</string>
     <string name="pref_sum_shared">SD-kaart wurdt dield</string>
@@ -118,7 +118,7 @@
     <string name="search_menu_title">Sykje</string>
     <string name="section_info_string_1_pl">%1$d Klokken</string>
     <string name="section_info_string_1_sg">1 belj</string>
-    <string name="section_info_string_2_pl">elke %1$d sekonden</string>
+    <string name="section_info_string_2_pl">eltse %1$d Sekonden</string>
     <string name="section_info_string_2_sg">elke sekonde</string>
     <string name="sekunden">Sekonden</string>
     <string name="select_audio">Selektearje lûdtriem</string>
@@ -130,14 +130,14 @@
     <string name="status_bar_notification_info_overflow">999+</string>
     <string name="test_mute_perm_request">De app is op it stuit net tastien om jo tillefoan te dempen. Iepenje de ynstellings om dit te feroarjen?</string>
     <string name="text_cant_mute">Jo tillefoan lit dizze app it net mute. Skeakelje it dempen út yn dizze Apps-ynstellingen of tastean demping ta yn jo tillefoanynstellingen.</string>
-    <string name="text_no_notify_access_settings">Jo tillefoan liket net de standertynstellingen te hawwen om muting mooglik te meitsjen. Sjoch asjebleaft manuell nei de ynstelling \&amp;quot;Net steure tagong\&amp;quot; en aktivearje it.</string>
+    <string name="text_no_notify_access_settings">Jo tillefoan liket net de standertynstellingen te hawwen om muting mooglik te meitsjen. Sjoch asjebleaft hân foar de \"Net fersteure tagong\" ynstelling en ynskeakelje it.</string>
     <string name="text_no_sections">Gjin Seksjes definiearre.</string>
     <string name="text_question_delete_session">De selektearre sesje echt wiskje?</string>
     <string name="theme">Tema</string>
     <string name="theme_dark">Dark Tema</string>
-    <string name="theme_desc">Kies ljocht as tsjuster uterlik fan \'e App</string>
+    <string name="theme_desc">Kies de app-uterlik</string>
     <string name="theme_light">Ljocht Tema</string>
-    <string name="theme_system">Systeem Tema</string>
+    <string name="theme_system">Systeem tema</string>
     <string name="theme_value_dark">dark</string>
     <string name="theme_value_light">light</string>
     <string name="theme_value_system">system</string>
@@ -157,5 +157,13 @@
     <string name="pref_desc_bell_volume">Bestjoert it folume fan \'e alaarmstream foar kloklûden</string>
     <string name="title_dim_bell">Dim Bell</string>
     <string name="dim_bell_label_off">Net dimmen</string>
-    <string name="dim_bell_label_format">Dimmearre: %1$d0%%</string>
+    <string name="dim_bell_label_format">Dimmt: %1$d0%%</string>
+    <string name="section_deleted">Wiske \'%s\'</string>
+    <string name="action_undo">Ungedien meitsje</string>
+    <string name="notification_channel_name">Meditaasje timer</string>
+    <string name="nav_label_sessions">Sesjes</string>
+    <string name="nav_label_meditation">Meditaasje</string>
+    <string name="nav_label_edit_session">Sesje bewurkje</string>
+    <string name="nav_label_edit_section">Seksje bewurkje</string>
+    <string name="nav_label_settings">Ynstellings</string>
 </resources>

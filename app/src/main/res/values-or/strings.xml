@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="abbrechen">ବାତିଲ୍ କରନ୍ତୁ |</string>
-    <string name="about1">Zazen Meditation Timer — A simple meditation timer with customizable sections, bell sounds, and session management.</string>
-    <string name="about2">Originally created by Stefan Gaffga. Currently maintained by Georg Graf.&lt;br&gt;&lt;br&gt;Thanks to Winfried of &lt;a href="http://www.meditationsuhren.de"&gt;http://www.meditationsuhren.de&lt;/a&gt; for providing such great Bell Sounds!</string>
-    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues"&gt;Report issues on GitHub&lt;/a&gt;</string>
-    <string name="app_description">This application lets the user define a set of meditation sessions and provides a timer with visual and audible feedback when a part or the whole meditation is over.</string>
+    <string name="about1">ଜାଜେନ୍ ଧ୍ୟାନ ସମୟ - କଷ୍ଟୋମାଇଜେବଲ୍ ବିଭାଗ, ଘଣ୍ଟି ଧ୍ୱନି, ଏବଂ ଅଧିବେଶନ ପରିଚାଳନା ସହିତ ଏକ ସରଳ ଧ୍ୟାନ ସମୟ |</string>
+    <string name="about2">ମୂଳତ Ste ଷ୍ଟେଫାନ୍ ଗାଫଗା ଦ୍ୱାରା ସୃଷ୍ଟି | ସମ୍ପ୍ରତି ଜର୍ଜ ଗ୍ରାଫ୍ ଦ୍ୱାରା ପରିଚାଳିତ |</string>
+    <string name="about3">&lt;a href = "https://github.com/georgernstgraf/zazentimer/issues"&gt; GitHub ରେ ସମସ୍ୟାଗୁଡିକ ରିପୋର୍ଟ କରନ୍ତୁ &lt;/a&gt;</string>
+    <string name="app_description">ଏହି ଅନୁପ୍ରୟୋଗ ଉପଭୋକ୍ତାଙ୍କୁ ଧ୍ୟାନ ଅଧିବେଶନର ଏକ ସେଟ୍ ବ୍ୟାଖ୍ୟା କରିବାକୁ ଦିଏ ଏବଂ ଏକ ଅଂଶ କିମ୍ବା ସମଗ୍ର ଧ୍ୟାନ ସମାପ୍ତ ହେଲେ ଭିଜୁଆଲ୍ ଏବଂ ଶ୍ରୋତାପୂର୍ଣ୍ଣ ମତାମତ ସହିତ ଏକ ଟାଇମର୍ ପ୍ରଦାନ କରେ |</string>
     <string name="app_name">Zazen Meditation Timer</string>
     <string name="appbar_scrolling_view_behavior">android.support.design.widget.AppBarLayout $ ScrollingViewBehavior</string>
     <string name="backup_error_text">ଦୁ Sorry ଖିତ, ସଞ୍ଚୟ କରିବା ସମୟରେ ଏକ ତ୍ରୁଟି ଘଟିଗଲା |</string>
     <string name="backup_no_permission">ଅନୁପସ୍ଥିତ ଅନୁମତି ହେତୁ ବ୍ୟାକଅପ୍ ସୃଷ୍ଟି କରିପାରିଲା ନାହିଁ |</string>
     <string name="backup_not_createable">ବ୍ୟାକଅପ୍ ଫାଇଲ୍ ସୃଷ୍ଟି କରିବାରେ ତ୍ରୁଟି |</string>
     <string name="backup_success_text">ବ୍ୟାକଅପ୍ ସଫଳତାର ସହିତ ସୃଷ୍ଟି ହେଲା!</string>
-    <string name="bell_name_1">High Tone</string>
-    <string name="bell_name_2">Low Tone</string>
-    <string name="bell_name_3">Jap. Rhinbowl Dharma, 107mm</string>
-    <string name="bell_name_4">Jap. Rhinbowl Dharma, 88mm (black, glazed)</string>
-    <string name="bell_name_5">Jap. Rhinbowl Shomyo, 90mm</string>
-    <string name="bell_name_6">Jap. Rhinbowl Tang, 164mm</string>
-    <string name="bell_name_7">Tib. Bowl, 230mm</string>
-    <string name="bell_name_8">Jap. Rhinbowl, 97mm</string>
+    <string name="bell_name_1">ଉଚ୍ଚ ସ୍ୱର</string>
+    <string name="bell_name_2">ନିମ୍ନ ସ୍ୱର</string>
+    <string name="bell_name_3">ଜାପ୍ ରାଇନ୍ବୋଲ୍ ଧର୍ମ, 107 ମିମି |</string>
+    <string name="bell_name_4">ଜାପ୍ ରାଇନ୍ବୋଲ୍ ଧର୍ମ, 88 ମିମି (କଳା, ଗ୍ଲାସ୍)</string>
+    <string name="bell_name_5">ଜାପ୍ ରାଇନ୍ବୋଲ୍ ଶୋମିଓ, 90 ମିମି |</string>
+    <string name="bell_name_6">ଜାପ୍ ରାଇନ୍ବୋଲ୍ ଟାଙ୍ଗ୍, 164 ମିମି |</string>
+    <string name="bell_name_7">ତିବ୍ ପାତ୍ର, 230 ମିମି |</string>
+    <string name="bell_name_8">ଜାପ୍ ରାଇନ୍ବୋଲ୍, 97 ମିମି |</string>
     <string name="bell_pause">ବେଲ୍ ଫାଙ୍କ (ସେକେଣ୍ଡ୍)</string>
     <string name="bell_user">ବେଲ୍ ଯୋଡନ୍ତୁ ...</string>
     <string name="bottom_nav_meditation">ଧ୍ୟାନ |</string>
@@ -30,7 +30,7 @@
     <string name="caption_zazen_meditation">ଜାଜେନ୍ ଧ୍ୟାନ |</string>
     <string name="character_counter_pattern">%1$d / %2$d</string>
     <string name="checkbox_keep_screen_on">ସ୍କ୍ରିନ୍ ଅନ୍ ରଖନ୍ତୁ |</string>
-    <string name="checkbox_no_server_messages">ସମ୍ବାଦ ଦେଖାନ୍ତୁ |</string>
+    <string name="checkbox_no_server_messages">ନ୍ୟୁଜ୍ ଦେଖାନ୍ତୁ |</string>
     <string name="checkbox_phone_off">ମ୍ୟୁଟ୍ ଫୋନ୍ |</string>
     <string name="checkbox_phone_off_desc">ସମସ୍ତ ଫୋନ୍ ଶବ୍ଦକୁ ଚୁପ୍ କର |</string>
     <string name="copy_prefix">ର କପି</string>
@@ -42,7 +42,7 @@
     <string name="crash_user_email_label">ବ tion କଳ୍ପିକ: ଏହି ପ୍ରସଙ୍ଗରେ ପ୍ରଶ୍ନ କିମ୍ବା ଅଦ୍ୟତନ ପାଇଁ ଆପଣଙ୍କର ଇ-ମେଲ୍-ଠିକଣା |</string>
     <string name="default_section_name">ନାମହୀନ</string>
     <string name="demo_sess1_description">ରବିବାର ସନ୍ଧ୍ୟା ଧ୍ୟାନ |</string>
-    <string name="demo_sess1_name">ଜାଜେନ୍ ଏବଂ କିନ୍ହିନ୍ |</string>
+    <string name="demo_sess1_name">ଜାଜେନ ଏବଂ କିନ୍ହିନ୍ |</string>
     <string name="demo_sess1_sec1_name">ପ୍ରସ୍ତୁତି</string>
     <string name="demo_sess1_sec2_name">ଜାଜେନ 1</string>
     <string name="demo_sess1_sec3_name">କିନ୍ହିନ୍ 1</string>
@@ -56,7 +56,7 @@
     <string name="desc_no_server_messages">ଆପ୍ ଆରମ୍ଭ ହେବାବେଳେ ସ୍ୱୟଂଚାଳିତ ଭାବରେ ସମ୍ବାଦ ଦେଖାନ୍ତୁ |</string>
     <string name="error_checking_for_server_messages">ନୂତନ ବାର୍ତ୍ତା ଆଣିବାରେ ତ୍ରୁଟି |</string>
     <string name="gong_type">ଗଙ୍ଗ ସାଉଣ୍ଡ |</string>
-    <string name="help_sectionlist_text">ଏଠାରେ ଆପଣ ଆପଣଙ୍କର ଅଧିବେଶନର ବିଷୟବସ୍ତୁର ନାମ, ବର୍ଣ୍ଣନା ଏବଂ ସଂପାଦନ କରିପାରିବେ |</string>
+    <string name="help_sectionlist_text">ଏଠାରେ ତୁମେ ତୁମର ଅଧିବେଶନର ବିଷୟବସ୍ତୁକୁ ନାମ, ବର୍ଣ୍ଣନା ଏବଂ ସଂପାଦନ କରିପାରିବ |\n\nରେକର୍ଡିଂ |\nଆଇଟମଗୁଡିକ ରେକର୍ଡ କରିବାକୁ, ଏକ ଆଇଟମ୍ ଉପରେ ଲମ୍ବା ଦବାନ୍ତୁ ଏବଂ |\nଏହାକୁ ଏହାର ନୂତନ ସ୍ଥିତିକୁ ଟାଣନ୍ତୁ |\n\nବିଲୋପ\nଏକ ଆଇଟମ୍ ଡିଲିଟ୍ କରିବାକୁ, ଏହାକୁ ଡାହାଣକୁ ଘୁଞ୍ଚାନ୍ତୁ |\n\nସମ୍ପାଦନ କରନ୍ତୁ |\nଏକ ବିଭାଗ ସଂପାଦନ କରିବାକୁ, ଏହାକୁ ଥରେ ସ୍ପର୍ଶ କରନ୍ତୁ |\n\nADD\nଏକ ନୂତନ ବିଭାଗ ଯୋଡିବାକୁ, + ବଟନ୍ ଦବାନ୍ତୁ |</string>
     <string name="help_sectionlist_title">ଅଧିବେଶନ ସଂପାଦନ କରନ୍ତୁ |</string>
     <string name="label_section_name">ବିଭାଗ ନାମ</string>
     <string name="label_session_description">ଅଧିବେଶନ ବର୍ଣ୍ଣନା</string>
@@ -74,7 +74,7 @@
     <string name="menu_settings">ସେଟିଂସମୂହ</string>
     <string name="minuten">ମିନିଟ୍ |</string>
     <string name="no_new_server_messages">କ new ଣସି ନୂତନ ବାର୍ତ୍ତା ଉପଲବ୍ଧ ନାହିଁ |</string>
-    <string name="no_sections_in_session">ଧ୍ୟାନ ଆରମ୍ଭ କରିପାରିବ ନାହିଁ: ମନୋନୀତ ଅଧିବେଶନରେ କ any ଣସି ବିଭାଗ ନାହିଁ |</string>
+    <string name="no_sections_in_session">ଧ୍ୟାନ ଆରମ୍ଭ କରିପାରିବ ନାହିଁ: ମନୋନୀତ ଅଧିବେଶନରେ କ S ଣସି ବିଭାଗ ନାହିଁ |</string>
     <string name="no_session_exists">କ no ଣସି ଅଧିବେଶନ ନାହିଁ ଯାହା ଆରମ୍ଭ ହୋଇପାରିବ | ଦୟାକରି ପ୍ରଥମେ ଗୋଟିଏ ସୃଷ୍ଟି କରନ୍ତୁ |</string>
     <string name="notification_text">ଏକ ଜାଜେନ୍ ଧ୍ୟାନ ବର୍ତ୍ତମାନ ଚାଲୁଛି |</string>
     <string name="notification_text_paused">ଜାଜେନ ଧ୍ୟାନ ବିରତ ହେଲା |</string>
@@ -86,7 +86,7 @@
     <string name="pref_get_messages">ବର୍ତ୍ତମାନ ନୂତନ ସନ୍ଦେଶଗୁଡ଼ିକ ଯାଞ୍ଚ କରନ୍ତୁ |</string>
     <string name="pref_mute_mode">ରିଙ୍ଗ୍ ସ୍ୱର ଏବଂ ବିଜ୍ଞପ୍ତିଗୁଡିକ |</string>
     <string name="pref_mute_mode_none">ନୀରବତା</string>
-    <string name="pref_mute_mode_none_desc">ଫୋନ୍ କଲ୍ ଏବଂ ବିଜ୍ଞପ୍ତି ପାଇଁ କ ring ଣସି ରିଙ୍ଗ୍ ଟୋନ୍ ଏବଂ କମ୍ପନ ନାହିଁ |</string>
+    <string name="pref_mute_mode_none_desc">ଫୋନ୍ କଲ ଏବଂ ବିଜ୍ଞପ୍ତି ପାଇଁ କ ring ଣସି ରିଙ୍ଗ୍ ସ୍ୱର ଏବଂ କ vib ଣସି କମ୍ପନ ନାହିଁ |</string>
     <string name="pref_mute_mode_pref">ରିଙ୍ଗ ସ୍ୱର ଏବଂ ବିଜ୍ଞପ୍ତି ସମ୍ବନ୍ଧୀୟ ସେଟିଂସମୂହ |</string>
     <string name="pref_mute_mode_vibrate">କେବଳ କମ୍ପନ |</string>
     <string name="pref_mute_mode_vibrate_desc">କେବଳ ଫୋନ୍ କଲ୍ ଏବଂ ବିଜ୍ଞପ୍ତି ପାଇଁ କମ୍ପନ କରନ୍ତୁ (ଆଣ୍ଡ୍ରଏଡ୍ 7 (ନୋଗାଟ) ରେ କାମ କରେ ନାହିଁ - ସାଇଲେନ୍ସ ସେଟିଂ ପରି ଆଚରଣ କରେ)</string>
@@ -108,7 +108,7 @@
     <string name="privacy_message">ଏହି ଆପ୍ କ personal ଣସି ବ୍ୟକ୍ତିଗତ ତଥ୍ୟ ସଂଗ୍ରହ କରେ ନାହିଁ - ଏହା ମଧ୍ୟ IP- ଠିକଣା କିମ୍ବା ଅନ୍ୟ କ technology ଣସି ପ୍ରଯୁକ୍ତିବିଦ୍ୟା ସମ୍ବନ୍ଧୀୟ ତଥ୍ୟ ବ୍ୟବହାର କରେ ନାହିଁ, କିମ୍ବା ଏହା କ collect ଣସି ପ୍ରକାରେ ସଂଗ୍ରହ, ପ୍ରକ୍ରିୟାକରଣ କିମ୍ବା ବ୍ୟବହାର କରେ ନାହିଁ |</string>
     <string name="privacy_ok">ଠିକ ଅଛି |</string>
     <string name="privacy_title">ଗୋପନୀୟତା ସୂଚନା</string>
-    <string name="really_stop">ପ୍ରକୃତରେ ଧ୍ୟାନ ବନ୍ଦ କର?</string>
+    <string name="really_stop">ପ୍ରକୃତରେ ଧ୍ୟାନ ବନ୍ଦ କରନ୍ତୁ?</string>
     <string name="restore_backup_not_found">ବ୍ୟାକଅପ୍ ଫାଇଲ୍ ମିଳିଲା ନାହିଁ |</string>
     <string name="restore_error_text">ବ୍ୟାକଅପ୍ ରୁ ପୁନରୁଦ୍ଧାରରେ ତ୍ରୁଟି |</string>
     <string name="restore_no_permission">ନିଖୋଜ ଅନୁମତି ହେତୁ ପୁନରୁଦ୍ଧାର ହୋଇପାରିଲା ନାହିଁ |</string>
@@ -130,14 +130,14 @@
     <string name="status_bar_notification_info_overflow">999+</string>
     <string name="test_mute_perm_request">ଆପ୍ ବର୍ତ୍ତମାନ ଆପଣଙ୍କର ଫୋନ୍ କୁ ମ୍ୟୁଟ୍ କରିବାକୁ ଅନୁମତିପ୍ରାପ୍ତ ନୁହେଁ | ଏହାକୁ ପରିବର୍ତ୍ତନ କରିବାକୁ ସେଟିଂସମୂହ ଖୋଲନ୍ତୁ?</string>
     <string name="text_cant_mute">ଆପଣଙ୍କର ଫୋନ୍ ଏହି ଆପ୍ କୁ ମ୍ୟୁଟ୍ କରିବାକୁ ଅନୁମତି ଦିଏ ନାହିଁ | ଏହି ଆପ୍ ସେଟିଂସମୂହରେ ମ୍ୟୁଟିଙ୍ଗ୍ ଅକ୍ଷମ କରନ୍ତୁ କିମ୍ବା ଆପଣଙ୍କର ଫୋନ୍ ସେଟିଂସମୂହରେ ମ୍ୟୁଟିଂ କରିବାକୁ ଅନୁମତି ଦିଅନ୍ତୁ |</string>
-    <string name="text_no_notify_access_settings">ତୁମର ଫୋନ୍ ମ୍ୟୁଟିଙ୍ଗ୍ ଅନୁମତି ଦେବାକୁ ଷ୍ଟାଣ୍ଡାର୍ଡ ସେଟିଙ୍ଗ୍ ଥିବା ପରି ମନେ ହେଉନାହିଁ | ଦୟାକରି \" ଆକ୍ସେସ୍ ବିଚଳିତ କରନ୍ତୁ ନାହିଁ⦆ ସେଟିଂ ଏବଂ ଏହାକୁ ସକ୍ଷମ କରିବାକୁ ମାନୁଆଲୀ ଦେଖନ୍ତୁ |</string>
+    <string name="text_no_notify_access_settings">ତୁମର ଫୋନ୍ ମ୍ୟୁଟିଙ୍ଗ୍ ଅନୁମତି ଦେବାକୁ ଷ୍ଟାଣ୍ଡାର୍ଡ ସେଟିଙ୍ଗ୍ ଥିବା ପରି ମନେ ହେଉନାହିଁ | ଦୟାକରି \" ପାଇଁ ମାନୁଆଲୀ ଦେଖନ୍ତୁ ଆକ୍ସେସ୍ ବ୍ୟାଘାତ କରନ୍ତୁ ନାହିଁ\" ସେଟିଂ ଏବଂ ଏହାକୁ ସକ୍ଷମ କରନ୍ତୁ |</string>
     <string name="text_no_sections">କ No ଣସି ବିଭାଗ ବ୍ୟାଖ୍ୟା କରାଯାଇ ନାହିଁ |</string>
     <string name="text_question_delete_session">ପ୍ରକୃତରେ ମନୋନୀତ ଅଧିବେଶନ ବିଲୋପ କରିବେ କି?</string>
     <string name="theme">ଥିମ୍</string>
     <string name="theme_dark">ଗା ark ଥିମ୍ |</string>
-    <string name="theme_desc">ଆପ୍ ର ହାଲୁକା କିମ୍ବା ଗା dark ଼ ରୂପ ବାଛନ୍ତୁ |</string>
+    <string name="theme_desc">ଆପ୍ ଦୃଶ୍ୟ ବାଛନ୍ତୁ |</string>
     <string name="theme_light">ହାଲୁକା ଥିମ୍ |</string>
-    <string name="theme_system">ସିଷ୍ଟମ୍ ଥିମ୍</string>
+    <string name="theme_system">ସିଷ୍ଟମ୍ ଥିମ୍ |</string>
     <string name="theme_value_dark">dark</string>
     <string name="theme_value_light">light</string>
     <string name="theme_value_system">system</string>
@@ -157,5 +157,13 @@
     <string name="pref_desc_bell_volume">ଘଣ୍ଟି ଧ୍ୱନି ପାଇଁ ଆଲାର୍ମ ଷ୍ଟ୍ରିମ୍ ଭଲ୍ୟୁମ୍ ନିୟନ୍ତ୍ରଣ କରେ |</string>
     <string name="title_dim_bell">ଡିମ୍ ବେଲ୍ |</string>
     <string name="dim_bell_label_off">ଅନ୍ଧକାର ନୁହେଁ |</string>
-    <string name="dim_bell_label_format">ଅଳ୍ପ: %1$d0 %%</string>
+    <string name="dim_bell_label_format">ଅଳ୍ପ: %1$d0%%</string>
+    <string name="section_deleted">ବିଲୋପିତ \'%s\'</string>
+    <string name="action_undo">ପୂର୍ବବତ୍ କରନ୍ତୁ |</string>
+    <string name="notification_channel_name">ଧ୍ୟାନ ସମୟ</string>
+    <string name="nav_label_sessions">ଅଧିବେଶନ</string>
+    <string name="nav_label_meditation">ଧ୍ୟାନ |</string>
+    <string name="nav_label_edit_session">ଅଧିବେଶନ ସଂପାଦନ କରନ୍ତୁ |</string>
+    <string name="nav_label_edit_section">ବିଭାଗ ସଂପାଦନ କରନ୍ତୁ |</string>
+    <string name="nav_label_settings">ସେଟିଂସମୂହ</string>
 </resources>

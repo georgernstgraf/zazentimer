@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="abbrechen">Elatyr</string>
-    <string name="about1">Zazen Meditation Timer — A simple meditation timer with customizable sections, bell sounds, and session management.</string>
-    <string name="about2">Originally created by Stefan Gaffga. Currently maintained by Georg Graf.&lt;br&gt;&lt;br&gt;Thanks to Winfried of &lt;a href="http://www.meditationsuhren.de"&gt;http://www.meditationsuhren.de&lt;/a&gt; for providing such great Bell Sounds!</string>
-    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues"&gt;Report issues on GitHub&lt;/a&gt;</string>
-    <string name="app_description">This application lets the user define a set of meditation sessions and provides a timer with visual and audible feedback when a part or the whole meditation is over.</string>
+    <string name="about1">Zazen Meditasiýa taýmeri - Düzülip bilinýän bölümler, jaň sesleri we sessiýa dolandyryşy bilen ýönekeý meditasiýa taýmeri.</string>
+    <string name="about2">Aslynda Stefan Gaffga tarapyndan döredildi. Häzirki wagtda Georg Graf.</string>
+    <string name="about3">&lt;a href = "https://github.com/georgernstgraf/zazentimer/issues"&gt; GitHub-da meseleleri habar beriň &lt;/a&gt;</string>
+    <string name="app_description">Bu programma ulanyja meditasiýa sessiýalarynyň toplumyny kesgitlemäge mümkinçilik berýär we bir bölegi ýa-da tutuş meditasiýa gutaranda wizual we eşidilýän seslenme bilen taýmer üpjün edýär.</string>
     <string name="app_name">Zazen Meditation Timer</string>
     <string name="appbar_scrolling_view_behavior">android.support.design.widget.AppBarLayout $ ScrollingViewBehavior</string>
     <string name="backup_error_text">Bagyşlaň, tygşytlamakda säwlik ýüze çykdy.</string>
     <string name="backup_no_permission">Rugsatlaryň ýoklugy sebäpli ätiýaçlyk döredip bilmedi.</string>
     <string name="backup_not_createable">Uptiýaçlyk faýl döretmekde säwlik.</string>
     <string name="backup_success_text">Uptiýaçlyk üstünlikli döredildi!</string>
-    <string name="bell_name_1">High Tone</string>
-    <string name="bell_name_2">Low Tone</string>
+    <string name="bell_name_1">Tokary ses</string>
+    <string name="bell_name_2">Pes ses</string>
     <string name="bell_name_3">Jap. Rhinbowl Dharma, 107mm</string>
-    <string name="bell_name_4">Jap. Rhinbowl Dharma, 88mm (black, glazed)</string>
-    <string name="bell_name_5">Jap. Rhinbowl Shomyo, 90mm</string>
+    <string name="bell_name_4">Jap. Rhinbowl Dharma, 88mm (gara, syrçaly)</string>
+    <string name="bell_name_5">Jap. Rhinbowl Şomyo, 90mm</string>
     <string name="bell_name_6">Jap. Rhinbowl Tang, 164mm</string>
-    <string name="bell_name_7">Tib. Bowl, 230mm</string>
+    <string name="bell_name_7">Tib. Käse, 230mm</string>
     <string name="bell_name_8">Jap. Rhinbowl, 97mm</string>
     <string name="bell_pause">Jaň boşlugy (sek)</string>
     <string name="bell_user">Bell goş ...</string>
@@ -33,7 +33,7 @@
     <string name="checkbox_no_server_messages">Täzelikleri görkez</string>
     <string name="checkbox_phone_off">Sessiz telefon</string>
     <string name="checkbox_phone_off_desc">Phonehli telefon seslerini öçüriň.</string>
-    <string name="copy_prefix">Göçür</string>
+    <string name="copy_prefix">Göçürme</string>
     <string name="crash_dialog_comment_prompt">Meýletin: Haýsy hereket ýalňyşlyga sebäp boldy?</string>
     <string name="crash_dialog_ok_toast">Kömekiňiz üçin köp sag boluň!</string>
     <string name="crash_dialog_text">Erroralňyşlyk ýüze çykanyna gynanýaryn. Bu näsazlyk hasabatyny ibermek we bu eden işiňiz barada has giňişleýin maglumat ibermek bilen bu meseläni tapmaga we düzetmäge kömek edip bilersiňiz.</string>
@@ -56,7 +56,7 @@
     <string name="desc_no_server_messages">Programma başlanda täzelikleri awtomatiki görkeziň</string>
     <string name="error_checking_for_server_messages">Täze habarlary almakda säwlik.</string>
     <string name="gong_type">Gong ses</string>
-    <string name="help_sectionlist_text">Bu ýerde Sessiýaňyzyň mazmunyny atlandyryp, suratlandyryp we redaktirläp bilersiňiz.</string>
+    <string name="help_sectionlist_text">Bu ýerde Sessiýaňyzyň mazmunyny atlandyryp, suratlandyryp we redaktirläp bilersiňiz.\n\nREazgy\nHarytlary tertipleşdirmek üçin bir elemente uzak basyň we\ntäze ýagdaýyna süýräň.\n\nÖçürmek\nBir elementi pozmak üçin ony saga geçiriň.\n\nÜýtget\nBölümi redaktirlemek üçin diňe bir gezek degiň.\n\nGoşuň\nTäze bölüm goşmak üçin + düwmesine basyň.</string>
     <string name="help_sectionlist_title">Sessiýany redaktirläň</string>
     <string name="label_section_name">Bölümiň ady</string>
     <string name="label_session_description">Sessiýanyň beýany</string>
@@ -89,7 +89,7 @@
     <string name="pref_mute_mode_none_desc">Telefon jaňlary we habarnamalar üçin jaň sesi we yrgyldy ýok</string>
     <string name="pref_mute_mode_pref">Jyňňyrdaýan sesler we bildirişler</string>
     <string name="pref_mute_mode_vibrate">Diňe Wibrasiýa</string>
-    <string name="pref_mute_mode_vibrate_desc">Diňe telefon jaňlary we bildirişler üçin titräň (Android 7-de işlemeýär (Nougat) - Sessizlik sazlamasy ýaly hereket edýär)</string>
+    <string name="pref_mute_mode_vibrate_desc">Diňe telefon jaňlary we habarnamalar üçin titräň (Android 7-de işlemeýär (Nougat) - Sessizlik sazlamasy ýaly hereket edýär)</string>
     <string name="pref_mute_mode_vibrate_sound">Jyňňyrdaýan ses we yrgyldy</string>
     <string name="pref_mute_mode_vibrate_sound_desc">Jyňňyrdaýan ses we wibrasiýa çalyň</string>
     <string name="pref_muting">Sessiz sazlamalar</string>
@@ -108,11 +108,11 @@
     <string name="privacy_message">Bu programma şahsy maglumatlary ýygnamaýar - IP-Salgylary ýa-da tehnologiýa bilen baglanyşykly başga maglumatlary ulanmaýar, ýa-da haýsydyr bir usul bilen ýygnamaýar, işlemeýär we ulanmaýar.</string>
     <string name="privacy_ok">Bolýar</string>
     <string name="privacy_title">Gizlinlik maglumatlary</string>
-    <string name="really_stop">Meditasiýany hakykatdanam bes ediň?</string>
+    <string name="really_stop">Meditasiýany hakykatdanam bes edersiňmi?</string>
     <string name="restore_backup_not_found">Uptiýaçlyk faýl tapylmady</string>
     <string name="restore_error_text">Uptiýaçlyk nusgasyndan dikeltmekde säwlik</string>
     <string name="restore_no_permission">Rugsat ýoklugy sebäpli dikeldip bolmady.</string>
-    <string name="restore_really_text">Bu, ähli Sessiýalaryňyzy ätiýaçlykdakylar bilen çalşar! (Undok et!)</string>
+    <string name="restore_really_text">Bu, ähli Sessiýalaryňyzy ätiýaçlykdakylar bilen çalşar! (Yza gaýtarma!)</string>
     <string name="restore_really_title">Hakykatdanam maglumatlary dikeltmeli?</string>
     <string name="restore_success_text">Maglumat üstünlikli dikeldilýär</string>
     <string name="search_menu_title">Gözlemek</string>
@@ -130,12 +130,12 @@
     <string name="status_bar_notification_info_overflow">999+</string>
     <string name="test_mute_perm_request">Programma häzirki wagtda telefonyňyzy öçürmäge rugsat berilmeýär. Muny üýtgetmek üçin sazlamalary açyň?</string>
     <string name="text_cant_mute">Telefonyňyz bu programmanyň sesini çykarmagyna rugsat bermeýär. Bu programmalar sazlamalarynda sesini öçüriň ýa-da Telefon sazlamalarynda ses bermäge rugsat beriň.</string>
-    <string name="text_no_notify_access_settings">Telefonyňyzda ses çykarmak üçin adaty sazlamalar ýok ýaly. \ &amp;quot;Girişi bozmaň \&amp;quot; sazlamak we işletmek üçin el bilen gözläň.</string>
+    <string name="text_no_notify_access_settings">Telefonyňyzda ses çykarmak üçin adaty sazlamalar ýok ýaly. \" el bilen gözläň, elýeterliligi bozmaň\" Sazlamak we işletmek.</string>
     <string name="text_no_sections">Bölümler kesgitlenmedi.</string>
     <string name="text_question_delete_session">Saýlanan sessiýany hakykatdanam pozup bilersiňizmi?</string>
     <string name="theme">Mowzuk</string>
     <string name="theme_dark">Garaňky tema</string>
-    <string name="theme_desc">Programmanyň ýeňil ýa-da garaňky görnüşini saýlaň</string>
+    <string name="theme_desc">Programmanyň daşky görnüşini saýlaň</string>
     <string name="theme_light">Lightagtylyk mowzugy</string>
     <string name="theme_system">Ulgam mowzugy</string>
     <string name="theme_value_dark">dark</string>
@@ -158,4 +158,12 @@
     <string name="title_dim_bell">Dim Bell</string>
     <string name="dim_bell_label_off">Garaňky däl</string>
     <string name="dim_bell_label_format">Ölçeg: %1$d0%%</string>
+    <string name="section_deleted">Öçürildi \'%s\'</string>
+    <string name="action_undo">Yzyna gaýtar</string>
+    <string name="notification_channel_name">Meditasiýa taýmeri</string>
+    <string name="nav_label_sessions">Sessiýalar</string>
+    <string name="nav_label_meditation">Meditasiýa</string>
+    <string name="nav_label_edit_session">Sessiýany redaktirläň</string>
+    <string name="nav_label_edit_section">Bölümi redaktirläň</string>
+    <string name="nav_label_settings">Sazlamalar</string>
 </resources>

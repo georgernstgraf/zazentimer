@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="abbrechen">Kanselleer</string>
-    <string name="about1">Zazen Meditation Timer — A simple meditation timer with customizable sections, bell sounds, and session management.</string>
-    <string name="about2">Originally created by Stefan Gaffga. Currently maintained by Georg Graf.&lt;br&gt;&lt;br&gt;Thanks to Winfried of &lt;a href="http://www.meditationsuhren.de"&gt;http://www.meditationsuhren.de&lt;/a&gt; for providing such great Bell Sounds!</string>
-    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues"&gt;Report issues on GitHub&lt;/a&gt;</string>
-    <string name="app_description">This application lets the user define a set of meditation sessions and provides a timer with visual and audible feedback when a part or the whole meditation is over.</string>
+    <string name="about1">Zazen Meditasie Timer - \'n Eenvoudige meditasie timer met aanpasbare afdelings, klokklanke en sessiebestuur.</string>
+    <string name="about2">Oorspronklik geskep deur Stefan Gaffga. Tans onderhou deur Georg Graf.&lt;br&gt;&lt;br&gt;Dankie aan Winfried van &lt;a href="http://www.meditationsuhren.de"&gt;http://www.meditationsuhren.de&lt;/a&gt; vir die verskaffing van sulke wonderlike klokklanke!</string>
+    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues"&gt;Gee probleme op GitHub aan&lt;/a&gt;</string>
+    <string name="app_description">Hierdie toepassing laat die gebruiker \'n stel meditasiesessies definieer en bied \'n timer met visuele en hoorbare terugvoer wanneer \'n deel of die hele meditasie verby is.</string>
     <string name="app_name">Zazen Meditation Timer</string>
     <string name="appbar_scrolling_view_behavior">android.support.design.widget.AppBarLayout$ScrollingView Behavior</string>
     <string name="backup_error_text">Jammer, \'n fout het voorgekom tydens stoor.</string>
     <string name="backup_no_permission">Kon nie rugsteun skep nie weens ontbrekende toestemmings.</string>
     <string name="backup_not_createable">Kon nie rugsteunlêer skep nie.</string>
     <string name="backup_success_text">Rugsteun suksesvol geskep!</string>
-    <string name="bell_name_1">High Tone</string>
-    <string name="bell_name_2">Low Tone</string>
-    <string name="bell_name_3">Jap. Rhinbowl Dharma, 107mm</string>
-    <string name="bell_name_4">Jap. Rhinbowl Dharma, 88mm (black, glazed)</string>
-    <string name="bell_name_5">Jap. Rhinbowl Shomyo, 90mm</string>
-    <string name="bell_name_6">Jap. Rhinbowl Tang, 164mm</string>
-    <string name="bell_name_7">Tib. Bowl, 230mm</string>
+    <string name="bell_name_1">Hoë toon</string>
+    <string name="bell_name_2">Lae toon</string>
+    <string name="bell_name_3">Jap. Rhinbowl Dharma, 107 mm</string>
+    <string name="bell_name_4">Jap. Rhinbowl Dharma, 88 mm (swart, geglasuurd)</string>
+    <string name="bell_name_5">Jap. Rhinbowl Shomyo, 90 mm</string>
+    <string name="bell_name_6">Jap. Rhinbowl Tang, 164 mm</string>
+    <string name="bell_name_7">Tib. Bak, 230 mm</string>
     <string name="bell_name_8">Jap. Rhinbowl, 97mm</string>
     <string name="bell_pause">Bell gap (sek)</string>
     <string name="bell_user">Voeg Bell by...</string>
@@ -53,10 +53,10 @@
     <string name="demo_sess2_name">Slegs Zazen</string>
     <string name="desc_get_messages">As outomatiese boodskappe gedeaktiveer is, kan jy hier kyk vir nuus.</string>
     <string name="desc_keep_screen_on">Hou die skerm aan tydens die meditasie</string>
-    <string name="desc_no_server_messages">Wys Nuus outomaties wanneer App begin</string>
+    <string name="desc_no_server_messages">Wys nuus outomaties wanneer die toepassing begin</string>
     <string name="error_checking_for_server_messages">Kon nie nuwe boodskappe haal nie.</string>
     <string name="gong_type">Gong klank</string>
-    <string name="help_sectionlist_text">Hier kan jy die inhoud van jou Sessie benoem, beskryf en wysig.\n\n HERBEORDELING\n Om die items te herrangskik, druk lank op \'n item en\n sleep dit na sy nuwe posisie.\n\n SKEE UIT\n Om \'n item uit te vee, skuif dit na regs.\n\n WYSIG\n Om \'n afdeling te wysig, raak net \'n nuwe afdeling by.\n\n Om \'n nuwe afdeling by te voeg.\n\n.</string>
+    <string name="help_sectionlist_text">Hier kan jy die inhoud van jou Sessie benoem, beskryf en wysig.\n\nHERBEORDELING\nOm die items te herrangskik, druk lank op \'n item en\nsleep dit na sy nuwe posisie.\n\nSKEP tans uit\nOm \'n item uit te vee, skuif dit na regs.\n\nEDIT\nOm \'n afdeling te wysig, raak dit net een keer.\n\nVOEG TOE\nOm \'n nuwe afdeling by te voeg, druk die + knoppie.</string>
     <string name="help_sectionlist_title">Wysig sessie</string>
     <string name="label_section_name">Afdeling naam</string>
     <string name="label_session_description">Sessiebeskrywing</string>
@@ -74,7 +74,7 @@
     <string name="menu_settings">Instellings</string>
     <string name="minuten">Minute</string>
     <string name="no_new_server_messages">Geen nuwe boodskappe beskikbaar nie.</string>
-    <string name="no_sections_in_session">Kan nie meditasie begin nie: Die geselekteerde sessie het geen afdelings nie.</string>
+    <string name="no_sections_in_session">Kan\' nie meditasie begin nie: Die geselekteerde sessie het geen afdelings nie.</string>
     <string name="no_session_exists">Daar is geen sessie wat begin kan word nie. Skep asseblief eers een.</string>
     <string name="notification_text">\'n Zazen-meditasie is tans aan die gang</string>
     <string name="notification_text_paused">Zazen Meditasie het onderbreek</string>
@@ -110,7 +110,7 @@
     <string name="privacy_title">Privaatheid inligting</string>
     <string name="really_stop">Regtig stop die meditasie?</string>
     <string name="restore_backup_not_found">Rugsteunlêer nie gevind nie</string>
-    <string name="restore_error_text">Kon nie teruglaai vanaf Rugsteun nie</string>
+    <string name="restore_error_text">Kon nie teruglaai vanaf rugsteun nie</string>
     <string name="restore_no_permission">Kon nie herstel nie weens ontbrekende toestemming.</string>
     <string name="restore_really_text">Dit sal al jou sessies vervang met dié in die rugsteun! (Geen ongedaan maak nie!)</string>
     <string name="restore_really_title">Stel data regtig terug?</string>
@@ -129,13 +129,13 @@
     <string name="session_list_unnamed_entry">Naamlose sessie</string>
     <string name="status_bar_notification_info_overflow">999+</string>
     <string name="test_mute_perm_request">Die toepassing word tans nie toegelaat om jou foon te demp nie. Maak die instellings oop om dit te verander?</string>
-    <string name="text_cant_mute">Jou foon laat nie toe dat hierdie toepassing dit demp nie. Deaktiveer demp in hierdie toepassingsinstellings of laat demp toe in jou fooninstellings.</string>
-    <string name="text_no_notify_access_settings">Dit lyk of jou foon nie die standaardinstellings het om demping toe te laat nie. Soek asseblief handmatig vir die \&amp;quot;Moenie Toegang Steur Nie&amp;quot;-instelling en aktiveer dit.</string>
+    <string name="text_cant_mute">Jou foon laat nie toe dat hierdie toepassing dit demp nie. Deaktiveer demp in hierdie toepassingsinstellings of laat demp in jou fooninstellings toe.</string>
+    <string name="text_no_notify_access_settings">Dit lyk of jou foon nie die standaardinstellings het om demping toe te laat nie. Soek asseblief handmatig vir die \"Moenie Steur Toegang\"-instelling en aktiveer dit.</string>
     <string name="text_no_sections">Geen afdelings gedefinieer nie.</string>
     <string name="text_question_delete_session">Vee regtig die geselekteerde sessie uit?</string>
     <string name="theme">Tema</string>
     <string name="theme_dark">Donker Tema</string>
-    <string name="theme_desc">Kies ligte of donker voorkoms van die toepassing</string>
+    <string name="theme_desc">Kies die toepassing se voorkoms</string>
     <string name="theme_light">Ligte tema</string>
     <string name="theme_system">Stelsel Tema</string>
     <string name="theme_value_dark">dark</string>
@@ -157,5 +157,13 @@
     <string name="pref_desc_bell_volume">Beheer die alarmstroomvolume vir klokklanke</string>
     <string name="title_dim_bell">Dowwe klok</string>
     <string name="dim_bell_label_off">Nie verdof nie</string>
-    <string name="dim_bell_label_format">Verduister: %1$d0%%</string>
+    <string name="dim_bell_label_format">Gedemp: %1$d0%%</string>
+    <string name="section_deleted">Het \'%s\' uitgevee</string>
+    <string name="action_undo">Ontdoen</string>
+    <string name="notification_channel_name">Meditasie Timer</string>
+    <string name="nav_label_sessions">Sessies</string>
+    <string name="nav_label_meditation">Meditasie</string>
+    <string name="nav_label_edit_session">Wysig sessie</string>
+    <string name="nav_label_edit_section">Wysig Afdeling</string>
+    <string name="nav_label_settings">Instellings</string>
 </resources>

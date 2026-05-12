@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="abbrechen">Fa\'aleaogaina</string>
-    <string name="about1">Zazen Meditation Timer — A simple meditation timer with customizable sections, bell sounds, and session management.</string>
-    <string name="about2">Originally created by Stefan Gaffga. Currently maintained by Georg Graf.&lt;br&gt;&lt;br&gt;Thanks to Winfried of &lt;a href="http://www.meditationsuhren.de"&gt;http://www.meditationsuhren.de&lt;/a&gt; for providing such great Bell Sounds!</string>
-    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues"&gt;Report issues on GitHub&lt;/a&gt;</string>
-    <string name="app_description">This application lets the user define a set of meditation sessions and provides a timer with visual and audible feedback when a part or the whole meditation is over.</string>
+    <string name="about1">Zazen Meditation Timer - O se taimi mafaufau loloto faigofie ma vaega faʻapitoa, logo logo, ma le pulega o sauniga.</string>
+    <string name="about2">Muamua na faia e Stefan Gaffga. O lo\'o tausia nei e Georg Graf.&lt;br&gt;&lt;br&gt;Fa\'afetai ia Winfried o &lt;a href="http://www.meditationsuhren.de"&gt;http://www.meditationsuhren.de&lt;/a&gt; mo le sauniaina o le tele o Bell Sounds!</string>
+    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues"&gt;Lipoti mataupu ile GitHub&lt;/a&gt;</string>
+    <string name="app_description">O lenei talosaga e mafai ai e le tagata faʻaoga ona faʻamalamalamaina se seti o taimi mafaufau loloto ma tuʻuina atu se taimi faʻatasi ai ma faʻamatalaga vaaia ma faʻalogo pe a uma se vaega poʻo le mafaufau loloto atoa.</string>
     <string name="app_name">Zazen Meditation Timer</string>
     <string name="appbar_scrolling_view_behavior">android.support.design.widget.AppBarLayout$ScrollingViewBehavior</string>
     <string name="backup_error_text">Fa\'amalie atu, na tupu se mea sese a\'o sefe.</string>
     <string name="backup_no_permission">Le mafai ona fai fa\'amaumauga ona o fa\'atagaga o misi.</string>
     <string name="backup_not_createable">Sese le faiga o faila faaleoleo.</string>
-    <string name="backup_success_text">Ua manuia le faiga o le faaleoleo!</string>
-    <string name="bell_name_1">High Tone</string>
-    <string name="bell_name_2">Low Tone</string>
-    <string name="bell_name_3">Jap. Rhinbowl Dharma, 107mm</string>
-    <string name="bell_name_4">Jap. Rhinbowl Dharma, 88mm (black, glazed)</string>
-    <string name="bell_name_5">Jap. Rhinbowl Shomyo, 90mm</string>
-    <string name="bell_name_6">Jap. Rhinbowl Tang, 164mm</string>
-    <string name="bell_name_7">Tib. Bowl, 230mm</string>
-    <string name="bell_name_8">Jap. Rhinbowl, 97mm</string>
+    <string name="backup_success_text">Na manuia le faia o le faaleoleo!</string>
+    <string name="bell_name_1">Leo maualuga</string>
+    <string name="bell_name_2">Leo Maulalo</string>
+    <string name="bell_name_3">Iapo. Rhinbowl Dharma, 107mm</string>
+    <string name="bell_name_4">Iapo. Rhinbowl Dharma, 88mm (uliuli, fa\'aiila)</string>
+    <string name="bell_name_5">Iapo. Rhinbowl Shomyo, 90mm</string>
+    <string name="bell_name_6">Iapo. Rhinbowl Tang, 164mm</string>
+    <string name="bell_name_7">Tib. Pesini, 230mm</string>
+    <string name="bell_name_8">Iapo. Rhinbowl, 97mm</string>
     <string name="bell_pause">avanoa logo (sec)</string>
     <string name="bell_user">Fa\'aopoopo Bell...</string>
     <string name="bottom_nav_meditation">Mafaufauga Loloto</string>
@@ -36,10 +36,10 @@
     <string name="copy_prefix">Kopi o</string>
     <string name="crash_dialog_comment_prompt">Filifili: O le fea gaioiga na mafua ai le mea sese?</string>
     <string name="crash_dialog_ok_toast">Faafetai tele mo lau fesoasoani!</string>
-    <string name="crash_dialog_text">Ou te faamalie atu, ua tupu se mea sese. E mafai ona e fesoasoani mai ia te aʻu e suʻe ma faʻaleleia lenei faʻafitauli e ala i le lafoina o le lipoti o le pusa ma atonu o nisi faʻamatalaga i mea na e faia.</string>
+    <string name="crash_dialog_text">Ou te faamalie atu, ua tupu se mea sese. E mafai ona e fesoasoani mai ia te aʻu e suʻe ma faʻaleleia lenei faʻafitauli e ala i le lafoina o le lipoti o le pusa ma atonu e sili atu faʻamatalaga i mea na e faia.</string>
     <string name="crash_dialog_title">Taimi Mafaufauga Loloto a Zazen</string>
     <string name="crash_toast_text">Fa\'amalie atu - ua tupu se Fa\'aletonu i totonu!</string>
-    <string name="crash_user_email_label">Filifili: O lau imeli-Address mo fesili poʻo faʻamatalaga i lenei mataupu.</string>
+    <string name="crash_user_email_label">Filifili: Lau tuatusi imeli mo fesili po\'o fa\'afouga i lenei mataupu.</string>
     <string name="default_section_name">Le ta\'ua</string>
     <string name="demo_sess1_description">Mafaufau loloto i le afiafi o le Aso Sa</string>
     <string name="demo_sess1_name">Zazen ma Kinhin</string>
@@ -49,14 +49,14 @@
     <string name="demo_sess1_sec4_name">Zazen 2</string>
     <string name="demo_sess1_sec5_name">Kinina 3</string>
     <string name="demo_sess1_sec6_name">Zazen 3</string>
-    <string name="demo_sess2_description">Mafaufau loloto i aso uma</string>
+    <string name="demo_sess2_description">Mafaufauga loloto i aso uma</string>
     <string name="demo_sess2_name">Na\'o Zazen</string>
     <string name="desc_get_messages">Afai e fa\'aletonu fe\'au otometi, e mafai ona e siaki mo tala fou iinei.</string>
     <string name="desc_keep_screen_on">Fa\'aola pea le lau ile taimi ole mafaufau loloto</string>
     <string name="desc_no_server_messages">Fa\'aali otometi Tala Fou pe a amata le App</string>
     <string name="error_checking_for_server_messages">Sese i le aumaia o fe\'au fou.</string>
     <string name="gong_type">Gong Sound</string>
-    <string name="help_sectionlist_text">E mafai ona e ta\'u igoa, faamatala ma faasa\'o mea o lo\'o i totonu o lau Sauniga.\n\n REORDERING\n Ina ia toe fa\'atonu mea, oomi umi i luga o se mea ma\n toso i lona tulaga fou.\n\n AVEA\n, fa\'agaoioi e tape le meataitasi. taumatau.\n\n EDIT\n Ina ia fa\'asa\'o se vaega, na\'o le pa\'i tasi lava.\n\n ADD\n Ina ia fa\'aopoopo se vaega fou, oomi le + button.</string>
+    <string name="help_sectionlist_text">E mafai ona e fa\'aigoaina, fa\'amatala ma fa\'asa\'o mea o lo\'o i totonu o lau Sauniga.\n\nToe fa\'atonu\nIna ia toe faatulaga aitema, oomi umi i luga o se mea ma\ntoso i lona tulaga fou.\n\nAVE\nIna ia tape se mea, ave i le itu taumatau.\n\nFA\'ASA\'E\nIna ia fa\'asa\'o se vaega, na\'o le pa\'i tasi i ai.\n\nFA\'AFI\nIna ia faaopoopo se vaega fou, oomi le + faamau.</string>
     <string name="help_sectionlist_title">Fa\'atonu Sauniga</string>
     <string name="label_section_name">Igoa vaega</string>
     <string name="label_session_description">Fa\'amatalaga o Sauniga</string>
@@ -74,7 +74,7 @@
     <string name="menu_settings">Fa\'atonu</string>
     <string name="minuten">minute</string>
     <string name="no_new_server_messages">Leai ni fe\'au fou e maua.</string>
-    <string name="no_sections_in_session">Le mafai ona amata Mafaufauga Loloto: Ole Sauniga filifilia e leai ni Vaega.</string>
+    <string name="no_sections_in_session">Le mafai\'t amata Mafaufauga Loloto: Ole Sauniga ua filifilia e leai ni Vaega.</string>
     <string name="no_session_exists">E leai se sauniga e mafai ona amata. Fa\'amolemole fai muamua se tasi.</string>
     <string name="notification_text">A Zazen Meditation o loʻo taʻavale nei</string>
     <string name="notification_text_paused">Na taofi le Zazen Meditation</string>
@@ -105,12 +105,12 @@
     <string name="pref_title_backup">Fausia Fa\'amaumauga</string>
     <string name="pref_title_brightness">Malamalama</string>
     <string name="pref_title_restore">Toe fa\'afo\'i mai le Backup</string>
-    <string name="privacy_message">Lenei App e le aoina mai soʻo se faʻamatalaga patino - e le faʻaogaina foi IP-Addresses poʻo soʻo se isi faʻamatalaga faʻatekonolosi, e le aoina, faʻaogaina pe faʻaogaina soʻo se auala.</string>
+    <string name="privacy_message">O lenei App e le aoina mai soʻo se faʻamatalaga patino - e le faʻaogaina foi IP-Addresses poʻo soʻo se isi faʻamatalaga faʻatekonolosi, e le aoina, faʻaogaina pe faʻaogaina soʻo se auala.</string>
     <string name="privacy_ok">Ua lelei</string>
     <string name="privacy_title">Fa\'amatalaga Fa\'alilolilo</string>
     <string name="really_stop">Taofi moni le mafaufau loloto?</string>
     <string name="restore_backup_not_found">E le maua le faila faila</string>
-    <string name="restore_error_text">Sese i le toe fa\'afo\'isia mai le Backup</string>
+    <string name="restore_error_text">Sese le toe fa\'afo\'i mai le Fa\'asao</string>
     <string name="restore_no_permission">Le mafai ona toe fa\'afo\'i ona o le misi o le fa\'atagaga.</string>
     <string name="restore_really_text">O le a suia uma au Sauniga ma mea o loʻo i totonu o le Backup! (Leai Lafo!)</string>
     <string name="restore_really_title">Toe fa\'afo\'i fa\'amatalaga?</string>
@@ -126,16 +126,16 @@
     <string name="content_desc_drag_handle">Toso e toe fa\'atonu</string>
     <string name="content_desc_section_actions">Fa\'atino vaega</string>
     <string name="content_desc_session_actions">Gaioiga o sauniga</string>
-    <string name="session_list_unnamed_entry">Sauniga e le ta\'ua</string>
+    <string name="session_list_unnamed_entry">Sauniga Le Ta\'u igoa</string>
     <string name="status_bar_notification_info_overflow">999+</string>
     <string name="test_mute_perm_request">O le App e le o faatagaina i le taimi nei e gugu lau telefoni. Tatala le faatulagaga e sui ai lenei mea?</string>
     <string name="text_cant_mute">E le fa\'atagaina e lau Telefoni lenei App e gugu. Fa\'agata le fa\'alogo i totonu o lenei Fa\'atonu Fa\'atonu pe fa\'ataga le fa\'alogo i lau Fa\'atonu Telefoni.</string>
-    <string name="text_no_notify_access_settings">O lau Telefoni e foliga mai e leai ni fa\'atulagaga masani e fa\'ataga ai le muting. Fa\'amolemole su\'e ma le lima le \&amp;quot;Aua le Fa\'alavelave Avanoa\&amp;quot; Seti ma fa\'agaoioi.</string>
+    <string name="text_no_notify_access_settings">O lau Telefoni e foliga mai e leai ni fa\'atulagaga masani e fa\'ataga ai le muting. Fa\'amolemole su\'e ma le lima le \"Aua le Fa\'alavelave Avanoa\" Seti ma fa\'agaoioi.</string>
     <string name="text_no_sections">Leai se Vaega ua fa\'amalamalamaina.</string>
     <string name="text_question_delete_session">Aveese moni le Sauniga ua filifilia?</string>
     <string name="theme">Autu</string>
     <string name="theme_dark">Autu Pogisa</string>
-    <string name="theme_desc">Filifili foliga malamalama pe pogisa o le App</string>
+    <string name="theme_desc">Filifili foliga o le app</string>
     <string name="theme_light">Autu Malamalama</string>
     <string name="theme_system">Autu Faiga</string>
     <string name="theme_value_dark">dark</string>
@@ -155,7 +155,15 @@
     <string name="stop_meditation_cancel">Fa\'aleaogaina</string>
     <string name="pref_title_bell_volume">Bell Volume</string>
     <string name="pref_desc_bell_volume">Puleaina le leo o le alavai mo leo logo</string>
-    <string name="title_dim_bell">Fa\'alilo logo</string>
+    <string name="title_dim_bell">Fa\'amumu Bell</string>
     <string name="dim_bell_label_off">E le faanenefu</string>
     <string name="dim_bell_label_format">Faanenefu: %1$d0%%</string>
+    <string name="section_deleted">Ave\'ese \'%s_\'</string>
+    <string name="action_undo">Tatala</string>
+    <string name="notification_channel_name">Taimi Mafaufauga Loloto</string>
+    <string name="nav_label_sessions">Sauniga</string>
+    <string name="nav_label_meditation">Mafaufauga Loloto</string>
+    <string name="nav_label_edit_session">Fa\'atonu Sauniga</string>
+    <string name="nav_label_edit_section">Fa\'atonu Vaega</string>
+    <string name="nav_label_settings">Fa\'atonu</string>
 </resources>

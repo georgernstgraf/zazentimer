@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="abbrechen">באָטל מאַכן</string>
-    <string name="about1">Zazen Meditation Timer — A simple meditation timer with customizable sections, bell sounds, and session management.</string>
-    <string name="about2">Originally created by Stefan Gaffga. Currently maintained by Georg Graf.&lt;br&gt;&lt;br&gt;Thanks to Winfried of &lt;a href="http://www.meditationsuhren.de"&gt;http://www.meditationsuhren.de&lt;/a&gt; for providing such great Bell Sounds!</string>
-    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues"&gt;Report issues on GitHub&lt;/a&gt;</string>
-    <string name="app_description">This application lets the user define a set of meditation sessions and provides a timer with visual and audible feedback when a part or the whole meditation is over.</string>
+    <string name="about1">Zazen מעדיטאַטיאָן טיימער - אַ פּשוט קלערן טייַמער מיט קוסטאָמיזאַבלע סעקשאַנז, גלאָק סאָונדס און סעסיע פאַרוואַלטונג.</string>
+    <string name="about2">ערידזשנאַלי באשאפן דורך Stefan Gaffga. איצט מיינטיינד דורך Georg Graf.&lt;br&gt;&lt;br&gt;דאַנק צו Winfried פון &lt;a href="http://www.meditationsuhren.de"&gt;http://www.meditationsuhren.de&lt;/a&gt; פֿאַר פּראַוויידינג אַזאַ גרויס בעל סאָונדס!</string>
+    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues"&gt; באריכט ישוז אויף GitHub&lt;/a&gt;</string>
+    <string name="app_description">די אַפּלאַקיישאַן אַלאַוז דער באַניצער צו דעפינירן אַ גאַנג פון קלערן סעשאַנז און גיט אַ טייַמער מיט וויזשאַוואַל און דייַטלעך באַמערקונגען ווען אַ טייל אָדער די גאנצע קלערן איז איבער.</string>
     <string name="app_name">Zazen Meditation Timer</string>
     <string name="appbar_scrolling_view_behavior">android.support.design.widget.AppBarLayout$ScrollingViewBehavior</string>
-    <string name="backup_error_text">אנטשולדיגט, א טעות איז פארגעקומען בשעת שפּאָרן.</string>
+    <string name="backup_error_text">אנטשולדיגט, אַ טעות איז פארגעקומען בשעת שפּאָרן.</string>
     <string name="backup_no_permission">קען נישט מאַכן באַקאַפּ ווייַל פון פעלנדיק פּערמישאַנז.</string>
     <string name="backup_not_createable">טעות קריייטינג באַקאַפּ טעקע.</string>
     <string name="backup_success_text">באַקקופּ באשאפן הצלחה!</string>
-    <string name="bell_name_1">High Tone</string>
-    <string name="bell_name_2">Low Tone</string>
-    <string name="bell_name_3">Jap. Rhinbowl Dharma, 107mm</string>
-    <string name="bell_name_4">Jap. Rhinbowl Dharma, 88mm (black, glazed)</string>
-    <string name="bell_name_5">Jap. Rhinbowl Shomyo, 90mm</string>
-    <string name="bell_name_6">Jap. Rhinbowl Tang, 164mm</string>
-    <string name="bell_name_7">Tib. Bowl, 230mm</string>
-    <string name="bell_name_8">Jap. Rhinbowl, 97mm</string>
+    <string name="bell_name_1">הויך טאָן</string>
+    <string name="bell_name_2">נידעריק טאָן</string>
+    <string name="bell_name_3">יאַפּ. ריינבאָול דהאַרמאַ, 107 מם</string>
+    <string name="bell_name_4">יאַפּ. Rhinbowl Dharma, 88 מם (שוואַרץ, גלייזד)</string>
+    <string name="bell_name_5">יאַפּ. ריינבאָול שומיאָ, 90 מם</string>
+    <string name="bell_name_6">יאַפּ. רינבאָוול טאַנג, 164 מם</string>
+    <string name="bell_name_7">טיב. שיסל, 230 מם</string>
+    <string name="bell_name_8">יאַפּ. ריינבאָול, 97 מם</string>
     <string name="bell_pause">גלאָק ריס (סעק)</string>
     <string name="bell_user">לייג גלאָק...</string>
     <string name="bottom_nav_meditation">קלערן</string>
@@ -74,7 +74,7 @@
     <string name="menu_settings">סעטטינגס</string>
     <string name="minuten">מינוטן</string>
     <string name="no_new_server_messages">ניט קיין נייַע אַרטיקלען בנימצא.</string>
-    <string name="no_sections_in_session">קען נישט אָנהייבן קלערן: די אויסגעקליבן סעסיע האט נישט קיין סעקשאַנז.</string>
+    <string name="no_sections_in_session">קענען \'ט אָנהייבן קלערן: די אויסגעקליבן סעסיע האט נישט קיין סעקשאַנז.</string>
     <string name="no_session_exists">עס איז קיין סעסיע וואָס קענען זיין סטאַרטעד. ביטע שאַפֿן איין ערשטער.</string>
     <string name="notification_text">א זאַזען מעדיטאַטיאָן איז דערווייַל פליסנדיק</string>
     <string name="notification_text_paused">זאזען מעדיטאציע האט זיך אפגעשטעלט</string>
@@ -97,7 +97,7 @@
     <string name="pref_sum_bad_removal">SD קאַרד איז אַוועקגענומען אָן זיין אַנמאָונטעד ערשטער.</string>
     <string name="pref_sum_checking">די SD-Card איז איצט אָפּגעשטעלט</string>
     <string name="pref_sum_ejecting">SD-Card איז ארויס</string>
-    <string name="pref_sum_nofs">קיין פילעסיסטעם אויף SD-Card</string>
+    <string name="pref_sum_nofs">קיין פילעסיסטעם אויף SD-קאַרד</string>
     <string name="pref_sum_read_only">SD-Card איז בלויז לייענען</string>
     <string name="pref_sum_removed">קיין SD-קאַרד איז פאָרשטעלן</string>
     <string name="pref_sum_restore">ומקערן דיין סעשאַנז און מנהג סאָונדס פֿון די סד-קאַרד באַקקופּ</string>
@@ -130,12 +130,12 @@
     <string name="status_bar_notification_info_overflow">999+</string>
     <string name="test_mute_perm_request">דער אַפּ איז דערווייַל נישט ערלויבט צו שטום דיין טעלעפאָן. עפענען די סעטטינגס צו טוישן דעם?</string>
     <string name="text_cant_mute">דיין טעלעפאָן קען נישט לאָזן דעם אַפּ צו שטום עס. דיסייבאַל מיוטינג אין דעם אַפּפּס סעטטינגס אָדער לאָזן מיוטינג אין דיין פאָנעס סעטטינגס.</string>
-    <string name="text_no_notify_access_settings">דיין טעלעפאָן קען נישט האָבן די סטאַנדאַרט סעטטינגס צו לאָזן מיוטינג. ביטע קוק מאַניואַלי פֿאַר די \&amp;quot;צי ניט שטערן אַקסעס\&amp;quot; באַשטעטיקן און געבן עס.</string>
+    <string name="text_no_notify_access_settings">דיין טעלעפאָן קען נישט האָבן די סטאַנדאַרט סעטטינגס צו לאָזן מיוטינג. ביטע קוק מאַניואַלי פֿאַר די \"צי ניט שטערן אַקסעס\" באַשטעטיקן און געבן עס.</string>
     <string name="text_no_sections">קיין סעקשאַנז דיפיינד.</string>
     <string name="text_question_delete_session">טאַקע ויסמעקן די אויסגעקליבן סעסיע?</string>
     <string name="theme">טעמע</string>
     <string name="theme_dark">טונקל טים</string>
-    <string name="theme_desc">קלייַבן ליכט אָדער טונקל אויסזען פון די אַפּ</string>
+    <string name="theme_desc">קלייַבן די אַפּ אויסזען</string>
     <string name="theme_light">ליכט טעמע</string>
     <string name="theme_system">סיסטעם טעמע</string>
     <string name="theme_value_dark">dark</string>
@@ -158,4 +158,12 @@
     <string name="title_dim_bell">טונקל בעל</string>
     <string name="dim_bell_label_off">ניט דימד</string>
     <string name="dim_bell_label_format">פאַרמאַכט: %1$d0%%</string>
+    <string name="section_deleted">אויסגעמעקט \'%s\'</string>
+    <string name="action_undo">ופמאַכן</string>
+    <string name="notification_channel_name">מעדיטאַטיאָן טיימער</string>
+    <string name="nav_label_sessions">סעשאַנז</string>
+    <string name="nav_label_meditation">קלערן</string>
+    <string name="nav_label_edit_session">רעדאַגירן סעסיע</string>
+    <string name="nav_label_edit_section">רעדאַגירן אָפּטיילונג</string>
+    <string name="nav_label_settings">סעטטינגס</string>
 </resources>

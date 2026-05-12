@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="abbrechen">ކެންސަލް</string>
-    <string name="about1">Zazen Meditation Timer — A simple meditation timer with customizable sections, bell sounds, and session management.</string>
-    <string name="about2">Originally created by Stefan Gaffga. Currently maintained by Georg Graf.&lt;br&gt;&lt;br&gt;Thanks to Winfried of &lt;a href="http://www.meditationsuhren.de"&gt;http://www.meditationsuhren.de&lt;/a&gt; for providing such great Bell Sounds!</string>
-    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues"&gt;Report issues on GitHub&lt;/a&gt;</string>
-    <string name="app_description">This application lets the user define a set of meditation sessions and provides a timer with visual and audible feedback when a part or the whole meditation is over.</string>
+    <string name="about1">ޒާޒެން މެޑިޓޭޝަން ޓައިމަރ — ކަސްޓަމައިޒް ކުރެވޭ ބައިތަކާއި، ބެލް އަޑުތަކާއި، ސެޝަން މެނޭޖްމަންޓް އެކުލެވޭ ސާދާ މެޑިޓޭޝަން ޓައިމަރެކެވެ.</string>
+    <string name="about2">އަސްލު އުފެއްދީ ސްޓެފަން ގަފްގާ އެވެ. މިހާރު ބެލެހެއްޓިފައިވަނީ ޖޯޖް ގްރާފް އެވެ.&lt;br&gt;&lt;br&gt;މިހާ މޮޅު ބެލް ސައުންޑްސް ފޯރުކޮށްދިން ކަމަށްޓަކައި &lt;a href="http://www.meditationsuhren.de"&gt;http://www.meditationsuhren.de&lt;/a&gt; ގެ ވިންފްރީޑް އަށް ޝުކުރު!</string>
+    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues"&gt;ގިޓްހަބްގައި މައްސަލަތައް ރިޕޯޓްކުރުން&lt;/a&gt;</string>
+    <string name="app_description">މި އެޕްލިކޭޝަންގެ ސަބަބުން މެޑިޓޭޝަން ސެޝަންތަކުގެ ސެޓެއް ކަނޑައެޅުމުގެ ފުރުސަތު ލިބިގެންދާއިރު، ބައެއް ނުވަތަ މުޅި މެޑިޓޭޝަން ނިމުމުން ވިޝުއަލް އަދި އޮޑިބަލް ފީޑްބެކް ލިބޭ ޓައިމަރެއް ލިބިގެންދެއެވެ.</string>
     <string name="app_name">Zazen Meditation Timer</string>
     <string name="appbar_scrolling_view_behavior">android.support.design.widget.AppBarLayout$ސްކްރޯލިންގވިއުބިހޭވިއަރ</string>
     <string name="backup_error_text">މާފަށް އެދެން، ސޭވް ކުރަމުން ދިޔައިރު Error އެއް ދިމާވެއްޖެއެވެ.</string>
     <string name="backup_no_permission">ހުއްދަތައް ގެއްލިގެން ބެކަޕް އުފެއްދިފައެއް ނުވެއެވެ.</string>
     <string name="backup_not_createable">ބެކަޕް ފައިލް އުފެއްދުމުގައި ގޯހެއް.</string>
     <string name="backup_success_text">ބެކަޕް އުފެއްދީ ކާމިޔާބުކަމާއެކު!</string>
-    <string name="bell_name_1">High Tone</string>
-    <string name="bell_name_2">Low Tone</string>
-    <string name="bell_name_3">Jap. Rhinbowl Dharma, 107mm</string>
-    <string name="bell_name_4">Jap. Rhinbowl Dharma, 88mm (black, glazed)</string>
-    <string name="bell_name_5">Jap. Rhinbowl Shomyo, 90mm</string>
-    <string name="bell_name_6">Jap. Rhinbowl Tang, 164mm</string>
-    <string name="bell_name_7">Tib. Bowl, 230mm</string>
-    <string name="bell_name_8">Jap. Rhinbowl, 97mm</string>
+    <string name="bell_name_1">ހައި ޓޯން އެވެ</string>
+    <string name="bell_name_2">ލޯ ޓޯން އެވެ</string>
+    <string name="bell_name_3">ޖަޕާނެވެ. ރައިންބޯލް ދަރްމާ، 107އެމްއެމް</string>
+    <string name="bell_name_4">ޖަޕާނެވެ. ރައިންބޯލް ދަރްމާ، 88އެމްއެމް (ކަޅު، ގްލޭޒްޑް)</string>
+    <string name="bell_name_5">ޖަޕާނެވެ. ރައިންބޯލް ޝޯމިއޯ، 90އެމްއެމް އެވެ</string>
+    <string name="bell_name_6">ޖަޕާނެވެ. ރައިންބޯލް ޓަންގް، 164އެމްއެމް އެވެ</string>
+    <string name="bell_name_7">ޓިބް. ތަށި، 230އެމްއެމް</string>
+    <string name="bell_name_8">ޖަޕާނެވެ. ރައިންބޯލް، 97އެމްއެމް އެވެ</string>
     <string name="bell_pause">ބެލް ގޭޕް (ސިކުންތު)</string>
     <string name="bell_user">އެޑް ބެލް...</string>
     <string name="bottom_nav_meditation">މެޑިޓޭޝަން</string>
@@ -112,7 +112,7 @@
     <string name="restore_backup_not_found">ބެކަޕް ފައިލް ނުފެނެއެވެ</string>
     <string name="restore_error_text">ބެކަޕް އިން ރިސްޓޯރ ކުރުމުގައި ގޯހެއް</string>
     <string name="restore_no_permission">ހުއްދަ ގެއްލިގެން ރިސްޓޯރ ނުކުރެވުނެވެ.</string>
-    <string name="restore_really_text">މިއީ ތިބާގެ ހުރިހާ ސެޝަންތަކެއް ބެކަޕްގައިވާ ސެޝަންތަކާ ބަދަލުކޮށްދޭނެ ކަމެކެވެ! (ނޯ އަންޑޯ!)</string>
+    <string name="restore_really_text">މިއީ ތިބާގެ ހުރިހާ ސެޝަންތަކެއް ބެކަޕްގައި ހުރި ސެޝަންތަކާ ބަދަލުކޮށްދޭނެ ކަމެކެވެ! (ނޯ އަންޑޯ!)</string>
     <string name="restore_really_title">އަސްލު ޑޭޓާ ރިސްޓޯރ ކުރަންތަ؟</string>
     <string name="restore_success_text">ޑޭޓާ ރިސްޓޯރ ކާމިޔާބު ވެއްޖެއެވެ</string>
     <string name="search_menu_title">ހޯދުން</string>
@@ -129,13 +129,13 @@
     <string name="session_list_unnamed_entry">ނަން ނުޖެހޭ ސެޝަން</string>
     <string name="status_bar_notification_info_overflow">999+ރ</string>
     <string name="test_mute_perm_request">މި އެޕްގައި މިވަގުތު ފޯނު މުއުޓް ކުރުމުގެ ހުއްދައެއް ނެތެވެ. މިކަން ބަދަލު ކުރަން ސެޓިންގްސް ހުޅުވާލަންވީތަ؟</string>
-    <string name="text_cant_mute">ތިޔަ ފޯނުން މި އެޕް މުއުޓް ކުރުމުގެ ހުއްދައެއް ނުދެއެވެ. މި އެޕްސް ސެޓިންގްސްގައި މުއުޓިންގ ޑިސެބަލް ނުވަތަ ފޯނުސް ސެޓިންގސްގައި މުއުޓިންގ ހުއްދަ ދިނުން.</string>
+    <string name="text_cant_mute">ތިޔަ ފޯނުން މި އެޕް މުއުޓް ކުރުމުގެ ހުއްދައެއް ނުދެއެވެ. މި އެޕްސް ސެޓިންގސް ގައި މުއުޓިންގ ޑިސެބަލް ނުވަތަ ފޯނު ސެޓިންގސް ގައި މުއުޓިންގ އަށް ހުއްދަ ދިނުން.</string>
     <string name="text_no_notify_access_settings">ތިބާގެ ފޯނުގައި މުއުޓް ކުރުމުގެ ހުއްދަ ދޭ ސްޓޭންޑަޑް ސެޓިންގްސް ހުރިހެނެއް ހިޔެއް ނުވެއެވެ. \"ޑޮންޓް ޑިސްޓަރބް އެކްސެސް\" ސެޓިންގ މެނުއަލްކޮށް ބައްލަވައި އެނެބަލް ކުރައްވާށެވެ.</string>
     <string name="text_no_sections">އެއްވެސް ސެކްޝަނެއް ކަނޑައެޅިފައެއް ނުވެއެވެ.</string>
     <string name="text_question_delete_session">ހަގީގަތުގައި ހޮވާފައިވާ ސެޝަން ޑިލީޓް ކޮށްލަންތަ؟</string>
     <string name="theme">ތީމް</string>
     <string name="theme_dark">ޑާކް ތީމް އެވެ</string>
-    <string name="theme_desc">އެޕްގެ އަލި ނުވަތަ އަނދިރި ސިފައެއް ހޮވާށެވެ</string>
+    <string name="theme_desc">އެޕްގެ ސިފަ ހޮވާށެވެ</string>
     <string name="theme_light">ލައިޓް ތީމް އެވެ</string>
     <string name="theme_system">ސިސްޓަމް ތީމް</string>
     <string name="theme_value_dark">dark</string>
@@ -158,4 +158,12 @@
     <string name="title_dim_bell">ޑިމް ބެލް އެވެ</string>
     <string name="dim_bell_label_off">ފަނޑުއެއް ނޫނެވެ</string>
     <string name="dim_bell_label_format">ޑިމްޑް: %1$d0%%</string>
+    <string name="section_deleted">ޑިލީޓް ކޮށްފި __1%s\'</string>
+    <string name="action_undo">އަންޑޯ</string>
+    <string name="notification_channel_name">މެޑިޓޭޝަން ޓައިމަރ އެވެ</string>
+    <string name="nav_label_sessions">ސެޝަންތައް</string>
+    <string name="nav_label_meditation">މެޑިޓޭޝަން</string>
+    <string name="nav_label_edit_session">އެޑިޓް ސެޝަން</string>
+    <string name="nav_label_edit_section">އެޑިޓް ސެކްޝަން</string>
+    <string name="nav_label_settings">ސެޓިންގސް</string>
 </resources>

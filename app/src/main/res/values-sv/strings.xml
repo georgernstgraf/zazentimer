@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="abbrechen">Avboka</string>
-    <string name="about1">Zazen Meditation Timer — A simple meditation timer with customizable sections, bell sounds, and session management.</string>
-    <string name="about2">Originally created by Stefan Gaffga. Currently maintained by Georg Graf.&lt;br&gt;&lt;br&gt;Thanks to Winfried of &lt;a href="http://www.meditationsuhren.de"&gt;http://www.meditationsuhren.de&lt;/a&gt; for providing such great Bell Sounds!</string>
-    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues"&gt;Report issues on GitHub&lt;/a&gt;</string>
-    <string name="app_description">This application lets the user define a set of meditation sessions and provides a timer with visual and audible feedback when a part or the whole meditation is over.</string>
+    <string name="about1">Zazen Meditationstimer — En enkel meditationstimer med anpassningsbara sektioner, klockljud och sessionshantering.</string>
+    <string name="about2">Ursprungligen skapad av Stefan Gaffga. Underhålls för närvarande av Georg Graf.&lt;br&gt;&lt;br&gt;Tack till Winfried från &lt;a href="http://www.meditationsuhren.de"&gt;http://www.meditationsuhren.de&lt;/a&gt; för att du tillhandahåller så fantastiska klockljud!</string>
+    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues"&gt;Rapportera problem på GitHub&lt;/a&gt;</string>
+    <string name="app_description">Denna applikation låter användaren definiera en uppsättning meditationssessioner och ger en timer med visuell och hörbar feedback när en del av eller hela meditationen är över.</string>
     <string name="app_name">Zazen Meditation Timer</string>
     <string name="appbar_scrolling_view_behavior">android.support.design.widget.AppBarLayout$ScrollingViewBehavior</string>
     <string name="backup_error_text">Tyvärr, ett fel uppstod när du sparade.</string>
     <string name="backup_no_permission">Det gick inte att skapa säkerhetskopia på grund av saknade behörigheter.</string>
     <string name="backup_not_createable">Det gick inte att skapa backupfil.</string>
     <string name="backup_success_text">Säkerhetskopieringen har skapats!</string>
-    <string name="bell_name_1">High Tone</string>
-    <string name="bell_name_2">Low Tone</string>
-    <string name="bell_name_3">Jap. Rhinbowl Dharma, 107mm</string>
-    <string name="bell_name_4">Jap. Rhinbowl Dharma, 88mm (black, glazed)</string>
-    <string name="bell_name_5">Jap. Rhinbowl Shomyo, 90mm</string>
-    <string name="bell_name_6">Jap. Rhinbowl Tang, 164mm</string>
-    <string name="bell_name_7">Tib. Bowl, 230mm</string>
-    <string name="bell_name_8">Jap. Rhinbowl, 97mm</string>
+    <string name="bell_name_1">Hög ton</string>
+    <string name="bell_name_2">Låg ton</string>
+    <string name="bell_name_3">Japan. Rhinbowl Dharma, 107 mm</string>
+    <string name="bell_name_4">Japan. Rhinbowl Dharma, 88 mm (svart, glaserad)</string>
+    <string name="bell_name_5">Japan. Rhinbowl Shomyo, 90mm</string>
+    <string name="bell_name_6">Japan. Rhinbowl Tang, 164 mm</string>
+    <string name="bell_name_7">Tib. Skål, 230 mm</string>
+    <string name="bell_name_8">Japan. Rhinbowl, 97 mm</string>
     <string name="bell_pause">Bell gap (sek)</string>
     <string name="bell_user">Lägg till Bell...</string>
     <string name="bottom_nav_meditation">Meditation</string>
@@ -56,11 +56,11 @@
     <string name="desc_no_server_messages">Visa nyheter automatiskt när appen startar</string>
     <string name="error_checking_for_server_messages">Det gick inte att hämta nya meddelanden.</string>
     <string name="gong_type">Gong ljud</string>
-    <string name="help_sectionlist_text">Här kan du namnge, beskriva och redigera innehållet i din session.\n\n OMORDNING\n För att ändra ordning på objekten, tryck länge på ett objekt och\n dra det till dess nya position.\n\n RADERA\n För att radera ett objekt, flytta det till höger.\n\n REDIGERA\n För att redigera ett avsnitt, tryck bara på ett nytt avsnitt,\n\n för att lägga till ett nytt avsnitt.\n\n</string>
+    <string name="help_sectionlist_text">Här kan du namnge, beskriva och redigera innehållet i din session.\n\nOMORDNING\nFör att ändra ordning på föremålen, tryck länge på ett föremål och\ndra den till sin nya position.\n\nRADERA\nFör att ta bort ett objekt, flytta det till höger.\n\nREDIGERA\nOm du vill redigera ett avsnitt trycker du bara på det en gång.\n\nTILLÄGGA\nFör att lägga till ett nytt avsnitt, tryck på +-knappen.</string>
     <string name="help_sectionlist_title">Redigera session</string>
     <string name="label_section_name">Sektionens namn</string>
     <string name="label_session_description">Sessionsbeskrivning</string>
-    <string name="label_session_name">Sessionens namn</string>
+    <string name="label_session_name">Sessionsnamn</string>
     <string name="menu_about">Om...</string>
     <string name="menu_copy_session">Duplicera session</string>
     <string name="menu_delete_section">Ta bort avsnitt</string>
@@ -74,10 +74,10 @@
     <string name="menu_settings">Inställningar</string>
     <string name="minuten">Minuter</string>
     <string name="no_new_server_messages">Inga nya meddelanden tillgängliga.</string>
-    <string name="no_sections_in_session">Kan inte starta meditation: Den valda sessionen har inga sektioner.</string>
-    <string name="no_session_exists">Det finns ingen session som kan startas. Vänligen skapa en först.</string>
+    <string name="no_sections_in_session">Kan\' inte starta meditation: Den valda sessionen har inga sektioner.</string>
+    <string name="no_session_exists">Det finns ingen session som kan startas. Skapa en först.</string>
     <string name="notification_text">En Zazen-meditation pågår för närvarande</string>
-    <string name="notification_text_paused">Zazen Meditation pausade</string>
+    <string name="notification_text_paused">Zazen Meditation pausades</string>
     <string name="notification_title">Zazen Meditation</string>
     <string name="notification_title_paused">Zazen Meditation (pausad)</string>
     <string name="num_bells">Klockantalet</string>
@@ -105,9 +105,9 @@
     <string name="pref_title_backup">Skapa säkerhetskopia</string>
     <string name="pref_title_brightness">Ljusstyrka</string>
     <string name="pref_title_restore">Återställ från säkerhetskopia</string>
-    <string name="privacy_message">This App does not collect any personal data - it also does not use IP-Addresses or any other technology-related data, nor does it collect, process or use any in any way.</string>
+    <string name="privacy_message">Den här appen samlar inte in några personliga uppgifter - den använder inte heller IP-adresser eller någon annan teknikrelaterad data, inte heller samlar den in, bearbetar eller använder någon på något sätt.</string>
     <string name="privacy_ok">OK</string>
-    <string name="privacy_title">Privacy Information</string>
+    <string name="privacy_title">Sekretessinformation</string>
     <string name="really_stop">Sluta verkligen meditationen?</string>
     <string name="restore_backup_not_found">Backup-filen hittades inte</string>
     <string name="restore_error_text">Fel vid återställning från säkerhetskopia</string>
@@ -115,10 +115,10 @@
     <string name="restore_really_text">Detta kommer att ersätta alla dina sessioner med de i säkerhetskopieringen! (Ingen ångra!)</string>
     <string name="restore_really_title">Verkligen återställa data?</string>
     <string name="restore_success_text">Dataåterställningen lyckades</string>
-    <string name="search_menu_title">Sök</string>
-    <string name="section_info_string_1_pl">%1$d klockor</string>
+    <string name="search_menu_title">Söka</string>
+    <string name="section_info_string_1_pl">%1$d Klockor</string>
     <string name="section_info_string_1_sg">1 Bell</string>
-    <string name="section_info_string_2_pl">var %1$d sekund</string>
+    <string name="section_info_string_2_pl">var %1$d sekunder</string>
     <string name="section_info_string_2_sg">varannan</string>
     <string name="sekunden">Sekunder</string>
     <string name="select_audio">Välj ljudfil</string>
@@ -127,7 +127,7 @@
     <string name="content_desc_section_actions">Sektionsåtgärder</string>
     <string name="content_desc_session_actions">Sessionsåtgärder</string>
     <string name="session_list_unnamed_entry">Namnlös session</string>
-    <string name="status_bar_notification_info_overflow">&amp;gt;999</string>
+    <string name="status_bar_notification_info_overflow">999+</string>
     <string name="test_mute_perm_request">Appen är för närvarande inte tillåten att stänga av din telefon. Öppna inställningarna för att ändra detta?</string>
     <string name="text_cant_mute">Din telefon tillåter inte denna app att stänga av den. Inaktivera avstängning i dessa appinställningar eller tillåt avstängning i dina telefoninställningar.</string>
     <string name="text_no_notify_access_settings">Din telefon verkar inte ha standardinställningarna för att tillåta tystnad. Vänligen leta manuellt efter inställningen \"Stör ej åtkomst\" och aktivera den.</string>
@@ -135,7 +135,7 @@
     <string name="text_question_delete_session">Vill du verkligen ta bort den valda sessionen?</string>
     <string name="theme">Tema</string>
     <string name="theme_dark">mörkt tema</string>
-    <string name="theme_desc">Välj ljus eller mörk utseende på appen</string>
+    <string name="theme_desc">Välj appens utseende</string>
     <string name="theme_light">Lätt tema</string>
     <string name="theme_system">Systemtema</string>
     <string name="theme_value_dark">dark</string>
@@ -157,5 +157,13 @@
     <string name="pref_desc_bell_volume">Styr larmströmmens volym för klockljud</string>
     <string name="title_dim_bell">Dim Bell</string>
     <string name="dim_bell_label_off">Ej nedtonat</string>
-    <string name="dim_bell_label_format">Nedtonat: %1$d0%%</string>
+    <string name="dim_bell_label_format">Nedtonad: %1$d0%%</string>
+    <string name="section_deleted">Raderade \'%s\'</string>
+    <string name="action_undo">Ångra</string>
+    <string name="notification_channel_name">Meditationstimer</string>
+    <string name="nav_label_sessions">Sessioner</string>
+    <string name="nav_label_meditation">Meditation</string>
+    <string name="nav_label_edit_session">Redigera session</string>
+    <string name="nav_label_edit_section">Redigera avsnitt</string>
+    <string name="nav_label_settings">Inställningar</string>
 </resources>

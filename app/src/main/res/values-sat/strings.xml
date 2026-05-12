@@ -1,36 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="abbrechen">ᱢᱩᱪᱮᱫ</string>
-    <string name="about1">Zazen Meditation Timer — A simple meditation timer with customizable sections, bell sounds, and session management.</string>
-    <string name="about2">Originally created by Stefan Gaffga. Currently maintained by Georg Graf.&lt;br&gt;&lt;br&gt;Thanks to Winfried of &lt;a href="http://www.meditationsuhren.de"&gt;http://www.meditationsuhren.de&lt;/a&gt; for providing such great Bell Sounds!</string>
-    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues"&gt;Report issues on GitHub&lt;/a&gt;</string>
-    <string name="app_description">This application lets the user define a set of meditation sessions and provides a timer with visual and audible feedback when a part or the whole meditation is over.</string>
+    <string name="about1">Zazen Meditation Timer — ᱢᱤᱫ ᱱᱚᱸᱰᱮᱱᱟᱜ ᱢᱮᱰᱤᱴᱮᱥᱚᱱ ᱴᱟᱭᱢᱚᱨ ᱠᱟᱱᱟ ᱡᱟᱦᱟᱸ ᱫᱚ ᱵᱮᱵᱷᱟᱨᱤᱡ ᱵᱮᱵᱷᱟᱨᱤᱡ ᱵᱮᱵᱷᱟᱨᱤᱡ ᱵᱮᱵᱷᱟᱨᱤᱡ ᱵᱮᱵᱷᱟᱨᱤᱡ ᱵᱮᱵᱷᱟᱨᱤᱡ ᱵᱮᱵᱷᱟᱨᱤᱡ ᱵᱮᱵᱷᱟᱨᱤᱡ ᱵᱮᱵᱷᱟᱨᱤᱡ ᱵᱮᱵᱷᱟᱨᱤᱡ ᱵᱮᱵᱷᱟᱨᱤᱡ ᱵᱮᱵᱷᱟᱨᱤᱡ ᱵᱮᱵᱷᱟᱨᱤᱡ ᱵᱮᱵᱷᱟᱨᱤᱡ ᱵᱮᱵᱷᱟᱨᱤᱡ ᱵᱮᱵᱷᱟᱨᱤᱡ ᱵᱮᱵᱷᱟᱨᱤᱡ ᱵᱮᱵᱷᱟᱨᱤᱡ ᱵᱮᱵᱷᱟᱨᱤᱡ ᱵᱮᱵᱷᱟᱨᱤᱡ ᱵᱮᱵᱷᱟᱨᱚᱜᱼᱟ ᱾</string>
+    <string name="about2">ᱥᱴᱮᱯᱷᱟᱱ ᱜᱟᱯᱟ ᱵᱮᱱᱟᱣ ᱟᱠᱟᱫᱟ ᱡᱚᱨᱡ ᱜᱨᱟᱯᱷ ᱦᱚᱛᱮᱛᱮ ᱱᱤᱛᱚᱜ ᱫᱚᱦᱚ ᱟᱠᱟᱱᱟ ᱾&lt;br&gt;&lt;br&gt;ᱣᱤᱱᱯᱷᱨᱤᱰ ᱟᱜ http://www.meditationsuhren.de ᱱᱚᱝᱠᱟᱱ ᱢᱟᱨᱟᱝ &lt;a href="http://www.meditationsuhren.de"&gt;ᱵᱮᱞ&lt;/a&gt; ᱥᱳᱭᱱᱥ ᱮᱢ ᱞᱟᱹᱜᱤᱫ ᱛᱮ ᱟᱭᱢᱟ ᱥᱟᱨᱦᱟᱣ ᱟᱠᱟᱱ ᱛᱟᱢᱤᱞ!</string>
+    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues"&gt;ᱜᱤᱛᱷᱩᱵᱽ ᱨᱮᱱ ᱥᱟᱦᱴᱟ&lt;/a&gt;</string>
+    <string name="app_description">ᱱᱚᱣᱟ ᱮᱯᱞᱤᱠᱮᱥᱚᱱ ᱫᱚ ᱵᱮᱵᱷᱟᱨᱤᱭᱟᱹ ᱫᱚ ᱟᱭᱢᱟ ᱞᱮᱠᱟᱱ ᱢᱮᱰᱤᱴᱮᱥᱚᱱ ᱥᱮᱥᱚᱱ ᱠᱚ ᱢᱟᱱᱟᱣ ᱵᱟᱛᱟᱣ ᱫᱟᱲᱮᱭᱟᱜᱼᱟ ᱟᱨ ᱢᱤᱫ ᱚᱠᱛᱚ ᱨᱮ ᱢᱤᱫ ᱴᱮᱱ ᱥᱮ ᱡᱚᱛᱚ ᱢᱮᱰᱤᱴᱮᱥᱚᱱ ᱢᱩᱪᱟᱹᱫ ᱨᱮ ᱢᱤᱫ ᱧᱮᱞᱚᱜ ᱟᱨ ᱥᱮᱪᱮᱫᱚᱜ ᱠᱟᱱ ᱨᱟᱹᱥᱠᱟᱹ ᱮᱢᱚᱜᱼᱟ ᱾</string>
     <string name="app_name">Zazen Meditation Timer</string>
     <string name="appbar_scrolling_view_behavior">android.support.design.widget.AppBarLayout$ScrollingViewBehavior</string>
     <string name="backup_error_text">ᱥᱟᱧᱪᱟᱣ ᱡᱷᱚᱛᱜ ᱵᱷᱩᱞ ᱦᱩᱭᱮᱱᱟ ᱾</string>
     <string name="backup_no_permission">बाङ बाङ हुय होचो ला़गित् बा</string>
     <string name="backup_not_createable">ᱵᱮᱠᱮᱯ ᱨᱮᱫ ᱛᱮᱭᱟᱨ ᱨᱮ ᱵᱷᱩᱞ ᱾</string>
     <string name="backup_success_text">ᱵᱮᱠᱟᱹᱯ ᱫᱟᱨᱟᱭ ᱛᱮ ᱵᱮᱱᱟᱣᱮᱱᱟ!</string>
-    <string name="bell_name_1">High Tone</string>
-    <string name="bell_name_2">Low Tone</string>
-    <string name="bell_name_3">Jap. Rhinbowl Dharma, 107mm</string>
-    <string name="bell_name_4">Jap. Rhinbowl Dharma, 88mm (black, glazed)</string>
-    <string name="bell_name_5">Jap. Rhinbowl Shomyo, 90mm</string>
-    <string name="bell_name_6">Jap. Rhinbowl Tang, 164mm</string>
-    <string name="bell_name_7">Tib. Bowl, 230mm</string>
-    <string name="bell_name_8">Jap. Rhinbowl, 97mm</string>
+    <string name="bell_name_1">ᱩᱥᱩᱞ ᱨᱚᱝ</string>
+    <string name="bell_name_2">ᱛᱤᱸᱜᱩ ᱨᱚᱝ</string>
+    <string name="bell_name_3">ᱡᱟᱯ. ᱨᱤᱱᱵᱳᱣᱞ ᱫᱷᱟᱨᱢᱟ, 107mm</string>
+    <string name="bell_name_4">ᱡᱟᱯ. ᱨᱤᱱᱵᱳᱣᱞ ᱫᱷᱟᱨᱢᱟ, ᱘᱘ ᱢᱤᱞᱤᱢᱤᱴᱚᱨ (ᱦᱮᱸᱫᱮ, ᱜᱽᱞᱚᱡᱮᱰ)</string>
+    <string name="bell_name_5">ᱡᱟᱯ. ᱨᱤᱱᱵᱳᱣᱞ ᱥᱳᱢᱤᱭᱳ, ᱙᱐ ᱢᱤᱞᱤᱢᱤᱴᱚᱨ</string>
+    <string name="bell_name_6">ᱡᱟᱯ. ᱨᱤᱱᱵᱳᱣᱞ ᱴᱟᱝ, ᱑᱖᱔ ᱢᱤᱞᱤᱢᱤᱴᱚᱨ</string>
+    <string name="bell_name_7">ᱴᱤᱵᱽ. ᱵᱚᱣᱞ, 230mm</string>
+    <string name="bell_name_8">ᱡᱟᱯ. ᱨᱤᱱᱵᱚᱣᱞ, ᱙᱗ ᱢᱤᱞᱤᱢᱤᱴᱚᱨ</string>
     <string name="bell_pause">बाङ गोड़ोवाक् (</string>
     <string name="bell_user">ᱵᱮᱞ ᱥᱮᱞᱮᱫ ᱢᱮ...</string>
     <string name="bottom_nav_meditation">ᱢᱮᱰᱤᱴᱟᱥᱚᱱ</string>
     <string name="bottom_nav_sessions">ᱚᱠᱛᱚ ᱠᱚ</string>
     <string name="bottom_sheet_behavior">android.support.design.widget.BottomSheetBehavior</string>
     <string name="but_pause">ᱛᱤᱝᱜᱩ</string>
-    <string name="but_start">ᱢᱮᱰᱤᱴᱟᱥᱚᱱ ᱮᱦᱚᱵ ᱢᱮ</string>
+    <string name="but_start">मित् एहोब</string>
     <string name="but_stop">ᱛᱤᱝᱜᱩᱭ ᱢᱮ</string>
     <string name="caption_zazen_meditation">ᱡᱚᱡᱮᱱ ᱢᱮᱰᱤᱴᱮᱥᱚᱱ</string>
     <string name="character_counter_pattern">%1$d / %2$d</string>
     <string name="checkbox_keep_screen_on">ᱥᱠᱨᱤᱱ ᱨᱮ ᱫᱚᱦᱚᱭ ᱢᱮ</string>
-    <string name="checkbox_no_server_messages">ᱠᱷᱚᱵᱚᱨ ᱫᱮᱠᱷᱟᱣ ᱢᱮ</string>
+    <string name="checkbox_no_server_messages">ᱠᱷᱚᱵᱚᱨ ᱠᱚ ᱩᱫᱩᱜ ᱢᱮ</string>
     <string name="checkbox_phone_off">ᱴᱮᱞᱤᱯᱷᱚᱱ ᱟᱸᱥᱚᱜ ᱢᱮ</string>
     <string name="checkbox_phone_off_desc">ᱴᱮᱞᱤᱯᱷᱳᱱ ᱫᱚ ᱡᱚᱛᱚ ᱚᱠᱛᱚ ᱨᱮᱜᱮ ᱟ.</string>
     <string name="copy_prefix">ᱠᱳᱯᱤ</string>
@@ -56,7 +56,7 @@
     <string name="desc_no_server_messages">पोरमान एहोब एहोब होचो</string>
     <string name="error_checking_for_server_messages">ᱱᱟᱣᱟ ᱯᱮᱭᱢᱮᱡ ᱠᱚ ᱧᱟᱢ ᱨᱮ ᱵᱷᱩᱞ ᱾</string>
     <string name="gong_type">ᱜᱚᱝ ᱨᱚᱝ</string>
-    <string name="help_sectionlist_text">ᱱᱚᱣᱟ ᱨᱮ ᱟᱢ ᱟᱢᱟᱜ ᱥᱮᱥᱚᱱ ᱨᱮᱭᱟᱜ ᱢᱮᱱᱮᱛ ᱠᱚ ᱧᱩᱛᱩᱢ, ᱪᱤᱠᱤ ᱟᱨ ᱥᱟᱯᱲᱟᱣ ᱫᱟᱲᱮᱭᱟᱜᱼᱟ ᱾\n\nदोहड़ा साद\nᱡᱤᱱᱤᱥ ᱠᱚ ᱫᱚᱦᱚ ᱞᱟᱹᱜᱤᱫ, ᱢᱤᱫ ᱡᱤᱱᱤᱥ ᱨᱮ ᱟᱹᱰᱤ ᱢᱟᱨᱟᱝ ᱯᱨᱮᱥ ᱟᱨ\nᱱᱩᱭ ᱫᱚ ᱟᱡᱟᱜ ᱱᱟᱣᱟ ᱯᱳᱥᱤᱥᱚᱱ ᱨᱮᱭ ᱥᱮᱱᱚᱜ ᱠᱟᱱ ᱛᱟᱦᱮᱸᱫ ᱾\n\nᱢᱮᱴᱟᱣ ᱮᱱᱟ\nᱡᱟᱦᱟᱸᱱᱟᱜ ᱡᱤᱱᱤᱥ ᱫᱚ ᱵᱚᱫᱚᱞ ᱞᱟᱹᱜᱤᱫ, ᱚᱱᱟ ᱫᱚ ᱫᱩᱠᱷᱤᱱ ᱨᱮ ᱪᱟᱞᱟᱣ ᱢᱮ ᱾\n\nᱥᱟᱯᱲᱣ ᱢᱮ\nᱢᱤᱫ ᱴᱟᱝ ᱮᱰᱤᱴ ᱞᱟᱹᱜᱤᱫ, ᱱᱚᱶᱟ ᱫᱚ ᱢᱤᱫ ᱫᱷᱟᱣ ᱜᱮ ᱴᱷᱤᱠ ᱢᱮ ᱾\n\nᱥᱮᱞᱮᱫ\nᱱᱟᱣᱟ ᱮᱞᱟᱠᱟ ᱥᱮᱞᱮᱫ ᱞᱟᱹᱜᱤᱫ, + ᱵᱟᱴᱚᱱ ᱨᱮ ᱠᱞᱤᱠ ᱢᱮ ᱾</string>
+    <string name="help_sectionlist_text">ᱱᱚᱣᱟ ᱨᱮ ᱟᱢ ᱟᱢᱟᱜ ᱥᱮᱥᱚᱱ ᱨᱮᱭᱟᱜ ᱢᱮᱱᱮᱛ ᱠᱚ ᱧᱩᱛᱩᱢ, ᱪᱤᱠᱤ ᱟᱨ ᱥᱟᱯᱲᱟᱣ ᱫᱟᱲᱮᱭᱟᱜᱼᱟ ᱾\n\nदोहड़ा साब\nᱡᱤᱱᱤᱥ ᱠᱚ ᱫᱚᱦᱚ ᱞᱟᱹᱜᱤᱫ, ᱢᱤᱫ ᱡᱤᱱᱤᱥ ᱨᱮ ᱟᱹᱰᱤ ᱢᱟᱨᱟᱝ ᱯᱨᱮᱥ ᱟᱨ\nᱱᱩᱭ ᱫᱚ ᱟᱡᱟᱜ ᱱᱟᱣᱟ ᱯᱳᱥᱤᱥᱚᱱ ᱨᱮᱭ ᱥᱮᱱᱚᱜ ᱠᱟᱱ ᱛᱟᱦᱮᱸᱫ ᱾\n\nᱢᱮᱴᱟᱣ ᱮᱱᱟ\nᱡᱟᱦᱟᱸᱱᱟᱜ ᱡᱤᱱᱤᱥ ᱫᱚ ᱵᱚᱫᱚᱞ ᱞᱟᱹᱜᱤᱫ, ᱚᱱᱟ ᱫᱚ ᱫᱩᱠᱷᱤᱱ ᱨᱮ ᱪᱟᱞᱟᱣ ᱢᱮ ᱾\n\nᱥᱟᱯᱲᱣ ᱢᱮ\nᱢᱤᱫ ᱴᱟᱝ ᱮᱰᱤᱴ ᱞᱟᱹᱜᱤᱫ, ᱱᱚᱶᱟ ᱫᱚ ᱢᱤᱫ ᱫᱷᱟᱣ ᱜᱮ ᱴᱷᱤᱠ ᱢᱮ ᱾\n\nᱥᱮᱞᱮᱫ\nᱱᱟᱣᱟ ᱮᱞᱟᱠᱟ ᱥᱮᱞᱮᱫ ᱞᱟᱹᱜᱤᱫ, + ᱵᱟᱴᱚᱱ ᱨᱮ ᱠᱞᱤᱠ ᱢᱮ ᱾</string>
     <string name="help_sectionlist_title">ᱚᱠᱛᱚ ᱥᱟᱥᱟᱯᱲᱟᱣ ᱢᱮ</string>
     <string name="label_section_name">ᱦᱟᱹᱴᱤᱧ ᱧᱩᱛᱩᱢ</string>
     <string name="label_session_description">ᱚᱠᱛᱚ ᱨᱮᱭᱟᱜ ᱵᱤᱵᱨᱚᱬ</string>
@@ -101,7 +101,7 @@
     <string name="pref_sum_read_only">SD Card ᱫᱚ ᱯᱟᱲᱦᱟᱣᱜ ᱜᱮᱭᱟ</string>
     <string name="pref_sum_removed">जाहान SD-ᱠᱟᱰ बाङ</string>
     <string name="pref_sum_restore">SD-Card ᱵᱮᱠᱮᱯ ᱠᱷᱚᱱ ᱟᱢᱟᱜ ᱥᱮᱥᱚᱱ ᱟᱨ ᱠᱩᱥᱴᱚᱢ ᱥᱟᱰᱮ ᱠᱚ ᱫᱚᱦᱚ ᱢᱮ</string>
-    <string name="pref_sum_shared">ᱮᱠᱟᱰᱮᱢᱤ ᱫᱚ ᱮᱠᱟᱰᱮᱢᱤ ᱠᱟᱱᱟ</string>
+    <string name="pref_sum_shared">SD ᱠᱟᱨᱰ ᱮᱞᱟᱠᱟ</string>
     <string name="pref_title_backup">ᱵᱮᱠᱮᱯ ᱛᱮᱭᱟᱨ ᱢᱮ</string>
     <string name="pref_title_brightness">ᱡᱷᱟᱞᱠᱟᱣ</string>
     <string name="pref_title_restore">ᱵᱮᱠᱮᱯ ᱠᱷᱚᱱ ᱫᱩᱦᱲᱟᱹ ᱡᱚᱜᱟᱣ ᱢᱮ</string>
@@ -116,7 +116,7 @@
     <string name="restore_really_title">नितोक् डाटा</string>
     <string name="restore_success_text">डाटा दोहड़ा</string>
     <string name="search_menu_title">ᱛᱚᱞᱟᱥ</string>
-    <string name="section_info_string_1_pl">%1$d ᱵᱤᱠᱟᱥ</string>
+    <string name="section_info_string_1_pl">__0 __ᱵᱮᱞ ᱠᱚ</string>
     <string name="section_info_string_1_sg">᱑ ᱵᱮᱞ</string>
     <string name="section_info_string_2_pl">ᱡᱚᱛᱚ %1$d ᱥᱮᱠᱚᱱᱰ</string>
     <string name="section_info_string_2_sg">ᱡᱚᱛᱚ ᱚᱠᱛᱚ</string>
@@ -135,7 +135,7 @@
     <string name="text_question_delete_session">ᱵᱟᱪᱷᱟᱣᱟᱜ ᱚᱠᱛᱚ ᱫᱚ ᱥᱟᱹᱨᱤ ᱛᱮᱭᱟᱜ ᱢᱮᱴᱟᱣ ᱢᱮ?</string>
     <string name="theme">ᱛᱷᱤᱢ</string>
     <string name="theme_dark">ᱧᱩᱛ ᱩᱭᱦᱟᱹᱨ</string>
-    <string name="theme_desc">ᱮᱯ ᱨᱮᱭᱟᱜ ᱛᱟᱞᱟ ᱥᱮ ᱛᱚᱸᱠᱮ ᱧᱮᱞ ᱵᱟᱪᱷᱟᱣ ᱢᱮ</string>
+    <string name="theme_desc">ᱮᱯ ᱨᱮᱭᱟᱜ ᱵᱮᱵᱚᱦᱟᱨ ᱵᱟᱪᱷᱟᱣ ᱢᱮ</string>
     <string name="theme_light">ᱢᱟᱨᱥᱟᱞ ᱩᱭᱦᱟᱹᱨ</string>
     <string name="theme_system">ᱥᱭᱥᱴᱟᱹᱢ ᱛᱷᱮᱢ</string>
     <string name="theme_value_dark">dark</string>
@@ -154,8 +154,16 @@
     <string name="stop_meditation_stop">ᱛᱤᱝᱜᱩᱭ ᱢᱮ</string>
     <string name="stop_meditation_cancel">ᱢᱩᱪᱮᱫ</string>
     <string name="pref_title_bell_volume">ᱵᱷᱩᱢᱟᱨ ᱵᱷᱩᱢᱟᱨ</string>
-    <string name="pref_desc_bell_volume">मित् रा़पुत् रेयाक् रा़पु</string>
+    <string name="pref_desc_bell_volume">मित् रा़पुत् रेयाक् रेयाक</string>
     <string name="title_dim_bell">ᱰᱤᱢ ᱵᱮᱞ</string>
     <string name="dim_bell_label_off">बाङ तेयार</string>
     <string name="dim_bell_label_format">ᱰᱤᱢᱮᱰ: %1$d0%%</string>
+    <string name="section_deleted">ᱵᱚᱫᱚᱞ ᱟᱠᱟᱱᱟ\'%s\'</string>
+    <string name="action_undo">ᱛᱟᱭᱚᱢ ᱥᱮᱫᱟᱜ ᱠᱟᱹᱢᱤ ᱧᱟᱢ ᱨᱩᱣᱟᱲ</string>
+    <string name="notification_channel_name">ᱢᱮᱰᱤᱴᱮᱥᱚᱱ ᱴᱟᱭᱢᱚᱨ</string>
+    <string name="nav_label_sessions">ᱚᱠᱛᱚ ᱠᱚ</string>
+    <string name="nav_label_meditation">ᱢᱮᱰᱤᱴᱟᱥᱚᱱ</string>
+    <string name="nav_label_edit_session">ᱚᱠᱛᱚ ᱥᱟᱥᱟᱯᱲᱟᱣ ᱢᱮ</string>
+    <string name="nav_label_edit_section">ᱦᱟᱹᱴᱤᱧ ᱥᱟᱥᱟᱯᱲᱟᱣ ᱢᱮ</string>
+    <string name="nav_label_settings">ᱥᱟᱡᱟᱣ ᱠᱚ</string>
 </resources>

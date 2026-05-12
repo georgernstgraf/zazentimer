@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="abbrechen">Batal</string>
-    <string name="about1">Zazen Meditation Timer — A simple meditation timer with customizable sections, bell sounds, and session management.</string>
-    <string name="about2">Originally created by Stefan Gaffga. Currently maintained by Georg Graf.&lt;br&gt;&lt;br&gt;Thanks to Winfried of &lt;a href="http://www.meditationsuhren.de"&gt;http://www.meditationsuhren.de&lt;/a&gt; for providing such great Bell Sounds!</string>
-    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues"&gt;Report issues on GitHub&lt;/a&gt;</string>
-    <string name="app_description">This application lets the user define a set of meditation sessions and provides a timer with visual and audible feedback when a part or the whole meditation is over.</string>
+    <string name="about1">Pemasa Meditasi Zazen — Pemasa meditasi mudah dengan bahagian yang boleh disesuaikan, bunyi loceng dan pengurusan sesi.</string>
+    <string name="about2">Asalnya dicipta oleh Stefan Gaffga. Pada masa ini diselenggara oleh Georg Graf.&lt;br&gt;&lt;br&gt;Terima kasih kepada Winfried daripada &lt;a href="http://www.meditationsuhren.de"&gt;http://www.meditationsuhren.de&lt;/a&gt; kerana menyediakan Bunyi Loceng yang begitu hebat!</string>
+    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues"&gt;Laporkan isu pada GitHub&lt;/a&gt;</string>
+    <string name="app_description">Aplikasi ini membolehkan pengguna menentukan satu set sesi meditasi dan menyediakan pemasa dengan maklum balas visual dan boleh didengar apabila sebahagian atau keseluruhan meditasi selesai.</string>
     <string name="app_name">Zazen Meditation Timer</string>
     <string name="appbar_scrolling_view_behavior">android.support.design.widget.AppBarLayout$ScrollingViewBehavior</string>
     <string name="backup_error_text">Maaf, Ralat telah berlaku semasa menyimpan.</string>
     <string name="backup_no_permission">Tidak dapat membuat sandaran kerana tiada kebenaran.</string>
     <string name="backup_not_createable">Ralat membuat fail sandaran.</string>
     <string name="backup_success_text">Sandaran berjaya dibuat!</string>
-    <string name="bell_name_1">High Tone</string>
-    <string name="bell_name_2">Low Tone</string>
+    <string name="bell_name_1">Nada Tinggi</string>
+    <string name="bell_name_2">Nada Rendah</string>
     <string name="bell_name_3">Jap. Rhinbowl Dharma, 107mm</string>
-    <string name="bell_name_4">Jap. Rhinbowl Dharma, 88mm (black, glazed)</string>
+    <string name="bell_name_4">Jap. Rhinbowl Dharma, 88mm (hitam, berlapis)</string>
     <string name="bell_name_5">Jap. Rhinbowl Shomyo, 90mm</string>
     <string name="bell_name_6">Jap. Rhinbowl Tang, 164mm</string>
-    <string name="bell_name_7">Tib. Bowl, 230mm</string>
+    <string name="bell_name_7">Tib. Mangkuk, 230mm</string>
     <string name="bell_name_8">Jap. Rhinbowl, 97mm</string>
     <string name="bell_pause">Jurang loceng (saat)</string>
     <string name="bell_user">Tambah Loceng...</string>
@@ -36,7 +36,7 @@
     <string name="copy_prefix">Salinan daripada</string>
     <string name="crash_dialog_comment_prompt">Pilihan: Tindakan manakah yang menyebabkan ralat?</string>
     <string name="crash_dialog_ok_toast">Terima kasih banyak atas bantuan anda!</string>
-    <string name="crash_dialog_text">Saya minta maaf, bahawa ralat telah berlaku.Anda boleh membantu saya mencari dan menyelesaikan isu ini dengan menghantar laporan pepijat ini dan mungkin butiran lanjut tentang perkara yang anda lakukan.</string>
+    <string name="crash_dialog_text">Saya minta maaf, bahawa ralat telah berlaku. Anda boleh membantu saya mencari dan menyelesaikan isu ini dengan menghantar laporan pepijat ini dan mungkin butiran lanjut tentang perkara yang anda lakukan.</string>
     <string name="crash_dialog_title">Pemasa Meditasi Zazen</string>
     <string name="crash_toast_text">Maaf - Ralat dalaman telah berlaku!</string>
     <string name="crash_user_email_label">Pilihan: Alamat e-mel anda untuk pertanyaan atau kemas kini tentang isu ini.</string>
@@ -56,7 +56,7 @@
     <string name="desc_no_server_messages">Paparkan Berita secara automatik apabila Apl dimulakan</string>
     <string name="error_checking_for_server_messages">Ralat semasa mengambil mesej baharu.</string>
     <string name="gong_type">Bunyi Gong</string>
-    <string name="help_sectionlist_text">Di sini anda boleh menamakan, menerangkan dan mengedit kandungan Sesi anda.\n\n PESANAN SEMULA\n Untuk menyusun semula item, tekan lama pada item dan\n seretnya ke kedudukan baharunya.\n\n MEMADAM\n Untuk memadam item, alihkannya ke kanan.\n\n EDIT\n Untuk mengedit bahagian, cuma sentuh sekali.\n\n butang + TAMBAH\n.</string>
+    <string name="help_sectionlist_text">Di sini anda boleh menamakan, menerangkan dan mengedit kandungan Sesi anda.\n\nPEMESANAN SEMULA\nUntuk menyusun semula item, tekan lama pada item dan\nseret ke kedudukan baharunya.\n\nMEMADAM\nUntuk memadamkan item, alihkannya ke kanan.\n\nEDIT\nUntuk mengedit bahagian, hanya sentuh sekali.\n\nTAMBAH\nUntuk menambah bahagian baharu, tekan butang +.</string>
     <string name="help_sectionlist_title">Edit Sesi</string>
     <string name="label_section_name">Nama bahagian</string>
     <string name="label_session_description">Penerangan Sesi</string>
@@ -74,8 +74,8 @@
     <string name="menu_settings">tetapan</string>
     <string name="minuten">minit</string>
     <string name="no_new_server_messages">Tiada mesej baharu tersedia.</string>
-    <string name="no_sections_in_session">Tidak boleh memulakan Meditasi: Sesi yang dipilih tidak mempunyai sebarang Bahagian.</string>
-    <string name="no_session_exists">Tiada sesi yang boleh dimulakan.Sila buat satu dahulu.</string>
+    <string name="no_sections_in_session">Boleh\'t memulakan Meditasi: Sesi yang dipilih tidak mempunyai sebarang Bahagian.</string>
+    <string name="no_session_exists">Tiada sesi yang boleh dimulakan. Sila buat satu dahulu.</string>
     <string name="notification_text">Meditasi Zazen sedang dijalankan</string>
     <string name="notification_text_paused">Meditasi Zazen berhenti seketika</string>
     <string name="notification_title">Meditasi Zazen</string>
@@ -112,7 +112,7 @@
     <string name="restore_backup_not_found">Fail Sandaran tidak ditemui</string>
     <string name="restore_error_text">Ralat memulihkan daripada Sandaran</string>
     <string name="restore_no_permission">Tidak dapat dipulihkan kerana tiada kebenaran.</string>
-    <string name="restore_really_text">Ini akan menggantikan semua Sesi anda dengan Sesi dalam Sandaran!(Tidak Buat Buat Asal!)</string>
+    <string name="restore_really_text">Ini akan menggantikan semua Sesi anda dengan Sesi dalam Sandaran! (Tiada Buat Asal!)</string>
     <string name="restore_really_title">Benar-benar memulihkan data?</string>
     <string name="restore_success_text">Pemulihan Data berjaya</string>
     <string name="search_menu_title">Cari</string>
@@ -128,14 +128,14 @@
     <string name="content_desc_session_actions">Tindakan sesi</string>
     <string name="session_list_unnamed_entry">Sesi Tanpa Nama</string>
     <string name="status_bar_notification_info_overflow">999+</string>
-    <string name="test_mute_perm_request">Apl pada masa ini tidak dibenarkan untuk meredamkan telefon anda.Buka tetapan untuk menukar ini?</string>
-    <string name="text_cant_mute">Telefon anda tidak membenarkan Apl ini meredamkannya.Lumpuhkan meredam dalam Tetapan Apl ini atau benarkan meredam dalam Tetapan Telefon anda.</string>
-    <string name="text_no_notify_access_settings">Telefon anda nampaknya tidak mempunyai tetapan standard untuk membenarkan meredam.Sila cari Tetapan \&amp;quot;Jangan Ganggu Akses\&amp;quot; secara manual dan dayakannya.</string>
+    <string name="test_mute_perm_request">Pada masa ini Apl tidak dibenarkan untuk meredamkan telefon anda. Buka tetapan untuk menukar ini?</string>
+    <string name="text_cant_mute">Telefon anda tidak membenarkan Apl ini meredamkannya. Lumpuhkan meredam dalam Tetapan Apl ini atau benarkan meredam dalam Tetapan Telefon anda.</string>
+    <string name="text_no_notify_access_settings">Telefon anda nampaknya tidak mempunyai tetapan standard untuk membenarkan meredam. Sila cari secara manual untuk Tetapan \"Jangan Ganggu Akses\" dan dayakannya.</string>
     <string name="text_no_sections">Tiada Bahagian ditakrifkan.</string>
     <string name="text_question_delete_session">Betul-betul padamkan Sesi yang dipilih?</string>
     <string name="theme">Tema</string>
     <string name="theme_dark">Tema Gelap</string>
-    <string name="theme_desc">Pilih penampilan Apl yang terang atau gelap</string>
+    <string name="theme_desc">Pilih rupa apl</string>
     <string name="theme_light">Tema Cahaya</string>
     <string name="theme_system">Tema Sistem</string>
     <string name="theme_value_dark">dark</string>
@@ -158,4 +158,12 @@
     <string name="title_dim_bell">Loceng malap</string>
     <string name="dim_bell_label_off">Tidak dimalapkan</string>
     <string name="dim_bell_label_format">Dimalapkan: %1$d0%%</string>
+    <string name="section_deleted">Dipadamkan \'%s\'</string>
+    <string name="action_undo">Buat asal</string>
+    <string name="notification_channel_name">Pemasa Meditasi</string>
+    <string name="nav_label_sessions">Sesi</string>
+    <string name="nav_label_meditation">Meditasi</string>
+    <string name="nav_label_edit_session">Edit Sesi</string>
+    <string name="nav_label_edit_section">Edit Bahagian</string>
+    <string name="nav_label_settings">tetapan</string>
 </resources>

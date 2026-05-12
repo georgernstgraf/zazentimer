@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="abbrechen">Atcelt</string>
-    <string name="about1">Zazen Meditation Timer — A simple meditation timer with customizable sections, bell sounds, and session management.</string>
-    <string name="about2">Originally created by Stefan Gaffga. Currently maintained by Georg Graf.&lt;br&gt;&lt;br&gt;Thanks to Winfried of &lt;a href="http://www.meditationsuhren.de"&gt;http://www.meditationsuhren.de&lt;/a&gt; for providing such great Bell Sounds!</string>
-    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues"&gt;Report issues on GitHub&lt;/a&gt;</string>
-    <string name="app_description">This application lets the user define a set of meditation sessions and provides a timer with visual and audible feedback when a part or the whole meditation is over.</string>
+    <string name="about1">Zazen meditācijas taimeris — vienkāršs meditācijas taimeris ar pielāgojamām sadaļām, zvana skaņām un sesiju pārvaldību.</string>
+    <string name="about2">Sākotnēji izveidoja Stefans Gafga. Pašlaik to uztur Georgs Grafs.&lt;br&gt;&lt;br&gt;Paldies Vinfrīdam no &lt;a href="http://www.meditationsuhren.de"&gt;http://www.meditationsuhren.de&lt;/a&gt; par tik lieliskām zvanu skaņām!</string>
+    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues"&gt;Ziņot par problēmām pakalpojumā GitHub&lt;/a&gt;</string>
+    <string name="app_description">Šī lietojumprogramma ļauj lietotājam definēt meditācijas sesiju kopu un nodrošina taimeri ar vizuālu un dzirdamu atgriezenisko saiti, kad meditācijas daļa vai visa meditācija ir beigusies.</string>
     <string name="app_name">Zazen Meditation Timer</string>
     <string name="appbar_scrolling_view_behavior">android.support.design.widget.AppBarLayout$ScrollingViewBehavior</string>
     <string name="backup_error_text">Atvainojiet, saglabāšanas laikā radās kļūda.</string>
     <string name="backup_no_permission">Nevarēja izveidot dublējumu, jo trūkst atļauju.</string>
     <string name="backup_not_createable">Veidojot dublējuma failu, radās kļūda.</string>
     <string name="backup_success_text">Dublējums ir veiksmīgi izveidots!</string>
-    <string name="bell_name_1">High Tone</string>
-    <string name="bell_name_2">Low Tone</string>
-    <string name="bell_name_3">Jap. Rhinbowl Dharma, 107mm</string>
-    <string name="bell_name_4">Jap. Rhinbowl Dharma, 88mm (black, glazed)</string>
+    <string name="bell_name_1">Augsts tonis</string>
+    <string name="bell_name_2">Zems tonis</string>
+    <string name="bell_name_3">Jap. Rhinbowl Dharma, 107 mm</string>
+    <string name="bell_name_4">Jap. Rhinbowl Dharma, 88mm (melns, glazēts)</string>
     <string name="bell_name_5">Jap. Rhinbowl Shomyo, 90mm</string>
     <string name="bell_name_6">Jap. Rhinbowl Tang, 164mm</string>
-    <string name="bell_name_7">Tib. Bowl, 230mm</string>
-    <string name="bell_name_8">Jap. Rhinbowl, 97mm</string>
+    <string name="bell_name_7">Tib. Bļoda, 230mm</string>
+    <string name="bell_name_8">Jap. Degunradža, 97mm</string>
     <string name="bell_pause">Zvana atstarpe (s)</string>
     <string name="bell_user">Pievienot zvanu...</string>
     <string name="bottom_nav_meditation">Meditācija</string>
@@ -36,7 +36,7 @@
     <string name="copy_prefix">kopija</string>
     <string name="crash_dialog_comment_prompt">Neobligāti: kura darbība izraisīja kļūdu?</string>
     <string name="crash_dialog_ok_toast">Liels paldies par palīdzību!</string>
-    <string name="crash_dialog_text">Es atvainojos, ka ir notikusi kļūda. Varat man palīdzēt atrast un novērst šo problēmu, nosūtot šo kļūdas ziņojumu un, iespējams, pat sīkāku informāciju par paveikto.</string>
+    <string name="crash_dialog_text">Es atvainojos, ka ir notikusi kļūda. Varat man palīdzēt atrast un novērst šo problēmu, nosūtot šo kļūdu ziņojumu un, iespējams, pat sīkāku informāciju par jūsu paveikto.</string>
     <string name="crash_dialog_title">Zazen meditācijas taimeris</string>
     <string name="crash_toast_text">Atvainojiet, ir notikusi iekšēja kļūda!</string>
     <string name="crash_user_email_label">Neobligāti: jūsu e-pasta adrese jautājumiem vai atjauninājumiem par šo problēmu.</string>
@@ -56,7 +56,7 @@
     <string name="desc_no_server_messages">Automātiski rādīt ziņas, kad lietotne tiek startēta</string>
     <string name="error_checking_for_server_messages">Ienesot jaunus ziņojumus, radās kļūda.</string>
     <string name="gong_type">Gongu skaņa</string>
-    <string name="help_sectionlist_text">Šeit varat nosaukt, aprakstīt un rediģēt savas sesijas saturu.\n\n PĀRKĀRTOŠANA\n Lai pārkārtotu vienumus, turiet nospiest uz vienuma un\n velciet to uz jauno pozīciju.\n\n DZĒŠA, lai to dzēstu uz 6⦆. pa labi.\n\n EDIT\n Lai rediģētu sadaļu, vienkārši pieskarieties tai vienreiz.\n\n ADD\n Lai pievienotu jaunu sadaļu, nospiediet pogu +.</string>
+    <string name="help_sectionlist_text">Šeit varat nosaukt, aprakstīt un rediģēt savas sesijas saturu.\n\nPĀRSŪTĪŠANA\nLai pārkārtotu preces, ilgi nospiediet uz vienuma un\nvelciet to jaunajā pozīcijā.\n\nDZĒŠANA\nLai izdzēstu vienumu, pārvietojiet to pa labi.\n\nREDIĢĒT\nLai rediģētu sadaļu, vienkārši pieskarieties tai vienreiz.\n\nPIEVIENOT\nLai pievienotu jaunu sadaļu, nospiediet pogu +.</string>
     <string name="help_sectionlist_title">Rediģēt sesiju</string>
     <string name="label_section_name">Sadaļas nosaukums</string>
     <string name="label_session_description">Sesijas apraksts</string>
@@ -74,8 +74,8 @@
     <string name="menu_settings">Iestatījumi</string>
     <string name="minuten">Minūtes</string>
     <string name="no_new_server_messages">Nav pieejams neviens jauns ziņojums.</string>
-    <string name="no_sections_in_session">Nevar sākt meditāciju: atlasītajā sesijā nav nevienas sadaļas.</string>
-    <string name="no_session_exists">Nav sesijas, kuru varētu sākt. Lūdzu, vispirms izveidojiet to.</string>
+    <string name="no_sections_in_session">Nevar\'sākt meditāciju: atlasītajā sesijā nav nevienas sadaļas.</string>
+    <string name="no_session_exists">Nav nevienas sesijas, kuru varētu sākt. Lūdzu, vispirms izveidojiet to.</string>
     <string name="notification_text">Pašlaik notiek Zazen meditācija</string>
     <string name="notification_text_paused">Zazen meditācija apstājās</string>
     <string name="notification_title">Zazen meditācija</string>
@@ -116,7 +116,7 @@
     <string name="restore_really_title">Vai tiešām atjaunot datus?</string>
     <string name="restore_success_text">Datu atjaunošana ir veiksmīga</string>
     <string name="search_menu_title">Meklēt</string>
-    <string name="section_info_string_1_pl">%1$d zvani</string>
+    <string name="section_info_string_1_pl">%1$d Zvani</string>
     <string name="section_info_string_1_sg">1 Zvans</string>
     <string name="section_info_string_2_pl">ik pēc %1$d sekundēm</string>
     <string name="section_info_string_2_sg">katru sekundi</string>
@@ -130,12 +130,12 @@
     <string name="status_bar_notification_info_overflow">999+</string>
     <string name="test_mute_perm_request">Lietojumprogrammai pašlaik nav atļauts izslēgt jūsu tālruņa skaņu. Vai atvērt iestatījumus, lai to mainītu?</string>
     <string name="text_cant_mute">Jūsu tālrunis neļauj šai lietotnei to izslēgt. Atspējojiet skaņas izslēgšanu šajā lietotņu iestatījumos vai atļaujiet izslēgšanu tālruņu iestatījumos.</string>
-    <string name="text_no_notify_access_settings">Šķiet, ka jūsu tālrunī nav standarta iestatījumu, kas atļautu izslēgt skaņu. Lūdzu, manuāli meklējiet iestatījumu \&amp;quot;Netraucēt piekļuvi\&amp;quot; un iespējojiet to.</string>
+    <string name="text_no_notify_access_settings">Šķiet, ka jūsu tālrunī nav standarta iestatījumu, kas atļautu izslēgt skaņu. Lūdzu, manuāli meklējiet iestatījumu \"Netraucēt piekļuvi\" un iespējojiet to.</string>
     <string name="text_no_sections">Nav definētu sadaļu.</string>
     <string name="text_question_delete_session">Vai tiešām dzēst atlasīto sesiju?</string>
     <string name="theme">Tēma</string>
     <string name="theme_dark">Tumšā tēma</string>
-    <string name="theme_desc">Izvēlieties lietotnes gaišo vai tumšo izskatu</string>
+    <string name="theme_desc">Izvēlieties lietotnes izskatu</string>
     <string name="theme_light">Gaismas tēma</string>
     <string name="theme_system">Sistēmas tēma</string>
     <string name="theme_value_dark">dark</string>
@@ -158,4 +158,12 @@
     <string name="title_dim_bell">Dim Bell</string>
     <string name="dim_bell_label_off">Nav aptumšots</string>
     <string name="dim_bell_label_format">Aptumšots: %1$d0%%</string>
+    <string name="section_deleted">Izdzēsts \'%s\'</string>
+    <string name="action_undo">Atsaukt</string>
+    <string name="notification_channel_name">Meditācijas taimeris</string>
+    <string name="nav_label_sessions">Sesijas</string>
+    <string name="nav_label_meditation">Meditācija</string>
+    <string name="nav_label_edit_session">Rediģēt sesiju</string>
+    <string name="nav_label_edit_section">Rediģēt sadaļu</string>
+    <string name="nav_label_settings">Iestatījumi</string>
 </resources>

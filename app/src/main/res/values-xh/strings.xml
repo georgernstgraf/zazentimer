@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="abbrechen">Rhoxisa</string>
-    <string name="about1">Zazen Meditation Timer — A simple meditation timer with customizable sections, bell sounds, and session management.</string>
-    <string name="about2">Originally created by Stefan Gaffga. Currently maintained by Georg Graf.&lt;br&gt;&lt;br&gt;Thanks to Winfried of &lt;a href="http://www.meditationsuhren.de"&gt;http://www.meditationsuhren.de&lt;/a&gt; for providing such great Bell Sounds!</string>
-    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues"&gt;Report issues on GitHub&lt;/a&gt;</string>
-    <string name="app_description">This application lets the user define a set of meditation sessions and provides a timer with visual and audible feedback when a part or the whole meditation is over.</string>
+    <string name="about1">I-Zazen Meditation Timer-Isibali-xesha esilula sokucamngca esinamacandelo enziwe ngokwezifiso, izandi zentsimbi, kunye nolawulo lweseshoni.</string>
+    <string name="about2">Ekuqaleni yadalwa nguStefan Gaffga. Ngoku igcinwe nguGeorg Graf.&lt;br&gt;&lt;br&gt;Enkosi kuWinfried we&lt;a href="http://www.meditationsuhren.de"&gt;http://www.meditationsuhren.de&lt;/a&gt; ngokunikezela ngeZandi zeBell ezinje!</string>
+    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues"&gt;Xela imiba kwiGitHub&lt;/a&gt;</string>
+    <string name="app_description">Esi sicelo sivumela umsebenzisi ukuba achaze iseti yeeseshini zokucamngca kwaye ibonelela ngesibali-xesha ngengxelo ebonakalayo kunye nevakalayo xa inxalenye okanye ukucamngca kuphelile.</string>
     <string name="app_name">Zazen Meditation Timer</string>
     <string name="appbar_scrolling_view_behavior">android.support.design.widget.AppBarLayout$ScrollingViewBehavior</string>
     <string name="backup_error_text">Uxolo, kwenzeke impazamo ngexesha ugcina.</string>
     <string name="backup_no_permission">Ayikwazanga ukwenza ugcino ngenxa yeemvumelwano ezingekhoyo.</string>
     <string name="backup_not_createable">Impazamo yokudala ifayile yogcino.</string>
     <string name="backup_success_text">Ugcino lwenziwe ngempumelelo!</string>
-    <string name="bell_name_1">High Tone</string>
-    <string name="bell_name_2">Low Tone</string>
-    <string name="bell_name_3">Jap. Rhinbowl Dharma, 107mm</string>
-    <string name="bell_name_4">Jap. Rhinbowl Dharma, 88mm (black, glazed)</string>
-    <string name="bell_name_5">Jap. Rhinbowl Shomyo, 90mm</string>
-    <string name="bell_name_6">Jap. Rhinbowl Tang, 164mm</string>
-    <string name="bell_name_7">Tib. Bowl, 230mm</string>
-    <string name="bell_name_8">Jap. Rhinbowl, 97mm</string>
+    <string name="bell_name_1">Ithoni ephezulu</string>
+    <string name="bell_name_2">Ithowuni ephantsi</string>
+    <string name="bell_name_3">eJapan. Rhinbowl Dharma, 107mm</string>
+    <string name="bell_name_4">eJapan. I-Rhinbowl Dharma, 88mm (emnyama, emenyezelayo)</string>
+    <string name="bell_name_5">eJapan. Rhinbowl Shomyo, 90mm</string>
+    <string name="bell_name_6">eJapan. I-Rhinbowl Tang, 164mm</string>
+    <string name="bell_name_7">Ithib. Isitya, 230mm</string>
+    <string name="bell_name_8">eJapan. I-Rhinbowl, 97mm</string>
     <string name="bell_pause">Intsimbi yentsimbi (umzuzwana)</string>
     <string name="bell_user">Yongeza iBell...</string>
     <string name="bottom_nav_meditation">Ukucamngca</string>
@@ -27,7 +27,7 @@
     <string name="but_pause">Misa</string>
     <string name="but_start">Qala ukucamngca</string>
     <string name="but_stop">Yeka</string>
-    <string name="caption_zazen_meditation">Ukucamngca ngeZazen</string>
+    <string name="caption_zazen_meditation">Ukucamngca kweZazen</string>
     <string name="character_counter_pattern">%1$d / %2$d</string>
     <string name="checkbox_keep_screen_on">Gcina isikrini sivuliwe</string>
     <string name="checkbox_no_server_messages">Bonisa Iindaba</string>
@@ -36,18 +36,18 @@
     <string name="copy_prefix">Ikopi ye</string>
     <string name="crash_dialog_comment_prompt">Ngokuzikhethela: Sesiphi isenzo esibangele impazamo?</string>
     <string name="crash_dialog_ok_toast">Enkosi kakhulu ngoncedo lwakho!</string>
-    <string name="crash_dialog_text">Uxolo, kwenzeke impazamo. Ungandinceda ndifumane kwaye ndilungise lo mba ngokuthumela le ngxelo yebug kwaye mhlawumbi neenkcukacha ezingakumbi kwinto oyenzileyo.</string>
+    <string name="crash_dialog_text">Uxolo, kwenzeke impazamo. Ungandinceda ndifumane kwaye ndilungise lo mba ngokuthumela le ngxelo yebug kwaye mhlawumbi iinkcukacha ezingakumbi malunga nento oyenzileyo.</string>
     <string name="crash_dialog_title">Zazen Meditation Timer</string>
     <string name="crash_toast_text">Uxolo - impazamo yangaphakathi yenzekile!</string>
     <string name="crash_user_email_label">Ngokuzikhethela: Idilesi yakho ye-imeyile yemibuzo okanye uhlaziyo ngalo mba.</string>
     <string name="default_section_name">Akuchazwanga ngagama</string>
     <string name="demo_sess1_description">Ukucamngca ngeCawa ngokuhlwa</string>
-    <string name="demo_sess1_name">Zazen kunye Kinhin</string>
+    <string name="demo_sess1_name">IZazen kunye neKinhin</string>
     <string name="demo_sess1_sec1_name">Ukulungiselela</string>
     <string name="demo_sess1_sec2_name">Zazeni 1</string>
     <string name="demo_sess1_sec3_name">Ikin 1</string>
     <string name="demo_sess1_sec4_name">Zazeni 2</string>
-    <string name="demo_sess1_sec5_name">Iqela 3</string>
+    <string name="demo_sess1_sec5_name">Ingqayi 3</string>
     <string name="demo_sess1_sec6_name">Zazeni 3</string>
     <string name="demo_sess2_description">Ukucamngca kwemihla ngemihla</string>
     <string name="demo_sess2_name">Zazen kuphela</string>
@@ -56,7 +56,7 @@
     <string name="desc_no_server_messages">Bonisa iindaba ngokuzenzekela xa usetyenziso luqala</string>
     <string name="error_checking_for_server_messages">Impazamo ekufumaneni imiyalezo emitsha.</string>
     <string name="gong_type">Isandi seGong</string>
-    <string name="help_sectionlist_text">Apha unganika igama, uchaze kwaye uhlele imixholo yeSeshini yakho.\n\n UKULUNGISELELA KWAKHONA\n Ukucwangcisa ngokutsha izinto, cofa ixesha elide kwinto kwaye\n uyitsalele kwindawo yayo entsha.\n\n UKUCIMA\n Ukucima into\n Ukucima into ekunene.\n\n HLELA\n Ukuhlela icandelo, vele ulibambe kube kanye.\n\n ADD\n Ukongeza icandelo elitsha, cofa iqhosha +.</string>
+    <string name="help_sectionlist_text">Apha ungachaza, uchaze kwaye uhlele imixholo yeSeshini yakho.\n\nUKUHLELA KWAKHONA\nUkucwangcisa ngokutsha izinto, cofa ixesha elide kwinto kwaye\nyitsalele kwindawo yayo entsha.\n\nUKUCIMA\nUkucima into, yise ekunene.\n\nHLELA\nUkuhlela icandelo, lichukumise kube kanye.\n\nYONZA\nUkongeza icandelo elitsha, cofa iqhosha +.</string>
     <string name="help_sectionlist_title">Hlela iSeshini</string>
     <string name="label_section_name">Igama lecandelo</string>
     <string name="label_session_description">Inkcazo yeseshoni</string>
@@ -73,12 +73,12 @@
     <string name="menu_privacy">Ubumfihlo...</string>
     <string name="menu_settings">Iisetingi</string>
     <string name="minuten">Imizuzu</string>
-    <string name="no_new_server_messages">Akukho miyalezo emitsha ekhoyo.</string>
-    <string name="no_sections_in_session">Ayinakuqalisa ukucamngca: Iseshoni ekhethiweyo ayinamaCandelo.</string>
+    <string name="no_new_server_messages">Akukho miyalezo mitsha ekhoyo.</string>
+    <string name="no_sections_in_session">Ayina\'ukuqalisa ukucamngca: Iseshoni ekhethiweyo ayinamaCandelo.</string>
     <string name="no_session_exists">Akukho seshoni inokuqaliswa. Nceda wenze enye kuqala.</string>
-    <string name="notification_text">Ukucamngca kweZazen kuqhutywa ngoku</string>
+    <string name="notification_text">Ukucamngca kweZazen kuyasebenza ngoku</string>
     <string name="notification_text_paused">Ukucamngca kweZazen kumisiwe</string>
-    <string name="notification_title">Ukucamngca ngeZazen</string>
+    <string name="notification_title">Ukucamngca kweZazen</string>
     <string name="notification_title_paused">Ukucamngca kweZazen (kunqunyanyisiwe)</string>
     <string name="num_bells">Ukubala intsimbi</string>
     <string name="ok">KULUNGILE</string>
@@ -89,7 +89,7 @@
     <string name="pref_mute_mode_none_desc">Akukho towuni yeringi kwaye akukho vibration kwiifowuni kunye neZaziso</string>
     <string name="pref_mute_mode_pref">Iisetingi malunga nethowuni yokukhala kunye nezaziso</string>
     <string name="pref_mute_mode_vibrate">Kuphela iVibration</string>
-    <string name="pref_mute_mode_vibrate_desc">Ukungcangcazela kuphela kwiifowuni kunye neZaziso (Ayisebenzi kwi-Android 7 (Nougat) - iziphatha njengesetingi yokuThula)</string>
+    <string name="pref_mute_mode_vibrate_desc">Ukungcangcazela kuphela kwiifowuni kunye neZaziso (Ayisebenzi kwi-Android 7 (i-Nougat) - iziphatha njengesetingi yokuThula)</string>
     <string name="pref_mute_mode_vibrate_sound">Ithowuni yeringi kunye neVibration</string>
     <string name="pref_mute_mode_vibrate_sound_desc">Dlala Ithowuni yeRingi kunye neVibration</string>
     <string name="pref_muting">Cima imimiselo</string>
@@ -101,7 +101,7 @@
     <string name="pref_sum_read_only">Ikhadi le-SD lifundeka kuphela</string>
     <string name="pref_sum_removed">Akukho SD-Card ekhoyo</string>
     <string name="pref_sum_restore">Buyisela iiSeshini zakho kunye nezandi zeSiko kwi-SD-Card Backup</string>
-    <string name="pref_sum_shared">I-SD-Card kwabelwana ngayo</string>
+    <string name="pref_sum_shared">Ikhadi le-SD kwabelwana ngalo</string>
     <string name="pref_title_backup">Yenza iBackup</string>
     <string name="pref_title_brightness">Ukuqaqamba</string>
     <string name="pref_title_restore">Buyisela kwi-Backup</string>
@@ -118,7 +118,7 @@
     <string name="search_menu_title">Khangela</string>
     <string name="section_info_string_1_pl">%1$d Iintsimbi</string>
     <string name="section_info_string_1_sg">1 Bell</string>
-    <string name="section_info_string_2_pl">yonke %1$d Imizuzwana</string>
+    <string name="section_info_string_2_pl">qho %1$d Imizuzwana</string>
     <string name="section_info_string_2_sg">yonke iSibini</string>
     <string name="sekunden">Imizuzwana</string>
     <string name="select_audio">Khetha ifayile yesandi</string>
@@ -130,12 +130,12 @@
     <string name="status_bar_notification_info_overflow">999+</string>
     <string name="test_mute_perm_request">I-App ayivumelekanga ngoku ukuba ithule ifowuni yakho. Vula useto lokutshintsha oku?</string>
     <string name="text_cant_mute">Ifowuni yakho ayivumeli le App ukuba iyithulise. Khubaza uthuliso kolu Seto lwe-Apps okanye uvumele uthuliso kwiiSetingi zeFowuni zakho.</string>
-    <string name="text_no_notify_access_settings">Ifowuni yakho ayibonakali inesetingi eziqhelekileyo zokuvumela uthuliso. Nceda ujonge ngesandla i- \&amp;quot;Musa ukuphazamisa uFikelelo\&amp;quot; Ukucwangcisa kwaye uyivule.</string>
+    <string name="text_no_notify_access_settings">Ifowuni yakho ayibonakali inesetingi eziqhelekileyo zokuvumela uthuliso. Nceda ujonge \"Ungaphazamisi UFikelelo\" Useto kwaye uluvule.</string>
     <string name="text_no_sections">Akukho maCandelo achaziweyo.</string>
     <string name="text_question_delete_session">Yicime ngokwenene iSeshini ekhethiweyo?</string>
     <string name="theme">Umxholo</string>
     <string name="theme_dark">Umxholo omnyama</string>
-    <string name="theme_desc">Khetha ukukhanya okanye inkangeleko emnyama ye-App</string>
+    <string name="theme_desc">Khetha inkangeleko ye-app</string>
     <string name="theme_light">Light Umxholo</string>
     <string name="theme_system">Umxholo weNkqubo</string>
     <string name="theme_value_dark">dark</string>
@@ -154,8 +154,16 @@
     <string name="stop_meditation_stop">Yeka</string>
     <string name="stop_meditation_cancel">Rhoxisa</string>
     <string name="pref_title_bell_volume">Bell Volume</string>
-    <string name="pref_desc_bell_volume">Ilawula isandi se-alam yezandi zentsimbi</string>
+    <string name="pref_desc_bell_volume">Ilawula ivolyum yesandi se-alam kwizandi zentsimbi</string>
     <string name="title_dim_bell">Dim Bell</string>
     <string name="dim_bell_label_off">Hayi mfiliba</string>
     <string name="dim_bell_label_format">Luzizi: %1$d0%%</string>
+    <string name="section_deleted">Icinyiwe _____%s\'</string>
+    <string name="action_undo">qhaqha</string>
+    <string name="notification_channel_name">Isibali-xesha sokucamngca</string>
+    <string name="nav_label_sessions">Iiseshoni</string>
+    <string name="nav_label_meditation">Ukucamngca</string>
+    <string name="nav_label_edit_session">Hlela iSeshini</string>
+    <string name="nav_label_edit_section">Hlela iCandelo</string>
+    <string name="nav_label_settings">Iisetingi</string>
 </resources>

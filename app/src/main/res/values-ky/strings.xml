@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="abbrechen">Жокко чыгаруу</string>
-    <string name="about1">Zazen Meditation Timer — A simple meditation timer with customizable sections, bell sounds, and session management.</string>
-    <string name="about2">Originally created by Stefan Gaffga. Currently maintained by Georg Graf.&lt;br&gt;&lt;br&gt;Thanks to Winfried of &lt;a href="http://www.meditationsuhren.de"&gt;http://www.meditationsuhren.de&lt;/a&gt; for providing such great Bell Sounds!</string>
-    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues"&gt;Report issues on GitHub&lt;/a&gt;</string>
-    <string name="app_description">This application lets the user define a set of meditation sessions and provides a timer with visual and audible feedback when a part or the whole meditation is over.</string>
+    <string name="about1">Zazen медитация таймери - ыңгайлаштырылган бөлүмдөрү, коңгуроо үндөрү жана сессияны башкаруу менен жөнөкөй медитация таймери.</string>
+    <string name="about2">Алгач Стефан Гаффга тарабынан түзүлгөн. Учурда Георг Граф тарабынан колдоого алынат.&lt;br&gt;&lt;br&gt;Ушундай сонун коңгуроо үндөрүн камсыз кылган &lt;a href="http://www.meditationsuhren.de"&gt;http://www.meditationsuhren.de&lt;/a&gt; сайтындагы Уинфридге рахмат!</string>
+    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues"&gt;GitHub боюнча көйгөйлөр тууралуу кабарлоо&lt;/a&gt;</string>
+    <string name="app_description">Бул колдонмо колдонуучуга медитация сессияларынын топтомун аныктоого мүмкүндүк берет жана медитациянын бир бөлүгү же бүтүндөй аяктаганда визуалдык жана уккулуктуу пикир менен таймерди камсыз кылат.</string>
     <string name="app_name">Zazen Meditation Timer</string>
     <string name="appbar_scrolling_view_behavior">android.support.design.widget.AppBarLayout$ScrollingViewBehavior</string>
     <string name="backup_error_text">Кечиресиз, сактоодо ката кетти.</string>
@@ -13,12 +13,12 @@
     <string name="backup_success_text">Камдык көчүрмө ийгиликтүү түзүлдү!</string>
     <string name="bell_name_1">High Tone</string>
     <string name="bell_name_2">Low Tone</string>
-    <string name="bell_name_3">Jap. Rhinbowl Dharma, 107mm</string>
-    <string name="bell_name_4">Jap. Rhinbowl Dharma, 88mm (black, glazed)</string>
-    <string name="bell_name_5">Jap. Rhinbowl Shomyo, 90mm</string>
-    <string name="bell_name_6">Jap. Rhinbowl Tang, 164mm</string>
-    <string name="bell_name_7">Tib. Bowl, 230mm</string>
-    <string name="bell_name_8">Jap. Rhinbowl, 97mm</string>
+    <string name="bell_name_3">жапон. Ринбоул Дхарма, 107мм</string>
+    <string name="bell_name_4">жапон. Rhinbowl Dharma, 88мм (кара, айнектелген)</string>
+    <string name="bell_name_5">жапон. Rhinbowl Shomyo, 90мм</string>
+    <string name="bell_name_6">жапон. Rhinbowl Tang, 164 мм</string>
+    <string name="bell_name_7">Tib. идиш, 230мм</string>
+    <string name="bell_name_8">жапон. Ринбоул, 97 мм</string>
     <string name="bell_pause">Коңгуроо боштугу (сек.)</string>
     <string name="bell_user">Коңгуроо кошуу...</string>
     <string name="bottom_nav_meditation">Медитация</string>
@@ -27,7 +27,7 @@
     <string name="but_pause">Тыныгуу</string>
     <string name="but_start">Медитацияны баштаңыз</string>
     <string name="but_stop">Токто</string>
-    <string name="caption_zazen_meditation">Zazen медитация</string>
+    <string name="caption_zazen_meditation">Зазен медитациясы</string>
     <string name="character_counter_pattern">%1$d / %2$d</string>
     <string name="checkbox_keep_screen_on">Экранды күйгүзүңүз</string>
     <string name="checkbox_no_server_messages">Show News</string>
@@ -44,7 +44,7 @@
     <string name="demo_sess1_description">Жекшемби күнү кечинде медитация</string>
     <string name="demo_sess1_name">Зазен жана Кинхин</string>
     <string name="demo_sess1_sec1_name">Даярдоо</string>
-    <string name="demo_sess1_sec2_name">Zazen 1</string>
+    <string name="demo_sess1_sec2_name">Зазен 1</string>
     <string name="demo_sess1_sec3_name">Кинхин 1</string>
     <string name="demo_sess1_sec4_name">Зазен 2</string>
     <string name="demo_sess1_sec5_name">Кинхин 3</string>
@@ -56,7 +56,7 @@
     <string name="desc_no_server_messages">Колдонмо башталганда Жаңылыктар автоматтык түрдө көрсөтүлөт</string>
     <string name="error_checking_for_server_messages">Жаңы билдирүүлөрдү алууда ката кетти.</string>
     <string name="gong_type">Gong Sound</string>
-    <string name="help_sectionlist_text">Бул жерден сиз Сеансыңыздын мазмунуна ат коюп, сүрөттөп жана түзөтө аласыз.\n\n РЕЗЕРТИЦИЯНЫ КАЙРА БЕРҮҮ\n Элементтердин иретин өзгөртүү үчүн, бир нерсени көпкө басып,\n аны жаңы ордуна сүйрөңүз. оң.\n\n ТҮЗӨТ\n Бөлүмдү түзөтүү үчүн ага бир жолу тийип коюңуз.\n\n КОШУУ\n Жаңы бөлүм кошуу үчүн + баскычын басыңыз.</string>
+    <string name="help_sectionlist_text">Бул жерден сиз Сессияңыздын мазмунун атап, сүрөттөп жана түзөтө аласыз.\n\nREERERING\nБуюмдарды кайра иреттөө үчүн, бир нерсени көпкө басыңыз жана\nаны жаңы ордуна сүйрөңүз.\n\nЖОК\nБир нерсени жок кылуу үчүн, аны оңго жылдырыңыз.\n\nEDIT\nБөлүмдү түзөтүү үчүн ага бир жолу тийип коюңуз.\n\nКОШУУ\nЖаңы бөлүм кошуу үчүн + баскычын басыңыз.</string>
     <string name="help_sectionlist_title">Сеансты түзөтүү</string>
     <string name="label_section_name">Бөлүмдүн аты</string>
     <string name="label_session_description">Сеанстын сүрөттөлүшү</string>
@@ -74,17 +74,17 @@
     <string name="menu_settings">Орнотуулар</string>
     <string name="minuten">Мүнөттөр</string>
     <string name="no_new_server_messages">Жаңы билдирүүлөр жок.</string>
-    <string name="no_sections_in_session">Медитацияны баштоо мүмкүн эмес: Тандалган сессияда бир да бөлүм жок.</string>
+    <string name="no_sections_in_session">Медитацияны баштай албайм: Тандалган сессияда бир да бөлүм жок.</string>
     <string name="no_session_exists">Баштай турган сессия жок. Сураныч, биринчи түзүңүз.</string>
     <string name="notification_text">Учурда Zazen Meditation иштеп жатат</string>
     <string name="notification_text_paused">Зазен медитациясы токтоду</string>
-    <string name="notification_title">Zazen медитация</string>
+    <string name="notification_title">Зазен медитациясы</string>
     <string name="notification_title_paused">Зазен медитациясы (тындырылган)</string>
     <string name="num_bells">Коңгуроо саны</string>
     <string name="ok">макул</string>
     <string name="pref_desc_brightness">Медитация учурунда дисплейдин жарыктыгы</string>
     <string name="pref_get_messages">Жаңы Билдирүүлөрдү азыр текшериңиз</string>
-    <string name="pref_mute_mode">Шыңгыр обону жана эскертмелер</string>
+    <string name="pref_mute_mode">Ring tone and Notifications</string>
     <string name="pref_mute_mode_none">Тынчтык</string>
     <string name="pref_mute_mode_none_desc">Телефон чалуулар жана эскертмелер үчүн рингтон жана титирөө жок</string>
     <string name="pref_mute_mode_pref">Шыңгыр үнүнө жана эскертмелерге байланыштуу орнотуулар</string>
@@ -118,7 +118,7 @@
     <string name="search_menu_title">Издөө</string>
     <string name="section_info_string_1_pl">%1$d Коңгуроолор</string>
     <string name="section_info_string_1_sg">1 Bell</string>
-    <string name="section_info_string_2_pl">%1$d секунд сайын</string>
+    <string name="section_info_string_2_pl">ар %1$d секунд</string>
     <string name="section_info_string_2_sg">ар бир секунд</string>
     <string name="sekunden">секунд</string>
     <string name="select_audio">Үн файлын тандаңыз</string>
@@ -130,12 +130,12 @@
     <string name="status_bar_notification_info_overflow">999+</string>
     <string name="test_mute_perm_request">Колдонмого учурда телефонуңуздун үнүн басууга уруксат жок. Муну өзгөртүү үчүн орнотууларды ачыңызбы?</string>
     <string name="text_cant_mute">Телефонуңуз бул колдонмого анын үнүн басууга уруксат бербейт. Бул Колдонмолор Жөндөөлөрүндө үнүн басууну өчүрүңүз же Телефондоруңуздун Жөндөөлөрүнөн үнүн басууга уруксат бериңиз.</string>
-    <string name="text_no_notify_access_settings">Телефонуңузда үнүн басууга уруксат берүүчү стандарттык жөндөөлөр жок окшойт. Сураныч, кол менен \"Тынчымды алба мүмкүнчүлүгүн\" жөндөөсүн издеп, аны иштетиңиз.</string>
+    <string name="text_no_notify_access_settings">Телефонуңузда үнүн басууга уруксат берүүчү стандарттык жөндөөлөр жок окшойт. Сураныч, \"Тынчымды алба мүмкүнчүлүгүн\" жөндөөсүн кол менен издеп, аны иштетиңиз.</string>
     <string name="text_no_sections">Бөлүмдөр аныкталган жок.</string>
-    <string name="text_question_delete_session">Тандалган сеанс чын эле өчүрүлсүнбү?</string>
+    <string name="text_question_delete_session">Тандалган сеанс чын эле жок кылынсынбы?</string>
     <string name="theme">Тема</string>
     <string name="theme_dark">Караңгы тема</string>
-    <string name="theme_desc">Колдонмонун жарык же караңгы көрүнүшүн тандаңыз</string>
+    <string name="theme_desc">Колдонмонун көрүнүшүн тандаңыз</string>
     <string name="theme_light">Light Theme</string>
     <string name="theme_system">Системанын темасы</string>
     <string name="theme_value_dark">dark</string>
@@ -157,5 +157,13 @@
     <string name="pref_desc_bell_volume">Коңгуроо үндөрү үчүн ойготкуч агымынын көлөмүн көзөмөлдөйт</string>
     <string name="title_dim_bell">Dim Bell</string>
     <string name="dim_bell_label_off">Караңгы эмес</string>
-    <string name="dim_bell_label_format">Күңүртөлгөн: %1$d0%%</string>
+    <string name="dim_bell_label_format">Караңгы: %1$d0%%</string>
+    <string name="section_deleted">Жок кылынган \'%s\'</string>
+    <string name="action_undo">Жок кылуу</string>
+    <string name="notification_channel_name">Медитация таймери</string>
+    <string name="nav_label_sessions">Сеанстар</string>
+    <string name="nav_label_meditation">Медитация</string>
+    <string name="nav_label_edit_session">Сеансты түзөтүү</string>
+    <string name="nav_label_edit_section">Бөлүмдү түзөтүү</string>
+    <string name="nav_label_settings">Орнотуулар</string>
 </resources>

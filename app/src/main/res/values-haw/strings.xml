@@ -1,31 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="abbrechen">Hoʻopau</string>
-    <string name="about1">Zazen Meditation Timer — A simple meditation timer with customizable sections, bell sounds, and session management.</string>
-    <string name="about2">Originally created by Stefan Gaffga. Currently maintained by Georg Graf.&lt;br&gt;&lt;br&gt;Thanks to Winfried of &lt;a href="http://www.meditationsuhren.de"&gt;http://www.meditationsuhren.de&lt;/a&gt; for providing such great Bell Sounds!</string>
-    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues"&gt;Report issues on GitHub&lt;/a&gt;</string>
-    <string name="app_description">This application lets the user define a set of meditation sessions and provides a timer with visual and audible feedback when a part or the whole meditation is over.</string>
+    <string name="about1">ʻO Zazen Meditation Timer - He manawa noʻonoʻo maʻalahi me nā ʻāpana i hana ʻia, nā kani bele, a me ka hoʻokele manawa.</string>
+    <string name="about2">Hana ʻia e Stefan Gaffga. Mālama ʻia e Georg Graf i kēia manawa.&lt;br&gt;&lt;br&gt;Mahalo iā Winfried o &lt;a href="http://www.meditationsuhren.de"&gt;http://www.meditationsuhren.de&lt;/a&gt; no ka hoʻolako ʻana i nā kani Bell maikaʻi loa!</string>
+    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues"&gt;Hōʻike i nā pilikia ma GitHub&lt;/a&gt;</string>
+    <string name="app_description">Hāʻawi kēia palapala noi i ka mea hoʻohana e wehewehe i kahi hoʻonohonoho o nā manawa noʻonoʻo a hāʻawi i kahi manawa me nā manaʻo ʻike a lohe ʻia i ka wā i pau ai kahi ʻāpana a i ʻole ka noʻonoʻo holoʻokoʻa.</string>
     <string name="app_name">Zazen Meditation Timer</string>
     <string name="appbar_scrolling_view_behavior">android.support.design.widget.AppBarLayout$ScrollingViewBehavior</string>
     <string name="backup_error_text">E kala mai, ua hewa i ka wā e mālama ai.</string>
     <string name="backup_no_permission">ʻAʻole hiki ke hana i ka hoʻopaʻa ʻana ma muli o nā ʻae nalo.</string>
     <string name="backup_not_createable">Ua hewa ka hana ʻana i ka waihona waihona.</string>
     <string name="backup_success_text">Ua holomua ka waihona!</string>
-    <string name="bell_name_1">High Tone</string>
-    <string name="bell_name_2">Low Tone</string>
-    <string name="bell_name_3">Jap. Rhinbowl Dharma, 107mm</string>
-    <string name="bell_name_4">Jap. Rhinbowl Dharma, 88mm (black, glazed)</string>
-    <string name="bell_name_5">Jap. Rhinbowl Shomyo, 90mm</string>
-    <string name="bell_name_6">Jap. Rhinbowl Tang, 164mm</string>
-    <string name="bell_name_7">Tib. Bowl, 230mm</string>
-    <string name="bell_name_8">Jap. Rhinbowl, 97mm</string>
+    <string name="bell_name_1">Leo Kiʻekiʻe</string>
+    <string name="bell_name_2">Leo Haʻahaʻa</string>
+    <string name="bell_name_3">Iapa. Rhinbowl Dharma, 107mm</string>
+    <string name="bell_name_4">Iapa. Rhinbowl Dharma, 88mm (ʻeleʻele, aniani)</string>
+    <string name="bell_name_5">Iapa. Rhinbowl Shomyo, 90mm</string>
+    <string name="bell_name_6">Iapa. Rhinbowl Tang, 164mm</string>
+    <string name="bell_name_7">ʻO Tib. Poʻo, 230mm</string>
+    <string name="bell_name_8">Iapa. Rhinbowl, 97mm</string>
     <string name="bell_pause">ʻAwāwa bele (sec)</string>
     <string name="bell_user">Hoʻohui i ka Bell...</string>
     <string name="bottom_nav_meditation">Ka noonoo ana</string>
     <string name="bottom_nav_sessions">Nā Kau</string>
     <string name="bottom_sheet_behavior">android.support.design.widget.BottomSheetBehavior</string>
     <string name="but_pause">Hoʻomaha</string>
-    <string name="but_start">E hoʻomaka i ka Noʻonoʻo</string>
+    <string name="but_start">Hoʻomaka noʻonoʻo</string>
     <string name="but_stop">Kāohi</string>
     <string name="caption_zazen_meditation">Ka noonoo ana o Zazen</string>
     <string name="character_counter_pattern">%1$d / %2$d</string>
@@ -56,14 +56,14 @@
     <string name="desc_no_server_messages">Hōʻike \'akomi i ka Nūhou ke hoʻomaka ka App</string>
     <string name="error_checking_for_server_messages">Ua hewa ke kiʻi ʻana i nā memo hou.</string>
     <string name="gong_type">kani ʻo Gong</string>
-    <string name="help_sectionlist_text">Maʻaneʻi hiki iāʻoe ke inoa, wehewehe a hoʻoponopono i nā mea o kāu Session.\n\n REORDERING\n No ka hoʻonohonoho houʻana i nā mea, e kaomi lōʻihi i kahi mea a\n kauo i kona kūlana hou. ʻākau.\n\n EDIT\n No ka hoʻoponopono ʻana i kahi ʻāpana, hoʻopā wale iā ia i hoʻokahi manawa.\n\n ADD\n No ka hoʻohui ʻana i kahi ʻāpana hou, kaomi i ke pihi +.</string>
+    <string name="help_sectionlist_text">Maanei hiki iā ʻoe ke inoa, wehewehe a hoʻoponopono i nā ʻike o kāu Kau.\n\nHOOLAHA HOU\nNo ka hoʻonohonoho hou ʻana i nā mea, e kaomi lōʻihi i kahi mea a\nkauo ia i kona kulana hou.\n\nHELE\nNo ka holoi ʻana i kahi mea, hoʻoneʻe iā ia i ka ʻākau.\n\nHOOPONOPONO\nNo ka hoʻoponopono ʻana i kahi ʻāpana, hoʻopā wale iā ia.\n\nHOOLAHA\nNo ka hoʻohui ʻana i kahi ʻāpana hou, e kaomi i ke pihi +.</string>
     <string name="help_sectionlist_title">Hoʻoponopono Kau</string>
     <string name="label_section_name">inoa ʻāpana</string>
     <string name="label_session_description">Wehewehe kau</string>
     <string name="label_session_name">Inoa Kau</string>
     <string name="menu_about">E pili ana i...</string>
     <string name="menu_copy_session">Kau Kaulua</string>
-    <string name="menu_delete_section">Holoi ʻāpana</string>
+    <string name="menu_delete_section">Holoi i ka ʻāpana</string>
     <string name="menu_delete_session">Holoi i ke Kau</string>
     <string name="menu_duplicate_section">Pauku Palua</string>
     <string name="menu_edit_session">Hoʻoponopono Kau</string>
@@ -74,10 +74,10 @@
     <string name="menu_settings">Nā hoʻonohonoho</string>
     <string name="minuten">Nā minuke</string>
     <string name="no_new_server_messages">ʻAʻohe memo hou i loaʻa.</string>
-    <string name="no_sections_in_session">ʻAʻole hiki ke hoʻomaka i ka Noʻonoʻo ʻana: ʻAʻohe ʻāpana o ka Session i koho ʻia.</string>
+    <string name="no_sections_in_session">Hiki\'t hoʻomaka i ka Noʻonoʻo: ʻAʻohe ʻāpana o ka Session i koho ʻia.</string>
     <string name="no_session_exists">ʻAʻohe kau e hiki ke hoʻomaka. E ʻoluʻolu e hana mua.</string>
     <string name="notification_text">Ke holo nei ʻo Zazen Meditation i kēia manawa</string>
-    <string name="notification_text_paused">Hoʻomaha ʻo Zazen Meditation</string>
+    <string name="notification_text_paused">Ua hoʻomaha ʻo Zazen Meditation</string>
     <string name="notification_title">Ka noonoo ana o Zazen</string>
     <string name="notification_title_paused">Noʻonoʻo Zazen (hoʻomaha)</string>
     <string name="num_bells">Helu bele</string>
@@ -89,12 +89,12 @@
     <string name="pref_mute_mode_none_desc">ʻAʻohe kani kani a ʻaʻohe vibration no nā kelepona kelepona a me nā Hoʻolaha</string>
     <string name="pref_mute_mode_pref">Nā hoʻonohonoho e pili ana i ke kani kani a me nā leka hoʻomaopopo</string>
     <string name="pref_mute_mode_vibrate">ʻO ka Vibration wale nō</string>
-    <string name="pref_mute_mode_vibrate_desc">E haʻalulu wale no nā kelepona kelepona a me nā leka hoʻomaopopo (ʻAʻole hana ma ka Android 7 (Nougat) - hana e like me ka hoʻonohonoho Silence)</string>
+    <string name="pref_mute_mode_vibrate_desc">E haʻalulu wale no nā kelepona a me nā leka hoʻomaopopo (ʻAʻole hana ma ka Android 7 (Nougat) - hana e like me ka hoʻonohonoho Silence)</string>
     <string name="pref_mute_mode_vibrate_sound">Leo kani a me ka Vibration</string>
     <string name="pref_mute_mode_vibrate_sound_desc">E pāʻani i ke kani kani a me ka Vibration</string>
     <string name="pref_muting">Nā hoʻonohonoho hoʻomumu</string>
     <string name="pref_sum_backup">E mālama i kahi waihona o kāu Sessions and Sounds i kāu SD-Card.</string>
-    <string name="pref_sum_bad_removal">Ua wehe ʻia ke kāleka SD me ka wehe ʻole ʻia ʻana ma mua.</string>
+    <string name="pref_sum_bad_removal">Ua wehe ʻia ke kāleka SD me ka wehe ʻole ʻia.</string>
     <string name="pref_sum_checking">Ke nānā ʻia nei ke kāleka SD i kēia manawa</string>
     <string name="pref_sum_ejecting">Ke kipaku ʻia nei ke kāleka SD</string>
     <string name="pref_sum_nofs">ʻAʻohe Pūnaehana Pūnaewele ma SD-Card</string>
@@ -103,14 +103,14 @@
     <string name="pref_sum_restore">Hoʻihoʻi hou i kāu mau kau a me nā kani maʻamau mai ka SD-Card Backup</string>
     <string name="pref_sum_shared">Hoʻokaʻawale ʻia ke kāleka SD</string>
     <string name="pref_title_backup">Hana i ka waihona</string>
-    <string name="pref_title_brightness">Olinolino</string>
-    <string name="pref_title_restore">Hoʻihoʻi mai ka waihona</string>
+    <string name="pref_title_brightness">ʻōlinolino</string>
+    <string name="pref_title_restore">Hoʻihoʻi mai ka Backup</string>
     <string name="privacy_message">ʻAʻole ʻohi kēia App i nā ʻikepili pilikino - ʻaʻole ia e hoʻohana i nā IP-Addresses a i ʻole nā ​​​​ʻikepili pili ʻenehana ʻē aʻe, ʻaʻole hoʻi e hōʻiliʻili, hana a hoʻohana paha i kekahi ma kekahi ʻano.</string>
     <string name="privacy_ok">OK</string>
     <string name="privacy_title">ʻIke pilikino</string>
     <string name="really_stop">Hoʻopau maoli i ka noʻonoʻo ʻana?</string>
     <string name="restore_backup_not_found">ʻAʻole i loaʻa ka waihona waihona</string>
-    <string name="restore_error_text">Ua hewa ka hoʻihoʻi ʻana mai Backup</string>
+    <string name="restore_error_text">Ua hewa ka hoʻihoʻi ʻana mai ka Backup</string>
     <string name="restore_no_permission">ʻAʻole hiki ke hoʻihoʻi ma muli o ka ʻae ʻole.</string>
     <string name="restore_really_text">E hoʻololi kēia i kāu mau Sessions me nā mea i ka Backup! (ʻAʻohe hoʻihoʻi!)</string>
     <string name="restore_really_title">Hoʻihoʻi maoli i ka ʻikepili?</string>
@@ -118,7 +118,7 @@
     <string name="search_menu_title">Huli</string>
     <string name="section_info_string_1_pl">%1$d Nā bele</string>
     <string name="section_info_string_1_sg">1 Bele</string>
-    <string name="section_info_string_2_pl">kēlā me kēia %1$d Kekona</string>
+    <string name="section_info_string_2_pl">kēlā me kēia %1$d kekona</string>
     <string name="section_info_string_2_sg">kēlā me kēia ʻElua</string>
     <string name="sekunden">Kekona</string>
     <string name="select_audio">E koho i ka faila kani</string>
@@ -129,13 +129,13 @@
     <string name="session_list_unnamed_entry">Kau inoa ʻole</string>
     <string name="status_bar_notification_info_overflow">999+</string>
     <string name="test_mute_perm_request">ʻAʻole ʻae ʻia ka App e hoʻomumu i kāu kelepona i kēia manawa. E wehe i nā hoʻonohonoho e hoʻololi i kēia?</string>
-    <string name="text_cant_mute">ʻAʻole ʻae kāu kelepona i kēia App e hoʻomumu iā ia. Hoʻopau i ka muting ma kēia mau ʻōkuhi Apps a i ʻole e ʻae i ka muting i kāu mau kelepona kelepona.</string>
-    <string name="text_no_notify_access_settings">ʻAʻole i loaʻa i kāu kelepona nā hoʻonohonoho maʻamau e ʻae ai i ka muting. E ʻoluʻolu e nānā lima no ka hoʻonohonoho \&amp;quot;Mai hoʻopilikia i ke komo ʻana\&amp;quot; a hiki iā ia.</string>
+    <string name="text_cant_mute">ʻAʻole ʻae kāu kelepona i kēia App e hoʻomumu iā ia. Hoʻopau i ka muting ma kēia mau ʻōkuhi Apps a i ʻole e ʻae i ka muting ma kāu mau kelepona kelepona.</string>
+    <string name="text_no_notify_access_settings">ʻAʻole i loaʻa i kāu kelepona nā hoʻonohonoho maʻamau e ʻae ai i ka muting. E ʻoluʻolu e nānā lima no ka \"Mai hoʻopilikia i ke komo\" Hoʻonohonoho a hoʻā.</string>
     <string name="text_no_sections">ʻAʻohe ʻāpana i wehewehe ʻia.</string>
     <string name="text_question_delete_session">Holoi maoli i ke Kau i koho ʻia?</string>
     <string name="theme">Kumuhana</string>
     <string name="theme_dark">Kumuhana Pouli</string>
-    <string name="theme_desc">E koho i nā hiʻohiʻona māmā a ʻeleʻele paha o ka App</string>
+    <string name="theme_desc">E koho i ke ʻano o ka polokalamu</string>
     <string name="theme_light">Kumuhana Māmā</string>
     <string name="theme_system">Kumuhana Pūnaehana</string>
     <string name="theme_value_dark">dark</string>
@@ -158,4 +158,12 @@
     <string name="title_dim_bell">Dim Bell</string>
     <string name="dim_bell_label_off">ʻAʻole pōʻino</string>
     <string name="dim_bell_label_format">Pohihihi: %1$d0%%</string>
+    <string name="section_deleted">Holoi ʻia \'%s\'</string>
+    <string name="action_undo">Wehe</string>
+    <string name="notification_channel_name">Manawa noonoo</string>
+    <string name="nav_label_sessions">Nā Kau</string>
+    <string name="nav_label_meditation">Ka noonoo ana</string>
+    <string name="nav_label_edit_session">Hoʻoponopono Kau</string>
+    <string name="nav_label_edit_section">Hoʻoponopono ʻāpana</string>
+    <string name="nav_label_settings">Nā hoʻonohonoho</string>
 </resources>

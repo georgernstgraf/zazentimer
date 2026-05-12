@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="abbrechen">Չեղարկել</string>
-    <string name="about1">Zazen Meditation Timer — A simple meditation timer with customizable sections, bell sounds, and session management.</string>
-    <string name="about2">Originally created by Stefan Gaffga. Currently maintained by Georg Graf.&lt;br&gt;&lt;br&gt;Thanks to Winfried of &lt;a href="http://www.meditationsuhren.de"&gt;http://www.meditationsuhren.de&lt;/a&gt; for providing such great Bell Sounds!</string>
-    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues"&gt;Report issues on GitHub&lt;/a&gt;</string>
-    <string name="app_description">This application lets the user define a set of meditation sessions and provides a timer with visual and audible feedback when a part or the whole meditation is over.</string>
+    <string name="about1">Zazen Meditation Timer — Պարզ մեդիտացիայի ժամանակաչափ՝ հարմարեցվող հատվածներով, զանգի հնչյուններով և նիստերի կառավարմամբ:</string>
+    <string name="about2">Սկզբնապես ստեղծվել է Ստեֆան Գաֆգանի կողմից: Ներկայումս սպասարկվում է Գեորգ Գրաֆի կողմից:&lt;br&gt;&lt;br&gt;Շնորհակալ ենք Ուինֆրիդին &lt;a href="http://www.meditationsuhren.de"&gt;http://www.meditationsuhren.de&lt;/a&gt;-ից՝ այսպիսի հիանալի Bell Sounds տրամադրելու համար:</string>
+    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues"&gt;Հաղորդել խնդիրների մասին GitHub-ում&lt;/a&gt;</string>
+    <string name="app_description">Այս հավելվածը թույլ է տալիս օգտատիրոջը սահմանել մեդիտացիայի սեանսների մի շարք և տրամադրում է ժմչփ տեսողական և լսելի արձագանքներով, երբ մեդիտացիայի մի մասը կամ ամբողջը ավարտվում է:</string>
     <string name="app_name">Zazen Meditation Timer</string>
     <string name="appbar_scrolling_view_behavior">android.support.design.widget.AppBarLayout$ScrollingViewBehavior</string>
     <string name="backup_error_text">Ներեցեք, պահելու ժամանակ սխալ է տեղի ունեցել:</string>
     <string name="backup_no_permission">Չհաջողվեց ստեղծել կրկնօրինակ՝ բացակայող թույլտվությունների պատճառով:</string>
     <string name="backup_not_createable">Չհաջողվեց ստեղծել կրկնօրինակ ֆայլ:</string>
     <string name="backup_success_text">Պահուստավորումը հաջողությամբ ստեղծվեց:</string>
-    <string name="bell_name_1">High Tone</string>
-    <string name="bell_name_2">Low Tone</string>
-    <string name="bell_name_3">Jap. Rhinbowl Dharma, 107mm</string>
-    <string name="bell_name_4">Jap. Rhinbowl Dharma, 88mm (black, glazed)</string>
-    <string name="bell_name_5">Jap. Rhinbowl Shomyo, 90mm</string>
-    <string name="bell_name_6">Jap. Rhinbowl Tang, 164mm</string>
-    <string name="bell_name_7">Tib. Bowl, 230mm</string>
-    <string name="bell_name_8">Jap. Rhinbowl, 97mm</string>
+    <string name="bell_name_1">Բարձր տոն</string>
+    <string name="bell_name_2">Ցածր տոնով</string>
+    <string name="bell_name_3">ճապ. Rhinbowl Dharma, 107 մմ</string>
+    <string name="bell_name_4">ճապ. Rhinbowl Dharma, 88 մմ (սև, ապակեպատ)</string>
+    <string name="bell_name_5">ճապ. Rhinbowl Shomyo, 90 մմ</string>
+    <string name="bell_name_6">ճապ. Rhinbowl Tang, 164 մմ</string>
+    <string name="bell_name_7">Տիբ. Թաս, 230 մմ</string>
+    <string name="bell_name_8">ճապ. Rhinbowl, 97 մմ</string>
     <string name="bell_pause">Զանգի բացը (վրկ)</string>
     <string name="bell_user">Ավելացնել Bell...</string>
     <string name="bottom_nav_meditation">Մեդիտացիա</string>
@@ -56,7 +56,7 @@
     <string name="desc_no_server_messages">Ավտոմատ ցուցադրել Նորությունները, երբ սկսվում է հավելվածը</string>
     <string name="error_checking_for_server_messages">Սխալ՝ նոր հաղորդագրություններ բեռնելիս:</string>
     <string name="gong_type">Գոնգի ձայն</string>
-    <string name="help_sectionlist_text">Այստեղ դուք կարող եք անվանել, նկարագրել և խմբագրել ձեր Session-ի բովանդակությունը:\n\n ՎԵՐԱԴԱՍԱՐԿՈՒՄ\n Տարրերը վերադասավորելու համար երկար սեղմեք տարրի վրա և\n քաշեք այն իր նոր դիրքի վրա:\n\n ՋՆՋՈՒՄ\n Տարրը ջնջելու համար տեղափոխեք այն աջ:\n\n ԽՄԲԱԳՐԵԼ\n Բաժին խմբագրելու համար\n սեղմեք կոճակը մեկ անգամ\n սեղմեք + AD\n բաժինը:</string>
+    <string name="help_sectionlist_text">Այստեղ դուք կարող եք անվանել, նկարագրել և խմբագրել ձեր Session-ի բովանդակությունը:\n\nՎԵՐԱՊԱՏՎԻՐՈՒՄ\nՆյութերը վերադասավորելու համար երկար սեղմեք ապրանքի վրա և\nքաշեք այն իր նոր դիրքի վրա:\n\nՋՆՋՈՒՄ\nՏարրը ջնջելու համար տեղափոխեք այն աջ:\n\nԽՄԲԱԳՐԵԼ\nԲաժին խմբագրելու համար պարզապես մեկ անգամ հպեք դրան:\n\nԱՎԵԼԱՑՆԵԼ\nՆոր բաժին ավելացնելու համար սեղմեք + կոճակը:</string>
     <string name="help_sectionlist_title">Խմբագրել նիստը</string>
     <string name="label_section_name">Բաժնի անվանումը</string>
     <string name="label_session_description">Նստաշրջանի նկարագրությունը</string>
@@ -74,7 +74,7 @@
     <string name="menu_settings">Կարգավորումներ</string>
     <string name="minuten">Րոպեներ</string>
     <string name="no_new_server_messages">Նոր հաղորդագրություններ չկան:</string>
-    <string name="no_sections_in_session">Հնարավոր չէ սկսել մեդիտացիան. ընտրված նստաշրջանը ոչ մի բաժին չունի:</string>
+    <string name="no_sections_in_session">Հնարավոր չէ\' սկսել մեդիտացիա. ընտրված նստաշրջանը ոչ մի բաժին չունի:</string>
     <string name="no_session_exists">Չկա նիստ, որը կարելի է սկսել: Խնդրում ենք նախ ստեղծել մեկը:</string>
     <string name="notification_text">Ներկայումս գործում է Զազեն մեդիտացիա</string>
     <string name="notification_text_paused">Զազեն մեդիտացիան ընդհատվեց</string>
@@ -115,7 +115,7 @@
     <string name="restore_really_text">Սա ձեր բոլոր նստաշրջանները կփոխարինի Պահուստավորման մեջ գտնվողներով: (Ոչ հետարկել!)</string>
     <string name="restore_really_title">Իսկապե՞ս վերականգնե՞լ տվյալները:</string>
     <string name="restore_success_text">Տվյալների վերականգնումը հաջողվեց</string>
-    <string name="search_menu_title">Որոնել</string>
+    <string name="search_menu_title">Որոնում</string>
     <string name="section_info_string_1_pl">%1$d Զանգեր</string>
     <string name="section_info_string_1_sg">1 զանգ</string>
     <string name="section_info_string_2_pl">յուրաքանչյուր %1$d վայրկյան</string>
@@ -130,12 +130,12 @@
     <string name="status_bar_notification_info_overflow">999+</string>
     <string name="test_mute_perm_request">Հավելվածին ներկայումս չի թույլատրվում անջատել ձեր հեռախոսը: Բացե՞լ կարգավորումները՝ սա փոխելու համար:</string>
     <string name="text_cant_mute">Ձեր հեռախոսը թույլ չի տալիս այս հավելվածին անջատել այն: Անջատեք խլացումը այս հավելվածների կարգավորումներում կամ թույլատրեք խլացումը ձեր Հեռախոսների կարգավորումներում:</string>
-    <string name="text_no_notify_access_settings">Ձեր հեռախոսը, կարծես, չունի ստանդարտ կարգավորումներ, որոնք թույլ են տալիս խլացնել: Խնդրում ենք ձեռքով փնտրել \&amp;quot;Չանհանգստացնել մուտքը\&amp;quot; կարգավորումը և միացնել այն:</string>
+    <string name="text_no_notify_access_settings">Ձեր հեռախոսը, կարծես, չունի ստանդարտ կարգավորումներ, որոնք թույլ են տալիս խլացնել: Խնդրում ենք ձեռքով փնտրել \"Չանհանգստացնել մուտքի\" կարգավորումը և միացնել այն:</string>
     <string name="text_no_sections">Բաժիններ սահմանված չեն:</string>
     <string name="text_question_delete_session">Իսկապե՞ս ջնջե՞լ ընտրված նստաշրջանը:</string>
     <string name="theme">Թեմա</string>
     <string name="theme_dark">Մութ թեմա</string>
-    <string name="theme_desc">Ընտրեք Հավելվածի թեթև կամ մութ տեսքը</string>
+    <string name="theme_desc">Ընտրեք հավելվածի տեսքը</string>
     <string name="theme_light">Թեթև թեմա</string>
     <string name="theme_system">Համակարգի թեմա</string>
     <string name="theme_value_dark">dark</string>
@@ -158,4 +158,12 @@
     <string name="title_dim_bell">Դիմ Բել</string>
     <string name="dim_bell_label_off">Ոչ խամրած</string>
     <string name="dim_bell_label_format">Մուգ՝ %1$d0%%</string>
+    <string name="section_deleted">Ջնջված է \'%s\'</string>
+    <string name="action_undo">Հետարկել</string>
+    <string name="notification_channel_name">Մեդիտացիայի ժամանակաչափ</string>
+    <string name="nav_label_sessions">Նիստեր</string>
+    <string name="nav_label_meditation">Մեդիտացիա</string>
+    <string name="nav_label_edit_session">Խմբագրել նիստը</string>
+    <string name="nav_label_edit_section">Խմբագրել բաժինը</string>
+    <string name="nav_label_settings">Կարգավորումներ</string>
 </resources>

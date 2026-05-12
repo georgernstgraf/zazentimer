@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="abbrechen">Batal</string>
-    <string name="about1">Zazen Meditation Timer — A simple meditation timer with customizable sections, bell sounds, and session management.</string>
-    <string name="about2">Originally created by Stefan Gaffga. Currently maintained by Georg Graf.&lt;br&gt;&lt;br&gt;Thanks to Winfried of &lt;a href="http://www.meditationsuhren.de"&gt;http://www.meditationsuhren.de&lt;/a&gt; for providing such great Bell Sounds!</string>
-    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues"&gt;Report issues on GitHub&lt;/a&gt;</string>
-    <string name="app_description">This application lets the user define a set of meditation sessions and provides a timer with visual and audible feedback when a part or the whole meditation is over.</string>
+    <string name="about1">Timer Meditasi Zazen - Timer meditasi sing gampang kanthi bagean sing bisa disesuaikan, swara lonceng, lan manajemen sesi.</string>
+    <string name="about2">Originally digawe dening Stefan Gaffga. Saiki dikelola dening Georg Graf.&lt;br&gt;&lt;br&gt;Matur nuwun kanggo Winfried saka &lt;a href="http://www.meditationsuhren.de"&gt;http://www.meditationsuhren.de&lt;/a&gt; kanggo nyedhiyakake Swara Lonceng sing apik banget!</string>
+    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues"&gt;Lapokake masalah ing GitHub&lt;/a&gt;</string>
+    <string name="app_description">Aplikasi iki ngidini pangguna nemtokake set sesi meditasi lan menehi wektu kanthi umpan balik visual lan bisa dirungokake nalika bagean utawa kabeh meditasi wis rampung.</string>
     <string name="app_name">Zazen Meditation Timer</string>
     <string name="appbar_scrolling_view_behavior">android.support.design.widget.AppBarLayout$ScrollingViewBehavior</string>
     <string name="backup_error_text">Nuwun sewu, ana kesalahan nalika nyimpen.</string>
     <string name="backup_no_permission">Ora bisa nggawe serep amarga ijin ilang.</string>
     <string name="backup_not_createable">Kesalahan nggawe file serep.</string>
     <string name="backup_success_text">Gawe serep kanthi sukses!</string>
-    <string name="bell_name_1">High Tone</string>
-    <string name="bell_name_2">Low Tone</string>
+    <string name="bell_name_1">Nada Dhuwur</string>
+    <string name="bell_name_2">Nada Sedheng</string>
     <string name="bell_name_3">Jap. Rhinbowl Dharma, 107mm</string>
-    <string name="bell_name_4">Jap. Rhinbowl Dharma, 88mm (black, glazed)</string>
-    <string name="bell_name_5">Jap. Rhinbowl Shomyo, 90mm</string>
+    <string name="bell_name_4">Jap. Rhinbowl Dharma, 88mm (ireng, kaca)</string>
+    <string name="bell_name_5">Jap. Badhak Shomyo, 90mm</string>
     <string name="bell_name_6">Jap. Rhinbowl Tang, 164mm</string>
-    <string name="bell_name_7">Tib. Bowl, 230mm</string>
-    <string name="bell_name_8">Jap. Rhinbowl, 97mm</string>
+    <string name="bell_name_7">Tib. Mangkok, 230 mm</string>
+    <string name="bell_name_8">Jap. Rhinbowl, 97 mm</string>
     <string name="bell_pause">Lonceng gap (detik)</string>
     <string name="bell_user">Tambah bel...</string>
     <string name="bottom_nav_meditation">Meditasi</string>
@@ -45,7 +45,7 @@
     <string name="demo_sess1_name">Zazen lan Kinhin</string>
     <string name="demo_sess1_sec1_name">Persiapan</string>
     <string name="demo_sess1_sec2_name">Zazen 1</string>
-    <string name="demo_sess1_sec3_name">Kinanthi 1</string>
+    <string name="demo_sess1_sec3_name">Kinan 1</string>
     <string name="demo_sess1_sec4_name">Zazen 2</string>
     <string name="demo_sess1_sec5_name">Kinan 3</string>
     <string name="demo_sess1_sec6_name">Zazen 3</string>
@@ -56,7 +56,7 @@
     <string name="desc_no_server_messages">Tampilake News kanthi otomatis nalika App diwiwiti</string>
     <string name="error_checking_for_server_messages">Kesalahan njupuk pesen anyar.</string>
     <string name="gong_type">Swara Gong</string>
-    <string name="help_sectionlist_text">Ing kene sampeyan bisa menehi jeneng, njlèntrèhaké lan ngowahi isi Sesi.\n\n REORDERING\n Kanggo ngatur maneh item, penet dawa ing item lan\n seret menyang posisi anyar.\n\n Mbusak\n Kanggo mbusak item, pindhah menyang tengen.\n\n EDIT\n Kanggo ngowahi bagean, mung tutul sapisan.\n\n ADD\n Kanggo nambah bagean anyar, pencet tombol +.</string>
+    <string name="help_sectionlist_text">Ing kene sampeyan bisa menehi jeneng, njlèntrèhaké lan ngowahi isi Sesi.\n\nREORDERING\nKanggo ngatur maneh item, penet dawa ing item lan\nseret menyang posisi anyar.\n\nMbusak\nKanggo mbusak item, pindhah menyang tengen.\n\nEDIT\nKanggo ngowahi bagean, mung tutul sapisan.\n\nADD\nKanggo nambah bagean anyar, pencet tombol +.</string>
     <string name="help_sectionlist_title">Sunting Sesi</string>
     <string name="label_section_name">Jeneng bagean</string>
     <string name="label_session_description">Deskripsi Sesi</string>
@@ -74,7 +74,7 @@
     <string name="menu_settings">Setelan</string>
     <string name="minuten">menit</string>
     <string name="no_new_server_messages">Ora ana pesen anyar sing kasedhiya.</string>
-    <string name="no_sections_in_session">Ora bisa miwiti Meditasi: Sesi sing dipilih ora ana Bagean.</string>
+    <string name="no_sections_in_session">Bisa\'t miwiti Meditasi: Sesi sing dipilih ora ana Bagean.</string>
     <string name="no_session_exists">Ora ana sesi sing bisa diwiwiti. Mangga nggawe siji dhisik.</string>
     <string name="notification_text">Meditasi Zazen saiki lagi mlaku</string>
     <string name="notification_text_paused">Meditasi Zazen ngaso</string>
@@ -111,7 +111,7 @@
     <string name="really_stop">Pancen mungkasi meditasi?</string>
     <string name="restore_backup_not_found">File serep ora ditemokake</string>
     <string name="restore_error_text">Kasalahan mulihake saka Serep</string>
-    <string name="restore_no_permission">Ora bisa mulihake amarga ijin ilang.</string>
+    <string name="restore_no_permission">Ora bisa dipulihake amarga ijin ilang.</string>
     <string name="restore_really_text">Iki bakal ngganti kabeh Sesi karo sing ana ing Serep! (Ora Batal!)</string>
     <string name="restore_really_title">Pancen mulihake data?</string>
     <string name="restore_success_text">Data mulihake sukses</string>
@@ -130,14 +130,14 @@
     <string name="status_bar_notification_info_overflow">999+</string>
     <string name="test_mute_perm_request">App saiki ora diijini kanggo bisu telpon. Bukak setelan kanggo ngganti iki?</string>
     <string name="text_cant_mute">Telpon sampeyan ora ngidini App iki bisu. Pateni bisu ing Setelan Aplikasi iki utawa ngidini bisu ing Setelan Telpon.</string>
-    <string name="text_no_notify_access_settings">Telpon sampeyan katon ora duwe setelan standar kanggo ngidini bisu. Mangga goleki kanthi manual Setelan \&amp;quot;Aja Ganggu Akses\&amp;quot; banjur aktifake.</string>
+    <string name="text_no_notify_access_settings">Telpon sampeyan katon ora duwe setelan standar kanggo ngidini bisu. Mangga deleng setelan \"Aja Ganggu Akses\" kanthi manual lan aktifake.</string>
     <string name="text_no_sections">Ora ana bagean sing ditetepake.</string>
     <string name="text_question_delete_session">Pancen mbusak Sesi sing dipilih?</string>
     <string name="theme">Tema</string>
     <string name="theme_dark">Tema peteng</string>
-    <string name="theme_desc">Pilih tampilan cahya utawa peteng App</string>
+    <string name="theme_desc">Pilih tampilan app</string>
     <string name="theme_light">Tema Cahya</string>
-    <string name="theme_system">System Theme</string>
+    <string name="theme_system">Tema Sistem</string>
     <string name="theme_value_dark">dark</string>
     <string name="theme_value_light">light</string>
     <string name="theme_value_system">system</string>
@@ -157,5 +157,13 @@
     <string name="pref_desc_bell_volume">Ngontrol volume aliran weker kanggo swara lonceng</string>
     <string name="title_dim_bell">Dim Bell</string>
     <string name="dim_bell_label_off">Ora surem</string>
-    <string name="dim_bell_label_format">Dimedhem: %1$d0%%</string>
+    <string name="dim_bell_label_format">Dim: %1$d0%%</string>
+    <string name="section_deleted">Dibusak \'%s\'</string>
+    <string name="action_undo">batalaken</string>
+    <string name="notification_channel_name">Timer Meditasi</string>
+    <string name="nav_label_sessions">Sesi</string>
+    <string name="nav_label_meditation">Meditasi</string>
+    <string name="nav_label_edit_session">Sunting Sesi</string>
+    <string name="nav_label_edit_section">Sunting Bagean</string>
+    <string name="nav_label_settings">Setelan</string>
 </resources>

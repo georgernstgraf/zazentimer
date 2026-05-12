@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="abbrechen">Ləğv et</string>
-    <string name="about1">Zazen Meditation Timer — A simple meditation timer with customizable sections, bell sounds, and session management.</string>
-    <string name="about2">Originally created by Stefan Gaffga. Currently maintained by Georg Graf.&lt;br&gt;&lt;br&gt;Thanks to Winfried of &lt;a href="http://www.meditationsuhren.de"&gt;http://www.meditationsuhren.de&lt;/a&gt; for providing such great Bell Sounds!</string>
-    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues"&gt;Report issues on GitHub&lt;/a&gt;</string>
-    <string name="app_description">This application lets the user define a set of meditation sessions and provides a timer with visual and audible feedback when a part or the whole meditation is over.</string>
+    <string name="about1">Zazen Meditasiya Taymeri — Fərdiləşdirilə bilən bölmələr, zəng səsləri və sessiyanın idarə edilməsi ilə sadə meditasiya taymeri.</string>
+    <string name="about2">Əvvəlcə Stefan Gaffga tərəfindən yaradılmışdır. Hal-hazırda Georg Graf tərəfindən qorunur.&lt;br&gt;&lt;br&gt;Belə möhtəşəm Zəng səslərini təmin etdiyinə görə &lt;a href="http://www.meditationsuhren.de"&gt;http://www.meditationsuhren.de&lt;/a&gt; saytından Winfried-ə təşəkkür edirik!</string>
+    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues"&gt;GitHub-da problemləri bildirin&lt;/a&gt;</string>
+    <string name="app_description">Bu proqram istifadəçiyə bir sıra meditasiya seansları təyin etməyə imkan verir və bir hissəsi və ya bütün meditasiya bitdikdə vizual və səsli əks əlaqə ilə taymer təmin edir.</string>
     <string name="app_name">Zazen Meditation Timer</string>
     <string name="appbar_scrolling_view_behavior">android.support.design.widget.AppBarLayout$ScrollingViewBehavior</string>
     <string name="backup_error_text">Bağışlayın, yadda saxlayarkən xəta baş verdi.</string>
     <string name="backup_no_permission">İcazələr çatışmadığına görə yedəkləmə yaratmaq mümkün olmadı.</string>
-    <string name="backup_not_createable">Yedək faylının yaradılması xətası.</string>
+    <string name="backup_not_createable">Yedək faylı yaratmaq xətası.</string>
     <string name="backup_success_text">Yedəkləmə uğurla yaradıldı!</string>
-    <string name="bell_name_1">High Tone</string>
-    <string name="bell_name_2">Low Tone</string>
-    <string name="bell_name_3">Jap. Rhinbowl Dharma, 107mm</string>
-    <string name="bell_name_4">Jap. Rhinbowl Dharma, 88mm (black, glazed)</string>
-    <string name="bell_name_5">Jap. Rhinbowl Shomyo, 90mm</string>
-    <string name="bell_name_6">Jap. Rhinbowl Tang, 164mm</string>
-    <string name="bell_name_7">Tib. Bowl, 230mm</string>
-    <string name="bell_name_8">Jap. Rhinbowl, 97mm</string>
+    <string name="bell_name_1">Yüksək Ton</string>
+    <string name="bell_name_2">Aşağı Ton</string>
+    <string name="bell_name_3">Yapon. Rhinbowl Dharma, 107 mm</string>
+    <string name="bell_name_4">Yapon. Rhinbowl Dharma, 88 mm (qara, şüşəli)</string>
+    <string name="bell_name_5">Yapon. Rhinbowl Shomyo, 90 mm</string>
+    <string name="bell_name_6">Yapon. Rhinbowl Tang, 164 mm</string>
+    <string name="bell_name_7">Tib. Qab, 230 mm</string>
+    <string name="bell_name_8">Yapon. Rhinbowl, 97 mm</string>
     <string name="bell_pause">Zəng boşluğu (san)</string>
     <string name="bell_user">Zəng əlavə et...</string>
     <string name="bottom_nav_meditation">Meditasiya</string>
@@ -50,13 +50,13 @@
     <string name="demo_sess1_sec5_name">Kinhin 3</string>
     <string name="demo_sess1_sec6_name">Zazen 3</string>
     <string name="demo_sess2_description">Gündəlik meditasiya</string>
-    <string name="demo_sess2_name">Yalnız zazen</string>
+    <string name="demo_sess2_name">Yalnız Zazen</string>
     <string name="desc_get_messages">Avtomatik mesajlar deaktiv edilibsə, xəbərləri burada yoxlaya bilərsiniz.</string>
     <string name="desc_keep_screen_on">Meditasiya zamanı ekranı açıq saxlayır</string>
     <string name="desc_no_server_messages">Proqram başlayanda Xəbərləri avtomatik göstərin</string>
     <string name="error_checking_for_server_messages">Yeni mesajlar alınarkən xəta baş verdi.</string>
     <string name="gong_type">Gong Səs</string>
-    <string name="help_sectionlist_text">Burada siz Sessiyanızın məzmununu adlandıra, təsvir edə və redaktə edə bilərsiniz.\n\n YENİDƏN SİPARİŞ\n Elementləri yenidən sıralamaq üçün elementin üzərinə uzun basın və\n onu yeni vəziyyətinə dartın.\n\n SİLİN\n Elementi silmək üçün onu sağa köçürün.\n\n EDİN\n Bölməni redaktə etmək üçün ona yeni bölmə əlavə etmək üçün sadəcə bir dəfə + AD düyməsini sıxın.\n.</string>
+    <string name="help_sectionlist_text">Burada siz Sessiyanızın məzmununu adlandıra, təsvir edə və redaktə edə bilərsiniz.\n\nYENİDƏN SİPARİŞ EDİLİR\nElementləri yenidən sıralamaq üçün elementə uzun basın və\nonu yeni mövqeyinə sürükləyin.\n\nSİLİNİR\nElementi silmək üçün onu sağa köçürün.\n\nEDİN\nBölməni redaktə etmək üçün sadəcə bir dəfə toxunun.\n\nƏLAVƏ EDİN\nYeni bölmə əlavə etmək üçün + düyməsini basın.</string>
     <string name="help_sectionlist_title">Sessiyaya düzəliş edin</string>
     <string name="label_section_name">Bölmə adı</string>
     <string name="label_session_description">Sessiyanın təsviri</string>
@@ -74,8 +74,8 @@
     <string name="menu_settings">Parametrlər</string>
     <string name="minuten">Dəqiqələr</string>
     <string name="no_new_server_messages">Yeni mesaj yoxdur.</string>
-    <string name="no_sections_in_session">Meditasiyaya başlamaq mümkün deyil: Seçilmiş Sessiyanın heç bir bölməsi yoxdur.</string>
-    <string name="no_session_exists">Başlana biləcək heç bir sessiya yoxdur. Zəhmət olmasa əvvəlcə birini yaradın.</string>
+    <string name="no_sections_in_session">Meditasiyaya başlaya bilmirəm: Seçilmiş Sessiyanın heç bir bölməsi yoxdur.</string>
+    <string name="no_session_exists">Başlana biləcək seans yoxdur. Zəhmət olmasa əvvəlcə birini yaradın.</string>
     <string name="notification_text">Hazırda Zazen Meditasiyası işləyir</string>
     <string name="notification_text_paused">Zazen Meditasiyası dayandırıldı</string>
     <string name="notification_title">Zazen Meditasiyası</string>
@@ -100,7 +100,7 @@
     <string name="pref_sum_nofs">SD-Kartda Fayl Sistemi yoxdur</string>
     <string name="pref_sum_read_only">SD-Kart yalnız oxumaq üçündür</string>
     <string name="pref_sum_removed">SD-Kart yoxdur</string>
-    <string name="pref_sum_restore">SD Kart Yedəkləməsindən Sessiyalarınızı və Fərdi Səslərinizi bərpa edin</string>
+    <string name="pref_sum_restore">Sessiyalarınızı və Fərdi Səslərinizi SD Kart Yedəkləməsindən bərpa edin</string>
     <string name="pref_sum_shared">SD-Kart paylaşılır</string>
     <string name="pref_title_backup">Yedək yaradın</string>
     <string name="pref_title_brightness">Parlaqlıq</string>
@@ -115,7 +115,7 @@
     <string name="restore_really_text">Bu, bütün Sessiyalarınızı Yedəkləmədəkilərlə əvəz edəcək! (Geri qaytarma yoxdur!)</string>
     <string name="restore_really_title">Həqiqətən data bərpa olunur?</string>
     <string name="restore_success_text">Məlumatların bərpası uğurlu oldu</string>
-    <string name="search_menu_title">Axtarış</string>
+    <string name="search_menu_title">Axtar</string>
     <string name="section_info_string_1_pl">%1$d Zənglər</string>
     <string name="section_info_string_1_sg">1 zəng</string>
     <string name="section_info_string_2_pl">hər %1$d Saniyədə</string>
@@ -129,13 +129,13 @@
     <string name="session_list_unnamed_entry">Adsız Sessiya</string>
     <string name="status_bar_notification_info_overflow">999+</string>
     <string name="test_mute_perm_request">Tətbiqə hazırda telefonunuzun səsini söndürməyə icazə verilmir. Bunu dəyişmək üçün parametrlər açılsın?</string>
-    <string name="text_cant_mute">Telefonunuz bu Tətbiqin səsini söndürməyə icazə vermir. Bu Tətbiq Ayarlarında səssizliyi söndürün və ya Telefon Ayarlarınızda səssizləşdirməyə icazə verin.</string>
-    <string name="text_no_notify_access_settings">Görünür, telefonunuzun səsi söndürməyə icazə verən standart parametrləri yoxdur. Lütfən, \&amp;quot;Girişi Narahat Etməyin\&amp;quot; Ayarını əl ilə axtarın və onu aktivləşdirin.</string>
+    <string name="text_cant_mute">Telefonunuz bu Tətbiqin səsini söndürməyə icazə vermir. Bu Tətbiq Ayarlarında səssizliyi deaktiv edin və ya Telefon Ayarlarınızda səssizləşdirməyə icazə verin.</string>
+    <string name="text_no_notify_access_settings">Görünür, telefonunuzun səsi söndürməyə icazə verən standart parametrləri yoxdur. Lütfən, \"Narahat Etməyin Girişi\" Ayarını əl ilə axtarın və onu aktivləşdirin.</string>
     <string name="text_no_sections">Bölmələr müəyyən edilməmişdir.</string>
     <string name="text_question_delete_session">Seçilmiş Sessiya həqiqətən silinsin?</string>
     <string name="theme">Mövzu</string>
     <string name="theme_dark">Qaranlıq Mövzu</string>
-    <string name="theme_desc">Proqramın açıq və ya qaranlıq görünüşünü seçin</string>
+    <string name="theme_desc">Proqram görünüşünü seçin</string>
     <string name="theme_light">Yüngül Mövzu</string>
     <string name="theme_system">Sistem mövzusu</string>
     <string name="theme_value_dark">dark</string>
@@ -158,4 +158,12 @@
     <string name="title_dim_bell">Dim Bell</string>
     <string name="dim_bell_label_off">Qaranlıq deyil</string>
     <string name="dim_bell_label_format">Qaranlıq: %1$d0%%</string>
+    <string name="section_deleted">Silindi \'%s\'</string>
+    <string name="action_undo">Geri al</string>
+    <string name="notification_channel_name">Meditasiya Taymeri</string>
+    <string name="nav_label_sessions">Sessiyalar</string>
+    <string name="nav_label_meditation">Meditasiya</string>
+    <string name="nav_label_edit_session">Sessiyaya düzəliş edin</string>
+    <string name="nav_label_edit_section">Bölməni redaktə edin</string>
+    <string name="nav_label_settings">Parametrlər</string>
 </resources>

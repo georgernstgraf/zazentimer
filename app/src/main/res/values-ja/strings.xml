@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="abbrechen">キャンセル</string>
-    <string name="about1">Zazen Meditation Timer — A simple meditation timer with customizable sections, bell sounds, and session management.</string>
-    <string name="about2">Originally created by Stefan Gaffga. Currently maintained by Georg Graf.&lt;br&gt;&lt;br&gt;Thanks to Winfried of &lt;a href="http://www.meditationsuhren.de"&gt;http://www.meditationsuhren.de&lt;/a&gt; for providing such great Bell Sounds!</string>
-    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues"&gt;Report issues on GitHub&lt;/a&gt;</string>
-    <string name="app_description">This application lets the user define a set of meditation sessions and provides a timer with visual and audible feedback when a part or the whole meditation is over.</string>
+    <string name="about1">Zazen Meditation Timer — カスタマイズ可能なセクション、ベルの音、セッション管理を備えたシンプルな瞑想タイマーです。</string>
+    <string name="about2">オリジナルはステファン・ガフガによって作成されました。現在、Georg Graf によって管理されています。&lt;br&gt;&lt;br&gt;このような素晴らしいベル サウンドを提供してくれた &lt;a href="http://www.meditationssuhren.de"&gt;http://www.meditationssuhren.de&lt;/a&gt; の Winfried に感謝します。</string>
+    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues"&gt;GitHub で問題を報告する&lt;/a&gt;</string>
+    <string name="app_description">このアプリケーションを使用すると、ユーザーは一連の瞑想セッションを定義し、瞑想の一部または全体が終了したときにタイマーに視覚的および聴覚的なフィードバックを提供できます。</string>
     <string name="app_name">Zazen Meditation Timer</string>
     <string name="appbar_scrolling_view_behavior">android.support.design.widget.AppBarLayout$ScrollingViewBehavior</string>
     <string name="backup_error_text">保存中にエラーが発生しました。</string>
     <string name="backup_no_permission">権限がないためバックアップを作成できませんでした。</string>
     <string name="backup_not_createable">バックアップ ファイルの作成中にエラーが発生しました。</string>
     <string name="backup_success_text">バックアップが正常に作成されました。</string>
-    <string name="bell_name_1">High Tone</string>
-    <string name="bell_name_2">Low Tone</string>
-    <string name="bell_name_3">Jap. Rhinbowl Dharma, 107mm</string>
-    <string name="bell_name_4">Jap. Rhinbowl Dharma, 88mm (black, glazed)</string>
-    <string name="bell_name_5">Jap. Rhinbowl Shomyo, 90mm</string>
-    <string name="bell_name_6">Jap. Rhinbowl Tang, 164mm</string>
-    <string name="bell_name_7">Tib. Bowl, 230mm</string>
-    <string name="bell_name_8">Jap. Rhinbowl, 97mm</string>
+    <string name="bell_name_1">ハイトーン</string>
+    <string name="bell_name_2">低音</string>
+    <string name="bell_name_3">ジャップ。ラインボウルダルマ 107mm</string>
+    <string name="bell_name_4">ジャップ。ラインボウルダルマ、88mm (黒、釉薬)</string>
+    <string name="bell_name_5">ジャップ。リンボウル声明 90mm</string>
+    <string name="bell_name_6">ジャップ。リンボウル ハング 164mm</string>
+    <string name="bell_name_7">ティブ。ボウル、230mm</string>
+    <string name="bell_name_8">ジャップ。リンボウル、97mm</string>
     <string name="bell_pause">ベルギャップ (秒)</string>
     <string name="bell_user">ベルを追加...</string>
     <string name="bottom_nav_meditation">瞑想</string>
@@ -56,7 +56,7 @@
     <string name="desc_no_server_messages">アプリ起動時にニュースを自動表示</string>
     <string name="error_checking_for_server_messages">新しいメッセージの取得中にエラーが発生しました。</string>
     <string name="gong_type">ゴングの音</string>
-    <string name="help_sectionlist_text">ここで、セッションの内容に名前を付け、説明し、編集できます。\n\n 並べ替え\n 項目を並べ替えるには、項目を長押しして、\n 新しい位置にドラッグします。\n\n 削除\n 項目を削除するには、右に移動します。\n\n 編集\n セクションを編集するには、一度タッチするだけです。\n\n 追加\n 新しいセクションを追加するには、+ ボタンを押します。</string>
+    <string name="help_sectionlist_text">ここで、セッションの内容に名前を付け、説明し、編集できます。\n\n再注文\n項目を並べ替えるには、項目を長押しして、\n新しい位置にドラッグします。\n\n削除中\n項目を削除するには、項目を右に移動します。\n\n編集\nセクションを編集するには、そのセクションを 1 回タッチするだけです。\n\n追加\n新しいセクションを追加するには、+ ボタンを押します。</string>
     <string name="help_sectionlist_title">セッションの編集</string>
     <string name="label_section_name">セクション名</string>
     <string name="label_session_description">セッションの説明</string>
@@ -75,13 +75,13 @@
     <string name="minuten">分</string>
     <string name="no_new_server_messages">新しいメッセージはありません。</string>
     <string name="no_sections_in_session">瞑想を開始できません: 選択したセッションにはセクションがありません。</string>
-    <string name="no_session_exists">開始できるセッションがありません。まず作成してください。</string>
+    <string name="no_session_exists">開始できるセッションがありません。まずは作成してください。</string>
     <string name="notification_text">座禅体験会開催中</string>
     <string name="notification_text_paused">座禅一時停止</string>
     <string name="notification_title">座禅瞑想</string>
     <string name="notification_title_paused">坐禅（一時停止中）</string>
     <string name="num_bells">ベル数</string>
-    <string name="ok">OK</string>
+    <string name="ok">わかりました</string>
     <string name="pref_desc_brightness">瞑想中のディスプレイの明るさ</string>
     <string name="pref_get_messages">今すぐ新しいメッセージをチェックしてください</string>
     <string name="pref_mute_mode">着信音と通知</string>
@@ -103,17 +103,17 @@
     <string name="pref_sum_restore">SDカードバックアップからセッションとカスタムサウンドを復元</string>
     <string name="pref_sum_shared">SDカードは共有されています</string>
     <string name="pref_title_backup">バックアップの作成</string>
-    <string name="pref_title_brightness">明るさ</string>
+    <string name="pref_title_brightness">輝度</string>
     <string name="pref_title_restore">バックアップから復元</string>
     <string name="privacy_message">このアプリは個人データを収集しません。また、IP アドレスやその他のテクノロジー関連データも使用せず、いかなる方法でも収集、処理、使用しません。</string>
-    <string name="privacy_ok">OK</string>
+    <string name="privacy_ok">わかりました</string>
     <string name="privacy_title">プライバシー情報</string>
     <string name="really_stop">本当に瞑想をやめるのですか？</string>
     <string name="restore_backup_not_found">バックアップファイルが見つかりません</string>
     <string name="restore_error_text">バックアップからの復元エラー</string>
     <string name="restore_no_permission">権限がないため復元できませんでした。</string>
-    <string name="restore_really_text">これにより、すべてのセッションがバックアップ内のセッションに置き換えられます。(元に戻すことはできません!)</string>
-    <string name="restore_really_title">本当にデータを復元しますか?</string>
+    <string name="restore_really_text">これにより、すべてのセッションがバックアップ内のセッションに置き換えられます。 (元に戻すことはできません!)</string>
+    <string name="restore_really_title">本当にデータを復元しますか？</string>
     <string name="restore_success_text">データの復元が成功しました</string>
     <string name="search_menu_title">検索</string>
     <string name="section_info_string_1_pl">%1$d ベル</string>
@@ -130,12 +130,12 @@
     <string name="status_bar_notification_info_overflow">999+</string>
     <string name="test_mute_perm_request">現在、アプリで携帯電話をミュートすることは許可されていません。これを変更するには設定を開いてください?</string>
     <string name="text_cant_mute">お使いの携帯電話では、このアプリがミュートすることは許可されていません。このアプリの設定でミュートを無効にするか、電話の設定でミュートを許可します。</string>
-    <string name="text_no_notify_access_settings">お使いの携帯電話には、ミュートを許可する標準設定がないようです。「アクセスを中断しない」設定を手動で探して有効にしてください。</string>
+    <string name="text_no_notify_access_settings">お使いの携帯電話には、ミュートを許可する標準設定がないようです。 \"アクセスを邪魔しない\" 設定を手動で探して有効にしてください。</string>
     <string name="text_no_sections">セクションが定義されていません。</string>
     <string name="text_question_delete_session">選択したセッションを本当に削除しますか?</string>
     <string name="theme">テーマ</string>
     <string name="theme_dark">ダークテーマ</string>
-    <string name="theme_desc">アプリの明るいまたは暗い外観を選択します</string>
+    <string name="theme_desc">アプリの外観を選択する</string>
     <string name="theme_light">ライトテーマ</string>
     <string name="theme_system">システムテーマ</string>
     <string name="theme_value_dark">dark</string>
@@ -158,4 +158,12 @@
     <string name="title_dim_bell">ディムベル</string>
     <string name="dim_bell_label_off">減光されていない</string>
     <string name="dim_bell_label_format">淡色表示: %1$d0%%</string>
+    <string name="section_deleted">\'%s\' を削除しました</string>
+    <string name="action_undo">元に戻す</string>
+    <string name="notification_channel_name">瞑想タイマー</string>
+    <string name="nav_label_sessions">セッション</string>
+    <string name="nav_label_meditation">瞑想</string>
+    <string name="nav_label_edit_session">セッションの編集</string>
+    <string name="nav_label_edit_section">セクションの編集</string>
+    <string name="nav_label_settings">設定</string>
 </resources>

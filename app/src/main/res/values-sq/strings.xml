@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="abbrechen">Anulo</string>
-    <string name="about1">Zazen Meditation Timer — A simple meditation timer with customizable sections, bell sounds, and session management.</string>
-    <string name="about2">Originally created by Stefan Gaffga. Currently maintained by Georg Graf.&lt;br&gt;&lt;br&gt;Thanks to Winfried of &lt;a href="http://www.meditationsuhren.de"&gt;http://www.meditationsuhren.de&lt;/a&gt; for providing such great Bell Sounds!</string>
-    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues"&gt;Report issues on GitHub&lt;/a&gt;</string>
-    <string name="app_description">This application lets the user define a set of meditation sessions and provides a timer with visual and audible feedback when a part or the whole meditation is over.</string>
+    <string name="about1">Kohëmatësi i meditimit Zazen — Një kohëmatës i thjeshtë meditimi me seksione të personalizueshme, tinguj zile dhe menaxhim të sesioneve.</string>
+    <string name="about2">Krijuar fillimisht nga Stefan Gaffga. Aktualisht mirëmbahet nga Georg Graf.&lt;br&gt;&lt;br&gt;Faleminderit Winfried të &lt;a href="http://www.meditationsuhren.de"&gt;http://www.meditationsuhren.de&lt;/a&gt; për ofrimin e tingujve kaq të mrekullueshëm të ziles!</string>
+    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues"&gt;Raportoni problemet në GitHub&lt;/a&gt;</string>
+    <string name="app_description">Ky aplikacion lejon përdoruesin të përcaktojë një grup seancash meditimi dhe siguron një kohëmatës me reagime vizuale dhe të dëgjueshme kur një pjesë ose i gjithë meditimi përfundon.</string>
     <string name="app_name">Zazen Meditation Timer</string>
     <string name="appbar_scrolling_view_behavior">android.support.design.widget.AppBarLayout$ScrollingViewBehavior</string>
     <string name="backup_error_text">Na vjen keq, ndodhi një gabim gjatë ruajtjes.</string>
     <string name="backup_no_permission">Rezervimi nuk mund të krijohej për shkak të mungesës së lejeve.</string>
     <string name="backup_not_createable">Gabim në krijimin e skedarit rezervë.</string>
     <string name="backup_success_text">Rezervimi u krijua me sukses!</string>
-    <string name="bell_name_1">High Tone</string>
-    <string name="bell_name_2">Low Tone</string>
-    <string name="bell_name_3">Jap. Rhinbowl Dharma, 107mm</string>
-    <string name="bell_name_4">Jap. Rhinbowl Dharma, 88mm (black, glazed)</string>
-    <string name="bell_name_5">Jap. Rhinbowl Shomyo, 90mm</string>
-    <string name="bell_name_6">Jap. Rhinbowl Tang, 164mm</string>
-    <string name="bell_name_7">Tib. Bowl, 230mm</string>
-    <string name="bell_name_8">Jap. Rhinbowl, 97mm</string>
+    <string name="bell_name_1">Ton i lartë</string>
+    <string name="bell_name_2">Ton i ulët</string>
+    <string name="bell_name_3">Japonia Rhinbowl Dharma, 107 mm</string>
+    <string name="bell_name_4">Japonia Rhinbowl Dharma, 88 mm (e zezë, me xham)</string>
+    <string name="bell_name_5">Japonia Rhinbowl Shomyo, 90 mm</string>
+    <string name="bell_name_6">Japonia Rhinbowl Tang, 164 mm</string>
+    <string name="bell_name_7">Tib. Tas, 230 mm</string>
+    <string name="bell_name_8">Japonia Rinbowl, 97 mm</string>
     <string name="bell_pause">Hendeku i ziles (sek)</string>
     <string name="bell_user">Shto zile...</string>
     <string name="bottom_nav_meditation">Meditim</string>
@@ -31,7 +31,7 @@
     <string name="character_counter_pattern">%1$d / %2$d</string>
     <string name="checkbox_keep_screen_on">Mbaje ekranin të ndezur</string>
     <string name="checkbox_no_server_messages">Shfaq Lajmet</string>
-    <string name="checkbox_phone_off">Heqja e telefonit</string>
+    <string name="checkbox_phone_off">Çaktivizo telefonin</string>
     <string name="checkbox_phone_off_desc">Heshti të gjithë tingujt e telefonit.</string>
     <string name="copy_prefix">Kopje e</string>
     <string name="crash_dialog_comment_prompt">Opsionale: Cili veprim shkaktoi gabimin?</string>
@@ -56,7 +56,7 @@
     <string name="desc_no_server_messages">Shfaq automatikisht Lajmet kur nis aplikacioni</string>
     <string name="error_checking_for_server_messages">Gabim gjatë marrjes së mesazheve të reja.</string>
     <string name="gong_type">Tingulli Gong</string>
-    <string name="help_sectionlist_text">Këtu mund të emërtoni, përshkruani dhe modifikoni përmbajtjen e Sesionit tuaj.\n\n RIORDERING\n Për të rirenditur artikujt, shtypni gjatë mbi një artikull dhe\n tërhiqeni atë në pozicionin e tij të ri.\n\n FSHIJE⦅⦅ fshijeni atë në drejtë.\n\n EDIT\n Për të modifikuar një seksion, mjafton ta prekni një herë.\n\n ADD\n Për të shtuar një seksion të ri, shtypni butonin +.</string>
+    <string name="help_sectionlist_text">Këtu mund të emërtoni, përshkruani dhe modifikoni përmbajtjen e Sesionit tuaj.\n\nRIPORDORIMI\nPër të rirenditur artikujt, shtypni gjatë mbi një artikull dhe\ntërhiqeni atë në pozicionin e ri.\n\nFSHIJE\nPër të fshirë një artikull, zhvendoseni në të djathtë.\n\nEDIT\nPër të modifikuar një seksion, mjafton ta prekni një herë.\n\nSHTO\nPër të shtuar një seksion të ri, shtypni butonin +.</string>
     <string name="help_sectionlist_title">Redakto seancën</string>
     <string name="label_section_name">Emri i seksionit</string>
     <string name="label_session_description">Përshkrimi i sesionit</string>
@@ -74,7 +74,7 @@
     <string name="menu_settings">Cilësimet</string>
     <string name="minuten">Minutat</string>
     <string name="no_new_server_messages">Nuk ka mesazhe të reja në dispozicion.</string>
-    <string name="no_sections_in_session">Nuk mund të fillohet meditimi: Sesioni i zgjedhur nuk ka asnjë seksion.</string>
+    <string name="no_sections_in_session">Nuk mund të\'nis meditimin: Sesioni i zgjedhur nuk ka asnjë seksion.</string>
     <string name="no_session_exists">Nuk ka asnjë seancë që mund të fillojë. Ju lutemi krijoni një të parë.</string>
     <string name="notification_text">Aktualisht po zhvillohet një Meditim Zazen</string>
     <string name="notification_text_paused">Zazen Meditimi u ndal</string>
@@ -116,26 +116,26 @@
     <string name="restore_really_title">Të rivendosen vërtet të dhënat?</string>
     <string name="restore_success_text">Rivendosja e të dhënave me sukses</string>
     <string name="search_menu_title">Kërko</string>
-    <string name="section_info_string_1_pl">%1$d këmbanat</string>
+    <string name="section_info_string_1_pl">%1$d Këmbanat</string>
     <string name="section_info_string_1_sg">1 zile</string>
-    <string name="section_info_string_2_pl">çdo %1$d sekonda</string>
+    <string name="section_info_string_2_pl">çdo %1$d Sekonda</string>
     <string name="section_info_string_2_sg">çdo Sekondë</string>
     <string name="sekunden">Sekonda</string>
     <string name="select_audio">Zgjidhni skedarin e zërit</string>
     <string name="service_description">Një meditim vrapues Zazen</string>
-    <string name="content_desc_drag_handle">Tërhiqeni për ta rirenditur</string>
+    <string name="content_desc_drag_handle">Zvarriteni për ta rirenditur</string>
     <string name="content_desc_section_actions">Veprimet e seksionit</string>
     <string name="content_desc_session_actions">Veprimet e seancës</string>
     <string name="session_list_unnamed_entry">Sesion pa emër</string>
     <string name="status_bar_notification_info_overflow">999+</string>
     <string name="test_mute_perm_request">Aplikacioni aktualisht nuk lejohet të hesht telefonin tuaj. Të hapen cilësimet për ta ndryshuar këtë?</string>
     <string name="text_cant_mute">Telefoni juaj nuk e lejon këtë aplikacion ta hesht. Çaktivizo heshtjen në cilësimet e aplikacioneve ose lejo heshtjen në cilësimet e telefonit.</string>
-    <string name="text_no_notify_access_settings">Telefoni juaj duket se nuk ka cilësimet standarde për të lejuar heshtjen. Kërkoni manualisht për cilësimin \&amp;quot;Mos shqetëso qasjen\&amp;quot; dhe aktivizojeni atë.</string>
+    <string name="text_no_notify_access_settings">Telefoni juaj duket se nuk ka cilësimet standarde për të lejuar heshtjen. Ju lutemi, kërkoni manualisht për cilësimin \"Mos shqetëso Access\" dhe aktivizoni atë.</string>
     <string name="text_no_sections">Nuk ka seksione të përcaktuara.</string>
     <string name="text_question_delete_session">Të fshihet vërtet seanca e zgjedhur?</string>
     <string name="theme">Tema</string>
     <string name="theme_dark">Temë e errët</string>
-    <string name="theme_desc">Zgjidhni pamjen e lehtë ose të errët të aplikacionit</string>
+    <string name="theme_desc">Zgjidhni pamjen e aplikacionit</string>
     <string name="theme_light">Tema e lehtë</string>
     <string name="theme_system">Tema e Sistemit</string>
     <string name="theme_value_dark">dark</string>
@@ -158,4 +158,12 @@
     <string name="title_dim_bell">Dim Bell</string>
     <string name="dim_bell_label_off">Jo e zbehur</string>
     <string name="dim_bell_label_format">E zbehur: %1$d0%%</string>
+    <string name="section_deleted">U fshi \'%s\'</string>
+    <string name="action_undo">Zhbër</string>
+    <string name="notification_channel_name">Kohëmatësi i meditimit</string>
+    <string name="nav_label_sessions">Sesionet</string>
+    <string name="nav_label_meditation">Meditim</string>
+    <string name="nav_label_edit_session">Redakto seancën</string>
+    <string name="nav_label_edit_section">Redakto seksionin</string>
+    <string name="nav_label_settings">Cilësimet</string>
 </resources>

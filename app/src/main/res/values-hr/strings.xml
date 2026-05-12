@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="abbrechen">Otkazati</string>
-    <string name="about1">Zazen Meditation Timer — A simple meditation timer with customizable sections, bell sounds, and session management.</string>
-    <string name="about2">Originally created by Stefan Gaffga. Currently maintained by Georg Graf.&lt;br&gt;&lt;br&gt;Thanks to Winfried of &lt;a href="http://www.meditationsuhren.de"&gt;http://www.meditationsuhren.de&lt;/a&gt; for providing such great Bell Sounds!</string>
-    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues"&gt;Report issues on GitHub&lt;/a&gt;</string>
-    <string name="app_description">This application lets the user define a set of meditation sessions and provides a timer with visual and audible feedback when a part or the whole meditation is over.</string>
+    <string name="about1">Zazen Meditation Timer — Jednostavan mjerač vremena za meditaciju s prilagodljivim dijelovima, zvukovima zvona i upravljanjem sesijom.</string>
+    <string name="about2">Izvorno kreiran od strane Stefana Gaffge. Trenutačno održava Georg Graf.&lt;br&gt;&lt;br&gt;Hvala Winfriedu s &lt;a href="http://www.meditationsuhren.de"&gt;http://www.meditationsuhren.de&lt;/a&gt; za pružanje tako sjajnih zvukova zvona!</string>
+    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues"&gt;Prijava problema na GitHubu&lt;/a&gt;</string>
+    <string name="app_description">Ova aplikacija omogućuje korisniku definiranje skupa sesija meditacije i pruža mjerač vremena s vizualnim i zvučnim povratnim informacijama kada dio ili cijela meditacija završi.</string>
     <string name="app_name">Zazen Meditation Timer</string>
     <string name="appbar_scrolling_view_behavior">android.support.design.widget.AppBarLayout$ScrollingViewBehavior</string>
     <string name="backup_error_text">Žao nam je, došlo je do pogreške prilikom spremanja.</string>
     <string name="backup_no_permission">Nije moguće izraditi sigurnosnu kopiju jer nedostaju dozvole.</string>
     <string name="backup_not_createable">Pogreška pri izradi datoteke sigurnosne kopije.</string>
     <string name="backup_success_text">Sigurnosna kopija je uspješno stvorena!</string>
-    <string name="bell_name_1">High Tone</string>
-    <string name="bell_name_2">Low Tone</string>
-    <string name="bell_name_3">Jap. Rhinbowl Dharma, 107mm</string>
-    <string name="bell_name_4">Jap. Rhinbowl Dharma, 88mm (black, glazed)</string>
-    <string name="bell_name_5">Jap. Rhinbowl Shomyo, 90mm</string>
-    <string name="bell_name_6">Jap. Rhinbowl Tang, 164mm</string>
-    <string name="bell_name_7">Tib. Bowl, 230mm</string>
-    <string name="bell_name_8">Jap. Rhinbowl, 97mm</string>
+    <string name="bell_name_1">Visoki ton</string>
+    <string name="bell_name_2">Nizak ton</string>
+    <string name="bell_name_3">Japanac Rhinbowl Dharma, 107 mm</string>
+    <string name="bell_name_4">Japanac Rhinbowl Dharma, 88 mm (crna, glazirana)</string>
+    <string name="bell_name_5">Japanac Rhinbowl Shomyo, 90 mm</string>
+    <string name="bell_name_6">Japanac Rhinbowl Tang, 164 mm</string>
+    <string name="bell_name_7">Tib. Zdjela, 230 mm</string>
+    <string name="bell_name_8">Japanac Rhinbowl, 97 mm</string>
     <string name="bell_pause">Razmak zvona (sek)</string>
     <string name="bell_user">Dodaj zvono...</string>
     <string name="bottom_nav_meditation">Meditacija</string>
@@ -36,7 +36,7 @@
     <string name="copy_prefix">Kopija od</string>
     <string name="crash_dialog_comment_prompt">Neobavezno: Koja radnja je uzrokovala pogrešku?</string>
     <string name="crash_dialog_ok_toast">Hvala vam puno na pomoći!</string>
-    <string name="crash_dialog_text">Žao mi je, došlo je do greške.Možete mi pomoći da pronađem i riješim ovaj problem slanjem ovog izvješća o pogrešci i možda čak i više pojedinosti o tome što ste učinili.</string>
+    <string name="crash_dialog_text">Žao mi je, došlo je do greške. Možete mi pomoći da pronađem i riješim ovaj problem slanjem ovog izvješća o pogrešci i možda čak i više detalja o tome što ste učinili.</string>
     <string name="crash_dialog_title">Mjerač vremena za meditaciju Zazen</string>
     <string name="crash_toast_text">Nažalost, došlo je do interne pogreške!</string>
     <string name="crash_user_email_label">Neobavezno: Vaša e-adresa za pitanja ili ažuriranja o ovom problemu.</string>
@@ -56,7 +56,7 @@
     <string name="desc_no_server_messages">Automatski prikaži vijesti kada se aplikacija pokrene</string>
     <string name="error_checking_for_server_messages">Pogreška pri dohvaćanju novih poruka.</string>
     <string name="gong_type">Zvuk gonga</string>
-    <string name="help_sectionlist_text">Ovdje možete imenovati, opisati i uređivati ​​sadržaj svoje sesije.\n\n PROMJENA REDOSREDA\n Za promjenu redoslijeda stavki, dugo pritisnite stavku i\n povucite je na njen novi položaj.\n\n BRISANJE\n Za brisanje stavke, pomaknite je udesno.\n\n UREDI\n Za uređivanje odjeljka, samo ga dodirnite jednom.\n\n DODAJ\n Za dodavanje novog odjeljka pritisnite gumb +.</string>
+    <string name="help_sectionlist_text">Ovdje možete imenovati, opisati i urediti sadržaj svoje sesije.\n\nPRENARUDŽIVANJE\nZa promjenu redoslijeda stavki, dugo pritisnite na stavku i\npovucite ga na novi položaj.\n\nBRISANJE\nDa biste izbrisali stavku, pomaknite je udesno.\n\nUREDI\nDa biste uredili odjeljak, samo ga dodirnite jednom.\n\nDODATI\nZa dodavanje novog odjeljka pritisnite gumb +.</string>
     <string name="help_sectionlist_title">Uredi sesiju</string>
     <string name="label_section_name">Naziv odjeljka</string>
     <string name="label_session_description">Opis sesije</string>
@@ -74,8 +74,8 @@
     <string name="menu_settings">postavke</string>
     <string name="minuten">minuta</string>
     <string name="no_new_server_messages">Nema dostupnih novih poruka.</string>
-    <string name="no_sections_in_session">Ne mogu započeti meditaciju: odabrana sesija nema nijedan odjeljak.</string>
-    <string name="no_session_exists">Nema sesije koja se može započeti.Prvo ga izradite.</string>
+    <string name="no_sections_in_session">Ne mogu\'ne mogu započeti meditaciju: odabrana sesija nema nijedan odjeljak.</string>
+    <string name="no_session_exists">Nema sesije koja se može započeti. Prvo ga izradite.</string>
     <string name="notification_text">Trenutno je u tijeku Zazen meditacija</string>
     <string name="notification_text_paused">Zazen meditacija je pauzirana</string>
     <string name="notification_title">Zazen meditacija</string>
@@ -105,18 +105,18 @@
     <string name="pref_title_backup">Napravi sigurnosnu kopiju</string>
     <string name="pref_title_brightness">Svjetlina</string>
     <string name="pref_title_restore">Vrati iz sigurnosne kopije</string>
-    <string name="privacy_message">Ova aplikacija ne prikuplja nikakve osobne podatke - također ne koristi IP adrese ili bilo koje druge podatke povezane s tehnologijom, niti ih prikuplja, obrađuje ili koristi na bilo koji način.</string>
+    <string name="privacy_message">Ova aplikacija ne prikuplja nikakve osobne podatke - također ne koristi IP-adrese ili bilo koje druge podatke povezane s tehnologijom, niti ih prikuplja, obrađuje ili koristi na bilo koji način.</string>
     <string name="privacy_ok">U REDU</string>
     <string name="privacy_title">Podaci o privatnosti</string>
     <string name="really_stop">Stvarno prestati s meditacijom?</string>
     <string name="restore_backup_not_found">Datoteka sigurnosne kopije nije pronađena</string>
     <string name="restore_error_text">Pogreška pri vraćanju iz sigurnosne kopije</string>
     <string name="restore_no_permission">Nije moguće vratiti jer nedostaje dozvola.</string>
-    <string name="restore_really_text">Ovo će zamijeniti sve vaše sesije onima u sigurnosnoj kopiji!(Bez poništavanja!)</string>
+    <string name="restore_really_text">Ovo će zamijeniti sve vaše sesije onima u sigurnosnoj kopiji! (Bez poništavanja!)</string>
     <string name="restore_really_title">Stvarno vraćate podatke?</string>
     <string name="restore_success_text">Vraćanje podataka uspješno</string>
     <string name="search_menu_title">Pretraživanje</string>
-    <string name="section_info_string_1_pl">%1$d zvona</string>
+    <string name="section_info_string_1_pl">%1$d Zvona</string>
     <string name="section_info_string_1_sg">1 zvono</string>
     <string name="section_info_string_2_pl">svakih %1$d sekundi</string>
     <string name="section_info_string_2_sg">svake sekunde</string>
@@ -128,14 +128,14 @@
     <string name="content_desc_session_actions">Radnje sesije</string>
     <string name="session_list_unnamed_entry">Neimenovana sesija</string>
     <string name="status_bar_notification_info_overflow">999+</string>
-    <string name="test_mute_perm_request">Aplikaciji trenutno nije dopušteno isključiti zvuk vašeg telefona.Otvoriti postavke da biste to promijenili?</string>
-    <string name="text_cant_mute">Vaš telefon ne dopušta ovoj aplikaciji da ga isključi.Onemogućite isključivanje zvuka u ovim postavkama aplikacije ili dopustite isključivanje zvuka u postavkama vašeg telefona.</string>
-    <string name="text_no_notify_access_settings">Čini se da vaš telefon nema standardne postavke za isključivanje zvuka.Ručno potražite postavku \&amp;quot;Ne uznemiravaj pristup\&amp;quot; i omogućite je.</string>
+    <string name="test_mute_perm_request">Aplikaciji trenutno nije dopušteno isključiti zvuk vašeg telefona. Otvoriti postavke da biste to promijenili?</string>
+    <string name="text_cant_mute">Vaš telefon ne dopušta ovoj aplikaciji da ga isključi. Onemogućite isključivanje zvuka u ovim postavkama aplikacije ili dopustite isključivanje zvuka u postavkama telefona.</string>
+    <string name="text_no_notify_access_settings">Čini se da vaš telefon nema standardne postavke za isključivanje zvuka. Ručno potražite postavku \"Do not Disturb Access\" i omogućite je.</string>
     <string name="text_no_sections">Nema definiranih odjeljaka.</string>
-    <string name="text_question_delete_session">Stvarno želite izbrisati odabranu sesiju?</string>
+    <string name="text_question_delete_session">Stvarno izbrišete odabranu sesiju?</string>
     <string name="theme">Tema</string>
     <string name="theme_dark">Tamna tema</string>
-    <string name="theme_desc">Odaberite svijetli ili tamni izgled aplikacije</string>
+    <string name="theme_desc">Odaberite izgled aplikacije</string>
     <string name="theme_light">Lagana tema</string>
     <string name="theme_system">Tema sustava</string>
     <string name="theme_value_dark">dark</string>
@@ -158,4 +158,12 @@
     <string name="title_dim_bell">Dim Bell</string>
     <string name="dim_bell_label_off">Nije zatamnjeno</string>
     <string name="dim_bell_label_format">Zatamnjeno: %1$d0%%</string>
+    <string name="section_deleted">Izbrisano \'%s\'</string>
+    <string name="action_undo">Poništi</string>
+    <string name="notification_channel_name">Mjerač vremena za meditaciju</string>
+    <string name="nav_label_sessions">Sjednice</string>
+    <string name="nav_label_meditation">Meditacija</string>
+    <string name="nav_label_edit_session">Uredi sesiju</string>
+    <string name="nav_label_edit_section">Uredi odjeljak</string>
+    <string name="nav_label_settings">postavke</string>
 </resources>

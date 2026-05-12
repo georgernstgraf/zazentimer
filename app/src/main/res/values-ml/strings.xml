@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="abbrechen">റദ്ദാക്കുക</string>
-    <string name="about1">Zazen Meditation Timer — A simple meditation timer with customizable sections, bell sounds, and session management.</string>
-    <string name="about2">Originally created by Stefan Gaffga. Currently maintained by Georg Graf.&lt;br&gt;&lt;br&gt;Thanks to Winfried of &lt;a href="http://www.meditationsuhren.de"&gt;http://www.meditationsuhren.de&lt;/a&gt; for providing such great Bell Sounds!</string>
-    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues"&gt;Report issues on GitHub&lt;/a&gt;</string>
-    <string name="app_description">This application lets the user define a set of meditation sessions and provides a timer with visual and audible feedback when a part or the whole meditation is over.</string>
+    <string name="about1">Zazen മെഡിറ്റേഷൻ ടൈമർ - ഇഷ്ടാനുസൃതമാക്കാവുന്ന വിഭാഗങ്ങൾ, ബെൽ ശബ്ദങ്ങൾ, സെഷൻ മാനേജ്മെൻ്റ് എന്നിവയുള്ള ഒരു ലളിതമായ ധ്യാന ടൈമർ.</string>
+    <string name="about2">യഥാർത്ഥത്തിൽ സ്റ്റീഫൻ ഗഫ്ഗ സൃഷ്ടിച്ചത്. നിലവിൽ ജോർജ്ജ് ഗ്രാഫ് പരിപാലിക്കുന്നു.&lt;br&gt;&lt;br&gt;ഇത്രയും മികച്ച ബെൽ ശബ്ദങ്ങൾ നൽകിയതിന് &lt;a href="http://www.meditationsuhren.de"&gt;http://www.meditationsuhren.de&lt;/a&gt;-ൻ്റെ Winfried-ന് നന്ദി!</string>
+    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues"&gt;GitHub-ൽ പ്രശ്നങ്ങൾ റിപ്പോർട്ട് ചെയ്യുക&lt;/a&gt;</string>
+    <string name="app_description">ഒരു കൂട്ടം ധ്യാന സെഷനുകൾ നിർവചിക്കാനും ഒരു ഭാഗമോ മുഴുവനായോ ധ്യാനം കഴിയുമ്പോൾ ദൃശ്യവും കേൾക്കാവുന്നതുമായ ഫീഡ്‌ബാക്ക് ടൈമർ നൽകാനും ഈ ആപ്ലിക്കേഷൻ ഉപയോക്താവിനെ അനുവദിക്കുന്നു.</string>
     <string name="app_name">Zazen Meditation Timer</string>
     <string name="appbar_scrolling_view_behavior">android.support.design.widget.AppBarLayout$ScrollingViewBehavior</string>
     <string name="backup_error_text">ക്ഷമിക്കണം, സംരക്ഷിക്കുമ്പോൾ ഒരു പിശക് സംഭവിച്ചു.</string>
     <string name="backup_no_permission">അനുമതികൾ നഷ്‌ടമായതിനാൽ ബാക്കപ്പ് സൃഷ്‌ടിക്കാനായില്ല.</string>
     <string name="backup_not_createable">ബാക്കപ്പ് ഫയൽ സൃഷ്ടിക്കുന്നതിൽ പിശക്.</string>
     <string name="backup_success_text">ബാക്കപ്പ് സൃഷ്‌ടിച്ചു!</string>
-    <string name="bell_name_1">High Tone</string>
-    <string name="bell_name_2">Low Tone</string>
-    <string name="bell_name_3">Jap. Rhinbowl Dharma, 107mm</string>
-    <string name="bell_name_4">Jap. Rhinbowl Dharma, 88mm (black, glazed)</string>
-    <string name="bell_name_5">Jap. Rhinbowl Shomyo, 90mm</string>
-    <string name="bell_name_6">Jap. Rhinbowl Tang, 164mm</string>
-    <string name="bell_name_7">Tib. Bowl, 230mm</string>
-    <string name="bell_name_8">Jap. Rhinbowl, 97mm</string>
+    <string name="bell_name_1">ഉയർന്ന ടോൺ</string>
+    <string name="bell_name_2">താഴ്ന്ന ടോൺ</string>
+    <string name="bell_name_3">ജാപ്പ് റിൻബൗൾ ധർമ്മ, 107 മി.മീ</string>
+    <string name="bell_name_4">ജാപ്പ് റിൻബൗൾ ധർമ്മ, 88 എംഎം (കറുപ്പ്, ഗ്ലേസ്ഡ്)</string>
+    <string name="bell_name_5">ജാപ്പ് റിൻബൗൾ ഷോമിയോ, 90 മി.മീ</string>
+    <string name="bell_name_6">ജാപ്പ് റിൻബൗൾ ടാങ്, 164 മി.മീ</string>
+    <string name="bell_name_7">ടിബ്. ബൗൾ, 230 മി.മീ</string>
+    <string name="bell_name_8">ജാപ്പ് റിൻബൗൾ, 97 മി.മീ</string>
     <string name="bell_pause">ബെൽ വിടവ് (സെക്കൻഡ്)</string>
     <string name="bell_user">ബെൽ ചേർക്കുക...</string>
     <string name="bottom_nav_meditation">ധ്യാനം</string>
@@ -56,7 +56,7 @@
     <string name="desc_no_server_messages">ആപ്പ് ആരംഭിക്കുമ്പോൾ വാർത്ത സ്വയമേവ കാണിക്കുക</string>
     <string name="error_checking_for_server_messages">പുതിയ സന്ദേശങ്ങൾ ലഭ്യമാക്കുന്നതിൽ പിശക്.</string>
     <string name="gong_type">ഗോങ് ശബ്ദം</string>
-    <string name="help_sectionlist_text">ഇവിടെ നിങ്ങൾക്ക് നിങ്ങളുടെ സെഷനിലെ ഉള്ളടക്കങ്ങളുടെ പേര് നൽകാനും വിവരിക്കാനും എഡിറ്റ് ചെയ്യാനും കഴിയും.\n\n REORDERING\n ഇനങ്ങൾ പുനഃക്രമീകരിക്കുന്നതിന്, ഒരു ഇനത്തിൽ ദീർഘനേരം അമർത്തി \n അതിൻ്റെ പുതിയ സ്ഥാനത്തേക്ക് വലിച്ചിടുക. വലത്.\n\n എഡിറ്റ്\n ഒരു വിഭാഗം എഡിറ്റ് ചെയ്യാൻ, ഒരു തവണ സ്പർശിക്കുക.\n\n ADD\n ഒരു പുതിയ വിഭാഗം ചേർക്കാൻ, + ബട്ടൺ അമർത്തുക.</string>
+    <string name="help_sectionlist_text">ഇവിടെ നിങ്ങൾക്ക് നിങ്ങളുടെ സെഷൻ്റെ ഉള്ളടക്കം പേരിടാനും വിവരിക്കാനും എഡിറ്റ് ചെയ്യാനുമാകും.\n\nപുനഃക്രമീകരിക്കുന്നു\nഇനങ്ങൾ പുനഃക്രമീകരിക്കാൻ, ഒരു ഇനത്തിൽ ദീർഘനേരം അമർത്തുക\nഅതിനെ അതിൻ്റെ പുതിയ സ്ഥാനത്തേക്ക് വലിച്ചിടുക.\n\nഇല്ലാതാക്കുന്നു\nഒരു ഇനം ഇല്ലാതാക്കാൻ, അത് വലത്തേക്ക് നീക്കുക.\n\nഎഡിറ്റ്\nഒരു വിഭാഗം എഡിറ്റ് ചെയ്യാൻ, ഒരിക്കൽ അതിൽ സ്പർശിച്ചാൽ മതി.\n\nചേർക്കുക\nഒരു പുതിയ വിഭാഗം ചേർക്കാൻ, + ബട്ടൺ അമർത്തുക.</string>
     <string name="help_sectionlist_title">സെഷൻ എഡിറ്റ് ചെയ്യുക</string>
     <string name="label_section_name">വിഭാഗത്തിൻ്റെ പേര്</string>
     <string name="label_session_description">സെഷൻ വിവരണം</string>
@@ -74,7 +74,7 @@
     <string name="menu_settings">ക്രമീകരണങ്ങൾ</string>
     <string name="minuten">മിനിറ്റ്</string>
     <string name="no_new_server_messages">പുതിയ സന്ദേശങ്ങളൊന്നും ലഭ്യമല്ല.</string>
-    <string name="no_sections_in_session">ധ്യാനം ആരംഭിക്കാൻ കഴിയില്ല: തിരഞ്ഞെടുത്ത സെഷനിൽ വിഭാഗങ്ങളൊന്നുമില്ല.</string>
+    <string name="no_sections_in_session">ധ്യാനം ആരംഭിക്കാൻ\' കഴിയില്ല: തിരഞ്ഞെടുത്ത സെഷനിൽ വിഭാഗങ്ങളൊന്നുമില്ല.</string>
     <string name="no_session_exists">ആരംഭിക്കാൻ കഴിയുന്ന ഒരു സെഷനും ഇല്ല. ആദ്യം ഒന്ന് സൃഷ്‌ടിക്കുക.</string>
     <string name="notification_text">ഒരു Zazen ധ്യാനം നിലവിൽ പ്രവർത്തിക്കുന്നു</string>
     <string name="notification_text_paused">Zazen ധ്യാനം താൽക്കാലികമായി നിർത്തി</string>
@@ -126,16 +126,16 @@
     <string name="content_desc_drag_handle">പുനഃക്രമീകരിക്കാൻ വലിച്ചിടുക</string>
     <string name="content_desc_section_actions">വിഭാഗം പ്രവർത്തനങ്ങൾ</string>
     <string name="content_desc_session_actions">സെഷൻ പ്രവർത്തനങ്ങൾ</string>
-    <string name="session_list_unnamed_entry">പേരിടാത്ത സെഷൻ</string>
+    <string name="session_list_unnamed_entry">പേരില്ലാത്ത സെഷൻ</string>
     <string name="status_bar_notification_info_overflow">999+</string>
     <string name="test_mute_perm_request">നിങ്ങളുടെ ഫോൺ നിശബ്ദമാക്കാൻ ആപ്പിന് നിലവിൽ അനുവാദമില്ല. ഇത് മാറ്റാൻ ക്രമീകരണം തുറക്കണോ?</string>
     <string name="text_cant_mute">നിങ്ങളുടെ ഫോൺ ഈ ആപ്പിനെ നിശബ്ദമാക്കാൻ അനുവദിക്കുന്നില്ല. ഈ ആപ്പ് ക്രമീകരണത്തിൽ നിശബ്ദമാക്കുന്നത് പ്രവർത്തനരഹിതമാക്കുക അല്ലെങ്കിൽ നിങ്ങളുടെ ഫോൺ ക്രമീകരണങ്ങളിൽ നിശബ്ദമാക്കാൻ അനുവദിക്കുക.</string>
-    <string name="text_no_notify_access_settings">നിശബ്‌ദമാക്കാൻ അനുവദിക്കുന്ന സ്റ്റാൻഡേർഡ് ക്രമീകരണങ്ങൾ നിങ്ങളുടെ ഫോണിൽ ഇല്ലെന്ന് തോന്നുന്നു. ദയവായി \"ശല്യപ്പെടുത്തരുത് ആക്‌സസ്സ്\" ക്രമീകരണത്തിനായി സ്വമേധയാ നോക്കി അത് പ്രവർത്തനക്ഷമമാക്കുക.</string>
+    <string name="text_no_notify_access_settings">നിശബ്‌ദമാക്കാൻ അനുവദിക്കുന്ന സ്റ്റാൻഡേർഡ് ക്രമീകരണങ്ങൾ നിങ്ങളുടെ ഫോണിൽ ഇല്ലെന്ന് തോന്നുന്നു. ദയവായി \"ശല്യപ്പെടുത്തരുത് ആക്സസ്\" ക്രമീകരണത്തിനായി നേരിട്ട് നോക്കുക, അത് പ്രവർത്തനക്ഷമമാക്കുക.</string>
     <string name="text_no_sections">വിഭാഗങ്ങളൊന്നും നിർവചിച്ചിട്ടില്ല.</string>
     <string name="text_question_delete_session">തിരഞ്ഞെടുത്ത സെഷൻ ശരിക്കും ഇല്ലാതാക്കണോ?</string>
     <string name="theme">തീം</string>
     <string name="theme_dark">ഇരുണ്ട തീം</string>
-    <string name="theme_desc">ആപ്പിൻ്റെ വെളിച്ചമോ ഇരുണ്ട രൂപമോ തിരഞ്ഞെടുക്കുക</string>
+    <string name="theme_desc">ആപ്പ് രൂപം തിരഞ്ഞെടുക്കുക</string>
     <string name="theme_light">ലൈറ്റ് തീം</string>
     <string name="theme_system">സിസ്റ്റം തീം</string>
     <string name="theme_value_dark">dark</string>
@@ -158,4 +158,12 @@
     <string name="title_dim_bell">ഡിം ബെൽ</string>
     <string name="dim_bell_label_off">മങ്ങിയിട്ടില്ല</string>
     <string name="dim_bell_label_format">മങ്ങിയത്: %1$d0%%</string>
+    <string name="section_deleted">ഇല്ലാതാക്കി \'%s\'</string>
+    <string name="action_undo">പഴയപടിയാക്കുക</string>
+    <string name="notification_channel_name">ധ്യാന ടൈമർ</string>
+    <string name="nav_label_sessions">സെഷനുകൾ</string>
+    <string name="nav_label_meditation">ധ്യാനം</string>
+    <string name="nav_label_edit_session">സെഷൻ എഡിറ്റ് ചെയ്യുക</string>
+    <string name="nav_label_edit_section">വിഭാഗം എഡിറ്റ് ചെയ്യുക</string>
+    <string name="nav_label_settings">ക്രമീകരണങ്ങൾ</string>
 </resources>

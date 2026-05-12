@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="abbrechen">Sayachiy</string>
-    <string name="about1">Zazen Meditation Timer — A simple meditation timer with customizable sections, bell sounds, and session management.</string>
-    <string name="about2">Originally created by Stefan Gaffga. Currently maintained by Georg Graf.&lt;br&gt;&lt;br&gt;Thanks to Winfried of &lt;a href="http://www.meditationsuhren.de"&gt;http://www.meditationsuhren.de&lt;/a&gt; for providing such great Bell Sounds!</string>
-    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues"&gt;Report issues on GitHub&lt;/a&gt;</string>
-    <string name="app_description">This application lets the user define a set of meditation sessions and provides a timer with visual and audible feedback when a part or the whole meditation is over.</string>
+    <string name="about1">Zazen Yuyaymanay Timer — Huk sanu yuyaymanay pacha yupayniyuq t\'aqakuna ruwanapaq, campana t\'uqyaykunawan, chaymanta sesión kamachiywan.</string>
+    <string name="about2">Qallariypiqa Stefan Gaffga sutiyuq runap kamasqan. Kunanqa Georg Grafpa qhawasqan.&lt;br&gt;&lt;br&gt;Gracias Winfriedman &lt;a href="http://www.meditationsuhren.de"&gt;http://www.meditationsuhren.de&lt;/a&gt; kayhina hatun Campana T\'uqyaykunata qusqanmanta!</string>
+    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues"&gt;GitHub kaqpi sasachakuykunamanta willay&lt;/a&gt;</string>
+    <string name="app_description">Kay ruwana ruwaqta huk huñu yuyaymanay sesiones kaqmanta riqsichiyta saqin chaymanta huk pacha yupayta qun rikuypaq chaymanta uyarinapaq kutichiywan mayk\'aq huk parte utaq tukuy yuyaymanay tukusqa.</string>
     <string name="app_name">Zazen Meditation Timer</string>
-    <string name="appbar_scrolling_view_behavior">android.yanapakuy.diseño.widget.AppBarLayout$KuyuchiyQhaway Ruway</string>
+    <string name="appbar_scrolling_view_behavior">android.yanapakuy.diseño.widget.AppBarLayout$KuyuchinaQhaway Ruway</string>
     <string name="backup_error_text">Llakikuy, waqaychaypi huk Pantasqa karqan.</string>
     <string name="backup_no_permission">Mana atirqanchu waqaychasqa ruwayta chinkachisqa atiykunarayku.</string>
     <string name="backup_not_createable">Waqaychasqa willañiqita paqarichispa pantasqa.</string>
     <string name="backup_success_text">¡Copia de seguridad ruwasqa allinta!</string>
-    <string name="bell_name_1">High Tone</string>
-    <string name="bell_name_2">Low Tone</string>
+    <string name="bell_name_1">Alto Tono</string>
+    <string name="bell_name_2">Bajo Tono nisqa</string>
     <string name="bell_name_3">Jap. Rhinbowl Dharma, 107mm</string>
-    <string name="bell_name_4">Jap. Rhinbowl Dharma, 88mm (black, glazed)</string>
+    <string name="bell_name_4">Jap. Rhinbowl Dharma, 88mm (yana, vidriado) .</string>
     <string name="bell_name_5">Jap. Rhinbowl Shomyo, 90mm</string>
-    <string name="bell_name_6">Jap. Rhinbowl Tang, 164mm</string>
-    <string name="bell_name_7">Tib. Bowl, 230mm</string>
+    <string name="bell_name_6">Jap. Rhinbowl Tang, 164mm nisqa</string>
+    <string name="bell_name_7">Tib. Manka, 230mm</string>
     <string name="bell_name_8">Jap. Rhinbowl, 97mm</string>
     <string name="bell_pause">Campana ch\'usaq (sec) .</string>
     <string name="bell_user">Yanapay Bell...</string>
@@ -48,7 +48,7 @@
     <string name="demo_sess1_sec3_name">Kinhin 1</string>
     <string name="demo_sess1_sec4_name">Zazen 2. 1999 watapi</string>
     <string name="demo_sess1_sec5_name">Kinhin 3</string>
-    <string name="demo_sess1_sec6_name">Zazen 3. 1.1</string>
+    <string name="demo_sess1_sec6_name">Zazen 3</string>
     <string name="demo_sess2_description">Sapa punchaw yuyaymanay</string>
     <string name="demo_sess2_name">Zazenlla</string>
     <string name="desc_get_messages">Kikinmanta willakuykunata mana llamk\'achisqa kaptinqa, kaypi willakuykunata qhawayta atinki.</string>
@@ -56,7 +56,7 @@
     <string name="desc_no_server_messages">Kikinmanta rikuchiy Noticias mayk\'aq App qallarikun</string>
     <string name="error_checking_for_server_messages">Musuq willakuykunata apamuspa pantasqa.</string>
     <string name="gong_type">Gong nisqap t\'uqyaynin</string>
-    <string name="help_sectionlist_text">Kaypiqa Sesión nisqaykipi kaqta sutichayta, sut’inchayta, allichayta ima atinki.\n\n WAQAYCHAY\n Imakunata wakmanta t’aqanaykipaqqa, juk imata unayta ñit’iy,\n musuq kasqanman aysay.\n\n QALLARIY\n Huk imata chinkachinaykipaqqa, chayman kuyuchiy paña.\n\n EDIT\n Huk rakita allichanapaqqa huk kutilla llachpay.\n\n ADD\n Musuq rakita yapanaykipaqqa + ñitiy.</string>
+    <string name="help_sectionlist_text">Kaypiqa Sesiónniykipa kaqninkunata sutichayta, willayta chaymanta allichayta atikunki.\n\nREORDACIÓN\nImakunatapas hukmanta ordenanaykipaqqa, huk imatapas unayta ñitiy hinaspa\nmusuq kasqanman aysay.\n\nQULLQI\nImatapas chinkachinaykipaqqa pañaman kuyuchiy.\n\nRUWAPAY\nHuk t’aqata allichanaykipaqqa huk kutilla llamiy.\n\nYAPAY\nMusuq rakita yapanaykipaqqa + niqpi ñitiy.</string>
     <string name="help_sectionlist_title">Llamk\'apuy Sesión</string>
     <string name="label_section_name">T’aqa suti</string>
     <string name="label_session_description">Sesión nisqamanta Willakuy</string>
@@ -74,12 +74,12 @@
     <string name="menu_settings">Ajustes nisqa</string>
     <string name="minuten">Minutokuna</string>
     <string name="no_new_server_messages">Mana musuq willakuykuna kanchu.</string>
-    <string name="no_sections_in_session">Mana\'t qallariyta atikunmanchu Yuyaymanay: Akllasqa Sesión nisqapiqa manan ima Secciones nisqapas kanchu.</string>
+    <string name="no_sections_in_session">Mana\'ta qallariyta atinchu Yuyaymanay: Akllasqa Sesión nisqapiqa manan ima Secciones nisqapas kanchu.</string>
     <string name="no_session_exists">Manam kanchu sesión qallariy atikuq. Ama hina kaspa, ñawpaqta hukta paqarichiy.</string>
     <string name="notification_text">Kunanqa huk Zazen Meditation nisqa puririchkan</string>
     <string name="notification_text_paused">Zazen Meditación nisqa huk rato sayaykurqan</string>
     <string name="notification_title">Zazen Yuyaymanay</string>
-    <string name="notification_title_paused">Zazen Meditación (pausasqa) .</string>
+    <string name="notification_title_paused">Zazen Yuyaymanay (pausasqa) .</string>
     <string name="num_bells">Campana yupay</string>
     <string name="ok">KUSA</string>
     <string name="pref_desc_brightness">Yuyaymanaypi Qhawachiypa k’anchariynin</string>
@@ -118,7 +118,7 @@
     <string name="search_menu_title">Maskay</string>
     <string name="section_info_string_1_pl">%1$d Campanakuna</string>
     <string name="section_info_string_1_sg">1 Campana</string>
-    <string name="section_info_string_2_pl">sapa %1$d Segundos</string>
+    <string name="section_info_string_2_pl">sapa %1$d Segundo</string>
     <string name="section_info_string_2_sg">sapa Segundo</string>
     <string name="sekunden">Segundokuna</string>
     <string name="select_audio">T’uqyay archivota akllay</string>
@@ -130,12 +130,12 @@
     <string name="status_bar_notification_info_overflow">999+</string>
     <string name="test_mute_perm_request">Kunanqa App mana telefonoykita upallachiyta atinchu. ¿Kayta tikranaykipaq churanakunata kichay?</string>
     <string name="text_cant_mute">Teléfonoykiqa manam kay App nisqa upallachiyta saqinchu. Kay Apps Ajustes kaqpi upallachiyta mana ruway utaq Teléfonos Ajustes kaqpi upallachiyta saqiy.</string>
-    <string name="text_no_notify_access_settings">Teléfonoykiqa manas ajustes estándares nisqayuqchu hinachu silenciamientota saqinanpaq. Ama hina kaspa, makiwan maskay \"Ama yaykuyta sasachaychu\" Ajuste nisqamanta hinaspa atichiy.</string>
+    <string name="text_no_notify_access_settings">Teléfonoykiqa manas ajustes estándares nisqayuqchu hinachu silenciamientota saqinanpaq. Ama hina kaspa, makiwan maskay \"Ama yaykuyta sasachaychu\" churayta chaymanta atichiy.</string>
     <string name="text_no_sections">Mana Secciones nisqakuna sut’inchasqachu.</string>
     <string name="text_question_delete_session">¿Chiqaptachu akllasqa Sesión nisqataqa chinkachinki?</string>
     <string name="theme">Rimay</string>
     <string name="theme_dark">Tutayaq Tema</string>
-    <string name="theme_desc">Akllay Apppa k’anchay utaq yana rikch’ayninta</string>
+    <string name="theme_desc">Akllay app rikchayta</string>
     <string name="theme_light">Tema de Luz</string>
     <string name="theme_system">Sistema nisqamanta Tema</string>
     <string name="theme_value_dark">dark</string>
@@ -157,5 +157,13 @@
     <string name="pref_desc_bell_volume">Campana waqaykunapaq alarma mayupa volumenninta kamachin</string>
     <string name="title_dim_bell">Dim Campana</string>
     <string name="dim_bell_label_off">Mana tutayachisqachu</string>
-    <string name="dim_bell_label_format">Dimmado: %1$d0%%.</string>
+    <string name="dim_bell_label_format">Dimmado: %1$d0%% .</string>
+    <string name="section_deleted">Qullusqa \'%s\' .</string>
+    <string name="action_undo">Deshacer</string>
+    <string name="notification_channel_name">Yuyaymananapaq Tiempo</string>
+    <string name="nav_label_sessions">Sesiones nisqakuna</string>
+    <string name="nav_label_meditation">Hamutay</string>
+    <string name="nav_label_edit_session">Llamk\'apuy Sesión</string>
+    <string name="nav_label_edit_section">Llamk\'apuy T\'aqa</string>
+    <string name="nav_label_settings">Ajustes nisqa</string>
 </resources>

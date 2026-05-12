@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="abbrechen">hanafoana</string>
-    <string name="about1">Zazen Meditation Timer — A simple meditation timer with customizable sections, bell sounds, and session management.</string>
-    <string name="about2">Originally created by Stefan Gaffga. Currently maintained by Georg Graf.&lt;br&gt;&lt;br&gt;Thanks to Winfried of &lt;a href="http://www.meditationsuhren.de"&gt;http://www.meditationsuhren.de&lt;/a&gt; for providing such great Bell Sounds!</string>
-    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues"&gt;Report issues on GitHub&lt;/a&gt;</string>
-    <string name="app_description">This application lets the user define a set of meditation sessions and provides a timer with visual and audible feedback when a part or the whole meditation is over.</string>
+    <string name="about1">Zazen Meditation Timer - Famantaranandro fisaintsainana tsotra misy fizarana azo zahana, feon-dakolosy ary fitantanana fivoriana.</string>
+    <string name="about2">Stefan Gaffga no namorona voalohany. Tazonin\'i Georg Graf amin\'izao fotoana izao.&lt;br&gt;&lt;br&gt;Misaotra an\'i Winfried ao amin\'ny &lt;a href="http://www.meditationsuhren.de"&gt;http://www.meditationsuhren.de&lt;/a&gt; tamin\'ny nanomezana ny Feon\'ny Bell mahafinaritra toy izany!</string>
+    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues"&gt;Mitatitra olana amin\'ny GitHub&lt;/a&gt;</string>
+    <string name="app_description">Ity fampiharana ity dia mamela ny mpampiasa hamaritra andiana fotoam-pisainana ary manome fameram-potoana misy valiny hita maso sy heno rehefa tapitra ny ampahany na ny fisaintsainana iray manontolo.</string>
     <string name="app_name">Zazen Meditation Timer</string>
     <string name="appbar_scrolling_view_behavior">android.support.design.widget.AppBarLayout$ScrollingViewBehavior</string>
     <string name="backup_error_text">Miala tsiny fa nisy hadisoana nitranga teo am-pamonjy.</string>
-    <string name="backup_no_permission">Tsy afaka namorona backup noho ny tsy fisian\'ny fahazoan-dàlana.</string>
+    <string name="backup_no_permission">Tsy afaka namorona backup noho ny fahazoan-dàlana tsy ampy.</string>
     <string name="backup_not_createable">Error amin\'ny famoronana rakitra backup.</string>
     <string name="backup_success_text">Vita soa aman-tsara ny backup!</string>
-    <string name="bell_name_1">High Tone</string>
-    <string name="bell_name_2">Low Tone</string>
+    <string name="bell_name_1">Tone avo</string>
+    <string name="bell_name_2">Tone ambany</string>
     <string name="bell_name_3">Jap. Rhinbowl Dharma, 107mm</string>
-    <string name="bell_name_4">Jap. Rhinbowl Dharma, 88mm (black, glazed)</string>
+    <string name="bell_name_4">Jap. Rhinbowl Dharma, 88mm (mainty, glazed)</string>
     <string name="bell_name_5">Jap. Rhinbowl Shomyo, 90mm</string>
     <string name="bell_name_6">Jap. Rhinbowl Tang, 164mm</string>
-    <string name="bell_name_7">Tib. Bowl, 230mm</string>
-    <string name="bell_name_8">Jap. Rhinbowl, 97mm</string>
+    <string name="bell_name_7">Tib. Boribory, 230 mm</string>
+    <string name="bell_name_8">Jap. Rhinbowl, 97 mm</string>
     <string name="bell_pause">elanelana lakolosy (sec)</string>
     <string name="bell_user">Ampio Bell...</string>
     <string name="bottom_nav_meditation">HOSAINTSAININA</string>
@@ -32,7 +32,7 @@
     <string name="checkbox_keep_screen_on">Tohizo ny efijery</string>
     <string name="checkbox_no_server_messages">Asehoy ny Vaovao</string>
     <string name="checkbox_phone_off">Ampiheno ny telefaona</string>
-    <string name="checkbox_phone_off_desc">Ampionona ny feo rehetra amin\'ny telefaona.</string>
+    <string name="checkbox_phone_off_desc">Ampiheno ny feo rehetra amin\'ny telefaona.</string>
     <string name="copy_prefix">Kopia ny</string>
     <string name="crash_dialog_comment_prompt">Azo atao: Inona no hetsika nahatonga ny fahadisoana?</string>
     <string name="crash_dialog_ok_toast">Misaotra betsaka amin\'ny fanampianao!</string>
@@ -56,7 +56,7 @@
     <string name="desc_no_server_messages">Asehoy ho azy ny Vaovao rehefa manomboka ny App</string>
     <string name="error_checking_for_server_messages">Hadisoana naka hafatra vaovao.</string>
     <string name="gong_type">Feon\'ny Gong</string>
-    <string name="help_sectionlist_text">Eto ianao dia afaka manonona anarana, mamaritra ary manova ny votoatin\'ny Sessiono.\n\n REORDERING\n Raha te handamina indray ireo entana dia tsindrio ela ny singa iray ary\n tariho amin\'ny toerana vaovao.\n\n DELETING\n, afindrao hamafa ilay entana. havanana.\n\n EDIT\n Raha te hanova fizarana iray dia kitiho indray mandeha fotsiny.\n\n ADD\n Raha te hampiditra fizarana vaovao dia tsindrio ny bokotra +.</string>
+    <string name="help_sectionlist_text">Eto ianao dia afaka manonona anarana, mamaritra ary manova ny votoatin\'ny Sessiono.\n\nREORDERING\nRaha te handamina indray ny entana dia tsindrio ela ny entana iray ary\nhisintona azy ho amin\'ny toerana vaovao.\n\nfamafana\nRaha hamafa singa iray dia afindra miankavanana izany.\n\nanglisy\nRaha hanova fizarana iray dia kitiho indray mandeha.\n\nhametraka\nRaha te hampiditra fizarana vaovao dia tsindrio ny bokotra +.</string>
     <string name="help_sectionlist_title">Ahitsio Session</string>
     <string name="label_section_name">Anaran\'ny fizarana</string>
     <string name="label_session_description">Famariparitana fivoriana</string>
@@ -69,14 +69,14 @@
     <string name="menu_edit_session">Ahitsio Session</string>
     <string name="menu_help">Vonjeo</string>
     <string name="menu_add_session">Ampio Session</string>
-    <string name="menu_new_session">Session vaovao</string>
+    <string name="menu_new_session">Session Vaovao</string>
     <string name="menu_privacy">Privacy...</string>
     <string name="menu_settings">Fikirana</string>
     <string name="minuten">minitra</string>
     <string name="no_new_server_messages">Tsy misy hafatra vaovao azo.</string>
     <string name="no_sections_in_session">Tsy afaka manomboka fisaintsainana: Tsy misy fizarana ny Session voafantina.</string>
-    <string name="no_session_exists">Tsy misy session azo atomboka. Mamorona iray aloha.</string>
-    <string name="notification_text">A Zazen Meditation dia mandeha amin\'izao fotoana izao</string>
+    <string name="no_session_exists">Tsy misy fivoriana azo atomboka. Mba mamorona iray aloha.</string>
+    <string name="notification_text">Misy Zazen Meditation mandeha amin\'izao fotoana izao</string>
     <string name="notification_text_paused">Niato ny fisaintsainana Zazen</string>
     <string name="notification_title">Zazen Meditation</string>
     <string name="notification_title_paused">Zazen Meditation (miato)</string>
@@ -91,7 +91,7 @@
     <string name="pref_mute_mode_vibrate">Vibration ihany</string>
     <string name="pref_mute_mode_vibrate_desc">Vibrate ho an\'ny antso an-telefaona sy fampandrenesana fotsiny (Tsy mandeha amin\'ny Android 7 (Nougat) - mitondra tena toy ny Silence Settings)</string>
     <string name="pref_mute_mode_vibrate_sound">Tonon-peo sy Vibration</string>
-    <string name="pref_mute_mode_vibrate_sound_desc">Lalao Ring tone and Vibration</string>
+    <string name="pref_mute_mode_vibrate_sound_desc">Lalao Ring tone sy Vibration</string>
     <string name="pref_muting">Fikirana moana</string>
     <string name="pref_sum_backup">Tehirizo ny backup ny Sessions sy Feo ao amin\'ny SD-Karatrao.</string>
     <string name="pref_sum_bad_removal">Nesorina ny karatra SD nefa tsy nesorina aloha.</string>
@@ -129,19 +129,19 @@
     <string name="session_list_unnamed_entry">Fivoriana tsy nomena anarana</string>
     <string name="status_bar_notification_info_overflow">999+</string>
     <string name="test_mute_perm_request">Ny App amin\'izao fotoana izao dia tsy avela hanakaiky ny findainao. Sokafy ny fanovana hanovana izany?</string>
-    <string name="text_cant_mute">Ny findainao dia tsy mamela an\'ity App ity hampangina azy. Atsaharo ny fampangatsiahana ao amin\'ity Fampiharana fampiharana ity na avelao ny fampanginana ao amin\'ny Fikirana finday.</string>
-    <string name="text_no_notify_access_settings">Ny findainao dia toa tsy manana ny filaharana manara-penitra ahafahana mamahana. Azafady, tadiavo amin\'ny tanana ny \"Aza manelingelina ny fidirana\" Setting ary avelao izy io.</string>
+    <string name="text_cant_mute">Tsy avelan\'ny findainao hampangina ity App ity. Atsaharo ny fampanginana amin\'ity Fikirana fampiharana ity na avelao ny fampanginana ao amin\'ny Fikirana finday.</string>
+    <string name="text_no_notify_access_settings">Toa tsy manana ny firafitry ny telefaona ny findainao mba ahafahana mamahana. Azafady, tadiavo amin\'ny tanana ny \"Aza manelingelina ny fidirana\" ary avelao izy io.</string>
     <string name="text_no_sections">Tsy misy fizarana voafaritra.</string>
     <string name="text_question_delete_session">Fafao tokoa ny Session voafantina?</string>
     <string name="theme">FOTO-KEVITRA</string>
     <string name="theme_dark">Lohahevitra maizina</string>
-    <string name="theme_desc">Misafidiana endrika maivana na maizina amin\'ny App</string>
+    <string name="theme_desc">Fidio ny endriky ny fampiharana</string>
     <string name="theme_light">Lohahevitra maivana</string>
     <string name="theme_system">Lohahevitra momba ny rafitra</string>
     <string name="theme_value_dark">dark</string>
     <string name="theme_value_light">light</string>
     <string name="theme_value_system">system</string>
-    <string name="time_section_elapsed">Nandeha ny fizarana</string>
+    <string name="time_section_elapsed">Lasa ny fizarana</string>
     <string name="time_section_remaining">Fizarana sisa</string>
     <string name="time_session_elapsed">Nandeha ny fivoriana</string>
     <string name="time_session_remaining">Fivoriana sisa</string>
@@ -158,4 +158,12 @@
     <string name="title_dim_bell">Dim Bell</string>
     <string name="dim_bell_label_off">Tsy manjavozavo</string>
     <string name="dim_bell_label_format">Manjavozavo: %1$d0%%</string>
+    <string name="section_deleted">Voafafa \'%s\'</string>
+    <string name="action_undo">Ravao</string>
+    <string name="notification_channel_name">Timer fisaintsainana</string>
+    <string name="nav_label_sessions">Sessions</string>
+    <string name="nav_label_meditation">HOSAINTSAININA</string>
+    <string name="nav_label_edit_session">Ahitsio Session</string>
+    <string name="nav_label_edit_section">Ahitsio Fizarana</string>
+    <string name="nav_label_settings">Fikirana</string>
 </resources>

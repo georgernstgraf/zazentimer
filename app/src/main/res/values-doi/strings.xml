@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="abbrechen">रद्द</string>
-    <string name="about1">Zazen Meditation Timer — A simple meditation timer with customizable sections, bell sounds, and session management.</string>
-    <string name="about2">Originally created by Stefan Gaffga. Currently maintained by Georg Graf.&lt;br&gt;&lt;br&gt;Thanks to Winfried of &lt;a href="http://www.meditationsuhren.de"&gt;http://www.meditationsuhren.de&lt;/a&gt; for providing such great Bell Sounds!</string>
-    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues"&gt;Report issues on GitHub&lt;/a&gt;</string>
-    <string name="app_description">This application lets the user define a set of meditation sessions and provides a timer with visual and audible feedback when a part or the whole meditation is over.</string>
+    <string name="about1">Zazen ध्यान टाइमर — अनुकूलन योग्य खंड, घंटी दी आवाज़, ते सत्र प्रबंधन कन्नै इक साधारण ध्यान टाइमर।</string>
+    <string name="about2">मूल रूप च स्टीफन गफगा द्वारा बनाया गया। वर्तमान च जॉर्ज ग्राफ द्वारा बनाए रखे दा ऐ।&lt;br&gt;&lt;br&gt;इतनी महान बेल साउंड्स उपलब्ध कराने आस्तै &lt;a href="http://www.meditationsuhren.de"&gt;http://www.meditationsuhren.de&lt;/a&gt; दे विनफ्राइड दा धन्यवाद!</string>
+    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues"&gt;गिटहब पर मुद्दें दी रिपोर्ट करो&lt;/a&gt;</string>
+    <string name="app_description">एह् एप्लिकेशन बरतूनी गी ध्यान सत्रें दा इक सेट परिभाशित करने दी अनुमति दिंदा ऐ ते जिसलै कोई हिस्सा जां पूरा ध्यान खत्म होई जंदा ऐ तां दृश्य ते श्रव्य प्रतिक्रिया कन्नै इक टाइमर उपलब्ध करोआंदा ऐ।</string>
     <string name="app_name">Zazen Meditation Timer</string>
     <string name="appbar_scrolling_view_behavior">android.support.design.widget.AppBarLayout $ स्क्रॉलिंगव्यूव्यवहार</string>
     <string name="backup_error_text">माफ करना, सेव करदे बेल्लै इक त्रुटि होई गेई।</string>
     <string name="backup_no_permission">लापता अनुमतियें दे कारण बैकअप नेईं बनाई सकेआ.</string>
     <string name="backup_not_createable">बैकअप फाइल बनाने च त्रुटि।</string>
     <string name="backup_success_text">बैकअप सफलतापूर्वक बनाया गेआ !</string>
-    <string name="bell_name_1">High Tone</string>
-    <string name="bell_name_2">Low Tone</string>
-    <string name="bell_name_3">Jap. Rhinbowl Dharma, 107mm</string>
-    <string name="bell_name_4">Jap. Rhinbowl Dharma, 88mm (black, glazed)</string>
-    <string name="bell_name_5">Jap. Rhinbowl Shomyo, 90mm</string>
-    <string name="bell_name_6">Jap. Rhinbowl Tang, 164mm</string>
-    <string name="bell_name_7">Tib. Bowl, 230mm</string>
-    <string name="bell_name_8">Jap. Rhinbowl, 97mm</string>
+    <string name="bell_name_1">हाई टोन</string>
+    <string name="bell_name_2">लो टोन</string>
+    <string name="bell_name_3">जप। स्फटिक धर्म, 107 मिमी</string>
+    <string name="bell_name_4">जप। स्फटिक धर्म, 88 मिमी (काला, ग्लेज़ेड)</string>
+    <string name="bell_name_5">जप। स्फटिक शोम्यो, 90 मिमी</string>
+    <string name="bell_name_6">जप। स्फटिक तांग, 164 मिमी</string>
+    <string name="bell_name_7">टिब। कटोरा, 230 मिमी</string>
+    <string name="bell_name_8">जप। स्फटिक, 97 मिमी</string>
     <string name="bell_pause">घंटी गैप (सेकंड)</string>
     <string name="bell_user">बेल जोड़ो...</string>
     <string name="bottom_nav_meditation">तप</string>
@@ -62,7 +62,7 @@
     <string name="label_session_description">सत्र दा वर्णन</string>
     <string name="label_session_name">सत्र दा नाम</string>
     <string name="menu_about">तकरीबन...</string>
-    <string name="menu_copy_session">डुप्लीकेट सत्र</string>
+    <string name="menu_copy_session">डुप्लिकेट सत्र</string>
     <string name="menu_delete_section">खंड हटाओ</string>
     <string name="menu_delete_session">सत्र हटाओ</string>
     <string name="menu_duplicate_section">डुप्लीकेट खंड</string>
@@ -76,7 +76,7 @@
     <string name="no_new_server_messages">कोई नए मैसेज उपलब्ध नहीं।</string>
     <string name="no_sections_in_session">ध्यान शुरू नेईं करी सकदा: चयनित सत्र च कोई खंड नेईं ऐ।</string>
     <string name="no_session_exists">कोई सत्र नेईं ऐ जेह्ड़ा शुरू कीता जाई सकै। कृपया पहले इक बनाओ।</string>
-    <string name="notification_text">इस वक्त इक ज़ज़ेन मेडिटेशन चलदा ऐ</string>
+    <string name="notification_text">इस वक्त इक ज़ाज़ेन मेडिटेशन चलदा ऐ</string>
     <string name="notification_text_paused">ज़ज़ेन मेडिटेशन रुक गया</string>
     <string name="notification_title">ज़ज़ेन ध्यान</string>
     <string name="notification_title_paused">ज़ज़ेन मेडिटेशन (विराम)</string>
@@ -132,10 +132,10 @@
     <string name="text_cant_mute">तुंदा फोन इस App गी म्यूट करने दी इजाजत नेईं दिंदा। इस ऐप सेटिंग्स च म्यूटिंग अक्षम करो जां अपने फोन सेटिंग्स च म्यूटिंग दी अनुमति देओ।</string>
     <string name="text_no_notify_access_settings">तुंदे फोन च म्यूटिंग दी इजाजत देने आस्तै मानक सेटिंग्स नेईं लब्भदियां न। कृपा करियै \"एक्सेस गी परेशान नेईं करो\" सेटिंग गी मैन्युअल रूप कन्नै दिक्खो ते इसगी सक्षम करो.</string>
     <string name="text_no_sections">कोई खंड परिभाषित नेईं कीता गेआ।</string>
-    <string name="text_question_delete_session">सचमुच चयनित सत्र गी हटाओ?</string>
+    <string name="text_question_delete_session">सचमुच चयनित सत्र गी हटाना?</string>
     <string name="theme">थीम</string>
     <string name="theme_dark">डार्क थीम</string>
-    <string name="theme_desc">ऐप दा हल्का जां गहरा रूप चुनो</string>
+    <string name="theme_desc">ऐप दी शक्ल चुनें</string>
     <string name="theme_light">लाइट थीम</string>
     <string name="theme_system">सिस्टम थीम दा</string>
     <string name="theme_value_dark">dark</string>
@@ -156,6 +156,14 @@
     <string name="pref_title_bell_volume">घंटी वॉल्यूम</string>
     <string name="pref_desc_bell_volume">घंटी दी आवाज़ें लेई अलार्म स्ट्रीम वॉल्यूम गी नियंत्रत करदा ऐ</string>
     <string name="title_dim_bell">मंद घंटी</string>
-    <string name="dim_bell_label_off">मद्धिम नहीं</string>
+    <string name="dim_bell_label_off">मंद नहीं हुआ</string>
     <string name="dim_bell_label_format">मंद: %1$d0%% ऐ।</string>
+    <string name="section_deleted">हटाया गया __1%s\'</string>
+    <string name="action_undo">पूर्ववत करो</string>
+    <string name="notification_channel_name">ध्यान टाइमर</string>
+    <string name="nav_label_sessions">सत्रें</string>
+    <string name="nav_label_meditation">तप</string>
+    <string name="nav_label_edit_session">संपादन सत्र</string>
+    <string name="nav_label_edit_section">संपादन खंड</string>
+    <string name="nav_label_settings">सेटिंग्स</string>
 </resources>

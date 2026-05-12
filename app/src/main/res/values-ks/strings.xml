@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="abbrechen">रद्द करना, रद्द करना</string>
-    <string name="about1">Zazen Meditation Timer — A simple meditation timer with customizable sections, bell sounds, and session management.</string>
-    <string name="about2">Originally created by Stefan Gaffga. Currently maintained by Georg Graf.&lt;br&gt;&lt;br&gt;Thanks to Winfried of &lt;a href="http://www.meditationsuhren.de"&gt;http://www.meditationsuhren.de&lt;/a&gt; for providing such great Bell Sounds!</string>
-    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues"&gt;Report issues on GitHub&lt;/a&gt;</string>
-    <string name="app_description">This application lets the user define a set of meditation sessions and provides a timer with visual and audible feedback when a part or the whole meditation is over.</string>
+    <string name="about1">ज़ाज़ेन मेडिटेशन टाइमर — अनुकूलित सेक्शन के साथ आसान मेडिटेशन टाइमर, बेल आवाज, सेशन मैनेजमेंट के साथ.</string>
+    <string name="about2">स्टीफन गेफ्गा द्वारा बनाई गई । जॉर्ज ग्रेफ द्वारा आवृत्ति ।&lt;br&gt;&lt;br&gt;बहुत-बहुत बधाई के साथ &lt;a href="http://www.meditationsuhren.de"&gt;शुभकामनायें&lt;/a&gt;, आप नित नये आयाम छुयें ।</string>
+    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues"&gt;एमेच्योरगधाकामुकामुकामुकामुकामुकामुक&lt;/a&gt;</string>
+    <string name="app_description">युस एप्लीकेशन छी एम् छी एवं इजाजत यूजर डेफिनेशन सेट मेडिटेशन सेशन बे छी एवं देवन टाइमर विज़ुअल बे ऑडियो फीडबैक यिल पार्ट या ऑल मेडिटेशन छी समाप्त</string>
     <string name="app_name">Zazen Meditation Timer</string>
     <string name="appbar_scrolling_view_behavior">android.support.design.widget.AppBarLayout$ScrollingViewBehavior</string>
     <string name="backup_error_text">अगर कहीं गलती आय, हम माफी मांगते छी,</string>
     <string name="backup_no_permission">बकियाँ मसलन मंज़ ईमान छी वेन ते बचावास मंज़ कम्म</string>
     <string name="backup_not_createable">बैकअप बैकअप फाइल बनाने की गलती ।</string>
     <string name="backup_success_text">कामयाबी की छू ले बुलंदी,</string>
-    <string name="bell_name_1">High Tone</string>
-    <string name="bell_name_2">Low Tone</string>
-    <string name="bell_name_3">Jap. Rhinbowl Dharma, 107mm</string>
-    <string name="bell_name_4">Jap. Rhinbowl Dharma, 88mm (black, glazed)</string>
-    <string name="bell_name_5">Jap. Rhinbowl Shomyo, 90mm</string>
-    <string name="bell_name_6">Jap. Rhinbowl Tang, 164mm</string>
-    <string name="bell_name_7">Tib. Bowl, 230mm</string>
-    <string name="bell_name_8">Jap. Rhinbowl, 97mm</string>
+    <string name="bell_name_1">ऊँच टोन, ऊँच टोन</string>
+    <string name="bell_name_2">कम टोन</string>
+    <string name="bell_name_3">जपानीस छिनबॉल धर्म, 107 मिमी</string>
+    <string name="bell_name_4">Rhinbowl Dharma, 88 मिमी (ब्लॅक, ग्लाइज)</string>
+    <string name="bell_name_5">Rhinbowl Shomyo, 90 मिमी</string>
+    <string name="bell_name_6">जपानीस छुक-छुक-छुक गाड़ी, 164 मिमी</string>
+    <string name="bell_name_7">टिप्स, टिप्स, 230 मिमी</string>
+    <string name="bell_name_8">जपानीस छुक-छुक-छुक, 97 मिमी</string>
     <string name="bell_pause">घुमावदार घुमावदार घुमावदार (सी)</string>
     <string name="bell_user">घुसपैठ के बीच एयरफोर्स</string>
     <string name="bottom_nav_meditation">ध्यान</string>
@@ -39,7 +39,7 @@
     <string name="crash_dialog_text">अगर कहीं गलती आय, हम माफी मांगते छी, ये मसाइल-ए-तसव्वुफ़, ये तिरा बयान \'ग़ालिब\'</string>
     <string name="crash_dialog_title">ज़ेन मेडिटेशन टाइमर</string>
     <string name="crash_toast_text">अगर कहीं गलती आय, हम माफी मांगते छी,</string>
-    <string name="crash_user_email_label">वैकल्पिकः ई-मेल एड्रेस फॉर क्वेरी या अपडेट ऑन थिस मामले.</string>
+    <string name="crash_user_email_label">वैकल्पिकः ईमेल एड्रेस फॉर क्वेरी या अपडेट ऑन थिस विषय.</string>
     <string name="default_section_name">अज्ञात नाम (अज्ञात नाम</string>
     <string name="demo_sess1_description">शुक्रवार की रात में, आई छुक छुक</string>
     <string name="demo_sess1_name">किशोर ते किशोर</string>
@@ -52,7 +52,7 @@
     <string name="demo_sess2_description">डेली टाइम मेडिटेशन</string>
     <string name="demo_sess2_name">सिंगल आस</string>
     <string name="desc_get_messages">ऑटोमैटिक मेसेज यहां क्लिक करे</string>
-    <string name="desc_keep_screen_on">ध्यान दें ध्यान केंद्रित करने पर आँख रखें</string>
+    <string name="desc_keep_screen_on">ध्यान ध्यान करने के दौरान स्क्रीन पे रखें</string>
     <string name="desc_no_server_messages">ऑटोमेटिक न्यूज दिखाओ जब ऐप शुरू हो जाये</string>
     <string name="error_checking_for_server_messages">नया वार्ता पृष्ठ बनाये एक नया वार्ता पृष्ठ आरम्भ करे</string>
     <string name="gong_type">गांधी आवाज</string>
@@ -64,7 +64,7 @@
     <string name="menu_about">ये आस -</string>
     <string name="menu_copy_session">डबल सेशन/डबल सेशन</string>
     <string name="menu_delete_section">सेक्शन डिलीट करे</string>
-    <string name="menu_delete_session">सत्र खत्म करना/सत्र खत</string>
+    <string name="menu_delete_session">सेशन डिलीट करे</string>
     <string name="menu_duplicate_section">डबल डिवीजन डबल डिवीजन</string>
     <string name="menu_edit_session">बैठक आसान</string>
     <string name="menu_help">मदद करो</string>
@@ -135,7 +135,7 @@
     <string name="text_question_delete_session">वोट टाइम इज योर मूवी ओवर?</string>
     <string name="theme">ओस बिंदु</string>
     <string name="theme_dark">डार्क थीम (Dark Theme)</string>
-    <string name="theme_desc">ऐसे बनाएं अंधेरा या लाइटवेट ऐप</string>
+    <string name="theme_desc">ऐप एप्लिकेशन डिस्प्ले चुनें</string>
     <string name="theme_light">आसान विषय</string>
     <string name="theme_system">सिस्टम थीम</string>
     <string name="theme_value_dark">dark</string>
@@ -158,4 +158,12 @@
     <string name="title_dim_bell">डिम बेल</string>
     <string name="dim_bell_label_off">छूटे ना</string>
     <string name="dim_bell_label_format">एमेच्योरगधाकामुकामुकामुकामुकामुकामुकामुकामुकामुक</string>
+    <string name="section_deleted">एमेच्योर छूत हस्तमैथुन_0_</string>
+    <string name="action_undo">उदासीनता छू</string>
+    <string name="notification_channel_name">टाइम मेडिटेशन टाइमर</string>
+    <string name="nav_label_sessions">सेशन्स</string>
+    <string name="nav_label_meditation">ध्यान</string>
+    <string name="nav_label_edit_session">बैठक आसान</string>
+    <string name="nav_label_edit_section">एडिटिंग सेक्शन</string>
+    <string name="nav_label_settings">सेटिंग्स</string>
 </resources>

@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="abbrechen">ರದ್ದುಮಾಡಿ</string>
-    <string name="about1">Zazen Meditation Timer — A simple meditation timer with customizable sections, bell sounds, and session management.</string>
-    <string name="about2">Originally created by Stefan Gaffga. Currently maintained by Georg Graf.&lt;br&gt;&lt;br&gt;Thanks to Winfried of &lt;a href="http://www.meditationsuhren.de"&gt;http://www.meditationsuhren.de&lt;/a&gt; for providing such great Bell Sounds!</string>
-    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues"&gt;Report issues on GitHub&lt;/a&gt;</string>
-    <string name="app_description">This application lets the user define a set of meditation sessions and provides a timer with visual and audible feedback when a part or the whole meditation is over.</string>
+    <string name="about1">Zazen ಧ್ಯಾನ ಟೈಮರ್ - ಗ್ರಾಹಕೀಯಗೊಳಿಸಬಹುದಾದ ವಿಭಾಗಗಳು, ಬೆಲ್ ಶಬ್ದಗಳು ಮತ್ತು ಅಧಿವೇಶನ ನಿರ್ವಹಣೆಯೊಂದಿಗೆ ಸರಳ ಧ್ಯಾನ ಟೈಮರ್.</string>
+    <string name="about2">ಮೂಲತಃ ಸ್ಟೀಫನ್ ಗಫ್ಗಾ ರಚಿಸಿದ್ದಾರೆ. ಪ್ರಸ್ತುತ ಜಾರ್ಜ್ ಗ್ರಾಫ್ ನಿರ್ವಹಿಸುತ್ತಿದ್ದಾರೆ.&lt;br&gt;&lt;br&gt;ಇಂತಹ ಉತ್ತಮ ಬೆಲ್ ಸೌಂಡ್‌ಗಳನ್ನು ಒದಗಿಸಿದ್ದಕ್ಕಾಗಿ &lt;a href="http://www.meditationsuhren.de"&gt;http://www.meditationsuhren.de&lt;/a&gt; ನ Winfried ಗೆ ಧನ್ಯವಾದಗಳು!</string>
+    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues"&gt;GitHub ನಲ್ಲಿ ಸಮಸ್ಯೆಗಳನ್ನು ವರದಿ ಮಾಡಿ&lt;/a&gt;</string>
+    <string name="app_description">ಈ ಅಪ್ಲಿಕೇಶನ್ ಬಳಕೆದಾರರಿಗೆ ಧ್ಯಾನ ಅವಧಿಗಳ ಗುಂಪನ್ನು ವ್ಯಾಖ್ಯಾನಿಸಲು ಅನುಮತಿಸುತ್ತದೆ ಮತ್ತು ಒಂದು ಭಾಗ ಅಥವಾ ಸಂಪೂರ್ಣ ಧ್ಯಾನವು ಮುಗಿದಾಗ ದೃಶ್ಯ ಮತ್ತು ಶ್ರವ್ಯ ಪ್ರತಿಕ್ರಿಯೆಯೊಂದಿಗೆ ಟೈಮರ್ ಅನ್ನು ಒದಗಿಸುತ್ತದೆ.</string>
     <string name="app_name">Zazen Meditation Timer</string>
     <string name="appbar_scrolling_view_behavior">android.support.design.widget.AppBarLayout$ScrollingViewBehavior</string>
     <string name="backup_error_text">ಕ್ಷಮಿಸಿ, ಉಳಿಸುವಾಗ ದೋಷ ಸಂಭವಿಸಿದೆ.</string>
     <string name="backup_no_permission">ಅನುಮತಿಗಳು ಕಾಣೆಯಾದ ಕಾರಣ ಬ್ಯಾಕಪ್ ರಚಿಸಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ.</string>
     <string name="backup_not_createable">ಬ್ಯಾಕಪ್ ಫೈಲ್ ರಚಿಸುವಲ್ಲಿ ದೋಷ.</string>
     <string name="backup_success_text">ಬ್ಯಾಕಪ್ ಅನ್ನು ಯಶಸ್ವಿಯಾಗಿ ರಚಿಸಲಾಗಿದೆ!</string>
-    <string name="bell_name_1">High Tone</string>
-    <string name="bell_name_2">Low Tone</string>
-    <string name="bell_name_3">Jap. Rhinbowl Dharma, 107mm</string>
-    <string name="bell_name_4">Jap. Rhinbowl Dharma, 88mm (black, glazed)</string>
-    <string name="bell_name_5">Jap. Rhinbowl Shomyo, 90mm</string>
-    <string name="bell_name_6">Jap. Rhinbowl Tang, 164mm</string>
-    <string name="bell_name_7">Tib. Bowl, 230mm</string>
-    <string name="bell_name_8">Jap. Rhinbowl, 97mm</string>
+    <string name="bell_name_1">ಹೈ ಟೋನ್</string>
+    <string name="bell_name_2">ಕಡಿಮೆ ಟೋನ್</string>
+    <string name="bell_name_3">ಜಾಪ್. ರೈನ್‌ಬೌಲ್ ಧರ್ಮ, 107 ಮಿಮೀ</string>
+    <string name="bell_name_4">ಜಾಪ್. ರೈನ್‌ಬೌಲ್ ಧರ್ಮ, 88mm (ಕಪ್ಪು, ಮೆರುಗುಗೊಳಿಸಲಾದ)</string>
+    <string name="bell_name_5">ಜಾಪ್. ರೈನ್‌ಬೌಲ್ ಶೋಮಿಯೊ, 90 ಮಿಮೀ</string>
+    <string name="bell_name_6">ಜಾಪ್. ರೈನ್‌ಬೌಲ್ ಟ್ಯಾಂಗ್, 164 ಮಿಮೀ</string>
+    <string name="bell_name_7">ಟಿಬ್ ಬೌಲ್, 230 ಮಿಮೀ</string>
+    <string name="bell_name_8">ಜಾಪ್. ರೈನ್‌ಬೌಲ್, 97 ಮಿಮೀ</string>
     <string name="bell_pause">ಬೆಲ್ ಅಂತರ (ಸೆಕೆಂಡು)</string>
     <string name="bell_user">ಬೆಲ್ ಸೇರಿಸಿ...</string>
     <string name="bottom_nav_meditation">ಧ್ಯಾನ</string>
@@ -37,7 +37,7 @@
     <string name="crash_dialog_comment_prompt">ಐಚ್ಛಿಕ: ಯಾವ ಕ್ರಿಯೆಯು ದೋಷವನ್ನು ಉಂಟುಮಾಡಿತು?</string>
     <string name="crash_dialog_ok_toast">ನಿಮ್ಮ ಸಹಾಯಕ್ಕಾಗಿ ತುಂಬಾ ಧನ್ಯವಾದಗಳು!</string>
     <string name="crash_dialog_text">ಕ್ಷಮಿಸಿ, ದೋಷ ಸಂಭವಿಸಿದೆ. ಈ ದೋಷ ವರದಿಯನ್ನು ಕಳುಹಿಸುವ ಮೂಲಕ ಮತ್ತು ನೀವು ಏನು ಮಾಡಿದ್ದೀರಿ ಎಂಬುದರ ಕುರಿತು ಇನ್ನಷ್ಟು ವಿವರಗಳನ್ನು ಕಳುಹಿಸುವ ಮೂಲಕ ಈ ಸಮಸ್ಯೆಯನ್ನು ಹುಡುಕಲು ಮತ್ತು ಸರಿಪಡಿಸಲು ನೀವು ನನಗೆ ಸಹಾಯ ಮಾಡಬಹುದು.</string>
-    <string name="crash_dialog_title">Zazen ಧ್ಯಾನ ಟೈಮರ್</string>
+    <string name="crash_dialog_title">ಝಝೆನ್ ಧ್ಯಾನ ಟೈಮರ್</string>
     <string name="crash_toast_text">ಕ್ಷಮಿಸಿ - ಆಂತರಿಕ ದೋಷ ಸಂಭವಿಸಿದೆ!</string>
     <string name="crash_user_email_label">ಐಚ್ಛಿಕ: ಈ ಸಮಸ್ಯೆಯ ಕುರಿತು ಪ್ರಶ್ನೆಗಳು ಅಥವಾ ನವೀಕರಣಗಳಿಗಾಗಿ ನಿಮ್ಮ ಇಮೇಲ್-ವಿಳಾಸ.</string>
     <string name="default_section_name">ಹೆಸರಿಲ್ಲದ</string>
@@ -56,7 +56,7 @@
     <string name="desc_no_server_messages">ಅಪ್ಲಿಕೇಶನ್ ಪ್ರಾರಂಭವಾದಾಗ ಸ್ವಯಂಚಾಲಿತವಾಗಿ ಸುದ್ದಿಯನ್ನು ತೋರಿಸಿ</string>
     <string name="error_checking_for_server_messages">ಹೊಸ ಸಂದೇಶಗಳನ್ನು ಪಡೆಯುವಲ್ಲಿ ದೋಷ.</string>
     <string name="gong_type">ಗಾಂಗ್ ಸೌಂಡ್</string>
-    <string name="help_sectionlist_text">ಇಲ್ಲಿ ನೀವು ನಿಮ್ಮ ಅಧಿವೇಶನದ ವಿಷಯಗಳನ್ನು ಹೆಸರಿಸಬಹುದು, ವಿವರಿಸಬಹುದು ಮತ್ತು ಸಂಪಾದಿಸಬಹುದು.\n\n ಮರುಕ್ರಮಗೊಳಿಸುವಿಕೆ\n ಐಟಂಗಳನ್ನು ಮರುಕ್ರಮಗೊಳಿಸಲು, ಐಟಂ ಅನ್ನು ದೀರ್ಘವಾಗಿ ಒತ್ತಿರಿ ಮತ್ತು\n ಅದನ್ನು ಅದರ ಹೊಸ ಸ್ಥಾನಕ್ಕೆ ಎಳೆಯಿರಿ.\n\n 6 ಐಟಂ ಅಳಿಸಲು, ಅಳಿಸಲು, ಅಳಿಸಲು⦅ ಬಲ.\n\n ಎಡಿಟ್\n ವಿಭಾಗವನ್ನು ಸಂಪಾದಿಸಲು, ಅದನ್ನು ಒಮ್ಮೆ ಸ್ಪರ್ಶಿಸಿ.\n\n ADD\n ಹೊಸ ವಿಭಾಗವನ್ನು ಸೇರಿಸಲು, + ಬಟನ್ ಒತ್ತಿರಿ.</string>
+    <string name="help_sectionlist_text">ಇಲ್ಲಿ ನೀವು ನಿಮ್ಮ ಸೆಷನ್‌ನ ವಿಷಯಗಳನ್ನು ಹೆಸರಿಸಬಹುದು, ವಿವರಿಸಬಹುದು ಮತ್ತು ಸಂಪಾದಿಸಬಹುದು.\n\nಮರುಕ್ರಮಗೊಳಿಸಲಾಗುತ್ತಿದೆ\nಐಟಂಗಳನ್ನು ಮರುಕ್ರಮಗೊಳಿಸಲು, ಐಟಂ ಮೇಲೆ ದೀರ್ಘವಾಗಿ ಒತ್ತಿರಿ ಮತ್ತು\nಅದನ್ನು ಅದರ ಹೊಸ ಸ್ಥಾನಕ್ಕೆ ಎಳೆಯಿರಿ.\n\nಅಳಿಸಲಾಗುತ್ತಿದೆ\nಐಟಂ ಅನ್ನು ಅಳಿಸಲು, ಅದನ್ನು ಬಲಕ್ಕೆ ಸರಿಸಿ.\n\nಸಂಪಾದಿಸಿ\nವಿಭಾಗವನ್ನು ಸಂಪಾದಿಸಲು, ಅದನ್ನು ಒಮ್ಮೆ ಸ್ಪರ್ಶಿಸಿ.\n\nಸೇರಿಸಿ\nಹೊಸ ವಿಭಾಗವನ್ನು ಸೇರಿಸಲು, + ಬಟನ್ ಒತ್ತಿರಿ.</string>
     <string name="help_sectionlist_title">ಸೆಷನ್ ಸಂಪಾದಿಸಿ</string>
     <string name="label_section_name">ವಿಭಾಗದ ಹೆಸರು</string>
     <string name="label_session_description">ಅಧಿವೇಶನ ವಿವರಣೆ</string>
@@ -74,7 +74,7 @@
     <string name="menu_settings">ಸೆಟ್ಟಿಂಗ್‌ಗಳು</string>
     <string name="minuten">ನಿಮಿಷಗಳು</string>
     <string name="no_new_server_messages">ಯಾವುದೇ ಹೊಸ ಸಂದೇಶಗಳು ಲಭ್ಯವಿಲ್ಲ.</string>
-    <string name="no_sections_in_session">ಧ್ಯಾನವನ್ನು ಪ್ರಾರಂಭಿಸಲು ಸಾಧ್ಯವಿಲ್ಲ: ಆಯ್ಕೆಮಾಡಿದ ಸೆಷನ್ ಯಾವುದೇ ವಿಭಾಗಗಳನ್ನು ಹೊಂದಿಲ್ಲ.</string>
+    <string name="no_sections_in_session">\' ಧ್ಯಾನವನ್ನು ಪ್ರಾರಂಭಿಸಲು ಸಾಧ್ಯವಿಲ್ಲ: ಆಯ್ಕೆಮಾಡಿದ ಸೆಷನ್ ಯಾವುದೇ ವಿಭಾಗಗಳನ್ನು ಹೊಂದಿಲ್ಲ.</string>
     <string name="no_session_exists">ಯಾವುದೇ ಅಧಿವೇಶನವನ್ನು ಪ್ರಾರಂಭಿಸಲಾಗುವುದಿಲ್ಲ. ದಯವಿಟ್ಟು ಮೊದಲು ಒಂದನ್ನು ರಚಿಸಿ.</string>
     <string name="notification_text">ಝಝೆನ್ ಧ್ಯಾನವು ಪ್ರಸ್ತುತ ಚಾಲನೆಯಲ್ಲಿದೆ</string>
     <string name="notification_text_paused">ಜಾಝೆನ್ ಧ್ಯಾನವನ್ನು ವಿರಾಮಗೊಳಿಸಲಾಗಿದೆ</string>
@@ -97,7 +97,7 @@
     <string name="pref_sum_bad_removal">SD ಕಾರ್ಡ್ ಅನ್ನು ಮೊದಲು ಅನ್‌ಮೌಂಟ್ ಮಾಡದೆಯೇ ತೆಗೆದುಹಾಕಲಾಗಿದೆ.</string>
     <string name="pref_sum_checking">ಈ ಸಮಯದಲ್ಲಿ SD-ಕಾರ್ಡ್ ಅನ್ನು ಪರಿಶೀಲಿಸಲಾಗುತ್ತಿದೆ</string>
     <string name="pref_sum_ejecting">SD-ಕಾರ್ಡ್ ಅನ್ನು ಹೊರಹಾಕಲಾಗುತ್ತಿದೆ</string>
-    <string name="pref_sum_nofs">SD ಕಾರ್ಡ್‌ನಲ್ಲಿ ಯಾವುದೇ ಫೈಲ್‌ಸಿಸ್ಟಮ್ ಇಲ್ಲ</string>
+    <string name="pref_sum_nofs">SD-ಕಾರ್ಡ್‌ನಲ್ಲಿ ಫೈಲ್‌ಸಿಸ್ಟಮ್ ಇಲ್ಲ</string>
     <string name="pref_sum_read_only">SD-ಕಾರ್ಡ್ ಓದಲು-ಮಾತ್ರ</string>
     <string name="pref_sum_removed">ಯಾವುದೇ SD ಕಾರ್ಡ್ ಇಲ್ಲ</string>
     <string name="pref_sum_restore">SD ಕಾರ್ಡ್ ಬ್ಯಾಕಪ್‌ನಿಂದ ನಿಮ್ಮ ಸೆಷನ್‌ಗಳು ಮತ್ತು ಕಸ್ಟಮ್ ಸೌಂಡ್‌ಗಳನ್ನು ಮರುಸ್ಥಾಪಿಸಿ</string>
@@ -117,7 +117,7 @@
     <string name="restore_success_text">ಡೇಟಾ ಮರುಸ್ಥಾಪನೆ ಯಶಸ್ವಿಯಾಗಿದೆ</string>
     <string name="search_menu_title">ಹುಡುಕು</string>
     <string name="section_info_string_1_pl">%1$d ಬೆಲ್ಸ್</string>
-    <string name="section_info_string_1_sg">1 ಬೆಲ್</string>
+    <string name="section_info_string_1_sg">1 ಗಂಟೆ</string>
     <string name="section_info_string_2_pl">ಪ್ರತಿ %1$d ಸೆಕೆಂಡುಗಳು</string>
     <string name="section_info_string_2_sg">ಪ್ರತಿ ಸೆಕೆಂಡ್</string>
     <string name="sekunden">ಸೆಕೆಂಡುಗಳು</string>
@@ -135,7 +135,7 @@
     <string name="text_question_delete_session">ಆಯ್ಕೆಮಾಡಿದ ಸೆಶನ್ ಅನ್ನು ನಿಜವಾಗಿಯೂ ಅಳಿಸುವುದೇ?</string>
     <string name="theme">ಥೀಮ್</string>
     <string name="theme_dark">ಡಾರ್ಕ್ ಥೀಮ್</string>
-    <string name="theme_desc">ಅಪ್ಲಿಕೇಶನ್‌ನ ಬೆಳಕು ಅಥವಾ ಗಾಢ ನೋಟವನ್ನು ಆರಿಸಿ</string>
+    <string name="theme_desc">ಅಪ್ಲಿಕೇಶನ್ ನೋಟವನ್ನು ಆರಿಸಿ</string>
     <string name="theme_light">ಲೈಟ್ ಥೀಮ್</string>
     <string name="theme_system">ಸಿಸ್ಟಮ್ ಥೀಮ್</string>
     <string name="theme_value_dark">dark</string>
@@ -158,4 +158,12 @@
     <string name="title_dim_bell">ಡಿಮ್ ಬೆಲ್</string>
     <string name="dim_bell_label_off">ಮಂಕಾಗಿಲ್ಲ</string>
     <string name="dim_bell_label_format">ಮಬ್ಬಾಗಿಸಿದ್ದು: %1$d0%%</string>
+    <string name="section_deleted">ಅಳಿಸಲಾಗಿದೆ __1_%s__\'</string>
+    <string name="action_undo">ರದ್ದುಮಾಡು</string>
+    <string name="notification_channel_name">ಧ್ಯಾನ ಟೈಮರ್</string>
+    <string name="nav_label_sessions">ಸೆಷನ್ಸ್</string>
+    <string name="nav_label_meditation">ಧ್ಯಾನ</string>
+    <string name="nav_label_edit_session">ಸೆಷನ್ ಸಂಪಾದಿಸಿ</string>
+    <string name="nav_label_edit_section">ವಿಭಾಗವನ್ನು ಸಂಪಾದಿಸಿ</string>
+    <string name="nav_label_settings">ಸೆಟ್ಟಿಂಗ್‌ಗಳು</string>
 </resources>

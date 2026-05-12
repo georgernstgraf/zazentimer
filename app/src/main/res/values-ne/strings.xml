@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="abbrechen">रद्द गर्नुहोस्</string>
-    <string name="about1">Zazen Meditation Timer — A simple meditation timer with customizable sections, bell sounds, and session management.</string>
-    <string name="about2">Originally created by Stefan Gaffga. Currently maintained by Georg Graf.&lt;br&gt;&lt;br&gt;Thanks to Winfried of &lt;a href="http://www.meditationsuhren.de"&gt;http://www.meditationsuhren.de&lt;/a&gt; for providing such great Bell Sounds!</string>
-    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues"&gt;Report issues on GitHub&lt;/a&gt;</string>
-    <string name="app_description">This application lets the user define a set of meditation sessions and provides a timer with visual and audible feedback when a part or the whole meditation is over.</string>
+    <string name="about1">Zazen ध्यान टाइमर - अनुकूलन खण्डहरू, घण्टी ध्वनि, र सत्र व्यवस्थापन संग एक साधारण ध्यान टाइमर।</string>
+    <string name="about2">मूलतः Stefan Gaffga द्वारा बनाईएको। हाल Georg Graf द्वारा मर्मत गरिएको।&lt;br&gt;&lt;br&gt;यस्तो उत्कृष्ट बेल साउन्डहरू प्रदान गर्नुभएकोमा &lt;a href="http://www.meditationsuhren.de"&gt;http://www.meditationsuhren.de&lt;/a&gt; को Winfried लाई धन्यवाद!</string>
+    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues"&gt;GitHub मा समस्याहरू रिपोर्ट गर्नुहोस्&lt;/a&gt;</string>
+    <string name="app_description">यो अनुप्रयोगले प्रयोगकर्तालाई ध्यान सत्रहरूको सेट परिभाषित गर्न दिन्छ र दृश्य र श्रव्य प्रतिक्रियाको साथ टाइमर प्रदान गर्दछ जब एक अंश वा सम्पूर्ण ध्यान समाप्त हुन्छ।</string>
     <string name="app_name">Zazen Meditation Timer</string>
     <string name="appbar_scrolling_view_behavior">android.support.design.widget.AppBarLayout$ScrollingViewBehavior</string>
     <string name="backup_error_text">माफ गर्नुहोस्, बचत गर्दा त्रुटि भयो।</string>
     <string name="backup_no_permission">अनुमतिहरू नभएका कारण ब्याकअप सिर्जना गर्न सकिएन।</string>
     <string name="backup_not_createable">ब्याकअप फाइल सिर्जना गर्दा त्रुटि भयो।</string>
     <string name="backup_success_text">ब्याकअप सफलतापूर्वक सिर्जना गरियो!</string>
-    <string name="bell_name_1">High Tone</string>
-    <string name="bell_name_2">Low Tone</string>
-    <string name="bell_name_3">Jap. Rhinbowl Dharma, 107mm</string>
-    <string name="bell_name_4">Jap. Rhinbowl Dharma, 88mm (black, glazed)</string>
-    <string name="bell_name_5">Jap. Rhinbowl Shomyo, 90mm</string>
-    <string name="bell_name_6">Jap. Rhinbowl Tang, 164mm</string>
-    <string name="bell_name_7">Tib. Bowl, 230mm</string>
-    <string name="bell_name_8">Jap. Rhinbowl, 97mm</string>
+    <string name="bell_name_1">उच्च टोन</string>
+    <string name="bell_name_2">कम टोन</string>
+    <string name="bell_name_3">जाप। राइनबोल धर्म, 107 मिमी</string>
+    <string name="bell_name_4">जाप। राइनबोल धर्म, 88 मिमी (कालो, चम्किलो)</string>
+    <string name="bell_name_5">जाप। Rhinbowl Shomyo, 90mm</string>
+    <string name="bell_name_6">जाप। Rhinbowl Tang, 164mm</string>
+    <string name="bell_name_7">टिब। कटोरा, 230mm</string>
+    <string name="bell_name_8">जाप। Rhinbowl, 97mm</string>
     <string name="bell_pause">बेल ग्याप (सेकेन्ड)</string>
     <string name="bell_user">घण्टी थप्नुहोस्...</string>
     <string name="bottom_nav_meditation">ध्यान</string>
@@ -56,7 +56,7 @@
     <string name="desc_no_server_messages">एप सुरु हुँदा स्वचालित रूपमा समाचार देखाउनुहोस्</string>
     <string name="error_checking_for_server_messages">नयाँ सन्देशहरू ल्याउन त्रुटि।</string>
     <string name="gong_type">गोंग ध्वनि</string>
-    <string name="help_sectionlist_text">यहाँ तपाईँले आफ्नो सत्रको सामग्रीको नाम, वर्णन र सम्पादन गर्न सक्नुहुन्छ। \n\n REORDERING\n वस्तुहरूलाई पुन: क्रमबद्ध गर्न, एउटा वस्तुमा लामो थिच्नुहोस् र\n यसलाई यसको नयाँ स्थितिमा तान्नुहोस्। दायाँ।\n\n EDIT\n खण्ड सम्पादन गर्न, यसलाई एक पटक छुनुहोस्।\n\n ADD\n नयाँ खण्ड थप्न, + बटन थिच्नुहोस्।</string>
+    <string name="help_sectionlist_text">यहाँ तपाईंले आफ्नो सत्रको सामग्रीको नाम, वर्णन र सम्पादन गर्न सक्नुहुन्छ।\n\nपुन: क्रमबद्ध गर्दै\nवस्तुहरू पुन: क्रमबद्ध गर्न, वस्तुमा लामो थिच्नुहोस् र\nयसलाई यसको नयाँ स्थितिमा तान्नुहोस्।\n\nमेटाउँदै\nएउटा वस्तु मेटाउन, यसलाई दायाँतिर सार्नुहोस्।\n\nसम्पादन गर्नुहोस्\nखण्ड सम्पादन गर्न, यसलाई एक पटक छुनुहोस्।\n\nथप्नुहोस्\nनयाँ खण्ड थप्न + बटन थिच्नुहोस्।</string>
     <string name="help_sectionlist_title">सत्र सम्पादन गर्नुहोस्</string>
     <string name="label_section_name">खण्डको नाम</string>
     <string name="label_session_description">सत्र विवरण</string>
@@ -74,7 +74,7 @@
     <string name="menu_settings">सेटिङहरू</string>
     <string name="minuten">मिनेट</string>
     <string name="no_new_server_messages">कुनै नयाँ सन्देशहरू उपलब्ध छैनन्।</string>
-    <string name="no_sections_in_session">\' ध्यान सुरु गर्न सकिँदैन: चयन गरिएको सत्रमा कुनै खण्डहरू छैनन्।</string>
+    <string name="no_sections_in_session">\'ध्यान सुरु गर्न सक्दैन: चयन गरिएको सत्रमा कुनै खण्डहरू छैनन्।</string>
     <string name="no_session_exists">सुरु गर्न सकिने कुनै सत्र छैन। कृपया पहिले एउटा सिर्जना गर्नुहोस्।</string>
     <string name="notification_text">एक Zazen ध्यान हाल चलिरहेको छ</string>
     <string name="notification_text_paused">Zazen ध्यान रोकियो</string>
@@ -93,7 +93,7 @@
     <string name="pref_mute_mode_vibrate_sound">घण्टी टोन र कम्पन</string>
     <string name="pref_mute_mode_vibrate_sound_desc">रिङ टोन र कम्पन बजाउनुहोस्</string>
     <string name="pref_muting">म्यूट सेटिङहरू</string>
-    <string name="pref_sum_backup">आफ्नो SD-Card मा आफ्नो सत्र र ध्वनि को एक ब्याकअप बचत गर्नुहोस्।</string>
+    <string name="pref_sum_backup">तपाईंको SD-Card मा तपाईंको सत्र र ध्वनिहरूको ब्याकअप बचत गर्नुहोस्।</string>
     <string name="pref_sum_bad_removal">SD कार्ड पहिले अनमाउन्ट नगरी हटाइयो।</string>
     <string name="pref_sum_checking">अहिले SD-कार्ड जाँच भइरहेको छ</string>
     <string name="pref_sum_ejecting">SD-कार्ड निकालिँदै छ</string>
@@ -116,9 +116,9 @@
     <string name="restore_really_title">साँच्चै डाटा पुनर्स्थापना?</string>
     <string name="restore_success_text">डाटा रिस्टोर सफल भयो</string>
     <string name="search_menu_title">खोज्नुहोस्</string>
-    <string name="section_info_string_1_pl">%1$d घण्टीहरू</string>
+    <string name="section_info_string_1_pl">%1$d घण्टी</string>
     <string name="section_info_string_1_sg">१ घण्टी</string>
-    <string name="section_info_string_2_pl">प्रत्येक %1$d सेकेन्ड</string>
+    <string name="section_info_string_2_pl">प्रत्येक %1$d सेकेन्डमा</string>
     <string name="section_info_string_2_sg">प्रत्येक सेकेन्ड</string>
     <string name="sekunden">सेकेन्ड</string>
     <string name="select_audio">ध्वनि फाइल चयन गर्नुहोस्</string>
@@ -130,12 +130,12 @@
     <string name="status_bar_notification_info_overflow">९९९+</string>
     <string name="test_mute_perm_request">एपलाई हाल तपाईंको फोन म्यूट गर्न अनुमति छैन। यसलाई परिवर्तन गर्न सेटिङहरू खोल्नुहोस्?</string>
     <string name="text_cant_mute">तपाईंको फोनले यो एपलाई म्यूट गर्न अनुमति दिँदैन। यस एप्स सेटिङहरूमा म्यूट गर्ने असक्षम पार्नुहोस् वा तपाईंको फोन सेटिङहरूमा म्यूट गर्न अनुमति दिनुहोस्।</string>
-    <string name="text_no_notify_access_settings">तपाईंको फोनमा म्युट गर्न अनुमति दिने मानक सेटिङहरू छैनन् जस्तो देखिन्छ। कृपया \" Do not disturb Access\" सेटिङका ​​लागि म्यानुअल रूपमा हेर्नुहोस् र यसलाई सक्षम गर्नुहोस्।</string>
+    <string name="text_no_notify_access_settings">तपाईंको फोनमा म्युट गर्न अनुमति दिने मानक सेटिङहरू छैनन् जस्तो देखिन्छ। कृपया म्यानुअल रूपमा हेर्नुहोस् \" पहुँचलाई बाधा नपुऱ्याउनुहोस्\" सेटिङ र यसलाई सक्षम गर्नुहोस्।</string>
     <string name="text_no_sections">कुनै खण्ड परिभाषित छैन।</string>
     <string name="text_question_delete_session">वास्तवमै चयन गरिएको सत्र मेटाउने हो?</string>
     <string name="theme">विषयवस्तु</string>
     <string name="theme_dark">गाढा विषयवस्तु</string>
-    <string name="theme_desc">अनुप्रयोगको हल्का वा गाढा उपस्थिति छनौट गर्नुहोस्</string>
+    <string name="theme_desc">अनुप्रयोग उपस्थिति छनौट गर्नुहोस्</string>
     <string name="theme_light">हल्का विषयवस्तु</string>
     <string name="theme_system">प्रणाली विषयवस्तु</string>
     <string name="theme_value_dark">dark</string>
@@ -158,4 +158,12 @@
     <string name="title_dim_bell">डिम बेल</string>
     <string name="dim_bell_label_off">धुमिल छैन</string>
     <string name="dim_bell_label_format">मधुरो: %1$d0%%</string>
+    <string name="section_deleted">मेटाइयो \'_%s2__</string>
+    <string name="action_undo">पूर्ववत गर्नुहोस्</string>
+    <string name="notification_channel_name">ध्यान टाइमर</string>
+    <string name="nav_label_sessions">सत्रहरू</string>
+    <string name="nav_label_meditation">ध्यान</string>
+    <string name="nav_label_edit_session">सत्र सम्पादन गर्नुहोस्</string>
+    <string name="nav_label_edit_section">खण्ड सम्पादन गर्नुहोस्</string>
+    <string name="nav_label_settings">सेटिङहरू</string>
 </resources>

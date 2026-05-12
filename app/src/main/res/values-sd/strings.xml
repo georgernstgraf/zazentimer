@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="abbrechen">منسوخ ڪريو</string>
-    <string name="about1">Zazen Meditation Timer — A simple meditation timer with customizable sections, bell sounds, and session management.</string>
-    <string name="about2">Originally created by Stefan Gaffga. Currently maintained by Georg Graf.&lt;br&gt;&lt;br&gt;Thanks to Winfried of &lt;a href="http://www.meditationsuhren.de"&gt;http://www.meditationsuhren.de&lt;/a&gt; for providing such great Bell Sounds!</string>
-    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues"&gt;Report issues on GitHub&lt;/a&gt;</string>
-    <string name="app_description">This application lets the user define a set of meditation sessions and provides a timer with visual and audible feedback when a part or the whole meditation is over.</string>
+    <string name="about1">ززين ميڊيٽيشن ٽائمر - هڪ سادي مراقبت ٽائمر حسب ضرورت سيڪشن، گھنٽي جي آوازن، ۽ سيشن جي انتظام سان.</string>
+    <string name="about2">اصل ۾ اسٽيفن گفگا پاران ٺاهي وئي. في الحال جارج گراف پاران سنڀاليو ويو آهي.&lt;br&gt;&lt;br&gt;اهڙا عظيم بيل آواز مهيا ڪرڻ لاءِ &lt;a href="http://www.meditationsuhren.de"&gt;http://www.meditationsuhren.de&lt;/a&gt; جي Winfried جي مهرباني!</string>
+    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues"&gt;GitHub تي مسئلن جي رپورٽ ڪريو&lt;/a&gt;</string>
+    <string name="app_description">هي ايپليڪيشن صارف کي مراقبي سيشن جو هڪ سيٽ بيان ڪرڻ جي اجازت ڏئي ٿي ۽ بصري ۽ ٻڌڻ واري راءِ سان ٽائمر مهيا ڪري ٿي جڏهن هڪ حصو يا سڄو مراقبو ختم ٿي وڃي.</string>
     <string name="app_name">Zazen Meditation Timer</string>
     <string name="appbar_scrolling_view_behavior">android.support.design.widget.AppBarLayout$ScrollingViewBehavior</string>
     <string name="backup_error_text">معاف ڪجو، محفوظ ڪرڻ دوران هڪ غلطي ٿي وئي.</string>
     <string name="backup_no_permission">گم ٿيل اجازتن جي ڪري بيڪ اپ ٺاهي نه سگهيو.</string>
     <string name="backup_not_createable">بيڪ اپ فائل ٺاهڻ ۾ غلطي.</string>
     <string name="backup_success_text">بيڪ اپ ڪاميابي سان ٺاهيو ويو!</string>
-    <string name="bell_name_1">High Tone</string>
-    <string name="bell_name_2">Low Tone</string>
-    <string name="bell_name_3">Jap. Rhinbowl Dharma, 107mm</string>
-    <string name="bell_name_4">Jap. Rhinbowl Dharma, 88mm (black, glazed)</string>
-    <string name="bell_name_5">Jap. Rhinbowl Shomyo, 90mm</string>
-    <string name="bell_name_6">Jap. Rhinbowl Tang, 164mm</string>
-    <string name="bell_name_7">Tib. Bowl, 230mm</string>
-    <string name="bell_name_8">Jap. Rhinbowl, 97mm</string>
+    <string name="bell_name_1">بلند آواز</string>
+    <string name="bell_name_2">گھٽ ٽون</string>
+    <string name="bell_name_3">جپ. رين باؤل ڌرم، 107mm</string>
+    <string name="bell_name_4">جپ. Rhinbowl Dharma، 88mm (ڪارو، چمڪندڙ)</string>
+    <string name="bell_name_5">جپ. رين باؤل شوميو، 90mm</string>
+    <string name="bell_name_6">جپ. رين باؤل تانگ، 164mm</string>
+    <string name="bell_name_7">ٽِب. پيالو، 230mm</string>
+    <string name="bell_name_8">جپ. رين باؤل، 97mm</string>
     <string name="bell_pause">بيل گپ (سيڪنڊ)</string>
     <string name="bell_user">بيل شامل ڪريو...</string>
     <string name="bottom_nav_meditation">مراقبو</string>
@@ -48,7 +48,7 @@
     <string name="demo_sess1_sec3_name">ڪنهين 1</string>
     <string name="demo_sess1_sec4_name">ززين 2</string>
     <string name="demo_sess1_sec5_name">ڪنهين 3</string>
-    <string name="demo_sess1_sec6_name">ززين 3</string>
+    <string name="demo_sess1_sec6_name">زين 3</string>
     <string name="demo_sess2_description">روزانه مراقبو</string>
     <string name="demo_sess2_name">صرف Zazen</string>
     <string name="desc_get_messages">جيڪڏهن خودڪار پيغام بند ٿيل آهن، توهان هتي خبرن جي جانچ ڪري سگهو ٿا.</string>
@@ -74,7 +74,7 @@
     <string name="menu_settings">سيٽنگون</string>
     <string name="minuten">منٽ</string>
     <string name="no_new_server_messages">ڪوبه نئون پيغام موجود ناهي.</string>
-    <string name="no_sections_in_session">مراقبت شروع نه ٿو ڪري سگھجي: چونڊيل سيشن ۾ ڪو به حصو نه آھي.</string>
+    <string name="no_sections_in_session">\' شروع نٿو ڪري سگھجي مراقبي: چونڊيل سيشن ۾ ڪو به سيڪشن نه آھي.</string>
     <string name="no_session_exists">ڪو به سيشن ناهي جيڪو شروع ڪري سگهجي. مھرباني ڪري پھريون ٺاھيو.</string>
     <string name="notification_text">هڪ ززين مراقبت هن وقت هلندڙ آهي</string>
     <string name="notification_text_paused">زازن مراقبي کي روڪيو ويو</string>
@@ -89,7 +89,7 @@
     <string name="pref_mute_mode_none_desc">فون ڪالز ۽ نوٽيفڪيشنز لاءِ ڪابه رِنگ ٽون ۽ ڪا وائبريشن ناهي</string>
     <string name="pref_mute_mode_pref">رنگ ٽون ۽ اطلاعن جي حوالي سان سيٽنگون</string>
     <string name="pref_mute_mode_vibrate">صرف Vibration</string>
-    <string name="pref_mute_mode_vibrate_desc">صرف فون ڪالن ۽ نوٽيفڪيشنز لاءِ وائبرٽ ڪريو (Android 7 (Nougat) تي ڪم نٿو ڪري - خاموشي جي سيٽنگ وانگر ڪم ڪري ٿو)</string>
+    <string name="pref_mute_mode_vibrate_desc">صرف فون ڪالز ۽ نوٽيفڪيشنز لاءِ وائبرٽ ڪريو (Android 7 (Nougat) تي ڪم نٿو ڪري - خاموشي جي سيٽنگ وانگر ڪم ڪري ٿو)</string>
     <string name="pref_mute_mode_vibrate_sound">رنگ ٽون ۽ وائبريشن</string>
     <string name="pref_mute_mode_vibrate_sound_desc">رنگ ٽون ۽ وائبريشن کيڏيو</string>
     <string name="pref_muting">خاموش سيٽنگون</string>
@@ -97,7 +97,7 @@
     <string name="pref_sum_bad_removal">SD ڪارڊ کي هٽايو ويو بغير بغير بغير پهرين.</string>
     <string name="pref_sum_checking">SD-Card هن وقت چيڪ ڪيو پيو وڃي</string>
     <string name="pref_sum_ejecting">SD-ڪارڊ ڪڍيو پيو وڃي</string>
-    <string name="pref_sum_nofs">SD-Card تي ڪوبه فائل سسٽم ناهي</string>
+    <string name="pref_sum_nofs">SD-Card تي ڪوبه فائيل سسٽم ناهي</string>
     <string name="pref_sum_read_only">SD-ڪارڊ صرف پڙهڻ لاءِ آهي</string>
     <string name="pref_sum_removed">ڪوبه SD-ڪارڊ موجود ناهي</string>
     <string name="pref_sum_restore">SD-Card Backup مان پنهنجا سيشن ۽ ڪسٽم آواز بحال ڪريو</string>
@@ -130,12 +130,12 @@
     <string name="status_bar_notification_info_overflow">999+</string>
     <string name="test_mute_perm_request">ايپ في الحال توهان جي فون کي خاموش ڪرڻ جي اجازت ناهي. هن کي تبديل ڪرڻ لاء سيٽنگون کوليو؟</string>
     <string name="text_cant_mute">توهان جو فون هن ايپ کي خاموش ڪرڻ جي اجازت نٿو ڏئي. هن ائپس سيٽنگن ۾ ميوٽ ڪرڻ کي بند ڪريو يا پنهنجي فون سيٽنگن ۾ ميوٽ ڪرڻ جي اجازت ڏيو.</string>
-    <string name="text_no_notify_access_settings">توهان جي فون کي خاموش ڪرڻ جي اجازت ڏيڻ لاء معياري سيٽنگون نه لڳي. مھرباني ڪري دستي طور \&amp;quot;Do Disturb Access\&amp;quot; سيٽنگ لاءِ ڏسو ۽ ان کي فعال ڪريو.</string>
+    <string name="text_no_notify_access_settings">توهان جي فون کي خاموش ڪرڻ جي اجازت ڏيڻ لاء معياري سيٽنگون نه لڳي. مھرباني ڪري دستي طور \"Do\'t Disturb Access\" سيٽنگ لاءِ ڏسو ۽ ان کي فعال ڪريو.</string>
     <string name="text_no_sections">ڪو به سيڪشن بيان نه ڪيو ويو آهي.</string>
     <string name="text_question_delete_session">ڇا واقعي چونڊيو سيشن کي ختم ڪيو؟</string>
     <string name="theme">موضوع</string>
     <string name="theme_dark">ڳاڙهو موضوع</string>
-    <string name="theme_desc">ايپ جي روشني يا اونداهي ظهور چونڊيو</string>
+    <string name="theme_desc">ايپ جي ظاهر کي چونڊيو</string>
     <string name="theme_light">هلڪو موضوع</string>
     <string name="theme_system">سسٽم جو موضوع</string>
     <string name="theme_value_dark">dark</string>
@@ -157,5 +157,13 @@
     <string name="pref_desc_bell_volume">گھنٽي جي آوازن لاءِ الارم اسٽريم جي مقدار کي ڪنٽرول ڪري ٿو</string>
     <string name="title_dim_bell">ڊم بيل</string>
     <string name="dim_bell_label_off">مدھم نه ٿيو</string>
-    <string name="dim_bell_label_format">گھٽيل: %1$d0%%</string>
+    <string name="dim_bell_label_format">مدھم: %1$d0%%</string>
+    <string name="section_deleted">ختم ٿيل \'_%s2__</string>
+    <string name="action_undo">اڻڄاتل</string>
+    <string name="notification_channel_name">مراقبي ٽائمر</string>
+    <string name="nav_label_sessions">سيشن</string>
+    <string name="nav_label_meditation">مراقبو</string>
+    <string name="nav_label_edit_session">سيشن ۾ ترميم ڪريو</string>
+    <string name="nav_label_edit_section">سيڪشن ۾ ترميم ڪريو</string>
+    <string name="nav_label_settings">سيٽنگون</string>
 </resources>

@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="abbrechen">Cancel</string>
-    <string name="about1">Zazen Meditation Timer — A simple meditation timer with customizable sections, bell sounds, and session management.</string>
-    <string name="about2">Originally created by Stefan Gaffga. Currently maintained by Georg Graf.&lt;br&gt;&lt;br&gt;Thanks to Winfried of &lt;a href="http://www.meditationsuhren.de"&gt;http://www.meditationsuhren.de&lt;/a&gt; for providing such great Bell Sounds!</string>
-    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues"&gt;Report issues on GitHub&lt;/a&gt;</string>
-    <string name="app_description">This application lets the user define a set of meditation sessions and provides a timer with visual and audible feedback when a part or the whole meditation is over.</string>
+    <string name="about1">Zazen Meditatio Timer — Simplex meditatio timoris cum sectionibus customisable, sonis campanae et administratione sessionis.</string>
+    <string name="about2">Primum creata a Stefan Gaffga. In statu servatur Georg Graf.&lt;br&gt;&lt;br&gt;Gratias Winfried de &lt;a href="http://www.meditationsuhren.de"&gt;http://www.meditationsuhren.de&lt;/a&gt; ad tantis sonos Campanorum comparandis!</string>
+    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues"&gt;Report quaestiones in GitHub&lt;/a&gt;</string>
+    <string name="app_description">Haec applicatio permittit utentis meditationis sessiones definitas definire ac timeri praebet opiniones visuales et audibiles, cum pars vel tota meditatio cessat.</string>
     <string name="app_name">Zazen Meditation Timer</string>
     <string name="appbar_scrolling_view_behavior">android.support.design.widget.AppBarLayout $ ScrollingViewBehavior</string>
     <string name="backup_error_text">Dolemus, errori salutaris occurrit.</string>
     <string name="backup_no_permission">Non potuit creare tergum ob permissiones absentis.</string>
     <string name="backup_not_createable">Error creare tergum lima.</string>
     <string name="backup_success_text">Tergum feliciter creatum est!</string>
-    <string name="bell_name_1">High Tone</string>
+    <string name="bell_name_1">Altus Tonus</string>
     <string name="bell_name_2">Low Tone</string>
     <string name="bell_name_3">Jap. Rhinbowl Dharma, 107mm</string>
-    <string name="bell_name_4">Jap. Rhinbowl Dharma, 88mm (black, glazed)</string>
+    <string name="bell_name_4">Jap. Rhinbowl LEX, 88mm (nigrum, vitreum)</string>
     <string name="bell_name_5">Jap. Rhinbowl Shomyo, 90mm</string>
     <string name="bell_name_6">Jap. Rhinbowl Tang, 164mm</string>
-    <string name="bell_name_7">Tib. Bowl, 230mm</string>
+    <string name="bell_name_7">Tib. Crater, 230mm</string>
     <string name="bell_name_8">Jap. Rhinbowl, 97mm</string>
     <string name="bell_pause">hiatus Campana (sec) ;</string>
     <string name="bell_user">Adde Bell...</string>
@@ -56,7 +56,7 @@
     <string name="desc_no_server_messages">Statim ostendere News cum App incipit</string>
     <string name="error_checking_for_server_messages">Error novos nuntios inducens.</string>
     <string name="gong_type">Gong Sound</string>
-    <string name="help_sectionlist_text">Hic nominare potes, describere et recensere contenta Session.\n\n REORDERING\n Ad reordinare res, diu premunt item and\n trahere ad novum situm.\n\n DELETING\n Item ad delere, ad ius movere. \n\n EDIT\n Ad sectionem recensere, modo eam semel tange.\n11⦆</string>
+    <string name="help_sectionlist_text">Hic nominare potes, describere et recensere contenta Sessionis tuae.\n\nRECORDING\nAd reorder vasa, diu instare an item and\ntrahunt ad novum locum.\n\nDELETING\nAd delete item, ad dextram move.\n\nEDIT\nAd sectionem emendo, mox tetigere semel.\n\nADD\nAd novam sectionem adde bullam + preme.</string>
     <string name="help_sectionlist_title">Sessio recensere</string>
     <string name="label_section_name">Nomen sectionis</string>
     <string name="label_session_description">Sessio Description</string>
@@ -74,7 +74,7 @@
     <string name="menu_settings">Occasus</string>
     <string name="minuten">Minuta</string>
     <string name="no_new_server_messages">Nullae epistulae novae praesto sunt.</string>
-    <string name="no_sections_in_session">Can\'t incipit Meditatio: Sessio selecta sectiones nullas habet.</string>
+    <string name="no_sections_in_session">Can\'t Meditatio incipiet: Sessio selecta sectiones ullam non habet.</string>
     <string name="no_session_exists">Nulla sessio quae iniri potest. Primum quaeso crea.</string>
     <string name="notification_text">A Zazen Meditatio est currently currit</string>
     <string name="notification_text_paused">Zazen Meditatio constiterunt</string>
@@ -92,13 +92,13 @@
     <string name="pref_mute_mode_vibrate_desc">Tantum volvebatur ad phone vocat et notificationes (non operatur in Android VII (Nougat) - gerit sicut silentium occasum)</string>
     <string name="pref_mute_mode_vibrate_sound">Annulus sonus et vibratio</string>
     <string name="pref_mute_mode_vibrate_sound_desc">Play Ring sono et Vibration</string>
-    <string name="pref_muting">Muta Occasus</string>
+    <string name="pref_muting">Muta Optiones</string>
     <string name="pref_sum_backup">Serva tergum Sessionum et Sonorum tuarum ad SD-Card.</string>
     <string name="pref_sum_bad_removal">SD Card remotus est quin primus eques.</string>
     <string name="pref_sum_checking">SD-Card inhibetur tempore</string>
     <string name="pref_sum_ejecting">D-Card est ejectus</string>
     <string name="pref_sum_nofs">Non Filesystem in SD-Card</string>
-    <string name="pref_sum_read_only">D-Card legitur solum</string>
+    <string name="pref_sum_read_only">SD-Card legitur solum</string>
     <string name="pref_sum_removed">Non SD-Card praesens</string>
     <string name="pref_sum_restore">Redde Sessiones et Custom Sonorum ex SD-Card Tergum</string>
     <string name="pref_sum_shared">SD-Card est shared</string>
@@ -116,9 +116,9 @@
     <string name="restore_really_title">Itane data restituet?</string>
     <string name="restore_success_text">Data Restituo felix</string>
     <string name="search_menu_title">Investigatio</string>
-    <string name="section_info_string_1_pl">0⦆ tintinnabulis</string>
+    <string name="section_info_string_1_pl">%1$d tintinnabula</string>
     <string name="section_info_string_1_sg">1 Bell</string>
-    <string name="section_info_string_2_pl">omne 0⦆ Seconds</string>
+    <string name="section_info_string_2_pl">omne %1$d Secundi</string>
     <string name="section_info_string_2_sg">omne secundi</string>
     <string name="sekunden">Secundis</string>
     <string name="select_audio">Lego sonus file</string>
@@ -129,13 +129,13 @@
     <string name="session_list_unnamed_entry">Sessio innominata</string>
     <string name="status_bar_notification_info_overflow">999+</string>
     <string name="test_mute_perm_request">App est currently non licet mutum tuum telephonum. Aperi occasus ut hoc mutes?</string>
-    <string name="text_cant_mute">Telephonum mobile tuum hoc App ut mutum non permittit. Inactivare mutum in hoc Apps Occasus vel in Phones Occasus muto permittere.</string>
-    <string name="text_no_notify_access_settings">Telephonum mobile tuum non videtur habere occasus normas ut mutos patiaris. Quaeso vide manually pro 0⦆ Noli turbare Access\" Ponere et efficiat.</string>
+    <string name="text_cant_mute">Telephonum mobile tuum hoc App ut mutum non permittit. Inactivare mutum in hac Apps Occasus vel in Phones Occasus muto permittere.</string>
+    <string name="text_no_notify_access_settings">Telephonum mobile tuum non videtur habere occasus normas ut mutos patiaris. Quaeso vide manually pro \" Noli Disturb Access\" Ponere ac fac.</string>
     <string name="text_no_sections">Nullae Sectiones definiuntur.</string>
     <string name="text_question_delete_session">Vere Sessionem electam delere?</string>
     <string name="theme">Theme</string>
     <string name="theme_dark">Dark Theme</string>
-    <string name="theme_desc">Lucem aut obscuram speciem App</string>
+    <string name="theme_desc">Elige quod app specie</string>
     <string name="theme_light">Lux Theme</string>
     <string name="theme_system">Systema Theme</string>
     <string name="theme_value_dark">dark</string>
@@ -143,13 +143,13 @@
     <string name="theme_value_system">system</string>
     <string name="time_section_elapsed">Sectio spatio</string>
     <string name="time_section_remaining">Reliqua sectione</string>
-    <string name="time_session_elapsed">Sessionem spatio</string>
+    <string name="time_session_elapsed">Sessio spatio</string>
     <string name="time_session_remaining">Sessio reliquum</string>
     <string name="title_mute_perm_request">Absentis Permission</string>
     <string name="title_question_delete_session">Sessio delere?</string>
     <string name="title_volume_bells">Bell Volume</string>
     <string name="unnamed">Innominatus</string>
-    <string name="stop_meditation_title">Meditatio cessa?</string>
+    <string name="stop_meditation_title">Meditatio desine?</string>
     <string name="stop_meditation_message">Meditatio tua adhuc currit.</string>
     <string name="stop_meditation_stop">Subsisto</string>
     <string name="stop_meditation_cancel">Cancel</string>
@@ -158,4 +158,12 @@
     <string name="title_dim_bell">Dim Bell</string>
     <string name="dim_bell_label_off">Non obscurata</string>
     <string name="dim_bell_label_format">Obscurata: %1$d0%%</string>
+    <string name="section_deleted">Deletum \'%s\'</string>
+    <string name="action_undo">Undo</string>
+    <string name="notification_channel_name">Meditatio Timer</string>
+    <string name="nav_label_sessions">Sessiones</string>
+    <string name="nav_label_meditation">Meditatio</string>
+    <string name="nav_label_edit_session">Sessio recensere</string>
+    <string name="nav_label_edit_section">Recensere Section</string>
+    <string name="nav_label_settings">Occasus</string>
 </resources>

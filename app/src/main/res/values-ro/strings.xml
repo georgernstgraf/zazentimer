@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="abbrechen">Anula</string>
-    <string name="about1">Zazen Meditation Timer — A simple meditation timer with customizable sections, bell sounds, and session management.</string>
-    <string name="about2">Originally created by Stefan Gaffga. Currently maintained by Georg Graf.&lt;br&gt;&lt;br&gt;Thanks to Winfried of &lt;a href="http://www.meditationsuhren.de"&gt;http://www.meditationsuhren.de&lt;/a&gt; for providing such great Bell Sounds!</string>
-    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues"&gt;Report issues on GitHub&lt;/a&gt;</string>
-    <string name="app_description">This application lets the user define a set of meditation sessions and provides a timer with visual and audible feedback when a part or the whole meditation is over.</string>
+    <string name="about1">Temporizator de meditație Zazen — Un temporizator de meditație simplu cu secțiuni personalizabile, sunete de clopoței și gestionarea sesiunilor.</string>
+    <string name="about2">Creat inițial de Stefan Gaffga. Întreținut în prezent de Georg Graf.&lt;br&gt;&lt;br&gt;Mulțumim lui Winfried de la &lt;a href="http://www.meditationsuhren.de"&gt;http://www.meditationsuhren.de&lt;/a&gt; pentru că a furnizat sunete de clopoțe atât de grozave!</string>
+    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues"&gt;Raportați probleme pe GitHub&lt;/a&gt;</string>
+    <string name="app_description">Această aplicație permite utilizatorului să definească un set de sesiuni de meditație și oferă un cronometru cu feedback vizual și sonor atunci când o parte sau întreaga meditație se termină.</string>
     <string name="app_name">Zazen Meditation Timer</string>
     <string name="appbar_scrolling_view_behavior">android.support.design.widget.AppBarLayout$ScrollingViewBehavior</string>
     <string name="backup_error_text">Ne pare rău, a apărut o eroare la salvare.</string>
     <string name="backup_no_permission">Nu s-a putut crea backup din cauza permisiunilor lipsă.</string>
     <string name="backup_not_createable">Eroare la crearea fișierului de rezervă.</string>
     <string name="backup_success_text">Backup creat cu succes!</string>
-    <string name="bell_name_1">High Tone</string>
-    <string name="bell_name_2">Low Tone</string>
-    <string name="bell_name_3">Jap. Rhinbowl Dharma, 107mm</string>
-    <string name="bell_name_4">Jap. Rhinbowl Dharma, 88mm (black, glazed)</string>
-    <string name="bell_name_5">Jap. Rhinbowl Shomyo, 90mm</string>
-    <string name="bell_name_6">Jap. Rhinbowl Tang, 164mm</string>
-    <string name="bell_name_7">Tib. Bowl, 230mm</string>
-    <string name="bell_name_8">Jap. Rhinbowl, 97mm</string>
+    <string name="bell_name_1">Ton înalt</string>
+    <string name="bell_name_2">Ton scăzut</string>
+    <string name="bell_name_3">Jap. Rhinbowl Dharma, 107 mm</string>
+    <string name="bell_name_4">Jap. Rhinbowl Dharma, 88 mm (negru, smălțuit)</string>
+    <string name="bell_name_5">Jap. Rhinbowl Shomyo, 90 mm</string>
+    <string name="bell_name_6">Jap. Rhinbowl Tang, 164 mm</string>
+    <string name="bell_name_7">Tib. Bol, 230 mm</string>
+    <string name="bell_name_8">Jap. Rhinbowl, 97 mm</string>
     <string name="bell_pause">Interval de clopot (sec)</string>
     <string name="bell_user">Adăugați Bell...</string>
     <string name="bottom_nav_meditation">Meditaţie</string>
@@ -56,7 +56,7 @@
     <string name="desc_no_server_messages">Afișează automat știri când pornește aplicația</string>
     <string name="error_checking_for_server_messages">Eroare la preluarea mesajelor noi.</string>
     <string name="gong_type">Sunetul Gong</string>
-    <string name="help_sectionlist_text">Aici puteți denumi, descrie și edita conținutul sesiunii dvs.\n\n RECOMANDARE\n Pentru a reordona articolele, apăsați lung pe un articol și\n trageți-l în noua poziție.\n\n DELETING\n Pentru a șterge un articol, mutați-l la dreapta. secțiune, atingeți-o o dată.\n\n ADD\n Pentru a adăuga o nouă secțiune, apăsați butonul +.</string>
+    <string name="help_sectionlist_text">Aici puteți denumi, descrie și edita conținutul sesiunii dvs.\n\nRECOMANDARE\nPentru a reordona articolele, apăsați lung pe un articol și\ntrageți-l în noua sa poziție.\n\nȘTERGEREA\nPentru a șterge un element, mutați-l la dreapta.\n\nEDITA\nPentru a edita o secțiune, atingeți-o o dată.\n\nADĂUGA\nPentru a adăuga o nouă secțiune, apăsați butonul +.</string>
     <string name="help_sectionlist_title">Editați sesiunea</string>
     <string name="label_section_name">Numele secțiunii</string>
     <string name="label_session_description">Descrierea sesiunii</string>
@@ -74,7 +74,7 @@
     <string name="menu_settings">Setări</string>
     <string name="minuten">Minute</string>
     <string name="no_new_server_messages">Nu există mesaje noi disponibile.</string>
-    <string name="no_sections_in_session">Nu se poate începe meditația: Sesiunea selectată nu are nicio secțiune.</string>
+    <string name="no_sections_in_session">Nu poate\' începe meditația: Sesiunea selectată nu are nicio secțiune.</string>
     <string name="no_session_exists">Nu există o sesiune care să poată fi începută. Vă rugăm să creați unul mai întâi.</string>
     <string name="notification_text">În prezent se desfășoară o meditație Zazen</string>
     <string name="notification_text_paused">Meditația Zazen se întrerupse</string>
@@ -100,15 +100,15 @@
     <string name="pref_sum_nofs">Fără sistem de fișiere pe cardul SD</string>
     <string name="pref_sum_read_only">Cardul SD este doar pentru citire</string>
     <string name="pref_sum_removed">Nu este prezent un card SD</string>
-    <string name="pref_sum_restore">Restaurați-vă sesiunile și sunetele personalizate din backup-ul cardului SD</string>
+    <string name="pref_sum_restore">Restaurați-vă sesiunile și sunetele personalizate de pe cardul SD</string>
     <string name="pref_sum_shared">Cardul SD este partajat</string>
     <string name="pref_title_backup">Creați o copie de rezervă</string>
     <string name="pref_title_brightness">Luminozitate</string>
-    <string name="pref_title_restore">Restaurați din Backup</string>
+    <string name="pref_title_restore">Restaurare din Backup</string>
     <string name="privacy_message">Această aplicație nu colectează date personale - de asemenea, nu folosește adrese IP sau alte date legate de tehnologie și nici nu colectează, procesează sau folosește niciuna în niciun fel.</string>
     <string name="privacy_ok">Bine</string>
     <string name="privacy_title">Informații de confidențialitate</string>
-    <string name="really_stop">Oprește cu adevărat meditația?</string>
+    <string name="really_stop">Opriți cu adevărat meditația?</string>
     <string name="restore_backup_not_found">Fișierul de rezervă nu a fost găsit</string>
     <string name="restore_error_text">Eroare la restaurarea din Backup</string>
     <string name="restore_no_permission">Nu s-a putut restabili din cauza permisiunii lipsă.</string>
@@ -130,12 +130,12 @@
     <string name="status_bar_notification_info_overflow">999+</string>
     <string name="test_mute_perm_request">În prezent, aplicația nu are permisiunea de a dezactiva sunetul telefonului dvs. Deschideți setările pentru a schimba acest lucru?</string>
     <string name="text_cant_mute">Telefonul dvs. nu permite acestei aplicații să o dezactiveze. Dezactivați dezactivarea sunetului în setările acestei aplicații sau permiteți dezactivarea sunetului în Setările telefoanelor dvs.</string>
-    <string name="text_no_notify_access_settings">Telefonul dvs. nu pare să aibă setările standard pentru a permite dezactivarea sunetului. Căutați manual setarea „Nu deranjați accesul” și activați-o.</string>
+    <string name="text_no_notify_access_settings">Telefonul dvs. nu pare să aibă setările standard pentru a permite dezactivarea sunetului. Căutați manual setarea \"Nu deranjați accesul\" și activați-o.</string>
     <string name="text_no_sections">Nu au fost definite secțiuni.</string>
     <string name="text_question_delete_session">Ștergeți cu adevărat sesiunea selectată?</string>
     <string name="theme">Temă</string>
     <string name="theme_dark">Tema întunecată</string>
-    <string name="theme_desc">Alegeți aspectul deschis sau întunecat al aplicației</string>
+    <string name="theme_desc">Alegeți aspectul aplicației</string>
     <string name="theme_light">Tema ușoară</string>
     <string name="theme_system">Tema sistemului</string>
     <string name="theme_value_dark">dark</string>
@@ -157,5 +157,13 @@
     <string name="pref_desc_bell_volume">Controlează volumul fluxului de alarmă pentru sunetele clopoțelului</string>
     <string name="title_dim_bell">Dim Bell</string>
     <string name="dim_bell_label_off">Nu estompat</string>
-    <string name="dim_bell_label_format">Întunecat: %1$d0%%</string>
+    <string name="dim_bell_label_format">Diminuat: %1$d0%%</string>
+    <string name="section_deleted">Șters \'%s\'</string>
+    <string name="action_undo">Anula</string>
+    <string name="notification_channel_name">Cronometru de meditație</string>
+    <string name="nav_label_sessions">Sesiuni</string>
+    <string name="nav_label_meditation">Meditaţie</string>
+    <string name="nav_label_edit_session">Editați sesiunea</string>
+    <string name="nav_label_edit_section">Editează secțiunea</string>
+    <string name="nav_label_settings">Setări</string>
 </resources>

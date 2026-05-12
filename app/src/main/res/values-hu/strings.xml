@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="abbrechen">Mégsem</string>
-    <string name="about1">Zazen Meditation Timer — A simple meditation timer with customizable sections, bell sounds, and session management.</string>
-    <string name="about2">Originally created by Stefan Gaffga. Currently maintained by Georg Graf.&lt;br&gt;&lt;br&gt;Thanks to Winfried of &lt;a href="http://www.meditationsuhren.de"&gt;http://www.meditationsuhren.de&lt;/a&gt; for providing such great Bell Sounds!</string>
-    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues"&gt;Report issues on GitHub&lt;/a&gt;</string>
-    <string name="app_description">This application lets the user define a set of meditation sessions and provides a timer with visual and audible feedback when a part or the whole meditation is over.</string>
+    <string name="abbrechen">Mégse</string>
+    <string name="about1">Zazen meditációs időzítő – Egyszerű meditációs időzítő testreszabható szakaszokkal, csengőhangokkal és munkamenet-kezeléssel.</string>
+    <string name="about2">Eredetileg Stefan Gaffga készítette. Jelenleg Georg Graf karbantartja.&lt;br&gt;&lt;br&gt;Köszönet Winfriednek a &lt;a href="http://www.meditationsuhren.de"&gt;http://www.meditationsuhren.de&lt;/a&gt; webhelyről, hogy ilyen nagyszerű csengőhangokat biztosított!</string>
+    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues"&gt;Problémák jelentése a GitHubon&lt;/a&gt;</string>
+    <string name="app_description">Ez az alkalmazás lehetővé teszi a felhasználó számára, hogy meghatározza a meditációs munkameneteket, és egy időzítőt biztosít vizuális és hangos visszajelzéssel, amikor a meditáció egy része vagy egésze véget ért.</string>
     <string name="app_name">Zazen Meditation Timer</string>
     <string name="appbar_scrolling_view_behavior">android.support.design.widget.AppBarLayout$ScrollingViewBehavior</string>
     <string name="backup_error_text">Sajnáljuk, hiba történt a mentés során.</string>
     <string name="backup_no_permission">Hiányzó engedélyek miatt nem sikerült biztonsági másolatot készíteni.</string>
     <string name="backup_not_createable">Hiba a biztonsági mentési fájl létrehozásakor.</string>
     <string name="backup_success_text">A biztonsági mentés sikeresen létrehozva!</string>
-    <string name="bell_name_1">High Tone</string>
-    <string name="bell_name_2">Low Tone</string>
-    <string name="bell_name_3">Jap. Rhinbowl Dharma, 107mm</string>
-    <string name="bell_name_4">Jap. Rhinbowl Dharma, 88mm (black, glazed)</string>
-    <string name="bell_name_5">Jap. Rhinbowl Shomyo, 90mm</string>
-    <string name="bell_name_6">Jap. Rhinbowl Tang, 164mm</string>
-    <string name="bell_name_7">Tib. Bowl, 230mm</string>
-    <string name="bell_name_8">Jap. Rhinbowl, 97mm</string>
+    <string name="bell_name_1">Magas tónus</string>
+    <string name="bell_name_2">Alacsony hang</string>
+    <string name="bell_name_3">Jap. Rhinbowl Dharma, 107 mm</string>
+    <string name="bell_name_4">Jap. Rhinbowl Dharma, 88mm (fekete, üvegezett)</string>
+    <string name="bell_name_5">Jap. Shomyo orrszarvú, 90 mm</string>
+    <string name="bell_name_6">Jap. Rhinbowl Tang, 164 mm</string>
+    <string name="bell_name_7">Tib. Tál, 230 mm</string>
+    <string name="bell_name_8">Jap. Orrszarvú, 97 mm</string>
     <string name="bell_pause">Harangköz (mp)</string>
     <string name="bell_user">Harang hozzáadása...</string>
     <string name="bottom_nav_meditation">Elmélkedés</string>
@@ -32,11 +32,11 @@
     <string name="checkbox_keep_screen_on">Tartsa bekapcsolva a képernyőt</string>
     <string name="checkbox_no_server_messages">Hírek megjelenítése</string>
     <string name="checkbox_phone_off">Telefon némítása</string>
-    <string name="checkbox_phone_off_desc">Elnémítja az összes telefon hangját.</string>
+    <string name="checkbox_phone_off_desc">A telefon összes hangjának némítása.</string>
     <string name="copy_prefix">másolata</string>
     <string name="crash_dialog_comment_prompt">Nem kötelező: Melyik művelet okozta a hibát?</string>
     <string name="crash_dialog_ok_toast">Köszönöm szépen a segítséget!</string>
-    <string name="crash_dialog_text">Sajnálom, hogy hiba történt. Segíthet megtalálni és kijavítani ezt a problémát, ha elküldi ezt a hibajelentést, és talán még további részleteket is tett.</string>
+    <string name="crash_dialog_text">Sajnálom, hogy hiba történt. Segíthet megtalálni és kijavítani ezt a problémát, ha elküldi ezt a hibajelentést, és talán még több részletet is tett.</string>
     <string name="crash_dialog_title">Zazen meditációs időzítő</string>
     <string name="crash_toast_text">Elnézést, belső hiba történt!</string>
     <string name="crash_user_email_label">Nem kötelező: Az Ön e-mail-címe a témával kapcsolatos kérdések vagy frissítések esetén.</string>
@@ -56,7 +56,7 @@
     <string name="desc_no_server_messages">A Hírek automatikus megjelenítése az alkalmazás indításakor</string>
     <string name="error_checking_for_server_messages">Hiba az új üzenetek lekérésekor.</string>
     <string name="gong_type">Gong hang</string>
-    <string name="help_sectionlist_text">Itt elnevezheti, leírhatja és szerkesztheti a munkamenet tartalmát.\n\n REORDERING\n Az elemek átrendezéséhez nyomja meg hosszan az elemet, és\n húzza az új pozícióba.\n\n DELETING\n Egy elem törléséhezPH____ mozgassa jobbra.PH____ EDIT\n Egy szakasz szerkesztéséhez érintse meg egyszer.\n\n ADD\n Új szakasz hozzáadásához nyomja meg a + gombot.</string>
+    <string name="help_sectionlist_text">Itt elnevezheti, leírhatja és szerkesztheti a munkamenet tartalmát.\n\nÚJRARENDELÉS\nA tételek átrendezéséhez nyomja meg hosszan a tételt és\nhúzza az új helyzetébe.\n\nTÖRLÉS\nElem törléséhez mozgassa jobbra.\n\nSZERKESZTÉS\nEgy szakasz szerkesztéséhez érintse meg egyszer.\n\nHOZZÁAD\nÚj szakasz hozzáadásához nyomja meg a + gombot.</string>
     <string name="help_sectionlist_title">Munkamenet szerkesztése</string>
     <string name="label_section_name">Szakasz neve</string>
     <string name="label_session_description">Munkamenet leírása</string>
@@ -74,7 +74,7 @@
     <string name="menu_settings">Beállítások elemre</string>
     <string name="minuten">Jegyzőkönyv</string>
     <string name="no_new_server_messages">Nincsenek új üzenetek.</string>
-    <string name="no_sections_in_session">Nem lehet elindítani a meditációt: A kiválasztott szekciónak nincsenek szakaszai.</string>
+    <string name="no_sections_in_session">Nem lehet\' elindítani a meditációt: A kiválasztott szekciónak nincsenek szakaszai.</string>
     <string name="no_session_exists">Nincs elindítható munkamenet. Kérjük, először hozzon létre egyet.</string>
     <string name="notification_text">Jelenleg egy Zazen Meditáció fut</string>
     <string name="notification_text_paused">A Zazen meditáció szünetelt</string>
@@ -92,7 +92,7 @@
     <string name="pref_mute_mode_vibrate_desc">Csak telefonhívásoknál és értesítéseknél rezeg (Android 7 (Nougat) rendszeren nem működik – úgy viselkedik, mint a Néma beállítás)</string>
     <string name="pref_mute_mode_vibrate_sound">Csengőhang és Rezgés</string>
     <string name="pref_mute_mode_vibrate_sound_desc">Csengőhang és rezgés lejátszása</string>
-    <string name="pref_muting">Némítási beállítások</string>
+    <string name="pref_muting">Némítás beállításai</string>
     <string name="pref_sum_backup">Mentse el a munkamenetek és a hangok biztonsági másolatát az SD-kártyára.</string>
     <string name="pref_sum_bad_removal">Az SD-kártya eltávolításra került anélkül, hogy először leválasztották volna.</string>
     <string name="pref_sum_checking">Az SD-kártya jelenleg ellenőrzés alatt áll</string>
@@ -118,24 +118,24 @@
     <string name="search_menu_title">Keresés</string>
     <string name="section_info_string_1_pl">%1$d Harangok</string>
     <string name="section_info_string_1_sg">1 Csengő</string>
-    <string name="section_info_string_2_pl">minden %1$d másodpercben</string>
+    <string name="section_info_string_2_pl">%1$d másodpercenként</string>
     <string name="section_info_string_2_sg">minden másodpercben</string>
     <string name="sekunden">Másodpercek</string>
     <string name="select_audio">Hangfájl kiválasztása</string>
     <string name="service_description">Egy futó Zazen meditáció</string>
     <string name="content_desc_drag_handle">Húzza át az átrendezéshez</string>
-    <string name="content_desc_section_actions">A szakasz műveletei</string>
+    <string name="content_desc_section_actions">Szakasz műveletek</string>
     <string name="content_desc_session_actions">Munkamenet műveletek</string>
     <string name="session_list_unnamed_entry">Névtelen munkamenet</string>
     <string name="status_bar_notification_info_overflow">999+</string>
     <string name="test_mute_perm_request">Az alkalmazás jelenleg nem tudja némítani a telefont. Megnyitja a beállításokat a módosításhoz?</string>
-    <string name="text_cant_mute">Telefonja nem engedi, hogy ez az alkalmazás elnémítsa. Tiltsa le a némítást az Alkalmazások beállításaiban, vagy engedélyezze a némítást a Telefonbeállításokban.</string>
-    <string name="text_no_notify_access_settings">Úgy tűnik, hogy a telefon nem rendelkezik a némítás engedélyezéséhez szükséges szabványos beállításokkal. Keresse meg manuálisan a \"Ne zavarjanak hozzáférés\" beállítást, és engedélyezze.</string>
+    <string name="text_cant_mute">Telefonja nem engedi, hogy ez az alkalmazás elnémítsa. Kapcsolja ki a némítást az Alkalmazások beállításaiban, vagy engedélyezze a némítást a Telefonbeállításokban.</string>
+    <string name="text_no_notify_access_settings">Úgy tűnik, hogy a telefon nem rendelkezik a némítás engedélyezéséhez szükséges szabványos beállításokkal. Keresse meg manuálisan a \"Ne zavarjanak hozzáférést\" beállítást, és engedélyezze.</string>
     <string name="text_no_sections">Nincsenek meghatározott szakaszok.</string>
     <string name="text_question_delete_session">Tényleg törli a kiválasztott munkamenetet?</string>
     <string name="theme">Téma</string>
     <string name="theme_dark">Sötét téma</string>
-    <string name="theme_desc">Válassza ki az alkalmazás világos vagy sötét megjelenését</string>
+    <string name="theme_desc">Válassza ki az alkalmazás megjelenését</string>
     <string name="theme_light">Fény téma</string>
     <string name="theme_system">Rendszer téma</string>
     <string name="theme_value_dark">dark</string>
@@ -152,10 +152,18 @@
     <string name="stop_meditation_title">Hagyja abba a meditációt?</string>
     <string name="stop_meditation_message">A meditáció még mindig tart.</string>
     <string name="stop_meditation_stop">Stop</string>
-    <string name="stop_meditation_cancel">Mégsem</string>
+    <string name="stop_meditation_cancel">Mégse</string>
     <string name="pref_title_bell_volume">Harang hangereje</string>
     <string name="pref_desc_bell_volume">Szabályozza a riasztási adatfolyam hangerejét a csengőhangokhoz</string>
     <string name="title_dim_bell">Dim Bell</string>
     <string name="dim_bell_label_off">Nincs halvány</string>
     <string name="dim_bell_label_format">Halványítva: %1$d0%%</string>
+    <string name="section_deleted">Törölve \'%s\'</string>
+    <string name="action_undo">Visszavonás</string>
+    <string name="notification_channel_name">Meditációs időzítő</string>
+    <string name="nav_label_sessions">Munkamenetek</string>
+    <string name="nav_label_meditation">Elmélkedés</string>
+    <string name="nav_label_edit_session">Munkamenet szerkesztése</string>
+    <string name="nav_label_edit_section">Szakasz szerkesztése</string>
+    <string name="nav_label_settings">Beállítások elemre</string>
 </resources>

@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="abbrechen">বাতিল করুন</string>
-    <string name="about1">Zazen Meditation Timer — A simple meditation timer with customizable sections, bell sounds, and session management.</string>
-    <string name="about2">Originally created by Stefan Gaffga. Currently maintained by Georg Graf.&lt;br&gt;&lt;br&gt;Thanks to Winfried of &lt;a href="http://www.meditationsuhren.de"&gt;http://www.meditationsuhren.de&lt;/a&gt; for providing such great Bell Sounds!</string>
-    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues"&gt;Report issues on GitHub&lt;/a&gt;</string>
-    <string name="app_description">This application lets the user define a set of meditation sessions and provides a timer with visual and audible feedback when a part or the whole meditation is over.</string>
+    <string name="about1">জাজেন মেডিটেশন টাইমার — কাস্টমাইজযোগ্য বিভাগ, ঘণ্টার শব্দ এবং সেশন ম্যানেজমেন্ট সহ একটি সাধারণ মেডিটেশন টাইমার।</string>
+    <string name="about2">মূলত স্টেফান গাফগা তৈরি করেছেন। বর্তমানে Georg Graf দ্বারা রক্ষণাবেক্ষণ করা হয়েছে৷&lt;br&gt;&lt;br&gt;এরকম দুর্দান্ত বেল সাউন্ড দেওয়ার জন্য &lt;a href="http://www.meditationsuhren.de"&gt;http://www.meditationsuhren.de&lt;/a&gt;-এর উইনফ্রিডকে ধন্যবাদ!</string>
+    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues"&gt;GitHub-এ সমস্যার প্রতিবেদন করুন&lt;/a&gt;</string>
+    <string name="app_description">এই অ্যাপ্লিকেশনটি ব্যবহারকারীকে মেডিটেশন সেশনের একটি সেট সংজ্ঞায়িত করতে দেয় এবং একটি অংশ বা পুরো ধ্যান শেষ হয়ে গেলে ভিজ্যুয়াল এবং শ্রবণযোগ্য প্রতিক্রিয়া সহ একটি টাইমার সরবরাহ করে।</string>
     <string name="app_name">Zazen Meditation Timer</string>
     <string name="appbar_scrolling_view_behavior">android.support.design.widget.AppBarLayout$ScrollingViewBehavior</string>
     <string name="backup_error_text">দুঃখিত, সংরক্ষণ করার সময় একটি ত্রুটি ঘটেছে৷</string>
     <string name="backup_no_permission">অনুপস্থিত অনুমতির কারণে ব্যাকআপ তৈরি করা যায়নি।</string>
     <string name="backup_not_createable">ব্যাকআপ ফাইল তৈরিতে ত্রুটি৷</string>
     <string name="backup_success_text">ব্যাকআপ সফলভাবে তৈরি হয়েছে!</string>
-    <string name="bell_name_1">High Tone</string>
-    <string name="bell_name_2">Low Tone</string>
-    <string name="bell_name_3">Jap. Rhinbowl Dharma, 107mm</string>
-    <string name="bell_name_4">Jap. Rhinbowl Dharma, 88mm (black, glazed)</string>
-    <string name="bell_name_5">Jap. Rhinbowl Shomyo, 90mm</string>
-    <string name="bell_name_6">Jap. Rhinbowl Tang, 164mm</string>
-    <string name="bell_name_7">Tib. Bowl, 230mm</string>
-    <string name="bell_name_8">Jap. Rhinbowl, 97mm</string>
+    <string name="bell_name_1">হাই টোন</string>
+    <string name="bell_name_2">লো টোন</string>
+    <string name="bell_name_3">জপ. রাইনবোল ধর্ম, 107 মিমি</string>
+    <string name="bell_name_4">জপ. Rhinbowl Dharma, 88mm (কালো, চকচকে)</string>
+    <string name="bell_name_5">জপ. Rhinbowl Shomyo, 90mm</string>
+    <string name="bell_name_6">জপ. Rhinbowl Tang, 164mm</string>
+    <string name="bell_name_7">টিব। বাটি, 230 মিমি</string>
+    <string name="bell_name_8">জপ. Rhinbowl, 97mm</string>
     <string name="bell_pause">বেল গ্যাপ (সেকেন্ড)</string>
     <string name="bell_user">বেল যোগ করুন...</string>
     <string name="bottom_nav_meditation">ধ্যান</string>
@@ -56,7 +56,7 @@
     <string name="desc_no_server_messages">অ্যাপ শুরু হলে স্বয়ংক্রিয়ভাবে সংবাদ দেখান</string>
     <string name="error_checking_for_server_messages">নতুন বার্তা আনার সময় ত্রুটি৷</string>
     <string name="gong_type">গং সাউন্ড</string>
-    <string name="help_sectionlist_text">এখানে আপনি আপনার সেশনের বিষয়বস্তুর নাম দিতে, বর্ণনা করতে এবং সম্পাদনা করতে পারেন।\n\n পুনরায় সাজানো\n আইটেমগুলিকে পুনরায় সাজাতে, একটি আইটেমের উপর দীর্ঘক্ষণ টিপুন এবং\n এটিকে তার নতুন অবস্থানে টেনে আনুন।\n\n মুছে ফেলা\n একটি আইটেম মুছতে, এটিকে ডানদিকে নিয়ে যান।\n\n সম্পাদনা\n একটি বিভাগ সম্পাদনা করতে, একটি নতুন বিভাগ যোগ করতে, শুধুমাত্র একবার স্পর্শ করুন।</string>
+    <string name="help_sectionlist_text">এখানে আপনি আপনার অধিবেশনের বিষয়বস্তুর নাম, বর্ণনা এবং সম্পাদনা করতে পারেন।\n\nপুনঃক্রম\nআইটেমগুলি পুনরায় সাজাতে, একটি আইটেমের উপর দীর্ঘক্ষণ টিপুন এবং৷\nএটিকে নতুন অবস্থানে টেনে আনুন।\n\nমুছে ফেলা হচ্ছে\nএকটি আইটেম মুছে ফেলার জন্য, এটি ডানদিকে সরান.\n\nসম্পাদনা করুন\nএকটি বিভাগ সম্পাদনা করতে, এটিকে একবার স্পর্শ করুন৷\n\nযোগ করুন\nএকটি নতুন বিভাগ যোগ করতে, + বোতাম টিপুন।</string>
     <string name="help_sectionlist_title">সেশন সম্পাদনা করুন</string>
     <string name="label_section_name">বিভাগের নাম</string>
     <string name="label_session_description">অধিবেশন বিবরণ</string>
@@ -74,7 +74,7 @@
     <string name="menu_settings">সেটিংস</string>
     <string name="minuten">মিনিট</string>
     <string name="no_new_server_messages">কোন নতুন বার্তা উপলব্ধ নেই.</string>
-    <string name="no_sections_in_session">মেডিটেশন শুরু করা যাচ্ছে না: নির্বাচিত সেশনে কোনো বিভাগ নেই।</string>
+    <string name="no_sections_in_session">\'মেডিটেশন শুরু করা যাবে না: নির্বাচিত সেশনে কোনো বিভাগ নেই।</string>
     <string name="no_session_exists">শুরু করা যাবে এমন কোনো সেশন নেই। প্রথমে একটি তৈরি করুন.</string>
     <string name="notification_text">একটি জাজেন মেডিটেশন বর্তমানে চলছে</string>
     <string name="notification_text_paused">জাজেন মেডিটেশন বিরতি</string>
@@ -117,7 +117,7 @@
     <string name="restore_success_text">ডেটা পুনরুদ্ধার সফল হয়েছে</string>
     <string name="search_menu_title">অনুসন্ধান করুন</string>
     <string name="section_info_string_1_pl">%1$d ঘণ্টা</string>
-    <string name="section_info_string_1_sg">1 ঘণ্টা</string>
+    <string name="section_info_string_1_sg">1 বেল</string>
     <string name="section_info_string_2_pl">প্রতি %1$d সেকেন্ডে</string>
     <string name="section_info_string_2_sg">প্রতি সেকেন্ড</string>
     <string name="sekunden">সেকেন্ড</string>
@@ -127,15 +127,15 @@
     <string name="content_desc_section_actions">বিভাগ কর্ম</string>
     <string name="content_desc_session_actions">অধিবেশন কর্ম</string>
     <string name="session_list_unnamed_entry">নামহীন অধিবেশন</string>
-    <string name="status_bar_notification_info_overflow">৯৯৯+</string>
+    <string name="status_bar_notification_info_overflow">999+</string>
     <string name="test_mute_perm_request">অ্যাপটিকে বর্তমানে আপনার ফোন নিঃশব্দ করার অনুমতি নেই। এটি পরিবর্তন করতে সেটিংস খুলবেন?</string>
     <string name="text_cant_mute">আপনার ফোন এই অ্যাপটিকে এটিকে নিঃশব্দ করার অনুমতি দেয় না। এই অ্যাপ সেটিংসে মিউট করা অক্ষম করুন বা আপনার ফোন সেটিংসে মিউট করার অনুমতি দিন।</string>
-    <string name="text_no_notify_access_settings">আপনার ফোনে নিঃশব্দ করার অনুমতি দেওয়ার জন্য মানক সেটিংস আছে বলে মনে হচ্ছে না। অনুগ্রহ করে ম্যানুয়ালি \&amp;quot;ডোন্ট ডিস্টার্ব অ্যাকসেস\&amp;quot; সেটিংস দেখুন এবং এটি সক্ষম করুন।</string>
+    <string name="text_no_notify_access_settings">আপনার ফোনে নিঃশব্দ করার অনুমতি দেওয়ার জন্য মানক সেটিংস আছে বলে মনে হচ্ছে না। অনুগ্রহ করে ম্যানুয়ালি দেখুন \"অ্যাক্সেস বিরক্ত করবেন না\" সেটিং এবং এটি সক্ষম করুন।</string>
     <string name="text_no_sections">কোন বিভাগ সংজ্ঞায়িত.</string>
     <string name="text_question_delete_session">সত্যিই নির্বাচিত সেশন মুছে ফেলবেন?</string>
     <string name="theme">থিম</string>
     <string name="theme_dark">ডার্ক থিম</string>
-    <string name="theme_desc">অ্যাপের হালকা বা গাঢ় চেহারা বেছে নিন</string>
+    <string name="theme_desc">অ্যাপের চেহারা বেছে নিন</string>
     <string name="theme_light">হালকা থিম</string>
     <string name="theme_system">সিস্টেম থিম</string>
     <string name="theme_value_dark">dark</string>
@@ -157,5 +157,13 @@
     <string name="pref_desc_bell_volume">ঘণ্টার শব্দের জন্য অ্যালার্ম স্ট্রিম ভলিউম নিয়ন্ত্রণ করে</string>
     <string name="title_dim_bell">আবছা বেল</string>
     <string name="dim_bell_label_off">আবছা না</string>
-    <string name="dim_bell_label_format">আবছা: %1$d0%%</string>
+    <string name="dim_bell_label_format">ম্লান: %1$d0%%</string>
+    <string name="section_deleted">মুছে ফেলা হয়েছে \'_%s_2__</string>
+    <string name="action_undo">পূর্বাবস্থায় ফেরান</string>
+    <string name="notification_channel_name">মেডিটেশন টাইমার</string>
+    <string name="nav_label_sessions">সেশন</string>
+    <string name="nav_label_meditation">ধ্যান</string>
+    <string name="nav_label_edit_session">সেশন সম্পাদনা করুন</string>
+    <string name="nav_label_edit_section">বিভাগ সম্পাদনা করুন</string>
+    <string name="nav_label_settings">সেটিংস</string>
 </resources>

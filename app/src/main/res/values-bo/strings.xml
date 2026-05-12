@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="abbrechen">ཕྱིར་འཐེན</string>
-    <string name="about1">Zazen Meditation Timer — A simple meditation timer with customizable sections, bell sounds, and session management.</string>
-    <string name="about2">Originally created by Stefan Gaffga. Currently maintained by Georg Graf.&lt;br&gt;&lt;br&gt;Thanks to Winfried of &lt;a href="http://www.meditationsuhren.de"&gt;http://www.meditationsuhren.de&lt;/a&gt; for providing such great Bell Sounds!</string>
-    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues"&gt;Report issues on GitHub&lt;/a&gt;</string>
-    <string name="app_description">This application lets the user define a set of meditation sessions and provides a timer with visual and audible feedback when a part or the whole meditation is over.</string>
+    <string name="about1">Zazen Meditation Timer - རང་བཞིན་སྒྲིག་ཐུབ་པའི་ཆ་ཤས་དང་། སྒྲ་དང་དུས་སྟོན་འཛིན་སྐྱོང་ཡོད་པའི་རང་བཞིན །</string>
+    <string name="about2">Stefan Gaffgaགྱིས་བཀོད་པ ། ད་ལྟ་ཇོ་རེཇ་གྷ་རེཕ་ཀྱིས་བདག་སྐྱོང་བྱས་ཡོད །&lt;br&gt;&lt;br&gt;Winfried &lt;a href="http://www.meditationsuhren.de"&gt;&lt;/a&gt; of http://www.meditationsuhren.de བཀའ་དྲིན་ཆེ་ཞུ་རྒྱུ་ཡིན །</string>
+    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues"&gt;ཕྱོགས་སྟོན ། གཙོ་ངོས ། "རྩོམ་རིག"&lt;/a&gt;</string>
+    <string name="app_description">ལག་ལེན་འདི་ཡིས་ལག་ལེན་པ་ཚོར་བསམ་བློ་གཏོང་བའི་ལས་རིམ་གྱི་རིམ་པ་ཞིག་གཏན་འབེབས་བྱེད་དུ་འཇུག་པ་དང་། ཡང་བསམ་བློ་གཏོང་བའི་ལས་རིམ་གང་ཞིག་དང་ཡང་ན་ཆ་ཚང་ཞིག་མཇུག་བསྡུ་བའི་སྐབས་མཐོང་ཐོས་དང་མཐོང་ཐོས་ཀྱི་ལན་འདེབས་ཀྱི་དུས་ཚོད་གཏན་འབེབས་བྱེད་དུ་འཇུག་པ་ཡོད །</string>
     <string name="app_name">Zazen Meditation Timer</string>
     <string name="appbar_scrolling_view_behavior">android.support.design.widget.AppBarLayout$ScrollingViewBehavior</string>
     <string name="backup_error_text">དགོས་མཁོ་ཆེན་པོ་ཞིག་རེད ། འོན་ཀྱང་དུས་སྐབས་དེར་ནོར་འཁྲུལ་ཞིག་བྱུང་ཡོད །</string>
     <string name="backup_no_permission">ཆོག་འཆན་མེད་པས་རྒྱབ་སྐྱོར་བཟོ་མ་ཐུབ་པ</string>
     <string name="backup_not_createable">རྒྱབ་སྐྱོར་ཡིག་ཆ་བཟོ་བཞིན་པའི་འཛོལ་བ་རེད །</string>
     <string name="backup_success_text">རྒྱབ་སྐྱོར་ལམ་ལྷོང་བྱུང་བ!</string>
-    <string name="bell_name_1">High Tone</string>
-    <string name="bell_name_2">Low Tone</string>
-    <string name="bell_name_3">Jap. Rhinbowl Dharma, 107mm</string>
-    <string name="bell_name_4">Jap. Rhinbowl Dharma, 88mm (black, glazed)</string>
-    <string name="bell_name_5">Jap. Rhinbowl Shomyo, 90mm</string>
-    <string name="bell_name_6">Jap. Rhinbowl Tang, 164mm</string>
-    <string name="bell_name_7">Tib. Bowl, 230mm</string>
-    <string name="bell_name_8">Jap. Rhinbowl, 97mm</string>
+    <string name="bell_name_1">སྒྲ་དབྱངས་མཐོ་པོ །</string>
+    <string name="bell_name_2">འོག་ངོས །</string>
+    <string name="bell_name_3">ཇ་པ. རིན་པོ་ལར་དྷར་མཱ་, 107mm</string>
+    <string name="bell_name_4">JAP. Rhinbowl Dharma, 88mm (དཀར་པོ ། འོད་དཀར་པོ །)</string>
+    <string name="bell_name_5">JAP. Rhinbowl Shomyo, 90mm</string>
+    <string name="bell_name_6">JAP. Rhinbowl Tang, 164mm</string>
+    <string name="bell_name_7">སྦྲང་ཆར ། སྦྲང་ཆར ། 230mm</string>
+    <string name="bell_name_8">JAP. Rhinbowl, 97mm</string>
     <string name="bell_pause">འོད་ཁམས ། (SEC)</string>
     <string name="bell_user">སྒྲོན་མེ །</string>
     <string name="bottom_nav_meditation">ཏིང་ངེ་འཛིན།</string>
@@ -56,7 +56,7 @@
     <string name="desc_no_server_messages">ལག་ལེན་འགོ་འཛུགས་སྐབས་འཕྲིན་གསར ། རང་བཞིན་གྱིས་སྟོན་པ</string>
     <string name="error_checking_for_server_messages">འཕྲིན་གསར །</string>
     <string name="gong_type">སྒྲ་དབྱངས་ཁང་།</string>
-    <string name="help_sectionlist_text">དྲ་ངོས་འདི་ཡི་བཟོ་བཅོས་མཐའ་མ་འདི་ཡི་བཟོ་བཅོས་མཐའ་མ་ལ །\n\nབསྐྱར་སྒྲིག\nདངོས་པོ་རྣམས་ཕྱིར་སློག་བྱེད་ཕྱིར་དང་། དངོས་པོ་ཞིག་གི་སྟེང་དུ་ཡུན་རིང་པོར་ཨེབ་གནང །\nཁོ་ལ་གོ་གནས་གསར་དུ་བསྐོ་གཞག་བྱེད་དགོས །\n\nབསུབ་པ\nདངོས་པོ་ཞིག་ཕྱིར་འབུད་བྱེད་ན ། དེ་དག་གཡས་ཕྱོགས་སུ་སྤོར་དགོས །\n\nབཅོས\nཕྱོགས་རིས་བསྒྱུར་བའི་ཆེད་དུ་ཐེངས་གཅིག་ལ་རེག་དགོས །\n\nསྣོན།\nསྡེ་ཚན་གསར་པ་ཞིག་སྣེ་ལེན་བྱེད་ན ། + བཏོན་པ་དེ་ཨེབ་གནང །</string>
+    <string name="help_sectionlist_text">དྲ་ངོས་འདི་ཡི་བཟོ་བཅོས་མཐའ་མ་འདི་ཡི་བཟོ་བཅོས་མཐའ་མ་ལ །\n\nབསྐྱར་སྒྲིག\nདངོས་པོ་རྣམས་ཕྱིར་སློག་བྱེད་པ ། དངོས་པོ་ཞིག་གི་སྟེང་དུ་ཡུན་རིང་པོར་ཨེབ་གཏང་བྱེད་པ །\nཁོ་ཡི་གོ་གནས་གསར་དུ་བསྐྱོད་ཅིག\n\nབསུབ་པ\nདངོས་པོ་ཞིག་ཕྱིར་འབུད་བྱེད་ན ། དེ་དག་གཡས་ཕྱོགས་སུ་སྤོར་དགོས །\n\nབཅོས\nཕྱོགས་རིས་བསྒྱུར་བའི་ཆེད་དུ་ཐེངས་གཅིག་ལ་རེག་དགོས །\n\nསྣོན།\nསྡེ་ཚན་གསར་པ་ཞིག་སྣེ་ལེན་བྱེད་ན ། + བཏོན་པ་དེ་ཨེབ་གནང །</string>
     <string name="help_sectionlist_title">ཚོགས་འདུ ། བསྒྱུར་བཅོས་བྱེད་པ</string>
     <string name="label_section_name">ཡན་ལག་མིང་།</string>
     <string name="label_session_description">ཚོགས་འདུའི་འགྲེལ་བཤད</string>
@@ -75,12 +75,12 @@
     <string name="minuten">སྐར་མ །</string>
     <string name="no_new_server_messages">འཕྲིན་ཡིག་གསར་པ་གང་ཡང་མ་འབྱོར་བ་རེད །</string>
     <string name="no_sections_in_session">Can __ 0_t བསམ་བློའི་འགོ་འཛུགས །: གདམ་ཁ་ཅན་གྱི་དུས་སྟོན་ལ་ཆ་ཤས་གང་ཡང་མེད །</string>
-    <string name="no_session_exists">ཚོགས་ཐེངས་གཅིག་ཀྱང་མ་འགོ་ཚུགས་སོ ། ཐོག་མར་གཅིག་བཟོས་ཤིག</string>
+    <string name="no_session_exists">ཚོགས་ཐེངས་གཅིག་ཀྱང་མ་འགོ་འཛུགས་སོ ། ཐོག་མར་གཅིག་བཟོས་ཤིག</string>
     <string name="notification_text">དུས་སྐབས་དེར་བསམ་བློ་གཏོང་རྒྱུ་དེ་ཧ་ཅང་ཁག་པོ་རེད །</string>
     <string name="notification_text_paused">བསམ་བློ་གཏོང་རྒྱུ་མཚམས་འཇོག་བྱས་པ །</string>
     <string name="notification_title">རང་བཞིན་གྱི་བསམ་བློ་གཏོང་།</string>
     <string name="notification_title_paused">རང་བཞིན་གྱི་བསམ་བློ་གཏོང་བ ། (འགོག་པ །)</string>
-    <string name="num_bells">གླེགས་བམ་རྩིས་ཁྲིད །</string>
+    <string name="num_bells">རྩིས་ཁྲིད །</string>
     <string name="ok">འགྲིགས།</string>
     <string name="pref_desc_brightness">བསམ་བློ་གཏོང་བའི་སྐབས་ཀྱི་གསལ་སྒྲགས་ཀྱི་གསལ་སྒྲགས་</string>
     <string name="pref_get_messages">འཕྲིན་གསར</string>
@@ -105,10 +105,10 @@
     <string name="pref_title_backup">རྒྱབ་སྐྱོར་བཟོ</string>
     <string name="pref_title_brightness">འོད་ཁམས །</string>
     <string name="pref_title_restore">Backupནས་སླར་གསོ་བྱེད་པ</string>
-    <string name="privacy_message">འདི་ཡིས་མི་སྣའི་ཡིག་ཆ་གང་ཡང་མི་བསྡུ་བ ། ཡང་ན་IP Address ཡང་ན་གཞན་འབྲེལ་ཡོད་རིག་པའི་ཡིག་ཆ་གང་ཡང་མི་ལག་ལེན་པ ། ཡང་ན་གང་ཡང་མི་བསྡུ་བ ། བྱ་བ་སྤྱོད་པ ། ཡང་ན་ལག་ལེན་བྱེད་པའོ །</string>
+    <string name="privacy_message">འདི་ཡིས་མི་སྣའི་ཡིག་ཆ་གང་ཡང་མི་བསྡུ་བ ། ཡང་ན་IP Address ཡང་ན་གཞན་འབྲེལ་ཡོད་ལག་རྩལ་གྱི་ཡིག་ཆ་གང་ཡང་མི་ལག་ལེན་པ ། ཡང་ན་གང་ཡང་མི་བསྡུ་བ ། བྱ་བ་སྤྱོད་པ ། ཡང་ན་ལག་ལེན་བྱེད་པའོ །</string>
     <string name="privacy_ok">འགྲིགས།</string>
     <string name="privacy_title">གསང་སྤྱོད་ཤེས་བྱ །</string>
-    <string name="really_stop">ཁྱོད་ཀྱིས་བསམ་བློ་གཏོང་རྒྱུ་མཚམས་འཇོག་བྱེད་ཀྱི་ཡོད་དམ །</string>
+    <string name="really_stop">ཁྱོད་ཀྱིས་བསམ་བློ་གཏོང་རྒྱུ་མཚམས་འཇོག་བྱེད་དམ་ཞེ་ན་མི་ཐུབ །</string>
     <string name="restore_backup_not_found">རྒྱབ་སྐྱོར་ཡིག་ཆ་རྙེད་མ་བྱུང་།</string>
     <string name="restore_error_text">Backupནས་བསྐྱར་གསོ་བྱེད་པའི་འཛོལ་བ་</string>
     <string name="restore_no_permission">ངོས་ལེན་མེད་པའི་རྐྱེན་གྱིས་སླར་གསོ་བྱེད་མ་ཐུབ་བོ །</string>
@@ -129,13 +129,13 @@
     <string name="session_list_unnamed_entry">མིང་མེད་པའི་ཚོགས་ཆེན །</string>
     <string name="status_bar_notification_info_overflow">999+</string>
     <string name="test_mute_perm_request">ད་ལྟའི་སྐབས་ཀྱི་ལག་ལེན་དེ་ཁྱོད་ཀྱི་ཁ་པར་ཁ་པར་གཏོང་མི་ཐུབ ། གནས་སྟངས་དེ་བསྒྱུར་ཐུབ་བམ །</string>
-    <string name="text_cant_mute">ཁྱོད་ཀྱི་ཁ་པར་གློག་འཕྲིན་འདི་འགོག་མི་ཐུབ ། སྒྲིག་འཇུག་བྱས་ཚད ། ཐེངས་10 ལས་ཉུང་བ ། ཐོན་རིམ་5.7.1 ནང་དུ་ཚོད་ལྟ་བྱས་ཟིན ། ཟླ 6 སྔོན་ལ་གསར་བཅོས་བྱས །</string>
+    <string name="text_cant_mute">ཁྱོད་ཀྱི་ཁ་པར་འདི་ཡི་ལག་ལེན་དེ་འགོག་མི་ཐུབ ། སྒྲིག་འཇུག་བྱས་ཚད ། ཐེངས་10 ལས་ཉུང་བ ། ཐོན་རིམ་5.7.1 ནང་དུ་ཚོད་ལྟ་བྱས་ཟིན ། ཟླ 6 སྔོན་ལ་གསར་བཅོས་བྱས །</string>
     <string name="text_no_notify_access_settings">ཁྱོད་ཀྱི་ཁ་པར་ཁ་བསྒྱུར་བྱེད་ནུས་པའི་རྒྱུན་ལྡན་སྒྲིག་གཞི་མེད་པ་མཐོང་། ལག་པས་གཟིགས་རོགས་གནང་། __ 0 __ Access __ 1 __ སྒྲིག་འཇུག་བྱས་ཚད ། ཐེངས་1 ལས་ཉུང་བ ། ཐོན་རིམ་5.7.1 ནང་དུ་ཚོད་ལྟ་བྱས་ཟིན ། ཟླ 1 སྔོན་ལ་གསར་བཅོས་བྱས །</string>
     <string name="text_no_sections">རྒྱས་བཤད་གསལ་བཤད་མེད་པ །</string>
     <string name="text_question_delete_session">བདམས་ཟིན་པའི་ཚོགས་འདུ་དེ་དངོས་གནས་ཕྱིར་འབུད་བྱེད་ཀྱི་ཡོད་དམ །</string>
     <string name="theme">དཔེ་པང་།</string>
     <string name="theme_dark">མུན་པའི་རྣམ་གཞག</string>
-    <string name="theme_desc">འོད་ཁམས ། ཡང་ན་མུན་པའི་རྣམ་པ་གདམ་ཁ་བྱེད་དགོས །</string>
+    <string name="theme_desc">སྒྲིག་འཇུག་བྱས་ཚད ། ཐེངས་10 ལས་ཉུང་བ ། ཐོན་རིམ་5.7.1</string>
     <string name="theme_light">གནད་དོན་འཇམ་ཏོང་ཏོ་</string>
     <string name="theme_system">གནད་ཚིག</string>
     <string name="theme_value_dark">dark</string>
@@ -158,4 +158,12 @@
     <string name="title_dim_bell">སྒྲོན་མེ །</string>
     <string name="dim_bell_label_off">མུན་པ་མི་འབྱུང་།</string>
     <string name="dim_bell_label_format">_{0_0_0_1_1}</string>
+    <string name="section_deleted">ཕྱིར་འཐེན་བྱས་པ །(1) ཕྱིར་འཐེན་བྱས་པ ། (2) ཕྱིར་འཐེན་བྱས་པ །</string>
+    <string name="action_undo">ཕྱིར་འཐེན(_U)</string>
+    <string name="notification_channel_name">བསམ་བློའི་དུས་ཚོད །</string>
+    <string name="nav_label_sessions">ཐུན།</string>
+    <string name="nav_label_meditation">ཏིང་ངེ་འཛིན།</string>
+    <string name="nav_label_edit_session">ཚོགས་འདུ ། བསྒྱུར་བཅོས་བྱེད་པ</string>
+    <string name="nav_label_edit_section">སྡེ་ཚན ། བསྒྱུར་བཅོས་བྱེད་པ</string>
+    <string name="nav_label_settings">སྒྲིག་བཀོད</string>
 </resources>

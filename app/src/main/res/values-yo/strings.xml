@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="abbrechen">Fagilee</string>
-    <string name="about1">Zazen Meditation Timer — A simple meditation timer with customizable sections, bell sounds, and session management.</string>
-    <string name="about2">Originally created by Stefan Gaffga. Currently maintained by Georg Graf.&lt;br&gt;&lt;br&gt;Thanks to Winfried of &lt;a href="http://www.meditationsuhren.de"&gt;http://www.meditationsuhren.de&lt;/a&gt; for providing such great Bell Sounds!</string>
-    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues"&gt;Report issues on GitHub&lt;/a&gt;</string>
-    <string name="app_description">This application lets the user define a set of meditation sessions and provides a timer with visual and audible feedback when a part or the whole meditation is over.</string>
+    <string name="about1">Aago Iṣaro Zazen - Aago iṣaro ti o rọrun pẹlu awọn apakan isọdi, awọn ohun agogo, ati iṣakoso igba.</string>
+    <string name="about2">Ni akọkọ da nipa Stefan Gaffga. Lọwọlọwọ itọju rẹ nipasẹ Georg Graf.&lt;br&gt;&lt;br&gt;O ṣeun si Winfried ti &lt;a href="http://www.meditationsuhren.de"&gt;http://www.meditationsuhren.de&lt;/a&gt; fun ipese iru Awọn ohun Bell nla!</string>
+    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues"&gt;Ijabọ awọn oran lori GitHub&lt;/a&gt;</string>
+    <string name="app_description">Ohun elo yii jẹ ki olumulo ṣalaye ṣeto awọn akoko iṣaroye ati pese aago kan pẹlu wiwo ati esi ti o gbọ nigbati apakan kan tabi gbogbo iṣaro ba pari.</string>
     <string name="app_name">Zazen Meditation Timer</string>
     <string name="appbar_scrolling_view_behavior">android.support.design.widget.AppBarLayout$ScrollingViewBehavior</string>
     <string name="backup_error_text">Ma binu, Aṣiṣe waye lakoko fifipamọ.</string>
     <string name="backup_no_permission">Ko le ṣẹda afẹyinti nitori awọn igbanilaaye ti o padanu.</string>
     <string name="backup_not_createable">Aṣiṣe ṣiṣẹda faili afẹyinti.</string>
     <string name="backup_success_text">Afẹyinti ṣẹda ni aṣeyọri!</string>
-    <string name="bell_name_1">High Tone</string>
-    <string name="bell_name_2">Low Tone</string>
+    <string name="bell_name_1">Ohun orin giga</string>
+    <string name="bell_name_2">Ohun orin kekere</string>
     <string name="bell_name_3">Jap. Rhinbowl Dharma, 107mm</string>
-    <string name="bell_name_4">Jap. Rhinbowl Dharma, 88mm (black, glazed)</string>
+    <string name="bell_name_4">Jap. Rhinbowl Dharma, 88mm (dudu, didan)</string>
     <string name="bell_name_5">Jap. Rhinbowl Shomyo, 90mm</string>
     <string name="bell_name_6">Jap. Rhinbowl Tang, 164mm</string>
-    <string name="bell_name_7">Tib. Bowl, 230mm</string>
+    <string name="bell_name_7">Tib. Ekan, 230mm</string>
     <string name="bell_name_8">Jap. Rhinbowl, 97mm</string>
     <string name="bell_pause">Alafo agogo (aaya)</string>
     <string name="bell_user">Fi Bell kun...</string>
@@ -32,7 +32,7 @@
     <string name="checkbox_keep_screen_on">Jeki iboju lori</string>
     <string name="checkbox_no_server_messages">Ṣe afihan Awọn iroyin</string>
     <string name="checkbox_phone_off">Pa foonu lẹnu</string>
-    <string name="checkbox_phone_off_desc">Pa gbogbo awọn ohun foonu mu.</string>
+    <string name="checkbox_phone_off_desc">Pa gbogbo awọn ohun foonu pa.</string>
     <string name="copy_prefix">Ẹda ti</string>
     <string name="crash_dialog_comment_prompt">Yiyan: Iṣe wo ni o fa aṣiṣe naa?</string>
     <string name="crash_dialog_ok_toast">O ṣeun pupọ fun iranlọwọ rẹ!</string>
@@ -56,7 +56,7 @@
     <string name="desc_no_server_messages">Ṣe afihan Awọn iroyin ni aifọwọyi nigbati App ba bẹrẹ</string>
     <string name="error_checking_for_server_messages">Aṣiṣe gbigba awọn ifiranṣẹ titun.</string>
     <string name="gong_type">Ohun Gong</string>
-    <string name="help_sectionlist_text">Nibi o le lorukọ, ṣapejuwe ati satunkọ awọn akoonu inu Ikoni rẹ. ọtun.\n\n EDIT\n Lati ṣatunkọ apakan kan, kan fọwọkan lẹẹkan.</string>
+    <string name="help_sectionlist_text">Nibi o le lorukọ, ṣapejuwe ati ṣatunkọ awọn akoonu inu Ikoni rẹ.\n\nAtunṣe\nLati tun awọn ohun kan to, tẹ gun lori ohun kan ati\nfa si ipo titun rẹ.\n\nNPAPA\nLati pa ohun kan rẹ, gbe lọ si apa ọtun.\n\nṢatunkọ\nLati ṣatunkọ apakan kan, kan fi ọwọ kan lẹẹkan.\n\nFIKÚN\nLati ṣafikun apakan tuntun, tẹ bọtini + +.</string>
     <string name="help_sectionlist_title">Ikoni Ṣatunkọ</string>
     <string name="label_section_name">Orukọ apakan</string>
     <string name="label_session_description">Apejuwe Ikoni</string>
@@ -74,7 +74,7 @@
     <string name="menu_settings">Eto</string>
     <string name="minuten">Iṣẹju</string>
     <string name="no_new_server_messages">Ko si awọn ifiranṣẹ titun wa.</string>
-    <string name="no_sections_in_session">Ko le bẹrẹ Iṣaro: Ikoni ti o yan ko ni Awọn apakan eyikeyi.</string>
+    <string name="no_sections_in_session">Le\'t bẹrẹ Iṣaro: Ikoni ti o yan ko ni Awọn apakan eyikeyi.</string>
     <string name="no_session_exists">Ko si igba ti o le bẹrẹ. Jọwọ ṣẹda ọkan akọkọ.</string>
     <string name="notification_text">Iṣaro Zazen kan nṣiṣẹ lọwọlọwọ</string>
     <string name="notification_text_paused">Iṣaro Zazen da duro</string>
@@ -94,7 +94,7 @@
     <string name="pref_mute_mode_vibrate_sound_desc">Mu ohun orin ipe ati gbigbọn ṣiṣẹ</string>
     <string name="pref_muting">Parẹ Awọn Eto</string>
     <string name="pref_sum_backup">Ṣafipamọ afẹyinti ti Awọn akoko ati Awọn ohun si kaadi SD rẹ.</string>
-    <string name="pref_sum_bad_removal">Kaadi SD ti yọkuro laisi ṣiṣi silẹ ni akọkọ.</string>
+    <string name="pref_sum_bad_removal">Kaadi SD ti yọ kuro laisi ṣiṣi silẹ ni akọkọ.</string>
     <string name="pref_sum_checking">SD-Kaadi ti wa ni ẹnikeji ni akoko</string>
     <string name="pref_sum_ejecting">SD-Kaadi ti wa ni jade</string>
     <string name="pref_sum_nofs">Ko si Eto faili lori kaadi SD</string>
@@ -129,13 +129,13 @@
     <string name="session_list_unnamed_entry">Apero ti a ko darukọ</string>
     <string name="status_bar_notification_info_overflow">999+</string>
     <string name="test_mute_perm_request">Ohun elo naa ko gba laaye lọwọlọwọ lati pa foonu rẹ dakẹ. Ṣii awọn eto lati yi eyi pada?</string>
-    <string name="text_cant_mute">Foonu rẹ ko gba laaye App yii lati pa ẹnu rẹ mọ. Muu dakẹ ninu Eto Awọn ohun elo yi tabi jẹ ki o dakẹ ninu Eto Awọn foonu rẹ.</string>
-    <string name="text_no_notify_access_settings">Foonu rẹ ko dabi pe o ni awọn eto boṣewa lati gba dakẹjẹẹ laaye. Jọwọ wo pẹlu ọwọ fun \&amp;quot;Maṣe Daju Wiwọle&amp;quot; Ṣiṣeto ki o si muu ṣiṣẹ.</string>
+    <string name="text_cant_mute">Foonu rẹ ko gba App yii laaye lati dakẹ. Muu dakẹ ninu Eto Awọn ohun elo yi tabi jẹ ki o dakẹ ninu Eto Awọn foonu rẹ.</string>
+    <string name="text_no_notify_access_settings">Foonu rẹ ko dabi pe o ni awọn eto boṣewa lati gba dakẹjẹẹ laaye. Jọwọ wa pẹlu ọwọ fun Eto \"Maṣe Daru Wiwọle \" Eto ati muu ṣiṣẹ.</string>
     <string name="text_no_sections">Ko si Awọn apakan asọye.</string>
     <string name="text_question_delete_session">Ṣe paarẹ Ikoni ti o yan bi?</string>
     <string name="theme">Akori</string>
     <string name="theme_dark">Akori Dudu</string>
-    <string name="theme_desc">Yan imọlẹ tabi irisi dudu ti App naa</string>
+    <string name="theme_desc">Yan irisi app naa</string>
     <string name="theme_light">Akori Imọlẹ</string>
     <string name="theme_system">Akori eto</string>
     <string name="theme_value_dark">dark</string>
@@ -158,4 +158,12 @@
     <string name="title_dim_bell">Dim Bell</string>
     <string name="dim_bell_label_off">Ko dimmed</string>
     <string name="dim_bell_label_format">Dimmed: %1$d0%%</string>
+    <string name="section_deleted">Parẹ \'%s\'</string>
+    <string name="action_undo">Yipada</string>
+    <string name="notification_channel_name">Aago Iṣaro</string>
+    <string name="nav_label_sessions">Awọn akoko</string>
+    <string name="nav_label_meditation">Iṣaro</string>
+    <string name="nav_label_edit_session">Ikoni Ṣatunkọ</string>
+    <string name="nav_label_edit_section">Abala Ṣatunkọ</string>
+    <string name="nav_label_settings">Eto</string>
 </resources>

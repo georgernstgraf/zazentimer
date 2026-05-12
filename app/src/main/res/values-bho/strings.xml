@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="abbrechen">मना कइ दीं</string>
-    <string name="about1">Zazen Meditation Timer — A simple meditation timer with customizable sections, bell sounds, and session management.</string>
-    <string name="about2">Originally created by Stefan Gaffga. Currently maintained by Georg Graf.&lt;br&gt;&lt;br&gt;Thanks to Winfried of &lt;a href="http://www.meditationsuhren.de"&gt;http://www.meditationsuhren.de&lt;/a&gt; for providing such great Bell Sounds!</string>
-    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues"&gt;Report issues on GitHub&lt;/a&gt;</string>
-    <string name="app_description">This application lets the user define a set of meditation sessions and provides a timer with visual and audible feedback when a part or the whole meditation is over.</string>
+    <string name="about1">ज़ाज़ेन मेडिटेशन टाइमर — एगो साधारण मेडिटेशन टाइमर जवना में अनुकूलन योग्य खंड, घंटी के आवाज, आ सत्र प्रबंधन होला।</string>
+    <string name="about2">मूल रूप से स्टीफन गफगा द्वारा बनावल गइल बा। वर्तमान में जॉर्ज ग्राफ द्वारा रखरखाव कइल जाला।&lt;br&gt;&lt;br&gt;अतना बढ़िया बेल साउंड्स उपलब्ध करावे खातिर &lt;a href="http://www.meditationsuhren.de"&gt;http://www.meditationsuhren.de&lt;/a&gt; के विनफ्राइड के धन्यवाद!</string>
+    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues"&gt;गिटहब पर मुद्दा के रिपोर्ट करीं&lt;/a&gt;</string>
+    <string name="app_description">ई एप्लीकेशन यूजर के मेडिटेशन सत्र के सेट परिभाषित करे के सुविधा देला आ जब कवनो हिस्सा भा पूरा मेडिटेशन खतम हो जाला त दृश्य आ श्रव्य प्रतिक्रिया के साथ टाइमर देला।</string>
     <string name="app_name">Zazen Meditation Timer</string>
     <string name="appbar_scrolling_view_behavior">एंड्रॉयड.सपोर्ट.डिजाइन.विजेट.एपबारलेआउट $ स्क्रॉलिंगव्यूबिहेवियर बा</string>
     <string name="backup_error_text">माफ करीं, सहेजत घरी एगो Error भइल।</string>
     <string name="backup_no_permission">अनुमति गायब होखला के चलते बैकअप ना बनावल जा सकल।</string>
     <string name="backup_not_createable">बैकअप फाइल बनावे में त्रुटि भइल।</string>
     <string name="backup_success_text">बैकअप सफलतापूर्वक बनावल गइल!</string>
-    <string name="bell_name_1">High Tone</string>
-    <string name="bell_name_2">Low Tone</string>
-    <string name="bell_name_3">Jap. Rhinbowl Dharma, 107mm</string>
-    <string name="bell_name_4">Jap. Rhinbowl Dharma, 88mm (black, glazed)</string>
-    <string name="bell_name_5">Jap. Rhinbowl Shomyo, 90mm</string>
-    <string name="bell_name_6">Jap. Rhinbowl Tang, 164mm</string>
-    <string name="bell_name_7">Tib. Bowl, 230mm</string>
-    <string name="bell_name_8">Jap. Rhinbowl, 97mm</string>
+    <string name="bell_name_1">हाई टोन के बा</string>
+    <string name="bell_name_2">कम टोन के बा</string>
+    <string name="bell_name_3">जाप के बा। स्फटिक धर्म, 107 मिमी के बा</string>
+    <string name="bell_name_4">जाप के बा। स्फटिक धर्म, 88 मिमी (काला, ग्लेज़ेड) के बा।</string>
+    <string name="bell_name_5">जाप के बा। स्फटिक शोम्यो, 90 मिमी के बा</string>
+    <string name="bell_name_6">जाप के बा। स्फटिक तांग, 164 मिमी के बा</string>
+    <string name="bell_name_7">टिब के बा। कटोरा, 230 मिमी के बा</string>
+    <string name="bell_name_8">जाप के बा। स्फटिक, 97 मिमी के बा</string>
     <string name="bell_pause">घंटी के अंतराल (सेकंड) के बा।</string>
     <string name="bell_user">बेल जोड़ल जाव...</string>
     <string name="bottom_nav_meditation">समाधि</string>
@@ -36,7 +36,7 @@
     <string name="copy_prefix">के प्रतिलिपि बा</string>
     <string name="crash_dialog_comment_prompt">वैकल्पिक: कवन कार्रवाई से त्रुटि भइल?</string>
     <string name="crash_dialog_ok_toast">रउरा सभे के मदद खातिर बहुत बहुत धन्यवाद!</string>
-    <string name="crash_dialog_text">माफ करीं, कि कवनो गलती हो गइल बा. रउआँ ई बग रिपोर्ट भेज के आ शायद रउआँ जवन कइले बानी ओकरा बारे में अउरी बिस्तार से एह मुद्दा के खोजे आ ठीक करे में मदद कर सकेनी।</string>
+    <string name="crash_dialog_text">माफी चाहत बानी, कि कवनो गलती हो गइल बा. रउआँ ई बग रिपोर्ट भेज के आ शायद रउआँ जवन कइले बानी ओकरा बारे में अउरी बिस्तार से एह मुद्दा के खोजे आ ठीक करे में मदद कर सकेनी।</string>
     <string name="crash_dialog_title">ज़ाज़ेन मेडिटेशन टाइमर के बा</string>
     <string name="crash_toast_text">माफ करीं - एगो आंतरिक त्रुटि हो गइल बा!</string>
     <string name="crash_user_email_label">वैकल्पिक: एह मुद्दा पर सवाल भा अपडेट खातिर राउर ईमेल-पता।</string>
@@ -56,7 +56,7 @@
     <string name="desc_no_server_messages">जब ऐप शुरू हो जाला त स्वचालित रूप से News देखावल जाला</string>
     <string name="error_checking_for_server_messages">नया संदेश ले आवे में त्रुटि भइल.</string>
     <string name="gong_type">गोंग साउंड के बा</string>
-    <string name="help_sectionlist_text">इहाँ रउआ अपना सत्र के सामग्री के नाम, वर्णन आ संपादन कर सकेनी।\n\n REORDERING\n आइटम के फिर से क्रमबद्ध करे खातिर, कवनो आइटम पर लंबा दबाईं आ\n ओकरा के ओकर नया स्थिति में खींची।\n\n DELETING\n कवनो आइटम के हटावे खातिर, ओकरा के... right.\n\n EDIT\n कवनो खंड के संपादित करे खातिर, बस एक बेर ओकरा के छूईं।\n\n ADD\n नया खंड जोड़े खातिर, + बटन दबाईं।</string>
+    <string name="help_sectionlist_text">इहाँ रउआँ अपना सत्र के सामग्री के नाम, वर्णन आ संपादन कर सकेनी।\n\nरिऑर्डरिंग कइल जा रहल बा\nआइटम के फेर से क्रमबद्ध करे खातिर कवनो आइटम पर लंबा दबाव डालीं आ...\nओकरा के अपना नया स्थिति में घसीटत बानी।\n\nडिलीट हो रहल बा\nकवनो आइटम के हटावे खातिर ओकरा के दाहिने ओर ले जाईं.\n\nसंपादन कईल\nकवनो खंड के संपादित करे खातिर बस एक बेर ओकरा के छूईं.\n\nजोड़ल\nनया खंड जोड़े खातिर + बटन दबाईं।</string>
     <string name="help_sectionlist_title">संपादन सत्र के बा</string>
     <string name="label_section_name">खंड के नाम बा</string>
     <string name="label_session_description">सत्र के विवरण दिहल गइल बा</string>
@@ -74,7 +74,7 @@
     <string name="menu_settings">सेटिंग्स के बारे में बतावल गइल बा</string>
     <string name="minuten">मिनट</string>
     <string name="no_new_server_messages">कवनो नया संदेश उपलब्ध नइखे.</string>
-    <string name="no_sections_in_session">ध्यान शुरू नइखे कइल जा सकत: चुनल सत्र में कवनो खंड नइखे।</string>
+    <string name="no_sections_in_session">ध्यान शुरू ना कर सकेला: चुनल सत्र में कवनो खंड नइखे।</string>
     <string name="no_session_exists">कवनो सत्र नइखे जवना के शुरुआत कइल जा सके. कृपया पहिले एगो बनाईं।</string>
     <string name="notification_text">फिलहाल एगो ज़ाज़ेन मेडिटेशन चल रहल बा</string>
     <string name="notification_text_paused">ज़ाज़ेन मेडिटेशन रुक गइल</string>
@@ -116,7 +116,7 @@
     <string name="restore_really_title">सचमुच डेटा के रिस्टोर कर सकेनी?</string>
     <string name="restore_success_text">डेटा रिस्टोर सफल भइल</string>
     <string name="search_menu_title">तलाशी</string>
-    <string name="section_info_string_1_pl">%1$d घंटी बा</string>
+    <string name="section_info_string_1_pl">%1$d घंटी के बा</string>
     <string name="section_info_string_1_sg">1 घंटी के बा</string>
     <string name="section_info_string_2_pl">हर %1$d सेकंड में बा</string>
     <string name="section_info_string_2_sg">हर सेकंड में हर सेकंड के बा</string>
@@ -130,12 +130,12 @@
     <string name="status_bar_notification_info_overflow">999+ के बा</string>
     <string name="test_mute_perm_request">फिलहाल ए ऐप के आपके फोन के म्यूट करे के इजाजत नईखे। एकरा के बदले खातिर सेटिंग खोलीं?</string>
     <string name="text_cant_mute">राउर फोन एह App के म्यूट ना करे देला। एह ऐप्स सेटिंग में म्यूटिंग के अक्षम करीं भा अपना फोन सेटिंग में म्यूटिंग के अनुमति दीं.</string>
-    <string name="text_no_notify_access_settings">लागत बा कि राउर फोन में म्यूटिंग के अनुमति देबे खातिर मानक सेटिंग नइखे. कृपया मैन्युअल रूप से \&amp;quot;पहुँच के परेशान मत करीं\&amp;quot; सेटिंग के देखल आ एकरा के सक्षम करीं।</string>
+    <string name="text_no_notify_access_settings">लागत बा कि राउर फोन में म्यूटिंग के अनुमति देबे खातिर मानक सेटिंग नइखे. कृपया मैन्युअल रूप से \"पहुंच के परेशान मत करीं\" सेटिंग के देखल आ एकरा के सक्षम करीं।</string>
     <string name="text_no_sections">कवनो धारा परिभाषित नइखे कइल गइल.</string>
     <string name="text_question_delete_session">सचमुच चुनल सत्र के हटा दिहल जाव?</string>
     <string name="theme">विषय</string>
     <string name="theme_dark">डार्क थीम के बा</string>
-    <string name="theme_desc">ऐप के हल्का भा गहरे रंग के रूप चुनीं</string>
+    <string name="theme_desc">ऐप के रूप चुनीं</string>
     <string name="theme_light">हल्का विषय के बा</string>
     <string name="theme_system">सिस्टम के थीम के बारे में बतावल गइल बा</string>
     <string name="theme_value_dark">dark</string>
@@ -157,5 +157,13 @@
     <string name="pref_desc_bell_volume">घंटी के आवाज़ खातिर अलार्म स्ट्रीम वॉल्यूम के नियंत्रित करेला</string>
     <string name="title_dim_bell">मंद घंटी के बा</string>
     <string name="dim_bell_label_off">मद्धिम ना भइल</string>
-    <string name="dim_bell_label_format">मद्धिम: %1$d0%% बा।</string>
+    <string name="dim_bell_label_format">मद्धिम हो गइल: %1$d0%%</string>
+    <string name="section_deleted">हटा दिहल गइल \'%s\'</string>
+    <string name="action_undo">पूर्ववत करीं</string>
+    <string name="notification_channel_name">ध्यान के टाइमर के बा</string>
+    <string name="nav_label_sessions">सत्र के आयोजन भइल</string>
+    <string name="nav_label_meditation">समाधि</string>
+    <string name="nav_label_edit_session">संपादन सत्र के बा</string>
+    <string name="nav_label_edit_section">संपादन खंड के बा</string>
+    <string name="nav_label_settings">सेटिंग्स के बारे में बतावल गइल बा</string>
 </resources>

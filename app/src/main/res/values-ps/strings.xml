@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="abbrechen">لغوه کړئ</string>
-    <string name="about1">Zazen Meditation Timer — A simple meditation timer with customizable sections, bell sounds, and session management.</string>
-    <string name="about2">Originally created by Stefan Gaffga. Currently maintained by Georg Graf.&lt;br&gt;&lt;br&gt;Thanks to Winfried of &lt;a href="http://www.meditationsuhren.de"&gt;http://www.meditationsuhren.de&lt;/a&gt; for providing such great Bell Sounds!</string>
-    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues"&gt;Report issues on GitHub&lt;/a&gt;</string>
-    <string name="app_description">This application lets the user define a set of meditation sessions and provides a timer with visual and audible feedback when a part or the whole meditation is over.</string>
+    <string name="about1">د زازن مراقبت ټایمر - یو ساده مراقبت ټایمر د تخصیص وړ برخو ، د زنګ غږونو او سیشن مدیریت سره.</string>
+    <string name="about2">په اصل کې د سټیفن ګافګا لخوا رامینځته شوی. اوس مهال د جورج ګراف لخوا ساتل کیږي.&lt;br&gt;&lt;br&gt;د &lt;a href="http://www.meditationsuhren.de"&gt;http://www.meditationsuhren.de&lt;/a&gt; د داسې عالي بیل غږونو چمتو کولو لپاره د وینفریډ څخه مننه!</string>
+    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues"&gt;په GitHub کې د مسلو راپور ورکړئ&lt;/a&gt;</string>
+    <string name="app_description">دا اپلیکیشن کارونکي ته اجازه ورکوي چې د مراقبت سیشنونو سیټ تعریف کړي او د لید او لید لید سره ټایمر چمتو کړي کله چې یوه برخه یا بشپړ مراقبت پای ته ورسیږي.</string>
     <string name="app_name">Zazen Meditation Timer</string>
     <string name="appbar_scrolling_view_behavior">android.support.design.widget.AppBarLayout$ScrollingViewBehavior</string>
     <string name="backup_error_text">بخښنه غواړئ، د خوندي کولو په وخت کې یوه تېروتنه رامنځته شوه.</string>
     <string name="backup_no_permission">د ورک شوي اجازې له امله بیک اپ نشي رامینځته کولی.</string>
     <string name="backup_not_createable">د بیک اپ فایل په جوړولو کې تېروتنه.</string>
     <string name="backup_success_text">بیک اپ په بریالیتوب سره جوړ شو!</string>
-    <string name="bell_name_1">High Tone</string>
-    <string name="bell_name_2">Low Tone</string>
-    <string name="bell_name_3">Jap. Rhinbowl Dharma, 107mm</string>
-    <string name="bell_name_4">Jap. Rhinbowl Dharma, 88mm (black, glazed)</string>
-    <string name="bell_name_5">Jap. Rhinbowl Shomyo, 90mm</string>
-    <string name="bell_name_6">Jap. Rhinbowl Tang, 164mm</string>
-    <string name="bell_name_7">Tib. Bowl, 230mm</string>
-    <string name="bell_name_8">Jap. Rhinbowl, 97mm</string>
+    <string name="bell_name_1">لوړ ټون</string>
+    <string name="bell_name_2">ټیټ ټون</string>
+    <string name="bell_name_3">جاپ Rhinbowl Dharma، 107mm</string>
+    <string name="bell_name_4">جاپ Rhinbowl Dharma، 88mm (تور، glazed)</string>
+    <string name="bell_name_5">جاپ Rhinbowl Shomyo، 90mm</string>
+    <string name="bell_name_6">جاپ Rhinbowl Tang، 164mm</string>
+    <string name="bell_name_7">تبه کڅوړه، 230mm</string>
+    <string name="bell_name_8">جاپ Rhinbowl، 97mm</string>
     <string name="bell_pause">د بیل ګپ (ثانوي)</string>
     <string name="bell_user">بیل اضافه کړئ ...</string>
     <string name="bottom_nav_meditation">مراقبت</string>
@@ -26,7 +26,7 @@
     <string name="bottom_sheet_behavior">android.support.design.widget.BottomSheetBehavior</string>
     <string name="but_pause">وقفه</string>
     <string name="but_start">مراقبت پیل کړئ</string>
-    <string name="but_stop">ودریږي</string>
+    <string name="but_stop">ودریږئ</string>
     <string name="caption_zazen_meditation">زازن مراقبت</string>
     <string name="character_counter_pattern">%1$d / %2$d</string>
     <string name="checkbox_keep_screen_on">سکرین جاري وساتئ</string>
@@ -56,7 +56,7 @@
     <string name="desc_no_server_messages">کله چې اپلیکیشن پیل شي په اوتومات ډول خبرونه وښایاست</string>
     <string name="error_checking_for_server_messages">د نوي پیغامونو په راوړلو کې تېروتنه.</string>
     <string name="gong_type">ګونګ غږ</string>
-    <string name="help_sectionlist_text">دلته تاسو کولی شئ د خپلې ناستې منځپانګې نوم، تشریح او ترمیم کړئ. \n\n REORDERING\n د توکو د بیا تنظیم کولو لپاره، یو توکي اوږد فشار ورکړئ او \n خپل نوي موقعیت ته کش کړئ. حق.\n\n EDIT\n د یوې برخې د سمولو لپاره، یوازې یو ځل یې لمس کړئ.</string>
+    <string name="help_sectionlist_text">دلته تاسو کولی شئ د خپلې ناستې منځپانګې نوم، تشریح او ترمیم کړئ.\n\nبیا ترتیب کول\nد توکو د بیا تنظیم کولو لپاره، په یو توکي اوږد فشار ورکړئ او\nخپل نوي موقعیت ته یې کش کړئ.\n\nړنګول\nد یو توکي حذف کولو لپاره، ښي خوا ته یې حرکت وکړئ.\n\nایډیټ\nد یوې برخې د سمولو لپاره، یوازې یو ځل یې لمس کړئ.\n\nADD\nد نوې برخې اضافه کولو لپاره، + تڼۍ فشار کړئ.</string>
     <string name="help_sectionlist_title">سیشن سمول</string>
     <string name="label_section_name">د برخې نوم</string>
     <string name="label_session_description">د غونډې تفصیل</string>
@@ -74,7 +74,7 @@
     <string name="menu_settings">ترتیبات</string>
     <string name="minuten">دقیقې</string>
     <string name="no_new_server_messages">هیڅ نوي پیغامونه شتون نلري.</string>
-    <string name="no_sections_in_session">\' نشي کولی مراقبت پیل کړي: ټاکل شوې ناسته هیڅ برخه نلري.</string>
+    <string name="no_sections_in_session">د مراقبت پیل نشي کولی: ټاکل شوې ناسته هیڅ برخه نلري.</string>
     <string name="no_session_exists">هیڅ غونډه نشته چې پیل شي. مهرباني وکړئ لومړی یو جوړ کړئ.</string>
     <string name="notification_text">A Zazen مراقبت اوس مهال روان دی</string>
     <string name="notification_text_paused">زازن مراقبت ودرول شو</string>
@@ -130,12 +130,12 @@
     <string name="status_bar_notification_info_overflow">۹۹۹+</string>
     <string name="test_mute_perm_request">اپلیکیشن اوس مهال اجازه نلري چې ستاسو تلیفون خاموش کړي. د دې بدلولو لپاره تنظیمات خلاص کړئ؟</string>
     <string name="text_cant_mute">ستاسو تلیفون دې اپلیکیشن ته اجازه نه ورکوي چې دا خاموش کړي. د دې ایپس ترتیباتو کې خاموش کول غیر فعال کړئ یا د خپل تلیفون ترتیباتو کې خاموش کولو ته اجازه ورکړئ.</string>
-    <string name="text_no_notify_access_settings">ستاسو تلیفون داسې نه بریښي چې د خاموش کولو اجازه ورکولو لپاره معیاري تنظیمات ولري. مهرباني وکړئ په لاسي ډول وګورئ \"Do Disturb Access\" ترتیب او فعال کړئ.</string>
+    <string name="text_no_notify_access_settings">ستاسو تلیفون داسې نه بریښي چې د خاموش کولو اجازه ورکولو لپاره معیاري تنظیمات ولري. مهرباني وکړئ په لاسي ډول د \"Do Disturb Access\" ترتیب لپاره وګورئ او فعال کړئ.</string>
     <string name="text_no_sections">هیڅ برخې ندي تعریف شوي.</string>
     <string name="text_question_delete_session">واقعیا ټاکل شوې سیشن حذف کړئ؟</string>
     <string name="theme">موضوع</string>
     <string name="theme_dark">تیاره موضوع</string>
-    <string name="theme_desc">د اپلیکیشن روښانه یا تیاره بڼه غوره کړئ</string>
+    <string name="theme_desc">د اپلیکیشن بڼه غوره کړئ</string>
     <string name="theme_light">رڼا موضوع</string>
     <string name="theme_system">د سیسټم موضوع</string>
     <string name="theme_value_dark">dark</string>
@@ -151,11 +151,19 @@
     <string name="unnamed">بې نومه</string>
     <string name="stop_meditation_title">مراقبت بند کړئ؟</string>
     <string name="stop_meditation_message">ستاسو د مراقبت ناسته لاهم روانه ده.</string>
-    <string name="stop_meditation_stop">ودریږي</string>
+    <string name="stop_meditation_stop">ودریږئ</string>
     <string name="stop_meditation_cancel">لغوه کړئ</string>
     <string name="pref_title_bell_volume">د بیل حجم</string>
     <string name="pref_desc_bell_volume">د زنګ غږونو لپاره د الارم جریان حجم کنټرولوي</string>
     <string name="title_dim_bell">ډیم بیل</string>
     <string name="dim_bell_label_off">تیاره نه ده</string>
-    <string name="dim_bell_label_format">کم شوی: %1$d0%</string>
+    <string name="dim_bell_label_format">کم شوی: %1$d0%%</string>
+    <string name="section_deleted">ړنګ شوی \'_%s_2__</string>
+    <string name="action_undo">بیرته راګرځول</string>
+    <string name="notification_channel_name">د مراقبت ټایمر</string>
+    <string name="nav_label_sessions">غونډې</string>
+    <string name="nav_label_meditation">مراقبت</string>
+    <string name="nav_label_edit_session">سیشن سمول</string>
+    <string name="nav_label_edit_section">برخه ترمیم کړئ</string>
+    <string name="nav_label_settings">ترتیبات</string>
 </resources>

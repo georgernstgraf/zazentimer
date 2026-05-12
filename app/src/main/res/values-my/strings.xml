@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="abbrechen">မလုပ်တော့</string>
-    <string name="about1">Zazen Meditation Timer — A simple meditation timer with customizable sections, bell sounds, and session management.</string>
-    <string name="about2">Originally created by Stefan Gaffga. Currently maintained by Georg Graf.&lt;br&gt;&lt;br&gt;Thanks to Winfried of &lt;a href="http://www.meditationsuhren.de"&gt;http://www.meditationsuhren.de&lt;/a&gt; for providing such great Bell Sounds!</string>
-    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues"&gt;Report issues on GitHub&lt;/a&gt;</string>
-    <string name="app_description">This application lets the user define a set of meditation sessions and provides a timer with visual and audible feedback when a part or the whole meditation is over.</string>
+    <string name="about1">Zazen တရားထိုင်ခြင်းအချိန်တိုင်း- စိတ်ကြိုက်ပြင်ဆင်နိုင်သောအပိုင်းများ၊ ခေါင်းလောင်းသံများနှင့် အပိုင်းများကို စီမံခန့်ခွဲနိုင်သော ရိုးရှင်းသော တရားထိုင်ချိန်တိုင်တစ်ခု။</string>
+    <string name="about2">မူရင်း Stefan Gaffga မှဖန်တီးခဲ့သည်။ Georg Graf မှ လောလောဆယ် ထိန်းသိမ်းထားသည်။&lt;br&gt;&lt;br&gt;ဤမျှလောက်ကြီးကျယ်သော Bell Sounds ပံ့ပိုးပေးသည့်အတွက် &lt;a href="http://www.meditationsuhren.de"&gt;http://www.meditationsuhren.de&lt;/a&gt; မှ Winfried အား ကျေးဇူးတင်ရှိပါသည်။</string>
+    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues"&gt;GitHub တွင် ပြဿနာများကို သတင်းပို့ပါ&lt;/a&gt;</string>
+    <string name="app_description">ဤအပလီကေးရှင်းသည် အသုံးပြုသူအား တရားထိုင်ခြင်းဆိုင်ရာ အစုအဝေးတစ်ခုအား သတ်မှတ်သတ်မှတ်နိုင်စေပြီး အစိတ်အပိုင်းတစ်ခု သို့မဟုတ် တရားထိုင်မှုတစ်ခုလုံး ပြီးဆုံးသောအခါတွင် အမြင်အာရုံနှင့် အသံကြားနိုင်သော တုံ့ပြန်ချက်တစ်ခု ပေးစွမ်းနိုင်သည်။</string>
     <string name="app_name">Zazen Meditation Timer</string>
     <string name="appbar_scrolling_view_behavior">android.support.design.widget.AppBarLayout$ScrollingViewBehavior</string>
     <string name="backup_error_text">ဝမ်းနည်းပါသည်၊ သိမ်းဆည်းနေစဉ် အမှားတစ်ခု ဖြစ်ပွားခဲ့သည်။</string>
     <string name="backup_no_permission">ခွင့်ပြုချက်များ ပျောက်ဆုံးနေသောကြောင့် အရန်ကူးယူခြင်း မပြုလုပ်နိုင်ခဲ့ပါ။</string>
     <string name="backup_not_createable">အရန်ဖိုင်ဖန်တီးရာတွင် အမှားအယွင်းရှိသည်။</string>
     <string name="backup_success_text">အရန်သိမ်းခြင်းကို အောင်မြင်စွာ ပြုလုပ်ပြီးပါပြီ။</string>
-    <string name="bell_name_1">High Tone</string>
-    <string name="bell_name_2">Low Tone</string>
-    <string name="bell_name_3">Jap. Rhinbowl Dharma, 107mm</string>
-    <string name="bell_name_4">Jap. Rhinbowl Dharma, 88mm (black, glazed)</string>
-    <string name="bell_name_5">Jap. Rhinbowl Shomyo, 90mm</string>
-    <string name="bell_name_6">Jap. Rhinbowl Tang, 164mm</string>
-    <string name="bell_name_7">Tib. Bowl, 230mm</string>
-    <string name="bell_name_8">Jap. Rhinbowl, 97mm</string>
+    <string name="bell_name_1">အသံမြင့်</string>
+    <string name="bell_name_2">အသံနိမ့်</string>
+    <string name="bell_name_3">ဂျပန်။ Rhinbowl Dharma, 107mm</string>
+    <string name="bell_name_4">ဂျပန်။ Rhinbowl Dharma, 88mm (အနက်ရောင်၊ စဉ့်ကူး)</string>
+    <string name="bell_name_5">ဂျပန်။ Rhinbowl Shomyo၊ 90mm</string>
+    <string name="bell_name_6">ဂျပန်။ ကြံ့တန်၊ ၁၆၄ မီလီမီတာ</string>
+    <string name="bell_name_7">တိဗ်။ ပန်းကန်၊ 230mm</string>
+    <string name="bell_name_8">ဂျပန်။ ကြံ့တံ၊ ၉၇ မီလီမီတာ</string>
     <string name="bell_pause">ဘဲလ်ကွာဟချက် (စက္ကန့်)</string>
     <string name="bell_user">ဘဲလ်ထည့်ပါ...</string>
     <string name="bottom_nav_meditation">တရားထိုင်ခြင်း။</string>
@@ -29,14 +29,14 @@
     <string name="but_stop">ရပ်</string>
     <string name="caption_zazen_meditation">Zazen တရားထိုင်ခြင်း။</string>
     <string name="character_counter_pattern">%1$d / %2$d</string>
-    <string name="checkbox_keep_screen_on">မျက်နှာပြင်ကို ဖွင့်ထားပါ။</string>
+    <string name="checkbox_keep_screen_on">မျက်နှာပြင်ကိုဖွင့်ထားပါ။</string>
     <string name="checkbox_no_server_messages">သတင်းပြပါ။</string>
     <string name="checkbox_phone_off">ဖုန်းကို အသံတိတ်ပါ။</string>
     <string name="checkbox_phone_off_desc">ဖုန်းအသံအားလုံးကို ပိတ်ထားပါ။</string>
     <string name="copy_prefix">မိတ္တူ</string>
     <string name="crash_dialog_comment_prompt">ရွေးချယ်နိုင်သည်- မည်သည့်လုပ်ဆောင်ချက်က အမှားအယွင်းဖြစ်စေသနည်း။</string>
     <string name="crash_dialog_ok_toast">သင့်အကူအညီအတွက် ကျေးဇူးအများကြီးတင်ပါတယ်။</string>
-    <string name="crash_dialog_text">တောင်းပန်ပါတယ်၊ အမှားဖြစ်သွားလို့ပါ။ ဤချွတ်ယွင်းချက်အစီရင်ခံစာကို ပေးပို့ပြီး သင်လုပ်ဆောင်ခဲ့သည့်အရာနှင့်ပတ်သက်သည့် နောက်ထပ်အသေးစိတ်အချက်အလက်များကို ပေးပို့ခြင်းဖြင့် ဤပြဿနာကို ရှာဖွေပြီး ဖြေရှင်းနိုင်စေရန် ကူညီနိုင်ပါသည်။</string>
+    <string name="crash_dialog_text">တောင်းပန်ပါတယ်၊ အမှားဖြစ်သွားလို့ပါ။ ဤချွတ်ယွင်းချက်အစီရင်ခံစာကို ပေးပို့ပြီး သင်လုပ်ဆောင်ခဲ့သည့်အရာနှင့်ပတ်သက်သည့် နောက်ထပ်အသေးစိတ်အချက်အလက်များကို ပေးပို့ခြင်းဖြင့် ဤပြဿနာကို ရှာဖွေပြီး ဖြေရှင်းရန် သင်သည် ကျွန်ုပ်ကို ကူညီနိုင်ပါသည်။</string>
     <string name="crash_dialog_title">Zazen တရားထိုင်သည့်အချိန်တိုင်း</string>
     <string name="crash_toast_text">ဝမ်းနည်းပါသည် - အတွင်းပိုင်း အမှားတစ်ခု ဖြစ်ပွားခဲ့သည်။</string>
     <string name="crash_user_email_label">ရွေးချယ်နိုင်သည်- ဤပြဿနာအတွက် မေးခွန်းများ သို့မဟုတ် အပ်ဒိတ်များအတွက် သင့်အီးမေးလ်လိပ်စာ။</string>
@@ -56,7 +56,7 @@
     <string name="desc_no_server_messages">အက်ပ်စတင်သည့်အခါ သတင်းများကို အလိုအလျောက်ပြသပါ။</string>
     <string name="error_checking_for_server_messages">မက်ဆေ့ဂျ်အသစ်များကို ရယူရာတွင် အမှားအယွင်းရှိသည်။</string>
     <string name="gong_type">ဂေါင်သံ</string>
-    <string name="help_sectionlist_text">ဤတွင် သင်သည် သင်၏ Session ၏ အကြောင်းအရာများကို အမည်၊ ဖော်ပြပြီး တည်းဖြတ်နိုင်ပါသည်။\n\n REORDERING\n အရာများကို ပြန်လည်စီစစ်ရန်၊ အရာတစ်ခုကို ကြာကြာနှိပ်ပြီး \n ၎င်းကို ၎င်း၏ အနေအထားအသစ်သို့ ဆွဲယူပါ။\n\n DELETING\n အရာတစ်ခုကို ဖျက်ရန် ၎င်းကိုရွှေ့ပါ။ ညာဘက်။\n\n Edit\n အပိုင်းတစ်ခုကို တည်းဖြတ်ရန်၊ ၎င်းကို တစ်ကြိမ်သာထိပါ။\n\n ADD\n ကဏ္ဍအသစ်တစ်ခုထည့်ရန် + ခလုတ်ကို နှိပ်ပါ။</string>
+    <string name="help_sectionlist_text">ဤနေရာတွင် သင်သည် သင်၏ Session ၏ အကြောင်းအရာများကို အမည်၊ ဖော်ပြပြီး တည်းဖြတ်နိုင်ပါသည်။\n\nမှာယူခြင်း\nပစ္စည်းများကို ပြန်စီရန်၊ ပစ္စည်းတစ်ခုပေါ်တွင် ကြာကြာဖိပြီး\n၎င်းကို ၎င်း၏ အနေအထားအသစ်သို့ ဆွဲချပါ။\n\nဖျက်ခြင်း။\nအရာတစ်ခုကို ဖျက်ရန်၊ ၎င်းကို ညာဘက်သို့ ရွှေ့ပါ။\n\nတည်းဖြတ်ပါ။\nကဏ္ဍတစ်ခုကို တည်းဖြတ်ရန် တစ်ကြိမ်သာထိပါ။\n\nထည့်ပါ။\nကဏ္ဍအသစ်တစ်ခုထည့်ရန် + ခလုတ်ကို နှိပ်ပါ။</string>
     <string name="help_sectionlist_title">အပိုင်းကို တည်းဖြတ်ပါ။</string>
     <string name="label_section_name">ကဏ္ဍအမည်</string>
     <string name="label_session_description">အပိုင်းဖော်ပြချက်</string>
@@ -74,8 +74,8 @@
     <string name="menu_settings">ဆက်တင်များ</string>
     <string name="minuten">မိနစ်</string>
     <string name="no_new_server_messages">မက်ဆေ့ဂျ်အသစ်များ မရရှိနိုင်ပါ။</string>
-    <string name="no_sections_in_session">တရားထိုင်ခြင်းကို စတင်နိုင်သည်- ရွေးချယ်ထားသော Session တွင် မည်သည့်အပိုင်းမှ မရှိပါ။</string>
-    <string name="no_session_exists">စတင်နိုင်သော session မရှိပါ။ ကျေးဇူးပြု၍ တစ်ခုအရင်ဖန်တီးပါ။</string>
+    <string name="no_sections_in_session">တရားထိုင်ခြင်းစတင်နိုင်သည်- ရွေးချယ်ထားသောစက်ရှင်တွင် မည်သည့်ကဏ္ဍများမှ မရှိပါ။</string>
+    <string name="no_session_exists">စတင်နိုင်သော session မရှိပါ။ ကျေးဇူးပြုပြီး အရင်ဖန်တီးပါ။</string>
     <string name="notification_text">Zazen တရားထိုင်ခြင်းကို လက်ရှိလုပ်ဆောင်နေပါသည်။</string>
     <string name="notification_text_paused">Zazen တရားထိုင်ခြင်းကို ရပ်ထားသည်။</string>
     <string name="notification_title">Zazen တရားထိုင်ခြင်း။</string>
@@ -86,7 +86,7 @@
     <string name="pref_get_messages">Messages အသစ်များကို ယခုစစ်ဆေးပါ။</string>
     <string name="pref_mute_mode">ဖုန်းမြည်သံနှင့် အကြောင်းကြားချက်များ</string>
     <string name="pref_mute_mode_none">တိတ်တိတ်နေ</string>
-    <string name="pref_mute_mode_none_desc">ဖုန်းခေါ်ဆိုမှုနှင့် အကြောင်းကြားချက်များအတွက် ဖုန်းမြည်သံမရှိသလို တုန်ခါမှုလည်းမရှိပေ။</string>
+    <string name="pref_mute_mode_none_desc">ဖုန်းခေါ်ဆိုမှုများနှင့် အကြောင်းကြားချက်များအတွက် ဖုန်းမြည်သံမရှိသလို တုန်ခါမှုလည်းမရှိပေ။</string>
     <string name="pref_mute_mode_pref">ဖုန်းမြည်သံနှင့် အကြောင်းကြားချက်များဆိုင်ရာ ဆက်တင်များ</string>
     <string name="pref_mute_mode_vibrate">Vibration ပဲရှိတယ်။</string>
     <string name="pref_mute_mode_vibrate_desc">ဖုန်းခေါ်ဆိုမှုနှင့် အကြောင်းကြားချက်များအတွက်သာ တုန်ခါခြင်း (Android 7 (Nougat) တွင် အလုပ်မလုပ်ပါ - အသံတိတ်ဆက်တင်ကဲ့သို့ လုပ်ဆောင်သည်)</string>
@@ -99,7 +99,7 @@
     <string name="pref_sum_ejecting">SD-Card ကို ထုတ်လိုက်ပါပြီ။</string>
     <string name="pref_sum_nofs">SD-Card တွင် ဖိုင်စနစ်မရှိပါ။</string>
     <string name="pref_sum_read_only">SD-Card သည် ဖတ်ရန်သာဖြစ်သည်။</string>
-    <string name="pref_sum_removed">SD-Card မရှိပါ။</string>
+    <string name="pref_sum_removed">SD-Card မပါဝင်ပါ။</string>
     <string name="pref_sum_restore">SD-Card Backup မှ သင်၏ Sessions နှင့် စိတ်ကြိုက်အသံများကို ပြန်လည်ရယူပါ။</string>
     <string name="pref_sum_shared">SD-Card ကို မျှဝေထားသည်။</string>
     <string name="pref_title_backup">Backup ပြုလုပ်ပါ။</string>
@@ -111,11 +111,11 @@
     <string name="really_stop">တရားထိုင်တာကို တကယ်ရပ်လိုက်သလား။</string>
     <string name="restore_backup_not_found">Backup ဖိုင်ကို ရှာမတွေ့ပါ။</string>
     <string name="restore_error_text">အရန်သိမ်းခြင်းမှ ပြန်လည်ရယူရာတွင် အမှားအယွင်းရှိသည်။</string>
-    <string name="restore_no_permission">ခွင့်ပြုချက်ပျောက်ဆုံးနေသောကြောင့် ပြန်မရနိုင်ပါ။</string>
-    <string name="restore_really_text">၎င်းသည် သင့်ဆက်ရှင်များအားလုံးကို အရန်သိမ်းထားသည့်အရာများဖြင့် အစားထိုးမည်ဖြစ်သည်။ (မလုပ်တော့ပါဘူး!)</string>
-    <string name="restore_really_title">အမှန်တကယ် ဒေတာပြန်ယူလိုပါသလား။</string>
+    <string name="restore_no_permission">ခွင့်ပြုချက်ပျောက်ဆုံးနေသောကြောင့် ပြန်လည်ရယူ၍မရပါ။</string>
+    <string name="restore_really_text">၎င်းသည် သင်၏ဆက်ရှင်များအားလုံးကို အရန်သိမ်းထားသည့်အရာများဖြင့် အစားထိုးမည်ဖြစ်သည်။ (မလုပ်တော့ပါဘူး!)</string>
+    <string name="restore_really_title">ဒေတာကို အမှန်တကယ် ပြန်လည်ရယူလိုပါသလား။</string>
     <string name="restore_success_text">Data Restore အောင်မြင်ပါပြီ။</string>
-    <string name="search_menu_title">ရှာဖွေပါ</string>
+    <string name="search_menu_title">ရှာရန်</string>
     <string name="section_info_string_1_pl">%1$d ခေါင်းလောင်းများ</string>
     <string name="section_info_string_1_sg">ဘဲလ် ၁</string>
     <string name="section_info_string_2_pl">%1$d စက္ကန့်တိုင်း</string>
@@ -126,23 +126,23 @@
     <string name="content_desc_drag_handle">ပြန်စီရန် ဆွဲယူပါ။</string>
     <string name="content_desc_section_actions">ပုဒ်မနဲ့ အရေးယူဖို့</string>
     <string name="content_desc_session_actions">Session လုပ်ဆောင်ချက်များ</string>
-    <string name="session_list_unnamed_entry">အမည်မဖော်လိုသော ကဏ္ဍ</string>
+    <string name="session_list_unnamed_entry">အမည်မဖော်ပြထားသော ကဏ္ဍ</string>
     <string name="status_bar_notification_info_overflow">၉၉၉+</string>
     <string name="test_mute_perm_request">အက်ပ်အား လက်ရှိတွင် သင့်ဖုန်းကို အသံတိတ်ရန် ခွင့်မပြုပါ။ ၎င်းကိုပြောင်းလဲရန် ဆက်တင်များကိုဖွင့်မလား။</string>
     <string name="text_cant_mute">သင့်ဖုန်းသည် ဤအက်ပ်အား အသံတိတ်ရန် ခွင့်မပြုပါ။ ဤအက်ပ်ဆက်တင်များတွင် အသံတိတ်ခြင်းကိုပိတ်ပါ သို့မဟုတ် သင့်ဖုန်းဆက်တင်များတွင် အသံတိတ်ခွင့်ပြုပါ။</string>
-    <string name="text_no_notify_access_settings">သင့်ဖုန်းတွင် အသံပိတ်ထားရန် စံဆက်တင်များ ရှိပုံမပေါ်ပါ။ \"Do not Disturb Access\" ဆက်တင်ကို ကိုယ်တိုင်ကြည့်ရှုပြီး ၎င်းကိုဖွင့်ပါ။</string>
+    <string name="text_no_notify_access_settings">သင့်ဖုန်းတွင် အသံပိတ်ထားရန် စံဆက်တင်များ ရှိပုံမပေါ်ပါ။ ကျေးဇူးပြု၍ \"မနှောင့်ယှက်ရ Access\" ဆက်တင်အတွက် ကိုယ်တိုင်ကြည့်ရှုပြီး ၎င်းကိုဖွင့်ပါ။</string>
     <string name="text_no_sections">ပုဒ်မများ သတ်မှတ်ထားခြင်း မရှိပါ။</string>
     <string name="text_question_delete_session">ရွေးချယ်ထားသော Session ကို အမှန်တကယ် ဖျက်မလား။</string>
     <string name="theme">အပြင်အဆင်</string>
     <string name="theme_dark">အမှောင် အပြင်အဆင်</string>
-    <string name="theme_desc">အက်ပ်၏ အလင်း သို့မဟုတ် အမှောင်အသွင်အပြင်ကို ရွေးပါ။</string>
+    <string name="theme_desc">အက်ပ်၏အသွင်အပြင်ကို ရွေးချယ်ပါ။</string>
     <string name="theme_light">အလင်းအပြင်အဆင်</string>
     <string name="theme_system">စနစ်အပြင်အဆင်</string>
     <string name="theme_value_dark">dark</string>
     <string name="theme_value_light">light</string>
     <string name="theme_value_system">system</string>
     <string name="time_section_elapsed">ပုဒ်မ ပြီးသွားပြီ</string>
-    <string name="time_section_remaining">အပိုင်းကျန်သေးတယ်။</string>
+    <string name="time_section_remaining">ပုဒ်မကျန်</string>
     <string name="time_session_elapsed">အပိုင်းပြီးသွားပါပြီ။</string>
     <string name="time_session_remaining">ဆက်ရှင်ကျန်သေးသည်။</string>
     <string name="title_mute_perm_request">ခွင့်ပြုချက်ပျောက်ဆုံး</string>
@@ -150,7 +150,7 @@
     <string name="title_volume_bells">Bell Volume</string>
     <string name="unnamed">အမည်မဖော်လိုသူ</string>
     <string name="stop_meditation_title">တရားထိုင်တာကို ရပ်မလား။</string>
-    <string name="stop_meditation_message">သင်၏ တရားထိုင်ခြင်းအပိုင်းသည် လုပ်ဆောင်နေဆဲဖြစ်သည်။</string>
+    <string name="stop_meditation_message">သင်၏ တရားထိုင်ခြင်းအပိုင်းကို ဆက်လက်လုပ်ဆောင်နေပါသည်။</string>
     <string name="stop_meditation_stop">ရပ်</string>
     <string name="stop_meditation_cancel">မလုပ်တော့</string>
     <string name="pref_title_bell_volume">Bell Volume</string>
@@ -158,4 +158,12 @@
     <string name="title_dim_bell">မှိန်ဘဲလ်</string>
     <string name="dim_bell_label_off">မမှိန်</string>
     <string name="dim_bell_label_format">မှိန်ထားသည်- %1$d0%%</string>
+    <string name="section_deleted">ဖျက်လိုက်သည် ___\'%s\'</string>
+    <string name="action_undo">မလုပ်တော့</string>
+    <string name="notification_channel_name">တရားထိုင်ချိန်တိုင်း</string>
+    <string name="nav_label_sessions">ဆက်ရှင်များ</string>
+    <string name="nav_label_meditation">တရားထိုင်ခြင်း။</string>
+    <string name="nav_label_edit_session">အပိုင်းကို တည်းဖြတ်ပါ။</string>
+    <string name="nav_label_edit_section">အပိုင်းကို တည်းဖြတ်ပါ။</string>
+    <string name="nav_label_settings">ဆက်တင်များ</string>
 </resources>

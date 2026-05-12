@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="abbrechen">منسوخ کریں۔</string>
-    <string name="about1">Zazen Meditation Timer — A simple meditation timer with customizable sections, bell sounds, and session management.</string>
-    <string name="about2">Originally created by Stefan Gaffga. Currently maintained by Georg Graf.&lt;br&gt;&lt;br&gt;Thanks to Winfried of &lt;a href="http://www.meditationsuhren.de"&gt;http://www.meditationsuhren.de&lt;/a&gt; for providing such great Bell Sounds!</string>
-    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues"&gt;Report issues on GitHub&lt;/a&gt;</string>
-    <string name="app_description">This application lets the user define a set of meditation sessions and provides a timer with visual and audible feedback when a part or the whole meditation is over.</string>
+    <string name="about1">زازن میڈیٹیشن ٹائمر — حسب ضرورت سیکشنز، گھنٹی کی آوازوں اور سیشن مینجمنٹ کے ساتھ ایک سادہ مراقبہ ٹائمر۔</string>
+    <string name="about2">اصل میں اسٹیفن گافگا نے تخلیق کیا۔ فی الحال Georg Graf کی طرف سے دیکھ بھال.&lt;br&gt;&lt;br&gt;اس طرح کی زبردست بیل ساؤنڈز فراہم کرنے کے لیے &lt;a href="http://www.meditationsuhren.de"&gt;http://www.meditationsuhren.de&lt;/a&gt; کے Winfried کا شکریہ!</string>
+    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues"&gt;GitHub پر مسائل کی اطلاع دیں&lt;/a&gt;</string>
+    <string name="app_description">یہ ایپلیکیشن صارف کو مراقبہ کے سیشنز کے سیٹ کی وضاحت کرنے دیتی ہے اور جب کوئی حصہ یا پورا مراقبہ ختم ہو جاتا ہے تو بصری اور قابل سماعت تاثرات کے ساتھ ٹائمر فراہم کرتا ہے۔</string>
     <string name="app_name">Zazen Meditation Timer</string>
     <string name="appbar_scrolling_view_behavior">android.support.design.widget.AppBarLayout$ScrollingViewBehavior</string>
     <string name="backup_error_text">معذرت، محفوظ کرتے وقت ایک خرابی پیش آگئی۔</string>
     <string name="backup_no_permission">اجازت نہ ہونے کی وجہ سے بیک اپ نہیں بنایا جا سکا۔</string>
     <string name="backup_not_createable">بیک اپ فائل بنانے میں خرابی۔</string>
     <string name="backup_success_text">بیک اپ کامیابی سے بن گیا!</string>
-    <string name="bell_name_1">High Tone</string>
-    <string name="bell_name_2">Low Tone</string>
-    <string name="bell_name_3">Jap. Rhinbowl Dharma, 107mm</string>
-    <string name="bell_name_4">Jap. Rhinbowl Dharma, 88mm (black, glazed)</string>
-    <string name="bell_name_5">Jap. Rhinbowl Shomyo, 90mm</string>
-    <string name="bell_name_6">Jap. Rhinbowl Tang, 164mm</string>
-    <string name="bell_name_7">Tib. Bowl, 230mm</string>
-    <string name="bell_name_8">Jap. Rhinbowl, 97mm</string>
+    <string name="bell_name_1">ہائی ٹون</string>
+    <string name="bell_name_2">لو ٹون</string>
+    <string name="bell_name_3">جاپ رائن باؤل دھرم، 107 ملی میٹر</string>
+    <string name="bell_name_4">جاپ رائن باؤل دھرم، 88 ملی میٹر (سیاہ، چمکدار)</string>
+    <string name="bell_name_5">جاپ رائن باؤل شومیو، 90 ملی میٹر</string>
+    <string name="bell_name_6">جاپ رائن باؤل تانگ، 164 ملی میٹر</string>
+    <string name="bell_name_7">ٹب کٹورا، 230 ملی میٹر</string>
+    <string name="bell_name_8">جاپ رائن باؤل، 97 ملی میٹر</string>
     <string name="bell_pause">بیل گیپ (سیکنڈ)</string>
     <string name="bell_user">بیل شامل کریں...</string>
     <string name="bottom_nav_meditation">مراقبہ</string>
@@ -56,7 +56,7 @@
     <string name="desc_no_server_messages">ایپ شروع ہونے پر خودکار طور پر خبریں دکھائیں۔</string>
     <string name="error_checking_for_server_messages">نئے پیغامات لانے میں خرابی۔</string>
     <string name="gong_type">گونگ ساؤنڈ</string>
-    <string name="help_sectionlist_text">یہاں آپ اپنے سیشن کے مواد کو نام دے سکتے ہیں، بیان کر سکتے ہیں اور اس میں ترمیم کر سکتے ہیں۔\n\n دوبارہ ترتیب دینا\n آئٹمز کو دوبارہ ترتیب دینے کے لیے، کسی آئٹم کو دیر تک دبائیں اور\n اسے اس کی نئی پوزیشن پر گھسیٹیں۔\n\n حذف کرنا\n کسی آئٹم کو حذف کرنے کے لیے، اسے دائیں طرف لے جائیں۔\n\n ترمیم\nکسی سیکشن میں ترمیم کرنے کے لیے، صرف ایک بار AD بٹن کو ٹچ کریں۔</string>
+    <string name="help_sectionlist_text">یہاں آپ اپنے سیشن کے مواد کو نام، بیان اور ترمیم کر سکتے ہیں۔\n\nدوبارہ ترتیب دے رہا ہے۔\nآئٹمز کو دوبارہ ترتیب دینے کے لیے، ایک آئٹم پر دیر تک دبائیں اور\nاسے اپنی نئی پوزیشن پر گھسیٹیں۔\n\nحذف کرنا\nکسی آئٹم کو حذف کرنے کے لیے، اسے دائیں طرف لے جائیں۔\n\nترمیم کریں۔\nکسی سیکشن میں ترمیم کرنے کے لیے، اسے صرف ایک بار ٹچ کریں۔\n\nشامل کریں۔\nنیا سیکشن شامل کرنے کے لیے، + بٹن دبائیں۔</string>
     <string name="help_sectionlist_title">سیشن میں ترمیم کریں۔</string>
     <string name="label_section_name">سیکشن کا نام</string>
     <string name="label_session_description">سیشن کی تفصیل</string>
@@ -74,7 +74,7 @@
     <string name="menu_settings">ترتیبات</string>
     <string name="minuten">منٹس</string>
     <string name="no_new_server_messages">کوئی نیا پیغام دستیاب نہیں ہے۔</string>
-    <string name="no_sections_in_session">مراقبہ شروع نہیں کیا جا سکتا: منتخب سیشن میں کوئی سیکشن نہیں ہے۔</string>
+    <string name="no_sections_in_session">مراقبہ شروع نہیں کر سکتے: منتخب سیشن میں کوئی سیکشن نہیں ہے۔</string>
     <string name="no_session_exists">کوئی سیشن نہیں ہے جو شروع کیا جا سکے۔ براہ کرم پہلے ایک بنائیں۔</string>
     <string name="notification_text">ایک Zazen مراقبہ اس وقت چل رہا ہے۔</string>
     <string name="notification_text_paused">زازن مراقبہ رک گیا۔</string>
@@ -101,7 +101,7 @@
     <string name="pref_sum_read_only">SD-کارڈ صرف پڑھنے کے لیے ہے۔</string>
     <string name="pref_sum_removed">کوئی SD کارڈ موجود نہیں ہے۔</string>
     <string name="pref_sum_restore">ایس ڈی کارڈ بیک اپ سے اپنے سیشنز اور حسب ضرورت آوازیں بحال کریں۔</string>
-    <string name="pref_sum_shared">ایس ڈی کارڈ کا اشتراک کیا گیا ہے۔</string>
+    <string name="pref_sum_shared">SD-کارڈ کا اشتراک کیا گیا ہے۔</string>
     <string name="pref_title_backup">بیک اپ بنائیں</string>
     <string name="pref_title_brightness">چمک</string>
     <string name="pref_title_restore">بیک اپ سے بحال کریں۔</string>
@@ -118,7 +118,7 @@
     <string name="search_menu_title">تلاش کریں۔</string>
     <string name="section_info_string_1_pl">%1$d گھنٹیاں</string>
     <string name="section_info_string_1_sg">1 گھنٹی</string>
-    <string name="section_info_string_2_pl">ہر %1$d سیکنڈز</string>
+    <string name="section_info_string_2_pl">ہر %1$d سیکنڈ</string>
     <string name="section_info_string_2_sg">ہر سیکنڈ</string>
     <string name="sekunden">سیکنڈز</string>
     <string name="select_audio">ساؤنڈ فائل کو منتخب کریں۔</string>
@@ -130,12 +130,12 @@
     <string name="status_bar_notification_info_overflow">999+</string>
     <string name="test_mute_perm_request">ایپ کو فی الحال آپ کے فون کو خاموش کرنے کی اجازت نہیں ہے۔ اسے تبدیل کرنے کے لیے ترتیبات کھولیں؟</string>
     <string name="text_cant_mute">آپ کا فون اس ایپ کو خاموش کرنے کی اجازت نہیں دیتا ہے۔ اس ایپس کی ترتیبات میں خاموشی کو غیر فعال کریں یا اپنے فون کی ترتیبات میں خاموش کرنے کی اجازت دیں۔</string>
-    <string name="text_no_notify_access_settings">ایسا لگتا ہے کہ آپ کے فون میں خاموش کرنے کی اجازت دینے کے لیے معیاری ترتیبات موجود نہیں ہیں۔ براہ کرم دستی طور پر \"Do Disturb Access\" سیٹنگ کو دیکھیں اور اسے فعال کریں۔</string>
+    <string name="text_no_notify_access_settings">ایسا لگتا ہے کہ آپ کے فون میں خاموش کرنے کی اجازت دینے کے لیے معیاری ترتیبات موجود نہیں ہیں۔ براہ کرم \"Do\'t Disturb Access\" سیٹنگ کو دستی طور پر دیکھیں اور اسے فعال کریں۔</string>
     <string name="text_no_sections">کوئی سیکشن متعین نہیں ہے۔</string>
     <string name="text_question_delete_session">واقعی منتخب سیشن کو حذف کریں؟</string>
     <string name="theme">تھیم</string>
     <string name="theme_dark">ڈارک تھیم</string>
-    <string name="theme_desc">ایپ کی ہلکی یا تاریک شکل کا انتخاب کریں۔</string>
+    <string name="theme_desc">ایپ کی ظاہری شکل کا انتخاب کریں۔</string>
     <string name="theme_light">ہلکی تھیم</string>
     <string name="theme_system">سسٹم تھیم</string>
     <string name="theme_value_dark">dark</string>
@@ -158,4 +158,12 @@
     <string name="title_dim_bell">مدھم بیل</string>
     <string name="dim_bell_label_off">مدھم نہیں ہوا۔</string>
     <string name="dim_bell_label_format">مدھم: %1$d0%%</string>
+    <string name="section_deleted">حذف شدہ \'_%s_2__</string>
+    <string name="action_undo">کالعدم</string>
+    <string name="notification_channel_name">مراقبہ کا ٹائمر</string>
+    <string name="nav_label_sessions">سیشنز</string>
+    <string name="nav_label_meditation">مراقبہ</string>
+    <string name="nav_label_edit_session">سیشن میں ترمیم کریں۔</string>
+    <string name="nav_label_edit_section">سیکشن میں ترمیم کریں۔</string>
+    <string name="nav_label_settings">ترتیبات</string>
 </resources>

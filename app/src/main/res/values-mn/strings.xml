@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="abbrechen">Цуцлах</string>
-    <string name="about1">Zazen Meditation Timer — A simple meditation timer with customizable sections, bell sounds, and session management.</string>
-    <string name="about2">Originally created by Stefan Gaffga. Currently maintained by Georg Graf.&lt;br&gt;&lt;br&gt;Thanks to Winfried of &lt;a href="http://www.meditationsuhren.de"&gt;http://www.meditationsuhren.de&lt;/a&gt; for providing such great Bell Sounds!</string>
-    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues"&gt;Report issues on GitHub&lt;/a&gt;</string>
-    <string name="app_description">This application lets the user define a set of meditation sessions and provides a timer with visual and audible feedback when a part or the whole meditation is over.</string>
+    <string name="about1">Зазен бясалгалын таймер - Өөрчлөн тохируулж болох хэсэг, хонхны дуу, сессийн удирдлага бүхий энгийн бясалгалын таймер.</string>
+    <string name="about2">Анх Стефан Гаффга бүтээсэн. Одоогоор Георг Граф засварлаж байна.&lt;br&gt;&lt;br&gt;Ийм гайхалтай хонхны дууг гаргаж өгсөн &lt;a href="http://www.meditationsuhren.de"&gt;http://www.meditationsuhren.de&lt;/a&gt;-н Винфридэд баярлалаа!</string>
+    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues"&gt;GitHub дээрх асуудлыг мэдээлэх&lt;/a&gt;</string>
+    <string name="app_description">Энэ аппликейшн нь хэрэглэгчдэд бясалгалын багцыг тодорхойлох боломжийг олгож, бясалгалын хэсэг эсвэл бүхэлд нь дууссаны дараа таймераар харааны болон дуут хариу өгөх боломжийг олгодог.</string>
     <string name="app_name">Zazen Meditation Timer</string>
     <string name="appbar_scrolling_view_behavior">android.support.design.widget.AppBarLayout$ScrollingViewBehavior</string>
     <string name="backup_error_text">Уучлаарай, хадгалах явцад алдаа гарлаа.</string>
-    <string name="backup_no_permission">Зөвшөөрөл байхгүй тул нөөцлөлт үүсгэж чадсангүй.</string>
+    <string name="backup_no_permission">Зөвшөөрөл байхгүй учир нөөцлөлт үүсгэж чадсангүй.</string>
     <string name="backup_not_createable">Нөөц файл үүсгэхэд алдаа гарлаа.</string>
     <string name="backup_success_text">Нөөцлөлтийг амжилттай үүсгэлээ!</string>
-    <string name="bell_name_1">High Tone</string>
-    <string name="bell_name_2">Low Tone</string>
-    <string name="bell_name_3">Jap. Rhinbowl Dharma, 107mm</string>
-    <string name="bell_name_4">Jap. Rhinbowl Dharma, 88mm (black, glazed)</string>
-    <string name="bell_name_5">Jap. Rhinbowl Shomyo, 90mm</string>
-    <string name="bell_name_6">Jap. Rhinbowl Tang, 164mm</string>
-    <string name="bell_name_7">Tib. Bowl, 230mm</string>
-    <string name="bell_name_8">Jap. Rhinbowl, 97mm</string>
+    <string name="bell_name_1">Өндөр өнгө</string>
+    <string name="bell_name_2">Дуу багатай</string>
+    <string name="bell_name_3">Япон. Rhinbowl Dharma, 107мм</string>
+    <string name="bell_name_4">Япон. Rhinbowl Dharma, 88мм (хар, бүрхүүлтэй)</string>
+    <string name="bell_name_5">Япон. Rhinbowl Shomyo, 90мм</string>
+    <string name="bell_name_6">Япон. Rhinbowl Tang, 164 мм</string>
+    <string name="bell_name_7">Тиб. Сав, 230 мм</string>
+    <string name="bell_name_8">Япон. Rhinbowl, 97 мм</string>
     <string name="bell_pause">Хонхны завсар (сек)</string>
     <string name="bell_user">Хонх нэмэх...</string>
     <string name="bottom_nav_meditation">Бясалгал</string>
@@ -36,10 +36,10 @@
     <string name="copy_prefix">хуулбар</string>
     <string name="crash_dialog_comment_prompt">Сонголт: Ямар үйлдэл алдаа гаргасан бэ?</string>
     <string name="crash_dialog_ok_toast">Тусалсанд маш их баярлалаа!</string>
-    <string name="crash_dialog_text">Уучлаарай, алдаа гарлаа. Та надад энэ алдааны тайланг илгээж, энэ асуудлыг олж засварлаж, юу хийсэн талаар илүү дэлгэрэнгүй мэдээлэл өгөх боломжтой.</string>
+    <string name="crash_dialog_text">Уучлаарай, алдаа гарлаа. Та энэ алдааны тайланг илгээж, энэ асуудлыг олж, засахад тусалж чадна, магадгүй таны хийсэн зүйлийн талаар илүү дэлгэрэнгүй мэдээлэл өгөх боломжтой.</string>
     <string name="crash_dialog_title">Зазен бясалгалын таймер</string>
     <string name="crash_toast_text">Уучлаарай - дотоод алдаа гарлаа!</string>
-    <string name="crash_user_email_label">Нэмэлт: Энэ асуудлын талаархи асуулт эсвэл шинэчлэлтийг авах бол таны имэйл хаяг.</string>
+    <string name="crash_user_email_label">Нэмэлт: Энэ асуудлын талаархи асуулт эсвэл шинэчлэлтийг авах бол таны и-мэйл хаяг.</string>
     <string name="default_section_name">Нэргүй</string>
     <string name="demo_sess1_description">Ням гарагийн оройн бясалгал</string>
     <string name="demo_sess1_name">Зазэн, Кинхин нар</string>
@@ -54,9 +54,9 @@
     <string name="desc_get_messages">Хэрэв автомат мессежийг идэвхгүй болгосон бол та эндээс мэдээ үзэх боломжтой.</string>
     <string name="desc_keep_screen_on">Бясалгалын үеэр дэлгэцийг асаалттай байлгана</string>
     <string name="desc_no_server_messages">Апп ажиллаж эхлэхэд Мэдээг автоматаар харуулах</string>
-    <string name="error_checking_for_server_messages">Шинэ мессежүүдийг татахад алдаа гарлаа.</string>
+    <string name="error_checking_for_server_messages">Шинэ зурвасуудыг дуудах үед алдаа гарлаа.</string>
     <string name="gong_type">Гон дуу</string>
-    <string name="help_sectionlist_text">Эндээс та сессийнхээ агуулгыг нэрлэх, тайлбарлах, засварлах боломжтой.\n\n ДАХИН ЗАХИАЛАХ\n Зүйлүүдийг дахин эрэмбэлэхийн тулд тухайн зүйл дээр удаан дараад\n шинэ байрлал руу нь чирнэ үү.\n\n Устгах⦅6 руу зөөнө баруун.\n\n ЗАСАХ\n Хэсгийг засахын тулд нэг удаа дарна уу.\n\n НЭМЭХ\n Шинэ хэсэг нэмэхийн тулд + товчийг дарна уу.</string>
+    <string name="help_sectionlist_text">Эндээс та Сессийнхээ агуулгыг нэрлэж, дүрсэлж, засварлаж болно.\n\nДАХИН ЗАХИАЛЖ БАЙНА\nЗүйлсийг дахин эрэмбэлэхийн тулд зүйл дээр удаан дарж,\nшинэ байрлал руу нь чирнэ үү.\n\nУСТГАЖ БАЙНА\nТухайн зүйлийг устгахын тулд баруун тийш зөөнө үү.\n\nЗАСАХ\nХэсгийг засахын тулд нэг удаа хүрнэ үү.\n\nНЭМЭХ\nШинэ хэсэг нэмэхийн тулд + товчийг дарна уу.</string>
     <string name="help_sectionlist_title">Сеанс засах</string>
     <string name="label_section_name">Хэсгийн нэр</string>
     <string name="label_session_description">Сеанс тайлбар</string>
@@ -74,7 +74,7 @@
     <string name="menu_settings">Тохиргоо</string>
     <string name="minuten">Минут</string>
     <string name="no_new_server_messages">Шинэ мессеж байхгүй байна.</string>
-    <string name="no_sections_in_session">Бясалгал эхлүүлэх боломжгүй: Сонгосон хичээлд ямар ч хэсэг байхгүй.</string>
+    <string name="no_sections_in_session">Бясалгалыг эхлүүлж чадахгүй \': Сонгосон хичээлд ямар ч хэсэг байхгүй.</string>
     <string name="no_session_exists">Эхлэх боломжтой сесс байхгүй. Эхлээд нэгийг үүсгэнэ үү.</string>
     <string name="notification_text">Одоогоор Зазен бясалгал ажиллаж байна</string>
     <string name="notification_text_paused">Зазэн бясалгал түр зогсов</string>
@@ -93,29 +93,29 @@
     <string name="pref_mute_mode_vibrate_sound">Хонхны дуу ба чичиргээ</string>
     <string name="pref_mute_mode_vibrate_sound_desc">Хонхны дуу болон чичиргээг тоглуулаарай</string>
     <string name="pref_muting">Дууг хаах тохиргоо</string>
-    <string name="pref_sum_backup">Sessions болон Sounds-ийн нөөц хуулбарыг өөрийн SD-картанд хадгална уу.</string>
+    <string name="pref_sum_backup">Sessions болон Sounds-ийн нөөц хуулбарыг SD картандаа хадгалаарай.</string>
     <string name="pref_sum_bad_removal">SD картыг эхлээд салгахгүйгээр салгасан.</string>
     <string name="pref_sum_checking">Одоогоор SD картыг шалгаж байна</string>
     <string name="pref_sum_ejecting">SD-картыг гаргаж байна</string>
     <string name="pref_sum_nofs">SD карт дээр файлын систем байхгүй</string>
     <string name="pref_sum_read_only">SD-карт нь зөвхөн унших боломжтой</string>
     <string name="pref_sum_removed">SD-карт байхгүй</string>
-    <string name="pref_sum_restore">SD картын нөөцлөлтөөс сесс болон захиалгат дууг сэргээнэ үү</string>
+    <string name="pref_sum_restore">SD картны нөөцлөлтөөс сесс болон захиалгат дууг сэргээнэ үү</string>
     <string name="pref_sum_shared">SD картыг хуваалцсан</string>
     <string name="pref_title_backup">Нөөцлөлт үүсгэх</string>
     <string name="pref_title_brightness">Гэрэлтүүлэг</string>
     <string name="pref_title_restore">Нөөцлөлтөөс сэргээх</string>
-    <string name="privacy_message">Энэхүү програм нь хувийн мэдээлэл цуглуулдаггүй - IP хаяг эсвэл бусад технологитой холбоотой өгөгдлийг ашигладаггүй, ямар ч байдлаар цуглуулж, боловсруулдаггүй, ашигладаггүй.</string>
+    <string name="privacy_message">Энэхүү програм нь ямар ч хувийн мэдээлэл цуглуулдаггүй - энэ нь IP хаяг эсвэл бусад технологитой холбоотой өгөгдлийг ашигладаггүй, ямар нэгэн байдлаар цуглуулж, боловсруулдаггүй, ашигладаггүй.</string>
     <string name="privacy_ok">OK</string>
     <string name="privacy_title">Нууцлалын мэдээлэл</string>
-    <string name="really_stop">Үнэхээр бясалгалаа зогсоох уу?</string>
+    <string name="really_stop">Бясалгалаа үнэхээр зогсоох уу?</string>
     <string name="restore_backup_not_found">Нөөц файл олдсонгүй</string>
     <string name="restore_error_text">Нөөцлөлтөөс сэргээхэд алдаа гарлаа</string>
     <string name="restore_no_permission">Зөвшөөрөл байхгүй тул сэргээж чадсангүй.</string>
     <string name="restore_really_text">Энэ нь таны бүх сешнүүдийг Нөөцлөлтийн хэсгүүдээр солих болно! (Буцаах боломжгүй!)</string>
     <string name="restore_really_title">Үнэхээр өгөгдлийг сэргээх үү?</string>
     <string name="restore_success_text">Өгөгдөл сэргээлт амжилттай</string>
-    <string name="search_menu_title">Хайлт</string>
+    <string name="search_menu_title">Хайх</string>
     <string name="section_info_string_1_pl">%1$d Хонх</string>
     <string name="section_info_string_1_sg">1 хонх</string>
     <string name="section_info_string_2_pl">%1$d секунд тутамд</string>
@@ -128,14 +128,14 @@
     <string name="content_desc_session_actions">Сеансын үйлдлүүд</string>
     <string name="session_list_unnamed_entry">Нэргүй сесс</string>
     <string name="status_bar_notification_info_overflow">999+</string>
-    <string name="test_mute_perm_request">Апп нь одоогоор таны утасны дууг хаах эрхгүй. Үүнийг өөрчлөхийн тулд тохиргоог нээх үү?</string>
+    <string name="test_mute_perm_request">Апп нь одоогоор таны утасны дууг хаах эрхгүй байна. Үүнийг өөрчлөхийн тулд тохиргоог нээх үү?</string>
     <string name="text_cant_mute">Таны утас энэ програмын дууг хаахыг зөвшөөрөхгүй. Энэ апп-ын тохиргооноос дууг хаахыг идэвхгүй болгох эсвэл утасныхаа тохиргооноос дууг хаахыг зөвшөөрнө үү.</string>
     <string name="text_no_notify_access_settings">Таны утсанд дууг хаахыг зөвшөөрөх стандарт тохиргоо байхгүй бололтой. \"Бүү саад бол хандалтын\" тохиргоог гараар хайж олоод идэвхжүүлнэ үү.</string>
     <string name="text_no_sections">Тодорхойлсон хэсэг байхгүй.</string>
     <string name="text_question_delete_session">Сонгосон сессийг үнэхээр устгах уу?</string>
     <string name="theme">Сэдэв</string>
     <string name="theme_dark">Харанхуй сэдэв</string>
-    <string name="theme_desc">Програмын цайвар эсвэл бараан харагдах байдлыг сонгоно уу</string>
+    <string name="theme_desc">Програмын харагдах байдлыг сонгоно уу</string>
     <string name="theme_light">Хөнгөн сэдэв</string>
     <string name="theme_system">Системийн сэдэв</string>
     <string name="theme_value_dark">dark</string>
@@ -158,4 +158,12 @@
     <string name="title_dim_bell">Бүдэг Белл</string>
     <string name="dim_bell_label_off">Бүдгэрээгүй</string>
     <string name="dim_bell_label_format">Бүдэг: %1$d0%%</string>
+    <string name="section_deleted">Устгасан \'%s\'</string>
+    <string name="action_undo">Буцаах</string>
+    <string name="notification_channel_name">Бясалгалын таймер</string>
+    <string name="nav_label_sessions">Хурал</string>
+    <string name="nav_label_meditation">Бясалгал</string>
+    <string name="nav_label_edit_session">Сеанс засах</string>
+    <string name="nav_label_edit_section">Засварлах хэсэг</string>
+    <string name="nav_label_settings">Тохиргоо</string>
 </resources>

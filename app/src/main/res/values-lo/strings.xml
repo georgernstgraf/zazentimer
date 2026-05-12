@@ -1,31 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="abbrechen">ຍົກເລີກ</string>
-    <string name="about1">Zazen Meditation Timer — A simple meditation timer with customizable sections, bell sounds, and session management.</string>
-    <string name="about2">Originally created by Stefan Gaffga. Currently maintained by Georg Graf.&lt;br&gt;&lt;br&gt;Thanks to Winfried of &lt;a href="http://www.meditationsuhren.de"&gt;http://www.meditationsuhren.de&lt;/a&gt; for providing such great Bell Sounds!</string>
-    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues"&gt;Report issues on GitHub&lt;/a&gt;</string>
-    <string name="app_description">This application lets the user define a set of meditation sessions and provides a timer with visual and audible feedback when a part or the whole meditation is over.</string>
+    <string name="about1">ເຄື່ອງຈັບເວລາສະມາທິ Zazen - ເຄື່ອງຈັບເວລາສະມາທິແບບງ່າຍໆທີ່ມີພາກສ່ວນທີ່ສາມາດປັບແຕ່ງໄດ້, ສຽງກະດິ່ງ, ແລະການຈັດການເຊດຊັນ.</string>
+    <string name="about2">ໃນເບື້ອງຕົ້ນສ້າງໂດຍ Stefan Gaffga. ປະຈຸບັນຮັກສາໄວ້ໂດຍ Georg Graf.&lt;br&gt;&lt;br&gt;ຂໍຂອບໃຈ Winfried ຂອງ &lt;a href="http://www.meditationsuhren.de"&gt;http://www.meditationsuhren.de&lt;/a&gt; ສໍາລັບການສະຫນອງສຽງ Bell ທີ່ຍິ່ງໃຫຍ່ດັ່ງກ່າວ!</string>
+    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues"&gt;ລາຍງານບັນຫາໃນ GitHub&lt;/a&gt;</string>
+    <string name="app_description">ແອັບພລິເຄຊັນນີ້ເຮັດໃຫ້ຜູ້ໃຊ້ກໍານົດຊຸດຂອງກອງປະຊຸມສະມາທິແລະສະຫນອງການຈັບເວລາທີ່ມີຄໍາຕິຊົມທີ່ເບິ່ງເຫັນແລະສຽງໃນເວລາທີ່ການນັ່ງສະມາທິບາງສ່ວນຫຼືທັງຫມົດສິ້ນສຸດລົງ.</string>
     <string name="app_name">Zazen Meditation Timer</string>
     <string name="appbar_scrolling_view_behavior">android.support.design.widget.AppBarLayout$ScrollingViewBehavior</string>
     <string name="backup_error_text">ຂໍອະໄພ, ເກີດຄວາມຜິດພາດຂຶ້ນໃນຂະນະທີ່ບັນທຶກ.</string>
-    <string name="backup_no_permission">ບໍ່ສາມາດສ້າງການສຳຮອງຂໍ້ມູນໄດ້ເນື່ອງຈາກບໍ່ມີສິດອະນຸຍາດ.</string>
+    <string name="backup_no_permission">ບໍ່ສາມາດສ້າງການສໍາຮອງໄດ້ເນື່ອງຈາກບໍ່ມີສິດອະນຸຍາດ.</string>
     <string name="backup_not_createable">ເກີດຄວາມຜິດພາດໃນການສ້າງໄຟລ໌ສຳຮອງ.</string>
     <string name="backup_success_text">ສ້າງການສຳຮອງຂໍ້ມູນສຳເລັດແລ້ວ!</string>
-    <string name="bell_name_1">High Tone</string>
-    <string name="bell_name_2">Low Tone</string>
-    <string name="bell_name_3">Jap. Rhinbowl Dharma, 107mm</string>
-    <string name="bell_name_4">Jap. Rhinbowl Dharma, 88mm (black, glazed)</string>
-    <string name="bell_name_5">Jap. Rhinbowl Shomyo, 90mm</string>
-    <string name="bell_name_6">Jap. Rhinbowl Tang, 164mm</string>
-    <string name="bell_name_7">Tib. Bowl, 230mm</string>
-    <string name="bell_name_8">Jap. Rhinbowl, 97mm</string>
+    <string name="bell_name_1">ສຽງສູງ</string>
+    <string name="bell_name_2">ສຽງຕ່ຳ</string>
+    <string name="bell_name_3">ປະເທດຍີ່ປຸ່ນ Rhinbowl Dharma, 107mm</string>
+    <string name="bell_name_4">ປະເທດຍີ່ປຸ່ນ Rhinbowl Dharma, 88mm (ສີດໍາ, glazed)</string>
+    <string name="bell_name_5">ປະເທດຍີ່ປຸ່ນ Rhinbowl Shomyo, 90mm</string>
+    <string name="bell_name_6">ປະເທດຍີ່ປຸ່ນ Rhinbowl Tang, 164mm</string>
+    <string name="bell_name_7">ທິບ. ໂຖປັດສະວະ, 230mm</string>
+    <string name="bell_name_8">ປະເທດຍີ່ປຸ່ນ Rhinbowl, 97mm</string>
     <string name="bell_pause">ຊ່ອງຫວ່າງກະດິ່ງ (ວິນາທີ)</string>
     <string name="bell_user">ເພີ່ມກະດິ່ງ...</string>
     <string name="bottom_nav_meditation">ສະມາທິ</string>
     <string name="bottom_nav_sessions">ເຊດຊັນ</string>
     <string name="bottom_sheet_behavior">android.support.design.widget.BottomSheetBehavior</string>
     <string name="but_pause">ຢຸດຊົ່ວຄາວ</string>
-    <string name="but_start">ເລີ່ມການຝຶກສະມາທິ</string>
+    <string name="but_start">ເລີ່ມການນັ່ງສະມາທິ</string>
     <string name="but_stop">ຢຸດ</string>
     <string name="caption_zazen_meditation">ສະມາທິ Zazen</string>
     <string name="character_counter_pattern">%1$d / %2$d</string>
@@ -56,7 +56,7 @@
     <string name="desc_no_server_messages">ສະແດງຂ່າວໂດຍອັດຕະໂນມັດເມື່ອແອັບເລີ່ມຕົ້ນ</string>
     <string name="error_checking_for_server_messages">ເກີດຄວາມຜິດພາດໃນການດຶງຂໍ້ຄວາມໃໝ່.</string>
     <string name="gong_type">ສຽງກອງ</string>
-    <string name="help_sectionlist_text">ທີ່ນີ້ທ່ານສາມາດຕັ້ງຊື່, ອະທິບາຍ ແລະແກ້ໄຂເນື້ອໃນຂອງ Session ຂອງທ່ານໄດ້.\n\n REORDERING\n ເພື່ອຈັດຮຽງລາຍການໃໝ່, ໃຫ້ກົດຄ້າງໄວ້ໃສ່ລາຍການໃດໜຶ່ງແລ້ວ\n ລາກມັນໄປໃສ່ຕຳແໜ່ງໃໝ່ຂອງມັນ.\n\n DELETING\n ເພື່ອລຶບລາຍການໃດໜຶ່ງອອກ. ຂວາ.\n\n EDIT\n ເພື່ອແກ້ໄຂພາກສ່ວນໃດໜຶ່ງ, ພຽງແຕ່ແຕະມັນເທື່ອດຽວ.\n\n ADD\n ເພື່ອເພີ່ມພາກໃໝ່, ໃຫ້ກົດປຸ່ມ +.</string>
+    <string name="help_sectionlist_text">ທີ່ນີ້ທ່ານສາມາດຕັ້ງຊື່, ອະທິບາຍ ແລະແກ້ໄຂເນື້ອໃນຂອງ Session ຂອງທ່ານໄດ້.\n\nກຳລັງສັ່ງຄືນໃໝ່\nເພື່ອຈັດຮຽງລາຍການຄືນໃໝ່, ໃຫ້ກົດຄ້າງໃສ່ລາຍການໃດໜຶ່ງ ແລະ\nລາກມັນໄປຫາຕໍາແຫນ່ງໃຫມ່ຂອງມັນ.\n\nການລຶບ\nເພື່ອລຶບລາຍການໃດໜຶ່ງ, ໃຫ້ຍ້າຍມັນໄປທາງຂວາ.\n\nແກ້ໄຂ\nເພື່ອແກ້ໄຂພາກສ່ວນໃດນຶ່ງ, ພຽງແຕ່ແຕະມັນເທື່ອດຽວ.\n\nເພີ່ມ\nເພື່ອເພີ່ມພາກສ່ວນໃໝ່, ໃຫ້ກົດປຸ່ມ +.</string>
     <string name="help_sectionlist_title">ແກ້ໄຂ Session</string>
     <string name="label_section_name">ຊື່ພາກ</string>
     <string name="label_session_description">ລາຍລະອຽດຂອງເຊດຊັນ</string>
@@ -74,9 +74,9 @@
     <string name="menu_settings">ການຕັ້ງຄ່າ</string>
     <string name="minuten">ນາທີ</string>
     <string name="no_new_server_messages">ບໍ່ມີຂໍ້ຄວາມໃໝ່.</string>
-    <string name="no_sections_in_session">Can\'tເລີ່ມການນັ່ງສະມາທິ: Session ທີ່ເລືອກບໍ່ມີພາກໃດ.</string>
+    <string name="no_sections_in_session">Can\'t ເລີ່ມການນັ່ງສະມາທິ: Session ທີ່ເລືອກບໍ່ມີພາກໃດ.</string>
     <string name="no_session_exists">ບໍ່ມີເຊດຊັນທີ່ສາມາດເລີ່ມຕົ້ນໄດ້. ກະລຸນາສ້າງອັນທໍາອິດ.</string>
-    <string name="notification_text">ການນັ່ງສະມາທິ Zazen ກໍາລັງດໍາເນີນຢູ່</string>
+    <string name="notification_text">ການນັ່ງສະມາທິ Zazen ກໍາລັງດໍາເນີນການຢູ່</string>
     <string name="notification_text_paused">Zazen Meditation ຢຸດຊົ່ວຄາວ</string>
     <string name="notification_title">ສະມາທິ Zazen</string>
     <string name="notification_title_paused">ການນັ່ງສະມາທິ Zazen (ຢຸດຊົ່ວຄາວ)</string>
@@ -116,7 +116,7 @@
     <string name="restore_really_title">ກູ້ຂໍ້ມູນແທ້ບໍ?</string>
     <string name="restore_success_text">ກູ້ຄືນຂໍ້ມູນສຳເລັດແລ້ວ</string>
     <string name="search_menu_title">ຊອກຫາ</string>
-    <string name="section_info_string_1_pl">%1$d ກະດິ່ງ</string>
+    <string name="section_info_string_1_pl">%1$d ລະຄັງ</string>
     <string name="section_info_string_1_sg">1 ກະດິ່ງ</string>
     <string name="section_info_string_2_pl">ທຸກໆ %1$d ວິນາທີ</string>
     <string name="section_info_string_2_sg">ທຸກໆວິນາທີ</string>
@@ -124,7 +124,7 @@
     <string name="select_audio">ເລືອກໄຟລ໌ສຽງ</string>
     <string name="service_description">ແລ່ນສະມາທິ Zazen</string>
     <string name="content_desc_drag_handle">ລາກເພື່ອຈັດຮຽງໃໝ່</string>
-    <string name="content_desc_section_actions">ພາກສ່ວນປະຕິບັດ</string>
+    <string name="content_desc_section_actions">ພາກປະຕິບັດ</string>
     <string name="content_desc_session_actions">ການປະຕິບັດຂອງເຊດຊັນ</string>
     <string name="session_list_unnamed_entry">ເຊດຊັນທີ່ບໍ່ມີຊື່</string>
     <string name="status_bar_notification_info_overflow">999+</string>
@@ -135,7 +135,7 @@
     <string name="text_question_delete_session">ລຶບ Session ທີ່ເລືອກແທ້ບໍ?</string>
     <string name="theme">ຫົວຂໍ້</string>
     <string name="theme_dark">ຮູບແບບສີສັນມືດ</string>
-    <string name="theme_desc">ເລືອກລັກສະນະແສງສະຫວ່າງຫຼືຊ້ໍາຂອງ App</string>
+    <string name="theme_desc">ເລືອກ​ຮູບ​ລັກ​ສະ​ນະ app ໄດ້​</string>
     <string name="theme_light">ຮູບແບບສີສັນແຈ້ງ</string>
     <string name="theme_system">ຫົວຂໍ້ລະບົບ</string>
     <string name="theme_value_dark">dark</string>
@@ -158,4 +158,12 @@
     <string name="title_dim_bell">Dim Bell</string>
     <string name="dim_bell_label_off">ບໍ່ມືດມົວ</string>
     <string name="dim_bell_label_format">ມືດລົງ: %1$d0%%</string>
+    <string name="section_deleted">ລຶບອອກ ___\'%s\'</string>
+    <string name="action_undo">ຍົກເລີກ</string>
+    <string name="notification_channel_name">ຈັບເວລານັ່ງສະມາທິ</string>
+    <string name="nav_label_sessions">ເຊດຊັນ</string>
+    <string name="nav_label_meditation">ສະມາທິ</string>
+    <string name="nav_label_edit_session">ແກ້ໄຂ Session</string>
+    <string name="nav_label_edit_section">ແກ້ໄຂພາກສ່ວນ</string>
+    <string name="nav_label_settings">ການຕັ້ງຄ່າ</string>
 </resources>
