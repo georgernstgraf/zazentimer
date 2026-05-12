@@ -2,7 +2,6 @@
 <resources>
     <string name="abbrechen">Баш тарту</string>
     <string name="about1">Zazen Meditation Timer - көйләнә торган бүлекләр, кыңгырау тавышлары, сессия белән идарә итү белән гади уйлану таймеры.</string>
-    <string name="about2">Башта Стефан Гаффа тарафыннан ясалган. Хәзерге вакытта Георг Граф тарафыннан саклана.</string>
     <string name="about3">&lt;a href = "https://github.com/georgernstgraf/zazentimer/issues"> GitHub\'та проблемалар турында хәбәр итү &lt;/a&gt;</string>
     <string name="app_description">Бу кушымта кулланучыга уйлану сессияләре җыелмасын билгеләргә мөмкинлек бирә һәм өлеш яки бөтен уйлану беткәч визуаль һәм ишетелә торган таймер белән тәэмин итә.</string>
     <string name="app_name">Zazen Meditation Timer</string>

@@ -158,7 +158,6 @@
     <string name="title_dim_bell">Dim Tswb</string>
     <string name="dim_bell_label_off">Tsis dimmed</string>
     <string name="dim_bell_label_format">Dimmed: %1$d0%%</string>
-    <string name="section_deleted">Rho tawm ___\'__0_2__</string>
     <string name="action_undo">Tshem tawm</string>
     <string name="notification_channel_name">Meditation Timer</string>
     <string name="nav_label_sessions">Kev sib tham</string>

@@ -40,7 +40,9 @@ Follow these without question. Do not deviate unless explicitly told.
 - Use `execution = "HOST"` in `build.gradle.kts` when the `am instrument` path is used (no orchestrator APK).
 - Keep emulator memory at `-memory 2048` to avoid `systemd-oomd` kills.
 
-## Internationalization (i18n)
+## Internationalization (i18n) & LLM Translations
+- **Extremely Strict LLM Instructions**: When using LLMs for translation, you **MUST** provide extremely precise instructions regarding XML tags and placeholders (`%s`, `%1$d`, `&lt;`, `&gt;`). LLMs often corrupt these in low-resource languages, leading to runtime formatting crashes.
+- **Explicit Fallback Rule**: Explicitly prompt any translation sub-agent: *"If you do not have high confidence in this specific language, or if you cannot guarantee that EVERY placeholder will be preserved exactly, you MUST leave the string in English. Guessing or hallucinating will cause the application to crash."*
 - Always use `R.string` — never hardcode user-facing text in Kotlin, XML, or navigation graphs
 - New strings go to `values/strings.xml` first, then run `retranslate.py --diff`
 - Mark programmatic strings as `translatable="false"` in XML

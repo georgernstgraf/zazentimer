@@ -2,7 +2,6 @@
 <resources>
     <string name="abbrechen">بىكار قىلىش</string>
     <string name="about1">Zazen Meditation Timer - خاسلاشتۇرۇلغان بۆلەكلەر ، قوڭغۇراق ئاۋازى ۋە يىغىن باشقۇرۇش بىلەن ئاددىي بولغان ئويلىنىش ۋاقتى.</string>
-    <string name="about2">ئەسلىدە ستېفان گافگا ئىجاد قىلغان. ھازىر جورج گراف تەرىپىدىن قوغدىلىدۇ. &lt;br&gt; &lt;br&gt; &lt;a href = "http://www.meditationsuhren.de"> http://www.meditationsuhren.de &lt;/a&gt; نىڭ Winfried غا رەھمەت</string>
     <string name="about3">&lt;a href = "https://github.com/georgernstgraf/zazentimer/issues"> GitHub دىكى مەسىلىلەرنى دوكلات قىلىش &lt;/a&gt;</string>
     <string name="app_description">بۇ پروگرامما ئىشلەتكۈچىلەرگە بىر يۈرۈش ئويلىنىش يىغىنلىرىنى ئېنىقلاپ بېرىدۇ ھەمدە بىر بۆلەك ياكى پۈتۈن ئويلىنىش ئاخىرلاشقاندا كۆرۈش ۋە ئاڭلاش ئىنكاسى بىلەن ۋاقىت تەمىنلەيدۇ.</string>
     <string name="app_name">Zazen Meditation Timer</string>

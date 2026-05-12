@@ -2,7 +2,6 @@
 <resources>
     <string name="abbrechen">Kureka</string>
     <string name="about1">Igihe cyo Gutekereza Zazen - Igihe cyoroshye cyo gutekereza hamwe nibice byihariye, amajwi yinzogera, hamwe nubuyobozi bwamasomo.</string>
-    <string name="about2">Mubyambere byakozwe na Stefan Gaffga. Kugeza ubu bikomezwa na Georg Graf. &lt;br&gt;</string>
     <string name="about3">&lt;a href = "https://github.com/georgernstgraf/zazentimer/issues"> Raporo y\'ibibazo kuri GitHub &lt;/a&gt;</string>
     <string name="app_description">Iyi porogaramu ituma uyikoresha asobanura urutonde rwibitekerezo kandi agatanga igihe hamwe nibitekerezo byumvikana kandi byumvikana mugihe igice cyangwa gutekereza byose birangiye.</string>
     <string name="app_name">Zazen Meditation Timer</string>
@@ -118,7 +117,6 @@
     <string name="search_menu_title">Shakisha</string>
     <string name="section_info_string_1_pl">%1$d Inzogera</string>
     <string name="section_info_string_1_sg">1 Inzogera</string>
-    <string name="section_info_string_2_pl">buri masegonda</string>
     <string name="section_info_string_2_sg">buri Isegonda</string>
     <string name="sekunden">Amasegonda</string>
     <string name="select_audio">Hitamo dosiye yijwi</string>
