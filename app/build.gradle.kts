@@ -1,3 +1,20 @@
+import org.gradle.api.provider.ValueSource
+import org.gradle.api.provider.ValueSourceParameters
+
+abstract class GitHashSource : ValueSource<String, ValueSourceParameters.None> {
+    override fun obtain(): String {
+        val process =
+            ProcessBuilder("git", "rev-parse", "--short=7", "HEAD")
+                .directory(File(System.getProperty("user.dir")))
+                .start()
+        process.waitFor()
+        return process.inputStream
+            .bufferedReader()
+            .readText()
+            .trim()
+    }
+}
+
 plugins {
     id("com.android.application")
     id("com.google.dagger.hilt.android")
@@ -19,11 +36,8 @@ android {
 
         testInstrumentationRunner = "at.priv.graf.zazentimer.HiltTestRunner"
 
-        buildConfigField(
-            "String",
-            "GIT_HASH",
-            "\"${providers.exec { commandLine("git", "rev-parse", "--short=7", "HEAD") }.standardOutput.asText.get().trim()}\"",
-        )
+        val gitHash = providers.of(GitHashSource::class.java) {}.get().trim()
+        buildConfigField("String", "GIT_HASH", "\"$gitHash\"")
 
         ksp {
             arg("room.schemaLocation", "$projectDir/schemas")
