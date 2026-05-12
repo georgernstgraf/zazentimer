@@ -2,8 +2,8 @@
 <resources>
     <string name="abbrechen">hanafoana</string>
     <string name="about1">Zazen Meditation Timer - Famantaranandro fisaintsainana tsotra misy fizarana azo zahana, feon-dakolosy ary fitantanana fivoriana.</string>
-    <string name="about2">Stefan Gaffga no namorona voalohany. Tazonin\'i Georg Graf amin\'izao fotoana izao.&lt;br&gt;&lt;br&gt;Misaotra an\'i Winfried ao amin\'ny &lt;a href="http://www.meditationsuhren.de"&gt;http://www.meditationsuhren.de&lt;/a&gt; tamin\'ny nanomezana ny Feon\'ny Bell mahafinaritra toy izany!</string>
-    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues"&gt;Mitatitra olana amin\'ny GitHub&lt;/a&gt;</string>
+    <string name="about2">Stefan Gaffga no namorona voalohany. Tazonin\'i Georg Graf amin\'izao fotoana izao.&lt;br&gt;&lt;br&gt;Misaotra an\'i Winfried ao amin\'ny &lt;a href="http://www.meditationsuhren.de">http://www.meditationsuhren.de&lt;/a&gt; tamin\'ny nanomezana ny Feon\'ny Bell mahafinaritra toy izany!</string>
+    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues">Mitatitra olana amin\'ny GitHub&lt;/a&gt;</string>
     <string name="app_description">Ity fampiharana ity dia mamela ny mpampiasa hamaritra andiana fotoam-pisainana ary manome fameram-potoana misy valiny hita maso sy heno rehefa tapitra ny ampahany na ny fisaintsainana iray manontolo.</string>
     <string name="app_name">Zazen Meditation Timer</string>
     <string name="appbar_scrolling_view_behavior">android.support.design.widget.AppBarLayout$ScrollingViewBehavior</string>

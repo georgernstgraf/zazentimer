@@ -2,8 +2,8 @@
 <resources>
     <string name="abbrechen">Hoʻopau</string>
     <string name="about1">ʻO Zazen Meditation Timer - He manawa noʻonoʻo maʻalahi me nā ʻāpana i hana ʻia, nā kani bele, a me ka hoʻokele manawa.</string>
-    <string name="about2">Hana ʻia e Stefan Gaffga. Mālama ʻia e Georg Graf i kēia manawa.&lt;br&gt;&lt;br&gt;Mahalo iā Winfried o &lt;a href="http://www.meditationsuhren.de"&gt;http://www.meditationsuhren.de&lt;/a&gt; no ka hoʻolako ʻana i nā kani Bell maikaʻi loa!</string>
-    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues"&gt;Hōʻike i nā pilikia ma GitHub&lt;/a&gt;</string>
+    <string name="about2">Hana ʻia e Stefan Gaffga. Mālama ʻia e Georg Graf i kēia manawa.&lt;br&gt;&lt;br&gt;Mahalo iā Winfried o &lt;a href="http://www.meditationsuhren.de">http://www.meditationsuhren.de&lt;/a&gt; no ka hoʻolako ʻana i nā kani Bell maikaʻi loa!</string>
+    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues">Hōʻike i nā pilikia ma GitHub&lt;/a&gt;</string>
     <string name="app_description">Hāʻawi kēia palapala noi i ka mea hoʻohana e wehewehe i kahi hoʻonohonoho o nā manawa noʻonoʻo a hāʻawi i kahi manawa me nā manaʻo ʻike a lohe ʻia i ka wā i pau ai kahi ʻāpana a i ʻole ka noʻonoʻo holoʻokoʻa.</string>
     <string name="app_name">Zazen Meditation Timer</string>
     <string name="appbar_scrolling_view_behavior">android.support.design.widget.AppBarLayout$ScrollingViewBehavior</string>

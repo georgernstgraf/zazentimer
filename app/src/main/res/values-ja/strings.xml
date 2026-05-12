@@ -2,8 +2,8 @@
 <resources>
     <string name="abbrechen">キャンセル</string>
     <string name="about1">Zazen Meditation Timer — カスタマイズ可能なセクション、ベルの音、セッション管理を備えたシンプルな瞑想タイマー。</string>
-    <string name="about2">オリジナル版はStefan Gaffgaによって作成されました。現在はGeorg Grafによって保守されています。&lt;br&gt;&lt;br&gt;素晴らしいベルの音を提供してくれた &lt;a href="http://www.meditationsuhren.de"&gt;http://www.meditationsuhren.de&lt;/a&gt; のWinfriedに感謝します！</string>
-    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues"&gt;GitHubで問題を報告する&lt;/a&gt;</string>
+    <string name="about2">オリジナル版はStefan Gaffgaによって作成されました。現在はGeorg Grafによって保守されています。&lt;br&gt;&lt;br&gt;素晴らしいベルの音を提供してくれた &lt;a href="http://www.meditationsuhren.de">http://www.meditationsuhren.de&lt;/a&gt; のWinfriedに感謝します！</string>
+    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues">GitHubで問題を報告する&lt;/a&gt;</string>
     <string name="app_description">このアプリは瞑想セッションを定義し、一部または全体の瞑想が終了したときに視覚的および聴覚的なフィードバックを提供するタイマーです。</string>
     <string name="appbar_scrolling_view_behavior">android.support.design.widget.AppBarLayout$ScrollingViewBehavior</string>
     <string name="backup_error_text">保存中にエラーが発生しました。</string>

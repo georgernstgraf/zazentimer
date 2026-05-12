@@ -2,8 +2,8 @@
 <resources>
     <string name="abbrechen">Rhoxisa</string>
     <string name="about1">I-Zazen Meditation Timer-Isibali-xesha esilula sokucamngca esinamacandelo enziwe ngokwezifiso, izandi zentsimbi, kunye nolawulo lweseshoni.</string>
-    <string name="about2">Ekuqaleni yadalwa nguStefan Gaffga. Ngoku igcinwe nguGeorg Graf.&lt;br&gt;&lt;br&gt;Enkosi kuWinfried we&lt;a href="http://www.meditationsuhren.de"&gt;http://www.meditationsuhren.de&lt;/a&gt; ngokunikezela ngeZandi zeBell ezinje!</string>
-    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues"&gt;Xela imiba kwiGitHub&lt;/a&gt;</string>
+    <string name="about2">Ekuqaleni yadalwa nguStefan Gaffga. Ngoku igcinwe nguGeorg Graf.&lt;br&gt;&lt;br&gt;Enkosi kuWinfried we&lt;a href="http://www.meditationsuhren.de">http://www.meditationsuhren.de&lt;/a&gt; ngokunikezela ngeZandi zeBell ezinje!</string>
+    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues">Xela imiba kwiGitHub&lt;/a&gt;</string>
     <string name="app_description">Esi sicelo sivumela umsebenzisi ukuba achaze iseti yeeseshini zokucamngca kwaye ibonelela ngesibali-xesha ngengxelo ebonakalayo kunye nevakalayo xa inxalenye okanye ukucamngca kuphelile.</string>
     <string name="app_name">Zazen Meditation Timer</string>
     <string name="appbar_scrolling_view_behavior">android.support.design.widget.AppBarLayout$ScrollingViewBehavior</string>

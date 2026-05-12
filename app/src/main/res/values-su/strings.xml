@@ -2,8 +2,8 @@
 <resources>
     <string name="abbrechen">Ngabolaykeun</string>
     <string name="about1">Timer Meditasi Zazen - Timer meditasi saderhana sareng bagian anu disesuaikan, sora bel, sareng manajemén sési.</string>
-    <string name="about2">Asalna dijieun ku Stefan Gaffga. Ayeuna dijaga ku Georg Graf.&lt;br&gt;&lt;br&gt;Hatur nuhun ka Winfried tina &lt;a href="http://www.meditationsuhren.de"&gt;http://www.meditationsuhren.de&lt;/a&gt; pikeun nyayogikeun Bell Sora anu saé!</string>
-    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues"&gt;Laporkeun masalah dina GitHub&lt;/a&gt;</string>
+    <string name="about2">Asalna dijieun ku Stefan Gaffga. Ayeuna dijaga ku Georg Graf.&lt;br&gt;&lt;br&gt;Hatur nuhun ka Winfried tina &lt;a href="http://www.meditationsuhren.de">http://www.meditationsuhren.de&lt;/a&gt; pikeun nyayogikeun Bell Sora anu saé!</string>
+    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues">Laporkeun masalah dina GitHub&lt;/a&gt;</string>
     <string name="app_description">Aplikasi ieu ngamungkinkeun pamaké pikeun nangtukeun sakumpulan sesi meditasi sareng nyayogikeun waktos sareng tanggapan visual sareng karungu nalika sabagian atanapi sadayana semedi parantos réngsé.</string>
     <string name="app_name">Zazen Meditation Timer</string>
     <string name="appbar_scrolling_view_behavior">android.support.design.widget.AppBarLayout$ScrollingViewBehavior</string>

@@ -2,8 +2,8 @@
 <resources>
     <string name="abbrechen">Jooji</string>
     <string name="about1">Saacadaha Meditation Timer-ka fudud ee waqtiga meditation oo leh qaybo la beddeli karo, dhawaqa gambaleelka, iyo maaraynta kalfadhiga.</string>
-    <string name="about2">Asal ahaan waxaa abuuray Stefan Gaffga. Hadda waxaa gacanta ku haya Georg Graf.&lt;br&gt;&lt;br&gt;Winfried ayaa ku mahadsan tii &lt;a href="http://www.meditationsuhren.de"&gt;http://www.meditationsuhren.de&lt;/a&gt; si ay u bixiso dhawaaqyada gambaleelka oo kale!</string>
-    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues"&gt;ka warbixi arrimaha GitHub&lt;/a&gt;</string>
+    <string name="about2">Asal ahaan waxaa abuuray Stefan Gaffga. Hadda waxaa gacanta ku haya Georg Graf.&lt;br&gt;&lt;br&gt;Winfried ayaa ku mahadsan tii &lt;a href="http://www.meditationsuhren.de">http://www.meditationsuhren.de&lt;/a&gt; si ay u bixiso dhawaaqyada gambaleelka oo kale!</string>
+    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues">ka warbixi arrimaha GitHub&lt;/a&gt;</string>
     <string name="app_description">Codsigan wuxuu u oggolaanayaa isticmaaluhu inuu qeexo kalfadhiyo ka fiirsi oo wuxuu siiyaa saacadeeyaha jawaab celin muuqaal iyo maqal ah marka qayb ama dhammaan ka fiirsashadu dhammaato.</string>
     <string name="app_name">Zazen Meditation Timer</string>
     <string name="appbar_scrolling_view_behavior">android.support.design.widget.AppBarLayout$Scrolling ViewBehavior</string>

@@ -2,8 +2,8 @@
 <resources>
     <string name="abbrechen">Tso tseg</string>
     <string name="about1">Zazen Meditation Timer - Ib qho yooj yim kev xav timer nrog cov ntu uas hloov tau, suab nrov, thiab kev tswj xyuas.</string>
-    <string name="about2">Keeb kwm tsim los ntawm Stefan Gaffga. Tam sim no khaws cia los ntawm Georg Graf.&lt;br&gt;&lt;br&gt;Ua tsaug rau Winfried ntawm &lt;a href="http://www.meditationsuhren.de"&gt;http://www.meditationsuhren.de&lt;/a&gt; rau kev muab lub suab zoo li tswb!</string>
-    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues"&gt; Qhia teeb meem ntawm GitHub&lt;/a&gt;</string>
+    <string name="about2">Keeb kwm tsim los ntawm Stefan Gaffga. Tam sim no khaws cia los ntawm Georg Graf.&lt;br&gt;&lt;br&gt;Ua tsaug rau Winfried ntawm &lt;a href="http://www.meditationsuhren.de">http://www.meditationsuhren.de&lt;/a&gt; rau kev muab lub suab zoo li tswb!</string>
+    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues"> Qhia teeb meem ntawm GitHub&lt;/a&gt;</string>
     <string name="app_description">Daim ntawv thov no tso cai rau tus neeg siv txhais cov txheej txheem kev xav thiab muab lub sijhawm nrog cov lus pom thiab mloog tau thaum ib feem lossis tag nrho kev xav tau dhau los.</string>
     <string name="app_name">Zazen Meditation Timer</string>
     <string name="appbar_scrolling_view_behavior">android.support.design.widget.AppBarLayout$ScrollingViewBehavior</string>

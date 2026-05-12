@@ -2,8 +2,8 @@
 <resources>
     <string name="abbrechen">रद्द</string>
     <string name="about1">Zazen Meditation Timer — सानुकूल करपाक येवपी विभाग, घंटी आवाज, आनी सत्र वेवस्थापन आशिल्लो एक सादो ध्यान टाइमर.</string>
-    <string name="about2">मुळांत स्टीफन गॅफगा हाणें तयार केल्लें. सद्या जॉर्ज ग्राफ हांणी सांबाळ्ळां.&lt;br&gt;&lt;br&gt;इतले व्हडले बेल साउंड्स दिवपा खातीर &lt;a href="http://www.meditationsuhren.de"&gt;http://www.meditationsuhren.de&lt;/a&gt; च्या विनफ्रीडाक आभार!</string>
-    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues"&gt;GitHub चेर समस्यांचो अहवाल दिवप&lt;/a&gt;</string>
+    <string name="about2">मुळांत स्टीफन गॅफगा हाणें तयार केल्लें. सद्या जॉर्ज ग्राफ हांणी सांबाळ्ळां.&lt;br&gt;&lt;br&gt;इतले व्हडले बेल साउंड्स दिवपा खातीर &lt;a href="http://www.meditationsuhren.de">http://www.meditationsuhren.de&lt;/a&gt; च्या विनफ्रीडाक आभार!</string>
+    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues">GitHub चेर समस्यांचो अहवाल दिवप&lt;/a&gt;</string>
     <string name="app_description">हो ऍप्लिकेशन वापरप्याक ध्यान सत्रांचो संच व्याख्या करूंक दिता आनी एक भाग वा पुराय ध्यान सोंपतकच दृश्य आनी श्रव्य प्रतिसादा सयत टाइमर पुरवण करता.</string>
     <string name="app_name">Zazen Meditation Timer</string>
     <string name="appbar_scrolling_view_behavior">android.support.design.widget.AppBarLayout $ स्क्रोलिंगदृश्यवर्तन</string>

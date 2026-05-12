@@ -2,8 +2,8 @@
 <resources>
     <string name="abbrechen">मना कइ दीं</string>
     <string name="about1">ज़ाज़ेन मेडिटेशन टाइमर — एगो साधारण मेडिटेशन टाइमर जवना में अनुकूलन योग्य खंड, घंटी के आवाज, आ सत्र प्रबंधन होला।</string>
-    <string name="about2">मूल रूप से स्टीफन गफगा द्वारा बनावल गइल बा। वर्तमान में जॉर्ज ग्राफ द्वारा रखरखाव कइल जाला।&lt;br&gt;&lt;br&gt;अतना बढ़िया बेल साउंड्स उपलब्ध करावे खातिर &lt;a href="http://www.meditationsuhren.de"&gt;http://www.meditationsuhren.de&lt;/a&gt; के विनफ्राइड के धन्यवाद!</string>
-    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues"&gt;गिटहब पर मुद्दा के रिपोर्ट करीं&lt;/a&gt;</string>
+    <string name="about2">मूल रूप से स्टीफन गफगा द्वारा बनावल गइल बा। वर्तमान में जॉर्ज ग्राफ द्वारा रखरखाव कइल जाला।&lt;br&gt;&lt;br&gt;अतना बढ़िया बेल साउंड्स उपलब्ध करावे खातिर &lt;a href="http://www.meditationsuhren.de">http://www.meditationsuhren.de&lt;/a&gt; के विनफ्राइड के धन्यवाद!</string>
+    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues">गिटहब पर मुद्दा के रिपोर्ट करीं&lt;/a&gt;</string>
     <string name="app_description">ई एप्लीकेशन यूजर के मेडिटेशन सत्र के सेट परिभाषित करे के सुविधा देला आ जब कवनो हिस्सा भा पूरा मेडिटेशन खतम हो जाला त दृश्य आ श्रव्य प्रतिक्रिया के साथ टाइमर देला।</string>
     <string name="app_name">Zazen Meditation Timer</string>
     <string name="appbar_scrolling_view_behavior">एंड्रॉयड.सपोर्ट.डिजाइन.विजेट.एपबारलेआउट $ स्क्रॉलिंगव्यूबिहेवियर बा</string>

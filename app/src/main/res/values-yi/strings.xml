@@ -2,8 +2,8 @@
 <resources>
     <string name="abbrechen">באָטל מאַכן</string>
     <string name="about1">Zazen מעדיטאַטיאָן טיימער - אַ פּשוט קלערן טייַמער מיט קוסטאָמיזאַבלע סעקשאַנז, גלאָק סאָונדס און סעסיע פאַרוואַלטונג.</string>
-    <string name="about2">ערידזשנאַלי באשאפן דורך Stefan Gaffga. איצט מיינטיינד דורך Georg Graf.&lt;br&gt;&lt;br&gt;דאַנק צו Winfried פון &lt;a href="http://www.meditationsuhren.de"&gt;http://www.meditationsuhren.de&lt;/a&gt; פֿאַר פּראַוויידינג אַזאַ גרויס בעל סאָונדס!</string>
-    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues"&gt; באריכט ישוז אויף GitHub&lt;/a&gt;</string>
+    <string name="about2">ערידזשנאַלי באשאפן דורך Stefan Gaffga. איצט מיינטיינד דורך Georg Graf.&lt;br&gt;&lt;br&gt;דאַנק צו Winfried פון &lt;a href="http://www.meditationsuhren.de">http://www.meditationsuhren.de&lt;/a&gt; פֿאַר פּראַוויידינג אַזאַ גרויס בעל סאָונדס!</string>
+    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues"> באריכט ישוז אויף GitHub&lt;/a&gt;</string>
     <string name="app_description">די אַפּלאַקיישאַן אַלאַוז דער באַניצער צו דעפינירן אַ גאַנג פון קלערן סעשאַנז און גיט אַ טייַמער מיט וויזשאַוואַל און דייַטלעך באַמערקונגען ווען אַ טייל אָדער די גאנצע קלערן איז איבער.</string>
     <string name="app_name">Zazen Meditation Timer</string>
     <string name="appbar_scrolling_view_behavior">android.support.design.widget.AppBarLayout$ScrollingViewBehavior</string>

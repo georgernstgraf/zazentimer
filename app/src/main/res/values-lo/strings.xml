@@ -2,8 +2,8 @@
 <resources>
     <string name="abbrechen">ຍົກເລີກ</string>
     <string name="about1">ເຄື່ອງຈັບເວລາສະມາທິ Zazen - ເຄື່ອງຈັບເວລາສະມາທິແບບງ່າຍໆທີ່ມີພາກສ່ວນທີ່ສາມາດປັບແຕ່ງໄດ້, ສຽງກະດິ່ງ, ແລະການຈັດການເຊດຊັນ.</string>
-    <string name="about2">ໃນເບື້ອງຕົ້ນສ້າງໂດຍ Stefan Gaffga. ປະຈຸບັນຮັກສາໄວ້ໂດຍ Georg Graf.&lt;br&gt;&lt;br&gt;ຂໍຂອບໃຈ Winfried ຂອງ &lt;a href="http://www.meditationsuhren.de"&gt;http://www.meditationsuhren.de&lt;/a&gt; ສໍາລັບການສະຫນອງສຽງ Bell ທີ່ຍິ່ງໃຫຍ່ດັ່ງກ່າວ!</string>
-    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues"&gt;ລາຍງານບັນຫາໃນ GitHub&lt;/a&gt;</string>
+    <string name="about2">ໃນເບື້ອງຕົ້ນສ້າງໂດຍ Stefan Gaffga. ປະຈຸບັນຮັກສາໄວ້ໂດຍ Georg Graf.&lt;br&gt;&lt;br&gt;ຂໍຂອບໃຈ Winfried ຂອງ &lt;a href="http://www.meditationsuhren.de">http://www.meditationsuhren.de&lt;/a&gt; ສໍາລັບການສະຫນອງສຽງ Bell ທີ່ຍິ່ງໃຫຍ່ດັ່ງກ່າວ!</string>
+    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues">ລາຍງານບັນຫາໃນ GitHub&lt;/a&gt;</string>
     <string name="app_description">ແອັບພລິເຄຊັນນີ້ເຮັດໃຫ້ຜູ້ໃຊ້ກໍານົດຊຸດຂອງກອງປະຊຸມສະມາທິແລະສະຫນອງການຈັບເວລາທີ່ມີຄໍາຕິຊົມທີ່ເບິ່ງເຫັນແລະສຽງໃນເວລາທີ່ການນັ່ງສະມາທິບາງສ່ວນຫຼືທັງຫມົດສິ້ນສຸດລົງ.</string>
     <string name="app_name">Zazen Meditation Timer</string>
     <string name="appbar_scrolling_view_behavior">android.support.design.widget.AppBarLayout$ScrollingViewBehavior</string>

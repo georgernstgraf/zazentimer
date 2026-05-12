@@ -2,8 +2,8 @@
 <resources>
     <string name="abbrechen">Отмена</string>
     <string name="about1">Таймер Дзэн-медитации — простой таймер медитации с настраиваемыми секциями, звуками гонга и управлением сессиями.</string>
-    <string name="about2">Изначально создан Stefan Gaffga. В настоящее время поддерживается Georg Graf.&lt;br&gt;&lt;br&gt;Спасибо Winfried из &lt;a href="http://www.meditationsuhren.de"&gt;http://www.meditationsuhren.de&lt;/a&gt; за предоставление отличных звуков гонга!</string>
-    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues"&gt;Сообщить об ошибке на GitHub&lt;/a&gt;</string>
+    <string name="about2">Изначально создан Stefan Gaffga. В настоящее время поддерживается Georg Graf.&lt;br&gt;&lt;br&gt;Спасибо Winfried из &lt;a href="http://www.meditationsuhren.de">http://www.meditationsuhren.de&lt;/a&gt; за предоставление отличных звуков гонга!</string>
+    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues">Сообщить об ошибке на GitHub&lt;/a&gt;</string>
     <string name="app_description">Приложение позволяет создавать собственные сессии медитации и предоставляет таймер с визуальными и звуковыми уведомлениями об окончании части или всей медитации.</string>
     <string name="appbar_scrolling_view_behavior">android.support.design.widget.AppBarLayout$ScrollingViewBehavior</string>
     <string name="backup_error_text">Произошла ошибка при сохранении.</string>

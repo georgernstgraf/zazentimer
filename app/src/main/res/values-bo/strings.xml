@@ -2,8 +2,8 @@
 <resources>
     <string name="abbrechen">ཕྱིར་འཐེན</string>
     <string name="about1">Zazen Meditation Timer - རང་བཞིན་སྒྲིག་ཐུབ་པའི་ཆ་ཤས་དང་། སྒྲ་དང་དུས་སྟོན་འཛིན་སྐྱོང་ཡོད་པའི་རང་བཞིན །</string>
-    <string name="about2">Stefan Gaffgaགྱིས་བཀོད་པ ། ད་ལྟ་ཇོ་རེཇ་གྷ་རེཕ་ཀྱིས་བདག་སྐྱོང་བྱས་ཡོད །&lt;br&gt;&lt;br&gt;Winfried &lt;a href="http://www.meditationsuhren.de"&gt;&lt;/a&gt; of http://www.meditationsuhren.de བཀའ་དྲིན་ཆེ་ཞུ་རྒྱུ་ཡིན །</string>
-    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues"&gt;ཕྱོགས་སྟོན ། གཙོ་ངོས ། "རྩོམ་རིག"&lt;/a&gt;</string>
+    <string name="about2">Stefan Gaffgaགྱིས་བཀོད་པ ། ད་ལྟ་ཇོ་རེཇ་གྷ་རེཕ་ཀྱིས་བདག་སྐྱོང་བྱས་ཡོད །&lt;br&gt;&lt;br&gt;Winfried &lt;a href="http://www.meditationsuhren.de">&lt;/a&gt; of http://www.meditationsuhren.de བཀའ་དྲིན་ཆེ་ཞུ་རྒྱུ་ཡིན །</string>
+    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues">ཕྱོགས་སྟོན ། གཙོ་ངོས ། "རྩོམ་རིག"&lt;/a&gt;</string>
     <string name="app_description">ལག་ལེན་འདི་ཡིས་ལག་ལེན་པ་ཚོར་བསམ་བློ་གཏོང་བའི་ལས་རིམ་གྱི་རིམ་པ་ཞིག་གཏན་འབེབས་བྱེད་དུ་འཇུག་པ་དང་། ཡང་བསམ་བློ་གཏོང་བའི་ལས་རིམ་གང་ཞིག་དང་ཡང་ན་ཆ་ཚང་ཞིག་མཇུག་བསྡུ་བའི་སྐབས་མཐོང་ཐོས་དང་མཐོང་ཐོས་ཀྱི་ལན་འདེབས་ཀྱི་དུས་ཚོད་གཏན་འབེབས་བྱེད་དུ་འཇུག་པ་ཡོད །</string>
     <string name="app_name">Zazen Meditation Timer</string>
     <string name="appbar_scrolling_view_behavior">android.support.design.widget.AppBarLayout$ScrollingViewBehavior</string>

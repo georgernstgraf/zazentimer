@@ -2,8 +2,8 @@
 <resources>
     <string name="abbrechen">Ikkanċella</string>
     <string name="about1">Zazen Meditation Timer — Timer ta \'meditazzjoni sempliċi b\'sezzjonijiet personalizzabbli, ħsejjes tal-qniepen, u ġestjoni tas-sessjoni.</string>
-    <string name="about2">Oriġinarjament maħluqa minn Stefan Gaffga. Bħalissa miżmum minn Georg Graf.&lt;br&gt;&lt;br&gt;Grazzi lil Winfried ta\' &lt;a href="http://www.meditationsuhren.de"&gt;http://www.meditationsuhren.de&lt;/a&gt; talli pprovda Ħsejjes tal-Qanpiena hekk kbar!</string>
-    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues"&gt;Irraporta kwistjonijiet fuq GitHub&lt;/a&gt;</string>
+    <string name="about2">Oriġinarjament maħluqa minn Stefan Gaffga. Bħalissa miżmum minn Georg Graf.&lt;br&gt;&lt;br&gt;Grazzi lil Winfried ta\' &lt;a href="http://www.meditationsuhren.de">http://www.meditationsuhren.de&lt;/a&gt; talli pprovda Ħsejjes tal-Qanpiena hekk kbar!</string>
+    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues">Irraporta kwistjonijiet fuq GitHub&lt;/a&gt;</string>
     <string name="app_description">Din l-applikazzjoni tħalli lill-utent jiddefinixxi sett ta \'sessjonijiet ta\' meditazzjoni u tipprovdi tajmer b\'rispons viżwali u li jinstema\' meta parti jew il-meditazzjoni kollha tkun spiċċat.</string>
     <string name="app_name">Zazen Meditation Timer</string>
     <string name="appbar_scrolling_view_behavior">android.support.design.widget.AppBarLayout$ScrollingViewBehavior</string>

@@ -3,7 +3,7 @@
     <string name="abbrechen">Elatyr</string>
     <string name="about1">Zazen Meditasiýa taýmeri - Düzülip bilinýän bölümler, jaň sesleri we sessiýa dolandyryşy bilen ýönekeý meditasiýa taýmeri.</string>
     <string name="about2">Aslynda Stefan Gaffga tarapyndan döredildi. Häzirki wagtda Georg Graf.</string>
-    <string name="about3">&lt;a href = "https://github.com/georgernstgraf/zazentimer/issues"&gt; GitHub-da meseleleri habar beriň &lt;/a&gt;</string>
+    <string name="about3">&lt;a href = "https://github.com/georgernstgraf/zazentimer/issues"> GitHub-da meseleleri habar beriň &lt;/a&gt;</string>
     <string name="app_description">Bu programma ulanyja meditasiýa sessiýalarynyň toplumyny kesgitlemäge mümkinçilik berýär we bir bölegi ýa-da tutuş meditasiýa gutaranda wizual we eşidilýän seslenme bilen taýmer üpjün edýär.</string>
     <string name="app_name">Zazen Meditation Timer</string>
     <string name="appbar_scrolling_view_behavior">android.support.design.widget.AppBarLayout $ ScrollingViewBehavior</string>

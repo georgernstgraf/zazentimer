@@ -2,8 +2,8 @@
 <resources>
     <string name="abbrechen">Haquu</string>
     <string name="about1">Zazen Meditation Timer — Sa\'aatii xiinxala salphaa kutaalee adda ta\'an, sagalee bilbilaa fi bulchiinsa turtii qabu.</string>
-    <string name="about2">Jalqaba kan uume Stefan Gaffga dha. Yeroo ammaa kan kunuunsu Georg Graf.&lt;br&gt;&lt;br&gt;Wiinfried kan &lt;a href="http://www.meditationsuhren.de"&gt;http://www.meditationsuhren.de&lt;/a&gt; Sagaleewwan Bell guddaa akkasii waan nuuf dhiheesseef galatoomaa!</string>
-    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues"&gt;Dhimmoota GitHub irratti gabaasuu&lt;/a&gt;</string>
+    <string name="about2">Jalqaba kan uume Stefan Gaffga dha. Yeroo ammaa kan kunuunsu Georg Graf.&lt;br&gt;&lt;br&gt;Wiinfried kan &lt;a href="http://www.meditationsuhren.de">http://www.meditationsuhren.de&lt;/a&gt; Sagaleewwan Bell guddaa akkasii waan nuuf dhiheesseef galatoomaa!</string>
+    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues">Dhimmoota GitHub irratti gabaasuu&lt;/a&gt;</string>
     <string name="app_description">Appilikeeshiniin kun fayyadamaan tuuta turtii xiinxala akka ibsu kan taasisu yoo ta\'u, yeroo kutaan tokko ykn guutummaan xiinxala xumuramu yaada mul\'ataa fi dhaga\'amuu qabu sa\'aatii kenna.</string>
     <string name="app_name">Zazen Meditation Timer</string>
     <string name="appbar_scrolling_view_behavior">android.deeggarsa.dizaayinii.wiijet.AppBarLayout$Amala Ilaalcha Scroll</string>

@@ -2,8 +2,8 @@
 <resources>
     <string name="abbrechen">निरसयतु</string>
     <string name="about1">Zazen Meditation Timer — अनुकूलनीयखण्डाः, घण्टाध्वनिः, सत्रप्रबन्धनं च सहितः सरलः ध्यानसमयनिर्धारकः ।</string>
-    <string name="about2">मूलतः Stefan Gaffga इत्यनेन निर्मितम् । सम्प्रति Georg Graf द्वारा परिपालितम्।&lt;br&gt;&lt;br&gt;एतादृशान् महान् Bell Sounds प्रदातुं &lt;a href="http://www.meditationsuhren.de"&gt;http://www.meditationsuhren.de&lt;/a&gt; इत्यस्य Winfried इत्यस्य धन्यवादः!</string>
-    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues"&gt;GitHub इत्यत्र समस्यानां प्रतिवेदनं&lt;/a&gt;</string>
+    <string name="about2">मूलतः Stefan Gaffga इत्यनेन निर्मितम् । सम्प्रति Georg Graf द्वारा परिपालितम्।&lt;br&gt;&lt;br&gt;एतादृशान् महान् Bell Sounds प्रदातुं &lt;a href="http://www.meditationsuhren.de">http://www.meditationsuhren.de&lt;/a&gt; इत्यस्य Winfried इत्यस्य धन्यवादः!</string>
+    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues">GitHub इत्यत्र समस्यानां प्रतिवेदनं&lt;/a&gt;</string>
     <string name="app_description">एतत् अनुप्रयोगं उपयोक्तारं ध्यानसत्रस्य समुच्चयं परिभाषितुं शक्नोति तथा च यदा कश्चन भागः अथवा सम्पूर्णं ध्यानं समाप्तं भवति तदा दृश्यश्रव्यप्रतिक्रिया सह समयनिर्धारकं प्रदाति</string>
     <string name="app_name">Zazen Meditation Timer</string>
     <string name="appbar_scrolling_view_behavior">android.support.design.widget.AppBarLayout $ स्क्रॉल दृश्यव्यवहार</string>

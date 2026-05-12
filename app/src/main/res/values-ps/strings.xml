@@ -2,8 +2,8 @@
 <resources>
     <string name="abbrechen">لغوه کړئ</string>
     <string name="about1">د زازن مراقبت ټایمر - یو ساده مراقبت ټایمر د تخصیص وړ برخو ، د زنګ غږونو او سیشن مدیریت سره.</string>
-    <string name="about2">په اصل کې د سټیفن ګافګا لخوا رامینځته شوی. اوس مهال د جورج ګراف لخوا ساتل کیږي.&lt;br&gt;&lt;br&gt;د &lt;a href="http://www.meditationsuhren.de"&gt;http://www.meditationsuhren.de&lt;/a&gt; د داسې عالي بیل غږونو چمتو کولو لپاره د وینفریډ څخه مننه!</string>
-    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues"&gt;په GitHub کې د مسلو راپور ورکړئ&lt;/a&gt;</string>
+    <string name="about2">په اصل کې د سټیفن ګافګا لخوا رامینځته شوی. اوس مهال د جورج ګراف لخوا ساتل کیږي.&lt;br&gt;&lt;br&gt;د &lt;a href="http://www.meditationsuhren.de">http://www.meditationsuhren.de&lt;/a&gt; د داسې عالي بیل غږونو چمتو کولو لپاره د وینفریډ څخه مننه!</string>
+    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues">په GitHub کې د مسلو راپور ورکړئ&lt;/a&gt;</string>
     <string name="app_description">دا اپلیکیشن کارونکي ته اجازه ورکوي چې د مراقبت سیشنونو سیټ تعریف کړي او د لید او لید لید سره ټایمر چمتو کړي کله چې یوه برخه یا بشپړ مراقبت پای ته ورسیږي.</string>
     <string name="app_name">Zazen Meditation Timer</string>
     <string name="appbar_scrolling_view_behavior">android.support.design.widget.AppBarLayout$ScrollingViewBehavior</string>

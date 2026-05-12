@@ -2,8 +2,8 @@
 <resources>
     <string name="abbrechen">Fagilee</string>
     <string name="about1">Aago Iṣaro Zazen - Aago iṣaro ti o rọrun pẹlu awọn apakan isọdi, awọn ohun agogo, ati iṣakoso igba.</string>
-    <string name="about2">Ni akọkọ da nipa Stefan Gaffga. Lọwọlọwọ itọju rẹ nipasẹ Georg Graf.&lt;br&gt;&lt;br&gt;O ṣeun si Winfried ti &lt;a href="http://www.meditationsuhren.de"&gt;http://www.meditationsuhren.de&lt;/a&gt; fun ipese iru Awọn ohun Bell nla!</string>
-    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues"&gt;Ijabọ awọn oran lori GitHub&lt;/a&gt;</string>
+    <string name="about2">Ni akọkọ da nipa Stefan Gaffga. Lọwọlọwọ itọju rẹ nipasẹ Georg Graf.&lt;br&gt;&lt;br&gt;O ṣeun si Winfried ti &lt;a href="http://www.meditationsuhren.de">http://www.meditationsuhren.de&lt;/a&gt; fun ipese iru Awọn ohun Bell nla!</string>
+    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues">Ijabọ awọn oran lori GitHub&lt;/a&gt;</string>
     <string name="app_description">Ohun elo yii jẹ ki olumulo ṣalaye ṣeto awọn akoko iṣaroye ati pese aago kan pẹlu wiwo ati esi ti o gbọ nigbati apakan kan tabi gbogbo iṣaro ba pari.</string>
     <string name="app_name">Zazen Meditation Timer</string>
     <string name="appbar_scrolling_view_behavior">android.support.design.widget.AppBarLayout$ScrollingViewBehavior</string>

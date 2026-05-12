@@ -2,8 +2,8 @@
 <resources>
     <string name="abbrechen">रद्द करना, रद्द करना</string>
     <string name="about1">ज़ाज़ेन मेडिटेशन टाइमर — अनुकूलित सेक्शन के साथ आसान मेडिटेशन टाइमर, बेल आवाज, सेशन मैनेजमेंट के साथ.</string>
-    <string name="about2">स्टीफन गेफ्गा द्वारा बनाई गई । जॉर्ज ग्रेफ द्वारा आवृत्ति ।&lt;br&gt;&lt;br&gt;बहुत-बहुत बधाई के साथ &lt;a href="http://www.meditationsuhren.de"&gt;शुभकामनायें&lt;/a&gt;, आप नित नये आयाम छुयें ।</string>
-    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues"&gt;एमेच्योरगधाकामुकामुकामुकामुकामुकामुक&lt;/a&gt;</string>
+    <string name="about2">स्टीफन गेफ्गा द्वारा बनाई गई । जॉर्ज ग्रेफ द्वारा आवृत्ति ।&lt;br&gt;&lt;br&gt;बहुत-बहुत बधाई के साथ &lt;a href="http://www.meditationsuhren.de">शुभकामनायें&lt;/a&gt;, आप नित नये आयाम छुयें ।</string>
+    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues">एमेच्योरगधाकामुकामुकामुकामुकामुकामुक&lt;/a&gt;</string>
     <string name="app_description">युस एप्लीकेशन छी एम् छी एवं इजाजत यूजर डेफिनेशन सेट मेडिटेशन सेशन बे छी एवं देवन टाइमर विज़ुअल बे ऑडियो फीडबैक यिल पार्ट या ऑल मेडिटेशन छी समाप्त</string>
     <string name="app_name">Zazen Meditation Timer</string>
     <string name="appbar_scrolling_view_behavior">android.support.design.widget.AppBarLayout$ScrollingViewBehavior</string>

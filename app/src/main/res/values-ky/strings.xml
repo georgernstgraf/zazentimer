@@ -2,8 +2,8 @@
 <resources>
     <string name="abbrechen">Жокко чыгаруу</string>
     <string name="about1">Zazen медитация таймери - ыңгайлаштырылган бөлүмдөрү, коңгуроо үндөрү жана сессияны башкаруу менен жөнөкөй медитация таймери.</string>
-    <string name="about2">Алгач Стефан Гаффга тарабынан түзүлгөн. Учурда Георг Граф тарабынан колдоого алынат.&lt;br&gt;&lt;br&gt;Ушундай сонун коңгуроо үндөрүн камсыз кылган &lt;a href="http://www.meditationsuhren.de"&gt;http://www.meditationsuhren.de&lt;/a&gt; сайтындагы Уинфридге рахмат!</string>
-    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues"&gt;GitHub боюнча көйгөйлөр тууралуу кабарлоо&lt;/a&gt;</string>
+    <string name="about2">Алгач Стефан Гаффга тарабынан түзүлгөн. Учурда Георг Граф тарабынан колдоого алынат.&lt;br&gt;&lt;br&gt;Ушундай сонун коңгуроо үндөрүн камсыз кылган &lt;a href="http://www.meditationsuhren.de">http://www.meditationsuhren.de&lt;/a&gt; сайтындагы Уинфридге рахмат!</string>
+    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues">GitHub боюнча көйгөйлөр тууралуу кабарлоо&lt;/a&gt;</string>
     <string name="app_description">Бул колдонмо колдонуучуга медитация сессияларынын топтомун аныктоого мүмкүндүк берет жана медитациянын бир бөлүгү же бүтүндөй аяктаганда визуалдык жана уккулуктуу пикир менен таймерди камсыз кылат.</string>
     <string name="app_name">Zazen Meditation Timer</string>
     <string name="appbar_scrolling_view_behavior">android.support.design.widget.AppBarLayout$ScrollingViewBehavior</string>

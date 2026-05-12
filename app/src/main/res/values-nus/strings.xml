@@ -2,8 +2,8 @@
 <resources>
     <string name="abbrechen">Canon ɛ canon</string>
     <string name="about1">Zazen Meditation Timer — ɛ gua̱a̱th mi̱ thi̱a̱k mi̱ ca la̱t kɛ ca̱r mi̱ ca la̱t kɛ ta̱a̱ in ca la̱t, jɔw mi̱ ca la̱t, kɛnɛ ta̱a̱ in ca la̱t kɛ gua̱a̱th in ca la̱t.</string>
-    <string name="about2">Kä mëë caa cak ɛ Stefan Gaffga. Ɛn gua̱a̱th ɛmɛ cua la̱t ɛ Georg Graf.&lt;br&gt;&lt;br&gt;Kɛ ɣöö ci̱ Winfried kä http://www.meditationsuhren.de ɛ &lt;a href="http://www.meditationsuhren.de"&gt;la̱t&lt;/a&gt; kɛ ɣöö ci̱ rɔ̱ la̱t kɛ jɔw ti̱ di̱i̱t ti̱ti̱!</string>
-    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues"&gt;Cäät kä: Github&lt;/a&gt;</string>
+    <string name="about2">Kä mëë caa cak ɛ Stefan Gaffga. Ɛn gua̱a̱th ɛmɛ cua la̱t ɛ Georg Graf.&lt;br&gt;&lt;br&gt;Kɛ ɣöö ci̱ Winfried kä http://www.meditationsuhren.de ɛ &lt;a href="http://www.meditationsuhren.de">la̱t&lt;/a&gt; kɛ ɣöö ci̱ rɔ̱ la̱t kɛ jɔw ti̱ di̱i̱t ti̱ti̱!</string>
+    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues">Cäät kä: Github&lt;/a&gt;</string>
     <string name="app_description">Ɛn la̱t ɛmɛ cuɛ luäk i̱ bi̱ la̱t ɛ la̱t mi̱ ca lat ɛ la̱t mi̱ ca la̱t ɛ la̱t mi̱ ca la̱t ɛ la̱t mi̱ ca la̱t ɛ la̱t mi̱ ca la̱t ɛ la̱t mi̱ ca la̱t ɛ la̱t mi̱ ci̱ rɔ̱ rep.</string>
     <string name="app_name">Zazen Meditation Timer</string>
     <string name="appbar_scrolling_view_behavior">android.support.design.widget.AppBarLayout$ScrollingViewBehavior</string>

@@ -2,8 +2,8 @@
 <resources>
     <string name="abbrechen">Abbrechen</string>
     <string name="about1">Zazen Meditation Timer — Ein einfacher Meditations-Timer mit anpassbaren Abschnitten, Gongs und Session-Verwaltung.</string>
-    <string name="about2">Ursprünglich erstellt von Stefan Gaffga. Aktuell gepflegt von Georg Graf.&lt;br&gt;&lt;br&gt;Danke an Winfried von &lt;a href="http://www.meditationsuhren.de"&gt;http://www.meditationsuhren.de&lt;/a&gt; für die tollen Gongs!</string>
-    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues"&gt;Probleme auf GitHub melden&lt;/a&gt;</string>
+    <string name="about2">Ursprünglich erstellt von Stefan Gaffga. Aktuell gepflegt von Georg Graf.&lt;br&gt;&lt;br&gt;Danke an Winfried von &lt;a href="http://www.meditationsuhren.de">http://www.meditationsuhren.de&lt;/a&gt; für die tollen Gongs!</string>
+    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues">Probleme auf GitHub melden&lt;/a&gt;</string>
     <string name="app_description">Diese App ermöglicht das Erstellen von Meditations-Sessions und bietet einen Timer mit optischem und akustischem Feedback für Abschnitte und die gesamte Meditation.</string>
     <string name="appbar_scrolling_view_behavior">android.support.design.widget.AppBarLayout$ScrollingViewBehavior</string>
     <string name="backup_error_text">Fehler beim Speichern des Backups.</string>

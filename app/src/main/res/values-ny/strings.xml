@@ -2,8 +2,8 @@
 <resources>
     <string name="abbrechen">Letsani</string>
     <string name="about1">Zazen Meditation Timer - Nthawi yosavuta yosinkhasinkha yokhala ndi magawo omwe mungasinthidwe, mabelu akumveka, komanso kasamalidwe ka gawo.</string>
-    <string name="about2">Poyamba adapangidwa ndi Stefan Gaffga. Pano ikusamalidwa ndi a Georg Graf.&lt;br&gt;&lt;br&gt;Zikomo kwa Winfried wa &lt;a href="http://www.meditationsuhren.de"&gt;http://www.meditationsuhren.de&lt;/a&gt; popereka Maphokoso abwino kwambiri a Bell!</string>
-    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues"&gt;Nenani za zovuta pa GitHub&lt;/a&gt;</string>
+    <string name="about2">Poyamba adapangidwa ndi Stefan Gaffga. Pano ikusamalidwa ndi a Georg Graf.&lt;br&gt;&lt;br&gt;Zikomo kwa Winfried wa &lt;a href="http://www.meditationsuhren.de">http://www.meditationsuhren.de&lt;/a&gt; popereka Maphokoso abwino kwambiri a Bell!</string>
+    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues">Nenani za zovuta pa GitHub&lt;/a&gt;</string>
     <string name="app_description">Pulogalamuyi imalola wogwiritsa kufotokozera magawo osinkhasinkha ndikupereka chowerengera chowonera komanso chomveka pamene gawo kapena kusinkhasinkha konse kwatha.</string>
     <string name="app_name">Zazen Meditation Timer</string>
     <string name="appbar_scrolling_view_behavior">android.support.design.widget.AppBarLayout$ScrollingViewBehavior</string>

@@ -2,8 +2,8 @@
 <resources>
     <string name="abbrechen">Kagbuo</string>
     <string name="about1">Oge ntụgharị uche Zazen - Oge ntụgharị uche dị mfe nwere ngalaba nwere ike ịhazi ya, ụda mgbịrịgba na njikwa nnọkọ.</string>
-    <string name="about2">Mbụ e kere site Stefan Gaffga. Ugbu a Georg Graf na-elekọta ya.&lt;br&gt;&lt;br&gt;Daalụ Winfried nke &lt;a href="http://www.meditationsuhren.de"&gt;http://www.meditationsuhren.de&lt;/a&gt; maka ịnye nnukwu ụda Bell!</string>
-    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues"&gt;Kọsa okwu na GitHub&lt;/a&gt;</string>
+    <string name="about2">Mbụ e kere site Stefan Gaffga. Ugbu a Georg Graf na-elekọta ya.&lt;br&gt;&lt;br&gt;Daalụ Winfried nke &lt;a href="http://www.meditationsuhren.de">http://www.meditationsuhren.de&lt;/a&gt; maka ịnye nnukwu ụda Bell!</string>
+    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues">Kọsa okwu na GitHub&lt;/a&gt;</string>
     <string name="app_description">Ngwa a na-ahapụ onye ọrụ ka ọ kọwapụta otu nnọkọ ntụgharị uche wee na-enye ngụ oge nzaghachi anya na nke a na-anụ mgbe akụkụ ma ọ bụ ntụgharị uche dum gwụchara.</string>
     <string name="app_name">Zazen Meditation Timer</string>
     <string name="appbar_scrolling_view_behavior">android.support.design.widget.AppBarLayout$ScrollingNlele Omume</string>

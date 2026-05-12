@@ -2,8 +2,8 @@
 <resources>
     <string name="abbrechen">Бекор кардан</string>
     <string name="about1">Timer Meditation Zazen - Вақтсанҷи оддии медитатсия бо бахшҳои танзимшаванда, садоҳои занг ва идоракунии сессия.</string>
-    <string name="about2">Аввалан аз ҷониби Стефан Гаффга офарида шудааст. Айни замон аз ҷониби Георг Граф нигоҳдорӣ мешавад.&lt;br&gt;&lt;br&gt;Ташаккур ба Винфрид аз &lt;a href="http://www.meditationsuhren.de"&gt;http://www.meditationsuhren.de&lt;/a&gt; барои пешниҳоди чунин садоҳои олии занг!</string>
-    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues"&gt;Масъалаҳоро дар GitHub гузориш диҳед&lt;/a&gt;</string>
+    <string name="about2">Аввалан аз ҷониби Стефан Гаффга офарида шудааст. Айни замон аз ҷониби Георг Граф нигоҳдорӣ мешавад.&lt;br&gt;&lt;br&gt;Ташаккур ба Винфрид аз &lt;a href="http://www.meditationsuhren.de">http://www.meditationsuhren.de&lt;/a&gt; барои пешниҳоди чунин садоҳои олии занг!</string>
+    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues">Масъалаҳоро дар GitHub гузориш диҳед&lt;/a&gt;</string>
     <string name="app_description">Ин барнома ба корбар имкон медиҳад, ки маҷмӯи сеансҳои мулоҳизаро муайян кунад ва ҳангоми ба итмом расидани як қисм ё тамоми медитатсия таймерро бо фикру мулоҳизаҳои визуалӣ ва садоӣ таъмин кунад.</string>
     <string name="app_name">Zazen Meditation Timer</string>
     <string name="appbar_scrolling_view_behavior">android.support.design.widget.AppBarLayout$ScrollingViewBehavior</string>

@@ -2,8 +2,8 @@
 <resources>
     <string name="abbrechen">Kanselahin</string>
     <string name="about1">Zazen Meditation Timer — Isang simpleng meditation timer na may mga nako-customize na seksyon, tunog ng kampana, at pamamahala ng session.</string>
-    <string name="about2">Orihinal na nilikha ni Stefan Gaffga. Kasalukuyang pinapanatili ni Georg Graf.&lt;br&gt;&lt;br&gt;Salamat kay Winfried ng &lt;a href="http://www.meditationsuhren.de"&gt;http://www.meditationsuhren.de&lt;/a&gt; para sa pagbibigay ng napakagandang Bell Sounds!</string>
-    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues"&gt;Mag-ulat ng mga isyu sa GitHub&lt;/a&gt;</string>
+    <string name="about2">Orihinal na nilikha ni Stefan Gaffga. Kasalukuyang pinapanatili ni Georg Graf.&lt;br&gt;&lt;br&gt;Salamat kay Winfried ng &lt;a href="http://www.meditationsuhren.de">http://www.meditationsuhren.de&lt;/a&gt; para sa pagbibigay ng napakagandang Bell Sounds!</string>
+    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues">Mag-ulat ng mga isyu sa GitHub&lt;/a&gt;</string>
     <string name="app_description">Ang application na ito ay nagbibigay-daan sa gumagamit na tukuyin ang isang hanay ng mga sesyon ng pagmumuni-muni at nagbibigay ng isang timer na may visual at naririnig na feedback kapag ang isang bahagi o ang buong pagmumuni-muni ay tapos na.</string>
     <string name="app_name">Zazen Meditation Timer</string>
     <string name="appbar_scrolling_view_behavior">android.support.design.widget.AppBarLayout$ScrollingViewBehavior</string>

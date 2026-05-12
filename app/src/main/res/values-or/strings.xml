@@ -3,7 +3,7 @@
     <string name="abbrechen">ବାତିଲ୍ କରନ୍ତୁ |</string>
     <string name="about1">ଜାଜେନ୍ ଧ୍ୟାନ ସମୟ - କଷ୍ଟୋମାଇଜେବଲ୍ ବିଭାଗ, ଘଣ୍ଟି ଧ୍ୱନି, ଏବଂ ଅଧିବେଶନ ପରିଚାଳନା ସହିତ ଏକ ସରଳ ଧ୍ୟାନ ସମୟ |</string>
     <string name="about2">ମୂଳତ Ste ଷ୍ଟେଫାନ୍ ଗାଫଗା ଦ୍ୱାରା ସୃଷ୍ଟି | ସମ୍ପ୍ରତି ଜର୍ଜ ଗ୍ରାଫ୍ ଦ୍ୱାରା ପରିଚାଳିତ |</string>
-    <string name="about3">&lt;a href = "https://github.com/georgernstgraf/zazentimer/issues"&gt; GitHub ରେ ସମସ୍ୟାଗୁଡିକ ରିପୋର୍ଟ କରନ୍ତୁ &lt;/a&gt;</string>
+    <string name="about3">&lt;a href = "https://github.com/georgernstgraf/zazentimer/issues"> GitHub ରେ ସମସ୍ୟାଗୁଡିକ ରିପୋର୍ଟ କରନ୍ତୁ &lt;/a&gt;</string>
     <string name="app_description">ଏହି ଅନୁପ୍ରୟୋଗ ଉପଭୋକ୍ତାଙ୍କୁ ଧ୍ୟାନ ଅଧିବେଶନର ଏକ ସେଟ୍ ବ୍ୟାଖ୍ୟା କରିବାକୁ ଦିଏ ଏବଂ ଏକ ଅଂଶ କିମ୍ବା ସମଗ୍ର ଧ୍ୟାନ ସମାପ୍ତ ହେଲେ ଭିଜୁଆଲ୍ ଏବଂ ଶ୍ରୋତାପୂର୍ଣ୍ଣ ମତାମତ ସହିତ ଏକ ଟାଇମର୍ ପ୍ରଦାନ କରେ |</string>
     <string name="app_name">Zazen Meditation Timer</string>
     <string name="appbar_scrolling_view_behavior">android.support.design.widget.AppBarLayout $ ScrollingViewBehavior</string>

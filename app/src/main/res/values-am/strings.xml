@@ -2,8 +2,8 @@
 <resources>
     <string name="abbrechen">ሰርዝ</string>
     <string name="about1">የዛዘን ሜዲቴሽን ሰዓት ቆጣሪ - ሊበጁ የሚችሉ ክፍሎች፣ የደወል ድምፆች እና የክፍለ-ጊዜ አስተዳደር ያለው ቀላል የሜዲቴሽን ጊዜ ቆጣሪ።</string>
-    <string name="about2">መጀመሪያ የተፈጠረው በ Stefan Gaffga ነው። በአሁኑ ጊዜ በGeorg Graf ተጠብቆ የሚገኘው።&lt;br&gt;&lt;br&gt;ይህን የመሰለ ምርጥ የቤል ድምጽ ስላቀረበ የ&lt;a href="http://www.meditationsuhren.de"&gt;http://www.meditationsuhren.de&lt;/a&gt; ዊንፍሪድ እናመሰግናለን!</string>
-    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues"&gt;በGitHub ላይ ያሉ ችግሮችን ሪፖርት አድርግ&lt;/a&gt;</string>
+    <string name="about2">መጀመሪያ የተፈጠረው በ Stefan Gaffga ነው። በአሁኑ ጊዜ በGeorg Graf ተጠብቆ የሚገኘው።&lt;br&gt;&lt;br&gt;ይህን የመሰለ ምርጥ የቤል ድምጽ ስላቀረበ የ&lt;a href="http://www.meditationsuhren.de">http://www.meditationsuhren.de&lt;/a&gt; ዊንፍሪድ እናመሰግናለን!</string>
+    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues">በGitHub ላይ ያሉ ችግሮችን ሪፖርት አድርግ&lt;/a&gt;</string>
     <string name="app_description">ይህ መተግበሪያ ተጠቃሚው የሜዲቴሽን ክፍለ ጊዜዎችን እንዲገልጽ ያስችለዋል እና አንድ ክፍል ወይም አጠቃላይ ማሰላሰል ሲያልቅ ጊዜ ቆጣሪን በእይታ እና በሚሰማ ግብረመልስ ይሰጣል።</string>
     <string name="app_name">Zazen Meditation Timer</string>
     <string name="appbar_scrolling_view_behavior">android.support.design.widget.AppBarLayout$ማሸብለል እይታ ባህሪ</string>

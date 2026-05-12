@@ -2,8 +2,8 @@
 <resources>
     <string name="abbrechen">Fa\'aleaogaina</string>
     <string name="about1">Zazen Meditation Timer - O se taimi mafaufau loloto faigofie ma vaega faʻapitoa, logo logo, ma le pulega o sauniga.</string>
-    <string name="about2">Muamua na faia e Stefan Gaffga. O lo\'o tausia nei e Georg Graf.&lt;br&gt;&lt;br&gt;Fa\'afetai ia Winfried o &lt;a href="http://www.meditationsuhren.de"&gt;http://www.meditationsuhren.de&lt;/a&gt; mo le sauniaina o le tele o Bell Sounds!</string>
-    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues"&gt;Lipoti mataupu ile GitHub&lt;/a&gt;</string>
+    <string name="about2">Muamua na faia e Stefan Gaffga. O lo\'o tausia nei e Georg Graf.&lt;br&gt;&lt;br&gt;Fa\'afetai ia Winfried o &lt;a href="http://www.meditationsuhren.de">http://www.meditationsuhren.de&lt;/a&gt; mo le sauniaina o le tele o Bell Sounds!</string>
+    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues">Lipoti mataupu ile GitHub&lt;/a&gt;</string>
     <string name="app_description">O lenei talosaga e mafai ai e le tagata faʻaoga ona faʻamalamalamaina se seti o taimi mafaufau loloto ma tuʻuina atu se taimi faʻatasi ai ma faʻamatalaga vaaia ma faʻalogo pe a uma se vaega poʻo le mafaufau loloto atoa.</string>
     <string name="app_name">Zazen Meditation Timer</string>
     <string name="appbar_scrolling_view_behavior">android.support.design.widget.AppBarLayout$ScrollingViewBehavior</string>

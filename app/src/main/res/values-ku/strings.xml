@@ -2,8 +2,8 @@
 <resources>
     <string name="abbrechen">Bişûndekirin</string>
     <string name="about1">Zazen Meditation Timer - Demjimêrek medîtasyonê ya hêsan bi beşên xwerû, dengên zengil û rêveberiya danişînê.</string>
-    <string name="about2">Bi eslê xwe ji hêla Stefan Gaffga ve hatî afirandin. Niha ji hêla Georg Graf ve tê parastin.&lt;br&gt;&lt;br&gt;Spas ji bo Winfried ya &lt;a href="http://www.meditationsuhren.de"&gt;http://www.meditationsuhren.de&lt;/a&gt; ji bo pêşkêşkirina Dengên Bell-ê yên wusa mezin!</string>
-    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues"&gt;Pirsgirêkan li ser GitHub rapor bikin&lt;/a&gt;</string>
+    <string name="about2">Bi eslê xwe ji hêla Stefan Gaffga ve hatî afirandin. Niha ji hêla Georg Graf ve tê parastin.&lt;br&gt;&lt;br&gt;Spas ji bo Winfried ya &lt;a href="http://www.meditationsuhren.de">http://www.meditationsuhren.de&lt;/a&gt; ji bo pêşkêşkirina Dengên Bell-ê yên wusa mezin!</string>
+    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues">Pirsgirêkan li ser GitHub rapor bikin&lt;/a&gt;</string>
     <string name="app_description">Ev serîlêdan dihêle ku bikarhêner komek danişînên meditationê diyar bike û dema ku beşek an tevahiya meditation qediya, demjimêrek bi bertekên dîtbar û bihîstbar peyda dike.</string>
     <string name="app_name">Zazen Meditation Timer</string>
     <string name="appbar_scrolling_view_behavior">android.support.design.widget.AppBarLayout$ScrollingViewBehavior</string>

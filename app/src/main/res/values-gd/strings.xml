@@ -2,8 +2,8 @@
 <resources>
     <string name="abbrechen">Sguir dheth</string>
     <string name="about1">Zazen Meditation Timer - Timer meòrachaidh sìmplidh le earrannan gnàthaichte, fuaimean clag, agus riaghladh seisean.</string>
-    <string name="about2">Chaidh a chruthachadh an toiseach le Stefan Gaffga. Air a chumail suas le Georg Graf an-dràsta.&lt;br&gt;&lt;br&gt;Taing do Winfried bho &lt;a href="http://www.meditationsuhren.de"&gt;http://www.meditationsuhren.de&lt;/a&gt; airson Bell Sounds cho math a thoirt seachad!</string>
-    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues"&gt;Dèan aithris air cùisean air GitHub&lt;/a&gt;</string>
+    <string name="about2">Chaidh a chruthachadh an toiseach le Stefan Gaffga. Air a chumail suas le Georg Graf an-dràsta.&lt;br&gt;&lt;br&gt;Taing do Winfried bho &lt;a href="http://www.meditationsuhren.de">http://www.meditationsuhren.de&lt;/a&gt; airson Bell Sounds cho math a thoirt seachad!</string>
+    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues">Dèan aithris air cùisean air GitHub&lt;/a&gt;</string>
     <string name="app_description">Leigidh an aplacaid seo leis an neach-cleachdaidh seata de sheiseanan meòrachaidh a mhìneachadh agus bheir e fios air ais lèirsinneach is cluinntinn dha timer nuair a bhios pàirt no am meòrachadh gu lèir seachad.</string>
     <string name="app_name">Zazen Meditation Timer</string>
     <string name="appbar_scrolling_view_behavior">android.support.design.widget.AppBarLayout$ScrollingViewBehavior</string>

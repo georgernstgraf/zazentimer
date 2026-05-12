@@ -2,8 +2,8 @@
 <resources>
     <string name="abbrechen">取消</string>
     <string name="about1">Zazen Meditation Timer — 简单的冥想计时器，包含可自定义的阶段、铃声及课程管理功能。</string>
-    <string name="about2">最初由 Stefan Gaffga 创建。目前由 Georg Graf 维护。&lt;br&gt;&lt;br&gt;感谢 &lt;a href="http://www.meditationsuhren.de"&gt;http://www.meditationsuhren.de&lt;/a&gt; 的 Winfried 提供如此优美的铃声！</string>
-    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues"&gt;在 GitHub 上报告问题&lt;/a&gt;</string>
+    <string name="about2">最初由 Stefan Gaffga 创建。目前由 Georg Graf 维护。&lt;br&gt;&lt;br&gt;感谢 &lt;a href="http://www.meditationsuhren.de">http://www.meditationsuhren.de&lt;/a&gt; 的 Winfried 提供如此优美的铃声！</string>
+    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues">在 GitHub 上报告问题&lt;/a&gt;</string>
     <string name="app_description">此应用程序可让用户定义一组冥想课程，并在部分或整个冥想结束时提供视觉与听觉的计时反馈。</string>
     <string name="appbar_scrolling_view_behavior">android.support.design.widget.AppBarLayout$ScrollingViewBehavior</string>
     <string name="backup_error_text">抱歉，保存时发生错误。</string>

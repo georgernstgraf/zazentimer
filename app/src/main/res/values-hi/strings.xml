@@ -2,8 +2,8 @@
 <resources>
     <string name="abbrechen">रद्द करें</string>
     <string name="about1">ज़ाज़ेन मेडिटेशन टाइमर — एक सरल मेडिटेशन टाइमर जिसमें कस्टमाइज़ करने योग्य सेक्शन, घंटी की आवाज़ें और सेशन प्रबंधन है।</string>
-    <string name="about2">मूल रूप से Stefan Gaffga द्वारा बनाया गया। वर्तमान में Georg Graf द्वारा प्रबंधित।&lt;br&gt;&lt;br&gt;&lt;a href="http://www.meditationsuhren.de"&gt;http://www.meditationsuhren.de&lt;/a&gt; के Winfried को बेहतरीन घंटी की आवाज़ें प्रदान करने के लिए धन्यवाद!</string>
-    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues"&gt;GitHub पर समस्याएँ रिपोर्ट करें&lt;/a&gt;</string>
+    <string name="about2">मूल रूप से Stefan Gaffga द्वारा बनाया गया। वर्तमान में Georg Graf द्वारा प्रबंधित।&lt;br&gt;&lt;br&gt;&lt;a href="http://www.meditationsuhren.de">http://www.meditationsuhren.de&lt;/a&gt; के Winfried को बेहतरीन घंटी की आवाज़ें प्रदान करने के लिए धन्यवाद!</string>
+    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues">GitHub पर समस्याएँ रिपोर्ट करें&lt;/a&gt;</string>
     <string name="app_description">यह एप्लिकेशन उपयोगकर्ता को मेडिटेशन सेशन सेट करने की सुविधा देता है और एक टाइमर प्रदान करता है जो किसी हिस्से या पूरे मेडिटेशन के खत्म होने पर दृश्य और श्रव्य फीडबैक देता है।</string>
     <string name="appbar_scrolling_view_behavior">android.support.design.widget.AppBarLayout$ScrollingViewBehavior</string>
     <string name="backup_error_text">क्षमा करें, सहेजते समय एक त्रुटि हुई।</string>

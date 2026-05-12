@@ -2,8 +2,8 @@
 <resources>
     <string name="abbrechen">ꯀꯛꯄ</string>
     <string name="about1">ꯖꯥꯖꯦꯟ ꯃꯦꯗꯤꯇꯦꯁꯟ ꯇꯥꯏꯃꯔ — ꯀꯁ꯭ꯇꯃꯔꯁꯤꯡꯅꯥ ꯁꯦꯝꯕꯥ ꯁꯦꯛꯁꯅꯁꯤꯡ, ꯕꯦꯂꯒꯤ ꯈꯣꯟꯖꯦꯂꯁꯤꯡ, ꯑꯃꯁꯨꯡ ꯁꯦꯁꯟ ꯃꯦꯅꯦꯖꯃꯦꯟꯇꯒꯥ ꯂꯣꯌꯅꯅꯥ ꯏꯆꯝ ꯆꯝꯕꯥ ꯃꯦꯗꯤꯇꯦꯁꯟ ꯇꯥꯏꯃꯔ ꯑꯃꯅꯤ꯫</string>
-    <string name="about2">ꯑꯍꯥꯅꯕꯗꯥ ꯁ꯭ꯇꯦꯐꯦꯟ ꯒꯥꯐꯒꯥꯅꯥ ꯁꯦꯃꯈꯤꯕꯅꯤ꯫ ꯍꯧꯖꯤꯛ ꯖꯤꯑꯣꯔꯒ ꯒ꯭ꯔꯥꯐꯅꯥ ꯁꯦꯃꯒꯠꯂꯤ꯫&lt;br&gt;&lt;br&gt;ꯑꯁꯨꯛ ꯌꯥꯝꯅꯥ ꯑꯆꯧꯕꯥ ꯕꯦꯜ ꯁꯥꯎꯟꯗꯁꯤꯡ ꯄꯤꯕꯒꯤꯗꯃꯛ &lt;a href="http://www.meditationsuhren.de"&gt;http://www.meditationsuhren.de&lt;/a&gt;ꯒꯤ ꯋꯤꯅꯐ꯭ꯔꯦꯗꯄꯨ ꯊꯥꯒꯠꯆꯔꯤ!</string>
-    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues"&gt;ꯒꯤꯇꯍꯕꯇꯥ ꯏꯁꯨꯁꯤꯡ ꯔꯤꯄꯣꯔꯠ ꯇꯧꯕꯥ&lt;/a&gt;</string>
+    <string name="about2">ꯑꯍꯥꯅꯕꯗꯥ ꯁ꯭ꯇꯦꯐꯦꯟ ꯒꯥꯐꯒꯥꯅꯥ ꯁꯦꯃꯈꯤꯕꯅꯤ꯫ ꯍꯧꯖꯤꯛ ꯖꯤꯑꯣꯔꯒ ꯒ꯭ꯔꯥꯐꯅꯥ ꯁꯦꯃꯒꯠꯂꯤ꯫&lt;br&gt;&lt;br&gt;ꯑꯁꯨꯛ ꯌꯥꯝꯅꯥ ꯑꯆꯧꯕꯥ ꯕꯦꯜ ꯁꯥꯎꯟꯗꯁꯤꯡ ꯄꯤꯕꯒꯤꯗꯃꯛ &lt;a href="http://www.meditationsuhren.de">http://www.meditationsuhren.de&lt;/a&gt;ꯒꯤ ꯋꯤꯅꯐ꯭ꯔꯦꯗꯄꯨ ꯊꯥꯒꯠꯆꯔꯤ!</string>
+    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues">ꯒꯤꯇꯍꯕꯇꯥ ꯏꯁꯨꯁꯤꯡ ꯔꯤꯄꯣꯔꯠ ꯇꯧꯕꯥ&lt;/a&gt;</string>
     <string name="app_description">ꯑꯦꯞꯂꯤꯀꯦꯁꯟ ꯑꯁꯤꯅꯥ ꯌꯨꯖꯔꯗꯥ ꯃꯦꯗꯤꯇꯦꯁꯟ ꯁꯦꯁꯅꯁꯤꯡꯒꯤ ꯁꯦꯠ ꯑꯃꯥ ꯗꯤꯐꯥꯏꯟ ꯇꯧꯕꯥ ꯌꯥꯍꯜꯂꯤ ꯑꯃꯁꯨꯡ ꯁꯔꯨꯛ ꯑꯃꯥ ꯅꯠꯠꯔꯒꯥ ꯃꯦꯗꯤꯇꯦꯁꯟ ꯄꯨꯝꯅꯃꯛ ꯂꯣꯏꯔꯕꯥ ꯃꯇꯃꯗꯥ ꯚꯤꯖꯨꯑꯦꯜ ꯑꯃꯁꯨꯡ ꯑꯣꯗꯤꯕꯜ ꯐꯤꯗꯕꯦꯛ ꯌꯥꯑꯣꯕꯥ ꯇꯥꯏꯃꯔ ꯑꯃꯥ ꯄꯤꯔꯤ꯫</string>
     <string name="app_name">Zazen Meditation Timer</string>
     <string name="appbar_scrolling_view_behavior">android.support.design.widget.AppBarLayout$ꯁ꯭ꯛꯔꯣꯂꯤꯡꯚꯤꯎꯕꯤꯍꯦꯕꯤꯌꯔ</string>

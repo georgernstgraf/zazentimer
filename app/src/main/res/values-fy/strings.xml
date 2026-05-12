@@ -2,8 +2,8 @@
 <resources>
     <string name="abbrechen">Ofbrekke</string>
     <string name="about1">Zazen Meditaasje Timer - In ienfâldige meditaasje timer mei oanpasbere seksjes, bel lûden, en sesje behear.</string>
-    <string name="about2">Oarspronklik makke troch Stefan Gaffga. Op it stuit ûnderhâlden troch Georg Graf.&lt;br&gt;&lt;br&gt;Mei tank oan Winfried fan &lt;a href="http://www.meditationsuhren.de"&gt;http://www.meditationsuhren.de&lt;/a&gt; foar it leverjen fan sokke geweldige Bell Sounds!</string>
-    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues"&gt;Rapportearje problemen op GitHub&lt;/a&gt;</string>
+    <string name="about2">Oarspronklik makke troch Stefan Gaffga. Op it stuit ûnderhâlden troch Georg Graf.&lt;br&gt;&lt;br&gt;Mei tank oan Winfried fan &lt;a href="http://www.meditationsuhren.de">http://www.meditationsuhren.de&lt;/a&gt; foar it leverjen fan sokke geweldige Bell Sounds!</string>
+    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues">Rapportearje problemen op GitHub&lt;/a&gt;</string>
     <string name="app_description">Dizze applikaasje lit de brûker in set meditaasje-sesjes definiearje en leveret in timer mei fisuele en harkbere feedback as in diel of de heule meditaasje foarby is.</string>
     <string name="app_name">Zazen Meditation Timer</string>
     <string name="appbar_scrolling_view_behavior">android.support.design.widget.AppBarLayout$ScrollingViewBehavior</string>

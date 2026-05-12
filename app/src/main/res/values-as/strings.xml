@@ -2,8 +2,8 @@
 <resources>
     <string name="abbrechen">বাতিল কৰক</string>
     <string name="about1">Zazen ধ্যান টাইমাৰ — স্বনিৰ্বাচিত অংশ, ঘণ্টাৰ শব্দ, আৰু অধিবেশন ব্যৱস্থাপনাৰ সৈতে এটা সহজ ধ্যান টাইমাৰ।</string>
-    <string name="about2">মূলতঃ ষ্টেফান গাফগাৰ দ্বাৰা সৃষ্টি কৰা হৈছে। বৰ্তমান Georg Graf দ্বাৰা ৰক্ষণাবেক্ষণ কৰা হৈছে।&lt;br&gt;&lt;br&gt;এনে মহান বেল শব্দ প্ৰদান কৰাৰ বাবে &lt;a href="http://www.meditationsuhren.de"&gt;http://www.meditationsuhren.de&lt;/a&gt; ৰ Winfried লৈ ধন্যবাদ!</string>
-    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues"&gt;GitHub ত সমস্যাসমূহ প্ৰতিবেদন কৰক&lt;/a&gt;</string>
+    <string name="about2">মূলতঃ ষ্টেফান গাফগাৰ দ্বাৰা সৃষ্টি কৰা হৈছে। বৰ্তমান Georg Graf দ্বাৰা ৰক্ষণাবেক্ষণ কৰা হৈছে।&lt;br&gt;&lt;br&gt;এনে মহান বেল শব্দ প্ৰদান কৰাৰ বাবে &lt;a href="http://www.meditationsuhren.de">http://www.meditationsuhren.de&lt;/a&gt; ৰ Winfried লৈ ধন্যবাদ!</string>
+    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues">GitHub ত সমস্যাসমূহ প্ৰতিবেদন কৰক&lt;/a&gt;</string>
     <string name="app_description">এই এপ্লিকেচনে ব্যৱহাৰকাৰীক ধ্যান অধিবেশনৰ এটা গোট সংজ্ঞায়িত কৰিবলৈ দিয়ে আৰু এটা অংশ বা গোটেই ধ্যান শেষ হ\'লে দৃশ্যমান আৰু শ্ৰৱণযোগ্য প্ৰতিক্ৰিয়াৰ সৈতে এটা টাইমাৰ প্ৰদান কৰে।</string>
     <string name="app_name">Zazen Meditation Timer</string>
     <string name="appbar_scrolling_view_behavior">android.support.design.widget.AppBarLayout$স্ক্ৰলিংভিউবিহেভিয়াৰ</string>

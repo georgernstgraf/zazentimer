@@ -2,8 +2,8 @@
 <resources>
     <string name="abbrechen">ᱢᱩᱪᱮᱫ</string>
     <string name="about1">Zazen Meditation Timer — ᱢᱤᱫ ᱱᱚᱸᱰᱮᱱᱟᱜ ᱢᱮᱰᱤᱴᱮᱥᱚᱱ ᱴᱟᱭᱢᱚᱨ ᱠᱟᱱᱟ ᱡᱟᱦᱟᱸ ᱫᱚ ᱵᱮᱵᱷᱟᱨᱤᱡ ᱵᱮᱵᱷᱟᱨᱤᱡ ᱵᱮᱵᱷᱟᱨᱤᱡ ᱵᱮᱵᱷᱟᱨᱤᱡ ᱵᱮᱵᱷᱟᱨᱤᱡ ᱵᱮᱵᱷᱟᱨᱤᱡ ᱵᱮᱵᱷᱟᱨᱤᱡ ᱵᱮᱵᱷᱟᱨᱤᱡ ᱵᱮᱵᱷᱟᱨᱤᱡ ᱵᱮᱵᱷᱟᱨᱤᱡ ᱵᱮᱵᱷᱟᱨᱤᱡ ᱵᱮᱵᱷᱟᱨᱤᱡ ᱵᱮᱵᱷᱟᱨᱤᱡ ᱵᱮᱵᱷᱟᱨᱤᱡ ᱵᱮᱵᱷᱟᱨᱤᱡ ᱵᱮᱵᱷᱟᱨᱤᱡ ᱵᱮᱵᱷᱟᱨᱤᱡ ᱵᱮᱵᱷᱟᱨᱤᱡ ᱵᱮᱵᱷᱟᱨᱤᱡ ᱵᱮᱵᱷᱟᱨᱤᱡ ᱵᱮᱵᱷᱟᱨᱚᱜᱼᱟ ᱾</string>
-    <string name="about2">ᱥᱴᱮᱯᱷᱟᱱ ᱜᱟᱯᱟ ᱵᱮᱱᱟᱣ ᱟᱠᱟᱫᱟ ᱡᱚᱨᱡ ᱜᱨᱟᱯᱷ ᱦᱚᱛᱮᱛᱮ ᱱᱤᱛᱚᱜ ᱫᱚᱦᱚ ᱟᱠᱟᱱᱟ ᱾&lt;br&gt;&lt;br&gt;ᱣᱤᱱᱯᱷᱨᱤᱰ ᱟᱜ http://www.meditationsuhren.de ᱱᱚᱝᱠᱟᱱ ᱢᱟᱨᱟᱝ &lt;a href="http://www.meditationsuhren.de"&gt;ᱵᱮᱞ&lt;/a&gt; ᱥᱳᱭᱱᱥ ᱮᱢ ᱞᱟᱹᱜᱤᱫ ᱛᱮ ᱟᱭᱢᱟ ᱥᱟᱨᱦᱟᱣ ᱟᱠᱟᱱ ᱛᱟᱢᱤᱞ!</string>
-    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues"&gt;ᱜᱤᱛᱷᱩᱵᱽ ᱨᱮᱱ ᱥᱟᱦᱴᱟ&lt;/a&gt;</string>
+    <string name="about2">ᱥᱴᱮᱯᱷᱟᱱ ᱜᱟᱯᱟ ᱵᱮᱱᱟᱣ ᱟᱠᱟᱫᱟ ᱡᱚᱨᱡ ᱜᱨᱟᱯᱷ ᱦᱚᱛᱮᱛᱮ ᱱᱤᱛᱚᱜ ᱫᱚᱦᱚ ᱟᱠᱟᱱᱟ ᱾&lt;br&gt;&lt;br&gt;ᱣᱤᱱᱯᱷᱨᱤᱰ ᱟᱜ http://www.meditationsuhren.de ᱱᱚᱝᱠᱟᱱ ᱢᱟᱨᱟᱝ &lt;a href="http://www.meditationsuhren.de">ᱵᱮᱞ&lt;/a&gt; ᱥᱳᱭᱱᱥ ᱮᱢ ᱞᱟᱹᱜᱤᱫ ᱛᱮ ᱟᱭᱢᱟ ᱥᱟᱨᱦᱟᱣ ᱟᱠᱟᱱ ᱛᱟᱢᱤᱞ!</string>
+    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues">ᱜᱤᱛᱷᱩᱵᱽ ᱨᱮᱱ ᱥᱟᱦᱴᱟ&lt;/a&gt;</string>
     <string name="app_description">ᱱᱚᱣᱟ ᱮᱯᱞᱤᱠᱮᱥᱚᱱ ᱫᱚ ᱵᱮᱵᱷᱟᱨᱤᱭᱟᱹ ᱫᱚ ᱟᱭᱢᱟ ᱞᱮᱠᱟᱱ ᱢᱮᱰᱤᱴᱮᱥᱚᱱ ᱥᱮᱥᱚᱱ ᱠᱚ ᱢᱟᱱᱟᱣ ᱵᱟᱛᱟᱣ ᱫᱟᱲᱮᱭᱟᱜᱼᱟ ᱟᱨ ᱢᱤᱫ ᱚᱠᱛᱚ ᱨᱮ ᱢᱤᱫ ᱴᱮᱱ ᱥᱮ ᱡᱚᱛᱚ ᱢᱮᱰᱤᱴᱮᱥᱚᱱ ᱢᱩᱪᱟᱹᱫ ᱨᱮ ᱢᱤᱫ ᱧᱮᱞᱚᱜ ᱟᱨ ᱥᱮᱪᱮᱫᱚᱜ ᱠᱟᱱ ᱨᱟᱹᱥᱠᱟᱹ ᱮᱢᱚᱜᱼᱟ ᱾</string>
     <string name="app_name">Zazen Meditation Timer</string>
     <string name="appbar_scrolling_view_behavior">android.support.design.widget.AppBarLayout$ScrollingViewBehavior</string>

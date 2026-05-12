@@ -2,8 +2,8 @@
 <resources>
     <string name="abbrechen">Ofbriechen</string>
     <string name="about1">Zazen Meditatioun Timer - En einfachen Meditatioun Timer mat personaliséierbar Sektiounen, Klacken Kläng, a Sessioun Gestioun.</string>
-    <string name="about2">Ursprénglech erstallt vum Stefan Gaffga. Aktuell ënnerhale vum Georg Graf.&lt;br&gt;&lt;br&gt;Merci un de Winfried vun &lt;a href="http://www.meditationsuhren.de"&gt;http://www.meditationsuhren.de&lt;/a&gt; fir esou flott Bell Sounds ze bidden!</string>
-    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues"&gt;Problemer op GitHub mellen&lt;/a&gt;</string>
+    <string name="about2">Ursprénglech erstallt vum Stefan Gaffga. Aktuell ënnerhale vum Georg Graf.&lt;br&gt;&lt;br&gt;Merci un de Winfried vun &lt;a href="http://www.meditationsuhren.de">http://www.meditationsuhren.de&lt;/a&gt; fir esou flott Bell Sounds ze bidden!</string>
+    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues">Problemer op GitHub mellen&lt;/a&gt;</string>
     <string name="app_description">Dës Applikatioun léisst de Benotzer eng Rei vu Meditationssessiounen definéieren a bitt en Timer mat visuellen an hörbare Feedback wann en Deel oder déi ganz Meditatioun eriwwer ass.</string>
     <string name="app_name">Zazen Meditation Timer</string>
     <string name="appbar_scrolling_view_behavior">android.support.design.widget.AppBarLayout$ScrollingViewBehavior</string>

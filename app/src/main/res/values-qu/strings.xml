@@ -2,8 +2,8 @@
 <resources>
     <string name="abbrechen">Sayachiy</string>
     <string name="about1">Zazen Yuyaymanay Timer — Huk sanu yuyaymanay pacha yupayniyuq t\'aqakuna ruwanapaq, campana t\'uqyaykunawan, chaymanta sesión kamachiywan.</string>
-    <string name="about2">Qallariypiqa Stefan Gaffga sutiyuq runap kamasqan. Kunanqa Georg Grafpa qhawasqan.&lt;br&gt;&lt;br&gt;Gracias Winfriedman &lt;a href="http://www.meditationsuhren.de"&gt;http://www.meditationsuhren.de&lt;/a&gt; kayhina hatun Campana T\'uqyaykunata qusqanmanta!</string>
-    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues"&gt;GitHub kaqpi sasachakuykunamanta willay&lt;/a&gt;</string>
+    <string name="about2">Qallariypiqa Stefan Gaffga sutiyuq runap kamasqan. Kunanqa Georg Grafpa qhawasqan.&lt;br&gt;&lt;br&gt;Gracias Winfriedman &lt;a href="http://www.meditationsuhren.de">http://www.meditationsuhren.de&lt;/a&gt; kayhina hatun Campana T\'uqyaykunata qusqanmanta!</string>
+    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues">GitHub kaqpi sasachakuykunamanta willay&lt;/a&gt;</string>
     <string name="app_description">Kay ruwana ruwaqta huk huñu yuyaymanay sesiones kaqmanta riqsichiyta saqin chaymanta huk pacha yupayta qun rikuypaq chaymanta uyarinapaq kutichiywan mayk\'aq huk parte utaq tukuy yuyaymanay tukusqa.</string>
     <string name="app_name">Zazen Meditation Timer</string>
     <string name="appbar_scrolling_view_behavior">android.yanapakuy.diseño.widget.AppBarLayout$KuyuchinaQhaway Ruway</string>

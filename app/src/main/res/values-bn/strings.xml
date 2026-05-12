@@ -2,8 +2,8 @@
 <resources>
     <string name="abbrechen">বাতিল করুন</string>
     <string name="about1">জাজেন মেডিটেশন টাইমার — কাস্টমাইজযোগ্য সেকশন, বেলের শব্দ এবং সেশন পরিচালনা সহ একটি সহজ মেডিটেশন টাইমার।</string>
-    <string name="about2">মূলত Stefan Gaffga দ্বারা তৈরি। বর্তমানে Georg Graf দ্বারা রক্ষণাবেক্ষণ করা হচ্ছে।&lt;br&gt;&lt;br&gt;চমৎকার বেলের শব্দ প্রদান করার জন্য &lt;a href="http://www.meditationsuhren.de"&gt;http://www.meditationsuhren.de&lt;/a&gt; এর Winfried-কে ধন্যবাদ!</string>
-    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues"&gt;GitHub এ সমস্যা রিপোর্ট করুন&lt;/a&gt;</string>
+    <string name="about2">মূলত Stefan Gaffga দ্বারা তৈরি। বর্তমানে Georg Graf দ্বারা রক্ষণাবেক্ষণ করা হচ্ছে।&lt;br&gt;&lt;br&gt;চমৎকার বেলের শব্দ প্রদান করার জন্য &lt;a href="http://www.meditationsuhren.de">http://www.meditationsuhren.de&lt;/a&gt; এর Winfried-কে ধন্যবাদ!</string>
+    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues">GitHub এ সমস্যা রিপোর্ট করুন&lt;/a&gt;</string>
     <string name="app_description">এই অ্যাপ্লিকেশনটি ব্যবহারকারীকে মেডিটেশন সেশনের একটি সেট সংজ্ঞায়িত করতে দেয় এবং একটি টাইমার প্রদান করে যা মেডিটেশনের একটি অংশ বা পুরোটা শেষ হলে দৃশ্যমান এবং শ্রবণযোগ্য ফিডব্যাক দেয়।</string>
     <string name="appbar_scrolling_view_behavior">android.support.design.widget.AppBarLayout$ScrollingViewBehavior</string>
     <string name="backup_error_text">দুঃখিত, সংরক্ষণ করার সময় একটি ত্রুটি ঘটেছে।</string>

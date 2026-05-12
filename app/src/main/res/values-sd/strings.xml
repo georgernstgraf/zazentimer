@@ -2,8 +2,8 @@
 <resources>
     <string name="abbrechen">منسوخ ڪريو</string>
     <string name="about1">ززين ميڊيٽيشن ٽائمر - هڪ سادي مراقبت ٽائمر حسب ضرورت سيڪشن، گھنٽي جي آوازن، ۽ سيشن جي انتظام سان.</string>
-    <string name="about2">اصل ۾ اسٽيفن گفگا پاران ٺاهي وئي. في الحال جارج گراف پاران سنڀاليو ويو آهي.&lt;br&gt;&lt;br&gt;اهڙا عظيم بيل آواز مهيا ڪرڻ لاءِ &lt;a href="http://www.meditationsuhren.de"&gt;http://www.meditationsuhren.de&lt;/a&gt; جي Winfried جي مهرباني!</string>
-    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues"&gt;GitHub تي مسئلن جي رپورٽ ڪريو&lt;/a&gt;</string>
+    <string name="about2">اصل ۾ اسٽيفن گفگا پاران ٺاهي وئي. في الحال جارج گراف پاران سنڀاليو ويو آهي.&lt;br&gt;&lt;br&gt;اهڙا عظيم بيل آواز مهيا ڪرڻ لاءِ &lt;a href="http://www.meditationsuhren.de">http://www.meditationsuhren.de&lt;/a&gt; جي Winfried جي مهرباني!</string>
+    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues">GitHub تي مسئلن جي رپورٽ ڪريو&lt;/a&gt;</string>
     <string name="app_description">هي ايپليڪيشن صارف کي مراقبي سيشن جو هڪ سيٽ بيان ڪرڻ جي اجازت ڏئي ٿي ۽ بصري ۽ ٻڌڻ واري راءِ سان ٽائمر مهيا ڪري ٿي جڏهن هڪ حصو يا سڄو مراقبو ختم ٿي وڃي.</string>
     <string name="app_name">Zazen Meditation Timer</string>
     <string name="appbar_scrolling_view_behavior">android.support.design.widget.AppBarLayout$ScrollingViewBehavior</string>

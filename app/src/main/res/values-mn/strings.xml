@@ -2,8 +2,8 @@
 <resources>
     <string name="abbrechen">Цуцлах</string>
     <string name="about1">Зазен бясалгалын таймер - Өөрчлөн тохируулж болох хэсэг, хонхны дуу, сессийн удирдлага бүхий энгийн бясалгалын таймер.</string>
-    <string name="about2">Анх Стефан Гаффга бүтээсэн. Одоогоор Георг Граф засварлаж байна.&lt;br&gt;&lt;br&gt;Ийм гайхалтай хонхны дууг гаргаж өгсөн &lt;a href="http://www.meditationsuhren.de"&gt;http://www.meditationsuhren.de&lt;/a&gt;-н Винфридэд баярлалаа!</string>
-    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues"&gt;GitHub дээрх асуудлыг мэдээлэх&lt;/a&gt;</string>
+    <string name="about2">Анх Стефан Гаффга бүтээсэн. Одоогоор Георг Граф засварлаж байна.&lt;br&gt;&lt;br&gt;Ийм гайхалтай хонхны дууг гаргаж өгсөн &lt;a href="http://www.meditationsuhren.de">http://www.meditationsuhren.de&lt;/a&gt;-н Винфридэд баярлалаа!</string>
+    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues">GitHub дээрх асуудлыг мэдээлэх&lt;/a&gt;</string>
     <string name="app_description">Энэ аппликейшн нь хэрэглэгчдэд бясалгалын багцыг тодорхойлох боломжийг олгож, бясалгалын хэсэг эсвэл бүхэлд нь дууссаны дараа таймераар харааны болон дуут хариу өгөх боломжийг олгодог.</string>
     <string name="app_name">Zazen Meditation Timer</string>
     <string name="appbar_scrolling_view_behavior">android.support.design.widget.AppBarLayout$ScrollingViewBehavior</string>

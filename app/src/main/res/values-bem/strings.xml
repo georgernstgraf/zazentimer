@@ -2,8 +2,8 @@
 <resources>
     <string name="abbrechen">Kanseni...</string>
     <string name="about1">ZAZEN Meditation Timer — A Simple Meditation Timer with Ukulele, Ukulele Tabs, Ukulele Tabs, Ukulele Tabs</string>
-    <string name="about2">Fela Anikulapo Kuti by Stefan Gaffga Pali ino nshita ba Georg Graf e balenga ukuti ifintu fibe bwino.&lt;br&gt;&lt;br&gt;Watashi no namae wa &lt;a href="http://www.meditationsuhren.de"&gt;http://www.meditationsuhren.de&lt;/a&gt; atashi no naka ni shite imasen deshita!</string>
-    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues"&gt;Bipasha Basu on GitHub&lt;/a&gt;</string>
+    <string name="about2">Fela Anikulapo Kuti by Stefan Gaffga Pali ino nshita ba Georg Graf e balenga ukuti ifintu fibe bwino.&lt;br&gt;&lt;br&gt;Watashi no namae wa &lt;a href="http://www.meditationsuhren.de">http://www.meditationsuhren.de&lt;/a&gt; atashi no naka ni shite imasen deshita!</string>
+    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues">Bipasha Basu on GitHub&lt;/a&gt;</string>
     <string name="app_description">Ili ilembo lilenga umuntu ukwishiba ifyo aletontonkanya kabili lilenga aleumfwa ifyo aletontonkanya nga ca kuti aletontonkanya pa fintu fimo nelyo nga aletontonkanya pa fintu fimbi.</string>
     <string name="app_name">Zazen Meditation Timer</string>
     <string name="appbar_scrolling_view_behavior">android.support.design.widget.AppBarLayout$ScrollingViewBehavior</string>
@@ -130,7 +130,7 @@
     <string name="status_bar_notification_info_overflow">999+</string>
     <string name="test_mute_perm_request">Pali ino nshita, te kuti mutemwe ukubomfya foni yenu. Kani mulukufwaya ukwalula ifi ifyakucita?</string>
     <string name="text_cant_mute">Foni yenu tayasuminisha iyi app ukukanashalapo. Mulukufwaya ukupyungisha ifyakupyungisha pa kupyungisha ifi ifyebo neli ukupyungisha ifyakupyungisha pa kupyungisha pa kupyungisha ifi ifyebo.</string>
-    <string name="text_no_notify_access_settings">Foni yenu tayakwata inshila sha kutendekelapo isha kusuminishishishamo. (src) = "10"&gt; Tamufwile ukukanasakamikwa pa fyo mwalecita pa kuti mulesangwa ku kulongana. - Amalumbo 1: 1.</string>
+    <string name="text_no_notify_access_settings">Foni yenu tayakwata inshila sha kutendekelapo isha kusuminishishishamo. (src) = "10"> Tamufwile ukukanasakamikwa pa fyo mwalecita pa kuti mulesangwa ku kulongana. - Amalumbo 1: 1.</string>
     <string name="text_no_sections">Takwaba ifyebo ifyalondolola ifyo ifintu fyaba.</string>
     <string name="text_question_delete_session">Kani mulyelelwe ukufumyapo ukupyungisha ukupyungisha uku</string>
     <string name="theme">Umutwe</string>

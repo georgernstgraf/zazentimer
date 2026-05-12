@@ -2,8 +2,8 @@
 <resources>
     <string name="abbrechen">रद्द</string>
     <string name="about1">Zazen ध्यान टाइमर — अनुकूलन योग्य खंड, घंटी के आवाज, आरू सत्र प्रबंधन के साथ एक सरल ध्यान टाइमर |</string>
-    <string name="about2">मूल रूप से स्टीफन गफगा द्वारा निर्मित। वर्तमान में जॉर्ज ग्राफ द्वारा रखरखाव कयल गेल अछि.&lt;br&gt;&lt;br&gt;एतेक बढ़िया बेल साउंड्स उपलब्ध कराबय लेल &lt;a href="http://www.meditationsuhren.de"&gt;http://www.meditationsuhren.de&lt;/a&gt; के विनफ्राइड के धन्यवाद !</string>
-    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues"&gt;गिटहब पर मुद्दा रिपोर्ट करू&lt;/a&gt;</string>
+    <string name="about2">मूल रूप से स्टीफन गफगा द्वारा निर्मित। वर्तमान में जॉर्ज ग्राफ द्वारा रखरखाव कयल गेल अछि.&lt;br&gt;&lt;br&gt;एतेक बढ़िया बेल साउंड्स उपलब्ध कराबय लेल &lt;a href="http://www.meditationsuhren.de">http://www.meditationsuhren.de&lt;/a&gt; के विनफ्राइड के धन्यवाद !</string>
+    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues">गिटहब पर मुद्दा रिपोर्ट करू&lt;/a&gt;</string>
     <string name="app_description">इ एप्लीकेशन उपयोगकर्ता कें ध्यान सत्रक कें एकटा सेट परिभाषित करय कें सुविधा देयत छै आ जखन कोनों भाग या पूरा ध्यान समाप्त भ जायत छै तखन दृश्य आ श्रव्य प्रतिक्रिया कें साथ एकटा टाइमर प्रदान करयत छै.</string>
     <string name="app_name">Zazen Meditation Timer</string>
     <string name="appbar_scrolling_view_behavior">android.support.design.widget.AppBarLayout $ स्क्रॉल दृश्यव्यवहार</string>

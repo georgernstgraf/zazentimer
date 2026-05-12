@@ -2,8 +2,8 @@
 <resources>
     <string name="abbrechen">Cancel</string>
     <string name="about1">Zazen Meditatio Timer — Simplex meditatio timoris cum sectionibus customisable, sonis campanae et administratione sessionis.</string>
-    <string name="about2">Primum creata a Stefan Gaffga. In statu servatur Georg Graf.&lt;br&gt;&lt;br&gt;Gratias Winfried de &lt;a href="http://www.meditationsuhren.de"&gt;http://www.meditationsuhren.de&lt;/a&gt; ad tantis sonos Campanorum comparandis!</string>
-    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues"&gt;Report quaestiones in GitHub&lt;/a&gt;</string>
+    <string name="about2">Primum creata a Stefan Gaffga. In statu servatur Georg Graf.&lt;br&gt;&lt;br&gt;Gratias Winfried de &lt;a href="http://www.meditationsuhren.de">http://www.meditationsuhren.de&lt;/a&gt; ad tantis sonos Campanorum comparandis!</string>
+    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues">Report quaestiones in GitHub&lt;/a&gt;</string>
     <string name="app_description">Haec applicatio permittit utentis meditationis sessiones definitas definire ac timeri praebet opiniones visuales et audibiles, cum pars vel tota meditatio cessat.</string>
     <string name="app_name">Zazen Meditation Timer</string>
     <string name="appbar_scrolling_view_behavior">android.support.design.widget.AppBarLayout $ ScrollingViewBehavior</string>

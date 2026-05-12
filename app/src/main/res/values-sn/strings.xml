@@ -2,8 +2,8 @@
 <resources>
     <string name="abbrechen">Cancel</string>
     <string name="about1">Zazen Meditation Timer - Yakareruka yekufungisisa timer ine customizable zvikamu, bhero ruzha, uye musangano manejimendi.</string>
-    <string name="about2">Pakutanga yakagadzirwa naStefan Gaffga. Parizvino inochengetwa naGeorg Graf.&lt;br&gt;&lt;br&gt;Tinotenda Winfried we&lt;a href="http://www.meditationsuhren.de"&gt;http://www.meditationsuhren.de&lt;/a&gt; nekupa Manzwi eBell anoyevedza kudaro!</string>
-    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues"&gt;Mhan\'ara nyaya paGitHub&lt;/a&gt;</string>
+    <string name="about2">Pakutanga yakagadzirwa naStefan Gaffga. Parizvino inochengetwa naGeorg Graf.&lt;br&gt;&lt;br&gt;Tinotenda Winfried we&lt;a href="http://www.meditationsuhren.de">http://www.meditationsuhren.de&lt;/a&gt; nekupa Manzwi eBell anoyevedza kudaro!</string>
+    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues">Mhan\'ara nyaya paGitHub&lt;/a&gt;</string>
     <string name="app_description">Ichi chishandiso chinobvumira mushandisi kutsanangura seti yekufungisisa seti uye inopa timer ine inooneka uye inonzwika mhinduro kana chikamu kana kufungisisa kwese kwapera.</string>
     <string name="app_name">Zazen Meditation Timer</string>
     <string name="appbar_scrolling_view_behavior">android.support.design.widget.AppBarLayout$ScrollingViewBehavior</string>

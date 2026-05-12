@@ -2,8 +2,8 @@
 <resources>
     <string name="abbrechen">Anulo</string>
     <string name="about1">Kohëmatësi i meditimit Zazen — Një kohëmatës i thjeshtë meditimi me seksione të personalizueshme, tinguj zile dhe menaxhim të sesioneve.</string>
-    <string name="about2">Krijuar fillimisht nga Stefan Gaffga. Aktualisht mirëmbahet nga Georg Graf.&lt;br&gt;&lt;br&gt;Faleminderit Winfried të &lt;a href="http://www.meditationsuhren.de"&gt;http://www.meditationsuhren.de&lt;/a&gt; për ofrimin e tingujve kaq të mrekullueshëm të ziles!</string>
-    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues"&gt;Raportoni problemet në GitHub&lt;/a&gt;</string>
+    <string name="about2">Krijuar fillimisht nga Stefan Gaffga. Aktualisht mirëmbahet nga Georg Graf.&lt;br&gt;&lt;br&gt;Faleminderit Winfried të &lt;a href="http://www.meditationsuhren.de">http://www.meditationsuhren.de&lt;/a&gt; për ofrimin e tingujve kaq të mrekullueshëm të ziles!</string>
+    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues">Raportoni problemet në GitHub&lt;/a&gt;</string>
     <string name="app_description">Ky aplikacion lejon përdoruesin të përcaktojë një grup seancash meditimi dhe siguron një kohëmatës me reagime vizuale dhe të dëgjueshme kur një pjesë ose i gjithë meditimi përfundon.</string>
     <string name="app_name">Zazen Meditation Timer</string>
     <string name="appbar_scrolling_view_behavior">android.support.design.widget.AppBarLayout$ScrollingViewBehavior</string>

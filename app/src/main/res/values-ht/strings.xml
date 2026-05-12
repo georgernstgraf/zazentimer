@@ -2,8 +2,8 @@
 <resources>
     <string name="abbrechen">Anile</string>
     <string name="about1">Zazen Meditation Timer — Yon senp revèy meditasyon ak seksyon personnalisable, son klòch, ak jesyon sesyon.</string>
-    <string name="about2">Originally kreye pa Stefan Gaffga. Aktyèlman konsève pa Georg Graf.&lt;br&gt;&lt;br&gt;Mèsi a Winfried nan &lt;a href="http://www.meditationsuhren.de"&gt;http://www.meditationsuhren.de&lt;/a&gt; pou bay gwo son Bell!</string>
-    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues"&gt;Rapòte pwoblèm sou GitHub&lt;/a&gt;</string>
+    <string name="about2">Originally kreye pa Stefan Gaffga. Aktyèlman konsève pa Georg Graf.&lt;br&gt;&lt;br&gt;Mèsi a Winfried nan &lt;a href="http://www.meditationsuhren.de">http://www.meditationsuhren.de&lt;/a&gt; pou bay gwo son Bell!</string>
+    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues">Rapòte pwoblèm sou GitHub&lt;/a&gt;</string>
     <string name="app_description">Aplikasyon sa a pèmèt itilizatè a defini yon seri sesyon meditasyon epi li bay yon revèy ak fidbak vizyèl ak oditif lè yon pati oswa tout meditasyon an fini.</string>
     <string name="app_name">Zazen Meditation Timer</string>
     <string name="appbar_scrolling_view_behavior">android.support.design.widget.AppBarLayout$ScrollingViewBehavior</string>

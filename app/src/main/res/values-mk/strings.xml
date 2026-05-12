@@ -2,8 +2,8 @@
 <resources>
     <string name="abbrechen">Откажи</string>
     <string name="about1">Зазен тајмер за медитација — Едноставен тајмер за медитација со приспособливи делови, звуци на ѕвончиња и управување со сесии.</string>
-    <string name="about2">Првично создаден од Стефан Гафга. Моментално го одржува Георг Граф.&lt;br&gt;&lt;br&gt;Благодарност до Винфрид од &lt;a href="http://www.meditationsuhren.de"&gt;http://www.meditationsuhren.de&lt;/a&gt; за обезбедувањето на толку одлични звуци на Бел!</string>
-    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues"&gt;Пријавете проблеми на GitHub&lt;/a&gt;</string>
+    <string name="about2">Првично создаден од Стефан Гафга. Моментално го одржува Георг Граф.&lt;br&gt;&lt;br&gt;Благодарност до Винфрид од &lt;a href="http://www.meditationsuhren.de">http://www.meditationsuhren.de&lt;/a&gt; за обезбедувањето на толку одлични звуци на Бел!</string>
+    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues">Пријавете проблеми на GitHub&lt;/a&gt;</string>
     <string name="app_description">Оваа апликација му овозможува на корисникот да дефинира сет на сесии за медитација и обезбедува тајмер со визуелни и звучни повратни информации кога ќе заврши дел или целата медитација.</string>
     <string name="app_name">Zazen Meditation Timer</string>
     <string name="appbar_scrolling_view_behavior">android.support.design.widget.AppBarLayout$ScrollingViewBehavior</string>

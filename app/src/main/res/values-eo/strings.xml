@@ -2,8 +2,8 @@
 <resources>
     <string name="abbrechen">Nuligi</string>
     <string name="about1">Zazen Meditation Timer — Simpla medita temporizilo kun agordeblaj sekcioj, sonoriloj kaj administrado de sesio.</string>
-    <string name="about2">Origine kreita de Stefan Gaffga. Nuntempe prizorgata de Georg Graf.&lt;br&gt;&lt;br&gt;Dankon al Winfried de &lt;a href="http://www.meditationsuhren.de"&gt;http://www.meditationsuhren.de&lt;/a&gt; pro provizi tiel bonegajn Sonorilojn!</string>
-    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues"&gt;Raporti problemojn en GitHub&lt;/a&gt;</string>
+    <string name="about2">Origine kreita de Stefan Gaffga. Nuntempe prizorgata de Georg Graf.&lt;br&gt;&lt;br&gt;Dankon al Winfried de &lt;a href="http://www.meditationsuhren.de">http://www.meditationsuhren.de&lt;/a&gt; pro provizi tiel bonegajn Sonorilojn!</string>
+    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues">Raporti problemojn en GitHub&lt;/a&gt;</string>
     <string name="app_description">Ĉi tiu aplikaĵo lasas la uzanton difini aron da meditado-sesioj kaj provizas tempigilon kun vidaj kaj aŭdeblaj retroscioj kiam parto aŭ la tuta meditado finiĝas.</string>
     <string name="app_name">Zazen Meditation Timer</string>
     <string name="appbar_scrolling_view_behavior">android.support.design.widget.AppBarLayout$ScrollingViewBehavior</string>

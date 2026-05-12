@@ -2,8 +2,8 @@
 <resources>
     <string name="abbrechen">إلغاء</string>
     <string name="about1">مؤقت التأمل زازين — مؤقت تأمل بسيط مع أقسام قابلة للتخصيص، أصوات أجراس، وإدارة الجلسات.</string>
-    <string name="about2">تم إنشاؤه في الأصل بواسطة Stefan Gaffga. تتم صيانته حاليًا بواسطة Georg Graf.&lt;br&gt;&lt;br&gt;شكرًا لـ Winfried من &lt;a href="http://www.meditationsuhren.de"&gt;http://www.meditationsuhren.de&lt;/a&gt; لتوفير أصوات الأجراس الرائعة!</string>
-    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues"&gt;الإبلاغ عن المشكلات على GitHub&lt;/a&gt;</string>
+    <string name="about2">تم إنشاؤه في الأصل بواسطة Stefan Gaffga. تتم صيانته حاليًا بواسطة Georg Graf.&lt;br&gt;&lt;br&gt;شكرًا لـ Winfried من &lt;a href="http://www.meditationsuhren.de">http://www.meditationsuhren.de&lt;/a&gt; لتوفير أصوات الأجراس الرائعة!</string>
+    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues">الإبلاغ عن المشكلات على GitHub&lt;/a&gt;</string>
     <string name="app_description">يتيح هذا التطبيق للمستخدم تحديد مجموعة من جلسات التأمل ويوفر مؤقتًا مع ملاحظات مرئية وصوتية عند انتهاء جزء أو التأمل بأكمله.</string>
     <string name="appbar_scrolling_view_behavior">android.support.design.widget.AppBarLayout$ScrollingViewBehavior</string>
     <string name="backup_error_text">عذرًا، حدث خطأ أثناء الحفظ.</string>

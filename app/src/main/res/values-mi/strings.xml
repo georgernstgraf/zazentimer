@@ -2,8 +2,8 @@
 <resources>
     <string name="abbrechen">Whakakore</string>
     <string name="about1">Zazen Meditation Timer - He taima whakaaroaro ngawari me nga waahanga whakarite, tangi pere, me te whakahaere i nga huihuinga.</string>
-    <string name="about2">I hanga tuatahi e Stefan Gaffga. Ko Georg Graf kei te tiaki i tenei wa.&lt;br&gt;&lt;br&gt;Nga mihi ki a Winfried o &lt;a href="http://www.meditationsuhren.de"&gt;http://www.meditationsuhren.de&lt;/a&gt; mo te tuku oro Bell tino pai!</string>
-    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues"&gt;Pūrongo take ki GitHub&lt;/a&gt;</string>
+    <string name="about2">I hanga tuatahi e Stefan Gaffga. Ko Georg Graf kei te tiaki i tenei wa.&lt;br&gt;&lt;br&gt;Nga mihi ki a Winfried o &lt;a href="http://www.meditationsuhren.de">http://www.meditationsuhren.de&lt;/a&gt; mo te tuku oro Bell tino pai!</string>
+    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues">Pūrongo take ki GitHub&lt;/a&gt;</string>
     <string name="app_description">Ma tenei tono ka taea e te kaiwhakamahi te tautuhi i te huinga o nga waahi whakaaroaro me te whakarato i te taima me nga urupare ataata me te whakarongo ka mutu tetahi waahanga, te katoa o te whakaaroaro.</string>
     <string name="app_name">Zazen Meditation Timer</string>
     <string name="appbar_scrolling_view_behavior">android.support.design.widget.AppBarLayout$ScrollingViewBehavior</string>

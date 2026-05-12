@@ -2,8 +2,8 @@
 <resources>
     <string name="abbrechen">okusazaamu</string>
     <string name="about1">Zazen Meditation Timer — Ekipima eky’okufumiitiriza eky’angu nga kiriko ebitundu ebisobola okulongoosebwa, amaloboozi g’akagombe, n’okuddukanya olutuula.</string>
-    <string name="about2">Yasooka kutondebwawo Stefan Gaffga. Mu kiseera kino eddaabirizibwa Georg Graf.&lt;br&gt;&lt;br&gt;Webale Winfried owa &lt;a href="http://www.meditationsuhren.de"&gt;http://www.meditationsuhren.de&lt;/a&gt; olw\'okuwa amaloboozi ga Bell amalungi bwe gatyo!</string>
-    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues"&gt;Oloopa ensonga ku GitHub&lt;/a&gt;</string>
+    <string name="about2">Yasooka kutondebwawo Stefan Gaffga. Mu kiseera kino eddaabirizibwa Georg Graf.&lt;br&gt;&lt;br&gt;Webale Winfried owa &lt;a href="http://www.meditationsuhren.de">http://www.meditationsuhren.de&lt;/a&gt; olw\'okuwa amaloboozi ga Bell amalungi bwe gatyo!</string>
+    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues">Oloopa ensonga ku GitHub&lt;/a&gt;</string>
     <string name="app_description">Enkola eno ereka omukozesa okunnyonnyola ekibinja ky’ebiseera by’okufumiitiriza era n’ewa ekiseera ekigere n’ebiddibwamu ebirabika n’ebiwulikika ng’ekitundu oba okufumiitiriza kwonna kuwedde.</string>
     <string name="app_name">Zazen Meditation Timer</string>
     <string name="appbar_scrolling_view_behavior">android.support.design.widget.AppBarLayout$Enneeyisa y\'okulaba</string>
