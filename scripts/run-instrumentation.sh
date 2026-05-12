@@ -538,7 +538,7 @@ echo "Mode: $([ "$CONTINUE_ON_ERROR" = true ] && echo 'continue-on-error' || ech
 if [ ${#TARGET_APIS[@]} -gt 0 ]; then
     echo "Target APIs: ${TARGET_APIS[*]}"
 else
-    echo "Target APIs: all (29-36)"
+    echo "Target APIs: all (23-36)"
 fi
 echo "Display: $([ "$IS_REAL_DISPLAY" = true ] && echo 'real' || echo 'Xvfb')"
 echo ""
