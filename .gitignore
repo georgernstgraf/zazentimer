@@ -10,6 +10,7 @@ output/
 .DS_Store
 *crash*.txt
 .venv/
+__pycache__/
 schemas/
 logs/
 .kotlin/
