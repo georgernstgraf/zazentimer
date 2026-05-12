@@ -38,13 +38,7 @@ class BellPlayer(
             Log.d(TAG, "WakeLock created for playing bells")
             for (i in 0 until section.bellcount) {
                 if (stoppingCheck()) break
-                val bell = BellCollection.getBellForSection(section)
-                if (bell != null) {
-                    val audio = Audio(context)
-                    audio.playAbsVolume(bell, section.volume)
-                    delay(BELL_OVERLAP_MS)
-                    audio.release()
-                }
+                playBell(section)
                 if (i < section.bellcount - 1) {
                     delay((section.bellpause * MS_PER_SECOND))
                 }
@@ -74,10 +68,27 @@ class BellPlayer(
         return false
     }
 
+    private suspend fun playBell(section: Section) {
+        val bell = BellCollection.getBellForSection(section) ?: return
+
+        val it = audioObjects.iterator()
+        while (it.hasNext()) {
+            val next = it.next()
+            if (!next.isPlaying()) {
+                Log.d(TAG, "Found free Audio Object")
+                next.playAbsVolume(bell, section.volume)
+                return
+            }
+        }
+        Log.d(TAG, "Created new Audio Object for new bell")
+        val audio = Audio(context)
+        audio.playAbsVolume(bell, section.volume)
+        audioObjects.add(audio)
+    }
+
     companion object {
         private const val TAG = "ZMT_BellPlayer"
         private const val BELL_WAKE_LOCK_MULTIPLIER = 25
-        private const val BELL_OVERLAP_MS = 500L
         private const val MS_PER_SECOND = 1000L
     }
 }
