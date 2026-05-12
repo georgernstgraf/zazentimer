@@ -208,8 +208,8 @@ class SessionEditFragment : Fragment() {
         a.removeItem(position)
 
         Snackbar
-            .make(binding.list, "Deleted '$deletedSection'", Snackbar.LENGTH_LONG)
-            .setAction("UNDO") {
+            .make(binding.list, getString(R.string.section_deleted, deletedSection), Snackbar.LENGTH_LONG)
+            .setAction(getString(R.string.action_undo)) {
                 lifecycleScope.launch {
                     dbOperations.insertSection(s, deletedSection)
                     a.insertItem(deletedPosition, deletedSection)

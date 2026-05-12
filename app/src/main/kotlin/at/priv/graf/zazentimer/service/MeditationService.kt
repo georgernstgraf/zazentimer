@@ -189,7 +189,7 @@ class MeditationService : LifecycleService() {
             val channel =
                 NotificationChannel(
                     "zazen_timer_channel",
-                    "Meditation Timer",
+                    getString(R.string.notification_channel_name),
                     NotificationManager.IMPORTANCE_LOW,
                 )
             val manager = getSystemService(NotificationManager::class.java)

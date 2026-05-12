@@ -7,7 +7,7 @@
     <fragment
         android:id="@+id/mainFragment"
         android:name="at.priv.graf.zazentimer.fragments.MainFragment"
-        android:label="Sessions">
+        android:label="@string/nav_label_sessions">
         <action
             android:id="@+id/action_mainFragment_to_sessionEditFragment"
             app:destination="@id/sessionEditFragment" />
@@ -23,12 +23,12 @@
     <fragment
         android:id="@+id/meditationFragment"
         android:name="at.priv.graf.zazentimer.fragments.MeditationFragment"
-        android:label="Meditation" />
+        android:label="@string/nav_label_meditation" />
 
     <fragment
         android:id="@+id/sessionEditFragment"
         android:name="at.priv.graf.zazentimer.fragments.SessionEditFragment"
-        android:label="Edit Session">
+        android:label="@string/nav_label_edit_session">
         <action
             android:id="@+id/action_sessionEditFragment_to_sectionEditFragment"
             app:destination="@id/sectionEditFragment" />
@@ -37,10 +37,10 @@
     <fragment
         android:id="@+id/sectionEditFragment"
         android:name="at.priv.graf.zazentimer.fragments.SectionEditFragment"
-        android:label="Edit Section" />
+        android:label="@string/nav_label_edit_section" />
 
     <fragment
         android:id="@+id/settingsFragment"
         android:name="at.priv.graf.zazentimer.fragments.SettingsFragment"
-        android:label="Settings" />
+        android:label="@string/nav_label_settings" />
 </navigation>
