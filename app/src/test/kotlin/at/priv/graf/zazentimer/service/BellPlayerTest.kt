@@ -1,8 +1,12 @@
 package at.priv.graf.zazentimer.service
 
 import android.content.Context
+import android.media.AudioManager
+import android.net.Uri
 import android.os.PowerManager
 import at.priv.graf.zazentimer.audio.Audio
+import at.priv.graf.zazentimer.audio.BellCollection
+import at.priv.graf.zazentimer.bo.Bell
 import at.priv.graf.zazentimer.bo.Section
 import io.mockk.coEvery
 import io.mockk.coVerify
@@ -35,6 +39,7 @@ class BellPlayerTest {
         mockWakeLock = mockk(relaxed = true)
 
         every { mockContext.getSystemService(Context.POWER_SERVICE) } returns mockPowerManager
+        every { mockContext.getSystemService(Context.AUDIO_SERVICE) } returns mockk<AudioManager>(relaxed = true)
         every { mockPowerManager.newWakeLock(any(), any()) } returns mockWakeLock
         every { mockWakeLock.isHeld } returns true
 
@@ -127,4 +132,30 @@ class BellPlayerTest {
             advanceUntilIdle()
         }
     }
+
+    @Test
+    fun `playBells spawns concurrent Audio instances when previous gongs are still playing`() =
+        runTest {
+            val mockBell = mockk<Bell>(relaxed = true)
+            val fakeUri = mockk<Uri>(relaxed = true)
+            every { mockBell.uri } returns fakeUri
+            every { fakeUri.toString() } returns "fake://bell/1"
+            val field = BellCollection::class.java.getDeclaredField("bells")
+            field.isAccessible = true
+            @Suppress("UNCHECKED_CAST")
+            val bells = field.get(BellCollection) as ArrayList<Bell>
+            bells.clear()
+            bells.add(mockBell)
+            every { anyConstructed<Audio>().isPlaying() } returns true
+
+            val section = Section(name = "Zazen", duration = 600)
+            section.bellUri = "fake://bell/1"
+            section.bellcount = 3
+            section.bellpause = 0
+            player.playBells(section, stoppingCheck = { false })
+            advanceUntilIdle()
+            bells.clear()
+
+            coVerify(exactly = 3) { anyConstructed<Audio>().playAbsVolume(any(), any()) }
+        }
 }
