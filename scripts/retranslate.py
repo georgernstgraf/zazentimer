@@ -2,14 +2,20 @@
 """Incremental retranslation of Android app string resources.
 
 Modes:
-  --diff     Only translate missing strings; copy keep-english strings
-  --all      Re-translate ALL translatable strings in all locales
-  --dry-run  Show what would change without writing files
+  --diff          Only translate missing strings; copy keep-english strings
+  --all           Re-translate ALL translatable strings in all locales
+  --lint          Compare current translations against MyMemory human-vetted data
+  --human-guard   Replace translations with high-confidence human matches (>=95%)
+  --dry-run       Show changes without writing files
+  --email EMAIL   MyMemory email for higher rate limits (50k chars/day vs 5k)
+  --locales X,Y   Process only specified locale directories
 
 Usage:
   source .venv/bin/activate
   python scripts/retranslate.py --diff
   python scripts/retranslate.py --all
+  python scripts/retranslate.py --lint --locales values-de,values-ja
+  python scripts/retranslate.py --human-guard --email you@example.com
   python scripts/retranslate.py --diff --dry-run
 """
 
@@ -19,11 +25,19 @@ import os
 import re
 import sys
 import time
+from dataclasses import dataclass
+from datetime import datetime, timedelta
 
 try:
     from deep_translator import GoogleTranslator, MyMemoryTranslator
 except ImportError:
     print("Error: deep-translator not installed. Run: pip install deep-translator")
+    sys.exit(1)
+
+try:
+    import requests
+except ImportError:
+    print("Error: requests not installed. Run: pip install requests")
     sys.exit(1)
 
 RES_BASE = "app/src/main/res"
@@ -46,9 +60,120 @@ RAW_APOS_RE = re.compile(r"(?<!\\)'")
 
 SPLIT_BY_NEWLINE = {"help_sectionlist_text"}
 
+MYMEMORY_API = "https://api.mymemory.translated.net/get"
+CACHE_FILE = os.path.join(SCRIPT_DIR, ".mymemory_cache.json")
+CACHE_TTL_DAYS = 7
+
+CORE_LOCALES = {
+    "values-zh": "zh-CN",
+    "values-es": "es",
+    "values-hi": "hi",
+    "values-ar": "ar",
+    "values-bn": "bn",
+    "values-pt": "pt",
+    "values-ru": "ru",
+    "values-ja": "ja",
+    "values-fr": "fr",
+}
+
+MT_ENGINES = {
+    "Google Translate", "Microsoft Translator", "MT",
+    "Google Translate v2", "Microsoft Translator v2",
+}
+
+
+@dataclass
+class MyMemoryResult:
+    translated_text: str
+    match: float
+    quality: int | None
+    created_by: str
+
+    @property
+    def is_human(self):
+        return self.created_by not in MT_ENGINES
+
 
 def count_format_specs(text):
     return len(FORMAT_SPEC_RE.findall(text))
+
+
+def load_cache():
+    if os.path.exists(CACHE_FILE):
+        with open(CACHE_FILE, "r", encoding="utf-8") as f:
+            return json.load(f)
+    return {}
+
+
+def save_cache(cache):
+    with open(CACHE_FILE, "w", encoding="utf-8") as f:
+        json.dump(cache, f, ensure_ascii=False, indent=2)
+
+
+def cache_key(langpair, source_text):
+    truncated = source_text[:100]
+    return f"{langpair}:{truncated}"
+
+
+def is_cache_valid(entry):
+    if "timestamp" not in entry:
+        return False
+    cached_time = datetime.fromisoformat(entry["timestamp"])
+    return datetime.now() - cached_time < timedelta(days=CACHE_TTL_DAYS)
+
+
+def mymemory_lookup(source_text, langpair, email=None, cache=None):
+    key = cache_key(langpair, source_text)
+    if cache is not None and key in cache and is_cache_valid(cache[key]):
+        entry = cache[key]
+        return MyMemoryResult(
+            translated_text=entry["translated_text"],
+            match=entry["match"],
+            quality=entry.get("quality"),
+            created_by=entry.get("created_by", ""),
+        )
+
+    params = {
+        "q": source_text[:500],
+        "langpair": f"en|{langpair}",
+    }
+    if email:
+        params["de"] = email
+
+    try:
+        resp = requests.get(MYMEMORY_API, params=params, timeout=10)
+        resp.raise_for_status()
+        data = resp.json()
+    except Exception as e:
+        print(f"      MYMEMORY API FAIL: {e}")
+        return None
+
+    if data.get("responseStatus") != 200:
+        return None
+
+    rd = data.get("responseData", {})
+    best = rd
+    for match_entry in data.get("matches", []):
+        if match_entry.get("match", 0) > best.get("match", 0):
+            best = match_entry
+
+    result = MyMemoryResult(
+        translated_text=best.get("translatedText", ""),
+        match=float(best.get("match", 0)),
+        quality=int(best["quality"]) if best.get("quality") else None,
+        created_by=best.get("created-by", ""),
+    )
+
+    if cache is not None:
+        cache[key] = {
+            "translated_text": result.translated_text,
+            "match": result.match,
+            "quality": result.quality,
+            "created_by": result.created_by,
+            "timestamp": datetime.now().isoformat(),
+        }
+
+    return result
 
 
 def should_translate(name):
@@ -162,6 +287,131 @@ def build_strings_xml(strings, source_order):
     return "\n".join(lines)
 
 
+def lint_locale(dir_name, langpair, source_strings, source_order, email, cache):
+    target_file = os.path.join(RES_BASE, dir_name, "strings.xml")
+    if not os.path.exists(target_file):
+        print(f"  SKIP: {dir_name} not found")
+        return
+
+    existing_strings, _ = extract_strings(target_file)
+
+    human_verified = 0
+    mt_only = 0
+    differs = 0
+    high_conf_differs = 0
+    no_match = 0
+    queried = 0
+
+    for name in source_order:
+        if name not in source_strings or not should_translate(name):
+            continue
+
+        value = source_strings[name]
+        current = existing_strings.get(name, "")
+
+        masked, mapping = mask_specials(value)
+        result = mymemory_lookup(masked, langpair, email=email, cache=cache)
+        queried += 1
+
+        if result is None:
+            no_match += 1
+            print(f"  {name}: NO MATCH")
+            continue
+
+        mm_text = unmask_specials(result.translated_text, mapping)
+
+        if result.is_human and result.match >= 0.95:
+            human_verified += 1
+            status = "HUMAN OK"
+        elif result.is_human:
+            human_verified += 1
+            status = f"HUMAN match={result.match:.2f}"
+        else:
+            mt_only += 1
+            status = "MT"
+
+        if mm_text and current and mm_text != current:
+            differs += 1
+            if result.is_human and result.match >= 0.95:
+                high_conf_differs += 1
+                status += " <- DIFFERS (high-conf human)"
+            else:
+                status += " <- differs"
+            print(f"  {name}: CURRENT={current[:50]}  MYMEMORY={mm_text[:50]}  [{status}]")
+        elif mm_text and current:
+            print(f"  {name}: [{status}] (same)")
+
+        if queried > 0 and queried % 5 == 0:
+            time.sleep(1)
+
+    if queried > 0:
+        save_cache(cache)
+
+    print(f"\n  --- Lint: {dir_name} ---")
+    print(f"  Queried: {queried}, Human-verified: {human_verified}, MT-only: {mt_only}, No match: {no_match}")
+    print(f"  Differs from current: {differs} (high-confidence human: {high_conf_differs})")
+
+
+def human_guard_locale(dir_name, langpair, source_strings, source_order, email, cache, dry_run):
+    target_file = os.path.join(RES_BASE, dir_name, "strings.xml")
+    if not os.path.exists(target_file):
+        print(f"  SKIP: {dir_name} not found")
+        return 0
+
+    existing_strings, _ = extract_strings(target_file)
+    result_strings = dict(existing_strings)
+    improvements = 0
+    queried = 0
+
+    for name in source_order:
+        if name not in source_strings or not should_translate(name):
+            continue
+
+        value = source_strings[name]
+        masked, mapping = mask_specials(value)
+        mm_result = mymemory_lookup(masked, langpair, email=email, cache=cache)
+        queried += 1
+
+        if mm_result is None:
+            continue
+
+        if mm_result.match < 0.95 or not mm_result.is_human:
+            continue
+
+        mm_text = unmask_specials(mm_result.translated_text, mapping)
+        mm_text = escape_apostrophes(mm_text)
+
+        if count_format_specs(mm_text) != count_format_specs(value):
+            print(f"    SKIP {name}: placeholder mismatch")
+            continue
+
+        current = existing_strings.get(name, "")
+        if mm_text != current:
+            improvements += 1
+            if dry_run:
+                print(f"    WOULD REPLACE: {name}")
+                print(f"      CURRENT: {current[:60]}")
+                print(f"      HUMAN:   {mm_text[:60]} (match={mm_result.match:.2f}, by={mm_result.created_by})")
+            else:
+                result_strings[name] = mm_text
+                print(f"    REPLACED: {name} (match={mm_result.match:.2f}, by={mm_result.created_by})")
+
+        if queried > 0 and queried % 5 == 0:
+            time.sleep(1)
+
+    if not dry_run and improvements > 0:
+        os.makedirs(os.path.dirname(target_file), exist_ok=True)
+        with open(target_file, "w", encoding="utf-8") as f:
+            f.write(build_strings_xml(result_strings, source_order))
+
+    if queried > 0:
+        save_cache(cache)
+
+    action = "Would replace" if dry_run else "Replaced"
+    print(f"  {action}: {improvements} strings with human-vetted translations ({queried} queried)")
+    return improvements
+
+
 def process_locale(locale_cfg, source_strings, source_order, mode, dry_run):
     dir_name = locale_cfg["dir"]
     target_file = os.path.join(RES_BASE, dir_name, "strings.xml")
@@ -241,20 +491,18 @@ def main():
         description="Retranslate Android app string resources"
     )
     parser.add_argument("--locales", type=str, default=None,
-                        help="Comma-separated list of locale dirs to process (e.g., values-de,values-fr)")
+                        help="Comma-separated list of locale dirs (e.g., values-de,values-fr)")
+    parser.add_argument("--email", type=str, default=None,
+                        help="MyMemory email for higher rate limits (50k chars/day)")
     group = parser.add_mutually_exclusive_group(required=True)
     group.add_argument("--diff", action="store_true", help="Translate missing strings only")
     group.add_argument("--all", action="store_true", help="Re-translate all translatable strings")
+    group.add_argument("--lint", action="store_true",
+                        help="Compare translations against MyMemory human-vetted data")
+    group.add_argument("--human-guard", action="store_true",
+                        help="Replace translations with high-confidence human matches")
     parser.add_argument("--dry-run", action="store_true", help="Show changes without writing")
     args = parser.parse_args()
-
-    mode = "all" if args.all else "diff"
-
-    locales_to_process = LOCALES
-    if args.locales:
-        selected = set(args.locales.split(","))
-        locales_to_process = [l for l in LOCALES if l["dir"] in selected]
-        print(f"Filtered to {len(locales_to_process)} locales: {', '.join(l['dir'] for l in locales_to_process)}")
 
     print(f"Reading source: {SOURCE_FILE}")
     source_strings, source_order = extract_strings(SOURCE_FILE)
@@ -264,7 +512,46 @@ def main():
         f"Translatable: {len(translatable)}, "
         f"Keep-english: {len(source_strings) - len(translatable)}"
     )
+
+    if args.lint:
+        mode = "lint"
+    elif args.human_guard:
+        mode = "human-guard"
+    else:
+        mode = "all" if args.all else "diff"
+
     print(f"  Mode: {mode}, Dry-run: {args.dry_run}")
+
+    if mode in ("lint", "human-guard"):
+        locales_map = dict(CORE_LOCALES)
+        if args.locales:
+            selected = set(args.locales.split(","))
+            locales_map = {k: v for k, v in locales_map.items() if k in selected}
+
+        if not locales_map:
+            print("No core locales match the --locales filter")
+            sys.exit(1)
+
+        print(f"  Locales: {', '.join(locales_map.keys())}")
+        cache = load_cache()
+
+        for dir_name, langpair in locales_map.items():
+            print(f"\n=== {dir_name} (langpair: en|{langpair}) ===")
+            if mode == "lint":
+                lint_locale(dir_name, langpair, source_strings, source_order,
+                            args.email, cache)
+            else:
+                human_guard_locale(dir_name, langpair, source_strings, source_order,
+                                   args.email, cache, args.dry_run)
+
+        print("\n=== Done ===")
+        return
+
+    locales_to_process = LOCALES
+    if args.locales:
+        selected = set(args.locales.split(","))
+        locales_to_process = [l for l in LOCALES if l["dir"] in selected]
+        print(f"Filtered to {len(locales_to_process)} locales: {', '.join(l['dir'] for l in locales_to_process)}")
 
     total_changes = 0
     total_new = 0
