@@ -36,8 +36,6 @@ with open(os.path.join(SCRIPT_DIR, "locales.json"), encoding="utf-8") as _f:
 with open(os.path.join(SCRIPT_DIR, "keep_english.json"), encoding="utf-8") as _f:
     KEEP_ENGLISH = set(json.load(_f))
 
-KEEP_ENGLISH_PREFIX = "abc_"
-
 PLACEHOLDER_FMT = "__{}__"
 
 FORMAT_SPEC_RE = re.compile(r"(%%)|(?<![%])%(?:\d+\$)?[ds]")
@@ -49,10 +47,12 @@ RAW_APOS_RE = re.compile(r"(?<!\\)'")
 SPLIT_BY_NEWLINE = {"help_sectionlist_text"}
 
 
+def count_format_specs(text):
+    return len(FORMAT_SPEC_RE.findall(text))
+
+
 def should_translate(name):
     if name in KEEP_ENGLISH:
-        return False
-    if name.startswith(KEEP_ENGLISH_PREFIX):
         return False
     return True
 
@@ -119,6 +119,8 @@ def translate_value(name, value, gt_code=None, mymemory_code=None):
             try:
                 t = translator.translate(masked)
                 t = unmask_specials(t, mapping)
+                if count_format_specs(t) != count_format_specs(seg):
+                    print(f"      WARNING: placeholder count mismatch for '{name}'")
                 translated.append(escape_apostrophes(t))
             except Exception as e:
                 print(f"      SEGMENT FAIL: {e}")
@@ -127,9 +129,15 @@ def translate_value(name, value, gt_code=None, mymemory_code=None):
         return "\\n".join(translated)
 
     masked, mapping = mask_specials(value)
-    t = translator.translate(masked)
-    t = unmask_specials(t, mapping)
-    return escape_apostrophes(t)
+    try:
+        t = translator.translate(masked)
+        t = unmask_specials(t, mapping)
+        if count_format_specs(t) != count_format_specs(value):
+            print(f"      WARNING: placeholder count mismatch for '{name}'")
+        return escape_apostrophes(t)
+    except Exception as e:
+        print(f"      TRANSLATE FAIL: {e}")
+        return value
 
 
 def xml_escape(text):
@@ -187,7 +195,10 @@ def process_locale(locale_cfg, source_strings, source_order, mode, dry_run):
                 result[name] = existing_strings[name]
                 continue
             if dry_run:
-                print(f"    WOULD TRANSLATE: {name}")
+                translated = translate_value(name, source_strings[name], gt_code=gt_code, mymemory_code=mymemory_code)
+                print(f"    DRY-RUN: {name}")
+                print(f"      EN: {source_strings[name]}")
+                print(f"      ->: {translated}")
                 result[name] = source_strings[name]
                 continue
             try:
@@ -225,6 +236,8 @@ def main():
     parser = argparse.ArgumentParser(
         description="Retranslate Android app string resources"
     )
+    parser.add_argument("--locales", type=str, default=None,
+                        help="Comma-separated list of locale dirs to process (e.g., values-de,values-fr)")
     group = parser.add_mutually_exclusive_group(required=True)
     group.add_argument("--diff", action="store_true", help="Translate missing strings only")
     group.add_argument("--all", action="store_true", help="Re-translate all translatable strings")
@@ -232,6 +245,12 @@ def main():
     args = parser.parse_args()
 
     mode = "all" if args.all else "diff"
+
+    locales_to_process = LOCALES
+    if args.locales:
+        selected = set(args.locales.split(","))
+        locales_to_process = [l for l in LOCALES if l["dir"] in selected]
+        print(f"Filtered to {len(locales_to_process)} locales: {', '.join(l['dir'] for l in locales_to_process)}")
 
     print(f"Reading source: {SOURCE_FILE}")
     source_strings, source_order = extract_strings(SOURCE_FILE)
@@ -246,7 +265,7 @@ def main():
     total_changes = 0
     total_new = 0
 
-    for locale_cfg in LOCALES:
+    for locale_cfg in locales_to_process:
         dir_name = locale_cfg["dir"]
         label = dir_name
         if "gt_code" in locale_cfg:
@@ -268,7 +287,7 @@ def main():
     action = "Would update" if args.dry_run else "Updated"
     print(
         f"\n=== {action}: {total_changes} changed, "
-        f"{total_new} new across {len(LOCALES)} locales ==="
+        f"{total_new} new across {len(locales_to_process)} locales ==="
     )
 
 
