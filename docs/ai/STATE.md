@@ -3,22 +3,18 @@
 Current status as of 2026-05-12.
 
 ## Current Focus
-#123 completed — Translation cleanup: 129 locales, expanded string coverage, consolidated directories.
+Issue #157 (Completed): context-sensitive LLM translation of German and Italian UI strings.
 
 ## Completed (this cycle)
-- [x] #149 — Fix retranslate.py reliability gaps (error handling, --locales, dry-run improvement)
-- [x] #150 — Trim keep-english list (18→5), delete 31 abc_* strings (189→166 entries)
-- [x] #151 — Externalize hardcoded strings (3 Kotlin locations + 5 nav_graph labels = 8 new R.string)
-- [x] #153 — Consolidate 136→129 locale directories, update locales.json and locales_config.xml
-- [x] #154 — Full retranslation for 129 locales (Google Translate + MyMemory)
-- [x] #152 — Final validation, knowledge docs updated
+- [x] Issue #158: Fix `GIT_HASH` gradle cache bug using ValueSource
+- [x] Issue #157: Fix remaining untranslated UI strings in Italian and German locales using LLM native translations
 
 ## Pending
 - [ ] #133 — Downgrade minSdk to 23
-- [ ] #64 — Play Store release
+- [ ] #64 — Play Store (Sub-issues #114 and #113)
 
 ## Blockers
-- None
+None
 
 ## Next Session Suggestion
-Proceed with #133 (minSdk downgrade) or #64 (Play Store release). All 206 unit tests and full API matrix (29-36) pass.
+Begin work on #133 (Downgrade minSdk to 23) by setting up the necessary AVDs for API 21-28.
