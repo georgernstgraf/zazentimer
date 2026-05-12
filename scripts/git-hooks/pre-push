@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+# pre-push hook — runs ktlint and detekt before allowing a push.
+#
+# Install (from repo root):
+#   cp scripts/git-hooks/pre-push .git/hooks/pre-push && chmod +x .git/hooks/pre-push
+#
+# Or install all hooks at once:
+#   for hook in scripts/git-hooks/*; do cp "$hook" ".git/hooks/$(basename "$hook")" && chmod +x ".git/hooks/$(basename "$hook")"; done
+
+set -euo pipefail
+
+echo "Running ktlintCheck..."
+./gradlew ktlintCheck --no-daemon --quiet
+
+echo "Running detekt..."
+./gradlew detekt --no-daemon --quiet
+
+echo "Lint checks passed."

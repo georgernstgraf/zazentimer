@@ -15,7 +15,6 @@ import org.robolectric.annotation.Config
 
 @RunWith(AndroidJUnit4::class)
 @Config(sdk = [29])
-
 class MigrationTest {
     private lateinit var context: Context
 
@@ -27,42 +26,44 @@ class MigrationTest {
 
     private fun createV1Database(): SupportSQLiteDatabase {
         val factory = FrameworkSQLiteOpenHelperFactory()
-        val helper = factory.create(
-            SupportSQLiteOpenHelper.Configuration.builder(context)
-                .name("test_migration.db")
-                .callback(
-                    object : SupportSQLiteOpenHelper.Callback(1) {
-                        override fun onCreate(db: SupportSQLiteDatabase) {
-                            db.execSQL(
-                                "CREATE TABLE sessions (" +
-                                    "_id INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                                    "name TEXT NOT NULL, " +
-                                    "description TEXT NOT NULL)",
-                            )
-                            db.execSQL(
-                                "CREATE TABLE sections (" +
-                                    "_id INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                                    "fk_session INTEGER NOT NULL, " +
-                                    "name TEXT NOT NULL, " +
-                                    "duration INTEGER NOT NULL, " +
-                                    "bell INTEGER NOT NULL, " +
-                                    "rank INTEGER, " +
-                                    "bellcount INTEGER, " +
-                                    "bellpause INTEGER, " +
-                                    "belluri TEXT)",
-                            )
-                        }
+        val helper =
+            factory.create(
+                SupportSQLiteOpenHelper.Configuration
+                    .builder(context)
+                    .name("test_migration.db")
+                    .callback(
+                        object : SupportSQLiteOpenHelper.Callback(1) {
+                            override fun onCreate(db: SupportSQLiteDatabase) {
+                                db.execSQL(
+                                    "CREATE TABLE sessions (" +
+                                        "_id INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                                        "name TEXT NOT NULL, " +
+                                        "description TEXT NOT NULL)",
+                                )
+                                db.execSQL(
+                                    "CREATE TABLE sections (" +
+                                        "_id INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                                        "fk_session INTEGER NOT NULL, " +
+                                        "name TEXT NOT NULL, " +
+                                        "duration INTEGER NOT NULL, " +
+                                        "bell INTEGER NOT NULL, " +
+                                        "rank INTEGER, " +
+                                        "bellcount INTEGER, " +
+                                        "bellpause INTEGER, " +
+                                        "belluri TEXT)",
+                                )
+                            }
 
-                        override fun onUpgrade(
-                            db: SupportSQLiteDatabase,
-                            oldVersion: Int,
-                            newVersion: Int,
-                        ) {
-                            // no-op: migration tested via explicit runMigrations()
-                        }
-                    },
-                ).build(),
-        )
+                            override fun onUpgrade(
+                                db: SupportSQLiteDatabase,
+                                oldVersion: Int,
+                                newVersion: Int,
+                            ) {
+                                // no-op: migration tested via explicit runMigrations()
+                            }
+                        },
+                    ).build(),
+            )
         return helper.writableDatabase
     }
 
@@ -77,9 +78,10 @@ class MigrationTest {
 
         AppDatabase.MIGRATION_1_2.migrate(db)
 
-        val cursor = db.query(
-            "SELECT name FROM sqlite_master WHERE type='table' AND name='settings'",
-        )
+        val cursor =
+            db.query(
+                "SELECT name FROM sqlite_master WHERE type='table' AND name='settings'",
+            )
         assertThat(cursor.count).isEqualTo(1)
         cursor.close()
         db.close()
@@ -104,9 +106,10 @@ class MigrationTest {
 
         AppDatabase.MIGRATION_2_3.migrate(db)
 
-        val cursor = db.query(
-            "SELECT name FROM sqlite_master WHERE type='table' AND name='settings'",
-        )
+        val cursor =
+            db.query(
+                "SELECT name FROM sqlite_master WHERE type='table' AND name='settings'",
+            )
         assertThat(cursor.count).isEqualTo(1)
         cursor.close()
         db.close()
@@ -188,9 +191,10 @@ class MigrationTest {
         AppDatabase.MIGRATION_3_4.migrate(db)
         AppDatabase.MIGRATION_4_5.migrate(db)
 
-        val cursor = db.query(
-            "SELECT name, description FROM sessions WHERE _id = 1",
-        )
+        val cursor =
+            db.query(
+                "SELECT name, description FROM sessions WHERE _id = 1",
+            )
         assertThat(cursor.count).isEqualTo(1)
         cursor.moveToFirst()
         assertThat(cursor.getString(cursor.getColumnIndexOrThrow("name")))
@@ -217,9 +221,10 @@ class MigrationTest {
         AppDatabase.MIGRATION_3_4.migrate(db)
         AppDatabase.MIGRATION_4_5.migrate(db)
 
-        val cursor = db.query(
-            "SELECT name, duration FROM sections WHERE _id = 1",
-        )
+        val cursor =
+            db.query(
+                "SELECT name, duration FROM sections WHERE _id = 1",
+            )
         assertThat(cursor.count).isEqualTo(1)
         cursor.moveToFirst()
         assertThat(cursor.getString(cursor.getColumnIndexOrThrow("name")))

@@ -112,9 +112,10 @@ class BellPlayerTest {
     }
 
     @Test
-    fun `release does not crash`() = runTest {
-        player.release()
-    }
+    fun `release does not crash`() =
+        runTest {
+            player.release()
+        }
 
     @Test
     fun `playBells handles stoppingCheck returning true immediately`() {

@@ -23,6 +23,18 @@ Before running any emulator or test command:
 - **Issue management:** Use the `issue-workflow` skill for all GitHub issue operations (start, commit, finish).
 - **Knowledge persistence:** Use the `knowledge-persistence` skill to persist session context into `docs/ai/` files after meaningful changes or when wrapping up.
 
+## Pre-Push Lint
+Before pushing (or committing), always run:
+```
+./gradlew ktlintCheck detekt --no-daemon
+```
+If there are violations, fix with `./gradlew ktlintFormat` first, then verify with the check command above. Do not push if lint fails.
+
+A pre-push hook is available at `scripts/git-hooks/pre-push` — install it to automate this check:
+```
+cp scripts/git-hooks/pre-push .git/hooks/pre-push && chmod +x .git/hooks/pre-push
+```
+
 ## Project-Specific Constraints
 - **Trunk-based development with tag-based releases.** Commit directly to `main`. No branches, no PRs. Push a `v*` tag to trigger release workflow.
 - Agent work is considered complete only if the application successfully starts in the emulator.

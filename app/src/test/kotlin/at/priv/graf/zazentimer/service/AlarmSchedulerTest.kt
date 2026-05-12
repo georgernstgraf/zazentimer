@@ -20,7 +20,9 @@ class AlarmSchedulerTest {
     private lateinit var mockClock: ZazenClock
     private lateinit var mockPendingIntent: PendingIntent
     private lateinit var scheduler: AlarmScheduler
-    private val section = at.priv.graf.zazentimer.bo.Section("Zazen", 600)
+    private val section =
+        at.priv.graf.zazentimer.bo
+            .Section("Zazen", 600)
 
     @Before
     fun setUp() {

@@ -4,11 +4,8 @@ import android.content.Context
 import android.content.SharedPreferences
 import android.media.AudioManager
 import at.priv.graf.zazentimer.ZazenTimerActivity
-import com.google.common.truth.Truth.assertThat
 import io.mockk.every
-import io.mockk.just
 import io.mockk.mockk
-import io.mockk.Runs
 import io.mockk.unmockkAll
 import io.mockk.verify
 import kotlinx.coroutines.test.runTest
@@ -43,128 +40,133 @@ class AudioStateManagerTest {
     }
 
     @Test
-    fun `mutePhone with vibrate pref sets ringer to VIBRATE`() = runTest {
-        every {
-            mockPrefs.getBoolean(
-                ZazenTimerActivity.PREF_KEY_MUTE_MODE_VIBRATE_SOUND,
-                false,
-            )
-        } returns false
-        every {
-            mockPrefs.getBoolean(
-                ZazenTimerActivity.PREF_KEY_MUTE_MODE_VIBRATE,
-                false,
-            )
-        } returns true
-        every {
-            mockPrefs.getBoolean(
-                ZazenTimerActivity.PREF_KEY_MUTE_MODE_NONE,
-                true,
-            )
-        } returns false
+    fun `mutePhone with vibrate pref sets ringer to VIBRATE`() =
+        runTest {
+            every {
+                mockPrefs.getBoolean(
+                    ZazenTimerActivity.PREF_KEY_MUTE_MODE_VIBRATE_SOUND,
+                    false,
+                )
+            } returns false
+            every {
+                mockPrefs.getBoolean(
+                    ZazenTimerActivity.PREF_KEY_MUTE_MODE_VIBRATE,
+                    false,
+                )
+            } returns true
+            every {
+                mockPrefs.getBoolean(
+                    ZazenTimerActivity.PREF_KEY_MUTE_MODE_NONE,
+                    true,
+                )
+            } returns false
 
-        manager.mutePhone()
+            manager.mutePhone()
 
-        manager.unmutePhone()
+            manager.unmutePhone()
 
-        verify { mockAudioManager.setStreamVolume(AudioManager.STREAM_RING, initialVolume, 0) }
-    }
-
-    @Test
-    fun `unmutePhone without prior mute does nothing`() = runTest {
-        every {
-            mockPrefs.getBoolean(
-                ZazenTimerActivity.PREF_KEY_MUTE_MODE_VIBRATE_SOUND,
-                false,
-            )
-        } returns false
-
-        manager.unmutePhone()
-
-        verify(exactly = 0) { mockAudioManager.setRingerMode(any()) }
-    }
+            verify { mockAudioManager.setStreamVolume(AudioManager.STREAM_RING, initialVolume, 0) }
+        }
 
     @Test
-    fun `unmutePhone after none mode restores ringer and volume`() = runTest {
-        every {
-            mockPrefs.getBoolean(
-                ZazenTimerActivity.PREF_KEY_MUTE_MODE_VIBRATE_SOUND,
-                false,
-            )
-        } returns false
-        every {
-            mockPrefs.getBoolean(
-                ZazenTimerActivity.PREF_KEY_MUTE_MODE_VIBRATE,
-                false,
-            )
-        } returns false
-        every {
-            mockPrefs.getBoolean(
-                ZazenTimerActivity.PREF_KEY_MUTE_MODE_NONE,
-                true,
-            )
-        } returns true
+    fun `unmutePhone without prior mute does nothing`() =
+        runTest {
+            every {
+                mockPrefs.getBoolean(
+                    ZazenTimerActivity.PREF_KEY_MUTE_MODE_VIBRATE_SOUND,
+                    false,
+                )
+            } returns false
 
-        manager.mutePhone()
+            manager.unmutePhone()
 
-        manager.unmutePhone()
-
-        verify { mockAudioManager.setStreamVolume(AudioManager.STREAM_RING, initialVolume, 0) }
-        verify(exactly = 2) { mockAudioManager.setStreamVolume(AudioManager.STREAM_RING, any(), any()) }
-    }
+            verify(exactly = 0) { mockAudioManager.setRingerMode(any()) }
+        }
 
     @Test
-    fun `mutePhone with none mode stores old volume and ringer`() = runTest {
-        every {
-            mockPrefs.getBoolean(
-                ZazenTimerActivity.PREF_KEY_MUTE_MODE_VIBRATE_SOUND,
-                false,
-            )
-        } returns false
-        every {
-            mockPrefs.getBoolean(
-                ZazenTimerActivity.PREF_KEY_MUTE_MODE_VIBRATE,
-                false,
-            )
-        } returns false
-        every {
-            mockPrefs.getBoolean(
-                ZazenTimerActivity.PREF_KEY_MUTE_MODE_NONE,
-                true,
-            )
-        } returns true
+    fun `unmutePhone after none mode restores ringer and volume`() =
+        runTest {
+            every {
+                mockPrefs.getBoolean(
+                    ZazenTimerActivity.PREF_KEY_MUTE_MODE_VIBRATE_SOUND,
+                    false,
+                )
+            } returns false
+            every {
+                mockPrefs.getBoolean(
+                    ZazenTimerActivity.PREF_KEY_MUTE_MODE_VIBRATE,
+                    false,
+                )
+            } returns false
+            every {
+                mockPrefs.getBoolean(
+                    ZazenTimerActivity.PREF_KEY_MUTE_MODE_NONE,
+                    true,
+                )
+            } returns true
 
-        manager.mutePhone()
+            manager.mutePhone()
 
-        verify { mockAudioManager.getStreamVolume(AudioManager.STREAM_RING) }
-    }
+            manager.unmutePhone()
+
+            verify { mockAudioManager.setStreamVolume(AudioManager.STREAM_RING, initialVolume, 0) }
+            verify(exactly = 2) { mockAudioManager.setStreamVolume(AudioManager.STREAM_RING, any(), any()) }
+        }
 
     @Test
-    fun `unmutePhone when ringer changed externally skips restore`() = runTest {
-        every {
-            mockPrefs.getBoolean(
-                ZazenTimerActivity.PREF_KEY_MUTE_MODE_VIBRATE_SOUND,
-                false,
-            )
-        } returns false
-        every {
-            mockPrefs.getBoolean(
-                ZazenTimerActivity.PREF_KEY_MUTE_MODE_VIBRATE,
-                false,
-            )
-        } returns true
-        every {
-            mockPrefs.getBoolean(
-                ZazenTimerActivity.PREF_KEY_MUTE_MODE_NONE,
-                true,
-            )
-        } returns false
+    fun `mutePhone with none mode stores old volume and ringer`() =
+        runTest {
+            every {
+                mockPrefs.getBoolean(
+                    ZazenTimerActivity.PREF_KEY_MUTE_MODE_VIBRATE_SOUND,
+                    false,
+                )
+            } returns false
+            every {
+                mockPrefs.getBoolean(
+                    ZazenTimerActivity.PREF_KEY_MUTE_MODE_VIBRATE,
+                    false,
+                )
+            } returns false
+            every {
+                mockPrefs.getBoolean(
+                    ZazenTimerActivity.PREF_KEY_MUTE_MODE_NONE,
+                    true,
+                )
+            } returns true
 
-        manager.mutePhone()
-        every { mockAudioManager.ringerMode } returns AudioManager.RINGER_MODE_SILENT
+            manager.mutePhone()
 
-        manager.unmutePhone()
+            verify { mockAudioManager.getStreamVolume(AudioManager.STREAM_RING) }
+        }
 
-        verify(exactly = 0) { mockAudioManager.setRingerMode(initialRingerMode) }
-    }
+    @Test
+    fun `unmutePhone when ringer changed externally skips restore`() =
+        runTest {
+            every {
+                mockPrefs.getBoolean(
+                    ZazenTimerActivity.PREF_KEY_MUTE_MODE_VIBRATE_SOUND,
+                    false,
+                )
+            } returns false
+            every {
+                mockPrefs.getBoolean(
+                    ZazenTimerActivity.PREF_KEY_MUTE_MODE_VIBRATE,
+                    false,
+                )
+            } returns true
+            every {
+                mockPrefs.getBoolean(
+                    ZazenTimerActivity.PREF_KEY_MUTE_MODE_NONE,
+                    true,
+                )
+            } returns false
+
+            manager.mutePhone()
+            every { mockAudioManager.ringerMode } returns AudioManager.RINGER_MODE_SILENT
+
+            manager.unmutePhone()
+
+            verify(exactly = 0) { mockAudioManager.setRingerMode(initialRingerMode) }
+        }
 }

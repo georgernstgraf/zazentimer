@@ -186,17 +186,21 @@ class MeditationService : LifecycleService() {
 
     private fun createNotificationChannel() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            val channel = NotificationChannel(
-                "zazen_timer_channel",
-                "Meditation Timer",
-                NotificationManager.IMPORTANCE_LOW,
-            )
+            val channel =
+                NotificationChannel(
+                    "zazen_timer_channel",
+                    "Meditation Timer",
+                    NotificationManager.IMPORTANCE_LOW,
+                )
             val manager = getSystemService(NotificationManager::class.java)
             manager?.createNotificationChannel(channel)
         }
     }
 
-    private fun startForegroundCompat(id: Int, notification: Notification) {
+    private fun startForegroundCompat(
+        id: Int,
+        notification: Notification,
+    ) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.UPSIDE_DOWN_CAKE) {
             startForeground(id, notification, ServiceInfo.FOREGROUND_SERVICE_TYPE_SPECIAL_USE)
         } else {
