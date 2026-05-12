@@ -39,3 +39,12 @@ Follow these without question. Do not deviate unless explicitly told.
 - Call `DevicePreFlightRule.execute()` in `HiltTestRunner.onStart()` wrapped in try-catch for resilience.
 - Use `execution = "HOST"` in `build.gradle.kts` when the `am instrument` path is used (no orchestrator APK).
 - Keep emulator memory at `-memory 2048` to avoid `systemd-oomd` kills.
+
+## Internationalization (i18n)
+- Always use `R.string` — never hardcode user-facing text in Kotlin, XML, or navigation graphs
+- New strings go to `values/strings.xml` first, then run `retranslate.py --diff`
+- Mark programmatic strings as `translatable="false"` in XML
+- Never add `abc_*` strings — those come from AndroidX automatically
+- Use `@string/` references in layout XML and navigation graphs
+- Run `retranslate.py --locales X,Y` for targeted locale fixes
+- Verify placeholder counts match after translation

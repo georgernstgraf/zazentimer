@@ -56,3 +56,23 @@ Each entry documents WHAT was decided and WHY.
 - **Reason**: Gradle runner (`connectedDebugAndroidTest`) works reliably on API 29-30. API 31+ emulators have split APK install races and UTP bugs. `am instrument` with streamed install is more stable.
 - **Considered**: gradleMaxApi=34 (API 34 agent recommended for orchestrator support), gradleMaxApi=29 (too aggressive, API 30 Gradle runner works).
 - **Tradeoff**: API 31-36 tests use manual APK install + `am instrument` flow (slightly slower but more reliable).
+
+## 2026-05-12: Translation cleanup — 129 locales, no regional duplicates
+- **Choice**: Consolidated 136 locale directories to 129 by removing 7 regional duplicates (en-AU, en-GB, en-IN, es-US, fr-CA, ms-MY, zh-HK) and stripping regional qualifiers from 31 others.
+- **Reason**: Regional variants exceeded requirements; base languages cover all target markets. Exception: kept zh-TW (different writing system), pt/pt-BR/pt-PT (distinct dialects), sr/sr-Latn (both scripts), fil/tl (both standards).
+- **Tradeoff**: Users in regions like Canada (fr-CA) will see standard French; acceptable for meditation timer.
+
+## 2026-05-12: 5 strings kept in English with translatable="false"
+- **Choice**: `app_name`, `character_counter_pattern`, `theme_value_dark/light/system` marked non-translatable.
+- **Reason**: Brand name, format patterns, and programmatic enum values must not be translated.
+- **Tradeoff**: About text and bell names are now translated (was previously kept in English).
+
+## 2026-05-12: Machine translation via Google Translate + MyMemory fallback
+- **Choice**: Use `retranslate.py` with Google Translate primary, MyMemory for unsupported locales (bem, sr-Latn, nus, bo, ks, sat, fil).
+- **Reason**: Free APIs; covers 128 of 129 locales. cgg (Chiga) unsupported by both.
+- **Tradeoff**: Machine translation quality varies; all locales marked `reviewed: false` for future human review.
+
+## 2026-05-12: Deleted 31 abc_* AndroidX duplicate strings
+- **Choice**: Removed all `abc_*` string entries from app's strings.xml and all 129 locale files.
+- **Reason**: These are AndroidX/AppCompat library strings provided by the library itself. Duplicating them was redundant and bloated translation scope.
+- **Tradeoff**: None — AndroidX provides its own translations automatically.
