@@ -37,13 +37,14 @@ jobs:
       run: echo "${{ secrets.RELEASE_KEYSTORE_BASE64 }}" | base64 -d > $RUNNER_TEMP/release.keystore
 
     - name: Build Release AAB
-      run: ./gradlew bundleRelease --no-daemon \
-        -PversionCode=${{ steps.version.outputs.version_code }} \
-        -PversionName=${{ steps.version.outputs.version_name }} \
-        -Pandroid.injected.signing.store.file=$RUNNER_TEMP/release.keystore \
-        -Pandroid.injected.signing.store.password=${{ secrets.KEYSTORE_PASSWORD }} \
-        -Pandroid.injected.signing.key.alias=${{ secrets.KEY_ALIAS }} \
-        -Pandroid.injected.signing.key.password=${{ secrets.KEY_PASSWORD }}
+      run: |
+        ./gradlew bundleRelease --no-daemon \
+          -PversionCode=${{ steps.version.outputs.version_code }} \
+          -PversionName=${{ steps.version.outputs.version_name }} \
+          -Pandroid.injected.signing.store.file=$RUNNER_TEMP/release.keystore \
+          -Pandroid.injected.signing.store.password=${{ secrets.KEYSTORE_PASSWORD }} \
+          -Pandroid.injected.signing.key.alias=${{ secrets.KEY_ALIAS }} \
+          -Pandroid.injected.signing.key.password=${{ secrets.KEY_PASSWORD }}
 
     - name: Cleanup keystore
       if: always()

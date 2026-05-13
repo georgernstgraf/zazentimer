@@ -31,8 +31,8 @@ android {
         applicationId = "at.priv.graf.zazentimer"
         minSdk = 23
         targetSdk = 36
-        versionCode = if (project.hasProperty("versionCode")) project.property("versionCode").toString().toInt() else 33
-        versionName = if (project.hasProperty("versionName")) project.property("versionName").toString() else "2.20"
+        versionCode = if (project.hasProperty("versionCode")) project.property("versionCode").toString().toInt() else 34
+        versionName = if (project.hasProperty("versionName")) project.property("versionName").toString() else "3.0.0"
 
         testInstrumentationRunner = "at.priv.graf.zazentimer.HiltTestRunner"
 
