@@ -65,9 +65,7 @@
             android:layout_marginTop="8dp"
             android:layout_below="@+id/text_sitzung_beschreibung"
             android:text="@string/button_bell_volumes"
-            android:background="@drawable/bg_button_rounded"
-            app:backgroundTint="?attr/colorPrimary"
-            android:textColor="?android:attr/textColorPrimaryInverse"/>
+            style="@style/PrimaryRoundedButton"/>
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/list"
             android:layout_width="match_parent"

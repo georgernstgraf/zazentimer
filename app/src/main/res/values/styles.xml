@@ -20,6 +20,10 @@
     <style name="zenIcon" parent="">
         <item name="android:src">?attr/zenIconSrc</item>
     </style>
+    <style name="PrimaryRoundedButton" parent="@style/Widget.AppCompat.Button">
+        <item name="android:background">@drawable/bg_button_rounded</item>
+        <item name="android:textColor">#ffffff</item>
+    </style>
     <style name="bellcount" parent="@style/Widget.AppCompat.Button">
         <item name="android:gravity">center</item>
         <item name="android:background">@drawable/bellcount</item>

@@ -22,7 +22,8 @@
             android:minWidth="140dp"
             android:minHeight="80dp"
             android:text="@string/but_start"
-            android:layout_alignParentBottom="true"/>
+            android:layout_alignParentBottom="true"
+            style="@style/PrimaryRoundedButton"/>
 
         <at.priv.graf.zazentimer.fragments.MaxHeightRecyclerView
             android:id="@+id/recycler_sessions"
