@@ -52,11 +52,12 @@ android {
                 project.property("versionCode").toString().toInt()
             } else {
                 val versionFromTag = providers.of(VersionTagSource::class.java) {}.get().trim()
-                val parts = versionFromTag.split(".")
+                val baseVersion = versionFromTag.substringBefore("-")
+                val parts = baseVersion.split(".")
                 val major = parts.getOrElse(0) { "0" }.toInt()
                 val minor = parts.getOrElse(1) { "0" }.toInt()
                 val patch = parts.getOrElse(2) { "0" }.toInt()
-                (major * 10000) + (minor * 100) + patch
+                (major * 10000 + minor * 100 + patch).coerceAtLeast(1)
             }
         versionName =
             if (project.hasProperty("versionName")) {
