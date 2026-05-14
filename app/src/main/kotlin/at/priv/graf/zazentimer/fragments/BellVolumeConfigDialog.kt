@@ -207,8 +207,12 @@ class BellVolumeConfigDialog : DialogFragment() {
 
         @Suppress("ReturnCount")
         private fun findBellForVolume(bv: SessionBellVolume): Bell? {
-            val uri = bv.bellUri ?: return null
-            return BellCollection.getBellList().find { it.uri.toString() == uri }
+            val uri = bv.bellUri
+            if (uri != null) {
+                BellCollection.getBellList().find { it.uri.toString() == uri }?.let { return it }
+            }
+            val idx = bv.bell ?: return null
+            return BellCollection.getBell(idx)
         }
     }
 }
