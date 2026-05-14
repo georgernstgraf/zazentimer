@@ -104,9 +104,10 @@ class Meditation(
         stopping = true
         stopTicker()
         alarmScheduler.cancelAlarm()
+        MeditationService.setRunning(false)
+        repository.onMeditationStopped()
         bellPlayer.release()
         audioStateManager.unmutePhone()
-        repository.onMeditationStopped()
         fireMeditationEnded()
     }
 

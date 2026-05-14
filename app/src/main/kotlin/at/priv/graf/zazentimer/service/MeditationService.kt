@@ -223,5 +223,10 @@ class MeditationService : LifecycleService() {
 
         @JvmStatic
         fun isServiceRunning(): Boolean = isRunning
+
+        @JvmStatic
+        fun setRunning(running: Boolean) {
+            isRunning = running
+        }
     }
 }
