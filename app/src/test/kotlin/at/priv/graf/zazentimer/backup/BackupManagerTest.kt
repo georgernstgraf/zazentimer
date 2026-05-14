@@ -248,6 +248,52 @@ class BackupManagerTest {
         assertThat(target.readText()).isEqualTo("stream data")
     }
 
+    @Test
+    fun restore_databaseVersionTooHigh_returnsVersionError() {
+        databaseFile.writeText("existing-data")
+        val dbBytes = createMockDatabaseBytes(version = 7)
+        val zipFile = File(tempDir, "newversion.zip")
+        ZipOutputStream(FileOutputStream(zipFile)).use { zos ->
+            val entry = ZipEntry("zentimer")
+            zos.putNextEntry(entry)
+            zos.write(dbBytes)
+            zos.closeEntry()
+        }
+
+        val result = backupManager.restore(zipFile)
+
+        assertThat(result).isEqualTo(3)
+        assertThat(databaseFile.readText()).isEqualTo("existing-data")
+    }
+
+    @Test
+    fun restore_databaseVersionEqualsCurrent_restoresSuccessfully() {
+        databaseFile.writeText("old-data")
+        val dbBytes = createMockDatabaseBytes(version = 6)
+        val zipFile = File(tempDir, "validversion.zip")
+        ZipOutputStream(FileOutputStream(zipFile)).use { zos ->
+            val entry = ZipEntry("zentimer")
+            zos.putNextEntry(entry)
+            zos.write(dbBytes)
+            zos.closeEntry()
+        }
+
+        val result = backupManager.restore(zipFile)
+
+        assertThat(result).isEqualTo(0)
+        assertThat(databaseFile.readBytes()).isEqualTo(dbBytes)
+    }
+
+    private fun createMockDatabaseBytes(version: Int): ByteArray {
+        val header = ByteArray(100) { 0 }
+        "SQLite format 3\u0000".toByteArray().copyInto(header, 0)
+        header[60] = ((version shr 24) and 0xFF).toByte()
+        header[61] = ((version shr 16) and 0xFF).toByte()
+        header[62] = ((version shr 8) and 0xFF).toByte()
+        header[63] = (version and 0xFF).toByte()
+        return header
+    }
+
     private fun createTempDir(): File {
         val dir = File(System.getProperty("java.io.tmpdir"), "backup-test-${System.nanoTime()}")
         dir.mkdirs()

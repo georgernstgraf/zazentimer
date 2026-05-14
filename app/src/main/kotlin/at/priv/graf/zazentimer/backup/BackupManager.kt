@@ -1,6 +1,7 @@
 package at.priv.graf.zazentimer.backup
 
 import android.util.Log
+import at.priv.graf.zazentimer.database.AppDatabase
 import java.io.File
 import java.io.FileInputStream
 import java.io.FileOutputStream
@@ -53,25 +54,23 @@ class BackupManager(
     }
 
     fun restore(zipFile: File): Int {
-        var failed = false
+        var result = 0
         val databaseName = databaseFileProvider().name
         try {
             val zf = ZipFile(zipFile)
-            if (!restoreEntries(zf, databaseName)) {
-                failed = true
-            }
+            result = restoreEntries(zf, databaseName)
             zf.close()
         } catch (e: IOException) {
             Log.e(TAG, "Restore failed", e)
-            failed = true
+            result = 2
         } catch (e: ZipException) {
             Log.e(TAG, "Restore failed", e)
-            failed = true
+            result = 2
         } catch (e: SecurityException) {
             Log.e(TAG, "Restore failed", e)
-            failed = true
+            result = 2
         }
-        return if (failed) 2 else 0
+        return result
     }
 
     @Suppress("TooGenericExceptionCaught")
@@ -86,22 +85,60 @@ class BackupManager(
     private fun restoreEntries(
         zf: ZipFile,
         databaseName: String,
-    ): Boolean {
-        var entryFailed = false
+    ): Int {
+        var result = 0
         val entries = zf.entries()
         while (entries.hasMoreElements()) {
             val entry = entries.nextElement()
             if (entry.name == databaseName) {
+                val entryBytes = zf.getInputStream(entry).use { it.readBytes() }
+                val dbVersion = readDatabaseVersion(entryBytes)
+                if (dbVersion > AppDatabase.VERSION_6) {
+                    return ERROR_VERSION_TOO_HIGH
+                }
                 onCloseDatabase()
-                if (!receiveFile(zf.getInputStream(entry), databaseFileProvider())) {
-                    entryFailed = true
+                if (!receiveBytes(entryBytes, databaseFileProvider())) {
+                    result = 2
                 }
                 onReopenDatabase()
             } else if (!receiveFile(zf.getInputStream(entry), File(filesDirProvider(), entry.name))) {
-                entryFailed = true
+                result = 2
             }
         }
-        return !entryFailed
+        return result
+    }
+
+    @Suppress("MagicNumber")
+    private fun readDatabaseVersion(bytes: ByteArray): Int {
+        val magic = "SQLite format 3\u0000".toByteArray()
+        val isValidSqlite =
+            bytes.size >= 68 &&
+                magic.indices.none { bytes[it] != magic[it] }
+        if (!isValidSqlite) return 0
+        val off = 60
+        return ((bytes[off].toInt() and 0xFF) shl 24) or
+            ((bytes[off + 1].toInt() and 0xFF) shl 16) or
+            ((bytes[off + 2].toInt() and 0xFF) shl 8) or
+            (bytes[off + 3].toInt() and 0xFF)
+    }
+
+    private fun receiveBytes(
+        bytes: ByteArray,
+        file: File,
+    ): Boolean {
+        var success = true
+        try {
+            val fos = FileOutputStream(file)
+            fos.write(bytes)
+            fos.close()
+        } catch (e: IOException) {
+            Log.e(TAG, "Failed to receive bytes", e)
+            success = false
+        } catch (e: SecurityException) {
+            Log.e(TAG, "Failed to receive bytes", e)
+            success = false
+        }
+        return success
     }
 
     private fun addFilesDirToZip(
@@ -123,6 +160,8 @@ class BackupManager(
 
     companion object {
         internal const val BUFFER_SIZE = 32768
+
+        internal const val ERROR_VERSION_TOO_HIGH = 3
 
         private const val TAG = "ZMT_BackupManager"
 

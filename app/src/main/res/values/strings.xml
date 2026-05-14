@@ -121,6 +121,8 @@
     <string name="restore_really_text">This will replace all your Sessions with the ones in the Backup! (No Undo!)</string>
     <string name="restore_really_title">Really restore data?</string>
     <string name="restore_success_text" tools:ignore="MissingTranslation">Data Restore successful</string>
+    <string name="restore_version_mismatch_title">Newer Backup Version</string>
+    <string name="restore_version_mismatch_text">This backup was created by a newer version of ZazenTimer. Please update the app.</string>
     <string name="search_menu_title">Search</string>
     <string name="section_info_string_1_pl">%1$d Bells</string>
     <string name="section_info_string_1_sg">1 Bell</string>

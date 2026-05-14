@@ -233,6 +233,13 @@ class SettingsFragment : PreferenceFragmentCompat() {
                 Toast.makeText(requireActivity(), R.string.restore_backup_not_found, Toast.LENGTH_SHORT).show()
             } else if (result == 2) {
                 Toast.makeText(requireActivity(), R.string.restore_error_text, Toast.LENGTH_SHORT).show()
+            } else if (result == BackupManager.ERROR_VERSION_TOO_HIGH) {
+                AlertDialog
+                    .Builder(requireActivity())
+                    .setTitle(R.string.restore_version_mismatch_title)
+                    .setMessage(R.string.restore_version_mismatch_text)
+                    .setPositiveButton(R.string.ok) { _, _ -> }
+                    .show()
             }
         }
     }
