@@ -119,7 +119,6 @@ class DbOperationsTest {
             dbOps.insertSession(session)
             val section = Section("Zazen", 300)
             section.bell = 1
-            section.volume = 80
             dbOps.insertSection(session, section)
 
             val result = dbOps.readSection(section.id)
@@ -127,7 +126,6 @@ class DbOperationsTest {
             assertThat(result!!.name).isEqualTo("Zazen")
             assertThat(result.duration).isEqualTo(300)
             assertThat(result.bell).isEqualTo(1)
-            assertThat(result.volume).isEqualTo(80)
             assertThat(result.fkSession).isEqualTo(session.id)
         }
     }

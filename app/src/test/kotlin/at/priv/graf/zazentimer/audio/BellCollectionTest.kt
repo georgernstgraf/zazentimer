@@ -104,7 +104,7 @@ class BellCollectionTest {
     fun getBellForSection_matchingUri() {
         BellCollection.initialize(context)
         val bell = BellCollection.getBell(3)!!
-        val section = Section(volume = 80)
+        val section = Section()
         section.bellUri = bell.uri.toString()
 
         val result = BellCollection.getBellForSection(section)
@@ -115,7 +115,7 @@ class BellCollectionTest {
     @Test
     fun getBellForSection_nonMatchingUri_returnsNull() {
         BellCollection.initialize(context)
-        val section = Section(volume = 80)
+        val section = Section()
         section.bellUri = "content://nonexistent/audio.mp3"
 
         assertThat(BellCollection.getBellForSection(section)).isNull()
@@ -124,7 +124,7 @@ class BellCollectionTest {
     @Test
     fun getBellForSection_nullUri_returnsNull() {
         BellCollection.initialize(context)
-        val section = Section(volume = 80)
+        val section = Section()
         section.bellUri = null
 
         assertThat(BellCollection.getBellForSection(section)).isNull()

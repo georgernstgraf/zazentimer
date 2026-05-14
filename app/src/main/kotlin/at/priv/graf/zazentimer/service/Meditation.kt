@@ -2,6 +2,7 @@ package at.priv.graf.zazentimer.service
 
 import android.util.Log
 import at.priv.graf.zazentimer.bo.Section
+import at.priv.graf.zazentimer.bo.SessionBellVolume
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.SupervisorJob
@@ -16,6 +17,7 @@ class Meditation(
     private val repository: MeditationRepository,
     private val sessionName: String,
     private val sections: Array<Section>,
+    private val bellVolumes: List<SessionBellVolume>,
     private val dispatchers: CoroutineDispatchers = CoroutineDispatchers(),
     private val audioStateManager: AudioStateManager,
     private val alarmScheduler: AlarmScheduler,
@@ -120,14 +122,20 @@ class Meditation(
     fun onSectionEnd() {
         alarmScheduler.cancelAlarm()
         if (currentSectionIdx < sections.size - 1) {
-            bellPlayer.playBells(sections[currentSectionIdx], { stopping }, null)
+            bellPlayer.playBells(
+                sections[currentSectionIdx],
+                getVolumeForSection(sections[currentSectionIdx]),
+                { stopping },
+                null,
+            )
             currentSectionIdx++
             pauseSectionSeconds = 0
             alarmScheduler.setAlarmForSectionEnd(sections[currentSectionIdx], pauseSectionSeconds)
             repository.onMeditationUpdated()
             return
         }
-        bellPlayer.playBells(sections[currentSectionIdx], { stopping }) {
+        val volume = getVolumeForSection(sections[currentSectionIdx])
+        bellPlayer.playBells(sections[currentSectionIdx], volume, { stopping }) {
             scope.launch {
                 finishMeditation()
             }
@@ -189,10 +197,20 @@ class Meditation(
 
     fun getSessionName(): String = sessionName
 
+    private fun getVolumeForSection(section: Section): Int {
+        val match =
+            bellVolumes.find { bv ->
+                (bv.bell != null && bv.bell == section.bell) ||
+                    (bv.bellUri != null && bv.bellUri == section.bellUri)
+            }
+        return match?.volume ?: DEFAULT_BELL_VOLUME
+    }
+
     companion object {
         const val INTENT_SECTION_ENDED: String = "at.priv.graf.zazentimer.ACTION_SECTION_ENDED"
         private const val TAG = "ZMT_Meditation"
         private const val TICKER_INTERVAL_MS = 1000L
         private const val MS_PER_SECOND = 1000L
+        private const val DEFAULT_BELL_VOLUME = 100
     }
 }

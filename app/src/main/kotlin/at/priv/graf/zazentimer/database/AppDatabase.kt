@@ -7,11 +7,17 @@ import androidx.room.migration.Migration
 import androidx.sqlite.db.SupportSQLiteDatabase
 
 @Suppress("MagicNumber")
-@Database(entities = [SessionEntity::class, SectionEntity::class], version = 5, exportSchema = true)
+@Database(
+    entities = [SessionEntity::class, SectionEntity::class, SessionBellVolumeEntity::class],
+    version = 6,
+    exportSchema = true,
+)
 abstract class AppDatabase : RoomDatabase() {
     abstract fun sessionDao(): SessionDao
 
     abstract fun sectionDao(): SectionDao
+
+    abstract fun sessionBellVolumeDao(): SessionBellVolumeDao
 
     companion object {
         const val DATABASE_NAME = "zentimer"
@@ -21,6 +27,7 @@ abstract class AppDatabase : RoomDatabase() {
         const val VERSION_3 = 3
         const val VERSION_4 = 4
         const val VERSION_5 = 5
+        const val VERSION_6 = 6
 
         const val DEFAULT_VOLUME = 100
 
@@ -149,6 +156,62 @@ abstract class AppDatabase : RoomDatabase() {
                     db.execSQL(
                         "CREATE INDEX IF NOT EXISTS index_sections_fk_session " +
                             "ON sections(fk_session)",
+                    )
+                }
+            }
+
+        val MIGRATION_5_6 =
+            object : Migration(VERSION_5, VERSION_6) {
+                override fun migrate(db: SupportSQLiteDatabase) {
+                    db.execSQL(
+                        "CREATE TABLE IF NOT EXISTS session_bell_volumes (" +
+                            "_id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, " +
+                            "fk_session INTEGER NOT NULL, " +
+                            "bell INTEGER, " +
+                            "belluri TEXT, " +
+                            "volume INTEGER NOT NULL DEFAULT $DEFAULT_VOLUME, " +
+                            "FOREIGN KEY (fk_session) REFERENCES sessions(_id) ON DELETE CASCADE)",
+                    )
+                    db.execSQL(
+                        "CREATE UNIQUE INDEX IF NOT EXISTS index_session_bell_volumes_session_bell_uri " +
+                            "ON session_bell_volumes(fk_session, bell, belluri)",
+                    )
+                    db.execSQL(
+                        "CREATE INDEX IF NOT EXISTS index_session_bell_volumes_fk_session " +
+                            "ON session_bell_volumes(fk_session)",
+                    )
+
+                    db.execSQL(
+                        "INSERT INTO session_bell_volumes (fk_session, bell, belluri, volume) " +
+                            "SELECT fk_session, bell, belluri, " +
+                            "CAST(AVG(COALESCE(volume, $DEFAULT_VOLUME)) AS INTEGER) " +
+                            "FROM sections " +
+                            "GROUP BY fk_session, bell, belluri",
+                    )
+
+                    db.execSQL(
+                        "CREATE TABLE sections_new (" +
+                            "_id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, " +
+                            "fk_session INTEGER NOT NULL, " +
+                            "name TEXT NOT NULL, " +
+                            "duration INTEGER NOT NULL, " +
+                            "bell INTEGER NOT NULL, " +
+                            "rank INTEGER, " +
+                            "bellcount INTEGER, " +
+                            "bellpause INTEGER, " +
+                            "belluri TEXT, " +
+                            "FOREIGN KEY (fk_session) REFERENCES sessions(_id) ON DELETE CASCADE)",
+                    )
+                    db.execSQL(
+                        "INSERT INTO sections_new " +
+                            "(_id, fk_session, name, duration, bell, rank, bellcount, bellpause, belluri) " +
+                            "SELECT _id, fk_session, name, duration, bell, " +
+                            "rank, bellcount, bellpause, belluri FROM sections",
+                    )
+                    db.execSQL("DROP TABLE sections")
+                    db.execSQL("ALTER TABLE sections_new RENAME TO sections")
+                    db.execSQL(
+                        "CREATE INDEX IF NOT EXISTS index_sections_fk_session ON sections(fk_session)",
                     )
                 }
             }

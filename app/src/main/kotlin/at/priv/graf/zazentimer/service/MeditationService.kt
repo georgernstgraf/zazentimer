@@ -116,6 +116,7 @@ class MeditationService : LifecycleService() {
         lifecycleScope.launch {
             val session = meditationRepository.readSession(i) ?: return@launch
             val sections = meditationRepository.readSections(i)
+            val bellVolumes = meditationRepository.readBellVolumes(i)
             if (sections.isEmpty()) return@launch
             runningMeditation =
                 Meditation(
@@ -123,6 +124,7 @@ class MeditationService : LifecycleService() {
                     meditationRepository,
                     session.name ?: "",
                     sections,
+                    bellVolumes,
                     coroutineDispatchers,
                     AudioStateManager(
                         this@MeditationService,

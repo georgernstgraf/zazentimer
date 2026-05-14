@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:gravity="center_vertical"
+    android:paddingTop="8dp"
+    android:paddingBottom="8dp">
+
+    <ImageButton
+        android:id="@+id/bell_preview"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
+        android:src="@drawable/play_gong"
+        android:contentDescription="@string/title_bell_volumes"
+        android:background="?attr/selectableItemBackgroundBorderless"/>
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp">
+
+        <TextView
+            android:id="@+id/bell_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="14sp"/>
+
+        <SeekBar
+            android:id="@+id/bell_volume_seekbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:max="9"
+            android:progress="0"/>
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/bell_volume_label"
+        android:layout_width="48dp"
+        android:layout_height="wrap_content"
+        android:gravity="end"
+        android:textSize="12sp"/>
+
+</LinearLayout>

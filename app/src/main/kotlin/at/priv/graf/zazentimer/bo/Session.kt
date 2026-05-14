@@ -4,6 +4,7 @@ data class Session(
     @JvmField var description: String? = null,
     @JvmField var id: Int = 0,
     @JvmField var name: String? = null,
+    @JvmField var bellVolumes: List<SessionBellVolume> = emptyList(),
 ) {
     constructor(name: String, description: String) : this(
         description = description,

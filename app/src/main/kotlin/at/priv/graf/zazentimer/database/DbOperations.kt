@@ -4,6 +4,7 @@ import android.content.Context
 import androidx.room.Room
 import at.priv.graf.zazentimer.bo.Section
 import at.priv.graf.zazentimer.bo.Session
+import at.priv.graf.zazentimer.bo.SessionBellVolume
 import at.priv.graf.zazentimer.service.IdlingResourceManager
 import dagger.hilt.android.qualifiers.ApplicationContext
 import javax.inject.Inject
@@ -20,6 +21,7 @@ class DbOperations
         private var appDb: AppDatabase? = null
         private var sessionDao: SessionDao? = null
         private var sectionDao: SectionDao? = null
+        private var sessionBellVolumeDao: SessionBellVolumeDao? = null
 
         init {
             openDatabase()
@@ -37,11 +39,13 @@ class DbOperations
                         AppDatabase.MIGRATION_2_3,
                         AppDatabase.MIGRATION_3_4,
                         AppDatabase.MIGRATION_4_5,
+                        AppDatabase.MIGRATION_5_6,
                     ).addCallback(AppDatabase.ON_CREATE_CALLBACK)
                     .build()
             val db = appDb ?: return
             sessionDao = db.sessionDao()
             sectionDao = db.sectionDao()
+            sessionBellVolumeDao = db.sessionBellVolumeDao()
         }
 
         private suspend fun <T> withIdling(block: suspend () -> T): T {
@@ -59,6 +63,7 @@ class DbOperations
                 appDb = null
                 sessionDao = null
                 sectionDao = null
+                sessionBellVolumeDao = null
             }
         }
 
@@ -73,7 +78,14 @@ class DbOperations
             withIdling {
                 val dao = sessionDao ?: return@withIdling null
                 val entity = dao.getSessionById(id)
-                entity?.let { EntityMapper.toBo(it) }
+                entity?.let {
+                    val session = EntityMapper.toBo(it)
+                    val bvDao = sessionBellVolumeDao
+                    if (bvDao != null) {
+                        session.bellVolumes = bvDao.getBellVolumesForSession(id).map { bv -> EntityMapper.toBo(bv) }
+                    }
+                    session
+                }
             }
 
         suspend fun updateSession(session: Session) =
@@ -114,7 +126,50 @@ class DbOperations
                     val sid = secDao.insert(sectionEntity)
                     section.id = sid.toInt()
                 }
+                val bvDao = sessionBellVolumeDao ?: return@withIdling source.id
+                val bellVolumeEntities = bvDao.getBellVolumesForSession(sourceId)
+                for (bv in bellVolumeEntities) {
+                    val newBv =
+                        SessionBellVolumeEntity(
+                            fk_session = source.id,
+                            bell = bv.bell,
+                            belluri = bv.belluri,
+                            volume = bv.volume,
+                        )
+                    bvDao.insert(newBv)
+                }
                 source.id
+            }
+
+        suspend fun readBellVolumes(sessionId: Int): List<SessionBellVolume> =
+            withIdling {
+                val dao = sessionBellVolumeDao ?: return@withIdling emptyList()
+                dao.getBellVolumesForSession(sessionId).map { EntityMapper.toBo(it) }
+            }
+
+        suspend fun saveBellVolumes(
+            sessionId: Int,
+            volumes: List<SessionBellVolume>,
+        ) = withIdling {
+            val dao = sessionBellVolumeDao ?: return@withIdling
+            dao.deleteForSession(sessionId)
+            val entities =
+                volumes.map { bo ->
+                    bo.fkSession = sessionId
+                    bo.id = 0
+                    EntityMapper.toEntity(bo)
+                }
+            dao.insertAll(entities)
+        }
+
+        suspend fun readSessionWithBellVolumes(id: Int): Session? =
+            withIdling {
+                val dao = sessionDao ?: return@withIdling null
+                val entity = dao.getSessionById(id) ?: return@withIdling null
+                val session = EntityMapper.toBo(entity)
+                val bvDao = sessionBellVolumeDao ?: return@withIdling session
+                session.bellVolumes = bvDao.getBellVolumesForSession(id).map { EntityMapper.toBo(it) }
+                session
             }
 
         suspend fun deleteSection(id: Long) =

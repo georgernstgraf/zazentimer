@@ -58,17 +58,17 @@ class BellPlayerTest {
     @Test
     fun `playBells acquires WakeLock even without bells`() {
         runTest {
-            player.playBells(Section(name = "Zazen", duration = 600), stoppingCheck = { false })
+            player.playBells(Section(name = "Zazen", duration = 600), volume = 100, stoppingCheck = { false })
             advanceUntilIdle()
         }
 
-        verify { mockPowerManager.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, "PlayBells") }
+        verify { mockPowerManager.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, "zazentimer:PlayBells") }
     }
 
     @Test
     fun `playBells releases WakeLock`() {
         runTest {
-            player.playBells(Section(name = "Zazen", duration = 600), stoppingCheck = { false })
+            player.playBells(Section(name = "Zazen", duration = 600), volume = 100, stoppingCheck = { false })
             advanceUntilIdle()
         }
 
@@ -82,6 +82,7 @@ class BellPlayerTest {
         runTest {
             player.playBells(
                 Section(name = "Zazen", duration = 600),
+                volume = 100,
                 stoppingCheck = { false },
                 onDone = Runnable { onDoneCalled = true },
             )
@@ -94,7 +95,7 @@ class BellPlayerTest {
     @Test
     fun `playBells does not call getBellForSection when no bells exist`() {
         runTest {
-            player.playBells(Section(name = "Zazen", duration = 600), stoppingCheck = { false })
+            player.playBells(Section(name = "Zazen", duration = 600), volume = 100, stoppingCheck = { false })
             advanceUntilIdle()
         }
 
@@ -102,14 +103,12 @@ class BellPlayerTest {
     }
 
     @Test
-    fun `playBells creates no Audio when BellCollection returns null`() {
+    fun `playBells creates no Audio when BellCollection returns null`() =
         runTest {
-            player.playBells(Section(name = "Zazen", duration = 600), stoppingCheck = { false })
+            player.playBells(Section(name = "Zazen", duration = 600), volume = 100, stoppingCheck = { false })
             advanceUntilIdle()
+            coVerify(exactly = 0) { anyConstructed<Audio>().playAbsVolume(any(), any()) }
         }
-
-        coVerify(exactly = 0) { anyConstructed<Audio>().playAbsVolume(any(), any()) }
-    }
 
     @Test
     fun `isPlaying returns false when no bells have been played`() {
@@ -127,6 +126,7 @@ class BellPlayerTest {
         runTest {
             player.playBells(
                 Section(name = "Zazen", duration = 600),
+                volume = 100,
                 stoppingCheck = { true },
             )
             advanceUntilIdle()
@@ -152,7 +152,7 @@ class BellPlayerTest {
             section.bellUri = "fake://bell/1"
             section.bellcount = 3
             section.bellpause = 0
-            player.playBells(section, stoppingCheck = { false })
+            player.playBells(section, volume = 100, stoppingCheck = { false })
             advanceUntilIdle()
             bells.clear()
 

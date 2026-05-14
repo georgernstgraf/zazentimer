@@ -6,7 +6,6 @@ import android.media.AudioManager
 import android.media.MediaPlayer
 import android.net.Uri
 import at.priv.graf.zazentimer.bo.Bell
-import at.priv.graf.zazentimer.bo.Section
 import com.google.common.truth.Truth.assertThat
 import io.mockk.every
 import io.mockk.just
@@ -156,21 +155,6 @@ class AudioTest {
         runBlocking { audio.playAbsVolume(bell, 100) }
 
         assertThat(audio.isPlaying()).isFalse()
-    }
-
-    @Test
-    fun playAbsVolume_withSection_delegatesToBellCollection() {
-        BellCollection.initialize(context)
-        val bell = BellCollection.getBell(0)!!
-        val section = Section(volume = 70)
-        section.bellUri = bell.uri.toString()
-
-        val audio = Audio(context)
-        runBlocking { audio.playAbsVolume(section) }
-
-        assertThat(audio.isPlaying()).isTrue()
-        verify { anyConstructed<MediaPlayer>().setVolume(0.7f, 0.7f) }
-        BellCollection.release()
     }
 
     @Test

@@ -13,7 +13,6 @@ data class Section(
     @JvmField var id: Int = 0,
     @JvmField var name: String? = null,
     @JvmField var rank: Int = -1,
-    @JvmField var volume: Int = 100,
 ) : Serializable {
     constructor(name: String, duration: Int) : this(
         bell = DEFAULT_BELL,
@@ -22,7 +21,6 @@ data class Section(
         name = name,
         duration = duration,
         rank = -1,
-        volume = 100,
     )
 
     fun getDurationString(): String =

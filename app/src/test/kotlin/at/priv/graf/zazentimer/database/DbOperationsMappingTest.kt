@@ -75,7 +75,6 @@ class DbOperationsMappingTest {
                 bellcount = 2,
                 bellpause = 5,
                 bellUri = "content://audio/bell.mp3",
-                volume = 75,
             )
         val entity = EntityMapper.toEntity(section)
         assertThat(entity._id).isEqualTo(5)
@@ -87,7 +86,6 @@ class DbOperationsMappingTest {
         assertThat(entity.bellcount).isEqualTo(2)
         assertThat(entity.bellpause).isEqualTo(5)
         assertThat(entity.belluri).isEqualTo("content://audio/bell.mp3")
-        assertThat(entity.volume).isEqualTo(75)
     }
 
     @Test
@@ -110,7 +108,6 @@ class DbOperationsMappingTest {
                 bellcount = 3,
                 bellpause = 10,
                 belluri = "content://audio/bell2.mp3",
-                volume = 50,
             )
         val bo = EntityMapper.toBo(entity)
         assertThat(bo.id).isEqualTo(5)
@@ -122,7 +119,6 @@ class DbOperationsMappingTest {
         assertThat(bo.bellcount).isEqualTo(3)
         assertThat(bo.bellpause).isEqualTo(10)
         assertThat(bo.bellUri).isEqualTo("content://audio/bell2.mp3")
-        assertThat(bo.volume).isEqualTo(50)
     }
 
     @Test
@@ -144,13 +140,6 @@ class DbOperationsMappingTest {
         val entity = SectionEntity(_id = 1, bellpause = null)
         val bo = EntityMapper.toBo(entity)
         assertThat(bo.bellpause).isEqualTo(1)
-    }
-
-    @Test
-    fun toBo_sectionEntity_nullVolume_defaultsTo100() {
-        val entity = SectionEntity(_id = 1, volume = null)
-        val bo = EntityMapper.toBo(entity)
-        assertThat(bo.volume).isEqualTo(100)
     }
 
     @Test
@@ -176,7 +165,6 @@ class DbOperationsMappingTest {
                 bellcount = 3,
                 bellpause = 15,
                 bellUri = "uri",
-                volume = 80,
             )
         val entity = EntityMapper.toEntity(original)
         val roundTripped = EntityMapper.toBo(entity)
@@ -189,6 +177,5 @@ class DbOperationsMappingTest {
         assertThat(roundTripped.bellcount).isEqualTo(3)
         assertThat(roundTripped.bellpause).isEqualTo(15)
         assertThat(roundTripped.bellUri).isEqualTo("uri")
-        assertThat(roundTripped.volume).isEqualTo(80)
     }
 }

@@ -11,7 +11,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
-import android.widget.SeekBar
 import android.widget.SpinnerAdapter
 import android.widget.TextView
 import androidx.activity.result.ActivityResultLauncher
@@ -187,10 +186,7 @@ class SectionEditFragment : Fragment() {
         private const val TAG = "ZMT_SectionEdit"
         private const val BUFFER_SIZE = 8192
         private const val SECONDS_PER_MINUTE = 60
-        private const val VOLUME_MAX = 100
-        private const val VOLUME_STEP_SIZE = 10
-        private const val VOLUME_MAX_STEP = 9
-        private const val MIN_VOLUME_STEP = 0
+        private const val DEFAULT_BELL_VOLUME = 100
         private const val GAP_COUNT = 14
         private const val GAP_ARRAY_SIZE = 15
         private const val BELL_UNSET = -2
@@ -200,7 +196,6 @@ class SectionEditFragment : Fragment() {
             s.bell = BELL_UNSET
             val bell = binding.selectGongSound.selectedItem as Bell
             s.bellUri = bell.uri.toString()
-            s.volume = VOLUME_MAX - binding.sectionGongVolume.progress * VOLUME_STEP_SIZE
             s.name = binding.sectionName.text.toString()
             s.duration = (this.durationMinutes * SECONDS_PER_MINUTE) + this.durationSeconds
         }
@@ -209,11 +204,6 @@ class SectionEditFragment : Fragment() {
             val s = section ?: return
             setViewBellCount(s.bellcount)
             setViewGap(s.bellpause)
-            binding.sectionGongVolume.max = VOLUME_MAX_STEP
-            var step = (VOLUME_MAX - s.volume) / VOLUME_STEP_SIZE
-            step = Math.max(MIN_VOLUME_STEP, Math.min(VOLUME_MAX_STEP, step))
-            binding.sectionGongVolume.progress = step
-            updateDimLabel(step)
             binding.sectionName.setText(s.name)
             setDurationMinutes(s.duration / SECONDS_PER_MINUTE)
             setDurationSeconds(s.duration % SECONDS_PER_MINUTE)
@@ -251,7 +241,6 @@ class SectionEditFragment : Fragment() {
             installGapListeners()
             installPlayGongListener()
             installBellSelectionListener()
-            installVolumeSliderListener()
         }
 
         private fun SectionEditFragment.installCustomBellListener() {
@@ -306,7 +295,7 @@ class SectionEditFragment : Fragment() {
                 val bellForSection = BellCollection.getBellForSection(s)
                 bellForSection?.let { bell ->
                     lifecycleScope.launch {
-                        audio?.playAbsVolume(bell, s.volume)
+                        audio?.playAbsVolume(bell, DEFAULT_BELL_VOLUME)
                     }
                 }
             }
@@ -335,36 +324,6 @@ class SectionEditFragment : Fragment() {
                         }
                     }
                 }
-        }
-
-        private fun SectionEditFragment.installVolumeSliderListener() {
-            binding.sectionGongVolume.setOnSeekBarChangeListener(
-                object : SeekBar.OnSeekBarChangeListener {
-                    override fun onProgressChanged(
-                        seekBar: SeekBar?,
-                        progress: Int,
-                        fromUser: Boolean,
-                    ) {
-                        updateDimLabel(progress)
-                    }
-
-                    override fun onStartTrackingTouch(seekBar: SeekBar?) {
-                        // no-op: required by interface
-                    }
-
-                    override fun onStopTrackingTouch(seekBar: SeekBar?) {
-                        val s = section ?: return
-                        val progress = seekBar?.progress ?: return
-                        s.volume = VOLUME_MAX - progress * VOLUME_STEP_SIZE
-                        val bellForSection = BellCollection.getBellForSection(s)
-                        bellForSection?.let { bell ->
-                            lifecycleScope.launch {
-                                audio?.playAbsVolume(s)
-                            }
-                        }
-                    }
-                },
-            )
         }
 
         private fun SectionEditFragment.setViewBellCount(count: Int) {
@@ -405,16 +364,6 @@ class SectionEditFragment : Fragment() {
             _binding?.let { b ->
                 b.time.text =
                     String.format(Locale.getDefault(), "%02d:%02d", durationMinutes, durationSeconds)
-            }
-        }
-
-        private fun SectionEditFragment.updateDimLabel(step: Int) {
-            _binding?.let { b ->
-                if (step == 0) {
-                    b.dimBellLabel.setText(R.string.dim_bell_label_off)
-                } else {
-                    b.dimBellLabel.text = getString(R.string.dim_bell_label_format, step)
-                }
             }
         }
 

@@ -236,6 +236,139 @@ class MigrationTest {
     }
 
     @Test
+    fun migrateFrom5To6_createsSessionBellVolumesTable() {
+        val db = createV1Database()
+        AppDatabase.MIGRATION_1_2.migrate(db)
+        AppDatabase.MIGRATION_2_3.migrate(db)
+        AppDatabase.MIGRATION_3_4.migrate(db)
+        AppDatabase.MIGRATION_4_5.migrate(db)
+
+        AppDatabase.MIGRATION_5_6.migrate(db)
+
+        val cursor =
+            db.query(
+                "SELECT name FROM sqlite_master WHERE type='table' AND name='session_bell_volumes'",
+            )
+        assertThat(cursor.count).isEqualTo(1)
+        cursor.close()
+        db.close()
+    }
+
+    @Test
+    fun migrateFrom5To6_removesVolumeColumnFromSections() {
+        val db = createV1Database()
+        AppDatabase.MIGRATION_1_2.migrate(db)
+        AppDatabase.MIGRATION_2_3.migrate(db)
+        AppDatabase.MIGRATION_3_4.migrate(db)
+        AppDatabase.MIGRATION_4_5.migrate(db)
+
+        AppDatabase.MIGRATION_5_6.migrate(db)
+
+        val cursor = db.query("PRAGMA table_info(sections)")
+        val names = mutableListOf<String>()
+        while (cursor.moveToNext()) {
+            names.add(cursor.getString(cursor.getColumnIndexOrThrow("name")))
+        }
+        cursor.close()
+        assertThat(names).doesNotContain("volume")
+        db.close()
+    }
+
+    @Test
+    fun migrateFrom5To6_migratesAvgVolumesToSessionBellVolumes() {
+        val db = createV1Database()
+        db.execSQL(
+            "INSERT INTO sessions (name, description) VALUES ('S', 'D')",
+        )
+        AppDatabase.MIGRATION_1_2.migrate(db)
+        AppDatabase.MIGRATION_2_3.migrate(db)
+        AppDatabase.MIGRATION_3_4.migrate(db)
+        db.execSQL(
+            "INSERT INTO sections (fk_session, name, duration, bell, rank, bellcount, bellpause, volume) " +
+                "VALUES (1, 'Zazen1', 600, 1, 1, 3, 5, 80)",
+        )
+        db.execSQL(
+            "INSERT INTO sections (fk_session, name, duration, bell, rank, bellcount, bellpause, volume) " +
+                "VALUES (1, 'Zazen2', 300, 1, 2, 1, 3, 60)",
+        )
+        AppDatabase.MIGRATION_4_5.migrate(db)
+
+        AppDatabase.MIGRATION_5_6.migrate(db)
+
+        val cursor =
+            db.query(
+                "SELECT volume FROM session_bell_volumes WHERE fk_session = 1 AND bell = 1",
+            )
+        assertThat(cursor.count).isEqualTo(1)
+        cursor.moveToFirst()
+        assertThat(cursor.getInt(cursor.getColumnIndexOrThrow("volume"))).isEqualTo(70)
+        cursor.close()
+        db.close()
+    }
+
+    @Test
+    fun fullChainFrom1To6_dataSurvives() {
+        val db = createV1Database()
+        db.execSQL(
+            "INSERT INTO sessions (name, description) VALUES ('Meditation', 'A test session')",
+        )
+        db.execSQL(
+            "INSERT INTO sections (fk_session, name, duration, bell, rank, bellcount, bellpause) " +
+                "VALUES (1, 'Zazen', 600, -1, 1, 3, 5)",
+        )
+
+        AppDatabase.MIGRATION_1_2.migrate(db)
+        AppDatabase.MIGRATION_2_3.migrate(db)
+        AppDatabase.MIGRATION_3_4.migrate(db)
+        AppDatabase.MIGRATION_4_5.migrate(db)
+        AppDatabase.MIGRATION_5_6.migrate(db)
+
+        val cursor =
+            db.query(
+                "SELECT name, description FROM sessions WHERE _id = 1",
+            )
+        assertThat(cursor.count).isEqualTo(1)
+        cursor.moveToFirst()
+        assertThat(cursor.getString(cursor.getColumnIndexOrThrow("name")))
+            .isEqualTo("Meditation")
+        assertThat(cursor.getString(cursor.getColumnIndexOrThrow("description")))
+            .isEqualTo("A test session")
+        cursor.close()
+        db.close()
+    }
+
+    @Test
+    fun fullChainFrom1To6_sectionsDataSurvives() {
+        val db = createV1Database()
+        db.execSQL(
+            "INSERT INTO sessions (name, description) VALUES ('S', 'D')",
+        )
+        db.execSQL(
+            "INSERT INTO sections (fk_session, name, duration, bell, rank, bellcount, bellpause, belluri) " +
+                "VALUES (1, 'Kinhin', 300, 0, 2, 1, 3, NULL)",
+        )
+
+        AppDatabase.MIGRATION_1_2.migrate(db)
+        AppDatabase.MIGRATION_2_3.migrate(db)
+        AppDatabase.MIGRATION_3_4.migrate(db)
+        AppDatabase.MIGRATION_4_5.migrate(db)
+        AppDatabase.MIGRATION_5_6.migrate(db)
+
+        val cursor =
+            db.query(
+                "SELECT name, duration FROM sections WHERE _id = 1",
+            )
+        assertThat(cursor.count).isEqualTo(1)
+        cursor.moveToFirst()
+        assertThat(cursor.getString(cursor.getColumnIndexOrThrow("name")))
+            .isEqualTo("Kinhin")
+        assertThat(cursor.getInt(cursor.getColumnIndexOrThrow("duration")))
+            .isEqualTo(300)
+        cursor.close()
+        db.close()
+    }
+
+    @Test
     fun migrateFrom3To4_recreatesSectionsAndSessions() {
         val db = createV1Database()
         db.execSQL(

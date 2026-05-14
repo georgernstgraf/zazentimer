@@ -6,7 +6,7 @@ import androidx.room.Index
 import androidx.room.PrimaryKey
 
 @Entity(
-    tableName = "sections",
+    tableName = "session_bell_volumes",
     foreignKeys = [
         ForeignKey(
             entity = SessionEntity::class,
@@ -15,18 +15,14 @@ import androidx.room.PrimaryKey
             onDelete = ForeignKey.CASCADE,
         ),
     ],
-    indices = [Index("fk_session")],
+    indices = [Index("fk_session"), Index(value = ["fk_session", "bell", "belluri"], unique = true)],
 )
 @Suppress("ConstructorParameterNaming")
-data class SectionEntity(
+data class SessionBellVolumeEntity(
     @PrimaryKey(autoGenerate = true)
     var _id: Int = 0,
     var fk_session: Int = 0,
-    var name: String = "",
-    var duration: Int = 0,
-    var bell: Int = 0,
-    var rank: Int? = null,
-    var bellcount: Int? = null,
-    var bellpause: Int? = null,
+    var bell: Int? = null,
     var belluri: String? = null,
+    var volume: Int = 100,
 )

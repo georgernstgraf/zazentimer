@@ -53,11 +53,9 @@ class DbOperationsDuplicateTest {
             dbOps.insertSession(session)
             val s1 = Section("Section 1", 60)
             s1.bell = 1
-            s1.volume = 80
             dbOps.insertSection(session, s1)
             val s2 = Section("Section 2", 120)
             s2.bell = 2
-            s2.volume = 90
             dbOps.insertSection(session, s2)
 
             val newId = dbOps.duplicateSession(session.id, "Copy")
@@ -70,12 +68,10 @@ class DbOperationsDuplicateTest {
             assertThat(copiedSections[0].name).isEqualTo("Section 1")
             assertThat(copiedSections[0].duration).isEqualTo(60)
             assertThat(copiedSections[0].bell).isEqualTo(1)
-            assertThat(copiedSections[0].volume).isEqualTo(80)
             assertThat(copiedSections[0].fkSession).isEqualTo(newId)
             assertThat(copiedSections[1].name).isEqualTo("Section 2")
             assertThat(copiedSections[1].duration).isEqualTo(120)
             assertThat(copiedSections[1].bell).isEqualTo(2)
-            assertThat(copiedSections[1].volume).isEqualTo(90)
             assertThat(copiedSections[1].fkSession).isEqualTo(newId)
         }
     }

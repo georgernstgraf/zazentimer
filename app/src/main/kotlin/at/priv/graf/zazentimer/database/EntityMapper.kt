@@ -2,6 +2,7 @@ package at.priv.graf.zazentimer.database
 
 import at.priv.graf.zazentimer.bo.Section
 import at.priv.graf.zazentimer.bo.Session
+import at.priv.graf.zazentimer.bo.SessionBellVolume
 
 object EntityMapper {
     const val DEFAULT_VOLUME = 100
@@ -33,7 +34,6 @@ object EntityMapper {
         entity.bellcount = bo.bellcount
         entity.bellpause = bo.bellpause
         entity.belluri = bo.bellUri
-        entity.volume = bo.volume
         return entity
     }
 
@@ -48,7 +48,26 @@ object EntityMapper {
         bo.bellcount = entity.bellcount ?: 1
         bo.bellpause = entity.bellpause ?: 1
         bo.bellUri = entity.belluri
-        bo.volume = entity.volume ?: DEFAULT_VOLUME
+        return bo
+    }
+
+    fun toEntity(bo: SessionBellVolume): SessionBellVolumeEntity {
+        val entity = SessionBellVolumeEntity()
+        entity._id = bo.id
+        entity.fk_session = bo.fkSession
+        entity.bell = bo.bell
+        entity.belluri = bo.bellUri
+        entity.volume = bo.volume
+        return entity
+    }
+
+    fun toBo(entity: SessionBellVolumeEntity): SessionBellVolume {
+        val bo = SessionBellVolume()
+        bo.id = entity._id
+        bo.fkSession = entity.fk_session
+        bo.bell = entity.bell
+        bo.bellUri = entity.belluri
+        bo.volume = entity.volume
         return bo
     }
 }

@@ -18,6 +18,7 @@ import at.priv.graf.zazentimer.R
 import at.priv.graf.zazentimer.ZazenTimerActivity
 import at.priv.graf.zazentimer.bo.Section
 import at.priv.graf.zazentimer.bo.Session
+import at.priv.graf.zazentimer.bo.SessionBellVolume
 import at.priv.graf.zazentimer.database.DbOperations
 import at.priv.graf.zazentimer.databinding.FragmentEditSessionBinding
 import at.priv.graf.zazentimer.views.MessageView
@@ -29,7 +30,10 @@ import kotlinx.coroutines.runBlocking
 import javax.inject.Inject
 
 @AndroidEntryPoint
-class SessionEditFragment : Fragment() {
+@Suppress("TooManyFunctions")
+class SessionEditFragment :
+    Fragment(),
+    BellVolumeConfigDialog.OnBellVolumesSavedListener {
     private var _binding: FragmentEditSessionBinding? = null
     private val binding get() = _binding!!
 
@@ -132,6 +136,9 @@ class SessionEditFragment : Fragment() {
         binding.butNewSection.setOnClickListener {
             editHelper.doCreateNewSection()
         }
+        binding.buttonBellVolumes.setOnClickListener {
+            showBellVolumeDialog()
+        }
         return binding.root
     }
 
@@ -159,6 +166,7 @@ class SessionEditFragment : Fragment() {
                 binding.textSitzungBeschreibung.setText(s.description)
                 this@SessionEditFragment.sections = dbOperations.readSections(s.id)
                 editHelper.initSectionList()
+                binding.buttonBellVolumes.isEnabled = !this@SessionEditFragment.sections.isNullOrEmpty()
             }
         }
         requireActivity().invalidateOptionsMenu()
@@ -221,11 +229,30 @@ class SessionEditFragment : Fragment() {
         copy.bellUri = source.bellUri
         copy.bellcount = source.bellcount
         copy.bellpause = source.bellpause
-        copy.volume = source.volume
         lifecycleScope.launch {
             dbOperations.insertSection(s, copy)
             sections = dbOperations.readSections(s.id)
             editHelper.initSectionList()
+        }
+    }
+
+    @Suppress("ReturnCount")
+    private fun showBellVolumeDialog() {
+        val s = session ?: return
+        val secs = sections ?: return
+        if (secs.isEmpty()) return
+
+        val dialog = BellVolumeConfigDialog.newInstance(s.id)
+        dialog.setBellVolumes(s.bellVolumes)
+        dialog.show(childFragmentManager, "bellVolumeConfig")
+    }
+
+    override fun onBellVolumesSaved(volumes: List<SessionBellVolume>) {
+        session?.bellVolumes = volumes
+        lifecycleScope.launch {
+            session?.let { s ->
+                dbOperations.saveBellVolumes(s.id, volumes)
+            }
         }
     }
 

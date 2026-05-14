@@ -20,6 +20,7 @@ class BellPlayer(
 
     fun playBells(
         section: Section,
+        volume: Int,
         stoppingCheck: () -> Boolean,
         onDone: Runnable? = null,
     ) {
@@ -38,7 +39,7 @@ class BellPlayer(
             Log.d(TAG, "WakeLock created for playing bells")
             for (i in 0 until section.bellcount) {
                 if (stoppingCheck()) break
-                playBell(section)
+                playBell(section, volume)
                 if (i < section.bellcount - 1) {
                     delay((section.bellpause * MS_PER_SECOND))
                 }
@@ -68,7 +69,10 @@ class BellPlayer(
         return false
     }
 
-    private suspend fun playBell(section: Section) {
+    private suspend fun playBell(
+        section: Section,
+        volume: Int,
+    ) {
         val bell = BellCollection.getBellForSection(section) ?: return
 
         val it = audioObjects.iterator()
@@ -76,13 +80,13 @@ class BellPlayer(
             val next = it.next()
             if (!next.isPlaying()) {
                 Log.d(TAG, "Found free Audio Object")
-                next.playAbsVolume(bell, section.volume)
+                next.playAbsVolume(bell, volume)
                 return
             }
         }
         Log.d(TAG, "Created new Audio Object for new bell")
         val audio = Audio(context)
-        audio.playAbsVolume(bell, section.volume)
+        audio.playAbsVolume(bell, volume)
         audioObjects.add(audio)
     }
 

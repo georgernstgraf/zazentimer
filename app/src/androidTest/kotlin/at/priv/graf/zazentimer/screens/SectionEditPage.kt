@@ -1,17 +1,12 @@
 package at.priv.graf.zazentimer.screens
 
 import android.os.SystemClock
-import android.view.View
-import android.widget.SeekBar
 import androidx.test.espresso.Espresso.onView
-import androidx.test.espresso.UiController
 import androidx.test.espresso.action.ViewActions
 import androidx.test.espresso.action.ViewActions.replaceText
-import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
 import androidx.test.espresso.matcher.ViewMatchers.withId
 import at.priv.graf.zazentimer.R
 import at.priv.graf.zazentimer.utils.ScreenRobot
-import org.hamcrest.Matcher
 
 class SectionEditPage {
     private val robot = ScreenRobot()
@@ -19,7 +14,6 @@ class SectionEditPage {
     fun verifySectionEditScreen(): SectionEditPage {
         SystemClock.sleep(1000)
         robot.checkElementIsDisplayed(R.id.play_gong)
-        robot.checkElementIsDisplayed(R.id.sectionGongVolume)
         return this
     }
 
@@ -69,26 +63,6 @@ class SectionEditPage {
             }
         onView(withId(id)).perform(ViewActions.scrollTo())
         robot.clickOnView(id)
-        return this
-    }
-
-    fun setVolume(level: Int): SectionEditPage {
-        onView(withId(R.id.sectionGongVolume)).perform(
-            object : androidx.test.espresso.ViewAction {
-                override fun getConstraints(): Matcher<View> = isDisplayed()
-
-                override fun getDescription(): String = "set SeekBar progress to $level"
-
-                override fun perform(
-                    uiController: UiController,
-                    view: View,
-                ) {
-                    if (view is SeekBar) {
-                        view.progress = level
-                    }
-                }
-            },
-        )
         return this
     }
 

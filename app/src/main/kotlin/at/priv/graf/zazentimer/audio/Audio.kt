@@ -8,7 +8,6 @@ import android.net.Uri
 import android.os.Build
 import android.util.Log
 import at.priv.graf.zazentimer.bo.Bell
-import at.priv.graf.zazentimer.bo.Section
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import java.io.IOException
@@ -84,10 +83,6 @@ class Audio(
             }
             this.player = null
         }
-    }
-
-    suspend fun playAbsVolume(section: Section) {
-        playAbsVolume(BellCollection.getBellForSection(section), section.volume)
     }
 
     suspend fun playAbsVolume(
