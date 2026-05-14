@@ -26,7 +26,7 @@
     <string name="bell_volume_label_format">%1$d%%</string>
     <string name="bell_volume_default">Default</string>
     <string name="no_bells_configured">No bells configured yet</string>
-    <string name="bell_volume_dim_explanation">Dim individual bells. Moving the slider reduces loudness (attenuation).</string>
+    <string name="bell_volume_dim_explanation">Reduce individual bell volumes. Also, consider the system alarm volume.</string>
     <string name="bottom_nav_meditation">Meditation</string>
     <string name="bottom_nav_sessions">Sessions</string>
     <string name="bottom_sheet_behavior" translatable="false">android.support.design.widget.BottomSheetBehavior</string>
