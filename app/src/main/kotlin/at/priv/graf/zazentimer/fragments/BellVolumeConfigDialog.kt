@@ -27,13 +27,18 @@ class BellVolumeConfigDialog : DialogFragment() {
 
     companion object {
         private const val ARG_SESSION_ID = "sessionId"
+        private const val ARG_IS_DARK = "isDark"
         private const val VOLUME_MAX = 100
         private const val VOLUME_STEP_SIZE = 10
         private const val VOLUME_MAX_STEP = 9
 
-        fun newInstance(sessionId: Int): BellVolumeConfigDialog {
+        fun newInstance(
+            sessionId: Int,
+            isDark: Boolean,
+        ): BellVolumeConfigDialog {
             val args = Bundle()
             args.putInt(ARG_SESSION_ID, sessionId)
+            args.putBoolean(ARG_IS_DARK, isDark)
             val dialog = BellVolumeConfigDialog()
             dialog.arguments = args
             return dialog
@@ -43,7 +48,9 @@ class BellVolumeConfigDialog : DialogFragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         sessionId = arguments?.getInt(ARG_SESSION_ID) ?: 0
-        setStyle(STYLE_NORMAL, R.style.LightZenTheme)
+        val isDark = arguments?.getBoolean(ARG_IS_DARK) ?: false
+        val theme = if (isDark) R.style.DarkZenTheme else R.style.LightZenTheme
+        setStyle(STYLE_NORMAL, theme)
     }
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {

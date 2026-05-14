@@ -242,9 +242,42 @@ class SessionEditFragment :
         val secs = sections ?: return
         if (secs.isEmpty()) return
 
-        val dialog = BellVolumeConfigDialog.newInstance(s.id)
-        dialog.setBellVolumes(s.bellVolumes)
+        val derived = deriveBellVolumesFromSections(secs, s.bellVolumes)
+        val isDark = isDarkTheme()
+        val dialog = BellVolumeConfigDialog.newInstance(s.id, isDark)
+        dialog.setBellVolumes(derived)
         dialog.show(childFragmentManager, "bellVolumeConfig")
+    }
+
+    @Suppress("ReturnCount")
+    private fun isDarkTheme(): Boolean {
+        val p = pref ?: return false
+        val theme = p.getString(ZazenTimerActivity.PREF_KEY_THEME, ZazenTimerActivity.PREF_DEFAULT_THEME)
+        if (theme == ZazenTimerActivity.PREF_VALUE_THEME_DARK) return true
+        if (theme == ZazenTimerActivity.PREF_VALUE_THEME_SYSTEM) {
+            val nightMode =
+                requireContext().resources.configuration.uiMode and
+                    android.content.res.Configuration.UI_MODE_NIGHT_MASK
+            return nightMode == android.content.res.Configuration.UI_MODE_NIGHT_YES
+        }
+        return false
+    }
+
+    private fun deriveBellVolumesFromSections(
+        secs: Array<Section>,
+        saved: List<SessionBellVolume>,
+    ): List<SessionBellVolume> {
+        val seen = linkedSetOf<Pair<Int?, String?>>()
+        for (sec in secs) {
+            seen.add(Pair(sec.bell, sec.bellUri))
+        }
+        return seen.map { (bell, bellUri) ->
+            val match =
+                saved.find { bv ->
+                    bv.bell == bell && bv.bellUri == bellUri
+                }
+            match ?: SessionBellVolume(bell = bell, bellUri = bellUri, volume = DEFAULT_BELL_VOLUME)
+        }
     }
 
     override fun onBellVolumesSaved(volumes: List<SessionBellVolume>) {
@@ -305,5 +338,6 @@ class SessionEditFragment :
     companion object {
         private const val TAG = "ZMT_SessionEditFragment"
         private const val DEFAULT_SECTION_DURATION_SECONDS = 60
+        private const val DEFAULT_BELL_VOLUME = 100
     }
 }
