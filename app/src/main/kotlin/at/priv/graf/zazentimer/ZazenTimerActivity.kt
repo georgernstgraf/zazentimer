@@ -446,7 +446,10 @@ class ZazenTimerActivity :
 
     private fun startMeditationWithDndCheck() {
         val nm = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
-        if (nm.currentInterruptionFilter != NotificationManager.INTERRUPTION_FILTER_ALL) {
+        val filter = nm.currentInterruptionFilter
+        if (filter == NotificationManager.INTERRUPTION_FILTER_NONE ||
+            filter == NotificationManager.INTERRUPTION_FILTER_PRIORITY
+        ) {
             AlertDialog
                 .Builder(this)
                 .setTitle(R.string.dnd_active_title)

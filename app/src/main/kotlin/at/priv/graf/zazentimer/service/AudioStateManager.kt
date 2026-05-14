@@ -1,14 +1,16 @@
 package at.priv.graf.zazentimer.service
 
+import android.app.NotificationManager
 import android.content.Context
 import android.content.SharedPreferences
 import android.media.AudioManager
+import android.os.Build
 import android.util.Log
 import at.priv.graf.zazentimer.ZazenTimerActivity
 import kotlinx.coroutines.delay
 
 class AudioStateManager(
-    context: Context,
+    private val context: Context,
     private val prefs: SharedPreferences,
 ) {
     private val audioManager: AudioManager =
@@ -19,6 +21,13 @@ class AudioStateManager(
 
     suspend fun mutePhone() {
         Log.d(TAG, "muting Phone")
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            val nm = context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+            if (nm.currentInterruptionFilter != NotificationManager.INTERRUPTION_FILTER_ALL) {
+                Log.d(TAG, "DND already active, skipping mutePhone()")
+                return
+            }
+        }
         val vibrateSound =
             prefs.getBoolean(
                 ZazenTimerActivity.PREF_KEY_MUTE_MODE_VIBRATE_SOUND,
