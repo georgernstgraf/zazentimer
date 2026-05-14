@@ -8,10 +8,10 @@
 2. [ ] **#164 — Missing translations**: 738 translations needed (6 new strings × 123 locales) for bell volume UI and dimming explanation. Use `scripts/retranslate.py --diff` or generate via LLM.
 
 ## Recently Completed
-- ✅ **#165 — DND warning dialog** (commit `6b2c0e1`): Checks NotificationManager.currentInterruptionFilter before starting meditation. Warns user if DND may suppress bell sounds.
-- ✅ **#163 — Backup version guard** (commit `4a085dd`): Reads Room DB version from SQLite header before restore. Shows AlertDialog on version mismatch instead of crashing.
-- ✅ **#162 — Main screen dead state** (commits `bf2a11a`, `6ffc086`): TDD fix. Moved isRunning flag before suspend call in finishMeditation(). Regression test added.
-- ✅ Debug build coexistence with `applicationIdSuffix = ".debug"`
+- ✅ **#165 — DND uses INTERRUPTION_FILTER_PRIORITY** (this session): Changed from INTERRUPTION_FILTER_NONE to INTERRUPTION_FILTER_PRIORITY with PRIORITY_CATEGORY_ALARMS policy. Alarms (gongs) now audible during DND.
+- ✅ **#169 — Short sections overlapping audio** (commit `4f5e96f`): Wait for last gong to finish before ending session.
+- ✅ **#163 — Backup version guard** (commit `4a085dd`): Reads Room DB version from SQLite header before restore.
+- ✅ **#162 — Main screen dead state** (commits `bf2a11a`, `6ffc086`): TDD fix.
 
 ## CI Status
 - Release AAB build step fails on all commits (pre-existing, related to #64 release pipeline)

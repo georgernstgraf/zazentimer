@@ -3,13 +3,16 @@
 Current status as of 2026-05-14.
 
 ## Current Focus
-Finished Issue #155: Bell volume refactored from per-section to per-session.
-Finished lint zero-warning cleanup (1,186→0 issues).
+Finished Issue #165: DND now uses INTERRUPTION_FILTER_PRIORITY with alarm-allowing policy.
 
 ## Completed (this cycle)
 - [x] Zero-warning build: eliminated all 1,186 lint/ktlint/detekt warnings
 - [x] Issue #161: Gong truncation regression (verified, closed)
 - [x] Issue #155: Bell volume moved from Section to Session level
+- [x] Issue #165: DND changed from INTERRUPTION_FILTER_NONE to INTERRUPTION_FILTER_PRIORITY with PRIORITY_CATEGORY_ALARMS policy
+- [x] Issue #169: Short sections overlapping audio fix
+- [x] Issue #162: Main screen dead state fix
+- [x] Issue #163: Backup version guard
 - [x] Dependency updates: coroutines 1.11.0, activity-ktx 1.13.0, Gradle 9.5.1
 - [x] Database migration v5→v6 with avg volume preservation
 
@@ -20,5 +23,5 @@ Finished lint zero-warning cleanup (1,186→0 issues).
 None
 
 ## Next Session Suggestion
-Run instrumented tests via `scripts/run-instrumentation.sh` to verify #155 works on device.
+Run instrumented tests via `scripts/run-instrumentation.sh` to verify recent fixes.
 Begin work on #64 (Play Store) — needs PLAY_SERVICE_ACCOUNT_JSON GitHub secret.

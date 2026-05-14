@@ -88,6 +88,12 @@ Each entry documents WHAT was decided and WHY.
 - **Considered**: Single volume per session (simpler but loses flexibility), keep per-section (rejected as UX problem).
 - **Tradeoff**: More complex schema (new `session_bell_volumes` table); migration averages section volumes per bell type.
 
+## 2026-05-14: DND uses INTERRUPTION_FILTER_PRIORITY instead of INTERRUPTION_FILTER_NONE
+- **Choice**: Changed "None" mute mode from `INTERRUPTION_FILTER_NONE` to `INTERRUPTION_FILTER_PRIORITY` with a custom `NotificationManager.Policy` that allows alarms (`PRIORITY_CATEGORY_ALARMS`).
+- **Reason**: `INTERRUPTION_FILTER_NONE` suppresses ALL audio including alarms, making end-of-session gongs inaudible and graying out the alarm volume slider. `INTERRUPTION_FILTER_PRIORITY` with alarm-allowing policy suppresses calls and notifications while allowing the timer's bell sounds to play.
+- **Considered**: `INTERRUPTION_FILTER_ALARMS` (simpler but less flexible — only alarms, no other priority categories), keeping `INTERRUPTION_FILTER_NONE` (broken for bells).
+- **Tradeoff**: Slightly more code (custom Policy object); alarms are always exempt from DND during meditation.
+
 ## 2026-05-14: Avg volume migration for bell volumes
 - **Choice**: When multiple sections used the same bell with different volumes, the migration takes the average.
 - **Reason**: Average preserves the intent of all sections rather than favoring one arbitrarily.

@@ -58,8 +58,15 @@ class AudioStateManager(
                 ) {
                     savedFilter = notificationManager.currentInterruptionFilter
                     savedPolicy = notificationManager.notificationPolicy
+                    val priorityPolicy =
+                        NotificationManager.Policy(
+                            NotificationManager.Policy.PRIORITY_CATEGORY_ALARMS,
+                            NotificationManager.Policy.PRIORITY_SENDERS_ANY,
+                            NotificationManager.Policy.PRIORITY_SENDERS_ANY,
+                        )
+                    notificationManager.notificationPolicy = priorityPolicy
                     notificationManager.setInterruptionFilter(
-                        NotificationManager.INTERRUPTION_FILTER_NONE,
+                        NotificationManager.INTERRUPTION_FILTER_PRIORITY,
                     )
                     appliedFilter = notificationManager.currentInterruptionFilter
                 } else {
