@@ -15,6 +15,22 @@ abstract class GitHashSource : ValueSource<String, ValueSourceParameters.None> {
     }
 }
 
+abstract class VersionTagSource : ValueSource<String, ValueSourceParameters.None> {
+    override fun obtain(): String {
+        val process =
+            ProcessBuilder("git", "describe", "--tags", "--match", "v*", "--abbrev=0")
+                .directory(File(System.getProperty("user.dir")))
+                .start()
+        process.waitFor()
+        val tag =
+            process.inputStream
+                .bufferedReader()
+                .readText()
+                .trim()
+        return if (tag.startsWith("v")) tag.substring(1) else "0.0.0"
+    }
+}
+
 plugins {
     id("com.android.application")
     id("com.google.dagger.hilt.android")
@@ -31,8 +47,23 @@ android {
         applicationId = "at.priv.graf.zazentimer"
         minSdk = 23
         targetSdk = 36
-        versionCode = if (project.hasProperty("versionCode")) project.property("versionCode").toString().toInt() else 34
-        versionName = if (project.hasProperty("versionName")) project.property("versionName").toString() else "3.0.0"
+        versionCode =
+            if (project.hasProperty("versionCode")) {
+                project.property("versionCode").toString().toInt()
+            } else {
+                val versionFromTag = providers.of(VersionTagSource::class.java) {}.get().trim()
+                val parts = versionFromTag.split(".")
+                val major = parts.getOrElse(0) { "0" }.toInt()
+                val minor = parts.getOrElse(1) { "0" }.toInt()
+                val patch = parts.getOrElse(2) { "0" }.toInt()
+                (major * 10000) + (minor * 100) + patch
+            }
+        versionName =
+            if (project.hasProperty("versionName")) {
+                project.property("versionName").toString()
+            } else {
+                providers.of(VersionTagSource::class.java) {}.get().trim()
+            }
 
         testInstrumentationRunner = "at.priv.graf.zazentimer.HiltTestRunner"
 
@@ -45,6 +76,10 @@ android {
     }
 
     buildTypes {
+        debug {
+            applicationIdSuffix = ".debug"
+            versionNameSuffix = "-debug"
+        }
         release {
             isMinifyEnabled = false
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")

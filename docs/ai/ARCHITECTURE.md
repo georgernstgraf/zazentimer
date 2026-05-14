@@ -11,6 +11,8 @@ ZazenTimer is an Android application for timing meditation sessions. It uses a f
 - **MeditationViewModel**: Bridges the UI and Repository; manages service binding.
 - **DbOperations**: Room database wrapper with built-in `IdlingResource` for test synchronization.
 - **ZazenClock**: Abstraction for system time to facilitate deterministic testing.
+- **BellPlayer**: Manages pooled `Audio` instances for bell playback. Receives explicit `volume: Int` parameter (volume is per-session, per bell type).
+- **BellVolumeConfigDialog**: DialogFragment in session editor for configuring per-bell-type volumes.
 
 ## Extracted Helpers (2026-05-11, #142)
 - **DemoSessionCreator** (`database/`) — Creates demo sessions on first launch; extracted from ZazenTimerActivity
@@ -47,6 +49,8 @@ ZazenTimer is an Android application for timing meditation sessions. It uses a f
 - **StateFlow** → `MeditationViewModel` → UI (Fragments).
 - **Service** → `DbOperations` (Read/Write session state).
 - **ViewModel** → `DbOperations` (Read session list/configuration).
+- **Bell Volume Flow**: Session → `bellVolumes: List<SessionBellVolume>` → `Meditation` → `BellPlayer.playBells(section, volume, ...)` → `Audio.playAbsVolume(bell, volume)`.
+- **Bell Volume Config**: `BellVolumeConfigDialog` → `DbOperations.saveBellVolumes()` → `session_bell_volumes` table.
 
 ## Knowledge Files (`docs/ai/`)
 | File | Purpose | Update mode |

@@ -76,3 +76,20 @@ Each entry documents WHAT was decided and WHY.
 - **Choice**: Removed all `abc_*` string entries from app's strings.xml and all 129 locale files.
 - **Reason**: These are AndroidX/AppCompat library strings provided by the library itself. Duplicating them was redundant and bloated translation scope.
 - **Tradeoff**: None — AndroidX provides its own translations automatically.
+
+## 2026-05-14: Zero-warning build — fix all, suppress none
+- **Choice**: Fixed all 1,186 lint warnings across 39 categories instead of suppressing or disabling them.
+- **Reason**: User explicitly requested strict approach — fix everything, no cosmetic suppression.
+- **Tradeoff**: 188 files changed (+581/-1152); deleted 19 empty resource dirs; stripped Material Design private overrides.
+
+## 2026-05-14: Bell volume per session, per unique bell type
+- **Choice**: Moved volume from per-Section to per-Session with one volume per unique bell type (bell/bellUri) per session.
+- **Reason**: Users with 12+ sections found per-section volume tedious and error-prone. Per-bell-type per-session is flexible (different volumes for different bells) without section-level overhead.
+- **Considered**: Single volume per session (simpler but loses flexibility), keep per-section (rejected as UX problem).
+- **Tradeoff**: More complex schema (new `session_bell_volumes` table); migration averages section volumes per bell type.
+
+## 2026-05-14: Avg volume migration for bell volumes
+- **Choice**: When multiple sections used the same bell with different volumes, the migration takes the average.
+- **Reason**: Average preserves the intent of all sections rather than favoring one arbitrarily.
+- **Considered**: First encountered volume (biased), maximum (favors loudest).
+- **Tradeoff**: Averaged volume may differ from any individual section's original setting.
