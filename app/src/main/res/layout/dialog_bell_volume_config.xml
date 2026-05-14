@@ -17,6 +17,15 @@
         android:padding="16dp">
 
         <TextView
+            android:id="@+id/dimming_explanation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/bell_volume_dim_explanation"
+            android:textSize="14sp"
+            android:textColor="?android:attr/textColorSecondary"
+            android:paddingBottom="12dp"/>
+
+        <TextView
             android:id="@+id/no_bells_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

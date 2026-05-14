@@ -54,7 +54,7 @@
             android:layout_below="@+id/textview_sitzung_description"
             android:inputType="text"
             android:importantForAutofill="no"/>
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/button_bell_volumes"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -65,7 +65,7 @@
             android:layout_marginTop="8dp"
             android:layout_below="@+id/text_sitzung_beschreibung"
             android:text="@string/button_bell_volumes"
-            style="@style/Widget.AppCompat.Button.Colored"/>
+            app:cornerRadius="8dp"/>
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/list"
             android:layout_width="match_parent"
