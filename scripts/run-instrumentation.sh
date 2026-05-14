@@ -202,14 +202,20 @@ else
             de.gaffga.android.zazentimer \
             de.gaffga.android.zazentimer.test \
             at.priv.graf.zazentimer \
-            at.priv.graf.zazentimer.test; do
+            at.priv.graf.zazentimer.test \
+            at.priv.graf.zazentimer.debug \
+            at.priv.graf.zazentimer.debug.test; do
             adb -s "$serial" uninstall "$pkg" >/dev/null 2>&1 || true
             adb -s "$serial" shell pm uninstall --user 0 "$pkg" >/dev/null 2>&1 || true
         done
         adb -s "$serial" shell cmd package install-existing at.priv.graf.zazentimer >/dev/null 2>&1 || true
         adb -s "$serial" shell cmd package install-existing at.priv.graf.zazentimer.test >/dev/null 2>&1 || true
+        adb -s "$serial" shell cmd package install-existing at.priv.graf.zazentimer.debug >/dev/null 2>&1 || true
+        adb -s "$serial" shell cmd package install-existing at.priv.graf.zazentimer.debug.test >/dev/null 2>&1 || true
         adb -s "$serial" uninstall at.priv.graf.zazentimer >/dev/null 2>&1 || true
         adb -s "$serial" uninstall at.priv.graf.zazentimer.test >/dev/null 2>&1 || true
+        adb -s "$serial" uninstall at.priv.graf.zazentimer.debug >/dev/null 2>&1 || true
+        adb -s "$serial" uninstall at.priv.graf.zazentimer.debug.test >/dev/null 2>&1 || true
     }
 
     dismiss_anr_dialog() {
@@ -404,7 +410,7 @@ else
         for test_attempt in 1 2; do
             set +e
             instrument_output=$(adb -s "$serial" shell am instrument -w \
-                at.priv.graf.zazentimer.test/at.priv.graf.zazentimer.HiltTestRunner 2>&1)
+                at.priv.graf.zazentimer.debug.test/at.priv.graf.zazentimer.HiltTestRunner 2>&1)
             result=$?
             echo "$instrument_output"
             set -e

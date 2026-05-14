@@ -44,7 +44,7 @@ class MeditationServiceTest {
         hiltRule.inject()
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
             InstrumentationRegistry.getInstrumentation().uiAutomation.executeShellCommand(
-                "pm grant at.priv.graf.zazentimer android.permission.POST_NOTIFICATIONS",
+                "pm grant at.priv.graf.zazentimer.debug android.permission.POST_NOTIFICATIONS",
             )
         }
         IdlingRegistry.getInstance().register(meditationIdlingResource)
