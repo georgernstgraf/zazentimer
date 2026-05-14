@@ -7,7 +7,6 @@ import android.os.Build
 import android.os.Handler
 import android.os.Looper
 import android.util.Log
-import androidx.annotation.NonNull
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -25,7 +24,7 @@ import javax.inject.Inject
 class MeditationViewModel
     @Inject
     constructor(
-        @NonNull application: Application,
+        application: Application,
         private val dbOperations: DbOperations,
         private val meditationRepository: MeditationRepository,
         val wakeLockManager: WakeLockManager,

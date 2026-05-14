@@ -5,7 +5,6 @@
     <string name="about2">Orihinal na nilikha ni Stefan Gaffga. Kasalukuyang pinapanatili ni Georg Graf.&lt;br&gt;&lt;br&gt;Salamat kay Winfried ng &lt;a href="http://www.meditationsuhren.de">http://www.meditationsuhren.de&lt;/a&gt; para sa pagbibigay ng napakagandang Bell Sounds!</string>
     <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues">Mag-ulat ng mga isyu sa GitHub&lt;/a&gt;</string>
     <string name="app_description">Ang application na ito ay nagbibigay-daan sa gumagamit na tukuyin ang isang hanay ng mga sesyon ng pagmumuni-muni at nagbibigay ng isang timer na may visual at naririnig na feedback kapag ang isang bahagi o ang buong pagmumuni-muni ay tapos na.</string>
-    <string name="app_name">Zazen Meditation Timer</string>
     <string name="appbar_scrolling_view_behavior">android.support.design.widget.AppBarLayout$ScrollingViewBehavior</string>
     <string name="backup_error_text">Paumanhin, may naganap na Error habang nagse-save.</string>
     <string name="backup_no_permission">Hindi makagawa ng backup dahil sa mga nawawalang pahintulot.</string>
@@ -20,7 +19,7 @@
     <string name="bell_name_7">Tib. Mangkok, 230mm</string>
     <string name="bell_name_8">Jap. Rhinbowl, 97mm</string>
     <string name="bell_pause">Bell gap (seg)</string>
-    <string name="bell_user">Idagdag ang Bell...</string>
+    <string name="bell_user">Idagdag ang Bell…</string>
     <string name="bottom_nav_meditation">Pagninilay</string>
     <string name="bottom_nav_sessions">Mga session</string>
     <string name="bottom_sheet_behavior">android.support.design.widget.BottomSheetBehavior</string>
@@ -28,7 +27,6 @@
     <string name="but_start">Simulan ang Pagninilay</string>
     <string name="but_stop">Tumigil ka</string>
     <string name="caption_zazen_meditation">Zazen Meditation</string>
-    <string name="character_counter_pattern">%1$d / %2$d</string>
     <string name="checkbox_keep_screen_on">Panatilihing naka-on ang screen</string>
     <string name="checkbox_no_server_messages">Ipakita ang Balita</string>
     <string name="checkbox_phone_off">I-mute ang Telepono</string>
@@ -61,7 +59,7 @@
     <string name="label_section_name">Pangalan ng seksyon</string>
     <string name="label_session_description">Paglalarawan ng Sesyon</string>
     <string name="label_session_name">Pangalan ng Sesyon</string>
-    <string name="menu_about">Tungkol sa...</string>
+    <string name="menu_about">Tungkol sa…</string>
     <string name="menu_copy_session">Duplicate na Session</string>
     <string name="menu_delete_section">Tanggalin ang Seksyon</string>
     <string name="menu_delete_session">Tanggalin ang Session</string>
@@ -70,7 +68,7 @@
     <string name="menu_help">Tulong</string>
     <string name="menu_add_session">Magdagdag ng Session</string>
     <string name="menu_new_session">Bagong Sesyon</string>
-    <string name="menu_privacy">Privacy...</string>
+    <string name="menu_privacy">Privacy…</string>
     <string name="menu_settings">Mga setting</string>
     <string name="minuten">Mga minuto</string>
     <string name="no_new_server_messages">Walang available na mga bagong mensahe.</string>
@@ -138,9 +136,6 @@
     <string name="theme_desc">Piliin ang hitsura ng app</string>
     <string name="theme_light">Banayad na Tema</string>
     <string name="theme_system">Tema ng System</string>
-    <string name="theme_value_dark">dark</string>
-    <string name="theme_value_light">light</string>
-    <string name="theme_value_system">system</string>
     <string name="time_section_elapsed">Lumipas ang seksyon</string>
     <string name="time_section_remaining">Seksyon ang natitira</string>
     <string name="time_session_elapsed">Lumipas ang session</string>

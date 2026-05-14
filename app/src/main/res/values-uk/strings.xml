@@ -18,7 +18,7 @@
     <string name="bell_name_7">Тибетська чаша, 230мм</string>
     <string name="bell_name_8">Яп. чаша, 97мм</string>
     <string name="bell_pause">Пауза дзвона (сек)</string>
-    <string name="bell_user">Додати дзвін...</string>
+    <string name="bell_user">Додати дзвін…</string>
     <string name="bottom_nav_meditation">Медитація</string>
     <string name="bottom_nav_sessions">Сесії</string>
     <string name="but_pause">Пауза</string>
@@ -57,7 +57,7 @@
     <string name="label_section_name">Назва секції</string>
     <string name="label_session_description">Опис сесії</string>
     <string name="label_session_name">Назва сесії</string>
-    <string name="menu_about">Про програму...</string>
+    <string name="menu_about">Про програму…</string>
     <string name="menu_copy_session">Дублювати сесію</string>
     <string name="menu_delete_section">Видалити секцію</string>
     <string name="menu_delete_session">Видалити сесію</string>
@@ -66,7 +66,7 @@
     <string name="menu_help">Довідка</string>
     <string name="menu_add_session">Додати сесію</string>
     <string name="menu_new_session">Нова сесія</string>
-    <string name="menu_privacy">Конфіденційність...</string>
+    <string name="menu_privacy">Конфіденційність…</string>
     <string name="menu_settings">Налаштування</string>
     <string name="minuten">Хвилини</string>
     <string name="no_new_server_messages">Немає нових повідомлень.</string>

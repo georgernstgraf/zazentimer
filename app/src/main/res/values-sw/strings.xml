@@ -19,7 +19,7 @@
     <string name="bell_name_7">Tib. Bowl, 230mm</string>
     <string name="bell_name_8">Jap. Rhinbowl, 97mm</string>
     <string name="bell_pause">Nafasi ya kengele (sek)</string>
-    <string name="bell_user">Ongeza Kengele...</string>
+    <string name="bell_user">Ongeza Kengele…</string>
     <string name="bottom_nav_meditation">Tafakari</string>
     <string name="bottom_nav_sessions">Vipindi</string>
     <string name="bottom_sheet_behavior">android.support.design.widget.BottomSheetBehavior</string>
@@ -59,7 +59,7 @@
     <string name="label_section_name">Jina la Sehemu</string>
     <string name="label_session_description">Maelezo ya Kipindi</string>
     <string name="label_session_name">Jina la Kipindi</string>
-    <string name="menu_about">Kuhusu...</string>
+    <string name="menu_about">Kuhusu…</string>
     <string name="menu_copy_session">Nakili Kipindi</string>
     <string name="menu_delete_section">Futa Sehemu</string>
     <string name="menu_delete_session">Futa Kipindi</string>
@@ -68,7 +68,7 @@
     <string name="menu_help">Msaada</string>
     <string name="menu_add_session">Ongeza Kipindi</string>
     <string name="menu_new_session">Kipindi Kipya</string>
-    <string name="menu_privacy">Faragha...</string>
+    <string name="menu_privacy">Faragha…</string>
     <string name="menu_settings">Mipangilio</string>
     <string name="minuten">Dakika</string>
     <string name="no_new_server_messages">Hakuna ujumbe mpya unaopatikana.</string>

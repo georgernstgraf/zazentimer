@@ -19,7 +19,7 @@
     <string name="bell_name_7">Tib. Bowl, 230mm</string>
     <string name="bell_name_8">Jap. Rinbowl, 97mm</string>
     <string name="bell_pause">బెల్ గ్యాప్ (సెకన్లు)</string>
-    <string name="bell_user">బెల్ జోడించండి...</string>
+    <string name="bell_user">బెల్ జోడించండి…</string>
     <string name="bottom_nav_meditation">ధ్యానం</string>
     <string name="bottom_nav_sessions">సెషన్‌లు</string>
     <string name="bottom_sheet_behavior">android.support.design.widget.BottomSheetBehavior</string>
@@ -59,7 +59,7 @@
     <string name="label_section_name">విభాగం పేరు</string>
     <string name="label_session_description">సెషన్ వివరణ</string>
     <string name="label_session_name">సెషన్ పేరు</string>
-    <string name="menu_about">గురించి...</string>
+    <string name="menu_about">గురించి…</string>
     <string name="menu_copy_session">సెషన్‌ను నకిలీ చేయండి</string>
     <string name="menu_delete_section">విభాగాన్ని తొలగించండి</string>
     <string name="menu_delete_session">సెషన్‌ను తొలగించండి</string>
@@ -68,7 +68,7 @@
     <string name="menu_help">సహాయం</string>
     <string name="menu_add_session">సెషన్‌ను జోడించండి</string>
     <string name="menu_new_session">కొత్త సెషన్</string>
-    <string name="menu_privacy">గోప్యత...</string>
+    <string name="menu_privacy">గోప్యత…</string>
     <string name="menu_settings">సెట్టింగ్‌లు</string>
     <string name="minuten">నిమిషాలు</string>
     <string name="no_new_server_messages">కొత్త సందేశాలు అందుబాటులో లేవు.</string>

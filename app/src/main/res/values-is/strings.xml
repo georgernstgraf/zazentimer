@@ -5,7 +5,6 @@
     <string name="about2">Upphaflega búið til af Stefan Gaffga. Núverandi viðhaldið af Georg Graf.&lt;br&gt;&lt;br&gt;Þökk sé Winfried frá &lt;a href="http://www.meditationsuhren.de">http://www.meditationsuhren.de&lt;/a&gt; fyrir að veita svo frábæra bjölluhljóð!</string>
     <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues">Tilkynna vandamál á GitHub&lt;/a&gt;</string>
     <string name="app_description">Þetta forrit gerir notandanum kleift að skilgreina sett af hugleiðslulotum og veitir tímamæli með sjónrænum og heyranlegum endurgjöf þegar hluta eða allri hugleiðslu er lokið.</string>
-    <string name="app_name">Zazen Meditation Timer</string>
     <string name="appbar_scrolling_view_behavior">android.support.design.widget.AppBarLayout$ScrollingViewBehavior</string>
     <string name="backup_error_text">Því miður kom upp villa við vistun.</string>
     <string name="backup_no_permission">Gat ekki búið til öryggisafrit vegna heimilda sem vantar.</string>
@@ -20,7 +19,7 @@
     <string name="bell_name_7">Tib. Skál, 230 mm</string>
     <string name="bell_name_8">Jap. Rhinbowl, 97mm</string>
     <string name="bell_pause">Bjöllubil (sek)</string>
-    <string name="bell_user">Bæta við bjöllu...</string>
+    <string name="bell_user">Bæta við bjöllu…</string>
     <string name="bottom_nav_meditation">Hugleiðsla</string>
     <string name="bottom_nav_sessions">Fundir</string>
     <string name="bottom_sheet_behavior">android.support.design.widget.BottomSheetBehavior</string>
@@ -28,7 +27,6 @@
     <string name="but_start">Byrjaðu hugleiðslu</string>
     <string name="but_stop">Hættu</string>
     <string name="caption_zazen_meditation">Zazen hugleiðsla</string>
-    <string name="character_counter_pattern">%1$d / %2$d</string>
     <string name="checkbox_keep_screen_on">Haltu skjánum á</string>
     <string name="checkbox_no_server_messages">Sýna fréttir</string>
     <string name="checkbox_phone_off">Slökkva á síma</string>
@@ -61,7 +59,7 @@
     <string name="label_section_name">Heiti hluta</string>
     <string name="label_session_description">Lýsing á fundi</string>
     <string name="label_session_name">Nafn fundar</string>
-    <string name="menu_about">Um...</string>
+    <string name="menu_about">Um…</string>
     <string name="menu_copy_session">Afrit af fundi</string>
     <string name="menu_delete_section">Eyða hluta</string>
     <string name="menu_delete_session">Eyða lotu</string>
@@ -70,7 +68,7 @@
     <string name="menu_help">Hjálp</string>
     <string name="menu_add_session">Bæta við lotu</string>
     <string name="menu_new_session">Nýtt þing</string>
-    <string name="menu_privacy">Persónuvernd...</string>
+    <string name="menu_privacy">Persónuvernd…</string>
     <string name="menu_settings">Stillingar</string>
     <string name="minuten">Fundargerð</string>
     <string name="no_new_server_messages">Engin ný skilaboð í boði.</string>
@@ -138,9 +136,6 @@
     <string name="theme_desc">Veldu útlit appsins</string>
     <string name="theme_light">Létt þema</string>
     <string name="theme_system">Kerfisþema</string>
-    <string name="theme_value_dark">dark</string>
-    <string name="theme_value_light">light</string>
-    <string name="theme_value_system">system</string>
     <string name="time_section_elapsed">Kafli liðinn</string>
     <string name="time_section_remaining">Hluti eftir</string>
     <string name="time_session_elapsed">Fundur liðinn</string>

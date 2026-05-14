@@ -19,7 +19,7 @@
     <string name="bell_name_7">西藏颂钵，230mm</string>
     <string name="bell_name_8">日本铃，97mm</string>
     <string name="bell_pause">铃声间隔 (秒)</string>
-    <string name="bell_user">添加铃声...</string>
+    <string name="bell_user">添加铃声…</string>
     <string name="bottom_nav_meditation">冥想</string>
     <string name="bottom_nav_sessions">课程</string>
     <string name="bottom_sheet_behavior">android.support.design.widget.BottomSheetBehavior</string>
@@ -59,7 +59,7 @@
     <string name="label_section_name">阶段名称</string>
     <string name="label_session_description">课程描述</string>
     <string name="label_session_name">课程名称</string>
-    <string name="menu_about">关于...</string>
+    <string name="menu_about">关于…</string>
     <string name="menu_copy_session">复制课程</string>
     <string name="menu_delete_section">删除阶段</string>
     <string name="menu_delete_session">删除课程</string>
@@ -68,7 +68,7 @@
     <string name="menu_help">帮助</string>
     <string name="menu_add_session">添加课程</string>
     <string name="menu_new_session">新课程</string>
-    <string name="menu_privacy">隐私...</string>
+    <string name="menu_privacy">隐私…</string>
     <string name="menu_settings">设置</string>
     <string name="minuten">分钟</string>
     <string name="no_new_server_messages">没有可用的新消息。</string>

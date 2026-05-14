@@ -19,7 +19,7 @@
     <string name="bell_name_7">ടിബ്. ബൗൾ, 230mm</string>
     <string name="bell_name_8">ജാപ്. റൈൻബൗൾ, 97mm</string>
     <string name="bell_pause">മണി ഇടവേള (സെക്കൻഡ്)</string>
-    <string name="bell_user">മണി ചേർക്കുക...</string>
+    <string name="bell_user">മണി ചേർക്കുക…</string>
     <string name="bottom_nav_meditation">ധ്യാനം</string>
     <string name="bottom_nav_sessions">സെഷനുകൾ</string>
     <string name="bottom_sheet_behavior">android.support.design.widget.BottomSheetBehavior</string>
@@ -59,7 +59,7 @@
     <string name="label_section_name">വിഭാഗത്തിൻ്റെ പേര്</string>
     <string name="label_session_description">സെഷൻ വിവരണം</string>
     <string name="label_session_name">സെഷൻ്റെ പേര്</string>
-    <string name="menu_about">കുറിച്ച്...</string>
+    <string name="menu_about">കുറിച്ച്…</string>
     <string name="menu_copy_session">സെഷൻ പകർത്തുക</string>
     <string name="menu_delete_section">വിഭാഗം ഇല്ലാതാക്കുക</string>
     <string name="menu_delete_session">സെഷൻ ഇല്ലാതാക്കുക</string>
@@ -68,7 +68,7 @@
     <string name="menu_help">സഹായം</string>
     <string name="menu_add_session">സെഷൻ ചേർക്കുക</string>
     <string name="menu_new_session">പുതിയ സെഷൻ</string>
-    <string name="menu_privacy">സ്വകാര്യത...</string>
+    <string name="menu_privacy">സ്വകാര്യത…</string>
     <string name="menu_settings">ക്രമീകരണങ്ങൾ</string>
     <string name="minuten">മിനിറ്റുകൾ</string>
     <string name="no_new_server_messages">പുതിയ സന്ദേശങ്ങളൊന്നുമില്ല.</string>

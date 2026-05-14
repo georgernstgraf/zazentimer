@@ -5,7 +5,6 @@
     <string name="about2">Аввалан аз ҷониби Стефан Гаффга офарида шудааст. Айни замон аз ҷониби Георг Граф нигоҳдорӣ мешавад.&lt;br&gt;&lt;br&gt;Ташаккур ба Винфрид аз &lt;a href="http://www.meditationsuhren.de">http://www.meditationsuhren.de&lt;/a&gt; барои пешниҳоди чунин садоҳои олии занг!</string>
     <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues">Масъалаҳоро дар GitHub гузориш диҳед&lt;/a&gt;</string>
     <string name="app_description">Ин барнома ба корбар имкон медиҳад, ки маҷмӯи сеансҳои мулоҳизаро муайян кунад ва ҳангоми ба итмом расидани як қисм ё тамоми медитатсия таймерро бо фикру мулоҳизаҳои визуалӣ ва садоӣ таъмин кунад.</string>
-    <string name="app_name">Zazen Meditation Timer</string>
     <string name="appbar_scrolling_view_behavior">android.support.design.widget.AppBarLayout$ScrollingViewBehavior</string>
     <string name="backup_error_text">Бубахшед, ҳангоми захиракунӣ хатогӣ рӯй дод.</string>
     <string name="backup_no_permission">Бо сабаби набудани иҷозатҳо нусхаи эҳтиётӣ эҷод карда натавонист.</string>
@@ -20,7 +19,7 @@
     <string name="bell_name_7">Тиб. Коса, 230мм</string>
     <string name="bell_name_8">Япония. Ринбоул, 97мм</string>
     <string name="bell_pause">Фосилаи занг (сония)</string>
-    <string name="bell_user">Илова кардани Белл...</string>
+    <string name="bell_user">Илова кардани Белл…</string>
     <string name="bottom_nav_meditation">Медитация</string>
     <string name="bottom_nav_sessions">Сеансхо</string>
     <string name="bottom_sheet_behavior">android.support.design.widget.BottomSheetBehavior</string>
@@ -28,7 +27,6 @@
     <string name="but_start">Медитацияро оғоз кунед</string>
     <string name="but_stop">Ист</string>
     <string name="caption_zazen_meditation">Медитацияи Зазен</string>
-    <string name="character_counter_pattern">%1$d / %2$d</string>
     <string name="checkbox_keep_screen_on">Экранро фаъол нигоҳ доред</string>
     <string name="checkbox_no_server_messages">Намоиши Ахбор</string>
     <string name="checkbox_phone_off">Хомӯш кардани телефон</string>
@@ -61,7 +59,7 @@
     <string name="label_section_name">Номи бахш</string>
     <string name="label_session_description">Тавсифи сессия</string>
     <string name="label_session_name">Номи сессия</string>
-    <string name="menu_about">Дар бораи...</string>
+    <string name="menu_about">Дар бораи…</string>
     <string name="menu_copy_session">Сеанси такрорӣ</string>
     <string name="menu_delete_section">Қисмро нест кунед</string>
     <string name="menu_delete_session">Сессияро нест кунед</string>
@@ -70,7 +68,7 @@
     <string name="menu_help">Кӯмак</string>
     <string name="menu_add_session">Илова кардани сессия</string>
     <string name="menu_new_session">Сессияи нав</string>
-    <string name="menu_privacy">Махфият...</string>
+    <string name="menu_privacy">Махфият…</string>
     <string name="menu_settings">Танзимотҳо</string>
     <string name="minuten">Дакикахо</string>
     <string name="no_new_server_messages">Паёмҳои нав дастрас нестанд.</string>
@@ -138,9 +136,6 @@
     <string name="theme_desc">Намуди барномаро интихоб кунед</string>
     <string name="theme_light">Мавзӯи сабук</string>
     <string name="theme_system">Мавзӯи система</string>
-    <string name="theme_value_dark">dark</string>
-    <string name="theme_value_light">light</string>
-    <string name="theme_value_system">system</string>
     <string name="time_section_elapsed">Бахш гузашт</string>
     <string name="time_section_remaining">Қисми боқимонда</string>
     <string name="time_session_elapsed">Сессия гузашт</string>

@@ -5,7 +5,6 @@
     <string name="about2">Originally kreye pa Stefan Gaffga. Aktyèlman konsève pa Georg Graf.&lt;br&gt;&lt;br&gt;Mèsi a Winfried nan &lt;a href="http://www.meditationsuhren.de">http://www.meditationsuhren.de&lt;/a&gt; pou bay gwo son Bell!</string>
     <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues">Rapòte pwoblèm sou GitHub&lt;/a&gt;</string>
     <string name="app_description">Aplikasyon sa a pèmèt itilizatè a defini yon seri sesyon meditasyon epi li bay yon revèy ak fidbak vizyèl ak oditif lè yon pati oswa tout meditasyon an fini.</string>
-    <string name="app_name">Zazen Meditation Timer</string>
     <string name="appbar_scrolling_view_behavior">android.support.design.widget.AppBarLayout$ScrollingViewBehavior</string>
     <string name="backup_error_text">Padon, yon Erè ki te fèt pandan y ap sove.</string>
     <string name="backup_no_permission">Pa t \'kapab kreye backup akòz otorizasyon ki manke.</string>
@@ -20,7 +19,7 @@
     <string name="bell_name_7">Tib. Bòl, 230mm</string>
     <string name="bell_name_8">Jap. Rhinbowl, 97mm</string>
     <string name="bell_pause">Gap klòch (seg)</string>
-    <string name="bell_user">Ajoute Bell...</string>
+    <string name="bell_user">Ajoute Bell…</string>
     <string name="bottom_nav_meditation">Meditasyon</string>
     <string name="bottom_nav_sessions">Sesyon yo</string>
     <string name="bottom_sheet_behavior">android.support.design.widget.BottomSheetBehavior</string>
@@ -28,7 +27,6 @@
     <string name="but_start">Kòmanse Meditasyon</string>
     <string name="but_stop">Sispann</string>
     <string name="caption_zazen_meditation">Zazen Meditasyon</string>
-    <string name="character_counter_pattern">%1$d / %2$d</string>
     <string name="checkbox_keep_screen_on">Kenbe ekran an limen</string>
     <string name="checkbox_no_server_messages">Montre Nouvèl</string>
     <string name="checkbox_phone_off">Telefòn bèbè</string>
@@ -61,7 +59,7 @@
     <string name="label_section_name">Non seksyon</string>
     <string name="label_session_description">Deskripsyon sesyon</string>
     <string name="label_session_name">Non Sesyon</string>
-    <string name="menu_about">Konsènan...</string>
+    <string name="menu_about">Konsènan…</string>
     <string name="menu_copy_session">Sesyon kopi</string>
     <string name="menu_delete_section">Efase Seksyon</string>
     <string name="menu_delete_session">Efase Sesyon</string>
@@ -70,7 +68,7 @@
     <string name="menu_help">Ede</string>
     <string name="menu_add_session">Ajoute Sesyon</string>
     <string name="menu_new_session">Nouvo Sesyon</string>
-    <string name="menu_privacy">Konfidansyalite...</string>
+    <string name="menu_privacy">Konfidansyalite…</string>
     <string name="menu_settings">Anviwònman</string>
     <string name="minuten">Minit</string>
     <string name="no_new_server_messages">Pa gen nouvo mesaj ki disponib.</string>
@@ -138,9 +136,6 @@
     <string name="theme_desc">Chwazi aparans aplikasyon an</string>
     <string name="theme_light">Tèm limyè</string>
     <string name="theme_system">Tèm sistèm</string>
-    <string name="theme_value_dark">dark</string>
-    <string name="theme_value_light">light</string>
-    <string name="theme_value_system">system</string>
     <string name="time_section_elapsed">Seksyon pase</string>
     <string name="time_section_remaining">Seksyon ki rete</string>
     <string name="time_session_elapsed">Sesyon pase</string>

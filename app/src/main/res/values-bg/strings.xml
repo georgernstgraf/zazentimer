@@ -18,7 +18,7 @@
     <string name="bell_name_7">Тибетска купа, 230мм</string>
     <string name="bell_name_8">Яп. купа, 97мм</string>
     <string name="bell_pause">Пауза на камбаната (сек)</string>
-    <string name="bell_user">Добавяне на камбана...</string>
+    <string name="bell_user">Добавяне на камбана…</string>
     <string name="bottom_nav_meditation">Медитация</string>
     <string name="bottom_nav_sessions">Сесии</string>
     <string name="but_pause">Пауза</string>
@@ -57,7 +57,7 @@
     <string name="label_section_name">Име на секцията</string>
     <string name="label_session_description">Описание на сесията</string>
     <string name="label_session_name">Име на сесията</string>
-    <string name="menu_about">За приложението...</string>
+    <string name="menu_about">За приложението…</string>
     <string name="menu_copy_session">Дублиране на сесията</string>
     <string name="menu_delete_section">Изтриване на секцията</string>
     <string name="menu_delete_session">Изтриване на сесията</string>
@@ -66,7 +66,7 @@
     <string name="menu_help">Помощ</string>
     <string name="menu_add_session">Добавяне на сесия</string>
     <string name="menu_new_session">Нова сесия</string>
-    <string name="menu_privacy">Поверителност...</string>
+    <string name="menu_privacy">Поверителност…</string>
     <string name="menu_settings">Настройки</string>
     <string name="minuten">Минути</string>
     <string name="no_new_server_messages">Няма нови съобщения.</string>

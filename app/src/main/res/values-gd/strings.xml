@@ -5,7 +5,6 @@
     <string name="about2">Chaidh a chruthachadh an toiseach le Stefan Gaffga. Air a chumail suas le Georg Graf an-dràsta.&lt;br&gt;&lt;br&gt;Taing do Winfried bho &lt;a href="http://www.meditationsuhren.de">http://www.meditationsuhren.de&lt;/a&gt; airson Bell Sounds cho math a thoirt seachad!</string>
     <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues">Dèan aithris air cùisean air GitHub&lt;/a&gt;</string>
     <string name="app_description">Leigidh an aplacaid seo leis an neach-cleachdaidh seata de sheiseanan meòrachaidh a mhìneachadh agus bheir e fios air ais lèirsinneach is cluinntinn dha timer nuair a bhios pàirt no am meòrachadh gu lèir seachad.</string>
-    <string name="app_name">Zazen Meditation Timer</string>
     <string name="appbar_scrolling_view_behavior">android.support.design.widget.AppBarLayout$ScrollingViewBehavior</string>
     <string name="backup_error_text">Duilich, thachair mearachd fhad \'s a bha sinn a\' sàbhaladh.</string>
     <string name="backup_no_permission">Cha b\' urrainn dhuinn lethbhreac-glèidhidh a chruthachadh air sgàth \'s gu bheil ceadan a dhìth.</string>
@@ -20,7 +19,7 @@
     <string name="bell_name_7">Tib. bobhla, 230mm</string>
     <string name="bell_name_8">Jap. bogha-frois, 97mm</string>
     <string name="bell_pause">Beàrn clag (diog)</string>
-    <string name="bell_user">Cuir Bell ris...</string>
+    <string name="bell_user">Cuir Bell ris…</string>
     <string name="bottom_nav_meditation">Meòrachadh</string>
     <string name="bottom_nav_sessions">Seiseanan</string>
     <string name="bottom_sheet_behavior">android.support.design.widget.BottomSheetBehaviour</string>
@@ -28,7 +27,6 @@
     <string name="but_start">Tòisich meditation</string>
     <string name="but_stop">Stad</string>
     <string name="caption_zazen_meditation">Zazen Meditation</string>
-    <string name="character_counter_pattern">%1$d / %2$d</string>
     <string name="checkbox_keep_screen_on">Cùm an sgrion air</string>
     <string name="checkbox_no_server_messages">Seall Naidheachdan</string>
     <string name="checkbox_phone_off">Mute fòn</string>
@@ -61,7 +59,7 @@
     <string name="label_section_name">Ainm na roinne</string>
     <string name="label_session_description">Tuairisgeul an t-Seisein</string>
     <string name="label_session_name">Ainm an t-Seisein</string>
-    <string name="menu_about">Mu dheidhinn...</string>
+    <string name="menu_about">Mu dheidhinn…</string>
     <string name="menu_copy_session">Seisean dùblaichte</string>
     <string name="menu_delete_section">Sguab às Earrann</string>
     <string name="menu_delete_session">Sguab às an t-Seisean</string>
@@ -70,7 +68,7 @@
     <string name="menu_help">Cuideachadh</string>
     <string name="menu_add_session">Cuir Seisean ris</string>
     <string name="menu_new_session">Seisean Ùr</string>
-    <string name="menu_privacy">Prìobhaideachd...</string>
+    <string name="menu_privacy">Prìobhaideachd…</string>
     <string name="menu_settings">Suidhichidhean</string>
     <string name="minuten">Mionaidean</string>
     <string name="no_new_server_messages">Chan eil teachdaireachdan ùra rim faighinn.</string>
@@ -138,9 +136,6 @@
     <string name="theme_desc">Tagh coltas an aplacaid</string>
     <string name="theme_light">Cuspair Solais</string>
     <string name="theme_system">Cuspair an t-siostam</string>
-    <string name="theme_value_dark">dark</string>
-    <string name="theme_value_light">light</string>
-    <string name="theme_value_system">system</string>
     <string name="time_section_elapsed">Chaidh earrann seachad</string>
     <string name="time_section_remaining">Earrann air fhàgail</string>
     <string name="time_session_elapsed">Chaidh an seisean seachad</string>

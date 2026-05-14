@@ -5,7 +5,6 @@
     <string name="about2">मूलतः Stefan Gaffga इत्यनेन निर्मितम् । सम्प्रति Georg Graf द्वारा परिपालितम्।&lt;br&gt;&lt;br&gt;एतादृशान् महान् Bell Sounds प्रदातुं &lt;a href="http://www.meditationsuhren.de">http://www.meditationsuhren.de&lt;/a&gt; इत्यस्य Winfried इत्यस्य धन्यवादः!</string>
     <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues">GitHub इत्यत्र समस्यानां प्रतिवेदनं&lt;/a&gt;</string>
     <string name="app_description">एतत् अनुप्रयोगं उपयोक्तारं ध्यानसत्रस्य समुच्चयं परिभाषितुं शक्नोति तथा च यदा कश्चन भागः अथवा सम्पूर्णं ध्यानं समाप्तं भवति तदा दृश्यश्रव्यप्रतिक्रिया सह समयनिर्धारकं प्रदाति</string>
-    <string name="app_name">Zazen Meditation Timer</string>
     <string name="appbar_scrolling_view_behavior">android.support.design.widget.AppBarLayout $ स्क्रॉल दृश्यव्यवहार</string>
     <string name="backup_error_text">क्षम्यतां, रक्षणकाले त्रुटिः अभवत् ।</string>
     <string name="backup_no_permission">अनुमतानाम् अभावात् बैकअप निर्मातुं न शक्तवान् ।</string>
@@ -20,7 +19,7 @@
     <string name="bell_name_7">तिब्. कटोरा, 230मिमी</string>
     <string name="bell_name_8">जप । राइनबोल, 97 मिमी</string>
     <string name="bell_pause">घण्टा अन्तराल (सेक) २.</string>
-    <string name="bell_user">Add Bell...</string>
+    <string name="bell_user">Add Bell…</string>
     <string name="bottom_nav_meditation">ध्यानं</string>
     <string name="bottom_nav_sessions">सत्रम्</string>
     <string name="bottom_sheet_behavior">android.समर्थन.डिजाइन.विजेट.नीचपत्रव्यवहार</string>
@@ -28,7 +27,6 @@
     <string name="but_start">ध्यानं आरभत</string>
     <string name="but_stop">विरमतु</string>
     <string name="caption_zazen_meditation">ज़ाज़ेन ध्यान</string>
-    <string name="character_counter_pattern">%1$d / %2$d</string>
     <string name="checkbox_keep_screen_on">स्क्रीन चालू कुर्वन्तु</string>
     <string name="checkbox_no_server_messages">Show News</string>
     <string name="checkbox_phone_off">म्यूट फ़ोन</string>
@@ -56,12 +54,12 @@
     <string name="desc_no_server_messages">यदा App आरभ्यते तदा स्वयमेव News दर्शयन्तु</string>
     <string name="error_checking_for_server_messages">नूतनसन्देशान् आनयितुं त्रुटिः।</string>
     <string name="gong_type">गोंग ध्वनि</string>
-    <string name="help_sectionlist_text">अत्र भवान् स्वस्य Session इत्यस्य सामग्रीं नामकरणं, वर्णनं, सम्पादनं च कर्तुं शक्नोति ।\n\nपुनर्क्रमणम्\nवस्तूनि पुनः क्रमयितुं, कस्यचित् द्रव्यस्य उपरि दीर्घकालं यावत् नुदन्तु तथा च...\nतस्य नूतनस्थानं प्रति कर्षन्तु।\n\nविलोपनम्\nद्रव्यं विलोपयितुं तत् दक्षिणतः चालयन्तु ।\n\nसम्पादन\nविभागं सम्पादयितुं केवलं एकवारं स्पृशन्तु ।\n\nसंयोजयति\nनूतनं विभागं योजयितुं + बटनं नुदन्तु ।</string>
+    <string name="help_sectionlist_text">अत्र भवान् स्वस्य Session इत्यस्य सामग्रीं नामकरणं, वर्णनं, सम्पादनं च कर्तुं शक्नोति ।\n\nपुनर्क्रमणम्\nवस्तूनि पुनः क्रमयितुं, कस्यचित् द्रव्यस्य उपरि दीर्घकालं यावत् नुदन्तु तथा च…\nतस्य नूतनस्थानं प्रति कर्षन्तु।\n\nविलोपनम्\nद्रव्यं विलोपयितुं तत् दक्षिणतः चालयन्तु ।\n\nसम्पादन\nविभागं सम्पादयितुं केवलं एकवारं स्पृशन्तु ।\n\nसंयोजयति\nनूतनं विभागं योजयितुं + बटनं नुदन्तु ।</string>
     <string name="help_sectionlist_title">सम्पादन सत्र</string>
     <string name="label_section_name">खण्डनाम</string>
     <string name="label_session_description">सत्रविवरणम्</string>
     <string name="label_session_name">सत्रनाम</string>
-    <string name="menu_about">विषये...</string>
+    <string name="menu_about">विषये…</string>
     <string name="menu_copy_session">डुप्लिकेट सत्र</string>
     <string name="menu_delete_section">खण्डं विलोपयतु</string>
     <string name="menu_delete_session">सत्रं विलोपयन्तु</string>
@@ -70,7 +68,7 @@
     <string name="menu_help">साहाय्यम्‌</string>
     <string name="menu_add_session">सत्रं योजयतु</string>
     <string name="menu_new_session">नव सत्र</string>
-    <string name="menu_privacy">निजता...</string>
+    <string name="menu_privacy">निजता…</string>
     <string name="menu_settings">सेटिंग्स्</string>
     <string name="minuten">पन्चनिमेषः</string>
     <string name="no_new_server_messages">न नूतनाः सन्देशाः उपलभ्यन्ते।</string>
@@ -138,9 +136,6 @@
     <string name="theme_desc">एप् स्वरूपं चिनोतु</string>
     <string name="theme_light">प्रकाश विषयः</string>
     <string name="theme_system">प्रणाली विषयः</string>
-    <string name="theme_value_dark">dark</string>
-    <string name="theme_value_light">light</string>
-    <string name="theme_value_system">system</string>
     <string name="time_section_elapsed">खण्डः व्यतीतः</string>
     <string name="time_section_remaining">खण्डः अवशिष्टः</string>
     <string name="time_session_elapsed">सत्रं व्यतीतम्</string>

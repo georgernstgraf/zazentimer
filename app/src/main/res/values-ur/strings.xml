@@ -19,7 +19,7 @@
     <string name="bell_name_7">Tib. Bowl, 230mm</string>
     <string name="bell_name_8">Jap. Rhinbowl, 97mm</string>
     <string name="bell_pause">گھنٹی کا وقفہ (سیکنڈ)</string>
-    <string name="bell_user">گھنٹی شامل کریں...</string>
+    <string name="bell_user">گھنٹی شامل کریں…</string>
     <string name="bottom_nav_meditation">مراقبہ</string>
     <string name="bottom_nav_sessions">سیشنز</string>
     <string name="bottom_sheet_behavior">android.support.design.widget.BottomSheetBehavior</string>
@@ -59,7 +59,7 @@
     <string name="label_section_name">سیکشن کا نام</string>
     <string name="label_session_description">سیشن کی تفصیل</string>
     <string name="label_session_name">سیشن کا نام</string>
-    <string name="menu_about">کے بارے میں...</string>
+    <string name="menu_about">کے بارے میں…</string>
     <string name="menu_copy_session">ڈپلیکیٹ سیشن</string>
     <string name="menu_delete_section">سیکشن کو حذف کریں</string>
     <string name="menu_delete_session">سیشن کو حذف کریں</string>
@@ -68,7 +68,7 @@
     <string name="menu_help">مدد</string>
     <string name="menu_add_session">سیشن شامل کریں</string>
     <string name="menu_new_session">نیا سیشن</string>
-    <string name="menu_privacy">رازداری...</string>
+    <string name="menu_privacy">رازداری…</string>
     <string name="menu_settings">ترتیبات</string>
     <string name="minuten">منٹس</string>
     <string name="no_new_server_messages">کوئی نیا پیغام دستیاب نہیں۔</string>

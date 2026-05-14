@@ -5,7 +5,6 @@
     <string name="about2">Originally created by Stefan Gaffga. Currently maintained by Georg Graf.&lt;br&gt;&lt;br&gt;Thanks to Winfried of &lt;a href="http://www.meditationsuhren.de">http://www.meditationsuhren.de&lt;/a&gt; for providing such great Bell Sounds!</string>
     <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues">Report issues on GitHub&lt;/a&gt;</string>
     <string name="app_description">This application lets the user define a set of meditation sessions and provides a timer with visual and audible feedback when a part or the whole meditation is over.</string>
-    <string name="app_name">Zazen Meditation Timer</string>
     <string name="appbar_scrolling_view_behavior">android.support.design.widget.AppBarLayout$ScrollingViewBehavior</string>
     <string name="backup_error_text">На жаль, падчас захавання адбылася памылка.</string>
     <string name="backup_no_permission">Немагчыма стварыць рэзервовую копію з-за адсутнасці дазволаў.</string>
@@ -20,7 +19,7 @@
     <string name="bell_name_7">Tib. Bowl, 230mm</string>
     <string name="bell_name_8">Jap. Rhinbowl, 97mm</string>
     <string name="bell_pause">Разрыў у званок (с)</string>
-    <string name="bell_user">Дадаць звон...</string>
+    <string name="bell_user">Дадаць звон…</string>
     <string name="bottom_nav_meditation">Медытацыя</string>
     <string name="bottom_nav_sessions">Сесіі</string>
     <string name="bottom_sheet_behavior">android.support.design.widget.BottomSheetBehavior</string>
@@ -28,7 +27,6 @@
     <string name="but_start">Пачаць медытацыю</string>
     <string name="but_stop">Стоп</string>
     <string name="caption_zazen_meditation">Медытацыя дзадзен</string>
-    <string name="character_counter_pattern">%1$d / %2$d</string>
     <string name="checkbox_keep_screen_on">Трымаць экран уключаным</string>
     <string name="checkbox_no_server_messages">Паказаць навіны</string>
     <string name="checkbox_phone_off">Выключыць тэлефон</string>
@@ -61,7 +59,7 @@
     <string name="label_section_name">Назва раздзела</string>
     <string name="label_session_description">Апісанне сесіі</string>
     <string name="label_session_name">Назва сеансу</string>
-    <string name="menu_about">Пра...</string>
+    <string name="menu_about">Пра…</string>
     <string name="menu_copy_session">Дублікат сеанса</string>
     <string name="menu_delete_section">Выдаліць раздзел</string>
     <string name="menu_delete_session">Выдаліць сеанс</string>
@@ -70,7 +68,7 @@
     <string name="menu_help">Даведка</string>
     <string name="menu_add_session">Дадаць сесію</string>
     <string name="menu_new_session">Новая сесія</string>
-    <string name="menu_privacy">Канфідэнцыяльнасць...</string>
+    <string name="menu_privacy">Канфідэнцыяльнасць…</string>
     <string name="menu_settings">Налады</string>
     <string name="minuten">хвіліны</string>
     <string name="no_new_server_messages">Новых паведамленняў няма.</string>
@@ -138,9 +136,6 @@
     <string name="theme_desc">Выберыце светлы або цёмны выгляд праграмы</string>
     <string name="theme_light">Светлая тэма</string>
     <string name="theme_system">Сістэмная тэма</string>
-    <string name="theme_value_dark">dark</string>
-    <string name="theme_value_light">light</string>
-    <string name="theme_value_system">system</string>
     <string name="time_section_elapsed">Раздзел прайшоў</string>
     <string name="time_section_remaining">Раздзел застаўся</string>
     <string name="time_session_elapsed">Сеанс скончыўся</string>

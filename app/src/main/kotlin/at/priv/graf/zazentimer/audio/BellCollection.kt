@@ -2,7 +2,7 @@ package at.priv.graf.zazentimer.audio
 
 import android.content.Context
 import android.net.Uri
-import androidx.annotation.Nullable
+import androidx.core.net.toUri
 import at.priv.graf.zazentimer.R
 import at.priv.graf.zazentimer.bo.Bell
 import at.priv.graf.zazentimer.bo.Section
@@ -93,14 +93,13 @@ object BellCollection {
     private fun getPredefinedBellUri(
         context: Context,
         i: Int,
-    ): Uri = Uri.parse("android.resource://${context.packageName}/$i")
+    ): Uri = "android.resource://${context.packageName}/$i".toUri()
 
     private fun getCustomBellUri(
         context: Context,
         str: String,
-    ): Uri = Uri.parse("file://${context.filesDir}/$str")
+    ): Uri = "file://${context.filesDir}/$str".toUri()
 
-    @Nullable
     @JvmStatic
     fun getBell(str: String): Bell? {
         for (bell in this.bells) {

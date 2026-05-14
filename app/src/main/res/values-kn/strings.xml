@@ -19,7 +19,7 @@
     <string name="bell_name_7">ಟಿಬ್. ಬೌಲ್, 230mm</string>
     <string name="bell_name_8">ಜ್ಯಾಪ್. ರೈನ್‌ಬೌಲ್, 97mm</string>
     <string name="bell_pause">ಬೆಲ್ ಅಂತರ (ಸೆಕೆಂಡುಗಳು)</string>
-    <string name="bell_user">ಬೆಲ್ ಸೇರಿಸಿ...</string>
+    <string name="bell_user">ಬೆಲ್ ಸೇರಿಸಿ…</string>
     <string name="bottom_nav_meditation">ಧ್ಯಾನ</string>
     <string name="bottom_nav_sessions">ಸೆಷನ್‌ಗಳು</string>
     <string name="bottom_sheet_behavior">android.support.design.widget.BottomSheetBehavior</string>
@@ -59,7 +59,7 @@
     <string name="label_section_name">ವಿಭಾಗದ ಹೆಸರು</string>
     <string name="label_session_description">ಸೆಷನ್ ವಿವರಣೆ</string>
     <string name="label_session_name">ಸೆಷನ್ ಹೆಸರು</string>
-    <string name="menu_about">ಬಗ್ಗೆ...</string>
+    <string name="menu_about">ಬಗ್ಗೆ…</string>
     <string name="menu_copy_session">ಸೆಷನ್ ನಕಲಿಸಿ</string>
     <string name="menu_delete_section">ವಿಭಾಗವನ್ನು ಅಳಿಸಿ</string>
     <string name="menu_delete_session">ಸೆಷನ್ ಅಳಿಸಿ</string>
@@ -68,7 +68,7 @@
     <string name="menu_help">ಸಹಾಯ</string>
     <string name="menu_add_session">ಸೆಷನ್ ಸೇರಿಸಿ</string>
     <string name="menu_new_session">ಹೊಸ ಸೆಷನ್</string>
-    <string name="menu_privacy">ಗೌಪ್ಯತೆ...</string>
+    <string name="menu_privacy">ಗೌಪ್ಯತೆ…</string>
     <string name="menu_settings">ಸೆಟ್ಟಿಂಗ್‌ಗಳು</string>
     <string name="minuten">ನಿಮಿಷಗಳು</string>
     <string name="no_new_server_messages">ಯಾವುದೇ ಹೊಸ ಸಂದೇಶಗಳು ಲಭ್ಯವಿಲ್ಲ.</string>

@@ -5,7 +5,6 @@
     <string name="about2">Poyamba adapangidwa ndi Stefan Gaffga. Pano ikusamalidwa ndi a Georg Graf.&lt;br&gt;&lt;br&gt;Zikomo kwa Winfried wa &lt;a href="http://www.meditationsuhren.de">http://www.meditationsuhren.de&lt;/a&gt; popereka Maphokoso abwino kwambiri a Bell!</string>
     <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues">Nenani za zovuta pa GitHub&lt;/a&gt;</string>
     <string name="app_description">Pulogalamuyi imalola wogwiritsa kufotokozera magawo osinkhasinkha ndikupereka chowerengera chowonera komanso chomveka pamene gawo kapena kusinkhasinkha konse kwatha.</string>
-    <string name="app_name">Zazen Meditation Timer</string>
     <string name="appbar_scrolling_view_behavior">android.support.design.widget.AppBarLayout$ScrollingViewBehavior</string>
     <string name="backup_error_text">Pepani, pachitika vuto posunga.</string>
     <string name="backup_no_permission">Sitinathe kupanga zosunga zobwezeretsera chifukwa chosowa zilolezo.</string>
@@ -20,7 +19,7 @@
     <string name="bell_name_7">Tib. Kutalika, 230 mm</string>
     <string name="bell_name_8">Jap. Rhinbowl, 97mm</string>
     <string name="bell_pause">Bell gap (mphindikati)</string>
-    <string name="bell_user">Onjezani Bell...</string>
+    <string name="bell_user">Onjezani Bell…</string>
     <string name="bottom_nav_meditation">Kusinkhasinkha</string>
     <string name="bottom_nav_sessions">Magawo</string>
     <string name="bottom_sheet_behavior">android.support.design.widget.BottomSheetBehavior</string>
@@ -28,7 +27,6 @@
     <string name="but_start">Yambani Kusinkhasinkha</string>
     <string name="but_stop">Imani</string>
     <string name="caption_zazen_meditation">Kusinkhasinkha kwa Zazen</string>
-    <string name="character_counter_pattern">%1$d / %2$d</string>
     <string name="checkbox_keep_screen_on">Sungani chophimba</string>
     <string name="checkbox_no_server_messages">Onetsani Nkhani</string>
     <string name="checkbox_phone_off">Tsegulani Foni</string>
@@ -61,7 +59,7 @@
     <string name="label_section_name">Dzina lachigawo</string>
     <string name="label_session_description">Kufotokozera Gawo</string>
     <string name="label_session_name">Dzina la Gawo</string>
-    <string name="menu_about">Za...</string>
+    <string name="menu_about">Za…</string>
     <string name="menu_copy_session">Duplicate Gawo</string>
     <string name="menu_delete_section">Chotsani Gawo</string>
     <string name="menu_delete_session">Chotsani Gawo</string>
@@ -70,7 +68,7 @@
     <string name="menu_help">Thandizeni</string>
     <string name="menu_add_session">Onjezani Gawo</string>
     <string name="menu_new_session">Gawo Latsopano</string>
-    <string name="menu_privacy">Zazinsinsi...</string>
+    <string name="menu_privacy">Zazinsinsi…</string>
     <string name="menu_settings">Zokonda</string>
     <string name="minuten">Mphindi</string>
     <string name="no_new_server_messages">Palibe mauthenga atsopano.</string>
@@ -138,9 +136,6 @@
     <string name="theme_desc">Sankhani mawonekedwe a pulogalamuyi</string>
     <string name="theme_light">Mutu Wowala</string>
     <string name="theme_system">System Theme</string>
-    <string name="theme_value_dark">dark</string>
-    <string name="theme_value_light">light</string>
-    <string name="theme_value_system">system</string>
     <string name="time_section_elapsed">Gawo linatha</string>
     <string name="time_section_remaining">Gawo lotsala</string>
     <string name="time_session_elapsed">Gawo linatha</string>

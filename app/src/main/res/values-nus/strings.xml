@@ -5,7 +5,6 @@
     <string name="about2">Kä mëë caa cak ɛ Stefan Gaffga. Ɛn gua̱a̱th ɛmɛ cua la̱t ɛ Georg Graf.&lt;br&gt;&lt;br&gt;Kɛ ɣöö ci̱ Winfried kä http://www.meditationsuhren.de ɛ &lt;a href="http://www.meditationsuhren.de">la̱t&lt;/a&gt; kɛ ɣöö ci̱ rɔ̱ la̱t kɛ jɔw ti̱ di̱i̱t ti̱ti̱!</string>
     <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues">Cäät kä: Github&lt;/a&gt;</string>
     <string name="app_description">Ɛn la̱t ɛmɛ cuɛ luäk i̱ bi̱ la̱t ɛ la̱t mi̱ ca lat ɛ la̱t mi̱ ca la̱t ɛ la̱t mi̱ ca la̱t ɛ la̱t mi̱ ca la̱t ɛ la̱t mi̱ ca la̱t ɛ la̱t mi̱ ca la̱t ɛ la̱t mi̱ ci̱ rɔ̱ rep.</string>
-    <string name="app_name">Zazen Meditation Timer</string>
     <string name="appbar_scrolling_view_behavior">android.support.design.widget.AppBarLayout$ScrollingViewBehavior</string>
     <string name="backup_error_text">Ɣän la̱rä jɛ ji̱ tɛ̈th lɔaac, cua duer la̱t kɛ gua̱a̱th ëë cä yio̱w tɔ̱ɔ̱w.</string>
     <string name="backup_no_permission">/Ca jɛ dee luäk kɛ ɣöö /ca jɛ dee luäk.</string>
@@ -28,7 +27,6 @@
     <string name="but_start">Ŋäcdɛ kɛ jɛ</string>
     <string name="but_stop">Stop ɛ</string>
     <string name="caption_zazen_meditation">Ŋäcdɛ kɛ kui̱i̱ kä tin ca la̱t</string>
-    <string name="character_counter_pattern">%1$d / %2$d</string>
     <string name="checkbox_keep_screen_on">Kä la̱tdɛ kɛ ta̱a̱ in te nhial</string>
     <string name="checkbox_no_server_messages">Nyuuthni tin pay tuɔɔk</string>
     <string name="checkbox_phone_off">Lɛlɛ telefɔɔdu</string>
@@ -61,7 +59,7 @@
     <string name="label_section_name">Rɛy gua̱th in ci̱ ciötdɛ ben</string>
     <string name="label_session_description">Lätdɛ kɛ gua̱a̱th in ci̱ rɔ̱ la̱t thi̱n</string>
     <string name="label_session_name">Cäät kä gua̱a̱th in ci̱ rɔ̱ dol</string>
-    <string name="menu_about">Kɛ kui̱...</string>
+    <string name="menu_about">Kɛ kui̱…</string>
     <string name="menu_copy_session">Luɔ̱ŋ mi̱ bi̱ rɔ̱ la̱t</string>
     <string name="menu_delete_section">Rɛy gua̱th in ci̱ rɔ̱ däk</string>
     <string name="menu_delete_session">Luɔ̱ŋ mi̱ bi̱ rɔ̱ la̱t</string>
@@ -70,7 +68,7 @@
     <string name="menu_help">Help</string>
     <string name="menu_add_session">Add Session</string>
     <string name="menu_new_session">New Session</string>
-    <string name="menu_privacy">Privacy...</string>
+    <string name="menu_privacy">Privacy…</string>
     <string name="menu_settings">Settings</string>
     <string name="minuten">Minutes</string>
     <string name="no_new_server_messages">No new messages available.</string>
@@ -138,9 +136,6 @@
     <string name="theme_desc">Choose the app appearance</string>
     <string name="theme_light">Light Theme</string>
     <string name="theme_system">System Theme</string>
-    <string name="theme_value_dark">dark</string>
-    <string name="theme_value_light">light</string>
-    <string name="theme_value_system">system</string>
     <string name="time_section_elapsed">Section elapsed</string>
     <string name="time_section_remaining">Section remaining</string>
     <string name="time_session_elapsed">Session elapsed</string>

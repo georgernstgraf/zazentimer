@@ -19,7 +19,7 @@
     <string name="bell_name_7">Tib. Bowl, 230mm</string>
     <string name="bell_name_8">Jap. Rhinbowl, 97mm</string>
     <string name="bell_pause">Khoảng cách chuông (giây)</string>
-    <string name="bell_user">Thêm chuông...</string>
+    <string name="bell_user">Thêm chuông…</string>
     <string name="bottom_nav_meditation">Thiền</string>
     <string name="bottom_nav_sessions">Phiên</string>
     <string name="bottom_sheet_behavior">android.support.design.widget.BottomSheetBehavior</string>
@@ -59,7 +59,7 @@
     <string name="label_section_name">Tên phần</string>
     <string name="label_session_description">Mô tả phiên</string>
     <string name="label_session_name">Tên phiên</string>
-    <string name="menu_about">Giới thiệu...</string>
+    <string name="menu_about">Giới thiệu…</string>
     <string name="menu_copy_session">Sao chép phiên</string>
     <string name="menu_delete_section">Xóa phần</string>
     <string name="menu_delete_session">Xóa phiên</string>
@@ -68,7 +68,7 @@
     <string name="menu_help">Trợ giúp</string>
     <string name="menu_add_session">Thêm phiên</string>
     <string name="menu_new_session">Phiên mới</string>
-    <string name="menu_privacy">Quyền riêng tư...</string>
+    <string name="menu_privacy">Quyền riêng tư…</string>
     <string name="menu_settings">Cài đặt</string>
     <string name="minuten">Phút</string>
     <string name="no_new_server_messages">Không có tin nhắn mới.</string>

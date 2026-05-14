@@ -19,7 +19,7 @@
     <string name="bell_name_7">Tib. Bowl, 230mm</string>
     <string name="bell_name_8">Jap. Rinbowl, 97mm</string>
     <string name="bell_pause">מרווח פעמון (שניות)</string>
-    <string name="bell_user">הוסף פעמון...</string>
+    <string name="bell_user">הוסף פעמון…</string>
     <string name="bottom_nav_meditation">מדיטציה</string>
     <string name="bottom_nav_sessions">סשנים</string>
     <string name="bottom_sheet_behavior">android.support.design.widget.BottomSheetBehavior</string>
@@ -59,7 +59,7 @@
     <string name="label_section_name">שם מקטע</string>
     <string name="label_session_description">תיאור סשן</string>
     <string name="label_session_name">שם סשן</string>
-    <string name="menu_about">אודות...</string>
+    <string name="menu_about">אודות…</string>
     <string name="menu_copy_session">שכפל סשן</string>
     <string name="menu_delete_section">מחק מקטע</string>
     <string name="menu_delete_session">מחק סשן</string>
@@ -68,7 +68,7 @@
     <string name="menu_help">עזרה</string>
     <string name="menu_add_session">הוסף סשן</string>
     <string name="menu_new_session">סשן חדש</string>
-    <string name="menu_privacy">פרטיות...</string>
+    <string name="menu_privacy">פרטיות…</string>
     <string name="menu_settings">הגדרות</string>
     <string name="minuten">דקות</string>
     <string name="no_new_server_messages">אין הודעות חדשות זמינות.</string>

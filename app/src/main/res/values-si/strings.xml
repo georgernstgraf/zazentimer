@@ -19,7 +19,7 @@
     <string name="bell_name_7">Tib. Bowl, 230mm</string>
     <string name="bell_name_8">Jap. Rhinbowl, 97mm</string>
     <string name="bell_pause">සීනුව විරාමය (තත්පර)</string>
-    <string name="bell_user">සීනුව එක් කරන්න...</string>
+    <string name="bell_user">සීනුව එක් කරන්න…</string>
     <string name="bottom_nav_meditation">භාවනාව</string>
     <string name="bottom_nav_sessions">සැසි</string>
     <string name="bottom_sheet_behavior">android.support.design.widget.BottomSheetBehavior</string>
@@ -59,7 +59,7 @@
     <string name="label_section_name">කොටසේ නම</string>
     <string name="label_session_description">සැසි විස්තරය</string>
     <string name="label_session_name">සැසි නම</string>
-    <string name="menu_about">පිළිබඳව...</string>
+    <string name="menu_about">පිළිබඳව…</string>
     <string name="menu_copy_session">සැසිය අනුපිටපත් කරන්න</string>
     <string name="menu_delete_section">කොටස මකන්න</string>
     <string name="menu_delete_session">සැසිය මකන්න</string>
@@ -68,7 +68,7 @@
     <string name="menu_help">උදව්</string>
     <string name="menu_add_session">සැසිය එක් කරන්න</string>
     <string name="menu_new_session">නව සැසිය</string>
-    <string name="menu_privacy">පෞද්ගලිකත්වය...</string>
+    <string name="menu_privacy">පෞද්ගලිකත්වය…</string>
     <string name="menu_settings">සැකසුම්</string>
     <string name="minuten">මිනිත්තු</string>
     <string name="no_new_server_messages">නව පණිවිඩ නොමැත.</string>

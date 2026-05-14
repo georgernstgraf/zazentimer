@@ -19,7 +19,7 @@
     <string name="bell_name_7">Tib. Bowl, 230mm</string>
     <string name="bell_name_8">Jap. Rhinbowl, 97mm</string>
     <string name="bell_pause">Igebe lensimbi (isekhondi)</string>
-    <string name="bell_user">Engeza Insimbi...</string>
+    <string name="bell_user">Engeza Insimbi…</string>
     <string name="bottom_nav_meditation">Ukuzindla</string>
     <string name="bottom_nav_sessions">Amaseshini</string>
     <string name="bottom_sheet_behavior">android.support.design.widget.BottomSheetBehavior</string>
@@ -59,7 +59,7 @@
     <string name="label_section_name">Igama lengxenye</string>
     <string name="label_session_description">Incazelo Yeseshini</string>
     <string name="label_session_name">Igama Leseshini</string>
-    <string name="menu_about">Mayelana...</string>
+    <string name="menu_about">Mayelana…</string>
     <string name="menu_copy_session">Phinda Iseshini</string>
     <string name="menu_delete_section">Susa Ingxenye</string>
     <string name="menu_delete_session">Susa Iseshini</string>
@@ -68,7 +68,7 @@
     <string name="menu_help">Usizo</string>
     <string name="menu_add_session">Engeza Iseshini</string>
     <string name="menu_new_session">Iseshini Entsha</string>
-    <string name="menu_privacy">Ubumfihlo...</string>
+    <string name="menu_privacy">Ubumfihlo…</string>
     <string name="menu_settings">Izilungiselelo</string>
     <string name="minuten">Amaminithi</string>
     <string name="no_new_server_messages">Ayikho imilayezo emisha etholakalayo.</string>

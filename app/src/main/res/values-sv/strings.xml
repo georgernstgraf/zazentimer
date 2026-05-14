@@ -19,7 +19,7 @@
     <string name="bell_name_7">Tib. Skål, 230 mm</string>
     <string name="bell_name_8">Jap. Rhinbowl, 97 mm</string>
     <string name="bell_pause">Klockintervall (sek)</string>
-    <string name="bell_user">Lägg till klocka...</string>
+    <string name="bell_user">Lägg till klocka…</string>
     <string name="bottom_nav_meditation">Meditation</string>
     <string name="bottom_nav_sessions">Sessioner</string>
     <string name="bottom_sheet_behavior">android.support.design.widget.BottomSheetBehavior</string>
@@ -59,7 +59,7 @@
     <string name="label_section_name">Sektionsnamn</string>
     <string name="label_session_description">Sessionsbeskrivning</string>
     <string name="label_session_name">Sessionsnamn</string>
-    <string name="menu_about">Om...</string>
+    <string name="menu_about">Om…</string>
     <string name="menu_copy_session">Duplicera session</string>
     <string name="menu_delete_section">Ta bort sektion</string>
     <string name="menu_delete_session">Ta bort session</string>
@@ -68,7 +68,7 @@
     <string name="menu_help">Hjälp</string>
     <string name="menu_add_session">Lägg till session</string>
     <string name="menu_new_session">Ny session</string>
-    <string name="menu_privacy">Integritet...</string>
+    <string name="menu_privacy">Integritet…</string>
     <string name="menu_settings">Inställningar</string>
     <string name="minuten">Minuter</string>
     <string name="no_new_server_messages">Inga nya meddelanden tillgängliga.</string>

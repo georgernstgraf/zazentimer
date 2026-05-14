@@ -303,8 +303,6 @@
     </attr>
     <attr name="expandedTitleTextAppearance" format="reference">
     </attr>
-    <attr name="foregroundInsidePadding" format="boolean">
-    </attr>
     <attr name="gapBetweenBars" format="dimension">
     </attr>
     <attr name="goIcon" format="reference">
@@ -522,10 +520,6 @@
     <attr name="stackFromEnd" format="boolean">
     </attr>
     <attr name="state_above_anchor" format="boolean">
-    </attr>
-    <attr name="state_collapsed" format="boolean">
-    </attr>
-    <attr name="state_collapsible" format="boolean">
     </attr>
     <attr name="statusBarScrim" format="color">
     </attr>

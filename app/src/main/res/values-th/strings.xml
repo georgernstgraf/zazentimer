@@ -19,7 +19,7 @@
     <string name="bell_name_7">Tib. Bowl, 230mm</string>
     <string name="bell_name_8">Jap. Rhinbowl, 97mm</string>
     <string name="bell_pause">ช่องว่างเสียงระฆัง (วินาที)</string>
-    <string name="bell_user">เพิ่มระฆัง...</string>
+    <string name="bell_user">เพิ่มระฆัง…</string>
     <string name="bottom_nav_meditation">การทำสมาธิ</string>
     <string name="bottom_nav_sessions">เซสชัน</string>
     <string name="bottom_sheet_behavior">android.support.design.widget.BottomSheetBehavior</string>
@@ -59,7 +59,7 @@
     <string name="label_section_name">ชื่อส่วน</string>
     <string name="label_session_description">คำอธิบายเซสชัน</string>
     <string name="label_session_name">ชื่อเซสชัน</string>
-    <string name="menu_about">เกี่ยวกับ...</string>
+    <string name="menu_about">เกี่ยวกับ…</string>
     <string name="menu_copy_session">ทำซ้ำเซสชัน</string>
     <string name="menu_delete_section">ลบส่วน</string>
     <string name="menu_delete_session">ลบเซสชัน</string>
@@ -68,7 +68,7 @@
     <string name="menu_help">วิธีใช้</string>
     <string name="menu_add_session">เพิ่มเซสชัน</string>
     <string name="menu_new_session">เซสชันใหม่</string>
-    <string name="menu_privacy">ความเป็นส่วนตัว...</string>
+    <string name="menu_privacy">ความเป็นส่วนตัว…</string>
     <string name="menu_settings">การตั้งค่า</string>
     <string name="minuten">นาที</string>
     <string name="no_new_server_messages">ไม่มีข้อความใหม่</string>

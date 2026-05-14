@@ -18,7 +18,7 @@
     <string name="bell_name_7">Tib. Bowl, 230mm</string>
     <string name="bell_name_8">Jap. Rhinbowl, 97mm</string>
     <string name="bell_pause">ခေါင်းလောင်း ကွာဟချက် (စက္ကန့်)</string>
-    <string name="bell_user">ခေါင်းလောင်းထည့်ရန်...</string>
+    <string name="bell_user">ခေါင်းလောင်းထည့်ရန်…</string>
     <string name="bottom_nav_meditation">တရားထိုင်ခြင်း</string>
     <string name="bottom_nav_sessions">အစီအစဉ်များ</string>
     <string name="but_pause">ခေတ္တရပ်ရန်</string>
@@ -57,7 +57,7 @@
     <string name="label_section_name">အပိုင်း အမည်</string>
     <string name="label_session_description">အစီအစဉ် ဖော်ပြချက်</string>
     <string name="label_session_name">အစီအစဉ် အမည်</string>
-    <string name="menu_about">အကြောင်း...</string>
+    <string name="menu_about">အကြောင်း…</string>
     <string name="menu_copy_session">အစီအစဉ် ပွားရန်</string>
     <string name="menu_delete_section">အပိုင်း ဖျက်ရန်</string>
     <string name="menu_delete_session">အစီအစဉ် ဖျက်ရန်</string>
@@ -66,7 +66,7 @@
     <string name="menu_help">အကူအညီ</string>
     <string name="menu_add_session">အစီအစဉ် ထည့်ရန်</string>
     <string name="menu_new_session">အစီအစဉ်သစ်</string>
-    <string name="menu_privacy">ကိုယ်ရေးလုံခြုံမှု...</string>
+    <string name="menu_privacy">ကိုယ်ရေးလုံခြုံမှု…</string>
     <string name="menu_settings">ဆက်တင်များ</string>
     <string name="minuten">မိနစ်</string>
     <string name="no_new_server_messages">မက်ဆေ့ဂျ်အသစ်များ မရှိပါ။</string>

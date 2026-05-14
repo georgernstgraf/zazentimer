@@ -9,8 +9,6 @@ import android.view.MenuInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
-import androidx.annotation.NonNull
-import androidx.annotation.Nullable
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.Navigation
@@ -57,22 +55,20 @@ class SessionEditFragment : Fragment() {
     }
 
     override fun onViewCreated(
-        @NonNull view: View,
-        @Nullable savedInstanceState: Bundle?,
+        view: View,
+        savedInstanceState: Bundle?,
     ) {
         super.onViewCreated(view, savedInstanceState)
         requireActivity().addMenuProvider(
             object : androidx.core.view.MenuProvider {
                 override fun onCreateMenu(
-                    @NonNull menu: Menu,
-                    @NonNull menuInflater: MenuInflater,
+                    menu: Menu,
+                    menuInflater: MenuInflater,
                 ) {
                     menuInflater.inflate(R.menu.session_edit_menu, menu)
                 }
 
-                override fun onMenuItemSelected(
-                    @NonNull menuItem: MenuItem,
-                ): Boolean {
+                override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
                     if (menuItem.itemId == R.id.menu_session_edit_help) {
                         editHelper.showHelp13()
                         return true
@@ -85,7 +81,6 @@ class SessionEditFragment : Fragment() {
         )
     }
 
-    @Nullable
     override fun onCreateView(
         layoutInflater: LayoutInflater,
         viewGroup: ViewGroup?,

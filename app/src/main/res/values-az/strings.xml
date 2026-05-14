@@ -19,7 +19,7 @@
     <string name="bell_name_7">Tibet qabı, 230mm</string>
     <string name="bell_name_8">Yapon Rhinbowl, 97mm</string>
     <string name="bell_pause">Zəng fasiləsi (san)</string>
-    <string name="bell_user">Zəng əlavə et...</string>
+    <string name="bell_user">Zəng əlavə et…</string>
     <string name="bottom_nav_meditation">Meditasiya</string>
     <string name="bottom_nav_sessions">Seanslar</string>
     <string name="bottom_sheet_behavior">android.support.design.widget.BottomSheetBehavior</string>
@@ -59,7 +59,7 @@
     <string name="label_section_name">Bölmə adı</string>
     <string name="label_session_description">Seans təsviri</string>
     <string name="label_session_name">Seans adı</string>
-    <string name="menu_about">Haqqında...</string>
+    <string name="menu_about">Haqqında…</string>
     <string name="menu_copy_session">Seansı kopyala</string>
     <string name="menu_delete_section">Bölməni sil</string>
     <string name="menu_delete_session">Seansı sil</string>
@@ -68,7 +68,7 @@
     <string name="menu_help">Kömək</string>
     <string name="menu_add_session">Seans əlavə et</string>
     <string name="menu_new_session">Yeni seans</string>
-    <string name="menu_privacy">Məxfilik...</string>
+    <string name="menu_privacy">Məxfilik…</string>
     <string name="menu_settings">Parametrlər</string>
     <string name="minuten">Dəqiqə</string>
     <string name="no_new_server_messages">Yeni mesaj yoxdur.</string>

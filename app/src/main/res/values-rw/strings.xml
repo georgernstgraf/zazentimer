@@ -4,7 +4,6 @@
     <string name="about1">Igihe cyo Gutekereza Zazen - Igihe cyoroshye cyo gutekereza hamwe nibice byihariye, amajwi yinzogera, hamwe nubuyobozi bwamasomo.</string>
     <string name="about3">&lt;a href = "https://github.com/georgernstgraf/zazentimer/issues"> Raporo y\'ibibazo kuri GitHub &lt;/a&gt;</string>
     <string name="app_description">Iyi porogaramu ituma uyikoresha asobanura urutonde rwibitekerezo kandi agatanga igihe hamwe nibitekerezo byumvikana kandi byumvikana mugihe igice cyangwa gutekereza byose birangiye.</string>
-    <string name="app_name">Zazen Meditation Timer</string>
     <string name="appbar_scrolling_view_behavior">android.support.design.widget.AppBarLayout $ ScrollingViewBehavior</string>
     <string name="backup_error_text">Ihangane, Ikosa ryabaye mugihe cyo kuzigama.</string>
     <string name="backup_no_permission">Ntushobora gukora backup kubera kubura uruhushya.</string>
@@ -19,7 +18,7 @@
     <string name="bell_name_7">Tib. Igikombe, 230mm</string>
     <string name="bell_name_8">Jap. Inkeri, 97mm</string>
     <string name="bell_pause">Icyuho cy\'inzogera (amasegonda)</string>
-    <string name="bell_user">Ongeraho inzogera ...</string>
+    <string name="bell_user">Ongeraho inzogera …</string>
     <string name="bottom_nav_meditation">Gutekereza</string>
     <string name="bottom_nav_sessions">Amasomo</string>
     <string name="bottom_sheet_behavior">android.support.design.widget.BottomSheetBehavior</string>
@@ -27,7 +26,6 @@
     <string name="but_start">Tangira Gutekereza</string>
     <string name="but_stop">Hagarara</string>
     <string name="caption_zazen_meditation">Gutekereza kwa Zazen</string>
-    <string name="character_counter_pattern">%1$d / %2$d</string>
     <string name="checkbox_keep_screen_on">Komeza ecran kuri</string>
     <string name="checkbox_no_server_messages">Erekana Amakuru</string>
     <string name="checkbox_phone_off">Terefone</string>
@@ -60,7 +58,7 @@
     <string name="label_section_name">Izina ry\'igice</string>
     <string name="label_session_description">Ibisobanuro</string>
     <string name="label_session_name">Izina ryamasomo</string>
-    <string name="menu_about">Ibyerekeye ...</string>
+    <string name="menu_about">Ibyerekeye …</string>
     <string name="menu_copy_session">Kwigana</string>
     <string name="menu_delete_section">Siba Igice</string>
     <string name="menu_delete_session">Siba Isomo</string>
@@ -69,7 +67,7 @@
     <string name="menu_help">Ubufasha</string>
     <string name="menu_add_session">Ongeraho Isomo</string>
     <string name="menu_new_session">Isomo Rishya</string>
-    <string name="menu_privacy">Amabanga ...</string>
+    <string name="menu_privacy">Amabanga …</string>
     <string name="menu_settings">Igenamiterere</string>
     <string name="minuten">Iminota</string>
     <string name="no_new_server_messages">Nta butumwa bushya buboneka.</string>
@@ -136,9 +134,6 @@
     <string name="theme_desc">Hitamo isura ya porogaramu</string>
     <string name="theme_light">Umucyo</string>
     <string name="theme_system">Insanganyamatsiko ya Sisitemu</string>
-    <string name="theme_value_dark">dark</string>
-    <string name="theme_value_light">light</string>
-    <string name="theme_value_system">system</string>
     <string name="time_section_elapsed">Igice cyashize</string>
     <string name="time_section_remaining">Igice gisigaye</string>
     <string name="time_session_elapsed">Isomo ryararangiye</string>

@@ -19,7 +19,7 @@
     <string name="bell_name_7">Tib. Bowl, 230mm</string>
     <string name="bell_name_8">Jap. Rhinbowl, 97mm</string>
     <string name="bell_pause">종 간격 (초)</string>
-    <string name="bell_user">종 추가...</string>
+    <string name="bell_user">종 추가…</string>
     <string name="bottom_nav_meditation">명상</string>
     <string name="bottom_nav_sessions">세션</string>
     <string name="bottom_sheet_behavior">android.support.design.widget.BottomSheetBehavior</string>
@@ -59,7 +59,7 @@
     <string name="label_section_name">섹션 이름</string>
     <string name="label_session_description">세션 설명</string>
     <string name="label_session_name">세션 이름</string>
-    <string name="menu_about">정보...</string>
+    <string name="menu_about">정보…</string>
     <string name="menu_copy_session">세션 복제</string>
     <string name="menu_delete_section">섹션 삭제</string>
     <string name="menu_delete_session">세션 삭제</string>
@@ -68,7 +68,7 @@
     <string name="menu_help">도움말</string>
     <string name="menu_add_session">세션 추가</string>
     <string name="menu_new_session">새 세션</string>
-    <string name="menu_privacy">개인정보 보호...</string>
+    <string name="menu_privacy">개인정보 보호…</string>
     <string name="menu_settings">설정</string>
     <string name="minuten">분</string>
     <string name="no_new_server_messages">새 메시지 없음.</string>

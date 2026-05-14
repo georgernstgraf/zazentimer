@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_gravity="fill"
     android:orientation="horizontal"
     android:visibility="visible"
@@ -37,6 +38,7 @@
             android:layout_height="60dp"
             android:layout_margin="8dp"
             android:src="@drawable/ic_pause_white_48dp"
+            android:contentDescription="@string/but_pause"
             android:text="@string/but_pause"
             android:drawableTop="@android:drawable/ic_media_pause"/>
         <ImageButton
@@ -47,6 +49,7 @@
             android:layout_height="60dp"
             android:layout_margin="8dp"
             android:src="@drawable/ic_stop_white_48dp"
+            android:contentDescription="@string/but_stop"
             android:text="@string/but_stop"/>
     </LinearLayout>
 </LinearLayout>

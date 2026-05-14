@@ -5,7 +5,6 @@
     <string name="about2">Jalqaba kan uume Stefan Gaffga dha. Yeroo ammaa kan kunuunsu Georg Graf.&lt;br&gt;&lt;br&gt;Wiinfried kan &lt;a href="http://www.meditationsuhren.de">http://www.meditationsuhren.de&lt;/a&gt; Sagaleewwan Bell guddaa akkasii waan nuuf dhiheesseef galatoomaa!</string>
     <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues">Dhimmoota GitHub irratti gabaasuu&lt;/a&gt;</string>
     <string name="app_description">Appilikeeshiniin kun fayyadamaan tuuta turtii xiinxala akka ibsu kan taasisu yoo ta\'u, yeroo kutaan tokko ykn guutummaan xiinxala xumuramu yaada mul\'ataa fi dhaga\'amuu qabu sa\'aatii kenna.</string>
-    <string name="app_name">Zazen Meditation Timer</string>
     <string name="appbar_scrolling_view_behavior">android.deeggarsa.dizaayinii.wiijet.AppBarLayout$Amala Ilaalcha Scroll</string>
     <string name="backup_error_text">Dhiifama, yeroo qusattu Dogoggorri uumameera.</string>
     <string name="backup_no_permission">Sababa hayyama dhabameen duwwaa uumuu hin dandeenye.</string>
@@ -20,7 +19,7 @@
     <string name="bell_name_7">Tib. Saanii, 230mm</string>
     <string name="bell_name_8">Jaappaan. Rhinbowl, 97mm kan ta\'e</string>
     <string name="bell_pause">Qaawwa bilbilaa (sec) .</string>
-    <string name="bell_user">Bell itti dabali...</string>
+    <string name="bell_user">Bell itti dabali…</string>
     <string name="bottom_nav_meditation">Sammuu keessa nanaannessuu</string>
     <string name="bottom_nav_sessions">Kutaalee</string>
     <string name="bottom_sheet_behavior">android.deeggarsa.dizaayinii.wiijetii.Amala Waraqaa Jala</string>
@@ -28,7 +27,6 @@
     <string name="but_start">Xiinxala Jalqabi</string>
     <string name="but_stop">Dhaabuu</string>
     <string name="caption_zazen_meditation">Zazen Xiinxala</string>
-    <string name="character_counter_pattern">%1$d / %2$d</string>
     <string name="checkbox_keep_screen_on">Iskiriinii irratti eegaa</string>
     <string name="checkbox_no_server_messages">Show Oduu</string>
     <string name="checkbox_phone_off">Bilbila Dubbisuu</string>
@@ -61,7 +59,7 @@
     <string name="label_section_name">Maqaa kutaa</string>
     <string name="label_session_description">Ibsa Kutaa</string>
     <string name="label_session_name">Maqaa Kutaa</string>
-    <string name="menu_about">Waa\'ee...</string>
+    <string name="menu_about">Waa\'ee…</string>
     <string name="menu_copy_session">Walgahii Dachaa</string>
     <string name="menu_delete_section">Kutaa Haquu</string>
     <string name="menu_delete_session">Kutaa Haquu</string>
@@ -70,7 +68,7 @@
     <string name="menu_help">Gargaaruu</string>
     <string name="menu_add_session">Session Dabaluu</string>
     <string name="menu_new_session">Yaa\'ii Haaraa</string>
-    <string name="menu_privacy">Dhuunfummaa...</string>
+    <string name="menu_privacy">Dhuunfummaa…</string>
     <string name="menu_settings">Sajoo</string>
     <string name="minuten">Daqiiqaawwan</string>
     <string name="no_new_server_messages">Ergaan haaraan hin jiru.</string>
@@ -138,9 +136,6 @@
     <string name="theme_desc">Mul\'ata appii filadhu</string>
     <string name="theme_light">Mata duree Ifaa</string>
     <string name="theme_system">Mata duree Sirnaa</string>
-    <string name="theme_value_dark">dark</string>
-    <string name="theme_value_light">light</string>
-    <string name="theme_value_system">system</string>
     <string name="time_section_elapsed">Kutaan darbe</string>
     <string name="time_section_remaining">Kutaa hafe</string>
     <string name="time_session_elapsed">Session darbe</string>

@@ -19,7 +19,7 @@
     <string name="bell_name_7">Tib. Bowl, 230mm</string>
     <string name="bell_name_8">Jap. Rhinbowl, 97mm</string>
     <string name="bell_pause">Пауза звона (сек)</string>
-    <string name="bell_user">Додај звоно...</string>
+    <string name="bell_user">Додај звоно…</string>
     <string name="bottom_nav_meditation">Медитација</string>
     <string name="bottom_nav_sessions">Сесије</string>
     <string name="bottom_sheet_behavior">android.support.design.widget.BottomSheetBehavior</string>
@@ -59,7 +59,7 @@
     <string name="label_section_name">Назив секције</string>
     <string name="label_session_description">Опис сесије</string>
     <string name="label_session_name">Назив сесије</string>
-    <string name="menu_about">О апликацији...</string>
+    <string name="menu_about">О апликацији…</string>
     <string name="menu_copy_session">Дуплирај сесију</string>
     <string name="menu_delete_section">Обриши секцију</string>
     <string name="menu_delete_session">Обриши сесију</string>
@@ -68,7 +68,7 @@
     <string name="menu_help">Помоћ</string>
     <string name="menu_add_session">Додај сесију</string>
     <string name="menu_new_session">Нова сесија</string>
-    <string name="menu_privacy">Приватност...</string>
+    <string name="menu_privacy">Приватност…</string>
     <string name="menu_settings">Подешавања</string>
     <string name="minuten">Минута</string>
     <string name="no_new_server_messages">Нема нових порука.</string>

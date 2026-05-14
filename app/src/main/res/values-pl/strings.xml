@@ -18,7 +18,7 @@
     <string name="bell_name_7">Misa tybetańska, 230mm</string>
     <string name="bell_name_8">Japońska misa, 97mm</string>
     <string name="bell_pause">Odstęp dzwonka (sek)</string>
-    <string name="bell_user">Dodaj dzwonek...</string>
+    <string name="bell_user">Dodaj dzwonek…</string>
     <string name="bottom_nav_meditation">Medytacja</string>
     <string name="bottom_nav_sessions">Sesje</string>
     <string name="but_pause">Pauza</string>
@@ -57,7 +57,7 @@
     <string name="label_section_name">Nazwa sekcji</string>
     <string name="label_session_description">Opis sesji</string>
     <string name="label_session_name">Nazwa sesji</string>
-    <string name="menu_about">O aplikacji...</string>
+    <string name="menu_about">O aplikacji…</string>
     <string name="menu_copy_session">Duplikuj sesję</string>
     <string name="menu_delete_section">Usuń sekcję</string>
     <string name="menu_delete_session">Usuń sesję</string>
@@ -66,7 +66,7 @@
     <string name="menu_help">Pomoc</string>
     <string name="menu_add_session">Dodaj sesję</string>
     <string name="menu_new_session">Nowa sesja</string>
-    <string name="menu_privacy">Prywatność...</string>
+    <string name="menu_privacy">Prywatność…</string>
     <string name="menu_settings">Ustawienia</string>
     <string name="minuten">Minuty</string>
     <string name="no_new_server_messages">Brak nowych wiadomości.</string>

@@ -19,7 +19,7 @@
     <string name="bell_name_7">Tib. Bowl, 230mm</string>
     <string name="bell_name_8">Jap. Rinbowl, 97mm</string>
     <string name="bell_pause">فاصله زنگ (ثانیه)</string>
-    <string name="bell_user">افزودن زنگ...</string>
+    <string name="bell_user">افزودن زنگ…</string>
     <string name="bottom_nav_meditation">مدیتیشن</string>
     <string name="bottom_nav_sessions">جلسات</string>
     <string name="bottom_sheet_behavior">android.support.design.widget.BottomSheetBehavior</string>
@@ -59,7 +59,7 @@
     <string name="label_section_name">نام بخش</string>
     <string name="label_session_description">توضیحات جلسه</string>
     <string name="label_session_name">نام جلسه</string>
-    <string name="menu_about">درباره...</string>
+    <string name="menu_about">درباره…</string>
     <string name="menu_copy_session">تکثیر جلسه</string>
     <string name="menu_delete_section">حذف بخش</string>
     <string name="menu_delete_session">حذف جلسه</string>
@@ -68,7 +68,7 @@
     <string name="menu_help">راهنما</string>
     <string name="menu_add_session">افزودن جلسه</string>
     <string name="menu_new_session">جلسه جدید</string>
-    <string name="menu_privacy">حریم خصوصی...</string>
+    <string name="menu_privacy">حریم خصوصی…</string>
     <string name="menu_settings">تنظیمات</string>
     <string name="minuten">دقیقه</string>
     <string name="no_new_server_messages">هیچ پیام جدیدی موجود نیست.</string>

@@ -19,7 +19,7 @@
     <string name="bell_name_7">Tib. Bowl, 230mm</string>
     <string name="bell_name_8">Jap. Rinbowl, 97mm</string>
     <string name="bell_pause">Zil aralığı (sn)</string>
-    <string name="bell_user">Zil Ekle...</string>
+    <string name="bell_user">Zil Ekle…</string>
     <string name="bottom_nav_meditation">Meditasyon</string>
     <string name="bottom_nav_sessions">Oturumlar</string>
     <string name="bottom_sheet_behavior">android.support.design.widget.BottomSheetBehavior</string>
@@ -59,7 +59,7 @@
     <string name="label_section_name">Bölüm adı</string>
     <string name="label_session_description">Oturum Açıklaması</string>
     <string name="label_session_name">Oturum Adı</string>
-    <string name="menu_about">Hakkında...</string>
+    <string name="menu_about">Hakkında…</string>
     <string name="menu_copy_session">Oturumu Çoğalt</string>
     <string name="menu_delete_section">Bölümü Sil</string>
     <string name="menu_delete_session">Oturumu Sil</string>
@@ -68,7 +68,7 @@
     <string name="menu_help">Yardım</string>
     <string name="menu_add_session">Oturum Ekle</string>
     <string name="menu_new_session">Yeni Oturum</string>
-    <string name="menu_privacy">Gizlilik...</string>
+    <string name="menu_privacy">Gizlilik…</string>
     <string name="menu_settings">Ayarlar</string>
     <string name="minuten">Dakika</string>
     <string name="no_new_server_messages">Yeni mesaj yok.</string>

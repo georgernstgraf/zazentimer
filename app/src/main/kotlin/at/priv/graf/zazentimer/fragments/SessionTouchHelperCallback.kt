@@ -1,6 +1,5 @@
 package at.priv.graf.zazentimer.fragments
 
-import androidx.annotation.NonNull
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
 
@@ -15,21 +14,21 @@ class SessionTouchHelperCallback(
     }
 
     override fun getMovementFlags(
-        @NonNull recyclerView: RecyclerView,
-        @NonNull viewHolder: RecyclerView.ViewHolder,
+        recyclerView: RecyclerView,
+        viewHolder: RecyclerView.ViewHolder,
     ): Int {
         val dragFlags = ItemTouchHelper.UP or ItemTouchHelper.DOWN
         return makeMovementFlags(dragFlags, 0)
     }
 
     override fun onMove(
-        @NonNull recyclerView: RecyclerView,
-        @NonNull viewHolder: RecyclerView.ViewHolder,
-        @NonNull target: RecyclerView.ViewHolder,
+        recyclerView: RecyclerView,
+        viewHolder: RecyclerView.ViewHolder,
+        target: RecyclerView.ViewHolder,
     ): Boolean = listener?.onMove(viewHolder.bindingAdapterPosition, target.bindingAdapterPosition) ?: false
 
     override fun onSwiped(
-        @NonNull viewHolder: RecyclerView.ViewHolder,
+        viewHolder: RecyclerView.ViewHolder,
         direction: Int,
     ) {
         // no-op: drag-only mode

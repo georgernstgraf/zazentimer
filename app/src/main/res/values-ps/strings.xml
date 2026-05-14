@@ -5,7 +5,6 @@
     <string name="about2">په اصل کې د سټیفن ګافګا لخوا رامینځته شوی. اوس مهال د جورج ګراف لخوا ساتل کیږي.&lt;br&gt;&lt;br&gt;د &lt;a href="http://www.meditationsuhren.de">http://www.meditationsuhren.de&lt;/a&gt; د داسې عالي بیل غږونو چمتو کولو لپاره د وینفریډ څخه مننه!</string>
     <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues">په GitHub کې د مسلو راپور ورکړئ&lt;/a&gt;</string>
     <string name="app_description">دا اپلیکیشن کارونکي ته اجازه ورکوي چې د مراقبت سیشنونو سیټ تعریف کړي او د لید او لید لید سره ټایمر چمتو کړي کله چې یوه برخه یا بشپړ مراقبت پای ته ورسیږي.</string>
-    <string name="app_name">Zazen Meditation Timer</string>
     <string name="appbar_scrolling_view_behavior">android.support.design.widget.AppBarLayout$ScrollingViewBehavior</string>
     <string name="backup_error_text">بخښنه غواړئ، د خوندي کولو په وخت کې یوه تېروتنه رامنځته شوه.</string>
     <string name="backup_no_permission">د ورک شوي اجازې له امله بیک اپ نشي رامینځته کولی.</string>
@@ -20,7 +19,7 @@
     <string name="bell_name_7">تبه کڅوړه، 230mm</string>
     <string name="bell_name_8">جاپ Rhinbowl، 97mm</string>
     <string name="bell_pause">د بیل ګپ (ثانوي)</string>
-    <string name="bell_user">بیل اضافه کړئ ...</string>
+    <string name="bell_user">بیل اضافه کړئ …</string>
     <string name="bottom_nav_meditation">مراقبت</string>
     <string name="bottom_nav_sessions">غونډې</string>
     <string name="bottom_sheet_behavior">android.support.design.widget.BottomSheetBehavior</string>
@@ -28,7 +27,6 @@
     <string name="but_start">مراقبت پیل کړئ</string>
     <string name="but_stop">ودریږئ</string>
     <string name="caption_zazen_meditation">زازن مراقبت</string>
-    <string name="character_counter_pattern">%1$d / %2$d</string>
     <string name="checkbox_keep_screen_on">سکرین جاري وساتئ</string>
     <string name="checkbox_no_server_messages">خبرونه ښکاره کړئ</string>
     <string name="checkbox_phone_off">تلیفون خاموش کړئ</string>
@@ -61,7 +59,7 @@
     <string name="label_section_name">د برخې نوم</string>
     <string name="label_session_description">د غونډې تفصیل</string>
     <string name="label_session_name">د غونډې نوم</string>
-    <string name="menu_about">په اړه...</string>
+    <string name="menu_about">په اړه…</string>
     <string name="menu_copy_session">دوه اړخیزه ناسته</string>
     <string name="menu_delete_section">برخه ړنګول</string>
     <string name="menu_delete_session">سیشن ړنګ کړئ</string>
@@ -70,7 +68,7 @@
     <string name="menu_help">مرسته</string>
     <string name="menu_add_session">سیشن اضافه کړئ</string>
     <string name="menu_new_session">نوې غونډه</string>
-    <string name="menu_privacy">محرمیت...</string>
+    <string name="menu_privacy">محرمیت…</string>
     <string name="menu_settings">ترتیبات</string>
     <string name="minuten">دقیقې</string>
     <string name="no_new_server_messages">هیڅ نوي پیغامونه شتون نلري.</string>
@@ -138,9 +136,6 @@
     <string name="theme_desc">د اپلیکیشن بڼه غوره کړئ</string>
     <string name="theme_light">رڼا موضوع</string>
     <string name="theme_system">د سیسټم موضوع</string>
-    <string name="theme_value_dark">dark</string>
-    <string name="theme_value_light">light</string>
-    <string name="theme_value_system">system</string>
     <string name="time_section_elapsed">برخه تیره شوه</string>
     <string name="time_section_remaining">پاتې برخه</string>
     <string name="time_session_elapsed">غونډه تیره شوه</string>

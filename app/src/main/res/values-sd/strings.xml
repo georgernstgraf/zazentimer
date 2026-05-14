@@ -5,7 +5,6 @@
     <string name="about2">اصل ۾ اسٽيفن گفگا پاران ٺاهي وئي. في الحال جارج گراف پاران سنڀاليو ويو آهي.&lt;br&gt;&lt;br&gt;اهڙا عظيم بيل آواز مهيا ڪرڻ لاءِ &lt;a href="http://www.meditationsuhren.de">http://www.meditationsuhren.de&lt;/a&gt; جي Winfried جي مهرباني!</string>
     <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues">GitHub تي مسئلن جي رپورٽ ڪريو&lt;/a&gt;</string>
     <string name="app_description">هي ايپليڪيشن صارف کي مراقبي سيشن جو هڪ سيٽ بيان ڪرڻ جي اجازت ڏئي ٿي ۽ بصري ۽ ٻڌڻ واري راءِ سان ٽائمر مهيا ڪري ٿي جڏهن هڪ حصو يا سڄو مراقبو ختم ٿي وڃي.</string>
-    <string name="app_name">Zazen Meditation Timer</string>
     <string name="appbar_scrolling_view_behavior">android.support.design.widget.AppBarLayout$ScrollingViewBehavior</string>
     <string name="backup_error_text">معاف ڪجو، محفوظ ڪرڻ دوران هڪ غلطي ٿي وئي.</string>
     <string name="backup_no_permission">گم ٿيل اجازتن جي ڪري بيڪ اپ ٺاهي نه سگهيو.</string>
@@ -20,7 +19,7 @@
     <string name="bell_name_7">ٽِب. پيالو، 230mm</string>
     <string name="bell_name_8">جپ. رين باؤل، 97mm</string>
     <string name="bell_pause">بيل گپ (سيڪنڊ)</string>
-    <string name="bell_user">بيل شامل ڪريو...</string>
+    <string name="bell_user">بيل شامل ڪريو…</string>
     <string name="bottom_nav_meditation">مراقبو</string>
     <string name="bottom_nav_sessions">سيشن</string>
     <string name="bottom_sheet_behavior">android.support.design.widget.BottomSheetBehavior</string>
@@ -28,7 +27,6 @@
     <string name="but_start">مراقبي شروع ڪريو</string>
     <string name="but_stop">روڪ</string>
     <string name="caption_zazen_meditation">زازن مراقبو</string>
-    <string name="character_counter_pattern">%1$d / %2$d</string>
     <string name="checkbox_keep_screen_on">اسڪرين تي رکو</string>
     <string name="checkbox_no_server_messages">ڏيکاريو خبرون</string>
     <string name="checkbox_phone_off">فون بند ڪريو</string>
@@ -61,7 +59,7 @@
     <string name="label_section_name">سيڪشن جو نالو</string>
     <string name="label_session_description">سيشن جي وضاحت</string>
     <string name="label_session_name">سيشن جو نالو</string>
-    <string name="menu_about">بابت...</string>
+    <string name="menu_about">بابت…</string>
     <string name="menu_copy_session">نقل سيشن</string>
     <string name="menu_delete_section">سيڪشن کي ختم ڪريو</string>
     <string name="menu_delete_session">سيشن کي ختم ڪريو</string>
@@ -70,7 +68,7 @@
     <string name="menu_help">مدد</string>
     <string name="menu_add_session">سيشن شامل ڪريو</string>
     <string name="menu_new_session">نئون سيشن</string>
-    <string name="menu_privacy">رازداري...</string>
+    <string name="menu_privacy">رازداري…</string>
     <string name="menu_settings">سيٽنگون</string>
     <string name="minuten">منٽ</string>
     <string name="no_new_server_messages">ڪوبه نئون پيغام موجود ناهي.</string>
@@ -138,9 +136,6 @@
     <string name="theme_desc">ايپ جي ظاهر کي چونڊيو</string>
     <string name="theme_light">هلڪو موضوع</string>
     <string name="theme_system">سسٽم جو موضوع</string>
-    <string name="theme_value_dark">dark</string>
-    <string name="theme_value_light">light</string>
-    <string name="theme_value_system">system</string>
     <string name="time_section_elapsed">سيڪشن ختم ٿي ويو</string>
     <string name="time_section_remaining">باقي حصو</string>
     <string name="time_session_elapsed">سيشن گذري ويو</string>

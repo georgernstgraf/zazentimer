@@ -5,7 +5,6 @@
     <string name="about2">އަސްލު އުފެއްދީ ސްޓެފަން ގަފްގާ އެވެ. މިހާރު ބެލެހެއްޓިފައިވަނީ ޖޯޖް ގްރާފް އެވެ.&lt;br&gt;&lt;br&gt;މިހާ މޮޅު ބެލް ސައުންޑްސް ފޯރުކޮށްދިން ކަމަށްޓަކައި &lt;a href="http://www.meditationsuhren.de">http://www.meditationsuhren.de&lt;/a&gt; ގެ ވިންފްރީޑް އަށް ޝުކުރު!</string>
     <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues">ގިޓްހަބްގައި މައްސަލަތައް ރިޕޯޓްކުރުން&lt;/a&gt;</string>
     <string name="app_description">މި އެޕްލިކޭޝަންގެ ސަބަބުން މެޑިޓޭޝަން ސެޝަންތަކުގެ ސެޓެއް ކަނޑައެޅުމުގެ ފުރުސަތު ލިބިގެންދާއިރު، ބައެއް ނުވަތަ މުޅި މެޑިޓޭޝަން ނިމުމުން ވިޝުއަލް އަދި އޮޑިބަލް ފީޑްބެކް ލިބޭ ޓައިމަރެއް ލިބިގެންދެއެވެ.</string>
-    <string name="app_name">Zazen Meditation Timer</string>
     <string name="appbar_scrolling_view_behavior">android.support.design.widget.AppBarLayout$ސްކްރޯލިންގވިއުބިހޭވިއަރ</string>
     <string name="backup_error_text">މާފަށް އެދެން، ސޭވް ކުރަމުން ދިޔައިރު Error އެއް ދިމާވެއްޖެއެވެ.</string>
     <string name="backup_no_permission">ހުއްދަތައް ގެއްލިގެން ބެކަޕް އުފެއްދިފައެއް ނުވެއެވެ.</string>
@@ -20,7 +19,7 @@
     <string name="bell_name_7">ޓިބް. ތަށި، 230އެމްއެމް</string>
     <string name="bell_name_8">ޖަޕާނެވެ. ރައިންބޯލް، 97އެމްއެމް އެވެ</string>
     <string name="bell_pause">ބެލް ގޭޕް (ސިކުންތު)</string>
-    <string name="bell_user">އެޑް ބެލް...</string>
+    <string name="bell_user">އެޑް ބެލް…</string>
     <string name="bottom_nav_meditation">މެޑިޓޭޝަން</string>
     <string name="bottom_nav_sessions">ސެޝަންތައް</string>
     <string name="bottom_sheet_behavior">އެންޑްރޮއިޑް.ސަޕޯޓް.ޑިޒައިން.ވިޖެޓް.ބޮޓޮމްޝީޓްބިހޭވިއަރ</string>
@@ -28,12 +27,11 @@
     <string name="but_start">މެޑިޓޭޝަން ފަށާށެވެ</string>
     <string name="but_stop">ހުއްޓުން</string>
     <string name="caption_zazen_meditation">ޒާޒެން މެޑިޓޭޝަން އެވެ</string>
-    <string name="character_counter_pattern">%1$d / %2$d</string>
     <string name="checkbox_keep_screen_on">ސްކްރީން އޮންކޮށް ބެހެއްޓުން</string>
     <string name="checkbox_no_server_messages">ޝޯ ނިއުސް</string>
     <string name="checkbox_phone_off">މޫޓް ފޯން</string>
     <string name="checkbox_phone_off_desc">ފޯނުގެ ހުރިހާ އަޑެއް ނިއްވާލާށެވެ.</string>
-    <string name="copy_prefix">ކޮޕީ އޮފް...</string>
+    <string name="copy_prefix">ކޮޕީ އޮފް…</string>
     <string name="crash_dialog_comment_prompt">އިޚްތިޔާރީ: އެ ގޯސް ދިމާވީ ކޮން ޢަމަލެއްގެ ސަބަބުން ހެއްޔެވެ؟</string>
     <string name="crash_dialog_ok_toast">ތިޔަ އެހީތެރިކަމަށް ވަރަށް ބޮޑަށް ޝުކުރިއްޔާ!</string>
     <string name="crash_dialog_text">އަޅުގަނޑަށް މާފަށް އެދެން، ގޯހެއް ދިމާވެއްޖެ ކަމަށް. މި ބަގް ރިޕޯޓް ފޮނުއްވައި އަދި ފަހަރެއްގައި ތިޔަ ކުރި ކަންކަމުގެ އިތުރު ތަފްސީލު ފޮނުއްވައިގެން މި މައްސަލަ ހޯދައި ރަނގަޅު ކުރުމަށް އަޅުގަނޑަށް އެހީތެރިވެދެވިދާނެއެވެ.</string>
@@ -56,12 +54,12 @@
     <string name="desc_no_server_messages">އެޕް ފެށުމުން އޮޓޮމެޓިކުން ނިއުސް ދައްކާށެވެ</string>
     <string name="error_checking_for_server_messages">އާ މެސެޖުތައް ގެނައުމުގައި ގޯހެއް.</string>
     <string name="gong_type">ގޮންގް ސައުންޑް އެވެ</string>
-    <string name="help_sectionlist_text">މިތަނުގައި ތިބާގެ ސެޝަންގެ ކޮންޓެންޓްތަކަށް ނަން ކިޔައި، ބަޔާންކޮށް، އެޑިޓް ކުރެވޭނެއެވެ.\n\nރީއޯޑަރިންގ\nތަކެތި އަލުން އޯޑަރު ކުރުމަށްޓަކައި އެއްޗެއްގެ މައްޗަށް ދިގުކޮށް ފިތާލުމުން އަދި...\nއޭގެ އާ މަޤާމަށް ދަމާލާށެވެ.\n\nޑިލީޓް ކުރުން\nއެއްޗެއް ޑިލީޓް ކުރުމަށްޓަކައި ކަނާތްފަރާތަށް ގެންދާށެވެ.\n\nބަދަލު ގެނައުން\nބައެއް އެޑިޓް ކުރުމަށްޓަކައި ހަމައެކަނި އެއްފަހަރު އަތްލާށެވެ.\n\nއެއްކުރުން\nއާ ބައެއް އިތުރު ކުރުމަށްޓަކައި + ބަޓަން އަށް ފިތާލާށެވެ.</string>
+    <string name="help_sectionlist_text">މިތަނުގައި ތިބާގެ ސެޝަންގެ ކޮންޓެންޓްތަކަށް ނަން ކިޔައި، ބަޔާންކޮށް، އެޑިޓް ކުރެވޭނެއެވެ.\n\nރީއޯޑަރިންގ\nތަކެތި އަލުން އޯޑަރު ކުރުމަށްޓަކައި އެއްޗެއްގެ މައްޗަށް ދިގުކޮށް ފިތާލުމުން އަދި…\nއޭގެ އާ މަޤާމަށް ދަމާލާށެވެ.\n\nޑިލީޓް ކުރުން\nއެއްޗެއް ޑިލީޓް ކުރުމަށްޓަކައި ކަނާތްފަރާތަށް ގެންދާށެވެ.\n\nބަދަލު ގެނައުން\nބައެއް އެޑިޓް ކުރުމަށްޓަކައި ހަމައެކަނި އެއްފަހަރު އަތްލާށެވެ.\n\nއެއްކުރުން\nއާ ބައެއް އިތުރު ކުރުމަށްޓަކައި + ބަޓަން އަށް ފިތާލާށެވެ.</string>
     <string name="help_sectionlist_title">އެޑިޓް ސެޝަން</string>
     <string name="label_section_name">ސެކްޝަންގެ ނަން</string>
     <string name="label_session_description">ސެޝަން ޑިސްކްރިޕްޝަން</string>
     <string name="label_session_name">ސެޝަންގެ ނަން</string>
-    <string name="menu_about">ގުޅިގެން...</string>
+    <string name="menu_about">ގުޅިގެން…</string>
     <string name="menu_copy_session">ޑަޕްލިކޭޓް ސެޝަން</string>
     <string name="menu_delete_section">ޑިލީޓް ސެކްޝަން</string>
     <string name="menu_delete_session">ޑިލީޓް ސެޝަން</string>
@@ -70,7 +68,7 @@
     <string name="menu_help">އެހީވުން</string>
     <string name="menu_add_session">ސެޝަން އިތުރުކުރުން</string>
     <string name="menu_new_session">އައު ސެޝަން</string>
-    <string name="menu_privacy">އަމިއްލަ...</string>
+    <string name="menu_privacy">އަމިއްލަ…</string>
     <string name="menu_settings">ސެޓިންގސް</string>
     <string name="minuten">މިނެޓް</string>
     <string name="no_new_server_messages">އާ މެސެޖެއް ނުލިބެއެވެ.</string>
@@ -138,9 +136,6 @@
     <string name="theme_desc">އެޕްގެ ސިފަ ހޮވާށެވެ</string>
     <string name="theme_light">ލައިޓް ތީމް އެވެ</string>
     <string name="theme_system">ސިސްޓަމް ތީމް</string>
-    <string name="theme_value_dark">dark</string>
-    <string name="theme_value_light">light</string>
-    <string name="theme_value_system">system</string>
     <string name="time_section_elapsed">ސެކްޝަން ފާއިތުވެއްޖެއެވެ</string>
     <string name="time_section_remaining">ބާކީ ބައި</string>
     <string name="time_session_elapsed">ސެޝަން ފާއިތުވެގެން ދިޔައެވެ</string>

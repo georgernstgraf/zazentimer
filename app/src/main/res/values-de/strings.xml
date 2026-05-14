@@ -19,7 +19,7 @@
     <string name="bell_name_7">Tib. Klangschale, 230mm</string>
     <string name="bell_name_8">Jap. Rhinbowl, 97mm</string>
     <string name="bell_pause">Gong-Pause (Sek.)</string>
-    <string name="bell_user">Gong hinzufügen...</string>
+    <string name="bell_user">Gong hinzufügen…</string>
     <string name="bottom_nav_meditation">Meditation</string>
     <string name="bottom_nav_sessions">Sessions</string>
     <string name="bottom_sheet_behavior">android.support.design.widget.BottomSheetBehavior</string>
@@ -59,7 +59,7 @@
     <string name="label_section_name">Abschnittsname</string>
     <string name="label_session_description">Session-Beschreibung</string>
     <string name="label_session_name">Session-Name</string>
-    <string name="menu_about">Über...</string>
+    <string name="menu_about">Über…</string>
     <string name="menu_copy_session">Session duplizieren</string>
     <string name="menu_delete_section">Abschnitt löschen</string>
     <string name="menu_delete_session">Session löschen</string>
@@ -68,7 +68,7 @@
     <string name="menu_help">Hilfe</string>
     <string name="menu_add_session">Session hinzufügen</string>
     <string name="menu_new_session">Neue Session</string>
-    <string name="menu_privacy">Datenschutz...</string>
+    <string name="menu_privacy">Datenschutz…</string>
     <string name="menu_settings">Einstellungen</string>
     <string name="minuten">Minuten</string>
     <string name="no_new_server_messages">Keine neuen Nachrichten verfügbar.</string>

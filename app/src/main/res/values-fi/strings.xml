@@ -19,7 +19,7 @@
     <string name="bell_name_7">Tiib. Kulho, 230 mm</string>
     <string name="bell_name_8">Jap. Rhinbowl, 97 mm</string>
     <string name="bell_pause">Kelloväli (s)</string>
-    <string name="bell_user">Lisää kello...</string>
+    <string name="bell_user">Lisää kello…</string>
     <string name="bottom_nav_meditation">Meditaatio</string>
     <string name="bottom_nav_sessions">Istunnot</string>
     <string name="bottom_sheet_behavior">android.support.design.widget.BottomSheetBehavior</string>
@@ -59,7 +59,7 @@
     <string name="label_section_name">Osion nimi</string>
     <string name="label_session_description">Istunnon kuvaus</string>
     <string name="label_session_name">Istunnon nimi</string>
-    <string name="menu_about">Tietoja...</string>
+    <string name="menu_about">Tietoja…</string>
     <string name="menu_copy_session">Kopioi istunto</string>
     <string name="menu_delete_section">Poista osio</string>
     <string name="menu_delete_session">Poista istunto</string>
@@ -68,7 +68,7 @@
     <string name="menu_help">Ohje</string>
     <string name="menu_add_session">Lisää istunto</string>
     <string name="menu_new_session">Uusi istunto</string>
-    <string name="menu_privacy">Tietosuoja...</string>
+    <string name="menu_privacy">Tietosuoja…</string>
     <string name="menu_settings">Asetukset</string>
     <string name="minuten">Minuuttia</string>
     <string name="no_new_server_messages">Uusia viestejä ei saatavilla.</string>

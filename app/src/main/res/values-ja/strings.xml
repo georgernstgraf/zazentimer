@@ -19,7 +19,7 @@
     <string name="bell_name_7">チベットボウル 230mm</string>
     <string name="bell_name_8">和りん 97mm</string>
     <string name="bell_pause">ベルの間隔 (秒)</string>
-    <string name="bell_user">ベルを追加...</string>
+    <string name="bell_user">ベルを追加…</string>
     <string name="bottom_nav_meditation">瞑想</string>
     <string name="bottom_nav_sessions">セッション</string>
     <string name="bottom_sheet_behavior">android.support.design.widget.BottomSheetBehavior</string>
@@ -59,7 +59,7 @@
     <string name="label_section_name">セクション名</string>
     <string name="label_session_description">セッションの説明</string>
     <string name="label_session_name">セッション名</string>
-    <string name="menu_about">アプリについて...</string>
+    <string name="menu_about">アプリについて…</string>
     <string name="menu_copy_session">セッションを複製</string>
     <string name="menu_delete_section">セクションを削除</string>
     <string name="menu_delete_session">セッションを削除</string>
@@ -68,7 +68,7 @@
     <string name="menu_help">ヘルプ</string>
     <string name="menu_add_session">セッションを追加</string>
     <string name="menu_new_session">新規セッション</string>
-    <string name="menu_privacy">プライバシー...</string>
+    <string name="menu_privacy">プライバシー…</string>
     <string name="menu_settings">設定</string>
     <string name="minuten">分</string>
     <string name="no_new_server_messages">新しいメッセージはありません。</string>

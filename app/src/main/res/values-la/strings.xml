@@ -5,7 +5,6 @@
     <string name="about2">Primum creata a Stefan Gaffga. In statu servatur Georg Graf.&lt;br&gt;&lt;br&gt;Gratias Winfried de &lt;a href="http://www.meditationsuhren.de">http://www.meditationsuhren.de&lt;/a&gt; ad tantis sonos Campanorum comparandis!</string>
     <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues">Report quaestiones in GitHub&lt;/a&gt;</string>
     <string name="app_description">Haec applicatio permittit utentis meditationis sessiones definitas definire ac timeri praebet opiniones visuales et audibiles, cum pars vel tota meditatio cessat.</string>
-    <string name="app_name">Zazen Meditation Timer</string>
     <string name="appbar_scrolling_view_behavior">android.support.design.widget.AppBarLayout $ ScrollingViewBehavior</string>
     <string name="backup_error_text">Dolemus, errori salutaris occurrit.</string>
     <string name="backup_no_permission">Non potuit creare tergum ob permissiones absentis.</string>
@@ -20,7 +19,7 @@
     <string name="bell_name_7">Tib. Crater, 230mm</string>
     <string name="bell_name_8">Jap. Rhinbowl, 97mm</string>
     <string name="bell_pause">hiatus Campana (sec) ;</string>
-    <string name="bell_user">Adde Bell...</string>
+    <string name="bell_user">Adde Bell…</string>
     <string name="bottom_nav_meditation">Meditatio</string>
     <string name="bottom_nav_sessions">Sessiones</string>
     <string name="bottom_sheet_behavior">android.support.design.widget.BottomSheetBehavior</string>
@@ -28,7 +27,6 @@
     <string name="but_start">Satus Meditatio</string>
     <string name="but_stop">Subsisto</string>
     <string name="caption_zazen_meditation">Zazen Meditatio</string>
-    <string name="character_counter_pattern">%1$d / %2$d</string>
     <string name="checkbox_keep_screen_on">Serva in screen</string>
     <string name="checkbox_no_server_messages">Ostendere News</string>
     <string name="checkbox_phone_off">Muta Phone</string>
@@ -61,7 +59,7 @@
     <string name="label_section_name">Nomen sectionis</string>
     <string name="label_session_description">Sessio Description</string>
     <string name="label_session_name">Sessio Nomen</string>
-    <string name="menu_about">De...</string>
+    <string name="menu_about">De…</string>
     <string name="menu_copy_session">Effingo Sessio</string>
     <string name="menu_delete_section">Delere sectionem</string>
     <string name="menu_delete_session">Delere Sessio</string>
@@ -70,7 +68,7 @@
     <string name="menu_help">Auxilium</string>
     <string name="menu_add_session">Add Sessio</string>
     <string name="menu_new_session">Nova Sessio</string>
-    <string name="menu_privacy">Secretum...</string>
+    <string name="menu_privacy">Secretum…</string>
     <string name="menu_settings">Occasus</string>
     <string name="minuten">Minuta</string>
     <string name="no_new_server_messages">Nullae epistulae novae praesto sunt.</string>
@@ -138,9 +136,6 @@
     <string name="theme_desc">Elige quod app specie</string>
     <string name="theme_light">Lux Theme</string>
     <string name="theme_system">Systema Theme</string>
-    <string name="theme_value_dark">dark</string>
-    <string name="theme_value_light">light</string>
-    <string name="theme_value_system">system</string>
     <string name="time_section_elapsed">Sectio spatio</string>
     <string name="time_section_remaining">Reliqua sectione</string>
     <string name="time_session_elapsed">Sessio spatio</string>

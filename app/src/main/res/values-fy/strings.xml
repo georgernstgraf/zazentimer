@@ -5,7 +5,6 @@
     <string name="about2">Oarspronklik makke troch Stefan Gaffga. Op it stuit ûnderhâlden troch Georg Graf.&lt;br&gt;&lt;br&gt;Mei tank oan Winfried fan &lt;a href="http://www.meditationsuhren.de">http://www.meditationsuhren.de&lt;/a&gt; foar it leverjen fan sokke geweldige Bell Sounds!</string>
     <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues">Rapportearje problemen op GitHub&lt;/a&gt;</string>
     <string name="app_description">Dizze applikaasje lit de brûker in set meditaasje-sesjes definiearje en leveret in timer mei fisuele en harkbere feedback as in diel of de heule meditaasje foarby is.</string>
-    <string name="app_name">Zazen Meditation Timer</string>
     <string name="appbar_scrolling_view_behavior">android.support.design.widget.AppBarLayout$ScrollingViewBehavior</string>
     <string name="backup_error_text">Sorry, der is in flater bard by it opslaan.</string>
     <string name="backup_no_permission">Koe gjin reservekopy meitsje fanwegen ûntbrekkende tagongsrjochten.</string>
@@ -20,7 +19,7 @@
     <string name="bell_name_7">Tib. Bakke, 230 mm</string>
     <string name="bell_name_8">Jap. Rhinbowl, 97 mm</string>
     <string name="bell_pause">Bell gap (sek)</string>
-    <string name="bell_user">Bel taheakje...</string>
+    <string name="bell_user">Bel taheakje…</string>
     <string name="bottom_nav_meditation">Meditaasje</string>
     <string name="bottom_nav_sessions">Sesjes</string>
     <string name="bottom_sheet_behavior">android.support.design.widget.BottomSheetBehavior</string>
@@ -28,7 +27,6 @@
     <string name="but_start">Begjin meditaasje</string>
     <string name="but_stop">Ophâlde</string>
     <string name="caption_zazen_meditation">Zazen Meditaasje</string>
-    <string name="character_counter_pattern">%1$d / %2$d</string>
     <string name="checkbox_keep_screen_on">Hâld skerm op</string>
     <string name="checkbox_no_server_messages">Nijs sjen litte</string>
     <string name="checkbox_phone_off">Dempe telefoan</string>
@@ -61,7 +59,7 @@
     <string name="label_section_name">Seksje namme</string>
     <string name="label_session_description">Sesje Beskriuwing</string>
     <string name="label_session_name">Sesje Namme</string>
-    <string name="menu_about">Oer...</string>
+    <string name="menu_about">Oer…</string>
     <string name="menu_copy_session">Duplikaat sesje</string>
     <string name="menu_delete_section">Seksje wiskje</string>
     <string name="menu_delete_session">Sesje wiskje</string>
@@ -70,7 +68,7 @@
     <string name="menu_help">Help</string>
     <string name="menu_add_session">Sesje tafoegje</string>
     <string name="menu_new_session">Nije sesje</string>
-    <string name="menu_privacy">Privacy...</string>
+    <string name="menu_privacy">Privacy…</string>
     <string name="menu_settings">Ynstellings</string>
     <string name="minuten">Minuten</string>
     <string name="no_new_server_messages">Gjin nije berjochten beskikber.</string>
@@ -138,9 +136,6 @@
     <string name="theme_desc">Kies de app-uterlik</string>
     <string name="theme_light">Ljocht Tema</string>
     <string name="theme_system">Systeem tema</string>
-    <string name="theme_value_dark">dark</string>
-    <string name="theme_value_light">light</string>
-    <string name="theme_value_system">system</string>
     <string name="time_section_elapsed">Seksje ferrûn</string>
     <string name="time_section_remaining">Seksje oerbleaun</string>
     <string name="time_session_elapsed">Sesje ferrûn</string>

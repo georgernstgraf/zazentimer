@@ -5,7 +5,6 @@
     <string name="about2">Ekuqaleni yadalwa nguStefan Gaffga. Ngoku igcinwe nguGeorg Graf.&lt;br&gt;&lt;br&gt;Enkosi kuWinfried we&lt;a href="http://www.meditationsuhren.de">http://www.meditationsuhren.de&lt;/a&gt; ngokunikezela ngeZandi zeBell ezinje!</string>
     <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues">Xela imiba kwiGitHub&lt;/a&gt;</string>
     <string name="app_description">Esi sicelo sivumela umsebenzisi ukuba achaze iseti yeeseshini zokucamngca kwaye ibonelela ngesibali-xesha ngengxelo ebonakalayo kunye nevakalayo xa inxalenye okanye ukucamngca kuphelile.</string>
-    <string name="app_name">Zazen Meditation Timer</string>
     <string name="appbar_scrolling_view_behavior">android.support.design.widget.AppBarLayout$ScrollingViewBehavior</string>
     <string name="backup_error_text">Uxolo, kwenzeke impazamo ngexesha ugcina.</string>
     <string name="backup_no_permission">Ayikwazanga ukwenza ugcino ngenxa yeemvumelwano ezingekhoyo.</string>
@@ -20,7 +19,7 @@
     <string name="bell_name_7">Ithib. Isitya, 230mm</string>
     <string name="bell_name_8">eJapan. I-Rhinbowl, 97mm</string>
     <string name="bell_pause">Intsimbi yentsimbi (umzuzwana)</string>
-    <string name="bell_user">Yongeza iBell...</string>
+    <string name="bell_user">Yongeza iBell…</string>
     <string name="bottom_nav_meditation">Ukucamngca</string>
     <string name="bottom_nav_sessions">Iiseshoni</string>
     <string name="bottom_sheet_behavior">android.support.design.widget.BottomSheetBehavior</string>
@@ -28,7 +27,6 @@
     <string name="but_start">Qala ukucamngca</string>
     <string name="but_stop">Yeka</string>
     <string name="caption_zazen_meditation">Ukucamngca kweZazen</string>
-    <string name="character_counter_pattern">%1$d / %2$d</string>
     <string name="checkbox_keep_screen_on">Gcina isikrini sivuliwe</string>
     <string name="checkbox_no_server_messages">Bonisa Iindaba</string>
     <string name="checkbox_phone_off">Cima ifowuni</string>
@@ -61,7 +59,7 @@
     <string name="label_section_name">Igama lecandelo</string>
     <string name="label_session_description">Inkcazo yeseshoni</string>
     <string name="label_session_name">Igama leSeshini</string>
-    <string name="menu_about">Malunga...</string>
+    <string name="menu_about">Malunga…</string>
     <string name="menu_copy_session">Phinda kabini iSeshini</string>
     <string name="menu_delete_section">Cima iCandelo</string>
     <string name="menu_delete_session">Cima iSeshini</string>
@@ -70,7 +68,7 @@
     <string name="menu_help">Nceda</string>
     <string name="menu_add_session">Yongeza iSeshini</string>
     <string name="menu_new_session">Iseshoni entsha</string>
-    <string name="menu_privacy">Ubumfihlo...</string>
+    <string name="menu_privacy">Ubumfihlo…</string>
     <string name="menu_settings">Iisetingi</string>
     <string name="minuten">Imizuzu</string>
     <string name="no_new_server_messages">Akukho miyalezo mitsha ekhoyo.</string>
@@ -138,9 +136,6 @@
     <string name="theme_desc">Khetha inkangeleko ye-app</string>
     <string name="theme_light">Light Umxholo</string>
     <string name="theme_system">Umxholo weNkqubo</string>
-    <string name="theme_value_dark">dark</string>
-    <string name="theme_value_light">light</string>
-    <string name="theme_value_system">system</string>
     <string name="time_section_elapsed">Icandelo liphelile</string>
     <string name="time_section_remaining">Icandelo eliseleyo</string>
     <string name="time_session_elapsed">Iphelile iseshoni</string>

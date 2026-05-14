@@ -18,7 +18,7 @@
     <string name="bell_name_7">Tibeto dubuo, 230mm</string>
     <string name="bell_name_8">Jap. varpas, 97mm</string>
     <string name="bell_pause">Tarpo trukmė (sek.)</string>
-    <string name="bell_user">Pridėti varpą...</string>
+    <string name="bell_user">Pridėti varpą…</string>
     <string name="bottom_nav_meditation">Meditacija</string>
     <string name="bottom_nav_sessions">Seansai</string>
     <string name="but_pause">Pauzė</string>
@@ -57,7 +57,7 @@
     <string name="label_section_name">Skyriaus pavadinimas</string>
     <string name="label_session_description">Seanso aprašymas</string>
     <string name="label_session_name">Seanso pavadinimas</string>
-    <string name="menu_about">Apie...</string>
+    <string name="menu_about">Apie…</string>
     <string name="menu_copy_session">Kopijuoti seansą</string>
     <string name="menu_delete_section">Ištrinti skyrių</string>
     <string name="menu_delete_session">Ištrinti seansą</string>
@@ -66,7 +66,7 @@
     <string name="menu_help">Pagalba</string>
     <string name="menu_add_session">Pridėti seansą</string>
     <string name="menu_new_session">Naujas seansas</string>
-    <string name="menu_privacy">Privatumas...</string>
+    <string name="menu_privacy">Privatumas…</string>
     <string name="menu_settings">Nustatymai</string>
     <string name="minuten">Minutės</string>
     <string name="no_new_server_messages">Naujų pranešimų nėra.</string>

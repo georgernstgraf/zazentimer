@@ -5,7 +5,6 @@
     <string name="about2">Keeb kwm tsim los ntawm Stefan Gaffga. Tam sim no khaws cia los ntawm Georg Graf.&lt;br&gt;&lt;br&gt;Ua tsaug rau Winfried ntawm &lt;a href="http://www.meditationsuhren.de">http://www.meditationsuhren.de&lt;/a&gt; rau kev muab lub suab zoo li tswb!</string>
     <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues"> Qhia teeb meem ntawm GitHub&lt;/a&gt;</string>
     <string name="app_description">Daim ntawv thov no tso cai rau tus neeg siv txhais cov txheej txheem kev xav thiab muab lub sijhawm nrog cov lus pom thiab mloog tau thaum ib feem lossis tag nrho kev xav tau dhau los.</string>
-    <string name="app_name">Zazen Meditation Timer</string>
     <string name="appbar_scrolling_view_behavior">android.support.design.widget.AppBarLayout$ScrollingViewBehavior</string>
     <string name="backup_error_text">Thov txim, qhov yuam kev tshwm sim thaum txuag.</string>
     <string name="backup_no_permission">Tsis tuaj yeem tsim thaub qab vim tsis muaj kev tso cai.</string>
@@ -20,7 +19,7 @@
     <string name="bell_name_7">Tib. Loj, 230mm</string>
     <string name="bell_name_8">Nyiv. luj, 97mm</string>
     <string name="bell_pause">Tswb gap (sec)</string>
-    <string name="bell_user">Ntxiv Tswb...</string>
+    <string name="bell_user">Ntxiv Tswb…</string>
     <string name="bottom_nav_meditation">Kev xav</string>
     <string name="bottom_nav_sessions">Kev sib tham</string>
     <string name="bottom_sheet_behavior">android.support.design.widget.BottomSheetBehavior</string>
@@ -28,7 +27,6 @@
     <string name="but_start">Pib Meditation</string>
     <string name="but_stop">Nres</string>
     <string name="caption_zazen_meditation">Zazen Meditation</string>
-    <string name="character_counter_pattern">%1$d / %2$d</string>
     <string name="checkbox_keep_screen_on">Khaws qhov screen rau</string>
     <string name="checkbox_no_server_messages">Qhia Xov Xwm</string>
     <string name="checkbox_phone_off">Mute xov tooj</string>
@@ -61,7 +59,7 @@
     <string name="label_section_name">Tshooj npe</string>
     <string name="label_session_description">Session Description</string>
     <string name="label_session_name">Lub npe ntu</string>
-    <string name="menu_about">Hais txog...</string>
+    <string name="menu_about">Hais txog…</string>
     <string name="menu_copy_session">Duplicate Session</string>
     <string name="menu_delete_section">Rho tawm Tshooj</string>
     <string name="menu_delete_session">Rho tawm Session</string>
@@ -70,7 +68,7 @@
     <string name="menu_help">Pab</string>
     <string name="menu_add_session">Ntxiv Session</string>
     <string name="menu_new_session">Session tshiab</string>
-    <string name="menu_privacy">Tsis pub twg paub...</string>
+    <string name="menu_privacy">Tsis pub twg paub…</string>
     <string name="menu_settings">Chaw</string>
     <string name="minuten">feeb</string>
     <string name="no_new_server_messages">Tsis muaj cov lus tshiab muaj.</string>
@@ -138,9 +136,6 @@
     <string name="theme_desc">Xaiv lub app tsos</string>
     <string name="theme_light">Lub ntsiab lus</string>
     <string name="theme_system">Lub ntsiab lus</string>
-    <string name="theme_value_dark">dark</string>
-    <string name="theme_value_light">light</string>
-    <string name="theme_value_system">system</string>
     <string name="time_section_elapsed">Tshooj dhau los</string>
     <string name="time_section_remaining">seem seem</string>
     <string name="time_session_elapsed">Kev sib tham dhau mus</string>

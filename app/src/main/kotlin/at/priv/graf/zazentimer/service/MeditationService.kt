@@ -49,6 +49,7 @@ class MeditationService : LifecycleService() {
     }
 
     override fun onBind(intent: Intent): IBinder {
+        super.onBind(intent)
         Log.d(TAG, "onBind")
         val b = MeditationServiceBinder(this)
         binder = b
@@ -66,6 +67,7 @@ class MeditationService : LifecycleService() {
         flags: Int,
         startId: Int,
     ): Int {
+        super.onStartCommand(intent, flags, startId)
         Log.d(TAG, "onStartCommand: action=${intent?.action ?: "null"}")
         if (intent != null && ACTION_SECTION_ENDED == intent.action) {
             runningMeditation?.onSectionEnd() ?: run {
@@ -149,6 +151,7 @@ class MeditationService : LifecycleService() {
         runningMeditation = null
         val intent = Intent()
         intent.action = ZAZENTIMER_SESSION_ENDED
+        intent.setPackage(packageName)
         sendBroadcast(intent)
         stopSelf()
     }

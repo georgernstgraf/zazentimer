@@ -1,6 +1,5 @@
 package at.priv.graf.zazentimer.database
 
-import androidx.annotation.NonNull
 import androidx.room.Entity
 import androidx.room.ForeignKey
 import androidx.room.Index
@@ -23,7 +22,6 @@ data class SectionEntity(
     @PrimaryKey(autoGenerate = true)
     var _id: Int = 0,
     var fk_session: Int = 0,
-    @field:NonNull
     var name: String = "",
     var duration: Int = 0,
     var bell: Int = 0,

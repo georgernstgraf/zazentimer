@@ -5,7 +5,6 @@
     <string name="about2">Muamua na faia e Stefan Gaffga. O lo\'o tausia nei e Georg Graf.&lt;br&gt;&lt;br&gt;Fa\'afetai ia Winfried o &lt;a href="http://www.meditationsuhren.de">http://www.meditationsuhren.de&lt;/a&gt; mo le sauniaina o le tele o Bell Sounds!</string>
     <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues">Lipoti mataupu ile GitHub&lt;/a&gt;</string>
     <string name="app_description">O lenei talosaga e mafai ai e le tagata faʻaoga ona faʻamalamalamaina se seti o taimi mafaufau loloto ma tuʻuina atu se taimi faʻatasi ai ma faʻamatalaga vaaia ma faʻalogo pe a uma se vaega poʻo le mafaufau loloto atoa.</string>
-    <string name="app_name">Zazen Meditation Timer</string>
     <string name="appbar_scrolling_view_behavior">android.support.design.widget.AppBarLayout$ScrollingViewBehavior</string>
     <string name="backup_error_text">Fa\'amalie atu, na tupu se mea sese a\'o sefe.</string>
     <string name="backup_no_permission">Le mafai ona fai fa\'amaumauga ona o fa\'atagaga o misi.</string>
@@ -20,7 +19,7 @@
     <string name="bell_name_7">Tib. Pesini, 230mm</string>
     <string name="bell_name_8">Iapo. Rhinbowl, 97mm</string>
     <string name="bell_pause">avanoa logo (sec)</string>
-    <string name="bell_user">Fa\'aopoopo Bell...</string>
+    <string name="bell_user">Fa\'aopoopo Bell…</string>
     <string name="bottom_nav_meditation">Mafaufauga Loloto</string>
     <string name="bottom_nav_sessions">Sauniga</string>
     <string name="bottom_sheet_behavior">android.support.design.widget.BottomSheetBehavior</string>
@@ -28,7 +27,6 @@
     <string name="but_start">Amata Mafaufauga Loloto</string>
     <string name="but_stop">Taofi</string>
     <string name="caption_zazen_meditation">Mafaufauga Loloto</string>
-    <string name="character_counter_pattern">%1$d / %2$d</string>
     <string name="checkbox_keep_screen_on">Ia ola pea le mata</string>
     <string name="checkbox_no_server_messages">Faaali Tala Fou</string>
     <string name="checkbox_phone_off">Gūgū Telefoni</string>
@@ -61,7 +59,7 @@
     <string name="label_section_name">Igoa vaega</string>
     <string name="label_session_description">Fa\'amatalaga o Sauniga</string>
     <string name="label_session_name">Igoa o le Sauniga</string>
-    <string name="menu_about">E uiga i...</string>
+    <string name="menu_about">E uiga i…</string>
     <string name="menu_copy_session">Sauniga faalua</string>
     <string name="menu_delete_section">Aveese Vaega</string>
     <string name="menu_delete_session">Aveese le Sauniga</string>
@@ -70,7 +68,7 @@
     <string name="menu_help">Fesoasoani</string>
     <string name="menu_add_session">Faaopoopo le Sauniga</string>
     <string name="menu_new_session">Fonotaga Fou</string>
-    <string name="menu_privacy">Fa\'alilolilo...</string>
+    <string name="menu_privacy">Fa\'alilolilo…</string>
     <string name="menu_settings">Fa\'atonu</string>
     <string name="minuten">minute</string>
     <string name="no_new_server_messages">Leai ni fe\'au fou e maua.</string>
@@ -138,9 +136,6 @@
     <string name="theme_desc">Filifili foliga o le app</string>
     <string name="theme_light">Autu Malamalama</string>
     <string name="theme_system">Autu Faiga</string>
-    <string name="theme_value_dark">dark</string>
-    <string name="theme_value_light">light</string>
-    <string name="theme_value_system">system</string>
     <string name="time_section_elapsed">Ua mavae le vaega</string>
     <string name="time_section_remaining">Vaega o totoe</string>
     <string name="time_session_elapsed">Ua mavae le sauniga</string>

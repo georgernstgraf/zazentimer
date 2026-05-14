@@ -18,7 +18,7 @@
     <string name="bell_name_7">Tib. Bowl, 230mm</string>
     <string name="bell_name_8">Jap. Rhinbowl, 97mm</string>
     <string name="bell_pause">ზარის ინტერვალი (წმ)</string>
-    <string name="bell_user">ზარის დამატება...</string>
+    <string name="bell_user">ზარის დამატება…</string>
     <string name="bottom_nav_meditation">მედიტაცია</string>
     <string name="bottom_nav_sessions">სესიები</string>
     <string name="but_pause">პაუზა</string>
@@ -57,7 +57,7 @@
     <string name="label_section_name">სექციის სახელი</string>
     <string name="label_session_description">სესიის აღწერა</string>
     <string name="label_session_name">სესიის სახელი</string>
-    <string name="menu_about">შესახებ...</string>
+    <string name="menu_about">შესახებ…</string>
     <string name="menu_copy_session">სესიის დუბლირება</string>
     <string name="menu_delete_section">სექციის წაშლა</string>
     <string name="menu_delete_session">სესიის წაშლა</string>
@@ -66,7 +66,7 @@
     <string name="menu_help">დახმარება</string>
     <string name="menu_add_session">სესიის დამატება</string>
     <string name="menu_new_session">ახალი სესია</string>
-    <string name="menu_privacy">კონფიდენციალურობა...</string>
+    <string name="menu_privacy">კონფიდენციალურობა…</string>
     <string name="menu_settings">პარამეტრები</string>
     <string name="minuten">წუთი</string>
     <string name="no_new_server_messages">ახალი შეტყობინებები არ არის.</string>

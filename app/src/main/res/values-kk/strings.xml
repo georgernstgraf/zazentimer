@@ -19,7 +19,7 @@
     <string name="bell_name_7">Тибет тостағаны, 230мм</string>
     <string name="bell_name_8">Жапон Rhinbowl, 97мм</string>
     <string name="bell_pause">Қоңырау аралығы (сек)</string>
-    <string name="bell_user">Қоңырау қосу...</string>
+    <string name="bell_user">Қоңырау қосу…</string>
     <string name="bottom_nav_meditation">Медитация</string>
     <string name="bottom_nav_sessions">Сеанстар</string>
     <string name="bottom_sheet_behavior">android.support.design.widget.BottomSheetBehavior</string>
@@ -59,7 +59,7 @@
     <string name="label_section_name">Бөлім атауы</string>
     <string name="label_session_description">Сеанс сипаттамасы</string>
     <string name="label_session_name">Сеанс атауы</string>
-    <string name="menu_about">Қолданба туралы...</string>
+    <string name="menu_about">Қолданба туралы…</string>
     <string name="menu_copy_session">Сеансты көшіру</string>
     <string name="menu_delete_section">Бөлімді жою</string>
     <string name="menu_delete_session">Сеансты жою</string>
@@ -68,7 +68,7 @@
     <string name="menu_help">Анықтама</string>
     <string name="menu_add_session">Сеанс қосу</string>
     <string name="menu_new_session">Жаңа сеанс</string>
-    <string name="menu_privacy">Құпиялық...</string>
+    <string name="menu_privacy">Құпиялық…</string>
     <string name="menu_settings">Параметрлер</string>
     <string name="minuten">Минут</string>
     <string name="no_new_server_messages">Жаңа хабарлар жоқ.</string>

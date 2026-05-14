@@ -5,7 +5,6 @@
     <string name="about2">Првично создаден од Стефан Гафга. Моментално го одржува Георг Граф.&lt;br&gt;&lt;br&gt;Благодарност до Винфрид од &lt;a href="http://www.meditationsuhren.de">http://www.meditationsuhren.de&lt;/a&gt; за обезбедувањето на толку одлични звуци на Бел!</string>
     <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues">Пријавете проблеми на GitHub&lt;/a&gt;</string>
     <string name="app_description">Оваа апликација му овозможува на корисникот да дефинира сет на сесии за медитација и обезбедува тајмер со визуелни и звучни повратни информации кога ќе заврши дел или целата медитација.</string>
-    <string name="app_name">Zazen Meditation Timer</string>
     <string name="appbar_scrolling_view_behavior">android.support.design.widget.AppBarLayout$ScrollingViewBehavior</string>
     <string name="backup_error_text">Извинете, се појави грешка при зачувувањето.</string>
     <string name="backup_no_permission">Не може да се создаде резервна копија поради недостиг на дозволи.</string>
@@ -20,7 +19,7 @@
     <string name="bell_name_7">Тиб. Сад, 230 мм</string>
     <string name="bell_name_8">Јап. Ринбоул, 97 мм</string>
     <string name="bell_pause">Јаз во ѕвончето (сек)</string>
-    <string name="bell_user">Додај Бел...</string>
+    <string name="bell_user">Додај Бел…</string>
     <string name="bottom_nav_meditation">Медитација</string>
     <string name="bottom_nav_sessions">Сесии</string>
     <string name="bottom_sheet_behavior">android.support.design.widget.BottomSheetBehavior</string>
@@ -28,7 +27,6 @@
     <string name="but_start">Започнете со медитација</string>
     <string name="but_stop">Стоп</string>
     <string name="caption_zazen_meditation">Зазен медитација</string>
-    <string name="character_counter_pattern">%1$d / %2$d</string>
     <string name="checkbox_keep_screen_on">Чувајте го екранот вклучен</string>
     <string name="checkbox_no_server_messages">Прикажи вести</string>
     <string name="checkbox_phone_off">Исклучи звук на телефонот</string>
@@ -61,7 +59,7 @@
     <string name="label_section_name">Име на делот</string>
     <string name="label_session_description">Опис на сесијата</string>
     <string name="label_session_name">Име на сесија</string>
-    <string name="menu_about">За...</string>
+    <string name="menu_about">За…</string>
     <string name="menu_copy_session">Дупликат сесија</string>
     <string name="menu_delete_section">Избриши го делот</string>
     <string name="menu_delete_session">Избриши сесија</string>
@@ -70,7 +68,7 @@
     <string name="menu_help">Помош</string>
     <string name="menu_add_session">Додадете сесија</string>
     <string name="menu_new_session">Нова сесија</string>
-    <string name="menu_privacy">Приватност...</string>
+    <string name="menu_privacy">Приватност…</string>
     <string name="menu_settings">Поставки</string>
     <string name="minuten">Минути</string>
     <string name="no_new_server_messages">Нема достапни нови пораки.</string>
@@ -138,9 +136,6 @@
     <string name="theme_desc">Изберете го изгледот на апликацијата</string>
     <string name="theme_light">Светла тема</string>
     <string name="theme_system">Системска тема</string>
-    <string name="theme_value_dark">dark</string>
-    <string name="theme_value_light">light</string>
-    <string name="theme_value_system">system</string>
     <string name="time_section_elapsed">Делот помина</string>
     <string name="time_section_remaining">Преостанат дел</string>
     <string name="time_session_elapsed">Сесијата помина</string>

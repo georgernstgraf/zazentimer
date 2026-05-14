@@ -5,7 +5,6 @@
     <string name="about2">Bi eslê xwe ji hêla Stefan Gaffga ve hatî afirandin. Niha ji hêla Georg Graf ve tê parastin.&lt;br&gt;&lt;br&gt;Spas ji bo Winfried ya &lt;a href="http://www.meditationsuhren.de">http://www.meditationsuhren.de&lt;/a&gt; ji bo pêşkêşkirina Dengên Bell-ê yên wusa mezin!</string>
     <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues">Pirsgirêkan li ser GitHub rapor bikin&lt;/a&gt;</string>
     <string name="app_description">Ev serîlêdan dihêle ku bikarhêner komek danişînên meditationê diyar bike û dema ku beşek an tevahiya meditation qediya, demjimêrek bi bertekên dîtbar û bihîstbar peyda dike.</string>
-    <string name="app_name">Zazen Meditation Timer</string>
     <string name="appbar_scrolling_view_behavior">android.support.design.widget.AppBarLayout$ScrollingViewBehavior</string>
     <string name="backup_error_text">Bibore, di dema tomarkirinê de çewtiyek derket.</string>
     <string name="backup_no_permission">Ji ber ku destûrên wenda nekarîn hilanînê çêbikin.</string>
@@ -20,7 +19,7 @@
     <string name="bell_name_7">Tib. Kulîlk, 230 mm</string>
     <string name="bell_name_8">Jap. Rhinbowl, 97mm</string>
     <string name="bell_pause">Xala zengilê (çirk)</string>
-    <string name="bell_user">Bell lê zêde bike...</string>
+    <string name="bell_user">Bell lê zêde bike…</string>
     <string name="bottom_nav_meditation">Ponijînî</string>
     <string name="bottom_nav_sessions">Sessions</string>
     <string name="bottom_sheet_behavior">android.support.design.widget.BottomSheetBehavior</string>
@@ -28,7 +27,6 @@
     <string name="but_start">Meditation dest pê bikin</string>
     <string name="but_stop">Rawestan</string>
     <string name="caption_zazen_meditation">Zazen Meditation</string>
-    <string name="character_counter_pattern">%1$d / %2$d</string>
     <string name="checkbox_keep_screen_on">Ekran li ser bimîne</string>
     <string name="checkbox_no_server_messages">Nûçe nîşan bide</string>
     <string name="checkbox_phone_off">Telefonê qut bike</string>
@@ -61,7 +59,7 @@
     <string name="label_section_name">Navê beşê</string>
     <string name="label_session_description">Danişîna Danişînê</string>
     <string name="label_session_name">Navê Rûniştinê</string>
-    <string name="menu_about">Ji dor...</string>
+    <string name="menu_about">Ji dor…</string>
     <string name="menu_copy_session">Rûniştina Ducarî</string>
     <string name="menu_delete_section">Beşê jêbirin</string>
     <string name="menu_delete_session">Rûniştinê jêbirin</string>
@@ -70,7 +68,7 @@
     <string name="menu_help">Alîkarî</string>
     <string name="menu_add_session">Rûniştinê zêde bikin</string>
     <string name="menu_new_session">Rûniştina Nû</string>
-    <string name="menu_privacy">Taybetî...</string>
+    <string name="menu_privacy">Taybetî…</string>
     <string name="menu_settings">Settings</string>
     <string name="minuten">Minutes</string>
     <string name="no_new_server_messages">Peyamên nû tune.</string>
@@ -138,9 +136,6 @@
     <string name="theme_desc">Dîmena sepanê hilbijêrin</string>
     <string name="theme_light">Mijara Ronahî</string>
     <string name="theme_system">Mijara Pergalê</string>
-    <string name="theme_value_dark">dark</string>
-    <string name="theme_value_light">light</string>
-    <string name="theme_value_system">system</string>
     <string name="time_section_elapsed">Beş derbas bû</string>
     <string name="time_section_remaining">Beşek maye</string>
     <string name="time_session_elapsed">Rûniştin bi dawî bû</string>

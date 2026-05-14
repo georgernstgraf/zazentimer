@@ -19,7 +19,7 @@
     <string name="bell_name_7">Tib. Bowl, 230mm</string>
     <string name="bell_name_8">Jap. Rhinbowl, 97mm</string>
     <string name="bell_pause">Bearna cloig (soicind)</string>
-    <string name="bell_user">Cuir Clog Leis...</string>
+    <string name="bell_user">Cuir Clog Leis…</string>
     <string name="bottom_nav_meditation">Machnamh</string>
     <string name="bottom_nav_sessions">Seisiúin</string>
     <string name="bottom_sheet_behavior">android.support.design.widget.BottomSheetBehavior</string>
@@ -59,7 +59,7 @@
     <string name="label_section_name">Ainm na Rannóige</string>
     <string name="label_session_description">Cur Síos ar an Seisiún</string>
     <string name="label_session_name">Ainm an tSeisiúin</string>
-    <string name="menu_about">Faoi...</string>
+    <string name="menu_about">Faoi…</string>
     <string name="menu_copy_session">Déan Cóip den Seisiún</string>
     <string name="menu_delete_section">Scrios Rannóg</string>
     <string name="menu_delete_session">Scrios Seisiún</string>
@@ -68,7 +68,7 @@
     <string name="menu_help">Cabhair</string>
     <string name="menu_add_session">Cuir Seisiún Leis</string>
     <string name="menu_new_session">Seisiún Nua</string>
-    <string name="menu_privacy">Privacy...</string>
+    <string name="menu_privacy">Privacy…</string>
     <string name="menu_settings">Socruithe</string>
     <string name="minuten">Nóiméid</string>
     <string name="no_new_server_messages">No new messages available.</string>

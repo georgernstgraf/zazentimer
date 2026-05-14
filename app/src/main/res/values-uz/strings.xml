@@ -19,7 +19,7 @@
     <string name="bell_name_7">Tibet kosasi, 230mm</string>
     <string name="bell_name_8">Yapon Rhinbowl, 97mm</string>
     <string name="bell_pause">Qo\'ng\'iroq oralig\'i (soniya)</string>
-    <string name="bell_user">Qo\'ng\'iroq qo\'shish...</string>
+    <string name="bell_user">Qo\'ng\'iroq qo\'shish…</string>
     <string name="bottom_nav_meditation">Meditatsiya</string>
     <string name="bottom_nav_sessions">Seanslar</string>
     <string name="bottom_sheet_behavior">android.support.design.widget.BottomSheetBehavior</string>
@@ -59,7 +59,7 @@
     <string name="label_section_name">Bo\'lim nomi</string>
     <string name="label_session_description">Seans tavsifi</string>
     <string name="label_session_name">Seans nomi</string>
-    <string name="menu_about">Dastur haqida...</string>
+    <string name="menu_about">Dastur haqida…</string>
     <string name="menu_copy_session">Seansdan nusxa ko\'chirish</string>
     <string name="menu_delete_section">Bo\'limni o\'chirish</string>
     <string name="menu_delete_session">Seansni o\'chirish</string>
@@ -68,7 +68,7 @@
     <string name="menu_help">Yordam</string>
     <string name="menu_add_session">Seans qo\'shish</string>
     <string name="menu_new_session">Yangi seans</string>
-    <string name="menu_privacy">Maxfiylik...</string>
+    <string name="menu_privacy">Maxfiylik…</string>
     <string name="menu_settings">Sozlamalar</string>
     <string name="minuten">Daqiqa</string>
     <string name="no_new_server_messages">Yangi xabarlar yo\'q.</string>

@@ -19,7 +19,7 @@
     <string name="bell_name_7">Tib. Bowl, 230mm</string>
     <string name="bell_name_8">Jap. Rhinbowl, 97mm</string>
     <string name="bell_pause">Kanpai-pasa (seg)</string>
-    <string name="bell_user">Gehitu kanpaia...</string>
+    <string name="bell_user">Gehitu kanpaia…</string>
     <string name="bottom_nav_meditation">Meditazioa</string>
     <string name="bottom_nav_sessions">Saioak</string>
     <string name="bottom_sheet_behavior">android.support.design.widget.BottomSheetBehavior</string>
@@ -59,7 +59,7 @@
     <string name="label_section_name">Atalaren izena</string>
     <string name="label_session_description">Saioaren deskribapena</string>
     <string name="label_session_name">Saioaren izena</string>
-    <string name="menu_about">Honi buruz...</string>
+    <string name="menu_about">Honi buruz…</string>
     <string name="menu_copy_session">Bikoiztu saioa</string>
     <string name="menu_delete_section">Ezabatu atala</string>
     <string name="menu_delete_session">Ezabatu saioa</string>
@@ -68,7 +68,7 @@
     <string name="menu_help">Laguntza</string>
     <string name="menu_add_session">Gehitu saioa</string>
     <string name="menu_new_session">Saio berria</string>
-    <string name="menu_privacy">Privacy...</string>
+    <string name="menu_privacy">Privacy…</string>
     <string name="menu_settings">Ezarpenak</string>
     <string name="minuten">Minutuak</string>
     <string name="no_new_server_messages">No new messages available.</string>

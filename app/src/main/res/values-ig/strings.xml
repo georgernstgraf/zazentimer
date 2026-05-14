@@ -5,7 +5,6 @@
     <string name="about2">Mbụ e kere site Stefan Gaffga. Ugbu a Georg Graf na-elekọta ya.&lt;br&gt;&lt;br&gt;Daalụ Winfried nke &lt;a href="http://www.meditationsuhren.de">http://www.meditationsuhren.de&lt;/a&gt; maka ịnye nnukwu ụda Bell!</string>
     <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues">Kọsa okwu na GitHub&lt;/a&gt;</string>
     <string name="app_description">Ngwa a na-ahapụ onye ọrụ ka ọ kọwapụta otu nnọkọ ntụgharị uche wee na-enye ngụ oge nzaghachi anya na nke a na-anụ mgbe akụkụ ma ọ bụ ntụgharị uche dum gwụchara.</string>
-    <string name="app_name">Zazen Meditation Timer</string>
     <string name="appbar_scrolling_view_behavior">android.support.design.widget.AppBarLayout$ScrollingNlele Omume</string>
     <string name="backup_error_text">Ndo, mperi mere mgbe ị na-echekwa.</string>
     <string name="backup_no_permission">Enweghị ike ịmepụta ndabere n\'ihi ikike efu.</string>
@@ -20,7 +19,7 @@
     <string name="bell_name_7">Tib. nnukwu efere, 230 mm</string>
     <string name="bell_name_8">Jap. Rhinbowl, 97mm</string>
     <string name="bell_pause">Oghere mgbịrịgba (skeji)</string>
-    <string name="bell_user">Tinye mgbịrịgba...</string>
+    <string name="bell_user">Tinye mgbịrịgba…</string>
     <string name="bottom_nav_meditation">Ntụgharị uche</string>
     <string name="bottom_nav_sessions">Oge</string>
     <string name="bottom_sheet_behavior">android.support.design.widget.BottomSheet Omume</string>
@@ -28,7 +27,6 @@
     <string name="but_start">Malite ntụgharị uche</string>
     <string name="but_stop">Kwụsị</string>
     <string name="caption_zazen_meditation">Ntụgharị uche Zazen</string>
-    <string name="character_counter_pattern">%1$d / %2$d</string>
     <string name="checkbox_keep_screen_on">Debe ihuenyo</string>
     <string name="checkbox_no_server_messages">Gosi akụkọ</string>
     <string name="checkbox_phone_off">Mechie ekwentị</string>
@@ -61,7 +59,7 @@
     <string name="label_section_name">Aha ngalaba</string>
     <string name="label_session_description">Nkọwa Oge</string>
     <string name="label_session_name">Aha Oge</string>
-    <string name="menu_about">Ihe gbasara...</string>
+    <string name="menu_about">Ihe gbasara…</string>
     <string name="menu_copy_session">Oge oyiri</string>
     <string name="menu_delete_section">Hichapụ ngalaba</string>
     <string name="menu_delete_session">Hichapụ Oge</string>
@@ -70,7 +68,7 @@
     <string name="menu_help">Enyemaka</string>
     <string name="menu_add_session">Tinye Oge</string>
     <string name="menu_new_session">Oge ọhụrụ</string>
-    <string name="menu_privacy">Nzuzo...</string>
+    <string name="menu_privacy">Nzuzo…</string>
     <string name="menu_settings">Ntọala</string>
     <string name="minuten">Nkeji</string>
     <string name="no_new_server_messages">Enweghị ozi ọhụrụ dị.</string>
@@ -138,9 +136,6 @@
     <string name="theme_desc">Họrọ ọdịdị ngwa ahụ</string>
     <string name="theme_light">Gburugburu Ọkụ</string>
     <string name="theme_system">Isiokwu Sistemu</string>
-    <string name="theme_value_dark">dark</string>
-    <string name="theme_value_light">light</string>
-    <string name="theme_value_system">system</string>
     <string name="time_section_elapsed">Ngalaba gafere</string>
     <string name="time_section_remaining">Akụkụ fọdụrụ</string>
     <string name="time_session_elapsed">Oge gafere</string>

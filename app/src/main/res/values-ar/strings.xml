@@ -19,7 +19,7 @@
     <string name="bell_name_7">وعاء تبتي، 230 ملم</string>
     <string name="bell_name_8">وعاء ياباني، 97 ملم</string>
     <string name="bell_pause">فجوة الجرس (ثانية)</string>
-    <string name="bell_user">إضافة جرس...</string>
+    <string name="bell_user">إضافة جرس…</string>
     <string name="bottom_nav_meditation">التأمل</string>
     <string name="bottom_nav_sessions">الجلسات</string>
     <string name="bottom_sheet_behavior">android.support.design.widget.BottomSheetBehavior</string>
@@ -59,7 +59,7 @@
     <string name="label_section_name">اسم القسم</string>
     <string name="label_session_description">وصف الجلسة</string>
     <string name="label_session_name">اسم الجلسة</string>
-    <string name="menu_about">حول...</string>
+    <string name="menu_about">حول…</string>
     <string name="menu_copy_session">تكرار الجلسة</string>
     <string name="menu_delete_section">حذف القسم</string>
     <string name="menu_delete_session">حذف الجلسة</string>
@@ -68,7 +68,7 @@
     <string name="menu_help">مساعدة</string>
     <string name="menu_add_session">إضافة جلسة</string>
     <string name="menu_new_session">جلسة جديدة</string>
-    <string name="menu_privacy">الخصوصية...</string>
+    <string name="menu_privacy">الخصوصية…</string>
     <string name="menu_settings">الإعدادات</string>
     <string name="minuten">دقائق</string>
     <string name="no_new_server_messages">لا توجد رسائل جديدة.</string>

@@ -5,7 +5,6 @@
     <string name="about2">Анх Стефан Гаффга бүтээсэн. Одоогоор Георг Граф засварлаж байна.&lt;br&gt;&lt;br&gt;Ийм гайхалтай хонхны дууг гаргаж өгсөн &lt;a href="http://www.meditationsuhren.de">http://www.meditationsuhren.de&lt;/a&gt;-н Винфридэд баярлалаа!</string>
     <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues">GitHub дээрх асуудлыг мэдээлэх&lt;/a&gt;</string>
     <string name="app_description">Энэ аппликейшн нь хэрэглэгчдэд бясалгалын багцыг тодорхойлох боломжийг олгож, бясалгалын хэсэг эсвэл бүхэлд нь дууссаны дараа таймераар харааны болон дуут хариу өгөх боломжийг олгодог.</string>
-    <string name="app_name">Zazen Meditation Timer</string>
     <string name="appbar_scrolling_view_behavior">android.support.design.widget.AppBarLayout$ScrollingViewBehavior</string>
     <string name="backup_error_text">Уучлаарай, хадгалах явцад алдаа гарлаа.</string>
     <string name="backup_no_permission">Зөвшөөрөл байхгүй учир нөөцлөлт үүсгэж чадсангүй.</string>
@@ -20,7 +19,7 @@
     <string name="bell_name_7">Тиб. Сав, 230 мм</string>
     <string name="bell_name_8">Япон. Rhinbowl, 97 мм</string>
     <string name="bell_pause">Хонхны завсар (сек)</string>
-    <string name="bell_user">Хонх нэмэх...</string>
+    <string name="bell_user">Хонх нэмэх…</string>
     <string name="bottom_nav_meditation">Бясалгал</string>
     <string name="bottom_nav_sessions">Хурал</string>
     <string name="bottom_sheet_behavior">android.support.design.widget.BottomSheetBehavior</string>
@@ -28,7 +27,6 @@
     <string name="but_start">Бясалгалыг эхлүүлэх</string>
     <string name="but_stop">Зогс</string>
     <string name="caption_zazen_meditation">Зазен бясалгал</string>
-    <string name="character_counter_pattern">%1$d / %2$d</string>
     <string name="checkbox_keep_screen_on">Дэлгэцийг асаалттай байлга</string>
     <string name="checkbox_no_server_messages">Мэдээг харуулах</string>
     <string name="checkbox_phone_off">Утасны дууг хаах</string>
@@ -61,7 +59,7 @@
     <string name="label_section_name">Хэсгийн нэр</string>
     <string name="label_session_description">Сеанс тайлбар</string>
     <string name="label_session_name">Сеанс нэр</string>
-    <string name="menu_about">тухай...</string>
+    <string name="menu_about">тухай…</string>
     <string name="menu_copy_session">Давхардсан сесс</string>
     <string name="menu_delete_section">Хэсгийг устгах</string>
     <string name="menu_delete_session">Сессийг устгах</string>
@@ -70,7 +68,7 @@
     <string name="menu_help">Туслаач</string>
     <string name="menu_add_session">Сесс нэмэх</string>
     <string name="menu_new_session">Шинэ сесс</string>
-    <string name="menu_privacy">Нууцлал...</string>
+    <string name="menu_privacy">Нууцлал…</string>
     <string name="menu_settings">Тохиргоо</string>
     <string name="minuten">Минут</string>
     <string name="no_new_server_messages">Шинэ мессеж байхгүй байна.</string>
@@ -138,9 +136,6 @@
     <string name="theme_desc">Програмын харагдах байдлыг сонгоно уу</string>
     <string name="theme_light">Хөнгөн сэдэв</string>
     <string name="theme_system">Системийн сэдэв</string>
-    <string name="theme_value_dark">dark</string>
-    <string name="theme_value_light">light</string>
-    <string name="theme_value_system">system</string>
     <string name="time_section_elapsed">Хэсэг дууслаа</string>
     <string name="time_section_remaining">Үлдсэн хэсэг</string>
     <string name="time_session_elapsed">Хурал дууслаа</string>

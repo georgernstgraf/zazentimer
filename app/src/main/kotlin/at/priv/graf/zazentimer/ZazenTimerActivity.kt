@@ -415,10 +415,10 @@ class ZazenTimerActivity :
         lifecycleScope.launch {
             if (dbOperations.readSections(getSelectedSessionId()).isEmpty()) {
                 if (getSelectedSessionId() == -1) {
-                    Toast.makeText(this@ZazenTimerActivity, R.string.no_session_exists, 0).show()
+                    Toast.makeText(this@ZazenTimerActivity, R.string.no_session_exists, Toast.LENGTH_SHORT).show()
                     return@launch
                 } else {
-                    Toast.makeText(this@ZazenTimerActivity, R.string.no_sections_in_session, 0).show()
+                    Toast.makeText(this@ZazenTimerActivity, R.string.no_sections_in_session, Toast.LENGTH_SHORT).show()
                     return@launch
                 }
             }
@@ -427,19 +427,15 @@ class ZazenTimerActivity :
                 preferences.getBoolean(PREF_KEY_MUTE_MODE_NONE, true) ||
                 preferences.getBoolean(PREF_KEY_MUTE_MODE_VIBRATE, false)
             ) {
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                    val notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
-                    if (!notificationManager.isNotificationPolicyAccessGranted()) {
-                        if (isCallable(this@ZazenTimerActivity.intentAllowMuting)) {
-                            showMessageAllowMute(this@ZazenTimerActivity.intentAllowMuting)
-                            return@launch
-                        } else {
-                            showMessageNoMuteSettings()
-                            return@launch
-                        }
+                val notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+                if (!notificationManager.isNotificationPolicyAccessGranted()) {
+                    if (isCallable(this@ZazenTimerActivity.intentAllowMuting)) {
+                        showMessageAllowMute(this@ZazenTimerActivity.intentAllowMuting)
+                        return@launch
+                    } else {
+                        showMessageNoMuteSettings()
+                        return@launch
                     }
-                    startMeditation()
-                    return@launch
                 }
                 startMeditation()
                 return@launch

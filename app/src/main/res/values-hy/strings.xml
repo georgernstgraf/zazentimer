@@ -18,7 +18,7 @@
     <string name="bell_name_7">Tib. Bowl, 230mm</string>
     <string name="bell_name_8">Jap. Rhinbowl, 97mm</string>
     <string name="bell_pause">Զանգի դադար (վրկ)</string>
-    <string name="bell_user">Ավելացնել զանգ...</string>
+    <string name="bell_user">Ավելացնել զանգ…</string>
     <string name="bottom_nav_meditation">Մեդիտացիա</string>
     <string name="bottom_nav_sessions">Սեսիաներ</string>
     <string name="but_pause">Դադար</string>
@@ -57,7 +57,7 @@
     <string name="label_section_name">Բաժնի անվանումը</string>
     <string name="label_session_description">Սեսիայի նկարագրություն</string>
     <string name="label_session_name">Սեսիայի անվանումը</string>
-    <string name="menu_about">Մասին...</string>
+    <string name="menu_about">Մասին…</string>
     <string name="menu_copy_session">Կրկնօրինակել սեսիան</string>
     <string name="menu_delete_section">Ջնջել բաժինը</string>
     <string name="menu_delete_session">Ջնջել սեսիան</string>
@@ -66,7 +66,7 @@
     <string name="menu_help">Օգնություն</string>
     <string name="menu_add_session">Ավելացնել սեսիա</string>
     <string name="menu_new_session">Նոր սեսիա</string>
-    <string name="menu_privacy">Գաղտնիություն...</string>
+    <string name="menu_privacy">Գաղտնիություն…</string>
     <string name="menu_settings">Կարգավորումներ</string>
     <string name="minuten">Րոպե</string>
     <string name="no_new_server_messages">Նոր հաղորդագրություններ չկան։</string>

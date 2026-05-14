@@ -8,7 +8,6 @@ import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.PopupMenu
 import android.widget.TextView
-import androidx.annotation.NonNull
 import androidx.recyclerview.widget.RecyclerView
 import at.priv.graf.zazentimer.R
 import at.priv.graf.zazentimer.bo.Section
@@ -38,9 +37,8 @@ class SectionListAdapter(
         val sectionOverflow: ImageButton = view.findViewById(R.id.sectionOverflow)
     }
 
-    @NonNull
     override fun onCreateViewHolder(
-        @NonNull parent: ViewGroup,
+        parent: ViewGroup,
         viewType: Int,
     ): ViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.session_list_item, parent, false)
@@ -48,7 +46,7 @@ class SectionListAdapter(
     }
 
     override fun onBindViewHolder(
-        @NonNull holder: ViewHolder,
+        holder: ViewHolder,
         position: Int,
     ) {
         val section = items[position]

@@ -5,7 +5,6 @@
     <string name="about2">Hana ʻia e Stefan Gaffga. Mālama ʻia e Georg Graf i kēia manawa.&lt;br&gt;&lt;br&gt;Mahalo iā Winfried o &lt;a href="http://www.meditationsuhren.de">http://www.meditationsuhren.de&lt;/a&gt; no ka hoʻolako ʻana i nā kani Bell maikaʻi loa!</string>
     <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues">Hōʻike i nā pilikia ma GitHub&lt;/a&gt;</string>
     <string name="app_description">Hāʻawi kēia palapala noi i ka mea hoʻohana e wehewehe i kahi hoʻonohonoho o nā manawa noʻonoʻo a hāʻawi i kahi manawa me nā manaʻo ʻike a lohe ʻia i ka wā i pau ai kahi ʻāpana a i ʻole ka noʻonoʻo holoʻokoʻa.</string>
-    <string name="app_name">Zazen Meditation Timer</string>
     <string name="appbar_scrolling_view_behavior">android.support.design.widget.AppBarLayout$ScrollingViewBehavior</string>
     <string name="backup_error_text">E kala mai, ua hewa i ka wā e mālama ai.</string>
     <string name="backup_no_permission">ʻAʻole hiki ke hana i ka hoʻopaʻa ʻana ma muli o nā ʻae nalo.</string>
@@ -20,7 +19,7 @@
     <string name="bell_name_7">ʻO Tib. Poʻo, 230mm</string>
     <string name="bell_name_8">Iapa. Rhinbowl, 97mm</string>
     <string name="bell_pause">ʻAwāwa bele (sec)</string>
-    <string name="bell_user">Hoʻohui i ka Bell...</string>
+    <string name="bell_user">Hoʻohui i ka Bell…</string>
     <string name="bottom_nav_meditation">Ka noonoo ana</string>
     <string name="bottom_nav_sessions">Nā Kau</string>
     <string name="bottom_sheet_behavior">android.support.design.widget.BottomSheetBehavior</string>
@@ -28,7 +27,6 @@
     <string name="but_start">Hoʻomaka noʻonoʻo</string>
     <string name="but_stop">Kāohi</string>
     <string name="caption_zazen_meditation">Ka noonoo ana o Zazen</string>
-    <string name="character_counter_pattern">%1$d / %2$d</string>
     <string name="checkbox_keep_screen_on">E mālama i ka pale</string>
     <string name="checkbox_no_server_messages">Hōʻike Nūhou</string>
     <string name="checkbox_phone_off">Paʻa kelepona</string>
@@ -61,7 +59,7 @@
     <string name="label_section_name">inoa ʻāpana</string>
     <string name="label_session_description">Wehewehe kau</string>
     <string name="label_session_name">Inoa Kau</string>
-    <string name="menu_about">E pili ana i...</string>
+    <string name="menu_about">E pili ana i…</string>
     <string name="menu_copy_session">Kau Kaulua</string>
     <string name="menu_delete_section">Holoi i ka ʻāpana</string>
     <string name="menu_delete_session">Holoi i ke Kau</string>
@@ -70,7 +68,7 @@
     <string name="menu_help">Kokua</string>
     <string name="menu_add_session">Pākuʻi Kau</string>
     <string name="menu_new_session">Kau Hou</string>
-    <string name="menu_privacy">Pilikino...</string>
+    <string name="menu_privacy">Pilikino…</string>
     <string name="menu_settings">Nā hoʻonohonoho</string>
     <string name="minuten">Nā minuke</string>
     <string name="no_new_server_messages">ʻAʻohe memo hou i loaʻa.</string>
@@ -138,9 +136,6 @@
     <string name="theme_desc">E koho i ke ʻano o ka polokalamu</string>
     <string name="theme_light">Kumuhana Māmā</string>
     <string name="theme_system">Kumuhana Pūnaehana</string>
-    <string name="theme_value_dark">dark</string>
-    <string name="theme_value_light">light</string>
-    <string name="theme_value_system">system</string>
     <string name="time_section_elapsed">Ua hala ka pauku</string>
     <string name="time_section_remaining">Mahele i koe</string>
     <string name="time_session_elapsed">Ua hala ke kau</string>

@@ -5,7 +5,6 @@
     <string name="about2">मूल रूप च स्टीफन गफगा द्वारा बनाया गया। वर्तमान च जॉर्ज ग्राफ द्वारा बनाए रखे दा ऐ।&lt;br&gt;&lt;br&gt;इतनी महान बेल साउंड्स उपलब्ध कराने आस्तै &lt;a href="http://www.meditationsuhren.de">http://www.meditationsuhren.de&lt;/a&gt; दे विनफ्राइड दा धन्यवाद!</string>
     <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues">गिटहब पर मुद्दें दी रिपोर्ट करो&lt;/a&gt;</string>
     <string name="app_description">एह् एप्लिकेशन बरतूनी गी ध्यान सत्रें दा इक सेट परिभाशित करने दी अनुमति दिंदा ऐ ते जिसलै कोई हिस्सा जां पूरा ध्यान खत्म होई जंदा ऐ तां दृश्य ते श्रव्य प्रतिक्रिया कन्नै इक टाइमर उपलब्ध करोआंदा ऐ।</string>
-    <string name="app_name">Zazen Meditation Timer</string>
     <string name="appbar_scrolling_view_behavior">android.support.design.widget.AppBarLayout $ स्क्रॉलिंगव्यूव्यवहार</string>
     <string name="backup_error_text">माफ करना, सेव करदे बेल्लै इक त्रुटि होई गेई।</string>
     <string name="backup_no_permission">लापता अनुमतियें दे कारण बैकअप नेईं बनाई सकेआ.</string>
@@ -20,7 +19,7 @@
     <string name="bell_name_7">टिब। कटोरा, 230 मिमी</string>
     <string name="bell_name_8">जप। स्फटिक, 97 मिमी</string>
     <string name="bell_pause">घंटी गैप (सेकंड)</string>
-    <string name="bell_user">बेल जोड़ो...</string>
+    <string name="bell_user">बेल जोड़ो…</string>
     <string name="bottom_nav_meditation">तप</string>
     <string name="bottom_nav_sessions">सत्रें</string>
     <string name="bottom_sheet_behavior">एंड्रॉयड.सपोर्ट.डिजाइन.विजेट.नीचे शीटव्यवहार</string>
@@ -28,7 +27,6 @@
     <string name="but_start">ध्यान शुरू करो</string>
     <string name="but_stop">रुको</string>
     <string name="caption_zazen_meditation">ज़ज़ेन ध्यान</string>
-    <string name="character_counter_pattern">%1$d / %2$d</string>
     <string name="checkbox_keep_screen_on">स्क्रीन चालू रखो</string>
     <string name="checkbox_no_server_messages">शो न्यूज़</string>
     <string name="checkbox_phone_off">म्यूट फोन</string>
@@ -56,12 +54,12 @@
     <string name="desc_no_server_messages">ऐप शुरू होने पर स्वचालित रूप कन्नै News दस्सो</string>
     <string name="error_checking_for_server_messages">नमें संदेश लाने च त्रुटि।</string>
     <string name="gong_type">गोंग साउंड</string>
-    <string name="help_sectionlist_text">इत्थै तुस अपने सत्र दी सामग्री दा नांऽ, वर्णन ते संपादत करी सकदे ओ।\n\nREORDERING करना\nआइटम गी दुबारा क्रमबद्ध करने लेई, इक आइटम पर लंबे समें तगर दबाओ ते...\nइसे अपनी नमीं स्थिति च घसीटना।\n\nडिलीट करना\nकोई आइटम हटाने लेई, उसी दाएं पास्से लेई जाओ।\n\nतरमीम करना\nकिसी खंड गी संपादत करने लेई, बस इक बारी छूओ।\n\nजोड़ करना\nनमां खंड जोड़ने लेई, + बटन दबाओ।</string>
+    <string name="help_sectionlist_text">इत्थै तुस अपने सत्र दी सामग्री दा नांऽ, वर्णन ते संपादत करी सकदे ओ।\n\nREORDERING करना\nआइटम गी दुबारा क्रमबद्ध करने लेई, इक आइटम पर लंबे समें तगर दबाओ ते…\nइसे अपनी नमीं स्थिति च घसीटना।\n\nडिलीट करना\nकोई आइटम हटाने लेई, उसी दाएं पास्से लेई जाओ।\n\nतरमीम करना\nकिसी खंड गी संपादत करने लेई, बस इक बारी छूओ।\n\nजोड़ करना\nनमां खंड जोड़ने लेई, + बटन दबाओ।</string>
     <string name="help_sectionlist_title">संपादन सत्र</string>
     <string name="label_section_name">खंड दा नाम</string>
     <string name="label_session_description">सत्र दा वर्णन</string>
     <string name="label_session_name">सत्र दा नाम</string>
-    <string name="menu_about">तकरीबन...</string>
+    <string name="menu_about">तकरीबन…</string>
     <string name="menu_copy_session">डुप्लिकेट सत्र</string>
     <string name="menu_delete_section">खंड हटाओ</string>
     <string name="menu_delete_session">सत्र हटाओ</string>
@@ -70,7 +68,7 @@
     <string name="menu_help">मदाद</string>
     <string name="menu_add_session">सत्र जोड़ो</string>
     <string name="menu_new_session">नया सत्र</string>
-    <string name="menu_privacy">निजता...</string>
+    <string name="menu_privacy">निजता…</string>
     <string name="menu_settings">सेटिंग्स</string>
     <string name="minuten">मिंट्ट</string>
     <string name="no_new_server_messages">कोई नए मैसेज उपलब्ध नहीं।</string>
@@ -138,9 +136,6 @@
     <string name="theme_desc">ऐप दी शक्ल चुनें</string>
     <string name="theme_light">लाइट थीम</string>
     <string name="theme_system">सिस्टम थीम दा</string>
-    <string name="theme_value_dark">dark</string>
-    <string name="theme_value_light">light</string>
-    <string name="theme_value_system">system</string>
     <string name="time_section_elapsed">धारा बीती गई</string>
     <string name="time_section_remaining">खंड बचे दा</string>
     <string name="time_session_elapsed">सत्र बीत गया</string>

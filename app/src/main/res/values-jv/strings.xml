@@ -19,7 +19,7 @@
     <string name="bell_name_7">Tib. Bowl, 230mm</string>
     <string name="bell_name_8">Jap. Rhinbowl, 97mm</string>
     <string name="bell_pause">Jeda lonceng (detik)</string>
-    <string name="bell_user">Tambah Lonceng...</string>
+    <string name="bell_user">Tambah Lonceng…</string>
     <string name="bottom_nav_meditation">Meditasi</string>
     <string name="bottom_nav_sessions">Sesi</string>
     <string name="bottom_sheet_behavior">android.support.design.widget.BottomSheetBehavior</string>
@@ -59,7 +59,7 @@
     <string name="label_section_name">Jeneng bagean</string>
     <string name="label_session_description">Katrangan Sesi</string>
     <string name="label_session_name">Jeneng Sesi</string>
-    <string name="menu_about">Babagan...</string>
+    <string name="menu_about">Babagan…</string>
     <string name="menu_copy_session">Gandhakake Sesi</string>
     <string name="menu_delete_section">Busak Bagean</string>
     <string name="menu_delete_session">Busak Sesi</string>
@@ -68,7 +68,7 @@
     <string name="menu_help">Pitulung</string>
     <string name="menu_add_session">Tambah Sesi</string>
     <string name="menu_new_session">Sesi Anyar</string>
-    <string name="menu_privacy">Privasi...</string>
+    <string name="menu_privacy">Privasi…</string>
     <string name="menu_settings">Setelan</string>
     <string name="minuten">Menit</string>
     <string name="no_new_server_messages">Ora ana pesen anyar sing kasedhiya.</string>

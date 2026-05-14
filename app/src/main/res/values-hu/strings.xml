@@ -18,7 +18,7 @@
     <string name="bell_name_7">Tibeti tál, 230mm</string>
     <string name="bell_name_8">Jap. csengő, 97mm</string>
     <string name="bell_pause">Harangköz (mp)</string>
-    <string name="bell_user">Harang hozzáadása...</string>
+    <string name="bell_user">Harang hozzáadása…</string>
     <string name="bottom_nav_meditation">Meditáció</string>
     <string name="bottom_nav_sessions">Profilok</string>
     <string name="but_pause">Szünet</string>
@@ -57,7 +57,7 @@
     <string name="label_section_name">Szakasz neve</string>
     <string name="label_session_description">Profil leírása</string>
     <string name="label_session_name">Profil neve</string>
-    <string name="menu_about">Névjegy...</string>
+    <string name="menu_about">Névjegy…</string>
     <string name="menu_copy_session">Profil másolása</string>
     <string name="menu_delete_section">Szakasz törlése</string>
     <string name="menu_delete_session">Profil törlése</string>
@@ -66,7 +66,7 @@
     <string name="menu_help">Súgó</string>
     <string name="menu_add_session">Profil hozzáadása</string>
     <string name="menu_new_session">Új profil</string>
-    <string name="menu_privacy">Adatvédelem...</string>
+    <string name="menu_privacy">Adatvédelem…</string>
     <string name="menu_settings">Beállítások</string>
     <string name="minuten">Perc</string>
     <string name="no_new_server_messages">Nincsenek új üzenetek.</string>

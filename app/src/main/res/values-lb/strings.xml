@@ -5,7 +5,6 @@
     <string name="about2">Ursprénglech erstallt vum Stefan Gaffga. Aktuell ënnerhale vum Georg Graf.&lt;br&gt;&lt;br&gt;Merci un de Winfried vun &lt;a href="http://www.meditationsuhren.de">http://www.meditationsuhren.de&lt;/a&gt; fir esou flott Bell Sounds ze bidden!</string>
     <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues">Problemer op GitHub mellen&lt;/a&gt;</string>
     <string name="app_description">Dës Applikatioun léisst de Benotzer eng Rei vu Meditationssessiounen definéieren a bitt en Timer mat visuellen an hörbare Feedback wann en Deel oder déi ganz Meditatioun eriwwer ass.</string>
-    <string name="app_name">Zazen Meditation Timer</string>
     <string name="appbar_scrolling_view_behavior">android.support.design.widget.AppBarLayout$ScrollingViewBehavior</string>
     <string name="backup_error_text">Entschëllegt, e Feeler ass geschitt beim Späicheren.</string>
     <string name="backup_no_permission">Konnt kee Backup erstellen wéinst fehlend Permissiounen.</string>
@@ -20,7 +19,7 @@
     <string name="bell_name_7">Tib. Schossel, 230 mm</string>
     <string name="bell_name_8">jap. Rhinbowl, 97 mm</string>
     <string name="bell_pause">Bell gap (sec)</string>
-    <string name="bell_user">Bell addéieren ...</string>
+    <string name="bell_user">Bell addéieren …</string>
     <string name="bottom_nav_meditation">Meditatioun</string>
     <string name="bottom_nav_sessions">Sessiounen</string>
     <string name="bottom_sheet_behavior">android.support.design.widget.BottomSheetBehavior</string>
@@ -28,7 +27,6 @@
     <string name="but_start">Start Meditatioun</string>
     <string name="but_stop">Stop</string>
     <string name="caption_zazen_meditation">Zazen Meditation</string>
-    <string name="character_counter_pattern">%1$d / %2$d</string>
     <string name="checkbox_keep_screen_on">Halen Écran op</string>
     <string name="checkbox_no_server_messages">Show News</string>
     <string name="checkbox_phone_off">Mute Telefon</string>
@@ -61,7 +59,7 @@
     <string name="label_section_name">Sektioun Numm</string>
     <string name="label_session_description">Sëtzung Beschreiwung</string>
     <string name="label_session_name">Sëtzung Numm</string>
-    <string name="menu_about">Iwwert ...</string>
+    <string name="menu_about">Iwwert …</string>
     <string name="menu_copy_session">Duplizéiert Sessioun</string>
     <string name="menu_delete_section">Sektioun läschen</string>
     <string name="menu_delete_session">Sessioun läschen</string>
@@ -70,7 +68,7 @@
     <string name="menu_help">Hëllef</string>
     <string name="menu_add_session">Sessioun addéieren</string>
     <string name="menu_new_session">Nei Sëtzung</string>
-    <string name="menu_privacy">Privatsphär ...</string>
+    <string name="menu_privacy">Privatsphär …</string>
     <string name="menu_settings">Astellungen</string>
     <string name="minuten">Minutt</string>
     <string name="no_new_server_messages">Keng nei Messagen verfügbar.</string>
@@ -138,9 +136,6 @@
     <string name="theme_desc">Wielt d\'App Erscheinung</string>
     <string name="theme_light">Liicht Thema</string>
     <string name="theme_system">System Thema</string>
-    <string name="theme_value_dark">dark</string>
-    <string name="theme_value_light">light</string>
-    <string name="theme_value_system">system</string>
     <string name="time_section_elapsed">Sektioun eriwwer</string>
     <string name="time_section_remaining">Sektioun Rescht</string>
     <string name="time_session_elapsed">Sessioun eriwwer</string>

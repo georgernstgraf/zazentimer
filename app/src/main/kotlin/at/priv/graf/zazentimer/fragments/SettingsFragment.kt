@@ -196,9 +196,9 @@ class SettingsFragment : PreferenceFragmentCompat() {
                     false
                 }
             if (success) {
-                Toast.makeText(requireActivity(), R.string.backup_success_text, 0).show()
+                Toast.makeText(requireActivity(), R.string.backup_success_text, Toast.LENGTH_SHORT).show()
             } else {
-                Toast.makeText(requireActivity(), R.string.backup_error_text, 0).show()
+                Toast.makeText(requireActivity(), R.string.backup_error_text, Toast.LENGTH_SHORT).show()
             }
         }
     }
@@ -228,11 +228,11 @@ class SettingsFragment : PreferenceFragmentCompat() {
                 Log.e(TAG, "Error restoring", e)
             }
             if (result == 0) {
-                Toast.makeText(requireActivity(), R.string.restore_success_text, 0).show()
+                Toast.makeText(requireActivity(), R.string.restore_success_text, Toast.LENGTH_SHORT).show()
             } else if (result == 1) {
-                Toast.makeText(requireActivity(), R.string.restore_backup_not_found, 0).show()
+                Toast.makeText(requireActivity(), R.string.restore_backup_not_found, Toast.LENGTH_SHORT).show()
             } else if (result == 2) {
-                Toast.makeText(requireActivity(), R.string.restore_error_text, 0).show()
+                Toast.makeText(requireActivity(), R.string.restore_error_text, Toast.LENGTH_SHORT).show()
             }
         }
     }

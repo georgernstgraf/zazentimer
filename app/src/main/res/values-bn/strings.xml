@@ -19,7 +19,7 @@
     <string name="bell_name_7">তিব্বতীয় বাটি, ২৩০ মিমি</string>
     <string name="bell_name_8">জাপানি রাইনবাউল, ৯৭ মিমি</string>
     <string name="bell_pause">বেলের বিরতি (সেকেন্ড)</string>
-    <string name="bell_user">বেল যোগ করুন...</string>
+    <string name="bell_user">বেল যোগ করুন…</string>
     <string name="bottom_nav_meditation">মেডিটেশন</string>
     <string name="bottom_nav_sessions">সেশন</string>
     <string name="bottom_sheet_behavior">android.support.design.widget.BottomSheetBehavior</string>
@@ -59,7 +59,7 @@
     <string name="label_section_name">সেকশনের নাম</string>
     <string name="label_session_description">সেশনের বিবরণ</string>
     <string name="label_session_name">সেশনের নাম</string>
-    <string name="menu_about">সম্পর্কে...</string>
+    <string name="menu_about">সম্পর্কে…</string>
     <string name="menu_copy_session">সেশনের অনুলিপি করুন</string>
     <string name="menu_delete_section">সেকশন মুছুন</string>
     <string name="menu_delete_session">সেশন মুছুন</string>
@@ -68,7 +68,7 @@
     <string name="menu_help">সাহায্য</string>
     <string name="menu_add_session">সেশন যোগ করুন</string>
     <string name="menu_new_session">নতুন সেশন</string>
-    <string name="menu_privacy">গোপনীয়তা...</string>
+    <string name="menu_privacy">গোপনীয়তা…</string>
     <string name="menu_settings">সেটিংস</string>
     <string name="minuten">মিনিট</string>
     <string name="no_new_server_messages">কোনো নতুন বার্তা নেই।</string>

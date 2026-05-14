@@ -5,7 +5,6 @@
     <string name="about2">Oriġinarjament maħluqa minn Stefan Gaffga. Bħalissa miżmum minn Georg Graf.&lt;br&gt;&lt;br&gt;Grazzi lil Winfried ta\' &lt;a href="http://www.meditationsuhren.de">http://www.meditationsuhren.de&lt;/a&gt; talli pprovda Ħsejjes tal-Qanpiena hekk kbar!</string>
     <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues">Irraporta kwistjonijiet fuq GitHub&lt;/a&gt;</string>
     <string name="app_description">Din l-applikazzjoni tħalli lill-utent jiddefinixxi sett ta \'sessjonijiet ta\' meditazzjoni u tipprovdi tajmer b\'rispons viżwali u li jinstema\' meta parti jew il-meditazzjoni kollha tkun spiċċat.</string>
-    <string name="app_name">Zazen Meditation Timer</string>
     <string name="appbar_scrolling_view_behavior">android.support.design.widget.AppBarLayout$ScrollingViewBehavior</string>
     <string name="backup_error_text">Jiddispjacini, seħħ Żball waqt l-iffrankar.</string>
     <string name="backup_no_permission">Ma setgħetx toħloq backup minħabba permessi neqsin.</string>
@@ -20,7 +19,7 @@
     <string name="bell_name_7">Tib. Skutella, 230mm</string>
     <string name="bell_name_8">Ġap. Rhinbowl, 97mm</string>
     <string name="bell_pause">Gap tal-qanpiena (sek)</string>
-    <string name="bell_user">Żid Qanpiena...</string>
+    <string name="bell_user">Żid Qanpiena…</string>
     <string name="bottom_nav_meditation">Meditazzjoni</string>
     <string name="bottom_nav_sessions">Sessjonijiet</string>
     <string name="bottom_sheet_behavior">android.support.design.widget.BottomSheetBehavior</string>
@@ -28,7 +27,6 @@
     <string name="but_start">Ibda Meditazzjoni</string>
     <string name="but_stop">Waqqaf</string>
     <string name="caption_zazen_meditation">Zazen Meditazzjoni</string>
-    <string name="character_counter_pattern">%1$d / %2$d</string>
     <string name="checkbox_keep_screen_on">Żomm l-iskrin mixgħul</string>
     <string name="checkbox_no_server_messages">Uri Aħbarijiet</string>
     <string name="checkbox_phone_off">Mute Phone</string>
@@ -61,7 +59,7 @@
     <string name="label_section_name">Isem it-taqsima</string>
     <string name="label_session_description">Deskrizzjoni tas-Sessjoni</string>
     <string name="label_session_name">Isem tas-Sessjoni</string>
-    <string name="menu_about">Dwar...</string>
+    <string name="menu_about">Dwar…</string>
     <string name="menu_copy_session">Sessjoni Duplikata</string>
     <string name="menu_delete_section">Ħassar Taqsima</string>
     <string name="menu_delete_session">Ħassar Sessjoni</string>
@@ -70,7 +68,7 @@
     <string name="menu_help">Għajnuna</string>
     <string name="menu_add_session">Żid Sessjoni</string>
     <string name="menu_new_session">Sessjoni Ġdida</string>
-    <string name="menu_privacy">Privatezza...</string>
+    <string name="menu_privacy">Privatezza…</string>
     <string name="menu_settings">Settings</string>
     <string name="minuten">Minuti</string>
     <string name="no_new_server_messages">Ebda messaġġ ġdid disponibbli.</string>
@@ -138,9 +136,6 @@
     <string name="theme_desc">Agħżel id-dehra tal-app</string>
     <string name="theme_light">Tema Dawl</string>
     <string name="theme_system">Tema tas-Sistema</string>
-    <string name="theme_value_dark">dark</string>
-    <string name="theme_value_light">light</string>
-    <string name="theme_value_system">system</string>
     <string name="time_section_elapsed">Taqsima għaddiet</string>
     <string name="time_section_remaining">Taqsima li fadal</string>
     <string name="time_session_elapsed">Sessjoni għaddiet</string>

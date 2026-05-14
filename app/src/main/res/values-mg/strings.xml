@@ -5,7 +5,6 @@
     <string name="about2">Stefan Gaffga no namorona voalohany. Tazonin\'i Georg Graf amin\'izao fotoana izao.&lt;br&gt;&lt;br&gt;Misaotra an\'i Winfried ao amin\'ny &lt;a href="http://www.meditationsuhren.de">http://www.meditationsuhren.de&lt;/a&gt; tamin\'ny nanomezana ny Feon\'ny Bell mahafinaritra toy izany!</string>
     <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues">Mitatitra olana amin\'ny GitHub&lt;/a&gt;</string>
     <string name="app_description">Ity fampiharana ity dia mamela ny mpampiasa hamaritra andiana fotoam-pisainana ary manome fameram-potoana misy valiny hita maso sy heno rehefa tapitra ny ampahany na ny fisaintsainana iray manontolo.</string>
-    <string name="app_name">Zazen Meditation Timer</string>
     <string name="appbar_scrolling_view_behavior">android.support.design.widget.AppBarLayout$ScrollingViewBehavior</string>
     <string name="backup_error_text">Miala tsiny fa nisy hadisoana nitranga teo am-pamonjy.</string>
     <string name="backup_no_permission">Tsy afaka namorona backup noho ny fahazoan-dàlana tsy ampy.</string>
@@ -20,7 +19,7 @@
     <string name="bell_name_7">Tib. Boribory, 230 mm</string>
     <string name="bell_name_8">Jap. Rhinbowl, 97 mm</string>
     <string name="bell_pause">elanelana lakolosy (sec)</string>
-    <string name="bell_user">Ampio Bell...</string>
+    <string name="bell_user">Ampio Bell…</string>
     <string name="bottom_nav_meditation">HOSAINTSAININA</string>
     <string name="bottom_nav_sessions">Sessions</string>
     <string name="bottom_sheet_behavior">android.support.design.widget.BottomSheetBehavior</string>
@@ -28,7 +27,6 @@
     <string name="but_start">Atombohy ny fisaintsainana</string>
     <string name="but_stop">Mijanòna</string>
     <string name="caption_zazen_meditation">Zazen Meditation</string>
-    <string name="character_counter_pattern">%1$d / %2$d</string>
     <string name="checkbox_keep_screen_on">Tohizo ny efijery</string>
     <string name="checkbox_no_server_messages">Asehoy ny Vaovao</string>
     <string name="checkbox_phone_off">Ampiheno ny telefaona</string>
@@ -61,7 +59,7 @@
     <string name="label_section_name">Anaran\'ny fizarana</string>
     <string name="label_session_description">Famariparitana fivoriana</string>
     <string name="label_session_name">Anaran\'ny fivoriana</string>
-    <string name="menu_about">Momba ny...</string>
+    <string name="menu_about">Momba ny…</string>
     <string name="menu_copy_session">Session duplicate</string>
     <string name="menu_delete_section">Fafao ny fizarana</string>
     <string name="menu_delete_session">Fafao ny Session</string>
@@ -70,7 +68,7 @@
     <string name="menu_help">Vonjeo</string>
     <string name="menu_add_session">Ampio Session</string>
     <string name="menu_new_session">Session Vaovao</string>
-    <string name="menu_privacy">Privacy...</string>
+    <string name="menu_privacy">Privacy…</string>
     <string name="menu_settings">Fikirana</string>
     <string name="minuten">minitra</string>
     <string name="no_new_server_messages">Tsy misy hafatra vaovao azo.</string>
@@ -138,9 +136,6 @@
     <string name="theme_desc">Fidio ny endriky ny fampiharana</string>
     <string name="theme_light">Lohahevitra maivana</string>
     <string name="theme_system">Lohahevitra momba ny rafitra</string>
-    <string name="theme_value_dark">dark</string>
-    <string name="theme_value_light">light</string>
-    <string name="theme_value_system">system</string>
     <string name="time_section_elapsed">Lasa ny fizarana</string>
     <string name="time_section_remaining">Fizarana sisa</string>
     <string name="time_session_elapsed">Nandeha ny fivoriana</string>

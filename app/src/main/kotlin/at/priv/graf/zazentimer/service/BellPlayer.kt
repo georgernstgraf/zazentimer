@@ -30,7 +30,7 @@ class BellPlayer(
             val wakeLock =
                 powerManager.newWakeLock(
                     PowerManager.PARTIAL_WAKE_LOCK,
-                    "PlayBells",
+                    "zazentimer:PlayBells",
                 )
             wakeLock.acquire(
                 (section.bellcount * BELL_WAKE_LOCK_MULTIPLIER * MS_PER_SECOND),

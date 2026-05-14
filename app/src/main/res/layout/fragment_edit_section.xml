@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:scrollbarStyle="outsideOverlay"
     android:orientation="vertical"
     android:padding="10dp"
@@ -8,18 +9,23 @@
     <LinearLayout
         android:orientation="vertical"
         android:paddingLeft="20dp"
+        android:paddingStart="20dp"
         android:paddingRight="20dp"
+        android:paddingEnd="20dp"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content">
         <LinearLayout
             android:layout_gravity="center_horizontal"
             android:orientation="horizontal"
             android:id="@+id/duration"
             android:paddingLeft="40dp"
+            android:paddingStart="40dp"
             android:paddingTop="20dp"
             android:paddingRight="40dp"
+            android:paddingEnd="40dp"
             android:paddingBottom="20dp"
             android:clickable="true"
+            android:focusable="true"
             android:layout_width="wrap_content"
             android:layout_height="match_parent">
             <ImageView
@@ -28,7 +34,9 @@
                 android:layout_width="60dp"
                 android:layout_height="60dp"
                 android:src="@drawable/clock"
-                android:scaleType="fitCenter"/>
+                android:scaleType="fitCenter"
+                android:contentDescription="@null"
+                tools:ignore="ContentDescription"/>
             <TextView
                 android:textSize="36sp"
                 android:layout_gravity="center"
@@ -36,7 +44,8 @@
                 android:padding="10dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="20:00"/>
+                android:text="20:00"
+                tools:ignore="HardcodedText"/>
         </LinearLayout>
         <TextView
             android:layout_gravity="center_vertical"
@@ -52,7 +61,8 @@
             android:layout_height="wrap_content"
             android:text=""
             android:hint="@string/label_section_name"
-            android:inputType="textPersonName"/>
+            android:inputType="textPersonName"
+            android:importantForAutofill="no"/>
         <TextView
             android:layout_gravity="center_vertical"
             android:layout_width="match_parent"
@@ -66,18 +76,28 @@
             android:layout_height="match_parent">
             <ImageView
                 android:id="@+id/bellcount1"
+                android:contentDescription="@null"
+                tools:ignore="ContentDescription"
                 style="@style/bellcount"/>
             <ImageView
                 android:id="@+id/bellcount2"
+                android:contentDescription="@null"
+                tools:ignore="ContentDescription"
                 style="@style/bellcount"/>
             <ImageView
                 android:id="@+id/bellcount3"
+                android:contentDescription="@null"
+                tools:ignore="ContentDescription"
                 style="@style/bellcount"/>
             <ImageView
                 android:id="@+id/bellcount4"
+                android:contentDescription="@null"
+                tools:ignore="ContentDescription"
                 style="@style/bellcount"/>
             <ImageView
                 android:id="@+id/bellcount5"
+                android:contentDescription="@null"
+                tools:ignore="ContentDescription"
                 style="@style/bellcount"/>
         </LinearLayout>
         <TextView
@@ -100,7 +120,8 @@
             <LinearLayout
                 android:orientation="horizontal"
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                tools:ignore="HardcodedText">
                 <TextView
                     android:id="@+id/gap1"
                     android:text="1"
@@ -163,11 +184,6 @@
                     style="@style/bellgapseconds"/>
             </LinearLayout>
         </HorizontalScrollView>
-        <LinearLayout
-            android:gravity="center_horizontal"
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -176,7 +192,9 @@
         <SeekBar
             android:id="@+id/sectionGongVolume"
             android:paddingLeft="10dp"
+            android:paddingStart="10dp"
             android:paddingRight="20dp"
+            android:paddingEnd="20dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:max="9"
@@ -190,7 +208,10 @@
             android:gravity="end"
             android:text="@string/dim_bell_label_off"
             android:textSize="12sp"
+            android:paddingLeft="20dp"
+            android:paddingStart="20dp"
             android:paddingRight="20dp"
+            android:paddingEnd="20dp"
             android:paddingBottom="4dp"/>
         <TextView
             android:layout_width="match_parent"
@@ -203,14 +224,12 @@
             android:layout_height="match_parent">
             <Spinner
                 android:id="@+id/selectGongSound"
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="0dp"
+                android:layout_marginStart="0dp"
                 android:layout_marginTop="0dp"
-                android:layout_weight="1"
-                android:layout_toLeftOf="@+id/addcustombell"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentTop="true"/>
+                android:layout_weight="1"/>
             <ImageButton
                 android:layout_gravity="center_vertical"
                 android:id="@+id/play_gong"
@@ -218,11 +237,14 @@
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:layout_marginLeft="@dimen/caption_margin"
+                android:layout_marginStart="@dimen/caption_margin"
                 android:src="@drawable/ic_play_arrow_white_48dp"
-                android:scaleType="fitCenter"/>
+                android:scaleType="fitCenter"
+                android:contentDescription="@null"
+                tools:ignore="ContentDescription"/>
         </LinearLayout>
         <LinearLayout
-            android:gravity="right"
+            android:gravity="end"
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -233,6 +255,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="5dp"
+                android:layout_marginEnd="5dp"
                 android:text="@string/bell_user"/>
             <ImageButton
                 android:id="@+id/addcustombell"
@@ -240,8 +263,11 @@
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:layout_marginLeft="@dimen/caption_margin"
+                android:layout_marginStart="@dimen/caption_margin"
                 android:src="@drawable/button_plus"
-                android:scaleType="fitCenter"/>
+                android:scaleType="fitCenter"
+                android:contentDescription="@null"
+                tools:ignore="ContentDescription"/>
         </LinearLayout>
     </LinearLayout>
 </ScrollView>

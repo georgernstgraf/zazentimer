@@ -18,7 +18,7 @@
     <string name="bell_name_7">Tibetská misa, 230mm</string>
     <string name="bell_name_8">Jap. misa, 97mm</string>
     <string name="bell_pause">Medzera zvončeka (sek)</string>
-    <string name="bell_user">Pridať zvonček...</string>
+    <string name="bell_user">Pridať zvonček…</string>
     <string name="bottom_nav_meditation">Meditácia</string>
     <string name="bottom_nav_sessions">Relácie</string>
     <string name="but_pause">Pauza</string>
@@ -57,7 +57,7 @@
     <string name="label_section_name">Názov sekcie</string>
     <string name="label_session_description">Popis relácie</string>
     <string name="label_session_name">Názov relácie</string>
-    <string name="menu_about">O aplikácii...</string>
+    <string name="menu_about">O aplikácii…</string>
     <string name="menu_copy_session">Duplikovať reláciu</string>
     <string name="menu_delete_section">Zmazať sekciu</string>
     <string name="menu_delete_session">Zmazať reláciu</string>
@@ -66,7 +66,7 @@
     <string name="menu_help">Pomocník</string>
     <string name="menu_add_session">Pridať reláciu</string>
     <string name="menu_new_session">Nová relácia</string>
-    <string name="menu_privacy">Súkromie...</string>
+    <string name="menu_privacy">Súkromie…</string>
     <string name="menu_settings">Nastavenia</string>
     <string name="minuten">Minúty</string>
     <string name="no_new_server_messages">Žiadne nové správy.</string>

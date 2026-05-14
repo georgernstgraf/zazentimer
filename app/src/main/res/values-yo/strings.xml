@@ -5,7 +5,6 @@
     <string name="about2">Ni akọkọ da nipa Stefan Gaffga. Lọwọlọwọ itọju rẹ nipasẹ Georg Graf.&lt;br&gt;&lt;br&gt;O ṣeun si Winfried ti &lt;a href="http://www.meditationsuhren.de">http://www.meditationsuhren.de&lt;/a&gt; fun ipese iru Awọn ohun Bell nla!</string>
     <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues">Ijabọ awọn oran lori GitHub&lt;/a&gt;</string>
     <string name="app_description">Ohun elo yii jẹ ki olumulo ṣalaye ṣeto awọn akoko iṣaroye ati pese aago kan pẹlu wiwo ati esi ti o gbọ nigbati apakan kan tabi gbogbo iṣaro ba pari.</string>
-    <string name="app_name">Zazen Meditation Timer</string>
     <string name="appbar_scrolling_view_behavior">android.support.design.widget.AppBarLayout$ScrollingViewBehavior</string>
     <string name="backup_error_text">Ma binu, Aṣiṣe waye lakoko fifipamọ.</string>
     <string name="backup_no_permission">Ko le ṣẹda afẹyinti nitori awọn igbanilaaye ti o padanu.</string>
@@ -20,7 +19,7 @@
     <string name="bell_name_7">Tib. Ekan, 230mm</string>
     <string name="bell_name_8">Jap. Rhinbowl, 97mm</string>
     <string name="bell_pause">Alafo agogo (aaya)</string>
-    <string name="bell_user">Fi Bell kun...</string>
+    <string name="bell_user">Fi Bell kun…</string>
     <string name="bottom_nav_meditation">Iṣaro</string>
     <string name="bottom_nav_sessions">Awọn akoko</string>
     <string name="bottom_sheet_behavior">android.support.design.widget.BottomSheetBehavior</string>
@@ -28,7 +27,6 @@
     <string name="but_start">Bẹrẹ Iṣaro</string>
     <string name="but_stop">Duro</string>
     <string name="caption_zazen_meditation">Iṣaro Zazen</string>
-    <string name="character_counter_pattern">%1$d / %2$d</string>
     <string name="checkbox_keep_screen_on">Jeki iboju lori</string>
     <string name="checkbox_no_server_messages">Ṣe afihan Awọn iroyin</string>
     <string name="checkbox_phone_off">Pa foonu lẹnu</string>
@@ -61,7 +59,7 @@
     <string name="label_section_name">Orukọ apakan</string>
     <string name="label_session_description">Apejuwe Ikoni</string>
     <string name="label_session_name">Orukọ igba</string>
-    <string name="menu_about">Nipa...</string>
+    <string name="menu_about">Nipa…</string>
     <string name="menu_copy_session">Ikoni pidánpidán</string>
     <string name="menu_delete_section">Pa Abala</string>
     <string name="menu_delete_session">Paarẹ Igba</string>
@@ -70,7 +68,7 @@
     <string name="menu_help">Egba Mi O</string>
     <string name="menu_add_session">Fi Ikoni kun</string>
     <string name="menu_new_session">Ikoni Tuntun</string>
-    <string name="menu_privacy">Asiri...</string>
+    <string name="menu_privacy">Asiri…</string>
     <string name="menu_settings">Eto</string>
     <string name="minuten">Iṣẹju</string>
     <string name="no_new_server_messages">Ko si awọn ifiranṣẹ titun wa.</string>
@@ -138,9 +136,6 @@
     <string name="theme_desc">Yan irisi app naa</string>
     <string name="theme_light">Akori Imọlẹ</string>
     <string name="theme_system">Akori eto</string>
-    <string name="theme_value_dark">dark</string>
-    <string name="theme_value_light">light</string>
-    <string name="theme_value_system">system</string>
     <string name="time_section_elapsed">Abala ti kọja</string>
     <string name="time_section_remaining">Abala ti o ku</string>
     <string name="time_session_elapsed">Ikoni ti kọja</string>

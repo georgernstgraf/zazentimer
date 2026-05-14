@@ -19,7 +19,7 @@
     <string name="bell_name_7">Tib. Bowl, 230mm</string>
     <string name="bell_name_8">Jap. Rhinbowl, 97mm</string>
     <string name="bell_pause">Pagitan ng kampana (seg)</string>
-    <string name="bell_user">Magdagdag ng Kampana...</string>
+    <string name="bell_user">Magdagdag ng Kampana…</string>
     <string name="bottom_nav_meditation">Pagninilay</string>
     <string name="bottom_nav_sessions">Mga Session</string>
     <string name="bottom_sheet_behavior">android.support.design.widget.BottomSheetBehavior</string>
@@ -59,7 +59,7 @@
     <string name="label_section_name">Pangalan ng seksyon</string>
     <string name="label_session_description">Paglalarawan ng Session</string>
     <string name="label_session_name">Pangalan ng Session</string>
-    <string name="menu_about">Tungkol sa...</string>
+    <string name="menu_about">Tungkol sa…</string>
     <string name="menu_copy_session">I-duplicate ang Session</string>
     <string name="menu_delete_section">Burahin ang Seksyon</string>
     <string name="menu_delete_session">Burahin ang Session</string>
@@ -68,7 +68,7 @@
     <string name="menu_help">Tulong</string>
     <string name="menu_add_session">Magdagdag ng Session</string>
     <string name="menu_new_session">Bagong Session</string>
-    <string name="menu_privacy">Privacy...</string>
+    <string name="menu_privacy">Privacy…</string>
     <string name="menu_settings">Mga Setting</string>
     <string name="minuten">Mga Minuto</string>
     <string name="no_new_server_messages">Walang bagong mensahe.</string>

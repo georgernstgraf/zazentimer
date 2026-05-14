@@ -5,7 +5,6 @@
     <string name="about2">Qallariypiqa Stefan Gaffga sutiyuq runap kamasqan. Kunanqa Georg Grafpa qhawasqan.&lt;br&gt;&lt;br&gt;Gracias Winfriedman &lt;a href="http://www.meditationsuhren.de">http://www.meditationsuhren.de&lt;/a&gt; kayhina hatun Campana T\'uqyaykunata qusqanmanta!</string>
     <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues">GitHub kaqpi sasachakuykunamanta willay&lt;/a&gt;</string>
     <string name="app_description">Kay ruwana ruwaqta huk huñu yuyaymanay sesiones kaqmanta riqsichiyta saqin chaymanta huk pacha yupayta qun rikuypaq chaymanta uyarinapaq kutichiywan mayk\'aq huk parte utaq tukuy yuyaymanay tukusqa.</string>
-    <string name="app_name">Zazen Meditation Timer</string>
     <string name="appbar_scrolling_view_behavior">android.yanapakuy.diseño.widget.AppBarLayout$KuyuchinaQhaway Ruway</string>
     <string name="backup_error_text">Llakikuy, waqaychaypi huk Pantasqa karqan.</string>
     <string name="backup_no_permission">Mana atirqanchu waqaychasqa ruwayta chinkachisqa atiykunarayku.</string>
@@ -20,7 +19,7 @@
     <string name="bell_name_7">Tib. Manka, 230mm</string>
     <string name="bell_name_8">Jap. Rhinbowl, 97mm</string>
     <string name="bell_pause">Campana ch\'usaq (sec) .</string>
-    <string name="bell_user">Yanapay Bell...</string>
+    <string name="bell_user">Yanapay Bell…</string>
     <string name="bottom_nav_meditation">Hamutay</string>
     <string name="bottom_nav_sessions">Sesiones nisqakuna</string>
     <string name="bottom_sheet_behavior">android.yanapay.diseño.widget.Ura RaphiComportamiento</string>
@@ -28,7 +27,6 @@
     <string name="but_start">Yuyaymanayta qallariy</string>
     <string name="but_stop">Sayay</string>
     <string name="caption_zazen_meditation">Zazen Yuyaymanay</string>
-    <string name="character_counter_pattern">%1$d / %2$d</string>
     <string name="checkbox_keep_screen_on">Pantalla llank’aypi hap’iy</string>
     <string name="checkbox_no_server_messages">Noticiakuna rikuchiy</string>
     <string name="checkbox_phone_off">Teléfono Silenciado</string>
@@ -61,7 +59,7 @@
     <string name="label_section_name">T’aqa suti</string>
     <string name="label_session_description">Sesión nisqamanta Willakuy</string>
     <string name="label_session_name">Sesión Suti</string>
-    <string name="menu_about">Sobre...</string>
+    <string name="menu_about">Sobre…</string>
     <string name="menu_copy_session">Sesión Duplicada nisqa</string>
     <string name="menu_delete_section">Borrar Sección</string>
     <string name="menu_delete_session">Borrar Sesión nisqa</string>
@@ -70,7 +68,7 @@
     <string name="menu_help">Yanapay</string>
     <string name="menu_add_session">Sesión nisqatapas yapay</string>
     <string name="menu_new_session">Musuq Sesión</string>
-    <string name="menu_privacy">Sapanchasqa...</string>
+    <string name="menu_privacy">Sapanchasqa…</string>
     <string name="menu_settings">Ajustes nisqa</string>
     <string name="minuten">Minutokuna</string>
     <string name="no_new_server_messages">Mana musuq willakuykuna kanchu.</string>
@@ -138,9 +136,6 @@
     <string name="theme_desc">Akllay app rikchayta</string>
     <string name="theme_light">Tema de Luz</string>
     <string name="theme_system">Sistema nisqamanta Tema</string>
-    <string name="theme_value_dark">dark</string>
-    <string name="theme_value_light">light</string>
-    <string name="theme_value_system">system</string>
     <string name="time_section_elapsed">Sección pasasqa</string>
     <string name="time_section_remaining">Sección puchuq</string>
     <string name="time_session_elapsed">Sesión pasasqa</string>

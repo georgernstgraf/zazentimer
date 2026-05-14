@@ -231,14 +231,12 @@ class MainFragment : Fragment() {
     override fun onAttach(context: Context) {
         super.onAttach(context)
         Log.d(TAG, "onAttach (Context)")
-        if (context != null) {
-            this.pref = ZazenTimerActivity.getPreferences(context)
-            if (context is OnFragmentInteractionListener) {
-                this.mListener = context
-                return
-            }
-            throw IllegalStateException(context.toString() + " must implement OnFragmentInteractionListener")
+        this.pref = ZazenTimerActivity.getPreferences(context)
+        if (context is OnFragmentInteractionListener) {
+            this.mListener = context
+            return
         }
+        throw IllegalStateException(context.toString() + " must implement OnFragmentInteractionListener")
     }
 
     override fun onDetach() {

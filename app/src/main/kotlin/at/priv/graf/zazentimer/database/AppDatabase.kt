@@ -1,7 +1,6 @@
 package at.priv.graf.zazentimer.database
 
 import android.database.Cursor
-import androidx.annotation.NonNull
 import androidx.room.Database
 import androidx.room.RoomDatabase
 import androidx.room.migration.Migration
@@ -27,9 +26,7 @@ abstract class AppDatabase : RoomDatabase() {
 
         val MIGRATION_1_2 =
             object : Migration(VERSION_1, VERSION_2) {
-                override fun migrate(
-                    @NonNull db: SupportSQLiteDatabase,
-                ) {
+                override fun migrate(db: SupportSQLiteDatabase) {
                     db.execSQL(
                         "CREATE TABLE IF NOT EXISTS settings(" +
                             "_id INTEGER PRIMARY KEY AUTOINCREMENT, " +
@@ -58,18 +55,14 @@ abstract class AppDatabase : RoomDatabase() {
 
         val MIGRATION_2_3 =
             object : Migration(VERSION_2, VERSION_3) {
-                override fun migrate(
-                    @NonNull db: SupportSQLiteDatabase,
-                ) {
+                override fun migrate(db: SupportSQLiteDatabase) {
                     // No-op: placeholder migration, no schema changes needed
                 }
             }
 
         val MIGRATION_3_4 =
             object : Migration(VERSION_3, VERSION_4) {
-                override fun migrate(
-                    @NonNull db: SupportSQLiteDatabase,
-                ) {
+                override fun migrate(db: SupportSQLiteDatabase) {
                     val cursor: Cursor = db.query("PRAGMA table_info(sections)")
                     var hasVolume = false
                     val nameIndex = cursor.getColumnIndex("name")
@@ -124,9 +117,7 @@ abstract class AppDatabase : RoomDatabase() {
 
         val MIGRATION_4_5 =
             object : Migration(VERSION_4, VERSION_5) {
-                override fun migrate(
-                    @NonNull db: SupportSQLiteDatabase,
-                ) {
+                override fun migrate(db: SupportSQLiteDatabase) {
                     db.execSQL(
                         "CREATE TABLE sessions_new (" +
                             "_id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, " +
@@ -164,9 +155,7 @@ abstract class AppDatabase : RoomDatabase() {
 
         val ON_CREATE_CALLBACK =
             object : RoomDatabase.Callback() {
-                override fun onCreate(
-                    @NonNull db: SupportSQLiteDatabase,
-                ) {
+                override fun onCreate(db: SupportSQLiteDatabase) {
                     super.onCreate(db)
                     db.execSQL(
                         "CREATE TABLE IF NOT EXISTS settings(" +

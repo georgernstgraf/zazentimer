@@ -5,7 +5,6 @@
     <string name="about2">Алгач Стефан Гаффга тарабынан түзүлгөн. Учурда Георг Граф тарабынан колдоого алынат.&lt;br&gt;&lt;br&gt;Ушундай сонун коңгуроо үндөрүн камсыз кылган &lt;a href="http://www.meditationsuhren.de">http://www.meditationsuhren.de&lt;/a&gt; сайтындагы Уинфридге рахмат!</string>
     <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues">GitHub боюнча көйгөйлөр тууралуу кабарлоо&lt;/a&gt;</string>
     <string name="app_description">Бул колдонмо колдонуучуга медитация сессияларынын топтомун аныктоого мүмкүндүк берет жана медитациянын бир бөлүгү же бүтүндөй аяктаганда визуалдык жана уккулуктуу пикир менен таймерди камсыз кылат.</string>
-    <string name="app_name">Zazen Meditation Timer</string>
     <string name="appbar_scrolling_view_behavior">android.support.design.widget.AppBarLayout$ScrollingViewBehavior</string>
     <string name="backup_error_text">Кечиресиз, сактоодо ката кетти.</string>
     <string name="backup_no_permission">Уруксаттардын жоктугунан камдык көчүрмө түзүлбөй койду.</string>
@@ -20,7 +19,7 @@
     <string name="bell_name_7">Tib. идиш, 230мм</string>
     <string name="bell_name_8">жапон. Ринбоул, 97 мм</string>
     <string name="bell_pause">Коңгуроо боштугу (сек.)</string>
-    <string name="bell_user">Коңгуроо кошуу...</string>
+    <string name="bell_user">Коңгуроо кошуу…</string>
     <string name="bottom_nav_meditation">Медитация</string>
     <string name="bottom_nav_sessions">Сеанстар</string>
     <string name="bottom_sheet_behavior">android.support.design.widget.BottomSheetBehavior</string>
@@ -28,7 +27,6 @@
     <string name="but_start">Медитацияны баштаңыз</string>
     <string name="but_stop">Токто</string>
     <string name="caption_zazen_meditation">Зазен медитациясы</string>
-    <string name="character_counter_pattern">%1$d / %2$d</string>
     <string name="checkbox_keep_screen_on">Экранды күйгүзүңүз</string>
     <string name="checkbox_no_server_messages">Show News</string>
     <string name="checkbox_phone_off">Телефондун үнүн басуу</string>
@@ -61,7 +59,7 @@
     <string name="label_section_name">Бөлүмдүн аты</string>
     <string name="label_session_description">Сеанстын сүрөттөлүшү</string>
     <string name="label_session_name">Сеанс аты</string>
-    <string name="menu_about">Жөнүндө...</string>
+    <string name="menu_about">Жөнүндө…</string>
     <string name="menu_copy_session">Дубликат сессиясы</string>
     <string name="menu_delete_section">Бөлүмдү өчүрүү</string>
     <string name="menu_delete_session">Сеансты жок кылуу</string>
@@ -70,7 +68,7 @@
     <string name="menu_help">Жардам</string>
     <string name="menu_add_session">Сеанс кошуу</string>
     <string name="menu_new_session">Жаңы сессия</string>
-    <string name="menu_privacy">Купуялык...</string>
+    <string name="menu_privacy">Купуялык…</string>
     <string name="menu_settings">Орнотуулар</string>
     <string name="minuten">Мүнөттөр</string>
     <string name="no_new_server_messages">Жаңы билдирүүлөр жок.</string>
@@ -138,9 +136,6 @@
     <string name="theme_desc">Колдонмонун көрүнүшүн тандаңыз</string>
     <string name="theme_light">Light Theme</string>
     <string name="theme_system">Системанын темасы</string>
-    <string name="theme_value_dark">dark</string>
-    <string name="theme_value_light">light</string>
-    <string name="theme_value_system">system</string>
     <string name="time_section_elapsed">Бөлүм бүттү</string>
     <string name="time_section_remaining">Бөлүм калды</string>
     <string name="time_session_elapsed">Сессия бүттү</string>

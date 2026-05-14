@@ -5,7 +5,6 @@
     <string name="about2">Asal ahaan waxaa abuuray Stefan Gaffga. Hadda waxaa gacanta ku haya Georg Graf.&lt;br&gt;&lt;br&gt;Winfried ayaa ku mahadsan tii &lt;a href="http://www.meditationsuhren.de">http://www.meditationsuhren.de&lt;/a&gt; si ay u bixiso dhawaaqyada gambaleelka oo kale!</string>
     <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues">ka warbixi arrimaha GitHub&lt;/a&gt;</string>
     <string name="app_description">Codsigan wuxuu u oggolaanayaa isticmaaluhu inuu qeexo kalfadhiyo ka fiirsi oo wuxuu siiyaa saacadeeyaha jawaab celin muuqaal iyo maqal ah marka qayb ama dhammaan ka fiirsashadu dhammaato.</string>
-    <string name="app_name">Zazen Meditation Timer</string>
     <string name="appbar_scrolling_view_behavior">android.support.design.widget.AppBarLayout$Scrolling ViewBehavior</string>
     <string name="backup_error_text">Waan ka xunahay, khalad ayaa dhacay markii la kaydinayay</string>
     <string name="backup_no_permission">Lama abuuri karo kaabta sababtoo ah ogolaanshaha maqan</string>
@@ -20,7 +19,7 @@
     <string name="bell_name_7">Tib. Makiinada, 230mm</string>
     <string name="bell_name_8">Jap Rhinbowl, 97mm</string>
     <string name="bell_pause">Farqiga dawanka (sek</string>
-    <string name="bell_user">Kudar dawan...</string>
+    <string name="bell_user">Kudar dawan…</string>
     <string name="bottom_nav_meditation">Ka fiirsashada</string>
     <string name="bottom_nav_sessions">Fadhiyo</string>
     <string name="bottom_sheet_behavior">android.support.design.widget.BottomSheet Habdhaqanka</string>
@@ -28,7 +27,6 @@
     <string name="but_start">Bilow Meditation</string>
     <string name="but_stop">Jooji</string>
     <string name="caption_zazen_meditation">Zazen Meditation</string>
-    <string name="character_counter_pattern">%1$d / %2$d</string>
     <string name="checkbox_keep_screen_on">Shaashada ha shid</string>
     <string name="checkbox_no_server_messages">Show News</string>
     <string name="checkbox_phone_off">Codka xidh teleefan</string>
@@ -61,7 +59,7 @@
     <string name="label_section_name">Magaca qaybta</string>
     <string name="label_session_description">Sharaxaada Casharka</string>
     <string name="label_session_name">Magaca Kulanka</string>
-    <string name="menu_about">ku saabsan...</string>
+    <string name="menu_about">ku saabsan…</string>
     <string name="menu_copy_session">Kalfadhiga Kooban</string>
     <string name="menu_delete_section">Tirtir Qaybta</string>
     <string name="menu_delete_session">Tirtir Kulanka</string>
@@ -70,7 +68,7 @@
     <string name="menu_help">Caawin</string>
     <string name="menu_add_session">Ku dar Casharka</string>
     <string name="menu_new_session">Kulan Cusub</string>
-    <string name="menu_privacy">Qarsoodi...</string>
+    <string name="menu_privacy">Qarsoodi…</string>
     <string name="menu_settings">Dejinta</string>
     <string name="minuten">Daqiiqado</string>
     <string name="no_new_server_messages">Fariimo cusub ma jiraan.</string>
@@ -138,9 +136,6 @@
     <string name="theme_desc">Dooro muuqaalka abka</string>
     <string name="theme_light">Mawduuca Fudud</string>
     <string name="theme_system">Mawduuca Nidaamka</string>
-    <string name="theme_value_dark">dark</string>
-    <string name="theme_value_light">light</string>
-    <string name="theme_value_system">system</string>
     <string name="time_section_elapsed">Qaybta ayaa dhacday</string>
     <string name="time_section_remaining">Qaybta hadhay</string>
     <string name="time_session_elapsed">Fadhigu wuu dhacay</string>

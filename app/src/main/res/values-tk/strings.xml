@@ -4,7 +4,6 @@
     <string name="about1">Zazen Meditasiýa taýmeri - Düzülip bilinýän bölümler, jaň sesleri we sessiýa dolandyryşy bilen ýönekeý meditasiýa taýmeri.</string>
     <string name="about3">&lt;a href = "https://github.com/georgernstgraf/zazentimer/issues"> GitHub-da meseleleri habar beriň &lt;/a&gt;</string>
     <string name="app_description">Bu programma ulanyja meditasiýa sessiýalarynyň toplumyny kesgitlemäge mümkinçilik berýär we bir bölegi ýa-da tutuş meditasiýa gutaranda wizual we eşidilýän seslenme bilen taýmer üpjün edýär.</string>
-    <string name="app_name">Zazen Meditation Timer</string>
     <string name="appbar_scrolling_view_behavior">android.support.design.widget.AppBarLayout $ ScrollingViewBehavior</string>
     <string name="backup_error_text">Bagyşlaň, tygşytlamakda säwlik ýüze çykdy.</string>
     <string name="backup_no_permission">Rugsatlaryň ýoklugy sebäpli ätiýaçlyk döredip bilmedi.</string>
@@ -19,7 +18,7 @@
     <string name="bell_name_7">Tib. Käse, 230mm</string>
     <string name="bell_name_8">Jap. Rhinbowl, 97mm</string>
     <string name="bell_pause">Jaň boşlugy (sek)</string>
-    <string name="bell_user">Bell goş ...</string>
+    <string name="bell_user">Bell goş …</string>
     <string name="bottom_nav_meditation">Meditasiýa</string>
     <string name="bottom_nav_sessions">Sessiýalar</string>
     <string name="bottom_sheet_behavior">android.support.design.widget.BottomSheetBehavior</string>
@@ -27,7 +26,6 @@
     <string name="but_start">Meditasiýa başlaň</string>
     <string name="but_stop">Dur</string>
     <string name="caption_zazen_meditation">Zazen Meditasiýa</string>
-    <string name="character_counter_pattern">%1$d / %2$d</string>
     <string name="checkbox_keep_screen_on">Ekrany dowam etdiriň</string>
     <string name="checkbox_no_server_messages">Täzelikleri görkez</string>
     <string name="checkbox_phone_off">Sessiz telefon</string>
@@ -60,7 +58,7 @@
     <string name="label_section_name">Bölümiň ady</string>
     <string name="label_session_description">Sessiýanyň beýany</string>
     <string name="label_session_name">Sessiýanyň ady</string>
-    <string name="menu_about">About ...</string>
+    <string name="menu_about">About …</string>
     <string name="menu_copy_session">Dublikat sessiýa</string>
     <string name="menu_delete_section">Bölümi poz</string>
     <string name="menu_delete_session">Sessiýany poz</string>
@@ -69,7 +67,7 @@
     <string name="menu_help">Kömek</string>
     <string name="menu_add_session">Sessiýa goş</string>
     <string name="menu_new_session">Täze sessiýa</string>
-    <string name="menu_privacy">Gizlinlik ...</string>
+    <string name="menu_privacy">Gizlinlik …</string>
     <string name="menu_settings">Sazlamalar</string>
     <string name="minuten">Minutlar</string>
     <string name="no_new_server_messages">Täze habar ýok.</string>
@@ -137,9 +135,6 @@
     <string name="theme_desc">Programmanyň daşky görnüşini saýlaň</string>
     <string name="theme_light">Lightagtylyk mowzugy</string>
     <string name="theme_system">Ulgam mowzugy</string>
-    <string name="theme_value_dark">dark</string>
-    <string name="theme_value_light">light</string>
-    <string name="theme_value_system">system</string>
     <string name="time_section_elapsed">Bölüm geçdi</string>
     <string name="time_section_remaining">Bölüm galan</string>
     <string name="time_session_elapsed">Sessiýa geçdi</string>

@@ -4,7 +4,6 @@
     <string name="about1">ଜାଜେନ୍ ଧ୍ୟାନ ସମୟ - କଷ୍ଟୋମାଇଜେବଲ୍ ବିଭାଗ, ଘଣ୍ଟି ଧ୍ୱନି, ଏବଂ ଅଧିବେଶନ ପରିଚାଳନା ସହିତ ଏକ ସରଳ ଧ୍ୟାନ ସମୟ |</string>
     <string name="about3">&lt;a href = "https://github.com/georgernstgraf/zazentimer/issues"> GitHub ରେ ସମସ୍ୟାଗୁଡିକ ରିପୋର୍ଟ କରନ୍ତୁ &lt;/a&gt;</string>
     <string name="app_description">ଏହି ଅନୁପ୍ରୟୋଗ ଉପଭୋକ୍ତାଙ୍କୁ ଧ୍ୟାନ ଅଧିବେଶନର ଏକ ସେଟ୍ ବ୍ୟାଖ୍ୟା କରିବାକୁ ଦିଏ ଏବଂ ଏକ ଅଂଶ କିମ୍ବା ସମଗ୍ର ଧ୍ୟାନ ସମାପ୍ତ ହେଲେ ଭିଜୁଆଲ୍ ଏବଂ ଶ୍ରୋତାପୂର୍ଣ୍ଣ ମତାମତ ସହିତ ଏକ ଟାଇମର୍ ପ୍ରଦାନ କରେ |</string>
-    <string name="app_name">Zazen Meditation Timer</string>
     <string name="appbar_scrolling_view_behavior">android.support.design.widget.AppBarLayout $ ScrollingViewBehavior</string>
     <string name="backup_error_text">ଦୁ Sorry ଖିତ, ସଞ୍ଚୟ କରିବା ସମୟରେ ଏକ ତ୍ରୁଟି ଘଟିଗଲା |</string>
     <string name="backup_no_permission">ଅନୁପସ୍ଥିତ ଅନୁମତି ହେତୁ ବ୍ୟାକଅପ୍ ସୃଷ୍ଟି କରିପାରିଲା ନାହିଁ |</string>
@@ -19,7 +18,7 @@
     <string name="bell_name_7">ତିବ୍ ପାତ୍ର, 230 ମିମି |</string>
     <string name="bell_name_8">ଜାପ୍ ରାଇନ୍ବୋଲ୍, 97 ମିମି |</string>
     <string name="bell_pause">ବେଲ୍ ଫାଙ୍କ (ସେକେଣ୍ଡ୍)</string>
-    <string name="bell_user">ବେଲ୍ ଯୋଡନ୍ତୁ ...</string>
+    <string name="bell_user">ବେଲ୍ ଯୋଡନ୍ତୁ …</string>
     <string name="bottom_nav_meditation">ଧ୍ୟାନ |</string>
     <string name="bottom_nav_sessions">ଅଧିବେଶନ</string>
     <string name="bottom_sheet_behavior">android.support.design.widget.BottomSheetBehavior</string>
@@ -27,7 +26,6 @@
     <string name="but_start">ଧ୍ୟାନ ଆରମ୍ଭ କରନ୍ତୁ |</string>
     <string name="but_stop">ବନ୍ଦ କର |</string>
     <string name="caption_zazen_meditation">ଜାଜେନ୍ ଧ୍ୟାନ |</string>
-    <string name="character_counter_pattern">%1$d / %2$d</string>
     <string name="checkbox_keep_screen_on">ସ୍କ୍ରିନ୍ ଅନ୍ ରଖନ୍ତୁ |</string>
     <string name="checkbox_no_server_messages">ନ୍ୟୁଜ୍ ଦେଖାନ୍ତୁ |</string>
     <string name="checkbox_phone_off">ମ୍ୟୁଟ୍ ଫୋନ୍ |</string>
@@ -60,7 +58,7 @@
     <string name="label_section_name">ବିଭାଗ ନାମ</string>
     <string name="label_session_description">ଅଧିବେଶନ ବର୍ଣ୍ଣନା</string>
     <string name="label_session_name">ଅଧିବେଶନ ନାମ</string>
-    <string name="menu_about">ବିଷୟରେ ...</string>
+    <string name="menu_about">ବିଷୟରେ …</string>
     <string name="menu_copy_session">ନକଲ ଅଧିବେଶନ |</string>
     <string name="menu_delete_section">ବିଭାଗ ବିଲୋପ କରନ୍ତୁ |</string>
     <string name="menu_delete_session">ଅଧିବେଶନ ବିଲୋପ କରନ୍ତୁ |</string>
@@ -69,7 +67,7 @@
     <string name="menu_help">ସାହାଯ୍ୟ</string>
     <string name="menu_add_session">ଅଧିବେଶନ ଯୋଡନ୍ତୁ |</string>
     <string name="menu_new_session">ନୂତନ ଅଧିବେଶନ |</string>
-    <string name="menu_privacy">ଗୋପନୀୟତା ...</string>
+    <string name="menu_privacy">ଗୋପନୀୟତା …</string>
     <string name="menu_settings">ସେଟିଂସମୂହ</string>
     <string name="minuten">ମିନିଟ୍ |</string>
     <string name="no_new_server_messages">କ new ଣସି ନୂତନ ବାର୍ତ୍ତା ଉପଲବ୍ଧ ନାହିଁ |</string>
@@ -137,9 +135,6 @@
     <string name="theme_desc">ଆପ୍ ଦୃଶ୍ୟ ବାଛନ୍ତୁ |</string>
     <string name="theme_light">ହାଲୁକା ଥିମ୍ |</string>
     <string name="theme_system">ସିଷ୍ଟମ୍ ଥିମ୍ |</string>
-    <string name="theme_value_dark">dark</string>
-    <string name="theme_value_light">light</string>
-    <string name="theme_value_system">system</string>
     <string name="time_section_elapsed">ବିଭାଗ ଅତିକ୍ରମ କଲା |</string>
     <string name="time_section_remaining">ବିଭାଗ ବାକି ଅଛି |</string>
     <string name="time_session_elapsed">ଅଧିବେଶନ ଶେଷ ହେଲା |</string>

@@ -19,7 +19,7 @@
     <string name="bell_name_7">Tib. Bowl, 230mm</string>
     <string name="bell_name_8">Jap. Rhinbowl, 97mm</string>
     <string name="bell_pause">Jeda loceng (saat)</string>
-    <string name="bell_user">Tambah Loceng...</string>
+    <string name="bell_user">Tambah Loceng…</string>
     <string name="bottom_nav_meditation">Meditasi</string>
     <string name="bottom_nav_sessions">Sesi</string>
     <string name="bottom_sheet_behavior">android.support.design.widget.BottomSheetBehavior</string>
@@ -59,7 +59,7 @@
     <string name="label_section_name">Nama Bahagian</string>
     <string name="label_session_description">Huraian Sesi</string>
     <string name="label_session_name">Nama Sesi</string>
-    <string name="menu_about">Perihal...</string>
+    <string name="menu_about">Perihal…</string>
     <string name="menu_copy_session">Gandakan Sesi</string>
     <string name="menu_delete_section">Padam Bahagian</string>
     <string name="menu_delete_session">Padam Sesi</string>
@@ -68,7 +68,7 @@
     <string name="menu_help">Bantuan</string>
     <string name="menu_add_session">Tambah Sesi</string>
     <string name="menu_new_session">Sesi Baharu</string>
-    <string name="menu_privacy">Privasi...</string>
+    <string name="menu_privacy">Privasi…</string>
     <string name="menu_settings">Tetapan</string>
     <string name="minuten">Minit</string>
     <string name="no_new_server_messages">Tiada mesej baharu.</string>

@@ -5,7 +5,6 @@
     <string name="about2">ໃນເບື້ອງຕົ້ນສ້າງໂດຍ Stefan Gaffga. ປະຈຸບັນຮັກສາໄວ້ໂດຍ Georg Graf.&lt;br&gt;&lt;br&gt;ຂໍຂອບໃຈ Winfried ຂອງ &lt;a href="http://www.meditationsuhren.de">http://www.meditationsuhren.de&lt;/a&gt; ສໍາລັບການສະຫນອງສຽງ Bell ທີ່ຍິ່ງໃຫຍ່ດັ່ງກ່າວ!</string>
     <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues">ລາຍງານບັນຫາໃນ GitHub&lt;/a&gt;</string>
     <string name="app_description">ແອັບພລິເຄຊັນນີ້ເຮັດໃຫ້ຜູ້ໃຊ້ກໍານົດຊຸດຂອງກອງປະຊຸມສະມາທິແລະສະຫນອງການຈັບເວລາທີ່ມີຄໍາຕິຊົມທີ່ເບິ່ງເຫັນແລະສຽງໃນເວລາທີ່ການນັ່ງສະມາທິບາງສ່ວນຫຼືທັງຫມົດສິ້ນສຸດລົງ.</string>
-    <string name="app_name">Zazen Meditation Timer</string>
     <string name="appbar_scrolling_view_behavior">android.support.design.widget.AppBarLayout$ScrollingViewBehavior</string>
     <string name="backup_error_text">ຂໍອະໄພ, ເກີດຄວາມຜິດພາດຂຶ້ນໃນຂະນະທີ່ບັນທຶກ.</string>
     <string name="backup_no_permission">ບໍ່ສາມາດສ້າງການສໍາຮອງໄດ້ເນື່ອງຈາກບໍ່ມີສິດອະນຸຍາດ.</string>
@@ -20,7 +19,7 @@
     <string name="bell_name_7">ທິບ. ໂຖປັດສະວະ, 230mm</string>
     <string name="bell_name_8">ປະເທດຍີ່ປຸ່ນ Rhinbowl, 97mm</string>
     <string name="bell_pause">ຊ່ອງຫວ່າງກະດິ່ງ (ວິນາທີ)</string>
-    <string name="bell_user">ເພີ່ມກະດິ່ງ...</string>
+    <string name="bell_user">ເພີ່ມກະດິ່ງ…</string>
     <string name="bottom_nav_meditation">ສະມາທິ</string>
     <string name="bottom_nav_sessions">ເຊດຊັນ</string>
     <string name="bottom_sheet_behavior">android.support.design.widget.BottomSheetBehavior</string>
@@ -28,7 +27,6 @@
     <string name="but_start">ເລີ່ມການນັ່ງສະມາທິ</string>
     <string name="but_stop">ຢຸດ</string>
     <string name="caption_zazen_meditation">ສະມາທິ Zazen</string>
-    <string name="character_counter_pattern">%1$d / %2$d</string>
     <string name="checkbox_keep_screen_on">ສືບຕໍ່ເປີດໜ້າຈໍ</string>
     <string name="checkbox_no_server_messages">ສະແດງຂ່າວ</string>
     <string name="checkbox_phone_off">ປິດສຽງໂທລະສັບ</string>
@@ -61,7 +59,7 @@
     <string name="label_section_name">ຊື່ພາກ</string>
     <string name="label_session_description">ລາຍລະອຽດຂອງເຊດຊັນ</string>
     <string name="label_session_name">ຊື່ເຊດຊັນ</string>
-    <string name="menu_about">ກ່ຽວກັບ...</string>
+    <string name="menu_about">ກ່ຽວກັບ…</string>
     <string name="menu_copy_session">ເຊດຊັນຊໍ້າກັນ</string>
     <string name="menu_delete_section">ລຶບພາກສ່ວນ</string>
     <string name="menu_delete_session">ລຶບ Session</string>
@@ -70,7 +68,7 @@
     <string name="menu_help">ຊ່ວຍເຫຼືອ</string>
     <string name="menu_add_session">ເພີ່ມ Session</string>
     <string name="menu_new_session">ເຊດຊັນໃໝ່</string>
-    <string name="menu_privacy">ຄວາມເປັນສ່ວນຕົວ...</string>
+    <string name="menu_privacy">ຄວາມເປັນສ່ວນຕົວ…</string>
     <string name="menu_settings">ການຕັ້ງຄ່າ</string>
     <string name="minuten">ນາທີ</string>
     <string name="no_new_server_messages">ບໍ່ມີຂໍ້ຄວາມໃໝ່.</string>
@@ -138,9 +136,6 @@
     <string name="theme_desc">ເລືອກ​ຮູບ​ລັກ​ສະ​ນະ app ໄດ້​</string>
     <string name="theme_light">ຮູບແບບສີສັນແຈ້ງ</string>
     <string name="theme_system">ຫົວຂໍ້ລະບົບ</string>
-    <string name="theme_value_dark">dark</string>
-    <string name="theme_value_light">light</string>
-    <string name="theme_value_system">system</string>
     <string name="time_section_elapsed">ພາກສ່ວນຜ່ານໄປ</string>
     <string name="time_section_remaining">ສ່ວນທີ່ຍັງເຫຼືອ</string>
     <string name="time_session_elapsed">ເຊດຊັນຜ່ານໄປແລ້ວ</string>

@@ -5,7 +5,6 @@
     <string name="about2">मुळांत स्टीफन गॅफगा हाणें तयार केल्लें. सद्या जॉर्ज ग्राफ हांणी सांबाळ्ळां.&lt;br&gt;&lt;br&gt;इतले व्हडले बेल साउंड्स दिवपा खातीर &lt;a href="http://www.meditationsuhren.de">http://www.meditationsuhren.de&lt;/a&gt; च्या विनफ्रीडाक आभार!</string>
     <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues">GitHub चेर समस्यांचो अहवाल दिवप&lt;/a&gt;</string>
     <string name="app_description">हो ऍप्लिकेशन वापरप्याक ध्यान सत्रांचो संच व्याख्या करूंक दिता आनी एक भाग वा पुराय ध्यान सोंपतकच दृश्य आनी श्रव्य प्रतिसादा सयत टाइमर पुरवण करता.</string>
-    <string name="app_name">Zazen Meditation Timer</string>
     <string name="appbar_scrolling_view_behavior">android.support.design.widget.AppBarLayout $ स्क्रोलिंगदृश्यवर्तन</string>
     <string name="backup_error_text">माफ करात, जतनाय करतना एक त्रुटी जाल्या.</string>
     <string name="backup_no_permission">गळून पडल्ल्या परवानगींक लागून बॅकअप तयार करूंक शकलो ना.</string>
@@ -20,7 +19,7 @@
     <string name="bell_name_7">टिब. बावल, 230 मिमी</string>
     <string name="bell_name_8">जॅप. स्फटिक, 97 मिमी</string>
     <string name="bell_pause">घंटी अंतर (सेकंद) 1.1.</string>
-    <string name="bell_user">जोडचें बेल...</string>
+    <string name="bell_user">जोडचें बेल…</string>
     <string name="bottom_nav_meditation">साधना</string>
     <string name="bottom_nav_sessions">सत्रां जालीं</string>
     <string name="bottom_sheet_behavior">android.support.design.widget.BottomSheetBehavior हें नांव</string>
@@ -28,7 +27,6 @@
     <string name="but_start">ध्यान सुरू करचें</string>
     <string name="but_stop">राव</string>
     <string name="caption_zazen_meditation">ज़ाझेन ध्यान</string>
-    <string name="character_counter_pattern">%1$d / %2$d</string>
     <string name="checkbox_keep_screen_on">स्क्रीन चालू दवरात</string>
     <string name="checkbox_no_server_messages">खबरो दाखोवचो</string>
     <string name="checkbox_phone_off">फोन म्यूट करचो</string>
@@ -61,7 +59,7 @@
     <string name="label_section_name">विभागाचें नांव</string>
     <string name="label_session_description">सत्राचें वर्णन</string>
     <string name="label_session_name">सत्राचें नांव</string>
-    <string name="menu_about">संबंदीं...</string>
+    <string name="menu_about">संबंदीं…</string>
     <string name="menu_copy_session">डुप्लीकेट सत्र</string>
     <string name="menu_delete_section">विभाग काडून उडोवप</string>
     <string name="menu_delete_session">सत्र काडून उडोवप</string>
@@ -70,7 +68,7 @@
     <string name="menu_help">आदार</string>
     <string name="menu_add_session">सत्र जोडचें</string>
     <string name="menu_new_session">नवें अधिवेशन</string>
-    <string name="menu_privacy">गुप्तताय...</string>
+    <string name="menu_privacy">गुप्तताय…</string>
     <string name="menu_settings">सेटिंग्ज</string>
     <string name="minuten">मिण्टां</string>
     <string name="no_new_server_messages">नवे संदेश उपलब्ध नात.</string>
@@ -138,9 +136,6 @@
     <string name="theme_desc">अॅप दिसप निवडात</string>
     <string name="theme_light">उजवाडाचो विशय</string>
     <string name="theme_system">प्रणाली थीम</string>
-    <string name="theme_value_dark">dark</string>
-    <string name="theme_value_light">light</string>
-    <string name="theme_value_system">system</string>
     <string name="time_section_elapsed">विभाग गेलो</string>
     <string name="time_section_remaining">विभाग उरला</string>
     <string name="time_session_elapsed">सत्र गेलें</string>

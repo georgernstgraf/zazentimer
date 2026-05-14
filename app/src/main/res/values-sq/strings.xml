@@ -5,7 +5,6 @@
     <string name="about2">Krijuar fillimisht nga Stefan Gaffga. Aktualisht mirëmbahet nga Georg Graf.&lt;br&gt;&lt;br&gt;Faleminderit Winfried të &lt;a href="http://www.meditationsuhren.de">http://www.meditationsuhren.de&lt;/a&gt; për ofrimin e tingujve kaq të mrekullueshëm të ziles!</string>
     <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues">Raportoni problemet në GitHub&lt;/a&gt;</string>
     <string name="app_description">Ky aplikacion lejon përdoruesin të përcaktojë një grup seancash meditimi dhe siguron një kohëmatës me reagime vizuale dhe të dëgjueshme kur një pjesë ose i gjithë meditimi përfundon.</string>
-    <string name="app_name">Zazen Meditation Timer</string>
     <string name="appbar_scrolling_view_behavior">android.support.design.widget.AppBarLayout$ScrollingViewBehavior</string>
     <string name="backup_error_text">Na vjen keq, ndodhi një gabim gjatë ruajtjes.</string>
     <string name="backup_no_permission">Rezervimi nuk mund të krijohej për shkak të mungesës së lejeve.</string>
@@ -20,7 +19,7 @@
     <string name="bell_name_7">Tib. Tas, 230 mm</string>
     <string name="bell_name_8">Japonia Rinbowl, 97 mm</string>
     <string name="bell_pause">Hendeku i ziles (sek)</string>
-    <string name="bell_user">Shto zile...</string>
+    <string name="bell_user">Shto zile…</string>
     <string name="bottom_nav_meditation">Meditim</string>
     <string name="bottom_nav_sessions">Sesionet</string>
     <string name="bottom_sheet_behavior">android.support.design.widget.BottomSheetBehavior</string>
@@ -28,7 +27,6 @@
     <string name="but_start">Filloni meditimin</string>
     <string name="but_stop">Ndalo</string>
     <string name="caption_zazen_meditation">Meditimi i Zazenit</string>
-    <string name="character_counter_pattern">%1$d / %2$d</string>
     <string name="checkbox_keep_screen_on">Mbaje ekranin të ndezur</string>
     <string name="checkbox_no_server_messages">Shfaq Lajmet</string>
     <string name="checkbox_phone_off">Çaktivizo telefonin</string>
@@ -61,7 +59,7 @@
     <string name="label_section_name">Emri i seksionit</string>
     <string name="label_session_description">Përshkrimi i sesionit</string>
     <string name="label_session_name">Emri i sesionit</string>
-    <string name="menu_about">Rreth...</string>
+    <string name="menu_about">Rreth…</string>
     <string name="menu_copy_session">Sesioni i kopjuar</string>
     <string name="menu_delete_section">Fshi seksionin</string>
     <string name="menu_delete_session">Fshi sesionin</string>
@@ -70,7 +68,7 @@
     <string name="menu_help">Ndihmë</string>
     <string name="menu_add_session">Shto seancë</string>
     <string name="menu_new_session">Sesion i ri</string>
-    <string name="menu_privacy">Privatësia...</string>
+    <string name="menu_privacy">Privatësia…</string>
     <string name="menu_settings">Cilësimet</string>
     <string name="minuten">Minutat</string>
     <string name="no_new_server_messages">Nuk ka mesazhe të reja në dispozicion.</string>
@@ -138,9 +136,6 @@
     <string name="theme_desc">Zgjidhni pamjen e aplikacionit</string>
     <string name="theme_light">Tema e lehtë</string>
     <string name="theme_system">Tema e Sistemit</string>
-    <string name="theme_value_dark">dark</string>
-    <string name="theme_value_light">light</string>
-    <string name="theme_value_system">system</string>
     <string name="time_section_elapsed">Seksioni ka kaluar</string>
     <string name="time_section_remaining">Seksioni i mbetur</string>
     <string name="time_session_elapsed">Seanca ka kaluar</string>

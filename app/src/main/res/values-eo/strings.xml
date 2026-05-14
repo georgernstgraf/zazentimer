@@ -5,7 +5,6 @@
     <string name="about2">Origine kreita de Stefan Gaffga. Nuntempe prizorgata de Georg Graf.&lt;br&gt;&lt;br&gt;Dankon al Winfried de &lt;a href="http://www.meditationsuhren.de">http://www.meditationsuhren.de&lt;/a&gt; pro provizi tiel bonegajn Sonorilojn!</string>
     <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues">Raporti problemojn en GitHub&lt;/a&gt;</string>
     <string name="app_description">Ĉi tiu aplikaĵo lasas la uzanton difini aron da meditado-sesioj kaj provizas tempigilon kun vidaj kaj aŭdeblaj retroscioj kiam parto aŭ la tuta meditado finiĝas.</string>
-    <string name="app_name">Zazen Meditation Timer</string>
     <string name="appbar_scrolling_view_behavior">android.support.design.widget.AppBarLayout$ScrollingViewBehavior</string>
     <string name="backup_error_text">Pardonu, eraro okazis dum konservado.</string>
     <string name="backup_no_permission">Ne eblis krei sekurkopion pro mankantaj permesoj.</string>
@@ -20,7 +19,7 @@
     <string name="bell_name_7">Tib. Bovlo, 230 mm</string>
     <string name="bell_name_8">Jap. Rinbovo, 97mm</string>
     <string name="bell_pause">Sonorilinterspaco (sec)</string>
-    <string name="bell_user">Aldonu Bell...</string>
+    <string name="bell_user">Aldonu Bell…</string>
     <string name="bottom_nav_meditation">Meditado</string>
     <string name="bottom_nav_sessions">Sesioj</string>
     <string name="bottom_sheet_behavior">android.support.design.widget.BottomSheetBehavior</string>
@@ -28,7 +27,6 @@
     <string name="but_start">Komencu Meditadon</string>
     <string name="but_stop">Haltu</string>
     <string name="caption_zazen_meditation">Zazen Meditado</string>
-    <string name="character_counter_pattern">%1$d / %2$d</string>
     <string name="checkbox_keep_screen_on">Konservu ekranon ŝaltita</string>
     <string name="checkbox_no_server_messages">Montru Novaĵojn</string>
     <string name="checkbox_phone_off">Muta Telefono</string>
@@ -61,7 +59,7 @@
     <string name="label_section_name">Nomo de sekcio</string>
     <string name="label_session_description">Sesia Priskribo</string>
     <string name="label_session_name">Nomo de Sesio</string>
-    <string name="menu_about">Pri...</string>
+    <string name="menu_about">Pri…</string>
     <string name="menu_copy_session">Duobliga Sesio</string>
     <string name="menu_delete_section">Forigi Sekcion</string>
     <string name="menu_delete_session">Forigi Sesion</string>
@@ -70,7 +68,7 @@
     <string name="menu_help">Helpu</string>
     <string name="menu_add_session">Aldonu Sesion</string>
     <string name="menu_new_session">Nova Sesio</string>
-    <string name="menu_privacy">Privateco...</string>
+    <string name="menu_privacy">Privateco…</string>
     <string name="menu_settings">Agordoj</string>
     <string name="minuten">Minutoj</string>
     <string name="no_new_server_messages">Neniuj novaj mesaĝoj disponeblaj.</string>
@@ -138,9 +136,6 @@
     <string name="theme_desc">Elektu la aspekton de la aplikaĵo</string>
     <string name="theme_light">Luma Temo</string>
     <string name="theme_system">Sistema Temo</string>
-    <string name="theme_value_dark">dark</string>
-    <string name="theme_value_light">light</string>
-    <string name="theme_value_system">system</string>
     <string name="time_section_elapsed">Sekcio pasis</string>
     <string name="time_section_remaining">Sekcio restanta</string>
     <string name="time_session_elapsed">Sesio pasis</string>

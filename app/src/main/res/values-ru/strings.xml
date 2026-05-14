@@ -19,7 +19,7 @@
     <string name="bell_name_7">Тиб. чаша, 230 мм</string>
     <string name="bell_name_8">Яп. чаша, 97 мм</string>
     <string name="bell_pause">Пауза гонга (сек)</string>
-    <string name="bell_user">Добавить гонг...</string>
+    <string name="bell_user">Добавить гонг…</string>
     <string name="bottom_nav_meditation">Медитация</string>
     <string name="bottom_nav_sessions">Сессии</string>
     <string name="bottom_sheet_behavior">android.support.design.widget.BottomSheetBehavior</string>
@@ -59,7 +59,7 @@
     <string name="label_section_name">Название секции</string>
     <string name="label_session_description">Описание сессии</string>
     <string name="label_session_name">Название сессии</string>
-    <string name="menu_about">О приложении...</string>
+    <string name="menu_about">О приложении…</string>
     <string name="menu_copy_session">Дублировать сессию</string>
     <string name="menu_delete_section">Удалить секцию</string>
     <string name="menu_delete_session">Удалить сессию</string>
@@ -68,7 +68,7 @@
     <string name="menu_help">Справка</string>
     <string name="menu_add_session">Добавить сессию</string>
     <string name="menu_new_session">Новая сессия</string>
-    <string name="menu_privacy">Конфиденциальность...</string>
+    <string name="menu_privacy">Конфиденциальность…</string>
     <string name="menu_settings">Настройки</string>
     <string name="minuten">Минуты</string>
     <string name="no_new_server_messages">Нет новых сообщений.</string>

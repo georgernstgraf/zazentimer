@@ -19,7 +19,7 @@
     <string name="bell_name_7">Tib. Bowl, 230mm</string>
     <string name="bell_name_8">Jap. Rhinbowl, 97mm</string>
     <string name="bell_pause">Bwlch cloch (eiliadau)</string>
-    <string name="bell_user">Ychwanegu Cloch...</string>
+    <string name="bell_user">Ychwanegu Cloch…</string>
     <string name="bottom_nav_meditation">Myfyrdod</string>
     <string name="bottom_nav_sessions">Sesiynau</string>
     <string name="bottom_sheet_behavior">android.support.design.widget.BottomSheetBehavior</string>
@@ -59,7 +59,7 @@
     <string name="label_section_name">Enw\'r Adran</string>
     <string name="label_session_description">Disgrifiad o\'r Sesiwn</string>
     <string name="label_session_name">Enw\'r Sesiwn</string>
-    <string name="menu_about">Ynghylch...</string>
+    <string name="menu_about">Ynghylch…</string>
     <string name="menu_copy_session">Dyblygu Sesiwn</string>
     <string name="menu_delete_section">Dileu Adran</string>
     <string name="menu_delete_session">Dileu Sesiwn</string>
@@ -68,7 +68,7 @@
     <string name="menu_help">Cymorth</string>
     <string name="menu_add_session">Ychwanegu Sesiwn</string>
     <string name="menu_new_session">Sesiwn Newydd</string>
-    <string name="menu_privacy">Privacy...</string>
+    <string name="menu_privacy">Privacy…</string>
     <string name="menu_settings">Gosodiadau</string>
     <string name="minuten">Cofnodion</string>
     <string name="no_new_server_messages">No new messages available.</string>

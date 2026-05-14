@@ -257,7 +257,7 @@ class SectionEditFragment : Fragment() {
         private fun SectionEditFragment.installCustomBellListener() {
             binding.addcustombell.setOnClickListener {
                 val intent = Intent("android.intent.action.GET_CONTENT")
-                intent.flags = 1
+                intent.flags = Intent.FLAG_GRANT_READ_URI_PERMISSION
                 intent.type = "audio/*"
                 bellPickerLauncher.launch(Intent.createChooser(intent, resources.getString(R.string.select_audio)))
             }

@@ -5,7 +5,6 @@
     <string name="about2">መጀመሪያ የተፈጠረው በ Stefan Gaffga ነው። በአሁኑ ጊዜ በGeorg Graf ተጠብቆ የሚገኘው።&lt;br&gt;&lt;br&gt;ይህን የመሰለ ምርጥ የቤል ድምጽ ስላቀረበ የ&lt;a href="http://www.meditationsuhren.de">http://www.meditationsuhren.de&lt;/a&gt; ዊንፍሪድ እናመሰግናለን!</string>
     <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues">በGitHub ላይ ያሉ ችግሮችን ሪፖርት አድርግ&lt;/a&gt;</string>
     <string name="app_description">ይህ መተግበሪያ ተጠቃሚው የሜዲቴሽን ክፍለ ጊዜዎችን እንዲገልጽ ያስችለዋል እና አንድ ክፍል ወይም አጠቃላይ ማሰላሰል ሲያልቅ ጊዜ ቆጣሪን በእይታ እና በሚሰማ ግብረመልስ ይሰጣል።</string>
-    <string name="app_name">Zazen Meditation Timer</string>
     <string name="appbar_scrolling_view_behavior">android.support.design.widget.AppBarLayout$ማሸብለል እይታ ባህሪ</string>
     <string name="backup_error_text">ይቅርታ፣ በማስቀመጥ ላይ ስህተት ተፈጥሯል።</string>
     <string name="backup_no_permission">በጎደሉ ፈቃዶች ምክንያት ምትኬን መፍጠር አልተቻለም።</string>
@@ -20,7 +19,7 @@
     <string name="bell_name_7">ቲብ. ጎድጓዳ ሳህን, 230 ሚሜ</string>
     <string name="bell_name_8">ጃፕ ራይንቦውል ፣ 97 ሚሜ</string>
     <string name="bell_pause">የደወል ክፍተት (ሰከንድ)</string>
-    <string name="bell_user">ደወል አክል...</string>
+    <string name="bell_user">ደወል አክል…</string>
     <string name="bottom_nav_meditation">ማሰላሰል</string>
     <string name="bottom_nav_sessions">ክፍለ-ጊዜዎች</string>
     <string name="bottom_sheet_behavior">android.support.design.widget.BottomSheet ባህሪ</string>
@@ -28,7 +27,6 @@
     <string name="but_start">ማሰላሰል ጀምር</string>
     <string name="but_stop">ተወ</string>
     <string name="caption_zazen_meditation">የዛዜን ማሰላሰል</string>
-    <string name="character_counter_pattern">%1$d / %2$d</string>
     <string name="checkbox_keep_screen_on">ማያ ገጹን እንደበራ አቆይ</string>
     <string name="checkbox_no_server_messages">ዜና አሳይ</string>
     <string name="checkbox_phone_off">ስልክ ድምጸ-ከል አድርግ</string>
@@ -61,7 +59,7 @@
     <string name="label_section_name">የክፍል ስም</string>
     <string name="label_session_description">የክፍለ ጊዜ መግለጫ</string>
     <string name="label_session_name">የክፍለ ጊዜ ስም</string>
-    <string name="menu_about">ስለ...</string>
+    <string name="menu_about">ስለ…</string>
     <string name="menu_copy_session">የተባዛ ክፍለ ጊዜ</string>
     <string name="menu_delete_section">ክፍልን ሰርዝ</string>
     <string name="menu_delete_session">ክፍለ-ጊዜን ሰርዝ</string>
@@ -70,7 +68,7 @@
     <string name="menu_help">እገዛ</string>
     <string name="menu_add_session">ክፍለ ጊዜ ጨምር</string>
     <string name="menu_new_session">አዲስ ክፍለ ጊዜ</string>
-    <string name="menu_privacy">ግላዊነት...</string>
+    <string name="menu_privacy">ግላዊነት…</string>
     <string name="menu_settings">ቅንብሮች</string>
     <string name="minuten">ደቂቃዎች</string>
     <string name="no_new_server_messages">ምንም አዲስ መልዕክቶች አይገኙም።</string>
@@ -138,9 +136,6 @@
     <string name="theme_desc">የመተግበሪያውን ገጽታ ይምረጡ</string>
     <string name="theme_light">የብርሃን ጭብጥ</string>
     <string name="theme_system">የስርዓት ጭብጥ</string>
-    <string name="theme_value_dark">dark</string>
-    <string name="theme_value_light">light</string>
-    <string name="theme_value_system">system</string>
     <string name="time_section_elapsed">ክፍል አልፏል</string>
     <string name="time_section_remaining">ክፍል ይቀራል</string>
     <string name="time_session_elapsed">ክፍለ ጊዜ አልፏል</string>

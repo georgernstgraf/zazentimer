@@ -19,7 +19,7 @@
     <string name="bell_name_7">Tib. Bowl, 230mm</string>
     <string name="bell_name_8">Jap. Rhinbowl, 97mm</string>
     <string name="bell_pause">Pausa de la campana (seg)</string>
-    <string name="bell_user">Afegir campana...</string>
+    <string name="bell_user">Afegir campana…</string>
     <string name="bottom_nav_meditation">Meditació</string>
     <string name="bottom_nav_sessions">Sessions</string>
     <string name="bottom_sheet_behavior">android.support.design.widget.BottomSheetBehavior</string>
@@ -59,7 +59,7 @@
     <string name="label_section_name">Nom de la secció</string>
     <string name="label_session_description">Descripció de la sessió</string>
     <string name="label_session_name">Nom de la sessió</string>
-    <string name="menu_about">Quant a...</string>
+    <string name="menu_about">Quant a…</string>
     <string name="menu_copy_session">Duplicar sessió</string>
     <string name="menu_delete_section">Suprimir secció</string>
     <string name="menu_delete_session">Suprimir sessió</string>
@@ -68,7 +68,7 @@
     <string name="menu_help">Ajuda</string>
     <string name="menu_add_session">Afegir sessió</string>
     <string name="menu_new_session">Nova sessió</string>
-    <string name="menu_privacy">Privacy...</string>
+    <string name="menu_privacy">Privacy…</string>
     <string name="menu_settings">Configuració</string>
     <string name="minuten">Minuts</string>
     <string name="no_new_server_messages">No new messages available.</string>

@@ -19,7 +19,7 @@
     <string name="bell_name_7">西藏頌缽，230mm</string>
     <string name="bell_name_8">日本鈴，97mm</string>
     <string name="bell_pause">鈴聲間隔 (秒)</string>
-    <string name="bell_user">新增鈴聲...</string>
+    <string name="bell_user">新增鈴聲…</string>
     <string name="bottom_nav_meditation">冥想</string>
     <string name="bottom_nav_sessions">課程</string>
     <string name="bottom_sheet_behavior">android.support.design.widget.BottomSheetBehavior</string>
@@ -59,7 +59,7 @@
     <string name="label_section_name">階段名稱</string>
     <string name="label_session_description">課程描述</string>
     <string name="label_session_name">課程名稱</string>
-    <string name="menu_about">關於...</string>
+    <string name="menu_about">關於…</string>
     <string name="menu_copy_session">複製課程</string>
     <string name="menu_delete_section">刪除階段</string>
     <string name="menu_delete_session">刪除課程</string>
@@ -68,7 +68,7 @@
     <string name="menu_help">說明</string>
     <string name="menu_add_session">新增課程</string>
     <string name="menu_new_session">新課程</string>
-    <string name="menu_privacy">隱私權...</string>
+    <string name="menu_privacy">隱私權…</string>
     <string name="menu_settings">設定</string>
     <string name="minuten">分鐘</string>
     <string name="no_new_server_messages">沒有可用的新訊息。</string>

@@ -19,7 +19,7 @@
     <string name="bell_name_7">Θιβ. Μπολ, 230mm</string>
     <string name="bell_name_8">Ιαπ. Rhinbowl, 97mm</string>
     <string name="bell_pause">Παύση κουδουνιού (δευτ)</string>
-    <string name="bell_user">Προσθήκη κουδουνιού...</string>
+    <string name="bell_user">Προσθήκη κουδουνιού…</string>
     <string name="bottom_nav_meditation">Διαλογισμός</string>
     <string name="bottom_nav_sessions">Συνεδρίες</string>
     <string name="bottom_sheet_behavior">android.support.design.widget.BottomSheetBehavior</string>
@@ -59,7 +59,7 @@
     <string name="label_section_name">Όνομα ενότητας</string>
     <string name="label_session_description">Περιγραφή συνεδρίας</string>
     <string name="label_session_name">Όνομα συνεδρίας</string>
-    <string name="menu_about">Σχετικά...</string>
+    <string name="menu_about">Σχετικά…</string>
     <string name="menu_copy_session">Διπλότυπη συνεδρία</string>
     <string name="menu_delete_section">Διαγραφή ενότητας</string>
     <string name="menu_delete_session">Διαγραφή συνεδρίας</string>
@@ -68,7 +68,7 @@
     <string name="menu_help">Βοήθεια</string>
     <string name="menu_add_session">Προσθήκη συνεδρίας</string>
     <string name="menu_new_session">Νέα συνεδρία</string>
-    <string name="menu_privacy">Απόρρητο...</string>
+    <string name="menu_privacy">Απόρρητο…</string>
     <string name="menu_settings">Ρυθμίσεις</string>
     <string name="minuten">Λεπτά</string>
     <string name="no_new_server_messages">Δεν υπάρχουν νέα μηνύματα.</string>

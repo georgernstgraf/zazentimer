@@ -5,7 +5,6 @@
     <string name="about2">I hanga tuatahi e Stefan Gaffga. Ko Georg Graf kei te tiaki i tenei wa.&lt;br&gt;&lt;br&gt;Nga mihi ki a Winfried o &lt;a href="http://www.meditationsuhren.de">http://www.meditationsuhren.de&lt;/a&gt; mo te tuku oro Bell tino pai!</string>
     <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues">Pūrongo take ki GitHub&lt;/a&gt;</string>
     <string name="app_description">Ma tenei tono ka taea e te kaiwhakamahi te tautuhi i te huinga o nga waahi whakaaroaro me te whakarato i te taima me nga urupare ataata me te whakarongo ka mutu tetahi waahanga, te katoa o te whakaaroaro.</string>
-    <string name="app_name">Zazen Meditation Timer</string>
     <string name="appbar_scrolling_view_behavior">android.support.design.widget.AppBarLayout$ScrollingViewBehavior</string>
     <string name="backup_error_text">Aroha mai, i puta he Hapa i te wa e tiaki ana.</string>
     <string name="backup_no_permission">Kāore i taea te hanga pūrua nā te ngaro o ngā whakaaetanga.</string>
@@ -20,7 +19,7 @@
     <string name="bell_name_7">Tib. Peera, 230mm</string>
     <string name="bell_name_8">Tap. Rhinbow, 97mm</string>
     <string name="bell_pause">Aputa pere (hekona)</string>
-    <string name="bell_user">Tāpiri Pere...</string>
+    <string name="bell_user">Tāpiri Pere…</string>
     <string name="bottom_nav_meditation">Whakaaroaro</string>
     <string name="bottom_nav_sessions">Wātū</string>
     <string name="bottom_sheet_behavior">android.support.design.widget.BottomSheetBehavior</string>
@@ -28,7 +27,6 @@
     <string name="but_start">Tīmata te Whakaaroaro</string>
     <string name="but_stop">Kati</string>
     <string name="caption_zazen_meditation">Zazen Whakaaroaro</string>
-    <string name="character_counter_pattern">%1$d / %2$d</string>
     <string name="checkbox_keep_screen_on">Kia mau te mata</string>
     <string name="checkbox_no_server_messages">Whakaatu Rongo</string>
     <string name="checkbox_phone_off">Wahangu Waea</string>
@@ -61,7 +59,7 @@
     <string name="label_section_name">Ingoa wahanga</string>
     <string name="label_session_description">Whakaahuatanga Wātū</string>
     <string name="label_session_name">Ingoa Wātū</string>
-    <string name="menu_about">Mō...</string>
+    <string name="menu_about">Mō…</string>
     <string name="menu_copy_session">Wātū Tārite</string>
     <string name="menu_delete_section">Muku Wāhanga</string>
     <string name="menu_delete_session">Muku Wātū</string>
@@ -70,7 +68,7 @@
     <string name="menu_help">Awhina</string>
     <string name="menu_add_session">Tāpiri Wātū</string>
     <string name="menu_new_session">Wātū Hou</string>
-    <string name="menu_privacy">Tūmataitinga...</string>
+    <string name="menu_privacy">Tūmataitinga…</string>
     <string name="menu_settings">Tautuhinga</string>
     <string name="minuten">Nga meneti</string>
     <string name="no_new_server_messages">Karekau he karere hou e waatea ana.</string>
@@ -138,9 +136,6 @@
     <string name="theme_desc">Kōwhirihia te ahua o te taupānga</string>
     <string name="theme_light">Kaupapa Maama</string>
     <string name="theme_system">Kaupapa Pūnaha</string>
-    <string name="theme_value_dark">dark</string>
-    <string name="theme_value_light">light</string>
-    <string name="theme_value_system">system</string>
     <string name="time_section_elapsed">Kua pau te wahanga</string>
     <string name="time_section_remaining">Te wahanga e toe ana</string>
     <string name="time_session_elapsed">Kua pau te wahanga</string>

@@ -3,7 +3,6 @@ package at.priv.graf.zazentimer.views
 import android.animation.Animator
 import android.animation.ObjectAnimator
 import android.app.Activity
-import android.os.Build
 import android.util.Log
 import android.view.ViewGroup
 import android.widget.Button
@@ -41,9 +40,7 @@ class MessageView(
         if (parent == null || view == null) return
         this.messageParent = parent
         this.messageViewContainer = view
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            view.elevation = ELEVATION_DP
-        }
+        view.elevation = ELEVATION_DP
         val textView = view.findViewById<TextView>(R.id.message_title)
         val textView2 = view.findViewById<TextView>(R.id.message_text)
         val button = view.findViewById<Button>(R.id.message_ok)

@@ -19,7 +19,7 @@
     <string name="bell_name_7">तिब. बाऊल, 230mm</string>
     <string name="bell_name_8">जॅप. राइनबाउल, 97mm</string>
     <string name="bell_pause">बेल अंतर (सेकंद)</string>
-    <string name="bell_user">बेल जोडा...</string>
+    <string name="bell_user">बेल जोडा…</string>
     <string name="bottom_nav_meditation">ध्यान</string>
     <string name="bottom_nav_sessions">सत्रे</string>
     <string name="bottom_sheet_behavior">android.support.design.widget.BottomSheetBehavior</string>
@@ -59,7 +59,7 @@
     <string name="label_section_name">विभागाचे नाव</string>
     <string name="label_session_description">सत्र वर्णन</string>
     <string name="label_session_name">सत्राचे नाव</string>
-    <string name="menu_about">बद्दल...</string>
+    <string name="menu_about">बद्दल…</string>
     <string name="menu_copy_session">सत्राची प्रत करा</string>
     <string name="menu_delete_section">विभाग हटवा</string>
     <string name="menu_delete_session">सत्र हटवा</string>
@@ -68,7 +68,7 @@
     <string name="menu_help">मदत</string>
     <string name="menu_add_session">सत्र जोडा</string>
     <string name="menu_new_session">नवीन सत्र</string>
-    <string name="menu_privacy">गोपनीयता...</string>
+    <string name="menu_privacy">गोपनीयता…</string>
     <string name="menu_settings">सेटिंग्ज</string>
     <string name="minuten">मिनिटे</string>
     <string name="no_new_server_messages">कोणतेही नवीन संदेश उपलब्ध नाहीत.</string>

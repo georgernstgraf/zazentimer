@@ -5,7 +5,6 @@
     <string name="about2">Orihinal nga gihimo ni Stefan Gaffga. Kasamtangang gimentinar ni Georg Graf.&lt;br&gt;&lt;br&gt;Salamat kang Winfried sa &lt;a href="http://www.meditationsuhren.de">http://www.meditationsuhren.de&lt;/a&gt; sa paghatag ug ingon ka nindot nga Bell Sounds!</string>
     <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues">I-report ang mga isyu sa GitHub&lt;/a&gt;</string>
     <string name="app_description">Gitugotan sa kini nga aplikasyon ang tiggamit nga mahibal-an ang usa ka hugpong sa mga sesyon sa pagpamalandong ug naghatag usa ka timer nga adunay biswal ug madungog nga feedback kung ang usa ka bahin o ang tibuuk nga pagpamalandong nahuman na.</string>
-    <string name="app_name">Zazen Meditation Timer</string>
     <string name="appbar_scrolling_view_behavior">android.support.design.widget.AppBarLayout$ScrollingViewBehavior</string>
     <string name="backup_error_text">Sorry, naay Error nga nahitabo samtang nagtipig.</string>
     <string name="backup_no_permission">Dili makahimo og backup tungod sa pagkawala sa mga permiso.</string>
@@ -20,7 +19,7 @@
     <string name="bell_name_7">Tib. Mangkok, 230mm</string>
     <string name="bell_name_8">Jap. Rhinbowl, 97mm</string>
     <string name="bell_pause">Bell gap (seg)</string>
-    <string name="bell_user">Idugang ang Bell...</string>
+    <string name="bell_user">Idugang ang Bell…</string>
     <string name="bottom_nav_meditation">Pagpamalandong</string>
     <string name="bottom_nav_sessions">Mga sesyon</string>
     <string name="bottom_sheet_behavior">android.support.design.widget.BottomSheetBehavior</string>
@@ -28,7 +27,6 @@
     <string name="but_start">Pagsugod sa Pagpamalandong</string>
     <string name="but_stop">Hunong</string>
     <string name="caption_zazen_meditation">Zazen Meditation</string>
-    <string name="character_counter_pattern">%1$d / %2$d</string>
     <string name="checkbox_keep_screen_on">Ipadayon ang screen</string>
     <string name="checkbox_no_server_messages">Ipakita ang Balita</string>
     <string name="checkbox_phone_off">I-mute ang Telepono</string>
@@ -61,7 +59,7 @@
     <string name="label_section_name">Ngalan sa seksyon</string>
     <string name="label_session_description">Deskripsyon sa Sesyon</string>
     <string name="label_session_name">Ngalan sa Sesyon</string>
-    <string name="menu_about">Mahitungod sa...</string>
+    <string name="menu_about">Mahitungod sa…</string>
     <string name="menu_copy_session">Duplicate nga Sesyon</string>
     <string name="menu_delete_section">Pagtangtang sa Seksyon</string>
     <string name="menu_delete_session">Pagtangtang sa Sesyon</string>
@@ -70,7 +68,7 @@
     <string name="menu_help">Tabang</string>
     <string name="menu_add_session">Idugang ang Sesyon</string>
     <string name="menu_new_session">Bag-ong Sesyon</string>
-    <string name="menu_privacy">Pagkapribado...</string>
+    <string name="menu_privacy">Pagkapribado…</string>
     <string name="menu_settings">Mga setting</string>
     <string name="minuten">Mga minuto</string>
     <string name="no_new_server_messages">Walay bag-ong mga mensahe nga magamit.</string>
@@ -138,9 +136,6 @@
     <string name="theme_desc">Pilia ang hitsura sa app</string>
     <string name="theme_light">Kahayag nga Tema</string>
     <string name="theme_system">Sistema nga Tema</string>
-    <string name="theme_value_dark">dark</string>
-    <string name="theme_value_light">light</string>
-    <string name="theme_value_system">system</string>
     <string name="time_section_elapsed">Nahuman ang seksyon</string>
     <string name="time_section_remaining">Ang nahabilin nga seksyon</string>
     <string name="time_session_elapsed">Nilabay ang sesyon</string>

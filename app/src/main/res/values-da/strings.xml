@@ -19,7 +19,7 @@
     <string name="bell_name_7">Tib. Skål, 230 mm</string>
     <string name="bell_name_8">Jap. Rhinbowl, 97 mm</string>
     <string name="bell_pause">Klokkeafstand (sek.)</string>
-    <string name="bell_user">Tilføj klokke...</string>
+    <string name="bell_user">Tilføj klokke…</string>
     <string name="bottom_nav_meditation">Meditation</string>
     <string name="bottom_nav_sessions">Sessioner</string>
     <string name="bottom_sheet_behavior">android.support.design.widget.BottomSheetBehavior</string>
@@ -59,7 +59,7 @@
     <string name="label_section_name">Sektionsnavn</string>
     <string name="label_session_description">Sessionsbeskrivelse</string>
     <string name="label_session_name">Sessionsnavn</string>
-    <string name="menu_about">Om...</string>
+    <string name="menu_about">Om…</string>
     <string name="menu_copy_session">Kopier session</string>
     <string name="menu_delete_section">Slet sektion</string>
     <string name="menu_delete_session">Slet session</string>
@@ -68,7 +68,7 @@
     <string name="menu_help">Hjælp</string>
     <string name="menu_add_session">Tilføj session</string>
     <string name="menu_new_session">Ny session</string>
-    <string name="menu_privacy">Privatliv...</string>
+    <string name="menu_privacy">Privatliv…</string>
     <string name="menu_settings">Indstillinger</string>
     <string name="minuten">Minutter</string>
     <string name="no_new_server_messages">Ingen nye beskeder tilgængelige.</string>

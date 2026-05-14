@@ -4,7 +4,6 @@
     <string name="about1">Zazen Meditation Timer - خاسلاشتۇرۇلغان بۆلەكلەر ، قوڭغۇراق ئاۋازى ۋە يىغىن باشقۇرۇش بىلەن ئاددىي بولغان ئويلىنىش ۋاقتى.</string>
     <string name="about3">&lt;a href = "https://github.com/georgernstgraf/zazentimer/issues"> GitHub دىكى مەسىلىلەرنى دوكلات قىلىش &lt;/a&gt;</string>
     <string name="app_description">بۇ پروگرامما ئىشلەتكۈچىلەرگە بىر يۈرۈش ئويلىنىش يىغىنلىرىنى ئېنىقلاپ بېرىدۇ ھەمدە بىر بۆلەك ياكى پۈتۈن ئويلىنىش ئاخىرلاشقاندا كۆرۈش ۋە ئاڭلاش ئىنكاسى بىلەن ۋاقىت تەمىنلەيدۇ.</string>
-    <string name="app_name">Zazen Meditation Timer</string>
     <string name="appbar_scrolling_view_behavior">android.support.design.widget.AppBarLayout $ ScrollingViewBehavior</string>
     <string name="backup_error_text">كەچۈرۈڭ ، ساقلاش جەريانىدا خاتالىق كۆرۈلدى.</string>
     <string name="backup_no_permission">ئىجازەت يوقالغانلىقتىن زاپاسلىيالمىدى.</string>
@@ -19,7 +18,7 @@
     <string name="bell_name_7">تىب. قاچا ، 230mm</string>
     <string name="bell_name_8">Jap. Rhinbowl, 97mm</string>
     <string name="bell_pause">قوڭغۇراق پەرقى (سېكۇنت)</string>
-    <string name="bell_user">قوڭغۇراقنى قوش ...</string>
+    <string name="bell_user">قوڭغۇراقنى قوش …</string>
     <string name="bottom_nav_meditation">Meditation</string>
     <string name="bottom_nav_sessions">يىغىن</string>
     <string name="bottom_sheet_behavior">android.support.design.widget.BottomSheetBehavior</string>
@@ -27,7 +26,6 @@
     <string name="but_start">ئويلىنىشنى باشلاڭ</string>
     <string name="but_stop">توختاڭ</string>
     <string name="caption_zazen_meditation">Zazen Meditation</string>
-    <string name="character_counter_pattern">%1$d / %2$d</string>
     <string name="checkbox_keep_screen_on">ئېكراننى ساقلاپ تۇرۇڭ</string>
     <string name="checkbox_no_server_messages">خەۋەرلەرنى كۆرسىتىش</string>
     <string name="checkbox_phone_off">ئاۋازسىز تېلېفون</string>
@@ -60,7 +58,7 @@
     <string name="label_section_name">بۆلەك ئىسمى</string>
     <string name="label_session_description">يىغىن چۈشەندۈرۈشى</string>
     <string name="label_session_name">يىغىن ئىسمى</string>
-    <string name="menu_about">ھەققىدە ...</string>
+    <string name="menu_about">ھەققىدە …</string>
     <string name="menu_copy_session">تەكرار يىغىن</string>
     <string name="menu_delete_section">بۆلەكنى ئۆچۈرۈڭ</string>
     <string name="menu_delete_session">يىغىننى ئۆچۈرۈڭ</string>
@@ -69,7 +67,7 @@
     <string name="menu_help">ياردەم</string>
     <string name="menu_add_session">يىغىننى قوشۇڭ</string>
     <string name="menu_new_session">يېڭى يىغىن</string>
-    <string name="menu_privacy">مەخپىيەتلىك ...</string>
+    <string name="menu_privacy">مەخپىيەتلىك …</string>
     <string name="menu_settings">تەڭشەك</string>
     <string name="minuten">مىنۇت</string>
     <string name="no_new_server_messages">يېڭى ئۇچۇر يوق.</string>
@@ -137,9 +135,6 @@
     <string name="theme_desc">ئەپ كۆرۈنۈشىنى تاللاڭ</string>
     <string name="theme_light">Light Theme</string>
     <string name="theme_system">سىستېما ئۇسلۇبى</string>
-    <string name="theme_value_dark">dark</string>
-    <string name="theme_value_light">light</string>
-    <string name="theme_value_system">system</string>
     <string name="time_section_elapsed">بۆلەك ئۆتۈپ كەتتى</string>
     <string name="time_section_remaining">بۆلەك قالدى</string>
     <string name="time_session_elapsed">يىغىن ئاخىرلاشتى</string>

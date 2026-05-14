@@ -16,36 +16,52 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
+            android:layout_marginStart="20dp"
             android:layout_marginRight="20dp"
-            android:text="@string/label_session_name"/>
+            android:layout_marginEnd="20dp"
+            android:text="@string/label_session_name"
+            android:labelFor="@id/text_sitzung_name"/>
         <EditText
             android:id="@+id/text_sitzung_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
+            android:layout_marginStart="20dp"
             android:layout_marginRight="20dp"
-            android:layout_below="@+id/textview_sitzung_name"/>
+            android:layout_marginEnd="20dp"
+            android:layout_below="@+id/textview_sitzung_name"
+            android:inputType="text"
+            android:importantForAutofill="no"/>
         <TextView
             android:id="@+id/textview_sitzung_description"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
+            android:layout_marginStart="20dp"
             android:layout_marginRight="20dp"
+            android:layout_marginEnd="20dp"
             android:text="@string/label_session_description"
-            android:layout_below="@+id/text_sitzung_name"/>
+            android:layout_below="@+id/text_sitzung_name"
+            android:labelFor="@id/text_sitzung_beschreibung"/>
         <EditText
             android:id="@+id/text_sitzung_beschreibung"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
+            android:layout_marginStart="20dp"
             android:layout_marginRight="20dp"
-            android:layout_below="@+id/textview_sitzung_description"/>
+            android:layout_marginEnd="20dp"
+            android:layout_below="@+id/textview_sitzung_description"
+            android:inputType="text"
+            android:importantForAutofill="no"/>
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/list"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginLeft="20dp"
+            android:layout_marginStart="20dp"
             android:layout_marginRight="20dp"
+            android:layout_marginEnd="20dp"
             android:layout_marginBottom="10dp"
             android:layout_below="@+id/text_sitzung_beschreibung"/>
     </RelativeLayout>
@@ -56,6 +72,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
         app:srcCompat="@drawable/ic_plus"
+        android:contentDescription="@string/menu_add_session"
         app:backgroundTint="?attr/colorAccent"
         app:layout_anchor="@id/list"
         app:layout_anchorGravity="bottom|end"/>

@@ -18,7 +18,7 @@
     <string name="bell_name_7">Tib. Bowl, 230mm</string>
     <string name="bell_name_8">Jap. Rhinbowl, 97mm</string>
     <string name="bell_pause">ចន្លោះពេលជួង (វិនាទី)</string>
-    <string name="bell_user">បន្ថែមជួង...</string>
+    <string name="bell_user">បន្ថែមជួង…</string>
     <string name="bottom_nav_meditation">សមាធិ</string>
     <string name="bottom_nav_sessions">វគ្គ</string>
     <string name="but_pause">ផ្អាក</string>
@@ -57,7 +57,7 @@
     <string name="label_section_name">ឈ្មោះផ្នែក</string>
     <string name="label_session_description">ការពិពណ៌នាវគ្គ</string>
     <string name="label_session_name">ឈ្មោះវគ្គ</string>
-    <string name="menu_about">អំពី...</string>
+    <string name="menu_about">អំពី…</string>
     <string name="menu_copy_session">ស្ទួនវគ្គ</string>
     <string name="menu_delete_section">លុបផ្នែក</string>
     <string name="menu_delete_session">លុបវគ្គ</string>
@@ -66,7 +66,7 @@
     <string name="menu_help">ជំនួយ</string>
     <string name="menu_add_session">បន្ថែមវគ្គ</string>
     <string name="menu_new_session">វគ្គថ្មី</string>
-    <string name="menu_privacy">ឯកជនភាព...</string>
+    <string name="menu_privacy">ឯកជនភាព…</string>
     <string name="menu_settings">ការកំណត់</string>
     <string name="minuten">នាទី</string>
     <string name="no_new_server_messages">គ្មានសារថ្មីទេ។</string>

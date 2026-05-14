@@ -18,7 +18,7 @@
     <string name="bell_name_7">Tiibeti kauss, 230mm</string>
     <string name="bell_name_8">Jap. kell, 97mm</string>
     <string name="bell_pause">Kella vahe (sek)</string>
-    <string name="bell_user">Lisa kell...</string>
+    <string name="bell_user">Lisa kell…</string>
     <string name="bottom_nav_meditation">Meditatsioon</string>
     <string name="bottom_nav_sessions">Seansid</string>
     <string name="but_pause">Paus</string>
@@ -57,7 +57,7 @@
     <string name="label_section_name">Osa nimi</string>
     <string name="label_session_description">Seansi kirjeldus</string>
     <string name="label_session_name">Seansi nimi</string>
-    <string name="menu_about">Teave...</string>
+    <string name="menu_about">Teave…</string>
     <string name="menu_copy_session">Kopeeri seanss</string>
     <string name="menu_delete_section">Kustuta osa</string>
     <string name="menu_delete_session">Kustuta seanss</string>
@@ -66,7 +66,7 @@
     <string name="menu_help">Abi</string>
     <string name="menu_add_session">Lisa seanss</string>
     <string name="menu_new_session">Uus seanss</string>
-    <string name="menu_privacy">Privaatsus...</string>
+    <string name="menu_privacy">Privaatsus…</string>
     <string name="menu_settings">Seaded</string>
     <string name="minuten">Minutid</string>
     <string name="no_new_server_messages">Uusi sõnumeid pole saadaval.</string>

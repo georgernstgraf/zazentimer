@@ -17,7 +17,7 @@ import javax.inject.Singleton
 class WakeLockManager
     @Inject
     constructor(
-        @ApplicationContext private val context: Context,
+        @param:ApplicationContext private val context: Context,
         private val dbOperations: DbOperations,
         private val dispatchers: CoroutineDispatchers = CoroutineDispatchers(),
     ) {
@@ -69,7 +69,7 @@ class WakeLockManager
 
         companion object {
             private const val TAG = "ZMT_WakeLockManager"
-            private const val WAKELOCK_TAG = "ScreenOnWakeLock"
+            private const val WAKELOCK_TAG = "zazentimer:ScreenOnWakeLock"
             private const val WAKELOCK_TIMEOUT_BUFFER_SECONDS = 60
             private const val MILLIS_PER_SECOND = 1000L
         }

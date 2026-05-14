@@ -8,7 +8,6 @@ import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.PopupMenu
 import android.widget.TextView
-import androidx.annotation.NonNull
 import androidx.recyclerview.widget.RecyclerView
 import at.priv.graf.zazentimer.R
 
@@ -45,9 +44,8 @@ class SessionListAdapter(
         val dragHandle: ImageView = view.findViewById(R.id.dragHandle)
     }
 
-    @NonNull
     override fun onCreateViewHolder(
-        @NonNull parent: ViewGroup,
+        parent: ViewGroup,
         viewType: Int,
     ): ViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item_session, parent, false)
@@ -55,7 +53,7 @@ class SessionListAdapter(
     }
 
     override fun onBindViewHolder(
-        @NonNull holder: ViewHolder,
+        holder: ViewHolder,
         position: Int,
     ) {
         val item = items[position]

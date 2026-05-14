@@ -19,7 +19,7 @@
     <string name="bell_name_7">Tib. Bowl, 230mm</string>
     <string name="bell_name_8">Jap. Rhinbowl, 97mm</string>
     <string name="bell_pause">Klokpouse (sek)</string>
-    <string name="bell_user">Voeg klok by...</string>
+    <string name="bell_user">Voeg klok by…</string>
     <string name="bottom_nav_meditation">Meditasie</string>
     <string name="bottom_nav_sessions">Sessies</string>
     <string name="bottom_sheet_behavior">android.support.design.widget.BottomSheetBehavior</string>
@@ -59,7 +59,7 @@
     <string name="label_section_name">Afdelingnaam</string>
     <string name="label_session_description">Sessiebeskrywing</string>
     <string name="label_session_name">Sessienaam</string>
-    <string name="menu_about">Meer oor...</string>
+    <string name="menu_about">Meer oor…</string>
     <string name="menu_copy_session">Dupliseer Sessie</string>
     <string name="menu_delete_section">Vee Afdeling uit</string>
     <string name="menu_delete_session">Vee Sessie uit</string>
@@ -68,7 +68,7 @@
     <string name="menu_help">Hulp</string>
     <string name="menu_add_session">Voeg Sessie by</string>
     <string name="menu_new_session">Nuwe Sessie</string>
-    <string name="menu_privacy">Privaatheid...</string>
+    <string name="menu_privacy">Privaatheid…</string>
     <string name="menu_settings">Instellings</string>
     <string name="minuten">Minute</string>
     <string name="no_new_server_messages">Geen nuwe boodskappe beskikbaar nie.</string>

@@ -18,7 +18,7 @@
     <string name="bell_name_7">Tibetas bļoda, 230mm</string>
     <string name="bell_name_8">Jap. zvans, 97mm</string>
     <string name="bell_pause">Zvana starplaiks (sek)</string>
-    <string name="bell_user">Pievienot zvanu...</string>
+    <string name="bell_user">Pievienot zvanu…</string>
     <string name="bottom_nav_meditation">Meditācija</string>
     <string name="bottom_nav_sessions">Sesijas</string>
     <string name="but_pause">Pauze</string>
@@ -57,7 +57,7 @@
     <string name="label_section_name">Sadaļas nosaukums</string>
     <string name="label_session_description">Sesijas apraksts</string>
     <string name="label_session_name">Sesijas nosaukums</string>
-    <string name="menu_about">Par...</string>
+    <string name="menu_about">Par…</string>
     <string name="menu_copy_session">Kopēt sesiju</string>
     <string name="menu_delete_section">Dzēst sadaļu</string>
     <string name="menu_delete_session">Dzēst sesiju</string>
@@ -66,7 +66,7 @@
     <string name="menu_help">Palīdzība</string>
     <string name="menu_add_session">Pievienot sesiju</string>
     <string name="menu_new_session">Jauna sesija</string>
-    <string name="menu_privacy">Privātums...</string>
+    <string name="menu_privacy">Privātums…</string>
     <string name="menu_settings">Iestatījumi</string>
     <string name="minuten">Minūtes</string>
     <string name="no_new_server_messages">Nav jaunu ziņojumu.</string>
