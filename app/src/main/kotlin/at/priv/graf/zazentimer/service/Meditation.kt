@@ -45,7 +45,7 @@ class Meditation(
 
     suspend fun start() {
         if (started) {
-            Log.d(TAG, "start(): Meditation already started!")
+            Log.d(TAG, "start(): already started")
             return
         }
         started = true
@@ -55,35 +55,23 @@ class Meditation(
         repository.onMeditationStarted(this)
     }
 
-    private fun startTicker() {
-        tickerJob?.cancel()
-        tickerJob =
-            scope.launch {
-                while (isActive) {
-                    repository.onMeditationUpdated()
-                    delay(TICKER_INTERVAL_MS)
-                }
-            }
-    }
-
-    private fun stopTicker() {
-        tickerJob?.cancel()
-        tickerJob = null
-    }
-
     fun stop() {
         if (!started) {
-            Log.d(TAG, "stop(): Meditation not yet started!")
-        } else {
-            scope.launch {
-                finishMeditation()
-            }
+            Log.d(TAG, "stop(): not started")
+            return
+        }
+        if (stopping) {
+            Log.d(TAG, "stop(): already stopping")
+            return
+        }
+        scope.launch {
+            stopImmediate()
         }
     }
 
     fun pause() {
         if (!started || stopping) {
-            Log.d(TAG, "pause(): Meditation not yet started or already stopped")
+            Log.d(TAG, "pause(): not started or already stopping")
             return
         }
         if (!paused) {
@@ -98,26 +86,6 @@ class Meditation(
             startTicker()
             repository.onMeditationUpdated()
         }
-    }
-
-    private suspend fun finishMeditation() {
-        stopping = true
-        stopTicker()
-        alarmScheduler.cancelAlarm()
-        MeditationService.setRunning(false)
-        repository.onMeditationStopped()
-        bellPlayer.release()
-        audioStateManager.unmutePhone()
-        fireMeditationEnded()
-    }
-
-    fun release() {
-        stopTicker()
-        scope.cancel()
-    }
-
-    private fun fireMeditationEnded() {
-        meditationService.onMeditationEnd()
     }
 
     fun onSectionEnd() {
@@ -138,9 +106,14 @@ class Meditation(
         val volume = getVolumeForSection(sections[currentSectionIdx])
         bellPlayer.playBells(sections[currentSectionIdx], volume, { stopping }) {
             scope.launch {
-                finishMeditation()
+                finishAfterLastBell()
             }
         }
+    }
+
+    fun release() {
+        stopTicker()
+        scope.cancel()
     }
 
     fun getCurrentSection(): Section = sections[currentSectionIdx]
@@ -197,6 +170,48 @@ class Meditation(
     }
 
     fun getSessionName(): String = sessionName
+
+    private suspend fun stopImmediate() {
+        Log.d(TAG, "stopImmediate: cancelling bells and cleaning up")
+        stopping = true
+        cleanup()
+    }
+
+    private suspend fun finishAfterLastBell() {
+        if (stopping) {
+            Log.d(TAG, "finishAfterLastBell: already stopping — skipping")
+            return
+        }
+        Log.d(TAG, "finishAfterLastBell: bells finished, cleaning up")
+        stopping = true
+        cleanup()
+    }
+
+    private suspend fun cleanup() {
+        stopTicker()
+        alarmScheduler.cancelAlarm()
+        MeditationService.setRunning(false)
+        repository.onMeditationStopped()
+        bellPlayer.release()
+        audioStateManager.unmutePhone()
+        meditationService.onMeditationEnd()
+    }
+
+    private fun startTicker() {
+        tickerJob?.cancel()
+        tickerJob =
+            scope.launch {
+                while (isActive) {
+                    repository.onMeditationUpdated()
+                    delay(TICKER_INTERVAL_MS)
+                }
+            }
+    }
+
+    private fun stopTicker() {
+        tickerJob?.cancel()
+        tickerJob = null
+    }
 
     private fun getVolumeForSection(section: Section): Int {
         val match =

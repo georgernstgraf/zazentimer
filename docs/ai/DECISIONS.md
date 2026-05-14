@@ -88,11 +88,11 @@ Each entry documents WHAT was decided and WHY.
 - **Considered**: Single volume per session (simpler but loses flexibility), keep per-section (rejected as UX problem).
 - **Tradeoff**: More complex schema (new `session_bell_volumes` table); migration averages section volumes per bell type.
 
-## 2026-05-14: DND uses INTERRUPTION_FILTER_PRIORITY instead of INTERRUPTION_FILTER_NONE
-- **Choice**: Changed "None" mute mode from `INTERRUPTION_FILTER_NONE` to `INTERRUPTION_FILTER_PRIORITY` with a custom `NotificationManager.Policy` that allows alarms (`PRIORITY_CATEGORY_ALARMS`).
-- **Reason**: `INTERRUPTION_FILTER_NONE` suppresses ALL audio including alarms, making end-of-session gongs inaudible and graying out the alarm volume slider. `INTERRUPTION_FILTER_PRIORITY` with alarm-allowing policy suppresses calls and notifications while allowing the timer's bell sounds to play.
-- **Considered**: `INTERRUPTION_FILTER_ALARMS` (simpler but less flexible — only alarms, no other priority categories), keeping `INTERRUPTION_FILTER_NONE` (broken for bells).
-- **Tradeoff**: Slightly more code (custom Policy object); alarms are always exempt from DND during meditation.
+## 2026-05-14: DND uses INTERRUPTION_FILTER_PRIORITY with alarm-allowing policy
+- **Choice**: Changed "None" mute mode from `INTERRUPTION_FILTER_NONE` to `INTERRUPTION_FILTER_PRIORITY` with a custom `NotificationManager.Policy` that allows alarms (`PRIORITY_CATEGORY_ALARMS`). Refactored `AudioStateManager` to save `activeMuteMode` at mute time instead of re-reading preferences at unmute time. Simplified DND restore guard to compare only the filter (not the policy). Refactored `Meditation.finishMeditation()` into `stopImmediate()` (stop button) and `finishAfterLastBell()` (natural end) with shared `cleanup()`.
+- **Reason**: `INTERRUPTION_FILTER_NONE` suppressed all audio including alarms. DND restore was failing due to `NotificationManager.Policy.equals()` being unreliable across read cycles. `unmutePhone()` was re-reading preferences which could differ from what `mutePhone()` used. Single `finishMeditation()` had race conditions with `BellPlayer`'s `onDone` callback.
+- **Considered**: `INTERRUPTION_FILTER_ALARMS` (simpler but less flexible), comparing policy in guard (unreliable), keeping single `finishMeditation()` (race conditions).
+- **Tradeoff**: Filter-only guard means if user changes DND filter during meditation but keeps same filter value, settings still get restored. `finishAfterLastBell()` guard prevents double-invocation but relies on `stopping` volatile flag.
 
 ## 2026-05-14: Avg volume migration for bell volumes
 - **Choice**: When multiple sections used the same bell with different volumes, the migration takes the average.
