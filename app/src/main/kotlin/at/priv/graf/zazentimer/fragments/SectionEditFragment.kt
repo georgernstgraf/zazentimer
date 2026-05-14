@@ -189,11 +189,10 @@ class SectionEditFragment : Fragment() {
         private const val DEFAULT_BELL_VOLUME = 100
         private const val GAP_COUNT = 14
         private const val GAP_ARRAY_SIZE = 15
-        private const val BELL_UNSET = -2
 
         private fun SectionEditFragment.fillDataFromViews() {
             val s = section ?: return
-            s.bell = BELL_UNSET
+            s.bell = binding.selectGongSound.selectedItemPosition
             val bell = binding.selectGongSound.selectedItem as Bell
             s.bellUri = bell.uri.toString()
             s.name = binding.sectionName.text.toString()
@@ -318,7 +317,7 @@ class SectionEditFragment : Fragment() {
                             BellCollection.getBell(i2)?.let { bell ->
                                 if (bell.uri.toString() != s.bellUri) {
                                     s.bellUri = bell.uri.toString()
-                                    s.bell = BELL_UNSET
+                                    s.bell = i2
                                 }
                             }
                         }
