@@ -44,6 +44,9 @@ class BellPlayer(
                     delay((section.bellpause * MS_PER_SECOND))
                 }
             }
+            while (isPlaying()) {
+                delay(WAIT_FOR_PLAYBACK_MS)
+            }
             if (wakeLock.isHeld) {
                 wakeLock.release()
             }
@@ -94,5 +97,6 @@ class BellPlayer(
         private const val TAG = "ZMT_BellPlayer"
         private const val BELL_WAKE_LOCK_MULTIPLIER = 25
         private const val MS_PER_SECOND = 1000L
+        private const val WAIT_FOR_PLAYBACK_MS = 100L
     }
 }
