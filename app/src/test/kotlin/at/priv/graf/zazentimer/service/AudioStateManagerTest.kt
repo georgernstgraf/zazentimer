@@ -1,5 +1,6 @@
 package at.priv.graf.zazentimer.service
 
+import android.app.NotificationManager
 import android.content.Context
 import android.content.SharedPreferences
 import android.media.AudioManager
@@ -16,6 +17,7 @@ import org.junit.Test
 class AudioStateManagerTest {
     private lateinit var mockContext: Context
     private lateinit var mockAudioManager: AudioManager
+    private lateinit var mockNotificationManager: NotificationManager
     private lateinit var mockPrefs: SharedPreferences
     private lateinit var manager: AudioStateManager
     private val initialRingerMode = AudioManager.RINGER_MODE_NORMAL
@@ -25,9 +27,11 @@ class AudioStateManagerTest {
     fun setUp() {
         mockContext = mockk(relaxed = true)
         mockAudioManager = mockk(relaxed = true)
+        mockNotificationManager = mockk(relaxed = true)
         mockPrefs = mockk(relaxed = true)
 
         every { mockContext.getSystemService(Context.AUDIO_SERVICE) } returns mockAudioManager
+        every { mockContext.getSystemService(Context.NOTIFICATION_SERVICE) } returns mockNotificationManager
         every { mockAudioManager.ringerMode } returns initialRingerMode
         every { mockAudioManager.getStreamVolume(AudioManager.STREAM_RING) } returns initialVolume
 

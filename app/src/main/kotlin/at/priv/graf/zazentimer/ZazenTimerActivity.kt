@@ -437,27 +437,9 @@ class ZazenTimerActivity :
                         return@launch
                     }
                 }
-                startMeditationWithDndCheck()
+                startMeditation()
                 return@launch
             }
-            startMeditationWithDndCheck()
-        }
-    }
-
-    private fun startMeditationWithDndCheck() {
-        val nm = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
-        val filter = nm.currentInterruptionFilter
-        if (filter == NotificationManager.INTERRUPTION_FILTER_NONE ||
-            filter == NotificationManager.INTERRUPTION_FILTER_PRIORITY
-        ) {
-            AlertDialog
-                .Builder(this)
-                .setTitle(R.string.dnd_active_title)
-                .setMessage(R.string.dnd_active_text)
-                .setPositiveButton(R.string.dnd_start_anyway) { _, _ -> startMeditation() }
-                .setNegativeButton(R.string.abbrechen, null)
-                .show()
-        } else {
             startMeditation()
         }
     }

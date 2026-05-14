@@ -27,9 +27,6 @@
     <string name="bell_volume_default">Default</string>
     <string name="no_bells_configured">No bells configured yet</string>
     <string name="bell_volume_dim_explanation">Reduce individual bell volumes. Also, consider the system alarm volume.</string>
-    <string name="dnd_active_title">Do Not Disturb Active</string>
-    <string name="dnd_active_text">Your device is in Do Not Disturb mode. The meditation bell sounds may be suppressed. The timer will continue to work.</string>
-    <string name="dnd_start_anyway">Start Anyway</string>
     <string name="bottom_nav_meditation">Meditation</string>
     <string name="bottom_nav_sessions">Sessions</string>
     <string name="bottom_sheet_behavior" translatable="false">android.support.design.widget.BottomSheetBehavior</string>
