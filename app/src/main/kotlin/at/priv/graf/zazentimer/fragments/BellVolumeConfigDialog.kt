@@ -1,6 +1,7 @@
 package at.priv.graf.zazentimer.fragments
 
 import android.app.Dialog
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -207,12 +208,13 @@ class BellVolumeConfigDialog : DialogFragment() {
 
         @Suppress("ReturnCount")
         private fun findBellForVolume(bv: SessionBellVolume): Bell? {
-            val uri = bv.bellUri
-            if (uri != null) {
-                BellCollection.getBellList().find { it.uri.toString() == uri }?.let { return it }
+            val idx = bv.bell ?: -1
+            if (idx >= 0) BellCollection.getBell(idx)?.let { return it }
+            val uri = bv.bellUri ?: return null
+            val path = Uri.parse(uri).lastPathSegment ?: return null
+            return BellCollection.getBellList().find {
+                it.uri.lastPathSegment == path
             }
-            val idx = bv.bell ?: return null
-            return BellCollection.getBell(idx)
         }
     }
 }
