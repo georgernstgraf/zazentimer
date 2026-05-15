@@ -1,0 +1,48 @@
+{
+  "locale": "fil",
+  "tier": 3,
+  "findings": [
+    {
+      "string_key": "bell_pause",
+      "english_source": "Bell gap (sec)",
+      "current_translation": "Pagitan ng kampana (seg)",
+      "suggested_translation": "Pagitan ng mangkok (seg)",
+      "reasoning": "'Kampana' is a church bell. Singing bowl is 'mangkok'."
+    },
+    {
+      "string_key": "bell_user",
+      "english_source": "Add Bell…",
+      "current_translation": "Magdagdag ng Kampana…",
+      "suggested_translation": "Magdagdag ng Mangkok…",
+      "reasoning": "Same as above."
+    },
+    {
+      "string_key": "num_bells",
+      "english_source": "Bell count",
+      "current_translation": "Bilang ng kampana",
+      "suggested_translation": "Bilang ng mangkok",
+      "reasoning": "Same as above."
+    },
+    {
+      "string_key": "title_volume_bells",
+      "english_source": "Bell Volume",
+      "current_translation": "Volume ng Kampana",
+      "suggested_translation": "Volume ng Mangkok",
+      "reasoning": "Same as above."
+    },
+    {
+      "string_key": "pref_title_bell_volume",
+      "english_source": "Bell Volume",
+      "current_translation": "Volume ng Kampana",
+      "suggested_translation": "Volume ng Mangkok",
+      "reasoning": "Same as above."
+    },
+    {
+      "string_key": "title_dim_bell",
+      "english_source": "Dim Bell",
+      "current_translation": "I-dim ang Kampana",
+      "suggested_translation": "I-dim ang Mangkok",
+      "reasoning": "Same as above."
+    }
+  ]
+}

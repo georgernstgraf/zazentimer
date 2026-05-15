@@ -1,0 +1,20 @@
+{
+  "locale": "zh",
+  "tier": 1,
+  "findings": [
+    {
+      "string_key": "bell_pause",
+      "english_source": "Bell pause (sec)",
+      "current_translation": "铃声间隔 (秒)",
+      "suggested_translation": "引磬间隔 (秒)",
+      "reasoning": "'铃声' usually means ringtone or a small ringing bell. '引磬' (yinqing) or '颂钵' (singing bowl) is the correct Buddhist term, and '引磬' is already used in 'title_bell_volumes'."
+    },
+    {
+      "string_key": "bell_user",
+      "english_source": "Add Bell…",
+      "current_translation": "添加铃声…",
+      "suggested_translation": "添加引磬…",
+      "reasoning": "Consistency with '引磬'."
+    }
+  ]
+}

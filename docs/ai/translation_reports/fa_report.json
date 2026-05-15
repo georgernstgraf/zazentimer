@@ -1,0 +1,48 @@
+{
+  "locale": "fa",
+  "tier": 3,
+  "findings": [
+    {
+      "string_key": "bell_pause",
+      "english_source": "Bell gap (sec)",
+      "current_translation": "فاصله زنگ (ثانیه)",
+      "suggested_translation": "فاصله کاسه (ثانیه)",
+      "reasoning": "'زنگ' means bell/ring. 'کاسه' (کاسه تبتی) is a singing bowl."
+    },
+    {
+      "string_key": "bell_user",
+      "english_source": "Add Bell…",
+      "current_translation": "افزودن زنگ…",
+      "suggested_translation": "افزودن کاسه…",
+      "reasoning": "Same as above."
+    },
+    {
+      "string_key": "num_bells",
+      "english_source": "Bell count",
+      "current_translation": "تعداد زنگ‌ها",
+      "suggested_translation": "تعداد کاسه‌ها",
+      "reasoning": "Same as above."
+    },
+    {
+      "string_key": "title_volume_bells",
+      "english_source": "Bell Volume",
+      "current_translation": "میزان صدای زنگ",
+      "suggested_translation": "میزان صدای کاسه",
+      "reasoning": "Same as above."
+    },
+    {
+      "string_key": "pref_title_bell_volume",
+      "english_source": "Bell Volume",
+      "current_translation": "میزان صدای زنگ",
+      "suggested_translation": "میزان صدای کاسه",
+      "reasoning": "Same as above."
+    },
+    {
+      "string_key": "title_dim_bell",
+      "english_source": "Dim Bell",
+      "current_translation": "زنگ کم‌نور",
+      "suggested_translation": "کاهش صدای کاسه",
+      "reasoning": "کم‌نور means dim light. کاسه is bowl. کاهش صدا is lower volume."
+    }
+  ]
+}

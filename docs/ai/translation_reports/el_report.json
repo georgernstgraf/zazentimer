@@ -1,0 +1,13 @@
+{
+  "locale": "el",
+  "tier": 2,
+  "findings": [
+    {
+      "string_key": "num_bells",
+      "english_source": "Bell count",
+      "current_translation": "Literal translation meaning κουδούνι",
+      "suggested_translation": "Translation meaning ηχογαβάθα",
+      "reasoning": "'κουδούνι' usually refers to a church or door bell. 'ηχογαβάθα' is the correct term for a singing bowl in a Zen context."
+    }
+  ]
+}

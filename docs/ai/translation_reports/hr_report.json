@@ -1,0 +1,34 @@
+{
+  "locale": "hr",
+  "tier": 3,
+  "findings": [
+    {
+      "string_key": "bell_pause",
+      "english_source": "Bell gap (sec)",
+      "current_translation": "Pauza zvona (sek)",
+      "suggested_translation": "Pauza zdjele (sek)",
+      "reasoning": "'Zvono' means church bell. 'Zdjela' (zvučna zdjela) is correct."
+    },
+    {
+      "string_key": "bell_user",
+      "english_source": "Add Bell…",
+      "current_translation": "Dodaj zvono…",
+      "suggested_translation": "Dodaj zdjelu…",
+      "reasoning": "Same as above."
+    },
+    {
+      "string_key": "num_bells",
+      "english_source": "Bell count",
+      "current_translation": "Broj zvona",
+      "suggested_translation": "Broj zdjela",
+      "reasoning": "Same as above."
+    },
+    {
+      "string_key": "title_dim_bell",
+      "english_source": "Dim Bell",
+      "current_translation": "Priguši zvono",
+      "suggested_translation": "Priguši zdjelu",
+      "reasoning": "Same as above."
+    }
+  ]
+}

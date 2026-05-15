@@ -1,0 +1,48 @@
+{
+  "locale": "ur",
+  "tier": 3,
+  "findings": [
+    {
+      "string_key": "bell_pause",
+      "english_source": "Bell gap (sec)",
+      "current_translation": "گھنٹی کا وقفہ (سیکنڈ)",
+      "suggested_translation": "پیالے کا وقفہ (سیکنڈ)",
+      "reasoning": "'گھنٹی' means bell. 'پیالہ' is singing bowl."
+    },
+    {
+      "string_key": "bell_user",
+      "english_source": "Add Bell…",
+      "current_translation": "گھنٹی شامل کریں…",
+      "suggested_translation": "پیالہ شامل کریں…",
+      "reasoning": "Same as above."
+    },
+    {
+      "string_key": "num_bells",
+      "english_source": "Bell count",
+      "current_translation": "گھنٹیوں کی تعداد",
+      "suggested_translation": "پیالوں کی تعداد",
+      "reasoning": "Same as above."
+    },
+    {
+      "string_key": "title_volume_bells",
+      "english_source": "Bell Volume",
+      "current_translation": "گھنٹی کا والیوم",
+      "suggested_translation": "پیالے کا والیوم",
+      "reasoning": "Same as above."
+    },
+    {
+      "string_key": "pref_title_bell_volume",
+      "english_source": "Bell Volume",
+      "current_translation": "گھنٹی کا والیوم",
+      "suggested_translation": "پیالے کا والیوم",
+      "reasoning": "Same as above."
+    },
+    {
+      "string_key": "title_dim_bell",
+      "english_source": "Dim Bell",
+      "current_translation": "مدھم گھنٹی",
+      "suggested_translation": "پیالے کی آواز کم کریں",
+      "reasoning": "مدھم means dim light. آواز کم کریں means lower volume."
+    }
+  ]
+}

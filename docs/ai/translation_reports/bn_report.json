@@ -1,0 +1,48 @@
+{
+  "locale": "bn",
+  "tier": 3,
+  "findings": [
+    {
+      "string_key": "bell_pause",
+      "english_source": "Bell gap (sec)",
+      "current_translation": "বেলের বিরতি (সেকেন্ড)",
+      "suggested_translation": "বাটির বিরতি (সেকেন্ড)",
+      "reasoning": "'বেল' means bell. 'বাটি' (সিংগিং বাটি) is correct."
+    },
+    {
+      "string_key": "bell_user",
+      "english_source": "Add Bell…",
+      "current_translation": "বেল যোগ করুন…",
+      "suggested_translation": "বাটি যোগ করুন…",
+      "reasoning": "Same as above."
+    },
+    {
+      "string_key": "num_bells",
+      "english_source": "Bell count",
+      "current_translation": "বেলের সংখ্যা",
+      "suggested_translation": "বাটির সংখ্যা",
+      "reasoning": "Same as above."
+    },
+    {
+      "string_key": "title_volume_bells",
+      "english_source": "Bell Volume",
+      "current_translation": "বেলের ভলিউম",
+      "suggested_translation": "বাটির ভলিউম",
+      "reasoning": "Same as above."
+    },
+    {
+      "string_key": "pref_title_bell_volume",
+      "english_source": "Bell Volume",
+      "current_translation": "বেলের ভলিউম",
+      "suggested_translation": "বাটির ভলিউম",
+      "reasoning": "Same as above."
+    },
+    {
+      "string_key": "title_dim_bell",
+      "english_source": "Dim Bell",
+      "current_translation": "ডিম বেল",
+      "suggested_translation": "বাটির শব্দ কমান",
+      "reasoning": "Same as above."
+    }
+  ]
+}

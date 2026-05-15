@@ -1,0 +1,13 @@
+{
+  "locale": "hu",
+  "tier": 2,
+  "findings": [
+    {
+      "string_key": "num_bells",
+      "english_source": "Bell count",
+      "current_translation": "Literal translation meaning harang",
+      "suggested_translation": "Translation meaning hangtál",
+      "reasoning": "'harang' usually refers to a church or door bell. 'hangtál' is the correct term for a singing bowl in a Zen context."
+    }
+  ]
+}

@@ -1,0 +1,48 @@
+{
+  "locale": "lt",
+  "tier": 3,
+  "findings": [
+    {
+      "string_key": "bell_pause",
+      "english_source": "Bell gap (sec)",
+      "current_translation": "Tarpo trukmė (sek.)",
+      "suggested_translation": "Dubens pauzė (sek.)",
+      "reasoning": "Wait, 'Varpas' is used in other keys. 'Varpas' means bell. 'Dubuo' is singing bowl."
+    },
+    {
+      "string_key": "bell_user",
+      "english_source": "Add Bell…",
+      "current_translation": "Pridėti varpą…",
+      "suggested_translation": "Pridėti dubenį…",
+      "reasoning": "'Varpas' is church bell. 'Dubuo' is singing bowl."
+    },
+    {
+      "string_key": "num_bells",
+      "english_source": "Bell count",
+      "current_translation": "Varpų skaičius",
+      "suggested_translation": "Dubenų skaičius",
+      "reasoning": "Same as above."
+    },
+    {
+      "string_key": "title_volume_bells",
+      "english_source": "Bell Volume",
+      "current_translation": "Varpų garsumas",
+      "suggested_translation": "Dubenų garsumas",
+      "reasoning": "Same as above."
+    },
+    {
+      "string_key": "pref_title_bell_volume",
+      "english_source": "Bell Volume",
+      "current_translation": "Varpų garsumas",
+      "suggested_translation": "Dubenų garsumas",
+      "reasoning": "Same as above."
+    },
+    {
+      "string_key": "title_dim_bell",
+      "english_source": "Dim Bell",
+      "current_translation": "Pritemdyti varpą",
+      "suggested_translation": "Pritildyti dubenį",
+      "reasoning": "Pritemdyti means to dim light. Pritildyti means to lower volume. Varpą -> Dubenį."
+    }
+  ]
+}

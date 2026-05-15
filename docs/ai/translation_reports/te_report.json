@@ -1,0 +1,48 @@
+{
+  "locale": "te",
+  "tier": 3,
+  "findings": [
+    {
+      "string_key": "bell_pause",
+      "english_source": "Bell gap (sec)",
+      "current_translation": "బెల్ గ్యాప్ (సెకన్లు)",
+      "suggested_translation": "బౌల్ గ్యాప్ (సెకన్లు)",
+      "reasoning": "'బెల్' means bell. 'బౌల్' is singing bowl."
+    },
+    {
+      "string_key": "bell_user",
+      "english_source": "Add Bell…",
+      "current_translation": "బెల్ జోడించండి…",
+      "suggested_translation": "బౌల్ జోడించండి…",
+      "reasoning": "Same as above."
+    },
+    {
+      "string_key": "num_bells",
+      "english_source": "Bell count",
+      "current_translation": "బెల్ కౌంట్",
+      "suggested_translation": "బౌల్ కౌంట్",
+      "reasoning": "Same as above."
+    },
+    {
+      "string_key": "title_volume_bells",
+      "english_source": "Bell Volume",
+      "current_translation": "బెల్ వాల్యూమ్",
+      "suggested_translation": "బౌల్ వాల్యూమ్",
+      "reasoning": "Same as above."
+    },
+    {
+      "string_key": "pref_title_bell_volume",
+      "english_source": "Bell Volume",
+      "current_translation": "బెల్ వాల్యూమ్",
+      "suggested_translation": "బౌల్ వాల్యూమ్",
+      "reasoning": "Same as above."
+    },
+    {
+      "string_key": "title_dim_bell",
+      "english_source": "Dim Bell",
+      "current_translation": "డిమ్ బెల్",
+      "suggested_translation": "బౌల్ సౌండ్ తగ్గించండి",
+      "reasoning": "డిమ్ means dim light. సౌండ్ తగ్గించండి means lower sound."
+    }
+  ]
+}

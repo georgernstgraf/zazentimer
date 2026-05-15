@@ -1,0 +1,27 @@
+{
+  "locale": "fr",
+  "tier": 1,
+  "findings": [
+    {
+      "string_key": "bell_pause",
+      "english_source": "Bell pause (sec)",
+      "current_translation": "Pause de cloche (sec)",
+      "suggested_translation": "Pause du bol (sec)",
+      "reasoning": "'Cloche' usually refers to a church bell. 'Bol chantant' or just 'Bol' is the correct term for a singing bowl."
+    },
+    {
+      "string_key": "bell_user",
+      "english_source": "Add Bell…",
+      "current_translation": "Ajouter cloche…",
+      "suggested_translation": "Ajouter un bol…",
+      "reasoning": "'Cloche' is inappropriate. Use 'Bol'."
+    },
+    {
+      "string_key": "title_volume_bells",
+      "english_source": "Bell Volume",
+      "current_translation": "Volume de la cloche",
+      "suggested_translation": "Volume du bol",
+      "reasoning": "Consistent use of 'bol'."
+    }
+  ]
+}

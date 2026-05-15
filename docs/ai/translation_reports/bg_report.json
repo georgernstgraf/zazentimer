@@ -1,0 +1,48 @@
+{
+  "locale": "bg",
+  "tier": 3,
+  "findings": [
+    {
+      "string_key": "bell_pause",
+      "english_source": "Bell gap (sec)",
+      "current_translation": "Пауза на камбаната (сек)",
+      "suggested_translation": "Пауза на купата (сек)",
+      "reasoning": "'Камбана' means church bell. 'Купа' (пееща купа) is correct for singing bowl."
+    },
+    {
+      "string_key": "bell_user",
+      "english_source": "Add Bell…",
+      "current_translation": "Добавяне на камбана…",
+      "suggested_translation": "Добавяне на купа…",
+      "reasoning": "Same as above."
+    },
+    {
+      "string_key": "num_bells",
+      "english_source": "Bell count",
+      "current_translation": "Брой камбани",
+      "suggested_translation": "Брой купи",
+      "reasoning": "Same as above."
+    },
+    {
+      "string_key": "title_volume_bells",
+      "english_source": "Bell Volume",
+      "current_translation": "Сила на звука на камбаната",
+      "suggested_translation": "Сила на звука на купата",
+      "reasoning": "Same as above."
+    },
+    {
+      "string_key": "pref_title_bell_volume",
+      "english_source": "Bell Volume",
+      "current_translation": "Сила на звука на камбаната",
+      "suggested_translation": "Сила на звука на купата",
+      "reasoning": "Same as above."
+    },
+    {
+      "string_key": "title_dim_bell",
+      "english_source": "Dim Bell",
+      "current_translation": "Приглушаване на камбаната",
+      "suggested_translation": "Приглушаване на купата",
+      "reasoning": "Same as above."
+    }
+  ]
+}

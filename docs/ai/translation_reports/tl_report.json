@@ -1,0 +1,48 @@
+{
+  "locale": "tl",
+  "tier": 3,
+  "findings": [
+    {
+      "string_key": "bell_pause",
+      "english_source": "Bell gap (sec)",
+      "current_translation": "Bell gap (seg)",
+      "suggested_translation": "Puwang ng mangkok (seg)",
+      "reasoning": "'Kampana' or 'bell' refers to a church bell. Singing bowl is usually 'mangkok' (singing bowl)."
+    },
+    {
+      "string_key": "bell_user",
+      "english_source": "Add Bell…",
+      "current_translation": "Idagdag ang Bell…",
+      "suggested_translation": "Magdagdag ng Mangkok…",
+      "reasoning": "Same as above."
+    },
+    {
+      "string_key": "num_bells",
+      "english_source": "Bell count",
+      "current_translation": "Bilang ng kampana",
+      "suggested_translation": "Bilang ng mangkok",
+      "reasoning": "'Kampana' is a church bell."
+    },
+    {
+      "string_key": "title_volume_bells",
+      "english_source": "Bell Volume",
+      "current_translation": "Dami ng kampana",
+      "suggested_translation": "Lakas ng mangkok",
+      "reasoning": "'Kampana' is church bell. 'Dami' means amount, 'Lakas' means volume."
+    },
+    {
+      "string_key": "pref_title_bell_volume",
+      "english_source": "Bell Volume",
+      "current_translation": "Dami ng kampana",
+      "suggested_translation": "Lakas ng mangkok",
+      "reasoning": "Same as above."
+    },
+    {
+      "string_key": "title_dim_bell",
+      "english_source": "Dim Bell",
+      "current_translation": "Dim Bell",
+      "suggested_translation": "Hinaan ang Mangkok",
+      "reasoning": "Same as above."
+    }
+  ]
+}

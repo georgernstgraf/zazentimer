@@ -1,0 +1,13 @@
+{
+  "locale": "pl",
+  "tier": 2,
+  "findings": [
+    {
+      "string_key": "num_bells",
+      "english_source": "Bell count",
+      "current_translation": "Literal translation meaning dzwonek",
+      "suggested_translation": "Translation meaning misa dźwiękowa",
+      "reasoning": "'dzwonek' usually refers to a church or door bell. 'misa dźwiękowa' is the correct term for a singing bowl in a Zen context."
+    }
+  ]
+}

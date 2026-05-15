@@ -1,0 +1,48 @@
+{
+  "locale": "b+sr+Latn",
+  "tier": 3,
+  "findings": [
+    {
+      "string_key": "bell_pause",
+      "english_source": "Bell gap (sec)",
+      "current_translation": "Pauza zvona (sek)",
+      "suggested_translation": "Pauza činije (sek)",
+      "reasoning": "'Zvono' is church bell. 'Činija' (zvučna činija) is correct."
+    },
+    {
+      "string_key": "bell_user",
+      "english_source": "Add Bell…",
+      "current_translation": "Dodaj zvono…",
+      "suggested_translation": "Dodaj činiju…",
+      "reasoning": "Same as above."
+    },
+    {
+      "string_key": "num_bells",
+      "english_source": "Bell count",
+      "current_translation": "Broj zvona",
+      "suggested_translation": "Broj činija",
+      "reasoning": "Same as above."
+    },
+    {
+      "string_key": "title_volume_bells",
+      "english_source": "Bell Volume",
+      "current_translation": "Jačina zvona",
+      "suggested_translation": "Jačina činije",
+      "reasoning": "Same as above."
+    },
+    {
+      "string_key": "pref_title_bell_volume",
+      "english_source": "Bell Volume",
+      "current_translation": "Jačina zvona",
+      "suggested_translation": "Jačina činije",
+      "reasoning": "Same as above."
+    },
+    {
+      "string_key": "title_dim_bell",
+      "english_source": "Dim Bell",
+      "current_translation": "Priguši zvono",
+      "suggested_translation": "Priguši činiju",
+      "reasoning": "Same as above."
+    }
+  ]
+}

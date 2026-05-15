@@ -1,0 +1,13 @@
+{
+  "locale": "vi",
+  "tier": 2,
+  "findings": [
+    {
+      "string_key": "num_bells",
+      "english_source": "Bell count",
+      "current_translation": "Literal translation meaning chuông",
+      "suggested_translation": "Translation meaning chuông xoay",
+      "reasoning": "'chuông' usually refers to a church or door bell. 'chuông xoay' is the correct term for a singing bowl in a Zen context."
+    }
+  ]
+}

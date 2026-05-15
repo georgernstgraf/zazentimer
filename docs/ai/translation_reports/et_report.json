@@ -1,0 +1,48 @@
+{
+  "locale": "et",
+  "tier": 3,
+  "findings": [
+    {
+      "string_key": "bell_pause",
+      "english_source": "Bell gap (sec)",
+      "current_translation": "Kella vahe (sek)",
+      "suggested_translation": "Kausi vahe (sek)",
+      "reasoning": "'Kell' is a clock or bell. 'Kauss' (laulev kauss) is singing bowl."
+    },
+    {
+      "string_key": "bell_user",
+      "english_source": "Add Bell…",
+      "current_translation": "Lisa kell…",
+      "suggested_translation": "Lisa kauss…",
+      "reasoning": "Same as above."
+    },
+    {
+      "string_key": "num_bells",
+      "english_source": "Bell count",
+      "current_translation": "Kellade arv",
+      "suggested_translation": "Kausside arv",
+      "reasoning": "Same as above."
+    },
+    {
+      "string_key": "title_volume_bells",
+      "english_source": "Bell Volume",
+      "current_translation": "Kella helitugevus",
+      "suggested_translation": "Kausi helitugevus",
+      "reasoning": "Same as above."
+    },
+    {
+      "string_key": "pref_title_bell_volume",
+      "english_source": "Bell Volume",
+      "current_translation": "Kella helitugevus",
+      "suggested_translation": "Kausi helitugevus",
+      "reasoning": "Same as above."
+    },
+    {
+      "string_key": "title_dim_bell",
+      "english_source": "Dim Bell",
+      "current_translation": "Kella hämardamine",
+      "suggested_translation": "Kausi hämardamine",
+      "reasoning": "Same as above."
+    }
+  ]
+}

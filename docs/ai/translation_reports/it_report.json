@@ -1,0 +1,20 @@
+{
+  "locale": "it",
+  "tier": 1,
+  "findings": [
+    {
+      "string_key": "bell_pause",
+      "english_source": "Bell pause (sec)",
+      "current_translation": "Pausa campana (sec)",
+      "suggested_translation": "Pausa campana tibetana (sec)",
+      "reasoning": "'Campana' by itself usually means a church bell. 'Campana tibetana' clarifies it is a singing bowl."
+    },
+    {
+      "string_key": "bell_user",
+      "english_source": "Add Bell…",
+      "current_translation": "Aggiungi campana…",
+      "suggested_translation": "Aggiungi campana tibetana…",
+      "reasoning": "Clarify it is a singing bowl."
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "locale": "th",
+  "tier": 2,
+  "findings": [
+    {
+      "string_key": "num_bells",
+      "english_source": "Bell count",
+      "current_translation": "Literal translation meaning ระฆัง",
+      "suggested_translation": "Translation meaning ขันลงหิน",
+      "reasoning": "'ระฆัง' usually refers to a church or door bell. 'ขันลงหิน' is the correct term for a singing bowl in a Zen context."
+    }
+  ]
+}

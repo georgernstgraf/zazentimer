@@ -1,0 +1,48 @@
+{
+  "locale": "uk",
+  "tier": 3,
+  "findings": [
+    {
+      "string_key": "bell_pause",
+      "english_source": "Bell gap (sec)",
+      "current_translation": "Пауза дзвона (сек)",
+      "suggested_translation": "Пауза чаші (сек)",
+      "reasoning": "'Дзвін' refers to a church bell. 'Чаша' (singing bowl) should be used in Zen context."
+    },
+    {
+      "string_key": "bell_user",
+      "english_source": "Add Bell…",
+      "current_translation": "Додати дзвін…",
+      "suggested_translation": "Додати чашу…",
+      "reasoning": "'Дзвін' refers to a church bell."
+    },
+    {
+      "string_key": "num_bells",
+      "english_source": "Bell count",
+      "current_translation": "Кількість дзвонів",
+      "suggested_translation": "Кількість чаш",
+      "reasoning": "'Дзвонів' refers to church bells."
+    },
+    {
+      "string_key": "title_volume_bells",
+      "english_source": "Bell Volume",
+      "current_translation": "Гучність дзвона",
+      "suggested_translation": "Гучність чаші",
+      "reasoning": "'Дзвона' refers to a church bell."
+    },
+    {
+      "string_key": "pref_title_bell_volume",
+      "english_source": "Bell Volume",
+      "current_translation": "Гучність дзвона",
+      "suggested_translation": "Гучність чаші",
+      "reasoning": "Same as above."
+    },
+    {
+      "string_key": "title_dim_bell",
+      "english_source": "Dim Bell",
+      "current_translation": "Приглушити дзвін",
+      "suggested_translation": "Приглушити чашу",
+      "reasoning": "Same as above."
+    }
+  ]
+}

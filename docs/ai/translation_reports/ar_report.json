@@ -1,0 +1,20 @@
+{
+  "locale": "ar",
+  "tier": 1,
+  "findings": [
+    {
+      "string_key": "bell_pause",
+      "english_source": "Bell pause (sec)",
+      "current_translation": "فجوة الجرس (ثانية)",
+      "suggested_translation": "فجوة جرس التأمل (ثانية)",
+      "reasoning": "'جرس' (jaras) typically means a doorbell or school bell. Adding 'التأمل' (meditation) clarifies the context."
+    },
+    {
+      "string_key": "title_dim_bell",
+      "english_source": "Dim Bell",
+      "current_translation": "جرس خافت",
+      "suggested_translation": "خفض صوت الجرس",
+      "reasoning": "The translation 'جرس خافت' means 'faint bell' (adjective), not the action of dimming/lowering the volume."
+    }
+  ]
+}

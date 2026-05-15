@@ -1,0 +1,20 @@
+{
+  "locale": "nl",
+  "tier": 1,
+  "findings": [
+    {
+      "string_key": "bell_pause",
+      "english_source": "Bell pause (sec)",
+      "current_translation": "Belinterval (sec)",
+      "suggested_translation": "Klankschaalinterval (sec)",
+      "reasoning": "'Bel' usually refers to a doorbell or bicycle bell. 'Klankschaal' is the correct term for a singing bowl, which is already correctly used in 'title_bell_volumes'."
+    },
+    {
+      "string_key": "bell_user",
+      "english_source": "Add Bell…",
+      "current_translation": "Bel toevoegen…",
+      "suggested_translation": "Klankschaal toevoegen…",
+      "reasoning": "Consistency with 'Klankschaal'."
+    }
+  ]
+}

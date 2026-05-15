@@ -1,0 +1,48 @@
+{
+  "locale": "sk",
+  "tier": 3,
+  "findings": [
+    {
+      "string_key": "bell_pause",
+      "english_source": "Bell gap (sec)",
+      "current_translation": "Medzera zvončeka (sek)",
+      "suggested_translation": "Medzera misy (sek)",
+      "reasoning": "'Zvonček' means small bell/doorbell. 'Misa' (spievajúca misa) is the correct term."
+    },
+    {
+      "string_key": "bell_user",
+      "english_source": "Add Bell…",
+      "current_translation": "Pridať zvonček…",
+      "suggested_translation": "Pridať misu…",
+      "reasoning": "Same as above."
+    },
+    {
+      "string_key": "num_bells",
+      "english_source": "Bell count",
+      "current_translation": "Počet zvončekov",
+      "suggested_translation": "Počet mís",
+      "reasoning": "Same as above."
+    },
+    {
+      "string_key": "title_volume_bells",
+      "english_source": "Bell Volume",
+      "current_translation": "Hlasitosť zvončeka",
+      "suggested_translation": "Hlasitosť misy",
+      "reasoning": "Same as above."
+    },
+    {
+      "string_key": "pref_title_bell_volume",
+      "english_source": "Bell Volume",
+      "current_translation": "Hlasitosť zvončeka",
+      "suggested_translation": "Hlasitosť misy",
+      "reasoning": "Same as above."
+    },
+    {
+      "string_key": "title_dim_bell",
+      "english_source": "Dim Bell",
+      "current_translation": "Stlmiť zvonček",
+      "suggested_translation": "Stlmiť misu",
+      "reasoning": "Same as above."
+    }
+  ]
+}

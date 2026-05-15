@@ -1,0 +1,48 @@
+{
+  "locale": "ca",
+  "tier": 3,
+  "findings": [
+    {
+      "string_key": "bell_pause",
+      "english_source": "Bell gap (sec)",
+      "current_translation": "Pausa de la campana (seg)",
+      "suggested_translation": "Pausa del bol (seg)",
+      "reasoning": "'Campana' is a church bell. 'Bol' (bol tibetà) is correct for singing bowl."
+    },
+    {
+      "string_key": "bell_user",
+      "english_source": "Add Bell…",
+      "current_translation": "Afegir campana…",
+      "suggested_translation": "Afegir bol…",
+      "reasoning": "Same as above."
+    },
+    {
+      "string_key": "num_bells",
+      "english_source": "Bell count",
+      "current_translation": "Nombre de campanes",
+      "suggested_translation": "Nombre de bols",
+      "reasoning": "Same as above."
+    },
+    {
+      "string_key": "title_volume_bells",
+      "english_source": "Bell Volume",
+      "current_translation": "Volum de la campana",
+      "suggested_translation": "Volum del bol",
+      "reasoning": "Same as above."
+    },
+    {
+      "string_key": "pref_title_bell_volume",
+      "english_source": "Bell Volume",
+      "current_translation": "Volum de la campana",
+      "suggested_translation": "Volum del bol",
+      "reasoning": "Same as above."
+    },
+    {
+      "string_key": "title_dim_bell",
+      "english_source": "Dim Bell",
+      "current_translation": "Atenuar campana",
+      "suggested_translation": "Atenuar bol",
+      "reasoning": "Same as above."
+    }
+  ]
+}

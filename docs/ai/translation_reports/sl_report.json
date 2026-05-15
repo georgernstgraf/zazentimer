@@ -1,0 +1,48 @@
+{
+  "locale": "sl",
+  "tier": 3,
+  "findings": [
+    {
+      "string_key": "bell_pause",
+      "english_source": "Bell gap (sec)",
+      "current_translation": "Premor zvonca (sek)",
+      "suggested_translation": "Premor posode (sek)",
+      "reasoning": "'Zvonec' is a small bell/doorbell. 'Posoda' (pojoča posoda) is correct."
+    },
+    {
+      "string_key": "bell_user",
+      "english_source": "Add Bell…",
+      "current_translation": "Dodaj zvonec…",
+      "suggested_translation": "Dodaj posodo…",
+      "reasoning": "Same as above."
+    },
+    {
+      "string_key": "num_bells",
+      "english_source": "Bell count",
+      "current_translation": "Število zvoncev",
+      "suggested_translation": "Število posod",
+      "reasoning": "Same as above."
+    },
+    {
+      "string_key": "title_volume_bells",
+      "english_source": "Bell Volume",
+      "current_translation": "Glasnost zvoncev",
+      "suggested_translation": "Glasnost posod",
+      "reasoning": "Same as above."
+    },
+    {
+      "string_key": "pref_title_bell_volume",
+      "english_source": "Bell Volume",
+      "current_translation": "Glasnost zvoncev",
+      "suggested_translation": "Glasnost posod",
+      "reasoning": "Same as above."
+    },
+    {
+      "string_key": "title_dim_bell",
+      "english_source": "Dim Bell",
+      "current_translation": "Zatemni zvonec",
+      "suggested_translation": "Zatemni posodo",
+      "reasoning": "Same as above."
+    }
+  ]
+}

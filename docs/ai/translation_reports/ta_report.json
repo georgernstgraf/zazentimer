@@ -1,0 +1,48 @@
+{
+  "locale": "ta",
+  "tier": 3,
+  "findings": [
+    {
+      "string_key": "bell_pause",
+      "english_source": "Bell gap (sec)",
+      "current_translation": "மணி இடைவெளி (வினாடி)",
+      "suggested_translation": "கிண்ண இடைவெளி (வினாடி)",
+      "reasoning": "'மணி' means bell. 'கிண்ணம்' is singing bowl."
+    },
+    {
+      "string_key": "bell_user",
+      "english_source": "Add Bell…",
+      "current_translation": "மணியைச் சேர்…",
+      "suggested_translation": "கிண்ணத்தைச் சேர்…",
+      "reasoning": "Same as above."
+    },
+    {
+      "string_key": "num_bells",
+      "english_source": "Bell count",
+      "current_translation": "மணி எண்ணிக்கை",
+      "suggested_translation": "கிண்ண எண்ணிக்கை",
+      "reasoning": "Same as above."
+    },
+    {
+      "string_key": "title_volume_bells",
+      "english_source": "Bell Volume",
+      "current_translation": "மணி அளவு",
+      "suggested_translation": "கிண்ண அளவு",
+      "reasoning": "Same as above."
+    },
+    {
+      "string_key": "pref_title_bell_volume",
+      "english_source": "Bell Volume",
+      "current_translation": "மணி அளவு",
+      "suggested_translation": "கிண்ண அளவு",
+      "reasoning": "Same as above."
+    },
+    {
+      "string_key": "title_dim_bell",
+      "english_source": "Dim Bell",
+      "current_translation": "மங்கலான மணி",
+      "suggested_translation": "கிண்ண ஒலியை குறை",
+      "reasoning": "மங்கலான means dim light. ஒலியை குறை means dim sound."
+    }
+  ]
+}

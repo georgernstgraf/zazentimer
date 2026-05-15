@@ -1,0 +1,20 @@
+{
+  "locale": "ru",
+  "tier": 1,
+  "findings": [
+    {
+      "string_key": "bell_pause",
+      "english_source": "Bell pause (sec)",
+      "current_translation": "Пауза гонга (сек)",
+      "suggested_translation": "Пауза чаши (сек)",
+      "reasoning": "While 'гонг' is acceptable, 'чаша' (singing bowl) is already used in 'title_bell_volumes' (Громкость чаш) and is more accurate."
+    },
+    {
+      "string_key": "bell_user",
+      "english_source": "Add Bell…",
+      "current_translation": "Добавить гонг…",
+      "suggested_translation": "Добавить чашу…",
+      "reasoning": "Consistency with 'чаша'."
+    }
+  ]
+}

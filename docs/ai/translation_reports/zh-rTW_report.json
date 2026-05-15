@@ -1,0 +1,20 @@
+{
+  "locale": "zh-rTW",
+  "tier": 1,
+  "findings": [
+    {
+      "string_key": "bell_pause",
+      "english_source": "Bell pause (sec)",
+      "current_translation": "鈴聲間隔 (秒)",
+      "suggested_translation": "引磬間隔 (秒)",
+      "reasoning": "'鈴聲' usually means ringtone. '引磬' is the correct Buddhist term and is already used in other strings."
+    },
+    {
+      "string_key": "bell_user",
+      "english_source": "Add Bell…",
+      "current_translation": "新增鈴聲…",
+      "suggested_translation": "新增引磬…",
+      "reasoning": "Consistency with '引磬'."
+    }
+  ]
+}

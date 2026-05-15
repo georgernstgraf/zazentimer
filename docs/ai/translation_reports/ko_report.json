@@ -1,0 +1,27 @@
+{
+  "locale": "ko",
+  "tier": 1,
+  "findings": [
+    {
+      "string_key": "title_dim_bell",
+      "english_source": "Dim Bell",
+      "current_translation": "어두운 종",
+      "suggested_translation": "종소리 줄이기",
+      "reasoning": "Literal and robotic translation. '어두운' means visually dark. 'Dim' here means to lower the audio volume."
+    },
+    {
+      "string_key": "dim_bell_label_off",
+      "english_source": "Not dimmed",
+      "current_translation": "어둡게 하지 않음",
+      "suggested_translation": "줄이지 않음",
+      "reasoning": "Literal translation of optical dimming."
+    },
+    {
+      "string_key": "dim_bell_label_format",
+      "english_source": "Dimmed: %1$d0%%",
+      "current_translation": "어둡게 함: %1$d0%%",
+      "suggested_translation": "줄임: %1$d0%%",
+      "reasoning": "Literal translation of optical dimming."
+    }
+  ]
+}

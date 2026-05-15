@@ -1,0 +1,48 @@
+{
+  "locale": "lv",
+  "tier": 3,
+  "findings": [
+    {
+      "string_key": "bell_pause",
+      "english_source": "Bell gap (sec)",
+      "current_translation": "Zvana starplaiks (sek)",
+      "suggested_translation": "Bļodas starplaiks (sek)",
+      "reasoning": "'Zvans' is a bell. 'Bļoda' (dziedošā bļoda) is correct."
+    },
+    {
+      "string_key": "bell_user",
+      "english_source": "Add Bell…",
+      "current_translation": "Pievienot zvanu…",
+      "suggested_translation": "Pievienot bļodu…",
+      "reasoning": "Same as above."
+    },
+    {
+      "string_key": "num_bells",
+      "english_source": "Bell count",
+      "current_translation": "Zvanu skaits",
+      "suggested_translation": "Bļodu skaits",
+      "reasoning": "Same as above."
+    },
+    {
+      "string_key": "title_volume_bells",
+      "english_source": "Bell Volume",
+      "current_translation": "Zvanu skaļums",
+      "suggested_translation": "Bļodu skaļums",
+      "reasoning": "Same as above."
+    },
+    {
+      "string_key": "pref_title_bell_volume",
+      "english_source": "Bell Volume",
+      "current_translation": "Zvanu skaļums",
+      "suggested_translation": "Bļodu skaļums",
+      "reasoning": "Same as above."
+    },
+    {
+      "string_key": "title_dim_bell",
+      "english_source": "Dim Bell",
+      "current_translation": "Aptumšot zvanu",
+      "suggested_translation": "Klusināt bļodu",
+      "reasoning": "Aptumšot means to dim light. Klusināt means to dim sound. Zvanu -> bļodu."
+    }
+  ]
+}

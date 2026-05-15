@@ -1,0 +1,34 @@
+{
+  "locale": "es",
+  "tier": 1,
+  "findings": [
+    {
+      "string_key": "bell_pause",
+      "english_source": "Bell pause (sec)",
+      "current_translation": "Pausa de campana (seg)",
+      "suggested_translation": "Pausa del cuenco (seg)",
+      "reasoning": "'Campana' usually refers to a church bell or doorbell. 'Cuenco' or 'Cuenco tibetano' is the correct term for a singing bowl in a Zen context."
+    },
+    {
+      "string_key": "bell_user",
+      "english_source": "Add Bell…",
+      "current_translation": "Añadir campana…",
+      "suggested_translation": "Añadir cuenco…",
+      "reasoning": "'Campana' is inappropriate. Use 'Cuenco'."
+    },
+    {
+      "string_key": "title_volume_bells",
+      "english_source": "Bell Volume",
+      "current_translation": "Volumen de campana",
+      "suggested_translation": "Volumen del cuenco",
+      "reasoning": "Consistent use of 'cuenco'."
+    },
+    {
+      "string_key": "title_bell_volumes",
+      "english_source": "Bell Volumes",
+      "current_translation": "Volúmenes de campana",
+      "suggested_translation": "Volúmenes de los cuencos",
+      "reasoning": "Consistent use of 'cuenco'."
+    }
+  ]
+}

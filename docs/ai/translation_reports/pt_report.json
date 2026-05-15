@@ -1,0 +1,20 @@
+{
+  "locale": "pt",
+  "tier": 1,
+  "findings": [
+    {
+      "string_key": "bell_pause",
+      "english_source": "Bell pause (sec)",
+      "current_translation": "Pausa do sino (seg)",
+      "suggested_translation": "Pausa da taça (seg)",
+      "reasoning": "'Sino' refers to a church bell. 'Taça tibetana' or simply 'Taça' is the correct term for a singing bowl in Portuguese."
+    },
+    {
+      "string_key": "bell_user",
+      "english_source": "Add Bell…",
+      "current_translation": "Adicionar sino…",
+      "suggested_translation": "Adicionar taça…",
+      "reasoning": "'Sino' is inappropriate. Use 'Taça'."
+    }
+  ]
+}
