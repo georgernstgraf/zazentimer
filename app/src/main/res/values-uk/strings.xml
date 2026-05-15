@@ -158,4 +158,12 @@
     <string name="nav_label_edit_session">Редагувати сесію</string>
     <string name="nav_label_edit_section">Редагувати секцію</string>
     <string name="nav_label_settings">Налаштування</string>
+    <string name="title_bell_volumes">Bell Volumes</string>
+    <string name="button_bell_volumes">Adjust Bell Volumes</string>
+    <string name="bell_volume_label_format">%1$d%%</string>
+    <string name="bell_volume_default">Default</string>
+    <string name="no_bells_configured">No bells configured yet</string>
+    <string name="bell_volume_dim_explanation">Reduce individual bell volumes. Also, consider the system alarm volume.</string>
+    <string name="restore_version_mismatch_title">Newer Backup Version</string>
+    <string name="restore_version_mismatch_text">This backup was created by a newer version of ZazenTimer. Please update the app.</string>
 </resources>
