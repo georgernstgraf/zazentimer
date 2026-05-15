@@ -161,4 +161,13 @@
     <string name="nav_label_edit_session">Rediger økt</string>
     <string name="nav_label_edit_section">Rediger seksjon</string>
     <string name="nav_label_settings">Innstillinger</string>
+
+    <string name="title_bell_volumes">Klokkevolum</string>
+    <string name="button_bell_volumes">Juster klokkevolum</string>
+    <string name="bell_volume_label_format">%1$d%%</string>
+    <string name="bell_volume_default">Standard</string>
+    <string name="no_bells_configured">Ingen klokker konfigurert ennå</string>
+    <string name="bell_volume_dim_explanation">Reduser individuelle klokkevolum. Vurder også systemets alarmvolum.</string>
+    <string name="restore_version_mismatch_title">Nyere sikkerhetskopi-versjon</string>
+    <string name="restore_version_mismatch_text">Denne sikkerhetskopien ble opprettet av en nyere versjon av ZazenTimer. Vennligst oppdater appen.</string>
 </resources>

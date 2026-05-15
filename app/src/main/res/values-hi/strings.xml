@@ -160,4 +160,14 @@
     <string name="nav_label_edit_session">सेशन संपादित करें</string>
     <string name="nav_label_edit_section">अनुभाग संपादित करें</string>
     <string name="nav_label_settings">सेटिंग्स</string>
+
+    <string name="title_bell_volumes">घंटी का वॉल्यूम</string>
+    <string name="button_bell_volumes">घंटी का वॉल्यूम समायोजित करें</string>
+    <string name="bell_volume_label_format">%1$d%%</string>
+    <string name="bell_volume_default">डिफ़ॉल्ट</string>
+    <string name="no_bells_configured">अभी तक कोई घंटी कॉन्फ़िगर नहीं की गई है</string>
+    <string name="bell_volume_dim_explanation">व्यक्तिगत घंटी का वॉल्यूम कम करें। इसके अलावा, सिस्टम अलार्म वॉल्यूम पर भी विचार करें।</string>
+    <string name="restore_success_text">डेटा पुनर्स्थापना सफल</string>
+    <string name="restore_version_mismatch_title">नया बैकअप संस्करण</string>
+    <string name="restore_version_mismatch_text">यह बैकअप ZazenTimer के एक नए संस्करण द्वारा बनाया गया था। कृपया ऐप को अपडेट करें।</string>
 </resources>

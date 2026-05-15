@@ -161,4 +161,13 @@
     <string name="nav_label_edit_session">แก้ไขเซสชัน</string>
     <string name="nav_label_edit_section">แก้ไขส่วน</string>
     <string name="nav_label_settings">การตั้งค่า</string>
+
+    <string name="title_bell_volumes">ระดับเสียงระฆัง</string>
+    <string name="button_bell_volumes">ปรับระดับเสียงระฆัง</string>
+    <string name="bell_volume_label_format">%1$d%%</string>
+    <string name="bell_volume_default">ค่าเริ่มต้น</string>
+    <string name="no_bells_configured">ยังไม่ได้กำหนดค่าระฆัง</string>
+    <string name="bell_volume_dim_explanation">ลดระดับเสียงระฆังแต่ละใบ นอกจากนี้ โปรดพิจารณาระดับเสียงนาฬิกาปลุกของระบบด้วย</string>
+    <string name="restore_version_mismatch_title">เวอร์ชันสำรองข้อมูลที่ใหม่กว่า</string>
+    <string name="restore_version_mismatch_text">ข้อมูลสำรองนี้ถูกสร้างขึ้นโดย ZazenTimer เวอร์ชันที่ใหม่กว่า โปรดอัปเดตแอป</string>
 </resources>

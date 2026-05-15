@@ -161,4 +161,13 @@
     <string name="nav_label_edit_session">Ubah Sesi</string>
     <string name="nav_label_edit_section">Ubah Bagian</string>
     <string name="nav_label_settings">Pengaturan</string>
+
+    <string name="title_bell_volumes">Volume Bel</string>
+    <string name="button_bell_volumes">Sesuaikan Volume Bel</string>
+    <string name="bell_volume_label_format">%1$d%%</string>
+    <string name="bell_volume_default">Bawaan</string>
+    <string name="no_bells_configured">Belum ada bel yang dikonfigurasi</string>
+    <string name="bell_volume_dim_explanation">Kurangi volume bel individu. Selain itu, pertimbangkan juga volume alarm sistem.</string>
+    <string name="restore_version_mismatch_title">Versi Cadangan Lebih Baru</string>
+    <string name="restore_version_mismatch_text">Cadangan ini dibuat oleh versi ZazenTimer yang lebih baru. Harap perbarui aplikasi.</string>
 </resources>

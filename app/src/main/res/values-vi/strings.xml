@@ -161,4 +161,13 @@
     <string name="nav_label_edit_session">Chỉnh sửa phiên</string>
     <string name="nav_label_edit_section">Chỉnh sửa phần</string>
     <string name="nav_label_settings">Cài đặt</string>
+
+    <string name="title_bell_volumes">Âm lượng Chuông</string>
+    <string name="button_bell_volumes">Điều chỉnh Âm lượng Chuông</string>
+    <string name="bell_volume_label_format">%1$d%%</string>
+    <string name="bell_volume_default">Mặc định</string>
+    <string name="no_bells_configured">Chưa cấu hình chuông nào</string>
+    <string name="bell_volume_dim_explanation">Giảm âm lượng của từng tiếng chuông. Ngoài ra, hãy lưu ý đến âm lượng báo thức của hệ thống.</string>
+    <string name="restore_version_mismatch_title">Phiên bản Sao lưu Mới hơn</string>
+    <string name="restore_version_mismatch_text">Bản sao lưu này được tạo bởi phiên bản ZazenTimer mới hơn. Vui lòng cập nhật ứng dụng.</string>
 </resources>

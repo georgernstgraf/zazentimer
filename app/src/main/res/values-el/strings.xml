@@ -161,4 +161,13 @@
     <string name="nav_label_edit_session">Επεξεργασία</string>
     <string name="nav_label_edit_section">Επεξεργασία ενότητας</string>
     <string name="nav_label_settings">Ρυθμίσεις</string>
+
+    <string name="title_bell_volumes">Ένταση κουδουνιών</string>
+    <string name="button_bell_volumes">Προσαρμογή έντασης κουδουνιών</string>
+    <string name="bell_volume_label_format">%1$d%%</string>
+    <string name="bell_volume_default">Προεπιλογή</string>
+    <string name="no_bells_configured">Δεν έχουν διαμορφωθεί κουδούνια ακόμα</string>
+    <string name="bell_volume_dim_explanation">Μειώστε την ένταση μεμονωμένων κουδουνιών. Επίσης, λάβετε υπόψη την ένταση ξυπνητηριού του συστήματος.</string>
+    <string name="restore_version_mismatch_title">Νεότερη έκδοση αντιγράφου ασφαλείας</string>
+    <string name="restore_version_mismatch_text">Αυτό το αντίγραφο ασφαλείας δημιουργήθηκε από μια νεότερη έκδοση του ZazenTimer. Παρακαλώ ενημερώστε την εφαρμογή.</string>
 </resources>

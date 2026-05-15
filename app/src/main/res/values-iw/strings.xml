@@ -161,4 +161,13 @@
     <string name="nav_label_edit_session">ערוך סשן</string>
     <string name="nav_label_edit_section">ערוך מקטע</string>
     <string name="nav_label_settings">הגדרות</string>
+
+    <string name="title_bell_volumes">עוצמות קול של הפעמונים</string>
+    <string name="button_bell_volumes">כוונן את עוצמות הקול של הפעמונים</string>
+    <string name="bell_volume_label_format">%1$d%%</string>
+    <string name="bell_volume_default">ברירת מחדל</string>
+    <string name="no_bells_configured">טרם הוגדרו פעמונים</string>
+    <string name="bell_volume_dim_explanation">הנמך את עוצמת הקול של הפעמונים הבודדים. כמו כן, קח בחשבון את עוצמת הקול של שעון המעורר של המערכת.</string>
+    <string name="restore_version_mismatch_title">גרסת גיבוי חדשה יותר</string>
+    <string name="restore_version_mismatch_text">גיבוי זה נוצר על ידי גרסה חדשה יותר של ZazenTimer. אנא עדכן את האפליקציה.</string>
 </resources>

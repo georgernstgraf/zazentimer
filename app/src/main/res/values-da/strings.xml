@@ -161,4 +161,13 @@
     <string name="nav_label_edit_session">Rediger session</string>
     <string name="nav_label_edit_section">Rediger sektion</string>
     <string name="nav_label_settings">Indstillinger</string>
+
+    <string name="title_bell_volumes">Klokkelydstyrker</string>
+    <string name="button_bell_volumes">Juster klokkelydstyrker</string>
+    <string name="bell_volume_label_format">%1$d%%</string>
+    <string name="bell_volume_default">Standard</string>
+    <string name="no_bells_configured">Ingen klokker konfigureret endnu</string>
+    <string name="bell_volume_dim_explanation">Reducer lydstyrken for individuelle klokker. Overvej også systemets alarmlydstyrke.</string>
+    <string name="restore_version_mismatch_title">Nyere backup-version</string>
+    <string name="restore_version_mismatch_text">Denne backup blev oprettet af en nyere version af ZazenTimer. Opdater venligst appen.</string>
 </resources>

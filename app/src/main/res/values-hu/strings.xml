@@ -158,4 +158,13 @@
     <string name="nav_label_edit_session">Profil szerkesztése</string>
     <string name="nav_label_edit_section">Szakasz szerkesztése</string>
     <string name="nav_label_settings">Beállítások</string>
+
+    <string name="title_bell_volumes">Harangok hangereje</string>
+    <string name="button_bell_volumes">Harangok hangerejének beállítása</string>
+    <string name="bell_volume_label_format">%1$d%%</string>
+    <string name="bell_volume_default">Alapértelmezett</string>
+    <string name="no_bells_configured">Még nincsenek harangok konfigurálva</string>
+    <string name="bell_volume_dim_explanation">Csökkentse az egyes harangok hangerejét. Vegye figyelembe a rendszer ébresztő hangerejét is.</string>
+    <string name="restore_version_mismatch_title">Újabb biztonsági mentés verzió</string>
+    <string name="restore_version_mismatch_text">Ezt a biztonsági mentést a ZazenTimer egy újabb verziója készítette. Kérjük, frissítse az alkalmazást.</string>
 </resources>

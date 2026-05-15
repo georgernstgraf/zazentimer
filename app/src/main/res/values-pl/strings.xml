@@ -158,4 +158,13 @@
     <string name="nav_label_edit_session">Edytuj sesję</string>
     <string name="nav_label_edit_section">Edytuj sekcję</string>
     <string name="nav_label_settings">Ustawienia</string>
+
+    <string name="title_bell_volumes">Głośność dzwonków</string>
+    <string name="button_bell_volumes">Dostosuj głośność dzwonków</string>
+    <string name="bell_volume_label_format">%1$d%%</string>
+    <string name="bell_volume_default">Domyślna</string>
+    <string name="no_bells_configured">Nie skonfigurowano jeszcze żadnych dzwonków</string>
+    <string name="bell_volume_dim_explanation">Zmniejsz głośność poszczególnych dzwonków. Zwróć też uwagę na głośność alarmu systemowego.</string>
+    <string name="restore_version_mismatch_title">Nowsza wersja kopii zapasowej</string>
+    <string name="restore_version_mismatch_text">Ta kopia zapasowa została utworzona przez nowszą wersję ZazenTimer. Zaktualizuj aplikację.</string>
 </resources>

@@ -158,4 +158,13 @@
     <string name="nav_label_edit_session">Upravit relaci</string>
     <string name="nav_label_edit_section">Upravit sekci</string>
     <string name="nav_label_settings">Nastavení</string>
+
+    <string name="title_bell_volumes">Hlasitost zvonků</string>
+    <string name="button_bell_volumes">Upravit hlasitost zvonků</string>
+    <string name="bell_volume_label_format">%1$d%%</string>
+    <string name="bell_volume_default">Výchozí</string>
+    <string name="no_bells_configured">Zatím nebyly nakonfigurovány žádné zvonky</string>
+    <string name="bell_volume_dim_explanation">Snižte hlasitost jednotlivých zvonků. Vezměte také v úvahu hlasitost systémového budíku.</string>
+    <string name="restore_version_mismatch_title">Novější verze zálohy</string>
+    <string name="restore_version_mismatch_text">Tato záloha byla vytvořena novější verzí aplikace ZazenTimer. Aktualizujte prosím aplikaci.</string>
 </resources>

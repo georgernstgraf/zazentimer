@@ -161,4 +161,13 @@
     <string name="nav_label_edit_session">Oturumu Düzenle</string>
     <string name="nav_label_edit_section">Bölümü Düzenle</string>
     <string name="nav_label_settings">Ayarlar</string>
+
+    <string name="title_bell_volumes">Zil Ses Seviyeleri</string>
+    <string name="button_bell_volumes">Zil Ses Seviyelerini Ayarla</string>
+    <string name="bell_volume_label_format">%1$d%%</string>
+    <string name="bell_volume_default">Varsayılan</string>
+    <string name="no_bells_configured">Henüz yapılandırılmış zil yok</string>
+    <string name="bell_volume_dim_explanation">Bireysel zil ses seviyelerini azaltın. Ayrıca, sistem alarm sesini de göz önünde bulundurun.</string>
+    <string name="restore_version_mismatch_title">Daha Yeni Yedekleme Sürümü</string>
+    <string name="restore_version_mismatch_text">Bu yedekleme ZazenTimer\'ın daha yeni bir sürümü tarafından oluşturulmuş. Lütfen uygulamayı güncelleyin.</string>
 </resources>

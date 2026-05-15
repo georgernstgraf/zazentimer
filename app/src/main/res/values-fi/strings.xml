@@ -161,4 +161,13 @@
     <string name="nav_label_edit_session">Muokkaa istuntoa</string>
     <string name="nav_label_edit_section">Muokkaa osiota</string>
     <string name="nav_label_settings">Asetukset</string>
+
+    <string name="title_bell_volumes">Kellojen äänenvoimakkuus</string>
+    <string name="button_bell_volumes">Säädä kellojen äänenvoimakkuutta</string>
+    <string name="bell_volume_label_format">%1$d%%</string>
+    <string name="bell_volume_default">Oletus</string>
+    <string name="no_bells_configured">Kelloja ei ole vielä määritetty</string>
+    <string name="bell_volume_dim_explanation">Pienennä yksittäisten kellojen äänenvoimakkuutta. Huomioi myös järjestelmän hälytysäänenvoimakkuus.</string>
+    <string name="restore_version_mismatch_title">Uudempi varmuuskopion versio</string>
+    <string name="restore_version_mismatch_text">Tämä varmuuskopio luotiin ZazenTimerin uudemmalla versiolla. Päivitä sovellus.</string>
 </resources>

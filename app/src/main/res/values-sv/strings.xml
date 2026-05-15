@@ -161,4 +161,13 @@
     <string name="nav_label_edit_session">Redigera session</string>
     <string name="nav_label_edit_section">Redigera sektion</string>
     <string name="nav_label_settings">Inställningar</string>
+
+    <string name="title_bell_volumes">Klockvolymer</string>
+    <string name="button_bell_volumes">Justera klockvolymer</string>
+    <string name="bell_volume_label_format">%1$d%%</string>
+    <string name="bell_volume_default">Standard</string>
+    <string name="no_bells_configured">Inga klockor konfigurerade ännu</string>
+    <string name="bell_volume_dim_explanation">Minska volymen för enskilda klockor. Tänk också på systemets larmvolym.</string>
+    <string name="restore_version_mismatch_title">Nyare säkerhetskopieringsversion</string>
+    <string name="restore_version_mismatch_text">Denna säkerhetskopia skapades av en nyare version av ZazenTimer. Uppdatera appen.</string>
 </resources>

@@ -161,4 +161,13 @@
     <string name="nav_label_edit_session">Editează sesiunea</string>
     <string name="nav_label_edit_section">Editează secțiunea</string>
     <string name="nav_label_settings">Setări</string>
+
+    <string name="title_bell_volumes">Volume clopoței</string>
+    <string name="button_bell_volumes">Ajustați volumele clopoțeilor</string>
+    <string name="bell_volume_label_format">%1$d%%</string>
+    <string name="bell_volume_default">Implicit</string>
+    <string name="no_bells_configured">Niciun clopoțel configurat încă</string>
+    <string name="bell_volume_dim_explanation">Reduceți volumele individuale ale clopoțeilor. De asemenea, luați în considerare volumul alarmei de sistem.</string>
+    <string name="restore_version_mismatch_title">Versiune de rezervă mai nouă</string>
+    <string name="restore_version_mismatch_text">Această copie de rezervă a fost creată de o versiune mai nouă a ZazenTimer. Vă rugăm să actualizați aplicația.</string>
 </resources>
