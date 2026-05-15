@@ -154,7 +154,7 @@ class SessionEditFragment :
     override fun onResume() {
         super.onResume()
         Log.d(TAG, "sessionId=${this.sessionId}")
-        lifecycleScope.launch {
+        viewLifecycleOwner.lifecycleScope.launch {
             this@SessionEditFragment.session = dbOperations.readSession(this@SessionEditFragment.sessionId)
             if (!isAdded) return@launch
             val s = this@SessionEditFragment.session
@@ -162,11 +162,11 @@ class SessionEditFragment :
                 Log.e(TAG, "session is NULL")
             } else {
                 Log.i(TAG, "session found and valid")
-                binding.textSitzungName.setText(s.name)
-                binding.textSitzungBeschreibung.setText(s.description)
+                _binding?.textSitzungName?.setText(s.name)
+                _binding?.textSitzungBeschreibung?.setText(s.description)
                 this@SessionEditFragment.sections = dbOperations.readSections(s.id)
                 editHelper.initSectionList()
-                binding.buttonBellVolumes.isEnabled = !this@SessionEditFragment.sections.isNullOrEmpty()
+                _binding?.buttonBellVolumes?.isEnabled = !this@SessionEditFragment.sections.isNullOrEmpty()
             }
         }
         requireActivity().invalidateOptionsMenu()

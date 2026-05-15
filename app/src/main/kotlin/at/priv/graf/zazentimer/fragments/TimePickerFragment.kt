@@ -52,6 +52,10 @@ class TimePickerFragment :
     }
 
     override fun onCreateDialog(bundle: Bundle?): Dialog {
+        bundle?.let { saved ->
+            minutes = saved.getInt(STATE_MINUTES, minutes)
+            seconds = saved.getInt(STATE_SECONDS, seconds)
+        }
         val act = activity ?: return super.onCreateDialog(bundle)
         val builder = AlertDialog.Builder(requireActivity())
         this.view = act.layoutInflater.inflate(R.layout.dialog_time_picker, null as ViewGroup?)
@@ -86,7 +90,15 @@ class TimePickerFragment :
         this.activity = context as Activity
     }
 
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        outState.putInt(STATE_MINUTES, npMin?.value ?: minutes)
+        outState.putInt(STATE_SECONDS, npSec?.value ?: seconds)
+    }
+
     companion object {
+        private const val STATE_MINUTES = "minutes"
+        private const val STATE_SECONDS = "seconds"
         private const val MIN_VALUE = 0
         private const val MAX_MINUTES = 120
         private const val MAX_SECONDS = 59

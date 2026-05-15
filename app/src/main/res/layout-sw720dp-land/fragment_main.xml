@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-    <androidx.recyclerview.widget.RecyclerView
+    <at.priv.graf.zazentimer.fragments.MaxHeightRecyclerView
         android:gravity="center"
         android:id="@+id/recycler_sessions"
         android:layout_width="match_parent"

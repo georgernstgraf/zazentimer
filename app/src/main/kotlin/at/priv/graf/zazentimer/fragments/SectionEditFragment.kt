@@ -134,7 +134,7 @@ class SectionEditFragment : Fragment() {
 
     override fun onResume() {
         super.onResume()
-        lifecycleScope.launch {
+        viewLifecycleOwner.lifecycleScope.launch {
             this@SectionEditFragment.section = dbOperations.readSection(this@SectionEditFragment.sectionId)
             if (!isAdded) return@launch
             this@SectionEditFragment.audio = Audio(requireContext())
@@ -142,13 +142,13 @@ class SectionEditFragment : Fragment() {
             fillViewFromData()
             installListeners()
             val s = section ?: return@launch
-            binding.bellGapScrollview.post {
+            _binding?.bellGapScrollview?.post {
                 val idx = s.bellpause - 1
                 if (idx < 0 || idx >= tvGaps.size) return@post
                 val textView = tvGaps[idx] ?: return@post
                 val rect = Rect()
                 textView.getDrawingRect(rect)
-                binding.bellGapScrollview.requestChildRectangleOnScreen(textView, rect, true)
+                _binding?.bellGapScrollview?.requestChildRectangleOnScreen(textView, rect, true)
             }
         }
     }

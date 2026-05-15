@@ -31,6 +31,31 @@ abstract class VersionTagSource : ValueSource<String, ValueSourceParameters.None
     }
 }
 
+abstract class CommitCountSource : ValueSource<String, ValueSourceParameters.None> {
+    override fun obtain(): String {
+        val tagProcess =
+            ProcessBuilder("git", "describe", "--tags", "--match", "v*", "--abbrev=0")
+                .directory(File(System.getProperty("user.dir")))
+                .start()
+        tagProcess.waitFor()
+        val tag =
+            tagProcess.inputStream
+                .bufferedReader()
+                .readText()
+                .trim()
+        if (!tag.startsWith("v")) return "0"
+        val countProcess =
+            ProcessBuilder("git", "rev-list", "$tag..HEAD", "--count")
+                .directory(File(System.getProperty("user.dir")))
+                .start()
+        countProcess.waitFor()
+        return countProcess.inputStream
+            .bufferedReader()
+            .readText()
+            .trim()
+    }
+}
+
 plugins {
     id("com.android.application")
     id("com.google.dagger.hilt.android")
@@ -57,7 +82,13 @@ android {
                 val major = parts.getOrElse(0) { "0" }.toInt()
                 val minor = parts.getOrElse(1) { "0" }.toInt()
                 val patch = parts.getOrElse(2) { "0" }.toInt()
-                (major * 10000 + minor * 100 + patch).coerceAtLeast(1)
+                val commits =
+                    providers
+                        .of(CommitCountSource::class.java) {}
+                        .get()
+                        .trim()
+                        .toInt()
+                major * 1000000 + minor * 10000 + patch * 100 + commits
             }
         versionName =
             if (project.hasProperty("versionName")) {

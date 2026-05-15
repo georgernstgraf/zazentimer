@@ -29,6 +29,7 @@ class BellVolumeConfigDialog : DialogFragment() {
     companion object {
         private const val ARG_SESSION_ID = "sessionId"
         private const val ARG_IS_DARK = "isDark"
+        private const val STATE_BELL_VOLUMES = "bellVolumes"
         private const val VOLUME_MAX = 100
         private const val VOLUME_STEP_SIZE = 10
         private const val VOLUME_MAX_STEP = 9
@@ -74,6 +75,13 @@ class BellVolumeConfigDialog : DialogFragment() {
         savedInstanceState: Bundle?,
     ) {
         super.onViewCreated(view, savedInstanceState)
+        if (savedInstanceState != null) {
+            @Suppress("DEPRECATION")
+            val saved = savedInstanceState.getSerializable(STATE_BELL_VOLUMES) as? ArrayList<SessionBellVolume>
+            if (saved != null && saved.isNotEmpty()) {
+                bellVolumes = saved.toMutableList()
+            }
+        }
         val recyclerView = view.findViewById<RecyclerView>(R.id.bell_volume_list)
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
 
@@ -113,6 +121,11 @@ class BellVolumeConfigDialog : DialogFragment() {
         }
         audio = null
         (parentFragment as? OnBellVolumesSavedListener)?.onBellVolumesSaved(bellVolumes)
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        outState.putSerializable(STATE_BELL_VOLUMES, ArrayList(bellVolumes))
     }
 
     fun setBellVolumes(volumes: List<SessionBellVolume>) {
