@@ -18,8 +18,8 @@
     <string name="bell_name_6">Campana giapponese Tang, 164mm</string>
     <string name="bell_name_7">Campana tibetana, 230mm</string>
     <string name="bell_name_8">Campana giapponese, 97mm</string>
-    <string name="bell_pause">Pausa campana (sec)</string>
-    <string name="bell_user">Aggiungi campana…</string>
+    <string name="bell_pause">Pausa campana tibetana (sec)</string>
+    <string name="bell_user">Aggiungi campana tibetana…</string>
     <string name="bottom_nav_meditation">Meditazione</string>
     <string name="bottom_nav_sessions">Sessioni</string>
     <string name="bottom_sheet_behavior">android.support.design.widget.BottomSheetBehavior</string>

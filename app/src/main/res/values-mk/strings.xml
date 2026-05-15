@@ -18,7 +18,7 @@
     <string name="bell_name_6">Јап. Rhinbowl Tang, 164 mm</string>
     <string name="bell_name_7">Тиб. Сад, 230 мм</string>
     <string name="bell_name_8">Јап. Ринбоул, 97 мм</string>
-    <string name="bell_pause">Јаз во ѕвончето (сек)</string>
+    <string name="bell_pause">Јаз на звучниот сад (сек)</string>
     <string name="bell_user">Додај Бел…</string>
     <string name="bottom_nav_meditation">Медитација</string>
     <string name="bottom_nav_sessions">Сесии</string>
@@ -150,7 +150,7 @@
     <string name="stop_meditation_cancel">Откажи</string>
     <string name="pref_title_bell_volume">Јачина на ѕвонче</string>
     <string name="pref_desc_bell_volume">Ја контролира јачината на звукот на алармот за звуците на ѕвончето</string>
-    <string name="title_dim_bell">Дим Бел</string>
+    <string name="title_dim_bell">Намали звук на сад</string>
     <string name="dim_bell_label_off">Не затемнети</string>
     <string name="dim_bell_label_format">Затемнет: %1$d0%%</string>
     <string name="section_deleted">Избришано \'%s\'</string>

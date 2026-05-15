@@ -18,8 +18,8 @@
     <string name="bell_name_6">Jap. klankschaal Tang, 164 mm</string>
     <string name="bell_name_7">Tib. klankschaal, 230 mm</string>
     <string name="bell_name_8">Jap. klankschaal, 97 mm</string>
-    <string name="bell_pause">Belinterval (sec)</string>
-    <string name="bell_user">Bel toevoegen…</string>
+    <string name="bell_pause">Klankschaalinterval (sec)</string>
+    <string name="bell_user">Klankschaal toevoegen…</string>
     <string name="bottom_nav_meditation">Meditatie</string>
     <string name="bottom_nav_sessions">Sessies</string>
     <string name="bottom_sheet_behavior">android.support.design.widget.BottomSheetBehavior</string>

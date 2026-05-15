@@ -78,7 +78,7 @@
     <string name="notification_text_paused">หยุดการทำสมาธิชั่วคราว</string>
     <string name="notification_title">การทำสมาธิแบบเซน</string>
     <string name="notification_title_paused">การทำสมาธิ (หยุดชั่วคราว)</string>
-    <string name="num_bells">จำนวนระฆัง</string>
+    <string name="num_bells">Translation meaning ขันลงหิน</string>
     <string name="ok">ตกลง</string>
     <string name="pref_desc_brightness">ความสว่างหน้าจอขณะทำสมาธิ</string>
     <string name="pref_get_messages">ตรวจสอบข้อความใหม่ทันที</string>

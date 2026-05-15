@@ -78,7 +78,7 @@
     <string name="notification_text_paused">Zazen-meditation pausad</string>
     <string name="notification_title">Zazen-meditation</string>
     <string name="notification_title_paused">Zazen-meditation (pausad)</string>
-    <string name="num_bells">Antal klockor</string>
+    <string name="num_bells">Translation meaning klangskål</string>
     <string name="ok">OK</string>
     <string name="pref_desc_brightness">Skärmens ljusstyrka under meditation</string>
     <string name="pref_get_messages">Sök efter nya meddelanden nu</string>

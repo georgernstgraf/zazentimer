@@ -18,7 +18,7 @@
     <string name="bell_name_6">وعاء تانغ ياباني، 164 ملم</string>
     <string name="bell_name_7">وعاء تبتي، 230 ملم</string>
     <string name="bell_name_8">وعاء ياباني، 97 ملم</string>
-    <string name="bell_pause">فجوة الجرس (ثانية)</string>
+    <string name="bell_pause">فجوة جرس التأمل (ثانية)</string>
     <string name="bell_user">إضافة جرس…</string>
     <string name="bottom_nav_meditation">التأمل</string>
     <string name="bottom_nav_sessions">الجلسات</string>
@@ -149,7 +149,7 @@
     <string name="stop_meditation_cancel">إلغاء</string>
     <string name="pref_title_bell_volume">حجم الجرس</string>
     <string name="pref_desc_bell_volume">يتحكم في مستوى صوت التنبيه لأصوات الجرس</string>
-    <string name="title_dim_bell">جرس خافت</string>
+    <string name="title_dim_bell">خفض صوت الجرس</string>
     <string name="dim_bell_label_off">غير خافت</string>
     <string name="dim_bell_label_format">خافت: %1$d0%%</string>
     <string name="section_deleted">تم حذف \'%s\'</string>

@@ -78,7 +78,7 @@
     <string name="notification_text_paused">ज़ाज़ेन ध्यान रोका गया</string>
     <string name="notification_title">ज़ाज़ेन ध्यान</string>
     <string name="notification_title_paused">ज़ाज़ेन ध्यान (रोका गया)</string>
-    <string name="num_bells">घंटी की गिनती</string>
+    <string name="num_bells">Translation meaning सिंगिंग बाउल</string>
     <string name="ok">ठीक है</string>
     <string name="pref_desc_brightness">ध्यान के दौरान डिस्प्ले की चमक</string>
     <string name="pref_get_messages">अभी नए संदेशों की जाँच करें</string>

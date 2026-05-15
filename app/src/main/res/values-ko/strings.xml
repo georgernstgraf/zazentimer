@@ -150,9 +150,9 @@
     <string name="stop_meditation_cancel">취소</string>
     <string name="pref_title_bell_volume">종소리 볼륨</string>
     <string name="pref_desc_bell_volume">종소리의 알람 스트림 볼륨 제어</string>
-    <string name="title_dim_bell">어두운 종</string>
-    <string name="dim_bell_label_off">어둡게 하지 않음</string>
-    <string name="dim_bell_label_format">어둡게 함: %1$d0%%</string>
+    <string name="title_dim_bell">종소리 줄이기</string>
+    <string name="dim_bell_label_off">줄이지 않음</string>
+    <string name="dim_bell_label_format">줄임: %1$d0%%</string>
     <string name="section_deleted">\'%s\' 삭제됨</string>
     <string name="action_undo">실행 취소</string>
     <string name="notification_channel_name">명상 타이머</string>

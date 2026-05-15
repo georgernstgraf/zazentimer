@@ -78,7 +78,7 @@
     <string name="notification_text_paused">Zazen Meditasyonu duraklatıldı</string>
     <string name="notification_title">Zazen Meditasyonu</string>
     <string name="notification_title_paused">Zazen Meditasyonu (duraklatıldı)</string>
-    <string name="num_bells">Zil sayısı</string>
+    <string name="num_bells">Translation meaning şarkı kasesi</string>
     <string name="ok">Tamam</string>
     <string name="pref_desc_brightness">Meditasyon sırasında Ekran Parlaklığı</string>
     <string name="pref_get_messages">Yeni Mesajları şimdi kontrol et</string>

@@ -18,7 +18,7 @@
     <string name="bell_name_6">Japonia Rhinbowl Tang, 164 mm</string>
     <string name="bell_name_7">Tib. Tas, 230 mm</string>
     <string name="bell_name_8">Japonia Rinbowl, 97 mm</string>
-    <string name="bell_pause">Hendeku i ziles (sek)</string>
+    <string name="bell_pause">Hendeku i tasit tibetian (sek)</string>
     <string name="bell_user">Shto zile…</string>
     <string name="bottom_nav_meditation">Meditim</string>
     <string name="bottom_nav_sessions">Sesionet</string>
@@ -150,7 +150,7 @@
     <string name="stop_meditation_cancel">Anulo</string>
     <string name="pref_title_bell_volume">Vëllimi i ziles</string>
     <string name="pref_desc_bell_volume">Kontrollon volumin e transmetimit të alarmit për tingujt e ziles</string>
-    <string name="title_dim_bell">Dim Bell</string>
+    <string name="title_dim_bell">Ule zërin</string>
     <string name="dim_bell_label_off">Jo e zbehur</string>
     <string name="dim_bell_label_format">E zbehur: %1$d0%%</string>
     <string name="section_deleted">U fshi \'%s\'</string>

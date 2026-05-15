@@ -19,7 +19,7 @@
     <string name="bell_name_7">Tib. Bowl, 230mm</string>
     <string name="bell_name_8">Jap. Rhinbowl, 97mm</string>
     <string name="bell_pause">Klokpouse (sek)</string>
-    <string name="bell_user">Voeg klok by…</string>
+    <string name="bell_user">Voeg klankskaal by…</string>
     <string name="bottom_nav_meditation">Meditasie</string>
     <string name="bottom_nav_sessions">Sessies</string>
     <string name="bottom_sheet_behavior">android.support.design.widget.BottomSheetBehavior</string>

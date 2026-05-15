@@ -76,7 +76,7 @@
     <string name="notification_text_paused">Medytacja Zazen wstrzymana</string>
     <string name="notification_title">Medytacja Zazen</string>
     <string name="notification_title_paused">Medytacja Zazen (wstrzymana)</string>
-    <string name="num_bells">Liczba dzwonków</string>
+    <string name="num_bells">Translation meaning misa dźwiękowa</string>
     <string name="ok">OK</string>
     <string name="pref_desc_brightness">Jasność ekranu podczas medytacji</string>
     <string name="pref_get_messages">Sprawdź teraz nowe wiadomości</string>

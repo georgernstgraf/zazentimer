@@ -78,7 +78,7 @@
     <string name="notification_text_paused">Zazen-meditaatio keskeytetty</string>
     <string name="notification_title">Zazen-meditaatio</string>
     <string name="notification_title_paused">Zazen-meditaatio (keskeytetty)</string>
-    <string name="num_bells">Kellojen määrä</string>
+    <string name="num_bells">Translation meaning äänimalja</string>
     <string name="ok">OK</string>
     <string name="pref_desc_brightness">Näytön kirkkaus meditaation aikana</string>
     <string name="pref_get_messages">Tarkista uudet viestit nyt</string>

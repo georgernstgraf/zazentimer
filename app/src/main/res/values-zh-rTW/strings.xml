@@ -18,8 +18,8 @@
     <string name="bell_name_6">日本唐鈴，164mm</string>
     <string name="bell_name_7">西藏頌缽，230mm</string>
     <string name="bell_name_8">日本鈴，97mm</string>
-    <string name="bell_pause">鈴聲間隔 (秒)</string>
-    <string name="bell_user">新增鈴聲…</string>
+    <string name="bell_pause">引磬間隔 (秒)</string>
+    <string name="bell_user">新增引磬…</string>
     <string name="bottom_nav_meditation">冥想</string>
     <string name="bottom_nav_sessions">課程</string>
     <string name="bottom_sheet_behavior">android.support.design.widget.BottomSheetBehavior</string>

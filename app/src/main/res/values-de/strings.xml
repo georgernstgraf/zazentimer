@@ -18,8 +18,8 @@
     <string name="bell_name_6">Jap. Rhinbowl Tang, 164mm</string>
     <string name="bell_name_7">Tib. Klangschale, 230mm</string>
     <string name="bell_name_8">Jap. Rhinbowl, 97mm</string>
-    <string name="bell_pause">Gong-Pause (Sek.)</string>
-    <string name="bell_user">Gong hinzufügen…</string>
+    <string name="bell_pause">Klangschalen-Pause (Sek.)</string>
+    <string name="bell_user">Klangschale hinzufügen…</string>
     <string name="bottom_nav_meditation">Meditation</string>
     <string name="bottom_nav_sessions">Sessions</string>
     <string name="bottom_sheet_behavior">android.support.design.widget.BottomSheetBehavior</string>

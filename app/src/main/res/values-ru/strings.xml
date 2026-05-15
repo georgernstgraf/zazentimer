@@ -18,8 +18,8 @@
     <string name="bell_name_6">Яп. чаша Тан, 164 мм</string>
     <string name="bell_name_7">Тиб. чаша, 230 мм</string>
     <string name="bell_name_8">Яп. чаша, 97 мм</string>
-    <string name="bell_pause">Пауза гонга (сек)</string>
-    <string name="bell_user">Добавить гонг…</string>
+    <string name="bell_pause">Пауза чаши (сек)</string>
+    <string name="bell_user">Добавить чашу…</string>
     <string name="bottom_nav_meditation">Медитация</string>
     <string name="bottom_nav_sessions">Сессии</string>
     <string name="bottom_sheet_behavior">android.support.design.widget.BottomSheetBehavior</string>

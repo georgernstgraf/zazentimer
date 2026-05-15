@@ -78,7 +78,7 @@
     <string name="notification_text_paused">Đã tạm dừng tọa thiền</string>
     <string name="notification_title">Tọa thiền</string>
     <string name="notification_title_paused">Tọa thiền (tạm dừng)</string>
-    <string name="num_bells">Số lần chuông</string>
+    <string name="num_bells">Translation meaning chuông xoay</string>
     <string name="ok">OK</string>
     <string name="pref_desc_brightness">Độ sáng màn hình khi thiền.</string>
     <string name="pref_get_messages">Kiểm tra tin nhắn mới ngay.</string>

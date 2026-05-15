@@ -78,7 +78,7 @@
     <string name="notification_text_paused">Ο διαλογισμός Zazen έχει τεθεί σε παύση</string>
     <string name="notification_title">Διαλογισμός Zazen</string>
     <string name="notification_title_paused">Διαλογισμός Zazen (σε παύση)</string>
-    <string name="num_bells">Αριθμός κουδουνιών</string>
+    <string name="num_bells">Translation meaning ηχογαβάθα</string>
     <string name="ok">ΟΚ</string>
     <string name="pref_desc_brightness">Φωτεινότητα οθόνης</string>
     <string name="pref_get_messages">Έλεγχος για νέα μηνύματα τώρα</string>

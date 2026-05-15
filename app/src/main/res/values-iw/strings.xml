@@ -78,7 +78,7 @@
     <string name="notification_text_paused">מדיטציית זאזן הושהתה</string>
     <string name="notification_title">מדיטציית זאזן</string>
     <string name="notification_title_paused">מדיטציית זאזן (מושהית)</string>
-    <string name="num_bells">ספירת פעמונים</string>
+    <string name="num_bells">Translation meaning קערת טיבטית</string>
     <string name="ok">אישור</string>
     <string name="pref_desc_brightness">בהירות התצוגה במהלך המדיטציה</string>
     <string name="pref_get_messages">בדוק אם יש הודעות חדשות כעת</string>

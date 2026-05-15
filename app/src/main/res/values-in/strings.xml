@@ -78,7 +78,7 @@
     <string name="notification_text_paused">Meditasi Zazen dijeda</string>
     <string name="notification_title">Meditasi Zazen</string>
     <string name="notification_title_paused">Meditasi Zazen (dijeda)</string>
-    <string name="num_bells">Jumlah Bel</string>
+    <string name="num_bells">Translation meaning mangkuk bernyanyi</string>
     <string name="ok">OK</string>
     <string name="pref_desc_brightness">Kecerahan layar selama meditasi.</string>
     <string name="pref_get_messages">Periksa pesan baru sekarang.</string>
