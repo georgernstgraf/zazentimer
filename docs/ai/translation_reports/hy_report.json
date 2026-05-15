@@ -1,0 +1,13 @@
+{
+  "locale": "hy",
+  "tier": 4,
+  "findings": [
+    {
+      "string_key": "bell_pause",
+      "english_source": "Bell gap (sec)",
+      "current_translation": "Զանգի դադար (վրկ)",
+      "suggested_translation": "Երգող թասի դադար (վրկ)",
+      "reasoning": "'Զանգ' is a general bell. 'Երգող թաս' (singing bowl) is the correct term for meditation."
+    }
+  ]
+}

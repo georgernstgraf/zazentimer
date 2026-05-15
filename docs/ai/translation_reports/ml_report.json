@@ -1,0 +1,13 @@
+{
+  "locale": "ml",
+  "tier": 4,
+  "findings": [
+    {
+      "string_key": "bell_pause",
+      "english_source": "Bell gap (sec)",
+      "current_translation": "മണി ഇടവേള (സെക്കൻഡ്)",
+      "suggested_translation": "നാദപാത്രം ഇടവേള (സെക്കൻഡ്)",
+      "reasoning": "'മണി' (Mani) is a regular bell. 'നാദപാത്രം' (Naadapaathram) or singing bowl is more appropriate."
+    }
+  ]
+}

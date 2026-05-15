@@ -1,0 +1,13 @@
+{
+  "locale": "sw",
+  "tier": 4,
+  "findings": [
+    {
+      "string_key": "bell_pause",
+      "english_source": "Bell gap (sec)",
+      "current_translation": "Nafasi ya kengele (sek)",
+      "suggested_translation": "Nafasi ya bakuli la sauti (sek)",
+      "reasoning": "'Kengele' refers to a regular bell. A singing bowl ('bakuli la sauti') is more appropriate for a Zen context."
+    }
+  ]
+}

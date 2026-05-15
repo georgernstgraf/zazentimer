@@ -1,0 +1,13 @@
+{
+  "locale": "az",
+  "tier": 4,
+  "findings": [
+    {
+      "string_key": "bell_pause",
+      "english_source": "Bell gap (sec)",
+      "current_translation": "Zəng fasiləsi (san)",
+      "suggested_translation": "Nəğməkar kasa fasiləsi (san)",
+      "reasoning": "'Zəng' is a standard bell or ringtone. 'Nəğməkar kasa' (singing bowl) is the right term for Zen."
+    }
+  ]
+}

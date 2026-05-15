@@ -1,0 +1,13 @@
+{
+  "locale": "is",
+  "tier": 4,
+  "findings": [
+    {
+      "string_key": "bell_pause",
+      "english_source": "Bell gap (sec)",
+      "current_translation": "Bjöllubil (sek)",
+      "suggested_translation": "Söngskálabil (sek)",
+      "reasoning": "'Bjalla' refers to a standard bell. 'Söngskál' (singing bowl) is correct for Zen meditation."
+    }
+  ]
+}

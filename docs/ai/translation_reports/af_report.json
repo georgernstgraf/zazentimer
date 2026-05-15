@@ -1,0 +1,13 @@
+{
+  "locale": "af",
+  "tier": 4,
+  "findings": [
+    {
+      "string_key": "bell_user",
+      "english_source": "Add Bell…",
+      "current_translation": "Voeg klok by…",
+      "suggested_translation": "Voeg klankskaal by…",
+      "reasoning": "'Klok' usually refers to a clock or church bell. 'Klankskaal' (singing bowl) is the correct term for Zen meditation."
+    }
+  ]
+}

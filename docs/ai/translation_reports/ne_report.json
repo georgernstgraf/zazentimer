@@ -1,0 +1,13 @@
+{
+  "locale": "ne",
+  "tier": 4,
+  "findings": [
+    {
+      "string_key": "bell_pause",
+      "english_source": "Bell gap (sec)",
+      "current_translation": "घण्टीको अन्तर (सेकेन्ड)",
+      "suggested_translation": "ध्वनि कचौराको अन्तर (सेकेन्ड)",
+      "reasoning": "'घण्टी' (Ghanti) is a standard bell. 'ध्वनि कचौरा' (Sound bowl) is appropriate for Zen."
+    }
+  ]
+}

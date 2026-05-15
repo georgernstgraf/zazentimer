@@ -1,0 +1,13 @@
+{
+  "locale": "ga",
+  "tier": 4,
+  "findings": [
+    {
+      "string_key": "bell_pause",
+      "english_source": "Bell gap (sec)",
+      "current_translation": "Bearna cloig (soicind)",
+      "suggested_translation": "Bearna babhla amhránaíochta (soicind)",
+      "reasoning": "'Clog' refers to a standard bell or clock. 'Babhla amhránaíochta' (singing bowl) is the correct term."
+    }
+  ]
+}

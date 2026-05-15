@@ -1,0 +1,13 @@
+{
+  "locale": "eu",
+  "tier": 4,
+  "findings": [
+    {
+      "string_key": "bell_pause",
+      "english_source": "Bell gap (sec)",
+      "current_translation": "Kanpai-pasa (seg)",
+      "suggested_translation": "Ontzi tibetarraren pasa (seg)",
+      "reasoning": "'Kanpai' is a church bell. 'Ontzi tibetarra' (Tibetan bowl) is correct for Zen meditation."
+    }
+  ]
+}

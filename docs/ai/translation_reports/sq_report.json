@@ -1,0 +1,20 @@
+{
+  "locale": "sq",
+  "tier": 4,
+  "findings": [
+    {
+      "string_key": "bell_pause",
+      "english_source": "Bell gap (sec)",
+      "current_translation": "Hendeku i ziles (sek)",
+      "suggested_translation": "Hendeku i tasit tibetian (sek)",
+      "reasoning": "'Zile' refers to a doorbell or phone ring. 'Tas tibetian' (Tibetan bowl) is more appropriate."
+    },
+    {
+      "string_key": "title_dim_bell",
+      "english_source": "Dim Bell",
+      "current_translation": "Dim Bell",
+      "suggested_translation": "Ule zërin",
+      "reasoning": "Left untranslated in English. Should be translated to indicate lowering the volume."
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "locale": "uz",
+  "tier": 4,
+  "findings": [
+    {
+      "string_key": "bell_pause",
+      "english_source": "Bell gap (sec)",
+      "current_translation": "Qo'ng'iroq oralig'i (soniya)",
+      "suggested_translation": "Kuylovchi kosa oralig'i (soniya)",
+      "reasoning": "'Qo'ng'iroq' refers to a regular bell. 'Kuylovchi kosa' (singing bowl) is correct for Zen."
+    }
+  ]
+}

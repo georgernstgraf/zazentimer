@@ -1,0 +1,13 @@
+{
+  "locale": "cy",
+  "tier": 4,
+  "findings": [
+    {
+      "string_key": "bell_pause",
+      "english_source": "Bell gap (sec)",
+      "current_translation": "Bwlch cloch (eiliadau)",
+      "suggested_translation": "Bwlch bowlen ganu (eiliadau)",
+      "reasoning": "'Cloch' refers to a church or school bell. 'Bowlen ganu' (singing bowl) is the correct instrument."
+    }
+  ]
+}

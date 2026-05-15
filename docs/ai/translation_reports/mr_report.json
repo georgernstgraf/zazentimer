@@ -1,0 +1,13 @@
+{
+  "locale": "mr",
+  "tier": 4,
+  "findings": [
+    {
+      "string_key": "bell_pause",
+      "english_source": "Bell gap (sec)",
+      "current_translation": "बेल अंतर (सेकंद)",
+      "suggested_translation": "सिंगिंग बाऊल अंतर (सेकंद)",
+      "reasoning": "'बेल' is the English word 'bell' transliterated. A singing bowl is used in this context."
+    }
+  ]
+}

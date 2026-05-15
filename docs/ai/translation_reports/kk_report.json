@@ -1,0 +1,13 @@
+{
+  "locale": "kk",
+  "tier": 4,
+  "findings": [
+    {
+      "string_key": "bell_pause",
+      "english_source": "Bell gap (sec)",
+      "current_translation": "Қоңырау аралығы (сек)",
+      "suggested_translation": "Әнші тостаған аралығы (сек)",
+      "reasoning": "'Қоңырау' is a standard bell. 'Әнші тостаған' (singing bowl) is better for meditation."
+    }
+  ]
+}

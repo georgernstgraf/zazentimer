@@ -1,0 +1,13 @@
+{
+  "locale": "ka",
+  "tier": 4,
+  "findings": [
+    {
+      "string_key": "bell_pause",
+      "english_source": "Bell gap (sec)",
+      "current_translation": "ზარის ინტერვალი (წმ)",
+      "suggested_translation": "მგალობელი თასის ინტერვალი (წმ)",
+      "reasoning": "'ზარი' (zari) is a standard bell. 'მგალობელი თასი' (singing bowl) fits the Zen context better."
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "locale": "gl",
+  "tier": 4,
+  "findings": [
+    {
+      "string_key": "bell_pause",
+      "english_source": "Bell gap (sec)",
+      "current_translation": "Pausa da campá (seg)",
+      "suggested_translation": "Pausa do cunco tibetano (seg)",
+      "reasoning": "'Campá' usually refers to a church bell. 'Cunco tibetano' is the correct term for a singing bowl in a Zen context."
+    }
+  ]
+}

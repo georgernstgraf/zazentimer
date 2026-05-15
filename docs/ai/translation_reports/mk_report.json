@@ -1,0 +1,20 @@
+{
+  "locale": "mk",
+  "tier": 4,
+  "findings": [
+    {
+      "string_key": "title_dim_bell",
+      "english_source": "Dim Bell",
+      "current_translation": "Дим Бел",
+      "suggested_translation": "Намали звук на сад",
+      "reasoning": "'Дим Бел' is a literal phonetic transcription of the English words. It should be translated to describe reducing the volume of the sound bowl."
+    },
+    {
+      "string_key": "bell_pause",
+      "english_source": "Bell gap (sec)",
+      "current_translation": "Јаз во ѕвончето (сек)",
+      "suggested_translation": "Јаз на звучниот сад (сек)",
+      "reasoning": "'Ѕвонче' is a small ringing bell. 'Звучен сад' (sound bowl) is better for meditation."
+    }
+  ]
+}

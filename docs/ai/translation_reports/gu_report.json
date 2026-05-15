@@ -1,0 +1,13 @@
+{
+  "locale": "gu",
+  "tier": 4,
+  "findings": [
+    {
+      "string_key": "bell_pause",
+      "english_source": "Bell gap (sec)",
+      "current_translation": "બેલ ગેપ (સેકંડ)",
+      "suggested_translation": "સિંગિંગ બાઉલ ગેપ (સેકંડ)",
+      "reasoning": "'બેલ' is a transliteration of 'bell'. A singing bowl is the intended instrument."
+    }
+  ]
+}

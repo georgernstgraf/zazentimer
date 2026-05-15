@@ -1,0 +1,13 @@
+{
+  "locale": "my",
+  "tier": 4,
+  "findings": [
+    {
+      "string_key": "bell_pause",
+      "english_source": "Bell gap (sec)",
+      "current_translation": "ခေါင်းလောင်း ကွာဟချက် (စက္ကန့်)",
+      "suggested_translation": "တရားထိုင်ဖလား ကွာဟချက် (စက္ကန့်)",
+      "reasoning": "'ခေါင်းလောင်း' is a general bell. 'တရားထိုင်ဖလား' (meditation bowl) is more fitting."
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "locale": "km",
+  "tier": 4,
+  "findings": [
+    {
+      "string_key": "bell_pause",
+      "english_source": "Bell gap (sec)",
+      "current_translation": "ចន្លោះពេលជួង (វិនាទី)",
+      "suggested_translation": "ចន្លោះពេលចានសមាធិ (វិនាទី)",
+      "reasoning": "'ជួង' (chuong) is a standard bell. 'ចានសមាធិ' (meditation bowl) fits the context better."
+    }
+  ]
+}
