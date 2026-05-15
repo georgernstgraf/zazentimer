@@ -161,4 +161,13 @@
     <string name="nav_label_edit_session">セッションの編集</string>
     <string name="nav_label_edit_section">セクションの編集</string>
     <string name="nav_label_settings">設定</string>
+
+    <string name="title_bell_volumes">鈴の音量</string>
+    <string name="button_bell_volumes">鈴の音量を調整</string>
+    <string name="bell_volume_label_format" translatable="false">%1$d%%</string>
+    <string name="bell_volume_default">デフォルト</string>
+    <string name="no_bells_configured">まだ鈴が設定されていません</string>
+    <string name="bell_volume_dim_explanation">個別の鈴の音量を下げます。また、システムのアラーム音量も考慮してください。</string>
+    <string name="restore_version_mismatch_title">新しいバックアップバージョン</string>
+    <string name="restore_version_mismatch_text">このバックアップは新しいバージョンのZazenTimerで作成されました。アプリを更新してください。</string>
 </resources>

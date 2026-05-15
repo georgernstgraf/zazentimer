@@ -161,4 +161,13 @@
     <string name="nav_label_edit_session">Modifica sessione</string>
     <string name="nav_label_edit_section">Modifica sezione</string>
     <string name="nav_label_settings">Impostazioni</string>
+
+    <string name="title_bell_volumes">Volumi della campana</string>
+    <string name="button_bell_volumes">Regola volumi</string>
+    <string name="bell_volume_label_format" translatable="false">%1$d%%</string>
+    <string name="bell_volume_default">Predefinito</string>
+    <string name="no_bells_configured">Nessuna campana ancora configurata</string>
+    <string name="bell_volume_dim_explanation">Riduci il volume delle singole campane. Considera anche il volume della sveglia di sistema.</string>
+    <string name="restore_version_mismatch_title">Versione di backup più recente</string>
+    <string name="restore_version_mismatch_text">Questo backup è stato creato da una versione più recente di ZazenTimer. Aggiorna l\'app.</string>
 </resources>

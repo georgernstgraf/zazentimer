@@ -161,4 +161,13 @@
     <string name="nav_label_edit_session">Изменить сессию</string>
     <string name="nav_label_edit_section">Изменить секцию</string>
     <string name="nav_label_settings">Настройки</string>
+
+    <string name="title_bell_volumes">Громкость чаш</string>
+    <string name="button_bell_volumes">Настроить громкость</string>
+    <string name="bell_volume_label_format" translatable="false">%1$d%%</string>
+    <string name="bell_volume_default">По умолчанию</string>
+    <string name="no_bells_configured">Чаши пока не настроены</string>
+    <string name="bell_volume_dim_explanation">Уменьшите громкость отдельных чаш. Также учитывайте системную громкость будильника.</string>
+    <string name="restore_version_mismatch_title">Более новая версия резервной копии</string>
+    <string name="restore_version_mismatch_text">Эта резервная копия создана в более новой версии ZazenTimer. Пожалуйста, обновите приложение.</string>
 </resources>

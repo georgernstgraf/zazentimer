@@ -161,4 +161,13 @@
     <string name="nav_label_edit_session">编辑课程</string>
     <string name="nav_label_edit_section">编辑阶段</string>
     <string name="nav_label_settings">设置</string>
+
+    <string name="title_bell_volumes">引磬音量</string>
+    <string name="button_bell_volumes">调整引磬音量</string>
+    <string name="bell_volume_label_format" translatable="false">%1$d%%</string>
+    <string name="bell_volume_default">默认</string>
+    <string name="no_bells_configured">尚未配置引磬</string>
+    <string name="bell_volume_dim_explanation">降低单独的引磬音量。同时，请注意系统的闹钟音量。</string>
+    <string name="restore_version_mismatch_title">更新的备份版本</string>
+    <string name="restore_version_mismatch_text">此备份是由较新版本的ZazenTimer创建的。请更新应用。</string>
 </resources>

@@ -161,4 +161,13 @@
     <string name="nav_label_edit_session">Session bearbeiten</string>
     <string name="nav_label_edit_section">Abschnitt bearbeiten</string>
     <string name="nav_label_settings">Einstellungen</string>
+
+    <string name="title_bell_volumes">Klangschalen-Lautstärke</string>
+    <string name="button_bell_volumes">Lautstärke anpassen</string>
+    <string name="bell_volume_label_format" translatable="false">%1$d%%</string>
+    <string name="bell_volume_default">Standard</string>
+    <string name="no_bells_configured">Noch keine Klangschalen konfiguriert</string>
+    <string name="bell_volume_dim_explanation">Reduziere individuelle Lautstärken. Beachte auch die System-Weckerlautstärke.</string>
+    <string name="restore_version_mismatch_title">Neuere Backup-Version</string>
+    <string name="restore_version_mismatch_text">Dieses Backup wurde mit einer neueren Version von ZazenTimer erstellt. Bitte aktualisiere die App.</string>
 </resources>

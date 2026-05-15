@@ -161,4 +161,13 @@
     <string name="nav_label_edit_session">세션 편집</string>
     <string name="nav_label_edit_section">섹션 편집</string>
     <string name="nav_label_settings">설정</string>
+
+    <string name="title_bell_volumes">종소리 볼륨</string>
+    <string name="button_bell_volumes">종소리 볼륨 조절</string>
+    <string name="bell_volume_label_format" translatable="false">%1$d%%</string>
+    <string name="bell_volume_default">기본값</string>
+    <string name="no_bells_configured">아직 구성된 종이 없습니다</string>
+    <string name="bell_volume_dim_explanation">개별 종소리 볼륨을 줄입니다. 시스템 알람 볼륨도 고려해 주세요.</string>
+    <string name="restore_version_mismatch_title">최신 백업 버전</string>
+    <string name="restore_version_mismatch_text">이 백업은 더 최신 버전의 ZazenTimer에서 생성되었습니다. 앱을 업데이트해 주세요.</string>
 </resources>

@@ -161,4 +161,13 @@
     <string name="nav_label_edit_session">Sessie bewerken</string>
     <string name="nav_label_edit_section">Sectie bewerken</string>
     <string name="nav_label_settings">Instellingen</string>
+
+    <string name="title_bell_volumes">Klankschaalvolumes</string>
+    <string name="button_bell_volumes">Klankschaalvolumes aanpassen</string>
+    <string name="bell_volume_label_format" translatable="false">%1$d%%</string>
+    <string name="bell_volume_default">Standaard</string>
+    <string name="no_bells_configured">Nog geen klankschalen geconfigureerd</string>
+    <string name="bell_volume_dim_explanation">Verlaag de individuele klankschaalvolumes. Houd ook rekening met het alarmvolume van het systeem.</string>
+    <string name="restore_version_mismatch_title">Nieuwere back-upversie</string>
+    <string name="restore_version_mismatch_text">Deze back-up is gemaakt door een nieuwere versie van ZazenTimer. Werk de app bij.</string>
 </resources>

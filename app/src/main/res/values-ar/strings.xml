@@ -160,4 +160,14 @@
     <string name="nav_label_edit_session">تعديل الجلسة</string>
     <string name="nav_label_edit_section">تعديل القسم</string>
     <string name="nav_label_settings">الإعدادات</string>
+
+    <string name="title_bell_volumes">مستوى صوت الجرس</string>
+    <string name="button_bell_volumes">ضبط مستوى صوت الجرس</string>
+    <string name="bell_volume_label_format" translatable="false">%1$d%%</string>
+    <string name="bell_volume_default">الافتراضي</string>
+    <string name="no_bells_configured">لم يتم إعداد أي أجراس بعد</string>
+    <string name="bell_volume_dim_explanation">تقليل مستوى صوت الأجراس الفردية. أيضًا، ضع في اعتبارك مستوى صوت منبه النظام.</string>
+    <string name="restore_version_mismatch_title">نسخة احتياطية أحدث</string>
+    <string name="restore_version_mismatch_text">تم إنشاء هذه النسخة الاحتياطية بواسطة إصدار أحدث من ZazenTimer. يرجى تحديث التطبيق.</string>
+    <string name="restore_success_text">نجحت استعادة البيانات</string>
 </resources>
