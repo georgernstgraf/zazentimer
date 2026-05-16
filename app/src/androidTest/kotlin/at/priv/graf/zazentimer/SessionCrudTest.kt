@@ -36,7 +36,6 @@ class SessionCrudTest : AbstractZazenTest() {
                 .apply()
         }
         activityRef?.resetDatabaseForTest()
-        onIdle()
     }
 
     @Test

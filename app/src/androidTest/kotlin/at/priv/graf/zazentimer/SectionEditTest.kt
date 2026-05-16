@@ -32,7 +32,6 @@ class SectionEditTest : AbstractZazenTest() {
                 .apply()
         }
         activityRef?.resetDatabaseForTest()
-        onIdle()
     }
 
     @Test

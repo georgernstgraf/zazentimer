@@ -47,7 +47,6 @@ class MainScreenDeadStateTest : AbstractZazenTest() {
                 activity.resetDatabaseForTest()
             }
         }
-        onIdle()
     }
 
     @After

@@ -23,7 +23,6 @@ class DuplicateSessionTest : AbstractZazenTest() {
         var activityRef: ZazenTimerActivity? = null
         activityRule.scenario.onActivity { activityRef = it }
         activityRef?.resetDatabaseForTest()
-        onIdle()
     }
 
     @Test
