@@ -40,6 +40,13 @@ cp scripts/git-hooks/pre-push .git/hooks/pre-push && chmod +x .git/hooks/pre-pus
 - Agent work is considered complete only if the application successfully starts in the emulator.
 - **The main agent must not create any code.** Its sole task is to orchestrate sub-agents that solve sub-issues. Delegate all implementation work to Task agents.
 
+## Destructive Git Operations — STRICT RULES
+
+- **NEVER run `git checkout -- <file>` or `git restore <file>`** to discard uncommitted changes, unless the changes were made by the agent itself in the current task.
+- **NEVER run `git stash drop`, `git reset --hard`, `git clean -fd`, or any command that permanently discards work.**
+- If you find unexpected dirty files that don't belong to the current task, **stop and ask the user** before touching them. The user may have pending work.
+- When orchestrating multiple sub-agents, each agent must only modify files within its scope. Review `git diff` output carefully and **preserve any unrelated changes**.
+
 ## Fixing Instrumented Test Failures
 
 1. Run: `scripts/run-instrumentation.sh`

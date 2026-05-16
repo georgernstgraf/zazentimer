@@ -53,7 +53,6 @@ fi
 export ANDROID_SDK_ROOT=$ANDROID_HOME
 export PATH=$PATH:$ANDROID_HOME/emulator:$ANDROID_HOME/platform-tools
 export ANDROID_EMU_ENABLE_CRASH_REPORTING=0
-rm -rf /tmp/android-georg/emu-crash-*.db
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 PROJECT_DIR="$(dirname "$SCRIPT_DIR")"
@@ -68,6 +67,10 @@ ERROR_LOGS=()
 IS_REAL_DISPLAY=true
 API_LOG=""
 
+log() {
+    echo "[$(date '+%H:%M:%S')] $*"
+}
+
 exec_api_log() {
     local api_level=$1
     API_LOG="$PROJECT_DIR/logs/api${api_level}-${TODAY}.log"
@@ -76,16 +79,24 @@ exec_api_log() {
 }
 
 log_api() {
-    echo "$@"
+    local msg="[$(date '+%H:%M:%S')] $*"
+    echo "$msg"
+    [ -n "${API_LOG:-}" ] && echo "$msg" >> "$API_LOG" 2>/dev/null || true
+}
+
+log_phase() {
+    local api_level=$1
+    shift
+    log_api "API $api_level — Phase: $*"
 }
 
 dump_logcat() {
     local api_level=$1
     local serial="$2"
     local logcat_file="$PROJECT_DIR/logs/api${api_level}-${TODAY}-logcat.txt"
-    echo "Dumping logcat to $logcat_file ..."
+    log_api "Dumping logcat to $logcat_file ..."
     adb -s "$serial" logcat -d > "$logcat_file" 2>/dev/null || true
-    echo "Logcat dumped ($(wc -l < "$logcat_file") lines)"
+    log_api "Logcat dumped ($(wc -l < "$logcat_file") lines)"
 }
 
 stop_xvfb() {
@@ -106,12 +117,12 @@ start_xvfb() {
     local waited=0
     while [ $waited -lt 30 ]; do
         if xdpyinfo -display :99 >/dev/null 2>&1; then
-            echo "Xvfb ready on :99 (PID $XVFB_PID, ${waited}s)"
+            log "Xvfb ready on :99 (PID $XVFB_PID, ${waited}s)"
             export DISPLAY=:99
             return 0
         fi
         if ! kill -0 "$XVFB_PID" 2>/dev/null; then
-            echo "ERROR: Xvfb failed to start (PID $XVFB_PID is dead)"
+            log "ERROR: Xvfb failed to start (PID $XVFB_PID is dead)"
             XVFB_PID=""
             return 1
         fi
@@ -119,10 +130,36 @@ start_xvfb() {
         waited=$((waited + 1))
     done
 
-    echo "ERROR: Xvfb did not become ready within 30s"
+    log "ERROR: Xvfb did not become ready within 30s"
     kill "$XVFB_PID" 2>/dev/null || true
     XVFB_PID=""
     return 1
+}
+
+kill_all_emulators() {
+    for emu_serial in $(adb devices 2>/dev/null | grep -oP 'emulator-\d+' || true); do
+        log_api "Killing leftover emulator $emu_serial"
+        adb -s "$emu_serial" emu kill 2>/dev/null || true
+    done
+    sleep 2
+    pkill -9 -f "qemu.*android" 2>/dev/null || true
+    pkill -9 -f "emulator.*-avd" 2>/dev/null || true
+    sleep 2
+}
+
+preserve_crash_dbs() {
+    local api_level=$1
+    local dest="$PROJECT_DIR/logs/crashdb-api${api_level}-${TODAY}"
+    local found=false
+    for db in /tmp/android-georg/emu-crash-*.db; do
+        [ -f "$db" ] || continue
+        if [ "$found" = false ]; then
+            mkdir -p "$dest"
+            found=true
+        fi
+        mv "$db" "$dest/" 2>/dev/null || true
+        log_api "Preserved crash DB: $(basename "$db") -> $dest/"
+    done
 }
 
 cleanup() {
@@ -130,7 +167,6 @@ cleanup() {
     for emu_serial in $(adb devices 2>/dev/null | grep -oP 'emulator-\d+' || true); do
         adb -s "$emu_serial" emu kill 2>/dev/null || true
     done
-    rm -rf /tmp/android-georg/emu-crash-*.db
 }
 trap cleanup EXIT
 
@@ -138,32 +174,32 @@ mkdir -p "$PROJECT_DIR/logs"
 
 exec > >(tee -a "$LOG_FILE") 2>&1
 
-echo "=== Instrumentation Test Run — $TODAY ==="
+log "=== Instrumentation Test Run — $TODAY ==="
 
 cd "$PROJECT_DIR"
 
 if [ "$IGNORE_DIRTY_GIT" = false ]; then
     if [ -n "$(git status --porcelain)" ]; then
-        echo "ERROR: Git repository is not clean. Commit or stash changes before running."
+        log "ERROR: Git repository is not clean. Commit or stash changes before running."
         git status --short
         exit 1
     fi
 
     git fetch origin && git pull --ff-only origin main
 else
-    echo "=== WARNING: --ignore-dirty-git enabled — skipping git clean check and pull ==="
+    log "=== WARNING: --ignore-dirty-git enabled — skipping git clean check and pull ==="
 fi
 
 if [ -z "${DISPLAY:-}" ]; then
     IS_REAL_DISPLAY=false
-    echo "=== Starting Xvfb on :99 ==="
+    log "=== Starting Xvfb on :99 ==="
     if ! start_xvfb; then
-        echo "ERROR: Failed to start Xvfb — cannot continue"
+        log "ERROR: Failed to start Xvfb — cannot continue"
         exit 1
     fi
 else
     IS_REAL_DISPLAY=true
-    echo "=== DISPLAY=$DISPLAY — using existing display ==="
+    log "=== DISPLAY=$DISPLAY — using existing display ==="
 fi
 
 DEFAULT_APIS_STRING=$(grep "^zazentimer.test.apis=" "$PROJECT_DIR/gradle.properties" | cut -d'=' -f2)
@@ -176,53 +212,70 @@ else
     APIS_TO_RUN=("${DEFAULT_APIS[@]}")
 fi
 
+TOTAL_APIS=${#APIS_TO_RUN[@]}
+
 # ──────────────────────────────────────────────
 # Unit Tests
 # ──────────────────────────────────────────────
-echo ""
-echo "========================================="
-echo "  Unit Tests"
-echo "========================================="
+log ""
+log "========================================="
+log "  Unit Tests"
+log "========================================="
 cd "$PROJECT_DIR"
 mkdir -p app/build/test-results/testDebugUnitTest/binary
 set +e
-./gradlew test
+./gradlew test 2>&1
 UNIT_RESULT=$?
 set -e
 
 if [ $UNIT_RESULT -ne 0 ]; then
-    echo "FAIL: Unit tests failed — skipping instrumented tests"
+    log "FAIL: Unit tests failed — skipping instrumented tests"
 else
-    echo "PASS: Unit tests"
+    log "PASS: Unit tests"
+
+    # ──────────────────────────────────────────────
+    # Helper functions
+    # ──────────────────────────────────────────────
 
     wait_for_emulator() {
         local serial="$1"
         local timeout_sec="${2:-300}"
         local elapsed=0
-        echo "Waiting for emulator $serial to boot..."
+        local last_progress=-15
+        log_api "Waiting for emulator $serial to boot..."
         adb -s "$serial" wait-for-device
         while [ $elapsed -lt $timeout_sec ]; do
             local boot_done
             boot_done=$(adb -s "$serial" shell getprop sys.boot_completed 2>/dev/null | tr -d '\r')
             if [ "$boot_done" = "1" ]; then
-                echo "Emulator $serial booted (${elapsed}s)"
-                adb -s "$serial" shell svc power stayon true
-                adb -s "$serial" shell input keyevent KEYCODE_WAKEUP
-                adb -s "$serial" shell input keyevent KEYCODE_MENU
-                adb -s "$serial" shell input keyevent KEYCODE_HOME
+                log_api "Emulator $serial booted (${elapsed}s)"
+                log_api "adb shell svc power stayon true"
+                adb -s "$serial" shell svc power stayon true 2>/dev/null || true
+                log_api "adb shell input keyevent KEYCODE_WAKEUP"
+                adb -s "$serial" shell input keyevent KEYCODE_WAKEUP 2>/dev/null || true
+                log_api "adb shell input keyevent KEYCODE_MENU"
+                adb -s "$serial" shell input keyevent KEYCODE_MENU 2>/dev/null || true
+                log_api "adb shell input keyevent KEYCODE_HOME"
+                adb -s "$serial" shell input keyevent KEYCODE_HOME 2>/dev/null || true
                 sleep 5
                 return 0
+            fi
+            if [ $((elapsed - last_progress)) -ge 15 ]; then
+                log_api "Still waiting for $serial... (${elapsed}s/${timeout_sec}s, boot=${boot_done:-unset})"
+                last_progress=$elapsed
             fi
             sleep 5
             elapsed=$((elapsed + 5))
         done
-        echo "ERROR: Emulator $serial did not boot within ${timeout_sec}s"
+        log_api "ERROR: Emulator $serial did not boot within ${timeout_sec}s"
         return 1
     }
 
     kill_emulator() {
         local serial="$1"
-        echo "Killing emulator $serial..."
+        log_phase "?" "killing emulator"
+        log_api "Killing emulator $serial..."
+        log_api "adb emu kill"
         adb -s "$serial" emu kill 2>/dev/null || true
         sleep 5
         local wait_count=0
@@ -254,14 +307,14 @@ else
             return 0
         fi
 
-        echo "ERROR: No AVD found for API $api_level. Available:" >&2
-        echo "$avd_list" >&2
+        log_api "ERROR: No AVD found for API $api_level. Available:"
+        log_api "$avd_list"
         return 1
     }
 
     clean_device_packages() {
         local serial="$1"
-        echo "Cleaning stale packages on $serial..."
+        log_api "Cleaning stale packages on $serial..."
         for pkg in \
             de.gaffga.android.zazentimer \
             de.gaffga.android.zazentimer.test \
@@ -269,17 +322,17 @@ else
             at.priv.graf.zazentimer.test \
             at.priv.graf.zazentimer.debug \
             at.priv.graf.zazentimer.debug.test; do
-            adb -s "$serial" uninstall "$pkg" >/dev/null 2>&1 || true
-            adb -s "$serial" shell pm uninstall --user 0 "$pkg" >/dev/null 2>&1 || true
+            adb -s "$serial" uninstall "$pkg" 2>/dev/null || true
+            adb -s "$serial" shell pm uninstall --user 0 "$pkg" 2>/dev/null || true
         done
-        adb -s "$serial" shell cmd package install-existing at.priv.graf.zazentimer >/dev/null 2>&1 || true
-        adb -s "$serial" shell cmd package install-existing at.priv.graf.zazentimer.test >/dev/null 2>&1 || true
-        adb -s "$serial" shell cmd package install-existing at.priv.graf.zazentimer.debug >/dev/null 2>&1 || true
-        adb -s "$serial" shell cmd package install-existing at.priv.graf.zazentimer.debug.test >/dev/null 2>&1 || true
-        adb -s "$serial" uninstall at.priv.graf.zazentimer >/dev/null 2>&1 || true
-        adb -s "$serial" uninstall at.priv.graf.zazentimer.test >/dev/null 2>&1 || true
-        adb -s "$serial" uninstall at.priv.graf.zazentimer.debug >/dev/null 2>&1 || true
-        adb -s "$serial" uninstall at.priv.graf.zazentimer.debug.test >/dev/null 2>&1 || true
+        adb -s "$serial" shell cmd package install-existing at.priv.graf.zazentimer 2>/dev/null || true
+        adb -s "$serial" shell cmd package install-existing at.priv.graf.zazentimer.test 2>/dev/null || true
+        adb -s "$serial" shell cmd package install-existing at.priv.graf.zazentimer.debug 2>/dev/null || true
+        adb -s "$serial" shell cmd package install-existing at.priv.graf.zazentimer.debug.test 2>/dev/null || true
+        adb -s "$serial" uninstall at.priv.graf.zazentimer 2>/dev/null || true
+        adb -s "$serial" uninstall at.priv.graf.zazentimer.test 2>/dev/null || true
+        adb -s "$serial" uninstall at.priv.graf.zazentimer.debug 2>/dev/null || true
+        adb -s "$serial" uninstall at.priv.graf.zazentimer.debug.test 2>/dev/null || true
     }
 
     dismiss_anr_dialog() {
@@ -290,18 +343,66 @@ else
             if [ "$anr_window" -eq 0 ] 2>/dev/null; then
                 return 0
             fi
-            echo "ANR dialog detected on $serial (attempt $attempt) — dismissing..."
+            log_api "ANR dialog detected on $serial (attempt $attempt) — dismissing..."
             adb -s "$serial" shell input keyevent KEYCODE_DPAD_RIGHT 2>/dev/null || true
             adb -s "$serial" shell input keyevent KEYCODE_ENTER 2>/dev/null || true
             sleep 3
         done
     }
 
+    setup_device() {
+        local serial="$1"
+        log_api "adb shell svc power stayon true"
+        adb -s "$serial" shell svc power stayon true 2>/dev/null || true
+        log_api "adb shell am force-stop com.google.android.apps.nexuslauncher"
+        adb -s "$serial" shell am force-stop com.google.android.apps.nexuslauncher 2>/dev/null || true
+        log_api "adb shell input keyevent KEYCODE_WAKEUP"
+        adb -s "$serial" shell input keyevent KEYCODE_WAKEUP 2>/dev/null || true
+        log_api "adb shell input keyevent KEYCODE_HOME"
+        adb -s "$serial" shell input keyevent KEYCODE_HOME 2>/dev/null || true
+        sleep 5
+        log_api "adb shell settings put global window_animation_scale 0.0"
+        adb -s "$serial" shell settings put global window_animation_scale 0.0 2>/dev/null || true
+        log_api "adb shell settings put global transition_animation_scale 0.0"
+        adb -s "$serial" shell settings put global transition_animation_scale 0.0 2>/dev/null || true
+        log_api "adb shell settings put global animator_duration_scale 0.0"
+        adb -s "$serial" shell settings put global animator_duration_scale 0.0 2>/dev/null || true
+    }
+
+    clear_logcat() {
+        local serial="$1"
+        log_api "adb logcat -c"
+        adb -s "$serial" logcat -c 2>/dev/null || true
+    }
+
+    prepare_isolated_run() {
+        local api_level=$1
+        preserve_crash_dbs "$api_level"
+        kill_all_emulators
+        if [ "$IS_REAL_DISPLAY" = false ]; then
+            log_api "=== Restarting Xvfb for API $api_level ==="
+            if ! start_xvfb; then
+                log_api "FAIL: Xvfb failed to start for API $api_level"
+                return 1
+            fi
+        fi
+        return 0
+    }
+
     run_gradle_test() {
         local api_level=$1
         local serial="emulator-5554"
-        local avd_name
         exec_api_log "$api_level"
+
+        if ! prepare_isolated_run "$api_level"; then
+            RESULTS[$api_level]=1
+            FAILED_APIS+=("$api_level")
+            ERROR_LOGS+=("API $api_level: Xvfb failed to start")
+            return
+        fi
+
+        log_phase "$api_level" "resolving AVD"
+        local avd_name
         avd_name=$(resolve_avd "$api_level") || {
             log_api "FAIL: Could not find AVD for API $api_level"
             RESULTS[$api_level]=1
@@ -315,6 +416,7 @@ else
         log_api "========================================="
         log_api "  API $api_level — Starting emulator ($avd_name)"
         log_api "========================================="
+        log_phase "$api_level" "starting emulator (AVD $avd_name)"
 
         $ANDROID_HOME/emulator/emulator \
             -avd "$avd_name" \
@@ -322,9 +424,12 @@ else
             -gpu swiftshader_indirect \
             $([ "$IS_REAL_DISPLAY" = false ] && echo "-noaudio") \
             -no-boot-anim \
-            -memory 2048 &>> "$API_LOG"
+            -memory 2048 >> "$API_LOG" 2>&1 &
+        local emu_pid=$!
         sleep 2
+        log_api "Emulator started (PID $emu_pid, AVD $avd_name)"
 
+        log_phase "$api_level" "waiting for boot"
         if ! wait_for_emulator "$serial"; then
             log_api "FAIL: API $api_level emulator did not boot"
             RESULTS[$api_level]=1
@@ -334,17 +439,14 @@ else
             return
         fi
 
+        log_phase "$api_level" "cleaning packages"
         clean_device_packages "$serial"
         dismiss_anr_dialog "$serial"
-        adb -s "$serial" shell svc power stayon true 2>/dev/null || true
-        adb -s "$serial" shell am force-stop com.google.android.apps.nexuslauncher 2>/dev/null || true
-        adb -s "$serial" shell input keyevent KEYCODE_WAKEUP 2>/dev/null || true
-        adb -s "$serial" shell input keyevent KEYCODE_HOME 2>/dev/null || true
-        sleep 5
-        adb -s "$serial" shell settings put global window_animation_scale 0.0 2>/dev/null || true
-        adb -s "$serial" shell settings put global transition_animation_scale 0.0 2>/dev/null || true
-        adb -s "$serial" shell settings put global animator_duration_scale 0.0 2>/dev/null || true
 
+        setup_device "$serial"
+        clear_logcat "$serial"
+
+        log_phase "$api_level" "running tests"
         log_api ""
         log_api "========================================="
         log_api "  API $api_level — Running instrumented tests"
@@ -379,6 +481,14 @@ else
         local result=0
         exec_api_log "$api_level"
 
+        if ! prepare_isolated_run "$api_level"; then
+            RESULTS[$api_level]=1
+            FAILED_APIS+=("$api_level")
+            ERROR_LOGS+=("API $api_level: Xvfb failed to start")
+            return
+        fi
+
+        log_phase "$api_level" "building APKs"
         log_api ""
         log_api "========================================="
         log_api "  API $api_level — Building APKs"
@@ -397,6 +507,7 @@ else
             return
         fi
 
+        log_phase "$api_level" "resolving AVD"
         local avd_name
         avd_name=$(resolve_avd "$api_level") || {
             log_api "FAIL: Could not find AVD for API $api_level"
@@ -410,6 +521,7 @@ else
         log_api "========================================="
         log_api "  API $api_level — Starting emulator ($avd_name)"
         log_api "========================================="
+        log_phase "$api_level" "starting emulator (AVD $avd_name)"
 
         $ANDROID_HOME/emulator/emulator \
             -avd "$avd_name" \
@@ -417,9 +529,12 @@ else
             -gpu swiftshader_indirect \
             $([ "$IS_REAL_DISPLAY" = false ] && echo "-noaudio") \
             -no-boot-anim \
-            -memory 2048 &>> "$API_LOG"
+            -memory 2048 >> "$API_LOG" 2>&1 &
+        local emu_pid=$!
         sleep 2
+        log_api "Emulator started (PID $emu_pid, AVD $avd_name)"
 
+        log_phase "$api_level" "waiting for boot"
         if ! wait_for_emulator "$serial"; then
             log_api "FAIL: API $api_level emulator did not boot"
             RESULTS[$api_level]=1
@@ -429,37 +544,39 @@ else
             return
         fi
 
+        log_phase "$api_level" "cleaning packages"
         clean_device_packages "$serial"
         sleep 8
         dismiss_anr_dialog "$serial"
-        adb -s "$serial" shell svc power stayon true 2>/dev/null || true
-        adb -s "$serial" shell am force-stop com.google.android.apps.nexuslauncher 2>/dev/null || true
-        adb -s "$serial" shell input keyevent KEYCODE_WAKEUP 2>/dev/null || true
-        adb -s "$serial" shell input keyevent KEYCODE_HOME 2>/dev/null || true
-        sleep 5
-        adb -s "$serial" shell settings put global window_animation_scale 0.0 2>/dev/null || true
-        adb -s "$serial" shell settings put global transition_animation_scale 0.0 2>/dev/null || true
-        adb -s "$serial" shell settings put global animator_duration_scale 0.0 2>/dev/null || true
 
+        setup_device "$serial"
+
+        log_phase "$api_level" "installing app APK"
         log_api ""
         log_api "========================================="
         log_api "  API $api_level — Installing APKs"
         log_api "========================================="
+        log_api "adb install -r app-debug.apk"
         set +e
         adb -s "$serial" install -r app/build/outputs/apk/debug/app-debug.apk 2>&1 | tee -a "$API_LOG"
         local install_app=$?
+        set -e
         sleep 10
+
         local install_test=1
         for install_attempt in 1 2; do
+            log_phase "$api_level" "installing test APK (attempt $install_attempt)"
+            log_api "adb install -r app-debug-androidTest.apk (attempt $install_attempt)"
+            set +e
             adb -s "$serial" install -r app/build/outputs/apk/androidTest/debug/app-debug-androidTest.apk 2>&1 | tee -a "$API_LOG"
             install_test=$?
+            set -e
             if [ $install_test -eq 0 ]; then
                 break
             fi
             log_api "Test APK install failed attempt $install_attempt — retrying after delay..."
             sleep 10
         done
-        set -e
 
         if [ $install_app -ne 0 ] || [ $install_test -ne 0 ]; then
             log_api "FAIL: API $api_level APK installation failed (app=$install_app, test=$install_test)"
@@ -471,6 +588,9 @@ else
             return
         fi
 
+        clear_logcat "$serial"
+
+        log_phase "$api_level" "running tests"
         log_api ""
         log_api "========================================="
         log_api "  API $api_level — Running instrumented tests"
@@ -562,11 +682,6 @@ else
         kill_emulator "$serial"
     }
 
-    # Note: The Gradle test runner is used for API ≤ zazentimer.test.gradleMaxApi (currently 30).
-    # For higher APIs (≥ 31) we use am instrument because PreFlightRule is applied in
-    # HiltTestRunner.onStart(), which integrates seamlessly with the am instrument path.
-    # If desired, the threshold can be raised to 32 to use Gradle runner + PreFlightRule
-    # on API 31-32 by setting zazentimer.test.gradleMaxApi=32 in gradle.properties.
     get_test_method() {
         local api=$1
         if [ "$api" -le "$GRADLE_MAX_API" ]; then
@@ -576,22 +691,13 @@ else
         fi
     }
 
+    API_IDX=0
     for api in "${APIS_TO_RUN[@]}"; do
-        if [ "$IS_REAL_DISPLAY" = false ]; then
-            echo ""
-            echo "=== Restarting Xvfb for API $api ==="
-            if ! start_xvfb; then
-                echo "FAIL: API $api — could not start Xvfb"
-                RESULTS[$api]=1
-                FAILED_APIS+=("$api")
-                ERROR_LOGS+=("API $api: Xvfb failed to start")
-                if [ "$CONTINUE_ON_ERROR" = false ]; then
-                    echo "FAIL-FAST: Xvfb unavailable — stopping"
-                    break
-                fi
-                continue
-            fi
-        fi
+        API_IDX=$((API_IDX + 1))
+        log ""
+        log "========================================="
+        log "  API $api ($API_IDX/$TOTAL_APIS)"
+        log "========================================="
 
         method=$(get_test_method "$api")
         pass=false
@@ -606,7 +712,7 @@ else
                 break
             fi
             if [ $attempt -eq 1 ]; then
-                echo "API $api attempt 1 failed — retrying..."
+                log_api "API $api attempt 1 failed — retrying..."
             fi
         done
 
@@ -619,8 +725,8 @@ else
         fi
 
         if [ "$CONTINUE_ON_ERROR" = false ] && [ "$pass" = false ]; then
-            echo ""
-            echo "FAIL-FAST: Stopping at API $api due to failure"
+            log ""
+            log "FAIL-FAST: Stopping at API $api due to failure"
             break
         fi
     done
@@ -629,43 +735,43 @@ fi
 # ──────────────────────────────────────────────
 # Summary
 # ──────────────────────────────────────────────
-echo ""
-echo "========================================="
-echo "  Test Summary — $TODAY"
-echo "========================================="
-echo "Mode: $([ "$CONTINUE_ON_ERROR" = true ] && echo 'continue-on-error' || echo 'fail-fast')"
+log ""
+log "========================================="
+log "  Test Summary — $TODAY"
+log "========================================="
+log "Mode: $([ "$CONTINUE_ON_ERROR" = true ] && echo 'continue-on-error' || echo 'fail-fast')"
 if [ ${#TARGET_APIS[@]} -gt 0 ]; then
-    echo "Target APIs: ${TARGET_APIS[*]}"
+    log "Target APIs: ${TARGET_APIS[*]}"
 else
-    echo "Target APIs: all (23-36)"
+    log "Target APIs: all (23-36)"
 fi
-echo "Display: $([ "$IS_REAL_DISPLAY" = true ] && echo 'real' || echo 'Xvfb')"
-echo ""
-echo "Unit Tests: $([ $UNIT_RESULT -eq 0 ] && echo 'PASS' || echo 'FAIL')"
+log "Display: $([ "$IS_REAL_DISPLAY" = true ] && echo 'real' || echo 'Xvfb')"
+log ""
+log "Unit Tests: $([ $UNIT_RESULT -eq 0 ] && echo 'PASS' || echo 'FAIL')"
 for api in "${APIS_TO_RUN[@]}"; do
     if [ -z "${RESULTS[$api]+isset}" ]; then
-        echo "API $api:    SKIPPED"
+        log "API $api:    SKIPPED"
     elif [ "${RESULTS[$api]}" -ne 0 ]; then
-        echo "API $api:    FAIL"
+        log "API $api:    FAIL"
     else
-        echo "API $api:    PASS"
+        log "API $api:    PASS"
     fi
 done
-echo "========================================="
+log "========================================="
 
 # Auto-tag on green full-matrix run
 if [ $UNIT_RESULT -eq 0 ] && [ ${#FAILED_APIS[@]} -eq 0 ]; then
     if [ "$IS_REAL_DISPLAY" = true ] && [ ${#TARGET_APIS[@]} -eq 0 ]; then
         TAG="tested-${TODAY}"
         if git tag -l "$TAG" | grep -q "$TAG"; then
-            echo "Tag $TAG already exists — skipping"
+            log "Tag $TAG already exists — skipping"
         else
-            echo "All tests passed on real display — tagging HEAD as $TAG"
+            log "All tests passed on real display — tagging HEAD as $TAG"
             git tag "$TAG" HEAD
             git push origin "$TAG"
         fi
     elif [ "$IS_REAL_DISPLAY" = false ]; then
-        echo "All tests passed but running under Xvfb — skipping auto-tag"
+        log "All tests passed but running under Xvfb — skipping auto-tag"
     fi
 fi
 
