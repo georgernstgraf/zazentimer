@@ -106,6 +106,12 @@ Each entry documents WHAT was decided and WHY.
 - **Considered**: Running each API as a separate script invocation (heavier), adding Xvfb watchdog (complex), accepting data loss on crash.
 - **Tradeoff**: ~2s overhead per API for Xvfb startup; `xdpyinfo` polling adds up to 30s per restart (typically <5s).
 
+## 2026-05-16: gradleMaxApi raised from 30 to 36 — AGP 9.1.1 fixes activity resolution
+- **Choice**: Set `zazentimer.test.gradleMaxApi=36` in `gradle.properties`, enabling `connectedDebugAndroidTest` for all API levels.
+- **Reason**: AGP 9.1.1 resolves the `Unable to resolve activity` bug that existed since AGP 7.2. Tested on API 31 (24/25 pass), 34 (25/25 pass), 36 (23/25 pass). All failures are Espresso UI issues (`NoMatchingViewException`), not AGP Manifest Merger errors.
+- **Considered**: Keeping `gradleMaxApi=30` (unnecessary workaround), upgrading to AGP 10.0 (not yet released, expected H2 2026).
+- **Tradeoff**: The `am instrument` fallback path remains in `run-instrumentation.sh` but is no longer invoked. Some tests may still fail due to Espresso UI timing issues under Xvfb, but these are test-specific, not AGP-specific.
+
 ## 2026-05-16: Per-API logfiles with logcat dumps in run-instrumentation.sh
 - **Choice**: All output from each API-level test run is written to `logs/api<level>-YYYY-MM-DD.log` via `tee -a`. On failure, `adb logcat -d` dumps to `logs/api<level>-YYYY-MM-DD-logcat.txt`. Overall run log at `logs/instrumentation-YYYY-MM-DD.log` via `exec > >(tee ...)`. Added `--debug` flag for logcat dumps on green runs too.
 - **Reason**: Previous runs lost all diagnostic output to terminal-only — when terminal timed out or Xvfb crashed, stack traces, `am instrument` output, and crash details were irrecoverable.

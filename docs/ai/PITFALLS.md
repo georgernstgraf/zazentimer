@@ -5,7 +5,7 @@ Read this file carefully before making changes in affected areas.
 
 - **Espresso & 300ms Polling**: Legacy polling in ViewModels prevented Espresso from reaching an idle state, causing `AppNotIdleException`.
 - **Service Binding Race**: Fragments attempting to interact with `MeditationService` before `onServiceConnected` caused NPEs or lost commands; use `MeditationRepository` as the stable intermediary.
-- **UTP / API 35 Bug**: AGP 9.1.1 UTP runner may report "0 tests found" on API 35; use manual `am instrument` fallback in scripts.
+- **UTP / API 35 "0 tests found"**: AGP 9.1.1 UTP runner may report "0 tests found" on API 35; this was the original reason for the `am instrument` fallback. However, as of 2026-05-16, `connectedDebugAndroidTest` was tested and works on API 31-36 with `gradleMaxApi=36`. The UTP bug may still occur intermittently — if it reappears, the `am instrument` fallback remains in the script.
 - **Emulator Hardware**: Never use `-target google_apis` with newer emulators (36.5.10+); use `-target android`.
 - **Database Race**: DB operations are async; without `IdlingResource`, tests may read old data before a write finishes.
 - **java-test-fixtures Plugin Conflict**: Adding `id("java-test-fixtures")` to the plugins block conflicts with AGP's built-in `testFixtures { enable = true }`. Only use the AGP block — do not add the standalone plugin.

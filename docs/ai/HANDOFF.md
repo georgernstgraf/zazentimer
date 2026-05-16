@@ -4,7 +4,7 @@
 `main` (Trunk-based development)
 
 ## Open Tasks
-1. [ ] **Full instrumentation test run (APIs 23-36)**: Script updated with Xvfb-per-API restart. All 14 AVDs installed. Run with `--continue-on-error --ignore-dirty-git` to collect all failures, then save to `logs/test-failures-YYYY-MM-DD.md`.
+1. [ ] **#183 — Full validation run**: Run `scripts/run-instrumentation.sh --continue-on-error --ignore-dirty-git` (all APIs 23-36) with `gradleMaxApi=36`. Then consider removing the `am instrument` path from the script.
 2. [ ] **#64 — Play Store**: Sub-issues #114 (AAB build) and #113 (privacy/legal). Blocked by missing `PLAY_SERVICE_ACCOUNT_JSON` GitHub secret.
 
 ## AVD Inventory (all installed)
