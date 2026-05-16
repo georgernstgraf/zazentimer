@@ -52,6 +52,8 @@ else
 fi
 export ANDROID_SDK_ROOT=$ANDROID_HOME
 export PATH=$PATH:$ANDROID_HOME/emulator:$ANDROID_HOME/platform-tools
+export ANDROID_EMU_ENABLE_CRASH_REPORTING=0
+rm -rf /tmp/android-georg/emu-crash-*.db
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 PROJECT_DIR="$(dirname "$SCRIPT_DIR")"
@@ -128,6 +130,7 @@ cleanup() {
     for emu_serial in $(adb devices 2>/dev/null | grep -oP 'emulator-\d+' || true); do
         adb -s "$emu_serial" emu kill 2>/dev/null || true
     done
+    rm -rf /tmp/android-georg/emu-crash-*.db
 }
 trap cleanup EXIT
 
