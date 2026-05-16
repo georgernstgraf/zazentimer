@@ -6,6 +6,7 @@ import androidx.test.filters.LargeTest
 import at.priv.graf.zazentimer.screens.MainPage
 import at.priv.graf.zazentimer.screens.MeditationPage
 import at.priv.graf.zazentimer.screens.SessionEditPage
+import dagger.hilt.android.testing.HiltAndroidTest
 import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith

@@ -3,6 +3,7 @@ package at.priv.graf.zazentimer
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.filters.LargeTest
 import at.priv.graf.zazentimer.screens.MainPage
+import dagger.hilt.android.testing.HiltAndroidTest
 import org.junit.Test
 import org.junit.runner.RunWith
 

@@ -14,6 +14,7 @@ import androidx.test.filters.LargeTest
 import androidx.test.platform.app.InstrumentationRegistry
 import at.priv.graf.zazentimer.screens.MainPage
 import at.priv.graf.zazentimer.screens.MeditationPage
+import dagger.hilt.android.testing.HiltAndroidTest
 import kotlinx.coroutines.runBlocking
 import org.junit.After
 import org.junit.Before

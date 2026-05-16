@@ -13,6 +13,7 @@ import androidx.test.uiautomator.UiDevice
 import androidx.test.uiautomator.UiSelector
 import at.priv.graf.zazentimer.screens.MainPage
 import at.priv.graf.zazentimer.utils.MeditationServiceIdlingResource
+import dagger.hilt.android.testing.HiltAndroidTest
 import kotlinx.coroutines.runBlocking
 import org.junit.After
 import org.junit.Before

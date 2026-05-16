@@ -22,6 +22,7 @@ import androidx.test.uiautomator.UiDevice
 import androidx.test.uiautomator.UiSelector
 import at.priv.graf.zazentimer.screens.MainPage
 import at.priv.graf.zazentimer.screens.SettingsPage
+import dagger.hilt.android.testing.HiltAndroidTest
 import org.hamcrest.Matcher
 import org.junit.Before
 import org.junit.Test

@@ -233,6 +233,24 @@ else
     log "PASS: Unit tests"
 
     # ──────────────────────────────────────────────
+    # Pre-flight: Compile androidTest sources
+    # ──────────────────────────────────────────────
+    log ""
+    log "========================================="
+    log "  Pre-flight: Compiling androidTest"
+    log "========================================="
+    set +e
+    ./gradlew compileDebugAndroidTestKotlin 2>&1
+    local compile_result=$?
+    set -e
+
+    if [ $compile_result -ne 0 ]; then
+        log "FAIL: androidTest compilation failed — skipping instrumented tests"
+        UNIT_RESULT=1
+    else
+        log "PASS: androidTest compilation"
+
+    # ──────────────────────────────────────────────
     # Helper functions
     # ──────────────────────────────────────────────
 
@@ -509,7 +527,8 @@ else
             break
         fi
     done
-fi
+    fi
+    fi
 
 # ──────────────────────────────────────────────
 # Summary

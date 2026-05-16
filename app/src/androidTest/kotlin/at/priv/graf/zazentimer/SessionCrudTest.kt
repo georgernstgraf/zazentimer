@@ -15,6 +15,7 @@ import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.filters.LargeTest
 import at.priv.graf.zazentimer.screens.MainPage
 import at.priv.graf.zazentimer.screens.SessionEditPage
+import dagger.hilt.android.testing.HiltAndroidTest
 import org.hamcrest.Matchers.not
 import org.junit.Before
 import org.junit.Test
