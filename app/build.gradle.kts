@@ -145,6 +145,7 @@ android {
 
     testOptions {
         execution = "HOST"
+        animationsDisabled = true
         unitTests {
             isReturnDefaultValues = true
             isIncludeAndroidResources = true
