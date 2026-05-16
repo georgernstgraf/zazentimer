@@ -103,6 +103,7 @@ android {
             }
 
         testInstrumentationRunner = "at.priv.graf.zazentimer.HiltTestRunner"
+        testInstrumentationRunnerArguments["testTimeoutSeconds"] = "120"
 
         val gitHash = providers.of(GitHashSource::class.java) {}.get().trim()
         buildConfigField("String", "GIT_HASH", "\"$gitHash\"")

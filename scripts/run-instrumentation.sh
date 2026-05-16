@@ -261,21 +261,12 @@ else
         local last_progress=-15
         log_api "Waiting for emulator $serial to boot..."
         adb -s "$serial" wait-for-device
+        local boot_done=""
         while [ $elapsed -lt $timeout_sec ]; do
-            local boot_done
             boot_done=$(adb -s "$serial" shell getprop sys.boot_completed 2>/dev/null | tr -d '\r')
             if [ "$boot_done" = "1" ]; then
                 log_api "Emulator $serial booted (${elapsed}s)"
-                log_api "adb shell svc power stayon true"
-                adb -s "$serial" shell svc power stayon true 2>/dev/null || true
-                log_api "adb shell input keyevent KEYCODE_WAKEUP"
-                adb -s "$serial" shell input keyevent KEYCODE_WAKEUP 2>/dev/null || true
-                log_api "adb shell input keyevent KEYCODE_MENU"
-                adb -s "$serial" shell input keyevent KEYCODE_MENU 2>/dev/null || true
-                log_api "adb shell input keyevent KEYCODE_HOME"
-                adb -s "$serial" shell input keyevent KEYCODE_HOME 2>/dev/null || true
-                sleep 5
-                return 0
+                break
             fi
             if [ $((elapsed - last_progress)) -ge 15 ]; then
                 log_api "Still waiting for $serial... (${elapsed}s/${timeout_sec}s, boot=${boot_done:-unset})"
@@ -284,8 +275,38 @@ else
             sleep 5
             elapsed=$((elapsed + 5))
         done
-        log_api "ERROR: Emulator $serial did not boot within ${timeout_sec}s"
-        return 1
+
+        if [ "$boot_done" != "1" ]; then
+            log_api "ERROR: Emulator $serial did not boot within ${timeout_sec}s"
+            return 1
+        fi
+
+        log_api "Waiting for system services on $serial..."
+        local svc_wait=0
+        while [ $svc_wait -lt 60 ]; do
+            local svc_check
+            svc_check=$(adb -s "$serial" shell service check activity 2>/dev/null | tr -d '\r')
+            if echo "$svc_check" | grep -q "Service: activity"; then
+                log_api "System services ready (${svc_wait}s)"
+                break
+            fi
+            sleep 2
+            svc_wait=$((svc_wait + 2))
+        done
+        if [ $svc_wait -ge 60 ]; then
+            log_api "WARNING: activity service not ready after 60s, proceeding anyway"
+        fi
+
+        log_api "adb shell svc power stayon true"
+        adb -s "$serial" shell svc power stayon true 2>/dev/null || true
+        log_api "adb shell input keyevent KEYCODE_WAKEUP"
+        adb -s "$serial" shell input keyevent KEYCODE_WAKEUP 2>/dev/null || true
+        log_api "adb shell input keyevent KEYCODE_MENU"
+        adb -s "$serial" shell input keyevent KEYCODE_MENU 2>/dev/null || true
+        log_api "adb shell input keyevent KEYCODE_HOME"
+        adb -s "$serial" shell input keyevent KEYCODE_HOME 2>/dev/null || true
+        sleep 5
+        return 0
     }
 
     kill_emulator() {
