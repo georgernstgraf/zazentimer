@@ -31,12 +31,14 @@ ZazenTimer is an Android application for timing meditation sessions. It uses a f
   - `src/testFixtures/` — Shared test utilities (ScreenRobot, MeditationServiceIdlingResource, DevicePreFlightRule) via `java-test-fixtures` plugin
 - **Test Runner**:
   - `HiltTestRunner` — Custom `AndroidJUnitRunner` injecting `HiltTestApplication`, with `DevicePreFlightRule.execute()` called in `onStart()` for self-healing tests
-  - `scripts/run-instrumentation.sh` — Orchestrates full test matrix: unit tests + per-API-level instrumented tests (API 23-36). Restarts Xvfb for each API level when running in virtual framebuffer mode.
+  - `scripts/run-instrumentation.sh` — Orchestrates full test matrix: unit tests + per-API-level instrumented tests (API 23-36). Launched via `at` scheduler for resilience against shell timeouts.
+  - `scripts/summarize-tests.sh` — Parses logs + JUnit XML into markdown report table. Usage: `scripts/summarize-tests.sh [--date YYYY-MM-DD] [--markdown]`
 - **Execution Strategy**:
-  - API 23-30: Gradle `connectedDebugAndroidTest` runner
-  - API 31-36: Manual `am instrument` (bypasses UTP bug on API 31+)
+  - All APIs 23-36: Gradle `connectedDebugAndroidTest` runner (`gradleMaxApi=36`)
   - API level source of truth: `zazentimer.test.apis` in `gradle.properties`
-  - Gradle runner threshold: `zazentimer.test.gradleMaxApi=30` in `gradle.properties`
+- **Background Launch**:
+  - Use `at` scheduler: `echo "cd <dir> && scripts/run-instrumentation.sh --continue-on-error --ignore-dirty-git --debug >/dev/null 2>&1" | at now`
+  - Never use `nohup &` from opencode bash tool — tool timeout kills the shell and all children
 - **Idling Resources**:
   - `IdlingResourceManager` (prod source) — `CountingIdlingResource` for DB operations
   - `MeditationServiceIdlingResource` (testFixtures) — Custom `IdlingResource` for service binding state

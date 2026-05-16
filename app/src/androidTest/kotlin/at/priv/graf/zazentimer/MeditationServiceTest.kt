@@ -4,7 +4,7 @@ import android.os.Build
 import android.os.SystemClock
 import android.util.Log
 import androidx.test.espresso.IdlingRegistry
-import androidx.test.ext.junit.rules.ActivityScenarioRule
+import androidx.test.espresso.action.ViewActions.click
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.filters.LargeTest
 import androidx.test.platform.app.InstrumentationRegistry
@@ -13,34 +13,22 @@ import androidx.test.uiautomator.UiDevice
 import androidx.test.uiautomator.UiSelector
 import at.priv.graf.zazentimer.screens.MainPage
 import at.priv.graf.zazentimer.utils.MeditationServiceIdlingResource
-import dagger.hilt.android.testing.HiltAndroidRule
-import dagger.hilt.android.testing.HiltAndroidTest
 import kotlinx.coroutines.runBlocking
 import org.junit.After
-import org.junit.Assert.assertTrue
 import org.junit.Before
-import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
 
 @HiltAndroidTest
 @RunWith(AndroidJUnit4::class)
 @LargeTest
-class MeditationServiceTest {
+class MeditationServiceTest : AbstractZazenTest() {
     private val uiTimeout = 5000L
-
-    @get:Rule(order = 0)
-    val hiltRule = HiltAndroidRule(this)
-
-    @get:Rule(order = 1)
-    val activityRule = ActivityScenarioRule(ZazenTimerActivity::class.java)
-
     private val meditationIdlingResource = MeditationServiceIdlingResource()
     private lateinit var device: UiDevice
 
     @Before
-    fun init() {
-        hiltRule.inject()
+    fun setupMeditation() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
             InstrumentationRegistry.getInstrumentation().uiAutomation.executeShellCommand(
                 "pm grant at.priv.graf.zazentimer.debug android.permission.POST_NOTIFICATIONS",
@@ -87,8 +75,7 @@ class MeditationServiceTest {
                 waitForStopButton()
                 val stopBtn =
                     device.findObject(
-                        androidx.test.uiautomator
-                            .UiSelector()
+                        UiSelector()
                             .resourceId("at.priv.graf.zazentimer:id/but_stop"),
                     )
                 if (stopBtn.exists()) {
@@ -96,14 +83,12 @@ class MeditationServiceTest {
                 } else {
                     val stopDesc =
                         device.findObject(
-                            androidx.test.uiautomator
-                                .UiSelector()
+                            UiSelector()
                                 .description("Stop"),
                         )
                     if (stopDesc.exists()) stopDesc.click()
                 }
 
-                // Wait for dialog
                 for (j in 0 until 20) {
                     if (isDialogVisible(titleText)) return
                     SystemClock.sleep(100)
@@ -116,24 +101,20 @@ class MeditationServiceTest {
         throw AssertionError("Dialog '$titleText' did not appear after clicking stop button 5 times")
     }
 
-    private fun clickByTextContainsWithUiAutomator(text: String) {
+    private fun clickStopConfirmButton() {
         androidx.test.espresso.Espresso
             .onView(
                 androidx.test.espresso.matcher.ViewMatchers
                     .withId(android.R.id.button1),
             ).perform(
-                androidx.test.espresso.action.ViewActions
-                    .click(),
+                click(),
             )
     }
-
-    // Helper removed to test UI button click properly
 
     private fun clickCancelDialog() {
         val cancelBtn =
             device.findObject(
-                androidx.test.uiautomator
-                    .UiSelector()
+                UiSelector()
                     .resourceId("android:id/button2"),
             )
         if (cancelBtn.exists()) {
@@ -141,27 +122,14 @@ class MeditationServiceTest {
         } else {
             val cancelText =
                 device.findObject(
-                    androidx.test.uiautomator
-                        .UiSelector()
+                    UiSelector()
                         .textMatches("(?i)cancel|abbrechen"),
                 )
             if (cancelText.exists()) cancelText.click()
         }
     }
 
-    private fun isDialogVisible(titleText: String): Boolean =
-        device.hasObject(
-            androidx.test.uiautomator.By
-                .text(titleText),
-        )
-
-    private fun waitForDialog(titleText: String) {
-        for (i in 0 until 50) {
-            if (isDialogVisible(titleText)) return
-            SystemClock.sleep(100)
-        }
-        throw AssertionError("Dialog $titleText not visible")
-    }
+    private fun isDialogVisible(titleText: String): Boolean = device.hasObject(By.text(titleText))
 
     @Test
     fun testStopMeditationConfirmation() {
@@ -181,8 +149,7 @@ class MeditationServiceTest {
         waitForStopButton()
         clickStopButtonAndWaitForDialog("Stop meditation?")
 
-        assertTrue(
-            "Stop dialog should be visible",
+        assert(
             isDialogVisible("Stop meditation?"),
         )
 
@@ -191,7 +158,7 @@ class MeditationServiceTest {
         waitForStopButton()
         clickStopButtonAndWaitForDialog("Stop meditation?")
 
-        clickByTextContainsWithUiAutomator("Stop")
+        clickStopConfirmButton()
     }
 
     @Test
@@ -212,7 +179,7 @@ class MeditationServiceTest {
         waitForStopButton()
         clickStopButtonAndWaitForDialog("Stop meditation?")
 
-        clickByTextContainsWithUiAutomator("Stop")
+        clickStopConfirmButton()
     }
 
     companion object {

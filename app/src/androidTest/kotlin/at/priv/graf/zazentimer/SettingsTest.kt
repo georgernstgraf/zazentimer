@@ -15,7 +15,6 @@ import androidx.test.espresso.intent.Intents.intended
 import androidx.test.espresso.intent.matcher.IntentMatchers.hasAction
 import androidx.test.espresso.matcher.ViewMatchers.isAssignableFrom
 import androidx.test.espresso.matcher.ViewMatchers.withText
-import androidx.test.ext.junit.rules.ActivityScenarioRule
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.filters.LargeTest
 import androidx.test.platform.app.InstrumentationRegistry
@@ -23,29 +22,19 @@ import androidx.test.uiautomator.UiDevice
 import androidx.test.uiautomator.UiSelector
 import at.priv.graf.zazentimer.screens.MainPage
 import at.priv.graf.zazentimer.screens.SettingsPage
-import dagger.hilt.android.testing.HiltAndroidRule
-import dagger.hilt.android.testing.HiltAndroidTest
 import org.hamcrest.Matcher
 import org.junit.Before
-import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
 
 @HiltAndroidTest
 @RunWith(AndroidJUnit4::class)
 @LargeTest
-class SettingsTest {
-    @get:Rule(order = 0)
-    val hiltRule = HiltAndroidRule(this)
-
-    @get:Rule(order = 1)
-    val activityRule = ActivityScenarioRule(ZazenTimerActivity::class.java)
-
+class SettingsTest : AbstractZazenTest() {
     private lateinit var device: UiDevice
 
     @Before
-    fun init() {
-        hiltRule.inject()
+    fun setupDevice() {
         device = UiDevice.getInstance(InstrumentationRegistry.getInstrumentation())
     }
 

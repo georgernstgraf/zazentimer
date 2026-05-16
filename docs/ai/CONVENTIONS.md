@@ -22,6 +22,8 @@ Follow these without question. Do not deviate unless explicitly told.
 - Shared test utilities (ScreenRobot, IdlingResource, PreFlightRule) live in `src/testFixtures/`.
 - `DevicePreFlightRule` is applied in `HiltTestRunner.onStart()` to ensure screen is awake and animations disabled.
 - Android Test utilities use `java-test-fixtures` via `testFixtures { enable = true }` in AGP, NOT the standalone plugin.
+- **Launching long-running scripts**: Always use `echo "cd <dir> && <cmd>" | at now` to schedule via `atd`. Never use `nohup &` from the bash tool — the tool's shell timeout kills the process. Redirect stdout/stderr to `/dev/null` since the scripts already tee to log files.
+- **Monitoring test runs**: Use `scripts/summarize-tests.sh --date YYYY-MM-DD` to get an at-a-glance report. Check process liveness with `ps aux | grep -E "(gradle|emulator|run-instrument)" | grep -v grep`.
 
 ## Database
 - All asynchronous DB operations in `DbOperations` must be wrapped with `withIdling { ... }` to ensure Espresso synchronization.

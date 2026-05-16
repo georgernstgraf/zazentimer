@@ -11,32 +11,21 @@ import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
 import androidx.test.espresso.matcher.ViewMatchers.withId
 import androidx.test.espresso.matcher.ViewMatchers.withText
-import androidx.test.ext.junit.rules.ActivityScenarioRule
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.filters.LargeTest
 import at.priv.graf.zazentimer.screens.MainPage
 import at.priv.graf.zazentimer.screens.SessionEditPage
-import dagger.hilt.android.testing.HiltAndroidRule
-import dagger.hilt.android.testing.HiltAndroidTest
 import org.hamcrest.Matchers.not
 import org.junit.Before
-import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
 
 @HiltAndroidTest
 @RunWith(AndroidJUnit4::class)
 @LargeTest
-class SessionCrudTest {
-    @get:Rule(order = 0)
-    val hiltRule = HiltAndroidRule(this)
-
-    @get:Rule(order = 1)
-    val activityRule = ActivityScenarioRule(ZazenTimerActivity::class.java)
-
+class SessionCrudTest : AbstractZazenTest() {
     @Before
-    fun init() {
-        hiltRule.inject()
+    fun setupDatabase() {
         var activityRef: ZazenTimerActivity? = null
         activityRule.scenario.onActivity { activity ->
             activityRef = activity
@@ -76,7 +65,6 @@ class SessionCrudTest {
         SessionEditPage()
             .verifyEditSessionScreen()
 
-        // Wait for async session load to complete and populate fields
         for (i in 0 until 10) {
             try {
                 onView(withId(R.id.text_sitzung_name)).check(matches(withText(demoSessionName)))
@@ -94,7 +82,6 @@ class SessionCrudTest {
         closeSoftKeyboard()
         SessionEditPage().goBack()
 
-        // Wait a bit to ensure the async DB save from SessionEditFragment completes
         SystemClock.sleep(2000)
 
         MainPage().verifySessionNameVisible("Updated Session Name")

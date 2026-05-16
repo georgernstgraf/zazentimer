@@ -9,34 +9,23 @@ import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
 import androidx.test.espresso.matcher.ViewMatchers.isEnabled
 import androidx.test.espresso.matcher.ViewMatchers.withId
 import androidx.test.espresso.matcher.ViewMatchers.withText
-import androidx.test.ext.junit.rules.ActivityScenarioRule
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.filters.LargeTest
 import androidx.test.platform.app.InstrumentationRegistry
 import at.priv.graf.zazentimer.screens.MainPage
 import at.priv.graf.zazentimer.screens.MeditationPage
-import dagger.hilt.android.testing.HiltAndroidRule
-import dagger.hilt.android.testing.HiltAndroidTest
 import kotlinx.coroutines.runBlocking
 import org.junit.After
 import org.junit.Before
-import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
 
 @HiltAndroidTest
 @RunWith(AndroidJUnit4::class)
 @LargeTest
-class MainScreenDeadStateTest {
-    @get:Rule(order = 0)
-    val hiltRule = HiltAndroidRule(this)
-
-    @get:Rule(order = 1)
-    val activityRule = ActivityScenarioRule(ZazenTimerActivity::class.java)
-
+class MainScreenDeadStateTest : AbstractZazenTest() {
     @Before
-    fun init() {
-        hiltRule.inject()
+    fun setupPermissions() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
             InstrumentationRegistry.getInstrumentation().uiAutomation.executeShellCommand(
                 "pm grant at.priv.graf.zazentimer.debug android.permission.POST_NOTIFICATIONS",

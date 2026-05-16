@@ -129,6 +129,18 @@ Each entry documents WHAT was decided and WHY.
 - **Choice**: Changed emulator launch from `&>> "$API_LOG"` to `>> "$API_LOG" 2>&1 &` so `$!` correctly captures the background PID.
 - **Reason**: In bash, `&>>` is the append redirect operator (`>>FILE 2>&1`), NOT `& >>` (background + redirect). The emulator must be explicitly backgrounded with `&` to capture its PID and allow the script to proceed to `wait_for_emulator`.
 
+## 2026-05-16: Use `at` scheduler for long-running instrumentation tests
+- **Choice**: Launch `run-instrumentation.sh` via the `at` scheduler (`echo "cmd" | at now`) instead of `nohup &` from the bash tool.
+- **Reason**: The opencode bash tool kills its shell after the timeout (default 2 min, max 10s for background launches). `nohup` inside the tool's shell still dies with the shell. `at` submits the job to the system `atd` daemon, which runs completely independently of the launching shell.
+- **Considered**: `nohup &` (killed by tool timeout), `systemd-run --user` (viable but more complex), `tmux`/`screen` (viable but interactive).
+- **Tradeoff**: `at` captures stdout/stderr and tries to mail it — must redirect to `/dev/null` since the script already tees to log files. Requires `at` package installed and `atd` service running.
+
+## 2026-05-16: Test report summarizer script
+- **Choice**: Created `scripts/summarize-tests.sh` to parse instrumentation logs and JUnit XML into a markdown report with summary table + failure details.
+- **Reason**: Long test runs (4-5 hours, 14 API levels) produce fragmented logs. A summarizer gives an at-a-glance view of what passed/failed and why.
+- **Considered**: Manual log inspection (tedious), CI dashboard (not available for local runs).
+- **Tradeoff**: Pure bash parsing of logs/XML — fragile if log format changes, but no Python dependency.
+
 ## 2026-05-16: Version display on About page
 - **Choice**: Added `BuildConfig.VERSION_DISPLAY` field showing `3.0.1+19` (untagged) or `3.0.1` (tagged). No `v` prefix. Tags fetched from GitHub via `git fetch --tags` in `VersionTagSource`.
 - **Reason**: Release tags now exist in the repo but were invisible to users. The `+N` suffix follows semantic versioning convention for build metadata.
