@@ -113,6 +113,21 @@ Each entry documents WHAT was decided and WHY.
 - **Tradeoff**: The `am instrument` fallback path remains in `run-instrumentation.sh` but is no longer invoked. Some tests may still fail due to Espresso UI timing issues under Xvfb, but these are test-specific, not AGP-specific.
 
 ## 2026-05-16: Per-API logfiles with logcat dumps in run-instrumentation.sh
+
+## 2026-05-16: Modular self-contained API test runs with full logging
+- **Choice**: Rewrote `run-instrumentation.sh` with per-run isolation: each API test (and each retry) gets its own Xvfb restart, zombie emulator kill, crash DB archival, logcat clear, and phase-annotated logging.
+- **Reason**: Unstaged changes from a previous agent session were accidentally lost by another agent. The lost version had significant improvements visible only from log output: timestamps on every line, phase markers (`API X — Phase: <description>`), ADB command logging, emulator PID capture, crash DB preservation. The committed version had no timestamps, silent ADB commands (`2>/dev/null`), no phase markers, and Xvfb restart only in the outer loop (not on retry).
+- **Considered**: Recreating from memory only (fragile), keeping the committed version (loses diagnostic value).
+- **Tradeoff**: More verbose logging; crash DB archives under `logs/crashdb-api<level>-<date>/` consume disk space but are gitignored.
+
+## 2026-05-16: Preserve crash DBs instead of deleting them
+- **Choice**: `preserve_crash_dbs()` moves `/tmp/android-georg/emu-crash-*.db` to `logs/crashdb-api<level>-<date>/` instead of `rm -rf`.
+- **Reason**: Crash DBs may contain important traces for diagnosing failures, especially with `--continue-on-error` where multiple APIs run sequentially. Deleting them destroys forensic evidence.
+- **Tradeoff**: Additional disk usage (~few MB per API); mitigated by `logs/` being gitignored.
+
+## 2026-05-16: Bash `&>>` does not background processes
+- **Choice**: Changed emulator launch from `&>> "$API_LOG"` to `>> "$API_LOG" 2>&1 &` so `$!` correctly captures the background PID.
+- **Reason**: In bash, `&>>` is the append redirect operator (`>>FILE 2>&1`), NOT `& >>` (background + redirect). The emulator must be explicitly backgrounded with `&` to capture its PID and allow the script to proceed to `wait_for_emulator`.
 - **Choice**: All output from each API-level test run is written to `logs/api<level>-YYYY-MM-DD.log` via `tee -a`. On failure, `adb logcat -d` dumps to `logs/api<level>-YYYY-MM-DD-logcat.txt`. Overall run log at `logs/instrumentation-YYYY-MM-DD.log` via `exec > >(tee ...)`. Added `--debug` flag for logcat dumps on green runs too.
 - **Reason**: Previous runs lost all diagnostic output to terminal-only — when terminal timed out or Xvfb crashed, stack traces, `am instrument` output, and crash details were irrecoverable.
 - **Considered**: Single combined log file (hard to navigate), only logging failures (misses context for intermittent issues).
