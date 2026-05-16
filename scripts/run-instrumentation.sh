@@ -297,6 +297,26 @@ else
             log_api "WARNING: activity service not ready after 60s, proceeding anyway"
         fi
 
+        log_api "Stabilizing — verifying services for 30s..."
+        local stable_count=0
+        local stab_wait=0
+        while [ $stab_wait -lt 45 ]; do
+            sleep 10
+            stab_wait=$((stab_wait + 10))
+            local svc_verify
+            svc_verify=$(adb -s "$serial" shell service check activity 2>/dev/null | tr -d '\r\n')
+            if [ -n "$svc_verify" ] && echo "$svc_verify" | grep -qi "activity"; then
+                stable_count=$((stable_count + 1))
+                if [ $stable_count -ge 3 ]; then
+                    log_api "Services stable ($stab_wait, $stable_count consecutive checks)"
+                    break
+                fi
+            else
+                stable_count=0
+                log_api "WARNING: activity service lost during stabilization (${stab_wait}s)"
+            fi
+        done
+
         log_api "adb shell svc power stayon true"
         adb -s "$serial" shell svc power stayon true 2>/dev/null || true
         log_api "adb shell input keyevent KEYCODE_WAKEUP"
