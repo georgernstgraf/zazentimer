@@ -32,9 +32,9 @@ ZazenTimer is an Android application for timing meditation sessions. It uses a f
   - `src/testFixtures/` — Shared test utilities (ScreenRobot, MeditationServiceIdlingResource, DevicePreFlightRule) via `java-test-fixtures` plugin
 - **Test Runner**:
   - `HiltTestRunner` — Custom `AndroidJUnitRunner` injecting `HiltTestApplication`, with `DevicePreFlightRule.execute()` called in `onStart()` for self-healing tests
-  - `scripts/run-instrumentation.sh` — Orchestrates full test matrix: unit tests + per-API-level instrumented tests (API 29-36)
+  - `scripts/run-instrumentation.sh` — Orchestrates full test matrix: unit tests + per-API-level instrumented tests (API 23-36). Restarts Xvfb for each API level when running in virtual framebuffer mode.
 - **Execution Strategy**:
-  - API 29-30: Gradle `connectedDebugAndroidTest` runner
+  - API 23-30: Gradle `connectedDebugAndroidTest` runner
   - API 31-36: Manual `am instrument` (bypasses UTP bug on API 31+)
   - API level source of truth: `zazentimer.test.apis` in `gradle.properties`
   - Gradle runner threshold: `zazentimer.test.gradleMaxApi=30` in `gradle.properties`

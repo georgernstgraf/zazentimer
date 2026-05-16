@@ -60,11 +60,45 @@ FAILED_APIS=()
 ERROR_LOGS=()
 IS_REAL_DISPLAY=true
 
-cleanup() {
+stop_xvfb() {
     if [ -n "${XVFB_PID:-}" ]; then
         kill "$XVFB_PID" 2>/dev/null || true
         wait "$XVFB_PID" 2>/dev/null || true
+        XVFB_PID=""
     fi
+    rm -f /tmp/.X99-lock /tmp/.X11-unix/X99 2>/dev/null || true
+}
+
+start_xvfb() {
+    stop_xvfb
+
+    Xvfb :99 -screen 0 1080x1920x24 &
+    XVFB_PID=$!
+
+    local waited=0
+    while [ $waited -lt 30 ]; do
+        if xdpyinfo -display :99 >/dev/null 2>&1; then
+            echo "Xvfb ready on :99 (PID $XVFB_PID, ${waited}s)"
+            export DISPLAY=:99
+            return 0
+        fi
+        if ! kill -0 "$XVFB_PID" 2>/dev/null; then
+            echo "ERROR: Xvfb failed to start (PID $XVFB_PID is dead)"
+            XVFB_PID=""
+            return 1
+        fi
+        sleep 1
+        waited=$((waited + 1))
+    done
+
+    echo "ERROR: Xvfb did not become ready within 30s"
+    kill "$XVFB_PID" 2>/dev/null || true
+    XVFB_PID=""
+    return 1
+}
+
+cleanup() {
+    stop_xvfb
     for emu_serial in $(adb devices 2>/dev/null | grep -oP 'emulator-\d+' || true); do
         adb -s "$emu_serial" emu kill 2>/dev/null || true
     done
@@ -91,14 +125,14 @@ else
 fi
 
 if [ -z "${DISPLAY:-}" ]; then
-    echo "=== Starting Xvfb on :99 ==="
-    Xvfb :99 -screen 0 1080x1920x24 &
-    XVFB_PID=$!
-    export DISPLAY=:99
     IS_REAL_DISPLAY=false
-    sleep 2
-    echo "Xvfb started (PID $XVFB_PID)"
+    echo "=== Starting Xvfb on :99 ==="
+    if ! start_xvfb; then
+        echo "ERROR: Failed to start Xvfb — cannot continue"
+        exit 1
+    fi
 else
+    IS_REAL_DISPLAY=true
     echo "=== DISPLAY=$DISPLAY — using existing display ==="
 fi
 
@@ -500,6 +534,22 @@ else
     }
 
     for api in "${APIS_TO_RUN[@]}"; do
+        if [ "$IS_REAL_DISPLAY" = false ]; then
+            echo ""
+            echo "=== Restarting Xvfb for API $api ==="
+            if ! start_xvfb; then
+                echo "FAIL: API $api — could not start Xvfb"
+                RESULTS[$api]=1
+                FAILED_APIS+=("$api")
+                ERROR_LOGS+=("API $api: Xvfb failed to start")
+                if [ "$CONTINUE_ON_ERROR" = false ]; then
+                    echo "FAIL-FAST: Xvfb unavailable — stopping"
+                    break
+                fi
+                continue
+            fi
+        fi
+
         method=$(get_test_method "$api")
         pass=false
         for attempt in 1 2; do

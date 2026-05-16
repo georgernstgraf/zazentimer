@@ -99,3 +99,9 @@ Each entry documents WHAT was decided and WHY.
 - **Reason**: Average preserves the intent of all sections rather than favoring one arbitrarily.
 - **Considered**: First encountered volume (biased), maximum (favors loudest).
 - **Tradeoff**: Averaged volume may differ from any individual section's original setting.
+
+## 2026-05-16: Xvfb restart per API level in run-instrumentation.sh
+- **Choice**: Refactored `run-instrumentation.sh` to restart Xvfb for each API level when running in virtual framebuffer mode (`IS_REAL_DISPLAY=false`).
+- **Reason**: Xvfb dies mid-run (OOM, emulator GPU driver conflict) causing cascading failures — all subsequent APIs are lost. Fresh Xvfb per API isolates failures to the affected API only.
+- **Considered**: Running each API as a separate script invocation (heavier), adding Xvfb watchdog (complex), accepting data loss on crash.
+- **Tradeoff**: ~2s overhead per API for Xvfb startup; `xdpyinfo` polling adds up to 30s per restart (typically <5s).
