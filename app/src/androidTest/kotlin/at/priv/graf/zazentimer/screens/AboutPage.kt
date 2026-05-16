@@ -21,6 +21,11 @@ class AboutPage {
         return this
     }
 
+    fun verifyVersion(version: String): AboutPage {
+        onView(withText(containsString("Version: $version"))).check(matches(isDisplayed()))
+        return this
+    }
+
     fun clickOk(): MainPage {
         robot.clickDialogButton(R.string.privacy_ok)
         return MainPage()

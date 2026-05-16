@@ -17,9 +17,14 @@ abstract class GitHashSource : ValueSource<String, ValueSourceParameters.None> {
 
 abstract class VersionTagSource : ValueSource<String, ValueSourceParameters.None> {
     override fun obtain(): String {
+        val dir = File(System.getProperty("user.dir"))
+        ProcessBuilder("git", "fetch", "--tags", "--quiet")
+            .directory(dir)
+            .start()
+            .waitFor()
         val process =
             ProcessBuilder("git", "describe", "--tags", "--match", "v*", "--abbrev=0")
-                .directory(File(System.getProperty("user.dir")))
+                .directory(dir)
                 .start()
         process.waitFor()
         val tag =
@@ -101,6 +106,10 @@ android {
 
         val gitHash = providers.of(GitHashSource::class.java) {}.get().trim()
         buildConfigField("String", "GIT_HASH", "\"$gitHash\"")
+
+        val commitCount = providers.of(CommitCountSource::class.java) {}.get().trim()
+        val versionDisplay = if (commitCount == "0") versionName else "$versionName+$commitCount"
+        buildConfigField("String", "VERSION_DISPLAY", "\"$versionDisplay\"")
 
         ksp {
             arg("room.schemaLocation", "$projectDir/schemas")
