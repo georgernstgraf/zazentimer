@@ -128,6 +128,12 @@ Each entry documents WHAT was decided and WHY.
 ## 2026-05-16: Bash `&>>` does not background processes
 - **Choice**: Changed emulator launch from `&>> "$API_LOG"` to `>> "$API_LOG" 2>&1 &` so `$!` correctly captures the background PID.
 - **Reason**: In bash, `&>>` is the append redirect operator (`>>FILE 2>&1`), NOT `& >>` (background + redirect). The emulator must be explicitly backgrounded with `&` to capture its PID and allow the script to proceed to `wait_for_emulator`.
+
+## 2026-05-16: Version display on About page
+- **Choice**: Added `BuildConfig.VERSION_DISPLAY` field showing `3.0.1+19` (untagged) or `3.0.1` (tagged). No `v` prefix. Tags fetched from GitHub via `git fetch --tags` in `VersionTagSource`.
+- **Reason**: Release tags now exist in the repo but were invisible to users. The `+N` suffix follows semantic versioning convention for build metadata.
+- **Considered**: Showing `v3.0.1` (user preferred no `v`), omitting version when untagged (less informative).
+- **Tradeoff**: `git fetch --tags` adds network dependency to build; fails gracefully if offline (uses local tags).
 - **Choice**: All output from each API-level test run is written to `logs/api<level>-YYYY-MM-DD.log` via `tee -a`. On failure, `adb logcat -d` dumps to `logs/api<level>-YYYY-MM-DD-logcat.txt`. Overall run log at `logs/instrumentation-YYYY-MM-DD.log` via `exec > >(tee ...)`. Added `--debug` flag for logcat dumps on green runs too.
 - **Reason**: Previous runs lost all diagnostic output to terminal-only — when terminal timed out or Xvfb crashed, stack traces, `am instrument` output, and crash details were irrecoverable.
 - **Considered**: Single combined log file (hard to navigate), only logging failures (misses context for intermittent issues).
