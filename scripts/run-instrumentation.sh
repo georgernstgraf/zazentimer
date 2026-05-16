@@ -241,7 +241,7 @@ else
     log "========================================="
     set +e
     ./gradlew compileDebugAndroidTestKotlin 2>&1
-    local compile_result=$?
+    compile_result=$?
     set -e
 
     if [ $compile_result -ne 0 ]; then
