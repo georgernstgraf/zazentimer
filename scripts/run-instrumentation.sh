@@ -372,6 +372,11 @@ else
 
     clean_device_packages() {
         local serial="$1"
+        local api_level="${2:-0}"
+        if [ "$api_level" -ge 36 ]; then
+            log_api "Skipping package cleanup on API $api_level (can destabilize system services)"
+            return 0
+        fi
         log_api "Cleaning stale packages on $serial..."
         for pkg in \
             de.gaffga.android.zazentimer \
@@ -498,7 +503,7 @@ else
         fi
 
         log_phase "$api_level" "cleaning packages"
-        clean_device_packages "$serial"
+        clean_device_packages "$serial" "$api_level"
         dismiss_anr_dialog "$serial"
 
         setup_device "$serial"
