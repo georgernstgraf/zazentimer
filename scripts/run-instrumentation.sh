@@ -285,8 +285,8 @@ else
         local svc_wait=0
         while [ $svc_wait -lt 60 ]; do
             local svc_check
-            svc_check=$(adb -s "$serial" shell service check activity 2>/dev/null | tr -d '\r')
-            if echo "$svc_check" | grep -q "Service: activity"; then
+            svc_check=$(adb -s "$serial" shell service check activity 2>/dev/null | tr -d '\r\n')
+            if [ -n "$svc_check" ] && echo "$svc_check" | grep -qi "activity"; then
                 log_api "System services ready (${svc_wait}s)"
                 break
             fi
