@@ -1,7 +1,6 @@
 package at.priv.graf.zazentimer
 
 import android.os.Build
-import android.os.SystemClock
 import android.util.Log
 import androidx.test.espresso.IdlingRegistry
 import androidx.test.espresso.action.ViewActions.click
@@ -11,6 +10,7 @@ import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.uiautomator.By
 import androidx.test.uiautomator.UiDevice
 import androidx.test.uiautomator.UiSelector
+import androidx.test.uiautomator.Until
 import at.priv.graf.zazentimer.screens.MainPage
 import at.priv.graf.zazentimer.utils.MeditationServiceIdlingResource
 import dagger.hilt.android.testing.HiltAndroidTest
@@ -24,7 +24,7 @@ import org.junit.runner.RunWith
 @RunWith(AndroidJUnit4::class)
 @LargeTest
 class MeditationServiceTest : AbstractZazenTest() {
-    private val uiTimeout = 5000L
+    private val uiTimeout = 10000L
     private val meditationIdlingResource = MeditationServiceIdlingResource()
     private lateinit var device: UiDevice
 
@@ -47,7 +47,6 @@ class MeditationServiceTest : AbstractZazenTest() {
                 activity.resetDatabaseForTest()
             }
         }
-        SystemClock.sleep(2000)
     }
 
     @After
@@ -61,13 +60,12 @@ class MeditationServiceTest : AbstractZazenTest() {
     private fun waitForStopButton() {
         val stopButtonById = By.res("at.priv.graf.zazentimer", "but_stop").enabled(true)
         val stopButtonByDesc = By.desc("Stop").enabled(true)
-        for (i in 0 until 50) {
-            if (device.hasObject(stopButtonById) || device.hasObject(stopButtonByDesc)) {
-                return
-            }
-            SystemClock.sleep(200)
+        val found =
+            device.wait(Until.hasObject(stopButtonById), uiTimeout) ||
+                device.wait(Until.hasObject(stopButtonByDesc), uiTimeout)
+        if (!found) {
+            throw AssertionError("Stop button never became enabled and displayed")
         }
-        throw AssertionError("Stop button never became enabled and displayed")
     }
 
     private fun clickStopButtonAndWaitForDialog(titleText: String) {
@@ -90,14 +88,11 @@ class MeditationServiceTest : AbstractZazenTest() {
                     if (stopDesc.exists()) stopDesc.click()
                 }
 
-                for (j in 0 until 20) {
-                    if (isDialogVisible(titleText)) return
-                    SystemClock.sleep(100)
-                }
+                device.wait(Until.hasObject(By.text(titleText)), 3000L)
+                if (isDialogVisible(titleText)) return
             } catch (e: Throwable) {
                 Log.e(TAG, "Stop button dialog attempt $i failed", e)
             }
-            SystemClock.sleep(500)
         }
         throw AssertionError("Dialog '$titleText' did not appear after clicking stop button 5 times")
     }
@@ -146,7 +141,6 @@ class MeditationServiceTest : AbstractZazenTest() {
             activity.startMeditation()
         }
 
-        SystemClock.sleep(8000)
         waitForStopButton()
         clickStopButtonAndWaitForDialog("Stop meditation?")
 
@@ -176,7 +170,6 @@ class MeditationServiceTest : AbstractZazenTest() {
             activity.startMeditation()
         }
 
-        SystemClock.sleep(8000)
         waitForStopButton()
         clickStopButtonAndWaitForDialog("Stop meditation?")
 

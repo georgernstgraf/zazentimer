@@ -1,6 +1,6 @@
 package at.priv.graf.zazentimer
 
-import android.os.SystemClock
+import androidx.test.espresso.Espresso.onIdle
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.assertion.ViewAssertions.matches
@@ -32,7 +32,7 @@ class SectionEditTest : AbstractZazenTest() {
                 .apply()
         }
         activityRef?.resetDatabaseForTest()
-        SystemClock.sleep(2000)
+        onIdle()
     }
 
     @Test
@@ -66,7 +66,7 @@ class SectionEditTest : AbstractZazenTest() {
             .verifySectionEditScreen()
             .tapDurationPicker()
 
-        SystemClock.sleep(1000)
+        onIdle()
 
         onView(withId(android.R.id.button1)).perform(click())
 

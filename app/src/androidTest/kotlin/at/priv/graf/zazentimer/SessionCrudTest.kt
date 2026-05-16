@@ -1,6 +1,5 @@
 package at.priv.graf.zazentimer
 
-import android.os.SystemClock
 import androidx.test.espresso.Espresso.closeSoftKeyboard
 import androidx.test.espresso.Espresso.onIdle
 import androidx.test.espresso.Espresso.onView
@@ -37,7 +36,7 @@ class SessionCrudTest : AbstractZazenTest() {
                 .apply()
         }
         activityRef?.resetDatabaseForTest()
-        SystemClock.sleep(3000)
+        onIdle()
     }
 
     @Test
@@ -66,14 +65,7 @@ class SessionCrudTest : AbstractZazenTest() {
         SessionEditPage()
             .verifyEditSessionScreen()
 
-        for (i in 0 until 10) {
-            try {
-                onView(withId(R.id.text_sitzung_name)).check(matches(withText(demoSessionName)))
-                break
-            } catch (e: Throwable) {
-                SystemClock.sleep(500)
-            }
-        }
+        onView(withId(R.id.text_sitzung_name)).check(matches(withText(demoSessionName)))
 
         onView(withId(R.id.text_sitzung_name))
             .perform(clearText(), typeText("Updated Session Name"))
@@ -83,7 +75,7 @@ class SessionCrudTest : AbstractZazenTest() {
         closeSoftKeyboard()
         SessionEditPage().goBack()
 
-        SystemClock.sleep(2000)
+        onIdle()
 
         MainPage().verifySessionNameVisible("Updated Session Name")
     }

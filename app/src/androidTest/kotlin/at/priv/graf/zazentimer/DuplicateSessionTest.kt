@@ -1,6 +1,6 @@
 package at.priv.graf.zazentimer
 
-import android.os.SystemClock
+import androidx.test.espresso.Espresso.onIdle
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
@@ -23,7 +23,7 @@ class DuplicateSessionTest : AbstractZazenTest() {
         var activityRef: ZazenTimerActivity? = null
         activityRule.scenario.onActivity { activityRef = it }
         activityRef?.resetDatabaseForTest()
-        SystemClock.sleep(2000)
+        onIdle()
     }
 
     @Test
@@ -39,7 +39,7 @@ class DuplicateSessionTest : AbstractZazenTest() {
             .verifyMainScreenIsDisplayed()
             .clickSessionOverflowAction(0, R.string.menu_copy_session)
 
-        SystemClock.sleep(1000)
+        onIdle()
 
         onView(withText(containsString("Copy of")))
             .check(matches(isDisplayed()))
