@@ -29,8 +29,6 @@
     <string name="caption_zazen_meditation">Zazen Meditation</string>
     <string name="checkbox_keep_screen_on">Ekran li ser bimîne</string>
     <string name="checkbox_no_server_messages">Nûçe nîşan bide</string>
-    <string name="checkbox_phone_off">Telefonê qut bike</string>
-    <string name="checkbox_phone_off_desc">Hemî dengên têlefonê qut bikin.</string>
     <string name="copy_prefix">Kopî ji</string>
     <string name="crash_dialog_comment_prompt">Vebijarkî: Kîjan kiryar bû sedema xeletiyê?</string>
     <string name="crash_dialog_ok_toast">Gelek spas ji bo alîkariya we!</string>
@@ -82,15 +80,6 @@
     <string name="ok">OK</string>
     <string name="pref_desc_brightness">Ronahiya Pêşandanê di dema Meditasyonê de</string>
     <string name="pref_get_messages">Naha Mesajên nû kontrol bikin</string>
-    <string name="pref_mute_mode">Deng û Agahdarî</string>
-    <string name="pref_mute_mode_none">Bêdengî</string>
-    <string name="pref_mute_mode_none_desc">Ji bo bangên têlefonê û Agahdariyên zengil û lerzîn tune</string>
-    <string name="pref_mute_mode_pref">Mîhengên di derbarê zengil û Agahdariyê de</string>
-    <string name="pref_mute_mode_vibrate">Tenê Vibrasyon</string>
-    <string name="pref_mute_mode_vibrate_desc">Tenê ji bo bangên têlefonê û Agahdariyê dilerizîne (Li ser Android 7 (Nougat) naxebite - mîna mîhenga Bêdengiyê tevdigere)</string>
-    <string name="pref_mute_mode_vibrate_sound">Dengê zengil û Vibrasyon</string>
-    <string name="pref_mute_mode_vibrate_sound_desc">Dengê zengilê û lerizînê bilîzin</string>
-    <string name="pref_muting">Mîhengên Mute</string>
     <string name="pref_sum_backup">Piştgiriyek ji Rûniştin û Dengên xwe li qerta SD-ya xwe hilînin.</string>
     <string name="pref_sum_bad_removal">Qerta SD bêyî ku pêşî were rakirin hate rakirin.</string>
     <string name="pref_sum_checking">Karta SD di vê gavê de tê kontrol kirin</string>
@@ -126,8 +115,6 @@
     <string name="content_desc_session_actions">Çalakiyên rûniştinê</string>
     <string name="session_list_unnamed_entry">Rûniştina bênav</string>
     <string name="status_bar_notification_info_overflow">999+</string>
-    <string name="test_mute_perm_request">Serlêdan niha nayê destûr kirin ku têlefona we qut bike. Ji bo guherandina vê mîhengan veke?</string>
-    <string name="text_cant_mute">Têlefona we destûr nade ku ev sepanê lal bike. Di vê Mîhengên Serlêdanan de lalbûnê neçalak bikin an jî di Mîhengên Têlefonên xwe de destûr bidin dengdanê.</string>
     <string name="text_no_notify_access_settings">Wusa dixuye ku têlefona we xwedan mîhengên standard nîne ku destûrê bide dengdanê. Ji kerema xwe bi destan li mîhenga \"Gehiştina Asteng neke\" bigerin û wê çalak bikin.</string>
     <string name="text_no_sections">No Beþ diyar kirin.</string>
     <string name="text_question_delete_session">Bi rastî danişîna hilbijartî jêbirin?</string>
@@ -140,7 +127,6 @@
     <string name="time_section_remaining">Beşek maye</string>
     <string name="time_session_elapsed">Rûniştin bi dawî bû</string>
     <string name="time_session_remaining">Rûniştin mayî</string>
-    <string name="title_mute_perm_request">Destûra wenda</string>
     <string name="title_question_delete_session">Rûniştinê jê bibe?</string>
     <string name="title_volume_bells">Volume Bell</string>
     <string name="unnamed">Bênav</string>

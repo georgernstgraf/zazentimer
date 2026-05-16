@@ -126,10 +126,6 @@ class MeditationService : LifecycleService() {
                     sections,
                     bellVolumes,
                     coroutineDispatchers,
-                    AudioStateManager(
-                        this@MeditationService,
-                        ZazenTimerActivity.getPreferences(this@MeditationService),
-                    ),
                     AlarmScheduler(this@MeditationService, clock),
                     BellPlayer(this@MeditationService, coroutineDispatchers),
                 )

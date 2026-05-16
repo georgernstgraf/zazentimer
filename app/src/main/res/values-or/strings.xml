@@ -28,8 +28,6 @@
     <string name="caption_zazen_meditation">ଜାଜେନ୍ ଧ୍ୟାନ |</string>
     <string name="checkbox_keep_screen_on">ସ୍କ୍ରିନ୍ ଅନ୍ ରଖନ୍ତୁ |</string>
     <string name="checkbox_no_server_messages">ନ୍ୟୁଜ୍ ଦେଖାନ୍ତୁ |</string>
-    <string name="checkbox_phone_off">ମ୍ୟୁଟ୍ ଫୋନ୍ |</string>
-    <string name="checkbox_phone_off_desc">ସମସ୍ତ ଫୋନ୍ ଶବ୍ଦକୁ ଚୁପ୍ କର |</string>
     <string name="copy_prefix">ର କପି</string>
     <string name="crash_dialog_comment_prompt">ବ tion କଳ୍ପିକ: କେଉଁ କାର୍ଯ୍ୟ ତ୍ରୁଟି ଘଟାଇଲା?</string>
     <string name="crash_dialog_ok_toast">ଆପଣଙ୍କ ସାହାଯ୍ୟ ପାଇଁ ଆପଣଙ୍କୁ ବହୁତ ଧନ୍ୟବାଦ!</string>
@@ -81,15 +79,6 @@
     <string name="ok">ଠିକ ଅଛି |</string>
     <string name="pref_desc_brightness">ଧ୍ୟାନ ସମୟରେ ପ୍ରଦର୍ଶନର ଉଜ୍ଜ୍ୱଳତା |</string>
     <string name="pref_get_messages">ବର୍ତ୍ତମାନ ନୂତନ ସନ୍ଦେଶଗୁଡ଼ିକ ଯାଞ୍ଚ କରନ୍ତୁ |</string>
-    <string name="pref_mute_mode">ରିଙ୍ଗ୍ ସ୍ୱର ଏବଂ ବିଜ୍ଞପ୍ତିଗୁଡିକ |</string>
-    <string name="pref_mute_mode_none">ନୀରବତା</string>
-    <string name="pref_mute_mode_none_desc">ଫୋନ୍ କଲ ଏବଂ ବିଜ୍ଞପ୍ତି ପାଇଁ କ ring ଣସି ରିଙ୍ଗ୍ ସ୍ୱର ଏବଂ କ vib ଣସି କମ୍ପନ ନାହିଁ |</string>
-    <string name="pref_mute_mode_pref">ରିଙ୍ଗ ସ୍ୱର ଏବଂ ବିଜ୍ଞପ୍ତି ସମ୍ବନ୍ଧୀୟ ସେଟିଂସମୂହ |</string>
-    <string name="pref_mute_mode_vibrate">କେବଳ କମ୍ପନ |</string>
-    <string name="pref_mute_mode_vibrate_desc">କେବଳ ଫୋନ୍ କଲ୍ ଏବଂ ବିଜ୍ଞପ୍ତି ପାଇଁ କମ୍ପନ କରନ୍ତୁ (ଆଣ୍ଡ୍ରଏଡ୍ 7 (ନୋଗାଟ) ରେ କାମ କରେ ନାହିଁ - ସାଇଲେନ୍ସ ସେଟିଂ ପରି ଆଚରଣ କରେ)</string>
-    <string name="pref_mute_mode_vibrate_sound">ରିଙ୍ଗ ସ୍ୱର ଏବଂ କମ୍ପନ |</string>
-    <string name="pref_mute_mode_vibrate_sound_desc">ରିଙ୍ଗ୍ ଟୋନ୍ ଏବଂ କମ୍ପନ ଚଲାନ୍ତୁ |</string>
-    <string name="pref_muting">ମ୍ୟୁଟ୍ ସେଟିଂସମୂହ</string>
     <string name="pref_sum_backup">ତୁମର SD- କାର୍ଡରେ ତୁମର ଅଧିବେଶନ ଏବଂ ଧ୍ୱନିଗୁଡ଼ିକର ଏକ ବ୍ୟାକଅପ୍ ସଞ୍ଚୟ କର |</string>
     <string name="pref_sum_bad_removal">ପ୍ରଥମେ ଅନ୍-ମାଉଣ୍ଟ୍ ନକରି SD କାର୍ଡ ଅପସାରିତ ହେଲା |</string>
     <string name="pref_sum_checking">ବର୍ତ୍ତମାନ SD-Card ଯାଞ୍ଚ କରାଯାଉଛି |</string>
@@ -125,8 +114,6 @@
     <string name="content_desc_session_actions">ଅଧିବେଶନ କାର୍ଯ୍ୟ</string>
     <string name="session_list_unnamed_entry">ନାମହୀନ ଅଧିବେଶନ |</string>
     <string name="status_bar_notification_info_overflow">999+</string>
-    <string name="test_mute_perm_request">ଆପ୍ ବର୍ତ୍ତମାନ ଆପଣଙ୍କର ଫୋନ୍ କୁ ମ୍ୟୁଟ୍ କରିବାକୁ ଅନୁମତିପ୍ରାପ୍ତ ନୁହେଁ | ଏହାକୁ ପରିବର୍ତ୍ତନ କରିବାକୁ ସେଟିଂସମୂହ ଖୋଲନ୍ତୁ?</string>
-    <string name="text_cant_mute">ଆପଣଙ୍କର ଫୋନ୍ ଏହି ଆପ୍ କୁ ମ୍ୟୁଟ୍ କରିବାକୁ ଅନୁମତି ଦିଏ ନାହିଁ | ଏହି ଆପ୍ ସେଟିଂସମୂହରେ ମ୍ୟୁଟିଙ୍ଗ୍ ଅକ୍ଷମ କରନ୍ତୁ କିମ୍ବା ଆପଣଙ୍କର ଫୋନ୍ ସେଟିଂସମୂହରେ ମ୍ୟୁଟିଂ କରିବାକୁ ଅନୁମତି ଦିଅନ୍ତୁ |</string>
     <string name="text_no_notify_access_settings">ତୁମର ଫୋନ୍ ମ୍ୟୁଟିଙ୍ଗ୍ ଅନୁମତି ଦେବାକୁ ଷ୍ଟାଣ୍ଡାର୍ଡ ସେଟିଙ୍ଗ୍ ଥିବା ପରି ମନେ ହେଉନାହିଁ | ଦୟାକରି \" ପାଇଁ ମାନୁଆଲୀ ଦେଖନ୍ତୁ ଆକ୍ସେସ୍ ବ୍ୟାଘାତ କରନ୍ତୁ ନାହିଁ\" ସେଟିଂ ଏବଂ ଏହାକୁ ସକ୍ଷମ କରନ୍ତୁ |</string>
     <string name="text_no_sections">କ No ଣସି ବିଭାଗ ବ୍ୟାଖ୍ୟା କରାଯାଇ ନାହିଁ |</string>
     <string name="text_question_delete_session">ପ୍ରକୃତରେ ମନୋନୀତ ଅଧିବେଶନ ବିଲୋପ କରିବେ କି?</string>
@@ -139,7 +126,6 @@
     <string name="time_section_remaining">ବିଭାଗ ବାକି ଅଛି |</string>
     <string name="time_session_elapsed">ଅଧିବେଶନ ଶେଷ ହେଲା |</string>
     <string name="time_session_remaining">ଅଧିବେଶନ ବାକି ଅଛି |</string>
-    <string name="title_mute_perm_request">ନିଖୋଜ ଅନୁମତି</string>
     <string name="title_question_delete_session">ଅଧିବେଶନ ବିଲୋପ କରିବେ କି?</string>
     <string name="title_volume_bells">ବେଲ୍ ଭଲ୍ୟୁମ୍</string>
     <string name="unnamed">ନାମହୀନ</string>

@@ -29,8 +29,6 @@
     <string name="caption_zazen_meditation">Διαλογισμός Zazen</string>
     <string name="checkbox_keep_screen_on">Διατήρηση οθόνης ενεργής</string>
     <string name="checkbox_no_server_messages">Εμφάνιση νέων</string>
-    <string name="checkbox_phone_off">Σίγαση τηλεφώνου</string>
-    <string name="checkbox_phone_off_desc">Σίγαση όλων των ήχων.</string>
     <string name="copy_prefix">Αντίγραφο</string>
     <string name="crash_dialog_comment_prompt">Προαιρετικό: Ποια ενέργεια προκάλεσε το σφάλμα;</string>
     <string name="crash_dialog_ok_toast">Ευχαριστούμε για τη βοήθεια!</string>
@@ -82,15 +80,6 @@
     <string name="ok">ΟΚ</string>
     <string name="pref_desc_brightness">Φωτεινότητα οθόνης</string>
     <string name="pref_get_messages">Έλεγχος για νέα μηνύματα τώρα</string>
-    <string name="pref_mute_mode">Ήχος κλήσης και ειδοποιήσεις</string>
-    <string name="pref_mute_mode_none">Σιωπή</string>
-    <string name="pref_mute_mode_none_desc">Χωρίς ήχο και δόνηση</string>
-    <string name="pref_mute_mode_pref">Ρυθμίσεις ήχου κλήσης</string>
-    <string name="pref_mute_mode_vibrate">Μόνο δόνηση</string>
-    <string name="pref_mute_mode_vibrate_desc">Μόνο δόνηση</string>
-    <string name="pref_mute_mode_vibrate_sound">Ήχος και δόνηση</string>
-    <string name="pref_mute_mode_vibrate_sound_desc">Ήχος και δόνηση</string>
-    <string name="pref_muting">Ρυθμίσεις σίγασης</string>
     <string name="pref_sum_backup">Αποθηκεύστε αντίγραφο ασφαλείας στην κάρτα SD.</string>
     <string name="pref_sum_bad_removal">Η κάρτα SD αφαιρέθηκε εσφαλμένα.</string>
     <string name="pref_sum_checking">Γίνεται έλεγχος της κάρτας SD</string>
@@ -126,8 +115,6 @@
     <string name="content_desc_session_actions">Ενέργειες συνεδρίας</string>
     <string name="session_list_unnamed_entry">Συνεδρία χωρίς όνομα</string>
     <string name="status_bar_notification_info_overflow">999+</string>
-    <string name="test_mute_perm_request">Η εφαρμογή δεν έχει άδεια. Άνοιγμα ρυθμίσεων;</string>
-    <string name="text_cant_mute">Το τηλέφωνο δεν επιτρέπει σίγαση.</string>
     <string name="text_no_notify_access_settings">Το τηλέφωνο δεν έχει τυπικές ρυθμίσεις για σίγαση.</string>
     <string name="text_no_sections">Δεν έχουν οριστεί ενότητες.</string>
     <string name="text_question_delete_session">Σίγουρα διαγραφή;</string>
@@ -140,7 +127,6 @@
     <string name="time_section_remaining">Υπολειπόμενος χρόνος</string>
     <string name="time_session_elapsed">Χρόνος συνεδρίας που παρήλθε</string>
     <string name="time_session_remaining">Υπολειπόμενος χρόνος</string>
-    <string name="title_mute_perm_request">Λείπει άδεια</string>
     <string name="title_question_delete_session">Διαγραφή συνεδρίας;</string>
     <string name="title_volume_bells">Ένταση κουδουνιού</string>
     <string name="unnamed">Χωρίς όνομα</string>

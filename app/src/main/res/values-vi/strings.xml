@@ -29,8 +29,6 @@
     <string name="caption_zazen_meditation">Tọa thiền</string>
     <string name="checkbox_keep_screen_on">Giữ màn hình sáng</string>
     <string name="checkbox_no_server_messages">Hiển thị tin tức</string>
-    <string name="checkbox_phone_off">Tắt tiếng điện thoại</string>
-    <string name="checkbox_phone_off_desc">Tắt mọi âm thanh điện thoại.</string>
     <string name="copy_prefix">Bản sao của</string>
     <string name="crash_dialog_comment_prompt">Tùy chọn: Hành động gây ra lỗi</string>
     <string name="crash_dialog_ok_toast">Cảm ơn sự giúp đỡ.</string>
@@ -82,15 +80,6 @@
     <string name="ok">OK</string>
     <string name="pref_desc_brightness">Độ sáng màn hình khi thiền.</string>
     <string name="pref_get_messages">Kiểm tra tin nhắn mới ngay.</string>
-    <string name="pref_mute_mode">Nhạc chuông và thông báo</string>
-    <string name="pref_mute_mode_none">Im lặng</string>
-    <string name="pref_mute_mode_none_desc">Không nhạc chuông và rung cho cuộc gọi, thông báo.</string>
-    <string name="pref_mute_mode_pref">Cài đặt nhạc chuông và thông báo.</string>
-    <string name="pref_mute_mode_vibrate">Chỉ rung</string>
-    <string name="pref_mute_mode_vibrate_desc">Chỉ rung cho cuộc gọi và thông báo.</string>
-    <string name="pref_mute_mode_vibrate_sound">Nhạc chuông và rung</string>
-    <string name="pref_mute_mode_vibrate_sound_desc">Phát nhạc chuông và rung.</string>
-    <string name="pref_muting">Cài đặt tắt tiếng</string>
     <string name="pref_sum_backup">Lưu bản sao lưu phiên và âm thanh vào thẻ nhớ.</string>
     <string name="pref_sum_bad_removal">Thẻ nhớ bị rút khi chưa tháo kết nối.</string>
     <string name="pref_sum_checking">Đang kiểm tra thẻ nhớ.</string>
@@ -126,8 +115,6 @@
     <string name="content_desc_session_actions">Hành động phiên</string>
     <string name="session_list_unnamed_entry">Phiên chưa đặt tên</string>
     <string name="status_bar_notification_info_overflow">999+</string>
-    <string name="test_mute_perm_request">Ứng dụng chưa được phép tắt tiếng. Đổi trong cài đặt.</string>
-    <string name="text_cant_mute">Điện thoại không cho phép tắt tiếng. Tắt trong cài đặt ứng dụng hoặc cấp quyền trên điện thoại.</string>
     <string name="text_no_notify_access_settings">Vui lòng bật quyền truy cập Không làm phiền trong cài đặt thiết bị.</string>
     <string name="text_no_sections">Chưa có phần nào.</string>
     <string name="text_question_delete_session">Xác nhận xóa phiên.</string>
@@ -140,7 +127,6 @@
     <string name="time_section_remaining">Thời gian phần còn lại</string>
     <string name="time_session_elapsed">Thời gian phiên đã qua</string>
     <string name="time_session_remaining">Thời gian phiên còn lại</string>
-    <string name="title_mute_perm_request">Thiếu quyền</string>
     <string name="title_question_delete_session">Xóa phiên</string>
     <string name="title_volume_bells">Âm lượng chuông</string>
     <string name="unnamed">Chưa đặt tên</string>

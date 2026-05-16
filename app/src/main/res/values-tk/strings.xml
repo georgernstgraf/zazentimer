@@ -28,8 +28,6 @@
     <string name="caption_zazen_meditation">Zazen Meditasiýa</string>
     <string name="checkbox_keep_screen_on">Ekrany dowam etdiriň</string>
     <string name="checkbox_no_server_messages">Täzelikleri görkez</string>
-    <string name="checkbox_phone_off">Sessiz telefon</string>
-    <string name="checkbox_phone_off_desc">Phonehli telefon seslerini öçüriň.</string>
     <string name="copy_prefix">Göçürme</string>
     <string name="crash_dialog_comment_prompt">Meýletin: Haýsy hereket ýalňyşlyga sebäp boldy?</string>
     <string name="crash_dialog_ok_toast">Kömekiňiz üçin köp sag boluň!</string>
@@ -81,15 +79,6 @@
     <string name="ok">Bolýar</string>
     <string name="pref_desc_brightness">Meditasiýa wagtynda ekranyň ýagtylygy</string>
     <string name="pref_get_messages">Täze habarlary barlaň</string>
-    <string name="pref_mute_mode">Jyňňyrdaýan ses we bildirişler</string>
-    <string name="pref_mute_mode_none">Dymmak</string>
-    <string name="pref_mute_mode_none_desc">Telefon jaňlary we habarnamalar üçin jaň sesi we yrgyldy ýok</string>
-    <string name="pref_mute_mode_pref">Jyňňyrdaýan sesler we bildirişler</string>
-    <string name="pref_mute_mode_vibrate">Diňe Wibrasiýa</string>
-    <string name="pref_mute_mode_vibrate_desc">Diňe telefon jaňlary we habarnamalar üçin titräň (Android 7-de işlemeýär (Nougat) - Sessizlik sazlamasy ýaly hereket edýär)</string>
-    <string name="pref_mute_mode_vibrate_sound">Jyňňyrdaýan ses we yrgyldy</string>
-    <string name="pref_mute_mode_vibrate_sound_desc">Jyňňyrdaýan ses we wibrasiýa çalyň</string>
-    <string name="pref_muting">Sessiz sazlamalar</string>
     <string name="pref_sum_backup">Sessiýalaryňyzyň we sesleriň ätiýaçlyk nusgasyny SD-karta ýazdyryň.</string>
     <string name="pref_sum_bad_removal">SD kartoçka ilki sanalmazdan aýryldy.</string>
     <string name="pref_sum_checking">SD-Card häzirki wagtda barlanýar</string>
@@ -125,8 +114,6 @@
     <string name="content_desc_session_actions">Sessiýa hereketleri</string>
     <string name="session_list_unnamed_entry">Ady agzalmadyk sessiýa</string>
     <string name="status_bar_notification_info_overflow">999+</string>
-    <string name="test_mute_perm_request">Programma häzirki wagtda telefonyňyzy öçürmäge rugsat berilmeýär. Muny üýtgetmek üçin sazlamalary açyň?</string>
-    <string name="text_cant_mute">Telefonyňyz bu programmanyň sesini çykarmagyna rugsat bermeýär. Bu programmalar sazlamalarynda sesini öçüriň ýa-da Telefon sazlamalarynda ses bermäge rugsat beriň.</string>
     <string name="text_no_notify_access_settings">Telefonyňyzda ses çykarmak üçin adaty sazlamalar ýok ýaly. \" el bilen gözläň, elýeterliligi bozmaň\" Sazlamak we işletmek.</string>
     <string name="text_no_sections">Bölümler kesgitlenmedi.</string>
     <string name="text_question_delete_session">Saýlanan sessiýany hakykatdanam pozup bilersiňizmi?</string>
@@ -139,7 +126,6 @@
     <string name="time_section_remaining">Bölüm galan</string>
     <string name="time_session_elapsed">Sessiýa geçdi</string>
     <string name="time_session_remaining">Sessiýa galdy</string>
-    <string name="title_mute_perm_request">Rugsat berilmedi</string>
     <string name="title_question_delete_session">Sessiýany pozmaly?</string>
     <string name="title_volume_bells">Jaň göwrümi</string>
     <string name="unnamed">Adynyň ady</string>

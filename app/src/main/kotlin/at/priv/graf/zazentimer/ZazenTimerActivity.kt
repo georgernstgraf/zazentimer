@@ -2,8 +2,6 @@ package at.priv.graf.zazentimer
 
 import android.Manifest
 import android.app.AlertDialog
-import android.app.NotificationManager
-import android.content.ActivityNotFoundException
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
@@ -57,7 +55,6 @@ class ZazenTimerActivity :
     MainFragment.OnFragmentInteractionListener {
     private var meditationEndReceiver: MeditationEndReceiver? = null
     private var pref: SharedPreferences? = null
-    private val intentAllowMuting: Intent = Intent("android.settings.NOTIFICATION_POLICY_ACCESS_SETTINGS")
     private var created: Boolean = false
     private var showPrefsOnStart: Boolean = false
     private var viewModel: MeditationViewModel? = null
@@ -422,71 +419,8 @@ class ZazenTimerActivity :
                     return@launch
                 }
             }
-            val preferences = this@ZazenTimerActivity.pref ?: return@launch
-            if (
-                preferences.getBoolean(PREF_KEY_MUTE_MODE_NONE, true) ||
-                preferences.getBoolean(PREF_KEY_MUTE_MODE_VIBRATE, false)
-            ) {
-                val notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
-                if (!notificationManager.isNotificationPolicyAccessGranted()) {
-                    if (isCallable(this@ZazenTimerActivity.intentAllowMuting)) {
-                        showMessageAllowMute(this@ZazenTimerActivity.intentAllowMuting)
-                        return@launch
-                    } else {
-                        showMessageNoMuteSettings()
-                        return@launch
-                    }
-                }
-                startMeditation()
-                return@launch
-            }
             startMeditation()
         }
-    }
-
-    private fun showMessageAllowMute(intent: Intent) {
-        AlertDialog
-            .Builder(
-                this,
-            ).setTitle(
-                R.string.title_mute_perm_request,
-            ).setMessage(R.string.test_mute_perm_request)
-            .setIcon(R.drawable.icon)
-            .setPositiveButton(R.string.ok) { _, _ ->
-                try {
-                    this@ZazenTimerActivity.runOnUiThread {
-                        try {
-                            this@ZazenTimerActivity.startActivity(intent)
-                        } catch (e: ActivityNotFoundException) {
-                            Log.e(TAG, "Mute permission error", e)
-                            this@ZazenTimerActivity.showMessageNoMuteSettings()
-                        }
-                    }
-                } catch (e: IllegalStateException) {
-                    Log.e(TAG, "Mute permission error", e)
-                    this@ZazenTimerActivity.runOnUiThread {
-                        this@ZazenTimerActivity.showMessageNoMuteSettings()
-                    }
-                }
-            }.setNegativeButton(R.string.abbrechen) { _, _ ->
-            }.show()
-    }
-
-    fun showMessageNoMuteSettings() {
-        AlertDialog
-            .Builder(
-                this,
-            ).setTitle(
-                R.string.title_mute_perm_request,
-            ).setMessage(R.string.text_no_notify_access_settings)
-            .setIcon(R.drawable.icon)
-            .setPositiveButton(R.string.ok) { _, _ ->
-            }.show()
-    }
-
-    private fun isCallable(intent: Intent): Boolean {
-        val queryIntentActivities = packageManager.queryIntentActivities(intent, PackageManager.MATCH_DEFAULT_ONLY)
-        return queryIntentActivities.isNotEmpty()
     }
 
     fun serviceMeditationEndNotify() {
@@ -500,18 +434,6 @@ class ZazenTimerActivity :
             return f.getSelectedSessionId()
         }
         return viewModel?.getSelectedSessionId() ?: -1
-    }
-
-    fun resetSettingsForTest() {
-        getPreferences(
-            this,
-        ).edit()
-            .putBoolean(
-                PREF_KEY_MUTE_MODE_VIBRATE_SOUND,
-                false,
-            ).putBoolean(PREF_KEY_MUTE_MODE_VIBRATE, false)
-            .putBoolean(PREF_KEY_MUTE_MODE_NONE, true)
-            .apply()
     }
 
     fun resetDatabaseForTest() {
@@ -543,10 +465,6 @@ class ZazenTimerActivity :
         const val PREF_DEFAULT_FIRST_START: Boolean = true
         const val PREF_DEFAULT_KEEP_SCREEN_ON: Boolean = false
         const val PREF_DEFAULT_LAST_SESSION: Int = -1
-        const val PREF_DEFAULT_MUTE_MODE_NONE: Boolean = true
-        const val PREF_DEFAULT_MUTE_MODE_VIBRATE: Boolean = false
-        const val PREF_DEFAULT_MUTE_MODE_VIBRATE_SOUND: Boolean = false
-        const val PREF_DEFAULT_PHONE_OFF: Boolean = true
         const val PREF_DEFAULT_SHOW_ELAPSED_TIME: Boolean = true
         const val PREF_DEFAULT_SHOW_SESSION_EDIT_HELP_V13: Boolean = false
         const val PREF_DEFAULT_SHOW_TIME_MODE: Int = 0
@@ -561,10 +479,6 @@ class ZazenTimerActivity :
         const val PREF_KEY_FIRST_START: String = "first_start"
         const val PREF_KEY_KEEP_SCREEN_ON: String = "keep_screen_on"
         const val PREF_KEY_LAST_SESSION: String = "last_session"
-        const val PREF_KEY_MUTE_MODE_NONE: String = "mute_mode_none"
-        const val PREF_KEY_MUTE_MODE_VIBRATE: String = "mute_mode_vibrate"
-        const val PREF_KEY_MUTE_MODE_VIBRATE_SOUND: String = "mute_mode_vibrate_sound"
-        const val PREF_KEY_PHONE_OFF: String = "phone_off"
         const val PREF_KEY_SHOW_ELAPSED_TIME: String = "show_elapsed_time"
         const val PREF_KEY_SHOW_SESSION_EDIT_HELP_V13: String = "session_edit_help_13"
         const val PREF_KEY_SHOW_TIME_MODE: String = "view_time_mode"

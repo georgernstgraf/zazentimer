@@ -29,8 +29,6 @@
     <string name="caption_zazen_meditation">ಝೆನ್ ಧ್ಯಾನ</string>
     <string name="checkbox_keep_screen_on">ಪರದೆಯನ್ನು ಆನ್ ಮಾಡಿಡಿ</string>
     <string name="checkbox_no_server_messages">ಸುದ್ದಿ ತೋರಿಸಿ</string>
-    <string name="checkbox_phone_off">ಫೋನ್ ಮ್ಯೂಟ್ ಮಾಡಿ</string>
-    <string name="checkbox_phone_off_desc">ಎಲ್ಲಾ ಫೋನ್ ಶಬ್ದಗಳನ್ನು ಮ್ಯೂಟ್ ಮಾಡಿ.</string>
     <string name="copy_prefix">ನ ನಕಲು</string>
     <string name="crash_dialog_comment_prompt">ಐಚ್ಛಿಕ: ಯಾವ ಕ್ರಿಯೆಯು ದೋಷಕ್ಕೆ ಕಾರಣವಾಯಿತು?</string>
     <string name="crash_dialog_ok_toast">ನಿಮ್ಮ ಸಹಾಯಕ್ಕಾಗಿ ತುಂಬಾ ಧನ್ಯವಾದಗಳು!</string>
@@ -82,15 +80,6 @@
     <string name="ok">ಸರಿ</string>
     <string name="pref_desc_brightness">ಧ್ಯಾನದ ಸಮಯದಲ್ಲಿ ಪ್ರದರ್ಶನದ ಹೊಳಪು</string>
     <string name="pref_get_messages">ಹೊಸ ಸಂದೇಶಗಳಿಗಾಗಿ ಈಗಲೇ ಪರಿಶೀಲಿಸಿ</string>
-    <string name="pref_mute_mode">ರಿಂಗ್ ಟೋನ್ ಮತ್ತು ಅಧಿಸೂಚನೆಗಳು</string>
-    <string name="pref_mute_mode_none">ಮೌನ</string>
-    <string name="pref_mute_mode_none_desc">ಫೋನ್ ಕರೆಗಳು ಮತ್ತು ಅಧಿಸೂಚನೆಗಳಿಗಾಗಿ ಯಾವುದೇ ರಿಂಗ್ ಟೋನ್ ಮತ್ತು ಕಂಪನವಿಲ್ಲ</string>
-    <string name="pref_mute_mode_pref">ರಿಂಗ್ ಟೋನ್ ಮತ್ತು ಅಧಿಸೂಚನೆಗಳಿಗೆ ಸಂಬಂಧಿಸಿದ ಸೆಟ್ಟಿಂಗ್‌ಗಳು</string>
-    <string name="pref_mute_mode_vibrate">ಕೇವಲ ಕಂಪನ</string>
-    <string name="pref_mute_mode_vibrate_desc">ಫೋನ್ ಕರೆಗಳು ಮತ್ತು ಅಧಿಸೂಚನೆಗಳಿಗಾಗಿ ಮಾತ್ರ ಕಂಪಿಸಿ</string>
-    <string name="pref_mute_mode_vibrate_sound">ರಿಂಗ್ ಟೋನ್ ಮತ್ತು ಕಂಪನ</string>
-    <string name="pref_mute_mode_vibrate_sound_desc">ರಿಂಗ್ ಟೋನ್ ಮತ್ತು ಕಂಪನವನ್ನು ಪ್ಲೇ ಮಾಡಿ</string>
-    <string name="pref_muting">ಮ್ಯೂಟ್ ಸೆಟ್ಟಿಂಗ್‌ಗಳು</string>
     <string name="pref_sum_backup">ನಿಮ್ಮ ಸೆಷನ್‌ಗಳು ಮತ್ತು ಶಬ್ದಗಳ ಬ್ಯಾಕಪ್ ಅನ್ನು ನಿಮ್ಮ SD-ಕಾರ್ಡ್‌ಗೆ ಉಳಿಸಿ.</string>
     <string name="pref_sum_bad_removal">ಮೊದಲು ಅನ್‌ಮೌಂಟ್ ಮಾಡದೆ SD ಕಾರ್ಡ್ ಅನ್ನು ತೆಗೆದುಹಾಕಲಾಗಿದೆ.</string>
     <string name="pref_sum_checking">SD-ಕಾರ್ಡ್ ಅನ್ನು ಪ್ರಸ್ತುತ ಪರಿಶೀಲಿಸಲಾಗುತ್ತಿದೆ</string>
@@ -126,8 +115,6 @@
     <string name="content_desc_session_actions">ಸೆಷನ್ ಕ್ರಿಯೆಗಳು</string>
     <string name="session_list_unnamed_entry">ಹೆಸರಿಸದ ಸೆಷನ್</string>
     <string name="status_bar_notification_info_overflow">999+</string>
-    <string name="test_mute_perm_request">ನಿಮ್ಮ ಫೋನ್ ಮ್ಯೂಟ್ ಮಾಡಲು ಅಪ್ಲಿಕೇಶನ್‌ಗೆ ಪ್ರಸ್ತುತ ಅನುಮತಿ ಇಲ್ಲ. ಇದನ್ನು ಬದಲಾಯಿಸಲು ಸೆಟ್ಟಿಂಗ್‌ಗಳನ್ನು ತೆರೆಯಬೇಕೆ?</string>
-    <string name="text_cant_mute">ನಿಮ್ಮ ಫೋನ್ ಈ ಅಪ್ಲಿಕೇಶನ್‌ಗೆ ಮ್ಯೂಟ್ ಮಾಡಲು ಅನುಮತಿಸುವುದಿಲ್ಲ.</string>
     <string name="text_no_notify_access_settings">ನಿಮ್ಮ ಫೋನ್ ಮ್ಯೂಟ್ ಮಾಡಲು ಅನುಮತಿಸುವ ಪ್ರಮಾಣಿತ ಸೆಟ್ಟಿಂಗ್‌ಗಳನ್ನು ಹೊಂದಿಲ್ಲ.</string>
     <string name="text_no_sections">ಯಾವುದೇ ವಿಭಾಗಗಳನ್ನು ವ್ಯಾಖ್ಯಾನಿಸಲಾಗಿಲ್ಲ.</string>
     <string name="text_question_delete_session">ಆಯ್ಕೆಮಾಡಿದ ಸೆಷನ್ ಅನ್ನು ನಿಜವಾಗಿಯೂ ಅಳಿಸಬೇಕೆ?</string>
@@ -140,7 +127,6 @@
     <string name="time_section_remaining">ವಿಭಾಗ ಉಳಿದಿರುವ ಸಮಯ</string>
     <string name="time_session_elapsed">ಸೆಷನ್ ಕಳೆದಿರುವ ಸಮಯ</string>
     <string name="time_session_remaining">ಸೆಷನ್ ಉಳಿದಿರುವ ಸಮಯ</string>
-    <string name="title_mute_perm_request">ಅನುಮತಿ ಕಾಣೆಯಾಗಿದೆ</string>
     <string name="title_question_delete_session">ಸೆಷನ್ ಅಳಿಸಬೇಕೆ?</string>
     <string name="title_volume_bells">ಬೆಲ್ ವಾಲ್ಯೂಮ್</string>
     <string name="unnamed">ಹೆಸರಿಸದ</string>

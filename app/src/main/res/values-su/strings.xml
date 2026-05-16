@@ -29,8 +29,6 @@
     <string name="caption_zazen_meditation">Zazen Meditasi</string>
     <string name="checkbox_keep_screen_on">Tetep layar hurung</string>
     <string name="checkbox_no_server_messages">Témbongkeun News</string>
-    <string name="checkbox_phone_off">Ngajempékeun Telepon</string>
-    <string name="checkbox_phone_off_desc">Jempékeun kabéh sora telepon.</string>
     <string name="copy_prefix">Salinan tina</string>
     <string name="crash_dialog_comment_prompt">Opsional: Peta mana anu nyababkeun kasalahan?</string>
     <string name="crash_dialog_ok_toast">Hatur nuhun pisan pikeun pitulung anjeun!</string>
@@ -82,15 +80,6 @@
     <string name="ok">OKÉ</string>
     <string name="pref_desc_brightness">Caang tina tampilan salila semedi</string>
     <string name="pref_get_messages">Pariksa Pesen anyar ayeuna</string>
-    <string name="pref_mute_mode">Nada dering sareng Bewara</string>
-    <string name="pref_mute_mode_none">tiiseun</string>
-    <string name="pref_mute_mode_none_desc">Teu aya nada dering sareng teu aya geter pikeun telepon sareng Bewara</string>
-    <string name="pref_mute_mode_pref">Setélan ngeunaan Nada dering sareng Bewara</string>
-    <string name="pref_mute_mode_vibrate">Ukur Geter</string>
-    <string name="pref_mute_mode_vibrate_desc">Ngan ukur ngageter kanggo telepon sareng Bewara (Teu tiasa dianggo dina Android 7 (Nougat) - berperilaku sapertos setélan Jempé)</string>
-    <string name="pref_mute_mode_vibrate_sound">Nada dering sareng Geter</string>
-    <string name="pref_mute_mode_vibrate_sound_desc">Puter Nada dering sareng Geter</string>
-    <string name="pref_muting">Setélan Jempé</string>
     <string name="pref_sum_backup">Simpen cadangan Sesi sareng Sora anjeun ka SD-Card anjeun.</string>
     <string name="pref_sum_bad_removal">SD Card ieu dihapus tanpa unmounted munggaran.</string>
     <string name="pref_sum_checking">SD-Card keur dipariksa di momen</string>
@@ -126,8 +115,6 @@
     <string name="content_desc_session_actions">lampah sési</string>
     <string name="session_list_unnamed_entry">Sesi Unnamed</string>
     <string name="status_bar_notification_info_overflow">999+</string>
-    <string name="test_mute_perm_request">App ayeuna teu diidinan ngajempékeun telepon anjeun. Buka setélan pikeun ngarobah ieu?</string>
-    <string name="text_cant_mute">Telepon anjeun henteu ngijinkeun Aplikasi ieu ngajempékeunana. Nonaktipkeun muting dina Setélan Aplikasi ieu atanapi ngantepkeun muting dina Setélan Telepon anjeun.</string>
     <string name="text_no_notify_access_settings">Telepon anjeun sigana henteu gaduh setélan standar pikeun ngawenangkeun muting. Mangga tingali sacara manual pikeun \"Ulah Ganggu Aksés\" Setélan tur aktipkeun.</string>
     <string name="text_no_sections">Taya Bagéan diartikeun.</string>
     <string name="text_question_delete_session">Leres ngahapus Sesi anu dipilih?</string>
@@ -140,7 +127,6 @@
     <string name="time_section_remaining">Bagian sésana</string>
     <string name="time_session_elapsed">Sidang ngaliwat</string>
     <string name="time_session_remaining">Sési sésana</string>
-    <string name="title_mute_perm_request">Leungit Idin</string>
     <string name="title_question_delete_session">Pupus Sesi?</string>
     <string name="title_volume_bells">Volume Bel</string>
     <string name="unnamed">Teu ngaranna</string>

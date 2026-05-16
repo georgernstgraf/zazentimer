@@ -29,8 +29,6 @@
     <string name="caption_zazen_meditation">זאַזען מעדיטאַטיאָן</string>
     <string name="checkbox_keep_screen_on">האַלטן פאַרשטעלן אויף</string>
     <string name="checkbox_no_server_messages">ווייַזן נייַעס</string>
-    <string name="checkbox_phone_off">שטום טעלעפאָן</string>
-    <string name="checkbox_phone_off_desc">שטום אַלע טעלעפאָן סאָונדס.</string>
     <string name="copy_prefix">קאָפּיע פון</string>
     <string name="crash_dialog_comment_prompt">אָפּטיאָנאַל: וואָס קאַמף האט געפֿירט דעם טעות?</string>
     <string name="crash_dialog_ok_toast">דאַנקען דיר אַזוי פיל פֿאַר דיין הילף!</string>
@@ -82,15 +80,6 @@
     <string name="ok">גוט</string>
     <string name="pref_desc_brightness">די ברייטנאַס פון די ווייַז בעשאַס קלערן</string>
     <string name="pref_get_messages">קוק איצט פֿאַר נייַע אַרטיקלען</string>
-    <string name="pref_mute_mode">רינג טאָן און נאָוטאַפאַקיישאַנז</string>
-    <string name="pref_mute_mode_none">שטילקייַט</string>
-    <string name="pref_mute_mode_none_desc">קיין רינג טאָן און קיין ווייבריישאַן פֿאַר טעלעפאָן קאַללס און נאָוטאַפאַקיישאַנז</string>
-    <string name="pref_mute_mode_pref">סעטטינגס וועגן רינג טאָן און נאָוטאַפאַקיישאַנז</string>
-    <string name="pref_mute_mode_vibrate">בלויז ווייבריישאַן</string>
-    <string name="pref_mute_mode_vibrate_desc">ווייברייט בלויז פֿאַר טעלעפאָן קאַללס און נאָוטאַפאַקיישאַנז (אַרבעט נישט אויף אַנדרויד 7 (Nougat) - ביכייווז ווי די שטילקייַט באַשטעטיקן)</string>
-    <string name="pref_mute_mode_vibrate_sound">רינג טאָן און ווייבריישאַן</string>
-    <string name="pref_mute_mode_vibrate_sound_desc">שפּיל רינג טאָן און ווייבריישאַן</string>
-    <string name="pref_muting">שטום סעטטינגס</string>
     <string name="pref_sum_backup">היט אַ באַקאַפּ פון דיין סעשאַנז און סאָונדס צו דיין סד-קאַרד.</string>
     <string name="pref_sum_bad_removal">SD קאַרד איז אַוועקגענומען אָן זיין אַנמאָונטעד ערשטער.</string>
     <string name="pref_sum_checking">די SD-Card איז איצט אָפּגעשטעלט</string>
@@ -126,8 +115,6 @@
     <string name="content_desc_session_actions">סעסיע אַקשאַנז</string>
     <string name="session_list_unnamed_entry">אומנעם סעסיע</string>
     <string name="status_bar_notification_info_overflow">999+</string>
-    <string name="test_mute_perm_request">דער אַפּ איז דערווייַל נישט ערלויבט צו שטום דיין טעלעפאָן. עפענען די סעטטינגס צו טוישן דעם?</string>
-    <string name="text_cant_mute">דיין טעלעפאָן קען נישט לאָזן דעם אַפּ צו שטום עס. דיסייבאַל מיוטינג אין דעם אַפּפּס סעטטינגס אָדער לאָזן מיוטינג אין דיין פאָנעס סעטטינגס.</string>
     <string name="text_no_notify_access_settings">דיין טעלעפאָן קען נישט האָבן די סטאַנדאַרט סעטטינגס צו לאָזן מיוטינג. ביטע קוק מאַניואַלי פֿאַר די \"צי ניט שטערן אַקסעס\" באַשטעטיקן און געבן עס.</string>
     <string name="text_no_sections">קיין סעקשאַנז דיפיינד.</string>
     <string name="text_question_delete_session">טאַקע ויסמעקן די אויסגעקליבן סעסיע?</string>
@@ -140,7 +127,6 @@
     <string name="time_section_remaining">אָפּטיילונג רוען</string>
     <string name="time_session_elapsed">סעסיע איז דורכגעגאנגען</string>
     <string name="time_session_remaining">סעסיע רוען</string>
-    <string name="title_mute_perm_request">פעלנדיק דערלויבעניש</string>
     <string name="title_question_delete_session">ויסמעקן סעסיע?</string>
     <string name="title_volume_bells">גלאָק באנד</string>
     <string name="unnamed">אומנעם</string>

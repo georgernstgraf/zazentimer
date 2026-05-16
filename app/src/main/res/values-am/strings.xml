@@ -29,8 +29,6 @@
     <string name="caption_zazen_meditation">የዛዜን ማሰላሰል</string>
     <string name="checkbox_keep_screen_on">ማያ ገጹን እንደበራ አቆይ</string>
     <string name="checkbox_no_server_messages">ዜና አሳይ</string>
-    <string name="checkbox_phone_off">ስልክ ድምጸ-ከል አድርግ</string>
-    <string name="checkbox_phone_off_desc">ሁሉንም የስልክ ድምፆች ድምጸ-ከል ያድርጉ።</string>
     <string name="copy_prefix">ቅጂ የ</string>
     <string name="crash_dialog_comment_prompt">አማራጭ፡ የትኛው እርምጃ ነው ስህተቱን ያመጣው?</string>
     <string name="crash_dialog_ok_toast">ለእርዳታዎ በጣም እናመሰግናለን!</string>
@@ -82,15 +80,6 @@
     <string name="ok">እሺ</string>
     <string name="pref_desc_brightness">በማሰላሰል ጊዜ የማሳያ ብሩህነት</string>
     <string name="pref_get_messages">አዲስ መልዕክቶችን አሁን ያረጋግጡ</string>
-    <string name="pref_mute_mode">የደወል ቅላጼ እና ማሳወቂያዎች</string>
-    <string name="pref_mute_mode_none">ዝምታ</string>
-    <string name="pref_mute_mode_none_desc">ምንም የስልክ ጥሪ ድምፅ እና ምንም ንዝረት የለም የስልክ ጥሪዎች እና ማሳወቂያዎች</string>
-    <string name="pref_mute_mode_pref">የጥሪ ድምጽ እና ማሳወቂያዎችን በተመለከተ ቅንብሮች</string>
-    <string name="pref_mute_mode_vibrate">ንዝረት ብቻ</string>
-    <string name="pref_mute_mode_vibrate_desc">ለስልክ ጥሪዎች እና ማሳወቂያዎች ብቻ ንዘር (በአንድሮይድ 7 (Nougat) ላይ አይሰራም - የዝምታ ቅንብርን ይመስላል)</string>
-    <string name="pref_mute_mode_vibrate_sound">የደወል ድምጽ እና ንዝረት</string>
-    <string name="pref_mute_mode_vibrate_sound_desc">የደወል ድምጽ እና ንዝረትን አጫውት።</string>
-    <string name="pref_muting">ቅንብሮችን ድምጸ-ከል አድርግ</string>
     <string name="pref_sum_backup">የእርስዎን ክፍለ-ጊዜዎች እና ድምፆች ምትኬ ወደ ኤስዲ-ካርድዎ ያስቀምጡ።</string>
     <string name="pref_sum_bad_removal">ኤስዲ ካርድ መጀመሪያ ሳይሰቀል ተወግዷል።</string>
     <string name="pref_sum_checking">ኤስዲ-ካርድ በአሁኑ ጊዜ እየተረጋገጠ ነው።</string>
@@ -126,8 +115,6 @@
     <string name="content_desc_session_actions">የክፍለ ጊዜ ድርጊቶች</string>
     <string name="session_list_unnamed_entry">ያልተሰየመ ክፍለ ጊዜ</string>
     <string name="status_bar_notification_info_overflow">999+</string>
-    <string name="test_mute_perm_request">መተግበሪያው በአሁኑ ጊዜ ስልክዎን ድምጸ-ከል ማድረግ አይፈቀድለትም። ይህንን ለመቀየር ቅንብሩን ይክፈቱ?</string>
-    <string name="text_cant_mute">ስልክህ ይህ መተግበሪያ ድምጸ-ከል እንዲያደርግ አይፈቅድም። በዚህ የመተግበሪያዎች ቅንብሮች ውስጥ ድምጸ-ከልን ያሰናክሉ ወይም በስልኮችዎ ውስጥ ድምጸ-ከል ያድርጉ።</string>
     <string name="text_no_notify_access_settings">ስልክዎ ድምጸ-ከል ማድረግን ለመፍቀድ መደበኛ ቅንብሮች ያለው አይመስልም። እባኮትን \"አትረብሽ መዳረሻ\" ማዋቀሩን እራስዎ ይፈልጉ እና ያነቃቁት።</string>
     <string name="text_no_sections">ምንም ክፍሎች አልተገለጹም።</string>
     <string name="text_question_delete_session">የተመረጠው ክፍለ ጊዜ ይሰረዝ?</string>
@@ -140,7 +127,6 @@
     <string name="time_section_remaining">ክፍል ይቀራል</string>
     <string name="time_session_elapsed">ክፍለ ጊዜ አልፏል</string>
     <string name="time_session_remaining">ክፍለ ጊዜ ይቀራል</string>
-    <string name="title_mute_perm_request">ፍቃድ ይጎድላል</string>
     <string name="title_question_delete_session">ክፍለ ጊዜ ይሰረዝ?</string>
     <string name="title_volume_bells">የደወል ድምጽ</string>
     <string name="unnamed">ያልተሰየመ</string>

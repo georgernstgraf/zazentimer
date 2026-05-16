@@ -29,8 +29,6 @@
     <string name="caption_zazen_meditation">ज़ाज़ेन ध्यान</string>
     <string name="checkbox_keep_screen_on">स्क्रीन चालू कुर्वन्तु</string>
     <string name="checkbox_no_server_messages">Show News</string>
-    <string name="checkbox_phone_off">म्यूट फ़ोन</string>
-    <string name="checkbox_phone_off_desc">सर्वाणि दूरभाषध्वनयः निःशब्दं कुर्वन्तु।</string>
     <string name="copy_prefix">प्रतिलिपि</string>
     <string name="crash_dialog_comment_prompt">वैकल्पिकम् : कस्याः क्रियायाः कारणेन दोषः अभवत् ?</string>
     <string name="crash_dialog_ok_toast">भवतः साहाय्यार्थं बहु धन्यवादः!</string>
@@ -82,15 +80,6 @@
     <string name="ok">अस्तु</string>
     <string name="pref_desc_brightness">ध्यानकाले प्रदर्शनस्य कान्तिः</string>
     <string name="pref_get_messages">अधुना नूतनानां सन्देशानां कृते पश्यन्तु</string>
-    <string name="pref_mute_mode">रिंग टोन तथा सूचना</string>
-    <string name="pref_mute_mode_none">शांति</string>
-    <string name="pref_mute_mode_none_desc">दूरभाषस्य सूचनानां च कृते रिंगटोनः नास्ति तथा च स्पन्दनं नास्ति</string>
-    <string name="pref_mute_mode_pref">Ring tone तथा Notifications इत्यस्य विषये सेटिंग्स्</string>
-    <string name="pref_mute_mode_vibrate">केवलं स्पन्दनम्</string>
-    <string name="pref_mute_mode_vibrate_desc">केवलं दूरभाषकॉलस्य सूचनानां च कृते स्पन्दनं करोति (एण्ड्रॉयड् 7 (Nougat) इत्यत्र कार्यं न करोति - Silence सेटिंग् इव व्यवहारं करोति)</string>
-    <string name="pref_mute_mode_vibrate_sound">रिंग टोन तथा विब्रेशन</string>
-    <string name="pref_mute_mode_vibrate_sound_desc">Ring tone तथा Vibration वादयन्तु</string>
-    <string name="pref_muting">सेटिंग्स् म्यूट् कुर्वन्तु</string>
     <string name="pref_sum_backup">स्वस्य Sessions and Sounds इत्यस्य बैकअपं स्वस्य SD-Card इत्यत्र रक्षन्तु ।</string>
     <string name="pref_sum_bad_removal">प्रथमं अनमाउण्ट् न कृत्वा SD Card निष्कासितम्।</string>
     <string name="pref_sum_checking">अस्मिन् क्षणे एसडी-कार्डस्य जाँचः क्रियते</string>
@@ -126,8 +115,6 @@
     <string name="content_desc_session_actions">सत्रक्रियाः</string>
     <string name="session_list_unnamed_entry">अनाम सत्र</string>
     <string name="status_bar_notification_info_overflow">९९९+</string>
-    <string name="test_mute_perm_request">सम्प्रति App इत्यनेन भवतः दूरभाषं म्यूट् कर्तुं अनुमतिः नास्ति। एतत् परिवर्तयितुं सेटिङ्ग्स् उद्घाटयन्तु?</string>
-    <string name="text_cant_mute">भवतः Phone इत्यनेन एतत् App म्यूट् कर्तुं न अनुमन्यते। अस्मिन् Apps Settings मध्ये म्यूटिंग् निष्क्रियं कुर्वन्तु अथवा स्वस्य Phones Settings मध्ये म्यूटिंग् अनुमन्यताम्।</string>
     <string name="text_no_notify_access_settings">भवतः Phone इत्यत्र म्यूटिंग् इत्यस्य अनुमतिं दातुं मानकसेटिंग्स् नास्ति इति दृश्यते । कृपया \"Do not Disturb Access\" सेटिंग् मैन्युअल् रूपेण पश्यन्तु तथा च सक्षमं कुर्वन्तु ।</string>
     <string name="text_no_sections">न Sections परिभाषितम्।</string>
     <string name="text_question_delete_session">वास्तवमेव चयनितं Session विलोपनं कुर्वन्तु?</string>
@@ -140,7 +127,6 @@
     <string name="time_section_remaining">खण्डः अवशिष्टः</string>
     <string name="time_session_elapsed">सत्रं व्यतीतम्</string>
     <string name="time_session_remaining">सत्र शेष</string>
-    <string name="title_mute_perm_request">अनुज्ञा गम्यते</string>
     <string name="title_question_delete_session">सत्रं विलोपयन्तु?</string>
     <string name="title_volume_bells">घण्टा खण्ड</string>
     <string name="unnamed">अनामिका</string>

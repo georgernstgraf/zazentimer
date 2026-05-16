@@ -29,8 +29,6 @@
     <string name="caption_zazen_meditation">Zazen Meditation</string>
     <string name="checkbox_keep_screen_on">Shaashada ha shid</string>
     <string name="checkbox_no_server_messages">Show News</string>
-    <string name="checkbox_phone_off">Codka xidh teleefan</string>
-    <string name="checkbox_phone_off_desc">Xidh dhammaan dhawaaqyada telefoonka</string>
     <string name="copy_prefix">Nuqul ka mid ah</string>
     <string name="crash_dialog_comment_prompt">Ikhtiyaar: Ficilkee keenay khaladka?</string>
     <string name="crash_dialog_ok_toast">Aad baad ugu mahadsantahay caawimadaada!</string>
@@ -82,15 +80,6 @@
     <string name="ok">OK</string>
     <string name="pref_desc_brightness">Iftiinka Muujinta inta lagu jiro Meditation</string>
     <string name="pref_get_messages">Hubi fariimaha cusub hadda</string>
-    <string name="pref_mute_mode">Codka garaaca iyo Ogeysiinta</string>
-    <string name="pref_mute_mode_none">Aamusnaanta</string>
-    <string name="pref_mute_mode_none_desc">Ma jiro codka garaaca iyo gariir la\'aanta wicitaanada taleefanka iyo Ogeysiinta</string>
-    <string name="pref_mute_mode_pref">Dejinta ku saabsan codka dhawaaqa iyo Ogeysiinta</string>
-    <string name="pref_mute_mode_vibrate">Kaliya Gariir</string>
-    <string name="pref_mute_mode_vibrate_desc">Kaliya gariir wicitaanada taleefanka iyo Ogeysiisyada (kuma shaqeeyo Android 7 (Nougat) - wuxuu u dhaqmaa sida dejinta aamusnaanta)</string>
-    <string name="pref_mute_mode_vibrate_sound">Codka garaaca iyo gariirka</string>
-    <string name="pref_mute_mode_vibrate_sound_desc">Ciyaar dhawaaqa garaaca iyo gariirka</string>
-    <string name="pref_muting">aamus Settings</string>
     <string name="pref_sum_backup">Ku kaydi kaydka fadhiyada iyo codadka kaadhka SD-kaaga.</string>
     <string name="pref_sum_bad_removal">Kaarka SD waa la saaray iyadoo aan marka hore la dajin.</string>
     <string name="pref_sum_checking">Kaarka SD-ka waa la hubinayaa hadda</string>
@@ -126,8 +115,6 @@
     <string name="content_desc_session_actions">Falalka fadhiga</string>
     <string name="session_list_unnamed_entry">Fadhi aan la magacaabin</string>
     <string name="status_bar_notification_info_overflow">999+</string>
-    <string name="test_mute_perm_request">App-ka hadda looma oggola inuu aamusiyo taleefankaaga. Fur setinka si aad tan u bedesho?</string>
-    <string name="text_cant_mute">Taleefankaagu ma ogola in App-kan uu xidho. Dami aamusinta Settings Apps ama u ogolow in la aamusiyo Settings Phones kaaga.</string>
     <string name="text_no_notify_access_settings">Taleefankaagu uma eka inuu leeyahay jaangooyooyinka caadiga ah si loogu oggolaado aamusnaanta. Fadlan gacanta ku raadi \"Ha carqaladayn Helitaanka\" Dejinta oo karti u yeela.</string>
     <string name="text_no_sections">Ma jiraan qaybo la qeexay.</string>
     <string name="text_question_delete_session">Runtii ma tirtirtaa Fadhiga la doortay?</string>
@@ -140,7 +127,6 @@
     <string name="time_section_remaining">Qaybta hadhay</string>
     <string name="time_session_elapsed">Fadhigu wuu dhacay</string>
     <string name="time_session_remaining">Casharka hadhay</string>
-    <string name="title_mute_perm_request">Ogolaanshaha maqan</string>
     <string name="title_question_delete_session">Fadhiga tirtira?</string>
     <string name="title_volume_bells">Volume Dawan</string>
     <string name="unnamed">Aan la magacaabin</string>

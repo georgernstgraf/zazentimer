@@ -29,8 +29,6 @@
     <string name="caption_zazen_meditation">ສະມາທິ Zazen</string>
     <string name="checkbox_keep_screen_on">ສືບຕໍ່ເປີດໜ້າຈໍ</string>
     <string name="checkbox_no_server_messages">ສະແດງຂ່າວ</string>
-    <string name="checkbox_phone_off">ປິດສຽງໂທລະສັບ</string>
-    <string name="checkbox_phone_off_desc">ປິດສຽງໂທລະສັບທັງໝົດ.</string>
     <string name="copy_prefix">ສຳເນົາຂອງ</string>
     <string name="crash_dialog_comment_prompt">ທາງເລືອກ: ການປະຕິບັດອັນໃດທີ່ເຮັດໃຫ້ເກີດຄວາມຜິດພາດ?</string>
     <string name="crash_dialog_ok_toast">ຂອບໃຈຫຼາຍໆສຳລັບການຊ່ວຍເຫຼືອຂອງເຈົ້າ!</string>
@@ -82,15 +80,6 @@
     <string name="ok">ຕົກລົງ</string>
     <string name="pref_desc_brightness">ຄວາມສະຫວ່າງຂອງຈໍສະແດງຜົນໃນລະຫວ່າງການນັ່ງສະມາທິ</string>
     <string name="pref_get_messages">ກວດເບິ່ງຂໍ້ຄວາມໃໝ່ດຽວນີ້</string>
-    <string name="pref_mute_mode">ສຽງເອີ້ນເຂົ້າ ແລະການແຈ້ງເຕືອນ</string>
-    <string name="pref_mute_mode_none">ຄວາມງຽບ</string>
-    <string name="pref_mute_mode_none_desc">ບໍ່ມີສຽງເອີ້ນເຂົ້າ ແລະບໍ່ມີການສັ່ນສະເທືອນສຳລັບການໂທ ແລະການແຈ້ງເຕືອນ</string>
-    <string name="pref_mute_mode_pref">ການຕັ້ງຄ່າກ່ຽວກັບສຽງເອີ້ນເຂົ້າ ແລະການແຈ້ງເຕືອນ</string>
-    <string name="pref_mute_mode_vibrate">ພຽງແຕ່ vibration</string>
-    <string name="pref_mute_mode_vibrate_desc">ສັ່ນສະເພາະສຳລັບການໂທ ແລະການແຈ້ງເຕືອນ (ບໍ່ເຮັດວຽກຢູ່ໃນ Android 7 (Nougat) - ເຮັດວຽກຄືກັບການຕັ້ງຄ່າຄວາມງຽບ)</string>
-    <string name="pref_mute_mode_vibrate_sound">ສຽງເອີ້ນເຂົ້າ ແລະການສັ່ນສະເທືອນ</string>
-    <string name="pref_mute_mode_vibrate_sound_desc">ຫຼິ້ນສຽງເອີ້ນເຂົ້າແລະການສັ່ນສະເທືອນ</string>
-    <string name="pref_muting">ປິດສຽງການຕັ້ງຄ່າ</string>
     <string name="pref_sum_backup">ບັນທຶກຂໍ້ມູນສຳຮອງຂອງ Sessions ແລະ Sounds ຂອງທ່ານໄວ້ໃນ SD-Card ຂອງທ່ານ.</string>
     <string name="pref_sum_bad_removal">SD Card ໄດ້ຖືກເອົາອອກໂດຍບໍ່ໄດ້ຖອນການເຊື່ອມຕໍ່ກ່ອນ.</string>
     <string name="pref_sum_checking">SD-Card ກໍາລັງຖືກກວດສອບຢູ່ໃນຂະນະນີ້</string>
@@ -126,8 +115,6 @@
     <string name="content_desc_session_actions">ການປະຕິບັດຂອງເຊດຊັນ</string>
     <string name="session_list_unnamed_entry">ເຊດຊັນທີ່ບໍ່ມີຊື່</string>
     <string name="status_bar_notification_info_overflow">999+</string>
-    <string name="test_mute_perm_request">ແອັບນີ້ບໍ່ໄດ້ຖືກອະນຸຍາດໃຫ້ປິດສຽງໂທລະສັບຂອງທ່ານ. ເປີດການຕັ້ງຄ່າເພື່ອປ່ຽນອັນນີ້ບໍ?</string>
-    <string name="text_cant_mute">ໂທລະສັບຂອງທ່ານບໍ່ອະນຸຍາດໃຫ້ແອັບຯນີ້ປິດສຽງມັນ. ປິດການປິດສຽງໃນການຕັ້ງຄ່າແອັບນີ້ ຫຼືອະນຸຍາດໃຫ້ປິດສຽງໃນການຕັ້ງຄ່າໂທລະສັບຂອງທ່ານ.</string>
     <string name="text_no_notify_access_settings">ໂທລະສັບຂອງທ່ານເບິ່ງຄືວ່າບໍ່ມີການຕັ້ງຄ່າມາດຕະຖານເພື່ອອະນຸຍາດໃຫ້ປິດສຽງໄດ້. ກະລຸນາເບິ່ງດ້ວຍຕົນເອງສໍາລັບການຕັ້ງຄ່າ \"ຫ້າມລົບກວນການເຂົ້າເຖິງ\" ແລະເປີດໃຊ້ມັນ.</string>
     <string name="text_no_sections">ບໍ່ໄດ້ກໍານົດພາກສ່ວນ.</string>
     <string name="text_question_delete_session">ລຶບ Session ທີ່ເລືອກແທ້ບໍ?</string>
@@ -140,7 +127,6 @@
     <string name="time_section_remaining">ສ່ວນທີ່ຍັງເຫຼືອ</string>
     <string name="time_session_elapsed">ເຊດຊັນຜ່ານໄປແລ້ວ</string>
     <string name="time_session_remaining">ຍັງເຫຼືອເຊສຊັນ</string>
-    <string name="title_mute_perm_request">ຂາດການອະນຸຍາດ</string>
     <string name="title_question_delete_session">ລຶບ Session ບໍ?</string>
     <string name="title_volume_bells">ປະລິມານກະດິ່ງ</string>
     <string name="unnamed">ບໍ່ມີຊື່</string>

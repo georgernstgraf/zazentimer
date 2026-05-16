@@ -29,8 +29,6 @@
     <string name="caption_zazen_meditation">Zazen Meditasie</string>
     <string name="checkbox_keep_screen_on">Hou skerm aan</string>
     <string name="checkbox_no_server_messages">Wys Nuus</string>
-    <string name="checkbox_phone_off">Demp Foon</string>
-    <string name="checkbox_phone_off_desc">Demp alle foonklanke.</string>
     <string name="copy_prefix">Kopie van</string>
     <string name="crash_dialog_comment_prompt">Opsioneel: Watter aksie het die fout veroorsaak?</string>
     <string name="crash_dialog_ok_toast">Baie dankie vir jou hulp!</string>
@@ -82,15 +80,6 @@
     <string name="ok">OK</string>
     <string name="pref_desc_brightness">Helderheid van die skerm tydens Meditasie</string>
     <string name="pref_get_messages">Kyk nou vir nuwe boodskappe</string>
-    <string name="pref_mute_mode">Luitone en Kennisgewings</string>
-    <string name="pref_mute_mode_none">Stilte</string>
-    <string name="pref_mute_mode_none_desc">Geen luitoon en geen vibrasie vir oproepe en Kennisgewings nie</string>
-    <string name="pref_mute_mode_pref">Instellings rakende Luitoon en Kennisgewings</string>
-    <string name="pref_mute_mode_vibrate">Slegs Vibrasie</string>
-    <string name="pref_mute_mode_vibrate_desc">Vibreer slegs vir oproepe en Kennisgewings</string>
-    <string name="pref_mute_mode_vibrate_sound">Luitoon en Vibrasie</string>
-    <string name="pref_mute_mode_vibrate_sound_desc">Speel Luitoon en Vibrasie</string>
-    <string name="pref_muting">Dempinstellings</string>
     <string name="pref_sum_backup">Stoor \'n rugsteun van jou Sessies en Klanke op jou SD-kaart.</string>
     <string name="pref_sum_bad_removal">SD-kaart is onbehoorlik verwyder.</string>
     <string name="pref_sum_checking">SD-kaart word nagegaan</string>
@@ -126,8 +115,6 @@
     <string name="content_desc_session_actions">Sessie aksies</string>
     <string name="session_list_unnamed_entry">Naamlose Sessie</string>
     <string name="status_bar_notification_info_overflow">999+</string>
-    <string name="test_mute_perm_request">Die Toepassing word tans nie toegelaat om jou foon te demp nie. Maak die instellings oop om dit te verander?</string>
-    <string name="text_cant_mute">Jou Foon laat nie hierdie Toepassing toe om dit te demp nie.</string>
     <string name="text_no_notify_access_settings">Jou Foon blyk nie die standaardinstellings te hê om demping toe te laat nie.</string>
     <string name="text_no_sections">Geen Afdelings gedefinieer nie.</string>
     <string name="text_question_delete_session">Vee die geselekteerde Sessie regtig uit?</string>
@@ -140,7 +127,6 @@
     <string name="time_section_remaining">Afdeling oorblywend</string>
     <string name="time_session_elapsed">Sessie verloop</string>
     <string name="time_session_remaining">Sessie oorblywend</string>
-    <string name="title_mute_perm_request">Ontbrekende Toestemming</string>
     <string name="title_question_delete_session">Vee Sessie uit?</string>
     <string name="title_volume_bells">Klokvolume</string>
     <string name="unnamed">Naamloos</string>

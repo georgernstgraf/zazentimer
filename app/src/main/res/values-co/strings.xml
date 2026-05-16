@@ -29,8 +29,6 @@
     <string name="caption_zazen_meditation">Meditazione Zazen</string>
     <string name="checkbox_keep_screen_on">Mantene u screnu accesa</string>
     <string name="checkbox_no_server_messages">Mostra News</string>
-    <string name="checkbox_phone_off">Mute Phone</string>
-    <string name="checkbox_phone_off_desc">Silenzia tutti i soni di u telefunu.</string>
     <string name="copy_prefix">Copia di</string>
     <string name="crash_dialog_comment_prompt">Opcional: Quale azione hà causatu l\'errore?</string>
     <string name="crash_dialog_ok_toast">Grazie mille per u vostru aiutu!</string>
@@ -82,15 +80,6 @@
     <string name="ok">OK</string>
     <string name="pref_desc_brightness">Luminosità di u Display durante a Meditazione</string>
     <string name="pref_get_messages">Verificate i novi Missaghji avà</string>
-    <string name="pref_mute_mode">Suoneria è Notificazioni</string>
-    <string name="pref_mute_mode_none">Silenziu</string>
-    <string name="pref_mute_mode_none_desc">Nisun tonu di suoneria è senza vibrazione per e telefonate è Notificazioni</string>
-    <string name="pref_mute_mode_pref">Configurazioni riguardanti Ringtone è Notificazioni</string>
-    <string name="pref_mute_mode_vibrate">Solu Vibrazioni</string>
-    <string name="pref_mute_mode_vibrate_desc">Vibra solu per e telefonate è Notificazioni (Ùn funziona micca in Android 7 (Nougat) - cumporta cum\'è l\'impostazione Silence)</string>
-    <string name="pref_mute_mode_vibrate_sound">Tone è vibrazione</string>
-    <string name="pref_mute_mode_vibrate_sound_desc">Ghjucà à suoneria è vibrazione</string>
-    <string name="pref_muting">Mute Settings</string>
     <string name="pref_sum_backup">Salvà una copia di salvezza di e vostre Sessioni è Soni à a vostra SD-Card.</string>
     <string name="pref_sum_bad_removal">A carta SD hè stata eliminata senza esse smontata prima.</string>
     <string name="pref_sum_checking">SD-Card hè verificatu in u mumentu</string>
@@ -126,8 +115,6 @@
     <string name="content_desc_session_actions">Azzione di sessione</string>
     <string name="session_list_unnamed_entry">Sessione senza nome</string>
     <string name="status_bar_notification_info_overflow">999+</string>
-    <string name="test_mute_perm_request">L\'App hè attualmente micca permessa di mute u vostru telefunu. Aprite i paràmetri per cambià questu?</string>
-    <string name="text_cant_mute">U vostru Phone ùn permette stu App à mute lu. Disattivà u silenziu in i paràmetri di l\'applicazioni o permette u silenziu in i paràmetri di u vostru telefuninu.</string>
     <string name="text_no_notify_access_settings">U vostru telefunu ùn pare micca avè i paràmetri standard per permette di muting. Per piacè cercate manualmente l\'impostazione \"Do Not Disturb Access\" è attivate.</string>
     <string name="text_no_sections">Nisuna Sezione definita.</string>
     <string name="text_question_delete_session">Daveru sguassà a Sessione selezziunata?</string>
@@ -140,7 +127,6 @@
     <string name="time_section_remaining">Sezione restante</string>
     <string name="time_session_elapsed">A sessione hè passata</string>
     <string name="time_session_remaining">Session restante</string>
-    <string name="title_mute_perm_request">Permissione mancante</string>
     <string name="title_question_delete_session">Sguassà a sessione ?</string>
     <string name="title_volume_bells">Volume di campana</string>
     <string name="unnamed">Senza nome</string>

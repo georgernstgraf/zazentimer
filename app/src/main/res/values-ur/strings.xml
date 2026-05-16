@@ -29,8 +29,6 @@
     <string name="caption_zazen_meditation">زازین مراقبہ</string>
     <string name="checkbox_keep_screen_on">اسکرین آن رکھیں</string>
     <string name="checkbox_no_server_messages">خبریں دکھائیں</string>
-    <string name="checkbox_phone_off">فون کو خاموش کریں</string>
-    <string name="checkbox_phone_off_desc">فون کی تمام آوازیں خاموش کریں۔</string>
     <string name="copy_prefix">کی کاپی</string>
     <string name="crash_dialog_comment_prompt">اختیاری: کس کارروائی کی وجہ سے خرابی ہوئی؟</string>
     <string name="crash_dialog_ok_toast">آپ کی مدد کا بہت شکریہ!</string>
@@ -82,15 +80,6 @@
     <string name="ok">ٹھیک ہے</string>
     <string name="pref_desc_brightness">مراقبہ کے دوران ڈسپلے کی چمک</string>
     <string name="pref_get_messages">ابھی نئے پیغامات چیک کریں</string>
-    <string name="pref_mute_mode">رنگ ٹون اور اطلاعات</string>
-    <string name="pref_mute_mode_none">خاموشی</string>
-    <string name="pref_mute_mode_none_desc">فون کالز اور اطلاعات کے لیے کوئی رنگ ٹون اور کوئی وائبریشن نہیں</string>
-    <string name="pref_mute_mode_pref">رنگ ٹون اور اطلاعات سے متعلق ترتیبات</string>
-    <string name="pref_mute_mode_vibrate">صرف وائبریشن</string>
-    <string name="pref_mute_mode_vibrate_desc">فون کالز اور اطلاعات کے لیے صرف وائبریٹ کریں</string>
-    <string name="pref_mute_mode_vibrate_sound">رنگ ٹون اور وائبریشن</string>
-    <string name="pref_mute_mode_vibrate_sound_desc">رنگ ٹون اور وائبریشن چلائیں</string>
-    <string name="pref_muting">خاموش کرنے کی ترتیبات</string>
     <string name="pref_sum_backup">اپنے سیشنز اور آوازوں کا بیک اپ اپنے SD-Card پر محفوظ کریں۔</string>
     <string name="pref_sum_bad_removal">ایس ڈی کارڈ کو پہلے اَن ماؤنٹ کیے بغیر ہٹا دیا گیا تھا۔</string>
     <string name="pref_sum_checking">اس وقت SD-Card چیک کیا جا رہا ہے</string>
@@ -126,8 +115,6 @@
     <string name="content_desc_session_actions">سیشن کے اعمال</string>
     <string name="session_list_unnamed_entry">بے نام سیشن</string>
     <string name="status_bar_notification_info_overflow">999+</string>
-    <string name="test_mute_perm_request">ایپ کو فی الحال آپ کا فون خاموش کرنے کی اجازت نہیں ہے۔ اسے تبدیل کرنے کے لیے ترتیبات کھولیں؟</string>
-    <string name="text_cant_mute">آپ کا فون اس ایپ کو خاموش کرنے کی اجازت نہیں دیتا ہے۔</string>
     <string name="text_no_notify_access_settings">ایسا لگتا ہے کہ آپ کے فون میں خاموش کرنے کی اجازت دینے کے لیے معیاری ترتیبات نہیں ہیں۔</string>
     <string name="text_no_sections">کوئی سیکشن متعین نہیں ہے۔</string>
     <string name="text_question_delete_session">کیا واقعی منتخب کردہ سیشن کو حذف کرنا ہے؟</string>
@@ -140,7 +127,6 @@
     <string name="time_section_remaining">سیکشن باقی ہے</string>
     <string name="time_session_elapsed">سیشن گزر گیا</string>
     <string name="time_session_remaining">سیشن باقی ہے</string>
-    <string name="title_mute_perm_request">اجازت غائب ہے</string>
     <string name="title_question_delete_session">سیشن کو حذف کریں؟</string>
     <string name="title_volume_bells">پیالے کا والیوم</string>
     <string name="unnamed">بے نام</string>

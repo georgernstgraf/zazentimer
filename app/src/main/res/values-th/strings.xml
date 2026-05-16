@@ -29,8 +29,6 @@
     <string name="caption_zazen_meditation">การทำสมาธิแบบเซน</string>
     <string name="checkbox_keep_screen_on">เปิดหน้าจอค้างไว้</string>
     <string name="checkbox_no_server_messages">แสดงข่าวสาร</string>
-    <string name="checkbox_phone_off">ปิดเสียงโทรศัพท์</string>
-    <string name="checkbox_phone_off_desc">ปิดเสียงโทรศัพท์ทั้งหมด</string>
     <string name="copy_prefix">สำเนาของ</string>
     <string name="crash_dialog_comment_prompt">ตัวเลือก: การดำเนินการที่ทำให้เกิดข้อผิดพลาด</string>
     <string name="crash_dialog_ok_toast">ขอบคุณสำหรับความช่วยเหลือ</string>
@@ -82,15 +80,6 @@
     <string name="ok">ตกลง</string>
     <string name="pref_desc_brightness">ความสว่างหน้าจอขณะทำสมาธิ</string>
     <string name="pref_get_messages">ตรวจสอบข้อความใหม่ทันที</string>
-    <string name="pref_mute_mode">เสียงเรียกเข้าและการแจ้งเตือน</string>
-    <string name="pref_mute_mode_none">เงียบ</string>
-    <string name="pref_mute_mode_none_desc">ไม่มีเสียงและไม่สั่น</string>
-    <string name="pref_mute_mode_pref">การตั้งค่าเสียงเรียกเข้า</string>
-    <string name="pref_mute_mode_vibrate">สั่นเท่านั้น</string>
-    <string name="pref_mute_mode_vibrate_desc">สั่นเมื่อมีสายเข้าและการแจ้งเตือน</string>
-    <string name="pref_mute_mode_vibrate_sound">เสียงและสั่น</string>
-    <string name="pref_mute_mode_vibrate_sound_desc">เล่นเสียงและสั่น</string>
-    <string name="pref_muting">การตั้งค่าปิดเสียง</string>
     <string name="pref_sum_backup">บันทึกข้อมูลสำรองไปยัง SD Card</string>
     <string name="pref_sum_bad_removal">ถอด SD Card โดยไม่ได้ยกเลิกการเชื่อมต่อก่อน</string>
     <string name="pref_sum_checking">กำลังตรวจสอบ SD Card</string>
@@ -126,8 +115,6 @@
     <string name="content_desc_session_actions">การดำเนินการเซสชัน</string>
     <string name="session_list_unnamed_entry">เซสชันไม่มีชื่อ</string>
     <string name="status_bar_notification_info_overflow">999+</string>
-    <string name="test_mute_perm_request">แอปไม่ได้รับอนุญาตให้ปิดเสียงโทรศัพท์ เปลี่ยนในการตั้งค่า</string>
-    <string name="text_cant_mute">โทรศัพท์ไม่อนุญาตให้ปิดเสียง ปิดใช้งานในการตั้งค่าแอปหรืออนุญาตในโทรศัพท์</string>
     <string name="text_no_notify_access_settings">กรุณาเปิดการอนุญาตห้ามรบกวนในการตั้งค่าอุปกรณ์</string>
     <string name="text_no_sections">ไม่มีส่วนที่กำหนด</string>
     <string name="text_question_delete_session">ยืนยันการลบเซสชัน</string>
@@ -140,7 +127,6 @@
     <string name="time_section_remaining">เวลาของส่วนที่เหลือ</string>
     <string name="time_session_elapsed">เวลาเซสชันที่ผ่านไป</string>
     <string name="time_session_remaining">เวลาเซสชันที่เหลือ</string>
-    <string name="title_mute_perm_request">ไม่มีสิทธิ์</string>
     <string name="title_question_delete_session">ลบเซสชัน</string>
     <string name="title_volume_bells">ระดับเสียงระฆัง</string>
     <string name="unnamed">ไม่มีชื่อ</string>

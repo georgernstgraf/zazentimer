@@ -29,8 +29,6 @@
     <string name="caption_zazen_meditation">Зазен медитација</string>
     <string name="checkbox_keep_screen_on">Чувајте го екранот вклучен</string>
     <string name="checkbox_no_server_messages">Прикажи вести</string>
-    <string name="checkbox_phone_off">Исклучи звук на телефонот</string>
-    <string name="checkbox_phone_off_desc">Исклучете ги сите звуци на телефонот.</string>
     <string name="copy_prefix">Копија од</string>
     <string name="crash_dialog_comment_prompt">Изборно: кое дејство ја предизвика грешката?</string>
     <string name="crash_dialog_ok_toast">Ви благодариме многу за вашата помош!</string>
@@ -82,15 +80,6 @@
     <string name="ok">Во ред</string>
     <string name="pref_desc_brightness">Осветленост на екранот за време на медитација</string>
     <string name="pref_get_messages">Проверете за нови пораки сега</string>
-    <string name="pref_mute_mode">Тон на ѕвонење и известувања</string>
-    <string name="pref_mute_mode_none">Тишина</string>
-    <string name="pref_mute_mode_none_desc">Без тон на ѕвонење и без вибрации за телефонски повици и известувања</string>
-    <string name="pref_mute_mode_pref">Поставки за рингтон и известувања</string>
-    <string name="pref_mute_mode_vibrate">Само вибрации</string>
-    <string name="pref_mute_mode_vibrate_desc">Вибрира само за телефонски повици и известувања (Не работи на Android 7 (Nougat) - се однесува како поставката Silence)</string>
-    <string name="pref_mute_mode_vibrate_sound">Тон на ѕвонење и вибрации</string>
-    <string name="pref_mute_mode_vibrate_sound_desc">Репродуцирајте ринг-тон и вибрации</string>
-    <string name="pref_muting">Исклучи ги поставките</string>
     <string name="pref_sum_backup">Зачувајте резервна копија од вашите сесии и звуци на вашата SD-картичка.</string>
     <string name="pref_sum_bad_removal">SD-картичката беше отстранета без претходно да се демонтира.</string>
     <string name="pref_sum_checking">SD-картичката се проверува во моментов</string>
@@ -126,8 +115,6 @@
     <string name="content_desc_session_actions">Дејства на сесијата</string>
     <string name="session_list_unnamed_entry">Неименувана сесија</string>
     <string name="status_bar_notification_info_overflow">999+</string>
-    <string name="test_mute_perm_request">Апликацијата во моментов не смее да го исклучи звукот на вашиот телефон. Да се ​​отворат поставките за да се промени ова?</string>
-    <string name="text_cant_mute">Вашиот телефон не дозволува оваа апликација да го исклучи звукот. Оневозможете го исклучувањето на звукот во поставките за апликациите или дозволете го исклучувањето на звукот во поставките за телефони.</string>
     <string name="text_no_notify_access_settings">Изгледа дека вашиот телефон нема стандардни поставки за да дозволи исклучување на звукот. Побарајте рачно поставката \"Не вознемирувај пристап\" и овозможете ја.</string>
     <string name="text_no_sections">Не се дефинирани делови.</string>
     <string name="text_question_delete_session">Дали навистина да се избрише избраната сесија?</string>
@@ -140,7 +127,6 @@
     <string name="time_section_remaining">Преостанат дел</string>
     <string name="time_session_elapsed">Сесијата помина</string>
     <string name="time_session_remaining">Преостаната сесија</string>
-    <string name="title_mute_perm_request">Недостасува дозвола</string>
     <string name="title_question_delete_session">Да се ​​избрише сесијата?</string>
     <string name="title_volume_bells">Јачина на ѕвонче</string>
     <string name="unnamed">Неименуван</string>

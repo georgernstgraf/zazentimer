@@ -29,8 +29,6 @@
     <string name="caption_zazen_meditation">Meditație Zazen</string>
     <string name="checkbox_keep_screen_on">Ține ecranul aprins</string>
     <string name="checkbox_no_server_messages">Afișează noutăți</string>
-    <string name="checkbox_phone_off">Dezactivează sunetul</string>
-    <string name="checkbox_phone_off_desc">Dezactivează toate sunetele telefonului.</string>
     <string name="copy_prefix">Copie</string>
     <string name="crash_dialog_comment_prompt">Opțional: Ce acțiune a cauzat eroarea?</string>
     <string name="crash_dialog_ok_toast">Mulțumim pentru ajutor!</string>
@@ -82,15 +80,6 @@
     <string name="ok">OK</string>
     <string name="pref_desc_brightness">Luminozitatea ecranului</string>
     <string name="pref_get_messages">Verifică mesaje noi acum</string>
-    <string name="pref_mute_mode">Ton de apel și notificări</string>
-    <string name="pref_mute_mode_none">Silențios</string>
-    <string name="pref_mute_mode_none_desc">Fără sunet și vibrații</string>
-    <string name="pref_mute_mode_pref">Setări pentru tonuri de apel</string>
-    <string name="pref_mute_mode_vibrate">Doar vibrații</string>
-    <string name="pref_mute_mode_vibrate_desc">Doar vibrații</string>
-    <string name="pref_mute_mode_vibrate_sound">Sunet și vibrații</string>
-    <string name="pref_mute_mode_vibrate_sound_desc">Redă sunet și vibrații</string>
-    <string name="pref_muting">Setări de dezactivare a sunetului</string>
     <string name="pref_sum_backup">Salvați o copie de rezervă pe cardul SD.</string>
     <string name="pref_sum_bad_removal">Cardul SD a fost eliminat incorect.</string>
     <string name="pref_sum_checking">Cardul SD este verificat</string>
@@ -126,8 +115,6 @@
     <string name="content_desc_session_actions">Acțiuni sesiune</string>
     <string name="session_list_unnamed_entry">Sesiune fără nume</string>
     <string name="status_bar_notification_info_overflow">999+</string>
-    <string name="test_mute_perm_request">Aplicația nu are permisiunea. Deschideți setările?</string>
-    <string name="text_cant_mute">Telefonul nu permite dezactivarea sunetului.</string>
     <string name="text_no_notify_access_settings">Telefonul nu are setările standard pentru a permite dezactivarea sunetului.</string>
     <string name="text_no_sections">Fără secțiuni.</string>
     <string name="text_question_delete_session">Ștergeți sesiunea?</string>
@@ -140,7 +127,6 @@
     <string name="time_section_remaining">Timp secțiune rămas</string>
     <string name="time_session_elapsed">Timp sesiune scurs</string>
     <string name="time_session_remaining">Timp sesiune rămas</string>
-    <string name="title_mute_perm_request">Permisiune lipsă</string>
     <string name="title_question_delete_session">Ștergeți sesiunea?</string>
     <string name="title_volume_bells">Volum clopoțel</string>
     <string name="unnamed">Fără nume</string>

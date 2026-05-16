@@ -27,8 +27,6 @@
     <string name="caption_zazen_meditation">សមាធិ Zazen</string>
     <string name="checkbox_keep_screen_on">ទុកអេក្រង់ឱ្យបើក</string>
     <string name="checkbox_no_server_messages">បង្ហាញព័ត៌មាន</string>
-    <string name="checkbox_phone_off">បិទសំឡេងទូរសព្ទ</string>
-    <string name="checkbox_phone_off_desc">បិទសំឡេងទូរសព្ទទាំងអស់។</string>
     <string name="copy_prefix">ច្បាប់ចម្លងនៃ</string>
     <string name="crash_dialog_comment_prompt">ជាជម្រើស៖ តើសកម្មភាពអ្វីដែលបង្កឱ្យមានកំហុស?</string>
     <string name="crash_dialog_ok_toast">អរគុណច្រើនសម្រាប់ជំនួយរបស់អ្នក!</string>
@@ -80,15 +78,6 @@
     <string name="ok">យល់ព្រម</string>
     <string name="pref_desc_brightness">ពន្លឺនៃអេក្រង់កំឡុងពេលសមាធិ</string>
     <string name="pref_get_messages">ពិនិត្យមើលសារថ្មីៗឥឡូវនេះ</string>
-    <string name="pref_mute_mode">សំឡេងរោទ៍ និងការជូនដំណឹង</string>
-    <string name="pref_mute_mode_none">ស្ងាត់</string>
-    <string name="pref_mute_mode_none_desc">គ្មានសំឡេងរោទ៍ និងគ្មានរំញ័រ</string>
-    <string name="pref_mute_mode_pref">ការកំណត់សំឡេងរោទ៍ និងការជូនដំណឹង</string>
-    <string name="pref_mute_mode_vibrate">មានតែរំញ័រប៉ុណ្ណោះ</string>
-    <string name="pref_mute_mode_vibrate_desc">ញ័រសម្រាប់តែការហៅទូរសព្ទ និងការជូនដំណឹងប៉ុណ្ណោះ</string>
-    <string name="pref_mute_mode_vibrate_sound">សំឡេងរោទ៍ និងរំញ័រ</string>
-    <string name="pref_mute_mode_vibrate_sound_desc">លេងសំឡេងរោទ៍ និងរំញ័រ</string>
-    <string name="pref_muting">ការកំណត់ការបិទសំឡេង</string>
     <string name="pref_sum_backup">រក្សាទុកការបម្រុងទុកនៃវគ្គ និងសំឡេងរបស់អ្នកទៅក្នុងកាត SD របស់អ្នក។</string>
     <string name="pref_sum_bad_removal">កាត SD ត្រូវបានដកចេញដោយមិនបាន unmount ជាមុន។</string>
     <string name="pref_sum_checking">កាត SD កំពុងត្រូវបានពិនិត្យនៅពេលនេះ</string>
@@ -124,8 +113,6 @@
     <string name="content_desc_session_actions">សកម្មភាពវគ្គ</string>
     <string name="session_list_unnamed_entry">វគ្គគ្មានឈ្មោះ</string>
     <string name="status_bar_notification_info_overflow">999+</string>
-    <string name="test_mute_perm_request">បច្ចុប្បន្ន កម្មវិធីមិនត្រូវបានអនុញ្ញាតឱ្យបិទសំឡេងទូរសព្ទរបស់អ្នកទេ។ បើកការកំណត់ដើម្បីផ្លាស់ប្តូរវា?</string>
-    <string name="text_cant_mute">ទូរសព្ទរបស់អ្នកមិនអនុញ្ញាតឱ្យកម្មវិធីនេះបិទសំឡេងទេ។</string>
     <string name="text_no_notify_access_settings">សូមស្វែងរកការកំណត់ "កុំរំខាន" ដោយដៃ ហើយបើកវា។</string>
     <string name="text_no_sections">មិនមានផ្នែកដែលបានកំណត់ទេ។</string>
     <string name="text_question_delete_session">ពិតជាលុបវគ្គដែលបានជ្រើសរើសមែនទេ?</string>
@@ -138,7 +125,6 @@
     <string name="time_section_remaining">ផ្នែកដែលនៅសល់</string>
     <string name="time_session_elapsed">វគ្គបានកន្លងផុតទៅ</string>
     <string name="time_session_remaining">វគ្គដែលនៅសល់</string>
-    <string name="title_mute_perm_request">បាត់ការអនុញ្ញាត</string>
     <string name="title_question_delete_session">លុបវគ្គ?</string>
     <string name="title_volume_bells">កម្រិតសំឡេងជួង</string>
     <string name="unnamed">គ្មានឈ្មោះ</string>

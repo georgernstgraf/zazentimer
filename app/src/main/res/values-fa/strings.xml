@@ -29,8 +29,6 @@
     <string name="caption_zazen_meditation">مدیتیشن زازن</string>
     <string name="checkbox_keep_screen_on">روشن نگه داشتن صفحه</string>
     <string name="checkbox_no_server_messages">نمایش اخبار</string>
-    <string name="checkbox_phone_off">بی‌صدا کردن تلفن</string>
-    <string name="checkbox_phone_off_desc">همه صداهای تلفن را بی‌صدا کنید.</string>
     <string name="copy_prefix">کپی از</string>
     <string name="crash_dialog_comment_prompt">اختیاری: کدام اقدام باعث خطا شد؟</string>
     <string name="crash_dialog_ok_toast">از کمک شما بسیار متشکرم!</string>
@@ -82,15 +80,6 @@
     <string name="ok">تایید</string>
     <string name="pref_desc_brightness">روشنایی صفحه نمایش در حین مدیتیشن</string>
     <string name="pref_get_messages">هم‌اکنون پیام‌های جدید را بررسی کنید</string>
-    <string name="pref_mute_mode">آهنگ زنگ و اعلان‌ها</string>
-    <string name="pref_mute_mode_none">سکوت</string>
-    <string name="pref_mute_mode_none_desc">هیچ آهنگ زنگ و هیچ لرزشی برای تماس‌های تلفنی و اعلان‌ها وجود ندارد</string>
-    <string name="pref_mute_mode_pref">تنظیمات مربوط به آهنگ زنگ و اعلان‌ها</string>
-    <string name="pref_mute_mode_vibrate">فقط لرزش</string>
-    <string name="pref_mute_mode_vibrate_desc">فقط برای تماس‌های تلفنی و اعلان‌ها لرزش داشته باشید (در اندروید 7 (Nougat) کار نمی‌کند - مانند تنظیمات سکوت رفتار می‌کند)</string>
-    <string name="pref_mute_mode_vibrate_sound">آهنگ زنگ و لرزش</string>
-    <string name="pref_mute_mode_vibrate_sound_desc">پخش آهنگ زنگ و لرزش</string>
-    <string name="pref_muting">تنظیمات بی‌صدا کردن</string>
     <string name="pref_sum_backup">یک نسخه پشتیبان از جلسات و صداهای خود را در کارت SD خود ذخیره کنید.</string>
     <string name="pref_sum_bad_removal">کارت SD قبل از لغو نصب حذف شد.</string>
     <string name="pref_sum_checking">کارت SD در حال حاضر در حال بررسی است</string>
@@ -126,8 +115,6 @@
     <string name="content_desc_session_actions">اقدامات جلسه</string>
     <string name="session_list_unnamed_entry">جلسه بی‌نام</string>
     <string name="status_bar_notification_info_overflow">999+</string>
-    <string name="test_mute_perm_request">در حال حاضر به برنامه اجازه داده نشده است تلفن شما را بی‌صدا کند. برای تغییر این تنظیمات، تنظیمات را باز کنید؟</string>
-    <string name="text_cant_mute">تلفن شما به این برنامه اجازه نمی‌دهد آن را بی‌صدا کند. بی‌صدا کردن را در تنظیمات این برنامه غیرفعال کنید یا در تنظیمات تلفن خود به بی‌صدا کردن اجازه دهید.</string>
     <string name="text_no_notify_access_settings">به نظر نمی‌رسد تلفن شما دارای تنظیمات استاندارد برای اجازه دادن به بی‌صدا کردن باشد. لطفاً به صورت دستی به دنبال تنظیم "دسترسی مزاحم نشوید" بگردید و آن را فعال کنید.</string>
     <string name="text_no_sections">هیچ بخشی تعریف نشده است.</string>
     <string name="text_question_delete_session">آیا واقعاً می‌خواهید جلسه انتخاب شده را حذف کنید؟</string>
@@ -140,7 +127,6 @@
     <string name="time_section_remaining">بخش باقی مانده</string>
     <string name="time_session_elapsed">جلسه سپری شده</string>
     <string name="time_session_remaining">جلسه باقی مانده</string>
-    <string name="title_mute_perm_request">مجوز موجود نیست</string>
     <string name="title_question_delete_session">حذف جلسه؟</string>
     <string name="title_volume_bells">میزان صدای کاسه</string>
     <string name="unnamed">بی‌نام</string>

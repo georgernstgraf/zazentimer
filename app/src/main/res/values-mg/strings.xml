@@ -29,8 +29,6 @@
     <string name="caption_zazen_meditation">Zazen Meditation</string>
     <string name="checkbox_keep_screen_on">Tohizo ny efijery</string>
     <string name="checkbox_no_server_messages">Asehoy ny Vaovao</string>
-    <string name="checkbox_phone_off">Ampiheno ny telefaona</string>
-    <string name="checkbox_phone_off_desc">Ampiheno ny feo rehetra amin\'ny telefaona.</string>
     <string name="copy_prefix">Kopia ny</string>
     <string name="crash_dialog_comment_prompt">Azo atao: Inona no hetsika nahatonga ny fahadisoana?</string>
     <string name="crash_dialog_ok_toast">Misaotra betsaka amin\'ny fanampianao!</string>
@@ -82,15 +80,6 @@
     <string name="ok">OK</string>
     <string name="pref_desc_brightness">Famirapiratry ny fampisehoana mandritra ny fisaintsainana</string>
     <string name="pref_get_messages">Hamarino raha misy Messages vaovao izao</string>
-    <string name="pref_mute_mode">Tonon-peo sy Fampandrenesana</string>
-    <string name="pref_mute_mode_none">Mangina</string>
-    <string name="pref_mute_mode_none_desc">Tsy misy feo ary tsy misy vibration amin\'ny antso an-telefaona sy fampahafantarana</string>
-    <string name="pref_mute_mode_pref">Fikirana momba ny tononkalon\'ny peratra sy ny Fampandrenesana</string>
-    <string name="pref_mute_mode_vibrate">Vibration ihany</string>
-    <string name="pref_mute_mode_vibrate_desc">Vibrate ho an\'ny antso an-telefaona sy fampandrenesana fotsiny (Tsy mandeha amin\'ny Android 7 (Nougat) - mitondra tena toy ny Silence Settings)</string>
-    <string name="pref_mute_mode_vibrate_sound">Tonon-peo sy Vibration</string>
-    <string name="pref_mute_mode_vibrate_sound_desc">Lalao Ring tone sy Vibration</string>
-    <string name="pref_muting">Fikirana moana</string>
     <string name="pref_sum_backup">Tehirizo ny backup ny Sessions sy Feo ao amin\'ny SD-Karatrao.</string>
     <string name="pref_sum_bad_removal">Nesorina ny karatra SD nefa tsy nesorina aloha.</string>
     <string name="pref_sum_checking">Ny SD-Card dia voazaha amin\'izao fotoana izao</string>
@@ -126,8 +115,6 @@
     <string name="content_desc_session_actions">Hetsika fivoriana</string>
     <string name="session_list_unnamed_entry">Fivoriana tsy nomena anarana</string>
     <string name="status_bar_notification_info_overflow">999+</string>
-    <string name="test_mute_perm_request">Ny App amin\'izao fotoana izao dia tsy avela hanakaiky ny findainao. Sokafy ny fanovana hanovana izany?</string>
-    <string name="text_cant_mute">Tsy avelan\'ny findainao hampangina ity App ity. Atsaharo ny fampanginana amin\'ity Fikirana fampiharana ity na avelao ny fampanginana ao amin\'ny Fikirana finday.</string>
     <string name="text_no_notify_access_settings">Toa tsy manana ny firafitry ny telefaona ny findainao mba ahafahana mamahana. Azafady, tadiavo amin\'ny tanana ny \"Aza manelingelina ny fidirana\" ary avelao izy io.</string>
     <string name="text_no_sections">Tsy misy fizarana voafaritra.</string>
     <string name="text_question_delete_session">Fafao tokoa ny Session voafantina?</string>
@@ -140,7 +127,6 @@
     <string name="time_section_remaining">Fizarana sisa</string>
     <string name="time_session_elapsed">Nandeha ny fivoriana</string>
     <string name="time_session_remaining">Fivoriana sisa</string>
-    <string name="title_mute_perm_request">Tsy nahazo alalana</string>
     <string name="title_question_delete_session">Fafao ny Session?</string>
     <string name="title_volume_bells">Bell Volume</string>
     <string name="unnamed">tsy voalaza anarana</string>

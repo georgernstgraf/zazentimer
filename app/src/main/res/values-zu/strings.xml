@@ -29,8 +29,6 @@
     <string name="caption_zazen_meditation">Ukuzindla kwe-Zazen</string>
     <string name="checkbox_keep_screen_on">Gcina isikrini sivuliwe</string>
     <string name="checkbox_no_server_messages">Bonisa Izindaba</string>
-    <string name="checkbox_phone_off">Thulisa Ifoni</string>
-    <string name="checkbox_phone_off_desc">Thulisa yonke imisindo yefoni.</string>
     <string name="copy_prefix">Ikhophi ye-</string>
     <string name="crash_dialog_comment_prompt">Ngokuzithandela: Yisiphi isenzo esidale iphutha?</string>
     <string name="crash_dialog_ok_toast">Siyabonga kakhulu ngosizo lwakho!</string>
@@ -82,15 +80,6 @@
     <string name="ok">KULUNGILE</string>
     <string name="pref_desc_brightness">Ukukhanya kwesikrini ngesikhathi sokuzindla</string>
     <string name="pref_get_messages">Bheka Imilayezo emisha manje</string>
-    <string name="pref_mute_mode">Iringithoni Nezaziso</string>
-    <string name="pref_mute_mode_none">Ukuthula</string>
-    <string name="pref_mute_mode_none_desc">Ayikho iringithoni futhi akukho ukudlidliza kwezingcingo Nezaziso</string>
-    <string name="pref_mute_mode_pref">Izilungiselelo eziphathelene Neringithoni Nezaziso</string>
-    <string name="pref_mute_mode_vibrate">Ukudlidliza Kuphela</string>
-    <string name="pref_mute_mode_vibrate_desc">Dlidliza kuphela ezingcingweni Nezaziso</string>
-    <string name="pref_mute_mode_vibrate_sound">Iringithoni Nokudlidliza</string>
-    <string name="pref_mute_mode_vibrate_sound_desc">Dlala Iringithoni Nokudlidliza</string>
-    <string name="pref_muting">Izilungiselelo zokuthulisa</string>
     <string name="pref_sum_backup">Gcina isipele samaseshini nemisindo yakho ekhadini lakho le-SD.</string>
     <string name="pref_sum_bad_removal">Ikhadi le-SD lisusiwe kabi.</string>
     <string name="pref_sum_checking">Ikhadi le-SD liyahlolwa njengamanje</string>
@@ -126,8 +115,6 @@
     <string name="content_desc_session_actions">Izenzo zeseshini</string>
     <string name="session_list_unnamed_entry">Iseshini Enganagama</string>
     <string name="status_bar_notification_info_overflow">999+</string>
-    <string name="test_mute_perm_request">Uhlelo lokusebenza okwamanje aluvunyelwe ukuthulisa ifoni yakho. Vula izilungiselelo ukuze ushintshe lokhu?</string>
-    <string name="text_cant_mute">Ifoni yakho ayiluvumeli lolu hlelo lokusebenza ukuthi luyithulise.</string>
     <string name="text_no_notify_access_settings">Ifoni yakho ibonakala ingenazo izilungiselelo ezijwayelekile zokuvumela ukuthulisa.</string>
     <string name="text_no_sections">Azikho Izingxenye ezichaziwe.</string>
     <string name="text_question_delete_session">Susa ngempela Iseshini ekhethiwe?</string>
@@ -140,7 +127,6 @@
     <string name="time_section_remaining">Ingxenye esele</string>
     <string name="time_session_elapsed">Iseshini edlulile</string>
     <string name="time_session_remaining">Iseshini esele</string>
-    <string name="title_mute_perm_request">Imvume Engekho</string>
     <string name="title_question_delete_session">Susa Iseshini?</string>
     <string name="title_volume_bells">Ivolumu Yensimbi</string>
     <string name="unnamed">Alinagama</string>

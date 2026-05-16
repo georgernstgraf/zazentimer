@@ -28,25 +28,19 @@ Business rules and domain relationships not obvious from code.
 ## Meditation Lifecycle
 1. User selects a session and presses Start.
 2. `MeditationService` starts as a foreground service (notification visible).
-3. `Meditation.start()` mutes the phone per preferences, schedules first section via `AlarmManager.setAlarmClock()`.
+3. `Meditation.start()` schedules first section via `AlarmManager.setAlarmClock()`.
 4. When a section timer expires, `SectionEndReceiver` fires → `Meditation.onSectionEnd()`:
    - Plays bells for the completed section (count × pause gap via `PlayBellsAsync`).
    - Schedules the next section's alarm (or finishes if last section).
 5. User can pause/resume (saves elapsed time, cancels/re-schedules alarm).
 6. User can stop manually (calls `finishMeditation()`).
-7. On finish: unmute phone, release WakeLock, stop foreground, send `ZAZENTIMER_SESSION_ENDED` broadcast, stopSelf.
-
-## Mute Modes (mutually exclusive)
-- **Vibrate + Sound** (`mute_mode_vibrate_sound`): Don't mute the phone during meditation.
-- **Vibrate Only** (`mute_mode_vibrate`): Mute ringer, keep vibrate.
-- **Silent** (`mute_mode_none`): Mute ringer and vibrate (default).
+7. On finish: release WakeLock, stop foreground, send `ZAZENTIMER_SESSION_ENDED` broadcast, stopSelf.
 
 ## Volume System
 - Bell audio always uses `AudioManager.STREAM_ALARM` (hard-coded, no channel selection).
 - **System volume**: User controls alarm stream volume via Settings slider (or Android volume buttons). The app does not modify system stream volume during bell playback.
 - **Per-section dimming**: Each section has a `volume` field (0-100 in DB, where 100=full loudness). The UI presents this as "Dim bell" (inverted: 0=full, 100=silent). Bell playback uses `MediaPlayer.setVolume(volume/100f)`.
 - No master volume multiplier — the Settings "Bell Volume" slider directly controls the system alarm stream volume.
-- Original stream volumes are saved before meditation and restored after (ringer only, not alarm/music channels).
 
 ## Timer Display (TimerView)
 - Custom circular arc showing session progress.

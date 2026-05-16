@@ -29,8 +29,6 @@
     <string name="caption_zazen_meditation">坐禅</string>
     <string name="checkbox_keep_screen_on">保持屏幕常亮</string>
     <string name="checkbox_no_server_messages">显示最新消息</string>
-    <string name="checkbox_phone_off">将手机设为静音</string>
-    <string name="checkbox_phone_off_desc">将所有手机音效设为静音。</string>
     <string name="copy_prefix">复制：</string>
     <string name="crash_dialog_comment_prompt">选填：是哪个操作导致了错误？</string>
     <string name="crash_dialog_ok_toast">非常感谢您的帮助！</string>
@@ -82,15 +80,6 @@
     <string name="ok">确定</string>
     <string name="pref_desc_brightness">冥想期间的屏幕亮度</string>
     <string name="pref_get_messages">立即检查新消息</string>
-    <string name="pref_mute_mode">铃声与通知</string>
-    <string name="pref_mute_mode_none">静音</string>
-    <string name="pref_mute_mode_none_desc">来电与通知时无铃声且不震动</string>
-    <string name="pref_mute_mode_pref">铃声与通知相关设置</string>
-    <string name="pref_mute_mode_vibrate">仅震动</string>
-    <string name="pref_mute_mode_vibrate_desc">来电与通知时仅震动 (在 Android 7 (Nougat) 上无效 - 运作方式与静音设置相同)</string>
-    <string name="pref_mute_mode_vibrate_sound">铃声与震动</string>
-    <string name="pref_mute_mode_vibrate_sound_desc">播放铃声并震动</string>
-    <string name="pref_muting">静音设置</string>
     <string name="pref_sum_backup">将课程与音效备份保存至 SD 卡。</string>
     <string name="pref_sum_bad_removal">SD 卡在未卸载的情况下被移除。</string>
     <string name="pref_sum_checking">目前正在检查 SD 卡</string>
@@ -126,8 +115,6 @@
     <string name="content_desc_session_actions">课程操作</string>
     <string name="session_list_unnamed_entry">未命名的课程</string>
     <string name="status_bar_notification_info_overflow">999+</string>
-    <string name="test_mute_perm_request">目前不允许应用程序将手机设为静音。要打开设置进行更改吗？</string>
-    <string name="text_cant_mute">您的手机不允许此应用程序将其设为静音。请在此应用程序的设置中禁用静音，或在您的手机设置中允许静音。</string>
     <string name="text_no_notify_access_settings">您的手机似乎没有允许静音的标准设置。请手动寻找“勿扰权限”设置并启用。</string>
     <string name="text_no_sections">未定义阶段。</string>
     <string name="text_question_delete_session">确定要删除选择的课程吗？</string>
@@ -140,7 +127,6 @@
     <string name="time_section_remaining">阶段剩余</string>
     <string name="time_session_elapsed">课程已过</string>
     <string name="time_session_remaining">课程剩余</string>
-    <string name="title_mute_perm_request">权限不足</string>
     <string name="title_question_delete_session">删除课程？</string>
     <string name="title_volume_bells">铃声音量</string>
     <string name="unnamed">未命名</string>

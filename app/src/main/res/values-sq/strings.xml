@@ -29,8 +29,6 @@
     <string name="caption_zazen_meditation">Meditimi i Zazenit</string>
     <string name="checkbox_keep_screen_on">Mbaje ekranin të ndezur</string>
     <string name="checkbox_no_server_messages">Shfaq Lajmet</string>
-    <string name="checkbox_phone_off">Çaktivizo telefonin</string>
-    <string name="checkbox_phone_off_desc">Heshti të gjithë tingujt e telefonit.</string>
     <string name="copy_prefix">Kopje e</string>
     <string name="crash_dialog_comment_prompt">Opsionale: Cili veprim shkaktoi gabimin?</string>
     <string name="crash_dialog_ok_toast">Faleminderit shumë për ndihmën tuaj!</string>
@@ -82,15 +80,6 @@
     <string name="ok">OK</string>
     <string name="pref_desc_brightness">Shkëlqimi i ekranit gjatë meditimit</string>
     <string name="pref_get_messages">Kontrollo për mesazhe të reja tani</string>
-    <string name="pref_mute_mode">Toni i ziles dhe Njoftimet</string>
-    <string name="pref_mute_mode_none">Heshtje</string>
-    <string name="pref_mute_mode_none_desc">Pa zile dhe pa dridhje për telefonatat dhe njoftimet</string>
-    <string name="pref_mute_mode_pref">Cilësimet në lidhje me tonin e ziles dhe njoftimet</string>
-    <string name="pref_mute_mode_vibrate">Vetëm dridhje</string>
-    <string name="pref_mute_mode_vibrate_desc">Dridhja vetëm për telefonatat dhe njoftimet (Nuk funksionon në Android 7 (Nougat) - sillet si cilësimi i heshtjes)</string>
-    <string name="pref_mute_mode_vibrate_sound">Toni i ziles dhe Vibrimi</string>
-    <string name="pref_mute_mode_vibrate_sound_desc">Luaj tonin e ziles dhe Vibrimin</string>
-    <string name="pref_muting">Cilësimet e heshtjes</string>
     <string name="pref_sum_backup">Ruani një kopje rezervë të sesioneve dhe tingujve tuaj në kartën tuaj SD.</string>
     <string name="pref_sum_bad_removal">Karta SD u hoq pa u çmontuar më parë.</string>
     <string name="pref_sum_checking">Karta SD po kontrollohet për momentin</string>
@@ -126,8 +115,6 @@
     <string name="content_desc_session_actions">Veprimet e seancës</string>
     <string name="session_list_unnamed_entry">Sesion pa emër</string>
     <string name="status_bar_notification_info_overflow">999+</string>
-    <string name="test_mute_perm_request">Aplikacioni aktualisht nuk lejohet të hesht telefonin tuaj. Të hapen cilësimet për ta ndryshuar këtë?</string>
-    <string name="text_cant_mute">Telefoni juaj nuk e lejon këtë aplikacion ta hesht. Çaktivizo heshtjen në cilësimet e aplikacioneve ose lejo heshtjen në cilësimet e telefonit.</string>
     <string name="text_no_notify_access_settings">Telefoni juaj duket se nuk ka cilësimet standarde për të lejuar heshtjen. Ju lutemi, kërkoni manualisht për cilësimin \"Mos shqetëso Access\" dhe aktivizoni atë.</string>
     <string name="text_no_sections">Nuk ka seksione të përcaktuara.</string>
     <string name="text_question_delete_session">Të fshihet vërtet seanca e zgjedhur?</string>
@@ -140,7 +127,6 @@
     <string name="time_section_remaining">Seksioni i mbetur</string>
     <string name="time_session_elapsed">Seanca ka kaluar</string>
     <string name="time_session_remaining">Mbetet seanca</string>
-    <string name="title_mute_perm_request">Mungon leja</string>
     <string name="title_question_delete_session">Të fshihet sesioni?</string>
     <string name="title_volume_bells">Vëllimi i ziles</string>
     <string name="unnamed">Pa emër</string>

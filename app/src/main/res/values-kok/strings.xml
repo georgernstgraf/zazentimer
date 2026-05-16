@@ -29,8 +29,6 @@
     <string name="caption_zazen_meditation">ज़ाझेन ध्यान</string>
     <string name="checkbox_keep_screen_on">स्क्रीन चालू दवरात</string>
     <string name="checkbox_no_server_messages">खबरो दाखोवचो</string>
-    <string name="checkbox_phone_off">फोन म्यूट करचो</string>
-    <string name="checkbox_phone_off_desc">सगळे फोन आवाज म्यूट करात.</string>
     <string name="copy_prefix">ची प्रत</string>
     <string name="crash_dialog_comment_prompt">पर्यायी: खंयचे कृतीक लागून त्रुटी जाली?</string>
     <string name="crash_dialog_ok_toast">तुमच्या मदती खातीर तुमचे खूब आभार!</string>
@@ -82,15 +80,6 @@
     <string name="ok">बरें</string>
     <string name="pref_desc_brightness">ध्याना वेळार प्रदर्शनाची तेजस्वीताय</string>
     <string name="pref_get_messages">आतां नवे संदेश तपासात</string>
-    <string name="pref_mute_mode">रिंग टोन आनी अधिसुचोवण्यो</string>
-    <string name="pref_mute_mode_none">शांतताय</string>
-    <string name="pref_mute_mode_none_desc">फोन कॉल आनी नोटिफिकेशनां खातीर रिंग टोन ना आनी वाइब्रेशन ना</string>
-    <string name="pref_mute_mode_pref">रिंग टोन आनी अधिसुचोवण्यो संबंदीत सेटिंग्ज</string>
-    <string name="pref_mute_mode_vibrate">फकत कंपन</string>
-    <string name="pref_mute_mode_vibrate_desc">फकत फोन कॉल आनी अधिसुचोवण्यां खातीर वाइब्रेट (Android 7 (Nougat) चेर काम करीना - Silence सेटिंगा सारकें वागता)</string>
-    <string name="pref_mute_mode_vibrate_sound">रिंग टोन आनी वाइब्रेशन</string>
-    <string name="pref_mute_mode_vibrate_sound_desc">रिंग टोन आनी वाइब्रेशन वाजोवप</string>
-    <string name="pref_muting">सेटिंग्ज म्यूट करात</string>
     <string name="pref_sum_backup">तुमच्या सत्रांचो आनी आवाजांचो बॅकअप तुमच्या SD-कार्डाचेर जतनाय घेयात.</string>
     <string name="pref_sum_bad_removal">एसडी कार्ड पयलीं अनमाउंट करिनासतना काडून उडयलें.</string>
     <string name="pref_sum_checking">सध्या एसडी-कार्ड तपासपाचें काम सुरू आसा</string>
@@ -126,8 +115,6 @@
     <string name="content_desc_session_actions">सत्राचीं कृती</string>
     <string name="session_list_unnamed_entry">अनामिक सत्र</string>
     <string name="status_bar_notification_info_overflow">९९९+ इतलें आसा</string>
-    <string name="test_mute_perm_request">सध्या App कडेन तुमचो फोन म्यूट करपाक मेळना. हें बदलपाक सेटिंग्ज उगडात?</string>
-    <string name="text_cant_mute">तुमचो फोन ह्या Appाक म्यूट करपाक दिना. ह्या ऍप्लिकेशनां मांडावळींत म्यूट करप अक्षम करचें वा तुमच्या फोन मांडावळींत म्यूट करपाक परवानगी दिवची.</string>
     <string name="text_no_notify_access_settings">तुमच्या फोनांत म्यूट करपाक परवानगी दिवपाक मानक सेटिंग्ज आसात अशें दिसना. उपकार करून \"प्रवेश अडचणींत घालूंक नाकात\" सेटिंग हाताळणी करून पळयात आनी ती सक्षम करात.</string>
     <string name="text_no_sections">खंयचेच विभाग व्याख्या केल्ले नात.</string>
     <string name="text_question_delete_session">खरेंच निवडिल्लें सत्र काडून उडोवप?</string>
@@ -140,7 +127,6 @@
     <string name="time_section_remaining">विभाग उरला</string>
     <string name="time_session_elapsed">सत्र गेलें</string>
     <string name="time_session_remaining">सत्र उरलां</string>
-    <string name="title_mute_perm_request">परवानगी गळून पडल्या</string>
     <string name="title_question_delete_session">सत्र काडून उडोवप?</string>
     <string name="title_volume_bells">घंटी खंड</string>
     <string name="unnamed">नांव नाशिल्लें</string>

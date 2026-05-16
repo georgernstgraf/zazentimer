@@ -27,8 +27,6 @@
     <string name="caption_zazen_meditation">Dzenbudisma meditācija</string>
     <string name="checkbox_keep_screen_on">Saglabāt ekrānu ieslēgtu</string>
     <string name="checkbox_no_server_messages">Rādīt jaunumus</string>
-    <string name="checkbox_phone_off">Apklusināt tālruni</string>
-    <string name="checkbox_phone_off_desc">Apklusināt visas tālruņa skaņas.</string>
     <string name="copy_prefix">Kopija no</string>
     <string name="crash_dialog_comment_prompt">Neobligāti: kura darbība izraisīja kļūdu?</string>
     <string name="crash_dialog_ok_toast">Liels paldies par jūsu palīdzību!</string>
@@ -80,15 +78,6 @@
     <string name="ok">Labi</string>
     <string name="pref_desc_brightness">Ekrāna spilgtums meditācijas laikā</string>
     <string name="pref_get_messages">Pārbaudīt jaunus ziņojumus tagad</string>
-    <string name="pref_mute_mode">Zvana signāls un paziņojumi</string>
-    <string name="pref_mute_mode_none">Klusums</string>
-    <string name="pref_mute_mode_none_desc">Nav zvana signāla un vibrācijas zvaniem un paziņojumiem</string>
-    <string name="pref_mute_mode_pref">Zvana signāla un paziņojumu iestatījumi</string>
-    <string name="pref_mute_mode_vibrate">Tikai vibrācija</string>
-    <string name="pref_mute_mode_vibrate_desc">Vibrēt tikai saņemot zvanus un paziņojumus (nedarbojas operētājsistēmā Android 7)</string>
-    <string name="pref_mute_mode_vibrate_sound">Zvana signāls un vibrācija</string>
-    <string name="pref_mute_mode_vibrate_sound_desc">Atskaņot zvana signālu un vibrēt</string>
-    <string name="pref_muting">Skaņas izslēgšanas iestatījumi</string>
     <string name="pref_sum_backup">Saglabāt sesiju un skaņu dublējumu SD kartē.</string>
     <string name="pref_sum_bad_removal">SD karte tika izņemta to neatvienojot.</string>
     <string name="pref_sum_checking">Pašlaik tiek pārbaudīta SD karte</string>
@@ -123,8 +112,6 @@
     <string name="content_desc_section_actions">Sadaļas darbības</string>
     <string name="content_desc_session_actions">Sesijas darbības</string>
     <string name="session_list_unnamed_entry">Nenosaukta sesija</string>
-    <string name="test_mute_perm_request">Lietotnei pašlaik nav atļauts izslēgt tālruņa skaņu. Vai atvērt iestatījumus, lai to mainītu?</string>
-    <string name="text_cant_mute">Tālrunis neļauj šai lietotnei to apklusināt. Lūdzu, atspējojiet skaņas izslēgšanu šīs lietotnes iestatījumos vai atļaujiet skaņas izslēgšanu tālruņa iestatījumos.</string>
     <string name="text_no_notify_access_settings">Šķiet, ka tālrunī nav standarta iestatījumu, lai atļautu skaņas izslēgšanu. Lūdzu, manuāli atrodiet iestatījumu \"Netraucēt piekļuvi\" un iespējojiet to.</string>
     <string name="text_no_sections">Sadaļas nav definētas.</string>
     <string name="text_question_delete_session">Vai tiešām dzēst izvēlēto sesiju?</string>
@@ -137,7 +124,6 @@
     <string name="time_section_remaining">No sadaļas atlicis</string>
     <string name="time_session_elapsed">No sesijas pagājis</string>
     <string name="time_session_remaining">No sesijas atlicis</string>
-    <string name="title_mute_perm_request">Trūkst atļaujas</string>
     <string name="title_question_delete_session">Dzēst sesiju?</string>
     <string name="title_volume_bells">Bļodu skaļums</string>
     <string name="unnamed">Nenosaukts</string>

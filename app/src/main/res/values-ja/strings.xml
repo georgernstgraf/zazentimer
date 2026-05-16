@@ -29,8 +29,6 @@
     <string name="caption_zazen_meditation">座禅</string>
     <string name="checkbox_keep_screen_on">画面をオンに保つ</string>
     <string name="checkbox_no_server_messages">ニュースを表示</string>
-    <string name="checkbox_phone_off">スマートフォンをミュート</string>
-    <string name="checkbox_phone_off_desc">すべての着信音をミュートします。</string>
     <string name="copy_prefix">コピー: </string>
     <string name="crash_dialog_comment_prompt">任意: どの操作がエラーの原因となりましたか？</string>
     <string name="crash_dialog_ok_toast">ご協力ありがとうございます。</string>
@@ -82,15 +80,6 @@
     <string name="ok">OK</string>
     <string name="pref_desc_brightness">瞑想中のディスプレイの明るさ</string>
     <string name="pref_get_messages">今すぐ新しいメッセージを確認する</string>
-    <string name="pref_mute_mode">着信音と通知</string>
-    <string name="pref_mute_mode_none">サイレント</string>
-    <string name="pref_mute_mode_none_desc">着信や通知の着信音とバイブレーションを無効にする</string>
-    <string name="pref_mute_mode_pref">着信音と通知に関する設定</string>
-    <string name="pref_mute_mode_vibrate">バイブレーションのみ</string>
-    <string name="pref_mute_mode_vibrate_desc">着信と通知でバイブレーションのみ動作します (Android 7 (Nougat) では機能せず、サイレント設定と同様に動作します)</string>
-    <string name="pref_mute_mode_vibrate_sound">着信音とバイブレーション</string>
-    <string name="pref_mute_mode_vibrate_sound_desc">着信音とバイブレーションを有効にする</string>
-    <string name="pref_muting">ミュート設定</string>
     <string name="pref_sum_backup">セッションとサウンドのバックアップをSDカードに保存します。</string>
     <string name="pref_sum_bad_removal">マウントを解除せずにSDカードが取り外されました。</string>
     <string name="pref_sum_checking">現在SDカードを確認しています</string>
@@ -126,8 +115,6 @@
     <string name="content_desc_session_actions">セッションのアクション</string>
     <string name="session_list_unnamed_entry">名称未設定のセッション</string>
     <string name="status_bar_notification_info_overflow">999+</string>
-    <string name="test_mute_perm_request">現在、アプリによるスマートフォンのミュートが許可されていません。設定を開いて変更しますか？</string>
-    <string name="text_cant_mute">スマートフォンでこのアプリによるミュートが許可されていません。このアプリの設定でミュートを無効にするか、スマートフォンの設定でミュートを許可してください。</string>
     <string name="text_no_notify_access_settings">スマートフォンにミュートを許可する標準設定がないようです。手動で「サイレントモードへのアクセス」設定を探して有効にしてください。</string>
     <string name="text_no_sections">セクションが定義されていません。</string>
     <string name="text_question_delete_session">本当に選択したセッションを削除しますか？</string>
@@ -140,7 +127,6 @@
     <string name="time_section_remaining">セクション残り</string>
     <string name="time_session_elapsed">セッション経過</string>
     <string name="time_session_remaining">セッション残り</string>
-    <string name="title_mute_perm_request">権限がありません</string>
     <string name="title_question_delete_session">セッションを削除しますか？</string>
     <string name="title_volume_bells">ベルの音量</string>
     <string name="unnamed">名称未設定</string>

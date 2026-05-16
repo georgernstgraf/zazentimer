@@ -29,8 +29,6 @@
     <string name="caption_zazen_meditation">জাজেন মেডিটেশন</string>
     <string name="checkbox_keep_screen_on">স্ক্রিন অন রাখুন</string>
     <string name="checkbox_no_server_messages">খবর দেখান</string>
-    <string name="checkbox_phone_off">ফোন মিউট করুন</string>
-    <string name="checkbox_phone_off_desc">ফোনের সমস্ত শব্দ মিউট করুন।</string>
     <string name="copy_prefix">এর কপি</string>
     <string name="crash_dialog_comment_prompt">ঐচ্ছিক: কোন কাজের কারণে ত্রুটিটি ঘটেছে?</string>
     <string name="crash_dialog_ok_toast">আপনার সাহায্যের জন্য অনেক ধন্যবাদ!</string>
@@ -82,15 +80,6 @@
     <string name="ok">ঠিক আছে</string>
     <string name="pref_desc_brightness">মেডিটেশনের সময় ডিসপ্লের উজ্জ্বলতা</string>
     <string name="pref_get_messages">এখনই নতুন বার্তা পরীক্ষা করুন</string>
-    <string name="pref_mute_mode">রিংটোন এবং বিজ্ঞপ্তি</string>
-    <string name="pref_mute_mode_none">নীরবতা</string>
-    <string name="pref_mute_mode_none_desc">ফোন কল এবং বিজ্ঞপ্তির জন্য কোনো রিংটোন এবং কোনো কম্পন নেই</string>
-    <string name="pref_mute_mode_pref">রিংটোন এবং বিজ্ঞপ্তি সম্পর্কিত সেটিংস</string>
-    <string name="pref_mute_mode_vibrate">শুধুমাত্র কম্পন</string>
-    <string name="pref_mute_mode_vibrate_desc">ফোন কল এবং বিজ্ঞপ্তির জন্য শুধুমাত্র কম্পন</string>
-    <string name="pref_mute_mode_vibrate_sound">রিংটোন এবং কম্পন</string>
-    <string name="pref_mute_mode_vibrate_sound_desc">রিংটোন বাজান এবং কম্পন করুন</string>
-    <string name="pref_muting">মিউট সেটিংস</string>
     <string name="pref_sum_backup">SD-কার্ডে আপনার সেশন এবং শব্দগুলোর ব্যাকআপ সংরক্ষণ করুন।</string>
     <string name="pref_sum_bad_removal">আনমাউন্ট করার আগেই SD কার্ড সরানো হয়েছে।</string>
     <string name="pref_sum_checking">এই মুহূর্তে SD-কার্ড পরীক্ষা করা হচ্ছে</string>
@@ -125,8 +114,6 @@
     <string name="content_desc_session_actions">সেশনের কাজগুলো</string>
     <string name="session_list_unnamed_entry">নামহীন সেশন</string>
     <string name="status_bar_notification_info_overflow">৯৯৯+</string>
-    <string name="test_mute_perm_request">অ্যাপটিকে বর্তমানে আপনার ফোন মিউট করার অনুমতি দেওয়া হয়নি। এটি পরিবর্তন করতে সেটিংস খুলবেন?</string>
-    <string name="text_cant_mute">আপনার ফোন এই অ্যাপটিকে মিউট করার অনুমতি দেয় না। এই অ্যাপের সেটিংসে মিউট করা নিষ্ক্রিয় করুন বা ফোনের সেটিংসে মিউট করার অনুমতি দিন।</string>
     <string name="text_no_notify_access_settings">মিউট করার অনুমতি দেওয়ার জন্য আপনার ফোনে স্ট্যান্ডার্ড সেটিংস আছে বলে মনে হচ্ছে না। অনুগ্রহ করে "Do not Disturb Access" সেটিংস ম্যানুয়ালি খুঁজুন এবং এটি সক্ষম করুন।</string>
     <string name="text_no_sections">কোনো সেকশন সংজ্ঞায়িত নেই।</string>
     <string name="text_question_delete_session">সত্যিই নির্বাচিত সেশন মুছতে চান?</string>
@@ -139,7 +126,6 @@
     <string name="time_section_remaining">সেকশনের সময় বাকি</string>
     <string name="time_session_elapsed">সেশনের সময় অতিক্রান্ত</string>
     <string name="time_session_remaining">সেশনের সময় বাকি</string>
-    <string name="title_mute_perm_request">অনুমতি নেই</string>
     <string name="title_question_delete_session">সেশন মুছবেন?</string>
     <string name="title_volume_bells">বাটির ভলিউম</string>
     <string name="unnamed">নামহীন</string>

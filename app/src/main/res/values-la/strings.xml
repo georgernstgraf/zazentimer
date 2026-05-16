@@ -29,8 +29,6 @@
     <string name="caption_zazen_meditation">Zazen Meditatio</string>
     <string name="checkbox_keep_screen_on">Serva in screen</string>
     <string name="checkbox_no_server_messages">Ostendere News</string>
-    <string name="checkbox_phone_off">Muta Phone</string>
-    <string name="checkbox_phone_off_desc">Muta omnia phone sonos.</string>
     <string name="copy_prefix">Exemplar</string>
     <string name="crash_dialog_comment_prompt">Ad libitum: Quod opus fecit errorem facere?</string>
     <string name="crash_dialog_ok_toast">Gratias tibi tam pro auxilio tuo!</string>
@@ -82,15 +80,6 @@
     <string name="ok">OK</string>
     <string name="pref_desc_brightness">Splendor Propono in Meditatione</string>
     <string name="pref_get_messages">Reprehendo ad novas nunc</string>
-    <string name="pref_mute_mode">Annulus sonus et notificationes</string>
-    <string name="pref_mute_mode_none">Silentium</string>
-    <string name="pref_mute_mode_none_desc">Nec sonus anulus nec tremor ad phone vocat et notificationes</string>
-    <string name="pref_mute_mode_pref">Optiones de Ringonis sono et notificationes</string>
-    <string name="pref_mute_mode_vibrate">Tantum Vibration</string>
-    <string name="pref_mute_mode_vibrate_desc">Tantum volvebatur ad phone vocat et notificationes (non operatur in Android VII (Nougat) - gerit sicut silentium occasum)</string>
-    <string name="pref_mute_mode_vibrate_sound">Annulus sonus et vibratio</string>
-    <string name="pref_mute_mode_vibrate_sound_desc">Play Ring sono et Vibration</string>
-    <string name="pref_muting">Muta Optiones</string>
     <string name="pref_sum_backup">Serva tergum Sessionum et Sonorum tuarum ad SD-Card.</string>
     <string name="pref_sum_bad_removal">SD Card remotus est quin primus eques.</string>
     <string name="pref_sum_checking">SD-Card inhibetur tempore</string>
@@ -126,8 +115,6 @@
     <string name="content_desc_session_actions">Sessio actiones</string>
     <string name="session_list_unnamed_entry">Sessio innominata</string>
     <string name="status_bar_notification_info_overflow">999+</string>
-    <string name="test_mute_perm_request">App est currently non licet mutum tuum telephonum. Aperi occasus ut hoc mutes?</string>
-    <string name="text_cant_mute">Telephonum mobile tuum hoc App ut mutum non permittit. Inactivare mutum in hac Apps Occasus vel in Phones Occasus muto permittere.</string>
     <string name="text_no_notify_access_settings">Telephonum mobile tuum non videtur habere occasus normas ut mutos patiaris. Quaeso vide manually pro \" Noli Disturb Access\" Ponere ac fac.</string>
     <string name="text_no_sections">Nullae Sectiones definiuntur.</string>
     <string name="text_question_delete_session">Vere Sessionem electam delere?</string>
@@ -140,7 +127,6 @@
     <string name="time_section_remaining">Reliqua sectione</string>
     <string name="time_session_elapsed">Sessio spatio</string>
     <string name="time_session_remaining">Sessio reliquum</string>
-    <string name="title_mute_perm_request">Absentis Permission</string>
     <string name="title_question_delete_session">Sessio delere?</string>
     <string name="title_volume_bells">Bell Volume</string>
     <string name="unnamed">Innominatus</string>

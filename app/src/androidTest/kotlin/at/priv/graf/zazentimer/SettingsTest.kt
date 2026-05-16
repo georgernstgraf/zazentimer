@@ -1,11 +1,9 @@
 package at.priv.graf.zazentimer
 
 import android.content.Intent
-import android.content.SharedPreferences
 import android.os.SystemClock
 import android.view.MotionEvent
 import android.widget.SeekBar
-import androidx.preference.PreferenceManager
 import androidx.test.espresso.Espresso
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.UiController
@@ -28,8 +26,6 @@ import at.priv.graf.zazentimer.screens.SettingsPage
 import dagger.hilt.android.testing.HiltAndroidRule
 import dagger.hilt.android.testing.HiltAndroidTest
 import org.hamcrest.Matcher
-import org.junit.Assert.assertFalse
-import org.junit.Assert.assertTrue
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
@@ -77,25 +73,6 @@ class SettingsTest {
         Espresso.onIdle()
 
         SettingsPage()
-    }
-
-    @Test
-    fun testMuteSettings() {
-        MainPage()
-            .verifyMainScreenIsDisplayed()
-            .clickToolbarOverflowItem(R.string.menu_settings)
-        SettingsPage()
-
-        clickPreferenceByText(R.string.pref_mute_mode_vibrate_sound)
-
-        val prefs = getPrefs()
-        assertTrue(prefs.getBoolean("mute_mode_vibrate_sound", false))
-        assertFalse(prefs.getBoolean("mute_mode_none", true))
-
-        clickPreferenceByText(R.string.pref_mute_mode_none)
-
-        assertTrue(prefs.getBoolean("mute_mode_none", false))
-        assertFalse(prefs.getBoolean("mute_mode_vibrate_sound", true))
     }
 
     @Test
@@ -158,9 +135,6 @@ class SettingsTest {
             device.findObject(UiSelector().text(text)).click()
         }
     }
-
-    private fun getPrefs(): SharedPreferences =
-        PreferenceManager.getDefaultSharedPreferences(InstrumentationRegistry.getInstrumentation().targetContext)
 
     companion object {
         private fun setSeekBarProgress(progress: Int): ViewAction =

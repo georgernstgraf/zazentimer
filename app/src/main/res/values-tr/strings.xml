@@ -29,8 +29,6 @@
     <string name="caption_zazen_meditation">Zazen Meditasyonu</string>
     <string name="checkbox_keep_screen_on">Ekranı açık tut</string>
     <string name="checkbox_no_server_messages">Haberleri Göster</string>
-    <string name="checkbox_phone_off">Telefonu Sessize Al</string>
-    <string name="checkbox_phone_off_desc">Tüm telefon seslerini kapat.</string>
     <string name="copy_prefix">Kopyası</string>
     <string name="crash_dialog_comment_prompt">İsteğe bağlı: Hangi eylem hataya neden oldu?</string>
     <string name="crash_dialog_ok_toast">Yardımınız için çok teşekkür ederiz!</string>
@@ -82,15 +80,6 @@
     <string name="ok">Tamam</string>
     <string name="pref_desc_brightness">Meditasyon sırasında Ekran Parlaklığı</string>
     <string name="pref_get_messages">Yeni Mesajları şimdi kontrol et</string>
-    <string name="pref_mute_mode">Zil sesi ve Bildirimler</string>
-    <string name="pref_mute_mode_none">Sessizlik</string>
-    <string name="pref_mute_mode_none_desc">Telefon görüşmeleri ve Bildirimler için zil sesi ve titreşim yok</string>
-    <string name="pref_mute_mode_pref">Zil sesi ve Bildirimlerle ilgili ayarlar</string>
-    <string name="pref_mute_mode_vibrate">Sadece Titreşim</string>
-    <string name="pref_mute_mode_vibrate_desc">Telefon görüşmeleri ve Bildirimler için sadece titreşim (Android 7 (Nougat)\'ta çalışmaz - Sessizlik ayarı gibi davranır)</string>
-    <string name="pref_mute_mode_vibrate_sound">Zil sesi ve Titreşim</string>
-    <string name="pref_mute_mode_vibrate_sound_desc">Zil sesi çal ve Titreşim</string>
-    <string name="pref_muting">Sessize Alma Ayarları</string>
     <string name="pref_sum_backup">Oturumlarınızın ve Seslerinizin bir yedeğini SD Kartınıza kaydedin.</string>
     <string name="pref_sum_bad_removal">SD Kart çıkarılmadan önce bağlantısı kesilmedi.</string>
     <string name="pref_sum_checking">SD Kart şu anda kontrol ediliyor</string>
@@ -126,8 +115,6 @@
     <string name="content_desc_session_actions">Oturum eylemleri</string>
     <string name="session_list_unnamed_entry">İsimsiz Oturum</string>
     <string name="status_bar_notification_info_overflow">999+</string>
-    <string name="test_mute_perm_request">Uygulamanın şu anda telefonunuzu sessize almasına izin verilmiyor. Bunu değiştirmek için ayarları açın?</string>
-    <string name="text_cant_mute">Telefonunuz bu Uygulamanın onu sessize almasına izin vermiyor. Bu Uygulamanın Ayarlarından sessize almayı devre dışı bırakın veya Telefonunuzun Ayarlarından sessize almaya izin verin.</string>
     <string name="text_no_notify_access_settings">Telefonunuz sessize almaya izin verecek standart ayarlara sahip görünmüyor. Lütfen manuel olarak "Rahatsız Etmeyin Erişimi" Ayarını arayın ve etkinleştirin.</string>
     <string name="text_no_sections">Bölüm tanımlanmadı.</string>
     <string name="text_question_delete_session">Seçilen Oturum gerçekten silinsin mi?</string>
@@ -140,7 +127,6 @@
     <string name="time_section_remaining">Bölümde kalan süre</string>
     <string name="time_session_elapsed">Oturumda geçen süre</string>
     <string name="time_session_remaining">Oturumda kalan süre</string>
-    <string name="title_mute_perm_request">Eksik İzin</string>
     <string name="title_question_delete_session">Oturum Silinsin mi?</string>
     <string name="title_volume_bells">Zil Sesi Seviyesi</string>
     <string name="unnamed">İsimsiz</string>

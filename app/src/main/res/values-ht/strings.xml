@@ -29,8 +29,6 @@
     <string name="caption_zazen_meditation">Zazen Meditasyon</string>
     <string name="checkbox_keep_screen_on">Kenbe ekran an limen</string>
     <string name="checkbox_no_server_messages">Montre Nouvèl</string>
-    <string name="checkbox_phone_off">Telefòn bèbè</string>
-    <string name="checkbox_phone_off_desc">Bète tout son telefòn yo.</string>
     <string name="copy_prefix">Kopi de</string>
     <string name="crash_dialog_comment_prompt">Si ou vle: Ki aksyon ki te lakòz erè a?</string>
     <string name="crash_dialog_ok_toast">Mèsi anpil pou èd ou!</string>
@@ -82,15 +80,6 @@
     <string name="ok">OK</string>
     <string name="pref_desc_brightness">Klere nan ekspozisyon an pandan meditasyon</string>
     <string name="pref_get_messages">Tcheke pou nouvo Mesaj kounye a</string>
-    <string name="pref_mute_mode">Sonnerie ak Notifikasyon</string>
-    <string name="pref_mute_mode_none">Silans</string>
-    <string name="pref_mute_mode_none_desc">Pa gen sonnen ak pa gen okenn vibrasyon pou apèl nan telefòn ak Notifikasyon</string>
-    <string name="pref_mute_mode_pref">Anviwònman konsènan Sonnerie ak Notifikasyon</string>
-    <string name="pref_mute_mode_vibrate">Se sèlman Vibration</string>
-    <string name="pref_mute_mode_vibrate_desc">Vibre sèlman pou apèl nan telefòn ak Notifikasyon (pa travay sou Android 7 (Nougat) - konpòte li tankou anviwònman an silans)</string>
-    <string name="pref_mute_mode_vibrate_sound">Sonnerie ak Vibration</string>
-    <string name="pref_mute_mode_vibrate_sound_desc">Jwe ton sonn ak Vibration</string>
-    <string name="pref_muting">Anviwònman bèbè</string>
     <string name="pref_sum_backup">Sove yon sovgad Sesyon ak Son ou yo sou Kat SD ou a.</string>
     <string name="pref_sum_bad_removal">Kat SD te retire san yo pa demonte anvan.</string>
     <string name="pref_sum_checking">SD-Card ap tcheke nan moman sa a</string>
@@ -126,8 +115,6 @@
     <string name="content_desc_session_actions">Aksyon sesyon yo</string>
     <string name="session_list_unnamed_entry">Sesyon san non</string>
     <string name="status_bar_notification_info_overflow">999+</string>
-    <string name="test_mute_perm_request">Kounye a, aplikasyon an pa pèmèt pou fèmen telefòn ou an. Louvri paramèt pou chanje sa?</string>
-    <string name="text_cant_mute">Telefòn ou a pa pèmèt aplikasyon sa a pou fèmen li. Enfim silenn nan Anviwònman Apps sa a oswa pèmèt silenn nan Anviwònman Telefòn ou yo.</string>
     <string name="text_no_notify_access_settings">Telefòn ou a pa sanble gen paramèt estanda pou pèmèt silenn. Tanpri gade manyèlman pou Anviwònman \"Pa Deranje Aksè\" epi aktive li.</string>
     <string name="text_no_sections">Pa gen seksyon defini.</string>
     <string name="text_question_delete_session">Vrèman efase Sesyon chwazi a?</string>
@@ -140,7 +127,6 @@
     <string name="time_section_remaining">Seksyon ki rete</string>
     <string name="time_session_elapsed">Sesyon pase</string>
     <string name="time_session_remaining">Sesyon ki rete</string>
-    <string name="title_mute_perm_request">Pèmisyon ki manke</string>
     <string name="title_question_delete_session">Efase sesyon?</string>
     <string name="title_volume_bells">Volim Bell</string>
     <string name="unnamed">San non</string>

@@ -29,8 +29,6 @@
     <string name="caption_zazen_meditation">Meditazione Zazen</string>
     <string name="checkbox_keep_screen_on">Mantieni schermo acceso</string>
     <string name="checkbox_no_server_messages">Mostra notizie</string>
-    <string name="checkbox_phone_off">Silenzia telefono</string>
-    <string name="checkbox_phone_off_desc">Disattiva tutti i suoni del telefono.</string>
     <string name="copy_prefix">Copia di</string>
     <string name="crash_dialog_comment_prompt">Opzionale: quale azione ha causato l\'errore?</string>
     <string name="crash_dialog_ok_toast">Grazie per l\'aiuto!</string>
@@ -82,15 +80,6 @@
     <string name="ok">OK</string>
     <string name="pref_desc_brightness">Luminosità dello schermo durante la meditazione</string>
     <string name="pref_get_messages">Controlla nuovi messaggi</string>
-    <string name="pref_mute_mode">Suoneria e notifiche</string>
-    <string name="pref_mute_mode_none">Silenzioso</string>
-    <string name="pref_mute_mode_none_desc">Nessuna suoneria o vibrazione</string>
-    <string name="pref_mute_mode_pref">Impostazioni per suoneria e notifiche</string>
-    <string name="pref_mute_mode_vibrate">Solo vibrazione</string>
-    <string name="pref_mute_mode_vibrate_desc">Solo vibrazione (su Android 7 funziona come \"Silenzioso\")</string>
-    <string name="pref_mute_mode_vibrate_sound">Suoneria e vibrazione</string>
-    <string name="pref_mute_mode_vibrate_sound_desc">Suoneria e vibrazione attive</string>
-    <string name="pref_muting">Impostazioni silenziamento</string>
     <string name="pref_sum_backup">Salva sessioni e suoni sulla scheda SD.</string>
     <string name="pref_sum_bad_removal">Scheda SD rimossa senza espulsione.</string>
     <string name="pref_sum_checking">Controllo della scheda SD in corso.</string>
@@ -126,8 +115,6 @@
     <string name="content_desc_session_actions">Azioni sessione</string>
     <string name="session_list_unnamed_entry">Sessione senza nome</string>
     <string name="status_bar_notification_info_overflow">999+</string>
-    <string name="test_mute_perm_request">L\'app non ha il permesso di silenziare il telefono. Aprire le impostazioni per modificarlo?</string>
-    <string name="text_cant_mute">Il sistema blocca il silenziamento. Concedere i permessi nelle impostazioni dell\'app o del sistema.</string>
     <string name="text_no_notify_access_settings">Il dispositivo non supporta il silenziamento standard. Attivare manualmente l\'accesso \"Non disturbare\".</string>
     <string name="text_no_sections">Nessuna sezione definita.</string>
     <string name="text_question_delete_session">Eliminare la sessione selezionata?</string>
@@ -140,7 +127,6 @@
     <string name="time_section_remaining">Sezione (rimanente)</string>
     <string name="time_session_elapsed">Sessione (trascorsa)</string>
     <string name="time_session_remaining">Sessione (rimanente)</string>
-    <string name="title_mute_perm_request">Permessi mancanti</string>
     <string name="title_question_delete_session">Eliminare la sessione?</string>
     <string name="title_volume_bells">Volume della campana</string>
     <string name="unnamed">Senza nome</string>

@@ -29,8 +29,6 @@
     <string name="caption_zazen_meditation">زازن مراقبو</string>
     <string name="checkbox_keep_screen_on">اسڪرين تي رکو</string>
     <string name="checkbox_no_server_messages">ڏيکاريو خبرون</string>
-    <string name="checkbox_phone_off">فون بند ڪريو</string>
-    <string name="checkbox_phone_off_desc">فون جي سڀني آوازن کي خاموش ڪريو.</string>
     <string name="copy_prefix">جي ڪاپي</string>
     <string name="crash_dialog_comment_prompt">اختياري: ڪهڙو عمل غلطي جو سبب بڻيو؟</string>
     <string name="crash_dialog_ok_toast">توهان جي مدد لاء تمام گهڻو مهرباني!</string>
@@ -82,15 +80,6 @@
     <string name="ok">ٺيڪ</string>
     <string name="pref_desc_brightness">مراقبت دوران ڊسپلي جي روشني</string>
     <string name="pref_get_messages">ھاڻي چيڪ ڪريو نوان نياپا</string>
-    <string name="pref_mute_mode">رنگ ٽون ۽ نوٽيفڪيشن</string>
-    <string name="pref_mute_mode_none">خاموشي</string>
-    <string name="pref_mute_mode_none_desc">فون ڪالز ۽ نوٽيفڪيشنز لاءِ ڪابه رِنگ ٽون ۽ ڪا وائبريشن ناهي</string>
-    <string name="pref_mute_mode_pref">رنگ ٽون ۽ اطلاعن جي حوالي سان سيٽنگون</string>
-    <string name="pref_mute_mode_vibrate">صرف Vibration</string>
-    <string name="pref_mute_mode_vibrate_desc">صرف فون ڪالز ۽ نوٽيفڪيشنز لاءِ وائبرٽ ڪريو (Android 7 (Nougat) تي ڪم نٿو ڪري - خاموشي جي سيٽنگ وانگر ڪم ڪري ٿو)</string>
-    <string name="pref_mute_mode_vibrate_sound">رنگ ٽون ۽ وائبريشن</string>
-    <string name="pref_mute_mode_vibrate_sound_desc">رنگ ٽون ۽ وائبريشن کيڏيو</string>
-    <string name="pref_muting">خاموش سيٽنگون</string>
     <string name="pref_sum_backup">پنھنجي SD-ڪارڊ ۾ پنھنجي سيشن ۽ آوازن جو بيڪ اپ محفوظ ڪريو.</string>
     <string name="pref_sum_bad_removal">SD ڪارڊ کي هٽايو ويو بغير بغير بغير پهرين.</string>
     <string name="pref_sum_checking">SD-Card هن وقت چيڪ ڪيو پيو وڃي</string>
@@ -126,8 +115,6 @@
     <string name="content_desc_session_actions">سيشن جي عملن</string>
     <string name="session_list_unnamed_entry">بينام سيشن</string>
     <string name="status_bar_notification_info_overflow">999+</string>
-    <string name="test_mute_perm_request">ايپ في الحال توهان جي فون کي خاموش ڪرڻ جي اجازت ناهي. هن کي تبديل ڪرڻ لاء سيٽنگون کوليو؟</string>
-    <string name="text_cant_mute">توهان جو فون هن ايپ کي خاموش ڪرڻ جي اجازت نٿو ڏئي. هن ائپس سيٽنگن ۾ ميوٽ ڪرڻ کي بند ڪريو يا پنهنجي فون سيٽنگن ۾ ميوٽ ڪرڻ جي اجازت ڏيو.</string>
     <string name="text_no_notify_access_settings">توهان جي فون کي خاموش ڪرڻ جي اجازت ڏيڻ لاء معياري سيٽنگون نه لڳي. مھرباني ڪري دستي طور \"Do\'t Disturb Access\" سيٽنگ لاءِ ڏسو ۽ ان کي فعال ڪريو.</string>
     <string name="text_no_sections">ڪو به سيڪشن بيان نه ڪيو ويو آهي.</string>
     <string name="text_question_delete_session">ڇا واقعي چونڊيو سيشن کي ختم ڪيو؟</string>
@@ -140,7 +127,6 @@
     <string name="time_section_remaining">باقي حصو</string>
     <string name="time_session_elapsed">سيشن گذري ويو</string>
     <string name="time_session_remaining">سيشن باقي</string>
-    <string name="title_mute_perm_request">گم ٿيل اجازت</string>
     <string name="title_question_delete_session">سيشن کي ختم ڪريو؟</string>
     <string name="title_volume_bells">گھنٽي جو حجم</string>
     <string name="unnamed">بينام</string>

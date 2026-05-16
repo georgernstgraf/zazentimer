@@ -29,8 +29,6 @@
     <string name="caption_zazen_meditation">Zazen Kufungisisa</string>
     <string name="checkbox_keep_screen_on">Ramba wakabatidza skrini</string>
     <string name="checkbox_no_server_messages">Show News</string>
-    <string name="checkbox_phone_off">Mute Phone</string>
-    <string name="checkbox_phone_off_desc">Nyamudza manzwi ese efoni.</string>
     <string name="copy_prefix">Copy of</string>
     <string name="crash_dialog_comment_prompt">Sarudzo: Ndechipi chiito chakonzera kukanganisa?</string>
     <string name="crash_dialog_ok_toast">Ndinokutendai zvikuru nerubatsiro rwenyu!</string>
@@ -82,15 +80,6 @@
     <string name="ok">OK</string>
     <string name="pref_desc_brightness">Kupenya kweChiratidziro panguva yekufungisisa</string>
     <string name="pref_get_messages">Tarisa uone maMessages matsva izvozvi</string>
-    <string name="pref_mute_mode">Inzwi remhete uye Zviziviso</string>
-    <string name="pref_mute_mode_none">Kunyarara</string>
-    <string name="pref_mute_mode_none_desc">Hapana toni yemhete uye hapana vibration yekufona uye Zviziviso</string>
-    <string name="pref_mute_mode_pref">Settings maererano neRing toni uye Zviziviso</string>
-    <string name="pref_mute_mode_vibrate">Vibration chete</string>
-    <string name="pref_mute_mode_vibrate_desc">Kudedera chete kwemafoni uye Zviziviso (Haishande paAndroid 7 (Nougat) - inoita senge Kunyarara kuseta)</string>
-    <string name="pref_mute_mode_vibrate_sound">Inzwi remhete uye Vibration</string>
-    <string name="pref_mute_mode_vibrate_sound_desc">Tamba Ring toni uye Vibration</string>
-    <string name="pref_muting">Mute Settings</string>
     <string name="pref_sum_backup">Chengetedza backup yeMasesheni ako uye Manzwi kune yako SD-Kadhi.</string>
     <string name="pref_sum_bad_removal">Kadhi reSD rakabviswa pasina kuburitswa pekutanga.</string>
     <string name="pref_sum_checking">SD-Kadhi iri kuongororwa panguva ino</string>
@@ -126,8 +115,6 @@
     <string name="content_desc_session_actions">Zviito zveSession</string>
     <string name="session_list_unnamed_entry">Zvisina Kutaurwa Session</string>
     <string name="status_bar_notification_info_overflow">999+</string>
-    <string name="test_mute_perm_request">Iyo App parizvino haibvumidzwe kunyararidza foni yako. Vhura zvigadziriso kuti uchinje izvi?</string>
-    <string name="text_cant_mute">Foni yako haitenderi iyi App kuidzima. Dzima kunyarara mune izvi Zvirongwa zveMapurogiramu kana kubvumira kunyarara muMafoni ako Settings.</string>
     <string name="text_no_notify_access_settings">Foni yako haiite kunge iine mwero marongero ekubvumidza kunyarara. Ndokumbira utarise nemaoko \"Do not Disturb Access\" Setting woigonesa.</string>
     <string name="text_no_sections">Hapana Zvikamu zvinotsanangurwa.</string>
     <string name="text_question_delete_session">Kudzima Session yakasarudzwa zvechokwadi?</string>
@@ -140,7 +127,6 @@
     <string name="time_section_remaining">Chikamu chasara</string>
     <string name="time_session_elapsed">Session yakapera</string>
     <string name="time_session_remaining">Session yasara</string>
-    <string name="title_mute_perm_request">Kushaya Mvumo</string>
     <string name="title_question_delete_session">Delete Session?</string>
     <string name="title_volume_bells">Bell Vhoriyamu</string>
     <string name="unnamed">Asina kudomwa zita</string>

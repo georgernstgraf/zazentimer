@@ -29,8 +29,6 @@
     <string name="caption_zazen_meditation">Зазен медитациясы</string>
     <string name="checkbox_keep_screen_on">Экранды күйгүзүңүз</string>
     <string name="checkbox_no_server_messages">Show News</string>
-    <string name="checkbox_phone_off">Телефондун үнүн басуу</string>
-    <string name="checkbox_phone_off_desc">Бардык телефон үндөрүн өчүрүү.</string>
     <string name="copy_prefix">көчүрмөсү</string>
     <string name="crash_dialog_comment_prompt">Кошумча: Катага кайсы аракет себеп болду?</string>
     <string name="crash_dialog_ok_toast">Жардамыңыз үчүн чоң рахмат!</string>
@@ -82,15 +80,6 @@
     <string name="ok">макул</string>
     <string name="pref_desc_brightness">Медитация учурунда дисплейдин жарыктыгы</string>
     <string name="pref_get_messages">Жаңы Билдирүүлөрдү азыр текшериңиз</string>
-    <string name="pref_mute_mode">Ring tone and Notifications</string>
-    <string name="pref_mute_mode_none">Тынчтык</string>
-    <string name="pref_mute_mode_none_desc">Телефон чалуулар жана эскертмелер үчүн рингтон жана титирөө жок</string>
-    <string name="pref_mute_mode_pref">Шыңгыр үнүнө жана эскертмелерге байланыштуу орнотуулар</string>
-    <string name="pref_mute_mode_vibrate">Бир гана титирөө</string>
-    <string name="pref_mute_mode_vibrate_desc">Телефон чалуулар жана эскертмелер үчүн гана титирөө (Android 7де (Nougat) иштебейт - Унчукпоо жөндөөсүндөй иштейт)</string>
-    <string name="pref_mute_mode_vibrate_sound">Шыңгыр обону жана титирөө</string>
-    <string name="pref_mute_mode_vibrate_sound_desc">Шыңгыр обонун жана титирөөнү ойноңуз</string>
-    <string name="pref_muting">Үнсүз орнотуулар</string>
     <string name="pref_sum_backup">Сеанстарыңыздын жана Үндөрдүн камдык көчүрмөсүн SD-картаңызга сактаңыз.</string>
     <string name="pref_sum_bad_removal">SD карта адегенде ажыратылбастан алынып салынды.</string>
     <string name="pref_sum_checking">Учурда SD-карта текшерилүүдө</string>
@@ -126,8 +115,6 @@
     <string name="content_desc_session_actions">Сеанс аракеттери</string>
     <string name="session_list_unnamed_entry">Аты жок сессия</string>
     <string name="status_bar_notification_info_overflow">999+</string>
-    <string name="test_mute_perm_request">Колдонмого учурда телефонуңуздун үнүн басууга уруксат жок. Муну өзгөртүү үчүн орнотууларды ачыңызбы?</string>
-    <string name="text_cant_mute">Телефонуңуз бул колдонмого анын үнүн басууга уруксат бербейт. Бул Колдонмолор Жөндөөлөрүндө үнүн басууну өчүрүңүз же Телефондоруңуздун Жөндөөлөрүнөн үнүн басууга уруксат бериңиз.</string>
     <string name="text_no_notify_access_settings">Телефонуңузда үнүн басууга уруксат берүүчү стандарттык жөндөөлөр жок окшойт. Сураныч, \"Тынчымды алба мүмкүнчүлүгүн\" жөндөөсүн кол менен издеп, аны иштетиңиз.</string>
     <string name="text_no_sections">Бөлүмдөр аныкталган жок.</string>
     <string name="text_question_delete_session">Тандалган сеанс чын эле жок кылынсынбы?</string>
@@ -140,7 +127,6 @@
     <string name="time_section_remaining">Бөлүм калды</string>
     <string name="time_session_elapsed">Сессия бүттү</string>
     <string name="time_session_remaining">Сеанс калды</string>
-    <string name="title_mute_perm_request">Уруксат жок</string>
     <string name="title_question_delete_session">Сеанс жок кылынсынбы?</string>
     <string name="title_volume_bells">Коңгуроонун көлөмү</string>
     <string name="unnamed">Аты жок</string>

@@ -29,8 +29,6 @@
     <string name="caption_zazen_meditation">ઝેન ધ્યાન</string>
     <string name="checkbox_keep_screen_on">સ્ક્રીન ચાલુ રાખો</string>
     <string name="checkbox_no_server_messages">સમાચાર બતાવો</string>
-    <string name="checkbox_phone_off">ફોન મ્યૂટ કરો</string>
-    <string name="checkbox_phone_off_desc">ફોનના બધા અવાજો મ્યૂટ કરો.</string>
     <string name="copy_prefix">ની નકલ</string>
     <string name="crash_dialog_comment_prompt">વૈકલ્પિક: કઈ ક્રિયાને કારણે ભૂલ આવી?</string>
     <string name="crash_dialog_ok_toast">તમારી મદદ માટે ખૂબ ખૂબ આભાર!</string>
@@ -82,15 +80,6 @@
     <string name="ok">બરાબર</string>
     <string name="pref_desc_brightness">ધ્યાન દરમિયાન ડિસ્પ્લેની બ્રાઇટનેસ</string>
     <string name="pref_get_messages">હવે નવા સંદેશા તપાસો</string>
-    <string name="pref_mute_mode">રિંગ ટોન અને સૂચનાઓ</string>
-    <string name="pref_mute_mode_none">મૌન</string>
-    <string name="pref_mute_mode_none_desc">ફોન કૉલ્સ અને સૂચનાઓ માટે કોઈ રિંગ ટોન અને કોઈ વાઇબ્રેશન નથી</string>
-    <string name="pref_mute_mode_pref">રિંગ ટોન અને સૂચનાઓ સંબંધિત સેટિંગ્સ</string>
-    <string name="pref_mute_mode_vibrate">ફક્ત વાઇબ્રેશન</string>
-    <string name="pref_mute_mode_vibrate_desc">ફોન કૉલ્સ અને સૂચનાઓ માટે ફક્ત વાઇબ્રેટ કરો</string>
-    <string name="pref_mute_mode_vibrate_sound">રિંગ ટોન અને વાઇબ્રેશન</string>
-    <string name="pref_mute_mode_vibrate_sound_desc">રિંગ ટોન અને વાઇબ્રેશન વગાડો</string>
-    <string name="pref_muting">મ્યૂટ સેટિંગ્સ</string>
     <string name="pref_sum_backup">તમારા સત્રો અને અવાજોનો બેકઅપ તમારા SD-કાર્ડમાં સાચવો.</string>
     <string name="pref_sum_bad_removal">પહેલા અનમાઉન્ટ કર્યા વિના SD કાર્ડ દૂર કરવામાં આવ્યું હતું.</string>
     <string name="pref_sum_checking">SD-કાર્ડ અત્યારે તપાસવામાં આવી રહ્યું છે</string>
@@ -126,8 +115,6 @@
     <string name="content_desc_session_actions">સત્ર ક્રિયાઓ</string>
     <string name="session_list_unnamed_entry">અનામી સત્ર</string>
     <string name="status_bar_notification_info_overflow">999+</string>
-    <string name="test_mute_perm_request">એપ્લિકેશનને હાલમાં તમારો ફોન મ્યૂટ કરવાની મંજૂરી નથી. આ બદલવા માટે સેટિંગ્સ ખોલો?</string>
-    <string name="text_cant_mute">તમારો ફોન આ એપ્લિકેશનને મ્યૂટ કરવાની મંજૂરી આપતો નથી.</string>
     <string name="text_no_notify_access_settings">તમારા ફોનમાં મ્યૂટ કરવાની મંજૂરી આપવા માટે પ્રમાણભૂત સેટિંગ્સ નથી.</string>
     <string name="text_no_sections">કોઈ વિભાગ વ્યાખ્યાયિત નથી.</string>
     <string name="text_question_delete_session">ખરેખર પસંદ કરેલ સત્ર કાઢી નાખવું છે?</string>
@@ -140,7 +127,6 @@
     <string name="time_section_remaining">વિભાગ બાકી</string>
     <string name="time_session_elapsed">સત્ર વીતી ગયું</string>
     <string name="time_session_remaining">સત્ર બાકી</string>
-    <string name="title_mute_perm_request">ગેરહાજર પરવાનગી</string>
     <string name="title_question_delete_session">સત્ર કાઢી નાખવું છે?</string>
     <string name="title_volume_bells">બેલ વોલ્યુમ</string>
     <string name="unnamed">અનામી</string>

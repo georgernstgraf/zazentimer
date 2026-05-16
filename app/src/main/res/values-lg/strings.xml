@@ -29,8 +29,6 @@
     <string name="caption_zazen_meditation">Zazen Okufumiitiriza</string>
     <string name="checkbox_keep_screen_on">Kuuma screen ku</string>
     <string name="checkbox_no_server_messages">Show Amawulire</string>
-    <string name="checkbox_phone_off">Mute Essimu</string>
-    <string name="checkbox_phone_off_desc">Mute amaloboozi gonna ag\'essimu.</string>
     <string name="copy_prefix">Kopi ya…</string>
     <string name="crash_dialog_comment_prompt">Okwesalirawo: Kikolwa ki ekyaleeta ensobi?</string>
     <string name="crash_dialog_ok_toast">Mwebale nnyo obuyambi bwammwe!</string>
@@ -82,15 +80,6 @@
     <string name="ok">KALE</string>
     <string name="pref_desc_brightness">Okumasamasa kw’Okwolesebwa mu kiseera ky’Okufumiitiriza</string>
     <string name="pref_get_messages">Kebera Obubaka obupya kati</string>
-    <string name="pref_mute_mode">Eddoboozi ly’essimu n’Ebimanyisibwa</string>
-    <string name="pref_mute_mode_none">Akasiriikiriro</string>
-    <string name="pref_mute_mode_none_desc">Tewali ring tone era tewali vibration ku ssimu ne Notifications</string>
-    <string name="pref_mute_mode_pref">Ensengeka ezikwata ku Ring tone ne Notifications</string>
-    <string name="pref_mute_mode_vibrate">Vibration yokka</string>
-    <string name="pref_mute_mode_vibrate_desc">Vibrate ku ssimu n\'okumanyisibwa kwokka (Tekola ku Android 7 (Nougat) - yeeyisa nga Silence setting)</string>
-    <string name="pref_mute_mode_vibrate_sound">Eddoboozi ly’empeta ne Vibration</string>
-    <string name="pref_mute_mode_vibrate_sound_desc">Zanya Ring tone ne Vibration</string>
-    <string name="pref_muting">Enteekateeka z’okusirisa</string>
     <string name="pref_sum_backup">Teeka backup ya Sessions ne Sounds zo ku SD-Card yo.</string>
     <string name="pref_sum_bad_removal">SD Card yaggyibwawo nga tesoose kugiggyamu.</string>
     <string name="pref_sum_checking">SD-Card ekeberebwa mu kiseera kino</string>
@@ -126,8 +115,6 @@
     <string name="content_desc_session_actions">Ebikolwa by’olutuula</string>
     <string name="session_list_unnamed_entry">Olutuula olutaliiko mannya</string>
     <string name="status_bar_notification_info_overflow">999+</string>
-    <string name="test_mute_perm_request">Mu kiseera kino App tekkirizibwa kusirisa ssimu yo. Ggulawo ensengeka okukyusa kino?</string>
-    <string name="text_cant_mute">Essimu yo tekkiriza App eno kugisirisa. Lemesa okusirisa mu Apps Settings eno oba kiriza okusirisa mu Phones Settings zo.</string>
     <string name="text_no_notify_access_settings">Essimu yo erabika terina standard settings ezisobozesa okusirisa. Nsaba onoonye mu ngalo Ensengeka ya \"Totaataaganya Kuyingira\" era ogisobozesa.</string>
     <string name="text_no_sections">Tewali Bitundu bitegeezeddwa.</string>
     <string name="text_question_delete_session">Ddala sazaamu Session erongooseddwa?</string>
@@ -140,7 +127,6 @@
     <string name="time_section_remaining">Ekitundu ekisigadde</string>
     <string name="time_session_elapsed">Olutuula lwayitawo</string>
     <string name="time_session_remaining">Olutuula lusigaddewo</string>
-    <string name="title_mute_perm_request">Olukusa olubula</string>
     <string name="title_question_delete_session">Okusazaamu Olutuula?</string>
     <string name="title_volume_bells">Omuzingo gwa Bell</string>
     <string name="unnamed">Atamanyiddwa mannya</string>

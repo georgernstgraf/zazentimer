@@ -29,8 +29,6 @@
     <string name="caption_zazen_meditation">Ukucamngca kweZazen</string>
     <string name="checkbox_keep_screen_on">Gcina isikrini sivuliwe</string>
     <string name="checkbox_no_server_messages">Bonisa Iindaba</string>
-    <string name="checkbox_phone_off">Cima ifowuni</string>
-    <string name="checkbox_phone_off_desc">Thulisa zonke izandi zefowuni.</string>
     <string name="copy_prefix">Ikopi ye</string>
     <string name="crash_dialog_comment_prompt">Ngokuzikhethela: Sesiphi isenzo esibangele impazamo?</string>
     <string name="crash_dialog_ok_toast">Enkosi kakhulu ngoncedo lwakho!</string>
@@ -82,15 +80,6 @@
     <string name="ok">KULUNGILE</string>
     <string name="pref_desc_brightness">Ukuqaqamba koMboniso ngexesha lokucamngca</string>
     <string name="pref_get_messages">Jonga iMiyalezo emitsha ngoku</string>
-    <string name="pref_mute_mode">Ithowuni yeringi kunye neZaziso</string>
-    <string name="pref_mute_mode_none">Cwaka</string>
-    <string name="pref_mute_mode_none_desc">Akukho towuni yeringi kwaye akukho vibration kwiifowuni kunye neZaziso</string>
-    <string name="pref_mute_mode_pref">Iisetingi malunga nethowuni yokukhala kunye nezaziso</string>
-    <string name="pref_mute_mode_vibrate">Kuphela iVibration</string>
-    <string name="pref_mute_mode_vibrate_desc">Ukungcangcazela kuphela kwiifowuni kunye neZaziso (Ayisebenzi kwi-Android 7 (i-Nougat) - iziphatha njengesetingi yokuThula)</string>
-    <string name="pref_mute_mode_vibrate_sound">Ithowuni yeringi kunye neVibration</string>
-    <string name="pref_mute_mode_vibrate_sound_desc">Dlala Ithowuni yeRingi kunye neVibration</string>
-    <string name="pref_muting">Cima imimiselo</string>
     <string name="pref_sum_backup">Gcina i-backup yeeSeshini zakho kunye neZandi kwi-SD-Card yakho.</string>
     <string name="pref_sum_bad_removal">Ikhadi le-SD lisusiwe ngaphandle kokuba lothulwe kuqala.</string>
     <string name="pref_sum_checking">Ikhadi le-SD liyajongwa okwangoku</string>
@@ -126,8 +115,6 @@
     <string name="content_desc_session_actions">Iintshukumo zeseshoni</string>
     <string name="session_list_unnamed_entry">Iseshoni engachazwanga</string>
     <string name="status_bar_notification_info_overflow">999+</string>
-    <string name="test_mute_perm_request">I-App ayivumelekanga ngoku ukuba ithule ifowuni yakho. Vula useto lokutshintsha oku?</string>
-    <string name="text_cant_mute">Ifowuni yakho ayivumeli le App ukuba iyithulise. Khubaza uthuliso kolu Seto lwe-Apps okanye uvumele uthuliso kwiiSetingi zeFowuni zakho.</string>
     <string name="text_no_notify_access_settings">Ifowuni yakho ayibonakali inesetingi eziqhelekileyo zokuvumela uthuliso. Nceda ujonge \"Ungaphazamisi UFikelelo\" Useto kwaye uluvule.</string>
     <string name="text_no_sections">Akukho maCandelo achaziweyo.</string>
     <string name="text_question_delete_session">Yicime ngokwenene iSeshini ekhethiweyo?</string>
@@ -140,7 +127,6 @@
     <string name="time_section_remaining">Icandelo eliseleyo</string>
     <string name="time_session_elapsed">Iphelile iseshoni</string>
     <string name="time_session_remaining">Iseshoni eseleyo</string>
-    <string name="title_mute_perm_request">Imvume engekho</string>
     <string name="title_question_delete_session">Cima iSeshini?</string>
     <string name="title_volume_bells">Bell Volume</string>
     <string name="unnamed">Akuchazwanga ngagama</string>

@@ -29,8 +29,6 @@
     <string name="caption_zazen_meditation">Iṣaro Zazen</string>
     <string name="checkbox_keep_screen_on">Jeki iboju lori</string>
     <string name="checkbox_no_server_messages">Ṣe afihan Awọn iroyin</string>
-    <string name="checkbox_phone_off">Pa foonu lẹnu</string>
-    <string name="checkbox_phone_off_desc">Pa gbogbo awọn ohun foonu pa.</string>
     <string name="copy_prefix">Ẹda ti</string>
     <string name="crash_dialog_comment_prompt">Yiyan: Iṣe wo ni o fa aṣiṣe naa?</string>
     <string name="crash_dialog_ok_toast">O ṣeun pupọ fun iranlọwọ rẹ!</string>
@@ -82,15 +80,6 @@
     <string name="ok">O DARA</string>
     <string name="pref_desc_brightness">Imọlẹ ti Ifihan lakoko Iṣaro</string>
     <string name="pref_get_messages">Ṣayẹwo fun awọn ifiranṣẹ titun bayi</string>
-    <string name="pref_mute_mode">Ohun orin ipe ati awọn iwifunni</string>
-    <string name="pref_mute_mode_none">Fi ipalọlọ</string>
-    <string name="pref_mute_mode_none_desc">Ko si ohun orin ipe ko si si gbigbọn fun awọn ipe foonu ati Awọn iwifunni</string>
-    <string name="pref_mute_mode_pref">Awọn eto nipa ohun orin ipe ati Awọn iwifunni</string>
-    <string name="pref_mute_mode_vibrate">Gbigbọn nikan</string>
-    <string name="pref_mute_mode_vibrate_desc">Gbigbọn nikan fun awọn ipe foonu ati Awọn iwifunni (Ko ṣiṣẹ lori Android 7 (Nougat) - ṣe bi eto ipalọlọ)</string>
-    <string name="pref_mute_mode_vibrate_sound">Ohun orin ipe ati Gbigbọn</string>
-    <string name="pref_mute_mode_vibrate_sound_desc">Mu ohun orin ipe ati gbigbọn ṣiṣẹ</string>
-    <string name="pref_muting">Parẹ Awọn Eto</string>
     <string name="pref_sum_backup">Ṣafipamọ afẹyinti ti Awọn akoko ati Awọn ohun si kaadi SD rẹ.</string>
     <string name="pref_sum_bad_removal">Kaadi SD ti yọ kuro laisi ṣiṣi silẹ ni akọkọ.</string>
     <string name="pref_sum_checking">SD-Kaadi ti wa ni ẹnikeji ni akoko</string>
@@ -126,8 +115,6 @@
     <string name="content_desc_session_actions">Awọn iṣe igba</string>
     <string name="session_list_unnamed_entry">Apero ti a ko darukọ</string>
     <string name="status_bar_notification_info_overflow">999+</string>
-    <string name="test_mute_perm_request">Ohun elo naa ko gba laaye lọwọlọwọ lati pa foonu rẹ dakẹ. Ṣii awọn eto lati yi eyi pada?</string>
-    <string name="text_cant_mute">Foonu rẹ ko gba App yii laaye lati dakẹ. Muu dakẹ ninu Eto Awọn ohun elo yi tabi jẹ ki o dakẹ ninu Eto Awọn foonu rẹ.</string>
     <string name="text_no_notify_access_settings">Foonu rẹ ko dabi pe o ni awọn eto boṣewa lati gba dakẹjẹẹ laaye. Jọwọ wa pẹlu ọwọ fun Eto \"Maṣe Daru Wiwọle \" Eto ati muu ṣiṣẹ.</string>
     <string name="text_no_sections">Ko si Awọn apakan asọye.</string>
     <string name="text_question_delete_session">Ṣe paarẹ Ikoni ti o yan bi?</string>
@@ -140,7 +127,6 @@
     <string name="time_section_remaining">Abala ti o ku</string>
     <string name="time_session_elapsed">Ikoni ti kọja</string>
     <string name="time_session_remaining">Igba to ku</string>
-    <string name="title_mute_perm_request">Ti o padanu Igbanilaaye</string>
     <string name="title_question_delete_session">Paarẹ Igba?</string>
     <string name="title_volume_bells">Iwọn didun Bell</string>
     <string name="unnamed">Ti a ko darukọ</string>

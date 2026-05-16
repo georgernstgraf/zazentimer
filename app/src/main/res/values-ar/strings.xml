@@ -29,8 +29,6 @@
     <string name="caption_zazen_meditation">تأمل زازين</string>
     <string name="checkbox_keep_screen_on">إبقاء الشاشة قيد التشغيل</string>
     <string name="checkbox_no_server_messages">إظهار الأخبار</string>
-    <string name="checkbox_phone_off">كتم صوت الهاتف</string>
-    <string name="checkbox_phone_off_desc">كتم جميع أصوات الهاتف.</string>
     <string name="copy_prefix">نسخة من</string>
     <string name="crash_dialog_comment_prompt">اختياري: ما الإجراء الذي تسبب في الخطأ؟</string>
     <string name="crash_dialog_ok_toast">شكرا جزيلا لمساعدتك!</string>
@@ -82,15 +80,6 @@
     <string name="ok">موافق</string>
     <string name="pref_desc_brightness">سطوع الشاشة أثناء التأمل</string>
     <string name="pref_get_messages">التحقق من الرسائل الجديدة الآن</string>
-    <string name="pref_mute_mode">نغمة الرنين والإشعارات</string>
-    <string name="pref_mute_mode_none">صمت</string>
-    <string name="pref_mute_mode_none_desc">لا توجد نغمة رنين ولا اهتزاز للمكالمات الهاتفية والإشعارات</string>
-    <string name="pref_mute_mode_pref">إعدادات نغمة الرنين والإشعارات</string>
-    <string name="pref_mute_mode_vibrate">اهتزاز فقط</string>
-    <string name="pref_mute_mode_vibrate_desc">الاهتزاز فقط للمكالمات الهاتفية والإشعارات</string>
-    <string name="pref_mute_mode_vibrate_sound">نغمة الرنين والاهتزاز</string>
-    <string name="pref_mute_mode_vibrate_sound_desc">تشغيل نغمة الرنين والاهتزاز</string>
-    <string name="pref_muting">إعدادات كتم الصوت</string>
     <string name="pref_sum_backup">احفظ نسخة احتياطية من جلساتك وأصواتك على بطاقة SD.</string>
     <string name="pref_sum_bad_removal">تمت إزالة بطاقة SD دون إلغاء تثبيتها أولاً.</string>
     <string name="pref_sum_checking">يتم التحقق من بطاقة SD في الوقت الحالي</string>
@@ -125,8 +114,6 @@
     <string name="content_desc_session_actions">إجراءات الجلسة</string>
     <string name="session_list_unnamed_entry">جلسة بدون اسم</string>
     <string name="status_bar_notification_info_overflow">999+</string>
-    <string name="test_mute_perm_request">غير مسموح للتطبيق حاليًا بكتم صوت هاتفك. فتح الإعدادات لتغيير هذا؟</string>
-    <string name="text_cant_mute">لا يسمح هاتفك لهذا التطبيق بكتم صوته. قم بتعطيل الكتم في إعدادات التطبيق أو اسمح به في إعدادات الهاتف.</string>
     <string name="text_no_notify_access_settings">لا يبدو أن هاتفك يحتوي على الإعدادات القياسية للسماح بالكتم. يرجى البحث يدويًا عن إعداد \"الوصول إلى عدم الإزعاج\" وتمكينه.</string>
     <string name="text_no_sections">لم يتم تحديد أقسام.</string>
     <string name="text_question_delete_session">هل تريد حقًا حذف الجلسة المحددة؟</string>
@@ -139,7 +126,6 @@
     <string name="time_section_remaining">المتبقي من القسم</string>
     <string name="time_session_elapsed">المنقضي من الجلسة</string>
     <string name="time_session_remaining">المتبقي من الجلسة</string>
-    <string name="title_mute_perm_request">إذن مفقود</string>
     <string name="title_question_delete_session">حذف الجلسة؟</string>
     <string name="title_volume_bells">حجم الجرس</string>
     <string name="unnamed">بدون اسم</string>

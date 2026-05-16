@@ -27,8 +27,6 @@
     <string name="caption_zazen_meditation">Medytacja Zazen</string>
     <string name="checkbox_keep_screen_on">Nie wyłączaj ekranu</string>
     <string name="checkbox_no_server_messages">Pokaż wiadomości</string>
-    <string name="checkbox_phone_off">Wycisz telefon</string>
-    <string name="checkbox_phone_off_desc">Wycisz wszystkie dźwięki telefonu.</string>
     <string name="copy_prefix">Kopia</string>
     <string name="crash_dialog_comment_prompt">Opcjonalnie: Jakie działanie spowodowało błąd?</string>
     <string name="crash_dialog_ok_toast">Dziękujemy bardzo za pomoc!</string>
@@ -80,15 +78,6 @@
     <string name="ok">OK</string>
     <string name="pref_desc_brightness">Jasność ekranu podczas medytacji</string>
     <string name="pref_get_messages">Sprawdź teraz nowe wiadomości</string>
-    <string name="pref_mute_mode">Dzwonek i powiadomienia</string>
-    <string name="pref_mute_mode_none">Cisza</string>
-    <string name="pref_mute_mode_none_desc">Brak dzwonka i wibracji dla połączeń i powiadomień</string>
-    <string name="pref_mute_mode_pref">Ustawienia dotyczące dzwonka i powiadomień</string>
-    <string name="pref_mute_mode_vibrate">Tylko wibracje</string>
-    <string name="pref_mute_mode_vibrate_desc">Tylko wibracje dla połączeń i powiadomień (nie działa na systemie Android 7 - zachowuje się jak Cisza)</string>
-    <string name="pref_mute_mode_vibrate_sound">Dzwonek i wibracje</string>
-    <string name="pref_mute_mode_vibrate_sound_desc">Odtwarzaj dzwonek i wibruj</string>
-    <string name="pref_muting">Ustawienia wyciszania</string>
     <string name="pref_sum_backup">Zapisz kopię zapasową swoich sesji i dźwięków na karcie SD.</string>
     <string name="pref_sum_bad_removal">Karta SD została usunięta bez wcześniejszego odmontowania.</string>
     <string name="pref_sum_checking">Karta SD jest obecnie sprawdzana</string>
@@ -123,8 +112,6 @@
     <string name="content_desc_section_actions">Akcje sekcji</string>
     <string name="content_desc_session_actions">Akcje sesji</string>
     <string name="session_list_unnamed_entry">Sesja bez nazwy</string>
-    <string name="test_mute_perm_request">Aplikacja nie ma obecnie uprawnień do wyciszania telefonu. Otworzyć ustawienia, aby to zmienić?</string>
-    <string name="text_cant_mute">Twój telefon nie pozwala tej aplikacji na jego wyciszenie. Wyłącz wyciszanie w ustawieniach tej aplikacji lub zezwól na wyciszanie w ustawieniach telefonu.</string>
     <string name="text_no_notify_access_settings">Twój telefon nie ma standardowych ustawień pozwalających na wyciszanie. Wyszukaj ręcznie ustawienie \"Dostęp do funkcji Nie przeszkadzać\" i włącz je.</string>
     <string name="text_no_sections">Brak zdefiniowanych sekcji.</string>
     <string name="text_question_delete_session">Czy na pewno usunąć wybraną sesję?</string>
@@ -137,7 +124,6 @@
     <string name="time_section_remaining">Pozostały czas sekcji</string>
     <string name="time_session_elapsed">Czas trwania sesji</string>
     <string name="time_session_remaining">Pozostały czas sesji</string>
-    <string name="title_mute_perm_request">Brak uprawnień</string>
     <string name="title_question_delete_session">Usunąć sesję?</string>
     <string name="title_volume_bells">Głośność dzwonka</string>
     <string name="unnamed">Bez nazwy</string>

@@ -29,8 +29,6 @@
     <string name="caption_zazen_meditation">Ka noonoo ana o Zazen</string>
     <string name="checkbox_keep_screen_on">E mālama i ka pale</string>
     <string name="checkbox_no_server_messages">Hōʻike Nūhou</string>
-    <string name="checkbox_phone_off">Paʻa kelepona</string>
-    <string name="checkbox_phone_off_desc">Hoʻopaʻa i nā kani kelepona a pau.</string>
     <string name="copy_prefix">Kope o</string>
     <string name="crash_dialog_comment_prompt">Koho: He aha ka hana i kumu i ka hewa?</string>
     <string name="crash_dialog_ok_toast">Mahalo nui iā ʻoe no kāu kōkua!</string>
@@ -82,15 +80,6 @@
     <string name="ok">OK</string>
     <string name="pref_desc_brightness">ʻO ka mālamalama o ka hōʻike i ka wā noʻonoʻo</string>
     <string name="pref_get_messages">E nānā i nā memo hou i kēia manawa</string>
-    <string name="pref_mute_mode">Leo kani a me nā Hoʻolaha</string>
-    <string name="pref_mute_mode_none">Hamau</string>
-    <string name="pref_mute_mode_none_desc">ʻAʻohe kani kani a ʻaʻohe vibration no nā kelepona kelepona a me nā Hoʻolaha</string>
-    <string name="pref_mute_mode_pref">Nā hoʻonohonoho e pili ana i ke kani kani a me nā leka hoʻomaopopo</string>
-    <string name="pref_mute_mode_vibrate">ʻO ka Vibration wale nō</string>
-    <string name="pref_mute_mode_vibrate_desc">E haʻalulu wale no nā kelepona a me nā leka hoʻomaopopo (ʻAʻole hana ma ka Android 7 (Nougat) - hana e like me ka hoʻonohonoho Silence)</string>
-    <string name="pref_mute_mode_vibrate_sound">Leo kani a me ka Vibration</string>
-    <string name="pref_mute_mode_vibrate_sound_desc">E pāʻani i ke kani kani a me ka Vibration</string>
-    <string name="pref_muting">Nā hoʻonohonoho hoʻomumu</string>
     <string name="pref_sum_backup">E mālama i kahi waihona o kāu Sessions and Sounds i kāu SD-Card.</string>
     <string name="pref_sum_bad_removal">Ua wehe ʻia ke kāleka SD me ka wehe ʻole ʻia.</string>
     <string name="pref_sum_checking">Ke nānā ʻia nei ke kāleka SD i kēia manawa</string>
@@ -126,8 +115,6 @@
     <string name="content_desc_session_actions">Nā hana kau</string>
     <string name="session_list_unnamed_entry">Kau inoa ʻole</string>
     <string name="status_bar_notification_info_overflow">999+</string>
-    <string name="test_mute_perm_request">ʻAʻole ʻae ʻia ka App e hoʻomumu i kāu kelepona i kēia manawa. E wehe i nā hoʻonohonoho e hoʻololi i kēia?</string>
-    <string name="text_cant_mute">ʻAʻole ʻae kāu kelepona i kēia App e hoʻomumu iā ia. Hoʻopau i ka muting ma kēia mau ʻōkuhi Apps a i ʻole e ʻae i ka muting ma kāu mau kelepona kelepona.</string>
     <string name="text_no_notify_access_settings">ʻAʻole i loaʻa i kāu kelepona nā hoʻonohonoho maʻamau e ʻae ai i ka muting. E ʻoluʻolu e nānā lima no ka \"Mai hoʻopilikia i ke komo\" Hoʻonohonoho a hoʻā.</string>
     <string name="text_no_sections">ʻAʻohe ʻāpana i wehewehe ʻia.</string>
     <string name="text_question_delete_session">Holoi maoli i ke Kau i koho ʻia?</string>
@@ -140,7 +127,6 @@
     <string name="time_section_remaining">Mahele i koe</string>
     <string name="time_session_elapsed">Ua hala ke kau</string>
     <string name="time_session_remaining">Kau i koe</string>
-    <string name="title_mute_perm_request">Nalo ka ʻae</string>
     <string name="title_question_delete_session">Holoi i ke Kau?</string>
     <string name="title_volume_bells">Volume Bele</string>
     <string name="unnamed">ʻAʻole inoa</string>

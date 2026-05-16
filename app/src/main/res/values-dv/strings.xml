@@ -29,8 +29,6 @@
     <string name="caption_zazen_meditation">ޒާޒެން މެޑިޓޭޝަން އެވެ</string>
     <string name="checkbox_keep_screen_on">ސްކްރީން އޮންކޮށް ބެހެއްޓުން</string>
     <string name="checkbox_no_server_messages">ޝޯ ނިއުސް</string>
-    <string name="checkbox_phone_off">މޫޓް ފޯން</string>
-    <string name="checkbox_phone_off_desc">ފޯނުގެ ހުރިހާ އަޑެއް ނިއްވާލާށެވެ.</string>
     <string name="copy_prefix">ކޮޕީ އޮފް…</string>
     <string name="crash_dialog_comment_prompt">އިޚްތިޔާރީ: އެ ގޯސް ދިމާވީ ކޮން ޢަމަލެއްގެ ސަބަބުން ހެއްޔެވެ؟</string>
     <string name="crash_dialog_ok_toast">ތިޔަ އެހީތެރިކަމަށް ވަރަށް ބޮޑަށް ޝުކުރިއްޔާ!</string>
@@ -82,15 +80,6 @@
     <string name="ok">އެންމެ ރަނގަޅު</string>
     <string name="pref_desc_brightness">މެޑިޓޭޝަންގެ ތެރޭގައި ޑިސްޕްލޭގެ އަލިކަން</string>
     <string name="pref_get_messages">މިހާރު އާ މެސެޖުތައް ހުރިތޯ ބަލާށެވެ</string>
-    <string name="pref_mute_mode">ރިންގް ޓޯން އަދި ނޮޓިފިކޭޝަންސް</string>
-    <string name="pref_mute_mode_none">ހަމަހިމޭންކަން</string>
-    <string name="pref_mute_mode_none_desc">ފޯނު ކޯލްތަކާއި ނޮޓިފިކޭޝަންތަކަށް ރިންގް ޓޯން އަދި ވައިބަރޭޝަން ވެސް ނެތެވެ</string>
-    <string name="pref_mute_mode_pref">ރިންގް ޓޯން އާއި ނޮޓިފިކޭޝަންސް އާއި ގުޅޭ ސެޓިންގސް</string>
-    <string name="pref_mute_mode_vibrate">ހަމައެކަނި ވައިބަރޭޝަން އެވެ</string>
-    <string name="pref_mute_mode_vibrate_desc">ހަމައެކަނި ފޯނު ކޯލްތަކާއި ނޮޓިފިކޭޝަންތަކަށް ވައިބްރޭޓް ކުރެވޭ (އެންޑްރޮއިޑް 7 (ނޫގަޓް) ގައި މަސައްކަތް ނުކުރެއެވެ - ސައިލެންސް ސެޓިންގް ފަދައިން ކަންތައް ކުރެއެވެ)</string>
-    <string name="pref_mute_mode_vibrate_sound">ރިންގް ޓޯން އާއި ވައިބަރޭޝަން އެވެ</string>
-    <string name="pref_mute_mode_vibrate_sound_desc">ރިންގް ޓޯން އަދި ވައިބްރޭޝަން ކުޅެން</string>
-    <string name="pref_muting">މުއުޓް ސެޓިންގސް</string>
     <string name="pref_sum_backup">ސެޝަންސް އެންޑް ސައުންޑްސްގެ ބެކަޕް އެއް އެސްޑީ-ކާޑަށް ސޭވް ކުރާށެވެ.</string>
     <string name="pref_sum_bad_removal">އެސްޑީ ކާޑު ނަގާފައިވަނީ ފުރަތަމަ އަންމައުންޓް ނުކޮށް އެވެ.</string>
     <string name="pref_sum_checking">އެސްޑީ-ކާޑު މިވަގުތު ދަނީ ޗެކް ކުރަމުންނެވެ</string>
@@ -126,8 +115,6 @@
     <string name="content_desc_session_actions">ސެޝަންގެ އަމަލުތައް</string>
     <string name="session_list_unnamed_entry">ނަން ނުޖެހޭ ސެޝަން</string>
     <string name="status_bar_notification_info_overflow">999+ރ</string>
-    <string name="test_mute_perm_request">މި އެޕްގައި މިވަގުތު ފޯނު މުއުޓް ކުރުމުގެ ހުއްދައެއް ނެތެވެ. މިކަން ބަދަލު ކުރަން ސެޓިންގްސް ހުޅުވާލަންވީތަ؟</string>
-    <string name="text_cant_mute">ތިޔަ ފޯނުން މި އެޕް މުއުޓް ކުރުމުގެ ހުއްދައެއް ނުދެއެވެ. މި އެޕްސް ސެޓިންގސް ގައި މުއުޓިންގ ޑިސެބަލް ނުވަތަ ފޯނު ސެޓިންގސް ގައި މުއުޓިންގ އަށް ހުއްދަ ދިނުން.</string>
     <string name="text_no_notify_access_settings">ތިބާގެ ފޯނުގައި މުއުޓް ކުރުމުގެ ހުއްދަ ދޭ ސްޓޭންޑަޑް ސެޓިންގްސް ހުރިހެނެއް ހިޔެއް ނުވެއެވެ. \"ޑޮންޓް ޑިސްޓަރބް އެކްސެސް\" ސެޓިންގ މެނުއަލްކޮށް ބައްލަވައި އެނެބަލް ކުރައްވާށެވެ.</string>
     <string name="text_no_sections">އެއްވެސް ސެކްޝަނެއް ކަނޑައެޅިފައެއް ނުވެއެވެ.</string>
     <string name="text_question_delete_session">ހަގީގަތުގައި ހޮވާފައިވާ ސެޝަން ޑިލީޓް ކޮށްލަންތަ؟</string>
@@ -140,7 +127,6 @@
     <string name="time_section_remaining">ބާކީ ބައި</string>
     <string name="time_session_elapsed">ސެޝަން ފާއިތުވެގެން ދިޔައެވެ</string>
     <string name="time_session_remaining">ސެޝަން ބާކީ އޮތީ</string>
-    <string name="title_mute_perm_request">ގެއްލިފައިވާ ހުއްދަ</string>
     <string name="title_question_delete_session">ޑިލީޓް ސެޝަން؟</string>
     <string name="title_volume_bells">ބެލް ވޮލިއުމް އެވެ</string>
     <string name="unnamed">ނަން ނުޖެހޭ</string>

@@ -27,8 +27,6 @@
     <string name="caption_zazen_meditation">Zazen တရားထိုင်ခြင်း</string>
     <string name="checkbox_keep_screen_on">မျက်နှာပြင်ကို ဖွင့်ထားရန်</string>
     <string name="checkbox_no_server_messages">သတင်းပြရန်</string>
-    <string name="checkbox_phone_off">ဖုန်းကို အသံပိတ်ရန်</string>
-    <string name="checkbox_phone_off_desc">ဖုန်းအသံအားလုံးကို ပိတ်ရန်။</string>
     <string name="copy_prefix">၏ မိတ္တူ</string>
     <string name="crash_dialog_comment_prompt">ရွေးချယ်နိုင်သည်- မည်သည့်လုပ်ဆောင်ချက်က အမှားအယွင်း ဖြစ်စေသနည်း။</string>
     <string name="crash_dialog_ok_toast">သင့်အကူအညီအတွက် ကျေးဇူးတင်ပါသည်။</string>
@@ -80,15 +78,6 @@
     <string name="ok">အိုကေ</string>
     <string name="pref_desc_brightness">တရားထိုင်နေစဉ် မျက်နှာပြင်၏ တောက်ပမှု</string>
     <string name="pref_get_messages">မက်ဆေ့ဂျ်အသစ်များကို ယခုစစ်ဆေးရန်</string>
-    <string name="pref_mute_mode">ဖုန်းမြည်သံနှင့် အကြောင်းကြားချက်များ</string>
-    <string name="pref_mute_mode_none">အသံတိတ်</string>
-    <string name="pref_mute_mode_none_desc">ဖုန်းမြည်သံနှင့် တုန်ခါမှု မရှိပါ</string>
-    <string name="pref_mute_mode_pref">ဖုန်းမြည်သံနှင့် အကြောင်းကြားချက် ဆက်တင်များ</string>
-    <string name="pref_mute_mode_vibrate">တုန်ခါမှုသာလျှင်</string>
-    <string name="pref_mute_mode_vibrate_desc">ဖုန်းခေါ်ဆိုမှုနှင့် အကြောင်းကြားချက်များအတွက်သာ တုန်ခါရန်</string>
-    <string name="pref_mute_mode_vibrate_sound">ဖုန်းမြည်သံနှင့် တုန်ခါမှု</string>
-    <string name="pref_mute_mode_vibrate_sound_desc">ဖုန်းမြည်သံနှင့် တုန်ခါမှု ဖွင့်ရန်</string>
-    <string name="pref_muting">အသံပိတ် ဆက်တင်များ</string>
     <string name="pref_sum_backup">သင့်အစီအစဉ်များနှင့် အသံများကို SD-Card သို့ အရန်သိမ်းဆည်းပါ။</string>
     <string name="pref_sum_bad_removal">SD ကတ်ကို ဦးစွာ မဖြုတ်ဘဲ ဖယ်ရှားလိုက်သည်။</string>
     <string name="pref_sum_checking">ယခုအချိန်တွင် SD ကတ်ကို စစ်ဆေးနေသည်</string>
@@ -124,8 +113,6 @@
     <string name="content_desc_session_actions">အစီအစဉ် လုပ်ဆောင်ချက်များ</string>
     <string name="session_list_unnamed_entry">အမည်မသိ အစီအစဉ်</string>
     <string name="status_bar_notification_info_overflow">999+</string>
-    <string name="test_mute_perm_request">အက်ပ်ကို သင့်ဖုန်းအား အသံပိတ်ရန် ခွင့်ပြုမထားပါ။ ၎င်းကို ပြောင်းရန် ဆက်တင်များကို ဖွင့်မလား။</string>
-    <string name="text_cant_mute">သင့်ဖုန်းသည် ဤအက်ပ်ကို အသံပိတ်ခွင့် မပေးပါ။</string>
     <string name="text_no_notify_access_settings">ကျေးဇူးပြု၍ "အနှောင့်အယှက် မပေးရ" ဆက်တင်ကို ကိုယ်တိုင်ရှာဖွေပြီး ၎င်းကို ဖွင့်ပါ။</string>
     <string name="text_no_sections">သတ်မှတ်ထားသော အပိုင်းများ မရှိပါ။</string>
     <string name="text_question_delete_session">ရွေးချယ်ထားသော အစီအစဉ်ကို တကယ် ဖျက်မလား။</string>
@@ -138,7 +125,6 @@
     <string name="time_section_remaining">ကျန်ရှိသော အပိုင်း</string>
     <string name="time_session_elapsed">အစီအစဉ် ကုန်ဆုံးသွားပြီ</string>
     <string name="time_session_remaining">ကျန်ရှိသော အစီအစဉ်</string>
-    <string name="title_mute_perm_request">ခွင့်ပြုချက် လိုအပ်သည်</string>
     <string name="title_question_delete_session">အစီအစဉ်ကို ဖျက်မလား။</string>
     <string name="title_volume_bells">ခေါင်းလောင်း အသံပမာဏ</string>
     <string name="unnamed">အမည်မသိ</string>

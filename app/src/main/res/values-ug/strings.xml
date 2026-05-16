@@ -28,8 +28,6 @@
     <string name="caption_zazen_meditation">Zazen Meditation</string>
     <string name="checkbox_keep_screen_on">ئېكراننى ساقلاپ تۇرۇڭ</string>
     <string name="checkbox_no_server_messages">خەۋەرلەرنى كۆرسىتىش</string>
-    <string name="checkbox_phone_off">ئاۋازسىز تېلېفون</string>
-    <string name="checkbox_phone_off_desc">بارلىق تېلېفون ئاۋازىنى ئاۋازسىز قىلىڭ.</string>
     <string name="copy_prefix">كۆپەيتىلگەن نۇسخىسى</string>
     <string name="crash_dialog_comment_prompt">تاللانما: قايسى ھەرىكەت خاتالىقنى كەلتۈرۈپ چىقاردى؟</string>
     <string name="crash_dialog_ok_toast">ياردىمىڭىزگە كۆپ رەھمەت!</string>
@@ -81,15 +79,6 @@
     <string name="ok">ماقۇل</string>
     <string name="pref_desc_brightness">ئويلىنىش جەريانىدا ئېكراننىڭ يورۇقلۇقى</string>
     <string name="pref_get_messages">ھازىر يېڭى ئۇچۇرلارنى تەكشۈرۈڭ</string>
-    <string name="pref_mute_mode">قوڭغۇراق ئاۋازى ۋە ئۇقتۇرۇش</string>
-    <string name="pref_mute_mode_none">سۈكۈت</string>
-    <string name="pref_mute_mode_none_desc">تېلېفون ۋە ئۇقتۇرۇشتا قوڭغۇراق ئاۋازى ۋە تەۋرىنىش بولمايدۇ</string>
-    <string name="pref_mute_mode_pref">ئۈزۈك ئاھاڭى ۋە ئۇقتۇرۇشقا مۇناسىۋەتلىك تەڭشەكلەر</string>
-    <string name="pref_mute_mode_vibrate">پەقەت تەۋرىنىش</string>
-    <string name="pref_mute_mode_vibrate_desc">پەقەت تېلېفون ۋە ئۇقتۇرۇشلار ئۈچۈن تەۋرىنىش (ئاندىرويىد 7 (Nougat) دە ئىشلىمەيدۇ) - جىمجىتلىق تەڭشىكىگە ئوخشايدۇ)</string>
-    <string name="pref_mute_mode_vibrate_sound">ئۈزۈك ئاۋازى ۋە تەۋرىنىش</string>
-    <string name="pref_mute_mode_vibrate_sound_desc">ئۈزۈك ئاۋازى ۋە تەۋرىنىشنى ئويناڭ</string>
-    <string name="pref_muting">Mute Settings</string>
     <string name="pref_sum_backup">يىغىن ۋە ئاۋازلىرىڭىزنى زاپاسلاپ SD كارتىڭىزغا ساقلاڭ.</string>
     <string name="pref_sum_bad_removal">SD كارتا ئالدى بىلەن تىزىملىتىلماي ئېلىۋېتىلدى.</string>
     <string name="pref_sum_checking">SD-Card ھازىر تەكشۈرۈلۈۋاتىدۇ</string>
@@ -125,8 +114,6 @@
     <string name="content_desc_session_actions">يىغىن ھەرىكىتى</string>
     <string name="session_list_unnamed_entry">نامسىز يىغىن</string>
     <string name="status_bar_notification_info_overflow">999+</string>
-    <string name="test_mute_perm_request">بۇ ئەپنىڭ ھازىر تېلېفونىڭىزنى ئۈنسىز قىلىشىغا يول قويۇلمايدۇ. بۇنى ئۆزگەرتىش ئۈچۈن تەڭشەكلەرنى ئېچىڭ؟</string>
-    <string name="text_cant_mute">تېلېفونىڭىز بۇ ئەپنىڭ ئۈنسىز بولۇشىغا يول قويمايدۇ. بۇ ئەپ تەڭشىكىدىكى ئاۋازنى چەكلەشنى چەكلەڭ ياكى تېلېفون تەڭشىكىڭىزدە ئاۋاز بېرىشكە يول قويۇڭ.</string>
     <string name="text_no_notify_access_settings">تېلېفونىڭىزدا ئاۋاز بېرىشكە رۇخسەت قىلىدىغان ئۆلچەملىك تەڭشەكلەر يوقتەك قىلىدۇ. \" قولدا ئىزدەڭ زىيارەتنى قالايمىقانلاشتۇرماڭ\" تەڭشەش ۋە ئۇنى قوزغىتىڭ.</string>
     <string name="text_no_sections">ھېچقانداق بۆلەك ئېنىقلانمىدى.</string>
     <string name="text_question_delete_session">تاللانغان يىغىننى راستىنلا ئۆچۈرەمسىز؟</string>
@@ -139,7 +126,6 @@
     <string name="time_section_remaining">بۆلەك قالدى</string>
     <string name="time_session_elapsed">يىغىن ئاخىرلاشتى</string>
     <string name="time_session_remaining">يىغىن قالدى</string>
-    <string name="title_mute_perm_request">ئىجازەت يوق</string>
     <string name="title_question_delete_session">يىغىننى ئۆچۈرەمسىز؟</string>
     <string name="title_volume_bells">قوڭغۇراق ئاۋازى</string>
     <string name="unnamed">نامسىز</string>

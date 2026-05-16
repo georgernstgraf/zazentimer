@@ -29,8 +29,6 @@
     <string name="caption_zazen_meditation">Zazen hugleiðsla</string>
     <string name="checkbox_keep_screen_on">Haltu skjánum á</string>
     <string name="checkbox_no_server_messages">Sýna fréttir</string>
-    <string name="checkbox_phone_off">Slökkva á síma</string>
-    <string name="checkbox_phone_off_desc">Slökkva á öllum hljóðum símans.</string>
     <string name="copy_prefix">Afrit af</string>
     <string name="crash_dialog_comment_prompt">Valfrjálst: Hvaða aðgerð olli villunni?</string>
     <string name="crash_dialog_ok_toast">Þakka þér kærlega fyrir hjálpina!</string>
@@ -82,15 +80,6 @@
     <string name="ok">Allt í lagi</string>
     <string name="pref_desc_brightness">Birtustig skjásins meðan á hugleiðslu stendur</string>
     <string name="pref_get_messages">Leitaðu að nýjum skilaboðum núna</string>
-    <string name="pref_mute_mode">Hringitónn og tilkynningar</string>
-    <string name="pref_mute_mode_none">Þögn</string>
-    <string name="pref_mute_mode_none_desc">Enginn hringitónn og enginn titringur fyrir símtöl og tilkynningar</string>
-    <string name="pref_mute_mode_pref">Stillingar varðandi hringitón og tilkynningar</string>
-    <string name="pref_mute_mode_vibrate">Aðeins titringur</string>
-    <string name="pref_mute_mode_vibrate_desc">Titra aðeins fyrir símtöl og tilkynningar (Virkar ekki á Android 7 (Nougat) - hegðar sér eins og Þögn stillingin)</string>
-    <string name="pref_mute_mode_vibrate_sound">Hringitónn og titringur</string>
-    <string name="pref_mute_mode_vibrate_sound_desc">Spilaðu hringitón og titring</string>
-    <string name="pref_muting">Þagga stillingar</string>
     <string name="pref_sum_backup">Vistaðu öryggisafrit af fundum þínum og hljóðum á SD-kortinu þínu.</string>
     <string name="pref_sum_bad_removal">SD-kortið var fjarlægt án þess að vera tekið af fyrst.</string>
     <string name="pref_sum_checking">Verið er að athuga SD-kort í augnablikinu</string>
@@ -126,8 +115,6 @@
     <string name="content_desc_session_actions">Fundaraðgerðir</string>
     <string name="session_list_unnamed_entry">Ónefndur fundur</string>
     <string name="status_bar_notification_info_overflow">999+</string>
-    <string name="test_mute_perm_request">Sem stendur er forritinu ekki heimilt að slökkva á símanum þínum. Opna stillingar til að breyta þessu?</string>
-    <string name="text_cant_mute">Síminn þinn leyfir þessu forriti ekki að slökkva á því. Slökktu á þöggun í þessum forritastillingum eða leyfðu þöggun í símastillingunum þínum.</string>
     <string name="text_no_notify_access_settings">Síminn þinn virðist ekki hafa staðlaðar stillingar til að leyfa þöggun. Vinsamlegast leitaðu handvirkt að \"Ekki trufla aðgang\" stillingu og virkjaðu hana.</string>
     <string name="text_no_sections">Engir hlutar skilgreindir.</string>
     <string name="text_question_delete_session">Viltu virkilega eyða valda lotunni?</string>
@@ -140,7 +127,6 @@
     <string name="time_section_remaining">Hluti eftir</string>
     <string name="time_session_elapsed">Fundur liðinn</string>
     <string name="time_session_remaining">Fundur eftir</string>
-    <string name="title_mute_perm_request">Vantar leyfi</string>
     <string name="title_question_delete_session">Eyða lotu?</string>
     <string name="title_volume_bells">Bjöllumagn</string>
     <string name="unnamed">Ónefndur</string>

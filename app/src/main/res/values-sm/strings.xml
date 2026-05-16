@@ -29,8 +29,6 @@
     <string name="caption_zazen_meditation">Mafaufauga Loloto</string>
     <string name="checkbox_keep_screen_on">Ia ola pea le mata</string>
     <string name="checkbox_no_server_messages">Faaali Tala Fou</string>
-    <string name="checkbox_phone_off">Gūgū Telefoni</string>
-    <string name="checkbox_phone_off_desc">Gūgū uma leo telefoni.</string>
     <string name="copy_prefix">Kopi o</string>
     <string name="crash_dialog_comment_prompt">Filifili: O le fea gaioiga na mafua ai le mea sese?</string>
     <string name="crash_dialog_ok_toast">Faafetai tele mo lau fesoasoani!</string>
@@ -82,15 +80,6 @@
     <string name="ok">Ua lelei</string>
     <string name="pref_desc_brightness">Malamalama o le Faʻaaliga i le taimi o le Mafaufau loloto</string>
     <string name="pref_get_messages">Siaki mo Savali fou nei</string>
-    <string name="pref_mute_mode">Leo mama ma Fa\'asilasilaga</string>
-    <string name="pref_mute_mode_none">Faalologo</string>
-    <string name="pref_mute_mode_none_desc">Leai se leo mama ma leai se vibration mo telefoni ma Faʻamatalaga</string>
-    <string name="pref_mute_mode_pref">Fa\'atonuga e uiga i leo mama ma Fa\'asilasilaga</string>
-    <string name="pref_mute_mode_vibrate">Na\'o Vibration</string>
-    <string name="pref_mute_mode_vibrate_desc">Naʻo le vibrate mo telefoni ma Faʻamatalaga (E le aoga ile Android 7 (Nougat) - amio e pei o le Silence setting)</string>
-    <string name="pref_mute_mode_vibrate_sound">Leo mama ma Vibration</string>
-    <string name="pref_mute_mode_vibrate_sound_desc">Ta\'alo leo mama ma Vibration</string>
-    <string name="pref_muting">Fa\'alogo Fa\'alogo</string>
     <string name="pref_sum_backup">Faasaoina se faaleoleo o au Sauniga ma leo i lau SD-Card.</string>
     <string name="pref_sum_bad_removal">SD Card na aveese e aunoa ma le tatalaina muamua.</string>
     <string name="pref_sum_checking">SD-Card o lo\'o siaki ile taimi nei</string>
@@ -126,8 +115,6 @@
     <string name="content_desc_session_actions">Gaioiga o sauniga</string>
     <string name="session_list_unnamed_entry">Sauniga Le Ta\'u igoa</string>
     <string name="status_bar_notification_info_overflow">999+</string>
-    <string name="test_mute_perm_request">O le App e le o faatagaina i le taimi nei e gugu lau telefoni. Tatala le faatulagaga e sui ai lenei mea?</string>
-    <string name="text_cant_mute">E le fa\'atagaina e lau Telefoni lenei App e gugu. Fa\'agata le fa\'alogo i totonu o lenei Fa\'atonu Fa\'atonu pe fa\'ataga le fa\'alogo i lau Fa\'atonu Telefoni.</string>
     <string name="text_no_notify_access_settings">O lau Telefoni e foliga mai e leai ni fa\'atulagaga masani e fa\'ataga ai le muting. Fa\'amolemole su\'e ma le lima le \"Aua le Fa\'alavelave Avanoa\" Seti ma fa\'agaoioi.</string>
     <string name="text_no_sections">Leai se Vaega ua fa\'amalamalamaina.</string>
     <string name="text_question_delete_session">Aveese moni le Sauniga ua filifilia?</string>
@@ -140,7 +127,6 @@
     <string name="time_section_remaining">Vaega o totoe</string>
     <string name="time_session_elapsed">Ua mavae le sauniga</string>
     <string name="time_session_remaining">Sauniga o totoe</string>
-    <string name="title_mute_perm_request">Leai se Fa\'atagaga</string>
     <string name="title_question_delete_session">Ave\'ese le Sauniga?</string>
     <string name="title_volume_bells">Bell Volume</string>
     <string name="unnamed">Le ta\'ua</string>

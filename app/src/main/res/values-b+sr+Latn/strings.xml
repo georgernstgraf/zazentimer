@@ -29,8 +29,6 @@
     <string name="caption_zazen_meditation">Zazen meditacija</string>
     <string name="checkbox_keep_screen_on">Zadrži ekran uključenim</string>
     <string name="checkbox_no_server_messages">Prikaži vesti</string>
-    <string name="checkbox_phone_off">Utišaj telefon</string>
-    <string name="checkbox_phone_off_desc">Utišaj sve zvuke telefona.</string>
     <string name="copy_prefix">Kopija</string>
     <string name="crash_dialog_comment_prompt">Opciono: Koja radnja je izazvala grešku?</string>
     <string name="crash_dialog_ok_toast">Hvala na pomoći!</string>
@@ -82,15 +80,6 @@
     <string name="ok">U redu</string>
     <string name="pref_desc_brightness">Osvetljenost ekrana</string>
     <string name="pref_get_messages">Proveri poruke sada</string>
-    <string name="pref_mute_mode">Melodija i obaveštenja</string>
-    <string name="pref_mute_mode_none">Tišina</string>
-    <string name="pref_mute_mode_none_desc">Bez zvuka i vibracije</string>
-    <string name="pref_mute_mode_pref">Podešavanja zvona</string>
-    <string name="pref_mute_mode_vibrate">Samo vibracija</string>
-    <string name="pref_mute_mode_vibrate_desc">Samo vibracija</string>
-    <string name="pref_mute_mode_vibrate_sound">Zvuk i vibracija</string>
-    <string name="pref_mute_mode_vibrate_sound_desc">Zvuk i vibracija</string>
-    <string name="pref_muting">Podešavanja utišavanja</string>
     <string name="pref_sum_backup">Sačuvajte rezervnu kopiju na SD karticu.</string>
     <string name="pref_sum_bad_removal">SD kartica je nepravilno uklonjena.</string>
     <string name="pref_sum_checking">SD kartica se proverava</string>
@@ -126,8 +115,6 @@
     <string name="content_desc_session_actions">Radnje sesije</string>
     <string name="session_list_unnamed_entry">Neimenovana sesija</string>
     <string name="status_bar_notification_info_overflow">999+</string>
-    <string name="test_mute_perm_request">Aplikacija nema dozvolu za utišavanje. Otvoriti podešavanja?</string>
-    <string name="text_cant_mute">Vaš telefon ne dozvoljava utišavanje.</string>
     <string name="text_no_notify_access_settings">Vaš telefon nema standardna podešavanja za utišavanje.</string>
     <string name="text_no_sections">Nema definisanih sekcija.</string>
     <string name="text_question_delete_session">Stvarno obrisati sesiju?</string>
@@ -140,7 +127,6 @@
     <string name="time_section_remaining">Preostalo vreme sekcije</string>
     <string name="time_session_elapsed">Isteklo vreme sesije</string>
     <string name="time_session_remaining">Preostalo vreme sesije</string>
-    <string name="title_mute_perm_request">Nedostaje dozvola</string>
     <string name="title_question_delete_session">Obrisati sesiju?</string>
     <string name="title_volume_bells">Jačina činije</string>
     <string name="unnamed">Neimenovano</string>

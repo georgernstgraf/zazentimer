@@ -27,8 +27,6 @@
     <string name="caption_zazen_meditation">Медитація Дзадзен</string>
     <string name="checkbox_keep_screen_on">Не вимикати екран</string>
     <string name="checkbox_no_server_messages">Показувати новини</string>
-    <string name="checkbox_phone_off">Вимкнути звук телефону</string>
-    <string name="checkbox_phone_off_desc">Вимкнути всі звуки телефону.</string>
     <string name="copy_prefix">Копія</string>
     <string name="crash_dialog_comment_prompt">Необов\'язково: Яка дія викликала помилку?</string>
     <string name="crash_dialog_ok_toast">Велике дякуємо за допомогу!</string>
@@ -80,15 +78,6 @@
     <string name="ok">ОК</string>
     <string name="pref_desc_brightness">Яскравість екрана під час медитації</string>
     <string name="pref_get_messages">Перевірити наявність нових повідомлень зараз</string>
-    <string name="pref_mute_mode">Рингтон і сповіщення</string>
-    <string name="pref_mute_mode_none">Тиша</string>
-    <string name="pref_mute_mode_none_desc">Немає рингтона і вібрації для дзвінків та сповіщень</string>
-    <string name="pref_mute_mode_pref">Налаштування рингтона і сповіщень</string>
-    <string name="pref_mute_mode_vibrate">Тільки вібрація</string>
-    <string name="pref_mute_mode_vibrate_desc">Тільки вібрація для дзвінків та сповіщень (на Android 7 працює як Тиша)</string>
-    <string name="pref_mute_mode_vibrate_sound">Рингтон і вібрація</string>
-    <string name="pref_mute_mode_vibrate_sound_desc">Відтворювати рингтон і вібрувати</string>
-    <string name="pref_muting">Налаштування вимкнення звуку</string>
     <string name="pref_sum_backup">Збережіть резервну копію ваших сесій і звуків на SD-карту.</string>
     <string name="pref_sum_bad_removal">SD-карту було вилучено без попереднього відключення.</string>
     <string name="pref_sum_checking">Наразі перевіряється SD-карта</string>
@@ -123,8 +112,6 @@
     <string name="content_desc_section_actions">Дії із секцією</string>
     <string name="content_desc_session_actions">Дії із сесією</string>
     <string name="session_list_unnamed_entry">Сесія без назви</string>
-    <string name="test_mute_perm_request">Програма наразі не має дозволу вимикати звук телефону. Відкрити налаштування, щоб змінити це?</string>
-    <string name="text_cant_mute">Ваш телефон не дозволяє цій програмі вимикати його звук. Вимкніть функцію вимкнення звуку в налаштуваннях цієї програми або дозвольте її в налаштуваннях телефону.</string>
     <string name="text_no_notify_access_settings">Схоже, на вашому телефоні немає стандартних налаштувань для вимкнення звуку. Знайдіть налаштування \"Доступ до режиму Не турбувати\" та ввімкніть його.</string>
     <string name="text_no_sections">Не визначено жодної секції.</string>
     <string name="text_question_delete_session">Справді видалити вибрану сесію?</string>
@@ -137,7 +124,6 @@
     <string name="time_section_remaining">Часу секції залишилося</string>
     <string name="time_session_elapsed">Часу сесії минуло</string>
     <string name="time_session_remaining">Часу сесії залишилося</string>
-    <string name="title_mute_perm_request">Відсутній дозвіл</string>
     <string name="title_question_delete_session">Видалити сесію?</string>
     <string name="title_volume_bells">Гучність чаші</string>
     <string name="unnamed">Без назви</string>

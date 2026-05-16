@@ -29,8 +29,6 @@
     <string name="caption_zazen_meditation">ज़ाज़ेन ध्यान</string>
     <string name="checkbox_keep_screen_on">स्क्रीन चालू रखें</string>
     <string name="checkbox_no_server_messages">समाचार दिखाएँ</string>
-    <string name="checkbox_phone_off">फ़ोन म्यूट करें</string>
-    <string name="checkbox_phone_off_desc">फ़ोन की सभी आवाज़ें म्यूट करें।</string>
     <string name="copy_prefix">की कॉपी</string>
     <string name="crash_dialog_comment_prompt">वैकल्पिक: किस क्रिया के कारण त्रुटि हुई?</string>
     <string name="crash_dialog_ok_toast">मदद के लिए बहुत बहुत धन्यवाद!</string>
@@ -82,15 +80,6 @@
     <string name="ok">ठीक है</string>
     <string name="pref_desc_brightness">ध्यान के दौरान डिस्प्ले की चमक</string>
     <string name="pref_get_messages">अभी नए संदेशों की जाँच करें</string>
-    <string name="pref_mute_mode">रिंगटोन और सूचनाएँ</string>
-    <string name="pref_mute_mode_none">चुप्पी</string>
-    <string name="pref_mute_mode_none_desc">फ़ोन कॉल और सूचनाओं के लिए कोई रिंगटोन और कोई कंपन नहीं</string>
-    <string name="pref_mute_mode_pref">रिंगटोन और सूचनाओं के संबंध में सेटिंग्स</string>
-    <string name="pref_mute_mode_vibrate">केवल कंपन</string>
-    <string name="pref_mute_mode_vibrate_desc">फ़ोन कॉल और सूचनाओं के लिए केवल कंपन</string>
-    <string name="pref_mute_mode_vibrate_sound">रिंगटोन और कंपन</string>
-    <string name="pref_mute_mode_vibrate_sound_desc">रिंगटोन बजाएँ और कंपन करें</string>
-    <string name="pref_muting">म्यूट सेटिंग्स</string>
     <string name="pref_sum_backup">अपने सेशन और आवाज़ों का बैकअप SD-कार्ड पर सहेजें।</string>
     <string name="pref_sum_bad_removal">SD कार्ड को अनमाउंट किए बिना निकाला गया था।</string>
     <string name="pref_sum_checking">इस समय SD-कार्ड की जाँच की जा रही है</string>
@@ -125,8 +114,6 @@
     <string name="content_desc_session_actions">सेशन कार्रवाइयाँ</string>
     <string name="session_list_unnamed_entry">अनाम सेशन</string>
     <string name="status_bar_notification_info_overflow">999+</string>
-    <string name="test_mute_perm_request">ऐप को वर्तमान में आपका फ़ोन म्यूट करने की अनुमति नहीं है। इसे बदलने के लिए सेटिंग्स खोलें?</string>
-    <string name="text_cant_mute">आपका फ़ोन इस ऐप को म्यूट करने की अनुमति नहीं देता है। इस ऐप की सेटिंग्स में म्यूटिंग अक्षम करें या अपने फ़ोन की सेटिंग्स में म्यूट करने की अनुमति दें。</string>
     <string name="text_no_notify_access_settings">ऐसा लगता है कि आपके फ़ोन में म्यूट करने की अनुमति देने के लिए मानक सेटिंग्स नहीं हैं। कृपया "Do not Disturb Access" सेटिंग मैन्युअल रूप से देखें और इसे सक्षम करें।</string>
     <string name="text_no_sections">कोई अनुभाग परिभाषित नहीं है।</string>
     <string name="text_question_delete_session">क्या वास्तव में चयनित सेशन को हटाना है?</string>
@@ -139,7 +126,6 @@
     <string name="time_section_remaining">अनुभाग शेष</string>
     <string name="time_session_elapsed">सेशन बीता हुआ</string>
     <string name="time_session_remaining">सेशन शेष</string>
-    <string name="title_mute_perm_request">अनुमति गुम है</string>
     <string name="title_question_delete_session">सेशन हटाएँ?</string>
     <string name="title_volume_bells">घंटी का वॉल्यूम</string>
     <string name="unnamed">अनाम</string>

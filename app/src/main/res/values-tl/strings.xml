@@ -29,8 +29,6 @@
     <string name="caption_zazen_meditation">Zazen Meditation</string>
     <string name="checkbox_keep_screen_on">Panatilihing naka-on ang screen</string>
     <string name="checkbox_no_server_messages">Ipakita ang Balita</string>
-    <string name="checkbox_phone_off">I-mute ang Telepono</string>
-    <string name="checkbox_phone_off_desc">I-mute ang lahat ng tunog ng telepono.</string>
     <string name="copy_prefix">Kopya ng</string>
     <string name="crash_dialog_comment_prompt">Opsyonal: Aling pagkilos ang naging sanhi ng error?</string>
     <string name="crash_dialog_ok_toast">Maraming salamat sa iyong tulong!</string>
@@ -82,15 +80,6 @@
     <string name="ok">OK</string>
     <string name="pref_desc_brightness">Liwanag ng Display sa panahon ng Meditation</string>
     <string name="pref_get_messages">Tingnan ang mga bagong Mensahe ngayon</string>
-    <string name="pref_mute_mode">Ring tone at Notifications</string>
-    <string name="pref_mute_mode_none">Katahimikan</string>
-    <string name="pref_mute_mode_none_desc">Walang ring tone at walang vibration para sa mga tawag sa telepono at Notification</string>
-    <string name="pref_mute_mode_pref">Mga setting tungkol sa Ring tone at Notifications</string>
-    <string name="pref_mute_mode_vibrate">Tanging Vibration</string>
-    <string name="pref_mute_mode_vibrate_desc">Mag-vibrate lang para sa mga tawag sa telepono at Notification (Hindi gumagana sa Android 7 (Nougat) - kumikilos tulad ng setting ng Silence)</string>
-    <string name="pref_mute_mode_vibrate_sound">Ring tone at Vibration</string>
-    <string name="pref_mute_mode_vibrate_sound_desc">I-play ang Ring tone at Vibration</string>
-    <string name="pref_muting">I-mute ang Mga Setting</string>
     <string name="pref_sum_backup">Mag-save ng backup ng iyong Mga Session at Tunog sa iyong SD-Card.</string>
     <string name="pref_sum_bad_removal">Ang SD Card ay inalis nang hindi muna na-unmount.</string>
     <string name="pref_sum_checking">Ang SD-Card ay sinusuri sa ngayon</string>
@@ -126,8 +115,6 @@
     <string name="content_desc_session_actions">Mga aksyon sa session</string>
     <string name="session_list_unnamed_entry">Walang Pangalanang Session</string>
     <string name="status_bar_notification_info_overflow">999+</string>
-    <string name="test_mute_perm_request">Ang App ay kasalukuyang hindi pinapayagang i-mute ang iyong telepono. Buksan ang mga setting para baguhin ito?</string>
-    <string name="text_cant_mute">Hindi pinapayagan ng iyong Telepono ang App na ito na i-mute ito. Huwag paganahin ang pag-mute sa Mga Setting ng Apps na ito o payagan ang pag-mute sa iyong Mga Setting ng Mga Telepono.</string>
     <string name="text_no_notify_access_settings">Mukhang walang mga karaniwang setting ang iyong Telepono upang payagan ang pag-mute. Pakihanap nang manu-mano ang \"Huwag Istorbohin ang Access\" Setting at paganahin ito.</string>
     <string name="text_no_sections">Walang tinukoy na Seksyon.</string>
     <string name="text_question_delete_session">Talagang tanggalin ang napiling Session?</string>
@@ -140,7 +127,6 @@
     <string name="time_section_remaining">Seksyon ang natitira</string>
     <string name="time_session_elapsed">Lumipas ang session</string>
     <string name="time_session_remaining">Session ang natitira</string>
-    <string name="title_mute_perm_request">Nawawalang Pahintulot</string>
     <string name="title_question_delete_session">Tanggalin ang Session?</string>
     <string name="title_volume_bells">Lakas ng mangkok</string>
     <string name="unnamed">Walang pangalan</string>

@@ -78,7 +78,6 @@ class SettingsFragment : PreferenceFragmentCompat() {
     ) {
         setPreferencesFromResource(R.xml.preferences, rootKey)
         setupThemePreference()
-        setupMuteModePreferences()
         setupBrightnessPreference()
         setupBackupPreferences()
     }
@@ -91,44 +90,6 @@ class SettingsFragment : PreferenceFragmentCompat() {
                 requireActivity().finish()
                 requireActivity().startActivity(intent)
             }
-            true
-        }
-    }
-
-    private fun setupMuteModePreferences() {
-        val vibSoundPref =
-            findPreference<CheckBoxPreference>(ZazenTimerActivity.PREF_KEY_MUTE_MODE_VIBRATE_SOUND)
-        val vibPref =
-            findPreference<CheckBoxPreference>(ZazenTimerActivity.PREF_KEY_MUTE_MODE_VIBRATE)
-        val nonePref =
-            findPreference<CheckBoxPreference>(ZazenTimerActivity.PREF_KEY_MUTE_MODE_NONE)
-        if (vibSoundPref == null || vibPref == null || nonePref == null) return
-        val checkVibSound = vibSoundPref
-        val checkVib = vibPref
-        val checkNone = nonePref
-
-        checkVibSound.setOnPreferenceChangeListener { _, obj ->
-            if (!(obj as Boolean)) {
-                return@setOnPreferenceChangeListener checkVib.isChecked || checkNone.isChecked
-            }
-            checkVib.isChecked = false
-            checkNone.isChecked = false
-            true
-        }
-        checkVib.setOnPreferenceChangeListener { _, obj ->
-            if (!(obj as Boolean)) {
-                return@setOnPreferenceChangeListener checkVibSound.isChecked || checkNone.isChecked
-            }
-            checkVibSound.isChecked = false
-            checkNone.isChecked = false
-            true
-        }
-        checkNone.setOnPreferenceChangeListener { _, obj ->
-            if (!(obj as Boolean)) {
-                return@setOnPreferenceChangeListener checkVibSound.isChecked || checkVib.isChecked
-            }
-            checkVibSound.isChecked = false
-            checkVib.isChecked = false
             true
         }
     }

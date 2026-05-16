@@ -29,8 +29,6 @@
     <string name="caption_zazen_meditation">Ntụgharị uche Zazen</string>
     <string name="checkbox_keep_screen_on">Debe ihuenyo</string>
     <string name="checkbox_no_server_messages">Gosi akụkọ</string>
-    <string name="checkbox_phone_off">Mechie ekwentị</string>
-    <string name="checkbox_phone_off_desc">Mechie ụda ekwentị niile.</string>
     <string name="copy_prefix">oyiri nke</string>
     <string name="crash_dialog_comment_prompt">Nhọrọ: Kedu ihe kpatara njehie ahụ?</string>
     <string name="crash_dialog_ok_toast">Daalụ nke ukwuu maka enyemaka gị!</string>
@@ -82,15 +80,6 @@
     <string name="ok">Ọ DỊ MMA</string>
     <string name="pref_desc_brightness">Icha ọkụ nke Ngosipụta n\'oge ntụgharị uche</string>
     <string name="pref_get_messages">Lelee maka ozi ọhụrụ ugbu a</string>
-    <string name="pref_mute_mode">Ụda ụda na ọkwa</string>
-    <string name="pref_mute_mode_none">gbachi nkịtị</string>
-    <string name="pref_mute_mode_none_desc">Enweghị ụda ụda na enweghị ịma jijiji maka oku ekwentị na ọkwa</string>
-    <string name="pref_mute_mode_pref">Ntọala gbasara ụda ụda na ọkwa</string>
-    <string name="pref_mute_mode_vibrate">Naanị ịma jijiji</string>
-    <string name="pref_mute_mode_vibrate_desc">Naanị maa jijiji maka oku ekwentị na ọkwa (anaghị arụ ọrụ na gam akporo 7 (Nougat) - na-eme dị ka ntọala Silence)</string>
-    <string name="pref_mute_mode_vibrate_sound">Ụda ụda na ịma jijiji</string>
-    <string name="pref_mute_mode_vibrate_sound_desc">Kpọọ ụda ụda na ịma jijiji</string>
-    <string name="pref_muting">Mebie ntọala</string>
     <string name="pref_sum_backup">Chekwaa ndabere nke Oge na ụda gị na kaadị SD gị.</string>
     <string name="pref_sum_bad_removal">E wepụrụ kaadị SD na-ebughị ụzọ ebutu ya.</string>
     <string name="pref_sum_checking">A na-enyocha kaadị SD ugbu a</string>
@@ -126,8 +115,6 @@
     <string name="content_desc_session_actions">Omume nke oge</string>
     <string name="session_list_unnamed_entry">Oge akpọghị aha</string>
     <string name="status_bar_notification_info_overflow">999+</string>
-    <string name="test_mute_perm_request">Achọghị ngwa ugbu a ka o mechie ekwentị gị. Mepee ntọala ka ịgbanwe nke a?</string>
-    <string name="text_cant_mute">Ekwentị gị anaghị ekwe ka ngwa a mebie ya. Gbanyụọ mkpọmkpọ ebe na Ntọala ngwa a ma ọ bụ kwe ka mbelata na Ntọala ekwentị gị.</string>
     <string name="text_no_notify_access_settings">Ekwentị gị eyighị ka ọ nwere ntọala ọkọlọtọ iji kwe ka mpụ. Biko jiri aka gị chọọ nhazi \"Edola nsogbu nweta\" ma mee ya.</string>
     <string name="text_no_sections">Enweghị ngalaba akọwapụtara.</string>
     <string name="text_question_delete_session">Hichapụ n\'ezie nnọkọ ahọpụtara?</string>
@@ -140,7 +127,6 @@
     <string name="time_section_remaining">Akụkụ fọdụrụ</string>
     <string name="time_session_elapsed">Oge gafere</string>
     <string name="time_session_remaining">Oge fọdụrụ</string>
-    <string name="title_mute_perm_request">Ikikere efu</string>
     <string name="title_question_delete_session">Hichapụ Oge?</string>
     <string name="title_volume_bells">Olu olu</string>
     <string name="unnamed">Akpọghị aha</string>

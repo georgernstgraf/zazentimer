@@ -19,7 +19,6 @@ class Meditation(
     private val sections: Array<Section>,
     private val bellVolumes: List<SessionBellVolume>,
     private val dispatchers: CoroutineDispatchers = CoroutineDispatchers(),
-    private val audioStateManager: AudioStateManager,
     private val alarmScheduler: AlarmScheduler,
     private val bellPlayer: BellPlayer,
 ) {
@@ -49,7 +48,6 @@ class Meditation(
             return
         }
         started = true
-        audioStateManager.mutePhone()
         alarmScheduler.setAlarmForSectionEnd(sections[currentSectionIdx], pauseSectionSeconds)
         startTicker()
         repository.onMeditationStarted(this)
@@ -193,7 +191,6 @@ class Meditation(
         MeditationService.setRunning(false)
         repository.onMeditationStopped()
         bellPlayer.release()
-        audioStateManager.unmutePhone()
         meditationService.onMeditationEnd()
     }
 

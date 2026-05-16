@@ -29,8 +29,6 @@
     <string name="caption_zazen_meditation">Zazen meditacija</string>
     <string name="checkbox_keep_screen_on">Držite ekran uključen</string>
     <string name="checkbox_no_server_messages">Show News</string>
-    <string name="checkbox_phone_off">Isključi zvuk telefona</string>
-    <string name="checkbox_phone_off_desc">Isključite sve zvukove telefona.</string>
     <string name="copy_prefix">Copy of</string>
     <string name="crash_dialog_comment_prompt">Opciono: Koja radnja je izazvala grešku?</string>
     <string name="crash_dialog_ok_toast">Hvala vam puno na pomoći!</string>
@@ -82,15 +80,6 @@
     <string name="ok">OK</string>
     <string name="pref_desc_brightness">Osvetljenost ekrana tokom meditacije</string>
     <string name="pref_get_messages">Provjerite ima li novih poruka sada</string>
-    <string name="pref_mute_mode">Ton zvona i Obavještenja</string>
-    <string name="pref_mute_mode_none">Tišina</string>
-    <string name="pref_mute_mode_none_desc">Bez melodije zvona i vibracije za telefonske pozive i Obavještenja</string>
-    <string name="pref_mute_mode_pref">Postavke u vezi melodije zvona i obavještenja</string>
-    <string name="pref_mute_mode_vibrate">Samo vibracija</string>
-    <string name="pref_mute_mode_vibrate_desc">Vibriraj samo za telefonske pozive i obavještenja (ne radi na Androidu 7 (Nougat) - ponaša se kao postavka Tišina)</string>
-    <string name="pref_mute_mode_vibrate_sound">Ton zvona i vibracija</string>
-    <string name="pref_mute_mode_vibrate_sound_desc">Pustite melodiju zvona i vibraciju</string>
-    <string name="pref_muting">Mute Settings</string>
     <string name="pref_sum_backup">Sačuvajte rezervnu kopiju vaših sesija i zvukova na SD kartici.</string>
     <string name="pref_sum_bad_removal">SD kartica je uklonjena bez prethodnog isključivanja.</string>
     <string name="pref_sum_checking">SD kartica se trenutno provjerava</string>
@@ -126,8 +115,6 @@
     <string name="content_desc_session_actions">Radnje sesije</string>
     <string name="session_list_unnamed_entry">Neimenovana sesija</string>
     <string name="status_bar_notification_info_overflow">999+</string>
-    <string name="test_mute_perm_request">Aplikaciji trenutno nije dozvoljeno da isključi zvuk na vašem telefonu. Otvoriti postavke da ovo promijenite?</string>
-    <string name="text_cant_mute">Vaš telefon ne dozvoljava ovoj aplikaciji da isključi zvuk. Onemogućite utišavanje u ovim postavkama aplikacija ili dozvolite isključenje zvuka u postavkama telefona.</string>
     <string name="text_no_notify_access_settings">Čini se da vaš telefon nema standardne postavke za omogućavanje isključivanja zvuka. Potražite ručno postavku \"Ne ometaj pristup\" i omogućite je.</string>
     <string name="text_no_sections">Nema definisanih sekcija.</string>
     <string name="text_question_delete_session">Stvarno izbrisati odabranu sesiju?</string>
@@ -140,7 +127,6 @@
     <string name="time_section_remaining">Preostala sekcija</string>
     <string name="time_session_elapsed">Sesija je protekla</string>
     <string name="time_session_remaining">Preostala sesija</string>
-    <string name="title_mute_perm_request">Nedostaje dozvola</string>
     <string name="title_question_delete_session">Izbrisati sesiju?</string>
     <string name="title_volume_bells">Jačina zvona</string>
     <string name="unnamed">Unnamed</string>

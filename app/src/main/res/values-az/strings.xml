@@ -29,8 +29,6 @@
     <string name="caption_zazen_meditation">Zazen Meditasiyası</string>
     <string name="checkbox_keep_screen_on">Ekranı açıq saxla</string>
     <string name="checkbox_no_server_messages">Xəbərləri göstər</string>
-    <string name="checkbox_phone_off">Telefonun səsini bağla</string>
-    <string name="checkbox_phone_off_desc">Bütün telefon səslərini bağla.</string>
     <string name="copy_prefix">Nüsxəsi: </string>
     <string name="crash_dialog_comment_prompt">İstəyə bağlı: Hansı hərəkət xətaya səbəb oldu?</string>
     <string name="crash_dialog_ok_toast">Köməyiniz üçün çox sağ olun!</string>
@@ -82,15 +80,6 @@
     <string name="ok">OLDu</string>
     <string name="pref_desc_brightness">Meditasiya zamanı ekranın parlaqlığı</string>
     <string name="pref_get_messages">Yeni mesajları indi yoxla</string>
-    <string name="pref_mute_mode">Zəng səsi və Bildirişlər</string>
-    <string name="pref_mute_mode_none">Səssiz</string>
-    <string name="pref_mute_mode_none_desc">Zənglər və bildirişlər üçün zəng səsi və vibrasiya yoxdur</string>
-    <string name="pref_mute_mode_pref">Zəng səsi və bildirişlər üzrə parametrlər</string>
-    <string name="pref_mute_mode_vibrate">Yalnız vibrasiya</string>
-    <string name="pref_mute_mode_vibrate_desc">Zənglər və bildirişlər üçün yalnız vibrasiya</string>
-    <string name="pref_mute_mode_vibrate_sound">Zəng səsi və vibrasiya</string>
-    <string name="pref_mute_mode_vibrate_sound_desc">Zəng səsi və vibrasiyanı aktiv et</string>
-    <string name="pref_muting">Səssiz rejimi parametrləri</string>
     <string name="pref_sum_backup">Seanslarınızın və səslərinizin ehtiyat nüsxəsini SD karta yadda saxlayın.</string>
     <string name="pref_sum_bad_removal">SD kart əvvəlcədən ayrılmadan çıxarıldı.</string>
     <string name="pref_sum_checking">Hazırda SD kart yoxlanılır</string>
@@ -126,8 +115,6 @@
     <string name="content_desc_session_actions">Seans hərəkətləri</string>
     <string name="session_list_unnamed_entry">Adsız seans</string>
     <string name="status_bar_notification_info_overflow">999+</string>
-    <string name="test_mute_perm_request">Hazırda tətbiqə telefonunuzun səsini bağlamağa icazə verilmir. Bunu dəyişdirmək üçün parametrləri açmaq istəyirsiniz?</string>
-    <string name="text_cant_mute">Telefonunuz bu tətbiqə səsini bağlamağa icazə vermir. Bunu tətbiq parametrlərində söndürün və ya telefon parametrlərində icazə verin.</string>
     <string name="text_no_notify_access_settings">Görünür telefonunuzda səs bağlamağa icazə verən standart parametrlər yoxdur. Zəhmət olmasa "Narahat etməyin icazəsi" parametrini əllə axtarıb tapın və onu aktiv edin.</string>
     <string name="text_no_sections">Heç bir bölmə təyin edilməyib.</string>
     <string name="text_question_delete_session">Seçilmiş seansı həqiqətən silmək istəyirsiniz?</string>
@@ -140,7 +127,6 @@
     <string name="time_section_remaining">Qalan bölmə vaxtı</string>
     <string name="time_session_elapsed">Keçən seans vaxtı</string>
     <string name="time_session_remaining">Qalan seans vaxtı</string>
-    <string name="title_mute_perm_request">İcazə çatmır</string>
     <string name="title_question_delete_session">Seans silinsin?</string>
     <string name="title_volume_bells">Zəng səsi səviyyəsi</string>
     <string name="unnamed">Adsız</string>

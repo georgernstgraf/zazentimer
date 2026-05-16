@@ -29,8 +29,6 @@
     <string name="caption_zazen_meditation">زازن مراقبت</string>
     <string name="checkbox_keep_screen_on">سکرین جاري وساتئ</string>
     <string name="checkbox_no_server_messages">خبرونه ښکاره کړئ</string>
-    <string name="checkbox_phone_off">تلیفون خاموش کړئ</string>
-    <string name="checkbox_phone_off_desc">د تلیفون ټول غږونه خاموش کړئ.</string>
     <string name="copy_prefix">کاپي</string>
     <string name="crash_dialog_comment_prompt">اختیاري: کوم عمل د خطا لامل شوی؟</string>
     <string name="crash_dialog_ok_toast">ستاسو د مرستې لپاره ډیره مننه!</string>
@@ -82,15 +80,6 @@
     <string name="ok">سمه ده</string>
     <string name="pref_desc_brightness">د مراقبت په جریان کې د نندارې روښانه کول</string>
     <string name="pref_get_messages">اوس د نوي پیغامونو لپاره وګورئ</string>
-    <string name="pref_mute_mode">رینګ ټون او خبرتیاوې</string>
-    <string name="pref_mute_mode_none">چوپتیا</string>
-    <string name="pref_mute_mode_none_desc">د تلیفون زنګونو او خبرتیاو لپاره هیڅ رنګ ټون او هیڅ وایبریشن نشته</string>
-    <string name="pref_mute_mode_pref">د رینګ ټون او خبرتیاو په اړه تنظیمات</string>
-    <string name="pref_mute_mode_vibrate">یوازې وایبریشن</string>
-    <string name="pref_mute_mode_vibrate_desc">یوازې د تلیفون زنګونو او خبرتیاو لپاره وایبریټ (په Android 7 (نوګټ) کې کار نه کوي - د چوپتیا ترتیب په څیر چلند کوي)</string>
-    <string name="pref_mute_mode_vibrate_sound">حلقوي ټون او وایبریشن</string>
-    <string name="pref_mute_mode_vibrate_sound_desc">د رینګ ټون او وایبریشن پلی کړئ</string>
-    <string name="pref_muting">خاموش ترتیبات</string>
     <string name="pref_sum_backup">ستاسو د غونډو او غږونو بیک اپ په خپل SD کارت کې خوندي کړئ.</string>
     <string name="pref_sum_bad_removal">SD کارت پرته له دې چې لومړی غیر نصب شي لرې شوی.</string>
     <string name="pref_sum_checking">SD-کارډ اوس مهال معاینه کیږي</string>
@@ -126,8 +115,6 @@
     <string name="content_desc_session_actions">د ناستې کړنې</string>
     <string name="session_list_unnamed_entry">بې نومه غونډه</string>
     <string name="status_bar_notification_info_overflow">۹۹۹+</string>
-    <string name="test_mute_perm_request">اپلیکیشن اوس مهال اجازه نلري چې ستاسو تلیفون خاموش کړي. د دې بدلولو لپاره تنظیمات خلاص کړئ؟</string>
-    <string name="text_cant_mute">ستاسو تلیفون دې اپلیکیشن ته اجازه نه ورکوي چې دا خاموش کړي. د دې ایپس ترتیباتو کې خاموش کول غیر فعال کړئ یا د خپل تلیفون ترتیباتو کې خاموش کولو ته اجازه ورکړئ.</string>
     <string name="text_no_notify_access_settings">ستاسو تلیفون داسې نه بریښي چې د خاموش کولو اجازه ورکولو لپاره معیاري تنظیمات ولري. مهرباني وکړئ په لاسي ډول د \"Do Disturb Access\" ترتیب لپاره وګورئ او فعال کړئ.</string>
     <string name="text_no_sections">هیڅ برخې ندي تعریف شوي.</string>
     <string name="text_question_delete_session">واقعیا ټاکل شوې سیشن حذف کړئ؟</string>
@@ -140,7 +127,6 @@
     <string name="time_section_remaining">پاتې برخه</string>
     <string name="time_session_elapsed">غونډه تیره شوه</string>
     <string name="time_session_remaining">پاتې ناسته</string>
-    <string name="title_mute_perm_request">د اجازې نشتوالی</string>
     <string name="title_question_delete_session">سیشن ړنګ کړئ؟</string>
     <string name="title_volume_bells">د بیل حجم</string>
     <string name="unnamed">بې نومه</string>

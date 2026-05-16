@@ -29,8 +29,6 @@
     <string name="caption_zazen_meditation">ज़ज़ेन ध्यान</string>
     <string name="checkbox_keep_screen_on">स्क्रीन चालू रखो</string>
     <string name="checkbox_no_server_messages">शो न्यूज़</string>
-    <string name="checkbox_phone_off">म्यूट फोन</string>
-    <string name="checkbox_phone_off_desc">सारे फोन दी आवाज़ें गी म्यूट करो।</string>
     <string name="copy_prefix">की नकल की</string>
     <string name="crash_dialog_comment_prompt">वैकल्पिक: कुस कार्रवाई ने त्रुटि पैदा कीती?</string>
     <string name="crash_dialog_ok_toast">तुंदी मदद आस्ते तुंदा मता मता धन्यवाद !</string>
@@ -82,15 +80,6 @@
     <string name="ok">ठीक ऐ</string>
     <string name="pref_desc_brightness">ध्यान दे दौरान प्रदर्शन दी चमक</string>
     <string name="pref_get_messages">हून नमें मैसेज दी जांच करो</string>
-    <string name="pref_mute_mode">रिंग टोन ते सूचनाएं</string>
-    <string name="pref_mute_mode_none">खमोशी</string>
-    <string name="pref_mute_mode_none_desc">फोन कॉल ते नोटिफिकेशन लेई कोई रिंग टोन ते कोई वाइब्रेशन नेईं</string>
-    <string name="pref_mute_mode_pref">रिंग टोन ते सूचनाएं दे बारे च सेटिंग्स</string>
-    <string name="pref_mute_mode_vibrate">सिर्फ कंपन ही</string>
-    <string name="pref_mute_mode_vibrate_desc">सिर्फ फोन कॉल ते सूचनाएं आस्तै वाइब्रेट (एंड्रॉयड 7 (नौगैट) पर कम्म नेईं करदा - साइलेंस सेटिंग दी तर्ज पर बर्ताव करदा ऐ)</string>
-    <string name="pref_mute_mode_vibrate_sound">रिंग टोन ते वाइब्रेशन</string>
-    <string name="pref_mute_mode_vibrate_sound_desc">रिंग टोन ते वाइब्रेशन बजाओ</string>
-    <string name="pref_muting">सेटिंग्स म्यूट करो</string>
     <string name="pref_sum_backup">अपने सत्रें ते ध्वनियें दा बैकअप अपने एसडी-कार्ड च सेव करो।</string>
     <string name="pref_sum_bad_removal">एसडी कार्ड गी पैह् ले अनमाउंट कीते बगैर हटाई दित्ता गेआ।</string>
     <string name="pref_sum_checking">इस वक्त एसडी-कार्ड दी जांच कीती जा करदी ऐ</string>
@@ -126,8 +115,6 @@
     <string name="content_desc_session_actions">सत्र क्रियाएं</string>
     <string name="session_list_unnamed_entry">बेनाम सत्र</string>
     <string name="status_bar_notification_info_overflow">९९९+ दा</string>
-    <string name="test_mute_perm_request">ऐप गी इसलै तुंदे फोन गी म्यूट करने दी इजाजत नेईं ऐ। इसगी बदलने लेई सेटिंग्स खोलो ?</string>
-    <string name="text_cant_mute">तुंदा फोन इस App गी म्यूट करने दी इजाजत नेईं दिंदा। इस ऐप सेटिंग्स च म्यूटिंग अक्षम करो जां अपने फोन सेटिंग्स च म्यूटिंग दी अनुमति देओ।</string>
     <string name="text_no_notify_access_settings">तुंदे फोन च म्यूटिंग दी इजाजत देने आस्तै मानक सेटिंग्स नेईं लब्भदियां न। कृपा करियै \"एक्सेस गी परेशान नेईं करो\" सेटिंग गी मैन्युअल रूप कन्नै दिक्खो ते इसगी सक्षम करो.</string>
     <string name="text_no_sections">कोई खंड परिभाषित नेईं कीता गेआ।</string>
     <string name="text_question_delete_session">सचमुच चयनित सत्र गी हटाना?</string>
@@ -140,7 +127,6 @@
     <string name="time_section_remaining">खंड बचे दा</string>
     <string name="time_session_elapsed">सत्र बीत गया</string>
     <string name="time_session_remaining">सत्र बाकी ऐ</string>
-    <string name="title_mute_perm_request">अनुमति गायब ऐ</string>
     <string name="title_question_delete_session">सत्र हटाओ ?</string>
     <string name="title_volume_bells">घंटी वॉल्यूम</string>
     <string name="unnamed">बेनाम</string>

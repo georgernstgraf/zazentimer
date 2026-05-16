@@ -29,8 +29,6 @@
     <string name="caption_zazen_meditation">מדיטציית זאזן</string>
     <string name="checkbox_keep_screen_on">השאר מסך דולק</string>
     <string name="checkbox_no_server_messages">הצג חדשות</string>
-    <string name="checkbox_phone_off">השתק טלפון</string>
-    <string name="checkbox_phone_off_desc">השתק את כל צלילי הטלפון.</string>
     <string name="copy_prefix">עותק של</string>
     <string name="crash_dialog_comment_prompt">אופציונלי: איזו פעולה גרמה לשגיאה?</string>
     <string name="crash_dialog_ok_toast">תודה רבה על עזרתך!</string>
@@ -82,15 +80,6 @@
     <string name="ok">אישור</string>
     <string name="pref_desc_brightness">בהירות התצוגה במהלך המדיטציה</string>
     <string name="pref_get_messages">בדוק אם יש הודעות חדשות כעת</string>
-    <string name="pref_mute_mode">רינגטון והתראות</string>
-    <string name="pref_mute_mode_none">שקט</string>
-    <string name="pref_mute_mode_none_desc">אין רינגטון ואין רטט לשיחות טלפון והתראות</string>
-    <string name="pref_mute_mode_pref">הגדרות בנוגע לרינגטון והתראות</string>
-    <string name="pref_mute_mode_vibrate">רק רטט</string>
-    <string name="pref_mute_mode_vibrate_desc">רטט רק לשיחות טלפון והתראות (לא פועל באנדרואיד 7 (Nougat) - מתנהג כמו הגדרת שקט)</string>
-    <string name="pref_mute_mode_vibrate_sound">רינגטון ורטט</string>
-    <string name="pref_mute_mode_vibrate_sound_desc">הפעל רינגטון ורטט</string>
-    <string name="pref_muting">הגדרות השתקה</string>
     <string name="pref_sum_backup">שמור גיבוי של הסשנים והצלילים שלך בכרטיס ה-SD שלך.</string>
     <string name="pref_sum_bad_removal">כרטיס ה-SD הוסר מבלי שנותק קודם.</string>
     <string name="pref_sum_checking">כרטיס ה-SD נבדק כרגע</string>
@@ -126,8 +115,6 @@
     <string name="content_desc_session_actions">פעולות סשן</string>
     <string name="session_list_unnamed_entry">סשן ללא שם</string>
     <string name="status_bar_notification_info_overflow">999+</string>
-    <string name="test_mute_perm_request">האפליקציה כרגע לא מורשית להשתיק את הטלפון שלך. לפתוח את ההגדרות כדי לשנות זאת?</string>
-    <string name="text_cant_mute">הטלפון שלך לא מאפשר לאפליקציה זו להשתיק אותו. השבת את ההשתקה בהגדרות אפליקציה זו או אפשר השתקה בהגדרות הטלפון שלך.</string>
     <string name="text_no_notify_access_settings">נראה שלטלפון שלך אין את ההגדרות הסטנדרטיות המאפשרות השתקה. אנא חפש ידנית את ההגדרה "גישה לא להפריע" והפעל אותה.</string>
     <string name="text_no_sections">לא הוגדרו מקטעים.</string>
     <string name="text_question_delete_session">האם באמת למחוק את הסשן שנבחר?</string>
@@ -140,7 +127,6 @@
     <string name="time_section_remaining">מקטע שנותר</string>
     <string name="time_session_elapsed">סשן שחלף</string>
     <string name="time_session_remaining">סשן שנותר</string>
-    <string name="title_mute_perm_request">הרשאה חסרה</string>
     <string name="title_question_delete_session">למחוק סשן?</string>
     <string name="title_volume_bells">עוצמת פעמון</string>
     <string name="unnamed">ללא שם</string>

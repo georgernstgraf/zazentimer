@@ -27,8 +27,6 @@
     <string name="caption_zazen_meditation">Zen meditacija</string>
     <string name="checkbox_keep_screen_on">Ohrani zaslon vklopljen</string>
     <string name="checkbox_no_server_messages">Prikaži novice</string>
-    <string name="checkbox_phone_off">Utišaj telefon</string>
-    <string name="checkbox_phone_off_desc">Utišaj vse zvoke telefona.</string>
     <string name="copy_prefix">Kopija</string>
     <string name="crash_dialog_comment_prompt">Izbirno: katero dejanje je povzročilo napako?</string>
     <string name="crash_dialog_ok_toast">Najlepša hvala za vašo pomoč!</string>
@@ -80,15 +78,6 @@
     <string name="ok">V redu</string>
     <string name="pref_desc_brightness">Svetlost zaslona med meditacijo</string>
     <string name="pref_get_messages">Preveri za nova sporočila zdaj</string>
-    <string name="pref_mute_mode">Zvonjenje in obvestila</string>
-    <string name="pref_mute_mode_none">Tišina</string>
-    <string name="pref_mute_mode_none_desc">Brez zvonjenja in vibriranja za klice in obvestila</string>
-    <string name="pref_mute_mode_pref">Nastavitve zvonjenja in obvestil</string>
-    <string name="pref_mute_mode_vibrate">Samo vibriranje</string>
-    <string name="pref_mute_mode_vibrate_desc">Samo vibriranje za klice in obvestila (ne deluje v sistemu Android 7)</string>
-    <string name="pref_mute_mode_vibrate_sound">Zvonjenje in vibriranje</string>
-    <string name="pref_mute_mode_vibrate_sound_desc">Predvajaj zvonjenje in vibriraj</string>
-    <string name="pref_muting">Nastavitve utišanja</string>
     <string name="pref_sum_backup">Shrani varnostno kopijo sej in zvokov na kartico SD.</string>
     <string name="pref_sum_bad_removal">Kartica SD je bila odstranjena, ne da bi bila prej izključena.</string>
     <string name="pref_sum_checking">Kartica SD se trenutno preverja</string>
@@ -123,8 +112,6 @@
     <string name="content_desc_section_actions">Dejanja odseka</string>
     <string name="content_desc_session_actions">Dejanja seje</string>
     <string name="session_list_unnamed_entry">Neimenovana seja</string>
-    <string name="test_mute_perm_request">Aplikacija trenutno ne sme utišati telefona. Ali želite odpreti nastavitve, da to spremenite?</string>
-    <string name="text_cant_mute">Telefon tej aplikaciji ne dovoli, da bi ga utišala. Onemogočite utišanje v nastavitvah te aplikacije ali omogočite utišanje v nastavitvah telefona.</string>
     <string name="text_no_notify_access_settings">Zdi se, da vaš telefon nima standardnih nastavitev, ki bi omogočale utišanje. Ročno poiščite nastavitev \"Dostop Ne moti\" in jo omogočite.</string>
     <string name="text_no_sections">Odseki niso določeni.</string>
     <string name="text_question_delete_session">Ali res želite izbrisati izbrano sejo?</string>
@@ -137,7 +124,6 @@
     <string name="time_section_remaining">Odsek preostalo</string>
     <string name="time_session_elapsed">Seja pretekla</string>
     <string name="time_session_remaining">Seja preostalo</string>
-    <string name="title_mute_perm_request">Manjka dovoljenje</string>
     <string name="title_question_delete_session">Izbriši sejo?</string>
     <string name="title_volume_bells">Glasnost posod</string>
     <string name="unnamed">Neimenovano</string>

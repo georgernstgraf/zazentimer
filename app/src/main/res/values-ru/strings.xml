@@ -29,8 +29,6 @@
     <string name="caption_zazen_meditation">Дзэн-медитация</string>
     <string name="checkbox_keep_screen_on">Не выключать экран</string>
     <string name="checkbox_no_server_messages">Показывать новости</string>
-    <string name="checkbox_phone_off">Без звука</string>
-    <string name="checkbox_phone_off_desc">Отключить все звуки телефона.</string>
     <string name="copy_prefix">Копия</string>
     <string name="crash_dialog_comment_prompt">Необязательно: Какое действие вызвало ошибку?</string>
     <string name="crash_dialog_ok_toast">Огромное спасибо за вашу помощь!</string>
@@ -82,15 +80,6 @@
     <string name="ok">ОК</string>
     <string name="pref_desc_brightness">Яркость экрана во время медитации</string>
     <string name="pref_get_messages">Проверить новые сообщения</string>
-    <string name="pref_mute_mode">Рингтон и уведомления</string>
-    <string name="pref_mute_mode_none">Тишина</string>
-    <string name="pref_mute_mode_none_desc">Без рингтона и вибрации для звонков и уведомлений</string>
-    <string name="pref_mute_mode_pref">Настройки рингтона и уведомлений</string>
-    <string name="pref_mute_mode_vibrate">Только вибрация</string>
-    <string name="pref_mute_mode_vibrate_desc">Только вибрация для звонков и уведомлений</string>
-    <string name="pref_mute_mode_vibrate_sound">Рингтон и вибрация</string>
-    <string name="pref_mute_mode_vibrate_sound_desc">Воспроизводить рингтон и вибрировать</string>
-    <string name="pref_muting">Настройки звука</string>
     <string name="pref_sum_backup">Сохранить резервную копию сессий и звуков на SD-карту.</string>
     <string name="pref_sum_bad_removal">SD-карта извлечена некорректно.</string>
     <string name="pref_sum_checking">SD-карта проверяется</string>
@@ -126,8 +115,6 @@
     <string name="content_desc_session_actions">Действия с сессией</string>
     <string name="session_list_unnamed_entry">Сессия без названия</string>
     <string name="status_bar_notification_info_overflow">999+</string>
-    <string name="test_mute_perm_request">Приложению не разрешено выключать звук. Открыть настройки?</string>
-    <string name="text_cant_mute">Ваш телефон не позволяет приложению выключать звук. Измените это в настройках.</string>
     <string name="text_no_notify_access_settings">Отсутствуют стандартные настройки отключения звука. Найдите параметр "Доступ к режиму Не беспокоить" и включите его.</string>
     <string name="text_no_sections">Секции не заданы.</string>
     <string name="text_question_delete_session">Действительно удалить выбранную сессию?</string>
@@ -140,7 +127,6 @@
     <string name="time_section_remaining">Осталось в секции</string>
     <string name="time_session_elapsed">Прошло в сессии</string>
     <string name="time_session_remaining">Осталось в сессии</string>
-    <string name="title_mute_perm_request">Отсутствует разрешение</string>
     <string name="title_question_delete_session">Удалить сессию?</string>
     <string name="title_volume_bells">Громкость гонга</string>
     <string name="unnamed">Без названия</string>

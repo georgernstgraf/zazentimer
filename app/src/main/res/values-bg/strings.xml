@@ -27,8 +27,6 @@
     <string name="caption_zazen_meditation">Дзадзен медитация</string>
     <string name="checkbox_keep_screen_on">Екранът да остане включен</string>
     <string name="checkbox_no_server_messages">Показване на новини</string>
-    <string name="checkbox_phone_off">Заглушаване на телефона</string>
-    <string name="checkbox_phone_off_desc">Заглушаване на всички звуци на телефона.</string>
     <string name="copy_prefix">Копие на</string>
     <string name="crash_dialog_comment_prompt">По желание: Кое действие предизвика грешката?</string>
     <string name="crash_dialog_ok_toast">Много ви благодарим за помощта!</string>
@@ -80,15 +78,6 @@
     <string name="ok">ОК</string>
     <string name="pref_desc_brightness">Яркост на дисплея по време на медитация</string>
     <string name="pref_get_messages">Проверка за нови съобщения сега</string>
-    <string name="pref_mute_mode">Мелодия на звънене и известия</string>
-    <string name="pref_mute_mode_none">Тишина</string>
-    <string name="pref_mute_mode_none_desc">Без мелодия на звънене и вибрация за телефонни обаждания и известия</string>
-    <string name="pref_mute_mode_pref">Настройки за мелодия на звънене и известия</string>
-    <string name="pref_mute_mode_vibrate">Само вибрация</string>
-    <string name="pref_mute_mode_vibrate_desc">Само вибрация за телефонни обаждания и известия (на Android 7 работи като Тишина)</string>
-    <string name="pref_mute_mode_vibrate_sound">Мелодия на звънене и вибрация</string>
-    <string name="pref_mute_mode_vibrate_sound_desc">Възпроизвеждане на мелодия на звънене и вибрация</string>
-    <string name="pref_muting">Настройки за заглушаване</string>
     <string name="pref_sum_backup">Запазете резервно копие на вашите сесии и звуци на вашата SD карта.</string>
     <string name="pref_sum_bad_removal">SD картата е извадена без предварително демонтиране.</string>
     <string name="pref_sum_checking">В момента SD картата се проверява</string>
@@ -123,8 +112,6 @@
     <string name="content_desc_section_actions">Действия на секцията</string>
     <string name="content_desc_session_actions">Действия на сесията</string>
     <string name="session_list_unnamed_entry">Сесия без име</string>
-    <string name="test_mute_perm_request">В момента приложението няма разрешение да заглушава телефона ви. Да отворите настройките, за да промените това?</string>
-    <string name="text_cant_mute">Вашият телефон не позволява на това приложение да го заглушава. Деактивирайте заглушаването в настройките на това приложение или го разрешете в настройките на телефона.</string>
     <string name="text_no_notify_access_settings">Изглежда, че вашият телефон няма стандартни настройки, които да позволяват заглушаване. Моля, потърсете ръчно настройката \"Достъп до режим Не ме безпокойте\" и я активирайте.</string>
     <string name="text_no_sections">Няма дефинирани секции.</string>
     <string name="text_question_delete_session">Наистина ли да изтриете избраната сесия?</string>
@@ -137,7 +124,6 @@
     <string name="time_section_remaining">Оставащо време на секцията</string>
     <string name="time_session_elapsed">Изминало време на сесията</string>
     <string name="time_session_remaining">Оставащо време на сесията</string>
-    <string name="title_mute_perm_request">Липсващо разрешение</string>
     <string name="title_question_delete_session">Изтриване на сесията?</string>
     <string name="title_volume_bells">Сила на звука на купата</string>
     <string name="unnamed">Без име</string>

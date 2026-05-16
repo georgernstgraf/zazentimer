@@ -29,8 +29,6 @@
     <string name="caption_zazen_meditation">Zazen Meditazzjoni</string>
     <string name="checkbox_keep_screen_on">Żomm l-iskrin mixgħul</string>
     <string name="checkbox_no_server_messages">Uri Aħbarijiet</string>
-    <string name="checkbox_phone_off">Mute Phone</string>
-    <string name="checkbox_phone_off_desc">Siekta l-ħsejjes kollha tat-telefon.</string>
     <string name="copy_prefix">Kopja ta\'</string>
     <string name="crash_dialog_comment_prompt">Fakultattiv: Liema azzjoni kkawża l-iżball?</string>
     <string name="crash_dialog_ok_toast">Grazzi ħafna għall-għajnuna tiegħek!</string>
@@ -82,15 +80,6 @@
     <string name="ok">OK</string>
     <string name="pref_desc_brightness">Luminożità tal-Wiri waqt il-Meditazzjoni</string>
     <string name="pref_get_messages">Iċċekkja għal Messaġġi ġodda issa</string>
-    <string name="pref_mute_mode">Ring tone u Notifiki</string>
-    <string name="pref_mute_mode_none">Silenzju</string>
-    <string name="pref_mute_mode_none_desc">L-ebda ring tone u l-ebda vibrazzjoni għal telefonati u Notifiki</string>
-    <string name="pref_mute_mode_pref">Settings dwar Ring tone u Notifiki</string>
-    <string name="pref_mute_mode_vibrate">Vibrazzjoni biss</string>
-    <string name="pref_mute_mode_vibrate_desc">Ivvibra biss għal telefonati u Notifiki (Ma taħdimx fuq Android 7 (Nougat) - iġib ruħu bħall-issettjar tas-Silenzju)</string>
-    <string name="pref_mute_mode_vibrate_sound">Ring tone u Vibrazzjoni</string>
-    <string name="pref_mute_mode_vibrate_sound_desc">Play Ring tone u Vibrazzjoni</string>
-    <string name="pref_muting">Mute Settings</string>
     <string name="pref_sum_backup">Issejvja backup tas-Sessjonijiet u l-Ħsejjes tiegħek fuq il-Kard SD tiegħek.</string>
     <string name="pref_sum_bad_removal">SD Card tneħħiet mingħajr ma ġiet żmuntata l-ewwel.</string>
     <string name="pref_sum_checking">SD-Card qed tiġi ċċekkjata bħalissa</string>
@@ -126,8 +115,6 @@
     <string name="content_desc_session_actions">Azzjonijiet tas-sessjoni</string>
     <string name="session_list_unnamed_entry">Sessjoni bla isem</string>
     <string name="status_bar_notification_info_overflow">999+</string>
-    <string name="test_mute_perm_request">L-App bħalissa mhix permessa li tismut it-telefon tiegħek. Iftaħ is-settings biex tbiddel dan?</string>
-    <string name="text_cant_mute">It-Telefown tiegħek ma jippermettix li din l-App tissikketha. Iddiżattiva l-muting f\'dan is-Settings tal-Apps jew ippermetti l-muting fis-Settings tat-Telefowns tiegħek.</string>
     <string name="text_no_notify_access_settings">It-Telefon tiegħek ma jidhirx li għandu s-settings standard biex jippermetti l-muting. Jekk jogħġbok fittex manwalment is-Setting \"Ma Tfixkilx Aċċess\" u ppermettiha.</string>
     <string name="text_no_sections">Ebda Sezzjonijiet definiti.</string>
     <string name="text_question_delete_session">Verament tħassar is-Sessjoni magħżula?</string>
@@ -140,7 +127,6 @@
     <string name="time_section_remaining">Taqsima li fadal</string>
     <string name="time_session_elapsed">Sessjoni għaddiet</string>
     <string name="time_session_remaining">Fadal sessjoni</string>
-    <string name="title_mute_perm_request">Nieqes Permess</string>
     <string name="title_question_delete_session">Ħassar Sessjoni?</string>
     <string name="title_volume_bells">Volum Qanpiena</string>
     <string name="unnamed">Bla isem</string>

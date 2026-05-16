@@ -29,8 +29,6 @@
     <string name="caption_zazen_meditation">Zazen Meditaasje</string>
     <string name="checkbox_keep_screen_on">Hâld skerm op</string>
     <string name="checkbox_no_server_messages">Nijs sjen litte</string>
-    <string name="checkbox_phone_off">Dempe telefoan</string>
-    <string name="checkbox_phone_off_desc">Demp alle tillefoanlûden.</string>
     <string name="copy_prefix">Kopy fan</string>
     <string name="crash_dialog_comment_prompt">Opsjoneel: Hokker aksje hat de flater feroarsake?</string>
     <string name="crash_dialog_ok_toast">Tige tank foar jo help!</string>
@@ -82,15 +80,6 @@
     <string name="ok">OK</string>
     <string name="pref_desc_brightness">Helderheid fan \'e werjefte tidens meditaasje</string>
     <string name="pref_get_messages">Kontrolearje no op nije berjochten</string>
-    <string name="pref_mute_mode">Ringtone en notifikaasjes</string>
-    <string name="pref_mute_mode_none">Stilte</string>
-    <string name="pref_mute_mode_none_desc">Gjin ringtone en gjin trilling foar tillefoantsjes en notifikaasjes</string>
-    <string name="pref_mute_mode_pref">Ynstellings oangeande ringtone en notifikaasjes</string>
-    <string name="pref_mute_mode_vibrate">Allinnich Vibration</string>
-    <string name="pref_mute_mode_vibrate_desc">Vibrearje allinich foar tillefoantsjes en notifikaasjes (wurket net op Android 7 (Nougat) - gedraacht as de Stilte-ynstelling)</string>
-    <string name="pref_mute_mode_vibrate_sound">Ring toan en trilling</string>
-    <string name="pref_mute_mode_vibrate_sound_desc">Spielje Ringtone en Vibraasje</string>
-    <string name="pref_muting">Mute Ynstellings</string>
     <string name="pref_sum_backup">Bewarje in reservekopy fan jo sesjes en lûden op jo SD-kaart.</string>
     <string name="pref_sum_bad_removal">SD-kaart is fuorthelle sûnder earst te ûntkoppelen.</string>
     <string name="pref_sum_checking">SD-kaart wurdt op it stuit kontrolearre</string>
@@ -126,8 +115,6 @@
     <string name="content_desc_session_actions">Sesje aksjes</string>
     <string name="session_list_unnamed_entry">Gjin sesje</string>
     <string name="status_bar_notification_info_overflow">999+</string>
-    <string name="test_mute_perm_request">De app is op it stuit net tastien om jo tillefoan te dempen. Iepenje de ynstellings om dit te feroarjen?</string>
-    <string name="text_cant_mute">Jo tillefoan lit dizze app it net mute. Skeakelje it dempen út yn dizze Apps-ynstellingen of tastean demping ta yn jo tillefoanynstellingen.</string>
     <string name="text_no_notify_access_settings">Jo tillefoan liket net de standertynstellingen te hawwen om muting mooglik te meitsjen. Sjoch asjebleaft hân foar de \"Net fersteure tagong\" ynstelling en ynskeakelje it.</string>
     <string name="text_no_sections">Gjin Seksjes definiearre.</string>
     <string name="text_question_delete_session">De selektearre sesje echt wiskje?</string>
@@ -140,7 +127,6 @@
     <string name="time_section_remaining">Seksje oerbleaun</string>
     <string name="time_session_elapsed">Sesje ferrûn</string>
     <string name="time_session_remaining">Sesje oerbleaun</string>
-    <string name="title_mute_perm_request">Missing tastimming</string>
     <string name="title_question_delete_session">Sesje wiskje?</string>
     <string name="title_volume_bells">Bell Volume</string>
     <string name="unnamed">Gjin namme</string>

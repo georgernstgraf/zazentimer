@@ -29,8 +29,6 @@
     <string name="caption_zazen_meditation">Zazen Meditation</string>
     <string name="checkbox_keep_screen_on">Ipadayon ang screen</string>
     <string name="checkbox_no_server_messages">Ipakita ang Balita</string>
-    <string name="checkbox_phone_off">I-mute ang Telepono</string>
-    <string name="checkbox_phone_off_desc">I-mute ang tanang tingog sa telepono.</string>
     <string name="copy_prefix">Kopya sa</string>
     <string name="crash_dialog_comment_prompt">Opsyonal: Unsa nga aksyon ang hinungdan sa sayup?</string>
     <string name="crash_dialog_ok_toast">Salamat kaayo sa imong tabang!</string>
@@ -82,15 +80,6 @@
     <string name="ok">OK ra</string>
     <string name="pref_desc_brightness">Kahayag sa Display panahon sa Pagpamalandong</string>
     <string name="pref_get_messages">Susiha ang bag-ong mga Mensahe karon</string>
-    <string name="pref_mute_mode">Ringtone ug Notifications</string>
-    <string name="pref_mute_mode_none">Kahilom</string>
-    <string name="pref_mute_mode_none_desc">Walay ring tone ug walay vibration para sa mga tawag sa telepono ug Notifications</string>
-    <string name="pref_mute_mode_pref">Mga setting bahin sa Ring tone ug Notifications</string>
-    <string name="pref_mute_mode_vibrate">Vibration lang</string>
-    <string name="pref_mute_mode_vibrate_desc">Pag-vibrate lang para sa mga tawag sa telepono ug Notifications (Dili mogana sa Android 7 (Nougat) - naggawi sama sa Silence setting)</string>
-    <string name="pref_mute_mode_vibrate_sound">Ringtone ug Vibration</string>
-    <string name="pref_mute_mode_vibrate_sound_desc">I-play ang Ring tone ug Vibration</string>
-    <string name="pref_muting">Mga setting sa mute</string>
     <string name="pref_sum_backup">Pagtipig og backup sa imong Sessions ug Sounds sa imong SD-Card.</string>
     <string name="pref_sum_bad_removal">Gikuha ang SD Card nga wala una i-unmount.</string>
     <string name="pref_sum_checking">Ang SD-Card gisusi sa pagkakaron</string>
@@ -126,8 +115,6 @@
     <string name="content_desc_session_actions">Mga aksyon sa sesyon</string>
     <string name="session_list_unnamed_entry">Wala Ngalan nga Sesyon</string>
     <string name="status_bar_notification_info_overflow">999+</string>
-    <string name="test_mute_perm_request">Ang App sa pagkakaron dili gitugutan nga mute sa imong telepono. Ablihi ang mga setting aron mabag-o kini?</string>
-    <string name="text_cant_mute">Ang imong Telepono dili motugot niini nga App nga mute niini. I-disable ang muting niining Apps Settings o tugoti ang muting sa imong Phones Settings.</string>
     <string name="text_no_notify_access_settings">Ang imong Telepono morag walay standard nga mga setting aron tugotan ang muting. Palihug pangitaa sa kamut ang \"Ayaw Pagsamok Pag-access\" Setting ug i-enable kini.</string>
     <string name="text_no_sections">Walay mga Seksyon nga gihubit.</string>
     <string name="text_question_delete_session">I-delete gyud ang pinili nga Session?</string>
@@ -140,7 +127,6 @@
     <string name="time_section_remaining">Ang nahabilin nga seksyon</string>
     <string name="time_session_elapsed">Nilabay ang sesyon</string>
     <string name="time_session_remaining">Ang nahabilin nga sesyon</string>
-    <string name="title_mute_perm_request">Nawala nga Permiso</string>
     <string name="title_question_delete_session">I-delete ang Sesyon?</string>
     <string name="title_volume_bells">Tomo sa Kampana</string>
     <string name="unnamed">Wala nganli</string>

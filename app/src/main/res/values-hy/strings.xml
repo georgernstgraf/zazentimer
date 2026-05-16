@@ -27,8 +27,6 @@
     <string name="caption_zazen_meditation">Զազեն մեդիտացիա</string>
     <string name="checkbox_keep_screen_on">Պահել էկրանը միացված</string>
     <string name="checkbox_no_server_messages">Ցուցադրել նորությունները</string>
-    <string name="checkbox_phone_off">Անջատել հեռախոսի ձայնը</string>
-    <string name="checkbox_phone_off_desc">Անջատել հեռախոսի բոլոր հնչյունները։</string>
     <string name="copy_prefix">Պատճեն</string>
     <string name="crash_dialog_comment_prompt">Լրացուցիչ. Ո՞ր գործողությունն է առաջացրել սխալը։</string>
     <string name="crash_dialog_ok_toast">Շատ շնորհակալություն օգնության համար։</string>
@@ -80,15 +78,6 @@
     <string name="ok">Լավ</string>
     <string name="pref_desc_brightness">Էկրանի պայծառությունը մեդիտացիայի ընթացքում</string>
     <string name="pref_get_messages">Ստուգել նոր հաղորդագրությունները հիմա</string>
-    <string name="pref_mute_mode">Զանգի ձայն և ծանուցումներ</string>
-    <string name="pref_mute_mode_none">Լռություն</string>
-    <string name="pref_mute_mode_none_desc">Առանց զանգի ձայնի և թրթռման</string>
-    <string name="pref_mute_mode_pref">Զանգի ձայնի և ծանուցումների կարգավորումներ</string>
-    <string name="pref_mute_mode_vibrate">Միայն թրթռում</string>
-    <string name="pref_mute_mode_vibrate_desc">Միայն թրթռում զանգերի և ծանուցումների համար</string>
-    <string name="pref_mute_mode_vibrate_sound">Զանգի ձայն և թրթռում</string>
-    <string name="pref_mute_mode_vibrate_sound_desc">Միացնել զանգի ձայնը և թրթռումը</string>
-    <string name="pref_muting">Ձայնագրման կարգավորումներ</string>
     <string name="pref_sum_backup">Պահպանեք ձեր սեսիաների և հնչյունների կրկնօրինակը SD քարտում։</string>
     <string name="pref_sum_bad_removal">SD քարտը հեռացվել է առանց նախապես ապամոնտաժվելու։</string>
     <string name="pref_sum_checking">Այս պահին SD քարտը ստուգվում է</string>
@@ -124,8 +113,6 @@
     <string name="content_desc_session_actions">Սեսիայի գործողություններ</string>
     <string name="session_list_unnamed_entry">Անանուն սեսիա</string>
     <string name="status_bar_notification_info_overflow">999+</string>
-    <string name="test_mute_perm_request">Հավելվածին ներկայումս թույլատրված չէ անջատել ձեր հեռախոսի ձայնը։ Բացե՞լ կարգավորումները սա փոխելու համար։</string>
-    <string name="text_cant_mute">Ձեր հեռախոսը թույլ չի տալիս այս հավելվածին անջատել ձայնը։</string>
     <string name="text_no_notify_access_settings">Խնդրում ենք ձեռքով որոնել «Մի անհանգստացրեք» կարգավորումը և միացնել այն։</string>
     <string name="text_no_sections">Սահմանված բաժիններ չկան։</string>
     <string name="text_question_delete_session">Իսկապե՞ս ջնջել ընտրված սեսիան։</string>
@@ -138,7 +125,6 @@
     <string name="time_section_remaining">Մնացած բաժինը</string>
     <string name="time_session_elapsed">Սեսիան անցել է</string>
     <string name="time_session_remaining">Մնացած սեսիան</string>
-    <string name="title_mute_perm_request">Բացակայում է թույլտվությունը</string>
     <string name="title_question_delete_session">Ջնջե՞լ սեսիան։</string>
     <string name="title_volume_bells">Զանգի ձայնի մակարդակը</string>
     <string name="unnamed">Անանուն</string>

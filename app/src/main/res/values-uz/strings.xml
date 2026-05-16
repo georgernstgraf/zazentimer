@@ -29,8 +29,6 @@
     <string name="caption_zazen_meditation">Zazen meditatsiyasi</string>
     <string name="checkbox_keep_screen_on">Ekranni yoqiq qoldirish</string>
     <string name="checkbox_no_server_messages">Yangiliklarni ko\'rsatish</string>
-    <string name="checkbox_phone_off">Telefon tovushini o\'chirish</string>
-    <string name="checkbox_phone_off_desc">Barcha telefon tovushlarini o\'chirish.</string>
     <string name="copy_prefix">Nusxasi: </string>
     <string name="crash_dialog_comment_prompt">Ixtiyoriy: Qaysi harakat xatolikka olib keldi?</string>
     <string name="crash_dialog_ok_toast">Yordamingiz uchun katta rahmat!</string>
@@ -82,15 +80,6 @@
     <string name="ok">OK</string>
     <string name="pref_desc_brightness">Meditatsiya vaqtida displey yorqinligi</string>
     <string name="pref_get_messages">Yangi xabarlarni hozir tekshirish</string>
-    <string name="pref_mute_mode">Qo\'ng\'iroq ohangi va bildirishnomalar</string>
-    <string name="pref_mute_mode_none">Jimjitlik</string>
-    <string name="pref_mute_mode_none_desc">Qo\'ng\'iroqlar va bildirishnomalar uchun qo\'ng\'iroq ohangi va tebranish yo\'q</string>
-    <string name="pref_mute_mode_pref">Qo\'ng\'iroq ohangi va bildirishnomalar sozlamalari</string>
-    <string name="pref_mute_mode_vibrate">Faqat tebranish</string>
-    <string name="pref_mute_mode_vibrate_desc">Qo\'ng\'iroqlar va bildirishnomalar uchun faqat tebranish</string>
-    <string name="pref_mute_mode_vibrate_sound">Qo\'ng\'iroq ohangi va tebranish</string>
-    <string name="pref_mute_mode_vibrate_sound_desc">Qo\'ng\'iroq ohangi va tebranishni yoqish</string>
-    <string name="pref_muting">Tovushni o\'chirish sozlamalari</string>
     <string name="pref_sum_backup">Seanslaringiz va tovushlaringiz zaxira nusxasini SD-kartaga saqlang.</string>
     <string name="pref_sum_bad_removal">SD-karta oldindan uzilmasdan chiqarib olindi.</string>
     <string name="pref_sum_checking">Hozirda SD-karta tekshirilmoqda</string>
@@ -126,8 +115,6 @@
     <string name="content_desc_session_actions">Seans amallari</string>
     <string name="session_list_unnamed_entry">Nomsiz seans</string>
     <string name="status_bar_notification_info_overflow">999+</string>
-    <string name="test_mute_perm_request">Hozirda ilovaga telefoningiz tovushini o\'chirishga ruxsat berilmagan. Buni o\'zgartirish uchun sozlamalar ochilsinmi?</string>
-    <string name="text_cant_mute">Telefoningiz ushbu ilovaga tovushni o\'chirishga ruxsat bermayapti. Buni ilova sozlamalarida bekor qiling yoki telefon sozlamalarida ruxsat bering.</string>
     <string name="text_no_notify_access_settings">Telefoningizda tovushni o\'chirishga ruxsat beruvchi standart sozlamalar yo\'q ko\'rinadi. Iltimos, qo\'lda "Bezovta qilinmasin ruxsati" sozlamasini qidirib toping va uni yoqing.</string>
     <string name="text_no_sections">Hech qanday bo\'lim belgilanmagan.</string>
     <string name="text_question_delete_session">Haqiqatan ham tanlangan Seans o\'chirilsinmi?</string>
@@ -140,7 +127,6 @@
     <string name="time_section_remaining">Qolgan bo\'lim vaqti</string>
     <string name="time_session_elapsed">O\'tgan seans vaqti</string>
     <string name="time_session_remaining">Qolgan seans vaqti</string>
-    <string name="title_mute_perm_request">Ruxsat yetishmayapti</string>
     <string name="title_question_delete_session">Seans o\'chirilsinmi?</string>
     <string name="title_volume_bells">Qo\'ng\'iroq balandligi</string>
     <string name="unnamed">Nomsiz</string>

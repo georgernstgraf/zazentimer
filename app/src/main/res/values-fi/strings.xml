@@ -29,8 +29,6 @@
     <string name="caption_zazen_meditation">Zazen-meditaatio</string>
     <string name="checkbox_keep_screen_on">Pidä näyttö päällä</string>
     <string name="checkbox_no_server_messages">Näytä uutiset</string>
-    <string name="checkbox_phone_off">Mykistä puhelin</string>
-    <string name="checkbox_phone_off_desc">Mykistä kaikki puhelimen äänet.</string>
     <string name="copy_prefix">Kopio:</string>
     <string name="crash_dialog_comment_prompt">Valinnainen: Mikä toimenpide aiheutti virheen?</string>
     <string name="crash_dialog_ok_toast">Kiitos avusta!</string>
@@ -82,15 +80,6 @@
     <string name="ok">OK</string>
     <string name="pref_desc_brightness">Näytön kirkkaus meditaation aikana</string>
     <string name="pref_get_messages">Tarkista uudet viestit nyt</string>
-    <string name="pref_mute_mode">Soittoääni ja ilmoitukset</string>
-    <string name="pref_mute_mode_none">Äänetön</string>
-    <string name="pref_mute_mode_none_desc">Ei soittoääntä tai värinää puheluissa ja ilmoituksissa</string>
-    <string name="pref_mute_mode_pref">Soittoääntä ja ilmoituksia koskevat asetukset</string>
-    <string name="pref_mute_mode_vibrate">Vain värinä</string>
-    <string name="pref_mute_mode_vibrate_desc">Värinä vain puheluissa ja ilmoituksissa (ei toimi Android 7:ssä, toimii kuten Äänetön)</string>
-    <string name="pref_mute_mode_vibrate_sound">Soittoääni ja värinä</string>
-    <string name="pref_mute_mode_vibrate_sound_desc">Toista soittoääni ja värinä</string>
-    <string name="pref_muting">Mykistysasetukset</string>
     <string name="pref_sum_backup">Tallenna varmuuskopio istunnoista ja äänistä SD-kortille.</string>
     <string name="pref_sum_bad_removal">SD-kortti poistettiin irrottamatta sitä ensin.</string>
     <string name="pref_sum_checking">SD-korttia tarkistetaan</string>
@@ -126,8 +115,6 @@
     <string name="content_desc_session_actions">Istunnon toiminnot</string>
     <string name="session_list_unnamed_entry">Nimetön istunto</string>
     <string name="status_bar_notification_info_overflow">999+</string>
-    <string name="test_mute_perm_request">Sovellus ei saa mykistää puhelinta. Avaa asetukset muuttaaksesi tätä?</string>
-    <string name="text_cant_mute">Puhelin ei salli sovelluksen mykistää sitä. Poista mykistys sovelluksen asetuksista tai salli se puhelimen asetuksista.</string>
     <string name="text_no_notify_access_settings">Puhelimesta näyttää puuttuvan vakioasetukset mykistykselle. Etsi asetus \"Älä häiritse -käyttöoikeus\" ja ota se käyttöön.</string>
     <string name="text_no_sections">Ei määritettyjä osioita.</string>
     <string name="text_question_delete_session">Poista valittu istunto?</string>
@@ -140,7 +127,6 @@
     <string name="time_section_remaining">Osioaikaa jäljellä</string>
     <string name="time_session_elapsed">Istuntoaikaa kulunut</string>
     <string name="time_session_remaining">Istuntoaikaa jäljellä</string>
-    <string name="title_mute_perm_request">Puuttuva oikeus</string>
     <string name="title_question_delete_session">Poista istunto?</string>
     <string name="title_volume_bells">Kellon äänenvoimakkuus</string>
     <string name="unnamed">Nimetön</string>

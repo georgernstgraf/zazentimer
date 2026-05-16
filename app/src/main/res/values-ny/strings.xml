@@ -29,8 +29,6 @@
     <string name="caption_zazen_meditation">Kusinkhasinkha kwa Zazen</string>
     <string name="checkbox_keep_screen_on">Sungani chophimba</string>
     <string name="checkbox_no_server_messages">Onetsani Nkhani</string>
-    <string name="checkbox_phone_off">Tsegulani Foni</string>
-    <string name="checkbox_phone_off_desc">Tsegulani mawu onse a foni.</string>
     <string name="copy_prefix">Kopi ya</string>
     <string name="crash_dialog_comment_prompt">Mwachidziwitso: Ndizochitika ziti zomwe zidayambitsa cholakwikacho?</string>
     <string name="crash_dialog_ok_toast">Zikomo kwambiri chifukwa cha thandizo lanu!</string>
@@ -82,15 +80,6 @@
     <string name="ok">Chabwino</string>
     <string name="pref_desc_brightness">Kuwala kwa Chiwonetsero pa Kusinkhasinkha</string>
     <string name="pref_get_messages">Yang\'anani Mauthenga atsopano tsopano</string>
-    <string name="pref_mute_mode">Kamvekedwe ka mphete ndi Zidziwitso</string>
-    <string name="pref_mute_mode_none">Chete</string>
-    <string name="pref_mute_mode_none_desc">Palibe kamvekedwe ka mphete komanso kugwedezeka kwa mafoni ndi Zidziwitso</string>
-    <string name="pref_mute_mode_pref">Zokonda zokhudzana ndi kamvekedwe ka mphete ndi Zidziwitso</string>
-    <string name="pref_mute_mode_vibrate">Kugwedezeka Kokha</string>
-    <string name="pref_mute_mode_vibrate_desc">Kungonjenjemera pama foni ndi Zidziwitso (Sizigwira ntchito pa Android 7 (Nougat) - zimakhala ngati Silence setting)</string>
-    <string name="pref_mute_mode_vibrate_sound">Kamvekedwe ka mphete ndi Vibration</string>
-    <string name="pref_mute_mode_vibrate_sound_desc">Sewerani kamvekedwe ka mphete ndi kugwedezeka</string>
-    <string name="pref_muting">Tsegulani Zokonda</string>
     <string name="pref_sum_backup">Sungani zosunga zobwezeretsera za Magawo ndi Mawu anu ku SD-Card yanu.</string>
     <string name="pref_sum_bad_removal">SD Card idachotsedwa popanda kutsitsa koyamba.</string>
     <string name="pref_sum_checking">SD-Card ikuyang\'aniridwa pakadali pano</string>
@@ -126,8 +115,6 @@
     <string name="content_desc_session_actions">Zochita pagawo</string>
     <string name="session_list_unnamed_entry">Gawo Losatchulidwa</string>
     <string name="status_bar_notification_info_overflow">999+</string>
-    <string name="test_mute_perm_request">Pulogalamuyi ndiyosaloledwa kuyimitsa foni yanu. Tsegulani zokonda kuti musinthe izi?</string>
-    <string name="text_cant_mute">Foni yanu siyilola kuti Pulogalamuyi iziyimitsa. Letsani kusalankhula mu Zochunira za Mapulogalamuwa kapena lolani kuti mutsegule mu Zochunira Zamafoni anu.</string>
     <string name="text_no_notify_access_settings">Foni yanu ikuwoneka kuti ilibe zoikamo zomwe zimalola kuti musinthe. Chonde yang\'anani pawokha \"Makonda Osasokoneza\" ndikuyatsa.</string>
     <string name="text_no_sections">Palibe Magawo ofotokozedwa.</string>
     <string name="text_question_delete_session">Chotsanidi Gawo losankhidwa?</string>
@@ -140,7 +127,6 @@
     <string name="time_section_remaining">Gawo lotsala</string>
     <string name="time_session_elapsed">Gawo linatha</string>
     <string name="time_session_remaining">Gawo latsala</string>
-    <string name="title_mute_perm_request">Chilolezo Chikusowa</string>
     <string name="title_question_delete_session">Chotsani Gawo?</string>
     <string name="title_volume_bells">Bell Volume</string>
     <string name="unnamed">Osatchulidwa</string>

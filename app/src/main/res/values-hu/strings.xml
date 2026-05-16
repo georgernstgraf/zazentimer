@@ -27,8 +27,6 @@
     <string name="caption_zazen_meditation">Zazen meditáció</string>
     <string name="checkbox_keep_screen_on">Képernyő ébrentartása</string>
     <string name="checkbox_no_server_messages">Hírek megjelenítése</string>
-    <string name="checkbox_phone_off">Telefon némítása</string>
-    <string name="checkbox_phone_off_desc">Minden telefonhang némítása.</string>
     <string name="copy_prefix">Másolat:</string>
     <string name="crash_dialog_comment_prompt">Opcionális: Melyik művelet okozta a hibát?</string>
     <string name="crash_dialog_ok_toast">Köszönjük a segítséget!</string>
@@ -80,15 +78,6 @@
     <string name="ok">OK</string>
     <string name="pref_desc_brightness">Kijelző fényereje a meditáció alatt</string>
     <string name="pref_get_messages">Új üzenetek keresése most</string>
-    <string name="pref_mute_mode">Csengőhang és értesítések</string>
-    <string name="pref_mute_mode_none">Néma</string>
-    <string name="pref_mute_mode_none_desc">Nincs csengőhang és rezgés a hívásoknál és értesítéseknél</string>
-    <string name="pref_mute_mode_pref">Csengőhang és értesítések beállításai</string>
-    <string name="pref_mute_mode_vibrate">Csak rezgés</string>
-    <string name="pref_mute_mode_vibrate_desc">Csak rezgés hívásoknál és értesítéseknél (Android 7 rendszeren nem működik)</string>
-    <string name="pref_mute_mode_vibrate_sound">Csengőhang és rezgés</string>
-    <string name="pref_mute_mode_vibrate_sound_desc">Csengőhang és rezgés egyaránt</string>
-    <string name="pref_muting">Némítási beállítások</string>
     <string name="pref_sum_backup">Készítsen biztonsági másolatot a profilokról és hangokról az SD-kártyára.</string>
     <string name="pref_sum_bad_removal">Az SD-kártyát leválasztás nélkül távolították el.</string>
     <string name="pref_sum_checking">Az SD-kártya ellenőrzése folyamatban</string>
@@ -123,8 +112,6 @@
     <string name="content_desc_section_actions">Szakasz műveletek</string>
     <string name="content_desc_session_actions">Profil műveletek</string>
     <string name="session_list_unnamed_entry">Névtelen profil</string>
-    <string name="test_mute_perm_request">Az alkalmazás jelenleg nem némíthatja el a telefont. Megnyitja a beállításokat a módosításhoz?</string>
-    <string name="text_cant_mute">A telefon nem engedélyezi az alkalmazás számára a némítást. Kérjük, tiltsa le a némítást az alkalmazás beállításaiban, vagy engedélyezze azt a telefon beállításaiban.</string>
     <string name="text_no_notify_access_settings">Úgy tűnik, hogy a telefon nem rendelkezik a némítás engedélyezéséhez szükséges szabványos beállításokkal. Keresse meg a \"Ne zavarjanak hozzáférés\" beállítást, és engedélyezze.</string>
     <string name="text_no_sections">Nincsenek szakaszok meghatározva.</string>
     <string name="text_question_delete_session">Biztosan törli a kiválasztott profilt?</string>
@@ -137,7 +124,6 @@
     <string name="time_section_remaining">Hátralévő idő a szakaszból</string>
     <string name="time_session_elapsed">Eltelt idő a profilból</string>
     <string name="time_session_remaining">Hátralévő idő a profilból</string>
-    <string name="title_mute_perm_request">Hiányzó engedély</string>
     <string name="title_question_delete_session">Törli a profilt?</string>
     <string name="title_volume_bells">Harang hangereje</string>
     <string name="unnamed">Névtelen</string>

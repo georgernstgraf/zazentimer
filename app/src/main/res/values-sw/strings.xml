@@ -29,8 +29,6 @@
     <string name="caption_zazen_meditation">Kutafakari kwa Zazen</string>
     <string name="checkbox_keep_screen_on">Weka skrini iwe wazi</string>
     <string name="checkbox_no_server_messages">Onyesha Habari</string>
-    <string name="checkbox_phone_off">Nyamazisha Simu</string>
-    <string name="checkbox_phone_off_desc">Nyamazisha sauti zote za simu.</string>
     <string name="copy_prefix">Nakala ya</string>
     <string name="crash_dialog_comment_prompt">Si lazima: Hatua gani ilisababisha hitilafu?</string>
     <string name="crash_dialog_ok_toast">Asante sana kwa msaada wako!</string>
@@ -82,15 +80,6 @@
     <string name="ok">Sawa</string>
     <string name="pref_desc_brightness">Mwangaza wa Skrini wakati wa Kutafakari</string>
     <string name="pref_get_messages">Angalia Ujumbe mpya sasa</string>
-    <string name="pref_mute_mode">Sauti ya mlio na Arifa</string>
-    <string name="pref_mute_mode_none">Kimya</string>
-    <string name="pref_mute_mode_none_desc">Hakuna sauti ya mlio na hakuna mtetemo kwa simu na Arifa</string>
-    <string name="pref_mute_mode_pref">Mipangilio kuhusu Sauti ya mlio na Arifa</string>
-    <string name="pref_mute_mode_vibrate">Mtetemo Tu</string>
-    <string name="pref_mute_mode_vibrate_desc">Tingisha tu kwa simu na Arifa</string>
-    <string name="pref_mute_mode_vibrate_sound">Sauti ya mlio na Mtetemo</string>
-    <string name="pref_mute_mode_vibrate_sound_desc">Cheza Sauti ya mlio na Mtetemo</string>
-    <string name="pref_muting">Mipangilio ya Kunyamazisha</string>
     <string name="pref_sum_backup">Hifadhi nakala rudufu ya Vipindi na Sauti zako kwenye Kadi yako ya SD.</string>
     <string name="pref_sum_bad_removal">Kadi ya SD imeondolewa vibaya.</string>
     <string name="pref_sum_checking">Kadi ya SD inakaguliwa</string>
@@ -126,8 +115,6 @@
     <string name="content_desc_session_actions">Vitendo vya kipindi</string>
     <string name="session_list_unnamed_entry">Kipindi Kisicho na Jina</string>
     <string name="status_bar_notification_info_overflow">999+</string>
-    <string name="test_mute_perm_request">Programu kwa sasa hairuhusiwi kunyamazisha simu yako. Fungua mipangilio ili kubadilisha hili?</string>
-    <string name="text_cant_mute">Simu yako hairuhusu Programu hii kuinyamazisha.</string>
     <string name="text_no_notify_access_settings">Simu yako inaonekana haina mipangilio ya kawaida ya kuruhusu kunyamazisha.</string>
     <string name="text_no_sections">Hakuna Sehemu zilizofafanuliwa.</string>
     <string name="text_question_delete_session">Kweli unataka kufuta Kipindi kilichochaguliwa?</string>
@@ -140,7 +127,6 @@
     <string name="time_section_remaining">Sehemu iliyobaki</string>
     <string name="time_session_elapsed">Kipindi kimepita</string>
     <string name="time_session_remaining">Kipindi kilichobaki</string>
-    <string name="title_mute_perm_request">Ruhusa Inakosekana</string>
     <string name="title_question_delete_session">Futa Kipindi?</string>
     <string name="title_volume_bells">Sauti ya Kengele</string>
     <string name="unnamed">Haina jina</string>

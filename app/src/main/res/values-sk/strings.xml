@@ -27,8 +27,6 @@
     <string name="caption_zazen_meditation">Zazen meditácia</string>
     <string name="checkbox_keep_screen_on">Ponechať obrazovku zapnutú</string>
     <string name="checkbox_no_server_messages">Zobraziť správy</string>
-    <string name="checkbox_phone_off">Stlmiť telefón</string>
-    <string name="checkbox_phone_off_desc">Stlmiť všetky zvuky telefónu.</string>
     <string name="copy_prefix">Kópia</string>
     <string name="crash_dialog_comment_prompt">Voliteľné: Ktorá akcia spôsobila chybu?</string>
     <string name="crash_dialog_ok_toast">Ďakujeme veľmi pekne za vašu pomoc!</string>
@@ -80,15 +78,6 @@
     <string name="ok">OK</string>
     <string name="pref_desc_brightness">Jas displeja počas meditácie</string>
     <string name="pref_get_messages">Skontrolovať nové správy teraz</string>
-    <string name="pref_mute_mode">Vyzváňací tón a upozornenia</string>
-    <string name="pref_mute_mode_none">Ticho</string>
-    <string name="pref_mute_mode_none_desc">Žiadny vyzváňací tón ani vibrácie pre hovory a upozornenia</string>
-    <string name="pref_mute_mode_pref">Nastavenia vyzváňacieho tónu a upozornení</string>
-    <string name="pref_mute_mode_vibrate">Iba vibrácie</string>
-    <string name="pref_mute_mode_vibrate_desc">Iba vibrácie pre hovory a upozornenia (na Androide 7 sa správa ako Ticho)</string>
-    <string name="pref_mute_mode_vibrate_sound">Vyzváňací tón a vibrácie</string>
-    <string name="pref_mute_mode_vibrate_sound_desc">Prehrať vyzváňací tón a vibrovať</string>
-    <string name="pref_muting">Nastavenia stlmenia</string>
     <string name="pref_sum_backup">Uložte si zálohu vašich relácií a zvukov na SD kartu.</string>
     <string name="pref_sum_bad_removal">SD karta bola vybratá bez predchádzajúceho odpojenia.</string>
     <string name="pref_sum_checking">SD karta sa práve kontroluje</string>
@@ -123,8 +112,6 @@
     <string name="content_desc_section_actions">Akcie sekcie</string>
     <string name="content_desc_session_actions">Akcie relácie</string>
     <string name="session_list_unnamed_entry">Nepomenovaná relácia</string>
-    <string name="test_mute_perm_request">Aplikácia momentálne nemá povolené stlmiť telefón. Otvoriť nastavenia a zmeniť to?</string>
-    <string name="text_cant_mute">Váš telefón nedovoľuje tejto aplikácii stlmiť ho. Zakážte stlmenie v nastaveniach tejto aplikácie alebo povoľte stlmenie v nastaveniach telefónu.</string>
     <string name="text_no_notify_access_settings">Zdá sa, že váš telefón nemá štandardné nastavenia, ktoré by umožňovali stlmenie. Nájdite manuálne nastavenie \"Prístup k funkcii Nerušiť\" a povoľte ho.</string>
     <string name="text_no_sections">Nie sú definované žiadne sekcie.</string>
     <string name="text_question_delete_session">Naozaj zmazať vybranú reláciu?</string>
@@ -137,7 +124,6 @@
     <string name="time_section_remaining">Zostávajúci čas sekcie</string>
     <string name="time_session_elapsed">Uplynutý čas relácie</string>
     <string name="time_session_remaining">Zostávajúci čas relácie</string>
-    <string name="title_mute_perm_request">Chýbajúce povolenie</string>
     <string name="title_question_delete_session">Zmazať reláciu?</string>
     <string name="title_volume_bells">Hlasitosť misy</string>
     <string name="unnamed">Bez názvu</string>

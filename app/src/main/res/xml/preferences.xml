@@ -7,24 +7,6 @@
         android:summary="@string/theme_desc"
         android:defaultValue="system"
         android:entryValues="@array/theme_values"/>
-    <PreferenceCategory
-        android:title="@string/pref_muting">
-        <CheckBoxPreference
-            android:title="@string/pref_mute_mode_vibrate_sound"
-            android:key="mute_mode_vibrate_sound"
-            android:summary="@string/pref_mute_mode_vibrate_sound_desc"
-            android:defaultValue="false"/>
-        <CheckBoxPreference
-            android:title="@string/pref_mute_mode_vibrate"
-            android:key="mute_mode_vibrate"
-            android:summary="@string/pref_mute_mode_vibrate_desc"
-            android:defaultValue="false"/>
-        <CheckBoxPreference
-            android:title="@string/pref_mute_mode_none"
-            android:key="mute_mode_none"
-            android:summary="@string/pref_mute_mode_none_desc"
-            android:defaultValue="true"/>
-    </PreferenceCategory>
 
     <CheckBoxPreference
         android:title="@string/checkbox_keep_screen_on"

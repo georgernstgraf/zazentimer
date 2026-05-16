@@ -29,8 +29,6 @@
     <string name="caption_zazen_meditation">Zazen Xiinxala</string>
     <string name="checkbox_keep_screen_on">Iskiriinii irratti eegaa</string>
     <string name="checkbox_no_server_messages">Show Oduu</string>
-    <string name="checkbox_phone_off">Bilbila Dubbisuu</string>
-    <string name="checkbox_phone_off_desc">Sagalee bilbilaa hunda dhaamsi.</string>
     <string name="copy_prefix">Koppii kan</string>
     <string name="crash_dialog_comment_prompt">Filannoo: Tarkaanfiin dogoggora kana fide isa kami?</string>
     <string name="crash_dialog_ok_toast">Gargaarsa keessaniif baay\'ee galatoomaa!</string>
@@ -82,15 +80,6 @@
     <string name="ok">TOLE</string>
     <string name="pref_desc_brightness">Ifa Agarsiisaa yeroo Xiinxala</string>
     <string name="pref_get_messages">Ergaa haaraa amma ilaalaa</string>
-    <string name="pref_mute_mode">Sagalee bilbilaa fi Beeksisa</string>
-    <string name="pref_mute_mode_none">Callisa</string>
-    <string name="pref_mute_mode_none_desc">Bilbilaa fi Beeksisaaf sagalee bilbilaa fi raafama hin qabu</string>
-    <string name="pref_mute_mode_pref">Sajoo sagalee bilbilaa fi Beeksisa ilaalchisee</string>
-    <string name="pref_mute_mode_vibrate">Vibration qofa</string>
-    <string name="pref_mute_mode_vibrate_desc">Bilbilaa fi Beeksisa qofaaf raafama (Android 7 (Nougat) irratti hin hojjetu - akka qindaa\'ina Silence amala qaba)</string>
-    <string name="pref_mute_mode_vibrate_sound">Sagalee bilbilaa fi Vibration</string>
-    <string name="pref_mute_mode_vibrate_sound_desc">Sagalee bilbilaa fi Vibration taphadhu</string>
-    <string name="pref_muting">Sajoo Dubbisuu</string>
     <string name="pref_sum_backup">Duubdeebii Sessions fi Sounds keessanii SD-Card keessan irratti saagi.</string>
     <string name="pref_sum_bad_removal">SD Card dursee osoo hin unmounted baafame.</string>
     <string name="pref_sum_checking">Yeroo ammaa kana SD-Card sakatta\'amaa jira</string>
@@ -126,8 +115,6 @@
     <string name="content_desc_session_actions">Gochoota walgahii</string>
     <string name="session_list_unnamed_entry">Kutaa Maqaa Hin Qabne</string>
     <string name="status_bar_notification_info_overflow">999+ ta\'a</string>
-    <string name="test_mute_perm_request">Yeroo ammaa kana Appiin kun bilbila keessan akka dhaamsu hin hayyamamu. Kana jijjiiruuf setting banaa?</string>
-    <string name="text_cant_mute">Bilbilli keessan App kana akka mute godhu hin hayyamu. Apps Settings kana keessatti muting dhorkaa ykn Phones Settings keessan keessatti muting hayyamaa.</string>
     <string name="text_no_notify_access_settings">Bilbilli keessan settings standard kan muting hayyamu waan qabu hin fakkaatu. Maaloo Sajoo \"Dhaqqabummaa Hin Jeeqin\" harkaan barbaadi fi dandeessisi.</string>
     <string name="text_no_sections">Kutaaleen ibsaman hin jiran.</string>
     <string name="text_question_delete_session">Dhuguma Session filatame haquu?</string>
@@ -140,7 +127,6 @@
     <string name="time_section_remaining">Kutaa hafe</string>
     <string name="time_session_elapsed">Session darbe</string>
     <string name="time_session_remaining">Kutaan hafe</string>
-    <string name="title_mute_perm_request">Hayyama Bade</string>
     <string name="title_question_delete_session">Session Haquu?</string>
     <string name="title_volume_bells">Jildii Bell</string>
     <string name="unnamed">Maqaa hin qabne</string>

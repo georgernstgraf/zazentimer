@@ -29,8 +29,6 @@
     <string name="caption_zazen_meditation">Zazen Yuyaymanay</string>
     <string name="checkbox_keep_screen_on">Pantalla llank’aypi hap’iy</string>
     <string name="checkbox_no_server_messages">Noticiakuna rikuchiy</string>
-    <string name="checkbox_phone_off">Teléfono Silenciado</string>
-    <string name="checkbox_phone_off_desc">Llapan telefonopa uyarikuyninkunata upallachiy.</string>
     <string name="copy_prefix">Copia de</string>
     <string name="crash_dialog_comment_prompt">Munasqa: ¿Mayqin ruwaytaq pantayta ruwarqa?</string>
     <string name="crash_dialog_ok_toast">¡Anchata agradecekuykiku yanapakuyniykimanta!</string>
@@ -82,15 +80,6 @@
     <string name="ok">KUSA</string>
     <string name="pref_desc_brightness">Yuyaymanaypi Qhawachiypa k’anchariynin</string>
     <string name="pref_get_messages">Kunan musuq Willakuykunata qhaway</string>
-    <string name="pref_mute_mode">Tono de timbre y Notificaciones</string>
-    <string name="pref_mute_mode_none">Upallay</string>
-    <string name="pref_mute_mode_none_desc">Mana timbre tono nitaq vibración telefono waqyaykunapaq chaymanta Notificaciones kaqpaq</string>
-    <string name="pref_mute_mode_pref">Tono de timbre chaymanta Willakuykuna kaqmanta churanakuna</string>
-    <string name="pref_mute_mode_vibrate">Vibración nisqalla</string>
-    <string name="pref_mute_mode_vibrate_desc">Telefono waqyaykunapaq chaymanta Willakuykunalla kuyurichin (Mana Android 7 (Nougat) kaqpi llamk\'anchu - Silencio churay hina purin)</string>
-    <string name="pref_mute_mode_vibrate_sound">Tono de timbre y Vibración</string>
-    <string name="pref_mute_mode_vibrate_sound_desc">Tono de timbre y Vibración nisqa pukllay</string>
-    <string name="pref_muting">Mute Ajustes nisqa</string>
     <string name="pref_sum_backup">Sesiones chaymanta Sonidosniykimanta huk copia de seguridad SD-Card kaqpi waqaychay.</string>
     <string name="pref_sum_bad_removal">Tarjeta SD nisqa mana ñawpaqta mana churasqa kachkaspa hurqusqa karqa.</string>
     <string name="pref_sum_checking">SD-Card nisqa kunan pacha qhawasqa kachkan</string>
@@ -126,8 +115,6 @@
     <string name="content_desc_session_actions">Sesión ruwaykuna</string>
     <string name="session_list_unnamed_entry">Mana sutiyuq Sesión</string>
     <string name="status_bar_notification_info_overflow">999+</string>
-    <string name="test_mute_perm_request">Kunanqa App mana telefonoykita upallachiyta atinchu. ¿Kayta tikranaykipaq churanakunata kichay?</string>
-    <string name="text_cant_mute">Teléfonoykiqa manam kay App nisqa upallachiyta saqinchu. Kay Apps Ajustes kaqpi upallachiyta mana ruway utaq Teléfonos Ajustes kaqpi upallachiyta saqiy.</string>
     <string name="text_no_notify_access_settings">Teléfonoykiqa manas ajustes estándares nisqayuqchu hinachu silenciamientota saqinanpaq. Ama hina kaspa, makiwan maskay \"Ama yaykuyta sasachaychu\" churayta chaymanta atichiy.</string>
     <string name="text_no_sections">Mana Secciones nisqakuna sut’inchasqachu.</string>
     <string name="text_question_delete_session">¿Chiqaptachu akllasqa Sesión nisqataqa chinkachinki?</string>
@@ -140,7 +127,6 @@
     <string name="time_section_remaining">Sección puchuq</string>
     <string name="time_session_elapsed">Sesión pasasqa</string>
     <string name="time_session_remaining">Sesión puchuq</string>
-    <string name="title_mute_perm_request">Permiso faltasqa</string>
     <string name="title_question_delete_session">¿Sesión Borrar?</string>
     <string name="title_volume_bells">Campana Volumen</string>
     <string name="unnamed">Mana sutiyuq</string>

@@ -29,8 +29,6 @@
     <string name="caption_zazen_meditation">Meditasi Zazen</string>
     <string name="checkbox_keep_screen_on">Biar skrin menyala</string>
     <string name="checkbox_no_server_messages">Papar Berita</string>
-    <string name="checkbox_phone_off">Bisu Telefon</string>
-    <string name="checkbox_phone_off_desc">Bisu semua bunyi telefon.</string>
     <string name="copy_prefix">Salinan</string>
     <string name="crash_dialog_comment_prompt">Pilihan: Tindakan yang menyebabkan ralat</string>
     <string name="crash_dialog_ok_toast">Terima kasih atas bantuan anda.</string>
@@ -82,15 +80,6 @@
     <string name="ok">OK</string>
     <string name="pref_desc_brightness">Kecerahan skrin semasa meditasi.</string>
     <string name="pref_get_messages">Semak mesej baharu sekarang.</string>
-    <string name="pref_mute_mode">Nada Dering dan Pemberitahuan</string>
-    <string name="pref_mute_mode_none">Senyap</string>
-    <string name="pref_mute_mode_none_desc">Tiada nada dering dan getaran untuk panggilan.</string>
-    <string name="pref_mute_mode_pref">Tetapan Nada Dering.</string>
-    <string name="pref_mute_mode_vibrate">Hanya Getar</string>
-    <string name="pref_mute_mode_vibrate_desc">Getar untuk panggilan dan pemberitahuan.</string>
-    <string name="pref_mute_mode_vibrate_sound">Nada Dering dan Getar</string>
-    <string name="pref_mute_mode_vibrate_sound_desc">Mainkan nada dering dan getar.</string>
-    <string name="pref_muting">Tetapan Bisu</string>
     <string name="pref_sum_backup">Simpan sandaran sesi dan bunyi ke Kad SD.</string>
     <string name="pref_sum_bad_removal">Kad SD dicabut tanpa dilepaskan dengan selamat.</string>
     <string name="pref_sum_checking">Memeriksa Kad SD.</string>
@@ -126,8 +115,6 @@
     <string name="content_desc_session_actions">Tindakan sesi</string>
     <string name="session_list_unnamed_entry">Sesi Tiada Nama</string>
     <string name="status_bar_notification_info_overflow">999+</string>
-    <string name="test_mute_perm_request">Aplikasi tidak dibenarkan membisukan telefon. Ubah dalam tetapan.</string>
-    <string name="text_cant_mute">Telefon tidak membenarkan akses bisu. Ubah tetapan telefon.</string>
     <string name="text_no_notify_access_settings">Sila dayakan kebenaran Jangan Ganggu dalam tetapan peranti.</string>
     <string name="text_no_sections">Tiada bahagian yang ditetapkan.</string>
     <string name="text_question_delete_session">Sahkan padam sesi.</string>
@@ -140,7 +127,6 @@
     <string name="time_section_remaining">Masa bahagian baki</string>
     <string name="time_session_elapsed">Masa sesi berlalu</string>
     <string name="time_session_remaining">Masa sesi baki</string>
-    <string name="title_mute_perm_request">Tiada Kebenaran</string>
     <string name="title_question_delete_session">Padam Sesi</string>
     <string name="title_volume_bells">Kelantangan Mangkuk</string>
     <string name="unnamed">Tiada Nama</string>

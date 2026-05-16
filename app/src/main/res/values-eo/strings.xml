@@ -29,8 +29,6 @@
     <string name="caption_zazen_meditation">Zazen Meditado</string>
     <string name="checkbox_keep_screen_on">Konservu ekranon ŝaltita</string>
     <string name="checkbox_no_server_messages">Montru Novaĵojn</string>
-    <string name="checkbox_phone_off">Muta Telefono</string>
-    <string name="checkbox_phone_off_desc">Silentigu ĉiujn telefonsonojn.</string>
     <string name="copy_prefix">Kopio de</string>
     <string name="crash_dialog_comment_prompt">Laŭvola: Kiu ago kaŭzis la eraron?</string>
     <string name="crash_dialog_ok_toast">Koran dankon pro via helpo!</string>
@@ -82,15 +80,6 @@
     <string name="ok">Bone</string>
     <string name="pref_desc_brightness">Brilo de la Ekrano dum Meditado</string>
     <string name="pref_get_messages">Kontrolu novajn Mesaĝojn nun</string>
-    <string name="pref_mute_mode">Ringtono kaj Sciigoj</string>
-    <string name="pref_mute_mode_none">Silento</string>
-    <string name="pref_mute_mode_none_desc">Neniu sonoro kaj neniu vibro por telefonvokoj kaj Sciigoj</string>
-    <string name="pref_mute_mode_pref">Agordoj pri sonorigo kaj sciigoj</string>
-    <string name="pref_mute_mode_vibrate">Nur Vibro</string>
-    <string name="pref_mute_mode_vibrate_desc">Vibri nur por telefonvokoj kaj Sciigoj (Ne funkcias ĉe Android 7 (Nougat) - kondutas kiel la agordo Silento)</string>
-    <string name="pref_mute_mode_vibrate_sound">Ringtono kaj Vibrado</string>
-    <string name="pref_mute_mode_vibrate_sound_desc">Ludu Ringtono kaj Vibradon</string>
-    <string name="pref_muting">Mutigi Agordojn</string>
     <string name="pref_sum_backup">Konservu sekurkopion de viaj Sesioj kaj Sonoj al via SD-Karto.</string>
     <string name="pref_sum_bad_removal">SD-Karto estis forigita sen esti unue malmuntita.</string>
     <string name="pref_sum_checking">SD-Karto estas kontrolita nuntempe</string>
@@ -126,8 +115,6 @@
     <string name="content_desc_session_actions">Sesiaj agoj</string>
     <string name="session_list_unnamed_entry">Nenomita Sesio</string>
     <string name="status_bar_notification_info_overflow">999+</string>
-    <string name="test_mute_perm_request">La Apo nuntempe ne rajtas silentigi vian telefonon. Ĉu malfermi la agordojn por ŝanĝi ĉi tion?</string>
-    <string name="text_cant_mute">Via Telefono ne permesas ĉi tiun Apon silentigi ĝin. Malebligu mutigon en ĉi tiuj Agordoj de Aparatoj aŭ permesu silentigon en viaj Telefonaj Agordoj.</string>
     <string name="text_no_notify_access_settings">Via Telefono ŝajnas ne havi la normajn agordojn por permesi silentigi. Bonvolu serĉi permane la \"Ne ĝenu la aliron\" kaj ebligu ĝin.</string>
     <string name="text_no_sections">Neniuj sekcioj difinitaj.</string>
     <string name="text_question_delete_session">Ĉu vere forigi la elektitan Sesion?</string>
@@ -140,7 +127,6 @@
     <string name="time_section_remaining">Sekcio restanta</string>
     <string name="time_session_elapsed">Sesio pasis</string>
     <string name="time_session_remaining">Sesio restanta</string>
-    <string name="title_mute_perm_request">Mankas Permeso</string>
     <string name="title_question_delete_session">Ĉu forigi sesion?</string>
     <string name="title_volume_bells">Sonorila Volumo</string>
     <string name="unnamed">Nenomita</string>

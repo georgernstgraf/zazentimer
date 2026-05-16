@@ -29,8 +29,6 @@
     <string name="caption_zazen_meditation">Zazen-meditatie</string>
     <string name="checkbox_keep_screen_on">Scherm aanhouden</string>
     <string name="checkbox_no_server_messages">Nieuws tonen</string>
-    <string name="checkbox_phone_off">Telefoon dempen</string>
-    <string name="checkbox_phone_off_desc">Alle telefoongeluiden dempen.</string>
     <string name="copy_prefix">Kopie van</string>
     <string name="crash_dialog_comment_prompt">Optioneel: Welke actie veroorzaakte de fout?</string>
     <string name="crash_dialog_ok_toast">Bedankt voor de hulp!</string>
@@ -82,15 +80,6 @@
     <string name="ok">OK</string>
     <string name="pref_desc_brightness">Schermhelderheid tijdens meditatie</string>
     <string name="pref_get_messages">Nu controleren op nieuwe berichten</string>
-    <string name="pref_mute_mode">Beltoon en meldingen</string>
-    <string name="pref_mute_mode_none">Stilte</string>
-    <string name="pref_mute_mode_none_desc">Geen beltoon en geen trilling voor telefoontjes en meldingen</string>
-    <string name="pref_mute_mode_pref">Instellingen voor beltoon en meldingen</string>
-    <string name="pref_mute_mode_vibrate">Alleen trillen</string>
-    <string name="pref_mute_mode_vibrate_desc">Alleen trillen voor telefoontjes en meldingen (werkt niet op Android 7, gedraagt zich als Stilte)</string>
-    <string name="pref_mute_mode_vibrate_sound">Beltoon en trillen</string>
-    <string name="pref_mute_mode_vibrate_sound_desc">Beltoon afspelen en trillen</string>
-    <string name="pref_muting">Geluidsinstellingen</string>
     <string name="pref_sum_backup">Sla een back-up van sessies en geluiden op de SD-kaart op.</string>
     <string name="pref_sum_bad_removal">SD-kaart is verwijderd zonder deze eerst te ontkoppelen.</string>
     <string name="pref_sum_checking">SD-kaart wordt gecontroleerd</string>
@@ -126,8 +115,6 @@
     <string name="content_desc_session_actions">Sessie-acties</string>
     <string name="session_list_unnamed_entry">Naamloze sessie</string>
     <string name="status_bar_notification_info_overflow">999+</string>
-    <string name="test_mute_perm_request">De app heeft geen toestemming om de telefoon te dempen. Instellingen openen om dit te wijzigen?</string>
-    <string name="text_cant_mute">De telefoon staat niet toe dat de app het geluid dempt. Schakel het dempen uit in de app-instellingen of sta het toe in de telefooninstellingen.</string>
     <string name="text_no_notify_access_settings">De telefoon lijkt standaardinstellingen voor dempen te missen. Zoek de instelling \"Niet storen-toegang\" en schakel deze in.</string>
     <string name="text_no_sections">Geen secties gedefinieerd.</string>
     <string name="text_question_delete_session">Geselecteerde sessie verwijderen?</string>
@@ -140,7 +127,6 @@
     <string name="time_section_remaining">Sectietijd resterend</string>
     <string name="time_session_elapsed">Sessietijd verstreken</string>
     <string name="time_session_remaining">Sessietijd resterend</string>
-    <string name="title_mute_perm_request">Ontbrekende toestemming</string>
     <string name="title_question_delete_session">Sessie verwijderen?</string>
     <string name="title_volume_bells">Belvolume</string>
     <string name="unnamed">Naamloos</string>

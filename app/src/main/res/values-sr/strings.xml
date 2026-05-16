@@ -29,8 +29,6 @@
     <string name="caption_zazen_meditation">Zazen медитација</string>
     <string name="checkbox_keep_screen_on">Задржи екран укљученим</string>
     <string name="checkbox_no_server_messages">Прикажи вести</string>
-    <string name="checkbox_phone_off">Утишај телефон</string>
-    <string name="checkbox_phone_off_desc">Утишај све звуке телефона.</string>
     <string name="copy_prefix">Копија</string>
     <string name="crash_dialog_comment_prompt">Опционо: Која радња је изазвала грешку?</string>
     <string name="crash_dialog_ok_toast">Хвала на помоћи!</string>
@@ -82,15 +80,6 @@
     <string name="ok">У реду</string>
     <string name="pref_desc_brightness">Осветљеност екрана</string>
     <string name="pref_get_messages">Провери поруке сада</string>
-    <string name="pref_mute_mode">Мелодија и обавештења</string>
-    <string name="pref_mute_mode_none">Тишина</string>
-    <string name="pref_mute_mode_none_desc">Без звука и вибрације</string>
-    <string name="pref_mute_mode_pref">Подешавања звона</string>
-    <string name="pref_mute_mode_vibrate">Само вибрација</string>
-    <string name="pref_mute_mode_vibrate_desc">Само вибрација</string>
-    <string name="pref_mute_mode_vibrate_sound">Звук и вибрација</string>
-    <string name="pref_mute_mode_vibrate_sound_desc">Звук и вибрација</string>
-    <string name="pref_muting">Подешавања утишавања</string>
     <string name="pref_sum_backup">Сачувајте резервну копију на SD картицу.</string>
     <string name="pref_sum_bad_removal">SD картица је неправилно уклоњена.</string>
     <string name="pref_sum_checking">SD картица се проверава</string>
@@ -126,8 +115,6 @@
     <string name="content_desc_session_actions">Радње сесије</string>
     <string name="session_list_unnamed_entry">Неименована сесија</string>
     <string name="status_bar_notification_info_overflow">999+</string>
-    <string name="test_mute_perm_request">Апликација нема дозволу за утишавање. Отворити подешавања?</string>
-    <string name="text_cant_mute">Ваш телефон не дозвољава утишавање.</string>
     <string name="text_no_notify_access_settings">Ваш телефон нема стандардна подешавања за утишавање.</string>
     <string name="text_no_sections">Нема дефинисаних секција.</string>
     <string name="text_question_delete_session">Стварно обрисати сесију?</string>
@@ -140,7 +127,6 @@
     <string name="time_section_remaining">Преостало време секције</string>
     <string name="time_session_elapsed">Истекло време сесије</string>
     <string name="time_session_remaining">Преостало време сесије</string>
-    <string name="title_mute_perm_request">Недостаје дозвола</string>
     <string name="title_question_delete_session">Обрисати сесију?</string>
     <string name="title_volume_bells">Јачина чиније</string>
     <string name="unnamed">Неименовано</string>

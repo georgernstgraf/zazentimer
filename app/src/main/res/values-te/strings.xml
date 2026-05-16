@@ -29,8 +29,6 @@
     <string name="caption_zazen_meditation">జాజెన్ ధ్యానం</string>
     <string name="checkbox_keep_screen_on">స్క్రీన్‌ని ఆన్‌లో ఉంచండి</string>
     <string name="checkbox_no_server_messages">వార్తలను చూపించు</string>
-    <string name="checkbox_phone_off">ఫోన్‌ను మ్యూట్ చేయండి</string>
-    <string name="checkbox_phone_off_desc">అన్ని ఫోన్ సౌండ్‌లను మ్యూట్ చేయండి.</string>
     <string name="copy_prefix">దీని కాపీ</string>
     <string name="crash_dialog_comment_prompt">ఐచ్ఛికం: ఏ చర్య లోపానికి కారణమైంది?</string>
     <string name="crash_dialog_ok_toast">మీ సహాయానికి చాలా ధన్యవాదాలు!</string>
@@ -82,15 +80,6 @@
     <string name="ok">సరే</string>
     <string name="pref_desc_brightness">ధ్యానం సమయంలో స్క్రీన్ ప్రకాశం</string>
     <string name="pref_get_messages">ఇప్పుడే కొత్త సందేశాల కోసం తనిఖీ చేయండి</string>
-    <string name="pref_mute_mode">రింగ్‌టోన్ మరియు నోటిఫికేషన్‌లు</string>
-    <string name="pref_mute_mode_none">సైలెన్స్</string>
-    <string name="pref_mute_mode_none_desc">ఫోన్ కాల్‌లు మరియు నోటిఫికేషన్‌ల కోసం రింగ్‌టోన్ మరియు వైబ్రేషన్ లేదు</string>
-    <string name="pref_mute_mode_pref">రింగ్‌టోన్ మరియు నోటిఫికేషన్‌లకు సంబంధించిన సెట్టింగ్‌లు</string>
-    <string name="pref_mute_mode_vibrate">వైబ్రేషన్ మాత్రమే</string>
-    <string name="pref_mute_mode_vibrate_desc">ఫోన్ కాల్‌లు మరియు నోటిఫికేషన్‌ల కోసం మాత్రమే వైబ్రేట్ చేయండి (ఆండ్రాయిడ్ 7 (నౌగాట్)లో పని చేయదు - సైలెన్స్ సెట్టింగ్ లాగా ప్రవర్తిస్తుంది)</string>
-    <string name="pref_mute_mode_vibrate_sound">రింగ్‌టోన్ మరియు వైబ్రేషన్</string>
-    <string name="pref_mute_mode_vibrate_sound_desc">రింగ్‌టోన్ మరియు వైబ్రేషన్ ప్లే చేయండి</string>
-    <string name="pref_muting">మ్యూట్ సెట్టింగ్‌లు</string>
     <string name="pref_sum_backup">మీ SD కార్డ్‌లో మీ సెషన్‌లు మరియు శబ్దాల బ్యాకప్‌ను సేవ్ చేయండి.</string>
     <string name="pref_sum_bad_removal">SD కార్డ్ అన్‌మౌంట్ చేయకుండానే తీసివేయబడింది.</string>
     <string name="pref_sum_checking">ప్రస్తుతం SD కార్డ్ తనిఖీ చేయబడుతోంది</string>
@@ -126,8 +115,6 @@
     <string name="content_desc_session_actions">సెషన్ చర్యలు</string>
     <string name="session_list_unnamed_entry">పేరులేని సెషన్</string>
     <string name="status_bar_notification_info_overflow">999+</string>
-    <string name="test_mute_perm_request">యాప్ ప్రస్తుతం మీ ఫోన్‌ని మ్యూట్ చేయడానికి అనుమతించబడలేదు. దీన్ని మార్చడానికి సెట్టింగ్‌లను తెరవాలా?</string>
-    <string name="text_cant_mute">ఈ యాప్ దాన్ని మ్యూట్ చేయడానికి మీ ఫోన్ అనుమతించదు. ఈ యాప్ సెట్టింగ్‌లలో మ్యూట్ చేయడాన్ని డిజేబుల్ చేయండి లేదా మీ ఫోన్ సెట్టింగ్‌లలో మ్యూట్ చేయడానికి అనుమతించండి.</string>
     <string name="text_no_notify_access_settings">మ్యూట్ చేయడానికి అనుమతించే ప్రామాణిక సెట్టింగ్‌లను మీ ఫోన్ కలిగి ఉన్నట్లు లేదు. దయచేసి మాన్యువల్‌గా "అంతరాయం కలిగించవద్దు యాక్సెస్" సెట్టింగ్ కోసం వెతికి దాన్ని ఎనేబుల్ చేయండి.</string>
     <string name="text_no_sections">విభాగాలు నిర్వచించబడలేదు.</string>
     <string name="text_question_delete_session">ఎంచుకున్న సెషన్‌ను నిజంగా తొలగించాలా?</string>
@@ -140,7 +127,6 @@
     <string name="time_section_remaining">విభాగం మిగిలి ఉంది</string>
     <string name="time_session_elapsed">సెషన్ గడిచింది</string>
     <string name="time_session_remaining">సెషన్ మిగిలి ఉంది</string>
-    <string name="title_mute_perm_request">అనుమతి లేదు</string>
     <string name="title_question_delete_session">సెషన్‌ను తొలగించాలా?</string>
     <string name="title_volume_bells">బౌల్ వాల్యూమ్</string>
     <string name="unnamed">పేరులేనిది</string>

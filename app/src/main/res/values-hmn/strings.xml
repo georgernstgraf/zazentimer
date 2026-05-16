@@ -29,8 +29,6 @@
     <string name="caption_zazen_meditation">Zazen Meditation</string>
     <string name="checkbox_keep_screen_on">Khaws qhov screen rau</string>
     <string name="checkbox_no_server_messages">Qhia Xov Xwm</string>
-    <string name="checkbox_phone_off">Mute xov tooj</string>
-    <string name="checkbox_phone_off_desc">Mute txhua lub suab hauv xov tooj.</string>
     <string name="copy_prefix">Luam ntawm</string>
     <string name="crash_dialog_comment_prompt">Yeem: Qhov kev txiav txim twg ua rau qhov yuam kev?</string>
     <string name="crash_dialog_ok_toast">Ua tsaug ntau rau koj kev pab!</string>
@@ -82,15 +80,6 @@
     <string name="ok">OK</string>
     <string name="pref_desc_brightness">Ci ntsa iab ntawm cov zaub thaum xav txog</string>
     <string name="pref_get_messages">Tshawb nrhiav cov lus tshiab tam sim no</string>
-    <string name="pref_mute_mode">Ringtone thiab ceeb toom</string>
-    <string name="pref_mute_mode_none">Nyob ntsiag to</string>
-    <string name="pref_mute_mode_none_desc">Tsis muaj suab nrov thiab tsis muaj kev vibration rau kev hu xov tooj thiab Kev Ceeb Toom</string>
-    <string name="pref_mute_mode_pref">Cov chaw hais txog lub suab nrov thiab Kev Ceeb Toom</string>
-    <string name="pref_mute_mode_vibrate">Tsuas yog kev vibration</string>
-    <string name="pref_mute_mode_vibrate_desc">Tsuas yog vibrate rau kev hu xov tooj thiab Kev Ceeb Toom (Tsis ua haujlwm ntawm Android 7 (Nougat) - coj zoo li qhov chaw ntsiag to)</string>
-    <string name="pref_mute_mode_vibrate_sound">Ringtone thiab vibration</string>
-    <string name="pref_mute_mode_vibrate_sound_desc">Ua si Ringtone thiab vibration</string>
-    <string name="pref_muting">Mute Settings</string>
     <string name="pref_sum_backup">Txuag ib qho thaub qab ntawm koj Sessions thiab Suab rau koj SD-Card.</string>
     <string name="pref_sum_bad_removal">SD Card raug tshem tawm yam tsis tau unmounted ua ntej.</string>
     <string name="pref_sum_checking">SD-Card tab tom kuaj xyuas tam sim no</string>
@@ -126,8 +115,6 @@
     <string name="content_desc_session_actions">Kev ua yeeb yam</string>
     <string name="session_list_unnamed_entry">Tsis muaj npe Session</string>
     <string name="status_bar_notification_info_overflow">999+ ib</string>
-    <string name="test_mute_perm_request">Lub App tam sim no tsis tso cai rau mute koj lub xov tooj. Qhib cov chaw los hloov qhov no?</string>
-    <string name="text_cant_mute">Koj lub xov tooj tsis tso cai rau lub App no ​​mute nws. Disable muting nyob rau hauv no Apps Chaw los yog tso cai muting nyob rau hauv koj lub xov tooj Settings.</string>
     <string name="text_no_notify_access_settings">Koj lub xov tooj zoo li tsis muaj cov qauv teeb tsa kom tso cai rau muting. Thov saib manually rau \"Do not Disturb Access\" Chaw thiab pab nws.</string>
     <string name="text_no_sections">Tsis muaj seem txhais.</string>
     <string name="text_question_delete_session">Tiag rho tawm Session xaiv?</string>
@@ -140,7 +127,6 @@
     <string name="time_section_remaining">seem seem</string>
     <string name="time_session_elapsed">Kev sib tham dhau mus</string>
     <string name="time_session_remaining">Session tseem tshuav</string>
-    <string name="title_mute_perm_request">Kev tso cai ploj lawm</string>
     <string name="title_question_delete_session">Rho tawm Session?</string>
     <string name="title_volume_bells">Tswb Volume</string>
     <string name="unnamed">Tsis muaj npe</string>

@@ -29,8 +29,6 @@
     <string name="caption_zazen_meditation">സെൻ ധ്യാനം</string>
     <string name="checkbox_keep_screen_on">സ്ക്രീൻ ഓണാക്കി നിർത്തുക</string>
     <string name="checkbox_no_server_messages">വാർത്തകൾ കാണിക്കുക</string>
-    <string name="checkbox_phone_off">ഫോൺ നിശബ്ദമാക്കുക</string>
-    <string name="checkbox_phone_off_desc">എല്ലാ ഫോൺ ശബ്ദങ്ങളും നിശബ്ദമാക്കുക.</string>
     <string name="copy_prefix">പകർപ്പ്</string>
     <string name="crash_dialog_comment_prompt">ഓപ്ഷണൽ: ഏത് പ്രവർത്തനമാണ് പിശകിന് കാരണമായത്?</string>
     <string name="crash_dialog_ok_toast">നിങ്ങളുടെ സഹായത്തിന് വളരെ നന്ദി!</string>
@@ -82,15 +80,6 @@
     <string name="ok">ശരി</string>
     <string name="pref_desc_brightness">ധ്യാനസമയത്ത് ഡിസ്പ്ലേയുടെ തെളിച്ചം</string>
     <string name="pref_get_messages">പുതിയ സന്ദേശങ്ങൾക്കായി ഇപ്പോൾ പരിശോധിക്കുക</string>
-    <string name="pref_mute_mode">റിംഗ് ടോണും അറിയിപ്പുകളും</string>
-    <string name="pref_mute_mode_none">നിശബ്ദത</string>
-    <string name="pref_mute_mode_none_desc">ഫോൺ കോളുകൾക്കും അറിയിപ്പുകൾക്കും റിംഗ് ടോണും വൈബ്രേഷനുമില്ല</string>
-    <string name="pref_mute_mode_pref">റിംഗ് ടോണിനും അറിയിപ്പുകൾക്കുമുള്ള ക്രമീകരണങ്ങൾ</string>
-    <string name="pref_mute_mode_vibrate">വൈബ്രേഷൻ മാത്രം</string>
-    <string name="pref_mute_mode_vibrate_desc">ഫോൺ കോളുകൾക്കും അറിയിപ്പുകൾക്കും വൈബ്രേറ്റ് മാത്രം ചെയ്യുക</string>
-    <string name="pref_mute_mode_vibrate_sound">റിംഗ് ടോണും വൈബ്രേഷനും</string>
-    <string name="pref_mute_mode_vibrate_sound_desc">റിംഗ് ടോണും വൈബ്രേഷനും പ്ലേ ചെയ്യുക</string>
-    <string name="pref_muting">നിശബ്ദ ക്രമീകരണങ്ങൾ</string>
     <string name="pref_sum_backup">നിങ്ങളുടെ സെഷനുകളുടെയും ശബ്ദങ്ങളുടെയും ബാക്കപ്പ് നിങ്ങളുടെ SD-കാർഡിൽ സംരക്ഷിക്കുക.</string>
     <string name="pref_sum_bad_removal">ആദ്യം അൺമൗണ്ട് ചെയ്യാതെ SD കാർഡ് നീക്കംചെയ്തു.</string>
     <string name="pref_sum_checking">SD-കാർഡ് നിലവിൽ പരിശോധിച്ചുകൊണ്ടിരിക്കുകയാണ്</string>
@@ -126,8 +115,6 @@
     <string name="content_desc_session_actions">സെഷൻ പ്രവർത്തനങ്ങൾ</string>
     <string name="session_list_unnamed_entry">പേരില്ലാത്ത സെഷൻ</string>
     <string name="status_bar_notification_info_overflow">999+</string>
-    <string name="test_mute_perm_request">നിങ്ങളുടെ ഫോൺ നിശബ്ദമാക്കാൻ ആപ്പിന് നിലവിൽ അനുമതിയില്ല. ഇത് മാറ്റാൻ ക്രമീകരണങ്ങൾ തുറക്കണോ?</string>
-    <string name="text_cant_mute">ഈ ആപ്പിനെ നിശബ്ദമാക്കാൻ നിങ്ങളുടെ ഫോൺ അനുവദിക്കുന്നില്ല.</string>
     <string name="text_no_notify_access_settings">നിശബ്ദമാക്കാൻ അനുവദിക്കുന്നതിനുള്ള സാധാരണ ക്രമീകരണങ്ങൾ നിങ്ങളുടെ ഫോണിലില്ല.</string>
     <string name="text_no_sections">വിഭാഗങ്ങളൊന്നും നിർവചിച്ചിട്ടില്ല.</string>
     <string name="text_question_delete_session">തിരഞ്ഞെടുത്ത സെഷൻ ഇല്ലാതാക്കണോ?</string>
@@ -140,7 +127,6 @@
     <string name="time_section_remaining">വിഭാഗം ബാക്കി</string>
     <string name="time_session_elapsed">സെഷൻ കഴിഞ്ഞു</string>
     <string name="time_session_remaining">സെഷൻ ബാക്കി</string>
-    <string name="title_mute_perm_request">അനുമതി ലഭ്യമല്ല</string>
     <string name="title_question_delete_session">സെഷൻ ഇല്ലാതാക്കണോ?</string>
     <string name="title_volume_bells">മണിയുടെ ശബ്ദം</string>
     <string name="unnamed">പേരില്ലാത്തത്</string>

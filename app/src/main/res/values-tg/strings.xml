@@ -29,8 +29,6 @@
     <string name="caption_zazen_meditation">Медитацияи Зазен</string>
     <string name="checkbox_keep_screen_on">Экранро фаъол нигоҳ доред</string>
     <string name="checkbox_no_server_messages">Намоиши Ахбор</string>
-    <string name="checkbox_phone_off">Хомӯш кардани телефон</string>
-    <string name="checkbox_phone_off_desc">Ҳама садоҳои телефонро хомӯш кунед.</string>
     <string name="copy_prefix">Нусхаи</string>
     <string name="crash_dialog_comment_prompt">Ихтиёрӣ: Кадом амал боиси хатогӣ шуд?</string>
     <string name="crash_dialog_ok_toast">Ташаккури зиёд барои кӯмакатон!</string>
@@ -82,15 +80,6 @@
     <string name="ok">ДУРУСТ</string>
     <string name="pref_desc_brightness">Равшании дисплей ҳангоми мулоҳиза</string>
     <string name="pref_get_messages">Ҳоло Паёмҳои навро тафтиш кунед</string>
-    <string name="pref_mute_mode">Оҳанги занг ва огоҳиҳо</string>
-    <string name="pref_mute_mode_none">Хомуш</string>
-    <string name="pref_mute_mode_none_desc">Оҳанги занг ва ларзиш барои зангҳои телефон ва огоҳиҳо нест</string>
-    <string name="pref_mute_mode_pref">Танзимотҳо дар бораи оҳанги занг ва огоҳиҳо</string>
-    <string name="pref_mute_mode_vibrate">Фақат Вибрация</string>
-    <string name="pref_mute_mode_vibrate_desc">Танҳо барои зангҳои телефонӣ ва огоҳиҳо ларзиш кунед (Дар Android 7 (Nougat) кор намекунад - мисли танзимоти хомӯшӣ рафтор мекунад)</string>
-    <string name="pref_mute_mode_vibrate_sound">Оҳанги занг ва ларзиш</string>
-    <string name="pref_mute_mode_vibrate_sound_desc">Оҳанги занг ва ларзишро бозӣ кунед</string>
-    <string name="pref_muting">Танзимоти хомӯш</string>
     <string name="pref_sum_backup">Нусхаи эҳтиётии сессияҳо ва садоҳои худро дар корти SD-и худ захира кунед.</string>
     <string name="pref_sum_bad_removal">Корти SD бидуни ҷудо кардани аввал хориҷ карда шуд.</string>
     <string name="pref_sum_checking">Дар айни замон корти SD тафтиш карда мешавад</string>
@@ -126,8 +115,6 @@
     <string name="content_desc_session_actions">Амалҳои сессия</string>
     <string name="session_list_unnamed_entry">Сессияи беном</string>
     <string name="status_bar_notification_info_overflow">999+</string>
-    <string name="test_mute_perm_request">Дар айни замон ба барнома иҷозат дода нашудааст, ки телефони шуморо хомӯш кунад. Барои тағир додани ин танзимотро кушоед?</string>
-    <string name="text_cant_mute">Телефони шумо ба ин барнома иҷозат намедиҳад, ки онро хомӯш кунад. Хомӯш карданро дар ин Танзимоти Барномаҳо хомӯш кунед ё дар Танзимоти телефонҳои худ хомӯширо иҷозат диҳед.</string>
     <string name="text_no_notify_access_settings">Чунин ба назар мерасад, ки телефони шумо танзимоти стандартӣ барои иҷозати хомӯш кардани хомӯшӣ надорад. Лутфан танзимоти \"Дастрасӣ халал нарасонед\"-ро дастӣ ҷустуҷӯ кунед ва онро фаъол созед.</string>
     <string name="text_no_sections">Қисмҳо муайян карда нашудаанд.</string>
     <string name="text_question_delete_session">Дар ҳақиқат Сессияи интихобшударо нест кунед?</string>
@@ -140,7 +127,6 @@
     <string name="time_section_remaining">Қисми боқимонда</string>
     <string name="time_session_elapsed">Сессия гузашт</string>
     <string name="time_session_remaining">Сессия мондааст</string>
-    <string name="title_mute_perm_request">Набудани иҷозат</string>
     <string name="title_question_delete_session">Сессия нест карда шавад?</string>
     <string name="title_volume_bells">Ҳаҷми занг</string>
     <string name="unnamed">Бе ном</string>

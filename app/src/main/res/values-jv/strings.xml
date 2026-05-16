@@ -29,8 +29,6 @@
     <string name="caption_zazen_meditation">Meditasi Zazen</string>
     <string name="checkbox_keep_screen_on">Tansah uripake layar</string>
     <string name="checkbox_no_server_messages">Tampilake Warta</string>
-    <string name="checkbox_phone_off">Bisu Telepon</string>
-    <string name="checkbox_phone_off_desc">Bisu kabeh swara telpon.</string>
     <string name="copy_prefix">Salinan saka</string>
     <string name="crash_dialog_comment_prompt">Opsional: Tumindak apa sing nyebabake kesalahan?</string>
     <string name="crash_dialog_ok_toast">Matur nuwun sanget kanggo bantuan sampeyan!</string>
@@ -82,15 +80,6 @@
     <string name="ok">OK</string>
     <string name="pref_desc_brightness">Padhang Layar nalika Meditasi</string>
     <string name="pref_get_messages">Priksa Pesen anyar saiki</string>
-    <string name="pref_mute_mode">Nada dering lan Notifikasi</string>
-    <string name="pref_mute_mode_none">Sepi</string>
-    <string name="pref_mute_mode_none_desc">Ora ana nada dering lan ora ana geter kanggo telpon lan Notifikasi</string>
-    <string name="pref_mute_mode_pref">Setelan babagan Nada dering lan Notifikasi</string>
-    <string name="pref_mute_mode_vibrate">Geter Mung</string>
-    <string name="pref_mute_mode_vibrate_desc">Mung geter kanggo telpon lan Notifikasi</string>
-    <string name="pref_mute_mode_vibrate_sound">Nada dering lan Geter</string>
-    <string name="pref_mute_mode_vibrate_sound_desc">Muter Nada dering lan Geter</string>
-    <string name="pref_muting">Setelan Bisu</string>
     <string name="pref_sum_backup">Simpen serep Sesi lan Swara ing SD-Card.</string>
     <string name="pref_sum_bad_removal">SD-Card dibusak kanthi ora bener.</string>
     <string name="pref_sum_checking">SD-Card lagi dipriksa</string>
@@ -126,8 +115,6 @@
     <string name="content_desc_session_actions">Tumindak sesi</string>
     <string name="session_list_unnamed_entry">Sesi Tanpa Jeneng</string>
     <string name="status_bar_notification_info_overflow">999+</string>
-    <string name="test_mute_perm_request">Aplikasi saiki ora diijini mbisukan telpon sampeyan. Bukak setelan kanggo ngganti iki?</string>
-    <string name="text_cant_mute">Telpon sampeyan ora ngidini Aplikasi iki mbisukan.</string>
     <string name="text_no_notify_access_settings">Telpon sampeyan kayane ora duwe setelan standar kanggo ngidini bisu.</string>
     <string name="text_no_sections">Ora ana Bagean sing ditetepake.</string>
     <string name="text_question_delete_session">Pancen pengin mbusak Sesi sing dipilih?</string>
@@ -140,7 +127,6 @@
     <string name="time_section_remaining">Sisa bagean</string>
     <string name="time_session_elapsed">Sesi wis liwat</string>
     <string name="time_session_remaining">Sisa sesi</string>
-    <string name="title_mute_perm_request">Idin Ora Ana</string>
     <string name="title_question_delete_session">Busak Sesi?</string>
     <string name="title_volume_bells">Volume Lonceng</string>
     <string name="unnamed">Tanpa jeneng</string>

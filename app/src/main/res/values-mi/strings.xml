@@ -29,8 +29,6 @@
     <string name="caption_zazen_meditation">Zazen Whakaaroaro</string>
     <string name="checkbox_keep_screen_on">Kia mau te mata</string>
     <string name="checkbox_no_server_messages">Whakaatu Rongo</string>
-    <string name="checkbox_phone_off">Wahangu Waea</string>
-    <string name="checkbox_phone_off_desc">Wahangu nga oro waea katoa.</string>
     <string name="copy_prefix">Te kape o</string>
     <string name="crash_dialog_comment_prompt">Kōwhiringa: Ko tēhea mahi i hapa ai?</string>
     <string name="crash_dialog_ok_toast">Ka nui te mihi ki a koe mo to awhina!</string>
@@ -82,15 +80,6 @@
     <string name="ok">pai</string>
     <string name="pref_desc_brightness">Te Maama o te Whakaatu i te wa e whakaaroaro ana</string>
     <string name="pref_get_messages">Tirohia mo nga Karere hou inaianei</string>
-    <string name="pref_mute_mode">Tangi tangi me nga Whakamōhiotanga</string>
-    <string name="pref_mute_mode_none">Wahangu</string>
-    <string name="pref_mute_mode_none_desc">Kaore he oro tangi me te wiri mo nga waea waea me nga Panui</string>
-    <string name="pref_mute_mode_pref">Tautuhinga e pa ana ki te tangi oro me nga Whakamōhiotanga</string>
-    <string name="pref_mute_mode_vibrate">Wiri anake</string>
-    <string name="pref_mute_mode_vibrate_desc">Wiri noa mo nga waea waea me nga Whakamōhiotanga (Kare e mahi i runga i te Android 7 (Nougat) - he rite te ahua ki te tautuhinga Wahangu)</string>
-    <string name="pref_mute_mode_vibrate_sound">Te tangi me te Wiri</string>
-    <string name="pref_mute_mode_vibrate_sound_desc">Whakatangihia te Ringtone me te Wiri</string>
-    <string name="pref_muting">Tautuhinga Wahangu</string>
     <string name="pref_sum_backup">Tiakina he taapiri o o Wātū me o Oro ki to Kaari SD.</string>
     <string name="pref_sum_bad_removal">I tangohia te Kaari SD me te kore e tango tuatahi.</string>
     <string name="pref_sum_checking">Kei te tirohia te Kaari SD i tenei wa</string>
@@ -126,8 +115,6 @@
     <string name="content_desc_session_actions">Nga mahi hui</string>
     <string name="session_list_unnamed_entry">Wātū Kore Ingoa</string>
     <string name="status_bar_notification_info_overflow">999+</string>
-    <string name="test_mute_perm_request">I tenei wa kaore e whakaaetia te App ki te wahangu i to waea. Whakatuwheratia nga tautuhinga hei huri i tenei?</string>
-    <string name="text_cant_mute">Kaore to Waea e tuku i tenei App ki te wahangu. Monokia te wahangu i roto i tenei Tautuhinga Taupānga, me whakaae ranei te wahangu ki o Tautuhinga Waea.</string>
     <string name="text_no_notify_access_settings">Ko te ahua karekau o to Waea i nga tautuhinga paerewa hei tuku i te wahangu. Tena koa tirohia a ringa mo te \"Kaua e Whakararuraru i te Uru\" Tautuhinga ka taea.</string>
     <string name="text_no_sections">Kaore he waahanga kua tautuhia.</string>
     <string name="text_question_delete_session">Me mukua te Wātū kua tohua?</string>
@@ -140,7 +127,6 @@
     <string name="time_section_remaining">Te wahanga e toe ana</string>
     <string name="time_session_elapsed">Kua pau te wahanga</string>
     <string name="time_session_remaining">Wātū e toe ana</string>
-    <string name="title_mute_perm_request">Ngaro Whakaaetanga</string>
     <string name="title_question_delete_session">Mukua Wātū?</string>
     <string name="title_volume_bells">Rōrahi Pere</string>
     <string name="unnamed">Kore ingoa</string>

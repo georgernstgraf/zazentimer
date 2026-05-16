@@ -28,8 +28,6 @@
     <string name="caption_zazen_meditation">Gutekereza kwa Zazen</string>
     <string name="checkbox_keep_screen_on">Komeza ecran kuri</string>
     <string name="checkbox_no_server_messages">Erekana Amakuru</string>
-    <string name="checkbox_phone_off">Terefone</string>
-    <string name="checkbox_phone_off_desc">Hindura amajwi yose ya terefone.</string>
     <string name="copy_prefix">Kopi ya</string>
     <string name="crash_dialog_comment_prompt">Ibyifuzo: Ni ikihe gikorwa cyateje ikosa?</string>
     <string name="crash_dialog_ok_toast">Urakoze cyane kubufasha bwawe!</string>
@@ -81,15 +79,6 @@
     <string name="ok">Nibyo</string>
     <string name="pref_desc_brightness">Ubwiza bwo Kwerekana mugihe cyo Gutekereza</string>
     <string name="pref_get_messages">Reba ubutumwa bushya ubu</string>
-    <string name="pref_mute_mode">Ijwi ry\'impeta n\'amatangazo</string>
-    <string name="pref_mute_mode_none">Guceceka</string>
-    <string name="pref_mute_mode_none_desc">Nta majwi y\'impeta kandi nta kunyeganyega kuri terefone no Kumenyesha</string>
-    <string name="pref_mute_mode_pref">Igenamiterere ryerekeye amajwi n\'impeta</string>
-    <string name="pref_mute_mode_vibrate">Kunyeganyega gusa</string>
-    <string name="pref_mute_mode_vibrate_desc">Gusa kunyeganyega kuri terefone no Kumenyesha (Ntabwo ikora kuri Android 7 (Nougat) - yitwara nko guceceka)</string>
-    <string name="pref_mute_mode_vibrate_sound">Ijwi ry\'impeta no kunyeganyega</string>
-    <string name="pref_mute_mode_vibrate_sound_desc">Kina amajwi y\'impeta no kunyeganyega</string>
-    <string name="pref_muting">Igenamiterere</string>
     <string name="pref_sum_backup">Bika ibikubiyemo byamasomo yawe n\'amajwi kuri SD-Ikarita yawe.</string>
     <string name="pref_sum_bad_removal">SD Ikarita yakuweho itabanje kubarwa.</string>
     <string name="pref_sum_checking">SD-Ikarita irasuzumwa muri iki gihe</string>
@@ -124,8 +113,6 @@
     <string name="content_desc_session_actions">Ibikorwa</string>
     <string name="session_list_unnamed_entry">Isomo ritiriwe</string>
     <string name="status_bar_notification_info_overflow">999+</string>
-    <string name="test_mute_perm_request">Kugeza ubu Porogaramu ntiyemerewe gucecekesha terefone yawe. Fungura igenamiterere kugirango uhindure ibi?</string>
-    <string name="text_cant_mute">Terefone yawe ntabwo yemerera iyi App kuyicecekesha. Hagarika gucecekesha muriyi porogaramu igenamigambi cyangwa wemerere guhinduka muri Igenamiterere rya Terefone yawe.</string>
     <string name="text_no_notify_access_settings">Terefone yawe isa nkaho idafite igenamiterere risanzwe ryemerera guhinduka. Nyamuneka reba intoki kuri \"Ntugahungabanye Access\" Gushiraho no kubikora.</string>
     <string name="text_no_sections">Nta bice byasobanuwe.</string>
     <string name="text_question_delete_session">Mubyukuri gusiba Isomo ryatoranijwe?</string>
@@ -138,7 +125,6 @@
     <string name="time_section_remaining">Igice gisigaye</string>
     <string name="time_session_elapsed">Isomo ryararangiye</string>
     <string name="time_session_remaining">Isomo risigaye</string>
-    <string name="title_mute_perm_request">Kubura Uruhushya</string>
     <string name="title_question_delete_session">Gusiba Isomo?</string>
     <string name="title_volume_bells">Inzogera</string>
     <string name="unnamed">Amazina</string>

@@ -29,8 +29,6 @@
     <string name="caption_zazen_meditation">Ŋäcdɛ kɛ kui̱i̱ kä tin ca la̱t</string>
     <string name="checkbox_keep_screen_on">Kä la̱tdɛ kɛ ta̱a̱ in te nhial</string>
     <string name="checkbox_no_server_messages">Nyuuthni tin pay tuɔɔk</string>
-    <string name="checkbox_phone_off">Lɛlɛ telefɔɔdu</string>
-    <string name="checkbox_phone_off_desc">Ɣän laa la̱tdä kɛ thɛl-pi̱ɔ̱n.</string>
     <string name="copy_prefix">Copy of</string>
     <string name="crash_dialog_comment_prompt">Li̱e̱th: Ɛŋu mi̱ ci̱ tuɔɔk kä duer ɛmɔ?</string>
     <string name="crash_dialog_ok_toast">Kɛ ɣöö ci̱kɛ luäkdu la̱t!</string>
@@ -82,15 +80,6 @@
     <string name="ok">OK</string>
     <string name="pref_desc_brightness">Brightness of the Display during Meditation</string>
     <string name="pref_get_messages">Check for new Messages now</string>
-    <string name="pref_mute_mode">Ring tone and Notifications</string>
-    <string name="pref_mute_mode_none">Silence</string>
-    <string name="pref_mute_mode_none_desc">No ring tone and no vibration for phone calls and Notifications</string>
-    <string name="pref_mute_mode_pref">Settings regarding Ring tone and Notifications</string>
-    <string name="pref_mute_mode_vibrate">Only Vibration</string>
-    <string name="pref_mute_mode_vibrate_desc">Only vibrate for phone calls and Notifications (Does not work on Android 7 (Nougat) - behaves like the Silence setting)</string>
-    <string name="pref_mute_mode_vibrate_sound">Ring tone and Vibration</string>
-    <string name="pref_mute_mode_vibrate_sound_desc">Play Ring tone and Vibration</string>
-    <string name="pref_muting">Mute Settings</string>
     <string name="pref_sum_backup">Save a backup of your Sessions and Sounds to your SD-Card.</string>
     <string name="pref_sum_bad_removal">SD Card was removed without being unmounted first.</string>
     <string name="pref_sum_checking">SD-Card is being checked at the moment</string>
@@ -126,8 +115,6 @@
     <string name="content_desc_session_actions">Session actions</string>
     <string name="session_list_unnamed_entry">Unnamed Session</string>
     <string name="status_bar_notification_info_overflow">999+</string>
-    <string name="test_mute_perm_request">The App is currently not allowed to mute your phone. Open the settings to change this?</string>
-    <string name="text_cant_mute">Your Phone does not allow this App to mute it. Disable muting in this Apps Settings or allow muting in your Phones Settings.</string>
     <string name="text_no_notify_access_settings">Your Phone does not seem to have the standard settings to allow muting. Please look manually for the \"Do not Disturb Access\" Setting and enable it.</string>
     <string name="text_no_sections">No Sections defined.</string>
     <string name="text_question_delete_session">Really delete the selected Session?</string>
@@ -140,7 +127,6 @@
     <string name="time_section_remaining">Section remaining</string>
     <string name="time_session_elapsed">Session elapsed</string>
     <string name="time_session_remaining">Session remaining</string>
-    <string name="title_mute_perm_request">Missing Permission</string>
     <string name="title_question_delete_session">Delete Session?</string>
     <string name="title_volume_bells">Bell Volume</string>
     <string name="unnamed">Unnamed</string>

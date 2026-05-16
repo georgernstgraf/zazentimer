@@ -1,6 +1,5 @@
 package at.priv.graf.zazentimer
 
-import android.content.SharedPreferences
 import android.os.Build
 import android.os.SystemClock
 import android.util.Log
@@ -50,13 +49,6 @@ class MeditationServiceTest {
         IdlingRegistry.getInstance().register(meditationIdlingResource)
         device = UiDevice.getInstance(InstrumentationRegistry.getInstrumentation())
         activityRule.scenario.onActivity { activity ->
-            val pref: SharedPreferences = ZazenTimerActivity.getPreferences(activity)
-            pref
-                .edit()
-                .putBoolean("mute_mode_none", false)
-                .putBoolean("mute_mode_vibrate", false)
-                .putBoolean("mute_mode_vibrate_sound", true)
-                .apply()
             if (runBlocking { activity.dbOperations.readSessions().isEmpty() } ||
                 runBlocking {
                     val sessions = activity.dbOperations.readSessions()

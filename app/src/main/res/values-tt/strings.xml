@@ -28,8 +28,6 @@
     <string name="caption_zazen_meditation">Зазен Медитация</string>
     <string name="checkbox_keep_screen_on">Экранны саклагыз</string>
     <string name="checkbox_no_server_messages">Яңалыклар күрсәтү</string>
-    <string name="checkbox_phone_off">Телефон</string>
-    <string name="checkbox_phone_off_desc">Барлык телефон тавышларын тавышсыз калдырыгыз.</string>
     <string name="copy_prefix">Күчермәсе</string>
     <string name="crash_dialog_comment_prompt">Ихтимал: Кайсы эш хата җибәрде?</string>
     <string name="crash_dialog_ok_toast">Ярдәмегез өчен бик зур рәхмәт!</string>
@@ -81,15 +79,6 @@
     <string name="ok">Ярар</string>
     <string name="pref_desc_brightness">Медитация вакытында дисплейның яктылыгы</string>
     <string name="pref_get_messages">Яңа хәбәрләрне хәзер тикшерегез</string>
-    <string name="pref_mute_mode">Кыңгырау тоны һәм хәбәрләр</string>
-    <string name="pref_mute_mode_none">Тынычлык</string>
-    <string name="pref_mute_mode_none_desc">Шалтырату тоны һәм телефоннан шалтыратулар һәм хәбәрләр өчен тибрәнү юк</string>
-    <string name="pref_mute_mode_pref">Кыңгырау тоны һәм хәбәрләр турында көйләүләр</string>
-    <string name="pref_mute_mode_vibrate">Тибрәнү генә</string>
-    <string name="pref_mute_mode_vibrate_desc">Телефоннан шалтыратулар һәм хәбәрләр өчен тибрәнү (Android 7 (Nougat) эшләми) - Тынычлык көйләү кебек эш итә)</string>
-    <string name="pref_mute_mode_vibrate_sound">Кыңгырау тоны һәм тибрәнү</string>
-    <string name="pref_mute_mode_vibrate_sound_desc">Кыңгырау тоны һәм тибрәнү уйнагыз</string>
-    <string name="pref_muting">Тавышсыз көйләүләр</string>
     <string name="pref_sum_backup">SD-картагызда сессияләр һәм тавышларның резервын саклагыз.</string>
     <string name="pref_sum_bad_removal">SD Card башта сансыз чыгарылды.</string>
     <string name="pref_sum_checking">SD-Card хәзерге вакытта тикшерелә</string>
@@ -125,8 +114,6 @@
     <string name="content_desc_session_actions">Сессия чаралары</string>
     <string name="session_list_unnamed_entry">Исемсез сессия</string>
     <string name="status_bar_notification_info_overflow">999+</string>
-    <string name="test_mute_perm_request">Кушымта хәзерге вакытта телефоныгызны телсез калдырырга рөхсәт ителми. Моны үзгәртү өчен көйләүләрне ачыгыз?</string>
-    <string name="text_cant_mute">Сезнең Телефон бу кушымтаны тавышсыз калдырырга рөхсәт итми. Бу кушымталар көйләүләрендә сүндерүне сүндерегез яки Телефон көйләүләрендә тавышны рөхсәт итегез.</string>
     <string name="text_no_notify_access_settings">Сезнең Телефонда сүндерү өчен стандарт көйләүләр юк кебек. Зинһар, \" өчен кул белән карагыз, Access\"ны бозмагыз.</string>
     <string name="text_no_sections">Бүлекләр билгеләнмәгән.</string>
     <string name="text_question_delete_session">Сайланган сессияне чыннан да бетерәсезме?</string>
@@ -139,7 +126,6 @@
     <string name="time_section_remaining">Бүлек калган</string>
     <string name="time_session_elapsed">Сессия үтте</string>
     <string name="time_session_remaining">Сессия калды</string>
-    <string name="title_mute_perm_request">Рөхсәтне югалту</string>
     <string name="title_question_delete_session">Сессияне бетерергә?</string>
     <string name="title_volume_bells">Кыңгырау күләме</string>
     <string name="unnamed">Исемсез</string>

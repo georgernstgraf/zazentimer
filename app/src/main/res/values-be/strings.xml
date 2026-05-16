@@ -29,8 +29,6 @@
     <string name="caption_zazen_meditation">Медытацыя дзадзен</string>
     <string name="checkbox_keep_screen_on">Трымаць экран уключаным</string>
     <string name="checkbox_no_server_messages">Паказаць навіны</string>
-    <string name="checkbox_phone_off">Выключыць тэлефон</string>
-    <string name="checkbox_phone_off_desc">Адключыць усе гукі тэлефона.</string>
     <string name="copy_prefix">Копія</string>
     <string name="crash_dialog_comment_prompt">Дадаткова: якое дзеянне выклікала памылку?</string>
     <string name="crash_dialog_ok_toast">Вялікі дзякуй за дапамогу!</string>
@@ -82,15 +80,6 @@
     <string name="ok">добра</string>
     <string name="pref_desc_brightness">Яркасць дысплея падчас медытацыі</string>
     <string name="pref_get_messages">Праверце наяўнасць новых паведамленняў</string>
-    <string name="pref_mute_mode">Рынгтон і апавяшчэнні</string>
-    <string name="pref_mute_mode_none">Цішыня</string>
-    <string name="pref_mute_mode_none_desc">Няма мелодыі званка і вібрацыі для тэлефонных званкоў і апавяшчэнняў</string>
-    <string name="pref_mute_mode_pref">Налады адносна мелодыі званка і апавяшчэнняў</string>
-    <string name="pref_mute_mode_vibrate">Толькі вібрацыя</string>
-    <string name="pref_mute_mode_vibrate_desc">Вібраваць толькі для тэлефонных званкоў і апавяшчэнняў (не працуе на Android 7 (Nougat) - паводзіць сябе як налада &amp;quot;Цішыня&amp;quot;)</string>
-    <string name="pref_mute_mode_vibrate_sound">Рынгтон і вібрацыя</string>
-    <string name="pref_mute_mode_vibrate_sound_desc">Прайграванне мелодыі званка і вібрацыі</string>
-    <string name="pref_muting">Налады адключэння гуку</string>
     <string name="pref_sum_backup">Захавайце рэзервовую копію вашых сесій і гукаў на вашу SD-карту.</string>
     <string name="pref_sum_bad_removal">SD-карта была выдалена без папярэдняга адключэння.</string>
     <string name="pref_sum_checking">SD-карта ў дадзены момант правяраецца</string>
@@ -126,8 +115,6 @@
     <string name="content_desc_session_actions">Дзеянні сесіі</string>
     <string name="session_list_unnamed_entry">Сеанс без назвы</string>
     <string name="status_bar_notification_info_overflow">больш за 999</string>
-    <string name="test_mute_perm_request">У цяперашні час праграме не дазволена адключаць гук вашага тэлефона. Каб змяніць гэта, адкрыць налады?</string>
-    <string name="text_cant_mute">Ваш тэлефон не дазваляе гэтай праграме адключаць гук. Адключыце адключэнне гуку ў гэтых наладах праграм або дазвольце адключэнне гуку ў наладах вашага тэлефона.</string>
     <string name="text_no_notify_access_settings">Здаецца, у вашым тэлефоне няма стандартных налад, каб дазволіць адключэнне гуку. Пашукайце ўручную параметр \&amp;quot;Не турбаваць доступ\&amp;quot; і ўключыце яго.</string>
     <string name="text_no_sections">Раздзелы не вызначаны.</string>
     <string name="text_question_delete_session">Сапраўды выдаліць выбраную сесію?</string>
@@ -140,7 +127,6 @@
     <string name="time_section_remaining">Раздзел застаўся</string>
     <string name="time_session_elapsed">Сеанс скончыўся</string>
     <string name="time_session_remaining">Сеанс застаўся</string>
-    <string name="title_mute_perm_request">Адсутнічае дазвол</string>
     <string name="title_question_delete_session">Выдаліць сеанс?</string>
     <string name="title_volume_bells">Аб\'ём звона</string>
     <string name="unnamed">Безназоўны</string>

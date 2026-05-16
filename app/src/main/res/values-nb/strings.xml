@@ -29,8 +29,6 @@
     <string name="caption_zazen_meditation">Zazen-meditasjon</string>
     <string name="checkbox_keep_screen_on">Hold skjermen på</string>
     <string name="checkbox_no_server_messages">Vis nyheter</string>
-    <string name="checkbox_phone_off">Lydløs telefon</string>
-    <string name="checkbox_phone_off_desc">Slå av alle telefonlyder.</string>
     <string name="copy_prefix">Kopi av</string>
     <string name="crash_dialog_comment_prompt">Valgfritt: Hvilken handling forårsaket feilen?</string>
     <string name="crash_dialog_ok_toast">Takk for hjelpen!</string>
@@ -82,15 +80,6 @@
     <string name="ok">OK</string>
     <string name="pref_desc_brightness">Skjermens lysstyrke under meditasjon</string>
     <string name="pref_get_messages">Se etter nye meldinger nå</string>
-    <string name="pref_mute_mode">Ringetone og varsler</string>
-    <string name="pref_mute_mode_none">Lydløs</string>
-    <string name="pref_mute_mode_none_desc">Ingen ringetone eller vibrasjon for telefonsamtaler og varsler</string>
-    <string name="pref_mute_mode_pref">Innstillinger for ringetone og varsler</string>
-    <string name="pref_mute_mode_vibrate">Kun vibrasjon</string>
-    <string name="pref_mute_mode_vibrate_desc">Vibrer kun for telefonsamtaler og varsler (fungerer ikke på Android 7, fungerer som Lydløs)</string>
-    <string name="pref_mute_mode_vibrate_sound">Ringetone og vibrasjon</string>
-    <string name="pref_mute_mode_vibrate_sound_desc">Spill ringetone og vibrer</string>
-    <string name="pref_muting">Lydinnstillinger</string>
     <string name="pref_sum_backup">Lagre en sikkerhetskopi av økter og lyder på SD-kortet.</string>
     <string name="pref_sum_bad_removal">SD-kortet ble fjernet uten å bli løst ut først.</string>
     <string name="pref_sum_checking">SD-kortet kontrolleres</string>
@@ -126,8 +115,6 @@
     <string name="content_desc_session_actions">Økthandlinger</string>
     <string name="session_list_unnamed_entry">Uten navn økt</string>
     <string name="status_bar_notification_info_overflow">999+</string>
-    <string name="test_mute_perm_request">Appen har ikke tillatelse til å gjøre telefonen lydløs. Åpne innstillingene for å endre dette?</string>
-    <string name="text_cant_mute">Telefonen tillater ikke at appen gjør den lydløs. Deaktiver lydløs i appens innstillinger eller tillat det i telefonens innstillinger.</string>
     <string name="text_no_notify_access_settings">Telefonen ser ut til å mangle standardinnstillinger for lydløs. Finn innstillingen \"Ikke forstyrr-tilgang\" og aktiver den.</string>
     <string name="text_no_sections">Ingen seksjoner definert.</string>
     <string name="text_question_delete_session">Slett valgt økt?</string>
@@ -140,7 +127,6 @@
     <string name="time_section_remaining">Seksjonstid gjenstår</string>
     <string name="time_session_elapsed">Økttid</string>
     <string name="time_session_remaining">Økttid gjenstår</string>
-    <string name="title_mute_perm_request">Tillatelse mangler</string>
     <string name="title_question_delete_session">Slett økt?</string>
     <string name="title_volume_bells">Klokkevolum</string>
     <string name="unnamed">Uten navn</string>

@@ -18,7 +18,7 @@ It serves as the single source of truth for UI test coverage.
 | `SessionCrudTest.java` | `testOpenEditSession()`, `testUpdateSessionMetadata()`, `testDeleteSession()`, `testDeleteCancel()` | 🟢 |
 | `MainScreenNavigationTest.java` | `testSessionSelectionHighlight()`, `testAddSessionViaMenu()`, `testBackArrowFromMeditation()`, `testBackArrowFromEdit()`, `testScreenRotation()` | 🟢 |
 | `SectionEditTest.java` | `testAddNewSection()`, `testEditSectionConfig()`, `testBellSoundPlayback()` | 🟢 |
-| `SettingsTest.java` | `testOpenSettings()`, `testThemeToggle()`, `testMuteSettings()`, `testBrightnessAdjustment()`, `testBackup()`, `testRestore()` | 🟢 |
+| `SettingsTest.java` | `testOpenSettings()`, `testThemeToggle()`, `testBrightnessAdjustment()`, `testBackup()`, `testRestore()` | 🟢 |
 | `MeditationServiceTest.java` | `testStopMeditationConfirmation()`, `testTimerCountdown()` | 🟢 |
 | `utils/DatabaseIdlingResource.java` | (utility, not a test) | — |
 
@@ -50,7 +50,6 @@ It serves as the single source of truth for UI test coverage.
 | :--- | :--- | :--- | :--- | :--- |
 | **Open Settings** | Menu -> Settings | Settings screen opens without crashing | `InflateException` from legacy `DialogPreference` | 🟢 |
 | **Theme Toggle** | Tap "Theme" -> Select "Dark Theme" | Application UI immediately switches to Dark Theme | | 🟢 |
-| **Mute Settings** | Tap "Mute Settings" checkboxes | Preferences update correctly; mutual exclusivity verified | Nested PreferenceScreen issue (Fixed by flattening) | 🟢 |
 | **Brightness Adjustment** | Toggle "Keep screen on" -> adjust "Brightness" SeekBar | Preference updates; no crashes | Replaces former "Volume Adjustment" (bell volume preference removed in #60) | 🟢 |
 | **Backup to SD** | Tap "Create Backup" | Prompts for location via SAF; intent verified | Legacy Storage Access issues | 🟢 |
 | **Restore from Backup** | Tap "Restore from Backup" -> confirm dialog | Prompts for file via SAF; intent verified | | 🟢 |

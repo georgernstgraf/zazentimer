@@ -29,8 +29,6 @@
     <string name="caption_zazen_meditation">झझेन ध्यान</string>
     <string name="checkbox_keep_screen_on">स्क्रीन चालू ठेवा</string>
     <string name="checkbox_no_server_messages">बातम्या दाखवा</string>
-    <string name="checkbox_phone_off">फोन म्यूट करा</string>
-    <string name="checkbox_phone_off_desc">सर्व फोन ध्वनी म्यूट करा.</string>
     <string name="copy_prefix">ची प्रत</string>
     <string name="crash_dialog_comment_prompt">पर्यायी: कोणत्या कृतीमुळे त्रुटी आली?</string>
     <string name="crash_dialog_ok_toast">मदतीबद्दल तुमचे खूप खूप आभार!</string>
@@ -82,15 +80,6 @@
     <string name="ok">ठीक आहे</string>
     <string name="pref_desc_brightness">ध्यानादरम्यान डिस्प्लेची चमक</string>
     <string name="pref_get_messages">आता नवीन संदेशांसाठी तपासा</string>
-    <string name="pref_mute_mode">रिंग टोन आणि सूचना</string>
-    <string name="pref_mute_mode_none">शांतता</string>
-    <string name="pref_mute_mode_none_desc">फोन कॉल आणि सूचनांसाठी कोणताही रिंग टोन आणि कंपन नाही</string>
-    <string name="pref_mute_mode_pref">रिंग टोन आणि सूचनांबाबत सेटिंग्ज</string>
-    <string name="pref_mute_mode_vibrate">केवळ कंपन</string>
-    <string name="pref_mute_mode_vibrate_desc">फोन कॉल आणि सूचनांसाठी फक्त कंपन करा</string>
-    <string name="pref_mute_mode_vibrate_sound">रिंग टोन आणि कंपन</string>
-    <string name="pref_mute_mode_vibrate_sound_desc">रिंग टोन आणि कंपन प्ले करा</string>
-    <string name="pref_muting">म्यूट सेटिंग्ज</string>
     <string name="pref_sum_backup">तुमच्या सत्रांचा आणि ध्वनींचा बॅकअप तुमच्या SD-कार्डवर सेव्ह करा.</string>
     <string name="pref_sum_bad_removal">आधी अनमाउंट न करता SD कार्ड काढले गेले.</string>
     <string name="pref_sum_checking">SD-कार्ड सध्या तपासले जात आहे</string>
@@ -126,8 +115,6 @@
     <string name="content_desc_session_actions">सत्र क्रिया</string>
     <string name="session_list_unnamed_entry">निनावी सत्र</string>
     <string name="status_bar_notification_info_overflow">999+</string>
-    <string name="test_mute_perm_request">अ‍ॅपला सध्या तुमचा फोन म्यूट करण्याची परवानगी नाही. हे बदलण्यासाठी सेटिंग्ज उघडायच्या?</string>
-    <string name="text_cant_mute">तुमचा फोन या अ‍ॅपला म्यूट करण्याची परवानगी देत नाही.</string>
     <string name="text_no_notify_access_settings">तुमच्या फोनमध्ये म्यूट करण्याची परवानगी देणारी मानक सेटिंग्ज दिसत नाहीत.</string>
     <string name="text_no_sections">कोणतेही विभाग परिभाषित केलेले नाहीत.</string>
     <string name="text_question_delete_session">खरोखर निवडलेले सत्र हटवायचे?</string>
@@ -140,7 +127,6 @@
     <string name="time_section_remaining">विभाग उर्वरित</string>
     <string name="time_session_elapsed">सत्र निघून गेले</string>
     <string name="time_session_remaining">सत्र उर्वरित</string>
-    <string name="title_mute_perm_request">गहाळ परवानगी</string>
     <string name="title_question_delete_session">सत्र हटवायचे?</string>
     <string name="title_volume_bells">बेल व्हॉल्यूम</string>
     <string name="unnamed">निनावी</string>

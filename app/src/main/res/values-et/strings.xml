@@ -27,8 +27,6 @@
     <string name="caption_zazen_meditation">Zazeni meditatsioon</string>
     <string name="checkbox_keep_screen_on">Hoia ekraan sees</string>
     <string name="checkbox_no_server_messages">Näita uudiseid</string>
-    <string name="checkbox_phone_off">Vaigista telefon</string>
-    <string name="checkbox_phone_off_desc">Vaigista kõik telefonihelid.</string>
     <string name="copy_prefix">Koopia:</string>
     <string name="crash_dialog_comment_prompt">Valikuline: milline toiming põhjustas vea?</string>
     <string name="crash_dialog_ok_toast">Suur tänu abi eest!</string>
@@ -80,15 +78,6 @@
     <string name="ok">OK</string>
     <string name="pref_desc_brightness">Ekraani heledus meditatsiooni ajal</string>
     <string name="pref_get_messages">Kontrolli uusi sõnumeid kohe</string>
-    <string name="pref_mute_mode">Helin ja teavitused</string>
-    <string name="pref_mute_mode_none">Vaikus</string>
-    <string name="pref_mute_mode_none_desc">Kõnede ja teavituste helin ja vibratsioon puudub</string>
-    <string name="pref_mute_mode_pref">Helina ja teavituste seaded</string>
-    <string name="pref_mute_mode_vibrate">Ainult vibratsioon</string>
-    <string name="pref_mute_mode_vibrate_desc">Vibreerib ainult kõnede ja teavituste korral (ei tööta Android 7-s)</string>
-    <string name="pref_mute_mode_vibrate_sound">Helin ja vibratsioon</string>
-    <string name="pref_mute_mode_vibrate_sound_desc">Mängi helinat ja vibreeri</string>
-    <string name="pref_muting">Vaigistuse seaded</string>
     <string name="pref_sum_backup">Salvestage oma seansside ja helide varukoopia SD-kaardile.</string>
     <string name="pref_sum_bad_removal">SD-kaart eemaldati ilma eelneva lahtiühendamiseta.</string>
     <string name="pref_sum_checking">SD-kaarti kontrollitakse praegu</string>
@@ -123,8 +112,6 @@
     <string name="content_desc_section_actions">Osa toimingud</string>
     <string name="content_desc_session_actions">Seansi toimingud</string>
     <string name="session_list_unnamed_entry">Nimetu seanss</string>
-    <string name="test_mute_perm_request">Rakendusel pole praegu lubatud teie telefoni vaigistada. Avage seaded selle muutmiseks?</string>
-    <string name="text_cant_mute">Teie telefon ei luba sellel rakendusel seda vaigistada. Keelake vaigistamine rakenduse seadetes või lubage see telefoni seadetes.</string>
     <string name="text_no_notify_access_settings">Tundub, et teie telefonil puuduvad standardseaded vaigistamise lubamiseks. Otsige käsitsi üles seade \"Ära sega juurdepääs\" ja lubage see.</string>
     <string name="text_no_sections">Osi pole määratletud.</string>
     <string name="text_question_delete_session">Kas tõesti kustutada valitud seanss?</string>
@@ -137,7 +124,6 @@
     <string name="time_section_remaining">Osast jäänud</string>
     <string name="time_session_elapsed">Seansist möödunud</string>
     <string name="time_session_remaining">Seansist jäänud</string>
-    <string name="title_mute_perm_request">Puuduv luba</string>
     <string name="title_question_delete_session">Kas kustutada seanss?</string>
     <string name="title_volume_bells">Kausi helitugevus</string>
     <string name="unnamed">Nimetu</string>

@@ -27,8 +27,6 @@
     <string name="caption_zazen_meditation">Dzeno meditacija</string>
     <string name="checkbox_keep_screen_on">Palikti ekraną įjungtą</string>
     <string name="checkbox_no_server_messages">Rodyti naujienas</string>
-    <string name="checkbox_phone_off">Nutildyti telefoną</string>
-    <string name="checkbox_phone_off_desc">Nutildyti visus telefono garsus.</string>
     <string name="copy_prefix">Kopija:</string>
     <string name="crash_dialog_comment_prompt">Neprivaloma: koks veiksmas sukėlė klaidą?</string>
     <string name="crash_dialog_ok_toast">Labai ačiū už jūsų pagalbą!</string>
@@ -80,15 +78,6 @@
     <string name="ok">Gerai</string>
     <string name="pref_desc_brightness">Ekrano ryškumas meditacijos metu</string>
     <string name="pref_get_messages">Tikrinti naujus pranešimus dabar</string>
-    <string name="pref_mute_mode">Skambėjimo tonas ir pranešimai</string>
-    <string name="pref_mute_mode_none">Tyla</string>
-    <string name="pref_mute_mode_none_desc">Nėra skambėjimo tono ir vibracijos skambučiams bei pranešimams</string>
-    <string name="pref_mute_mode_pref">Skambėjimo tono ir pranešimų nustatymai</string>
-    <string name="pref_mute_mode_vibrate">Tik vibracija</string>
-    <string name="pref_mute_mode_vibrate_desc">Vibruoti tik gavus skambučius ir pranešimus (neveikia „Android 7“)</string>
-    <string name="pref_mute_mode_vibrate_sound">Skambėjimo tonas ir vibracija</string>
-    <string name="pref_mute_mode_vibrate_sound_desc">Leisti skambėjimo toną ir vibruoti</string>
-    <string name="pref_muting">Nutildymo nustatymai</string>
     <string name="pref_sum_backup">Išsaugoti seansų ir garsų atsarginę kopiją SD kortelėje.</string>
     <string name="pref_sum_bad_removal">SD kortelė buvo išimta jos neatjungus.</string>
     <string name="pref_sum_checking">Šiuo metu SD kortelė tikrinama</string>
@@ -123,8 +112,6 @@
     <string name="content_desc_section_actions">Skyriaus veiksmai</string>
     <string name="content_desc_session_actions">Seanso veiksmai</string>
     <string name="session_list_unnamed_entry">Bevardis seansas</string>
-    <string name="test_mute_perm_request">Programai šiuo metu neleidžiama nutildyti telefono. Atidaryti nustatymus, kad tai pakeistumėte?</string>
-    <string name="text_cant_mute">Telefonas neleidžia šiai programai jo nutildyti. Išjunkite nutildymą šios programos nustatymuose arba leiskite nutildyti telefono nustatymuose.</string>
     <string name="text_no_notify_access_settings">Panašu, kad telefone nėra standartinių nustatymų, leidžiančių nutildyti. Rankiniu būdu raskite „Netrukdyti prieiga“ nustatymą ir jį įgalinkite.</string>
     <string name="text_no_sections">Skyriai nenustatyti.</string>
     <string name="text_question_delete_session">Tikrai ištrinti pasirinktą seansą?</string>
@@ -137,7 +124,6 @@
     <string name="time_section_remaining">Liko iš skyriaus</string>
     <string name="time_session_elapsed">Praėjo nuo seanso</string>
     <string name="time_session_remaining">Liko iš seanso</string>
-    <string name="title_mute_perm_request">Trūksta leidimo</string>
     <string name="title_question_delete_session">Ištrinti seansą?</string>
     <string name="title_volume_bells">Dubenų garsumas</string>
     <string name="unnamed">Bevardis</string>

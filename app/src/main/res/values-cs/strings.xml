@@ -27,8 +27,6 @@
     <string name="caption_zazen_meditation">Zazen meditace</string>
     <string name="checkbox_keep_screen_on">Ponechat obrazovku zapnutou</string>
     <string name="checkbox_no_server_messages">Zobrazit zprávy</string>
-    <string name="checkbox_phone_off">Ztlumit telefon</string>
-    <string name="checkbox_phone_off_desc">Ztlumit všechny zvuky telefonu.</string>
     <string name="copy_prefix">Kopie</string>
     <string name="crash_dialog_comment_prompt">Volitelné: Která akce způsobila chybu?</string>
     <string name="crash_dialog_ok_toast">Moc děkujeme za vaši pomoc!</string>
@@ -80,15 +78,6 @@
     <string name="ok">OK</string>
     <string name="pref_desc_brightness">Jas displeje během meditace</string>
     <string name="pref_get_messages">Zkontrolovat nové zprávy nyní</string>
-    <string name="pref_mute_mode">Vyzváněcí tón a oznámení</string>
-    <string name="pref_mute_mode_none">Ticho</string>
-    <string name="pref_mute_mode_none_desc">Žádný vyzváněcí tón ani vibrace pro hovory a oznámení</string>
-    <string name="pref_mute_mode_pref">Nastavení vyzváněcího tónu a oznámení</string>
-    <string name="pref_mute_mode_vibrate">Pouze vibrace</string>
-    <string name="pref_mute_mode_vibrate_desc">Pouze vibrace pro hovory a oznámení (na Androidu 7 se chová jako Ticho)</string>
-    <string name="pref_mute_mode_vibrate_sound">Vyzváněcí tón a vibrace</string>
-    <string name="pref_mute_mode_vibrate_sound_desc">Přehrát vyzváněcí tón a vibrovat</string>
-    <string name="pref_muting">Nastavení ztlumení</string>
     <string name="pref_sum_backup">Uložit zálohu vašich relací a zvuků na SD kartu.</string>
     <string name="pref_sum_bad_removal">SD karta byla vyjmuta bez předchozího odpojení.</string>
     <string name="pref_sum_checking">SD karta se právě kontroluje</string>
@@ -123,8 +112,6 @@
     <string name="content_desc_section_actions">Akce sekce</string>
     <string name="content_desc_session_actions">Akce relace</string>
     <string name="session_list_unnamed_entry">Nepojmenovaná relace</string>
-    <string name="test_mute_perm_request">Aplikace momentálně nemá povoleno ztlumit telefon. Otevřít nastavení a změnit to?</string>
-    <string name="text_cant_mute">Váš telefon nedovoluje této aplikaci jej ztlumit. Zakažte ztlumení v nastavení této aplikace nebo povolte ztlumení v nastavení telefonu.</string>
     <string name="text_no_notify_access_settings">Váš telefon zřejmě nemá standardní nastavení, které by umožňovalo ztlumení. Najděte ručně nastavení \"Přístup k funkci Nerušit\" a povolte jej.</string>
     <string name="text_no_sections">Nejsou definovány žádné sekce.</string>
     <string name="text_question_delete_session">Opravdu smazat vybranou relaci?</string>
@@ -137,7 +124,6 @@
     <string name="time_section_remaining">Zbývající čas sekce</string>
     <string name="time_session_elapsed">Uplynulý čas relace</string>
     <string name="time_session_remaining">Zbývající čas relace</string>
-    <string name="title_mute_perm_request">Chybějící oprávnění</string>
     <string name="title_question_delete_session">Smazat relaci?</string>
     <string name="title_volume_bells">Hlasitost zvonku</string>
     <string name="unnamed">Bez názvu</string>

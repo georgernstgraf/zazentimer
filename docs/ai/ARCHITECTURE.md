@@ -20,7 +20,6 @@ ZazenTimer is an Android application for timing meditation sessions. It uses a f
 - **WakeLockManager** (`service/`) — Manages screen wake lock lifecycle; extracted from MeditationViewModel
 - **MeditationServiceState** (`service/`) — Static helper for `isServiceRunning()`; extracted from MeditationService
 - **EntityMapper** (`database/`) — Maps between BO and Entity types for Room; extracted from DbOperations
-- **AudioStateManager** (`service/`) — Handles ringer mode mute/unmute during meditation; extracted from Meditation
 - **AlarmScheduler** (`service/`) — Schedules/cancels exact alarms for section transitions; extracted from Meditation
 - **BellPlayer** (`service/`) — Manages MediaPlayer lifecycle for bell playback; extracted from Meditation
 - **TimerAnimator + AnimationRunner** (`views/`) — Animation state machine; extracted from TimerView

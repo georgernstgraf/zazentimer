@@ -29,8 +29,6 @@
     <string name="caption_zazen_meditation">Zazen Meditation</string>
     <string name="checkbox_keep_screen_on">Cùm an sgrion air</string>
     <string name="checkbox_no_server_messages">Seall Naidheachdan</string>
-    <string name="checkbox_phone_off">Mute fòn</string>
-    <string name="checkbox_phone_off_desc">Cuir dheth a h-uile fuaim fòn.</string>
     <string name="copy_prefix">Leth-bhreac de</string>
     <string name="crash_dialog_comment_prompt">Roghainneil: Dè an gnìomh a dh’ adhbhraich a’ mhearachd?</string>
     <string name="crash_dialog_ok_toast">Mòran taing airson do chuideachadh!</string>
@@ -82,15 +80,6 @@
     <string name="ok">ceart gu leòr</string>
     <string name="pref_desc_brightness">Soilleireachd an Taisbeanaidh aig àm meòrachadh</string>
     <string name="pref_get_messages">Thoir sùil airson teachdaireachdan ùra a-nis</string>
-    <string name="pref_mute_mode">Tòn fàinne agus brathan</string>
-    <string name="pref_mute_mode_none">Sàmhchair</string>
-    <string name="pref_mute_mode_none_desc">Gun tòna fàinne agus gun chrathadh airson fiosan fòn agus fiosan</string>
-    <string name="pref_mute_mode_pref">Suidhichidhean a thaobh tòna fàinne agus Brathan</string>
-    <string name="pref_mute_mode_vibrate">A-mhàin Vibration</string>
-    <string name="pref_mute_mode_vibrate_desc">Na bi a ’crith ach airson fiosan fòn agus fiosan (Chan eil e ag obair air Android 7 (Nougat) - gad ghiùlan fhèin mar shuidheachadh Silence)</string>
-    <string name="pref_mute_mode_vibrate_sound">Tòn fàinne agus Vibration</string>
-    <string name="pref_mute_mode_vibrate_sound_desc">Cluich Ring Tone agus Vibration</string>
-    <string name="pref_muting">Mute Settings</string>
     <string name="pref_sum_backup">Sàbhail cùl-taic de na seiseanan is na fuaimean agad air a’ chairt SD agad.</string>
     <string name="pref_sum_bad_removal">Chaidh cairt SD a thoirt air falbh gun a bhith air a chuir a-steach an toiseach.</string>
     <string name="pref_sum_checking">Tha cairt SD ga sgrùdadh an-dràsta</string>
@@ -126,8 +115,6 @@
     <string name="content_desc_session_actions">Gnìomhan seisean</string>
     <string name="session_list_unnamed_entry">Seisean gun ainm</string>
     <string name="status_bar_notification_info_overflow">999+</string>
-    <string name="test_mute_perm_request">Chan eil cead aig an App am fòn agad a chuir dheth an-dràsta. Fosgail na roghainnean gus seo atharrachadh?</string>
-    <string name="text_cant_mute">Cha leig am Fòn agad leis an aplacaid seo a thomadh. Cuir dheth muting anns na roghainnean Apps seo no leig le gluasad anns na roghainnean fòn agad.</string>
     <string name="text_no_notify_access_settings">Chan eil e coltach gu bheil na roghainnean àbhaisteach aig an fhòn agad gus leigeil le gluasad. Feuch an toir thu sùil le làimh airson an suidheachadh \"Na cuir dragh air ruigsinneachd\" agus cuir an comas e.</string>
     <string name="text_no_sections">Chan eil roinnean air am mìneachadh.</string>
     <string name="text_question_delete_session">Dìreach sguab às an t-Seisean a thagh thu?</string>
@@ -140,7 +127,6 @@
     <string name="time_section_remaining">Earrann air fhàgail</string>
     <string name="time_session_elapsed">Chaidh an seisean seachad</string>
     <string name="time_session_remaining">Seisean air fhàgail</string>
-    <string name="title_mute_perm_request">Cead a dhìth</string>
     <string name="title_question_delete_session">Sguab às an t-seisean?</string>
     <string name="title_volume_bells">Meud Bell</string>
     <string name="unnamed">Gun ainm</string>

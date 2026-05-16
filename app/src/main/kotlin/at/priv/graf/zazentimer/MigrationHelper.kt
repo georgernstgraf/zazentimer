@@ -27,36 +27,6 @@ class MigrationHelper(
             scope.launch { convertBellIndices() }
             Log.d(TAG, "done converting Bell Indices")
         }
-        convertPhoneOffPreference()
-    }
-
-    private fun convertPhoneOffPreference() {
-        if (!preferences.contains(ZazenTimerActivity.PREF_KEY_PHONE_OFF)) {
-            return
-        }
-        if (preferences.getBoolean(ZazenTimerActivity.PREF_KEY_PHONE_OFF, true)) {
-            preferences
-                .edit()
-                .putBoolean(
-                    ZazenTimerActivity.PREF_KEY_MUTE_MODE_VIBRATE_SOUND,
-                    false,
-                ).putBoolean(ZazenTimerActivity.PREF_KEY_MUTE_MODE_VIBRATE, false)
-                .putBoolean(ZazenTimerActivity.PREF_KEY_MUTE_MODE_NONE, true)
-                .remove(ZazenTimerActivity.PREF_KEY_PHONE_OFF)
-                .apply()
-        } else {
-            preferences
-                .edit()
-                .putBoolean(
-                    ZazenTimerActivity.PREF_KEY_MUTE_MODE_VIBRATE_SOUND,
-                    true,
-                ).putBoolean(
-                    ZazenTimerActivity.PREF_KEY_MUTE_MODE_VIBRATE,
-                    false,
-                ).putBoolean(ZazenTimerActivity.PREF_KEY_MUTE_MODE_NONE, false)
-                .remove(ZazenTimerActivity.PREF_KEY_PHONE_OFF)
-                .apply()
-        }
     }
 
     @Suppress("LoopWithTooManyJumpStatements")

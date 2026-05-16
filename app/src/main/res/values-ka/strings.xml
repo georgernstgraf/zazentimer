@@ -27,8 +27,6 @@
     <string name="caption_zazen_meditation">ძაძენის მედიტაცია</string>
     <string name="checkbox_keep_screen_on">ეკრანის ჩართულად დატოვება</string>
     <string name="checkbox_no_server_messages">სიახლეების ჩვენება</string>
-    <string name="checkbox_phone_off">ტელეფონის დადუმება</string>
-    <string name="checkbox_phone_off_desc">ტელეფონის ყველა ხმის დადუმება.</string>
     <string name="copy_prefix">ასლი</string>
     <string name="crash_dialog_comment_prompt">არასავალდებულო: რამ გამოიწვია შეცდომა?</string>
     <string name="crash_dialog_ok_toast">დიდი მადლობა დახმარებისთვის!</string>
@@ -80,15 +78,6 @@
     <string name="ok">კარგი</string>
     <string name="pref_desc_brightness">ეკრანის სიკაშკაშე მედიტაციის დროს</string>
     <string name="pref_get_messages">შეამოწმეთ ახალი შეტყობინებები ახლავე</string>
-    <string name="pref_mute_mode">ზარის მელოდია და შეტყობინებები</string>
-    <string name="pref_mute_mode_none">სიჩუმე</string>
-    <string name="pref_mute_mode_none_desc">არ არის ზარის მელოდია და ვიბრაცია</string>
-    <string name="pref_mute_mode_pref">ზარის მელოდიის და შეტყობინებების პარამეტრები</string>
-    <string name="pref_mute_mode_vibrate">მხოლოდ ვიბრაცია</string>
-    <string name="pref_mute_mode_vibrate_desc">მხოლოდ ვიბრაცია ზარებისთვის და შეტყობინებებისთვის</string>
-    <string name="pref_mute_mode_vibrate_sound">ზარის მელოდია და ვიბრაცია</string>
-    <string name="pref_mute_mode_vibrate_sound_desc">ზარის მელოდიის და ვიბრაციის ჩართვა</string>
-    <string name="pref_muting">დადუმების პარამეტრები</string>
     <string name="pref_sum_backup">შეინახეთ სესიებისა და ხმების სარეზერვო ასლი SD ბარათზე.</string>
     <string name="pref_sum_bad_removal">SD ბარათი ამოღებულია მოხსნის გარეშე.</string>
     <string name="pref_sum_checking">SD ბარათი ამჟამად მოწმდება</string>
@@ -124,8 +113,6 @@
     <string name="content_desc_session_actions">სესიის მოქმედებები</string>
     <string name="session_list_unnamed_entry">უსახელო სესია</string>
     <string name="status_bar_notification_info_overflow">999+</string>
-    <string name="test_mute_perm_request">აპლიკაციას ამჟამად არ აქვს ტელეფონის დადუმების უფლება. გახსნათ პარამეტრები ამის შესაცვლელად?</string>
-    <string name="text_cant_mute">თქვენი ტელეფონი არ აძლევს ამ აპლიკაციას დადუმების უფლებას.</string>
     <string name="text_no_notify_access_settings">გთხოვთ ხელით მოძებნოთ "არ შემაწუხოთ" პარამეტრი და ჩართოთ იგი.</string>
     <string name="text_no_sections">სექციები არ არის განსაზღვრული.</string>
     <string name="text_question_delete_session">ნამდვილად გსურთ არჩეული სესიის წაშლა?</string>
@@ -138,7 +125,6 @@
     <string name="time_section_remaining">სექციის დარჩენილი დრო</string>
     <string name="time_session_elapsed">სესიის გასული დრო</string>
     <string name="time_session_remaining">სესიის დარჩენილი დრო</string>
-    <string name="title_mute_perm_request">ნებართვა აკლია</string>
     <string name="title_question_delete_session">წავშალოთ სესია?</string>
     <string name="title_volume_bells">ზარის ხმის დონე</string>
     <string name="unnamed">უსახელო</string>

@@ -29,8 +29,6 @@
     <string name="caption_zazen_meditation">Zazen Meditation</string>
     <string name="checkbox_keep_screen_on">Bildschirm eingeschaltet lassen</string>
     <string name="checkbox_no_server_messages">Neuigkeiten anzeigen</string>
-    <string name="checkbox_phone_off">Telefon stummschalten</string>
-    <string name="checkbox_phone_off_desc">Alle Telefontöne stummschalten.</string>
     <string name="copy_prefix">Kopie von</string>
     <string name="crash_dialog_comment_prompt">Optional: Welche Aktion hat den Fehler verursacht?</string>
     <string name="crash_dialog_ok_toast">Vielen Dank für die Hilfe!</string>
@@ -82,15 +80,6 @@
     <string name="ok">OK</string>
     <string name="pref_desc_brightness">Bildschirmhelligkeit während der Meditation</string>
     <string name="pref_get_messages">Jetzt nach Nachrichten suchen</string>
-    <string name="pref_mute_mode">Klingelton und Benachrichtigungen</string>
-    <string name="pref_mute_mode_none">Lautlos</string>
-    <string name="pref_mute_mode_none_desc">Kein Klingelton und keine Vibration</string>
-    <string name="pref_mute_mode_pref">Einstellungen für Klingelton und Benachrichtigungen</string>
-    <string name="pref_mute_mode_vibrate">Nur Vibration</string>
-    <string name="pref_mute_mode_vibrate_desc">Nur Vibration für Anrufe und Benachrichtigungen (Unter Android 7 wie \"Lautlos\")</string>
-    <string name="pref_mute_mode_vibrate_sound">Klingelton und Vibration</string>
-    <string name="pref_mute_mode_vibrate_sound_desc">Klingelton und Vibration bleiben aktiv</string>
-    <string name="pref_muting">Stummschaltung</string>
     <string name="pref_sum_backup">Sessions und Gongs auf der SD-Karte speichern.</string>
     <string name="pref_sum_bad_removal">Speicher wurde ohne Auswerfen entfernt.</string>
     <string name="pref_sum_checking">Speicher wird überprüft.</string>
@@ -126,8 +115,6 @@
     <string name="content_desc_session_actions">Sessionaktionen</string>
     <string name="session_list_unnamed_entry">Unbenannte Session</string>
     <string name="status_bar_notification_info_overflow">999+</string>
-    <string name="test_mute_perm_request">Die App darf das Telefon derzeit nicht stummschalten. Einstellungen öffnen, um dies zu ändern?</string>
-    <string name="text_cant_mute">Das System blockiert die Stummschaltung. Bitte in den App- oder Systemeinstellungen die Berechtigung erteilen.</string>
     <string name="text_no_notify_access_settings">Das Gerät unterstützt die Standard-Einstellung für Stummschaltung nicht. Bitte den \"Nicht stören\"-Zugriff manuell aktivieren.</string>
     <string name="text_no_sections">Keine Abschnitte definiert.</string>
     <string name="text_question_delete_session">Ausgewählte Session wirklich löschen?</string>
@@ -140,7 +127,6 @@
     <string name="time_section_remaining">Abschnitt (verbleibend)</string>
     <string name="time_session_elapsed">Session (verstrichen)</string>
     <string name="time_session_remaining">Session (verbleibend)</string>
-    <string name="title_mute_perm_request">Fehlende Berechtigung</string>
     <string name="title_question_delete_session">Session löschen?</string>
     <string name="title_volume_bells">Gong-Lautstärke</string>
     <string name="unnamed">Unbenannt</string>

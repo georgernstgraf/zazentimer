@@ -29,8 +29,6 @@
     <string name="caption_zazen_meditation">Zazen медитациясы</string>
     <string name="checkbox_keep_screen_on">Экранды қосулы қалдыру</string>
     <string name="checkbox_no_server_messages">Жаңалықтарды көрсету</string>
-    <string name="checkbox_phone_off">Телефон дыбысын өшіру</string>
-    <string name="checkbox_phone_off_desc">Барлық телефон дыбыстарын өшіру.</string>
     <string name="copy_prefix">Көшірмесі: </string>
     <string name="crash_dialog_comment_prompt">Қосымша: Қандай әрекет қатеге әкелді?</string>
     <string name="crash_dialog_ok_toast">Көмегіңіз үшін көп рахмет!</string>
@@ -82,15 +80,6 @@
     <string name="ok">ЖАРАЙДЫ</string>
     <string name="pref_desc_brightness">Медитация кезіндегі дисплей жарықтығы</string>
     <string name="pref_get_messages">Жаңа хабарларды қазір тексеру</string>
-    <string name="pref_mute_mode">Қоңырау үні және хабарландырулар</string>
-    <string name="pref_mute_mode_none">Үнсіздік</string>
-    <string name="pref_mute_mode_none_desc">Қоңыраулар мен хабарландырулар үшін қоңырау үні мен діріл жоқ</string>
-    <string name="pref_mute_mode_pref">Қоңырау үні мен хабарландырулар параметрлері</string>
-    <string name="pref_mute_mode_vibrate">Тек діріл</string>
-    <string name="pref_mute_mode_vibrate_desc">Қоңыраулар мен хабарландырулар үшін тек діріл</string>
-    <string name="pref_mute_mode_vibrate_sound">Қоңырау үні және діріл</string>
-    <string name="pref_mute_mode_vibrate_sound_desc">Қоңырау үні мен дірілді қосу</string>
-    <string name="pref_muting">Дыбысты өшіру параметрлері</string>
     <string name="pref_sum_backup">Сеанстар мен дыбыстардың сақтық көшірмесін SD картасына сақтаңыз.</string>
     <string name="pref_sum_bad_removal">SD картасы алдын ала ажыратылмай шығарылды.</string>
     <string name="pref_sum_checking">SD картасы қазір тексерілуде</string>
@@ -126,8 +115,6 @@
     <string name="content_desc_session_actions">Сеанс әрекеттері</string>
     <string name="session_list_unnamed_entry">Атаусыз сеанс</string>
     <string name="status_bar_notification_info_overflow">999+</string>
-    <string name="test_mute_perm_request">Қазіргі уақытта қолданбаға телефоныңыздың дыбысын өшіруге рұқсат етілмеген. Осыны өзгерту үшін параметрлерді ашу керек пе?</string>
-    <string name="text_cant_mute">Телефоныңыз бұл қолданбаға дыбысты өшіруге рұқсат бермейді. Бұны қолданба параметрлерінде өшіріңіз немесе телефон параметрлерінде рұқсат етіңіз.</string>
     <string name="text_no_notify_access_settings">Телефоныңызда дыбысты өшіруге рұқсат беретін стандартты параметрлер жоқ сияқты. "Мазаламау рұқсаты" параметрін қолмен іздеп, оны қосыңыз.</string>
     <string name="text_no_sections">Ешқандай бөлім анықталмаған.</string>
     <string name="text_question_delete_session">Таңдалған сеансты шынымен жойғыңыз келе ме?</string>
@@ -140,7 +127,6 @@
     <string name="time_section_remaining">Бөлімнің қалған уақыты</string>
     <string name="time_session_elapsed">Сеанстың өткен уақыты</string>
     <string name="time_session_remaining">Сеанстың қалған уақыты</string>
-    <string name="title_mute_perm_request">Рұқсат жетіспейді</string>
     <string name="title_question_delete_session">Сеансты жою керек пе?</string>
     <string name="title_volume_bells">Қоңырау дыбысының деңгейі</string>
     <string name="unnamed">Атаусыз</string>

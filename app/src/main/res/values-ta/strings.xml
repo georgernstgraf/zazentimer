@@ -29,8 +29,6 @@
     <string name="caption_zazen_meditation">ஜென் தியானம்</string>
     <string name="checkbox_keep_screen_on">திரையை எரியும் படி வை</string>
     <string name="checkbox_no_server_messages">செய்திகளைக் காட்டு</string>
-    <string name="checkbox_phone_off">தொலைபேசியை முடக்கு</string>
-    <string name="checkbox_phone_off_desc">அனைத்து தொலைபேசி ஒலிகளையும் முடக்கு.</string>
     <string name="copy_prefix">நகல்</string>
     <string name="crash_dialog_comment_prompt">விருப்பத்திற்குரியது: எந்த செயல் பிழையை ஏற்படுத்தியது?</string>
     <string name="crash_dialog_ok_toast">உங்கள் உதவிக்கு மிக்க நன்றி!</string>
@@ -82,15 +80,6 @@
     <string name="ok">சரி</string>
     <string name="pref_desc_brightness">தியானத்தின் போது திரையின் பிரகாசம்</string>
     <string name="pref_get_messages">இப்போது புதிய செய்திகளைச் சரிபார்க்கவும்</string>
-    <string name="pref_mute_mode">ரிங்டோன் மற்றும் அறிவிப்புகள்</string>
-    <string name="pref_mute_mode_none">அமைதி</string>
-    <string name="pref_mute_mode_none_desc">தொலைபேசி அழைப்புகள் மற்றும் அறிவிப்புகளுக்கு ரிங்டோன் மற்றும் அதிர்வு இல்லை</string>
-    <string name="pref_mute_mode_pref">ரிங்டோன் மற்றும் அறிவிப்புகள் தொடர்பான அமைப்புகள்</string>
-    <string name="pref_mute_mode_vibrate">அதிர்வு மட்டும்</string>
-    <string name="pref_mute_mode_vibrate_desc">தொலைபேசி அழைப்புகள் மற்றும் அறிவிப்புகளுக்கு அதிர்வு மட்டும் (Android 7 (Nougat) இல் வேலை செய்யாது - அமைதி அமைப்பைப் போல செயல்படுகிறது)</string>
-    <string name="pref_mute_mode_vibrate_sound">ரிங்டோன் மற்றும் அதிர்வு</string>
-    <string name="pref_mute_mode_vibrate_sound_desc">ரிங்டோன் மற்றும் அதிர்வை இயக்கு</string>
-    <string name="pref_muting">முடக்கு அமைப்புகள்</string>
     <string name="pref_sum_backup">உங்கள் அமர்வுகள் மற்றும் ஒலிகளின் காப்புப்பிரதியை உங்கள் SD கார்டில் சேமிக்கவும்.</string>
     <string name="pref_sum_bad_removal">முதலிலியே அகற்றப்படாமல் SD கார்டு அகற்றப்பட்டது.</string>
     <string name="pref_sum_checking">தற்போது SD கார்டு சரிபார்க்கப்படுகிறது</string>
@@ -126,8 +115,6 @@
     <string name="content_desc_session_actions">அமர்வு செயல்கள்</string>
     <string name="session_list_unnamed_entry">பெயரிடப்படாத அமர்வு</string>
     <string name="status_bar_notification_info_overflow">999+</string>
-    <string name="test_mute_perm_request">தற்போது உங்கள் தொலைபேசியை முடக்க இந்தப் பயன்பாட்டிற்கு அனுமதி இல்லை. இதை மாற்ற அமைப்புகளைத் திறக்கவா?</string>
-    <string name="text_cant_mute">இந்தப் பயன்பாடு முடக்குவதற்கு உங்கள் தொலைபேசி அனுமதிக்கவில்லை. இந்தப் பயன்பாட்டின் அமைப்புகளில் முடக்குவதை முடக்கவும் அல்லது உங்கள் தொலைபேசியின் அமைப்புகளில் முடக்குவதற்கு அனுமதிக்கவும்.</string>
     <string name="text_no_notify_access_settings">முடக்குவதற்கு அனுமதிக்கும் நிலையான அமைப்புகளை உங்கள் தொலைபேசி கொண்டிருக்கவில்லை என்று தெரிகிறது. தயவுசெய்து "தொந்தரவு செய்யாதே அணுகல்" அமைப்பை கைமுறையாகத் தேடி அதை இயக்கவும்.</string>
     <string name="text_no_sections">பிரிவுகள் வரையறுக்கப்படவில்லை.</string>
     <string name="text_question_delete_session">தேர்ந்தெடுக்கப்பட்ட அமர்வை உண்மையிலேயே நீக்க வேண்டுமா?</string>
@@ -140,7 +127,6 @@
     <string name="time_section_remaining">பிரிவு மீதமுள்ளது</string>
     <string name="time_session_elapsed">அமர்வு முடிந்தது</string>
     <string name="time_session_remaining">அமர்வு மீதமுள்ளது</string>
-    <string name="title_mute_perm_request">அனுமதி இல்லை</string>
     <string name="title_question_delete_session">அமர்வை நீக்கவா?</string>
     <string name="title_volume_bells">கிண்ண அளவு</string>
     <string name="unnamed">பெயரிடப்படாதது</string>

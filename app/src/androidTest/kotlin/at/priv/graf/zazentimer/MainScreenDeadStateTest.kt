@@ -1,6 +1,5 @@
 package at.priv.graf.zazentimer
 
-import android.content.SharedPreferences
 import android.os.Build
 import android.os.SystemClock
 import androidx.test.espresso.Espresso.onView
@@ -44,13 +43,6 @@ class MainScreenDeadStateTest {
             )
         }
         activityRule.scenario.onActivity { activity ->
-            val pref: SharedPreferences = ZazenTimerActivity.getPreferences(activity)
-            pref
-                .edit()
-                .putBoolean("mute_mode_none", false)
-                .putBoolean("mute_mode_vibrate", false)
-                .putBoolean("mute_mode_vibrate_sound", true)
-                .apply()
             ZazenTimerActivity
                 .getPreferences(activity)
                 .edit()

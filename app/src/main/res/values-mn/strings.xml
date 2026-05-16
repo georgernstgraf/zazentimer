@@ -29,8 +29,6 @@
     <string name="caption_zazen_meditation">Зазен бясалгал</string>
     <string name="checkbox_keep_screen_on">Дэлгэцийг асаалттай байлга</string>
     <string name="checkbox_no_server_messages">Мэдээг харуулах</string>
-    <string name="checkbox_phone_off">Утасны дууг хаах</string>
-    <string name="checkbox_phone_off_desc">Утасны бүх дууг хаа.</string>
     <string name="copy_prefix">хуулбар</string>
     <string name="crash_dialog_comment_prompt">Сонголт: Ямар үйлдэл алдаа гаргасан бэ?</string>
     <string name="crash_dialog_ok_toast">Тусалсанд маш их баярлалаа!</string>
@@ -82,15 +80,6 @@
     <string name="ok">OK</string>
     <string name="pref_desc_brightness">Бясалгалын үед дэлгэцийн тод байдал</string>
     <string name="pref_get_messages">Одоо шинэ зурвас байгаа эсэхийг шалгана уу</string>
-    <string name="pref_mute_mode">Хонхны дуу ба мэдэгдэл</string>
-    <string name="pref_mute_mode_none">Чимээгүй</string>
-    <string name="pref_mute_mode_none_desc">Утасны дуудлага болон мэдэгдлийн дуудлагын ая, чичиргээ байхгүй</string>
-    <string name="pref_mute_mode_pref">Хонхны дуу болон мэдэгдлийн тохиргоо</string>
-    <string name="pref_mute_mode_vibrate">Зөвхөн чичиргээ</string>
-    <string name="pref_mute_mode_vibrate_desc">Зөвхөн утасны дуудлага болон мэдэгдлийн хувьд чичирнэ (Android 7 (Nougat) дээр ажиллахгүй - Чимээгүй тохиргоо шиг ажилладаг)</string>
-    <string name="pref_mute_mode_vibrate_sound">Хонхны дуу ба чичиргээ</string>
-    <string name="pref_mute_mode_vibrate_sound_desc">Хонхны дуу болон чичиргээг тоглуулаарай</string>
-    <string name="pref_muting">Дууг хаах тохиргоо</string>
     <string name="pref_sum_backup">Sessions болон Sounds-ийн нөөц хуулбарыг SD картандаа хадгалаарай.</string>
     <string name="pref_sum_bad_removal">SD картыг эхлээд салгахгүйгээр салгасан.</string>
     <string name="pref_sum_checking">Одоогоор SD картыг шалгаж байна</string>
@@ -126,8 +115,6 @@
     <string name="content_desc_session_actions">Сеансын үйлдлүүд</string>
     <string name="session_list_unnamed_entry">Нэргүй сесс</string>
     <string name="status_bar_notification_info_overflow">999+</string>
-    <string name="test_mute_perm_request">Апп нь одоогоор таны утасны дууг хаах эрхгүй байна. Үүнийг өөрчлөхийн тулд тохиргоог нээх үү?</string>
-    <string name="text_cant_mute">Таны утас энэ програмын дууг хаахыг зөвшөөрөхгүй. Энэ апп-ын тохиргооноос дууг хаахыг идэвхгүй болгох эсвэл утасныхаа тохиргооноос дууг хаахыг зөвшөөрнө үү.</string>
     <string name="text_no_notify_access_settings">Таны утсанд дууг хаахыг зөвшөөрөх стандарт тохиргоо байхгүй бололтой. \"Бүү саад бол хандалтын\" тохиргоог гараар хайж олоод идэвхжүүлнэ үү.</string>
     <string name="text_no_sections">Тодорхойлсон хэсэг байхгүй.</string>
     <string name="text_question_delete_session">Сонгосон сессийг үнэхээр устгах уу?</string>
@@ -140,7 +127,6 @@
     <string name="time_section_remaining">Үлдсэн хэсэг</string>
     <string name="time_session_elapsed">Хурал дууслаа</string>
     <string name="time_session_remaining">Сеанс үлдлээ</string>
-    <string name="title_mute_perm_request">Зөвшөөрөл дутуу</string>
     <string name="title_question_delete_session">Сессийг устгах уу?</string>
     <string name="title_volume_bells">Хонхны дууны хэмжээ</string>
     <string name="unnamed">Нэргүй</string>
