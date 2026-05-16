@@ -3,6 +3,7 @@ set -euo pipefail
 
 CONTINUE_ON_ERROR=false
 IGNORE_DIRTY_GIT=false
+DEBUG_LOG=false
 TARGET_APIS=()
 
 while [[ $# -gt 0 ]]; do
@@ -15,6 +16,10 @@ while [[ $# -gt 0 ]]; do
         IGNORE_DIRTY_GIT=true
         shift
         ;;
+    --debug)
+        DEBUG_LOG=true
+        shift
+        ;;
     --api)
         if [ -z "${2:-}" ]; then
             echo "ERROR: --api requires an argument (e.g., --api 32 or --api 29,35)"
@@ -24,7 +29,7 @@ while [[ $# -gt 0 ]]; do
         shift 2
         ;;
     *)
-        echo "Usage: $0 [--continue-on-error] [--ignore-dirty-git] [--api <level>[,<level>...]]"
+        echo "Usage: $0 [--continue-on-error] [--ignore-dirty-git] [--debug] [--api <level>[,<level>...]]"
         exit 1
         ;;
     esac
@@ -59,6 +64,27 @@ declare -A RESULTS
 FAILED_APIS=()
 ERROR_LOGS=()
 IS_REAL_DISPLAY=true
+API_LOG=""
+
+exec_api_log() {
+    local api_level=$1
+    API_LOG="$PROJECT_DIR/logs/api${api_level}-${TODAY}.log"
+    : > "$API_LOG"
+    echo "=== API $api_level — $(date) ===" >> "$API_LOG"
+}
+
+log_api() {
+    echo "$@"
+}
+
+dump_logcat() {
+    local api_level=$1
+    local serial="$2"
+    local logcat_file="$PROJECT_DIR/logs/api${api_level}-${TODAY}-logcat.txt"
+    echo "Dumping logcat to $logcat_file ..."
+    adb -s "$serial" logcat -d > "$logcat_file" 2>/dev/null || true
+    echo "Logcat dumped ($(wc -l < "$logcat_file") lines)"
+}
 
 stop_xvfb() {
     if [ -n "${XVFB_PID:-}" ]; then
@@ -107,8 +133,9 @@ trap cleanup EXIT
 
 mkdir -p "$PROJECT_DIR/logs"
 
+exec > >(tee -a "$LOG_FILE") 2>&1
+
 echo "=== Instrumentation Test Run — $TODAY ==="
-echo "Logging to $LOG_FILE"
 
 cd "$PROJECT_DIR"
 
@@ -271,8 +298,9 @@ else
         local api_level=$1
         local serial="emulator-5554"
         local avd_name
+        exec_api_log "$api_level"
         avd_name=$(resolve_avd "$api_level") || {
-            echo "FAIL: Could not find AVD for API $api_level"
+            log_api "FAIL: Could not find AVD for API $api_level"
             RESULTS[$api_level]=1
             FAILED_APIS+=("$api_level")
             ERROR_LOGS+=("API $api_level: No AVD found")
@@ -280,10 +308,10 @@ else
         }
         local result=0
 
-        echo ""
-        echo "========================================="
-        echo "  API $api_level — Starting emulator ($avd_name)"
-        echo "========================================="
+        log_api ""
+        log_api "========================================="
+        log_api "  API $api_level — Starting emulator ($avd_name)"
+        log_api "========================================="
 
         $ANDROID_HOME/emulator/emulator \
             -avd "$avd_name" \
@@ -291,11 +319,11 @@ else
             -gpu swiftshader_indirect \
             $([ "$IS_REAL_DISPLAY" = false ] && echo "-noaudio") \
             -no-boot-anim \
-            -memory 2048 &
+            -memory 2048 &>> "$API_LOG"
         sleep 2
 
         if ! wait_for_emulator "$serial"; then
-            echo "FAIL: API $api_level emulator did not boot"
+            log_api "FAIL: API $api_level emulator did not boot"
             RESULTS[$api_level]=1
             FAILED_APIS+=("$api_level")
             ERROR_LOGS+=("API $api_level: Emulator failed to boot")
@@ -314,25 +342,29 @@ else
         adb -s "$serial" shell settings put global transition_animation_scale 0.0 2>/dev/null || true
         adb -s "$serial" shell settings put global animator_duration_scale 0.0 2>/dev/null || true
 
-        echo ""
-        echo "========================================="
-        echo "  API $api_level — Running instrumented tests"
-        echo "========================================="
+        log_api ""
+        log_api "========================================="
+        log_api "  API $api_level — Running instrumented tests"
+        log_api "========================================="
 
         set +e
         cd "$PROJECT_DIR"
-        ./gradlew connectedDebugAndroidTest
+        ./gradlew connectedDebugAndroidTest 2>&1 | tee -a "$API_LOG"
         result=$?
         set -e
 
         if [ $result -ne 0 ]; then
-            echo "FAIL: API $api_level tests failed (exit $result)"
+            log_api "FAIL: API $api_level tests failed (exit $result)"
             RESULTS[$api_level]=$result
             FAILED_APIS+=("$api_level")
             ERROR_LOGS+=("API $api_level: connectedDebugAndroidTest exit code $result")
+            dump_logcat "$api_level" "$serial"
         else
-            echo "PASS: API $api_level"
+            log_api "PASS: API $api_level"
             RESULTS[$api_level]=0
+            if [ "$DEBUG_LOG" = true ]; then
+                dump_logcat "$api_level" "$serial"
+            fi
         fi
 
         kill_emulator "$serial"
@@ -342,19 +374,20 @@ else
         local api_level=$1
         local serial="emulator-5554"
         local result=0
+        exec_api_log "$api_level"
 
-        echo ""
-        echo "========================================="
-        echo "  API $api_level — Building APKs"
-        echo "========================================="
+        log_api ""
+        log_api "========================================="
+        log_api "  API $api_level — Building APKs"
+        log_api "========================================="
         cd "$PROJECT_DIR"
         set +e
-        ./gradlew assembleDebug assembleDebugAndroidTest
+        ./gradlew assembleDebug assembleDebugAndroidTest 2>&1 | tee -a "$API_LOG"
         local build_result=$?
         set -e
 
         if [ $build_result -ne 0 ]; then
-            echo "FAIL: API $api_level build failed"
+            log_api "FAIL: API $api_level build failed"
             RESULTS[$api_level]=$build_result
             FAILED_APIS+=("$api_level")
             ERROR_LOGS+=("API $api_level: Build failed (exit $build_result)")
@@ -363,17 +396,17 @@ else
 
         local avd_name
         avd_name=$(resolve_avd "$api_level") || {
-            echo "FAIL: Could not find AVD for API $api_level"
+            log_api "FAIL: Could not find AVD for API $api_level"
             RESULTS[$api_level]=1
             FAILED_APIS+=("$api_level")
             ERROR_LOGS+=("API $api_level: No AVD found")
             return
         }
 
-        echo ""
-        echo "========================================="
-        echo "  API $api_level — Starting emulator ($avd_name)"
-        echo "========================================="
+        log_api ""
+        log_api "========================================="
+        log_api "  API $api_level — Starting emulator ($avd_name)"
+        log_api "========================================="
 
         $ANDROID_HOME/emulator/emulator \
             -avd "$avd_name" \
@@ -381,11 +414,11 @@ else
             -gpu swiftshader_indirect \
             $([ "$IS_REAL_DISPLAY" = false ] && echo "-noaudio") \
             -no-boot-anim \
-            -memory 2048 &
+            -memory 2048 &>> "$API_LOG"
         sleep 2
 
         if ! wait_for_emulator "$serial"; then
-            echo "FAIL: API $api_level emulator did not boot"
+            log_api "FAIL: API $api_level emulator did not boot"
             RESULTS[$api_level]=1
             FAILED_APIS+=("$api_level")
             ERROR_LOGS+=("API $api_level: Emulator failed to boot")
@@ -405,39 +438,40 @@ else
         adb -s "$serial" shell settings put global transition_animation_scale 0.0 2>/dev/null || true
         adb -s "$serial" shell settings put global animator_duration_scale 0.0 2>/dev/null || true
 
-        echo ""
-        echo "========================================="
-        echo "  API $api_level — Installing APKs"
-        echo "========================================="
+        log_api ""
+        log_api "========================================="
+        log_api "  API $api_level — Installing APKs"
+        log_api "========================================="
         set +e
-        adb -s "$serial" install -r app/build/outputs/apk/debug/app-debug.apk
+        adb -s "$serial" install -r app/build/outputs/apk/debug/app-debug.apk 2>&1 | tee -a "$API_LOG"
         local install_app=$?
         sleep 10
         local install_test=1
         for install_attempt in 1 2; do
-            adb -s "$serial" install -r app/build/outputs/apk/androidTest/debug/app-debug-androidTest.apk
+            adb -s "$serial" install -r app/build/outputs/apk/androidTest/debug/app-debug-androidTest.apk 2>&1 | tee -a "$API_LOG"
             install_test=$?
             if [ $install_test -eq 0 ]; then
                 break
             fi
-            echo "Test APK install failed attempt $install_attempt — retrying after delay..."
+            log_api "Test APK install failed attempt $install_attempt — retrying after delay..."
             sleep 10
         done
         set -e
 
         if [ $install_app -ne 0 ] || [ $install_test -ne 0 ]; then
-            echo "FAIL: API $api_level APK installation failed (app=$install_app, test=$install_test)"
+            log_api "FAIL: API $api_level APK installation failed (app=$install_app, test=$install_test)"
             RESULTS[$api_level]=1
             FAILED_APIS+=("$api_level")
             ERROR_LOGS+=("API $api_level: APK install failed (app=$install_app, test=$install_test)")
+            dump_logcat "$api_level" "$serial"
             kill_emulator "$serial"
             return
         fi
 
-        echo ""
-        echo "========================================="
-        echo "  API $api_level — Running instrumented tests"
-        echo "========================================="
+        log_api ""
+        log_api "========================================="
+        log_api "  API $api_level — Running instrumented tests"
+        log_api "========================================="
 
         local instrument_output
         local failures=1
@@ -446,7 +480,7 @@ else
             instrument_output=$(adb -s "$serial" shell am instrument -w \
                 at.priv.graf.zazentimer.debug.test/at.priv.graf.zazentimer.HiltTestRunner 2>&1)
             result=$?
-            echo "$instrument_output"
+            echo "$instrument_output" | tee -a "$API_LOG"
             set -e
 
             local process_crashed
@@ -465,14 +499,14 @@ else
             fi
 
             if [ "${process_crashed:-0}" -gt 0 ]; then
-                echo "Process crashed detected — not retrying (fatal)"
+                log_api "Process crashed detected — not retrying (fatal)"
                 break
             fi
 
             local focus_errors
             focus_errors=$(echo "$instrument_output" | grep -c "RootViewWithoutFocusException\|has-window-focus=false" || true)
             if [ "$focus_errors" -gt 0 ] && [ "$test_attempt" -eq 1 ]; then
-                echo "Focus errors detected — retrying with wakeup..."
+                log_api "Focus errors detected — retrying with wakeup..."
                 adb -s "$serial" shell svc power stayon true 2>/dev/null || true
                 adb -s "$serial" shell input keyevent KEYCODE_WAKEUP 2>/dev/null || true
                 adb -s "$serial" shell input keyevent KEYCODE_HOME 2>/dev/null || true
@@ -497,23 +531,29 @@ else
         fi
 
         if [ "${process_crashed:-0}" -gt 0 ]; then
-            echo "FAIL: API $api_level test process crashed"
+            log_api "FAIL: API $api_level test process crashed"
             RESULTS[$api_level]=1
             FAILED_APIS+=("$api_level")
             ERROR_LOGS+=("API $api_level: Process crashed")
+            dump_logcat "$api_level" "$serial"
         elif [ "${any_test_output_final:-0}" -eq 0 ] && [ "${combined:-0}" -eq 0 ]; then
-            echo "FAIL: API $api_level no test output (empty result)"
+            log_api "FAIL: API $api_level no test output (empty result)"
             RESULTS[$api_level]=1
             FAILED_APIS+=("$api_level")
             ERROR_LOGS+=("API $api_level: no test output")
+            dump_logcat "$api_level" "$serial"
         elif [ "$combined" -ne 0 ] || { [ "$result" -ne 0 ] && [ "$sigterm_ok" = false ]; }; then
-            echo "FAIL: API $api_level am instrument failed (exit=$result, failures=$combined)"
+            log_api "FAIL: API $api_level am instrument failed (exit=$result, failures=$combined)"
             RESULTS[$api_level]=1
             FAILED_APIS+=("$api_level")
             ERROR_LOGS+=("API $api_level: am instrument exit=$result failures=$combined")
+            dump_logcat "$api_level" "$serial"
         else
-            echo "PASS: API $api_level"
+            log_api "PASS: API $api_level"
             RESULTS[$api_level]=0
+            if [ "$DEBUG_LOG" = true ]; then
+                dump_logcat "$api_level" "$serial"
+            fi
         fi
 
         kill_emulator "$serial"

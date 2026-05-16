@@ -105,3 +105,9 @@ Each entry documents WHAT was decided and WHY.
 - **Reason**: Xvfb dies mid-run (OOM, emulator GPU driver conflict) causing cascading failures — all subsequent APIs are lost. Fresh Xvfb per API isolates failures to the affected API only.
 - **Considered**: Running each API as a separate script invocation (heavier), adding Xvfb watchdog (complex), accepting data loss on crash.
 - **Tradeoff**: ~2s overhead per API for Xvfb startup; `xdpyinfo` polling adds up to 30s per restart (typically <5s).
+
+## 2026-05-16: Per-API logfiles with logcat dumps in run-instrumentation.sh
+- **Choice**: All output from each API-level test run is written to `logs/api<level>-YYYY-MM-DD.log` via `tee -a`. On failure, `adb logcat -d` dumps to `logs/api<level>-YYYY-MM-DD-logcat.txt`. Overall run log at `logs/instrumentation-YYYY-MM-DD.log` via `exec > >(tee ...)`. Added `--debug` flag for logcat dumps on green runs too.
+- **Reason**: Previous runs lost all diagnostic output to terminal-only — when terminal timed out or Xvfb crashed, stack traces, `am instrument` output, and crash details were irrecoverable.
+- **Considered**: Single combined log file (hard to navigate), only logging failures (misses context for intermittent issues).
+- **Tradeoff**: ~50-100MB logcat dump per failed API; `logs/` is gitignored so no repo bloat.
