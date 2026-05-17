@@ -391,4 +391,147 @@ class MigrationTest {
         cursor.close()
         db.close()
     }
+
+    @Test
+    fun migrateFrom6To7_createsBellsTable() {
+        val db = createV1Database()
+        AppDatabase.MIGRATION_1_2.migrate(db)
+        AppDatabase.MIGRATION_2_3.migrate(db)
+        AppDatabase.MIGRATION_3_4.migrate(db)
+        AppDatabase.MIGRATION_4_5.migrate(db)
+        AppDatabase.MIGRATION_5_6.migrate(db)
+
+        AppDatabase.MIGRATION_6_7.migrate(db)
+
+        val cursor =
+            db.query(
+                "SELECT name FROM sqlite_master WHERE type='table' AND name='bells'",
+            )
+        assertThat(cursor.count).isEqualTo(1)
+        cursor.close()
+        db.close()
+    }
+
+    @Test
+    fun migrateFrom6To7_seedsBellsFromSectionUris() {
+        val db = createV1Database()
+        db.execSQL("INSERT INTO sessions (name, description) VALUES ('S', 'D')")
+        AppDatabase.MIGRATION_1_2.migrate(db)
+        AppDatabase.MIGRATION_2_3.migrate(db)
+        AppDatabase.MIGRATION_3_4.migrate(db)
+        db.execSQL(
+            "INSERT INTO sections (fk_session, name, duration, bell, rank, bellcount, bellpause, belluri, volume) " +
+                "VALUES (1, 'Zazen', 600, -2, 1, 1, 3, 'android.resource://test.pkg/123', 100)",
+        )
+        AppDatabase.MIGRATION_4_5.migrate(db)
+        AppDatabase.MIGRATION_5_6.migrate(db)
+        AppDatabase.MIGRATION_6_7.migrate(db)
+
+        val bellsCursor = db.query("SELECT _id FROM bells WHERE uri = 'android.resource://test.pkg/123'")
+        assertThat(bellsCursor.count).isEqualTo(1)
+        bellsCursor.moveToFirst()
+        val bellId = bellsCursor.getInt(bellsCursor.getColumnIndexOrThrow("_id"))
+        bellsCursor.close()
+
+        val secCursor = db.query("SELECT bell_id FROM sections WHERE _id = 1")
+        assertThat(secCursor.count).isEqualTo(1)
+        secCursor.moveToFirst()
+        assertThat(secCursor.getInt(secCursor.getColumnIndexOrThrow("bell_id"))).isEqualTo(bellId)
+        secCursor.close()
+        db.close()
+    }
+
+    @Test
+    fun migrateFrom6To7_sectionsHaveBellIdColumn() {
+        val db = createV1Database()
+        AppDatabase.MIGRATION_1_2.migrate(db)
+        AppDatabase.MIGRATION_2_3.migrate(db)
+        AppDatabase.MIGRATION_3_4.migrate(db)
+        AppDatabase.MIGRATION_4_5.migrate(db)
+        AppDatabase.MIGRATION_5_6.migrate(db)
+        AppDatabase.MIGRATION_6_7.migrate(db)
+
+        val cursor = db.query("PRAGMA table_info(sections)")
+        val names = mutableListOf<String>()
+        while (cursor.moveToNext()) {
+            names.add(cursor.getString(cursor.getColumnIndexOrThrow("name")))
+        }
+        cursor.close()
+        assertThat(names).contains("bell_id")
+        db.close()
+    }
+
+    @Test
+    fun fullChainFrom1To7_dataSurvives() {
+        val db = createV1Database()
+        db.execSQL(
+            "INSERT INTO sessions (name, description) VALUES ('Meditation', 'A test session')",
+        )
+        db.execSQL(
+            "INSERT INTO sections (fk_session, name, duration, bell, rank, bellcount, bellpause) " +
+                "VALUES (1, 'Zazen', 600, -1, 1, 3, 5)",
+        )
+
+        AppDatabase.MIGRATION_1_2.migrate(db)
+        AppDatabase.MIGRATION_2_3.migrate(db)
+        AppDatabase.MIGRATION_3_4.migrate(db)
+        AppDatabase.MIGRATION_4_5.migrate(db)
+        AppDatabase.MIGRATION_5_6.migrate(db)
+        AppDatabase.MIGRATION_6_7.migrate(db)
+
+        val cursor =
+            db.query(
+                "SELECT name, description FROM sessions WHERE _id = 1",
+            )
+        assertThat(cursor.count).isEqualTo(1)
+        cursor.moveToFirst()
+        assertThat(cursor.getString(cursor.getColumnIndexOrThrow("name")))
+            .isEqualTo("Meditation")
+        assertThat(cursor.getString(cursor.getColumnIndexOrThrow("description")))
+            .isEqualTo("A test session")
+        cursor.close()
+
+        val secCursor =
+            db.query(
+                "SELECT name, duration, bell_id FROM sections WHERE _id = 1",
+            )
+        assertThat(secCursor.count).isEqualTo(1)
+        secCursor.moveToFirst()
+        assertThat(secCursor.getString(secCursor.getColumnIndexOrThrow("name")))
+            .isEqualTo("Zazen")
+        assertThat(secCursor.getInt(secCursor.getColumnIndexOrThrow("duration")))
+            .isEqualTo(600)
+        assertThat(secCursor.getInt(secCursor.getColumnIndexOrThrow("bell_id")))
+            .isEqualTo(0)
+        secCursor.close()
+        db.close()
+    }
+
+    @Test
+    fun migrateFrom6To7_volumeEntriesGetBellId() {
+        val db = createV1Database()
+        db.execSQL("INSERT INTO sessions (name, description) VALUES ('S', 'D')")
+        AppDatabase.MIGRATION_1_2.migrate(db)
+        AppDatabase.MIGRATION_2_3.migrate(db)
+        AppDatabase.MIGRATION_3_4.migrate(db)
+        AppDatabase.MIGRATION_4_5.migrate(db)
+        AppDatabase.MIGRATION_5_6.migrate(db)
+        db.execSQL(
+            "INSERT INTO session_bell_volumes (fk_session, bell, belluri, volume) " +
+                "VALUES (1, -2, 'android.resource://test.pkg/456', 80)",
+        )
+        AppDatabase.MIGRATION_6_7.migrate(db)
+
+        val cursor =
+            db.query(
+                "SELECT v.bell_id FROM session_bell_volumes v " +
+                    "JOIN bells b ON b.uri = 'android.resource://test.pkg/456' " +
+                    "WHERE v.fk_session = 1",
+            )
+        assertThat(cursor.count).isEqualTo(1)
+        cursor.moveToFirst()
+        assertThat(cursor.getInt(cursor.getColumnIndexOrThrow("bell_id"))).isGreaterThan(0)
+        cursor.close()
+        db.close()
+    }
 }
