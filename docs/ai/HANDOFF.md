@@ -1,28 +1,13 @@
-# Handoff
+# Hand Off
 
-## Current Branch
-`main` (Trunk-based development)
+No pending tasks. Last cleared: 2026-05-18.
 
-## Open Tasks
-1. [in_progress] **#64 — Play Store**: Service Account JSON created and API connection verified. Automated check script at `scripts/play_store/check_status.py`.
+## Recently Closed
+- #64 Play Store Automation: Service account configured, API connection verified, check_status.py script active.
+- #192 Backup Restore Crash: Fixed Room migration 6→7 schema mismatch and updated version check.
+- #192 Integration Testing: Implemented `RestoreIntegrationTest.kt` with a real backup sample.
 
-## Architecture Update (2026-05-17, #180)
-- Added `bells` database table (V7) with FK from `sections.bell_id` and `session_bell_volumes.bell_id`
-- `MigrationHelper.ensureBellsTableConsistent()` runs every startup: seeds built-in bells, syncs custom bells, fixes stale URIs from backup imports, deduplicates
-- Bell references (bell, belluri) kept as migration buffer; bell_id is the canonical FK
-- `BellPlayer.playBell()` has demo bell fallback if `getBellForSection()` returns null
-
-## Key Files from #180
-- `app/src/main/kotlin/at/priv/graf/zazentimer/database/BellEntity.kt` — bells table entity
-- `app/src/main/kotlin/at/priv/graf/zazentimer/database/BellDao.kt` — bells table DAO
-- `app/src/main/kotlin/at/priv/graf/zazentimer/database/AppDatabase.kt` — VERSION_7, MIGRATION_6_7
-- `app/src/main/kotlin/at/priv/graf/zazentimer/MigrationHelper.kt` — `ensureBellsTableConsistent()` runtime repair
-- `app/src/main/kotlin/at/priv/graf/zazentimer/service/BellPlayer.kt` — demo bell fallback
-- `app/src/schemas/at.priv.graf.zazentimer.database.AppDatabase/7.json` — Room schema export for V7
-
-## Pushed Tags
-- `tested-2026-05-15` — APIs 23-36 all green (24/24 tests each)
-
-## CI Status
-- Release AAB build step fails on all commits (pre-existing, related to #64 release pipeline)
-- Unit tests and lint pass locally
+## Open Issues (pick next)
+- #64 Promotion Automation: Create script to promote releases between tracks (e.g. Alpha to Production).
+- #47 DB caching for smoother swiping.
+- #45 Sharing mode popup: delete or share?
