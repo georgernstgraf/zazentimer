@@ -95,13 +95,22 @@ fi
 declare -A API_RESULT
 declare -A API_SUMMARY_LINE
 while IFS= read -r line; do
+    # Format 1: "API 34:    PASS"
     api=$(echo "$line" | grep -oP 'API\s+\K[0-9]+')
     result=$(echo "$line" | grep -oP 'API\s+[0-9]+:\s+\K(PASS|FAIL|SKIPPED)')
+    # Format 2: "[13:44:41] PASS: API 35" or "[13:59:57] FAIL: API 35 tests failed (exit 1)"
+    if [ -z "$result" ]; then
+        api_from_result=$(echo "$line" | grep -oP '\[\d{2}:\d{2}:\d{2}\]\s+(PASS|FAIL|SKIPPED):\s+API\s+\K[0-9]+')
+        if [ -n "$api_from_result" ]; then
+            api=$api_from_result
+            result=$(echo "$line" | grep -oP '\[\d{2}:\d{2}:\d{2}\]\s+\K(PASS|FAIL|SKIPPED)')
+        fi
+    fi
     if [ -n "$api" ] && [ -n "$result" ]; then
         API_RESULT[$api]=$result
         API_SUMMARY_LINE[$api]=$line
     fi
-done < <(grep -E "API\s+[0-9]+:\s+(PASS|FAIL|SKIPPED)" "$MAIN_LOG")
+done < <(grep -E "(API\s+[0-9]+:\s+(PASS|FAIL|SKIPPED)|\[[0-9]{2}:[0-9]{2}:[0-9]{2}\]\s+(PASS|FAIL|SKIPPED):\s+API\s+[0-9]+)" "$MAIN_LOG")
 
 api_order=()
 for f in "${api_logs[@]}"; do
