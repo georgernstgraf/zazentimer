@@ -17,8 +17,8 @@ This document explains how to set up the environment for Play Store automation s
     This will create a `.venv/` directory in the project root and install all necessary dependencies (google-api-python-client, etc.).
 
 3.  **Place your Service Account Key:**
-    The scripts currently look for the key at `~/.config/iron-country-322716-8ab0815de79f.json`.
-    You can also provide a different path by modifying the `KEY_PATH` variable in the scripts if needed.
+    The scripts look for the key at `google/play-api-key.json` within the project.
+    This file is ignored by git, so you can safely place it there.
 
 ## Available Scripts
 
