@@ -1,7 +1,6 @@
 package at.priv.graf.zazentimer
 
 import android.os.Build
-import androidx.test.espresso.Espresso.onIdle
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.assertion.ViewAssertions.matches
@@ -67,20 +66,14 @@ class MainScreenDeadStateTest : AbstractZazenTest() {
 
         onView(withId(R.id.but_start)).perform(click())
 
-        onIdle()
-
         MeditationPage()
             .verifyMeditationScreenIsDisplayed()
             .verifyStopButtonDisplayed()
 
         onView(withId(R.id.but_stop)).perform(click())
 
-        onIdle()
-
         onView(withText(stopText)).check(matches(isDisplayed()))
         onView(withText(stopText)).perform(click())
-
-        onIdle()
 
         MainPage().verifyMainScreenIsDisplayed()
 

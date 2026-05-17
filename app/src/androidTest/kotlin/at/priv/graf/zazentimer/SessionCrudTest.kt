@@ -1,7 +1,6 @@
 package at.priv.graf.zazentimer
 
 import androidx.test.espresso.Espresso.closeSoftKeyboard
-import androidx.test.espresso.Espresso.onIdle
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.action.ViewActions.clearText
 import androidx.test.espresso.action.ViewActions.click
@@ -74,8 +73,6 @@ class SessionCrudTest : AbstractZazenTest() {
         closeSoftKeyboard()
         SessionEditPage().goBack()
 
-        onIdle()
-
         MainPage().verifySessionNameVisible("Updated Session Name")
     }
 
@@ -88,8 +85,6 @@ class SessionCrudTest : AbstractZazenTest() {
         onView(withText(R.string.title_question_delete_session))
             .check(matches(isDisplayed()))
         onView(withText(R.string.ok)).perform(click())
-
-        onIdle()
 
         MainPage()
             .verifyMainScreenIsDisplayed()
@@ -104,8 +99,6 @@ class SessionCrudTest : AbstractZazenTest() {
         onView(withText(R.string.title_question_delete_session))
             .check(matches(isDisplayed()))
         onView(withText(R.string.abbrechen)).perform(click())
-
-        onIdle()
 
         MainPage()
             .verifyMainScreenIsDisplayed()
