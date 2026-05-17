@@ -58,6 +58,7 @@ Follow these without question. Do not deviate unless explicitly told.
     - `setup.sh`: Bootstraps the local `.venv`.
     - `check_status.py`: Lists current tracks and releases.
     - `update_notes.py`: Updates release notes for a specific track. Usage: `.venv/bin/python3 scripts/play_store/update_notes.py <track> <notes> [language]`
+    - `activate_alpha_bundle.py`: Re-activates a specific version code (e.g. 3000300) in the alpha track if it was deactivated.
 
 - **Extremely Strict LLM Instructions**: When using LLMs for translation, you **MUST** provide extremely precise instructions regarding XML tags and placeholders (`%s`, `%1$d`, `&lt;`, `&gt;`). LLMs often corrupt these in low-resource languages, leading to runtime formatting crashes.
 - **Explicit Fallback Rule**: Explicitly prompt any translation sub-agent: *"If you do not have high confidence in this specific language, or if you cannot guarantee that EVERY placeholder will be preserved exactly, you MUST leave the string in English. Guessing or hallucinating will cause the application to crash."*

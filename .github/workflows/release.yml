@@ -64,7 +64,7 @@ jobs:
         serviceAccountJsonPlainText: ${{ secrets.PLAY_SERVICE_ACCOUNT_JSON }}
         packageName: at.priv.graf.zazentimer
         releaseFiles: app/build/outputs/bundle/release/app-release.aab
-        track: internal
+        track: alpha
         status: completed
         whatsNewDirectory: distribution/whatsnew
       continue-on-error: true
