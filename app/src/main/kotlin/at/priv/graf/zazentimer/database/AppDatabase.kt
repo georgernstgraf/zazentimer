@@ -230,7 +230,7 @@ abstract class AppDatabase : RoomDatabase() {
                             "name TEXT NOT NULL DEFAULT '', " +
                             "uri TEXT NOT NULL DEFAULT '', " +
                             "is_builtin INTEGER NOT NULL DEFAULT 0, " +
-                            "resource_name TEXT)",
+                            "resourceName TEXT)",
                     )
 
                     // 2. Seed from existing section bell URIs
@@ -249,28 +249,28 @@ abstract class AppDatabase : RoomDatabase() {
                             "AND NOT EXISTS (SELECT 1 FROM bells b WHERE b.uri = v.belluri)",
                     )
 
-                    // 3. Rebuild sections with bell_id column
+                    // 3. Rebuild sections with bellId column
                     db.execSQL(
                         "CREATE TABLE sections_new (" +
                             "_id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, " +
                             "fk_session INTEGER NOT NULL, " +
                             "name TEXT NOT NULL, " +
                             "duration INTEGER NOT NULL, " +
-                            "bell INTEGER NOT NULL DEFAULT -2, " +
-                            "belluri TEXT, " +
-                            "bell_id INTEGER NOT NULL DEFAULT 0, " +
+                            "bell INTEGER NOT NULL, " +
                             "rank INTEGER, " +
                             "bellcount INTEGER, " +
                             "bellpause INTEGER, " +
+                            "belluri TEXT, " +
+                            "bellId INTEGER NOT NULL, " +
                             "FOREIGN KEY (fk_session) REFERENCES sessions(_id) ON DELETE CASCADE)",
                     )
                     db.execSQL(
                         "INSERT INTO sections_new " +
-                            "SELECT s._id, s.fk_session, s.name, s.duration, s.bell, s.belluri, " +
+                            "SELECT s._id, s.fk_session, s.name, s.duration, s.bell, " +
+                            "s.rank, s.bellcount, s.bellpause, s.belluri, " +
                             "COALESCE(" +
                             "(SELECT b._id FROM bells b WHERE b.uri = s.belluri AND s.belluri != ''), " +
-                            "0), " +
-                            "s.rank, s.bellcount, s.bellpause " +
+                            "0) " +
                             "FROM sections s",
                     )
                     db.execSQL("DROP TABLE sections")
@@ -279,15 +279,15 @@ abstract class AppDatabase : RoomDatabase() {
                         "CREATE INDEX IF NOT EXISTS index_sections_fk_session ON sections(fk_session)",
                     )
 
-                    // 4. Rebuild session_bell_volumes with bell_id column
+                    // 4. Rebuild session_bell_volumes with bellId column
                     db.execSQL(
                         "CREATE TABLE session_bell_volumes_new (" +
                             "_id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, " +
                             "fk_session INTEGER NOT NULL, " +
                             "bell INTEGER, " +
                             "belluri TEXT, " +
-                            "bell_id INTEGER NOT NULL DEFAULT 0, " +
-                            "volume INTEGER NOT NULL DEFAULT 100, " +
+                            "bellId INTEGER NOT NULL, " +
+                            "volume INTEGER NOT NULL, " +
                             "FOREIGN KEY (fk_session) REFERENCES sessions(_id) ON DELETE CASCADE)",
                     )
                     db.execSQL(
@@ -304,6 +304,10 @@ abstract class AppDatabase : RoomDatabase() {
                     db.execSQL(
                         "CREATE INDEX IF NOT EXISTS index_session_bell_volumes_fk_session " +
                             "ON session_bell_volumes(fk_session)",
+                    )
+                    db.execSQL(
+                        "CREATE UNIQUE INDEX IF NOT EXISTS index_session_bell_volumes_fk_session_bell_belluri " +
+                            "ON session_bell_volumes(fk_session, bell, belluri)",
                     )
                 }
             }
