@@ -318,6 +318,7 @@ class SectionEditFragment : Fragment() {
                                 if (bell.uri.toString() != s.bellUri) {
                                     s.bellUri = bell.uri.toString()
                                     s.bell = i2
+                                    s.bellId = 0
                                 }
                             }
                         }

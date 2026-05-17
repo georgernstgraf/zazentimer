@@ -227,7 +227,7 @@ class BellVolumeConfigDialog : DialogFragment() {
             val path = Uri.parse(uri).lastPathSegment ?: return null
             return BellCollection.getBellList().find {
                 it.uri.lastPathSegment == path
-            }
+            } ?: BellCollection.getDemoBell()
         }
     }
 }

@@ -76,7 +76,10 @@ class BellPlayer(
         section: Section,
         volume: Int,
     ) {
-        val bell = BellCollection.getBellForSection(section) ?: return
+        var bell = BellCollection.getBellForSection(section)
+        if (bell == null) {
+            bell = BellCollection.getDemoBell() ?: return
+        }
 
         val it = audioObjects.iterator()
         while (it.hasNext()) {

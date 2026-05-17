@@ -14,6 +14,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.preference.CheckBoxPreference
 import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
+import at.priv.graf.zazentimer.MigrationHelper
 import at.priv.graf.zazentimer.R
 import at.priv.graf.zazentimer.ZazenTimerActivity
 import at.priv.graf.zazentimer.backup.BackupManager
@@ -189,6 +190,9 @@ class SettingsFragment : PreferenceFragmentCompat() {
                 Log.e(TAG, "Error restoring", e)
             }
             if (result == 0) {
+                launch {
+                    MigrationHelper.ensureBellsTableConsistent(requireActivity(), dbOperations)
+                }
                 Toast.makeText(requireActivity(), R.string.restore_success_text, Toast.LENGTH_SHORT).show()
             } else if (result == 1) {
                 Toast.makeText(requireActivity(), R.string.restore_backup_not_found, Toast.LENGTH_SHORT).show()
