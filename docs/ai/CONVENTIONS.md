@@ -45,6 +45,7 @@ Follow these without question. Do not deviate unless explicitly told.
 - **Never call `Espresso.onIdle()` in `@Before`**: Causes `TestLooperManager already held`. DB ops in `onActivity {}` are synchronous — no idle wait needed.
 - **All test classes must extend `AbstractZazenTest`**: Provides `Timeout(2, MINUTES)`, `hiltRule`, and `activityRule`. Never duplicate these rules.
 - **`@HiltAndroidTest` annotation is NOT inherited**: Every test class needs its own `@HiltAndroidTest` annotation AND the `import dagger.hilt.android.testing.HiltAndroidTest`. ktlintFormat removes the import as "unused" — always verify with `compileDebugAndroidTestKotlin` after `ktlintFormat`.
+- **Use `inRoot(isDialog())` for AlertDialog interactions**: On API 36+, the system enforces edge-to-edge (`EDGE_TO_EDGE_ENFORCED`), which can cause activity windows to lose focus when `AlertDialog` appears. Espresso's default root matcher requires window focus, causing `RootViewWithoutFocusException`. Use `.inRoot(isDialog())` to target the dialog root directly. Import: `import androidx.test.espresso.matcher.RootMatchers.isDialog`.
 
 ## Internationalization (i18n) & LLM Translations
 - **Extremely Strict LLM Instructions**: When using LLMs for translation, you **MUST** provide extremely precise instructions regarding XML tags and placeholders (`%s`, `%1$d`, `&lt;`, `&gt;`). LLMs often corrupt these in low-resource languages, leading to runtime formatting crashes.

@@ -168,3 +168,10 @@ Each entry documents WHAT was decided and WHY.
 - **Reason**: Centralizes common test setup and ensures no test runs longer than 2 minutes, preventing hung tests from blocking the entire suite.
 - **Considered**: Per-test `@Test(timeout=...)` (verbose, easy to forget), no timeout (25+ minute hangs observed).
 - **Tradeoff**: 2-minute timeout may be too short for some tests on slow emulators; can be increased per-class if needed.
+
+## 2026-05-17: inRoot(isDialog()) for AlertDialog interactions on API 36+
+- **Choice**: Use `onView(...).inRoot(isDialog())` for Espresso interactions with AlertDialog buttons on API 36+.
+- **Reason**: API 36 enforces edge-to-edge (`EDGE_TO_EDGE_ENFORCED` flag on decor view). When an AlertDialog appears, the activity window loses focus, causing Espresso's default root matcher (which requires `hasWindowFocus()`) to throw `RootViewWithoutFocusException`. `isDialog()` matches windows with `TYPE_APPLICATION` (AlertDialog's type) without requiring focus.
+- **Considered**: `Thread.sleep()` delays (already timed-out at 10s), catching exception with retry loop (band-aid).
+- **Tradeoff**: Import of `RootMatchers.isDialog` adds one extra import; must be placed in correct lexicographic order for ktlint.
+- **Module**: `app/src/androidTest/kotlin/at/priv/graf/zazentimer/MainScreenDeadStateTest.kt`

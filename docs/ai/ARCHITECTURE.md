@@ -1,6 +1,6 @@
 # Architecture
 
-Living structural map of the system as of 2026-05-11.
+Living structural map of the system as of 2026-05-17.
 
 ## Overview
 ZazenTimer is an Android application for timing meditation sessions. It uses a foreground service for background timing and a Repository-based architecture to synchronize state between the UI and the service.
@@ -31,10 +31,11 @@ ZazenTimer is an Android application for timing meditation sessions. It uses a f
   - `src/testFixtures/` — Shared test utilities (ScreenRobot, MeditationServiceIdlingResource, DevicePreFlightRule) via `java-test-fixtures` plugin
 - **Test Runner**:
   - `HiltTestRunner` — Custom `AndroidJUnitRunner` injecting `HiltTestApplication`, with `DevicePreFlightRule.execute()` called in `onStart()` for self-healing tests
-  - `scripts/run-instrumentation.sh` — Orchestrates full test matrix: unit tests + per-API-level instrumented tests (API 23-36). Launched via `at` scheduler for resilience against shell timeouts.
-  - `scripts/summarize-tests.sh` — Parses logs + JUnit XML into markdown report table. Usage: `scripts/summarize-tests.sh [--date YYYY-MM-DD] [--markdown]`
+   - `scripts/run-instrumentation.sh` — Orchestrates full test matrix: unit tests + per-API-level instrumented tests (API 23-36). Flat early-exit structure (`print_summary(); exit 1` on pre-flight failures), `stdbuf -oL` for pipe output. Launched via `at` scheduler for resilience against shell timeouts.
+   - `scripts/summarize-tests.sh` — Parses logs + JUnit XML into markdown report table. Falls back to `Finished N tests`/`OK (N tests)` when Gradle progress lines are incomplete. Usage: `scripts/summarize-tests.sh [--date YYYY-MM-DD] [--markdown]`
 - **Execution Strategy**:
   - All APIs 23-36: Gradle `connectedDebugAndroidTest` runner (`gradleMaxApi=36`)
+  - The `am instrument` fallback path has been removed — Gradle confirmed working on all tested API levels
   - API level source of truth: `zazentimer.test.apis` in `gradle.properties`
 - **Background Launch**:
   - Use `at` scheduler: `echo "cd <dir> && scripts/run-instrumentation.sh --continue-on-error --ignore-dirty-git --debug >/dev/null 2>&1" | at now`
