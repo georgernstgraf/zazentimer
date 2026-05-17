@@ -50,6 +50,12 @@ jobs:
       if: always()
       run: rm -f $RUNNER_TEMP/release.keystore
 
+    - name: Create GitHub Release
+      uses: softprops/action-gh-release@v2
+      with:
+        files: app/build/outputs/bundle/release/app-release.aab
+        generate_release_notes: true
+
     - name: Upload to Play Console
       uses: r0adkll/upload-google-play@v1
       with:
