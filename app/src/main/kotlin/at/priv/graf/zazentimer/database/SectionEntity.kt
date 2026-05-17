@@ -29,4 +29,5 @@ data class SectionEntity(
     var bellcount: Int? = null,
     var bellpause: Int? = null,
     var belluri: String? = null,
+    var bellId: Int = 0,
 )

@@ -24,5 +24,6 @@ data class SessionBellVolumeEntity(
     var fk_session: Int = 0,
     var bell: Int? = null,
     var belluri: String? = null,
+    var bellId: Int = 0,
     var volume: Int = 100,
 )

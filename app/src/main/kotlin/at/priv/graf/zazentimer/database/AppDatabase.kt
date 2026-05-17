@@ -8,8 +8,8 @@ import androidx.sqlite.db.SupportSQLiteDatabase
 
 @Suppress("MagicNumber")
 @Database(
-    entities = [SessionEntity::class, SectionEntity::class, SessionBellVolumeEntity::class],
-    version = 6,
+    entities = [SessionEntity::class, SectionEntity::class, SessionBellVolumeEntity::class, BellEntity::class],
+    version = 7,
     exportSchema = true,
 )
 abstract class AppDatabase : RoomDatabase() {
@@ -18,6 +18,8 @@ abstract class AppDatabase : RoomDatabase() {
     abstract fun sectionDao(): SectionDao
 
     abstract fun sessionBellVolumeDao(): SessionBellVolumeDao
+
+    abstract fun bellDao(): BellDao
 
     companion object {
         const val DATABASE_NAME = "zentimer"
@@ -28,6 +30,7 @@ abstract class AppDatabase : RoomDatabase() {
         const val VERSION_4 = 4
         const val VERSION_5 = 5
         const val VERSION_6 = 6
+        const val VERSION_7 = 7
 
         const val DEFAULT_VOLUME = 100
 
@@ -212,6 +215,95 @@ abstract class AppDatabase : RoomDatabase() {
                     db.execSQL("ALTER TABLE sections_new RENAME TO sections")
                     db.execSQL(
                         "CREATE INDEX IF NOT EXISTS index_sections_fk_session ON sections(fk_session)",
+                    )
+                }
+            }
+
+        val MIGRATION_6_7 =
+            object : Migration(VERSION_6, VERSION_7) {
+                @Suppress("LongMethod")
+                override fun migrate(db: SupportSQLiteDatabase) {
+                    // 1. Create bells table
+                    db.execSQL(
+                        "CREATE TABLE IF NOT EXISTS bells (" +
+                            "_id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, " +
+                            "name TEXT NOT NULL DEFAULT '', " +
+                            "uri TEXT NOT NULL DEFAULT '', " +
+                            "is_builtin INTEGER NOT NULL DEFAULT 0, " +
+                            "resource_name TEXT)",
+                    )
+
+                    // 2. Seed from existing section bell URIs
+                    db.execSQL(
+                        "INSERT INTO bells (name, uri, is_builtin) " +
+                            "SELECT DISTINCT COALESCE(belluri, ''), COALESCE(belluri, ''), 0 " +
+                            "FROM sections WHERE belluri IS NOT NULL AND belluri != ''",
+                    )
+
+                    // 2b. Seed from existing volume bell URIs (not already in bells)
+                    db.execSQL(
+                        "INSERT INTO bells (name, uri, is_builtin) " +
+                            "SELECT DISTINCT v.belluri, v.belluri, 0 " +
+                            "FROM session_bell_volumes v " +
+                            "WHERE v.belluri IS NOT NULL AND v.belluri != '' " +
+                            "AND NOT EXISTS (SELECT 1 FROM bells b WHERE b.uri = v.belluri)",
+                    )
+
+                    // 3. Rebuild sections with bell_id column
+                    db.execSQL(
+                        "CREATE TABLE sections_new (" +
+                            "_id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, " +
+                            "fk_session INTEGER NOT NULL, " +
+                            "name TEXT NOT NULL, " +
+                            "duration INTEGER NOT NULL, " +
+                            "bell INTEGER NOT NULL DEFAULT -2, " +
+                            "belluri TEXT, " +
+                            "bell_id INTEGER NOT NULL DEFAULT 0, " +
+                            "rank INTEGER, " +
+                            "bellcount INTEGER, " +
+                            "bellpause INTEGER, " +
+                            "FOREIGN KEY (fk_session) REFERENCES sessions(_id) ON DELETE CASCADE)",
+                    )
+                    db.execSQL(
+                        "INSERT INTO sections_new " +
+                            "SELECT s._id, s.fk_session, s.name, s.duration, s.bell, s.belluri, " +
+                            "COALESCE(" +
+                            "(SELECT b._id FROM bells b WHERE b.uri = s.belluri AND s.belluri != ''), " +
+                            "0), " +
+                            "s.rank, s.bellcount, s.bellpause " +
+                            "FROM sections s",
+                    )
+                    db.execSQL("DROP TABLE sections")
+                    db.execSQL("ALTER TABLE sections_new RENAME TO sections")
+                    db.execSQL(
+                        "CREATE INDEX IF NOT EXISTS index_sections_fk_session ON sections(fk_session)",
+                    )
+
+                    // 4. Rebuild session_bell_volumes with bell_id column
+                    db.execSQL(
+                        "CREATE TABLE session_bell_volumes_new (" +
+                            "_id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, " +
+                            "fk_session INTEGER NOT NULL, " +
+                            "bell INTEGER, " +
+                            "belluri TEXT, " +
+                            "bell_id INTEGER NOT NULL DEFAULT 0, " +
+                            "volume INTEGER NOT NULL DEFAULT 100, " +
+                            "FOREIGN KEY (fk_session) REFERENCES sessions(_id) ON DELETE CASCADE)",
+                    )
+                    db.execSQL(
+                        "INSERT INTO session_bell_volumes_new " +
+                            "SELECT v._id, v.fk_session, v.bell, v.belluri, " +
+                            "COALESCE(" +
+                            "(SELECT b._id FROM bells b WHERE b.uri = v.belluri AND v.belluri != ''), " +
+                            "0), " +
+                            "v.volume " +
+                            "FROM session_bell_volumes v",
+                    )
+                    db.execSQL("DROP TABLE session_bell_volumes")
+                    db.execSQL("ALTER TABLE session_bell_volumes_new RENAME TO session_bell_volumes")
+                    db.execSQL(
+                        "CREATE INDEX IF NOT EXISTS index_session_bell_volumes_fk_session " +
+                            "ON session_bell_volumes(fk_session)",
                     )
                 }
             }

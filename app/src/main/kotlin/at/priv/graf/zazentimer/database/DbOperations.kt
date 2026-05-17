@@ -22,6 +22,7 @@ class DbOperations
         private var sessionDao: SessionDao? = null
         private var sectionDao: SectionDao? = null
         private var sessionBellVolumeDao: SessionBellVolumeDao? = null
+        private var bellDao: BellDao? = null
 
         init {
             openDatabase()
@@ -40,12 +41,14 @@ class DbOperations
                         AppDatabase.MIGRATION_3_4,
                         AppDatabase.MIGRATION_4_5,
                         AppDatabase.MIGRATION_5_6,
+                        AppDatabase.MIGRATION_6_7,
                     ).addCallback(AppDatabase.ON_CREATE_CALLBACK)
                     .build()
             val db = appDb ?: return
             sessionDao = db.sessionDao()
             sectionDao = db.sectionDao()
             sessionBellVolumeDao = db.sessionBellVolumeDao()
+            bellDao = db.bellDao()
         }
 
         private suspend fun <T> withIdling(block: suspend () -> T): T {
@@ -64,6 +67,7 @@ class DbOperations
                 sessionDao = null
                 sectionDao = null
                 sessionBellVolumeDao = null
+                bellDao = null
             }
         }
 
