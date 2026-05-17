@@ -14,3 +14,4 @@ __pycache__/
 schemas/
 logs/
 .kotlin/
+google/play-api-key.json

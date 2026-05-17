@@ -1,10 +1,30 @@
 
 import os
 import sys
+import re
 from google.oauth2 import service_account
 from googleapiclient.discovery import build
 
-def update_release_notes(package_name, key_path, track_name, new_notes, language='de-DE'):
+def get_package_name():
+    gradle_path = os.path.join(os.path.dirname(__file__), "../../app/build.gradle.kts")
+    if not os.path.exists(gradle_path):
+        return "at.priv.graf.zazentimer"
+    with open(gradle_path, "r") as f:
+        content = f.read()
+        match = re.search(r'(namespace|applicationId)\s*=\s*"([^"]+)"', content)
+        if match:
+            return match.group(2)
+    return "at.priv.graf.zazentimer"
+
+def update_release_notes(track_name, new_notes, language='de-DE'):
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+    key_path = os.path.join(script_dir, "../../google/play-api-key.json")
+    package_name = get_package_name()
+
+    if not os.path.exists(key_path):
+        print(f"Error: Key not found at {key_path}")
+        sys.exit(1)
+
     scopes = ['https://www.googleapis.com/auth/androidpublisher']
     credentials = service_account.Credentials.from_service_account_file(key_path, scopes=scopes)
     service = build('androidpublisher', 'v3', credentials=credentials)
@@ -27,12 +47,9 @@ def update_release_notes(package_name, key_path, track_name, new_notes, language
 
     # 3. Update notes in the latest release
     latest_release = track['releases'][0]
-    
-    # Ensure releaseNotes structure exists
     if 'releaseNotes' not in latest_release:
         latest_release['releaseNotes'] = []
     
-    # Find existing note for language or add new one
     found = False
     for note in latest_release['releaseNotes']:
         if note['language'] == language:
@@ -56,7 +73,7 @@ def update_release_notes(package_name, key_path, track_name, new_notes, language
 
     # 5. Commit the changes
     service.edits().commit(packageName=package_name, editId=edit_id).execute()
-    print(f"Successfully updated {language} notes for track {track_name}.")
+    print(f"Successfully updated {language} notes for track {track_name} ({package_name}).")
 
 if __name__ == "__main__":
     if len(sys.argv) < 3:
@@ -67,11 +84,8 @@ if __name__ == "__main__":
     NOTES = sys.argv[2]
     LANG = sys.argv[3] if len(sys.argv) > 3 else 'de-DE'
     
-    KEY_PATH = os.path.expanduser("~/.config/iron-country-322716-8ab0815de79f.json")
-    PACKAGE_NAME = "at.priv.graf.zazentimer"
-    
     try:
-        update_release_notes(PACKAGE_NAME, KEY_PATH, TRACK, NOTES, LANG)
+        update_release_notes(TRACK, NOTES, LANG)
     except Exception as e:
         print(f"Error: {e}")
         sys.exit(1)
