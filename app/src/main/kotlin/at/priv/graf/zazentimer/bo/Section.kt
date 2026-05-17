@@ -6,6 +6,7 @@ import java.util.Locale
 data class Section(
     @JvmField var bell: Int = DEFAULT_BELL,
     @JvmField var bellUri: String? = null,
+    @JvmField var bellId: Int = 0,
     @JvmField var bellcount: Int = 0,
     @JvmField var bellpause: Int = 0,
     @JvmField var duration: Int = 0,

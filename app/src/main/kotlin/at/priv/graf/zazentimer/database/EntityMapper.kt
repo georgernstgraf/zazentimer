@@ -34,6 +34,7 @@ object EntityMapper {
         entity.bellcount = bo.bellcount
         entity.bellpause = bo.bellpause
         entity.belluri = bo.bellUri
+        entity.bellId = bo.bellId
         return entity
     }
 
@@ -48,6 +49,7 @@ object EntityMapper {
         bo.bellcount = entity.bellcount ?: 1
         bo.bellpause = entity.bellpause ?: 1
         bo.bellUri = entity.belluri
+        bo.bellId = entity.bellId
         return bo
     }
 
@@ -57,6 +59,7 @@ object EntityMapper {
         entity.fk_session = bo.fkSession
         entity.bell = bo.bell
         entity.belluri = bo.bellUri
+        entity.bellId = bo.bellId
         entity.volume = bo.volume
         return entity
     }
@@ -67,6 +70,7 @@ object EntityMapper {
         bo.fkSession = entity.fk_session
         bo.bell = entity.bell
         bo.bellUri = entity.belluri
+        bo.bellId = entity.bellId
         bo.volume = entity.volume
         return bo
     }

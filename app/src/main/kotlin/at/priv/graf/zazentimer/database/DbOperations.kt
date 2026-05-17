@@ -253,4 +253,20 @@ class DbOperations
                 }
                 result.toTypedArray()
             }
+
+        suspend fun getBellById(id: Int): BellEntity? = withIdling { bellDao?.getById(id) }
+
+        suspend fun getBellByUri(uri: String): BellEntity? = withIdling { bellDao?.getByUri(uri) }
+
+        suspend fun getAllBells(): List<BellEntity> = withIdling { bellDao?.getAll() ?: emptyList() }
+
+        suspend fun getBuiltinBells(): List<BellEntity> = withIdling { bellDao?.getBuiltinBells() ?: emptyList() }
+
+        suspend fun getNonBuiltinBells(): List<BellEntity> = withIdling { bellDao?.getNonBuiltinBells() ?: emptyList() }
+
+        suspend fun insertBell(bell: BellEntity): Long = withIdling { bellDao?.insert(bell) ?: -1 }
+
+        suspend fun updateBell(bell: BellEntity) = withIdling { bellDao?.update(bell) }
+
+        suspend fun deleteBellById(id: Int) = withIdling { bellDao?.deleteById(id) }
     }
