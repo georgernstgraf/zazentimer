@@ -1,6 +1,5 @@
 package at.priv.graf.zazentimer.screens
 
-import android.os.SystemClock
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.action.ViewActions
 import androidx.test.espresso.action.ViewActions.replaceText
@@ -12,7 +11,7 @@ class SectionEditPage {
     private val robot = ScreenRobot()
 
     fun verifySectionEditScreen(): SectionEditPage {
-        SystemClock.sleep(1000)
+        Thread.sleep(1000)
         robot.checkElementIsDisplayed(R.id.play_gong)
         return this
     }

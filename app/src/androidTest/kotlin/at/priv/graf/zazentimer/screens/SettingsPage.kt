@@ -1,6 +1,5 @@
 package at.priv.graf.zazentimer.screens
 
-import android.os.SystemClock
 import androidx.recyclerview.widget.RecyclerView
 import androidx.test.espresso.Espresso.onIdle
 import androidx.test.espresso.Espresso.onView
@@ -17,8 +16,7 @@ class SettingsPage {
     private val robot = ScreenRobot()
 
     init {
-        // PITFALLS #81: PreferenceFragment RecyclerView initialization not tracked by Espresso idle
-        SystemClock.sleep(1000)
+        Thread.sleep(1000)
         onView(withId(R.id.recycler_view)).check { _, noViewFoundException ->
             if (noViewFoundException != null) throw noViewFoundException
         }
@@ -28,8 +26,7 @@ class SettingsPage {
         try {
             onView(withId(R.id.recycler_view))
                 .perform(RecyclerViewActions.scrollToPosition<RecyclerView.ViewHolder>(0))
-            // PITFALLS #81: PreferenceFragment scrolling not tracked by Espresso idle
-            SystemClock.sleep(300)
+            Thread.sleep(300)
         } catch (_: Exception) {
         }
     }
@@ -38,8 +35,7 @@ class SettingsPage {
         try {
             onView(withId(R.id.recycler_view))
                 .perform(RecyclerViewActions.scrollToPosition<RecyclerView.ViewHolder>(99))
-            // PITFALLS #81: PreferenceFragment scrolling not tracked by Espresso idle
-            SystemClock.sleep(500)
+            Thread.sleep(500)
         } catch (_: Exception) {
         }
     }
@@ -52,8 +48,7 @@ class SettingsPage {
                 return true
             } catch (e: NoMatchingViewException) {
                 scrollPreferencesToBottom()
-                // PITFALLS #81: PreferenceFragment scrolling not tracked by Espresso idle
-                SystemClock.sleep(300)
+                Thread.sleep(300)
             }
         }
         try {
@@ -66,7 +61,7 @@ class SettingsPage {
 
     fun clickBackup(): SettingsPage {
         scrollToPreference(R.string.pref_title_backup)
-        SystemClock.sleep(500)
+        Thread.sleep(500)
         onView(withText(R.string.pref_title_backup)).perform(click())
         return this
     }

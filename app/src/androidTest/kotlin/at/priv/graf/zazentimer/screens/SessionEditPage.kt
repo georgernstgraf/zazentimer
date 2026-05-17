@@ -1,6 +1,5 @@
 package at.priv.graf.zazentimer.screens
 
-import android.os.SystemClock
 import androidx.recyclerview.widget.RecyclerView
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.action.ViewActions.click
@@ -14,7 +13,7 @@ class SessionEditPage {
     private val robot = ScreenRobot()
 
     fun verifyEditSessionScreen(): SessionEditPage {
-        SystemClock.sleep(1000)
+        Thread.sleep(1000)
         robot.checkElementIsDisplayed(R.id.text_sitzung_name)
         robot.checkElementIsDisplayed(R.id.but_new_section)
         return this
@@ -32,7 +31,7 @@ class SessionEditPage {
 
     fun clickAddSection(): SectionEditPage {
         robot.clickOnView(R.id.but_new_section)
-        SystemClock.sleep(1500)
+        Thread.sleep(1500)
         return SectionEditPage()
     }
 
@@ -44,7 +43,7 @@ class SessionEditPage {
                     .perform(actionOnItemAtPosition<RecyclerView.ViewHolder>(pos, click()))
                 return this
             } catch (e: Throwable) {
-                SystemClock.sleep(500)
+                Thread.sleep(500)
             }
         }
         throw AssertionError("Could not click section at position $pos")
@@ -57,7 +56,7 @@ class SessionEditPage {
 
     fun goBack(): MainPage {
         robot.pressBack()
-        SystemClock.sleep(3000)
+        Thread.sleep(3000)
         return MainPage()
     }
 }

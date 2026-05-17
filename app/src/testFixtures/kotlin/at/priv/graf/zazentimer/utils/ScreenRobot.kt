@@ -1,6 +1,5 @@
 package at.priv.graf.zazentimer.utils
 
-import android.os.SystemClock
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 import androidx.test.espresso.Espresso
@@ -33,8 +32,8 @@ class ScreenRobot {
             try {
                 onViewWithId(viewId).check(matches(allOf(withEffectiveVisibility(Visibility.VISIBLE), hasNonZeroHeight())))
                 return this
-            } catch (e: Throwable) {
-                SystemClock.sleep(500)
+            } catch (_: Throwable) {
+                Thread.sleep(500)
             }
         }
         onViewWithId(viewId).check(matches(allOf(withEffectiveVisibility(Visibility.VISIBLE), hasNonZeroHeight())))
@@ -63,7 +62,7 @@ class ScreenRobot {
             val overflowButton = device.findObject(UiSelector().descriptionContains("More options"))
             if (overflowButton.waitForExists(2000)) {
                 overflowButton.click()
-                SystemClock.sleep(1000)
+                Thread.sleep(1000)
             } else {
                 openActionBarOverflowOrOptionsMenu(getInstrumentation().targetContext)
             }
@@ -88,7 +87,7 @@ class ScreenRobot {
                 onView(withText(textResId)).check(matches(isDisplayed()))
                 break
             } catch (e: Exception) {
-                SystemClock.sleep(500)
+                Thread.sleep(500)
             }
         }
         onView(withText(textResId)).perform(click())
@@ -114,7 +113,7 @@ class ScreenRobot {
                 onView(withId(recyclerViewId)).check(matches(RecyclerViewPopulatedMatcher()))
                 return this
             } catch (e: Throwable) {
-                SystemClock.sleep(500)
+                Thread.sleep(500)
             }
         }
         onView(withId(recyclerViewId)).check(matches(RecyclerViewPopulatedMatcher()))

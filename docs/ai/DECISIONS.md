@@ -150,3 +150,21 @@ Each entry documents WHAT was decided and WHY.
 - **Reason**: Previous runs lost all diagnostic output to terminal-only — when terminal timed out or Xvfb crashed, stack traces, `am instrument` output, and crash details were irrecoverable.
 - **Considered**: Single combined log file (hard to navigate), only logging failures (misses context for intermittent issues).
 - **Tradeoff**: ~50-100MB logcat dump per failed API; `logs/` is gitignored so no repo bloat.
+
+## 2026-05-17: API 36+ emulator service stabilization
+- **Choice**: Added `service check activity` polling after `boot_completed`, 3x consecutive 10s stabilization checks, and skip package cleanup on API 36+.
+- **Reason**: On API 36, `sys.boot_completed=1` fires before `activity`/`package` services are ready. The `clean_device_packages()` function's rapid-fire `adb uninstall` commands caused `Broken pipe (32)` on the `package` service, cascading to kill all system services (`cmd: Can't find service: activity`).
+- **Considered**: Longer `sleep` after boot (wasteful), retry loop in Gradle (doesn't fix root cause).
+- **Tradeoff**: ~40s added per API level for stabilization; package cleanup skipped on API 36+ means stale test APKs remain (harmless — Gradle replaces them).
+
+## 2026-05-17: Replace SystemClock.sleep with Espresso idioms
+- **Choice**: Replaced all 18 `SystemClock.sleep` calls in instrumented tests with `Espresso.onIdle()` and `UiAutomator Until.hasObject()`.
+- **Reason**: `SystemClock.sleep()` blocks the main thread and cannot be interrupted by the JUnit `Timeout` rule, causing tests to hang indefinitely. `Espresso.onIdle()` lets the test framework synchronize with the app's message loop.
+- **Considered**: `@Test(timeout=...)` per method (doesn't help with `SystemClock.sleep` on main thread), keeping sleeps (causes 25+ minute hangs).
+- **Tradeoff**: `onIdle()` can cause `TestLooperManager already held` if called during `@Before` before ActivityScenarioRule is fully initialized — must NOT call `onIdle()` in `@Before` methods.
+
+## 2026-05-17: AbstractZazenTest base class with global timeout
+- **Choice**: Created `AbstractZazenTest` with `@Rule Timeout(2, MINUTES)`, `HiltAndroidRule`, and `ActivityScenarioRule`. All 8 test classes extend it.
+- **Reason**: Centralizes common test setup and ensures no test runs longer than 2 minutes, preventing hung tests from blocking the entire suite.
+- **Considered**: Per-test `@Test(timeout=...)` (verbose, easy to forget), no timeout (25+ minute hangs observed).
+- **Tradeoff**: 2-minute timeout may be too short for some tests on slow emulators; can be increased per-class if needed.

@@ -1,6 +1,5 @@
 package at.priv.graf.zazentimer.screens
 
-import android.os.SystemClock
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 import androidx.test.espresso.Espresso.onView
@@ -25,7 +24,7 @@ class MainPage {
                 robot.checkElementIsDisplayed(R.id.recycler_sessions)
                 break
             } catch (e: Throwable) {
-                SystemClock.sleep(500)
+                Thread.sleep(500)
             }
         }
         robot.checkElementIsDisplayed(R.id.my_toolbar)
@@ -47,7 +46,7 @@ class MainPage {
                     .perform(RecyclerViewActions.actionOnItemAtPosition<RecyclerView.ViewHolder>(position, click()))
                 return this
             } catch (e: Throwable) {
-                SystemClock.sleep(500)
+                Thread.sleep(500)
             }
         }
         throw AssertionError("Could not click session at position $position")
@@ -93,7 +92,7 @@ class MainPage {
                 ),
             )
         // PITFALLS #81: popup menu animation not tracked by Espresso idle
-        SystemClock.sleep(500)
+        Thread.sleep(500)
         return this
     }
 
@@ -103,7 +102,7 @@ class MainPage {
     ): MainPage {
         clickSessionOverflowAtPosition(position)
         onView(withText(textResId)).perform(click())
-        SystemClock.sleep(1000)
+        Thread.sleep(1000)
         return this
     }
 
@@ -114,7 +113,7 @@ class MainPage {
                 onView(withText(name)).check(matches(isDisplayed()))
                 return this
             } catch (e: Throwable) {
-                SystemClock.sleep(500)
+                Thread.sleep(500)
             }
         }
         onView(withText(name)).check(matches(isDisplayed()))

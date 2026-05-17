@@ -1,6 +1,5 @@
 package at.priv.graf.zazentimer.screens
 
-import android.os.SystemClock
 import at.priv.graf.zazentimer.R
 import at.priv.graf.zazentimer.utils.ScreenRobot
 
@@ -8,7 +7,7 @@ class MeditationPage {
     private val robot = ScreenRobot()
 
     fun verifyMeditationScreenIsDisplayed(): MeditationPage {
-        SystemClock.sleep(500)
+        Thread.sleep(500)
         robot.checkElementIsDisplayed(R.id.but_pause)
         robot.checkElementIsDisplayed(R.id.but_stop)
         robot.checkElementIsDisplayed(R.id.timerView)

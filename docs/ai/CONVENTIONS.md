@@ -41,6 +41,10 @@ Follow these without question. Do not deviate unless explicitly told.
 - Call `DevicePreFlightRule.execute()` in `HiltTestRunner.onStart()` wrapped in try-catch for resilience.
 - Use `execution = "HOST"` in `build.gradle.kts` when the `am instrument` path is used (no orchestrator APK).
 - Keep emulator memory at `-memory 2048` to avoid `systemd-oomd` kills.
+- **Never use `SystemClock.sleep()` in tests**: Use `Espresso.onIdle()` after UI actions, `UiAutomator Until.hasObject()` for polling. `SystemClock.sleep` blocks the main thread and prevents JUnit `Timeout` rule from working.
+- **Never call `Espresso.onIdle()` in `@Before`**: Causes `TestLooperManager already held`. DB ops in `onActivity {}` are synchronous — no idle wait needed.
+- **All test classes must extend `AbstractZazenTest`**: Provides `Timeout(2, MINUTES)`, `hiltRule`, and `activityRule`. Never duplicate these rules.
+- **`@HiltAndroidTest` annotation is NOT inherited**: Every test class needs its own `@HiltAndroidTest` annotation AND the `import dagger.hilt.android.testing.HiltAndroidTest`. ktlintFormat removes the import as "unused" — always verify with `compileDebugAndroidTestKotlin` after `ktlintFormat`.
 
 ## Internationalization (i18n) & LLM Translations
 - **Extremely Strict LLM Instructions**: When using LLMs for translation, you **MUST** provide extremely precise instructions regarding XML tags and placeholders (`%s`, `%1$d`, `&lt;`, `&gt;`). LLMs often corrupt these in low-resource languages, leading to runtime formatting crashes.

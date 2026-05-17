@@ -4,25 +4,30 @@
 `main` (Trunk-based development)
 
 ## Open Tasks
-1. [ ] **#183 — Full validation run**: Launched via `at now` at 17:46 CEST. Monitor with `ps aux | grep run-instrument` or `tail logs/instrumentation-2026-05-16.log`. Run `scripts/summarize-tests.sh --date 2026-05-16` when done. The `run-instrumentation.sh` script has 209 lines of unstaged changes (the rewrite) — these are committed now as `541901f` (summarize script only, the instrumentation script rewrite was already committed earlier).
-2. [ ] **#64 — Play Store**: Sub-issues #114 (AAB build) and #113 (privacy/legal). Blocked by missing `PLAY_SERVICE_ACCOUNT_JSON` GitHub secret.
+1. [ ] **#183 — Fix 7 remaining test failures on API 36**: These are test-code issues, not infrastructure. Root cause: `MainScreenDeadStateTest.testButStartEnabledAfterStoppingMeditation` times out at 2min and leaves Espresso in a bad state, causing `TestLooperManager already held` cascade in `MainScreenNavigationTest` (5 tests). Also `MeditationServiceTest.testStopMeditationConfirmation` times out. Files: `app/src/androidTest/kotlin/at/priv/graf/zazentimer/MainScreenDeadStateTest.kt`, `MainScreenNavigationTest.kt`, `MeditationServiceTest.kt`.
+2. [ ] **#183 — Apply infrastructure fixes to API 23-35**: The service check, stabilization, and package-cleanup-skip are currently only tested on API 36. Need full matrix run to verify all APIs.
+3. [ ] **#64 — Play Store**: Blocked by missing `PLAY_SERVICE_ACCOUNT_JSON` GitHub secret.
 
 ## AVD Inventory (all installed)
 `test_api23` `test_api24` `test_api25` `test_api26` `test_api27` `test_api28` `test_api29` `test_api30` `test_api31` `test_api32` `test_api33` `test_api34` `test_api35` `test_api36`
 
-## Known Test Failures (from previous partial runs)
-- **API 31**: `SectionEditTest.testEditSectionConfig` — `keyDispatchingTimedOut`, 15/25 completed
-- **API 36**: `DuplicateSessionTest.testDuplicateSessionDoesNotCrash` — UTP aborted, 3/25 completed
-- **API 34**: PASS — 25/25
+## API 36 Test Results (2026-05-17, latest run)
+- **17/24 PASS**, 7 FAIL
+- Passes: BackupRestoreTest (2), DuplicateSessionTest (2), MainScreenDeadStateTest (1 of 2), MainScreenNavigationTest (0 of 5 — all cascading), MeditationServiceTest (1 of 2), SectionEditTest (3), SessionCrudTest (3), SettingsTest (5)
+- Fails: `MainScreenDeadStateTest.testButStartEnabledAfterStoppingMeditation` (2min timeout), `MainScreenNavigationTest` (5 tests, TestLooperManager cascade), `MeditationServiceTest.testStopMeditationConfirmation` (2min timeout)
 
 ## Key Files This Session
-- `scripts/summarize-tests.sh` — new, committed (`541901f`)
-- `scripts/run-instrumentation.sh` — committed earlier
-- `docs/ai/*` — updated with `at` scheduler knowledge
+- `app/src/androidTest/kotlin/at/priv/graf/zazentimer/AbstractZazenTest.kt` — base class with Timeout rule
+- `app/src/androidTest/kotlin/at/priv/graf/zazentimer/HiltTestRunner.kt` — IdlingPolicies timeout
+- `app/src/androidTest/AndroidManifest.xml` — NEW, storage permissions for test APK
+- `app/build.gradle.kts` — testTimeoutSeconds=120, animationsDisabled
+- `scripts/run-instrumentation.sh` — service check, stabilization, package cleanup skip
+- `scripts/kill-test-run.sh` — kill all test processes
+- `scripts/summarize-tests.sh` — markdown test report
 
 ## How to Launch Long-Running Tests
 ```bash
-echo "cd /home/georg/repos/georgernstgraf/zazentimer && scripts/run-instrumentation.sh --continue-on-error --ignore-dirty-git --debug >/dev/null 2>&1" | at now
+echo "scripts/run-instrumentation.sh --api 36" | at now
 ```
 Check: `atq` (queue), `ps aux | grep run-instrument` (running), `tail logs/instrumentation-$(date +%Y-%m-%d).log` (progress)
 
