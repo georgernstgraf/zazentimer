@@ -15,7 +15,7 @@ Current status as of 2026-05-17.
 - [x] #180 — Lena's backup import: stale bell URIs from old package automatically fixed at startup
 
 ## Pending
-- [ ] #64 — Play Store (blocked by missing `PLAY_SERVICE_ACCOUNT_JSON` GitHub secret)
+- [x] #64 — Play Store automation: Service Account connected, local `.venv` setup via `scripts/play_store/setup.sh`, scripts active in `scripts/play_store/`.
 
 ## Blockers
 None

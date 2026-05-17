@@ -70,6 +70,12 @@ ZazenTimer is an Android application for timing meditation sessions. It uses a f
 - **Bell Volume Config**: `BellVolumeConfigDialog` → reads `session_bell_volumes` → displays bell name from `bells` table → saves to `DbOperations.saveBellVolumes()`.
 - **Bell Import Repair**: `BackupManager.restore()` → Room migrations (3→4→5→6→7) → MIGRATION_6_7 seeds bells from existing URIs → `ensureBellsTableConsistent()` fixes stale URIs at next startup.
 
+## Play Store Automation (`scripts/play_store/`)
+- **`setup.sh`**: Bootstraps the local `.venv` environment from `requirements.txt`.
+- **`check_status.py`**: Queries the Google Play Android Publisher API for current track and release states.
+- **`update_notes.py`**: Updates release notes for specific tracks and languages using the API.
+- **`.venv/`**: Local Python virtual environment (gitignored).
+
 ## Knowledge Files (`docs/ai/`)
 | File | Purpose | Update mode |
 |------|---------|------------|
@@ -80,3 +86,4 @@ ZazenTimer is an Android application for timing meditation sessions. It uses a f
 | PITFALLS.md | Hard-won failure knowledge | Append |
 | DOMAIN.md | Business/domain rules | Append |
 | STATE.md | Current project status | Overwrite |
+| PLAY_STORE_SETUP.md | Setup guide for automation scripts | Append |

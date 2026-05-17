@@ -4,7 +4,7 @@
 `main` (Trunk-based development)
 
 ## Open Tasks
-1. [ ] **#64 — Play Store**: Blocked by missing `PLAY_SERVICE_ACCOUNT_JSON` GitHub secret.
+1. [in_progress] **#64 — Play Store**: Service Account JSON created and API connection verified. Automated check script at `scripts/play_store/check_status.py`.
 
 ## Architecture Update (2026-05-17, #180)
 - Added `bells` database table (V7) with FK from `sections.bell_id` and `session_bell_volumes.bell_id`

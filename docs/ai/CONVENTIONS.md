@@ -50,7 +50,15 @@ Follow these without question. Do not deviate unless explicitly told.
 - **`@HiltAndroidTest` annotation is NOT inherited**: Every test class needs its own `@HiltAndroidTest` annotation AND the `import dagger.hilt.android.testing.HiltAndroidTest`. ktlintFormat removes the import as "unused" — always verify with `compileDebugAndroidTestKotlin` after `ktlintFormat`.
 - **Use `inRoot(isDialog())` for AlertDialog interactions**: On API 36+, the system enforces edge-to-edge (`EDGE_TO_EDGE_ENFORCED`), which can cause activity windows to lose focus when `AlertDialog` appears. Espresso's default root matcher requires window focus, causing `RootViewWithoutFocusException`. Use `.inRoot(isDialog())` to target the dialog root directly. Import: `import androidx.test.espresso.matcher.RootMatchers.isDialog`.
 
-## Internationalization (i18n) & LLM Translations
+
+## Play Store Automation
+- Service Account key is located at `~/.config/iron-country-322716-8ab0815de79f.json` (Local) or provided via GitHub Secrets for CI.
+- The Python environment is managed in the project root under `.venv/`.
+- Automation scripts are located in `scripts/play_store/`:
+    - `setup.sh`: Bootstraps the local `.venv`.
+    - `check_status.py`: Lists current tracks and releases.
+    - `update_notes.py`: Updates release notes for a specific track. Usage: `.venv/bin/python3 scripts/play_store/update_notes.py <track> <notes> [language]`
+
 - **Extremely Strict LLM Instructions**: When using LLMs for translation, you **MUST** provide extremely precise instructions regarding XML tags and placeholders (`%s`, `%1$d`, `&lt;`, `&gt;`). LLMs often corrupt these in low-resource languages, leading to runtime formatting crashes.
 - **Explicit Fallback Rule**: Explicitly prompt any translation sub-agent: *"If you do not have high confidence in this specific language, or if you cannot guarantee that EVERY placeholder will be preserved exactly, you MUST leave the string in English. Guessing or hallucinating will cause the application to crash."*
 - Always use `R.string` — never hardcode user-facing text in Kotlin, XML, or navigation graphs
