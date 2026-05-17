@@ -49,7 +49,8 @@ def check_status():
         print(f"\n--- Active Tracks for {package_name} ---")
         for track in tracks.get('tracks', []):
             name = track['track']
-            print(f"\nTrack: {name.upper()}")
+            print(f"\nTrack: {name}")
+
             for release in track.get('releases', []):
                 ver = release.get('versionCodes', ['?'])
                 status = release.get('status', 'unknown')

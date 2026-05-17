@@ -80,12 +80,15 @@ if __name__ == "__main__":
         print("Usage: python3 update_notes.py <track> <notes> [language]")
         sys.exit(1)
 
-    TRACK = sys.argv[1]
+    TRACK = sys.argv[1].lower()  # Force lowercase for Google Play API
     NOTES = sys.argv[2]
     LANG = sys.argv[3] if len(sys.argv) > 3 else 'de-DE'
     
     try:
         update_release_notes(TRACK, NOTES, LANG)
     except Exception as e:
-        print(f"Error: {e}")
+        if "Track not found" in str(e):
+            print(f"Error: Track '{TRACK}' not found. Use lowercase names like 'alpha', 'internal', 'beta', or 'production'.")
+        else:
+            print(f"Error: {e}")
         sys.exit(1)
