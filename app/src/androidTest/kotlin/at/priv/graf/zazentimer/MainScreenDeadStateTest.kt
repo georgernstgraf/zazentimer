@@ -5,6 +5,7 @@ import androidx.test.espresso.Espresso.onIdle
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.assertion.ViewAssertions.matches
+import androidx.test.espresso.matcher.RootMatchers.isDialog
 import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
 import androidx.test.espresso.matcher.ViewMatchers.isEnabled
 import androidx.test.espresso.matcher.ViewMatchers.withId
@@ -77,8 +78,8 @@ class MainScreenDeadStateTest : AbstractZazenTest() {
 
         onIdle()
 
-        onView(withText(stopText)).check(matches(isDisplayed()))
-        onView(withText(stopText)).perform(click())
+        onView(withText(stopText)).inRoot(isDialog()).check(matches(isDisplayed()))
+        onView(withText(stopText)).inRoot(isDialog()).perform(click())
 
         onIdle()
 
