@@ -1,5 +1,6 @@
 package at.priv.graf.zazentimer
 
+import androidx.test.espresso.Espresso.onIdle
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
@@ -36,6 +37,8 @@ class DuplicateSessionTest : AbstractZazenTest() {
         MainPage()
             .verifyMainScreenIsDisplayed()
             .clickSessionOverflowAction(0, R.string.menu_copy_session)
+
+        onIdle()
 
         onView(withText(containsString("Copy of")))
             .check(matches(isDisplayed()))
