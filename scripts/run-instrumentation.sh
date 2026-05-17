@@ -548,7 +548,7 @@ run_gradle_test() {
 
     set +e
     cd "$PROJECT_DIR"
-    ./gradlew connectedDebugAndroidTest 2>&1 | tee -a "$API_LOG"
+    stdbuf -oL ./gradlew connectedDebugAndroidTest 2>&1 | tee -a "$API_LOG"
     result=$?
     set -e
 

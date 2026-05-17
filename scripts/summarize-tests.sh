@@ -147,6 +147,19 @@ for f in "${api_logs[@]}"; do
     fi
 
     progress=$(grep -oP 'Tests \K[0-9]+/[0-9]+ completed' "$f" | tail -1)
+    if [ -n "$progress" ]; then
+        p_n=${progress%/*}
+        finished=$(grep -oP 'Finished \K[0-9]+' "$f" | tail -1)
+        if [ -n "$finished" ] && [ "$finished" -gt "$p_n" ] 2>/dev/null; then
+            progress="${finished}/${finished} completed"
+        fi
+    else
+        finished=$(grep -oP 'Finished \K[0-9]+' "$f" | tail -1)
+        if [ -z "$finished" ]; then
+            finished=$(grep -oP 'OK \(\K[0-9]+' "$f" | tail -1)
+        fi
+        [ -n "$finished" ] && progress="${finished}/${finished} completed"
+    fi
     [ -n "$progress" ] && API_TEST_PROGRESS[$api]=$progress
 
     failed_count=$(grep -oP '\(([0-9]+) failed\)' "$f" | tail -1 | grep -oP '[0-9]+')
