@@ -1,9 +1,11 @@
 package at.priv.graf.zazentimer
 
+import android.content.Context
 import android.content.SharedPreferences
 import android.util.Log
 import at.priv.graf.zazentimer.audio.BellCollection
 import at.priv.graf.zazentimer.bo.Section
+import at.priv.graf.zazentimer.database.BellEntity
 import at.priv.graf.zazentimer.database.DbOperations
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
@@ -22,11 +24,10 @@ class MigrationHelper(
                 .apply()
             Log.d(TAG, "done converting settings")
         }
-        if (!preferences.getBoolean(ZazenTimerActivity.PREF_KEY_CONVERTED_BELL_INDICES, false)) {
-            Log.d(TAG, "converting Bell Indices to URIs...")
-            scope.launch { convertBellIndices() }
-            Log.d(TAG, "done converting Bell Indices")
-        }
+        // Bell URI repair runs EVERY startup to catch stale backup URIs
+        Log.d(TAG, "repairing bell URIs...")
+        scope.launch { convertBellIndices() }
+        Log.d(TAG, "done repairing bell URIs")
     }
 
     @Suppress("LoopWithTooManyJumpStatements")
@@ -38,6 +39,7 @@ class MigrationHelper(
         }
     }
 
+    @Suppress("ReturnCount")
     private suspend fun convertSectionBellIndex(section: Section) {
         val bellUri = section.bellUri
         if (bellUri == null || bellUri.trim().isEmpty()) {
@@ -53,6 +55,9 @@ class MigrationHelper(
             section.bell = BELL_INDEX_NONE
             section.bellUri = BellCollection.getDemoBell()?.uri?.toString() ?: return
             dbOperations.updateSection(section)
+        } else if (section.bell == BELL_INDEX_NONE && BellCollection.getBellForSection(section) == null) {
+            section.bellUri = BellCollection.getDemoBell()?.uri?.toString() ?: return
+            dbOperations.updateSection(section)
         }
     }
 
@@ -60,5 +65,179 @@ class MigrationHelper(
         private const val TAG = "ZMT_MigrationHelper"
         private const val BELL_INDEX_NONE = -2
         private const val BELL_INDEX_LEGACY_DEFAULT = -1
+
+        @Suppress("LongMethod", "CyclomaticComplexMethod", "LoopWithTooManyJumpStatements")
+        suspend fun ensureBellsTableConsistent(
+            context: Context,
+            db: DbOperations,
+        ) {
+            // 1. Seed 8 built-in bells
+            val builtinResNames =
+                listOf(
+                    "bell1",
+                    "bell2",
+                    "dharma107",
+                    "dharmaschwarz88",
+                    "shomyo90",
+                    "tang164",
+                    "tib230",
+                    "zen97",
+                )
+            for (i in builtinResNames.indices) {
+                val bell = BellCollection.getBell(i) ?: continue
+                db.insertBell(
+                    BellEntity(
+                        name = bell.getName(),
+                        uri = bell.uri.toString(),
+                        isBuiltin = true,
+                        resourceName = builtinResNames[i],
+                    ),
+                )
+            }
+
+            // 2. Sync custom bells from filesDir
+            val filesDir = context.filesDir
+            val customFiles = filesDir.listFiles { _, name -> name.startsWith("bell_") }
+            if (customFiles != null) {
+                for (file in customFiles) {
+                    val uri = "file://${file.absolutePath}"
+                    db.insertBell(
+                        BellEntity(
+                            name = file.name.removePrefix("bell_"),
+                            uri = uri,
+                        ),
+                    )
+                }
+            }
+
+            // 3. Resolve built-in bell URIs and names
+            for (entity in db.getBuiltinBells()) {
+                val resName = entity.resourceName ?: continue
+                val idx = builtinResNames.indexOf(resName)
+                if (idx >= 0) {
+                    val bell = BellCollection.getBell(idx) ?: continue
+                    if (entity.uri != bell.uri.toString() || entity.name != bell.getName()) {
+                        entity.uri = bell.uri.toString()
+                        entity.name = bell.getName()
+                        db.updateBell(entity)
+                    }
+                }
+            }
+
+            // 4. Fix stale bell URIs (backup import case)
+            val allBells = BellCollection.getBellList()
+            for (entity in db.getNonBuiltinBells()) {
+                val found = allBells.find { it.uri.toString() == entity.uri }
+                if (found == null) {
+                    val demo = BellCollection.getDemoBell() ?: allBells.firstOrNull() ?: continue
+                    entity.uri = demo.uri.toString()
+                    entity.name = demo.getName()
+                    db.updateBell(entity)
+                }
+            }
+
+            // 5. Deduplicate bells with same URI
+            val allBellEntities = db.getAllBells()
+            val byUri = allBellEntities.groupBy { it.uri }
+            for ((_, group) in byUri) {
+                if (group.size <= 1) continue
+                val keep = group.first()
+                for (remove in group.drop(1)) {
+                    updateSectionBellId(db, remove._id, keep._id)
+                    updateVolumeBellId(db, remove._id, keep._id)
+                    db.deleteBellById(remove._id)
+                }
+            }
+
+            // 6. Resolve bellId for any entries still at 0
+            resolveUnresolvedBellIds(db)
+        }
+
+        suspend fun repairBellUris(db: DbOperations) {
+            for (session in db.readSessions()) {
+                for (section in db.readSections(session.id)) {
+                    if (section.bell == BELL_INDEX_NONE && BellCollection.getBellForSection(section) == null) {
+                        section.bellUri = BellCollection.getDemoBell()?.uri?.toString() ?: continue
+                        db.updateSection(section)
+                    }
+                }
+            }
+        }
+
+        private suspend fun updateSectionBellId(
+            db: DbOperations,
+            fromId: Int,
+            toId: Int,
+        ) {
+            for (session in db.readSessions()) {
+                for (section in db.readSections(session.id)) {
+                    if (section.bellId == fromId) {
+                        section.bellId = toId
+                        db.updateSection(section)
+                    }
+                }
+            }
+        }
+
+        private suspend fun updateVolumeBellId(
+            db: DbOperations,
+            fromId: Int,
+            toId: Int,
+        ) {
+            for (session in db.readSessions()) {
+                for (bv in db.readBellVolumes(session.id)) {
+                    if (bv.bellId == fromId) {
+                        bv.bellId = toId
+                    }
+                }
+                val cleaned = db.readBellVolumes(session.id)
+                if (cleaned.any { it.bellId == toId }) {
+                    db.saveBellVolumes(session.id, cleaned)
+                }
+            }
+        }
+
+        @Suppress("CyclomaticComplexMethod", "NestedBlockDepth")
+        private suspend fun resolveUnresolvedBellIds(db: DbOperations) {
+            val allBellEntities = db.getAllBells()
+            val demoEntity =
+                allBellEntities.firstOrNull { it.resourceName == "bell2" }
+                    ?: allBellEntities.firstOrNull { it.isBuiltin }
+                    ?: allBellEntities.firstOrNull()
+            val demoId = demoEntity?._id ?: 0
+
+            for (session in db.readSessions()) {
+                for (section in db.readSections(session.id)) {
+                    if (section.bellId <= 0 && !section.bellUri.isNullOrEmpty()) {
+                        val matched = allBellEntities.find { it.uri == section.bellUri }
+                        section.bellId = matched?._id ?: demoId
+                        if (section.bellId > 0) {
+                            db.updateSection(section)
+                        }
+                    } else if (section.bellId <= 0) {
+                        section.bellId = demoId
+                        if (section.bellId > 0) {
+                            db.updateSection(section)
+                        }
+                    }
+                }
+
+                val volumes = db.readBellVolumes(session.id)
+                var changed = false
+                for (bv in volumes) {
+                    if (bv.bellId <= 0 && !bv.bellUri.isNullOrEmpty()) {
+                        val matched = allBellEntities.find { it.uri == bv.bellUri }
+                        bv.bellId = matched?._id ?: demoId
+                        changed = true
+                    } else if (bv.bellId <= 0) {
+                        bv.bellId = demoId
+                        changed = true
+                    }
+                }
+                if (changed) {
+                    db.saveBellVolumes(session.id, volumes)
+                }
+            }
+        }
     }
 }
