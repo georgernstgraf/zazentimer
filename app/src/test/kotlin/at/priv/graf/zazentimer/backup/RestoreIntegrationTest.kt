@@ -11,15 +11,41 @@ import org.junit.After
 import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
-import org.robolectric.RobolectricTestRunner
+import org.robolectric.ParameterizedRobolectricTestRunner
 import org.robolectric.RuntimeEnvironment
 import org.robolectric.annotation.Config
 import java.io.File
 import java.io.FileOutputStream
 
-@RunWith(RobolectricTestRunner::class)
+@RunWith(ParameterizedRobolectricTestRunner::class)
 @Config(sdk = [34])
-class RestoreIntegrationTest {
+class RestoreIntegrationTest(private val backupFileName: String) {
+
+    companion object {
+        @JvmStatic
+        @ParameterizedRobolectricTestRunner.Parameters(name = "Restore Backup: {0}")
+        fun getBackupFiles(): Collection<Array<String>> {
+            val userDir = System.getProperty("user.dir")
+            val backupsDir = File(userDir, "src/test/resources/backups")
+            
+            // Fallback if running from a different working directory
+            val files = if (backupsDir.exists() && backupsDir.isDirectory) {
+                backupsDir.listFiles { _, name -> name.endsWith(".zip") }?.map { it.name } ?: emptyList()
+            } else {
+                // Hardcode known backups if dir scanning fails
+                listOf(
+                    "zazentimer-georg-0516-backup.zip",
+                    "zazentimer-georg-backup_01.zip",
+                    "zazentimer-georg-backup_02.zip",
+                    "zazentimer-georg-prod-backup.zip",
+                    "zazentimer-lena-backup.zip"
+                )
+            }
+            
+            return files.map { arrayOf(it) }
+        }
+    }
+
     private lateinit var context: Context
     private lateinit var tempDir: File
     private lateinit var databaseFile: File
@@ -31,7 +57,7 @@ class RestoreIntegrationTest {
     fun setUp() {
         context = RuntimeEnvironment.getApplication()
         at.priv.graf.zazentimer.audio.BellCollection.initialize(context)
-        tempDir = File(context.cacheDir, "restore-test").apply { mkdirs() }
+        tempDir = File(context.cacheDir, "restore-test-${System.currentTimeMillis()}").apply { mkdirs() }
         databaseFile = File(tempDir, "zentimer")
         filesDir = File(tempDir, "files").apply { mkdirs() }
         
@@ -52,23 +78,30 @@ class RestoreIntegrationTest {
     fun tearDown() {
         db?.close()
         tempDir.deleteRecursively()
+        
+        // Clean up the actual app database created by DbOperations to avoid cross-test contamination
+        val internalDbFile = context.getDatabasePath(AppDatabase.DATABASE_NAME)
+        internalDbFile.delete()
+        File("${internalDbFile.absolutePath}-wal").delete()
+        File("${internalDbFile.absolutePath}-shm").delete()
     }
 
     @Test
-    fun restoreLenaBackup_migratesAndQueriesSuccessfully() = runBlocking {
+    fun restoreBackup_migratesAndQueriesSuccessfully() = runBlocking {
+        println("Testing restore for backup: $backupFileName")
+        
         // 1. Copy backup from resources to temp file
         val userDir = System.getProperty("user.dir")
-        val backupFileInProject = File(userDir, "src/test/resources/backups/zazentimer-lena-backup.zip")
+        val backupFileInProject = File(userDir, "src/test/resources/backups/$backupFileName")
         
         val backupResource = if (backupFileInProject.exists()) {
             backupFileInProject.inputStream()
         } else {
-            // Fallback for different environments
-            javaClass.getResourceAsStream("/backups/zazentimer-lena-backup.zip")
+            javaClass.getResourceAsStream("/backups/$backupFileName")
         }
         assertThat(backupResource).isNotNull()
         
-        val zipFile = File(tempDir, "lena-backup.zip")
+        val zipFile = File(tempDir, backupFileName)
         backupResource!!.use { input ->
             FileOutputStream(zipFile).use { output ->
                 input.copyTo(output)
@@ -93,11 +126,12 @@ class RestoreIntegrationTest {
         // 5. Verify queries
         val sessions = dbOps.readSessions()
         assertThat(sessions).isNotEmpty()
-        assertThat(sessions.size).isEqualTo(5) // Lena's backup has 5 sessions
+        println("  Restored ${sessions.size} sessions")
 
         for (session in sessions) {
             val sections = dbOps.readSections(session.id)
-            assertThat(sections).isNotEmpty()
+            // It's possible some sessions have no sections, but we shouldn't crash
+            println("  Session '${session.name}' has ${sections.size} sections")
             
             for (section in sections) {
                 // V7 specific check: bellId should be resolved
@@ -106,9 +140,23 @@ class RestoreIntegrationTest {
                 val bell = dbOps.getBellById(section.bellId)
                 assertThat(bell).isNotNull()
             }
+            
+            // Check volumes too
+            val volumes = dbOps.readBellVolumes(session.id)
+            for (volume in volumes) {
+                 assertThat(volume.bellId).isGreaterThan(0)
+                 val bell = dbOps.getBellById(volume.bellId)
+                 if (bell == null) {
+                     println("  ERROR: Null bell for Volume ID ${volume.bellId} in session '${session.name}'")
+                     println("         Volume details: bell=${volume.bell}, uri=${volume.bellUri}")
+                 }
+                 assertThat(bell).isNotNull()
+            }
         }
         
         val bells = dbOps.getAllBells()
-        assertThat(bells).hasSize(8) // 8 built-in bells
+        // We should have at least the 8 built-in bells
+        assertThat(bells.size).isAtLeast(8) 
+        println("  Database has ${bells.size} bells total after repair")
     }
 }

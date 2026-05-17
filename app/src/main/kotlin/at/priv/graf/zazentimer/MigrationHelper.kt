@@ -126,6 +126,7 @@ class MigrationHelper(
 
             // 4. Fix stale bell URIs (backup import case)
             val allBells = BellCollection.getBellList()
+            var anyBellsUpdated = false
             for (entity in db.getNonBuiltinBells()) {
                 val found = allBells.find { it.uri.toString() == entity.uri }
                 if (found == null) {
@@ -133,6 +134,7 @@ class MigrationHelper(
                     entity.uri = demo.uri.toString()
                     entity.name = demo.getName()
                     db.updateBell(entity)
+                    anyBellsUpdated = true
                 }
             }
 
@@ -146,11 +148,15 @@ class MigrationHelper(
                     updateSectionBellId(db, remove._id, keep._id)
                     updateVolumeBellId(db, remove._id, keep._id)
                     db.deleteBellById(remove._id)
+                    anyBellsUpdated = true
                 }
             }
+            
+            // 5.5 If we updated any bells, we need to refresh our list before resolving IDs
+            val finalBellEntities = if (anyBellsUpdated) db.getAllBells() else allBellEntities
 
             // 6. Resolve bellId for any entries still at 0
-            resolveUnresolvedBellIds(db)
+            resolveUnresolvedBellIds(db, finalBellEntities)
         }
 
         suspend fun repairBellUris(db: DbOperations) {
@@ -198,8 +204,7 @@ class MigrationHelper(
         }
 
         @Suppress("CyclomaticComplexMethod", "NestedBlockDepth")
-        private suspend fun resolveUnresolvedBellIds(db: DbOperations) {
-            val allBellEntities = db.getAllBells()
+        private suspend fun resolveUnresolvedBellIds(db: DbOperations, allBellEntities: List<BellEntity>) {
             val demoEntity =
                 allBellEntities.firstOrNull { it.resourceName == "bell2" }
                     ?: allBellEntities.firstOrNull { it.isBuiltin }
@@ -227,10 +232,16 @@ class MigrationHelper(
                 for (bv in volumes) {
                     if (bv.bellId <= 0 && !bv.bellUri.isNullOrEmpty()) {
                         val matched = allBellEntities.find { it.uri == bv.bellUri }
+                        // Special fix for backup imports: if URI is not found, force to demoId
                         bv.bellId = matched?._id ?: demoId
                         changed = true
                     } else if (bv.bellId <= 0) {
                         bv.bellId = demoId
+                        changed = true
+                    } else if (bv.bellId > 0 && allBellEntities.none { it._id == bv.bellId }) {
+                        // The ID exists but points to a deleted/non-existent bell (due to deduplication)
+                        val matched = allBellEntities.find { it.uri == bv.bellUri }
+                        bv.bellId = matched?._id ?: demoId
                         changed = true
                     }
                 }
