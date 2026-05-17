@@ -433,10 +433,10 @@ class MigrationTest {
         val bellId = bellsCursor.getInt(bellsCursor.getColumnIndexOrThrow("_id"))
         bellsCursor.close()
 
-        val secCursor = db.query("SELECT bell_id FROM sections WHERE _id = 1")
+        val secCursor = db.query("SELECT bellId FROM sections WHERE _id = 1")
         assertThat(secCursor.count).isEqualTo(1)
         secCursor.moveToFirst()
-        assertThat(secCursor.getInt(secCursor.getColumnIndexOrThrow("bell_id"))).isEqualTo(bellId)
+        assertThat(secCursor.getInt(secCursor.getColumnIndexOrThrow("bellId"))).isEqualTo(bellId)
         secCursor.close()
         db.close()
     }
@@ -457,7 +457,7 @@ class MigrationTest {
             names.add(cursor.getString(cursor.getColumnIndexOrThrow("name")))
         }
         cursor.close()
-        assertThat(names).contains("bell_id")
+        assertThat(names).contains("bellId")
         db.close()
     }
 
@@ -493,7 +493,7 @@ class MigrationTest {
 
         val secCursor =
             db.query(
-                "SELECT name, duration, bell_id FROM sections WHERE _id = 1",
+                "SELECT name, duration, bellId FROM sections WHERE _id = 1",
             )
         assertThat(secCursor.count).isEqualTo(1)
         secCursor.moveToFirst()
@@ -501,7 +501,7 @@ class MigrationTest {
             .isEqualTo("Zazen")
         assertThat(secCursor.getInt(secCursor.getColumnIndexOrThrow("duration")))
             .isEqualTo(600)
-        assertThat(secCursor.getInt(secCursor.getColumnIndexOrThrow("bell_id")))
+        assertThat(secCursor.getInt(secCursor.getColumnIndexOrThrow("bellId")))
             .isEqualTo(0)
         secCursor.close()
         db.close()
@@ -524,13 +524,13 @@ class MigrationTest {
 
         val cursor =
             db.query(
-                "SELECT v.bell_id FROM session_bell_volumes v " +
+                "SELECT v.bellId FROM session_bell_volumes v " +
                     "JOIN bells b ON b.uri = 'android.resource://test.pkg/456' " +
                     "WHERE v.fk_session = 1",
             )
         assertThat(cursor.count).isEqualTo(1)
         cursor.moveToFirst()
-        assertThat(cursor.getInt(cursor.getColumnIndexOrThrow("bell_id"))).isGreaterThan(0)
+        assertThat(cursor.getInt(cursor.getColumnIndexOrThrow("bellId"))).isGreaterThan(0)
         cursor.close()
         db.close()
     }

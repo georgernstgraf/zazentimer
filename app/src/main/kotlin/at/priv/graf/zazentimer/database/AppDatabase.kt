@@ -9,7 +9,7 @@ import androidx.sqlite.db.SupportSQLiteDatabase
 @Suppress("MagicNumber")
 @Database(
     entities = [SessionEntity::class, SectionEntity::class, SessionBellVolumeEntity::class, BellEntity::class],
-    version = 7,
+    version = AppDatabase.CURRENT_VERSION,
     exportSchema = true,
 )
 abstract class AppDatabase : RoomDatabase() {
@@ -31,6 +31,8 @@ abstract class AppDatabase : RoomDatabase() {
         const val VERSION_5 = 5
         const val VERSION_6 = 6
         const val VERSION_7 = 7
+
+        const val CURRENT_VERSION = VERSION_7
 
         const val DEFAULT_VOLUME = 100
 

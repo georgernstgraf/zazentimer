@@ -93,7 +93,7 @@ class BackupManager(
             if (entry.name == databaseName) {
                 val entryBytes = zf.getInputStream(entry).use { it.readBytes() }
                 val dbVersion = readDatabaseVersion(entryBytes)
-                if (dbVersion > AppDatabase.VERSION_7) {
+                if (dbVersion > AppDatabase.CURRENT_VERSION) {
                     return ERROR_VERSION_TOO_HIGH
                 }
                 onCloseDatabase()
