@@ -11,8 +11,23 @@ ZazenTimer is an Android application for timing meditation sessions. It uses a f
 - **MeditationViewModel**: Bridges the UI and Repository; manages service binding.
 - **DbOperations**: Room database wrapper with built-in `IdlingResource` for test synchronization.
 - **ZazenClock**: Abstraction for system time to facilitate deterministic testing.
-- **BellPlayer**: Manages pooled `Audio` instances for bell playback. Receives explicit `volume: Int` parameter (volume is per-session, per bell type).
+- **BellPlayer**: Manages pooled `Audio` instances for bell playback. Receives explicit `volume: Int` parameter (volume is per-session, per bell type). Has demo bell fallback if `getBellForSection()` returns null.
 - **BellVolumeConfigDialog**: DialogFragment in session editor for configuring per-bell-type volumes.
+
+## Database (Room, V7)
+| Table | Key columns | Purpose |
+|-------|-----------|---------|
+| `bells` | `_id`, `name`, `uri`, `is_builtin`, `resource_name` | Bell metadata; FK target for sections and session_bell_volumes |
+| `sessions` | `_id`, `name`, `description` | Meditation sessions |
+| `sections` | `_id`, `fk_session`, `bell`, `belluri`, `bell_id`, `duration`, `rank`, `bellcount`, `bellpause` | Timed segments within a session; `bell_id` FK→bells._id |
+| `session_bell_volumes` | `_id`, `fk_session`, `bell`, `belluri`, `bell_id`, `volume` | Per-session per-bell volume; `bell_id` FK→bells._id |
+| `settings` | `_id`, `param`, `value`, `def` | App settings (key-value) |
+
+### Bell Resolution Flow
+1. Startup: `MigrationHelper.ensureBellsTableConsistent()` seeds built-in bells (8 rows), syncs custom bells from filesDir, fixes stale URIs, resolves `bell_id=0` entries
+2. Section creation: `DemoSessionCreator` / `SectionEditFragment` set `bell=-2` (BELL_INDEX_NONE) + valid `bellUri` from BellCollection; `bellId` left as 0
+3. Playback: `BellPlayer.playBell()` resolves bell via `BellCollection.getBellForSection()` (URI match); fallback to `getDemoBell()` if null
+4. Volume: `Meditation.getVolumeForSection()` matches `session_bell_volumes.bell_id == section.bell_id`
 
 ## Extracted Helpers (2026-05-11, #142)
 - **DemoSessionCreator** (`database/`) — Creates demo sessions on first launch; extracted from ZazenTimerActivity
@@ -51,8 +66,9 @@ ZazenTimer is an Android application for timing meditation sessions. It uses a f
 - **StateFlow** → `MeditationViewModel` → UI (Fragments).
 - **Service** → `DbOperations` (Read/Write session state).
 - **ViewModel** → `DbOperations` (Read session list/configuration).
-- **Bell Volume Flow**: Session → `bellVolumes: List<SessionBellVolume>` → `Meditation` → `BellPlayer.playBells(section, volume, ...)` → `Audio.playAbsVolume(bell, volume)`.
-- **Bell Volume Config**: `BellVolumeConfigDialog` → `DbOperations.saveBellVolumes()` → `session_bell_volumes` table.
+- **Bell Volume Flow**: Section `bell_id` → `session_bell_volumes` lookup via `bell_id` → `Meditation.getVolumeForSection()` → `BellPlayer.playBells(section, volume)` → `Audio.playAbsVolume(bell, volume)`.
+- **Bell Volume Config**: `BellVolumeConfigDialog` → reads `session_bell_volumes` → displays bell name from `bells` table → saves to `DbOperations.saveBellVolumes()`.
+- **Bell Import Repair**: `BackupManager.restore()` → Room migrations (3→4→5→6→7) → MIGRATION_6_7 seeds bells from existing URIs → `ensureBellsTableConsistent()` fixes stale URIs at next startup.
 
 ## Knowledge Files (`docs/ai/`)
 | File | Purpose | Update mode |

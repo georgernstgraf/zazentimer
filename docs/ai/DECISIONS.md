@@ -175,3 +175,9 @@ Each entry documents WHAT was decided and WHY.
 - **Considered**: `Thread.sleep()` delays (already timed-out at 10s), catching exception with retry loop (band-aid).
 - **Tradeoff**: Import of `RootMatchers.isDialog` adds one extra import; must be placed in correct lexicographic order for ktlint.
 - **Module**: `app/src/androidTest/kotlin/at/priv/graf/zazentimer/MainScreenDeadStateTest.kt`
+
+## 2026-05-17: Add bells database table (V7) for referential integrity
+- **Choice**: Added a `bells` table (`_id`, `name`, `uri`, `is_builtin`, `resource_name`) with FK references from `sections.bell_id` and `session_bell_volumes.bell_id`. MIGRATION_6_7 seeds bells from existing section/volume bell URIs. Runtime repair (`ensureBellsTableConsistent()`) runs every startup to seed built-in bells, sync custom bells, fix stale URIs from old backups, and deduplicate.
+- **Reason**: Old backup imports had stale `belluri` values (different package name, different R.raw IDs) that didn't resolve. A bells table gives stable IDs so stale URIs can be fixed in-place without breaking FK references.
+- **Considered**: Repairing URIs at application level only (fragile, no DB enforcement), adding FK to a non-existent bells table (SQLite doesn't enforce FKs with PRAGMA unless set).
+- **Tradeoff**: Adds a new table and migration; built-in bells are seeded at runtime (not during SQL migration, where Context is unavailable). Old `bell`/`belluri` columns kept as migration buffer (to be dropped in V8).

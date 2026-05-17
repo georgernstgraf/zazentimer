@@ -27,6 +27,9 @@ Follow these without question. Do not deviate unless explicitly told.
 
 ## Database
 - All asynchronous DB operations in `DbOperations` must be wrapped with `withIdling { ... }` to ensure Espresso synchronization.
+- Bell references use the `bells` table (`_id`, `name`, `uri`, `is_builtin`, `resource_name`). Sections and session_bell_volumes reference bells via `bell_id` FK.
+- New sections must be created with `bell = -2` (BELL_INDEX_NONE) and a valid `bellUri` from `BellCollection`. `bellId` is resolved at startup by `ensureBellsTableConsistent()`.
+- Built-in bells always have `is_builtin = true` and `resource_name` set to the R.raw resource name (e.g., "bell1", "bell2", "dharma107").
 
 ## Detekt
 - `./gradlew detekt` must exit 0 before any commit. Zero violations policy.
