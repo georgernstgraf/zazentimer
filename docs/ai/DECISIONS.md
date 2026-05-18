@@ -176,8 +176,11 @@ Each entry documents WHAT was decided and WHY.
 - **Tradeoff**: Import of `RootMatchers.isDialog` adds one extra import; must be placed in correct lexicographic order for ktlint.
 - **Module**: `app/src/androidTest/kotlin/at/priv/graf/zazentimer/MainScreenDeadStateTest.kt`
 
-## 2026-05-17: Add bells database table (V7) for referential integrity
-- **Choice**: Added a `bells` table (`_id`, `name`, `uri`, `is_builtin`, `resource_name`) with FK references from `sections.bell_id` and `session_bell_volumes.bell_id`. MIGRATION_6_7 seeds bells from existing section/volume bell URIs. Runtime repair (`ensureBellsTableConsistent()`) runs every startup to seed built-in bells, sync custom bells, fix stale URIs from old backups, and deduplicate.
-- **Reason**: Old backup imports had stale `belluri` values (different package name, different R.raw IDs) that didn't resolve. A bells table gives stable IDs so stale URIs can be fixed in-place without breaking FK references.
-- **Considered**: Repairing URIs at application level only (fragile, no DB enforcement), adding FK to a non-existent bells table (SQLite doesn't enforce FKs with PRAGMA unless set).
-- **Tradeoff**: Adds a new table and migration; built-in bells are seeded at runtime (not during SQL migration, where Context is unavailable). Old `bell`/`belluri` columns kept as migration buffer (to be dropped in V8).
+## 2026-05-18: Group bell volumes by bellId in UI
+- **Choice**: Refactored `SessionEditFragment` and `BellVolumeConfigDialog` to identify unique bells via `bellId` instead of legacy `bell` index and `bellUri`.
+- **Reason**: Normalization in V7 migration created a `bells` table, but the UI was still using legacy fields, causing duplicate sliders when identical bells were identified differently in old backups.
+- **Tradeoff**: UI now depends on `DbOperations` (via Hilt) to map `bellId` to display names.
+
+## 2026-05-18: Fix and deduplicate volumes during bellId remapping
+- **Choice**: Updated `MigrationHelper.updateVolumeBellId` to correctly save modified volumes and added a deduplication step that averages volumes for the same `bellId`.
+- **Reason**: The previous implementation had a bug where it read volumes twice and never saved the updated `bellId`s, leaving duplicate records in the database.

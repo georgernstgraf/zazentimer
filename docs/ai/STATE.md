@@ -3,23 +3,23 @@
 Current status as of 2026-05-18.
 
 ## Current Focus
-#192 — Closed. Backup restore crash fixed and integration tests implemented.
+#193 — Closed. Duplicate bell volume sliders fixed via bellId grouping and migration repair.
 
 ## Completed (this cycle)
-- [x] #64 — Play Store automation: Service Account connected, local `.venv` setup via `scripts/play_store/setup.sh`, scripts active in `scripts/play_store/`.
-- [x] #192 — Backup restore crash fixed: corrected Room migration 6→7 schema (indices and column naming) and updated version check in `BackupManager`.
-- [x] #192 — Implemented `RestoreIntegrationTest` (Robolectric) to verify database restoration and migration process using Lena's backup.
-- [x] #183 — `MainScreenDeadStateTest` fixed: `inRoot(isDialog())` for API 36 AlertDialog focus loss
-- [x] #183 — Removed `am instrument` fallback path; all APIs now use `connectedDebugAndroidTest` (Gradle)
-- [x] #183 — `run-instrumentation.sh` restructured: flat early-exit pattern, `stdbuf -oL` for pipe buffering
-- [x] #183 — Full matrix validation: APIs 23-36 all PASS with 24/24 instrumented tests
-- [x] #180 — bells table V6→V7 migration, runtime repair, UI integration, 5 migration tests
+- [x] #193 — Fix duplicate bell volume sliders: Grouped by `bellId` in `SessionEditFragment`.
+- [x] #193 — Fix volume migration: Corrected `MigrationHelper.updateVolumeBellId` to save changes and deduplicate volumes.
+- [x] #193 — UI Robustness: Refactored `BellVolumeConfigDialog` to use Hilt and inject `DbOperations` for normalized bell lookups.
+- [x] #192 — Backup restore crash fixed and integration tests implemented.
+- [x] #64 — Play Store automation: Service Account connected, local `.venv` setup, scripts active.
 
 ## Pending
 - [ ] #64 — Promotion/Upload automation: Implement full Fastlane-like upload script in Python.
+- [ ] #195 — Back arrow bug during meditation.
+- [ ] #196 — System Alarm Volume link/slider.
+- [ ] #194 — 3-dot menu for "Add Section" in Edit Session.
 
 ## Blockers
 None
 
 ## Next Session Suggestion
-Test the Alpha release download with real users and proceed with automated production promotion script.
+Tackle #195 (Back arrow bug during meditation) to improve session stability.
