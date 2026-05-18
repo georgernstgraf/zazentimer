@@ -15,7 +15,7 @@ class SessionEditPage {
     fun verifyEditSessionScreen(): SessionEditPage {
         Thread.sleep(1000)
         robot.checkElementIsDisplayed(R.id.text_sitzung_name)
-        robot.checkElementIsDisplayed(R.id.but_new_section)
+        robot.checkElementIsDisplayed(R.id.list)
         return this
     }
 
@@ -30,7 +30,7 @@ class SessionEditPage {
     }
 
     fun clickAddSection(): SectionEditPage {
-        robot.clickOnView(R.id.but_new_section)
+        robot.clickToolbarOverflowItem(R.string.menu_add_section)
         Thread.sleep(1500)
         return SectionEditPage()
     }

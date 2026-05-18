@@ -72,7 +72,12 @@ class SessionEditFragment :
                     menuInflater.inflate(R.menu.session_edit_menu, menu)
                 }
 
+                @Suppress("ReturnCount")
                 override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
+                    if (menuItem.itemId == R.id.menu_add_section) {
+                        editHelper.doCreateNewSection()
+                        return true
+                    }
                     if (menuItem.itemId == R.id.menu_session_edit_help) {
                         editHelper.showHelp13()
                         return true
@@ -133,9 +138,6 @@ class SessionEditFragment :
             )
         ItemTouchHelper(callback).attachToRecyclerView(binding.list)
 
-        binding.butNewSection.setOnClickListener {
-            editHelper.doCreateNewSection()
-        }
         binding.buttonBellVolumes.setOnClickListener {
             showBellVolumeDialog()
         }
