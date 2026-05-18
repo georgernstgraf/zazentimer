@@ -46,6 +46,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import java.io.File
 import javax.inject.Inject
 
 @AndroidEntryPoint
@@ -176,11 +177,12 @@ class ZazenTimerActivity :
             appBarConfiguration?.let { NavigationUI.setupActionBarWithNavController(this, nc, it) }
         }
         observeViewModel()
-        if (preferences.getBoolean(PREF_KEY_FIRST_START, true)) {
-            Log.d(TAG, "This is the first run - create demo sessions")
-            preferences.edit().putBoolean(PREF_KEY_FIRST_START, false).apply()
+        val demoMarker = File(noBackupFilesDir, "demo_sessions_created")
+        if (!demoMarker.exists()) {
+            Log.d(TAG, "No demo marker -- creating demo sessions")
             lifecycleScope.launch {
                 DemoSessionCreator(dbOperations, resources).createDemoSessions()
+                demoMarker.createNewFile()
                 withContext(Dispatchers.Main) {
                     findMainFragment()?.updateSessionList()
                 }
@@ -476,7 +478,6 @@ class ZazenTimerActivity :
         const val PREF_KEY_BRIGHTNESS: String = "brightness"
         const val PREF_KEY_CONVERTED_BELL_INDICES: String = "bell_indices_converted"
         const val PREF_KEY_CONVERTED_FROM_DB: String = "pref_converted"
-        const val PREF_KEY_FIRST_START: String = "first_start"
         const val PREF_KEY_KEEP_SCREEN_ON: String = "keep_screen_on"
         const val PREF_KEY_LAST_SESSION: String = "last_session"
         const val PREF_KEY_SHOW_ELAPSED_TIME: String = "show_elapsed_time"
