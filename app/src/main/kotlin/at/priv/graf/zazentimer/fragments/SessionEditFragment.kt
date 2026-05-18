@@ -9,6 +9,8 @@ import android.view.MenuInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
+import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.Navigation
@@ -21,7 +23,6 @@ import at.priv.graf.zazentimer.bo.Session
 import at.priv.graf.zazentimer.bo.SessionBellVolume
 import at.priv.graf.zazentimer.database.DbOperations
 import at.priv.graf.zazentimer.databinding.FragmentEditSessionBinding
-import at.priv.graf.zazentimer.views.MessageView
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.transition.MaterialSharedAxis
 import dagger.hilt.android.AndroidEntryPoint
@@ -37,7 +38,6 @@ class SessionEditFragment :
     private var _binding: FragmentEditSessionBinding? = null
     private val binding get() = _binding!!
 
-    private var messageView: MessageView? = null
     private var pref: SharedPreferences? = null
     private var sections: Array<Section>? = null
     private var session: Session? = null
@@ -303,20 +303,16 @@ class SessionEditFragment :
         }
 
         fun showHelp13() {
-            if (messageView != null) {
-                return
-            }
-            messageView = MessageView(requireActivity())
-            messageView?.let { mv ->
-                mv.setTitle(getString(R.string.help_sectionlist_title))
-                mv.setText(getString(R.string.help_sectionlist_text))
-                mv.setOnOkListener(
-                    Runnable {
-                        messageView = null
-                    },
-                )
-                mv.show()
-            }
+            val textView = TextView(requireContext())
+            textView.text = getString(R.string.help_sectionlist_text)
+            val pad = (HELP_PADDING_DP * resources.displayMetrics.density).toInt()
+            textView.setPadding(pad, pad, pad, pad)
+            AlertDialog
+                .Builder(requireContext())
+                .setTitle(R.string.help_sectionlist_title)
+                .setView(textView)
+                .setPositiveButton(R.string.ok) { dialog, _ -> dialog.dismiss() }
+                .show()
         }
 
         fun doCreateNewSection() {
@@ -345,5 +341,6 @@ class SessionEditFragment :
         private const val TAG = "ZMT_SessionEditFragment"
         private const val DEFAULT_SECTION_DURATION_SECONDS = 60
         private const val DEFAULT_BELL_VOLUME = at.priv.graf.zazentimer.Constants.DEFAULT_BELL_VOLUME
+        private const val HELP_PADDING_DP = 24
     }
 }
