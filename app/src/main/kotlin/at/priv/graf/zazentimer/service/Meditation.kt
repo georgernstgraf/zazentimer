@@ -1,6 +1,7 @@
 package at.priv.graf.zazentimer.service
 
 import android.util.Log
+import at.priv.graf.zazentimer.Constants
 import at.priv.graf.zazentimer.bo.Section
 import at.priv.graf.zazentimer.bo.SessionBellVolume
 import kotlinx.coroutines.CoroutineScope
@@ -224,6 +225,6 @@ class Meditation(
         private const val TAG = "ZMT_Meditation"
         private const val TICKER_INTERVAL_MS = 1000L
         private const val MS_PER_SECOND = 1000L
-        private const val DEFAULT_BELL_VOLUME = 100
+        private const val DEFAULT_BELL_VOLUME = Constants.DEFAULT_BELL_VOLUME
     }
 }

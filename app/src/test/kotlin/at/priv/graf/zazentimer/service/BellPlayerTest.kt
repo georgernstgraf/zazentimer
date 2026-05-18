@@ -4,6 +4,7 @@ import android.content.Context
 import android.media.AudioManager
 import android.net.Uri
 import android.os.PowerManager
+import at.priv.graf.zazentimer.Constants
 import at.priv.graf.zazentimer.audio.Audio
 import at.priv.graf.zazentimer.audio.BellCollection
 import at.priv.graf.zazentimer.bo.Bell
@@ -58,7 +59,11 @@ class BellPlayerTest {
     @Test
     fun `playBells acquires WakeLock even without bells`() {
         runTest {
-            player.playBells(Section(name = "Zazen", duration = 600), volume = 100, stoppingCheck = { false })
+            player.playBells(
+                Section(name = "Zazen", duration = 600),
+                volume = Constants.DEFAULT_BELL_VOLUME,
+                stoppingCheck = { false },
+            )
             advanceUntilIdle()
         }
 
@@ -68,7 +73,11 @@ class BellPlayerTest {
     @Test
     fun `playBells releases WakeLock`() {
         runTest {
-            player.playBells(Section(name = "Zazen", duration = 600), volume = 100, stoppingCheck = { false })
+            player.playBells(
+                Section(name = "Zazen", duration = 600),
+                volume = Constants.DEFAULT_BELL_VOLUME,
+                stoppingCheck = { false },
+            )
             advanceUntilIdle()
         }
 
@@ -82,7 +91,7 @@ class BellPlayerTest {
         runTest {
             player.playBells(
                 Section(name = "Zazen", duration = 600),
-                volume = 100,
+                volume = Constants.DEFAULT_BELL_VOLUME,
                 stoppingCheck = { false },
                 onDone = Runnable { onDoneCalled = true },
             )
@@ -95,7 +104,11 @@ class BellPlayerTest {
     @Test
     fun `playBells does not call getBellForSection when no bells exist`() {
         runTest {
-            player.playBells(Section(name = "Zazen", duration = 600), volume = 100, stoppingCheck = { false })
+            player.playBells(
+                Section(name = "Zazen", duration = 600),
+                volume = Constants.DEFAULT_BELL_VOLUME,
+                stoppingCheck = { false },
+            )
             advanceUntilIdle()
         }
 
@@ -105,7 +118,11 @@ class BellPlayerTest {
     @Test
     fun `playBells creates no Audio when BellCollection returns null`() =
         runTest {
-            player.playBells(Section(name = "Zazen", duration = 600), volume = 100, stoppingCheck = { false })
+            player.playBells(
+                Section(name = "Zazen", duration = 600),
+                volume = Constants.DEFAULT_BELL_VOLUME,
+                stoppingCheck = { false },
+            )
             advanceUntilIdle()
             coVerify(exactly = 0) { anyConstructed<Audio>().playAbsVolume(any(), any()) }
         }
@@ -126,7 +143,7 @@ class BellPlayerTest {
         runTest {
             player.playBells(
                 Section(name = "Zazen", duration = 600),
-                volume = 100,
+                volume = Constants.DEFAULT_BELL_VOLUME,
                 stoppingCheck = { true },
             )
             advanceUntilIdle()
@@ -152,7 +169,7 @@ class BellPlayerTest {
             section.bellUri = "fake://bell/1"
             section.bellcount = 3
             section.bellpause = 0
-            player.playBells(section, volume = 100, stoppingCheck = { false })
+            player.playBells(section, volume = Constants.DEFAULT_BELL_VOLUME, stoppingCheck = { false })
             advanceUntilIdle()
             bells.clear()
 

@@ -21,14 +21,20 @@ import at.priv.graf.zazentimer.bo.SessionBellVolume
 import at.priv.graf.zazentimer.database.BellEntity
 import at.priv.graf.zazentimer.database.DbOperations
 import com.google.android.material.appbar.MaterialToolbar
-import dagger.hilt.android.AndroidEntryPoint
+import dagger.hilt.EntryPoint
+import dagger.hilt.EntryPoints
+import dagger.hilt.InstallIn
+import dagger.hilt.components.SingletonComponent
 import kotlinx.coroutines.launch
-import javax.inject.Inject
 
-@AndroidEntryPoint
 class BellVolumeConfigDialog : DialogFragment() {
-    @Inject
-    lateinit var dbOperations: DbOperations
+    @EntryPoint
+    @InstallIn(SingletonComponent::class)
+    interface BellVolumeConfigDialogEntryPoint {
+        fun dbOperations(): DbOperations
+    }
+
+    private lateinit var dbOperations: DbOperations
 
     private var audio: Audio? = null
     private var bellVolumes: MutableList<SessionBellVolume> = mutableListOf()
@@ -58,6 +64,13 @@ class BellVolumeConfigDialog : DialogFragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        val entryPoint =
+            EntryPoints.get(
+                requireContext().applicationContext,
+                BellVolumeConfigDialogEntryPoint::class.java,
+            )
+        dbOperations = entryPoint.dbOperations()
+
         sessionId = arguments?.getInt(ARG_SESSION_ID) ?: 0
         val isDark = arguments?.getBoolean(ARG_IS_DARK) ?: false
         val theme = if (isDark) R.style.DarkZenTheme else R.style.LightZenTheme

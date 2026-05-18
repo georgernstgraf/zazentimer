@@ -34,7 +34,7 @@ abstract class AppDatabase : RoomDatabase() {
 
         const val CURRENT_VERSION = VERSION_7
 
-        const val DEFAULT_VOLUME = 100
+        const val DEFAULT_VOLUME = at.priv.graf.zazentimer.Constants.DEFAULT_BELL_VOLUME
 
         val MIGRATION_1_2 =
             object : Migration(VERSION_1, VERSION_2) {

@@ -14,26 +14,39 @@ import androidx.lifecycle.LifecycleService
 import androidx.lifecycle.lifecycleScope
 import at.priv.graf.zazentimer.R
 import at.priv.graf.zazentimer.ZazenTimerActivity
-import dagger.hilt.android.AndroidEntryPoint
+import dagger.hilt.EntryPoint
+import dagger.hilt.EntryPoints
+import dagger.hilt.InstallIn
+import dagger.hilt.components.SingletonComponent
 import kotlinx.coroutines.launch
-import javax.inject.Inject
 
 @Suppress("TooManyFunctions")
-@AndroidEntryPoint
 class MeditationService : LifecycleService() {
-    @Inject
+    @EntryPoint
+    @InstallIn(SingletonComponent::class)
+    interface MeditationServiceEntryPoint {
+        fun meditationRepository(): MeditationRepository
+
+        fun coroutineDispatchers(): CoroutineDispatchers
+
+        fun clock(): ZazenClock
+    }
+
     lateinit var meditationRepository: MeditationRepository
 
-    @Inject
     lateinit var coroutineDispatchers: CoroutineDispatchers
 
-    @Inject
     lateinit var clock: ZazenClock
 
     private var binder: IBinder? = null
     private var runningMeditation: Meditation? = null
 
     override fun onCreate() {
+        val entryPoint = EntryPoints.get(applicationContext, MeditationServiceEntryPoint::class.java)
+        meditationRepository = entryPoint.meditationRepository()
+        coroutineDispatchers = entryPoint.coroutineDispatchers()
+        clock = entryPoint.clock()
+
         super.onCreate()
         isRunning = true
         createNotificationChannel()

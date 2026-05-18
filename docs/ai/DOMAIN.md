@@ -18,6 +18,7 @@ Business rules and domain relationships not obvious from code.
 - Bell sound: either a built-in resource URI or a custom file URI (`bell_*` prefix in app filesDir).
 - Duration displayed as MM:SS.
 - Ordered by `rank` field within a session.
+- **Default volume**: 50% (since 2026-05-18).
 
 ### Bell
 - A sound played at section boundaries during meditation.
@@ -39,7 +40,8 @@ Business rules and domain relationships not obvious from code.
 ## Volume System
 - Bell audio always uses `AudioManager.STREAM_ALARM` (hard-coded, no channel selection).
 - **System volume**: User controls alarm stream volume via Settings slider (or Android volume buttons). The app does not modify system stream volume during bell playback.
-- **Per-section dimming**: Each section has a `volume` field (0-100 in DB, where 100=full loudness). The UI presents this as "Dim bell" (inverted: 0=full, 100=silent). Bell playback uses `MediaPlayer.setVolume(volume/100f)`.
+- **Per-session bell volume**: Each session defines volume per bell type (0-100 in DB, where 100=full loudness). The UI presents this as "Adjust Bell Volumes". Default is 50% for new sessions.
+- **Legacy per-section dimming**: Older versions had a `volume` field (0-100) per section. These are migrated to per-session volumes.
 - No master volume multiplier — the Settings "Bell Volume" slider directly controls the system alarm stream volume.
 
 ## Timer Display (TimerView)

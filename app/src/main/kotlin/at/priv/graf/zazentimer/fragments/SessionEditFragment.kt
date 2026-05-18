@@ -342,6 +342,6 @@ class SessionEditFragment :
     companion object {
         private const val TAG = "ZMT_SessionEditFragment"
         private const val DEFAULT_SECTION_DURATION_SECONDS = 60
-        private const val DEFAULT_BELL_VOLUME = 100
+        private const val DEFAULT_BELL_VOLUME = at.priv.graf.zazentimer.Constants.DEFAULT_BELL_VOLUME
     }
 }

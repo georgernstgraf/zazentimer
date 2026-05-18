@@ -186,7 +186,7 @@ class SectionEditFragment : Fragment() {
         private const val TAG = "ZMT_SectionEdit"
         private const val BUFFER_SIZE = 8192
         private const val SECONDS_PER_MINUTE = 60
-        private const val DEFAULT_BELL_VOLUME = 100
+        private const val DEFAULT_BELL_VOLUME = at.priv.graf.zazentimer.Constants.DEFAULT_BELL_VOLUME
         private const val GAP_COUNT = 14
         private const val GAP_ARRAY_SIZE = 15
 

@@ -4,6 +4,7 @@ import androidx.room.Entity
 import androidx.room.ForeignKey
 import androidx.room.Index
 import androidx.room.PrimaryKey
+import at.priv.graf.zazentimer.Constants
 
 @Entity(
     tableName = "session_bell_volumes",
@@ -25,5 +26,5 @@ data class SessionBellVolumeEntity(
     var bell: Int? = null,
     var belluri: String? = null,
     var bellId: Int = 0,
-    var volume: Int = 100,
+    var volume: Int = Constants.DEFAULT_BELL_VOLUME,
 )

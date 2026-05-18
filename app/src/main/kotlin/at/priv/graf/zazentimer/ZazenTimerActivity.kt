@@ -472,7 +472,7 @@ class ZazenTimerActivity :
         const val PREF_VALUE_THEME_DARK: String = "dark"
         const val PREF_VALUE_THEME_LIGHT: String = "light"
         const val PREF_VALUE_THEME_SYSTEM: String = "system"
-        const val PREF_DEFAULT_VOLUME: Int = 100
+        const val PREF_DEFAULT_VOLUME: Int = at.priv.graf.zazentimer.Constants.DEFAULT_BELL_VOLUME
         const val PREF_KEY_BRIGHTNESS: String = "brightness"
         const val PREF_KEY_CONVERTED_BELL_INDICES: String = "bell_indices_converted"
         const val PREF_KEY_CONVERTED_FROM_DB: String = "pref_converted"
