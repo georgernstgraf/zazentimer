@@ -176,7 +176,10 @@ Each entry documents WHAT was decided and WHY.
 - **Tradeoff**: Import of `RootMatchers.isDialog` adds one extra import; must be placed in correct lexicographic order for ktlint.
 - **Module**: `app/src/androidTest/kotlin/at/priv/graf/zazentimer/MainScreenDeadStateTest.kt`
 
-## 2026-05-18: Centralize DEFAULT_BELL_VOLUME in Constants.kt
+## 2026-05-18: Replace Add Section FAB with 3-dot menu
+- **Choice**: Removed the `FloatingActionButton` (+ icon) from `fragment_edit_session.xml` and added "Add Section" to the overflow menu (`session_edit_menu.xml`).
+- **Reason**: User wanted consistency with the main screen's 3-dot menu pattern and disliked the white plus symbol.
+- **Tradeoff**: Two-tap to add a section instead of one-tap, but cleaner UI.
 - **Choice**: Created `Constants.DEFAULT_BELL_VOLUME = 50` as single source of truth. All code constants (`AppDatabase.DEFAULT_VOLUME`, `EntityMapper.DEFAULT_VOLUME`, `Meditation.DEFAULT_BELL_VOLUME`, `SessionEditFragment.DEFAULT_BELL_VOLUME`, etc.) now reference this.
 - **Reason**: Previously `100` was spread across 7+ files as separate constants. Changing the default required updating every file and risked inconsistency.
 - **Tradeoff**: Cross-package references use fully-qualified names to avoid Hilt KSP compilation issues (see PITFALLS.md).
