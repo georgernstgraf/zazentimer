@@ -1,6 +1,8 @@
 package at.priv.graf.zazentimer.fragments
 
 import android.app.Dialog
+import android.content.Context
+import android.media.AudioManager
 import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -40,6 +42,8 @@ class BellVolumeConfigDialog : DialogFragment() {
     private var bellVolumes: MutableList<SessionBellVolume> = mutableListOf()
     private var sessionId: Int = 0
     private var bellEntities: Map<Int, BellEntity> = emptyMap()
+    private var systemVolumeSeekBar: SeekBar? = null
+    private var systemVolumeLabel: TextView? = null
 
     companion object {
         private const val ARG_SESSION_ID = "sessionId"
@@ -127,6 +131,44 @@ class BellVolumeConfigDialog : DialogFragment() {
             noBellsText.visibility = View.GONE
             recyclerView.visibility = View.VISIBLE
         }
+
+        setupSystemVolumeControl(view)
+    }
+
+    private fun setupSystemVolumeControl(view: View) {
+        val seekBar = view.findViewById<SeekBar>(R.id.system_volume_seekbar)
+        val label = view.findViewById<TextView>(R.id.system_volume_label)
+        systemVolumeSeekBar = seekBar
+        systemVolumeLabel = label
+
+        val audioManager = requireContext().getSystemService(Context.AUDIO_SERVICE) as? AudioManager ?: return
+        val maxVolume = audioManager.getStreamMaxVolume(AudioManager.STREAM_ALARM)
+        val currentVolume = audioManager.getStreamVolume(AudioManager.STREAM_ALARM)
+
+        seekBar.max = maxVolume
+        seekBar.progress = currentVolume
+        label.text = getString(R.string.system_volume_label_format, currentVolume, maxVolume)
+
+        seekBar.setOnSeekBarChangeListener(
+            object : SeekBar.OnSeekBarChangeListener {
+                override fun onProgressChanged(
+                    seekBar: SeekBar?,
+                    progress: Int,
+                    fromUser: Boolean,
+                ) {
+                    label.text = getString(R.string.system_volume_label_format, progress, maxVolume)
+                }
+
+                override fun onStartTrackingTouch(seekBar: SeekBar?) {
+                    // no-op: required by interface
+                }
+
+                override fun onStopTrackingTouch(seekBar: SeekBar?) {
+                    val vol = seekBar?.progress ?: return
+                    audioManager.setStreamVolume(AudioManager.STREAM_ALARM, vol, 0)
+                }
+            },
+        )
     }
 
     override fun onStart() {
