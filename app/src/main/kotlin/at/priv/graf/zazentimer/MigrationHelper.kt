@@ -124,9 +124,25 @@ class MigrationHelper(
                 }
             }
 
+            // 3b. Mark bells as built-in if their URI matches a BellCollection built-in bell
+            var anyBellsUpdated = false
+            for (entity in db.getAllBells()) {
+                if (entity.isBuiltin) continue
+                val bell = BellCollection.getBellList().find { it.uri.toString() == entity.uri }
+                if (bell != null) {
+                    val idx = BellCollection.getBellList().indexOf(bell)
+                    if (idx >= 0 && idx < builtinResNames.size) {
+                        entity.isBuiltin = true
+                        entity.resourceName = builtinResNames[idx]
+                        entity.name = bell.getName()
+                        db.updateBell(entity)
+                        anyBellsUpdated = true
+                    }
+                }
+            }
+
             // 4. Fix stale bell URIs (backup import case)
             val allBells = BellCollection.getBellList()
-            var anyBellsUpdated = false
             for (entity in db.getNonBuiltinBells()) {
                 val found = allBells.find { it.uri.toString() == entity.uri }
                 if (found == null) {
@@ -157,6 +173,27 @@ class MigrationHelper(
 
             // 6. Resolve bellId for any entries still at 0
             resolveUnresolvedBellIds(db, finalBellEntities)
+
+            // 7. Repair stale section URIs (e.g. from old backup with different package name)
+            repairStaleSectionUris(db, finalBellEntities)
+        }
+
+        @Suppress("LoopWithTooManyJumpStatements")
+        private suspend fun repairStaleSectionUris(
+            db: DbOperations,
+            allBellEntities: List<BellEntity>,
+        ) {
+            for (session in db.readSessions()) {
+                for (section in db.readSections(session.id)) {
+                    if (section.bellId <= 0) continue
+                    val currentBell = allBellEntities.find { it._id == section.bellId } ?: continue
+                    if (section.bellUri == null || BellCollection.getBellForSection(section) == null) {
+                        section.bellUri = currentBell.uri
+                        section.bell = BELL_INDEX_NONE
+                        db.updateSection(section)
+                    }
+                }
+            }
         }
 
         suspend fun repairBellUris(db: DbOperations) {

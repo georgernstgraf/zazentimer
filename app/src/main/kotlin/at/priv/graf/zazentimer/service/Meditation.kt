@@ -214,8 +214,7 @@ class Meditation(
     private fun getVolumeForSection(section: Section): Int {
         val match =
             bellVolumes.find { bv ->
-                (bv.bell != null && bv.bell == section.bell) ||
-                    (bv.bellUri != null && bv.bellUri == section.bellUri)
+                bv.bellId > 0 && bv.bellId == section.bellId
             }
         return match?.volume ?: DEFAULT_BELL_VOLUME
     }
