@@ -387,9 +387,9 @@ class ZazenTimerActivity :
         }
 
     override fun onPrepareOptionsMenu(menu: Menu): Boolean {
-        menu.clear()
         val nc = getNavController()
         if (nc?.currentDestination?.id == R.id.mainFragment) {
+            menu.clear()
             menuInflater.inflate(R.menu.main_menu, menu)
         }
         return super.onPrepareOptionsMenu(menu)
