@@ -12,7 +12,7 @@ ZazenTimer is an Android application for timing meditation sessions. It uses a f
 - **DbOperations**: Room database wrapper with built-in `IdlingResource` for test synchronization.
 - **ZazenClock**: Abstraction for system time to facilitate deterministic testing.
 - **BellPlayer**: Manages pooled `Audio` instances for bell playback. Receives explicit `volume: Int` parameter (volume is per-session, per bell type). Has demo bell fallback if `getBellForSection()` returns null.
-- **BellVolumeConfigDialog**: DialogFragment in session editor for configuring per-bell-type volumes. Uses Hilt for `DbOperations` injection to resolve `bellId` to names/URIs.
+- **BellVolumeConfigDialog**: DialogFragment in session editor for configuring per-bell-type volumes and system alarm volume. Uses Hilt EntryPoints for manual `DbOperations` injection. Controls `AudioManager.STREAM_ALARM` via a seekbar at the top of the dialog.
 
 ## Database (Room, V7)
 | Table | Key columns | Purpose |

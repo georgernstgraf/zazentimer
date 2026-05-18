@@ -176,11 +176,18 @@ Each entry documents WHAT was decided and WHY.
 - **Tradeoff**: Import of `RootMatchers.isDialog` adds one extra import; must be placed in correct lexicographic order for ktlint.
 - **Module**: `app/src/androidTest/kotlin/at/priv/graf/zazentimer/MainScreenDeadStateTest.kt`
 
-## 2026-05-18: Group bell volumes by bellId in UI
-- **Choice**: Refactored `SessionEditFragment` and `BellVolumeConfigDialog` to identify unique bells via `bellId` instead of legacy `bell` index and `bellUri`.
-- **Reason**: Normalization in V7 migration created a `bells` table, but the UI was still using legacy fields, causing duplicate sliders when identical bells were identified differently in old backups.
-- **Tradeoff**: UI now depends on `DbOperations` (via Hilt) to map `bellId` to display names.
+## 2026-05-18: Centralize DEFAULT_BELL_VOLUME in Constants.kt
+- **Choice**: Created `Constants.DEFAULT_BELL_VOLUME = 50` as single source of truth. All code constants (`AppDatabase.DEFAULT_VOLUME`, `EntityMapper.DEFAULT_VOLUME`, `Meditation.DEFAULT_BELL_VOLUME`, `SessionEditFragment.DEFAULT_BELL_VOLUME`, etc.) now reference this.
+- **Reason**: Previously `100` was spread across 7+ files as separate constants. Changing the default required updating every file and risked inconsistency.
+- **Tradeoff**: Cross-package references use fully-qualified names to avoid Hilt KSP compilation issues (see PITFALLS.md).
 
-## 2026-05-18: Fix and deduplicate volumes during bellId remapping
-- **Choice**: Updated `MigrationHelper.updateVolumeBellId` to correctly save modified volumes and added a deduplication step that averages volumes for the same `bellId`.
-- **Reason**: The previous implementation had a bug where it read volumes twice and never saved the updated `bellId`s, leaving duplicate records in the database.
+## 2026-05-18: Hide action bar back arrow during meditation
+- **Choice**: In `MeditationFragment.showRunningState()`, call `supportActionBar?.setDisplayHomeAsUpEnabled(false)`.
+- **Reason**: The back arrow was buggy during meditation; only the Stop button should allow exiting.
+- **Tradeoff**: No change to `showIdleState()` needed since the fragment is destroyed when meditation stops.
+
+## 2026-05-18: System alarm volume slider in Bell Volumes dialog
+- **Choice**: Added a `SeekBar` for `AudioManager.STREAM_ALARM` at the top of the Bell Volume Config dialog, with section headers for "Meditation Volume" and "Bell Dimming".
+- **Reason**: Users needed to adjust the phone's alarm volume from within the app's bell configuration dialog.
+- **Considered**: Link to system settings (less integrated), percentage-based slider (raw device steps are more accurate).
+- **Tradeoff**: Volume label shows raw device steps (e.g. "5/7") rather than percentage; UI now uses ScrollView.
