@@ -1,9 +1,13 @@
 package at.priv.graf.zazentimer.fragments
 
 import android.app.Dialog
+import android.content.BroadcastReceiver
 import android.content.Context
+import android.content.Intent
+import android.content.IntentFilter
 import android.media.AudioManager
 import android.net.Uri
+import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -44,6 +48,7 @@ class BellVolumeConfigDialog : DialogFragment() {
     private var bellEntities: Map<Int, BellEntity> = emptyMap()
     private var systemVolumeSeekBar: SeekBar? = null
     private var systemVolumeLabel: TextView? = null
+    private var volumeChangeReceiver: BroadcastReceiver? = null
 
     companion object {
         private const val ARG_SESSION_ID = "sessionId"
@@ -182,10 +187,42 @@ class BellVolumeConfigDialog : DialogFragment() {
     override fun onResume() {
         super.onResume()
         audio = Audio(requireContext())
+
+        val filter = IntentFilter("android.media.VOLUME_CHANGED_ACTION")
+        volumeChangeReceiver =
+            object : BroadcastReceiver() {
+                override fun onReceive(
+                    context: Context,
+                    intent: Intent,
+                ) {
+                    val streamType = intent.getIntExtra("android.media.EXTRA_VOLUME_STREAM_TYPE", -1)
+                    if (streamType != AudioManager.STREAM_ALARM) return
+                    val volume = intent.getIntExtra("android.media.EXTRA_VOLUME_STREAM_VALUE", -1)
+                    val prevVolume = intent.getIntExtra("android.media.EXTRA_PREV_VOLUME_STREAM_VALUE", -1)
+                    if (volume == prevVolume) return
+                    systemVolumeSeekBar?.progress = volume
+                    systemVolumeSeekBar?.max?.let { max ->
+                        systemVolumeLabel?.text = getString(R.string.system_volume_label_format, volume, max)
+                    }
+                }
+            }
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            requireContext().registerReceiver(
+                volumeChangeReceiver,
+                filter,
+                Context.RECEIVER_EXPORTED,
+            )
+        } else {
+            @Suppress("DEPRECATION")
+            requireContext().registerReceiver(volumeChangeReceiver, filter)
+        }
     }
 
     override fun onPause() {
         super.onPause()
+        volumeChangeReceiver?.let { requireContext().unregisterReceiver(it) }
+        volumeChangeReceiver = null
+
         lifecycleScope.launch {
             audio?.release()
         }
