@@ -251,7 +251,10 @@ class BackupManagerTest {
     @Test
     fun restore_databaseVersionTooHigh_returnsVersionError() {
         databaseFile.writeText("existing-data")
-        val dbBytes = createMockDatabaseBytes(version = at.priv.graf.zazentimer.database.AppDatabase.CURRENT_VERSION + 1)
+        val dbBytes =
+            createMockDatabaseBytes(
+                version = at.priv.graf.zazentimer.database.AppDatabase.CURRENT_VERSION + 1,
+            )
         val zipFile = File(tempDir, "newversion.zip")
         ZipOutputStream(FileOutputStream(zipFile)).use { zos ->
             val entry = ZipEntry("zentimer")

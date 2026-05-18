@@ -18,13 +18,22 @@ import at.priv.graf.zazentimer.audio.Audio
 import at.priv.graf.zazentimer.audio.BellCollection
 import at.priv.graf.zazentimer.bo.Bell
 import at.priv.graf.zazentimer.bo.SessionBellVolume
+import at.priv.graf.zazentimer.database.BellEntity
+import at.priv.graf.zazentimer.database.DbOperations
 import com.google.android.material.appbar.MaterialToolbar
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class BellVolumeConfigDialog : DialogFragment() {
+    @Inject
+    lateinit var dbOperations: DbOperations
+
     private var audio: Audio? = null
     private var bellVolumes: MutableList<SessionBellVolume> = mutableListOf()
     private var sessionId: Int = 0
+    private var bellEntities: Map<Int, BellEntity> = emptyMap()
 
     companion object {
         private const val ARG_SESSION_ID = "sessionId"
@@ -90,6 +99,12 @@ class BellVolumeConfigDialog : DialogFragment() {
                 bellVolumes[position].volume = volume
             }
         recyclerView.adapter = adapter
+
+        lifecycleScope.launch {
+            val entities = dbOperations.getAllBells()
+            bellEntities = entities.associateBy { it._id }
+            adapter.notifyDataSetChanged()
+        }
 
         val noBellsText = view.findViewById<TextView>(R.id.no_bells_text)
         if (bellVolumes.isEmpty()) {
@@ -221,10 +236,21 @@ class BellVolumeConfigDialog : DialogFragment() {
 
         @Suppress("ReturnCount")
         private fun findBellForVolume(bv: SessionBellVolume): Bell? {
+            val entity = bellEntities[bv.bellId]
+            if (entity != null) {
+                // Try to find in BellCollection by URI
+                val uriStr = entity.uri
+                val found = BellCollection.getBellList().find { it.uri.toString() == uriStr }
+                if (found != null) return found
+                // Fallback to name match if URI doesn't match exactly (e.g. package name change)
+                BellCollection.getBell(entity.name)?.let { return it }
+            }
+
+            // Absolute fallback for unexpected states
             val idx = bv.bell ?: -1
             if (idx >= 0) BellCollection.getBell(idx)?.let { return it }
-            val uri = bv.bellUri ?: return null
-            val path = Uri.parse(uri).lastPathSegment ?: return null
+            val uri = bv.bellUri ?: return BellCollection.getDemoBell()
+            val path = Uri.parse(uri).lastPathSegment ?: return BellCollection.getDemoBell()
             return BellCollection.getBellList().find {
                 it.uri.lastPathSegment == path
             } ?: BellCollection.getDemoBell()

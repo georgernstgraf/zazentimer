@@ -151,7 +151,7 @@ class MigrationHelper(
                     anyBellsUpdated = true
                 }
             }
-            
+
             // 5.5 If we updated any bells, we need to refresh our list before resolving IDs
             val finalBellEntities = if (anyBellsUpdated) db.getAllBells() else allBellEntities
 
@@ -191,20 +191,35 @@ class MigrationHelper(
             toId: Int,
         ) {
             for (session in db.readSessions()) {
-                for (bv in db.readBellVolumes(session.id)) {
+                val volumes = db.readBellVolumes(session.id)
+                var changed = false
+                for (bv in volumes) {
                     if (bv.bellId == fromId) {
                         bv.bellId = toId
+                        changed = true
                     }
                 }
-                val cleaned = db.readBellVolumes(session.id)
-                if (cleaned.any { it.bellId == toId }) {
-                    db.saveBellVolumes(session.id, cleaned)
+                if (changed) {
+                    // Deduplicate after remapping
+                    val deduplicated =
+                        volumes.groupBy { it.bellId }.map { (bellId, group) ->
+                            if (group.size > 1) {
+                                val avgVolume = group.map { it.volume }.average().toInt()
+                                group.first().apply { volume = avgVolume }
+                            } else {
+                                group.first()
+                            }
+                        }
+                    db.saveBellVolumes(session.id, deduplicated)
                 }
             }
         }
 
         @Suppress("CyclomaticComplexMethod", "NestedBlockDepth")
-        private suspend fun resolveUnresolvedBellIds(db: DbOperations, allBellEntities: List<BellEntity>) {
+        private suspend fun resolveUnresolvedBellIds(
+            db: DbOperations,
+            allBellEntities: List<BellEntity>,
+        ) {
             val demoEntity =
                 allBellEntities.firstOrNull { it.resourceName == "bell2" }
                     ?: allBellEntities.firstOrNull { it.isBuiltin }

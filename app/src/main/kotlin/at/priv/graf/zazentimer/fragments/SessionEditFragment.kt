@@ -267,16 +267,20 @@ class SessionEditFragment :
         secs: Array<Section>,
         saved: List<SessionBellVolume>,
     ): List<SessionBellVolume> {
-        val seen = linkedSetOf<Pair<Int?, String?>>()
+        val seenBellIds = linkedSetOf<Int>()
+        val bellIdToLegacy = mutableMapOf<Int, Pair<Int?, String?>>()
         for (sec in secs) {
-            seen.add(Pair(sec.bell, sec.bellUri))
+            seenBellIds.add(sec.bellId)
+            bellIdToLegacy[sec.bellId] = Pair(sec.bell, sec.bellUri)
         }
-        return seen.map { (bell, bellUri) ->
-            val match =
-                saved.find { bv ->
-                    bv.bell == bell && bv.bellUri == bellUri
-                }
-            match ?: SessionBellVolume(bell = bell, bellUri = bellUri, volume = DEFAULT_BELL_VOLUME)
+        return seenBellIds.map { bellId ->
+            val match = saved.find { bv -> bv.bellId == bellId }
+            match ?: SessionBellVolume(
+                bellId = bellId,
+                bell = bellIdToLegacy[bellId]?.first,
+                bellUri = bellIdToLegacy[bellId]?.second,
+                volume = DEFAULT_BELL_VOLUME,
+            )
         }
     }
 
