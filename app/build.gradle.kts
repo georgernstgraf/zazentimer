@@ -387,7 +387,7 @@ tasks.register("prismaRefreshSchema") {
     doLast {
         val root = File(rootDirStr, "prisma")
         val currentDir = File(root, "current")
-        ProcessBuilder("deno", "-A", "prisma", "db", "pull")
+        ProcessBuilder("deno", "-A", "prisma", "db", "pull", "--force")
             .directory(currentDir)
             .inheritIO()
             .start()
