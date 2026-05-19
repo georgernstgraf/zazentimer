@@ -15,3 +15,5 @@ schemas/
 logs/
 .kotlin/
 google/play-api-key.json
+scripts/translation_deltas.json
+scripts/.mymemory_cache.json
