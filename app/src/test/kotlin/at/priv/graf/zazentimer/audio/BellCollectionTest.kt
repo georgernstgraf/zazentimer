@@ -1,7 +1,6 @@
 package at.priv.graf.zazentimer.audio
 
 import android.content.Context
-import at.priv.graf.zazentimer.bo.Section
 import com.google.common.truth.Truth.assertThat
 import org.junit.After
 import org.junit.Before
@@ -101,33 +100,18 @@ class BellCollectionTest {
     }
 
     @Test
-    fun getBellForSection_matchingUri() {
+    fun getBellByUri_matchingUri() {
         BellCollection.initialize(context)
         val bell = BellCollection.getBell(3)!!
-        val section = Section()
-        section.bellUri = bell.uri.toString()
-
-        val result = BellCollection.getBellForSection(section)
+        val result = BellCollection.getBellByUri(bell.uri.toString())
         assertThat(result).isNotNull()
         assertThat(result!!.uri).isEqualTo(bell.uri)
     }
 
     @Test
-    fun getBellForSection_nonMatchingUri_returnsNull() {
+    fun getBellByUri_nonMatchingUri_returnsNull() {
         BellCollection.initialize(context)
-        val section = Section()
-        section.bellUri = "content://nonexistent/audio.mp3"
-
-        assertThat(BellCollection.getBellForSection(section)).isNull()
-    }
-
-    @Test
-    fun getBellForSection_nullUri_returnsNull() {
-        BellCollection.initialize(context)
-        val section = Section()
-        section.bellUri = null
-
-        assertThat(BellCollection.getBellForSection(section)).isNull()
+        assertThat(BellCollection.getBellByUri("content://nonexistent/audio.mp3")).isNull()
     }
 
     @Test

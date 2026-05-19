@@ -7,7 +7,7 @@ import androidx.room.Update
 
 @Dao
 interface SessionDao {
-    @Query("SELECT * FROM sessions ORDER BY name COLLATE NOCASE")
+    @Query("SELECT * FROM sessions ORDER BY rank, name COLLATE NOCASE")
     suspend fun getAllSessions(): List<SessionEntity>
 
     @Query("SELECT * FROM sessions WHERE _id = :id")
@@ -21,4 +21,13 @@ interface SessionDao {
 
     @Query("DELETE FROM sessions WHERE _id = :id")
     suspend fun deleteById(id: Int)
+
+    @Query("SELECT MAX(rank) FROM sessions")
+    suspend fun getMaxRank(): Int?
+
+    @Query("UPDATE sessions SET rank = :rank WHERE _id = :sessionId")
+    suspend fun updateRank(
+        sessionId: Int,
+        rank: Int,
+    )
 }

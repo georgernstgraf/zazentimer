@@ -40,7 +40,6 @@ class DaoTest {
                             name = TestBellHelper.TEST_BELL_NAME,
                             uri = TestBellHelper.TEST_BELL_URI,
                             isBuiltin = true,
-                            resourceName = "bell2",
                         ),
                     ).toInt()
         }
@@ -108,17 +107,45 @@ class DaoTest {
     }
 
     @Test
-    fun sessionDao_getAllOrderedByNameCaseInsensitive() {
+    fun sessionDao_getAllOrderedByRankAndName() {
         runBlocking {
-            sessionDao.insert(SessionEntity(name = "Banana", description = ""))
-            sessionDao.insert(SessionEntity(name = "apple", description = ""))
-            sessionDao.insert(SessionEntity(name = "Cherry", description = ""))
+            sessionDao.insert(SessionEntity(name = "Banana", description = "", rank = 2))
+            sessionDao.insert(SessionEntity(name = "apple", description = "", rank = 1))
+            sessionDao.insert(SessionEntity(name = "Cherry", description = "", rank = 1))
 
             val sessions = sessionDao.getAllSessions()
             assertThat(sessions).hasSize(3)
             assertThat(sessions[0].name).isEqualTo("apple")
-            assertThat(sessions[1].name).isEqualTo("Banana")
-            assertThat(sessions[2].name).isEqualTo("Cherry")
+            assertThat(sessions[1].name).isEqualTo("Cherry")
+            assertThat(sessions[2].name).isEqualTo("Banana")
+        }
+    }
+
+    @Test
+    fun sessionDao_getMaxRankEmpty() {
+        runBlocking {
+            assertThat(sessionDao.getMaxRank()).isNull()
+        }
+    }
+
+    @Test
+    fun sessionDao_getMaxRankWithData() {
+        runBlocking {
+            sessionDao.insert(SessionEntity(name = "A", description = "", rank = 1))
+            sessionDao.insert(SessionEntity(name = "B", description = "", rank = 3))
+            sessionDao.insert(SessionEntity(name = "C", description = "", rank = 2))
+
+            assertThat(sessionDao.getMaxRank()).isEqualTo(3)
+        }
+    }
+
+    @Test
+    fun sessionDao_updateRank() {
+        runBlocking {
+            val id = sessionDao.insert(SessionEntity(name = "S", description = "", rank = 0))
+            sessionDao.updateRank(id.toInt(), 5)
+
+            assertThat(sessionDao.getSessionById(id.toInt())!!.rank).isEqualTo(5)
         }
     }
 
@@ -131,7 +158,6 @@ class DaoTest {
                     fk_session = sessionId.toInt(),
                     name = "Section 1",
                     duration = 300,
-                    bell = 0,
                     bellId = bellId,
                     rank = 1,
                 ),
@@ -153,7 +179,6 @@ class DaoTest {
                         fk_session = sessionId.toInt(),
                         name = "By ID",
                         duration = 60,
-                        bell = 0,
                         bellId = bellId,
                         rank = 1,
                     ),
@@ -191,7 +216,6 @@ class DaoTest {
                     fk_session = sessionId.toInt(),
                     name = "S1",
                     duration = 60,
-                    bell = 0,
                     bellId = bellId,
                     rank = 1,
                 ),
@@ -201,7 +225,6 @@ class DaoTest {
                     fk_session = sessionId.toInt(),
                     name = "S2",
                     duration = 120,
-                    bell = 0,
                     bellId = bellId,
                     rank = 3,
                 ),
@@ -211,7 +234,6 @@ class DaoTest {
                     fk_session = sessionId.toInt(),
                     name = "S3",
                     duration = 180,
-                    bell = 0,
                     bellId = bellId,
                     rank = 2,
                 ),
@@ -231,7 +253,6 @@ class DaoTest {
                         fk_session = sessionId.toInt(),
                         name = "Old",
                         duration = 60,
-                        bell = 0,
                         bellId = bellId,
                         rank = 1,
                     ),
@@ -243,7 +264,6 @@ class DaoTest {
                     fk_session = sessionId.toInt(),
                     name = "Updated",
                     duration = 120,
-                    bell = 1,
                     rank = 1,
                     bellId = bellId,
                 ),
@@ -252,7 +272,6 @@ class DaoTest {
             val result = sectionDao.getSectionById(id.toInt())
             assertThat(result!!.name).isEqualTo("Updated")
             assertThat(result.duration).isEqualTo(120)
-            assertThat(result.bell).isEqualTo(1)
         }
     }
 
@@ -266,7 +285,6 @@ class DaoTest {
                         fk_session = sessionId.toInt(),
                         name = "S1",
                         duration = 60,
-                        bell = 0,
                         bellId = bellId,
                         rank = 1,
                     ),
@@ -288,7 +306,6 @@ class DaoTest {
                         fk_session = sessionId.toInt(),
                         name = "Del",
                         duration = 60,
-                        bell = 0,
                         bellId = bellId,
                         rank = 1,
                     ),
@@ -309,7 +326,6 @@ class DaoTest {
                     fk_session = sessionId.toInt(),
                     name = "Third",
                     duration = 180,
-                    bell = 0,
                     bellId = bellId,
                     rank = 3,
                 ),
@@ -319,7 +335,6 @@ class DaoTest {
                     fk_session = sessionId.toInt(),
                     name = "First",
                     duration = 60,
-                    bell = 0,
                     bellId = bellId,
                     rank = 1,
                 ),
@@ -329,7 +344,6 @@ class DaoTest {
                     fk_session = sessionId.toInt(),
                     name = "Second",
                     duration = 120,
-                    bell = 0,
                     bellId = bellId,
                     rank = 2,
                 ),
@@ -352,7 +366,6 @@ class DaoTest {
                     fk_session = sessionId.toInt(),
                     name = "S1",
                     duration = 60,
-                    bell = 0,
                     bellId = bellId,
                     rank = 1,
                 ),
@@ -362,7 +375,6 @@ class DaoTest {
                     fk_session = sessionId.toInt(),
                     name = "S2",
                     duration = 120,
-                    bell = 0,
                     bellId = bellId,
                     rank = 2,
                 ),

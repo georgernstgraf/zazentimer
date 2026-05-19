@@ -26,13 +26,11 @@ import androidx.room.PrimaryKey
 data class SectionEntity(
     @PrimaryKey(autoGenerate = true)
     var _id: Int = 0,
-    var fk_session: Int = 0,
     var name: String = "",
     var duration: Int = 0,
-    var bell: Int = 0,
-    var rank: Int? = null,
-    var bellcount: Int? = null,
-    var bellpause: Int? = null,
-    var belluri: String? = null,
+    var rank: Int = 0,
+    var bellcount: Int = 1,
+    var bellpause: Int = 1,
     var bellId: Int = 0,
+    var fk_session: Int = 0,
 )

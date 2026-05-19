@@ -9,6 +9,7 @@ import at.priv.graf.zazentimer.audio.Audio
 import at.priv.graf.zazentimer.audio.BellCollection
 import at.priv.graf.zazentimer.bo.Bell
 import at.priv.graf.zazentimer.bo.Section
+import at.priv.graf.zazentimer.database.BellEntity
 import io.mockk.coEvery
 import io.mockk.coVerify
 import io.mockk.every
@@ -48,7 +49,7 @@ class BellPlayerTest {
         coEvery { anyConstructed<Audio>().playAbsVolume(any(), any()) } returns Unit
         coEvery { anyConstructed<Audio>().release() } returns Unit
 
-        player = BellPlayer(mockContext, CoroutineDispatchers(main = testDispatcher))
+        player = BellPlayer(mockContext, CoroutineDispatchers(main = testDispatcher)) { null }
     }
 
     @After
@@ -102,7 +103,7 @@ class BellPlayerTest {
     }
 
     @Test
-    fun `playBells does not call getBellForSection when no bells exist`() {
+    fun `playBells creates no Audio when BellPlayer has no bells`() {
         runTest {
             player.playBells(
                 Section(name = "Zazen", duration = 600),
@@ -166,10 +167,17 @@ class BellPlayerTest {
             every { anyConstructed<Audio>().isPlaying() } returns true
 
             val section = Section(name = "Zazen", duration = 600)
-            section.bellUri = "fake://bell/1"
+            section.bellId = 1
             section.bellcount = 3
             section.bellpause = 0
-            player.playBells(section, volume = Constants.DEFAULT_BELL_VOLUME, stoppingCheck = { false })
+            val concurrentPlayer =
+                BellPlayer(
+                    mockContext,
+                    CoroutineDispatchers(main = testDispatcher),
+                ) {
+                    BellEntity(_id = 1, uri = "fake://bell/1")
+                }
+            concurrentPlayer.playBells(section, volume = Constants.DEFAULT_BELL_VOLUME, stoppingCheck = { false })
             advanceUntilIdle()
             bells.clear()
 

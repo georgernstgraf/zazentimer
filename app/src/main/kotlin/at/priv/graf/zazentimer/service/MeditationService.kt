@@ -140,7 +140,9 @@ class MeditationService : LifecycleService() {
                     bellVolumes,
                     coroutineDispatchers,
                     AlarmScheduler(this@MeditationService, clock),
-                    BellPlayer(this@MeditationService, coroutineDispatchers),
+                    BellPlayer(this@MeditationService, coroutineDispatchers) { id ->
+                        meditationRepository.getBellById(id)
+                    },
                 )
             val meditation = runningMeditation ?: return@launch
             meditation.start()

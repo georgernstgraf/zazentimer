@@ -10,4 +10,5 @@ data class SessionEntity(
     var _id: Int = 0,
     var name: String = "",
     var description: String = "",
+    var rank: Int = 0,
 )

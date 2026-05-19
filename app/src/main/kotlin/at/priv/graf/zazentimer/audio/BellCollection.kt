@@ -5,7 +5,6 @@ import android.net.Uri
 import androidx.core.net.toUri
 import at.priv.graf.zazentimer.R
 import at.priv.graf.zazentimer.bo.Bell
-import at.priv.graf.zazentimer.bo.Section
 import java.io.File
 import java.io.FilenameFilter
 
@@ -131,14 +130,9 @@ object BellCollection {
     }
 
     @JvmStatic
-    fun getBellForSection(section: Section): Bell? {
-        val str = section.bellUri
-        for (bell in this.bells) {
-            if (bell.uri.toString() == str) {
-                return bell
-            }
-        }
-        return null
+    fun getBellByUri(uri: String?): Bell? {
+        if (uri == null) return null
+        return this.bells.find { it.uri.toString() == uri }
     }
 
     @JvmStatic

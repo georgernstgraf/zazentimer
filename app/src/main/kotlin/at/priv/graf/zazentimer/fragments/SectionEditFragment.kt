@@ -91,8 +91,18 @@ class SectionEditFragment : Fragment() {
                 BellCollection.initialize(requireContext())
                 fillBellList()
                 section?.let { s ->
-                    s.bellUri = BellCollection.getUriForName(str).toString()
-                    selectBell(s.bellUri)
+                    val uri = BellCollection.getUriForName(str)
+                    if (uri != null) {
+                        val entity = runBlocking { dbOperations.getBellByUri(uri.toString()) }
+                        s.bellId = entity?._id ?: 0
+                        runBlocking {
+                            if (s.bellId > 0) {
+                                dbOperations.updateSection(s)
+                            }
+                        }
+                    }
+                    fillBellList()
+                    selectBellForSection(s)
                 }
             } catch (e: IOException) {
                 e.printStackTrace()
@@ -162,11 +172,6 @@ class SectionEditFragment : Fragment() {
         fillDataFromViews()
         section?.let { s ->
             runBlocking {
-                val uri = s.bellUri ?: ""
-                if (uri.isNotEmpty() && s.bellId <= 0) {
-                    val entity = dbOperations.getBellByUri(uri)
-                    s.bellId = entity?._id ?: 0
-                }
                 dbOperations.updateSection(s)
             }
         }
@@ -197,9 +202,9 @@ class SectionEditFragment : Fragment() {
 
         private fun SectionEditFragment.fillDataFromViews() {
             val s = section ?: return
-            s.bell = binding.selectGongSound.selectedItemPosition
             val bell = binding.selectGongSound.selectedItem as Bell
-            s.bellUri = bell.uri.toString()
+            val entity = runBlocking { dbOperations.getBellByUri(bell.uri.toString()) }
+            s.bellId = entity?._id ?: 0
             s.name = binding.sectionName.text.toString()
             s.duration = (this.durationMinutes * SECONDS_PER_MINUTE) + this.durationSeconds
         }
@@ -212,7 +217,15 @@ class SectionEditFragment : Fragment() {
             setDurationMinutes(s.duration / SECONDS_PER_MINUTE)
             setDurationSeconds(s.duration % SECONDS_PER_MINUTE)
             fillBellList()
-            selectBell(s.bellUri)
+            selectBellForSection(s)
+        }
+
+        private fun SectionEditFragment.selectBellForSection(s: Section) {
+            if (s.bellId <= 0) return
+            val entity = runBlocking { dbOperations.getBellById(s.bellId) }
+            if (entity != null) {
+                selectBell(entity.uri)
+            }
         }
 
         private fun SectionEditFragment.getViewComponents() {
@@ -296,10 +309,11 @@ class SectionEditFragment : Fragment() {
             }
             binding.playGong.setOnClickListener {
                 val s = section ?: return@setOnClickListener
-                val bellForSection = BellCollection.getBellForSection(s)
-                bellForSection?.let { bell ->
+                val entity = runBlocking { dbOperations.getBellById(s.bellId) }
+                val bell = entity?.let { BellCollection.getBellByUri(it.uri) }
+                bell?.let { b ->
                     lifecycleScope.launch {
-                        audio?.playAbsVolume(bell, DEFAULT_BELL_VOLUME)
+                        audio?.playAbsVolume(b, DEFAULT_BELL_VOLUME)
                     }
                 }
             }
@@ -320,9 +334,10 @@ class SectionEditFragment : Fragment() {
                     ) {
                         section?.let { s ->
                             BellCollection.getBell(i2)?.let { bell ->
-                                if (bell.uri.toString() != s.bellUri) {
-                                    s.bellUri = bell.uri.toString()
-                                    s.bell = i2
+                                val entity = runBlocking { dbOperations.getBellByUri(bell.uri.toString()) }
+                                s.bellId = entity?._id ?: 0
+                                if (s.bellId > 0) {
+                                    runBlocking { dbOperations.updateSection(s) }
                                 }
                             }
                         }

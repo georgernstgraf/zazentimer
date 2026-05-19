@@ -11,5 +11,4 @@ data class BellEntity(
     var name: String = "",
     var uri: String = "",
     @ColumnInfo(name = "is_builtin") var isBuiltin: Boolean = false,
-    var resourceName: String? = null,
 )

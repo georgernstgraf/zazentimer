@@ -11,7 +11,6 @@ object TestBellHelper {
                     name = TEST_BELL_NAME,
                     uri = TEST_BELL_URI,
                     isBuiltin = true,
-                    resourceName = "bell2",
                 ),
             ).toInt()
 
@@ -23,7 +22,6 @@ object TestBellHelper {
                     name = TEST_BELL_NAME,
                     uri = TEST_BELL_URI,
                     isBuiltin = true,
-                    resourceName = "bell2",
                 ),
             ).toInt()
 }

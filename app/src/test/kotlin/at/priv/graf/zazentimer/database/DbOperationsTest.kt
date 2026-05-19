@@ -33,7 +33,6 @@ class DbOperationsTest {
                             name = TestBellHelper.TEST_BELL_NAME,
                             uri = TestBellHelper.TEST_BELL_URI,
                             isBuiltin = true,
-                            resourceName = "bell2",
                         ),
                     ).toInt()
         }
@@ -70,7 +69,7 @@ class DbOperationsTest {
     }
 
     @Test
-    fun readSessions_orderedByNameCaseInsensitive() {
+    fun readSessions_orderedByRank() {
         runBlocking {
             dbOps.insertSession(Session("Banana", "Desc"))
             dbOps.insertSession(Session("apple", "Desc"))
@@ -78,9 +77,12 @@ class DbOperationsTest {
 
             val sessions = dbOps.readSessions()
             assertThat(sessions).hasLength(3)
-            assertThat(sessions[0].name).isEqualTo("apple")
-            assertThat(sessions[1].name).isEqualTo("Banana")
+            assertThat(sessions[0].name).isEqualTo("Banana")
+            assertThat(sessions[0].rank).isEqualTo(1)
+            assertThat(sessions[1].name).isEqualTo("apple")
+            assertThat(sessions[1].rank).isEqualTo(2)
             assertThat(sessions[2].name).isEqualTo("Cherry")
+            assertThat(sessions[2].rank).isEqualTo(3)
         }
     }
 
@@ -134,7 +136,6 @@ class DbOperationsTest {
             val session = Session("Session", "Desc")
             dbOps.insertSession(session)
             val section = Section("Zazen", 300)
-            section.bell = 1
             section.bellId = bellId
             dbOps.insertSection(session, section)
 
@@ -142,7 +143,7 @@ class DbOperationsTest {
             assertThat(result).isNotNull()
             assertThat(result!!.name).isEqualTo("Zazen")
             assertThat(result.duration).isEqualTo(300)
-            assertThat(result.bell).isEqualTo(1)
+            assertThat(result.bellId).isEqualTo(bellId)
             assertThat(result.fkSession).isEqualTo(session.id)
         }
     }
@@ -221,6 +222,22 @@ class DbOperationsTest {
             dbOps.deleteSection(section.id.toLong())
 
             assertThat(dbOps.readSection(section.id)).isNull()
+        }
+    }
+
+    @Test
+    fun switchSessionPositions() {
+        runBlocking {
+            val sessionA = Session("Session A", "Desc A")
+            dbOps.insertSession(sessionA)
+            val sessionB = Session("Session B", "Desc B")
+            dbOps.insertSession(sessionB)
+
+            dbOps.switchSessionPositions(sessionA.id.toLong(), sessionB.id.toLong())
+
+            val sessions = dbOps.readSessions()
+            assertThat(sessions[0].name).isEqualTo("Session B")
+            assertThat(sessions[1].name).isEqualTo("Session A")
         }
     }
 

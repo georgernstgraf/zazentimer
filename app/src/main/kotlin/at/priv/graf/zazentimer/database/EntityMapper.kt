@@ -13,6 +13,7 @@ object EntityMapper {
         entity._id = bo.id
         entity.name = bo.name ?: ""
         entity.description = bo.description ?: ""
+        entity.rank = bo.rank
         return entity
     }
 
@@ -21,21 +22,20 @@ object EntityMapper {
         bo.id = entity._id
         bo.name = entity.name
         bo.description = entity.description
+        bo.rank = entity.rank
         return bo
     }
 
     fun toEntity(bo: Section): SectionEntity {
         val entity = SectionEntity()
         entity._id = bo.id
-        entity.fk_session = bo.fkSession
         entity.name = bo.name ?: ""
         entity.duration = bo.duration
-        entity.bell = bo.bell
         entity.rank = bo.rank
         entity.bellcount = bo.bellcount
         entity.bellpause = bo.bellpause
-        entity.belluri = bo.bellUri
         entity.bellId = bo.bellId
+        entity.fk_session = bo.fkSession
         return entity
     }
 
@@ -45,11 +45,9 @@ object EntityMapper {
         bo.fkSession = entity.fk_session
         bo.name = entity.name
         bo.duration = entity.duration
-        bo.bell = entity.bell
-        bo.rank = entity.rank ?: -1
-        bo.bellcount = entity.bellcount ?: 1
-        bo.bellpause = entity.bellpause ?: 1
-        bo.bellUri = entity.belluri
+        bo.rank = entity.rank
+        bo.bellcount = entity.bellcount
+        bo.bellpause = entity.bellpause
         bo.bellId = entity.bellId
         return bo
     }
@@ -58,8 +56,6 @@ object EntityMapper {
         val entity = SessionBellVolumeEntity()
         entity._id = bo.id
         entity.fk_session = bo.fkSession
-        entity.bell = bo.bell
-        entity.belluri = bo.bellUri
         entity.bellId = bo.bellId
         entity.volume = bo.volume
         return entity
@@ -69,8 +65,6 @@ object EntityMapper {
         val bo = SessionBellVolume()
         bo.id = entity._id
         bo.fkSession = entity.fk_session
-        bo.bell = entity.bell
-        bo.bellUri = entity.belluri
         bo.bellId = entity.bellId
         bo.volume = entity.volume
         return bo

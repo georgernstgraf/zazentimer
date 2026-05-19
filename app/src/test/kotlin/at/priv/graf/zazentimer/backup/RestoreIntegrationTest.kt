@@ -154,7 +154,7 @@ class RestoreIntegrationTest(
                     val bell = dbOps.getBellById(volume.bellId)
                     if (bell == null) {
                         println("  ERROR: Null bell for Volume ID ${volume.bellId} in session '${session.name}'")
-                        println("         Volume details: bell=${volume.bell}, uri=${volume.bellUri}")
+                        println("         Volume details: bellId=${volume.bellId}, volume=${volume.volume}")
                     }
                     assertThat(bell).isNotNull()
                 }

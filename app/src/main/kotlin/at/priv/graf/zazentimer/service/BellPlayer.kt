@@ -6,6 +6,7 @@ import android.util.Log
 import at.priv.graf.zazentimer.audio.Audio
 import at.priv.graf.zazentimer.audio.BellCollection
 import at.priv.graf.zazentimer.bo.Section
+import at.priv.graf.zazentimer.database.BellEntity
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.delay
@@ -14,6 +15,7 @@ import kotlinx.coroutines.launch
 class BellPlayer(
     private val context: Context,
     private val dispatchers: CoroutineDispatchers = CoroutineDispatchers(),
+    private val getBellById: suspend (Int) -> BellEntity? = { null },
 ) {
     private val scope = CoroutineScope(SupervisorJob() + dispatchers.main)
     private val audioObjects = ArrayList<Audio>()
@@ -76,7 +78,11 @@ class BellPlayer(
         section: Section,
         volume: Int,
     ) {
-        var bell = BellCollection.getBellForSection(section)
+        var bell: at.priv.graf.zazentimer.bo.Bell? = null
+        val entity = getBellById(section.bellId)
+        if (entity != null) {
+            bell = BellCollection.getBellByUri(entity.uri)
+        }
         if (bell == null) {
             bell = BellCollection.getDemoBell() ?: return
         }

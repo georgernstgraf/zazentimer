@@ -6,8 +6,6 @@ import java.io.Serializable
 data class SessionBellVolume(
     @JvmField var id: Int = 0,
     @JvmField var fkSession: Int = 0,
-    @JvmField var bell: Int? = null,
-    @JvmField var bellUri: String? = null,
     @JvmField var bellId: Int = 0,
     @JvmField var volume: Int = Constants.DEFAULT_BELL_VOLUME,
 ) : Serializable {

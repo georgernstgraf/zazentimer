@@ -3,6 +3,7 @@ package at.priv.graf.zazentimer.service
 import at.priv.graf.zazentimer.bo.Section
 import at.priv.graf.zazentimer.bo.Session
 import at.priv.graf.zazentimer.bo.SessionBellVolume
+import at.priv.graf.zazentimer.database.BellEntity
 import at.priv.graf.zazentimer.database.DbOperations
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -78,4 +79,6 @@ class MeditationRepository
         suspend fun readSections(id: Int): Array<Section> = dbOperations.readSections(id)
 
         suspend fun readBellVolumes(sessionId: Int): List<SessionBellVolume> = dbOperations.readBellVolumes(sessionId)
+
+        suspend fun getBellById(id: Int): BellEntity? = dbOperations.getBellById(id)
     }

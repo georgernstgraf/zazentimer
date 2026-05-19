@@ -227,8 +227,7 @@ class SessionEditFragment :
         val s = session ?: return
         val source = a.getItem(position)
         val copy = Section(source.name ?: "", source.duration)
-        copy.bell = source.bell
-        copy.bellUri = source.bellUri
+        copy.bellId = source.bellId
         copy.bellcount = source.bellcount
         copy.bellpause = source.bellpause
         lifecycleScope.launch {
@@ -269,30 +268,16 @@ class SessionEditFragment :
         secs: Array<Section>,
         saved: List<SessionBellVolume>,
     ): List<SessionBellVolume> {
-        data class Key(
-            val bellId: Int,
-            val bellUri: String?,
-        )
-        val seen = linkedSetOf<Key>()
+        val seen = linkedSetOf<Int>()
         for (sec in secs) {
             if (sec.bellId > 0) {
-                seen.add(Key(sec.bellId, null))
-            } else {
-                seen.add(Key(0, sec.bellUri ?: ""))
+                seen.add(sec.bellId)
             }
         }
-        return seen.map { key ->
-            val match =
-                saved.find { bv ->
-                    if (bv.bellId > 0 && key.bellId > 0) {
-                        bv.bellId == key.bellId
-                    } else {
-                        bv.bellUri == key.bellUri
-                    }
-                }
+        return seen.map { bellId ->
+            val match = saved.find { bv -> bv.bellId == bellId }
             match ?: SessionBellVolume(
-                bellId = key.bellId,
-                bellUri = key.bellUri,
+                bellId = bellId,
                 volume = DEFAULT_BELL_VOLUME,
             )
         }

@@ -33,8 +33,9 @@ abstract class AppDatabase : RoomDatabase() {
         const val VERSION_7 = 7
         const val VERSION_8 = 8
         const val VERSION_9 = 9
+        const val VERSION_10 = 10
 
-        const val CURRENT_VERSION = VERSION_9
+        const val CURRENT_VERSION = VERSION_10
 
         const val DEFAULT_VOLUME = at.priv.graf.zazentimer.Constants.DEFAULT_BELL_VOLUME
 
@@ -430,6 +431,99 @@ abstract class AppDatabase : RoomDatabase() {
             object : Migration(VERSION_8, VERSION_9) {
                 override fun migrate(db: SupportSQLiteDatabase) {
                     db.execSQL("DROP TABLE IF EXISTS settings")
+                }
+            }
+
+        @Suppress("LongMethod")
+        val MIGRATION_9_10 =
+            object : Migration(VERSION_9, VERSION_10) {
+                override fun migrate(db: SupportSQLiteDatabase) {
+                    db.execSQL(
+                        "ALTER TABLE sessions ADD COLUMN rank INTEGER NOT NULL DEFAULT 0",
+                    )
+                    db.execSQL(
+                        "UPDATE sessions SET rank = _id - (SELECT MIN(_id) FROM sessions)",
+                    )
+
+                    db.execSQL(
+                        "UPDATE sections SET rank = 0 WHERE rank IS NULL",
+                    )
+                    db.execSQL(
+                        "UPDATE sections SET bellcount = 1 WHERE bellcount IS NULL",
+                    )
+                    db.execSQL(
+                        "UPDATE sections SET bellpause = 1 WHERE bellpause IS NULL",
+                    )
+                    db.execSQL(
+                        "CREATE TABLE sections_new (" +
+                            "_id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, " +
+                            "name TEXT NOT NULL, " +
+                            "duration INTEGER NOT NULL, " +
+                            "rank INTEGER NOT NULL, " +
+                            "bellcount INTEGER NOT NULL, " +
+                            "bellpause INTEGER NOT NULL, " +
+                            "bellId INTEGER NOT NULL, " +
+                            "fk_session INTEGER NOT NULL, " +
+                            "FOREIGN KEY (fk_session) REFERENCES sessions(_id) ON DELETE CASCADE, " +
+                            "FOREIGN KEY (bellId) REFERENCES bells(_id))",
+                    )
+                    db.execSQL(
+                        "INSERT INTO sections_new" +
+                            " (_id, name, duration, rank, bellcount, bellpause, bellId, fk_session)" +
+                            " SELECT _id, name, duration," +
+                            " COALESCE(rank, 0), COALESCE(bellcount, 1)," +
+                            " COALESCE(bellpause, 1), bellId, fk_session FROM sections",
+                    )
+                    db.execSQL("DROP TABLE sections")
+                    db.execSQL("ALTER TABLE sections_new RENAME TO sections")
+                    db.execSQL(
+                        "CREATE INDEX IF NOT EXISTS index_sections_fk_session ON sections(fk_session)",
+                    )
+                    db.execSQL(
+                        "CREATE INDEX IF NOT EXISTS index_sections_bellId ON sections(bellId)",
+                    )
+
+                    db.execSQL(
+                        "CREATE TABLE session_bell_volumes_new (" +
+                            "_id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, " +
+                            "fk_session INTEGER NOT NULL, " +
+                            "bellId INTEGER NOT NULL, " +
+                            "volume INTEGER NOT NULL, " +
+                            "FOREIGN KEY (fk_session) REFERENCES sessions(_id) ON DELETE CASCADE, " +
+                            "FOREIGN KEY (bellId) REFERENCES bells(_id))",
+                    )
+                    db.execSQL(
+                        "INSERT INTO session_bell_volumes_new (_id, fk_session, bellId, volume) " +
+                            "SELECT _id, fk_session, bellId, volume FROM session_bell_volumes",
+                    )
+                    db.execSQL("DROP TABLE session_bell_volumes")
+                    db.execSQL("ALTER TABLE session_bell_volumes_new RENAME TO session_bell_volumes")
+                    db.execSQL(
+                        "CREATE INDEX IF NOT EXISTS index_session_bell_volumes_fk_session " +
+                            "ON session_bell_volumes(fk_session)",
+                    )
+                    db.execSQL(
+                        "CREATE INDEX IF NOT EXISTS index_session_bell_volumes_bellId " +
+                            "ON session_bell_volumes(bellId)",
+                    )
+                    db.execSQL(
+                        "CREATE UNIQUE INDEX IF NOT EXISTS index_session_bell_volumes_fk_session_bellId " +
+                            "ON session_bell_volumes(fk_session, bellId)",
+                    )
+
+                    db.execSQL(
+                        "CREATE TABLE bells_new (" +
+                            "_id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, " +
+                            "name TEXT NOT NULL DEFAULT '', " +
+                            "uri TEXT NOT NULL DEFAULT '', " +
+                            "is_builtin INTEGER NOT NULL DEFAULT 0)",
+                    )
+                    db.execSQL(
+                        "INSERT INTO bells_new (_id, name, uri, is_builtin) " +
+                            "SELECT _id, name, uri, is_builtin FROM bells",
+                    )
+                    db.execSQL("DROP TABLE bells")
+                    db.execSQL("ALTER TABLE bells_new RENAME TO bells")
                 }
             }
 

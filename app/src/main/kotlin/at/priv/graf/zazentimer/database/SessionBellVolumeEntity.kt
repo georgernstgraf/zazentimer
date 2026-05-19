@@ -21,15 +21,13 @@ import at.priv.graf.zazentimer.Constants
             childColumns = ["bellId"],
         ),
     ],
-    indices = [Index("fk_session"), Index(value = ["fk_session", "bell", "belluri"], unique = true), Index("bellId")],
+    indices = [Index("fk_session"), Index(value = ["fk_session", "bellId"], unique = true), Index("bellId")],
 )
 @Suppress("ConstructorParameterNaming")
 data class SessionBellVolumeEntity(
     @PrimaryKey(autoGenerate = true)
     var _id: Int = 0,
     var fk_session: Int = 0,
-    var bell: Int? = null,
-    var belluri: String? = null,
     var bellId: Int = 0,
     var volume: Int = Constants.DEFAULT_BELL_VOLUME,
 )

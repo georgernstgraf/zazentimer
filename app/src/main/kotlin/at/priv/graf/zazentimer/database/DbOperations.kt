@@ -44,6 +44,7 @@ class DbOperations
                         AppDatabase.MIGRATION_6_7,
                         AppDatabase.MIGRATION_7_8,
                         AppDatabase.MIGRATION_8_9,
+                        AppDatabase.MIGRATION_9_10,
                     ).addCallback(AppDatabase.ON_CREATE_CALLBACK)
                     .build()
             val db = appDb ?: return
@@ -116,6 +117,7 @@ class DbOperations
                 val source = EntityMapper.toBo(sourceEntity)
                 source.name = newName
                 source.id = 0
+                source.rank = (sDao.getMaxRank() ?: 0) + 1
                 val sectionEntities = secDao.getSectionsForSession(sourceId)
                 val newEntity = EntityMapper.toEntity(source)
                 val newId = sDao.insert(newEntity)
@@ -138,8 +140,7 @@ class DbOperations
                     val newBv =
                         SessionBellVolumeEntity(
                             fk_session = source.id,
-                            bell = bv.bell,
-                            belluri = bv.belluri,
+                            bellId = bv.bellId,
                             volume = bv.volume,
                         )
                     bvDao.insert(newBv)
@@ -204,8 +205,8 @@ class DbOperations
             val s1 = dao.getSectionById(id1.toInt())
             val s2 = dao.getSectionById(id2.toInt())
             if (s1 != null && s2 != null) {
-                val rank1 = s1.rank ?: 0
-                val rank2 = s2.rank ?: 0
+                val rank1 = s1.rank
+                val rank2 = s2.rank
                 dao.updateRank(id1.toInt(), rank2)
                 dao.updateRank(id2.toInt(), rank1)
             }
@@ -229,10 +230,28 @@ class DbOperations
         suspend fun insertSession(session: Session) =
             withIdling {
                 val dao = sessionDao ?: return@withIdling
+                if (session.rank <= 0) {
+                    session.rank = (dao.getMaxRank() ?: 0) + 1
+                }
                 val entity = EntityMapper.toEntity(session)
                 val newId = dao.insert(entity)
                 session.id = newId.toInt()
             }
+
+        suspend fun switchSessionPositions(
+            id1: Long,
+            id2: Long,
+        ) = withIdling {
+            val dao = sessionDao ?: return@withIdling
+            val s1 = dao.getSessionById(id1.toInt())
+            val s2 = dao.getSessionById(id2.toInt())
+            if (s1 != null && s2 != null) {
+                val rank1 = s1.rank
+                val rank2 = s2.rank
+                dao.updateRank(id1.toInt(), rank2)
+                dao.updateRank(id2.toInt(), rank1)
+            }
+        }
 
         suspend fun readSections(sessionId: Int): Array<Section> =
             withIdling {

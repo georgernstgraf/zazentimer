@@ -6,7 +6,6 @@ import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
 import android.media.AudioManager
-import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -330,22 +329,13 @@ class BellVolumeConfigDialog : DialogFragment() {
         private fun findBellForVolume(bv: SessionBellVolume): Bell? {
             val entity = bellEntities[bv.bellId]
             if (entity != null) {
-                // Try to find in BellCollection by URI
                 val uriStr = entity.uri
                 val found = BellCollection.getBellList().find { it.uri.toString() == uriStr }
                 if (found != null) return found
-                // Fallback to name match if URI doesn't match exactly (e.g. package name change)
                 BellCollection.getBell(entity.name)?.let { return it }
             }
 
-            // Absolute fallback for unexpected states
-            val idx = bv.bell ?: -1
-            if (idx >= 0) BellCollection.getBell(idx)?.let { return it }
-            val uri = bv.bellUri ?: return BellCollection.getDemoBell()
-            val path = Uri.parse(uri).lastPathSegment ?: return BellCollection.getDemoBell()
-            return BellCollection.getBellList().find {
-                it.uri.lastPathSegment == path
-            } ?: BellCollection.getDemoBell()
+            return BellCollection.getDemoBell()
         }
     }
 }
