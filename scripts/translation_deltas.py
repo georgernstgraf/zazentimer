@@ -2,10 +2,12 @@
 """Compute translation deltas: missing and obsolete strings per locale.
 
 Compares each values-*/strings.xml against the English master
-values/strings.xml.  Skips translatable="false" entries.  Locales listed in
-scripts/non_llm_languages.json appear only in the top-level "excluded" array
-and are omitted from the per-locale "locales" map.  Locales without any deltas
-(0 missing, 0 obsolete) are also omitted from "locales".
+values/strings.xml.  Skips translatable="false" entries and keys listed in
+scripts/keep_english.json (format strings intended to stay in English).
+Locales listed in scripts/non_llm_languages.json appear only in the
+top-level "excluded" array and are omitted from the per-locale "locales"
+map.  Locales without any deltas (0 missing, 0 obsolete) are also omitted
+from "locales".
 """
 
 import json
@@ -17,6 +19,7 @@ SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 RES_DIR = os.path.join(SCRIPT_DIR, "..", "app", "src", "main", "res")
 MASTER = os.path.join(RES_DIR, "values", "strings.xml")
 EXCLUDE_FILE = os.path.join(SCRIPT_DIR, "non_llm_languages.json")
+KEEP_ENGLISH_FILE = os.path.join(SCRIPT_DIR, "keep_english.json")
 OUTPUT = os.path.join(SCRIPT_DIR, "translation_deltas.json")
 
 # Regex: <string name="key" ...>value</string>  (dots-all for multi-line values)
@@ -60,6 +63,15 @@ def load_excluded():
     return set()
 
 
+def load_keep_english():
+    """Return set of string keys that must stay in English (format strings)."""
+    if os.path.exists(KEEP_ENGLISH_FILE):
+        with open(KEEP_ENGLISH_FILE, "r", encoding="utf-8") as fh:
+            data = json.load(fh)
+        return set(data)
+    return set()
+
+
 def locale_name_from_dir(dirname):
     """'values-de' -> 'de', 'values-b+sr+Latn' -> 'b+sr+Latn'."""
     return dirname[len("values-"):]
@@ -70,6 +82,10 @@ def main():
     if not master_keys:
         print("ERROR: no translatable keys found in master", file=sys.stderr)
         sys.exit(1)
+
+    keep_set = load_keep_english()
+    for key in keep_set:
+        master_keys.pop(key, None)
 
     excluded_set = load_excluded()
 
