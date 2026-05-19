@@ -19,6 +19,7 @@ Follow these without question. Do not deviate unless explicitly told.
 ## Test Infrastructure
 - API levels for instrumentation tests are defined in `gradle.properties` (`zazentimer.test.apis`).
 - `scripts/run-instrumentation.sh` reads API levels dynamically — never hardcode them.
+- Hostname-specific API lists use `zazentimer.test.apis.<hostname>` keys in `gradle.properties` (e.g., `zazentimer.test.apis.claw=34`).
 - Shared test utilities (ScreenRobot, IdlingResource, PreFlightRule) live in `src/testFixtures/`.
 - `DevicePreFlightRule` is applied in `HiltTestRunner.onStart()` to ensure screen is awake and animations disabled.
 - Android Test utilities use `java-test-fixtures` via `testFixtures { enable = true }` in AGP, NOT the standalone plugin.
@@ -34,6 +35,7 @@ Follow these without question. Do not deviate unless explicitly told.
 - **FK constraint testing**: Any unit test that creates sections must first insert a bell row and set `bellId` to the valid ID.
 - **Migration snapshots**: Every Room migration that modifies table schemas must include index creation statements for all indices in `@Entity`. Room validates full schema after migration.
 - Column order in SQLite is cosmetic — Room maps by column name, not position. Reordering columns in a migration is harmless.
+- **Session rank persistence**: Session order is persisted in `MainFragment.onPause()` by recomputing `sessions[i].rank = i` from list position and calling `dbOperations.updateSession()` — matching the pattern in `SessionEditFragment.onPause()` for sections.
 
 ## Prisma
 - `prisma/desired/schema.prisma` is **human-only** — hand-crafted SOLL schema. Never auto-generate or edit by agent.
@@ -79,3 +81,9 @@ Follow these without question. Do not deviate unless explicitly told.
 - Never add `abc_*` strings — those come from AndroidX automatically
 - Use `@string/` references in layout XML and navigation graphs
 - Verify placeholder counts match after translation
+
+## Emulator Scripts
+- `start-emulator.sh` and `stop-emulator.sh` are sourceable libraries. Use `[[ "${BASH_SOURCE[0]}" == "${0}" ]]` guard for standalone mode.
+- `emulator_launch(avd, serial, logfile, ...flags)` requires a logfile parameter. Callers pass `-noaudio`, `-no-snapshot-save`, `-wipe-data` etc. explicitly.
+- `-noaudio` must be passed by callers based on display state (Xvfb vs real X11); it is NOT auto-detected in emulator_launch.
+- New emulator-management scripts (`run-instrumentation.sh`, `create-emulator-snapshots.sh`) source `start-emulator.sh` and `stop-emulator.sh` — do NOT duplicate functions.

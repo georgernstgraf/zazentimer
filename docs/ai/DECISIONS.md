@@ -237,3 +237,35 @@ Each entry documents WHAT was decided and WHY.
 - **Considered**: Making `bellId` nullable in the FK (allows 0 as "no bell", but 0 is not NULL — FK constraint still fires). Requiring the UI to always set bellId before insert (SectionEditFragment doesn't set it until onPause).
 - **Tradeoff**: Slightly magic behavior — user creates a section, it defaults to demo bell. The SectionEditFragment immediately shows the selected bell in the spinner, so the user sees the correct bell.
 
+## 2026-05-20: Session rank persistence via onPause() recomputation (#199)
+- **Choice**: Session drag-and-drop order persists via `MainFragment.onPause()` which recomputes ranks from in-memory list position and calls `dbOperations.updateSession()` for each session.
+- **Reason**: Following the established pattern in `SessionEditFragment.onPause()` for sections. Simpler than calling `switchSessionPositions()` per `onMove` callback, and handles all drag scenarios correctly.
+- **Considered**: Calling `switchSessionPositions()` in the `onMove` callback (complex — coroutine ordering issues with rapid successive drag events, and only handles adjacent swaps).
+- **Tradeoff**: Writes all sessions to DB on every pause, even if no reorder occurred. Negligible for typical session counts.
+
+## 2026-05-20: Emulator scripts as sourceable libraries (#200)
+- **Choice**: Restructured `start-emulator.sh` and `stop-emulator.sh` to be both standalone executables AND sourceable libraries with a `[[ "${BASH_SOURCE[0]}" == "${0}" ]]` guard. `run-instrumentation.sh` and `create-emulator-snapshots.sh` source them instead of duplicating functions.
+- **Reason**: 6 functions were duplicated 3-4x across scripts (`resolve_avd`, `wait_for_boot`, `configure_system`, `kill_emulator`, `kill_stale`, `setup_device`). Single source of truth eliminates drift.
+- **Considered**: Extracting into a separate `lib/emulator-helpers.sh` file (additional file, no standalone mode).
+- **Tradeoff**: Library functions must be generic (parameterized, not relying on global variables). Standalone mode duplicates a few lines of arg parsing.
+
+## 2026-05-20: `-noaudio` passed explicitly by callers (#200)
+- **Choice**: Removed auto-detection of `-noaudio` from `emulator_launch()` (which checked `$DISPLAY`). Callers now pass `-noaudio` explicitly based on their own display state (Xvfb vs real X11).
+- **Reason**: After `emulator_x11_prepare` starts Xvfb, `$DISPLAY` is set to `:99`, causing `emulator_launch` to skip `-noaudio` — resulting in pulseaudio connection errors on headless VPS. The auto-detection was coupled to display state, but audio is independent.
+- **Considered**: Adding a separate `EMULATOR_X11_IS_XVFB` flag checked by emulator_launch (adds coupling). Passing a boolean parameter (less flexible).
+- **Tradeoff**: Every caller must remember to pass `-noaudio` when appropriate.
+
+## 2026-05-20: Emulator logfile as mandatory parameter (#200)
+- **Choice**: `emulator_launch(avd, serial, logfile, ...flags)` now requires a logfile parameter; emulator stdout/stderr redirected via `>> "$logfile" 2>&1 &`.
+- **Reason**: Previously, callers tried to redirect emulator output via `$(emulator_launch ... 2>>logfile)`, but the background emulator process inherits the subshell's file descriptors only during the function call — its subsequent output was lost. Making logfile mandatory and redirecting inside the function ensures all emulator output is captured.
+- **Tradeoff**: Every caller must provide a logfile path.
+
+## 2026-05-20: Hostname-based test matrix (#200)
+- **Choice**: `run-instrumentation.sh` selects API list and display strategy based on `hostname -s`:
+  - `claw`: Xvfb forced, APIs from `zazentimer.test.apis.claw` (currently API 34 only)
+  - `think`: uses X11 if available, or `--force-xvfb` flag, otherwise skips instrumented
+  - other: skips instrumented tests entirely (unit tests only)
+- **Reason**: VPS (claw) and local dev machine have different AVD sets and display capabilities. Avoids running instrumented tests in inappropriate environments.
+- **Considered**: Hardcoding in script (less flexible), environment variable (works but not repo-tracked).
+- **Tradeoff**: Hostname is hardcoded in `case` statement; adding a new host requires editing the script.
+

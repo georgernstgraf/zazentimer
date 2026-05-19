@@ -1,6 +1,6 @@
 # Architecture
 
-Living structural map of the system as of 2026-05-19.
+Living structural map of the system as of 2026-05-20.
 
 ## Overview
 ZazenTimer is an Android application for timing meditation sessions. It uses a foreground service for background timing and a Repository-based architecture to synchronize state between the UI and the service.
@@ -48,7 +48,13 @@ ZazenTimer is an Android application for timing meditation sessions. It uses a f
 - **Test Runner**:
   - `HiltTestRunner` — Custom `AndroidJUnitRunner` injecting `HiltTestApplication`, with `DevicePreFlightRule.execute()` called in `onStart()` for self-healing tests
    - `scripts/run-instrumentation.sh` — Orchestrates full test matrix: unit tests + per-API-level instrumented tests (API 23-36). Flat early-exit structure (`print_summary(); exit 1` on pre-flight failures), `stdbuf -oL` for pipe output. Launched via `at` scheduler for resilience against shell timeouts.
-   - `scripts/summarize-tests.sh` — Parses logs + JUnit XML into markdown report table. Falls back to `Finished N tests`/`OK (N tests)` when Gradle progress lines are incomplete. Usage: `scripts/summarize-tests.sh [--date YYYY-MM-DD] [--markdown]`
+    - `scripts/summarize-tests.sh` — Parses logs + JUnit XML into markdown report table. Falls back to `Finished N tests`/`OK (N tests)` when Gradle progress lines are incomplete. Usage: `scripts/summarize-tests.sh [--date YYYY-MM-DD] [--markdown]`
+- **Emulator Management Scripts** (sourceable libraries):
+  - `scripts/start-emulator.sh` — Library: `emulator_launch`, `emulator_wait_boot`, `emulator_x11_prepare`, `emulator_configure_system`, `emulator_resolve_avd`, `emulator_kill_stale`. Standalone: starts emulator for Prisma DB extraction. Sourced-or-executed guard.
+  - `scripts/stop-emulator.sh` — Library: `emulator_kill_serial`, `emulator_kill_all`. Standalone: kills emulator + Xvfb. Sourced-or-executed guard.
+  - `scripts/create-emulator-snapshots.sh` — Creates clean, app-free emulator snapshots via `-wipe-data` + graceful shutdown. Sources `start-emulator.sh`.
+  - `emulator_launch(avd, serial, logfile, ...flags)` — always requires logfile parameter; flags like `-noaudio`, `-no-snapshot-save`, `-wipe-data` passed explicitly.
+- **Hostname-Based Configuration**: `run-instrumentation.sh` selects API list and display strategy via `case $(hostname -s)`. Host `claw` forces Xvfb + API 34 only. Host `think` uses X11 or `--force-xvfb`. Unknown hosts skip instrumented tests. API lists in `gradle.properties` via `zazentimer.test.apis.<hostname>`.
 - **Execution Strategy**:
   - All APIs 23-36: Gradle `connectedDebugAndroidTest` runner (`gradleMaxApi=36`)
   - The `am instrument` fallback path has been removed — Gradle confirmed working on all tested API levels
