@@ -4,6 +4,8 @@ set -euo pipefail
 CONTINUE_ON_ERROR=false
 IGNORE_DIRTY_GIT=false
 DEBUG_LOG=false
+FORCE_XVFB=false
+COLD_BOOT=false
 TARGET_APIS=()
 
 while [[ $# -gt 0 ]]; do
@@ -20,6 +22,14 @@ while [[ $# -gt 0 ]]; do
         DEBUG_LOG=true
         shift
         ;;
+    --force-xvfb)
+        FORCE_XVFB=true
+        shift
+        ;;
+    --cold-boot)
+        COLD_BOOT=true
+        shift
+        ;;
     --api)
         if [ -z "${2:-}" ]; then
             echo "ERROR: --api requires an argument (e.g., --api 32 or --api 29,35)"
@@ -29,7 +39,7 @@ while [[ $# -gt 0 ]]; do
         shift 2
         ;;
     *)
-        echo "Usage: $0 [--continue-on-error] [--ignore-dirty-git] [--debug] [--api <level>[,<level>...]]"
+        echo "Usage: $0 [--continue-on-error] [--ignore-dirty-git] [--debug] [--force-xvfb] [--cold-boot] [--api <level>[,<level>...]]"
         exit 1
         ;;
     esac
@@ -65,6 +75,8 @@ declare -A RESULTS
 FAILED_APIS=()
 ERROR_LOGS=()
 IS_REAL_DISPLAY=true
+SKIP_INSTRUMENTED=false
+SNAPSHOT_FLAG=""
 API_LOG=""
 
 log() {
@@ -216,7 +228,35 @@ else
     log "=== WARNING: --ignore-dirty-git enabled — skipping git clean check and pull ==="
 fi
 
-if [ -z "${DISPLAY:-}" ]; then
+# ──────────────────────────────────────────────
+# Hostname-specific configuration
+# ──────────────────────────────────────────────
+HOST_SHORT=$(hostname -s)
+case "$HOST_SHORT" in
+    claw)
+        FORCE_XVFB=true
+        log "=== Host claw: forcing Xvfb ==="
+        ;;
+    think)
+        if [ -z "${DISPLAY:-}" ] && [ "$FORCE_XVFB" != true ]; then
+            SKIP_INSTRUMENTED=true
+            log "=== Host think: no DISPLAY and --force-xvfb not set — skipping instrumented tests ==="
+        fi
+        ;;
+    *)
+        SKIP_INSTRUMENTED=true
+        log "=== Unknown host $HOST_SHORT — skipping instrumented tests ==="
+        ;;
+esac
+
+if [ "$FORCE_XVFB" = true ]; then
+    IS_REAL_DISPLAY=false
+    log "=== FORCE_XVFB — starting Xvfb on :99 ==="
+    if ! start_xvfb; then
+        log "ERROR: Failed to start Xvfb — cannot continue"
+        exit 1
+    fi
+elif [ -z "${DISPLAY:-}" ]; then
     IS_REAL_DISPLAY=false
     log "=== Starting Xvfb on :99 ==="
     if ! start_xvfb; then
@@ -228,7 +268,26 @@ else
     log "=== DISPLAY=$DISPLAY — using existing display ==="
 fi
 
-DEFAULT_APIS_STRING=$(grep "^zazentimer.test.apis=" "$PROJECT_DIR/gradle.properties" | cut -d'=' -f2)
+# ──────────────────────────────────────────────
+# API list: hostname-specific or default
+# ──────────────────────────────────────────────
+DEFAULT_APIS_STRING=$(grep -oP "^zazentimer\.test\.apis=\K.*" "$PROJECT_DIR/gradle.properties" || true)
+
+if [ "$HOST_SHORT" = "claw" ]; then
+    host_apis=$(grep -oP "^zazentimer\.test\.apis\.claw=\K.*" "$PROJECT_DIR/gradle.properties" || true)
+    if [ -n "$host_apis" ]; then
+        DEFAULT_APIS_STRING="$host_apis"
+    fi
+    log "=== APIs for claw: ${DEFAULT_APIS_STRING} ==="
+fi
+
+# Set snapshot flag based on --cold-boot
+if [ "$COLD_BOOT" = true ]; then
+    SNAPSHOT_FLAG="-no-snapshot"
+else
+    SNAPSHOT_FLAG="-no-snapshot-save"
+fi
+
 IFS=',' read -ra DEFAULT_APIS <<<"$DEFAULT_APIS_STRING"
 
 if [ ${#TARGET_APIS[@]} -gt 0 ]; then
@@ -514,7 +573,7 @@ run_gradle_test() {
 
     $ANDROID_HOME/emulator/emulator \
         -avd "$avd_name" \
-        -no-snapshot \
+        $SNAPSHOT_FLAG \
         -gpu swiftshader_indirect \
         $([ "$IS_REAL_DISPLAY" = false ] && echo "-noaudio") \
         -no-boot-anim \
@@ -572,6 +631,15 @@ run_gradle_test() {
 # ──────────────────────────────────────────────
 # Instrumented tests
 # ──────────────────────────────────────────────
+
+if [ "$SKIP_INSTRUMENTED" = true ]; then
+    log ""
+    log "========================================="
+    log "  Instrumented tests SKIPPED"
+    log "========================================="
+    print_summary
+    exit $UNIT_RESULT
+fi
 
 API_IDX=0
 for api in "${APIS_TO_RUN[@]}"; do

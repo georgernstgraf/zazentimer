@@ -17,7 +17,28 @@ set -euo pipefail
 # Default API: 35
 # ──────────────────────────────────────────────
 
-API_LEVEL="${1:-35}"
+COLD=false
+API_LEVEL=""
+
+while [[ $# -gt 0 ]]; do
+    case "$1" in
+    --cold)
+        COLD=true
+        shift
+        ;;
+    *)
+        API_LEVEL="$1"
+        shift
+        ;;
+    esac
+done
+
+API_LEVEL="${API_LEVEL:-35}"
+SNAPSHOT_FLAG="-no-snapshot-save"
+if [ "$COLD" = true ]; then
+    SNAPSHOT_FLAG="-no-snapshot"
+fi
+
 AVD_NAME=""
 ANDROID_HOME="${ANDROID_HOME:-$HOME/Android/Sdk}"
 
@@ -109,7 +130,7 @@ export ANDROID_SERIAL="$SERIAL"
 echo "Starting emulator ($AVD_NAME, serial $SERIAL)..."
 "$ANDROID_HOME/emulator/emulator" \
     -avd "$AVD_NAME" \
-    -no-snapshot \
+    $SNAPSHOT_FLAG \
     -gpu swiftshader_indirect \
     $([ -z "${DISPLAY:-}" ] && echo "-noaudio") \
     -no-boot-anim \
