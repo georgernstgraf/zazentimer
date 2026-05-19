@@ -109,7 +109,7 @@ class DemoSessionCreator(
         val section = Section()
         section.bell = BELL_INDEX_NONE
         section.bellUri = BellCollection.getBell(bellIdx)?.uri?.toString() ?: return
-        section.bellId = 0
+        section.bellId = dbOperations.getBellByUri(section.bellUri ?: "")?.let { it._id } ?: 0
         section.bellcount = bellCount
         section.bellpause = if (bellCount == 1) BELL_PAUSE_1 else BELL_PAUSE_3
         section.duration = duration

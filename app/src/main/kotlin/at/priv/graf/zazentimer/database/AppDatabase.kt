@@ -31,8 +31,9 @@ abstract class AppDatabase : RoomDatabase() {
         const val VERSION_5 = 5
         const val VERSION_6 = 6
         const val VERSION_7 = 7
+        const val VERSION_8 = 8
 
-        const val CURRENT_VERSION = VERSION_7
+        const val CURRENT_VERSION = VERSION_8
 
         const val DEFAULT_VOLUME = at.priv.graf.zazentimer.Constants.DEFAULT_BELL_VOLUME
 
@@ -310,6 +311,116 @@ abstract class AppDatabase : RoomDatabase() {
                     db.execSQL(
                         "CREATE UNIQUE INDEX IF NOT EXISTS index_session_bell_volumes_fk_session_bell_belluri " +
                             "ON session_bell_volumes(fk_session, bell, belluri)",
+                    )
+                }
+            }
+
+        @Suppress("LongMethod")
+        val MIGRATION_7_8 =
+            object : Migration(VERSION_7, VERSION_8) {
+                override fun migrate(db: SupportSQLiteDatabase) {
+                    // 1. Seed built-in bells (idempotent: INSERT OR IGNORE)
+                    val builtinBells =
+                        listOf(
+                            listOf("bell1", "High Tone"),
+                            listOf("bell2", "Low Tone"),
+                            listOf("dharma107", "Japanische Rhin Bowl Dharma 107 mm"),
+                            listOf("dharmaschwarz88", "Japanische Rhin Bowl, schwarz 88 mm"),
+                            listOf("shomyo90", "Japanische Shomyō Klingel, 90 mm"),
+                            listOf("tang164", "Japanische Rin Tang, 164 mm"),
+                            listOf("tib230", "Tibetische Bowl 230 mm"),
+                            listOf("zen97", "Zen Klangschale, 97 mm"),
+                        )
+                    for ((resName, displayName) in builtinBells) {
+                        db.execSQL(
+                            "INSERT OR IGNORE INTO bells (name, uri, is_builtin, resourceName) " +
+                                "VALUES ('$displayName', " +
+                                "'android.resource://at.priv.graf.zazentimer/raw/$resName', " +
+                                "1, '$resName')",
+                        )
+                    }
+
+                    // 2. Rebuild sections with resolved bellId + FK constraint
+                    db.execSQL(
+                        "CREATE TABLE sections_new (" +
+                            "_id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, " +
+                            "fk_session INTEGER NOT NULL, " +
+                            "name TEXT NOT NULL, " +
+                            "duration INTEGER NOT NULL, " +
+                            "bell INTEGER NOT NULL, " +
+                            "rank INTEGER, " +
+                            "bellcount INTEGER, " +
+                            "bellpause INTEGER, " +
+                            "belluri TEXT, " +
+                            "bellId INTEGER NOT NULL, " +
+                            "FOREIGN KEY (fk_session) REFERENCES sessions(_id) ON DELETE CASCADE, " +
+                            "FOREIGN KEY (bellId) REFERENCES bells(_id))",
+                    )
+                    db.execSQL(
+                        "INSERT INTO sections_new " +
+                            "SELECT s._id, s.fk_session, s.name, s.duration, s.bell, " +
+                            "s.rank, s.bellcount, s.bellpause, s.belluri, " +
+                            "CASE " +
+                            "WHEN s.bellId > 0 AND EXISTS " +
+                            "(SELECT 1 FROM bells b2 WHERE b2._id = s.bellId) THEN s.bellId " +
+                            "WHEN s.belluri IS NOT NULL AND s.belluri != '' THEN " +
+                            "COALESCE((SELECT b._id FROM bells b WHERE b.uri = s.belluri LIMIT 1), " +
+                            "(SELECT b._id FROM bells b WHERE b.resourceName = 'bell2' LIMIT 1)) " +
+                            "ELSE COALESCE((SELECT b._id FROM bells b WHERE b.resourceName = 'bell2' LIMIT 1), " +
+                            "(SELECT MIN(b._id) FROM bells b)) " +
+                            "END " +
+                            "FROM sections s",
+                    )
+                    db.execSQL("DROP TABLE sections")
+                    db.execSQL("ALTER TABLE sections_new RENAME TO sections")
+                    db.execSQL(
+                        "CREATE INDEX IF NOT EXISTS index_sections_fk_session ON sections(fk_session)",
+                    )
+                    db.execSQL(
+                        "CREATE INDEX IF NOT EXISTS index_sections_bellId ON sections(bellId)",
+                    )
+
+                    // 3. Rebuild session_bell_volumes with resolved bellId + FK constraint
+                    db.execSQL(
+                        "CREATE TABLE session_bell_volumes_new (" +
+                            "_id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, " +
+                            "fk_session INTEGER NOT NULL, " +
+                            "bell INTEGER, " +
+                            "belluri TEXT, " +
+                            "bellId INTEGER NOT NULL, " +
+                            "volume INTEGER NOT NULL, " +
+                            "FOREIGN KEY (fk_session) REFERENCES sessions(_id) ON DELETE CASCADE, " +
+                            "FOREIGN KEY (bellId) REFERENCES bells(_id))",
+                    )
+                    db.execSQL(
+                        "INSERT INTO session_bell_volumes_new " +
+                            "SELECT v._id, v.fk_session, v.bell, v.belluri, " +
+                            "CASE " +
+                            "WHEN v.bellId > 0 AND EXISTS " +
+                            "(SELECT 1 FROM bells b2 WHERE b2._id = v.bellId) THEN v.bellId " +
+                            "WHEN v.belluri IS NOT NULL AND v.belluri != '' THEN " +
+                            "COALESCE((SELECT b._id FROM bells b WHERE b.uri = v.belluri LIMIT 1), " +
+                            "(SELECT b._id FROM bells b WHERE b.resourceName = 'bell2' LIMIT 1)) " +
+                            "ELSE COALESCE((SELECT b._id FROM bells b WHERE b.resourceName = 'bell2' LIMIT 1), " +
+                            "(SELECT MIN(b._id) FROM bells b)) " +
+                            "END, " +
+                            "v.volume " +
+                            "FROM session_bell_volumes v",
+                    )
+                    db.execSQL("DROP TABLE session_bell_volumes")
+                    db.execSQL("ALTER TABLE session_bell_volumes_new RENAME TO session_bell_volumes")
+                    db.execSQL(
+                        "CREATE INDEX IF NOT EXISTS index_session_bell_volumes_fk_session " +
+                            "ON session_bell_volumes(fk_session)",
+                    )
+                    db.execSQL(
+                        "CREATE UNIQUE INDEX IF NOT EXISTS " +
+                            "index_session_bell_volumes_fk_session_bell_belluri " +
+                            "ON session_bell_volumes(fk_session, bell, belluri)",
+                    )
+                    db.execSQL(
+                        "CREATE INDEX IF NOT EXISTS index_session_bell_volumes_bellId " +
+                            "ON session_bell_volumes(bellId)",
                     )
                 }
             }

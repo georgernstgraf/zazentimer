@@ -18,6 +18,8 @@ class DaoTest {
     private lateinit var db: AppDatabase
     private lateinit var sessionDao: SessionDao
     private lateinit var sectionDao: SectionDao
+    private lateinit var bellDao: BellDao
+    private var bellId: Int = 0
 
     @Before
     fun setUp() {
@@ -29,6 +31,19 @@ class DaoTest {
                 .build()
         sessionDao = db.sessionDao()
         sectionDao = db.sectionDao()
+        bellDao = db.bellDao()
+        runBlocking {
+            bellId =
+                bellDao
+                    .insert(
+                        BellEntity(
+                            name = TestBellHelper.TEST_BELL_NAME,
+                            uri = TestBellHelper.TEST_BELL_URI,
+                            isBuiltin = true,
+                            resourceName = "bell2",
+                        ),
+                    ).toInt()
+        }
     }
 
     @After
@@ -117,6 +132,7 @@ class DaoTest {
                     name = "Section 1",
                     duration = 300,
                     bell = 0,
+                    bellId = bellId,
                     rank = 1,
                 ),
             )
@@ -138,6 +154,7 @@ class DaoTest {
                         name = "By ID",
                         duration = 60,
                         bell = 0,
+                        bellId = bellId,
                         rank = 1,
                     ),
                 )
@@ -175,6 +192,7 @@ class DaoTest {
                     name = "S1",
                     duration = 60,
                     bell = 0,
+                    bellId = bellId,
                     rank = 1,
                 ),
             )
@@ -184,6 +202,7 @@ class DaoTest {
                     name = "S2",
                     duration = 120,
                     bell = 0,
+                    bellId = bellId,
                     rank = 3,
                 ),
             )
@@ -193,6 +212,7 @@ class DaoTest {
                     name = "S3",
                     duration = 180,
                     bell = 0,
+                    bellId = bellId,
                     rank = 2,
                 ),
             )
@@ -212,6 +232,7 @@ class DaoTest {
                         name = "Old",
                         duration = 60,
                         bell = 0,
+                        bellId = bellId,
                         rank = 1,
                     ),
                 )
@@ -224,6 +245,7 @@ class DaoTest {
                     duration = 120,
                     bell = 1,
                     rank = 1,
+                    bellId = bellId,
                 ),
             )
 
@@ -245,6 +267,7 @@ class DaoTest {
                         name = "S1",
                         duration = 60,
                         bell = 0,
+                        bellId = bellId,
                         rank = 1,
                     ),
                 )
@@ -266,6 +289,7 @@ class DaoTest {
                         name = "Del",
                         duration = 60,
                         bell = 0,
+                        bellId = bellId,
                         rank = 1,
                     ),
                 )
@@ -286,6 +310,7 @@ class DaoTest {
                     name = "Third",
                     duration = 180,
                     bell = 0,
+                    bellId = bellId,
                     rank = 3,
                 ),
             )
@@ -295,6 +320,7 @@ class DaoTest {
                     name = "First",
                     duration = 60,
                     bell = 0,
+                    bellId = bellId,
                     rank = 1,
                 ),
             )
@@ -304,6 +330,7 @@ class DaoTest {
                     name = "Second",
                     duration = 120,
                     bell = 0,
+                    bellId = bellId,
                     rank = 2,
                 ),
             )
@@ -326,6 +353,7 @@ class DaoTest {
                     name = "S1",
                     duration = 60,
                     bell = 0,
+                    bellId = bellId,
                     rank = 1,
                 ),
             )
@@ -335,6 +363,7 @@ class DaoTest {
                     name = "S2",
                     duration = 120,
                     bell = 0,
+                    bellId = bellId,
                     rank = 2,
                 ),
             )

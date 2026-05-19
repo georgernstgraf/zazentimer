@@ -177,10 +177,11 @@ class ZazenTimerActivity :
             appBarConfiguration?.let { NavigationUI.setupActionBarWithNavController(this, nc, it) }
         }
         observeViewModel()
-        val demoMarker = File(noBackupFilesDir, "demo_sessions_created")
-        if (!demoMarker.exists()) {
-            Log.d(TAG, "No demo marker -- creating demo sessions")
-            lifecycleScope.launch {
+        lifecycleScope.launch {
+            MigrationHelper.ensureBellsTableConsistent(this@ZazenTimerActivity, dbOperations)
+            val demoMarker = File(noBackupFilesDir, "demo_sessions_created")
+            if (!demoMarker.exists()) {
+                Log.d(TAG, "No demo marker -- creating demo sessions")
                 DemoSessionCreator(dbOperations, resources).createDemoSessions()
                 demoMarker.createNewFile()
                 withContext(Dispatchers.Main) {

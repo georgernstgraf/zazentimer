@@ -5,6 +5,7 @@ import androidx.test.core.app.ApplicationProvider
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import at.priv.graf.zazentimer.bo.Section
 import at.priv.graf.zazentimer.bo.Session
+import at.priv.graf.zazentimer.database.BellEntity
 import com.google.common.truth.Truth.assertThat
 import kotlinx.coroutines.runBlocking
 import org.junit.After
@@ -17,12 +18,25 @@ import org.robolectric.annotation.Config
 @Config(sdk = [29])
 class DbOperationsDuplicateTest {
     private lateinit var dbOps: DbOperations
+    private var bellId: Int = 0
 
     @Before
     fun setUp() {
         val context = ApplicationProvider.getApplicationContext<Context>()
         context.deleteDatabase(AppDatabase.DATABASE_NAME)
         dbOps = DbOperations(context)
+        runBlocking {
+            bellId =
+                dbOps
+                    .insertBell(
+                        BellEntity(
+                            name = TestBellHelper.TEST_BELL_NAME,
+                            uri = TestBellHelper.TEST_BELL_URI,
+                            isBuiltin = true,
+                            resourceName = "bell2",
+                        ),
+                    ).toInt()
+        }
     }
 
     @After
@@ -53,9 +67,11 @@ class DbOperationsDuplicateTest {
             dbOps.insertSession(session)
             val s1 = Section("Section 1", 60)
             s1.bell = 1
+            s1.bellId = bellId
             dbOps.insertSection(session, s1)
             val s2 = Section("Section 2", 120)
             s2.bell = 2
+            s2.bellId = bellId
             dbOps.insertSection(session, s2)
 
             val newId = dbOps.duplicateSession(session.id, "Copy")
@@ -82,6 +98,7 @@ class DbOperationsDuplicateTest {
             val session = Session("Original", "Original Desc")
             dbOps.insertSession(session)
             val s1 = Section("Section 1", 60)
+            s1.bellId = bellId
             dbOps.insertSection(session, s1)
             val originalSessionId = session.id
             val originalSectionId = s1.id
@@ -104,6 +121,7 @@ class DbOperationsDuplicateTest {
             val session = Session("First", "Desc")
             dbOps.insertSession(session)
             val s1 = Section("Section A", 60)
+            s1.bellId = bellId
             dbOps.insertSection(session, s1)
 
             val copy1Id = dbOps.duplicateSession(session.id, "Copy 1")

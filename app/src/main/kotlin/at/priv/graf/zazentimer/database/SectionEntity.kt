@@ -14,8 +14,13 @@ import androidx.room.PrimaryKey
             childColumns = ["fk_session"],
             onDelete = ForeignKey.CASCADE,
         ),
+        ForeignKey(
+            entity = BellEntity::class,
+            parentColumns = ["_id"],
+            childColumns = ["bellId"],
+        ),
     ],
-    indices = [Index("fk_session")],
+    indices = [Index("fk_session"), Index("bellId")],
 )
 @Suppress("ConstructorParameterNaming")
 data class SectionEntity(

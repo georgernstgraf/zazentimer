@@ -162,6 +162,11 @@ class SectionEditFragment : Fragment() {
         fillDataFromViews()
         section?.let { s ->
             runBlocking {
+                val uri = s.bellUri ?: ""
+                if (uri.isNotEmpty() && s.bellId <= 0) {
+                    val entity = dbOperations.getBellByUri(uri)
+                    s.bellId = entity?._id ?: 0
+                }
                 dbOperations.updateSection(s)
             }
         }
@@ -318,7 +323,6 @@ class SectionEditFragment : Fragment() {
                                 if (bell.uri.toString() != s.bellUri) {
                                     s.bellUri = bell.uri.toString()
                                     s.bell = i2
-                                    s.bellId = 0
                                 }
                             }
                         }

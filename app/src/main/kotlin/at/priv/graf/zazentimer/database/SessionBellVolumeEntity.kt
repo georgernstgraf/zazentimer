@@ -15,8 +15,13 @@ import at.priv.graf.zazentimer.Constants
             childColumns = ["fk_session"],
             onDelete = ForeignKey.CASCADE,
         ),
+        ForeignKey(
+            entity = BellEntity::class,
+            parentColumns = ["_id"],
+            childColumns = ["bellId"],
+        ),
     ],
-    indices = [Index("fk_session"), Index(value = ["fk_session", "bell", "belluri"], unique = true)],
+    indices = [Index("fk_session"), Index(value = ["fk_session", "bell", "belluri"], unique = true), Index("bellId")],
 )
 @Suppress("ConstructorParameterNaming")
 data class SessionBellVolumeEntity(

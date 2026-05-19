@@ -5,6 +5,7 @@ import androidx.test.core.app.ApplicationProvider
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import at.priv.graf.zazentimer.bo.Section
 import at.priv.graf.zazentimer.bo.Session
+import at.priv.graf.zazentimer.database.BellEntity
 import com.google.common.truth.Truth.assertThat
 import kotlinx.coroutines.runBlocking
 import org.junit.After
@@ -17,12 +18,25 @@ import org.robolectric.annotation.Config
 @Config(sdk = [29])
 class DbOperationsTest {
     private lateinit var dbOps: DbOperations
+    private var bellId: Int = 0
 
     @Before
     fun setUp() {
         val context = ApplicationProvider.getApplicationContext<Context>()
         context.deleteDatabase(AppDatabase.DATABASE_NAME)
         dbOps = DbOperations(context)
+        runBlocking {
+            bellId =
+                dbOps
+                    .insertBell(
+                        BellEntity(
+                            name = TestBellHelper.TEST_BELL_NAME,
+                            uri = TestBellHelper.TEST_BELL_URI,
+                            isBuiltin = true,
+                            resourceName = "bell2",
+                        ),
+                    ).toInt()
+        }
     }
 
     @After
@@ -102,8 +116,10 @@ class DbOperationsTest {
             val session = Session("Session", "Desc")
             dbOps.insertSession(session)
             val s1 = Section("Section 1", 60)
+            s1.bellId = bellId
             dbOps.insertSection(session, s1)
             val s2 = Section("Section 2", 120)
+            s2.bellId = bellId
             dbOps.insertSection(session, s2)
 
             dbOps.deleteSession(session.id)
@@ -119,6 +135,7 @@ class DbOperationsTest {
             dbOps.insertSession(session)
             val section = Section("Zazen", 300)
             section.bell = 1
+            section.bellId = bellId
             dbOps.insertSection(session, section)
 
             val result = dbOps.readSection(section.id)
@@ -136,8 +153,10 @@ class DbOperationsTest {
             val session = Session("Session", "Desc")
             dbOps.insertSession(session)
             val s1 = Section("First", 60)
+            s1.bellId = bellId
             dbOps.insertSection(session, s1)
             val s2 = Section("Second", 120)
+            s2.bellId = bellId
             dbOps.insertSection(session, s2)
 
             assertThat(s1.rank).isEqualTo(1)
@@ -152,12 +171,15 @@ class DbOperationsTest {
             dbOps.insertSession(session)
             val s1 = Section("C Section", 180)
             s1.rank = 3
+            s1.bellId = bellId
             dbOps.insertSection(session, s1)
             val s2 = Section("A Section", 60)
             s2.rank = 1
+            s2.bellId = bellId
             dbOps.insertSection(session, s2)
             val s3 = Section("B Section", 120)
             s3.rank = 2
+            s3.bellId = bellId
             dbOps.insertSection(session, s3)
 
             val sections = dbOps.readSections(session.id)
@@ -174,6 +196,7 @@ class DbOperationsTest {
             val session = Session("Session", "Desc")
             dbOps.insertSession(session)
             val section = Section("Old Name", 60)
+            section.bellId = bellId
             dbOps.insertSection(session, section)
 
             section.name = "New Name"
@@ -192,6 +215,7 @@ class DbOperationsTest {
             val session = Session("Session", "Desc")
             dbOps.insertSession(session)
             val section = Section("Delete Me", 60)
+            section.bellId = bellId
             dbOps.insertSection(session, section)
 
             dbOps.deleteSection(section.id.toLong())

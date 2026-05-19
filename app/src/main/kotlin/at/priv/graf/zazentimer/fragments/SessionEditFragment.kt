@@ -269,18 +269,30 @@ class SessionEditFragment :
         secs: Array<Section>,
         saved: List<SessionBellVolume>,
     ): List<SessionBellVolume> {
-        val seenBellIds = linkedSetOf<Int>()
-        val bellIdToLegacy = mutableMapOf<Int, Pair<Int?, String?>>()
+        data class Key(
+            val bellId: Int,
+            val bellUri: String?,
+        )
+        val seen = linkedSetOf<Key>()
         for (sec in secs) {
-            seenBellIds.add(sec.bellId)
-            bellIdToLegacy[sec.bellId] = Pair(sec.bell, sec.bellUri)
+            if (sec.bellId > 0) {
+                seen.add(Key(sec.bellId, null))
+            } else {
+                seen.add(Key(0, sec.bellUri ?: ""))
+            }
         }
-        return seenBellIds.map { bellId ->
-            val match = saved.find { bv -> bv.bellId == bellId }
+        return seen.map { key ->
+            val match =
+                saved.find { bv ->
+                    if (bv.bellId > 0 && key.bellId > 0) {
+                        bv.bellId == key.bellId
+                    } else {
+                        bv.bellUri == key.bellUri
+                    }
+                }
             match ?: SessionBellVolume(
-                bellId = bellId,
-                bell = bellIdToLegacy[bellId]?.first,
-                bellUri = bellIdToLegacy[bellId]?.second,
+                bellId = key.bellId,
+                bellUri = key.bellUri,
                 volume = DEFAULT_BELL_VOLUME,
             )
         }
