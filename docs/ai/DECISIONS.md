@@ -213,8 +213,27 @@ Each entry documents WHAT was decided and WHY.
 - **Considered**: Running only on version upgrade (misses backup restore), running only on demo creation (misses stale data in existing sessions).
 - **Tradeoff**: ~few dozen ms of DB operations at startup; idempotent (INSERT OR IGNORE for built-in bells).
 
-## 2026-05-19: deriveBellVolumesFromSections deduplication by bellUri fallback
-- **Choice**: When `bellId > 0`, group by `bellId`. When `bellId == 0`, group by `bellUri` string.
-- **Reason**: Safety net — even with FK constraint, edge cases (concurrent operations, migration in progress) could temporarily produce `bellId=0`. The URI-based fallback prevents sections with different bells from collapsing into one.
-- **Considered**: Only grouping by bellId (relies on FK guarantee), only grouping by bellUri (loses the performance benefit of integer keys).
-- **Tradeoff**: Slightly more complex data class for the grouping key; `SessionBellVolume` objects with `bellId=0` have incomplete data but the dialog resolves bell name via URI fallback.
+## 2026-05-19: 3NF Normalization — remove bell/belluri/resourceName (#199)
+- **Choice**: Dropped `sections.bell`, `sections.belluri`, `session_bell_volumes.bell`, `session_bell_volumes.belluri`, `bells.resourceName`. Made `sections.rank`/`bellcount`/`bellpause` NOT NULL. Changed `session_bell_volumes` unique constraint from `(fk_session, bell, belluri)` to `(fk_session, bellId)`.
+- **Reason**: These columns were duplicate representations of bell identity — the canonical source is `bells._id` via FK constraint (MIGRATION_7_8). Maintaining duplicates violates 3NF. `resourceName` is redundant with `bells.uri` (e.g., `android.resource://.../raw/bell2` encodes the resource name).
+- **Considered**: Keeping them as safety net (rejected — FK constraint already enforces integrity). Gradual deprecation via code-only removal (rejected — leaves cruft in migration chain).
+- **Tradeoff**: Large migration (MIGRATION_9_10 drops 5 columns across 3 tables). All callers of `section.bell`/`section.bellUri` must be updated. `deriveBellVolumesFromSections()` simplified to bellId-only grouping.
+
+## 2026-05-19: sessions.rank for persistent session ordering (#199)
+- **Choice**: Added `rank INTEGER NOT NULL DEFAULT 0` to `sessions` table. `SessionDao` queries now `ORDER BY rank, name COLLATE NOCASE`.
+- **Reason**: Session drag-and-drop reordering in the UI only modified the in-memory list — after app restart, sessions reverted to alphabetical order. Sections already had `rank` for this purpose; sessions needed parity.
+- **Considered**: Storing order in SharedPreferences (fragile, breaks when sessions are added/deleted). Using natural alphabetical order only (already in place but users wanted custom order).
+- **Tradeoff**: One extra column in sessions table. `DbOperations.insertSession()` now assigns `rank = MAX(rank) + 1`. Drag-and-drop in MainFragment needs to persist via `switchSessionPositions()`.
+
+## 2026-05-19: BellPlayer accepts getBellById lambda
+- **Choice**: `BellPlayer` constructor takes `getBellById: suspend (Int) -> BellEntity?` lambda instead of resolving bells internally.
+- **Reason**: `BellCollection.getBellForSection()` accessed `section.bellUri` which no longer exists. Bell resolution now requires a DB query (`bellId → BellEntity.uri → BellCollection.getBellByUri`). BellPlayer is a service-layer class without Hilt injection; the lambda keeps it decoupled from DbOperations while enabling async resolution.
+- **Considered**: Injecting DbOperations directly into BellPlayer (heavier DI, changes MeditationService construction). Passing Bell objects directly to playBells() (changes API, caller must pre-resolve for all sections).
+- **Tradeoff**: BellPlayer callers (MeditationService) must provide a lambda wrapping `meditationRepository.getBellById()`.
+
+## 2026-05-19: insertSection defaults bellId=0 to demo bell
+- **Choice**: `DbOperations.insertSection()` resolves `bellId=0` to the demo bell via `BellCollection.getDemoBell() → getBellByUri() → bellId` before Room insert.
+- **Reason**: New sections are created with `bellId=0` (no bell selected yet). The FK constraint `bellId → bells._id` rejects `bellId=0` at the SQLite level. Defaulting to the demo bell prevents the FK violation while keeping the user experience (bell can be changed immediately after creation in SectionEditFragment).
+- **Considered**: Making `bellId` nullable in the FK (allows 0 as "no bell", but 0 is not NULL — FK constraint still fires). Requiring the UI to always set bellId before insert (SectionEditFragment doesn't set it until onPause).
+- **Tradeoff**: Slightly magic behavior — user creates a section, it defaults to demo bell. The SectionEditFragment immediately shows the selected bell in the spinner, so the user sees the correct bell.
+

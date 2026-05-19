@@ -3,24 +3,20 @@
 Current status as of 2026-05-19.
 
 ## Current Focus
-FK constraint bellId → bells._id implemented (#198). All session issues closed.
+3NF normalization complete (#199). Schema V10: bell/belluri/resourceName removed, sessions.rank added.
 
 ## Completed (this cycle)
-- [x] #193 — Default bell volume 100% → 50%, centralized in Constants.kt
-- [x] #193 — Duplicate bell volume sliders fixed (grouping by bellId)
-- [x] #193 — MigrationHelper: fix volume save/deduplication, repair stale URIs, mark built-in bells
-- [x] #193 — Meditation.getVolumeForSection: match by bellId instead of bell/bellUri
-- [x] #193 — Demo sessions: use noBackupFilesDir marker instead of SharedPreferences flag
-- [x] #195 — Back arrow hidden during meditation (setDisplayHomeAsUpEnabled(false))
-- [x] #196 — System alarm volume slider in Bell Volumes dialog + section headers
-- [x] #196 — VOLUME_CHANGED_ACTION receiver for external volume changes
-- [x] #194 — Add Section FAB replaced with 3-dot menu item
-- [x] #194 — Help screen: AlertDialog.Builder instead of custom MessageView
-- [x] #198 — MIGRATION_7_8: FK constraint bellId → bells._id, resolve all bellId=0 rows
-- [x] #198 — SectionEditFragment + DemoSessionCreator: resolve bellId via DB on save/create
-- [x] #198 — ZazenTimerActivity: ensureBellsTableConsistent() at every startup
-- [x] #198 — deriveBellVolumesFromSections: deduplicate by bellUri fallback when bellId=0
-- [x] #198 — Tests updated for FK compliance (seed bells before section inserts)
+- [x] #199 — MIGRATION_9_10: Drop bell/belluri/resourceName, add sessions.rank, NOT NULL on rank/bellcount/bellpause
+- [x] #199 — Entities/BOs/EntityMapper: Remove all bell/belluri/resourceName fields, add rank to Session
+- [x] #199 — SessionDao: ORDER BY rank,name, getMaxRank(), updateRank()
+- [x] #199 — DbOperations: insertSession assigns rank, switchSessionPositions, insertSection defaults bellId to demo
+- [x] #199 — MigrationHelper: Rewrite without resourceName/bellUri/bell references
+- [x] #199 — BellCollection.getBellByUri() replaces getBellForSection()
+- [x] #199 — BellPlayer accepts getBellById lambda for DB-backed bell lookup
+- [x] #199 — SectionEditFragment: bell resolved via bellId + DB query instead of bellUri field access
+- [x] #199 — SessionEditFragment: deriveBellVolumesFromSections simplified to bellId-only
+- [x] #199 — BellVolumeConfigDialog: fallback bell/bellUri paths removed
+- [x] #199 — Unit tests (212) + instrumentation tests (24) all pass
 
 ## Pending
 - [ ] #64 — Promotion/Upload automation: Fastlane-like upload script
@@ -30,4 +26,4 @@ FK constraint bellId → bells._id implemented (#198). All session issues closed
 None
 
 ## Next Session Suggestion
-#64 Promotion Automation or #197 Prisma migration.
+Push `v*` tag to trigger release workflow. Then #64 or #197.
