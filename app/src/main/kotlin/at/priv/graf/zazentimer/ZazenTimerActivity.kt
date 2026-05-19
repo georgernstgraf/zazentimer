@@ -153,9 +153,7 @@ class ZazenTimerActivity :
         this.viewModel?.setHandler(this.handler ?: Handler(Looper.getMainLooper()))
         BellCollection.initialize(this)
         this.pref = getPreferences(this)
-        this.pref?.let { prefs ->
-            MigrationHelper(dbOperations, prefs, lifecycleScope).convertFromOldVersions()
-        }
+        MigrationHelper(dbOperations, lifecycleScope).convertFromOldVersions()
         setContentView(R.layout.main)
         val toolbar = findViewById<Toolbar>(R.id.my_toolbar)
         toolbar?.let {
@@ -478,7 +476,6 @@ class ZazenTimerActivity :
         const val PREF_DEFAULT_VOLUME: Int = at.priv.graf.zazentimer.Constants.DEFAULT_BELL_VOLUME
         const val PREF_KEY_BRIGHTNESS: String = "brightness"
         const val PREF_KEY_CONVERTED_BELL_INDICES: String = "bell_indices_converted"
-        const val PREF_KEY_CONVERTED_FROM_DB: String = "pref_converted"
         const val PREF_KEY_KEEP_SCREEN_ON: String = "keep_screen_on"
         const val PREF_KEY_LAST_SESSION: String = "last_session"
         const val PREF_KEY_SHOW_ELAPSED_TIME: String = "show_elapsed_time"

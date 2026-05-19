@@ -66,10 +66,3 @@ model sessions {
   sections             sections[]
   session_bell_volumes session_bell_volumes[]
 }
-
-model settings {
-  id    Int    @id @default(autoincrement()) @map("_id")
-  param String
-  value String
-  def   String
-}

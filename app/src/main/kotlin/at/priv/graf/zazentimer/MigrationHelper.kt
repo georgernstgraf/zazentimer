@@ -1,7 +1,6 @@
 package at.priv.graf.zazentimer
 
 import android.content.Context
-import android.content.SharedPreferences
 import android.util.Log
 import at.priv.graf.zazentimer.audio.BellCollection
 import at.priv.graf.zazentimer.bo.Section
@@ -12,18 +11,9 @@ import kotlinx.coroutines.launch
 
 class MigrationHelper(
     private val dbOperations: DbOperations,
-    private val preferences: SharedPreferences,
     private val scope: CoroutineScope,
 ) {
     fun convertFromOldVersions() {
-        if (!preferences.getBoolean(ZazenTimerActivity.PREF_KEY_CONVERTED_FROM_DB, false)) {
-            Log.d(TAG, "marking settings as converted from DB to preferences...")
-            preferences
-                .edit()
-                .putBoolean(ZazenTimerActivity.PREF_KEY_CONVERTED_FROM_DB, true)
-                .apply()
-            Log.d(TAG, "done converting settings")
-        }
         // Bell URI repair runs EVERY startup to catch stale backup URIs
         Log.d(TAG, "repairing bell URIs...")
         scope.launch { convertBellIndices() }

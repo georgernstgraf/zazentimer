@@ -73,44 +73,23 @@ class MigrationTest {
     }
 
     @Test
-    fun migrateFrom1To2_createsSettingsTable() {
-        val db = createV1Database()
-
-        AppDatabase.MIGRATION_1_2.migrate(db)
-
-        val cursor =
-            db.query(
-                "SELECT name FROM sqlite_master WHERE type='table' AND name='settings'",
-            )
-        assertThat(cursor.count).isEqualTo(1)
-        cursor.close()
-        db.close()
-    }
-
-    @Test
-    fun migrateFrom1To2_setsDefaultSettings() {
-        val db = createV1Database()
-
-        AppDatabase.MIGRATION_1_2.migrate(db)
-
-        val cursor = db.query("SELECT param FROM settings WHERE param = 'I_BELL_VOLUME'")
-        assertThat(cursor.count).isEqualTo(1)
-        cursor.close()
-        db.close()
-    }
-
-    @Test
-    fun migrateFrom2To3_noopDoesNotChangeSchema() {
+    fun migrateFrom8To9_dropsSettingsTable() {
         val db = createV1Database()
         AppDatabase.MIGRATION_1_2.migrate(db)
-
         AppDatabase.MIGRATION_2_3.migrate(db)
+        AppDatabase.MIGRATION_3_4.migrate(db)
+        AppDatabase.MIGRATION_4_5.migrate(db)
+        AppDatabase.MIGRATION_5_6.migrate(db)
+        AppDatabase.MIGRATION_6_7.migrate(db)
+        AppDatabase.MIGRATION_7_8.migrate(db)
+
+        AppDatabase.MIGRATION_8_9.migrate(db)
 
         val cursor =
             db.query(
                 "SELECT name FROM sqlite_master WHERE type='table' AND name='settings'",
             )
-        assertThat(cursor.count).isEqualTo(1)
+        assertThat(cursor.count).isEqualTo(0)
         cursor.close()
         db.close()
     }

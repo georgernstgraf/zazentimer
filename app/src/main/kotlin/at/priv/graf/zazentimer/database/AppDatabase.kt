@@ -32,8 +32,9 @@ abstract class AppDatabase : RoomDatabase() {
         const val VERSION_6 = 6
         const val VERSION_7 = 7
         const val VERSION_8 = 8
+        const val VERSION_9 = 9
 
-        const val CURRENT_VERSION = VERSION_8
+        const val CURRENT_VERSION = VERSION_9
 
         const val DEFAULT_VOLUME = at.priv.graf.zazentimer.Constants.DEFAULT_BELL_VOLUME
 
@@ -425,33 +426,17 @@ abstract class AppDatabase : RoomDatabase() {
                 }
             }
 
+        val MIGRATION_8_9 =
+            object : Migration(VERSION_8, VERSION_9) {
+                override fun migrate(db: SupportSQLiteDatabase) {
+                    db.execSQL("DROP TABLE IF EXISTS settings")
+                }
+            }
+
         val ON_CREATE_CALLBACK =
             object : RoomDatabase.Callback() {
                 override fun onCreate(db: SupportSQLiteDatabase) {
                     super.onCreate(db)
-                    db.execSQL(
-                        "CREATE TABLE IF NOT EXISTS settings(" +
-                            "_id INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                            "param TEXT NOT NULL, " +
-                            "value TEXT NOT NULL, " +
-                            "def TEXT NOT NULL)",
-                    )
-                    db.execSQL(
-                        "INSERT OR IGNORE INTO settings(param,value,def) " +
-                            "VALUES('B_PHONE_OFF_DURING_MEDITATION', '1', '1')",
-                    )
-                    db.execSQL(
-                        "INSERT OR IGNORE INTO settings(param,value,def) " +
-                            "VALUES('B_NOTIFICATIONS_OFF_DURING_MEDITATION', '1', '1')",
-                    )
-                    db.execSQL(
-                        "INSERT OR IGNORE INTO settings(param,value,def) " +
-                            "VALUES('I_LAST_SELECTED_SESSION', '-1', '-1')",
-                    )
-                    db.execSQL(
-                        "INSERT OR IGNORE INTO settings(param,value,def) " +
-                            "VALUES('I_BELL_VOLUME', '20', '20')",
-                    )
                 }
             }
     }
