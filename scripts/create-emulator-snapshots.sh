@@ -106,8 +106,11 @@ for api in "${API_LEVELS[@]}"; do
 
     # Start emulator: -wipe-data for clean state, no snapshot flags so snapshot is saved on exit
     echo "  Starting emulator ($avd_name)..."
+    local logfile="/tmp/zazentimer-snapshot-api${api}.log"
+    local extra_flags="-wipe-data"
+    [ -z "${DISPLAY:-}" ] && extra_flags="$extra_flags -noaudio"
     local emu_pid
-    emu_pid=$(emulator_launch "$avd_name" "$SERIAL" -wipe-data 2>/dev/null)
+    emu_pid=$(emulator_launch "$avd_name" "$SERIAL" "$logfile" $extra_flags)
     echo "  Emulator PID: $emu_pid"
 
     if ! emulator_wait_boot "$SERIAL"; then

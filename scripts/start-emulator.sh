@@ -112,22 +112,22 @@ emulator_resolve_avd() {
 # emulator_launch — start an emulator in background
 # $1 = avd_name
 # $2 = serial (exported as ANDROID_SERIAL)
+# $3 = logfile (emulator stdout/stderr redirected here)
 # $@ = extra flags appended after common flags
 # Echoes PID to stdout, messages to stderr.
 # ──────────────────────────────────────────────
 emulator_launch() {
-    local avd=$1 serial=$2
-    shift 2
+    local avd=$1 serial=$2 logfile=$3
+    shift 3
     export ANDROID_SERIAL="$serial"
 
     echo "Starting emulator ($avd, serial=$serial)..." >&2
     "$ANDROID_HOME/emulator/emulator" \
         -avd "$avd" \
         -gpu swiftshader_indirect \
-        $([ -z "${DISPLAY:-}" ] && echo "-noaudio") \
         -no-boot-anim \
         -memory 2048 \
-        "$@" &
+        "$@" >> "$logfile" 2>&1 &
     echo $!
 }
 
@@ -246,7 +246,9 @@ if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
     emulator_kill_stale
 
     SERIAL="emulator-5554"
-    EMU_PID=$(emulator_launch "$AVD_NAME" "$SERIAL" $SNAPSHOT_FLAG >> /tmp/zazentimer-emulator.log 2>&1)
+    local extra_flags="$SNAPSHOT_FLAG"
+    [ -n "${EMULATOR_XVFB_PID:-}" ] && extra_flags="$extra_flags -noaudio"
+    EMU_PID=$(emulator_launch "$AVD_NAME" "$SERIAL" "/tmp/zazentimer-emulator.log" $extra_flags)
     echo "$EMU_PID" > /tmp/zazentimer-emulator.pid
     echo "Emulator started (PID $EMU_PID, AVD $AVD_NAME)"
 

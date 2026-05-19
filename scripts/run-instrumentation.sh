@@ -239,7 +239,9 @@ run_gradle_test() {
     log_phase "$api_level" "starting emulator (AVD $avd_name)"
 
     local emu_pid
-    emu_pid=$(emulator_launch "$avd_name" "$serial" $SNAPSHOT_FLAG 2>>"$API_LOG")
+    local extra_flags="$SNAPSHOT_FLAG"
+    [ "$IS_REAL_DISPLAY" = false ] && extra_flags="$extra_flags -noaudio"
+    emu_pid=$(emulator_launch "$avd_name" "$serial" "$API_LOG" $extra_flags)
     sleep 2
     log_api "Emulator started (PID $emu_pid, AVD $avd_name)"
 
