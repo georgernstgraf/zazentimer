@@ -2,6 +2,7 @@ package at.priv.graf.zazentimer.database
 
 import android.content.Context
 import androidx.room.Room
+import at.priv.graf.zazentimer.audio.BellCollection
 import at.priv.graf.zazentimer.bo.Section
 import at.priv.graf.zazentimer.bo.Session
 import at.priv.graf.zazentimer.bo.SessionBellVolume
@@ -220,6 +221,13 @@ class DbOperations
             if (section.rank == -1) {
                 val maxRank = dao.getMaxRank(session.id)
                 section.rank = (maxRank ?: 0) + 1
+            }
+            if (section.bellId <= 0) {
+                val demoBell =
+                    BellCollection.getDemoBell()?.uri?.toString()?.let { uri ->
+                        bellDao?.getByUri(uri)
+                    }
+                section.bellId = demoBell?._id ?: 0
             }
             section.fkSession = session.id
             val entity = EntityMapper.toEntity(section)
