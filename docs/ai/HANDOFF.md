@@ -9,6 +9,9 @@ No pending tasks. Last cleared: 2026-05-19.
 - #196 System alarm volume slider + nicer dialog UI
 - #198 FK constraint bellId → bells._id with migration 7→8
 
+## Completed (no issue)
+- Prisma schema workflow: Gradle tasks (prismaPullDb, prismaRefreshSchema, prismaCheckSchema) with Deno + Prisma 6.19.2
+
 ## Open Issues (pick next)
 - #64 Promotion Automation: Create script to promote releases between tracks.
 - #197 Migrate from Room to Prisma for SQLite schema management.
