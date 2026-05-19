@@ -25,9 +25,11 @@ import at.priv.graf.zazentimer.service.MeditationService
 import com.google.android.material.transition.MaterialFadeThrough
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
 import javax.inject.Inject
 
 @AndroidEntryPoint
+@Suppress("TooManyFunctions")
 class MainFragment : Fragment() {
     private var _binding: FragmentMainBinding? = null
     private val binding get() = _binding!!
@@ -142,6 +144,19 @@ class MainFragment : Fragment() {
         binding.recyclerSessions.viewTreeObserver.removeOnGlobalLayoutListener(globalLayoutListener)
         super.onDestroyView()
         _binding = null
+    }
+
+    override fun onPause() {
+        super.onPause()
+        if (!isAdded) return
+        for (i in sessions.indices) {
+            sessions[i].rank = i
+        }
+        runBlocking {
+            for (session in sessions) {
+                dbOperations.updateSession(session)
+            }
+        }
     }
 
     fun onFabNewSessionClicked() {
