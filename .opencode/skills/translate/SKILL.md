@@ -1,5 +1,14 @@
 # Skill: Translate
 
+## Policy — Read First
+
+**NO AUTOMATED BLIND SCRIPTS.**  The LLM performs translations interactively
+using explicit Zen meditation context.  Script-based, context-free automated
+translation of meditation-specific strings (e.g. via `retranslate.py`,
+Google Translate API, or MyMemory) is **strictly forbidden**.  Every locale
+must be translated by an LLM sub-agent that understands Zazen, Kinhin,
+mindfulness, and singing-bowl terminology.
+
 ## Purpose
 
 Format LLM translation work orders from the output of
@@ -14,19 +23,47 @@ report that `scripts/apply_translations.py` can apply.
    ```bash
    python3 scripts/translation_deltas.py
    ```
-2. Load this skill when the user asks to translate one or more locales.
-3. Read `scripts/translation_deltas.json` and `scripts/non_llm_languages.json`.
-4. For each requested locale (or all non-excluded locales with deltas),
-   format a prompt using the template below.
-5. Dispatch the prompt to a translation sub-agent (Task tool).
+2. Read `scripts/translation_deltas.json` and `scripts/non_llm_languages.json`.
+3. **Work in batches of 5–10 locales** — do not process all locales at once.
+   Smaller batches preserve quality and prevent context dilution.
+4. For each batch, dispatch one LLM sub-agent per locale using the
+   prompt template below.
+5. After each batch completes, verify:
+   ```bash
+   python3 scripts/translation_deltas.py
+   ```
+   If any locale in the batch still has missing keys, re-dispatch only
+   those remaining keys.
+
+## 5-Step Process (per Batch)
+
+1. **Extract English Source** — read the exact English values from
+   `translation_deltas.json` to capture all format placeholders (`%s`,
+   `%1$d`, `%%`), XML tags (`<br>`, `<a href="...">`), and escaped
+   characters (`\'`, `\n`).
+2. **Batch Processing** — dispatch 5–10 LLM sub-agents in parallel
+   using the Task tool, one per locale.
+3. **Apply Zen Context** — each sub-agent translates with awareness that
+   "bell" = singing bowl (Klangschale), "session" = meditation session,
+   "section" = timed segment, "Zazen"/"Kinhin" are Japanese Buddhist terms.
+4. **Iterative Injection** — after translation, the sub-agent writes
+   `docs/ai/translation_reports/{locale_code}_report.json`.  Run
+   `scripts/apply_translations.py` to inject findings into the XML files.
+5. **Verification** — run `python3 scripts/translation_deltas.py` after
+   injection to confirm all keys in the batch are covered.  Run
+   `./gradlew lintDebug` to catch XML formatting errors.
 
 ## Prompt Template
 
-For **each locale** the user wants translated, assemble a prompt:
+For **each locale** in the current batch, assemble a prompt:
 
 ```
-Translate the following Android string resources from English into
-{language_name} ({locale_code}).
+--- DO NOT USE SCRIPTS OR APIs ---
+You are a human-language translator. Translate the following Android
+string resources from English into {language_name} ({locale_code}) with
+full awareness of Zen meditation context. Do NOT use Google Translate,
+MyMemory, or any automated translation engine — you must perform the
+translation yourself, understanding the meditation-specific terminology.
 
 Output a JSON file at docs/ai/translation_reports/{locale_code}_report.json
 using exactly this structure:
@@ -68,7 +105,9 @@ Strings to translate:
      doorbell, telephone bell, or school bell.
    - "session" is a meditation session, not a login session.
    - "section" is a timed segment within a session.
-   - Prefer meditation-appropriate vocabulary throughout.
+   - "Zazen" and "Kinhin" are Japanese Buddhist terms — transliterate
+     naturally, do not translate them.
+   - Prefer meditation-appropriate, calm vocabulary throughout.
 
 5. **Fallback rule**: If you do NOT have high confidence in {language_name},
    or if you cannot guarantee that EVERY format specifier, XML tag, and
@@ -83,7 +122,7 @@ Strings to translate:
 | Key | English |
 |-----|---------|
 | bell_dimming_section_title | Bell Dimming |
-| bell_volume_label_format | %1$d%% |
+| system_volume_subtitle | Controls the phone\'s alarm volume for all bells. |
 ...
 ```
 
@@ -102,7 +141,7 @@ Use these tier assignments (from the previous Phase 1 assessment):
 
 ## Output
 
-The translation sub-agent writes one or more JSON files to
+The translation sub-agent writes JSON files to
 `docs/ai/translation_reports/{locale_code}_report.json`.  These files are
 compatible with `scripts/apply_translations.py` and can be applied with:
 
@@ -110,5 +149,11 @@ compatible with `scripts/apply_translations.py` and can be applied with:
 python3 scripts/apply_translations.py
 ```
 
-After applying, run `scripts/translation_deltas.py` again to verify no
-strings remain missing and no new validation errors exist.
+After applying an entire batch, run the verification loop:
+
+```bash
+python3 scripts/translation_deltas.py
+```
+
+If any locale in the batch still has `missing` keys in the output, those
+keys must be re-translated before the batch is considered complete.

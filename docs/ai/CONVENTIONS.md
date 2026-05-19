@@ -69,12 +69,13 @@ Follow these without question. Do not deviate unless explicitly told.
     - `update_notes.py`: Updates release notes for a specific track. Usage: `.venv/bin/python3 scripts/play_store/update_notes.py <track> <notes> [language]`
     - `activate_alpha_bundle.py`: Re-activates a specific version code (e.g. 3000300) in the alpha track if it was deactivated.
 
+- **No Automated Blind Scripts**: The LLM performs translations interactively with explicit Zen meditation context. Script-based, context-free automated translation of meditation-specific strings (e.g. via Google Translate API, MyMemory, or any batch script) is **strictly forbidden**. Every locale must be translated by an LLM sub-agent that understands Zazen, Kinhin, mindfulness, and singing-bowl terminology.
 - **Extremely Strict LLM Instructions**: When using LLMs for translation, you **MUST** provide extremely precise instructions regarding XML tags and placeholders (`%s`, `%1$d`, `&lt;`, `&gt;`). LLMs often corrupt these in low-resource languages, leading to runtime formatting crashes.
 - **Explicit Fallback Rule**: Explicitly prompt any translation sub-agent: *"If you do not have high confidence in this specific language, or if you cannot guarantee that EVERY placeholder will be preserved exactly, you MUST leave the string in English. Guessing or hallucinating will cause the application to crash."*
+- **Translation Workflow**: Work in batches of 5–10 locales. After each batch, run `scripts/translation_deltas.py` to verify no keys remain missing. Run `scripts/apply_translations.py` to inject translations into XML.
 - Always use `R.string` — never hardcode user-facing text in Kotlin, XML, or navigation graphs
-- New strings go to `values/strings.xml` first, then run `retranslate.py --diff`
+- New strings go to `values/strings.xml` first, then run `scripts/translation_deltas.py`
 - Mark programmatic strings as `translatable="false"` in XML
 - Never add `abc_*` strings — those come from AndroidX automatically
 - Use `@string/` references in layout XML and navigation graphs
-- Run `retranslate.py --locales X,Y` for targeted locale fixes
 - Verify placeholder counts match after translation
