@@ -194,3 +194,27 @@ Each entry documents WHAT was decided and WHY.
 - **Reason**: Users needed to adjust the phone's alarm volume from within the app's bell configuration dialog.
 - **Considered**: Link to system settings (less integrated), percentage-based slider (raw device steps are more accurate).
 - **Tradeoff**: Volume label shows raw device steps (e.g. "5/7") rather than percentage; UI now uses ScrollView.
+
+## 2026-05-19: Foreign key bellId → bells._id with DB migration 7→8
+- **Choice**: Added `FOREIGN KEY (bellId) REFERENCES bells(_id)` to both `sections` and `session_bell_volumes` tables via MIGRATION_7_8, plus `@ForeignKey` annotations on Room entities.
+- **Reason**: No FK constraint existed — `bellId = 0` was silently allowed, causing sections with the same bell to collapse into a single entry in the Bell Volume dialog. The FK constraint prevents this at the database level, guaranteeing referential integrity.
+- **Considered**: Fixing only the UI (deriveBellVolumesFromSections deduplication) — treats symptoms, not root cause. Adding FK without migration — would fail on existing data with bellId=0.
+- **Tradeoff**: Migration must seed built-in bells with hardcoded package-name URIs (`android.resource://at.priv.graf.zazentimer/raw/…`). Debug builds produce different URIs; `ensureBellsTableConsistent()` at startup repairs the mismatch. Every test that creates sections now needs a bell row in the bells table first.
+
+## 2026-05-19: BellId resolved at write time, not startup time
+- **Choice**: `SectionEditFragment.onPause()` resolves `bellId` via `dbOperations.getBellByUri()` before saving. `DemoSessionCreator.createSection()` resolves `bellId` via `getBellByUri()` before insert. Removed `s.bellId = 0` in `onItemSelected()`.
+- **Reason**: Previously, `bellId` was set to `0` when the user changed a bell and was resolved only at next app startup by `MigrationHelper.resolveUnresolvedBellIds()`. Between the change and the restart, all sections with `bellId=0` appeared as a single bell in the dialog.
+- **Considered**: Resolving in `onItemSelected()` callback (async race with `onPause()` save), scheduling at startup only (leaves window of broken state).
+- **Tradeoff**: One extra DB query per section save; negligible overhead.
+
+## 2026-05-19: ensureBellsTableConsistent at every startup
+- **Choice**: `ZazenTimerActivity` now calls `MigrationHelper.ensureBellsTableConsistent()` at every app startup (not just on backup restore), before demo session creation.
+- **Reason**: The bells table may be stale after backup restore, manual DB modification, or upgrade from older versions. Running it every startup ensures consistency for the FK constraint.
+- **Considered**: Running only on version upgrade (misses backup restore), running only on demo creation (misses stale data in existing sessions).
+- **Tradeoff**: ~few dozen ms of DB operations at startup; idempotent (INSERT OR IGNORE for built-in bells).
+
+## 2026-05-19: deriveBellVolumesFromSections deduplication by bellUri fallback
+- **Choice**: When `bellId > 0`, group by `bellId`. When `bellId == 0`, group by `bellUri` string.
+- **Reason**: Safety net — even with FK constraint, edge cases (concurrent operations, migration in progress) could temporarily produce `bellId=0`. The URI-based fallback prevents sections with different bells from collapsing into one.
+- **Considered**: Only grouping by bellId (relies on FK guarantee), only grouping by bellUri (loses the performance benefit of integer keys).
+- **Tradeoff**: Slightly more complex data class for the grouping key; `SessionBellVolume` objects with `bellId=0` have incomplete data but the dialog resolves bell name via URI fallback.

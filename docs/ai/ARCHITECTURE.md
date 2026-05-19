@@ -14,20 +14,22 @@ ZazenTimer is an Android application for timing meditation sessions. It uses a f
 - **BellPlayer**: Manages pooled `Audio` instances for bell playback. Receives explicit `volume: Int` parameter (volume is per-session, per bell type). Has demo bell fallback if `getBellForSection()` returns null.
 - **BellVolumeConfigDialog**: DialogFragment in session editor for configuring per-bell-type volumes and system alarm volume. Uses Hilt EntryPoints for manual `DbOperations` injection. Controls `AudioManager.STREAM_ALARM` via a seekbar at the top of the dialog.
 
-## Database (Room, V7)
+## Database (Room, V8)
 | Table | Key columns | Purpose |
 |-------|-----------|---------|
 | `bells` | `_id`, `name`, `uri`, `is_builtin`, `resource_name` | Bell metadata; FK target for sections and session_bell_volumes |
 | `sessions` | `_id`, `name`, `description` | Meditation sessions |
-| `sections` | `_id`, `fk_session`, `bell`, `belluri`, `bell_id`, `duration`, `rank`, `bellcount`, `bellpause` | Timed segments within a session; `bell_id` FK→bells._id |
-| `session_bell_volumes` | `_id`, `fk_session`, `bell`, `belluri`, `bell_id`, `volume` | Per-session per-bell volume; `bell_id` FK→bells._id |
+| `sections` | `_id`, `fk_session`, `bell`, `belluri`, `bell_id`, `duration`, `rank`, `bellcount`, `bellpause` | Timed segments within a session; `bell_id` FK→bells._id (enforced from V8) |
+| `session_bell_volumes` | `_id`, `fk_session`, `bell`, `belluri`, `bell_id`, `volume` | Per-session per-bell volume; `bell_id` FK→bells._id (enforced from V8) |
 | `settings` | `_id`, `param`, `value`, `def` | App settings (key-value) |
 
-### Bell Resolution Flow
-1. Startup: `MigrationHelper.ensureBellsTableConsistent()` seeds built-in bells (8 rows), syncs custom bells from filesDir, fixes stale URIs, resolves `bell_id=0` entries
-2. Section creation: `DemoSessionCreator` / `SectionEditFragment` set `bell=-2` (BELL_INDEX_NONE) + valid `bellUri` from BellCollection; `bellId` left as 0
-3. Playback: `BellPlayer.playBell()` resolves bell via `BellCollection.getBellForSection()` (URI match); fallback to `getDemoBell()` if null
-4. Volume: `Meditation.getVolumeForSection()` matches `session_bell_volumes.bell_id == section.bell_id`
+### Bell Resolution Flow (V8)
+1. Startup: `MigrationHelper.ensureBellsTableConsistent()` seeds built-in bells (8 rows), syncs custom bells from filesDir, fixes stale URIs, resolves `bell_id=0` entries. Runs EVERY startup, not just on restore.
+2. Section creation: `DemoSessionCreator` resolves `bellId` via `getBellByUri()` before insert. FK constraint enforces referential integrity.
+3. Section edit: `SectionEditFragment.onPause()` resolves `bellId` via `getBellByUri()` before `updateSection()`. Removed the old `bellId = 0` reset.
+4. Playback: `BellPlayer.playBell()` resolves bell via `BellCollection.getBellForSection()` (URI match); fallback to `getDemoBell()` if null
+5. Volume: `Meditation.getVolumeForSection()` matches `session_bell_volumes.bell_id == section.bell_id`
+6. UI: `deriveBellVolumesFromSections()` groups by `bellId` when > 0, falls back to `bellUri` when 0 (safety net)
 
 ## Extracted Helpers (2026-05-11, #142)
 - **DemoSessionCreator** (`database/`) — Creates demo sessions on first launch; extracted from ZazenTimerActivity

@@ -1,9 +1,9 @@
 # Project State
 
-Current status as of 2026-05-18.
+Current status as of 2026-05-19.
 
 ## Current Focus
-All session issues (#193, #195, #196, #194) completed and closed.
+FK constraint bellId → bells._id implemented (#198). All session issues closed.
 
 ## Completed (this cycle)
 - [x] #193 — Default bell volume 100% → 50%, centralized in Constants.kt
@@ -15,7 +15,12 @@ All session issues (#193, #195, #196, #194) completed and closed.
 - [x] #196 — System alarm volume slider in Bell Volumes dialog + section headers
 - [x] #196 — VOLUME_CHANGED_ACTION receiver for external volume changes
 - [x] #194 — Add Section FAB replaced with 3-dot menu item
-- [x] #64 — Play Store automation scripts active
+- [x] #194 — Help screen: AlertDialog.Builder instead of custom MessageView
+- [x] #198 — MIGRATION_7_8: FK constraint bellId → bells._id, resolve all bellId=0 rows
+- [x] #198 — SectionEditFragment + DemoSessionCreator: resolve bellId via DB on save/create
+- [x] #198 — ZazenTimerActivity: ensureBellsTableConsistent() at every startup
+- [x] #198 — deriveBellVolumesFromSections: deduplicate by bellUri fallback when bellId=0
+- [x] #198 — Tests updated for FK compliance (seed bells before section inserts)
 
 ## Pending
 - [ ] #64 — Promotion/Upload automation: Fastlane-like upload script

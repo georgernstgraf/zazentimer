@@ -28,8 +28,11 @@ Follow these without question. Do not deviate unless explicitly told.
 ## Database
 - All asynchronous DB operations in `DbOperations` must be wrapped with `withIdling { ... }` to ensure Espresso synchronization.
 - Bell references use the `bells` table (`_id`, `name`, `uri`, `is_builtin`, `resource_name`). Sections and session_bell_volumes reference bells via `bell_id` FK.
-- New sections must be created with `bell = -2` (BELL_INDEX_NONE) and a valid `bellUri` from `BellCollection`. `bellId` is resolved at startup by `ensureBellsTableConsistent()`.
+- New sections must be created with `bell = -2` (BELL_INDEX_NONE) and a valid `bellUri` from `BellCollection`. `bellId` is resolved at write time via `dbOperations.getBellByUri()`.
 - Built-in bells always have `is_builtin = true` and `resource_name` set to the R.raw resource name (e.g., "bell1", "bell2", "dharma107").
+- **FK constraint testing**: Any unit test that creates sections (via `DbOperations` or raw DAO) must first insert a bell row into the bells table and set `section.bellId` / `SectionEntity.bellId` to the valid ID. The FK constraint on `bellId → bells._id` is enforced at the SQLite level.
+- **Migration snapshots**: Every Room migration that modifies table schemas must include index creation statements for all indices defined in the `@Entity` annotation. Room validates the full schema (columns, FKs, indices) after migration.
+- **ensureBellsTableConsistent()**: Called at every app startup (not just on backup restore). Idempotent — uses `INSERT OR IGNORE` for built-in bells. Deduplicates by URI in step 5.
 
 ## Detekt
 - `./gradlew detekt` must exit 0 before any commit. Zero violations policy.
