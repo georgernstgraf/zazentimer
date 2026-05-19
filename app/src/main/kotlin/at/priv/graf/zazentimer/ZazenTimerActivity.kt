@@ -37,6 +37,8 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.NavigationUI
 import androidx.preference.PreferenceManager
 import at.priv.graf.zazentimer.audio.BellCollection
+import at.priv.graf.zazentimer.backup.BackupManager
+import at.priv.graf.zazentimer.database.AppDatabase
 import at.priv.graf.zazentimer.database.DbOperations
 import at.priv.graf.zazentimer.database.DemoSessionCreator
 import at.priv.graf.zazentimer.fragments.MainFragment
@@ -47,6 +49,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import java.io.File
+import java.io.FileOutputStream
 import javax.inject.Inject
 
 @AndroidEntryPoint
@@ -185,6 +188,10 @@ class ZazenTimerActivity :
                 withContext(Dispatchers.Main) {
                     findMainFragment()?.updateSessionList()
                 }
+            }
+            if (intent.getStringExtra(INTENT_EXTRA_CREATE_BACKUP) == "true") {
+                createBackupAndFinish()
+                return@launch
             }
         }
         BellCollection.initialize(this)
@@ -458,8 +465,35 @@ class ZazenTimerActivity :
         }
     }
 
+    private fun createBackupAndFinish() {
+        Log.d(TAG, "create_backup intent received — writing backup ZIP")
+        val dbFile = getDatabasePath(AppDatabase.DATABASE_NAME)
+        if (!dbFile.exists()) {
+            Log.e(TAG, "Database file does not exist: ${dbFile.absolutePath}")
+            finish()
+            return
+        }
+        Log.d(TAG, "Database file: ${dbFile.absolutePath} (${dbFile.length()} bytes)")
+        dbOperations.close()
+        val zipFile = File(filesDir, BACKUP_ZIP_NAME)
+        val ok =
+            BackupManager(
+                databaseFileProvider = { dbFile },
+                filesDirProvider = { filesDir },
+                onCloseDatabase = { },
+                onReopenDatabase = { },
+            ).backup(FileOutputStream(zipFile))
+        if (!ok) {
+            Log.e(TAG, "BackupManager.backup() returned false")
+        }
+        Log.d(TAG, "Backup written to ${zipFile.absolutePath} (${zipFile.length()} bytes, success=$ok)")
+        finish()
+    }
+
     companion object {
         const val INTENT_DATA_SHOW_PREF_ON_START: String = "gotoPrefs"
+        const val INTENT_EXTRA_CREATE_BACKUP: String = "create_backup"
+        const val BACKUP_ZIP_NAME: String = "zazentimer_backup.zip"
         const val PREF_DEFAULT_BRIGHTNESS: Int = 0
         const val PREF_DEFAULT_CONVERTED_BELL_INDICES: Boolean = false
         const val PREF_DEFAULT_CONVERTED_FROM_DB: Boolean = false

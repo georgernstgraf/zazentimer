@@ -1,3 +1,4 @@
 device_db.sqlite
 device_db.sqlite-wal
 deno.lock
+device_db.sqlite-shm

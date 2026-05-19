@@ -226,46 +226,158 @@ dependencies {
 
 val rootDirStr = project.rootDir.absolutePath
 
-tasks.register("prismaPullDb") {
-    description = "Pull the app SQLite database from a connected device/emulator"
+fun exec(vararg cmd: String): Int =
+    ProcessBuilder(*cmd)
+        .inheritIO()
+        .start()
+        .waitFor()
+
+fun execCapture(vararg cmd: String): String =
+    ProcessBuilder(*cmd)
+        .redirectErrorStream(true)
+        .start()
+        .inputStream
+        .bufferedReader()
+        .readText()
+        .trim()
+
+fun fileStartsWith(
+    file: File,
+    prefix: ByteArray,
+): Boolean {
+    if (!file.exists() || file.length() < prefix.size) return false
+    val buf = ByteArray(prefix.size)
+    file.inputStream().use { it.read(buf) }
+    return buf.contentEquals(prefix)
+}
+
+tasks.register("pullDeviceDb") {
+    description = "Pull consistent SQLite DB via in-app backup ZIP from device/emulator"
     group = "prisma"
+    dependsOn("assembleDebug")
     notCompatibleWithConfigurationCache(
         "Uses ADB to communicate with external device",
     )
     doLast {
         val root = File(rootDirStr, "prisma")
-        val dbFile = File(root, "device_db.sqlite")
-        ProcessBuilder("adb", "shell", "am", "force-stop", "at.priv.graf.zazentimer.debug")
-            .start()
-            .waitFor()
-        ProcessBuilder(
-            "adb",
-            "exec-out",
-            "run-as",
-            "at.priv.graf.zazentimer.debug",
-            "cat",
-            "databases/zentimer",
-        ).redirectOutput(dbFile)
-            .start()
-            .waitFor()
-        val walFile = File(root, "device_db.sqlite-wal")
-        ProcessBuilder(
-            "adb",
-            "exec-out",
-            "run-as",
-            "at.priv.graf.zazentimer.debug",
-            "cat",
-            "databases/zentimer-wal",
-        ).redirectOutput(walFile)
-            .start()
-            .waitFor()
+        val scriptDir = File(rootDirStr, "scripts")
+        val startEmulator = File(scriptDir, "start-emulator.sh")
+        val stopEmulator = File(scriptDir, "stop-emulator.sh")
+        val apkFile = File(rootDirStr, "app/build/outputs/apk/debug/app-debug.apk")
+        val appId = "at.priv.graf.zazentimer.debug"
+        val activity = "$appId/at.priv.graf.zazentimer.ZazenTimerActivity"
+
+        var emulatorStarted = false
+        try {
+            // ── 1. Device detection ──
+            val rawDevices = execCapture("adb", "devices")
+            println("ADB devices:\n$rawDevices")
+            val deviceCount = rawDevices.lines().count { it.contains("\tdevice") }
+            if (deviceCount == 0) {
+                println("No ADB device found — starting emulator")
+                val ec = exec("bash", startEmulator.absolutePath, "35")
+                if (ec != 0) throw GradleException("Emulator start failed (exit=$ec)")
+                emulatorStarted = true
+            } else {
+                println("ADB device found ($deviceCount device(s)) — using it")
+            }
+
+            // ── 2. Install APK ──
+            println("Installing APK (${apkFile.length()} bytes)...")
+            val installEc = exec("adb", "install", "-r", apkFile.absolutePath)
+            if (installEc != 0) throw GradleException("adb install failed (exit=$installEc)")
+            val packages = execCapture("adb", "shell", "pm", "list", "packages", appId)
+            if (!packages.contains(appId)) {
+                throw GradleException("Package $appId not found after install")
+            }
+            println("Install verified: $appId")
+
+            // ── 3. Trigger backup ──
+            println("Starting app with create_backup intent...")
+            exec("adb", "shell", "am", "force-stop", appId)
+            exec("adb", "logcat", "-c")
+            exec("adb", "shell", "am", "start", "-n", activity, "--es", "create_backup", "true")
+
+            // ── 4. Wait for app to finish ──
+            println("Waiting for app to create backup and exit...")
+            val deadline = System.currentTimeMillis() + 60_000
+            var appExited = false
+            while (System.currentTimeMillis() < deadline) {
+                val pid = execCapture("adb", "shell", "pidof", appId)
+                if (pid.isEmpty()) { appExited = true; break }
+                Thread.sleep(1000)
+            }
+            if (!appExited) {
+                println("App did not exit within 60s — dumping logcat tail:")
+                val logcat = execCapture("adb", "logcat", "-d", "-t", "30")
+                println(logcat)
+                throw GradleException(
+                    "App still running after 60s — backup likely failed (see logcat above)",
+                )
+            }
+
+            // ── 5. Check backup on device ──
+            val deviceZipPath = "files/zazentimer_backup.zip"
+            val stat = execCapture("adb", "shell", "run-as", appId, "stat", deviceZipPath)
+            println("Device backup stat: $stat")
+            if (!stat.contains("regular file") && !stat.contains("Size:")) {
+                throw GradleException("Backup ZIP not found on device: $stat")
+            }
+
+            // ── 6. Pull backup ZIP to /tmp/ ──
+            val zipFile = File("/tmp/zazentimer_backup.zip")
+            println("Pulling backup ZIP from device to ${zipFile.absolutePath}...")
+            val pullEc = exec("adb", "pull", "/data/data/$appId/$deviceZipPath", zipFile.absolutePath)
+            // fallback: run-as pull if adb pull fails (non-root device)
+            if (pullEc != 0 || !zipFile.exists() || zipFile.length() <= 22L) {
+                println("adb pull failed or empty, falling back to run-as...")
+                ProcessBuilder(
+                    "adb",
+                    "exec-out",
+                    "run-as",
+                    appId,
+                    "cat",
+                    deviceZipPath,
+                ).redirectOutput(zipFile)
+                    .start()
+                    .waitFor()
+            }
+
+            if (!fileStartsWith(zipFile, "PK".toByteArray())) {
+                throw GradleException(
+                    "Downloaded file is not a valid ZIP (${zipFile.length()} bytes, " +
+                        "magic=${zipFile.readBytes().take(4).toByteArray().contentToString()})",
+                )
+            }
+            println("Backup ZIP downloaded: ${zipFile.length()} bytes")
+
+            // ── 7. Extract database ──
+            println("Extracting database from backup ZIP...")
+            val dbFile = File(root, "device_db.sqlite")
+            val unzipEc = exec("unzip", "-o", zipFile.absolutePath, "zentimer", "-d", root.absolutePath)
+            if (unzipEc != 0) throw GradleException("unzip failed (exit=$unzipEc)")
+            val extractedDb = File(root, "zentimer")
+            if (!extractedDb.exists()) throw GradleException("Extracted database file 'zentimer' not found in ZIP")
+            extractedDb.renameTo(dbFile)
+            println("Database extracted: ${dbFile.length()} bytes")
+
+            if (!fileStartsWith(dbFile, "SQLite format 3\u0000".toByteArray())) {
+                throw GradleException("Extracted file is not a valid SQLite database")
+            }
+            println("Database validated: SQLite format 3")
+        } finally {
+            if (emulatorStarted) {
+                println("Stopping emulator...")
+                exec("bash", stopEmulator.absolutePath)
+            }
+        }
     }
 }
 
 tasks.register("prismaRefreshSchema") {
     description = "Run prisma db pull to populate current/ from device database"
     group = "prisma"
-    dependsOn("prismaPullDb")
+    dependsOn("pullDeviceDb")
     notCompatibleWithConfigurationCache(
         "Runs external Deno/Prisma CLI process",
     )
