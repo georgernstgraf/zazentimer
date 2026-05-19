@@ -223,3 +223,83 @@ dependencies {
     testImplementation(testFixtures(project(":app")))
     androidTestImplementation(testFixtures(project(":app")))
 }
+
+val rootDirStr = project.rootDir.absolutePath
+
+tasks.register("prismaPullDb") {
+    description = "Pull the app SQLite database from a connected device/emulator"
+    group = "prisma"
+    notCompatibleWithConfigurationCache(
+        "Uses ADB to communicate with external device",
+    )
+    doLast {
+        val root = File(rootDirStr, "prisma")
+        val dbFile = File(root, "device_db.sqlite")
+        ProcessBuilder("adb", "shell", "am", "force-stop", "at.priv.graf.zazentimer.debug")
+            .start()
+            .waitFor()
+        ProcessBuilder(
+            "adb",
+            "exec-out",
+            "run-as",
+            "at.priv.graf.zazentimer.debug",
+            "cat",
+            "databases/zentimer",
+        ).redirectOutput(dbFile)
+            .start()
+            .waitFor()
+        val walFile = File(root, "device_db.sqlite-wal")
+        ProcessBuilder(
+            "adb",
+            "exec-out",
+            "run-as",
+            "at.priv.graf.zazentimer.debug",
+            "cat",
+            "databases/zentimer-wal",
+        ).redirectOutput(walFile)
+            .start()
+            .waitFor()
+    }
+}
+
+tasks.register("prismaRefreshSchema") {
+    description = "Copy desired schema to current/ and run prisma db pull"
+    group = "prisma"
+    dependsOn("prismaPullDb")
+    notCompatibleWithConfigurationCache(
+        "Runs external Deno/Prisma CLI process",
+    )
+    doLast {
+        val root = File(rootDirStr, "prisma")
+        val currentDir = File(root, "current")
+        val desiredFile = File(root, "desired/schema.prisma")
+        desiredFile.copyTo(File(currentDir, "schema.prisma"), overwrite = true)
+        ProcessBuilder("deno", "-A", "prisma", "db", "pull")
+            .directory(currentDir)
+            .inheritIO()
+            .start()
+            .waitFor()
+    }
+}
+
+tasks.register("prismaCheckSchema") {
+    description = "Check device schema matches desired migration schema (drift detection)"
+    group = "prisma"
+    dependsOn("prismaRefreshSchema")
+    notCompatibleWithConfigurationCache(
+        "Runs external diff process",
+    )
+    doLast {
+        val root = File(rootDirStr, "prisma")
+        val desiredPath = File(root, "desired/schema.prisma").absolutePath
+        val currentPath = File(root, "current/schema.prisma").absolutePath
+        val proc =
+            ProcessBuilder("diff", "-u", desiredPath, currentPath)
+                .inheritIO()
+                .start()
+        val exitCode = proc.waitFor()
+        if (exitCode != 0) {
+            throw GradleException("Schema drift detected: current/ differs from desired/")
+        }
+    }
+}
