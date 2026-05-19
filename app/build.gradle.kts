@@ -263,7 +263,7 @@ tasks.register("prismaPullDb") {
 }
 
 tasks.register("prismaRefreshSchema") {
-    description = "Copy desired schema to current/ and run prisma db pull"
+    description = "Run prisma db pull to populate current/ from device database"
     group = "prisma"
     dependsOn("prismaPullDb")
     notCompatibleWithConfigurationCache(
@@ -272,8 +272,6 @@ tasks.register("prismaRefreshSchema") {
     doLast {
         val root = File(rootDirStr, "prisma")
         val currentDir = File(root, "current")
-        val desiredFile = File(root, "desired/schema.prisma")
-        desiredFile.copyTo(File(currentDir, "schema.prisma"), overwrite = true)
         ProcessBuilder("deno", "-A", "prisma", "db", "pull")
             .directory(currentDir)
             .inheritIO()

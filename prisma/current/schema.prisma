@@ -1,0 +1,68 @@
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model android_metadata {
+  locale String?
+
+  @@ignore
+}
+
+model bells {
+  id           Int     @id @default(autoincrement()) @map("_id")
+  name         String
+  uri          String
+  is_builtin   Int
+  resourceName String?
+
+  sections_bellIdToBells              Section[]            @relation("Section_bellIdToBells")
+  session_bell_volumes_bellIdToBells  SessionBellVolume[]  @relation("SessionBellVolume_bellIdToBells")
+}
+
+model room_master_table {
+  id            Int     @id @default(autoincrement())
+  identity_hash String?
+}
+
+model sections {
+  id         Int      @id @default(autoincrement()) @map("_id")
+  fk_session Int
+  name       String
+  duration   Int
+  bell       Int
+  rank       Int?
+  bellcount  Int?
+  bellpause  Int?
+  belluri    String?
+  bellId     Int
+  sessions   sessions @relation(fields: [fk_session], references: [id], onDelete: Cascade, onUpdate: NoAction)
+  bells      bells    @relation("Section_bellIdToBells", fields: [bellId], references: [id])
+
+  @@index([fk_session], map: "index_sections_fk_session")
+  @@index([bellId], map: "index_sections_bellId")
+}
+
+model session_bell_volumes {
+  id         Int      @id @default(autoincrement()) @map("_id")
+  fk_session Int
+  bell       Int?
+  belluri    String?
+  bellId     Int
+  volume     Int
+  sessions   sessions @relation(fields: [fk_session], references: [id], onDelete: Cascade, onUpdate: NoAction)
+  bells      bells    @relation("SessionBellVolume_bellIdToBells", fields: [bellId], references: [id])
+
+  @@unique([fk_session, bell, belluri], map: "index_session_bell_volumes_fk_session_bell_belluri")
+  @@index([fk_session], map: "index_session_bell_volumes_fk_session")
+  @@index([bellId], map: "index_session_bell_volumes_bellId")
+}
+
+model sessions {
+  id                   Int                    @id @default(autoincrement()) @map("_id")
+  name                 String
+  description          String
+  sections             sections[]
+  session_bell_volumes session_bell_volumes[]
+}

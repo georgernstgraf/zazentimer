@@ -1,4 +1,3 @@
 device_db.sqlite
 device_db.sqlite-wal
-current/schema.prisma
 deno.lock
