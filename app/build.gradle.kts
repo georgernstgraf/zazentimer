@@ -304,7 +304,10 @@ tasks.register("pullDeviceDb") {
             var appExited = false
             while (System.currentTimeMillis() < deadline) {
                 val pid = execCapture("adb", "shell", "pidof", appId)
-                if (pid.isEmpty()) { appExited = true; break }
+                if (pid.isEmpty()) {
+                    appExited = true
+                    break
+                }
                 Thread.sleep(1000)
             }
             if (!appExited) {
@@ -317,7 +320,7 @@ tasks.register("pullDeviceDb") {
             }
 
             // ── 5. Check backup on device ──
-            val deviceZipPath = "files/zazentimer_backup.zip"
+            val deviceZipPath = "cache/zazentimer_backup.zip"
             val stat = execCapture("adb", "shell", "run-as", appId, "stat", deviceZipPath)
             println("Device backup stat: $stat")
             if (!stat.contains("regular file") && !stat.contains("Size:")) {

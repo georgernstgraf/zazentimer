@@ -475,7 +475,7 @@ class ZazenTimerActivity :
         }
         Log.d(TAG, "Database file: ${dbFile.absolutePath} (${dbFile.length()} bytes)")
         dbOperations.close()
-        val zipFile = File(filesDir, BACKUP_ZIP_NAME)
+        val zipFile = File(cacheDir, BACKUP_ZIP_NAME)
         val ok =
             BackupManager(
                 databaseFileProvider = { dbFile },
