@@ -246,7 +246,7 @@ if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
     emulator_kill_stale
 
     SERIAL="emulator-5554"
-    local extra_flags="$SNAPSHOT_FLAG"
+    extra_flags="$SNAPSHOT_FLAG"
     [ -n "${EMULATOR_XVFB_PID:-}" ] && extra_flags="$extra_flags -noaudio"
     EMU_PID=$(emulator_launch "$AVD_NAME" "$SERIAL" "/tmp/zazentimer-emulator.log" $extra_flags)
     echo "$EMU_PID" > /tmp/zazentimer-emulator.pid
