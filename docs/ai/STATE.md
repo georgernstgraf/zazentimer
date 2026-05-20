@@ -3,9 +3,10 @@
 Current status as of 2026-05-20.
 
 ## Current Focus
-Emulator infrastructure optimization complete (#200). Session order persistence complete (#199).
+Fixing dialog headings size/styling (#201).
 
 ## Completed (this cycle)
+- [x] #201 — Fix tiny headings for system and individual bell volume in config dialog
 - [x] #200 — Snapshot creation script for fast emulator boots
 - [x] #200 — Emulator scripts refactored as sourceable libraries (removed ~270 lines duplication)
 - [x] #200 — Hostname-based test matrix (claw/think/other)

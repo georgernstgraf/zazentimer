@@ -25,7 +25,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/system_volume_section_title"
-                android:textAppearance="?attr/textAppearanceSubtitle1"/>
+                android:textSize="18sp"
+                android:textStyle="bold"/>
 
             <TextView
                 android:id="@+id/system_volume_subtitle"
@@ -71,7 +72,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/bell_dimming_section_title"
-                android:textAppearance="?attr/textAppearanceSubtitle1"/>
+                android:textSize="18sp"
+                android:textStyle="bold"/>
 
             <TextView
                 android:id="@+id/dimming_explanation"
