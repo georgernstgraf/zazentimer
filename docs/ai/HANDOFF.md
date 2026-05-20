@@ -8,4 +8,3 @@ No pending tasks. Last cleared: 2026-05-20.
 
 ## Open Issues (pick next)
 - #64 Promotion Automation: Create script to promote releases between tracks.
-- #197 Migrate from Room to Prisma for SQLite schema management.
