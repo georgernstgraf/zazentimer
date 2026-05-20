@@ -6,12 +6,35 @@ set -euo pipefail
 #                    + standalone cleanup.
 #
 # When sourced: exports library functions.
-# When executed: kills emulator and Xvfb.
+# When executed: saves a snapshot, then kills
+#                emulator and Xvfb.
 #
 # Library functions:
-#   emulator_kill_serial  <serial>
+#   emulator_save_snapshot  <serial> [name]
+#   emulator_kill_serial    <serial>
 #   emulator_kill_all
 # ──────────────────────────────────────────────
+
+# ──────────────────────────────────────────────
+# emulator_save_snapshot — save emulator state
+# $1 = serial (e.g. "emulator-5554")
+# $2 = snapshot name (default: "default_boot")
+# ──────────────────────────────────────────────
+emulator_save_snapshot() {
+    local serial=$1
+    local name=${2:-default_boot}
+    if adb devices 2>/dev/null | grep -q "$serial"; then
+        echo "Saving snapshot '$name' on $serial..." >&2
+        adb -s "$serial" emu avd snapshot save "$name" 2>/dev/null || {
+            echo "Warning: snapshot save failed (emulator may be busy)" >&2
+            return 1
+        }
+        echo "Snapshot '$name' saved on $serial." >&2
+    else
+        echo "Emulator $serial not connected — cannot save snapshot" >&2
+        return 1
+    fi
+}
 
 # ──────────────────────────────────────────────
 # emulator_kill_serial — kill emulator by serial
@@ -51,6 +74,8 @@ emulator_kill_all() {
 # ──────────────────────────────────────────────
 if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
     SERIAL="emulator-5554"
+
+    emulator_save_snapshot "$SERIAL" || true
 
     emulator_kill_serial "$SERIAL"
 

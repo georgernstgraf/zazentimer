@@ -19,6 +19,12 @@ set -euo pipefail
 # Usage (standalone):
 #   scripts/start-emulator.sh [--cold] [api_level]
 #   Default API: 35
+#
+# Snapshot workflow:
+#   --cold   → clean boot (no snapshot).  stop-emulator.sh saves a
+#              snapshot for subsequent fast boots.
+#   normal   → fast boot from snapshot saved by stop-emulator.sh.
+#              If no snapshot exists, falls back to normal cold boot.
 # ──────────────────────────────────────────────
 
 ANDROID_HOME="${ANDROID_HOME:-$HOME/Android/Sdk}"
