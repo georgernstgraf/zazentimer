@@ -301,15 +301,21 @@ class DbOperations
 
         suspend fun deleteCustomBell(bellId: Int) =
             withIdling {
-                val builtinBells = bellDao?.getBuiltinBells() ?: return@withIdling
-                val demoTarget = builtinBells.firstOrNull() ?: return@withIdling
+                val demoBellUri = BellCollection.getDemoBell()?.uri?.toString()
+                val demoTarget =
+                    if (demoBellUri != null) {
+                        bellDao?.getByUri(demoBellUri)
+                    } else {
+                        bellDao?.getBuiltinBells()?.firstOrNull()
+                    } ?: return@withIdling
+                val targetBellId = demoTarget._id
 
                 val allSessionEntities = sessionDao?.getAllSessions() ?: emptyList()
                 for (sessionEntity in allSessionEntities) {
                     val sections = sectionDao?.getSectionsForSession(sessionEntity._id) ?: emptyList()
                     for (section in sections) {
                         if (section.bellId == bellId) {
-                            section.bellId = demoTarget._id
+                            section.bellId = targetBellId
                             sectionDao?.update(section)
                         }
                     }

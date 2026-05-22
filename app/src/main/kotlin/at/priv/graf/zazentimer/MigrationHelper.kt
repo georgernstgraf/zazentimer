@@ -97,6 +97,7 @@ class MigrationHelper(
             var anyBellsUpdated = false
             for (entity in db.getAllBells()) {
                 if (entity.isBuiltin) continue
+                if (entity.uri.startsWith("file://")) continue
                 val bell = BellCollection.getBellList().find { it.uri.toString() == entity.uri }
                 if (bell != null) {
                     entity.isBuiltin = true
