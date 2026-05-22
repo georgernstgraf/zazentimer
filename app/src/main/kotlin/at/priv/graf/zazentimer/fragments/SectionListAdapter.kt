@@ -24,6 +24,8 @@ class SectionListAdapter(
         fun onDeleteSection(position: Int)
 
         fun onDuplicateSection(position: Int)
+
+        fun onEditSection(position: Int)
     }
 
     private var items: MutableList<Section> = ArrayList()
@@ -93,6 +95,10 @@ class SectionListAdapter(
                             }
                             R.id.card_action_duplicate_section -> {
                                 actionListener.onDuplicateSection(pos)
+                                true
+                            }
+                            R.id.card_action_edit_section -> {
+                                actionListener.onEditSection(pos)
                                 true
                             }
                             else -> false

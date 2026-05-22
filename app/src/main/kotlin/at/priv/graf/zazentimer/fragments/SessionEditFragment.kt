@@ -114,6 +114,11 @@ class SessionEditFragment :
                     override fun onDuplicateSection(position: Int) {
                         duplicateSectionAt(position)
                     }
+
+                    override fun onEditSection(position: Int) {
+                        val sectionId = adapter?.getItem(position)?.id ?: return
+                        editHelper.navigateToSectionEdit(sectionId)
+                    }
                 },
             )
 

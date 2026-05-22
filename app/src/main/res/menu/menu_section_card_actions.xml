@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
+        android:id="@+id/card_action_edit_section"
+        android:title="@string/nav_label_edit_section" />
+    <item
         android:id="@+id/card_action_delete_section"
         android:title="@string/menu_delete_section" />
     <item

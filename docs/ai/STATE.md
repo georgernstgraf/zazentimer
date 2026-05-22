@@ -1,11 +1,15 @@
 # Project State
 
-Current status as of 2026-05-20.
+Current status as of 2026-05-22.
 
 ## Current Focus
-Fixing dialog headings size/styling (#201).
+None.
 
 ## Completed (this cycle)
+- [x] #204 — External song import: fixed auto-select, playback, and back-navigation crash
+- [x] #205 — Added "Edit Section" to 3-dot overflow menu in session editor
+
+## Completed (previous cycles)
 - [x] #201 — Fix tiny headings for system and individual bell volume in config dialog
 - [x] #200 — Snapshot creation script for fast emulator boots
 - [x] #200 — Emulator scripts refactored as sourceable libraries (removed ~270 lines duplication)
