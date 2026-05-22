@@ -23,6 +23,7 @@ import at.priv.graf.zazentimer.audio.Audio
 import at.priv.graf.zazentimer.audio.BellCollection
 import at.priv.graf.zazentimer.bo.Bell
 import at.priv.graf.zazentimer.bo.Section
+import at.priv.graf.zazentimer.database.BellEntity
 import at.priv.graf.zazentimer.database.DbOperations
 import at.priv.graf.zazentimer.databinding.FragmentEditSectionBinding
 import com.google.android.material.transition.MaterialSharedAxis
@@ -90,6 +91,17 @@ class SectionEditFragment : Fragment() {
                 openFileOutput.close()
                 BellCollection.initialize(requireContext())
                 fillBellList()
+                val bellUri = BellCollection.getUriForName(str)
+                if (bellUri != null) {
+                    runBlocking {
+                        dbOperations.insertBell(
+                            BellEntity(
+                                name = str.removePrefix("bell_"),
+                                uri = bellUri.toString(),
+                            ),
+                        )
+                    }
+                }
                 section?.let { s ->
                     val uri = BellCollection.getUriForName(str)
                     if (uri != null) {
@@ -106,6 +118,8 @@ class SectionEditFragment : Fragment() {
                 }
             } catch (e: IOException) {
                 e.printStackTrace()
+            } catch (e: SecurityException) {
+                Log.e(TAG, "SecurityException importing bell", e)
             }
         }
 
@@ -169,6 +183,7 @@ class SectionEditFragment : Fragment() {
             audio?.release()
         }
         this.audio = null
+        if (_binding == null) return
         fillDataFromViews()
         section?.let { s ->
             runBlocking {
@@ -202,7 +217,7 @@ class SectionEditFragment : Fragment() {
 
         private fun SectionEditFragment.fillDataFromViews() {
             val s = section ?: return
-            val bell = binding.selectGongSound.selectedItem as Bell
+            val bell = (binding.selectGongSound.selectedItem as? Bell) ?: return
             val entity = runBlocking { dbOperations.getBellByUri(bell.uri.toString()) }
             s.bellId = entity?._id ?: 0
             s.name = binding.sectionName.text.toString()
