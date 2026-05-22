@@ -1,0 +1,46 @@
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+/// A locale that translations target (e.g., "de" for values-de).
+model locales {
+  code      String  @id
+  directory String
+  reviewed  Boolean @default(false)
+}
+
+/// A source English string that needs translation.
+model strings {
+  key     String @id
+  english String
+}
+
+/// One candidate translation produced by one LLM for one (locale, string_key).
+model translations {
+  id          Int      @id @default(autoincrement())
+  locale_code String
+  string_key  String
+  model       String
+  translation String
+  preserved   Boolean  @default(true)
+  created_at  DateTime @default(now())
+
+  @@unique([locale_code, string_key, model])
+}
+
+/// The agreed-upon translation after the voting pass.
+model votes {
+  id           Int       @id @default(autoincrement())
+  locale_code  String
+  string_key   String
+  translation  String
+  agreement    Int
+  total_models Int       @default(4)
+  auto_resolved Boolean  @default(false)
+  resolved     Boolean   @default(false)
+  resolved_at  DateTime?
+  created_at   DateTime  @default(now())
+
+  @@unique([locale_code, string_key])
+}

@@ -395,6 +395,31 @@ tasks.register("prismaRefreshSchema") {
     }
 }
 
+tasks.register("prismaValidateTranslationsSchema") {
+    description = "Validate translations Prisma schema"
+    group = "prisma"
+    notCompatibleWithConfigurationCache(
+        "Runs prisma validate",
+    )
+    doLast {
+        val schemaPath = File(rootDirStr, "prisma/translations/schema.prisma").absolutePath
+        val proc =
+            ProcessBuilder(
+                "deno",
+                "run",
+                "-A",
+                "npm:prisma@6.19.2",
+                "validate",
+                "--schema",
+                schemaPath,
+            ).inheritIO().start()
+        val exitCode = proc.waitFor()
+        if (exitCode != 0) {
+            throw GradleException("Translation schema validation failed")
+        }
+    }
+}
+
 tasks.register("prismaCheckSchema") {
     description = "Check device schema matches desired migration schema (drift detection)"
     group = "prisma"

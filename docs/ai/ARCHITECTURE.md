@@ -1,6 +1,6 @@
 # Architecture
 
-Living structural map of the system as of 2026-05-20.
+Living structural map of the system as of 2026-05-22.
 
 ## Overview
 ZazenTimer is an Android application for timing meditation sessions. It uses a foreground service for background timing and a Repository-based architecture to synchronize state between the UI and the service.
@@ -29,6 +29,11 @@ ZazenTimer is an Android application for timing meditation sessions. It uses a f
 4. Playback: `BellPlayer.playBell()` resolves bell via `getBellById(bellId)` lambda (DB lookup → BellEntity.uri → BellCollection.getBellByUri()); fallback to getDemoBell().
 5. Volume: `Meditation.getVolumeForSection()` matches `session_bell_volumes.bellId == section.bellId`
 6. UI: `deriveBellVolumesFromSections()` groups by `bellId` only (no bellUri fallback needed)
+
+## Prisma Schemas
+Two Prisma-managed SQLite schemas coexist under `prisma/`:
+- **Device DB** (`prisma/desired/` + `prisma/current/`): Documents the Room-managed app database. `desired/` is hand-crafted (SOLL), `current/` is auto-generated from device via `prisma db pull` (IST). Drift detection via `prismaCheckSchema` Gradle task.
+- **Translation DB** (`prisma/translations/`): Stores multi-LLM translation candidates and voting results for the app's 123 locale files. 4 models: locales, strings, translations, votes. No auto-generation — schema evolves by hand. Validation via `prismaValidateTranslationsSchema` Gradle task.
 
 ## Extracted Helpers (2026-05-11, #142)
 - **DemoSessionCreator** (`database/`) — Creates demo sessions on first launch; extracted from ZazenTimerActivity

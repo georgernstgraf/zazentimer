@@ -243,6 +243,12 @@ Each entry documents WHAT was decided and WHY.
 - **Considered**: Calling `switchSessionPositions()` in the `onMove` callback (complex — coroutine ordering issues with rapid successive drag events, and only handles adjacent swaps).
 - **Tradeoff**: Writes all sessions to DB on every pause, even if no reorder occurred. Negligible for typical session counts.
 
+## 2026-05-22: Prisma-managed translation voting database (#202)
+- **Choice**: Created a second Prisma schema at `prisma/translations/schema.prisma` with 4 models (locales, strings, translations, votes) to store multi-LLM translation candidates and voting results. Added `prismaValidateTranslationsSchema` Gradle task.
+- **Reason**: Need a structured, version-controlled data store for the multi-model translation pipeline where 4 LLMs (Claude, Gemini, GPT, DeepSeek) each produce candidate translations that are then compared via a voting mechanism.
+- **Considered**: JSON-only storage (no queryability), keeping in-memory only (no persistence between sessions).
+- **Tradeoff**: Two Prisma schemas now coexist under `prisma/` — device DB at `prisma/desired/` + `prisma/current/`, translation DB at `prisma/translations/`. The translation DB is not auto-pulled from a device; schema evolves by hand.
+
 ## 2026-05-20: Emulator scripts as sourceable libraries (#200)
 - **Choice**: Restructured `start-emulator.sh` and `stop-emulator.sh` to be both standalone executables AND sourceable libraries with a `[[ "${BASH_SOURCE[0]}" == "${0}" ]]` guard. `run-instrumentation.sh` and `create-emulator-snapshots.sh` source them instead of duplicating functions.
 - **Reason**: 6 functions were duplicated 3-4x across scripts (`resolve_avd`, `wait_for_boot`, `configure_system`, `kill_emulator`, `kill_stale`, `setup_device`). Single source of truth eliminates drift.

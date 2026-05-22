@@ -2,3 +2,6 @@ device_db.sqlite
 device_db.sqlite-wal
 deno.lock
 device_db.sqlite-shm
+translation_votes.db
+translation_votes.db-wal
+translation_votes.db-shm
