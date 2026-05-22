@@ -1,8 +1,10 @@
 package at.priv.graf.zazentimer
 
+import androidx.test.espresso.IdlingRegistry
 import androidx.test.ext.junit.rules.ActivityScenarioRule
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.filters.LargeTest
+import at.priv.graf.zazentimer.service.IdlingResourceManager
 import dagger.hilt.android.testing.HiltAndroidRule
 import dagger.hilt.android.testing.HiltAndroidTest
 import org.junit.Before
@@ -27,5 +29,6 @@ abstract class AbstractZazenTest {
     @Before
     fun baseInit() {
         hiltRule.inject()
+        IdlingRegistry.getInstance().register(IdlingResourceManager.countingIdlingResource)
     }
 }

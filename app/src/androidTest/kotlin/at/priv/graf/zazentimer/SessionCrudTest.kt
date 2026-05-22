@@ -7,6 +7,7 @@ import androidx.test.espresso.action.ViewActions.clearText
 import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.action.ViewActions.typeText
 import androidx.test.espresso.assertion.ViewAssertions.matches
+import androidx.test.espresso.matcher.RootMatchers.isDialog
 import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
 import androidx.test.espresso.matcher.ViewMatchers.withId
 import androidx.test.espresso.matcher.ViewMatchers.withText
@@ -86,8 +87,11 @@ class SessionCrudTest : AbstractZazenTest() {
             .clickSessionOverflowAction(0, R.string.menu_delete_session)
 
         onView(withText(R.string.title_question_delete_session))
+            .inRoot(isDialog())
             .check(matches(isDisplayed()))
-        onView(withText(R.string.ok)).perform(click())
+        onView(withText(R.string.ok))
+            .inRoot(isDialog())
+            .perform(click())
 
         onIdle()
 
@@ -102,8 +106,11 @@ class SessionCrudTest : AbstractZazenTest() {
             .clickSessionOverflowAction(0, R.string.menu_delete_session)
 
         onView(withText(R.string.title_question_delete_session))
+            .inRoot(isDialog())
             .check(matches(isDisplayed()))
-        onView(withText(R.string.abbrechen)).perform(click())
+        onView(withText(R.string.abbrechen))
+            .inRoot(isDialog())
+            .perform(click())
 
         onIdle()
 

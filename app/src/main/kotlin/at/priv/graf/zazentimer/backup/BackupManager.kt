@@ -87,10 +87,12 @@ class BackupManager(
         databaseName: String,
     ): Int {
         var result = 0
+        var foundDatabase = false
         val entries = zf.entries()
         while (entries.hasMoreElements()) {
             val entry = entries.nextElement()
             if (entry.name == databaseName) {
+                foundDatabase = true
                 val entryBytes = zf.getInputStream(entry).use { it.readBytes() }
                 val dbVersion = readDatabaseVersion(entryBytes)
                 if (dbVersion > AppDatabase.CURRENT_VERSION) {
@@ -105,7 +107,7 @@ class BackupManager(
                 result = 2
             }
         }
-        return result
+        return if (!foundDatabase) 1 else result
     }
 
     @Suppress("MagicNumber")

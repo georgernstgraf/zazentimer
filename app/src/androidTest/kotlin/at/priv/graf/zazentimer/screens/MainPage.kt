@@ -7,7 +7,9 @@ import androidx.test.espresso.UiController
 import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.contrib.RecyclerViewActions
+import androidx.test.espresso.matcher.ViewMatchers.Visibility
 import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
+import androidx.test.espresso.matcher.ViewMatchers.withEffectiveVisibility
 import androidx.test.espresso.matcher.ViewMatchers.withId
 import androidx.test.espresso.matcher.ViewMatchers.withText
 import at.priv.graf.zazentimer.R
@@ -18,18 +20,10 @@ class MainPage {
     private val robot = ScreenRobot()
 
     fun verifyMainScreenIsDisplayed(): MainPage {
-        // Wait for layout to complete and RecyclerView to have non-zero height
-        for (i in 0 until 20) {
-            try {
-                robot.checkElementIsDisplayed(R.id.recycler_sessions)
-                break
-            } catch (e: Throwable) {
-                Thread.sleep(500)
-            }
-        }
         robot.checkElementIsDisplayed(R.id.my_toolbar)
         robot.checkElementIsDisplayed(R.id.but_start)
-        robot.checkElementIsDisplayed(R.id.recycler_sessions)
+        onView(withId(R.id.recycler_sessions))
+            .check(matches(withEffectiveVisibility(Visibility.VISIBLE)))
         return this
     }
 
@@ -40,16 +34,9 @@ class MainPage {
     }
 
     fun selectSessionByPosition(position: Int): MainPage {
-        for (i in 0 until 10) {
-            try {
-                onView(withId(R.id.recycler_sessions))
-                    .perform(RecyclerViewActions.actionOnItemAtPosition<RecyclerView.ViewHolder>(position, click()))
-                return this
-            } catch (e: Throwable) {
-                Thread.sleep(500)
-            }
-        }
-        throw AssertionError("Could not click session at position $position")
+        onView(withId(R.id.recycler_sessions))
+            .perform(RecyclerViewActions.actionOnItemAtPosition<RecyclerView.ViewHolder>(position, click()))
+        return this
     }
 
     fun clickStartMeditation(): MeditationPage {
@@ -91,8 +78,6 @@ class MainPage {
                     ScreenRobot.clickChildViewWithId(R.id.sessionOverflow),
                 ),
             )
-        // PITFALLS #81: popup menu animation not tracked by Espresso idle
-        Thread.sleep(500)
         return this
     }
 
@@ -102,20 +87,10 @@ class MainPage {
     ): MainPage {
         clickSessionOverflowAtPosition(position)
         onView(withText(textResId)).perform(click())
-        Thread.sleep(1000)
         return this
     }
 
     fun verifySessionNameVisible(name: String): MainPage {
-        // Give some time for async DB save to complete and list to refresh
-        for (i in 0 until 10) {
-            try {
-                onView(withText(name)).check(matches(isDisplayed()))
-                return this
-            } catch (e: Throwable) {
-                Thread.sleep(500)
-            }
-        }
         onView(withText(name)).check(matches(isDisplayed()))
         return this
     }

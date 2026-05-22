@@ -57,7 +57,7 @@ class RestoreIntegrationTest {
         for (fileName in oldBackupFiles) {
             val zipFile = resolveBackup(fileName) ?: continue
             val result = backupManager.restore(zipFile)
-            assertThat(result).isEqualTo(0)
+            assertThat(result).isEqualTo(1)
             assertThat(databaseFile.exists()).isFalse()
             zipFile.delete()
         }

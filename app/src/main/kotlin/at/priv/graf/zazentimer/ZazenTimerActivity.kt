@@ -180,6 +180,10 @@ class ZazenTimerActivity :
         lifecycleScope.launch {
             MigrationHelper.seedBuiltinBells(this@ZazenTimerActivity, dbOperations)
             val demoMarker = File(noBackupFilesDir, "demo_sessions_created")
+            if (demoMarker.exists() && dbOperations.readSessions().isEmpty()) {
+                Log.d(TAG, "Marker exists but DB empty -- data lost, recreating demo sessions")
+                demoMarker.delete()
+            }
             if (!demoMarker.exists()) {
                 Log.d(TAG, "No demo marker -- creating demo sessions")
                 DemoSessionCreator(dbOperations, resources).createDemoSessions()

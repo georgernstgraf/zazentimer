@@ -175,17 +175,17 @@ class BackupManagerTest {
     }
 
     @Test
-    fun restore_emptyZip_returnsSuccess() {
+    fun restore_emptyZip_returnsNotFound() {
         val emptyZip = File(tempDir, "empty.zip")
         ZipOutputStream(FileOutputStream(emptyZip)).use { it.close() }
 
         val result = backupManager.restore(emptyZip)
 
-        assertThat(result).isEqualTo(0)
+        assertThat(result).isEqualTo(1)
     }
 
     @Test
-    fun restore_zipWithMissingEntries_stillSucceeds() {
+    fun restore_zipWithMissingEntries_returnsNotFound() {
         val zipFile = File(tempDir, "partial.zip")
         ZipOutputStream(FileOutputStream(zipFile)).use { zos ->
             val entry = ZipEntry("otherfile")
@@ -196,7 +196,7 @@ class BackupManagerTest {
 
         val result = backupManager.restore(zipFile)
 
-        assertThat(result).isEqualTo(0)
+        assertThat(result).isEqualTo(1)
         assertThat(File(filesDir, "otherfile").readText()).isEqualTo("other-data")
     }
 
