@@ -156,7 +156,6 @@ class ZazenTimerActivity :
         this.viewModel?.setHandler(this.handler ?: Handler(Looper.getMainLooper()))
         BellCollection.initialize(this)
         this.pref = getPreferences(this)
-        MigrationHelper(dbOperations, lifecycleScope).convertFromOldVersions()
         setContentView(R.layout.main)
         val toolbar = findViewById<Toolbar>(R.id.my_toolbar)
         toolbar?.let {
@@ -179,7 +178,7 @@ class ZazenTimerActivity :
         }
         observeViewModel()
         lifecycleScope.launch {
-            MigrationHelper.ensureBellsTableConsistent(this@ZazenTimerActivity, dbOperations)
+            MigrationHelper.seedBuiltinBells(this@ZazenTimerActivity, dbOperations)
             val demoMarker = File(noBackupFilesDir, "demo_sessions_created")
             if (!demoMarker.exists()) {
                 Log.d(TAG, "No demo marker -- creating demo sessions")

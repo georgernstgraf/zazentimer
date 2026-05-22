@@ -200,7 +200,7 @@ class SettingsFragment : PreferenceFragmentCompat() {
             }
             if (result == 0) {
                 launch {
-                    MigrationHelper.ensureBellsTableConsistent(requireActivity(), dbOperations)
+                    MigrationHelper.seedBuiltinBells(requireActivity(), dbOperations)
                 }
                 Toast.makeText(requireActivity(), R.string.restore_success_text, Toast.LENGTH_SHORT).show()
             } else if (result == 1) {

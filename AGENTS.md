@@ -26,7 +26,7 @@ Before running any emulator or test command:
 ## Pre-Push Lint
 Before pushing (or committing), always run:
 ```
-./gradlew ktlintCheck detekt --no-daemon
+./gradlew ktlintCheck detekt
 ```
 If there are violations, fix with `./gradlew ktlintFormat` first, then verify with the check command above. Do not push if lint fails.
 
