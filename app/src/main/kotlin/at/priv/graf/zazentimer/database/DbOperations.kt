@@ -298,4 +298,29 @@ class DbOperations
         suspend fun updateBell(bell: BellEntity) = withIdling { bellDao?.update(bell) }
 
         suspend fun deleteBellById(id: Int) = withIdling { bellDao?.deleteById(id) }
+
+        suspend fun deleteCustomBell(bellId: Int) =
+            withIdling {
+                val builtinBells = bellDao?.getBuiltinBells() ?: return@withIdling
+                val demoTarget = builtinBells.firstOrNull() ?: return@withIdling
+
+                val allSessionEntities = sessionDao?.getAllSessions() ?: emptyList()
+                for (sessionEntity in allSessionEntities) {
+                    val sections = sectionDao?.getSectionsForSession(sessionEntity._id) ?: emptyList()
+                    for (section in sections) {
+                        if (section.bellId == bellId) {
+                            section.bellId = demoTarget._id
+                            sectionDao?.update(section)
+                        }
+                    }
+                    val volumes = sessionBellVolumeDao?.getBellVolumesForSession(sessionEntity._id) ?: emptyList()
+                    for (volume in volumes) {
+                        if (volume.bellId == bellId) {
+                            sessionBellVolumeDao?.deleteById(volume._id.toLong())
+                        }
+                    }
+                }
+
+                bellDao?.deleteById(bellId)
+            }
     }

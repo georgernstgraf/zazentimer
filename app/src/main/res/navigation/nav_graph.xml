@@ -42,5 +42,13 @@
     <fragment
         android:id="@+id/settingsFragment"
         android:name="at.priv.graf.zazentimer.fragments.SettingsFragment"
-        android:label="@string/nav_label_settings" />
+        android:label="@string/nav_label_settings">
+        <action
+            android:id="@+id/action_settingsFragment_to_manageBellsFragment"
+            app:destination="@id/manageBellsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/manageBellsFragment"
+        android:name="at.priv.graf.zazentimer.fragments.ManageBellsFragment"
+        android:label="@string/nav_label_manage_bells" />
 </navigation>

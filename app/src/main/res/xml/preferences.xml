@@ -23,4 +23,8 @@
     <Preference
         android:title="@string/pref_title_restore"
         android:key="restore_from_sd"/>
+    <Preference
+        android:title="@string/manage_bells"
+        android:key="manage_bells"
+        android:summary="@string/manage_bells_summary"/>
 </PreferenceScreen>

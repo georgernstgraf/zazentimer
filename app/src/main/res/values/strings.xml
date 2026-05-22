@@ -166,4 +166,11 @@
     <string name="nav_label_edit_session" tools:ignore="MissingTranslation">Edit Session</string>
     <string name="nav_label_edit_section" tools:ignore="MissingTranslation">Edit Section</string>
     <string name="nav_label_settings" tools:ignore="MissingTranslation">Settings</string>
+    <string name="nav_label_manage_bells" tools:ignore="MissingTranslation">Manage Bells</string>
+    <string name="manage_bells">Manage Bells</string>
+    <string name="manage_bells_summary">Add Bells from filesystem / remove Bells from the App</string>
+    <string name="no_custom_bells">No custom bells imported.</string>
+    <string name="action_delete">Delete</string>
+    <string name="confirm_delete_bell">Delete bell \"%s\"?</string>
+    <string name="bell_deleted">Bell deleted</string>
 </resources>

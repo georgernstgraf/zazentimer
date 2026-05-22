@@ -11,6 +11,7 @@ import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AlertDialog
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.Navigation
 import androidx.preference.CheckBoxPreference
 import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
@@ -81,6 +82,7 @@ class SettingsFragment : PreferenceFragmentCompat() {
         setupThemePreference()
         setupBrightnessPreference()
         setupBackupPreferences()
+        setupManageBellsPreference()
     }
 
     private fun setupThemePreference() {
@@ -108,6 +110,13 @@ class SettingsFragment : PreferenceFragmentCompat() {
             true
         }
         checkBrightness.isEnabled = checkKeepScreenOn.isChecked
+    }
+
+    private fun setupManageBellsPreference() {
+        findPreference<Preference>("manage_bells")?.setOnPreferenceClickListener {
+            Navigation.findNavController(requireView()).navigate(R.id.action_settingsFragment_to_manageBellsFragment)
+            true
+        }
     }
 
     private fun setupBackupPreferences() {

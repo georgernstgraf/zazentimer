@@ -8,6 +8,7 @@ None.
 ## Completed (this cycle)
 - [x] #204 — External song import: fixed auto-select, playback, and back-navigation crash
 - [x] #205 — Added "Edit Section" to 3-dot overflow menu in session editor
+- [x] #206 — Manage Bells settings screen with custom bell deletion
 
 ## Completed (previous cycles)
 - [x] #201 — Fix tiny headings for system and individual bell volume in config dialog
