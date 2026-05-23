@@ -28,6 +28,7 @@ class MainPage {
     }
 
     fun verifyDefaultSessionsAreVisible(): MainPage {
+        robot.waitForRecyclerViewToBePopulated(R.id.recycler_sessions)
         onView(withId(R.id.recycler_sessions)).check(matches(isDisplayed()))
         onView(withId(R.id.but_start)).check(matches(isDisplayed()))
         return this

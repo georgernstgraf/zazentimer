@@ -36,6 +36,14 @@ class ManageBellsPage {
     }
 
     fun verifyBellListed(name: String): ManageBellsPage {
+        for (i in 0 until 20) {
+            try {
+                onView(withText(name)).check(matches(isDisplayed()))
+                return this
+            } catch (_: Throwable) {
+                Thread.sleep(500)
+            }
+        }
         onView(withText(name)).check(matches(isDisplayed()))
         return this
     }
