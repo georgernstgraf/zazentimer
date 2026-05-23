@@ -7,6 +7,7 @@ import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.contrib.RecyclerViewActions
+import androidx.test.espresso.matcher.RootMatchers
 import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
 import androidx.test.espresso.matcher.ViewMatchers.withId
 import androidx.test.espresso.matcher.ViewMatchers.withText
@@ -60,7 +61,9 @@ class ManageBellsPage {
     }
 
     fun confirmDelete(): ManageBellsPage {
-        onView(withText(R.string.action_delete)).perform(click())
+        onView(withText(R.string.action_delete))
+            .inRoot(RootMatchers.isDialog())
+            .perform(click())
         Thread.sleep(500)
         return this
     }
