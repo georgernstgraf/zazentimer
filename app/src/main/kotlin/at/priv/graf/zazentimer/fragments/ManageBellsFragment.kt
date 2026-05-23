@@ -13,6 +13,7 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import at.priv.graf.zazentimer.R
 import at.priv.graf.zazentimer.audio.BellCollection
@@ -109,6 +110,7 @@ class ManageBellsFragment : Fragment() {
         savedInstanceState: Bundle?,
     ) {
         super.onViewCreated(view, savedInstanceState)
+        binding.list.layoutManager = LinearLayoutManager(requireContext())
         binding.importButton.setOnClickListener {
             val intent = Intent(Intent.ACTION_GET_CONTENT)
             intent.flags = Intent.FLAG_GRANT_READ_URI_PERMISSION
