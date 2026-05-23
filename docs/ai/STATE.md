@@ -1,19 +1,15 @@
 # Project State
 
-Current status as of 2026-05-22.
+Current status as of 2026-05-23.
 
 ## Current Focus
-#208 — Clean slate: remove old migrations, reset DB to V1, rename DB file.
+#206 — Added tests for custom bell feature (Manage Bells UI + DbOperations).
 
 ## Completed (this cycle)
-- [x] #204 — External song import: fixed auto-select, playback, and back-navigation crash
-- [x] #205 — Added "Edit Section" to 3-dot overflow menu in session editor
-- [x] #206 — Manage Bells settings screen with custom bell deletion + fixes
-- [x] #208 — Removed all old migrations, reset DB to V1, renamed to `zazentimer.sqlite`
-- [x] #208 — Replaced `ensureBellsTableConsistent()` with `seedBuiltinBells()`
-- [x] #208 — Deleted MigrationTest.kt (516 lines, dead code)
-- [x] #208 — Rewrote RestoreIntegrationTest to verify old backups fail
-- [x] #208 — Gradle perf: parallel=true, caching=true, heap 4g
+- [x] #206 — 12 unit tests for Bell CRUD and `deleteCustomBell` in `DbOperationsTest.kt`
+- [x] #206 — 3 instrumentation tests for Manage Bells UI (`ManageBellsTest.kt`)
+- [x] #206 — New page object `ManageBellsPage.kt` + `clickManageBells()` on `SettingsPage.kt`
+- [x] #206 — All checks pass: ktlint, detekt, 28/28 unit tests
 
 ## Pending
 - [ ] #202 — Multi-LLM translation pipeline (Prisma schema done, needs Python scripts)
@@ -23,4 +19,4 @@ Current status as of 2026-05-22.
 None
 
 ## Next Session Suggestion
-Check instrumented test results from #208 scheduled run. Then #202.
+Run the instrumented tests (`scripts/run-instrumentation.sh`) to verify Manage Bells UI tests on emulator. Then #202.

@@ -60,6 +60,8 @@ Follow these without question. Do not deviate unless explicitly told.
 - **All test classes must extend `AbstractZazenTest`**: Provides `Timeout(2, MINUTES)`, `hiltRule`, and `activityRule`. Never duplicate these rules.
 - **`@HiltAndroidTest` annotation is NOT inherited**: Every test class needs its own `@HiltAndroidTest` annotation AND the `import dagger.hilt.android.testing.HiltAndroidTest`. ktlintFormat removes the import as "unused" — always verify with `compileDebugAndroidTestKotlin` after `ktlintFormat`.
 - **Use `inRoot(isDialog())` for AlertDialog interactions**: On API 36+, the system enforces edge-to-edge (`EDGE_TO_EDGE_ENFORCED`), which can cause activity windows to lose focus when `AlertDialog` appears. Espresso's default root matcher requires window focus, causing `RootViewWithoutFocusException`. Use `.inRoot(isDialog())` to target the dialog root directly. Import: `import androidx.test.espresso.matcher.RootMatchers.isDialog`.
+- **Bell DB tests**: Always seed at least one builtin bell via `TestBellHelper.seedBell()`. Insert custom bells with `isBuiltin=false` and `file://` URIs. For `deleteCustomBell` tests, `BellCollection.getDemoBell()` returns null in Robolectric — the fallback `bellDao?.getBuiltinBells()?.firstOrNull()` is used instead.
+- **ManageBellsPage pattern**: Use `RecyclerViewActions.actionOnItem<ViewHolder>(withBellName(name), clickChildViewWithId(R.id.deleteButton))` to find and click delete for a specific bell. Custom matcher `withBellName()` checks `R.id.bellName` text on each item. `hasSibling()` from Hamcrest is NOT available — use custom TypeSafeMatcher instead.
 
 
 ## Play Store Automation
