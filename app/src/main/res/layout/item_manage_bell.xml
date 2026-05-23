@@ -20,5 +20,5 @@
         android:layout_height="wrap_content"
         android:text="@string/action_delete"
         style="@style/Widget.AppCompat.Button.Borderless"
-        android:textColor="?android:attr/colorError" />
+        android:textColor="?attr/colorError" />
 </LinearLayout>
