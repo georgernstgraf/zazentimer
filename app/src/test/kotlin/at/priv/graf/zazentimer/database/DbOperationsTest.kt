@@ -5,6 +5,7 @@ import androidx.test.core.app.ApplicationProvider
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import at.priv.graf.zazentimer.bo.Section
 import at.priv.graf.zazentimer.bo.Session
+import at.priv.graf.zazentimer.bo.SessionBellVolume
 import at.priv.graf.zazentimer.database.BellEntity
 import com.google.common.truth.Truth.assertThat
 import kotlinx.coroutines.runBlocking
@@ -254,4 +255,157 @@ class DbOperationsTest {
             assertThat(dbOps.readSection(999)).isNull()
         }
     }
+
+    // --- Bell CRUD tests ---
+
+    @Test
+    fun insertBell_returnsPositiveId() =
+        runBlocking {
+            val id = dbOps.insertBell(BellEntity(name = "Custom", uri = "file://test.mp3", isBuiltin = false))
+            assertThat(id).isGreaterThan(0)
+        }
+
+    @Test
+    fun getNonBuiltinBells_returnsOnlyNonBuiltin() =
+        runBlocking {
+            dbOps.insertBell(BellEntity(name = "Custom", uri = "file://test.mp3", isBuiltin = false))
+            val bells = dbOps.getNonBuiltinBells()
+            assertThat(bells).hasSize(1)
+            assertThat(bells[0].isBuiltin).isFalse()
+            assertThat(bells[0].name).isEqualTo("Custom")
+        }
+
+    @Test
+    fun getBuiltinBells_returnsOnlyBuiltin() =
+        runBlocking {
+            val bells = dbOps.getBuiltinBells()
+            assertThat(bells).hasSize(1)
+            assertThat(bells[0].isBuiltin).isTrue()
+            assertThat(bells[0].name).isEqualTo(TestBellHelper.TEST_BELL_NAME)
+        }
+
+    @Test
+    fun getAllBells_returnsBothBuiltinAndCustom() =
+        runBlocking {
+            dbOps.insertBell(BellEntity(name = "Custom", uri = "file://test.mp3", isBuiltin = false))
+            assertThat(dbOps.getAllBells()).hasSize(2)
+        }
+
+    @Test
+    fun getBellById_returnsCorrectBell() =
+        runBlocking {
+            val id = dbOps.insertBell(BellEntity(name = "FindMe", uri = "file://find.mp3", isBuiltin = false)).toInt()
+            val bell = dbOps.getBellById(id)
+            assertThat(bell).isNotNull()
+            assertThat(bell!!.name).isEqualTo("FindMe")
+        }
+
+    @Test
+    fun getBellById_notFound_returnsNull() =
+        runBlocking {
+            assertThat(dbOps.getBellById(999)).isNull()
+        }
+
+    @Test
+    fun getBellByUri_returnsCorrectBell() =
+        runBlocking {
+            dbOps.insertBell(BellEntity(name = "ByUri", uri = "file://byuri.mp3", isBuiltin = false))
+            assertThat(dbOps.getBellByUri("file://byuri.mp3")).isNotNull()
+        }
+
+    @Test
+    fun getBellByUri_notFound_returnsNull() =
+        runBlocking {
+            assertThat(dbOps.getBellByUri("file://nonexistent.mp3")).isNull()
+        }
+
+    @Test
+    fun deleteBellById_removesBell() =
+        runBlocking {
+            val id =
+                dbOps
+                    .insertBell(BellEntity(name = "DeleteMe", uri = "file://delete.mp3", isBuiltin = false))
+                    .toInt()
+            dbOps.deleteBellById(id)
+            assertThat(dbOps.getBellById(id)).isNull()
+        }
+
+    @Test
+    fun updateBell_updatesFields() =
+        runBlocking {
+            val id =
+                dbOps
+                    .insertBell(BellEntity(name = "Old", uri = "file://old.mp3", isBuiltin = false))
+                    .toInt()
+            dbOps.updateBell(BellEntity(_id = id, name = "New", uri = "file://new.mp3", isBuiltin = false))
+            val bell = dbOps.getBellById(id)
+            assertThat(bell!!.name).isEqualTo("New")
+            assertThat(bell.uri).isEqualTo("file://new.mp3")
+            assertThat(bell.isBuiltin).isFalse()
+        }
+
+    // --- deleteCustomBell tests ---
+
+    @Test
+    fun deleteCustomBell_unused_deletesRow() {
+        runBlocking {
+            val id =
+                dbOps
+                    .insertBell(BellEntity(name = "Custom", uri = "file://test.mp3", isBuiltin = false))
+                    .toInt()
+            dbOps.deleteCustomBell(id)
+            assertThat(dbOps.getBellById(id)).isNull()
+        }
+    }
+
+    @Test
+    fun deleteCustomBell_reassignsSections() =
+        runBlocking {
+            val customId =
+                dbOps
+                    .insertBell(BellEntity(name = "Custom", uri = "file://test.mp3", isBuiltin = false))
+                    .toInt()
+            val session = Session("Test", "Desc")
+            dbOps.insertSession(session)
+            val section = Section("Zazen", 300)
+            section.bellId = customId
+            dbOps.insertSection(session, section)
+
+            dbOps.deleteCustomBell(customId)
+
+            val updated = dbOps.readSection(section.id)
+            assertThat(updated).isNotNull()
+            assertThat(updated!!.bellId).isNotEqualTo(customId)
+            assertThat(updated.bellId).isEqualTo(bellId)
+        }
+
+    @Test
+    fun deleteCustomBell_removesBellVolumes() =
+        runBlocking {
+            val customId =
+                dbOps
+                    .insertBell(BellEntity(name = "Custom", uri = "file://test.mp3", isBuiltin = false))
+                    .toInt()
+            val session = Session("Volumes", "Desc")
+            dbOps.insertSession(session)
+            dbOps.saveBellVolumes(session.id, listOf(SessionBellVolume(bellId = customId, volume = 80)))
+
+            dbOps.deleteCustomBell(customId)
+
+            assertThat(dbOps.readBellVolumes(session.id)).isEmpty()
+        }
+
+    @Test
+    fun deleteCustomBell_noBuiltinBells_noOp() =
+        runBlocking {
+            dbOps.getAllBells().forEach { dbOps.deleteBellById(it._id) }
+
+            val customId =
+                dbOps
+                    .insertBell(BellEntity(name = "Custom", uri = "file://test.mp3", isBuiltin = false))
+                    .toInt()
+            dbOps.deleteCustomBell(customId)
+
+            assertThat(dbOps.getBellById(customId)).isNotNull()
+        }
 }

@@ -74,6 +74,12 @@ class SettingsPage {
         return this
     }
 
+    fun clickManageBells(): ManageBellsPage {
+        scrollToPreference(R.string.manage_bells)
+        onView(withText(R.string.manage_bells)).perform(click())
+        return ManageBellsPage()
+    }
+
     fun goBack(): MainPage {
         robot.pressBack()
         return MainPage()
