@@ -1,6 +1,6 @@
 POST http://localhost:8000/api/votes
 Content-Type: application/json
 
-{"bcp_47":"de","model":"gemini-3.1-pro","master_text":"Cancel","translation":"ERbrechen","confidence":4}
+{"bcp_47":"de","model":"gemini-3.1-pro","master_text":"Cancel","translation":"Abbrechen"}
 
 ###

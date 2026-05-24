@@ -32,23 +32,13 @@ app.post("/api/votes", async (c) => {
     model?: string;
     master_text?: string;
     translation?: string;
-    confidence?: number;
   }>();
 
-  const { bcp_47, model, master_text, translation, confidence } = body;
+  const { bcp_47, model, master_text, translation } = body;
 
-  if (!bcp_47 || !model || !master_text || !translation || confidence == null) {
+  if (!bcp_47 || !model || !master_text || !translation) {
     throw new HTTPException(400, {
-      message: "bcp_47, model, master_text, translation, and confidence are required",
-    });
-  }
-
-  if (
-    typeof confidence !== "number" || confidence < 1 || confidence > 5 ||
-    !Number.isInteger(confidence)
-  ) {
-    throw new HTTPException(400, {
-      message: "confidence must be an integer between 1 and 5",
+      message: "bcp_47, model, master_text, and translation are required",
     });
   }
 
@@ -81,13 +71,12 @@ app.post("/api/votes", async (c) => {
           translation,
         },
       },
-      update: { confidence },
+      update: {},
       create: {
         languagesId: language.id,
         llm_modelsId: llmModel.id,
         master_stringsId: masterString.id,
         translation,
-        confidence,
       },
     });
   });

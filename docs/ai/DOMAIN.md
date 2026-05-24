@@ -69,6 +69,12 @@ Business rules and domain relationships not obvious from code.
 - **Whisper**: Used for audio transcription during meditation, not for TTS. Whisper language map is static (100 languages). 32 of 123 locales have no Whisper support (whisper_response = null).
 - **Confidence scale**: 1-5, Int, raw SQL CHECK. Not an enum — SQLite sorts enums alphabetically, making ordered queries meaningless.
 
+## Translation Orchestrator (#202)
+- **Orchestrator** (`prisma/translate.ts`): Nested Loop über `llm_models × languages`. Pro (model, locale) eine opencode-Session. Prüft vor Dispatch via `getExistingVotes`, welche Strings bereits einen Vote haben — nur fehlende werden angefragt.
+- **Output-JSON**: Darf `null` für unbekannte Übersetzungen enthalten → wird nicht in DB gespeichert. `proficiency` (1-5) pro (model, locale) ist Pflicht — fehlt sie → Abbruch.
+- **Multiple Optionen pro String**: `@@unique([languagesId, llm_modelsId, master_stringsId, translation])` erlaubt verschiedene Übersetzungsvorschläge desselben Models für denselben String. Nützlich wenn das Model sich nicht entscheiden kann.
+- **Voting**: Noch nicht implementiert. Sobald alle Modelle ihre Votes abgegeben haben, können via SQL gleiche Übersetzungen pro (langId, stringId) gezählt und nach Consensus gefiltert werden.
+
 ## Screen Behavior During Meditation
 - **Keep screen on** (`keep_screen_on` preference): Prevents screen timeout during meditation.
 - **Brightness** (`brightness` preference): Sets screen brightness (0-100) during meditation, only when keep_screen_on is enabled.

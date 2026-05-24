@@ -60,6 +60,16 @@ Follow these without question. Do not deviate unless explicitly told.
 - Put CHECK constraints directly in the init migration's SQL, not in separate migration files.
 - Confidence `Int` with CHECK — never use Prisma enum for numeric ranges (SQLite sorts enums alphabetically).
 
+## Translation Pipeline (#202)
+- Shared Prisma DB queries in `prisma/lib/db.ts` — verwendet von `voting_api.ts` und `translate.ts`.
+- Orchestrator at `prisma/translate.ts` — nistete Loop `for model × for locale → dispatch → verify → store`.
+- `prisma/lib/opencode_client.ts` — HTTP Client für opencode Server (`createSession`, `sendMessage`, `closeSession`).
+- `prisma/lib/verify.ts` — Output-Verifikation: JSON-Struktur, Keys, null erlaubt, Placeholder-Check.
+- One opencode session per (model, locale) pair. `DELETE /session/{id}` nach erfolgreichem oder abgebrochenem Durchlauf.
+- `--all` runs haben 10 Minuten Timeout. Erreichte Sessions sind dauerhaft in DB (Idempotenz via `getExistingVotes`-Check).
+- Output-JSON erlaubt `"translation": null` für unbekannte Strings → kein Vote, kein Fehler.
+- Proficiency (1-5) ist Pflicht. Fehlt sie → `Deno.exit(1)`. Keine halben Sachen in der DB.
+
 ## Detekt
 - `./gradlew detekt` must exit 0 before any commit. Zero violations policy.
 - Use `@Suppress("TooManyFunctions")` for classes that are cohesive but exceed function limits (e.g., main Activity, core business logic).

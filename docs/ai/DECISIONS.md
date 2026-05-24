@@ -297,6 +297,54 @@ Each entry documents WHAT was decided and WHY.
 - **Considered**: Copy (drifts from template), inline in `.git/hooks/` (not version-controlled).
 - **Tradeoff**: Requires symlink creation on fresh clones. Documented in ONBOARDING.md.
 
+## 2026-05-24: PrismaClient per-request pattern with Deno.serve (#202)
+- **Choice**: Create a fresh PrismaClient per request inside a serialized promise queue (`withPrisma()`). Never cache a module-level PrismaClient when using `Deno.serve`.
+- **Reason**: PrismaClient created at module level loses engine connectivity once `Deno.serve` enters its event loop — subsequent requests hang indefinitely. Concurrent PrismaClient initialization causes `Unsupported scheme "node"` errors. Fresh client per request + serial queue avoids both issues.
+- **Considered**: Module-level singleton (hangs), lazy singleton with cached client (still hangs on second request), concurrent clients (node:fs conflict).
+- **Tradeoff**: Each request pays ~200ms for Prisma Engine process spawn + DB connection + disconnect. Acceptable for a voting backend with ~1 req/s load.
+
+## 2026-05-24: Per-request PrismaClient with serialized queue (#202)
+- **Choice**: Serialize PrismaClient creation and destruction via a promise chain (`_queue = _queue.then(...).catch(() => {})`). Only one PrismaClient exists at any time.
+- **Reason**: Deno's npm compatibility layer has a race condition when multiple PrismaEngine binaries are spawned simultaneously — the runtime library (`library.mjs`) tries to import `node:fs` which Deno doesn't support in concurrent contexts.
+- **Considered**: Mutex/lock (more complex), single client with connection pooling (Deno doesn't support it properly).
+- **Tradeoff**: Sequential processing of concurrent requests — acceptable for this backend.
+
+## 2026-05-24: Opencode HTTP API for translation orchestration (#202)
+- **Choice**: The orchestrator (`prisma/translate.ts`) uses opencode's HTTP API (`POST /session`, `POST /session/{id}/message`, `DELETE /session/{id}`) instead of `opencode run --model X --continue`.
+- **Reason**: opencode server läuft bereits (opencode serve). HTTP API vermeidet Prozess-Overhead pro Aufruf (1230× Deno.Process fork wäre zu langsam). Strukturierte Trennung von System-Prompt und Input-Daten via `system`-Feld.
+- **Considered**: `opencode run --model X --continue` (Prozess-Overhead, Text-Parsing nötig), `Deno.Command` (blocking, parallel schwer handhabbar).
+- **Tradeoff**: Orchestrator muss opencode-Server-URL kennen (konfigurierbar via Umgebungsvariable).
+
+## 2026-05-24: Deno/TypeScript für Orchestrator, nicht Python (#202)
+- **Choice**: Der Orchestrator wird in Deno/TypeScript geschrieben (`prisma/translate.ts`), nicht in Python.
+- **Reason**: Direkter Import von `prismaclient` möglich (kein exec/umweg), konsistente Toolchain mit dem restlichen Prisma-Ökosystem, shared `prisma/lib/`-Module.
+- **Considered**: Python mit `datasource`-Wrapper (extra Abhängigkeit, `prisma-client-py`), Shell-Scripting (zu komplex).
+- **Tradeoff**: Kein Zugriff auf `pycountry` für ISO 639-3 Lookups — wird aber für den Orchestrator nicht benötigt.
+
+## 2026-05-24: One opencode session per (model, locale) pair (#202)
+- **Choice**: Jede (model, locale)-Kombination bekommt eine eigene opencode-Session. Keine Sessions, die mehrere Sprachen oder Modelle mischen.
+- **Reason**: Der Agent sieht nur eine Sprache → null Verwechslungsgefahr. Kontextfenster bleibt minimal (~2k Tokens). Retry betrifft nur genau dieses (model, locale).
+- **Considered**: Alle Locales in einer Session (Kontext wächst auf 250k+ Tokens, Agent vergisst Zielsprache, Retry in Sprache 42 riskiert 41 vorherige Ergebnisse).
+- **Tradeoff**: Session-Churn — 1230 Sessions für einen Voll-Durchlauf. HTTP API verkraftet das problemlos.
+
+## 2026-05-24: 10-minute timeout for --all runs (#202)
+- **Choice**: `--all` runs haben ein hartes Timeout von 10 Minuten. `translate.ts` prüft vor jeder (model, locale)-Iteration `Date.now() - START_TIME >= 600_000`. Bei Überschreitung: `Deno.exit(0)` (sauberes Ende).
+- **Reason**: LLM-API-Aufrufe dauern 3-20s pro Session → 10 Minuten reichen für ~30-200 Sessions. Der Rest wird beim nächsten Lauf nachgeholt (Idempotenz via `getExistingVotes`).
+- **Considered**: Kein Timeout (Skript läuft Stunden), Timeout + Fehlercode (wäre kein Fehler, nur Abbruch).
+- **Tradeoff**: Unvollständiger Durchlauf ist der Normalfall — muss dem Operator klar kommuniziert werden.
+
+## 2026-05-24: null erlaubt im Output-JSON (#202)
+- **Choice**: Das Output-JSON des LLM-Agents darf `"translation": null` enthalten. Der Agent signalisiert damit „diesen String kenne ich nicht". Solche Einträge werden nicht in der DB gespeichert.
+- **Reason**: Bei ~154 Strings pro Locale kann ein Modell einzelne Strings nicht kennen (z.B. tiefe Meditationsterminologie in einer schwachen Sprache). Erzwungene Halluzination wäre schlimmer als `null`.
+- **Considered**: Fehlende Keys im Output = unbehandelt (nicht von `translation: null` unterscheidbar), leere Strings (`""`) als Platzhalter (nicht von echten leeren Übersetzungen unterscheidbar).
+- **Tradeoff**: Zusätzlicher Verify-Schritt. `null`-Einträge müssen beim Voting ignoriert werden.
+
+## 2026-05-24: M:N language_proficiencies als Junction Table (#202)
+- **Choice**: `language_proficiencies` ist eine implizite M:N-Junction zwischen `llm_models` und `languages` mit `level` als Payload. Ein Model kann mehrere Level-Einträge haben (pro Sprache), eine Sprache kann von mehreren Modellen bewertet werden.
+- **Reason**: Flexibilität für zukünftige Anwendungsfälle (z.B. „Model hat Level 5 in Deutsch, aber nur Level 3 in österreichischem Deutsch"). `@@unique` auf der Junction wäre zu restriktiv gewesen.
+- **Considered**: Explizite 1:N mit `@@unique([modelId, languageId])` (restriktiver, keine doppelten Einträge pro Model-Language-Paar).
+- **Tradeoff**: Ohne `@@unique` können theoretisch doppelte (model, language, level)-Einträge entstehen. Der Orchestrator muss deduplizieren.
+
 ## 2026-05-22: Prisma-managed translation voting database (#202)
 - **Choice**: Created a second Prisma schema at `prisma/translations/schema.prisma` with 4 models (locales, strings, translations, votes) to store multi-LLM translation candidates and voting results. Added `prismaValidateTranslationsSchema` Gradle task.
 - **Reason**: Need a structured, version-controlled data store for the multi-model translation pipeline where 4 LLMs (Claude, Gemini, GPT, DeepSeek) each produce candidate translations that are then compared via a voting mechanism.
