@@ -31,14 +31,12 @@ configurations), and sections (timed segments within a session).
 ```json
 {
   "locale": "de",
-  "model": "gemini-3.1-pro",
   "proficiency": 4,
   "reasoning": "German is one of my strongest languages. I can handle meditation UI terminology fluently."
 }
 ```
 
 - `locale`: must be the exact `bcp_47` string from the input locale object. Do not use the `english_name` or any other value.
-- `model`: your own model identifier exactly as specified.
 - `proficiency`: self-assessment of your ability in this language:
   1 = minimal (cannot produce reliable translations)
   2 = basic (can handle simple phrases with frequent errors)

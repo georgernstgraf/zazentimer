@@ -5,14 +5,11 @@ export interface TranslationEntry {
 
 export interface TranslationOutput {
   locale: string;
-  model: string;
-  proficiency: number;
   translations: TranslationEntry[];
 }
 
 export interface ProficiencyOutput {
   locale: string;
-  model: string;
   proficiency: number;
   reasoning: string;
 }
@@ -61,22 +58,6 @@ function checkProficiency(value: unknown): number {
   return value;
 }
 
-function extractModelName(value: string): string {
-  const lastSlash = value.lastIndexOf("/");
-  return lastSlash === -1 ? value : value.slice(lastSlash + 1);
-}
-
-function checkModel(value: unknown, expected: string): string {
-  const model = String(value ?? "");
-  const extracted = extractModelName(model);
-  if (extracted !== expected) {
-    throw new VerifyError(
-      `model mismatch: expected '${expected}', got '${model}'`,
-    );
-  }
-  return model;
-}
-
 function checkLocale(value: unknown, expected: string): string {
   const locale = String(value ?? "");
   if (locale !== expected) {
@@ -90,26 +71,21 @@ function checkLocale(value: unknown, expected: string): string {
 export function verifyProficiency(
   raw: string,
   expectedLocale: string,
-  expectedModel: string,
 ): ProficiencyOutput {
   const obj = asObject(raw);
   const locale = checkLocale(obj.locale, expectedLocale);
-  const model = checkModel(obj.model, expectedModel);
   const proficiency = checkProficiency(obj.proficiency);
   const reasoning = String(obj.reasoning ?? "");
-  return { locale, model, proficiency, reasoning };
+  return { locale, proficiency, reasoning };
 }
 
 export function verifyTranslation(
   raw: string,
   expectedLocale: string,
-  expectedModel: string,
   inputStrings: InputString[],
 ): TranslationOutput {
   const obj = asObject(raw);
   const locale = checkLocale(obj.locale, expectedLocale);
-  const model = checkModel(obj.model, expectedModel);
-  const proficiency = checkProficiency(obj.proficiency);
 
   if (!Array.isArray(obj.translations)) {
     throw new VerifyError("translations must be an array");
@@ -164,5 +140,5 @@ export function verifyTranslation(
     }
   }
 
-  return { locale, model, proficiency, translations };
+  return { locale, translations };
 }

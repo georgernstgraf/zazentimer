@@ -41,8 +41,6 @@ Use calm, meditation-appropriate vocabulary.
 ```json
 {
   "locale": "de",
-  "model": "gemini-3.1-pro",
-  "proficiency": 4,
   "translations": [
     {"key": "cancel", "translation": "Abbrechen"},
     {"key": "about_title", "translation": null}
@@ -51,10 +49,6 @@ Use calm, meditation-appropriate vocabulary.
 ```
 
 - `locale`: must match the input `bcp_47`.
-- `model`: your own model identifier.
-- `proficiency`: self-assessment of your ability in this language (1=minimal, 5=native).
-  Be honest. If you do not know the language well, set a low proficiency.
-  **proficiency is REQUIRED** — omitting it aborts the run.
 - `translations`: one entry per input string, in the same order.
 - `key`: must exactly match the input key.
 - `translation`: your translation, or **`null`** if you are not confident enough.

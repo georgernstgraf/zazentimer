@@ -225,26 +225,36 @@ async function recoverStaleOutput(): Promise<void> {
 
   try {
     const parsed = JSON.parse(raw);
-    if (parsed.locale && parsed.model && parsed.proficiency) {
+    if (!parsed.locale) {
+      logError(`Cannot recover ${OUTPUT_FILE}: missing locale`);
+      await Deno.remove(OUTPUT_FILE);
+      return;
+    }
+
+    if (parsed.model) {
+      // Old-format recovery: output includes model → can attribute to DB
       const language = await getOrCreateLanguage(parsed.locale);
       const modelDb = await getOrCreateModel(parsed.model);
 
       if (parsed.translations) {
-        const result = verifyTranslation(raw, parsed.locale, parsed.model, []);
-        await upsertProficiency(language.id, modelDb.id, result.proficiency);
+        const result = verifyTranslation(raw, parsed.locale, []);
         const allMs = await getAllMasterStrings();
         for (const t of result.translations) {
           if (t.translation === null) continue;
           const ms = allMs.find((s) => s.text === t.key);
           if (ms) await upsertVote(language.id, modelDb.id, ms.id, t.translation);
         }
-      } else {
-        const result = verifyProficiency(raw, parsed.locale, parsed.model);
+      } else if (parsed.proficiency) {
+        const result = verifyProficiency(raw, parsed.locale);
         await upsertProficiency(language.id, modelDb.id, result.proficiency);
       }
 
       await Deno.remove(OUTPUT_FILE);
       log("Recovery successful");
+    } else {
+      // New-format output without model → discard, orchestrator will retry
+      log(`New-format output without model — discarding (will retry)`);
+      await Deno.remove(OUTPUT_FILE);
     }
   } catch (e) {
     logError(`Cannot recover ${OUTPUT_FILE}: ${e}`);
@@ -286,7 +296,7 @@ async function dispatchProficiency(
     await writeOutput(raw);
 
     try {
-      const result = verifyProficiency(raw, langBcp47, modelName);
+      const result = verifyProficiency(raw, langBcp47);
       const language = await getOrCreateLanguage(langBcp47);
       const modelDb = await getOrCreateModel(modelName);
       await upsertProficiency(language.id, modelDb.id, result.proficiency);
@@ -347,11 +357,9 @@ async function dispatchTranslate(
       await writeOutput(raw);
 
       try {
-        const result = verifyTranslation(raw, langBcp47, modelName, strings);
+        const result = verifyTranslation(raw, langBcp47, strings);
         const language = await getOrCreateLanguage(langBcp47);
         const modelDb = await getOrCreateModel(modelName);
-
-        await upsertProficiency(language.id, modelDb.id, result.proficiency);
 
         const allMs = await getAllMasterStrings();
         let stored = 0;
