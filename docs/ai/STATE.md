@@ -9,19 +9,15 @@ Current status as of 2026-05-24.
 - [x] #202 — Prisma schema + seed + migration
 - [x] #202 — `voting_api.ts` Hono backend (POST /api/votes, error handling, serialized PrismaClient)
 - [x] #202 — Architecture design: opencode HTTP API for LLM dispatch
-- [x] #202 — Decision: Deno/TypeScript orchestrator (not Python)
-- [x] #202 — Decision: one opencode session per (model, locale)
-- [x] #202 — Decision: null allowed in output JSON, proficiency required
-- [x] #202 — Decision: 10-minute timeout for --all runs
-- [x] #202 — M:N language_proficiencies junction table with CHECK(1-5)
-- [x] #202 — Skill: .opencode/skills/translate/SKILL.md (self-contained, no tools)
-- [x] #202 — prisma/lib/db.ts (shared Prisma queries: getOrCreate*, getExistingVotes, upsertVote, upsertProficiency)
-- [x] #202 — prisma/lib/opencode_client.ts (HTTP session client: createSession, sendMessage, closeSession)
-- [x] #202 — prisma/lib/verify.ts (output verification: JSON structure, null allowed, placeholder integrity)
-- [x] #202 — prisma/translate.ts (orchestrator nested loop with 10-min timeout, retry, verify)
-- [x] #202 — deno.json task: translate
-- [x] #202 — Sub-issue #209 created for this implementation batch
-- [x] #202 — Knowledge persisted: 9 decision entries, 5 pitfalls, conventions, domain, state, handoff
+- [x] #202 — Deno/TypeScript orchestrator + shared lib (db.ts, opencode_client.ts, verify.ts)
+- [x] #202 — Translate + Proficiency SKILL.md
+- [x] #202 — translate.ts: two-phase (proficiency + translate), file-based recovery, 10-min timeout
+- [x] #202 — PROVIDER_RANKING: ascending by cost/quality (zai=1, nvidia=2, opencode=4, ..., anthropic=10)
+- [x] #202 — fetchAvailableModels(): parses `opencode models` output, builds fallback chains
+- [x] #202 — Fallback chain per dispatch: tries cheapest provider first, fails over to expensive
+- [x] #202 — opencode_client.ts: model per message (ModelRef), system in sendMessage (PromptInput API)
+- [x] #202 — Sub-issue #209 created + implementation complete
+- [x] #202 — Knowledge persisted
 
 ## Pending
 - [ ] #202 — Voting + export script (auto-resolve consensus translations)

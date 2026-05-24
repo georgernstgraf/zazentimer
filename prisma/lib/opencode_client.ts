@@ -1,13 +1,21 @@
 const BASE_URL = Deno.env.get("OPENCODE_SERVER_URL") || "http://localhost:3001";
 
+export interface ModelRef {
+  providerID: string;
+  modelID: string;
+}
+
+export interface SendOptions {
+  model?: ModelRef;
+  system?: string;
+}
+
 export class OpencodeClient {
-  async createSession(systemPrompt: string): Promise<string> {
+  async createSession(): Promise<string> {
     const res = await fetch(`${BASE_URL}/session`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        system: systemPrompt,
-      }),
+      body: "{}",
     });
     if (!res.ok) {
       throw new Error(`createSession failed: ${res.status} ${await res.text()}`);
@@ -23,13 +31,29 @@ export class OpencodeClient {
     return sessionId;
   }
 
-  async sendMessage(sessionId: string, text: string): Promise<string> {
+  async sendMessage(
+    sessionId: string,
+    text: string,
+    opts?: SendOptions,
+  ): Promise<string> {
+    const body: Record<string, unknown> = {
+      parts: [{ type: "text", text }],
+    };
+
+    if (opts?.system) {
+      body.system = opts.system;
+    }
+    if (opts?.model) {
+      body.model = {
+        providerID: opts.model.providerID,
+        modelID: opts.model.modelID,
+      };
+    }
+
     const res = await fetch(`${BASE_URL}/session/${sessionId}/message`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        parts: [{ type: "text", text }],
-      }),
+      body: JSON.stringify(body),
     });
     if (!res.ok) {
       throw new Error(
