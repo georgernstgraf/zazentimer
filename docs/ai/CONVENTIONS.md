@@ -112,6 +112,13 @@ Follow these without question. Do not deviate unless explicitly told.
 - Use `@string/` references in layout XML and navigation graphs
 - Verify placeholder counts match after translation
 
+## Opencode HTTP API
+- System prompt und Model werden **per Message** gesendet (`POST /session/{id}/message`), nicht bei Session-Erstellung (`POST /session {}`).
+- Model-Ref Format: `{ providerID: "opencode", modelID: "gpt-5.5" }` — getrennt von Provider, nicht der Gesamt-Slug.
+- `sendMessage()` response: aus `parts[]` den Eintrag mit `type: "text"` extrahieren (nicht `parts[0]`).
+- Bei Retry in derselben Session: `system` nur beim ersten Request mitsenden (bereits im Kontext).
+- Auth: Basic Auth mit `OPENCODE_SERVER_USERNAME`/`OPENCODE_SERVER_PASSWORD`.
+
 ## Emulator Scripts
 - `start-emulator.sh` and `stop-emulator.sh` are sourceable libraries. Use `[[ "${BASH_SOURCE[0]}" == "${0}" ]]` guard for standalone mode.
 - `emulator_launch(avd, serial, logfile, ...flags)` requires a logfile parameter. Callers pass `-noaudio`, `-no-snapshot-save`, `-wipe-data` etc. explicitly.

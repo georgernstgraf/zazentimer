@@ -74,3 +74,16 @@ Read this file carefully before making changes in affected areas.
 - **PrismaClient concurrent init in Deno causes node:fs error**: When two PrismaClients are created simultaneously (two concurrent requests), Prisma's runtime library (`library.mjs`) tries to import `node:fs` which Deno's npm compatibility layer doesn't support. Error: `Unsupported scheme "node" for module "node:fs"`. Fix: serialize PrismaClient creation via promise queue.
 - **Hono HTTPException requires app.onError handler**: Without `app.onError()`, unhandled `HTTPException` instances return an empty 500 response body. Add global error handler to return proper status codes (400, 404, 409, 500) with meaningful messages.
 - **Prisma P2002 (Unique Constraint) returns empty response without error handler**: Unhandled Prisma errors crash the request with no response body. Global `app.onError()` must catch errors with `code === "P2002"` and return 409 with the error message.
+
+### Opencode HTTP API
+- **Basic Auth required**: Server läuft hinter `OPENCODE_SERVER_USERNAME`/`OPENCODE_SERVER_PASSWORD`. Alle API-Calls brauchen `Authorization: Basic <base64>`. Default-Port: `4096` (nicht `3001`).
+- **Parts-Format im Response**: Message-Parts enthalten `step-start`, `reasoning`, `text`, `step-finish`. Der Content liegt im Part mit `type: "text"` — nicht in `parts[0]` (das ist `step-start` ohne `.text`).
+- **Model-Eigenidentifikation**: LLMs geben oft `providerID/modelID` (z.B. `opencode/gpt-5.5`) statt nur `gpt-5.5` als Model-Namen zurück. Verify-Funktionen müssen den letzten Slash-Teil extrahieren (`extractModelName()`).
+- **System + Model per Message**: `POST /session/{id}/message` akzeptiert `{ system, model: { providerID, modelID }, parts }`. Session-Erstellung (`POST /session`) hat KEINEN `system`-Parameter.
+- **zai (Zhipu AI) Provider**: Subscription abgelaufen — Modelle liefern `locale: ""` statt des bcp_47-Codes. Aus PROVIDER_RANKING entfernt. `zai-coding-plan` analog.
+
+### Translation Pipeline
+- **Gemini 3.1 Pro Performance**: ~90s für 154 Strings, Proficiency 5/5, alle 153 übersetzt (0 null).
+- **GPT-5.5 Performance**: ~120s für 154 Strings, Proficiency 4/5, alle 154 übersetzt (0 null).
+- **Übersetzungsqualität**: Beide Modelle liefern exzellente Ergebnisse mit korrektem Fachvokabular („Klangschale" statt „Glocke"), HTML-Tags erhalten, Placeholder intakt.
+- **Große Batches**: 154 Strings passen in einen Request — Response-Zeit skaliert linear mit String-Anzahl.

@@ -3,21 +3,21 @@
 Current status as of 2026-05-24.
 
 ## Current Focus
-#202 — Building the Deno translate orchestrator with opencode HTTP API.
+#202 — Orchestrator läuft. Erste Test-Übersetzungen für Deutsch mit 2 Modellen in der DB.
 
 ## Completed (this cycle)
-- [x] #202 — Prisma schema + seed + migration
-- [x] #202 — `voting_api.ts` Hono backend (POST /api/votes, error handling, serialized PrismaClient)
-- [x] #202 — Architecture design: opencode HTTP API for LLM dispatch
-- [x] #202 — Deno/TypeScript orchestrator + shared lib (db.ts, opencode_client.ts, verify.ts)
-- [x] #202 — Translate + Proficiency SKILL.md
-- [x] #202 — translate.ts: two-phase (proficiency + translate), file-based recovery, 10-min timeout
-- [x] #202 — PROVIDER_RANKING: ascending by cost/quality (zai=1, nvidia=2, opencode=4, ..., anthropic=10)
-- [x] #202 — fetchAvailableModels(): parses `opencode models` output, builds fallback chains
-- [x] #202 — Fallback chain per dispatch: tries cheapest provider first, fails over to expensive
-- [x] #202 — opencode_client.ts: model per message (ModelRef), system in sendMessage (PromptInput API)
-- [x] #202 — Sub-issue #209 created + implementation complete
-- [x] #202 — Knowledge persisted
+- [x] Prisma schema + seed + migration
+- [x] voting_api.ts Hono backend
+- [x] translate + proficiency SKILL.md
+- [x] translate.ts: PROVIDER_RANKING, fetchAvailableModels(), Fallback-Chain, Logging
+- [x] opencode_client.ts: auth, model per message, parts extraktion
+- [x] verify.ts: extractModelName für Provider-Prefix
+- [x] Loops merged: runOne/runAll (proficiency on-demand + translate)
+- [x] zai/zai-coding-plan aus Ranking entfernt
+- [x] Erster Voll-Durchlauf: Gemini 3.1 Pro → 154 DE votes (Proficiency 5)
+- [x] Zweiter Durchlauf: GPT-5.5 → 154 DE votes (Proficiency 4)
+- [x] DB: 308 Votes, 2 Modelle, 6 Proficiencies (DE + FR)
+- [x] Sub-issue #209 abgeschlossen
 
 ## Pending
 - [ ] #202 — Voting + export script (auto-resolve consensus translations)
