@@ -1,10 +1,13 @@
 {
   "tasks": {
-    "dev": "deno run --watch main.ts"
+    "prisma:generatetranslationsclient": "deno -A prisma generate --schema=translations/schema.prisma",
+    "try": "deno run -A translations/seed_template.ts"
   },
   "imports": {
     "@std/assert": "jsr:@std/assert@1",
-    "prisma": "npm:prisma@^6.19.2"
+    "prisma": "npm:prisma@^6.19.3",
+    "@prisma/client": "npm:@prisma/client@^6.19.3",
+    "prismaclient": "./generatedprismaclient/client.ts"
   },
   "fmt": {
     "indentWidth": 4

@@ -1,3 +1,9 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../generatedprismaclient"
+  runtime  = "deno"
+}
+
 datasource db {
   provider = "sqlite"
   url      = env("DATABASE_URL")
@@ -16,16 +22,19 @@ model languages {
 }
 
 /// A source English string that needs translation.
+/// Note: Only translatable strings (<string> without translatable="false")
+/// from app/src/main/res/values/strings.xml are seeded here.
+/// Non-translatable strings (e.g. app_name, platform internals) are excluded.
 model master_strings {
   id    Int     @id @default(autoincrement())
-  text  String
+  text  String  @unique
   votes votes[]
 }
 
 /// LLM Model (gemini-3.1-pro, opus-4.7, etc..)
 model llm_models {
   id    Int     @id @default(autoincrement())
-  name  String
+  name  String  @unique
   votes votes[]
 }
 
@@ -44,5 +53,5 @@ model votes {
   llm_modelsId     Int
   master_stringsId Int
 
-  @@unique([languagesId, llm_modelsId, master_stringsId])
+  @@unique([languagesId, llm_modelsId, master_stringsId, translation])
 }
