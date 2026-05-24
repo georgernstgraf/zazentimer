@@ -4,43 +4,44 @@ datasource db {
 }
 
 /// A locale that translations target (e.g., "de" for values-de).
-model locales {
-  code      String  @id
-  directory String
-  reviewed  Boolean @default(false)
+model languages {
+  id               Int     @id @default(autoincrement())
+  posix_code       String  @unique /// _region is nice to have, but optional here
+  bcp_47           String  @unique
+  iso_639_3        String  @unique
+  whisper_response String? @unique
+  directory        String  @unique
+  votes            votes[]
 }
 
 /// A source English string that needs translation.
-model strings {
-  key     String @id
-  english String
+model master_strings {
+  id    Int     @id @default(autoincrement())
+  text  String
+  votes votes[]
 }
 
-/// One candidate translation produced by one LLM for one (locale, string_key).
-model translations {
-  id          Int      @id @default(autoincrement())
-  locale_code String
-  string_key  String
-  model       String
+/// LLM Model (gemini-3.1-pro, opus-4.7, etc..)
+model llm_models {
+  id    Int     @id @default(autoincrement())
+  name  String
+  votes votes[]
+}
+
+/// Individual Votings of large models
+model votes {
+  id            Int            @id @default(autoincrement())
+  language      languages      @relation(fields: [languagesId], references: [id])
+  llm_model     llm_models     @relation(fields: [llm_modelsId], references: [id])
+  master_string master_strings @relation(fields: [master_stringsId], references: [id])
+  confidence    Int /// valid: 1-5  <-  raw migration gibt check_constraints dazu
+
   translation String
-  preserved   Boolean  @default(true)
   created_at  DateTime @default(now())
 
-  @@unique([locale_code, string_key, model])
-}
+  languagesId      Int
+  llm_modelsId     Int
+  master_stringsId Int
 
-/// The agreed-upon translation after the voting pass.
-model votes {
-  id           Int       @id @default(autoincrement())
-  locale_code  String
-  string_key   String
-  translation  String
-  agreement    Int
-  total_models Int       @default(4)
-  auto_resolved Boolean  @default(false)
-  resolved     Boolean   @default(false)
-  resolved_at  DateTime?
-  created_at   DateTime  @default(now())
-
-  @@unique([locale_code, string_key])
+  @@unique([languagesId, llm_modelsId, master_stringsId])
 }
