@@ -11,14 +11,15 @@ datasource db {
 
 /// A locale that translations target (e.g., "de" for values-de).
 model languages {
-  id               Int     @id @default(autoincrement())
-  posix_code       String  @unique /// _region is nice to have, but optional here
-  bcp_47           String  @unique
-  iso_639_3        String
-  whisper_response String?
-  directory        String  @unique
-  english_name     String /// The English name of the language
-  votes            votes[]
+  id                     Int                      @id @default(autoincrement())
+  posix_code             String                   @unique /// _region is nice to have, but optional here
+  bcp_47                 String                   @unique
+  iso_639_3              String
+  whisper_response       String?
+  directory              String                   @unique
+  english_name           String /// The English name of the language
+  votes                  votes[]
+  language_proficiencies language_proficiencies[]
 }
 
 /// A source English string that needs translation.
@@ -33,9 +34,18 @@ model master_strings {
 
 /// LLM Model (gemini-3.1-pro, opus-4.7, etc..)
 model llm_models {
-  id    Int     @id @default(autoincrement())
-  name  String  @unique
-  votes votes[]
+  id                     Int                      @id @default(autoincrement())
+  name                   String                   @unique
+  votes                  votes[]
+  language_proficiencies language_proficiencies[]
+}
+
+/// self-assessment of llms
+model language_proficiencies {
+  id         Int          @id @default(autoincrement())
+  level      Int
+  llm_models llm_models[]
+  languages  languages[]
 }
 
 /// Individual Votings of large models
@@ -44,7 +54,6 @@ model votes {
   language      languages      @relation(fields: [languagesId], references: [id], onDelete: Cascade)
   llm_model     llm_models     @relation(fields: [llm_modelsId], references: [id], onDelete: Cascade)
   master_string master_strings @relation(fields: [master_stringsId], references: [id], onDelete: Cascade)
-  confidence    Int /// valid: 1-5
 
   translation String
   created_at  DateTime @default(now())

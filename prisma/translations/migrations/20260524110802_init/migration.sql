@@ -22,12 +22,17 @@ CREATE TABLE "llm_models" (
 );
 
 -- CreateTable
+CREATE TABLE "language_proficiencies" (
+    "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    "level" INTEGER NOT NULL CHECK(
+        level BETWEEN 1
+        AND 5
+    )
+);
+
+-- CreateTable
 CREATE TABLE "votes" (
     "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
-    "confidence" INTEGER NOT NULL CHECK(
-        confidence BETWEEN 1
-        AND 5
-    ),
     "translation" TEXT NOT NULL,
     "created_at" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "languagesId" INTEGER NOT NULL,
@@ -36,6 +41,22 @@ CREATE TABLE "votes" (
     CONSTRAINT "votes_languagesId_fkey" FOREIGN KEY ("languagesId") REFERENCES "languages" ("id") ON DELETE CASCADE ON UPDATE CASCADE,
     CONSTRAINT "votes_llm_modelsId_fkey" FOREIGN KEY ("llm_modelsId") REFERENCES "llm_models" ("id") ON DELETE CASCADE ON UPDATE CASCADE,
     CONSTRAINT "votes_master_stringsId_fkey" FOREIGN KEY ("master_stringsId") REFERENCES "master_strings" ("id") ON DELETE CASCADE ON UPDATE CASCADE
+);
+
+-- CreateTable
+CREATE TABLE "_language_proficienciesTollm_models" (
+    "A" INTEGER NOT NULL,
+    "B" INTEGER NOT NULL,
+    CONSTRAINT "_language_proficienciesTollm_models_A_fkey" FOREIGN KEY ("A") REFERENCES "language_proficiencies" ("id") ON DELETE CASCADE ON UPDATE CASCADE,
+    CONSTRAINT "_language_proficienciesTollm_models_B_fkey" FOREIGN KEY ("B") REFERENCES "llm_models" ("id") ON DELETE CASCADE ON UPDATE CASCADE
+);
+
+-- CreateTable
+CREATE TABLE "_language_proficienciesTolanguages" (
+    "A" INTEGER NOT NULL,
+    "B" INTEGER NOT NULL,
+    CONSTRAINT "_language_proficienciesTolanguages_A_fkey" FOREIGN KEY ("A") REFERENCES "language_proficiencies" ("id") ON DELETE CASCADE ON UPDATE CASCADE,
+    CONSTRAINT "_language_proficienciesTolanguages_B_fkey" FOREIGN KEY ("B") REFERENCES "languages" ("id") ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 -- CreateIndex
@@ -60,3 +81,15 @@ CREATE UNIQUE INDEX "votes_languagesId_llm_modelsId_master_stringsId_translation
     "master_stringsId",
     "translation"
 );
+
+-- CreateIndex
+CREATE UNIQUE INDEX "_language_proficienciesTollm_models_AB_unique" ON "_language_proficienciesTollm_models"("A", "B");
+
+-- CreateIndex
+CREATE INDEX "_language_proficienciesTollm_models_B_index" ON "_language_proficienciesTollm_models"("B");
+
+-- CreateIndex
+CREATE UNIQUE INDEX "_language_proficienciesTolanguages_AB_unique" ON "_language_proficienciesTolanguages"("A", "B");
+
+-- CreateIndex
+CREATE INDEX "_language_proficienciesTolanguages_B_index" ON "_language_proficienciesTolanguages"("B");
