@@ -8,3 +8,4 @@ translation_votes.db-shm
 generatedprismaclient/
 translation_votes.*
 translate-*.json
+logs/

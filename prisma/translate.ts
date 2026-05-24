@@ -17,25 +17,23 @@ import {
 } from "./lib/db.ts";
 
 // ── Provider Ranking (ascending = cheapest/worst -> most expensive/best) ─────
-// The orchestrator starts with the lowest rank and falls back to higher ranks.
-// nvidia is ranked lowest (cheapest, often lower quality), anthropic highest.
-const PROVIDER_RANKING: { prefix: string; rank: number; note: string }[] = [
-  { prefix: "zai", rank: 1, note: "Zhipu AI — cheap" },
-  { prefix: "zai-coding-plan", rank: 1, note: "Zhipu AI coding — cheap" },
-  { prefix: "nvidia", rank: 2, note: "Nvidia NIM — cheap, often lower quality" },
-  { prefix: "privatemode-ai", rank: 3, note: "Private mode" },
-  { prefix: "opencode", rank: 4, note: "Free via Zen credits" },
-  { prefix: "opencode-go", rank: 5, note: "Community models" },
-  { prefix: "openrouter", rank: 6, note: "Paid aggregation" },
-  { prefix: "github-copilot", rank: 7, note: "GitHub subscription" },
-  { prefix: "google", rank: 8, note: "Direct Google API" },
-  { prefix: "openai", rank: 9, note: "Direct OpenAI API" },
-  { prefix: "anthropic", rank: 10, note: "Direct Anthropic API" },
+const PROVIDER_RANKING = [
+  "zai",
+  "zai-coding-plan",
+  "nvidia",
+  "privatemode-ai",
+  "opencode-go",
+  "opencode",
+  "openrouter",
+  "github-copilot",
+  "google",
+  "openai",
+  "anthropic",
 ];
 
 function getProviderRank(providerID: string): number {
-  const entry = PROVIDER_RANKING.find((r) => r.prefix === providerID);
-  return entry?.rank ?? 99;
+  const idx = PROVIDER_RANKING.indexOf(providerID);
+  return idx === -1 ? 99 : idx;
 }
 
 function normalizeModelName(name: string): string {
@@ -66,9 +64,7 @@ async function fetchAvailableModels(): Promise<Map<string, ModelEntry[]>> {
     if (firstSlash === -1) continue;
 
     const providerID = slug.slice(0, firstSlash);
-    // modelPath may contain sub-provider (e.g. "anthropic/claude-opus-4.7")
     const modelPath = slug.slice(firstSlash + 1);
-    // For matching against seed names use the last component after the final slash
     const lastSlash = modelPath.lastIndexOf("/");
     const matchKey = lastSlash === -1 ? modelPath : modelPath.slice(lastSlash + 1);
     const normalized = normalizeModelName(matchKey);
@@ -96,6 +92,43 @@ function buildFallbackChain(
   const entries = available.get(normalized);
   if (!entries || entries.length === 0) return [];
   return entries.map((e) => ({ providerID: e.providerID, modelID: e.modelID }));
+}
+
+// ── Logging ───────────────────────────────────────────────────────────────────
+const LOG_DIR = "logs";
+const LOG_FILE = "logs/orchestrator.log";
+
+function ts(): string {
+  return new Date().toISOString();
+}
+
+function ensureLogDir(): void {
+  try {
+    Deno.mkdirSync(LOG_DIR, { recursive: true });
+  } catch {
+    // ignore
+  }
+}
+
+function writeLog(line: string): void {
+  ensureLogDir();
+  try {
+    Deno.writeTextFileSync(LOG_FILE, line + "\n", { append: true, create: true });
+  } catch {
+    // ignore write errors
+  }
+}
+
+function log(msg: string): void {
+  const line = `[${ts()}] ${msg}`;
+  console.log(msg);
+  writeLog(line);
+}
+
+function logError(msg: string): void {
+  const line = `[${ts()}] ERROR: ${msg}`;
+  console.error(msg);
+  writeLog(line);
 }
 
 // ── Skill files ──────────────────────────────────────────────────────────────
@@ -159,7 +192,7 @@ function parseArgs(): CliArgs {
         minProficiency = parseInt(args[++i], 10);
         break;
       case "--help":
-        console.log(
+        log(
           `Usage: deno task translate -- [OPTIONS]
 
 Options:
@@ -180,7 +213,7 @@ Options:
   if (model && locale) {
     return { all: false, model, locale, proficiencyOnly, translateOnly, minProficiency };
   }
-  console.error("Specify --model <name> --locale <bcp47> or --all");
+  logError("Specify --model <name> --locale <bcp47> or --all");
   Deno.exit(1);
 }
 
@@ -201,33 +234,33 @@ async function recoverStaleOutput(): Promise<void> {
   }
 
   const raw = await Deno.readTextFile(OUTPUT_FILE);
-  console.warn(`Found stale ${OUTPUT_FILE}, attempting recovery...`);
+  log(`Recovering stale ${OUTPUT_FILE}...`);
 
   try {
     const parsed = JSON.parse(raw);
     if (parsed.locale && parsed.model && parsed.proficiency) {
       const language = await getOrCreateLanguage(parsed.locale);
-      const model = await getOrCreateModel(parsed.model);
+      const modelDb = await getOrCreateModel(parsed.model);
 
       if (parsed.translations) {
         const result = verifyTranslation(raw, parsed.locale, parsed.model, []);
-        await upsertProficiency(language.id, model.id, result.proficiency);
+        await upsertProficiency(language.id, modelDb.id, result.proficiency);
         const allMs = await getAllMasterStrings();
         for (const t of result.translations) {
           if (t.translation === null) continue;
           const ms = allMs.find((s) => s.text === t.key);
-          if (ms) await upsertVote(language.id, model.id, ms.id, t.translation);
+          if (ms) await upsertVote(language.id, modelDb.id, ms.id, t.translation);
         }
       } else {
         const result = verifyProficiency(raw, parsed.locale, parsed.model);
-        await upsertProficiency(language.id, model.id, result.proficiency);
+        await upsertProficiency(language.id, modelDb.id, result.proficiency);
       }
 
       await Deno.remove(OUTPUT_FILE);
-      console.log("  Recovery successful");
+      log("Recovery successful");
     }
   } catch (e) {
-    console.error(`  Cannot recover ${OUTPUT_FILE}: ${e}`);
+    logError(`Cannot recover ${OUTPUT_FILE}: ${e}`);
     await Deno.remove(OUTPUT_FILE);
   }
 }
@@ -268,13 +301,16 @@ async function dispatchProficiency(
     try {
       const result = verifyProficiency(raw, langBcp47, modelName);
       const language = await getOrCreateLanguage(langBcp47);
-      const model = await getOrCreateModel(modelName);
-      await upsertProficiency(language.id, model.id, result.proficiency);
+      const modelDb = await getOrCreateModel(modelName);
+      await upsertProficiency(language.id, modelDb.id, result.proficiency);
       await Deno.remove(OUTPUT_FILE);
+
+      const rank = getProviderRank(modelRef.providerID);
+      log(`proficiency ${modelName} ${langBcp47} ${modelRef.providerID} rank=${rank} → ${result.proficiency}`);
       return result.proficiency;
     } catch (e) {
-      console.error(
-        `  ${modelRef.providerID}/${modelRef.modelID} failed: ${e instanceof Error ? e.message : e}`,
+      logError(
+        `${modelRef.providerID}/${modelRef.modelID} failed: ${e instanceof Error ? e.message : e}`,
       );
     }
   }
@@ -326,9 +362,9 @@ async function dispatchTranslate(
       try {
         const result = verifyTranslation(raw, langBcp47, modelName, strings);
         const language = await getOrCreateLanguage(langBcp47);
-        const model = await getOrCreateModel(modelName);
+        const modelDb = await getOrCreateModel(modelName);
 
-        await upsertProficiency(language.id, model.id, result.proficiency);
+        await upsertProficiency(language.id, modelDb.id, result.proficiency);
 
         const allMs = await getAllMasterStrings();
         let stored = 0;
@@ -343,25 +379,27 @@ async function dispatchTranslate(
             skipped++;
             continue;
           }
-          await upsertVote(language.id, model.id, ms.id, t.translation);
+          await upsertVote(language.id, modelDb.id, ms.id, t.translation);
           stored++;
         }
 
         await Deno.remove(OUTPUT_FILE);
-        console.log(`  ${langBcp47}: stored ${stored}, skipped ${skipped}`);
+
+        const rank = getProviderRank(modelRef.providerID);
+        log(`translate ${modelName} ${langBcp47} ${modelRef.providerID} rank=${rank} → stored ${stored} skipped ${skipped}`);
         return;
       } catch (e) {
         lastError = e instanceof VerifyError ? e.message : String(e);
-        console.error(
-          `  Retry ${retry + 1}/${MAX_RETRIES}: ${lastError}`,
+        logError(
+          `${modelRef.providerID}/${modelRef.modelID} retry ${retry + 1}/${MAX_RETRIES}: ${lastError}`,
         );
       }
     }
   }
 
   await Deno.remove(OUTPUT_FILE);
-  console.error(
-    `  ${langBcp47}: failed after ${MAX_RETRIES} retries across ${chain.length} provider(s)`,
+  logError(
+    `${modelName} ${langBcp47}: failed after ${MAX_RETRIES} retries across ${chain.length} provider(s)`,
   );
 }
 
@@ -372,14 +410,13 @@ async function phaseProficiency(
   languages: { id: number; bcp_47: string; english_name: string }[],
   availableModels: Map<string, ModelEntry[]>,
 ): Promise<void> {
-  console.log("\n=== Phase 1: Proficiency Assessment ===");
+  log("=== Phase 1: Proficiency Assessment ===");
   for (const m of models) {
     for (const lang of languages) {
       if (isTimeUp()) {
-        console.log(`Timeout. Stopped at model=${m.name}, locale=${lang.bcp_47}`);
+        log(`Timeout. Stopped at model=${m.name}, locale=${lang.bcp_47}`);
         Deno.exit(0);
       }
-      process.stdout.write(`[${m.name}] [${lang.bcp_47}] `);
       try {
         const p = await dispatchProficiency(
           opencode,
@@ -388,9 +425,8 @@ async function phaseProficiency(
           lang.english_name,
           availableModels,
         );
-        console.log(`  proficiency=${p}`);
       } catch (e) {
-        console.log(`  ${e instanceof Error ? e.message : String(e)}`);
+        logError(`${m.name} ${lang.bcp_47}: ${e instanceof Error ? e.message : String(e)}`);
       }
     }
   }
@@ -403,32 +439,30 @@ async function phaseTranslate(
   availableModels: Map<string, ModelEntry[]>,
   minProficiency: number,
 ): Promise<void> {
-  console.log(`\n=== Phase 2: Translate (min-proficiency=${minProficiency}) ===`);
+  log(`=== Phase 2: Translate (min-proficiency=${minProficiency}) ===`);
   const allMs = await getAllMasterStrings();
 
   for (const m of models) {
     for (const lang of languages) {
       if (isTimeUp()) {
-        console.log(`Timeout. Stopped at model=${m.name}, locale=${lang.bcp_47}`);
+        log(`Timeout. Stopped at model=${m.name}, locale=${lang.bcp_47}`);
         Deno.exit(0);
       }
-      process.stdout.write(`[${m.name}] [${lang.bcp_47}] `);
 
       const existing = await getExistingVotes(m.id, lang.id);
       const missing = allMs.filter((s) => !existing.has(s.id));
 
       if (missing.length === 0) {
-        console.log("  all strings have votes, skipping");
+        log(`${m.name} ${lang.bcp_47}: all strings have votes, skipping`);
         continue;
       }
 
       if (existing.size === 0) {
-        console.log("  no proficiency assessed yet, skipping");
+        log(`${m.name} ${lang.bcp_47}: no proficiency assessed yet, skipping`);
         continue;
       }
 
       const strings = missing.map((s) => ({ key: s.text, text: s.text }));
-      console.log(`  ${strings.length} missing`);
       try {
         await dispatchTranslate(
           opencode,
@@ -439,7 +473,7 @@ async function phaseTranslate(
           availableModels,
         );
       } catch (e) {
-        console.error(`  ${e instanceof Error ? e.message : String(e)}`);
+        logError(`${m.name} ${lang.bcp_47}: ${e instanceof Error ? e.message : String(e)}`);
       }
     }
   }
@@ -453,27 +487,25 @@ async function singleRun(
 ): Promise<void> {
   const language = await getOrCreateLanguage(langBcp47);
 
-  const p = await dispatchProficiency(
+  await dispatchProficiency(
     opencode,
     modelName,
     langBcp47,
     language.english_name,
     availableModels,
   );
-  console.log(`  proficiency=${p}`);
 
   const allMs = await getAllMasterStrings();
-  const model = await getOrCreateModel(modelName);
-  const existing = await getExistingVotes(model.id, language.id);
+  const modelDb = await getOrCreateModel(modelName);
+  const existing = await getExistingVotes(modelDb.id, language.id);
   const missing = allMs.filter((s) => !existing.has(s.id));
 
   if (missing.length === 0) {
-    console.log(`  ${langBcp47}: all strings have votes`);
+    log(`${modelName} ${langBcp47}: all strings have votes`);
     return;
   }
 
   const strings = missing.map((s) => ({ key: s.text, text: s.text }));
-  console.log(`  ${strings.length} missing strings`);
   await dispatchTranslate(
     opencode,
     modelName,
@@ -489,18 +521,16 @@ async function main() {
   const args = parseArgs();
   const opencode = new OpencodeClient();
 
-  console.log("Fetching available models from opencode...");
+  log("Fetching available models from opencode...");
   const availableModels = await fetchAvailableModels();
-  console.log(`  Found ${availableModels.size} unique models across providers`);
+  log(`Found ${availableModels.size} unique models across providers`);
 
   await recoverStaleOutput();
 
   if (args.all) {
     const models = await getAllModels();
     const languages = await getAllLanguages();
-    console.log(
-      `Full run: ${models.length} models x ${languages.length} locales`,
-    );
+    log(`Full run: ${models.length} models x ${languages.length} locales`);
 
     if (!args.translateOnly) {
       await phaseProficiency(opencode, models, languages, availableModels);
@@ -515,7 +545,7 @@ async function main() {
       );
     }
 
-    console.log("\nFull run complete");
+    log("Full run complete");
   } else if (args.model && args.locale) {
     await singleRun(opencode, args.model, args.locale, availableModels);
   }
