@@ -7,3 +7,4 @@ translation_votes.db-wal
 translation_votes.db-shm
 generatedprismaclient/
 translation_votes.*
+translate-*.json

@@ -10,6 +10,18 @@ export interface TranslationOutput {
   translations: TranslationEntry[];
 }
 
+export interface ProficiencyOutput {
+  locale: string;
+  model: string;
+  proficiency: number;
+  reasoning: string;
+}
+
+export interface InputString {
+  key: string;
+  text: string;
+}
+
 export class VerifyError extends Error {
   constructor(message: string) {
     super(message);
@@ -19,63 +31,86 @@ export class VerifyError extends Error {
 
 const PLACEHOLDER_RE = /(%[sd]|%\d+\$[sd]|%%)|(&lt;)|(&gt;)|(&amp;)|(&quot;)|(&#39;)|(<br\s*\/?>)|(<\/?[a-z]+\s*[^>]*>)/gi;
 
-export function extractPlaceholders(text: string): string[] {
+function extractPlaceholders(text: string): string[] {
   const matches = text.match(PLACEHOLDER_RE);
   return matches || [];
 }
 
-export interface InputString {
-  key: string;
-  text: string;
-}
-
-export function verify(
-  raw: string,
-  expectedLocale: string,
-  expectedModel: string,
-  inputStrings: InputString[],
-): TranslationOutput {
-  const inputKeyToText = new Map(inputStrings.map((s) => [s.key, s.text]));
-  const inputKeys = new Set(inputStrings.map((s) => s.key));
+function asObject(raw: string): Record<string, unknown> {
   let parsed: unknown;
   try {
     parsed = JSON.parse(raw);
   } catch {
     throw new VerifyError("Response is not valid JSON");
   }
-
   if (typeof parsed !== "object" || parsed === null) {
     throw new VerifyError("Response must be a JSON object");
   }
+  return parsed as Record<string, unknown>;
+}
 
-  const obj = parsed as Record<string, unknown>;
-
-  if (obj.locale !== expectedLocale) {
-    throw new VerifyError(
-      `locale mismatch: expected '${expectedLocale}', got '${obj.locale}'`,
-    );
-  }
-
-  if (obj.model !== expectedModel) {
-    throw new VerifyError(
-      `model mismatch: expected '${expectedModel}', got '${obj.model}'`,
-    );
-  }
-
-  const proficiency = obj.proficiency;
+function checkProficiency(value: unknown): number {
   if (
-    typeof proficiency !== "number" || proficiency < 1 || proficiency > 5 ||
-    !Number.isInteger(proficiency)
+    typeof value !== "number" || value < 1 || value > 5 ||
+    !Number.isInteger(value)
   ) {
     throw new VerifyError(
-      `proficiency must be an integer 1-5, got ${JSON.stringify(proficiency)}`,
+      `proficiency must be an integer 1-5, got ${JSON.stringify(value)}`,
     );
   }
+  return value;
+}
+
+function checkModel(value: unknown, expected: string): string {
+  const model = String(value ?? "");
+  if (model !== expected) {
+    throw new VerifyError(
+      `model mismatch: expected '${expected}', got '${model}'`,
+    );
+  }
+  return model;
+}
+
+function checkLocale(value: unknown, expected: string): string {
+  const locale = String(value ?? "");
+  if (locale !== expected) {
+    throw new VerifyError(
+      `locale mismatch: expected '${expected}', got '${locale}'`,
+    );
+  }
+  return locale;
+}
+
+export function verifyProficiency(
+  raw: string,
+  expectedLocale: string,
+  expectedModel: string,
+): ProficiencyOutput {
+  const obj = asObject(raw);
+  const locale = checkLocale(obj.locale, expectedLocale);
+  const model = checkModel(obj.model, expectedModel);
+  const proficiency = checkProficiency(obj.proficiency);
+  const reasoning = String(obj.reasoning ?? "");
+  return { locale, model, proficiency, reasoning };
+}
+
+export function verifyTranslation(
+  raw: string,
+  expectedLocale: string,
+  expectedModel: string,
+  inputStrings: InputString[],
+): TranslationOutput {
+  const obj = asObject(raw);
+  const locale = checkLocale(obj.locale, expectedLocale);
+  const model = checkModel(obj.model, expectedModel);
+  const proficiency = checkProficiency(obj.proficiency);
 
   if (!Array.isArray(obj.translations)) {
     throw new VerifyError("translations must be an array");
   }
 
+  const inputKeyToText = new Map(inputStrings.map((s) => [s.key, s.text]));
+  const inputKeys = new Set(inputStrings.map((s) => s.key));
   const outputKeys = new Set<string>();
   const translations: TranslationEntry[] = [];
 
@@ -123,10 +158,5 @@ export function verify(
     }
   }
 
-  return {
-    locale: obj.locale as string,
-    model: obj.model as string,
-    proficiency,
-    translations,
-  };
+  return { locale, model, proficiency, translations };
 }
