@@ -19,10 +19,8 @@ import {
 
 // ── Provider Ranking (ascending = cheapest/worst -> most expensive/best) ─────
 const PROVIDER_RANKING = [
-  "zai",
-  "zai-coding-plan",
-  "nvidia",
   "privatemode-ai",
+  "nvidia",
   "opencode-go",
   "opencode",
   "openrouter",

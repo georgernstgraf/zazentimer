@@ -61,9 +61,15 @@ function checkProficiency(value: unknown): number {
   return value;
 }
 
+function extractModelName(value: string): string {
+  const lastSlash = value.lastIndexOf("/");
+  return lastSlash === -1 ? value : value.slice(lastSlash + 1);
+}
+
 function checkModel(value: unknown, expected: string): string {
   const model = String(value ?? "");
-  if (model !== expected) {
+  const extracted = extractModelName(model);
+  if (extracted !== expected) {
     throw new VerifyError(
       `model mismatch: expected '${expected}', got '${model}'`,
     );
