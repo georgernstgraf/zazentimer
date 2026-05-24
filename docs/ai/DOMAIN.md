@@ -59,6 +59,16 @@ Business rules and domain relationships not obvious from code.
 - Light and dark themes available via `ListPreference` in settings.
 - Changing theme restarts the Activity.
 
+## Translation Voting Pipeline
+- **Locale**: A language variant identified by BCP 47 tag (e.g., `pt-BR`), POSIX code (`pt_BR`), ISO 639-3 code (`por`), and optional Whisper response name. 123 locales in the app. ISO 639-3 is NOT unique per locale — por/srp/zho each cover multiple regional variants.
+- **POSIX code format**: `language[_territory][@modifier]` (e.g., `sr@latin`, `pt_BR`). No uppercase rules — follows what `locale -a` on Linux produces.
+- **BCP 47 vs POSIX**: BCP 47 uses hyphens (`pt-BR`), POSIX uses underscores (`pt_BR`). Some locales use POSIX modifier (`sr@latin` → BCP 47 `sr-Latn`). Legacy Android locale dirs (e.g., `values-in`, `values-iw`, `values-ji`) have been renamed to modern BCP 47 codes.
+- **Master String**: An English string from `values/strings.xml` with a unique key. Some are `translatable="false"`. Multiple keys may share the same English text — each key is a separate master string. 154 unique strings from 174 total.
+- **LLM Model**: A registered model from `llm_models` table (10 models from 6 providers: OpenAI, Anthropic, Google, Meta, Mistral, DeepSeek). Each model can produce translation candidates.
+- **Vote**: A translation candidate submitted by an LLM, with a confidence score (1-5) enforced by SQL CHECK constraint. One vote per (master_string, locale, llm_model). Confidence is never "per-model quality" — it's per-translation-per-model.
+- **Whisper**: Used for audio transcription during meditation, not for TTS. Whisper language map is static (100 languages). 32 of 123 locales have no Whisper support (whisper_response = null).
+- **Confidence scale**: 1-5, Int, raw SQL CHECK. Not an enum — SQLite sorts enums alphabetically, making ordered queries meaningless.
+
 ## Screen Behavior During Meditation
 - **Keep screen on** (`keep_screen_on` preference): Prevents screen timeout during meditation.
 - **Brightness** (`brightness` preference): Sets screen brightness (0-100) during meditation, only when keep_screen_on is enabled.

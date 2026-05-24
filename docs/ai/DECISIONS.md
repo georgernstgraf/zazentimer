@@ -243,6 +243,60 @@ Each entry documents WHAT was decided and WHY.
 - **Considered**: Calling `switchSessionPositions()` in the `onMove` callback (complex — coroutine ordering issues with rapid successive drag events, and only handles adjacent swaps).
 - **Tradeoff**: Writes all sessions to DB on every pause, even if no reorder occurred. Negligible for typical session counts.
 
+## 2026-05-24: Deno runtime for Prisma schema generation
+- **Choice**: Use Deno with `runtime = "deno"` in Prisma Client generator config, import map alias `"prismaclient": "./generatedprismaclient/client.ts"`. No Node.js/npm involved.
+- **Reason**: The developer machine has Deno installed (not Node.js). `npm:prisma@^6.19.3` works natively via Deno's npm compatibility layer. Avoids maintaining a separate Node.js toolchain.
+- **Considered**: Node.js + npx (requires Node install), Python SQLAlchemy (different ecosystem, no Prisma).
+- **Tradeoff**: Prisma's Deno support is newer; some edge cases may differ from Node.js behavior.
+
+## 2026-05-24: Confidence as Int with raw SQL CHECK constraint (not enum)
+- **Choice**: `confidence` is `Int` with raw SQL `CHECK(confidence BETWEEN 1 AND 5)` in the `CREATE TABLE votes` statement. No Prisma `@validation` or enum type.
+- **Reason**: SQLite sorts enums alphabetically by their string value, not by declaration order. `CONFIDENCE_LOW` (1) would sort before `CONFIDENCE_HIGH` (5) lexicographically, making ordered queries meaningless. A numeric Int with CHECK preserves natural ordering.
+- **Considered**: Prisma enum (alphabetical sort issue), `@validation` annotation (only enforced by Prisma Client, not at SQLite level).
+- **Tradeoff**: Raw SQL in migration file must be hand-maintained; Prisma's `prisma format` doesn't validate CHECK expressions.
+
+## 2026-05-24: CHECK constraint in init migration CREATE TABLE, not separate migration
+- **Choice**: Placed `CHECK(confidence BETWEEN 1 AND 5)` directly in the init migration's `CREATE TABLE votes` statement. Not as a separate migration with `ALTER TABLE ADD CHECK`.
+- **Reason**: SQLite (via `prisma db push` or migration engine) does NOT support `ALTER TABLE ADD CHECK`. The CHECK must be present in the original `CREATE TABLE` or the migration fails with `SQLite does not support adding CHECK constraints to existing tables`.
+- **Considered**: Separate migration (would fail), Prisma-level validation only (not enforced at DB level).
+- **Tradeoff**: If the schema is re-generated from scratch, the raw SQL in the init migration must be preserved manually.
+
+## 2026-05-24: whisper_response NOT unique — regional variants share same response
+- **Choice**: Removed `@unique` from `whisper_response` in `locales` model. Multiple regions sharing the same language (e.g., `pt`, `pt-BR`, `pt-PT` → "portuguese"; `sr`, `sr-Latn` → "serbian"; `zh`, `zh-TW` → "chinese") legitimately have identical Whisper responses.
+- **Reason**: Whisper returns one canonical name per language regardless of region. A unique constraint would prevent storing multiple BCP 47 variants that map to the same Whisper language.
+- **Considered**: Keeping `@unique` with a separate `whisper_region` discriminator (over-engineered, Whisper doesn't distinguish regions).
+- **Tradeoff**: Application code must handle the case where multiple locales resolve to the same Whisper transcription.
+
+## 2026-05-24: Python pycountry for language seed generation (not openai-whisper)
+- **Choice**: `scripts/generate_languages_seed.py` uses `pycountry` for ISO 639-3 codes and English names. A static `whisper_languages.json` (2 KB, extracted from Whisper `tokenizer.py`) provides the Whisper code → name mapping.
+- **Reason**: `openai-whisper` has a massive dependency tree (Torch, CUDA, NumPy) — installing it just to extract the built-in language map is wasteful. `pycountry` is lightweight, pure Python, and provides authoritative ISO 639-3 lookups.
+- **Considered**: `openai-whisper` pip install (106+ MB, pulls CUDA/Torch), manual ISO table (not authoritative), `langcodes` library (Pandas dependency).
+- **Tradeoff**: The Whisper language map is static — if Whisper adds languages in a future release, the JSON must be manually updated.
+
+## 2026-05-24: Static whisper_languages.json instead of openai-whisper import
+- **Choice**: Extracted the 100-entry Whisper language map from `openai/whisper/tokenizer.py` into `prisma/translations/whisper_languages.json`. The Python seed script reads this JSON alongside the generated locale data.
+- **Reason**: Avoids the 106+ MB `openai-whisper` dependency (Torch, CUDA, NumPy, tqdm, more). The language map is stable — Whisper hasn't changed its 100-language set since the Multilingual model release (late 2022).
+- **Considered**: Dynamic import via `import whisper` then `whisper.tokenizer.LANGUAGES` (106 MB install), hardcoding in Python (maintenance burden).
+- **Tradeoff**: If Whisper adds languages, the JSON must be manually regenerated. The Python seed script uses `from whisper_languages import LANGUAGES` — if the JSON format changes, the script breaks.
+
+## 2026-05-24: ISO 639-3 is NOT unique in locales table
+- **Choice**: `iso_639_3` column in `locales` has no `@unique` constraint. Portuguese (`por`: pt, pt-BR, pt-PT), Serbian (`srp`: sr, sr-Latn), and Chinese (`zho`: zh, zh-TW) each have multiple regional variants sharing the same ISO 639-3 code.
+- **Reason**: ISO 639-3 identifies a language macrolanguage, not a specific region. A locale like `pt-BR` and `pt-PT` are both Portuguese (`por`). Enforcing uniqueness would prevent storing all regional variants.
+- **Considered**: Unique on (iso_639_3, script) pair (over-engineered for current needs), splitting into separate language/region models (3NF normalization, too complex).
+- **Tradeoff**: Queries grouping by ISO 639-3 must handle 1:N cardinality. The 3 affected codes are known and documented.
+
+## 2026-05-24: Regex fallback for strings.xml parsing (no DOMParser in Deno 2.7.14)
+- **Choice**: The Deno seed script parses `strings.xml` with a regex (`<string[^>]*name="([^"]*)"[^>]*>([^<]*)</string>`) instead of an XML parser.
+- **Reason**: Deno 2.7.14 has no native `DOMParser` (requires `npm:xmldom` as polyfill). All 174 entries in the English `strings.xml` are single-line and well-formed — regex is sufficient and avoids an npm dependency.
+- **Considered**: `npm:xmldom` polyfill (additional import, maintenance), `npm:fast-xml-parser` (heavier, configuration needed).
+- **Tradeoff**: Regex breaks on multi-line string definitions or XML comments within the strings block. Must be verified if `strings.xml` format changes.
+
+## 2026-05-24: Pre-push hook as symlink to scripts/git-hooks/
+- **Choice**: `.git/hooks/pre-push` → `../../scripts/git-hooks/pre-push` (symlink). Not a copy.
+- **Reason**: Keeps the pre-push hook always in sync with the template. Any edit to `scripts/git-hooks/pre-push` immediately applies to the live hook. The `--no-daemon` flag was removed from the hook to avoid unnecessary daemon-spawning behavior.
+- **Considered**: Copy (drifts from template), inline in `.git/hooks/` (not version-controlled).
+- **Tradeoff**: Requires symlink creation on fresh clones. Documented in ONBOARDING.md.
+
 ## 2026-05-22: Prisma-managed translation voting database (#202)
 - **Choice**: Created a second Prisma schema at `prisma/translations/schema.prisma` with 4 models (locales, strings, translations, votes) to store multi-LLM translation candidates and voting results. Added `prismaValidateTranslationsSchema` Gradle task.
 - **Reason**: Need a structured, version-controlled data store for the multi-model translation pipeline where 4 LLMs (Claude, Gemini, GPT, DeepSeek) each produce candidate translations that are then compared via a voting mechanism.
@@ -274,4 +328,5 @@ Each entry documents WHAT was decided and WHY.
 - **Reason**: VPS (claw) and local dev machine have different AVD sets and display capabilities. Avoids running instrumented tests in inappropriate environments.
 - **Considered**: Hardcoding in script (less flexible), environment variable (works but not repo-tracked).
 - **Tradeoff**: Hostname is hardcoded in `case` statement; adding a new host requires editing the script.
+- **SUPERSEDED 2026-05-24**: claw no longer uses `zazentimer.test.apis.claw` (property removed). All hosts use `zazentimer.test.apis`. Missing AVDs are silently skipped instead of failing. Gradle exit code is no longer fatal — per-API pass/fail is tracked independently, and overall exit code reflects test results only.
 
