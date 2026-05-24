@@ -10,9 +10,9 @@
 set -euo pipefail
 
 echo "Running ktlintCheck..."
-./gradlew ktlintCheck --no-daemon --quiet
+./gradlew ktlintCheck --quiet
 
 echo "Running detekt..."
-./gradlew detekt --no-daemon --quiet
+./gradlew detekt --quiet
 
 echo "Lint checks passed."

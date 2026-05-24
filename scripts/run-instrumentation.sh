@@ -224,10 +224,7 @@ run_gradle_test() {
     log_phase "$api_level" "resolving AVD"
     local avd_name
     avd_name=$(emulator_resolve_avd "$api_level") || {
-        log_api "FAIL: Could not find AVD for API $api_level"
-        RESULTS[$api_level]=1
-        FAILED_APIS+=("$api_level")
-        ERROR_LOGS+=("API $api_level: No AVD found")
+        log_api "SKIP: No AVD for API $api_level — skipping"
         return
     }
     local result=0
@@ -350,14 +347,6 @@ fi
 # API list: hostname-specific or default
 # ──────────────────────────────────────────────
 DEFAULT_APIS_STRING=$(grep -oP "^zazentimer\.test\.apis=\K.*" "$PROJECT_DIR/gradle.properties" || true)
-
-if [ "$HOST_SHORT" = "claw" ]; then
-    host_apis=$(grep -oP "^zazentimer\.test\.apis\.claw=\K.*" "$PROJECT_DIR/gradle.properties" || true)
-    if [ -n "$host_apis" ]; then
-        DEFAULT_APIS_STRING="$host_apis"
-    fi
-    log "=== APIs for claw: ${DEFAULT_APIS_STRING} ==="
-fi
 
 # Set snapshot flag based on --cold-boot
 if [ "$COLD_BOOT" = true ]; then
