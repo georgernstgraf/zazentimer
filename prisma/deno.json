@@ -3,7 +3,8 @@
     "prismatranslationsgenerateclient": "deno -A prisma generate --schema=translations/schema.prisma",
     "prismatranslationsseed": "deno run --env-file=translations/.env -A translations/seed.ts",
     "prismatranslationsmigratedev": "deno run  -A prisma migrate dev --schema=translations/schema.prisma",
-    "prismatranslationsmigratestatus": "deno run  -A prisma migrate status --schema=translations/schema.prisma"
+    "prismatranslationsmigratestatus": "deno run  -A prisma migrate status --schema=translations/schema.prisma",
+    "prismatranslationsmigratereset": "deno run  -A prisma migrate reset --schema=translations/schema.prisma"
   },
   "imports": {
     "@std/assert": "jsr:@std/assert@1",

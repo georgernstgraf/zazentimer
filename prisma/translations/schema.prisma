@@ -41,10 +41,10 @@ model llm_models {
 /// Individual Votings of large models
 model votes {
   id            Int            @id @default(autoincrement())
-  language      languages      @relation(fields: [languagesId], references: [id])
-  llm_model     llm_models     @relation(fields: [llm_modelsId], references: [id])
-  master_string master_strings @relation(fields: [master_stringsId], references: [id])
-  confidence    Int /// valid: 1-5  <-  raw migration gibt check_constraints dazu
+  language      languages      @relation(fields: [languagesId], references: [id], onDelete: Cascade)
+  llm_model     llm_models     @relation(fields: [llm_modelsId], references: [id], onDelete: Cascade)
+  master_string master_strings @relation(fields: [master_stringsId], references: [id], onDelete: Cascade)
+  confidence    Int /// valid: 1-5
 
   translation String
   created_at  DateTime @default(now())

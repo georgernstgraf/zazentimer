@@ -24,15 +24,18 @@ CREATE TABLE "llm_models" (
 -- CreateTable
 CREATE TABLE "votes" (
     "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
-    "confidence" INTEGER NOT NULL,
+    "confidence" INTEGER NOT NULL CHECK(
+        confidence BETWEEN 1
+        AND 5
+    ),
     "translation" TEXT NOT NULL,
     "created_at" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "languagesId" INTEGER NOT NULL,
     "llm_modelsId" INTEGER NOT NULL,
     "master_stringsId" INTEGER NOT NULL,
-    CONSTRAINT "votes_languagesId_fkey" FOREIGN KEY ("languagesId") REFERENCES "languages" ("id") ON DELETE RESTRICT ON UPDATE CASCADE,
-    CONSTRAINT "votes_llm_modelsId_fkey" FOREIGN KEY ("llm_modelsId") REFERENCES "llm_models" ("id") ON DELETE RESTRICT ON UPDATE CASCADE,
-    CONSTRAINT "votes_master_stringsId_fkey" FOREIGN KEY ("master_stringsId") REFERENCES "master_strings" ("id") ON DELETE RESTRICT ON UPDATE CASCADE
+    CONSTRAINT "votes_languagesId_fkey" FOREIGN KEY ("languagesId") REFERENCES "languages" ("id") ON DELETE CASCADE ON UPDATE CASCADE,
+    CONSTRAINT "votes_llm_modelsId_fkey" FOREIGN KEY ("llm_modelsId") REFERENCES "llm_models" ("id") ON DELETE CASCADE ON UPDATE CASCADE,
+    CONSTRAINT "votes_master_stringsId_fkey" FOREIGN KEY ("master_stringsId") REFERENCES "master_strings" ("id") ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 -- CreateIndex
@@ -51,4 +54,9 @@ CREATE UNIQUE INDEX "master_strings_text_key" ON "master_strings"("text");
 CREATE UNIQUE INDEX "llm_models_name_key" ON "llm_models"("name");
 
 -- CreateIndex
-CREATE UNIQUE INDEX "votes_languagesId_llm_modelsId_master_stringsId_translation_key" ON "votes"("languagesId", "llm_modelsId", "master_stringsId", "translation");
+CREATE UNIQUE INDEX "votes_languagesId_llm_modelsId_master_stringsId_translation_key" ON "votes"(
+    "languagesId",
+    "llm_modelsId",
+    "master_stringsId",
+    "translation"
+);
