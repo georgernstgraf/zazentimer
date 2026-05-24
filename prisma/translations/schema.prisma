@@ -15,7 +15,7 @@ model languages {
   posix_code       String  @unique /// _region is nice to have, but optional here
   bcp_47           String  @unique
   iso_639_3        String
-  whisper_response String? @unique
+  whisper_response String?
   directory        String  @unique
   english_name     String /// The English name of the language
   votes            votes[]
