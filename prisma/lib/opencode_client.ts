@@ -1,4 +1,14 @@
-const BASE_URL = Deno.env.get("OPENCODE_SERVER_URL") || "http://localhost:3001";
+const BASE_URL = Deno.env.get("OPENCODE_SERVER_URL") || "http://localhost:4096";
+const USERNAME = Deno.env.get("OPENCODE_SERVER_USERNAME") || "georg";
+const PASSWORD = Deno.env.get("OPENCODE_SERVER_PASSWORD") || "home5home";
+
+function authHeaders(): Record<string, string> {
+  const encoded = btoa(`${USERNAME}:${PASSWORD}`);
+  return {
+    "Content-Type": "application/json",
+    Authorization: `Basic ${encoded}`,
+  };
+}
 
 export interface ModelRef {
   providerID: string;
@@ -14,7 +24,7 @@ export class OpencodeClient {
   async createSession(): Promise<string> {
     const res = await fetch(`${BASE_URL}/session`, {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
+      headers: authHeaders(),
       body: "{}",
     });
     if (!res.ok) {
@@ -52,7 +62,7 @@ export class OpencodeClient {
 
     const res = await fetch(`${BASE_URL}/session/${sessionId}/message`, {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
+      headers: authHeaders(),
       body: JSON.stringify(body),
     });
     if (!res.ok) {
@@ -61,14 +71,20 @@ export class OpencodeClient {
       );
     }
     const data = await res.json();
-    const reply =
-      data.parts?.[0]?.text || data.message || data.text || JSON.stringify(data);
-    return reply;
+    const parts = data.parts as Array<{ type: string; text?: string }> | undefined;
+    if (parts) {
+      const textPart = parts.find((p) => p.type === "text" || p.type === "tool-use");
+      if (textPart?.text) return textPart.text;
+    }
+    return data.message || data.text || JSON.stringify(data);
   }
 
   async closeSession(sessionId: string): Promise<void> {
     try {
-      await fetch(`${BASE_URL}/session/${sessionId}`, { method: "DELETE" });
+      await fetch(`${BASE_URL}/session/${sessionId}`, {
+        method: "DELETE",
+        headers: authHeaders(),
+      });
     } catch {
       // Ignore close errors — session may already be gone
     }

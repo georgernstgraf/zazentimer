@@ -131,3 +131,19 @@ export async function getAllMasterStrings(): Promise<PMasterString[]> {
   const prisma = await getClient();
   return await prisma.master_strings.findMany({ orderBy: { id: "asc" } });
 }
+
+export async function hasProficiency(
+  modelId: number,
+  languageId: number,
+): Promise<boolean> {
+  const prisma = await getClient();
+  const rows = await prisma.language_proficiencies.findMany({
+    where: {
+      llm_models: { some: { id: modelId } },
+      languages: { some: { id: languageId } },
+    },
+    take: 1,
+    select: { id: true },
+  });
+  return rows.length > 0;
+}

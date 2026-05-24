@@ -11,6 +11,7 @@ import {
   getExistingVotes,
   upsertVote,
   upsertProficiency,
+  hasProficiency,
   getAllModels,
   getAllLanguages,
   getAllMasterStrings,
@@ -155,8 +156,6 @@ function isTimeUp(): boolean {
 // ── CLI args ─────────────────────────────────────────────────────────────────
 interface CliArgs {
   all: boolean;
-  proficiencyOnly: boolean;
-  translateOnly: boolean;
   minProficiency: number;
   model?: string;
   locale?: string;
@@ -165,8 +164,6 @@ interface CliArgs {
 function parseArgs(): CliArgs {
   const args = Deno.args;
   let all = false;
-  let proficiencyOnly = false;
-  let translateOnly = false;
   let minProficiency = DEFAULT_MIN_PROFICIENCY;
   let model: string | undefined;
   let locale: string | undefined;
@@ -182,12 +179,6 @@ function parseArgs(): CliArgs {
       case "--all":
         all = true;
         break;
-      case "--proficiency-only":
-        proficiencyOnly = true;
-        break;
-      case "--translate-only":
-        translateOnly = true;
-        break;
       case "--min-proficiency":
         minProficiency = parseInt(args[++i], 10);
         break;
@@ -198,8 +189,6 @@ function parseArgs(): CliArgs {
 Options:
   --model <name> --locale <bcp47>    Single (model, locale) pair
   --all                               Full matrix over all models x locales
-  --proficiency-only                  Only assess proficiencies (phase 1)
-  --translate-only                    Only translate where proficiency exists (phase 2)
   --min-proficiency <N>               Skip locales below this proficiency (default: ${DEFAULT_MIN_PROFICIENCY})
   --help                              Show this help`,
         );
@@ -208,10 +197,10 @@ Options:
   }
 
   if (all) {
-    return { all: true, model: undefined, locale: undefined, proficiencyOnly, translateOnly, minProficiency };
+    return { all: true, model: undefined, locale: undefined, minProficiency };
   }
   if (model && locale) {
-    return { all: false, model, locale, proficiencyOnly, translateOnly, minProficiency };
+    return { all: false, model, locale, minProficiency };
   }
   logError("Specify --model <name> --locale <bcp47> or --all");
   Deno.exit(1);
@@ -403,117 +392,77 @@ async function dispatchTranslate(
   );
 }
 
-// ── Phases ───────────────────────────────────────────────────────────────────
-async function phaseProficiency(
+// ── Single (model, locale) run ──────────────────────────────────────────────
+async function runOne(
   opencode: OpencodeClient,
-  models: { id: number; name: string }[],
-  languages: { id: number; bcp_47: string; english_name: string }[],
+  modelName: string,
+  langBcp47: string,
+  langEnglishName: string,
   availableModels: Map<string, ModelEntry[]>,
+  minProficiency: number,
 ): Promise<void> {
-  log("=== Phase 1: Proficiency Assessment ===");
-  for (const m of models) {
-    for (const lang of languages) {
-      if (isTimeUp()) {
-        log(`Timeout. Stopped at model=${m.name}, locale=${lang.bcp_47}`);
-        Deno.exit(0);
-      }
-      try {
-        const p = await dispatchProficiency(
-          opencode,
-          m.name,
-          lang.bcp_47,
-          lang.english_name,
-          availableModels,
-        );
-      } catch (e) {
-        logError(`${m.name} ${lang.bcp_47}: ${e instanceof Error ? e.message : String(e)}`);
-      }
+  const modelDb = await getOrCreateModel(modelName);
+  const language = await getOrCreateLanguage(langBcp47);
+
+  // Step 1: Proficiency (on-demand if not in DB)
+  if (!(await hasProficiency(modelDb.id, language.id))) {
+    try {
+      const p = await dispatchProficiency(
+        opencode,
+        modelName,
+        langBcp47,
+        langEnglishName,
+        availableModels,
+      );
+      log(`proficiency ${modelName} ${langBcp47} → ${p}`);
+    } catch (e) {
+      logError(`${modelName} ${langBcp47}: proficiency failed, skipping translate: ${e instanceof Error ? e.message : String(e)}`);
+      return;
     }
+  }
+
+  // Step 2: Translate (only missing strings)
+  const allMs = await getAllMasterStrings();
+  const existing = await getExistingVotes(modelDb.id, language.id);
+  const missing = allMs.filter((s) => !existing.has(s.id));
+
+  if (missing.length === 0) {
+    log(`${modelName} ${langBcp47}: all strings have votes, skipping`);
+    return;
+  }
+
+  const strings = missing.map((s) => ({ key: s.text, text: s.text }));
+  try {
+    await dispatchTranslate(
+      opencode,
+      modelName,
+      langBcp47,
+      langEnglishName,
+      strings,
+      availableModels,
+    );
+  } catch (e) {
+    logError(`${modelName} ${langBcp47}: ${e instanceof Error ? e.message : String(e)}`);
   }
 }
 
-async function phaseTranslate(
+// ── Full matrix run ──────────────────────────────────────────────────────────
+async function runAll(
   opencode: OpencodeClient,
   models: { id: number; name: string }[],
   languages: { id: number; bcp_47: string; english_name: string }[],
   availableModels: Map<string, ModelEntry[]>,
   minProficiency: number,
 ): Promise<void> {
-  log(`=== Phase 2: Translate (min-proficiency=${minProficiency}) ===`);
-  const allMs = await getAllMasterStrings();
-
   for (const m of models) {
     for (const lang of languages) {
       if (isTimeUp()) {
         log(`Timeout. Stopped at model=${m.name}, locale=${lang.bcp_47}`);
         Deno.exit(0);
       }
-
-      const existing = await getExistingVotes(m.id, lang.id);
-      const missing = allMs.filter((s) => !existing.has(s.id));
-
-      if (missing.length === 0) {
-        log(`${m.name} ${lang.bcp_47}: all strings have votes, skipping`);
-        continue;
-      }
-
-      if (existing.size === 0) {
-        log(`${m.name} ${lang.bcp_47}: no proficiency assessed yet, skipping`);
-        continue;
-      }
-
-      const strings = missing.map((s) => ({ key: s.text, text: s.text }));
-      try {
-        await dispatchTranslate(
-          opencode,
-          m.name,
-          lang.bcp_47,
-          lang.english_name,
-          strings,
-          availableModels,
-        );
-      } catch (e) {
-        logError(`${m.name} ${lang.bcp_47}: ${e instanceof Error ? e.message : String(e)}`);
-      }
+      await runOne(opencode, m.name, lang.bcp_47, lang.english_name, availableModels, minProficiency);
     }
   }
-}
-
-async function singleRun(
-  opencode: OpencodeClient,
-  modelName: string,
-  langBcp47: string,
-  availableModels: Map<string, ModelEntry[]>,
-): Promise<void> {
-  const language = await getOrCreateLanguage(langBcp47);
-
-  await dispatchProficiency(
-    opencode,
-    modelName,
-    langBcp47,
-    language.english_name,
-    availableModels,
-  );
-
-  const allMs = await getAllMasterStrings();
-  const modelDb = await getOrCreateModel(modelName);
-  const existing = await getExistingVotes(modelDb.id, language.id);
-  const missing = allMs.filter((s) => !existing.has(s.id));
-
-  if (missing.length === 0) {
-    log(`${modelName} ${langBcp47}: all strings have votes`);
-    return;
-  }
-
-  const strings = missing.map((s) => ({ key: s.text, text: s.text }));
-  await dispatchTranslate(
-    opencode,
-    modelName,
-    langBcp47,
-    language.english_name,
-    strings,
-    availableModels,
-  );
 }
 
 // ── Main ─────────────────────────────────────────────────────────────────────
@@ -532,22 +481,12 @@ async function main() {
     const languages = await getAllLanguages();
     log(`Full run: ${models.length} models x ${languages.length} locales`);
 
-    if (!args.translateOnly) {
-      await phaseProficiency(opencode, models, languages, availableModels);
-    }
-    if (!args.proficiencyOnly) {
-      await phaseTranslate(
-        opencode,
-        models,
-        languages,
-        availableModels,
-        args.minProficiency,
-      );
-    }
+    await runAll(opencode, models, languages, availableModels, args.minProficiency);
 
     log("Full run complete");
   } else if (args.model && args.locale) {
-    await singleRun(opencode, args.model, args.locale, availableModels);
+    const language = await getOrCreateLanguage(args.locale);
+    await runOne(opencode, args.model, args.locale, language.english_name, availableModels, args.minProficiency);
   }
 }
 
