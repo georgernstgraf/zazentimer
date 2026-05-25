@@ -148,6 +148,7 @@ const SKILL_PROFICIENCY = await Deno.readTextFile(
 );
 
 // ── Constants ────────────────────────────────────────────────────────────────
+const PROJECT_DIR = Deno.cwd();
 const INPUT_FILE = "translate-input.json";
 const OUTPUT_FILE = "translate-output.json";
 const PROFICIENCY_OUTPUT_FILE = "proficiency-output.json";
@@ -254,7 +255,7 @@ async function dispatchProficiency(
         throw new Error(`No available provider for model '${modelName}'`);
     }
 
-    const sessionId = await opencode.createSession();
+    const sessionId = await opencode.createSession(PROJECT_DIR);
 
     for (const modelRef of chain) {
         let lastError: string | undefined;
@@ -323,7 +324,7 @@ async function dispatchTranslate(
         throw new Error(`No available provider for model '${modelName}'`);
     }
 
-    const sessionId = await opencode.createSession();
+    const sessionId = await opencode.createSession(PROJECT_DIR);
 
     for (const modelRef of chain) {
         let lastError: string | undefined;

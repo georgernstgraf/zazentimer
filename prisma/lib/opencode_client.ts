@@ -21,8 +21,11 @@ export interface SendOptions {
 }
 
 export class OpencodeClient {
-  async createSession(): Promise<string> {
-    const res = await fetch(`${BASE_URL}/session`, {
+  async createSession(directory?: string): Promise<string> {
+    const url = directory
+      ? `${BASE_URL}/session?directory=${encodeURIComponent(directory)}`
+      : `${BASE_URL}/session`;
+    const res = await fetch(url, {
       method: "POST",
       headers: authHeaders(),
       body: "{}",
