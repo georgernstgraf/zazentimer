@@ -30,6 +30,30 @@ ZazenTimer is an Android application for timing meditation sessions. It uses a f
 5. Volume: `Meditation.getVolumeForSection()` matches `session_bell_volumes.bellId == section.bellId`
 6. UI: `deriveBellVolumesFromSections()` groups by `bellId` only (no bellUri fallback needed)
 
+## Voting API + Frontend (`prisma/voting_api.tsx`)
+- **Stack**: Deno + Hono JSX (SSR) + htmx + Pico CSS — alles in einer Datei, kein Build-Schritt.
+- **DB-Anbindung**: Lazy PrismaClient Singleton via `lib/prisma.ts` mit WAL Mode.
+- **REST Endpoints** (JSON):
+  - `GET /api/stats` — Dashboard-Zahlen
+  - `GET /api/models` — Alle LLM-Modelle
+  - `GET /api/models/:id/proficiencies` — Proficiency-Level pro Sprache (via M:N-Junctions)
+  - `GET /api/languages` — Alle Sprachen
+  - `GET /api/strings?search=` — Master-Strings mit Suche
+  - `GET /api/models/:mid/languages/:lid/votes` — Übersetzungen gruppiert pro String
+  - `GET /api/models/:mid/languages/:lid/coverage` — Coverage-Statistik
+  - `GET /api/strings/:sid/comparison?langId=` — Side-by-Side Modellvergleich
+  - `POST /api/votes` — Vote erstellen
+- **Frontend-Seiten** (JSX + htmx):
+  - `/` — Dashboard mit Stat-Kacheln
+  - `/models` — Dropdown → htmx-fragment: Proficiency-Tabelle + Coverage-Balken
+  - `/models/:mid/languages/:lid` — Detail: alle Übersetzungen (Model→Sprache)
+  - `/strings` — String-Suche (htmx keyup delay:300ms)
+  - `/strings/:sid/comparison?langId=` — Side-by-Side mit Consensus-Markierung
+- **htmx-Fragmente**:
+  - `/models/proficiencies/table?modelId=` — Tabelle (Level, Coverage, Link)
+  - `/strings/table?search=` — Suchergebnisse
+  - `/strings/:sid/comparison/table?langId=` — Vergleichstabelle
+
 ## Prisma Schemas
 Two Prisma-managed SQLite schemas coexist under `prisma/`:
 - **Device DB** (`prisma/desired/` + `prisma/current/`): Documents the Room-managed app database. `desired/` is hand-crafted (SOLL), `current/` is auto-generated from device via `prisma db pull` (IST). Drift detection via `prismaCheckSchema` Gradle task.

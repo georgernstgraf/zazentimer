@@ -57,6 +57,9 @@ Read this file carefully before making changes in affected areas.
 
 - **AppCompat Theme & Material text appearances**: In projects with AppCompat base themes (e.g., `Theme.AppCompat`), Material Components attributes like `?attr/textAppearanceSubtitle1` are undefined or do not resolve properly, causing TextViews to fall back to tiny, unstyled sizes. Use explicit text sizing and styling (e.g., `android:textSize="18sp"`, `android:textStyle="bold"`) to guarantee correct styling across different parent themes.
 
+- **PRAGMA via $executeRawUnsafe schlägt fehl mit "Execute returned results"**: `PRAGMA journal_mode=WAL` gibt einen Ergebnis-String zurück ("wal"), den `$executeRawUnsafe` nicht akzeptiert. Verwende `$queryRawUnsafe` für PRAGMAs.
+- **JavaScript in <script>-Tags ist nicht self-closing**: `<script src="htmx.org" />` schließt das Tag nicht korrekt — ein separater `</script>`-Abschluss ist nötig. Sonst wird der Rest der HTML-Seite als JavaScript interpretiert.
+
 ## Prisma / Deno / Translation Pipeline
 - **Deno 2.7.14 has no native `DOMParser`**: Unlike Node.js + `jsdom`, Deno's standard library doesn't include an XML parser. Must use regex or pull in `npm:xmldom` as a polyfill. For well-formed single-line `strings.xml`, regex is sufficient.
 - **`openai-whisper` pip install is 106+ MB**: Pulls Torch, CUDA, NumPy, tqdm, and more. For just extracting the 100-language map from `tokenizer.py`, use a static JSON instead. The `pycountry` library alone is <1 MB.

@@ -1,30 +1,23 @@
 # Project State
 
-Current status as of 2026-05-24.
+Current status as of 2026-05-25.
 
 ## Current Focus
-#202 — Orchestrator läuft. Erste Test-Übersetzungen für Deutsch mit 2 Modellen in der DB.
+#212 — Voting API + Frontend (abgeschlossen)
 
 ## Completed (this cycle)
-- [x] Prisma schema + seed + migration
-- [x] voting_api.ts Hono backend
-- [x] translate + proficiency SKILL.md
-- [x] translate.ts: PROVIDER_RANKING, fetchAvailableModels(), Fallback-Chain, Logging
-- [x] opencode_client.ts: auth, model per message, parts extraktion
-- [x] verify.ts: extractModelName für Provider-Prefix
-- [x] Loops merged: runOne/runAll (proficiency on-demand + translate)
-- [x] zai/zai-coding-plan aus Ranking entfernt
-- [x] Erster Voll-Durchlauf: Gemini 3.1 Pro → 154 DE votes (Proficiency 5)
-- [x] Zweiter Durchlauf: GPT-5.5 → 154 DE votes (Proficiency 4)
-- [x] DB: 308 Votes, 2 Modelle, 6 Proficiencies (DE + FR)
-- [x] Sub-issue #209 abgeschlossen
+- [x] #212 — `prisma/voting_api.tsx` mit 8 REST-Endpoints + JSX-Frontend (htmx/Pico CSS)
+- [x] #212 — `prisma/lib/prisma.ts` (Lazy Singleton + WAL Mode)
+- [x] #212 — `prisma/deno.json` angepasst (JSX-Config, votingbackend Task)
+- [x] Seed-DB: 123 languages, 10 models, 154 master strings
 
 ## Pending
 - [ ] #202 — Voting + export script (auto-resolve consensus translations)
 - [ ] #64 — Promotion/Upload automation
+- [ ] #212 — Weitere Frontend-Seiten wenn gewünscht (Stats-Detailseite, Consensus-Ansicht)
 
 ## Blockers
 None
 
 ## Next Session Suggestion
-Run `deno task translate --all` to execute the first full translation round. Then build the voting mechanism to auto-resolve consensus translations.
+`deno task votingbackend` starten und unter http://localhost:8000/ die Oberfläche erkunden.

@@ -368,6 +368,13 @@ Each entry documents WHAT was decided and WHY.
 - **Reason**: Previously, callers tried to redirect emulator output via `$(emulator_launch ... 2>>logfile)`, but the background emulator process inherits the subshell's file descriptors only during the function call — its subsequent output was lost. Making logfile mandatory and redirecting inside the function ensures all emulator output is captured.
 - **Tradeoff**: Every caller must provide a logfile path.
 
+## 2026-05-24: Voting API + Frontend als Hono JSX + htmx (#212)
+- **Choice**: Rewrote `voting_api.ts` as `voting_api.tsx` mit Hono JSX (SSR) + htmx + Pico CSS. Lazy PrismaClient Singleton mit WAL Mode in `lib/prisma.ts`.
+- **Reason**: `voting_api.ts` wurde upstream gelöscht (war Teil von #211). Neubau als `.tsx` für JSX-Support. htmx erlaubt interaktive Filter/Suche ohne eigenes JavaScript. Pico CSS ist classless und macht rohes HTML sofort presentabel.
+- **Considered**: SPA mit React/Vue (zu schwer, Build-Schritt nötig), reines Vanilla JS (htmx spart ~100 Zeilen fetch/event-code).
+- **Tradeoff**: htmx-Abwesenheit = Full Page Reloads bei Filter-Änderungen. Pico CSS CDN = keine Offline-Funktionalität.
+- **DB-Pattern**: Lazy Singleton (`lib/prisma.ts`) statt per-request `withPrisma()` — SQLite profitiert von Single-Connection. WAL-Mode für gleichzeitiges Lesen/Schreiben. PRAGMAs via `$queryRawUnsafe` (nicht `$executeRawUnsafe`, da PRAGMA Result-Zeilen zurückgibt).
+
 ## 2026-05-20: Hostname-based test matrix (#200)
 - **Choice**: `run-instrumentation.sh` selects API list and display strategy based on `hostname -s`:
   - `claw`: Xvfb forced, APIs from `zazentimer.test.apis.claw` (currently API 34 only)
