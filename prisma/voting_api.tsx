@@ -924,7 +924,8 @@ app.get("/evaluation", async (c) => {
 
     const data = langId ? await getEvaluation(langId) : [];
 
-    if (sort && dir && data.length > 0) {
+    // Default sort: models desc, then score desc (getEvaluation already does this)
+    if (sort && dir) {
         data.sort((a, b) => {
             let va: string | number;
             let vb: string | number;
@@ -933,6 +934,7 @@ app.get("/evaluation", async (c) => {
                 case "translation": va = a.translation; vb = b.translation; break;
                 case "score": va = a.score; vb = b.score; break;
                 case "models": va = a.modelCount; vb = b.modelCount; break;
+                case "settled": va = a.modelCount >= 3 ? 1 : 0; vb = b.modelCount >= 3 ? 1 : 0; break;
                 default: return 0;
             }
             if (typeof va === "string") {
@@ -960,32 +962,41 @@ app.get("/evaluation", async (c) => {
     }
 
     const tableContent = data.length === 0
-        ? <p>{langId ? "No evaluation data found." : "Select a language to see evaluation scores."}</p>
+        ? <p>{langId ? "No evaluation data found." : "Select a language to see evaluation results."}</p>
         : (
             <table>
                 <thead>
                     <tr>
                         <th>{sortLink("master_string", "Master String")}</th>
                         <th>{sortLink("translation", "Translation")}</th>
-                        <th style="text-align: center;">{sortLink("score", "Score")}</th>
-                        <th style="text-align: center;">{sortLink("models", "Models")}</th>
-                        <th>Voting Models</th>
+                        <th style="text-align: center;">{sortLink("models", "Votes")}</th>
+                        <th style="text-align: center;">{sortLink("score", "Confidence")}</th>
+                        <th style="text-align: center;">{sortLink("settled", "Settled")}</th>
+                        <th>Models</th>
                     </tr>
                 </thead>
                 <tbody>
-                    {data.map((r) => (
-                        <tr>
-                            <td>{r.master_string}</td>
-                            <td>
-                                <strong>{r.translation}</strong>
-                            </td>
-                            <td style="text-align: center;">
-                                <code>{r.score}</code>
-                            </td>
-                            <td style="text-align: center;">{r.modelCount}</td>
-                            <td style="font-size: 0.85rem;">{r.modelNames}</td>
-                        </tr>
-                    ))}
+                    {data.map((r) => {
+                        const settled = r.modelCount >= 3;
+                        return (
+                            <tr>
+                                <td>{r.master_string}</td>
+                                <td>
+                                    <strong>{r.translation}</strong>
+                                </td>
+                                <td style="text-align: center;">{r.modelCount}</td>
+                                <td style="text-align: center;">
+                                    <code>{r.score}</code>
+                                </td>
+                                <td style="text-align: center;">
+                                    {settled
+                                        ? <mark style="background: var(--pico-color-green); color: white; padding: 0.1rem 0.4rem; border-radius: var(--pico-border-radius);">✓</mark>
+                                        : <span style="color: var(--pico-color-zinc-500);">—</span>}
+                                </td>
+                                <td style="font-size: 0.85rem;">{r.modelNames}</td>
+                            </tr>
+                        );
+                    })}
                 </tbody>
             </table>
         );
@@ -996,7 +1007,7 @@ app.get("/evaluation", async (c) => {
         <Layout title="Evaluation">
             <hgroup>
                 <h1>Evaluation</h1>
-                <p>Score-based translation ranking (proficiency-weighted)</p>
+                <p>Democratic vote: sorted by vote count, ties broken by confidence sum</p>
             </hgroup>
 
             <select

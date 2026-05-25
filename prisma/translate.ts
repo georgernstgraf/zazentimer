@@ -16,6 +16,7 @@ import {
     getExistingVotes,
     getOrCreateLanguage,
     getOrCreateModel,
+    getSettledStrings,
     hasProficiency,
     upsertProficiency,
     upsertVote,
@@ -440,11 +441,17 @@ async function runOne(
     // Step 2: Translate (only missing strings)
     const allMs = await getAllMasterStrings();
     const existing = await getExistingVotes(modelDb.id, language.id);
-    const missing = allMs.filter((s) => !existing.has(s.id));
+    const settled = await getSettledStrings(language.id);
+    const skip = new Set([...existing, ...settled]);
+    const missing = allMs.filter((s) => !skip.has(s.id));
 
     if (missing.length === 0) {
-        log(`${modelName} ${langBcp47}: all strings have votes, skipping`);
+        log(`${modelName} ${langBcp47}: all ${allMs.length} strings settled or existing, skipping`);
         return;
+    }
+
+    if (settled.size > 0) {
+        log(`${modelName} ${langBcp47}: ${allMs.length} total, ${skip.size} skip (${existing.size} existing, ${settled.size} settled), ${missing.length} remaining`);
     }
 
     const strings = missing.map((s) => ({ key: s.text, text: s.text }));

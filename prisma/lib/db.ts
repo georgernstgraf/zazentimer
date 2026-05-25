@@ -296,8 +296,9 @@ export async function getEvaluation(langId: number) {
     }
 
     const groups = new Map<number, Map<string, {
+        master_stringsId: number;
         master_string: string; translation: string;
-        score: number; modelNames: string[];
+        score: number; modelCount: number; modelNames: string[];
     }>>();
 
     for (const v of votes) {
@@ -308,27 +309,47 @@ export async function getEvaluation(langId: number) {
         const tmap = groups.get(msId)!;
         if (!tmap.has(v.translation)) {
             tmap.set(v.translation, {
+                master_stringsId: msId,
                 master_string: v.master_string.text,
                 translation: v.translation,
                 score: 0,
+                modelCount: 0,
                 modelNames: [],
             });
         }
         const entry = tmap.get(v.translation)!;
         entry.score += level;
+        entry.modelCount++;
         entry.modelNames.push(v.llm_model.name);
     }
 
     const result = [];
     for (const [, tmap] of groups) {
-        const ranked = [...tmap.values()].sort((a, b) => b.score - a.score);
+        const ranked = [...tmap.values()].sort((a, b) => {
+            const dc = b.modelCount - a.modelCount;
+            if (dc !== 0) return dc;
+            return b.score - a.score;
+        });
         result.push(...ranked);
     }
     return result.map((r) => ({
         ...r,
-        modelCount: r.modelNames.length,
         modelNames: r.modelNames.join(", "),
     }));
+}
+
+export async function getSettledStrings(langId: number): Promise<Set<number>> {
+    const evaluation = await getEvaluation(langId);
+    const best = new Map<number, number>();
+    for (const e of evaluation) {
+        const current = best.get(e.master_stringsId) || 0;
+        if (e.modelCount > current) best.set(e.master_stringsId, e.modelCount);
+    }
+    return new Set(
+        [...best.entries()]
+            .filter(([_, count]) => count >= 3)
+            .map(([id]) => id),
+    );
 }
 
 // ── Stats ───────────────────────────────────────────────────────────────────
