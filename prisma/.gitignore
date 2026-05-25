@@ -9,4 +9,5 @@ generatedprismaclient/
 translation_votes.*
 translate-*.json
 proficiency-*.json
+session-*.md
 logs/
