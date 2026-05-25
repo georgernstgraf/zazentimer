@@ -32,6 +32,7 @@ function Layout(
                     <ul>
                         <li><a href="/models">Models</a></li>
                         <li><a href="/strings">Strings</a></li>
+                        <li><a href="/languages">Languages</a></li>
                     </ul>
                 </nav>
                 <main class="container">
@@ -211,6 +212,32 @@ async function getComparison(stringId: number, langId: number) {
         }
     }
     return { master_string: masterString.text, comparisons: Object.values(byModel) };
+}
+
+async function getLanguagesWithStats(search: string) {
+    const prisma = await getPrisma();
+    const where = search
+        ? {
+            OR: [
+                { english_name: { contains: search } },
+                { bcp_47: { contains: search } },
+            ],
+        }
+        : {};
+    const languages = await prisma.languages.findMany({
+        where,
+        orderBy: { bcp_47: "asc" },
+    });
+
+    return await Promise.all(languages.map(async (lang) => {
+        const [modelCount, voteCount] = await Promise.all([
+            prisma.language_proficiencies.count({
+                where: { languages: { some: { id: lang.id } } },
+            }),
+            prisma.votes.count({ where: { languagesId: lang.id } }),
+        ]);
+        return { ...lang, modelCount, voteCount };
+    }));
 }
 
 // ── API Routes (JSON) ─────────────────────────────────────────────────────────
@@ -862,6 +889,157 @@ app.get("/strings/:sid/comparison/table", async (c) => {
     if (isNaN(sid)) return c.html(<p>Invalid string ID.</p>);
 
     return c.html(await renderComparisonContent(sid, langId));
+});
+
+// ── Languages Page ────────────────────────────────────────────────────────────
+
+app.get("/languages", async (c) => {
+    const search = c.req.query("search") || "";
+    const sort = c.req.query("sort") || "";
+    const dir = c.req.query("dir") || "";
+    const isHtmx = c.req.header("HX-Request") === "true";
+
+    const languages = await getLanguagesWithStats(search);
+
+    if (sort && dir) {
+        languages.sort((a, b) => {
+            const va = (() => {
+                switch (sort) {
+                    case "bcp47": return a.bcp_47;
+                    case "name": return a.english_name;
+                    case "posix": return a.posix_code;
+                    case "iso": return a.iso_639_3;
+                    case "whisper": return a.whisper_response || "";
+                    case "models": return a.modelCount;
+                    case "votes": return a.voteCount;
+                    default: return 0;
+                }
+            })();
+            const vb = (() => {
+                switch (sort) {
+                    case "bcp47": return b.bcp_47;
+                    case "name": return b.english_name;
+                    case "posix": return b.posix_code;
+                    case "iso": return b.iso_639_3;
+                    case "whisper": return b.whisper_response || "";
+                    case "models": return b.modelCount;
+                    case "votes": return b.voteCount;
+                    default: return 0;
+                }
+            })();
+            if (typeof va === "string" && typeof vb === "string") {
+                return dir === "asc" ? va.localeCompare(vb) : vb.localeCompare(va);
+            }
+            return dir === "asc" ? Number(va) - Number(vb) : Number(vb) - Number(va);
+        });
+    }
+
+    const nextDir = dir === "asc" ? "desc" : "asc";
+
+    function sortLink(field: string, label: string) {
+        const indicator = sort === field ? (dir === "asc" ? "▲" : "▼") : "";
+        return (
+            <a
+                href="#"
+                hx-get={`/languages?search=${search}&sort=${field}&dir=${nextDir}`}
+                hx-target="#language-table"
+                hx-push-url="true"
+                style="text-decoration: none; color: inherit;"
+            >
+                {label} {indicator}
+            </a>
+        );
+    }
+
+    const tableContent = languages.length === 0
+        ? <p>No languages found.</p>
+        : (
+            <table>
+                <thead>
+                    <tr>
+                        <th>{sortLink("bcp47", "BCP 47")}</th>
+                        <th>{sortLink("name", "English Name")}</th>
+                        <th>{sortLink("posix", "POSIX")}</th>
+                        <th>{sortLink("iso", "ISO 639-3")}</th>
+                        <th>{sortLink("whisper", "Whisper")}</th>
+                        <th style="text-align: center;">{sortLink("models", "Models")}</th>
+                        <th style="text-align: center;">{sortLink("votes", "Votes")}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {languages.map((l) => (
+                        <tr>
+                            <td><code>{l.bcp_47}</code></td>
+                            <td><a href={`/languages/${l.id}`}>{l.english_name}</a></td>
+                            <td><code>{l.posix_code}</code></td>
+                            <td><code>{l.iso_639_3}</code></td>
+                            <td>{l.whisper_response || <em style="color: var(--pico-color-zinc-500);">—</em>}</td>
+                            <td style="text-align: center;">{l.modelCount}</td>
+                            <td style="text-align: center;">{l.voteCount}</td>
+                        </tr>
+                    ))}
+                </tbody>
+            </table>
+        );
+
+    if (isHtmx) return c.html(tableContent);
+
+    return c.html(
+        <Layout title="Languages">
+            <hgroup>
+                <h1>Languages</h1>
+                <p>Browse {languages.length} locales</p>
+            </hgroup>
+
+            <input
+                type="search"
+                name="search"
+                placeholder="Search by name or BCP 47..."
+                value={search}
+                hx-get={`/languages?sort=${sort}&dir=${dir}`}
+                hx-target="#language-table"
+                hx-trigger="keyup changed delay:300ms"
+                hx-push-url="true"
+            />
+
+            <div id="language-table">
+                {tableContent}
+            </div>
+        </Layout>,
+    );
+});
+
+app.get("/languages/:lid", async (c) => {
+    const lid = parseInt(c.req.param("lid"), 10);
+    if (isNaN(lid)) throw new HTTPException(400, { message: "Invalid language id" });
+
+    const prisma = await getPrisma();
+    const language = await prisma.languages.findUnique({ where: { id: lid } });
+    if (!language) throw new HTTPException(404, { message: "Language not found" });
+
+    return c.html(
+        <Layout title={language.english_name}>
+            <a href="/languages">&larr; Back to Languages</a>
+            <hgroup>
+                <h1>{language.english_name}</h1>
+                <p>
+                    {language.bcp_47}
+                    {" — "}
+                    <code>{language.posix_code}</code>
+                    {" — "}
+                    <code>{language.iso_639_3}</code>
+                </p>
+            </hgroup>
+
+            <article>
+                <header>Details</header>
+                {language.whisper_response
+                    ? <p>Whisper response: <code>{language.whisper_response}</code></p>
+                    : <p>Whisper: <em>Not supported</em></p>}
+                <p>Directory: <code>{language.directory}</code></p>
+            </article>
+        </Layout>,
+    );
 });
 
 // ── Error Handler ─────────────────────────────────────────────────────────────
