@@ -368,6 +368,80 @@ export async function getSettledStrings(langId: number): Promise<Set<number>> {
     );
 }
 
+export async function getStringSettlement(stringId: number) {
+    const prisma = await getPrisma();
+
+    const votes = await prisma.votes.findMany({
+        where: { master_stringsId: stringId, ...NOT_EMPTY },
+        include: { language: true, llm_model: true },
+    });
+
+    const profs = await prisma.language_proficiencies.findMany({
+        where: { level: { gte: 2 } },
+        include: { llm_models: true, languages: true },
+    });
+
+    const levelMap = new Map<string, number>();
+    for (const p of profs) {
+        for (const m of p.llm_models) {
+            for (const l of p.languages) {
+                levelMap.set(`${m.id}:${l.id}`, p.level);
+            }
+        }
+    }
+
+    const langData = new Map<number, {
+        bcp47: string;
+        englishName: string;
+        translations: Map<string, { count: number; score: number }>;
+    }>();
+
+    for (const v of votes) {
+        const level = levelMap.get(`${v.llm_modelsId}:${v.languagesId}`);
+        if (!level) continue;
+
+        if (!langData.has(v.languagesId)) {
+            langData.set(v.languagesId, {
+                bcp47: v.language.bcp_47,
+                englishName: v.language.english_name,
+                translations: new Map(),
+            });
+        }
+        const lang = langData.get(v.languagesId)!;
+        if (!lang.translations.has(v.translation)) {
+            lang.translations.set(v.translation, { count: 0, score: 0 });
+        }
+        const t = lang.translations.get(v.translation)!;
+        t.count++;
+        t.score += level;
+    }
+
+    const languages = [...langData.entries()].map(([langId, data]) => {
+        const best = [...data.translations.entries()]
+            .sort((a, b) => {
+                const dc = b[1].count - a[1].count;
+                if (dc !== 0) return dc;
+                return b[1].score - a[1].score;
+            })[0];
+
+        return {
+            languageId: langId,
+            bcp47: data.bcp47,
+            englishName: data.englishName,
+            translation: best[0],
+            voteCount: best[1].count,
+            score: best[1].score,
+            settled: best[1].count >= 3,
+        };
+    });
+
+    return {
+        totalLanguages: languages.length,
+        settledLanguages: languages.filter((r) => r.settled).length,
+        languages,
+    };
+}
+
 // ── Stats ───────────────────────────────────────────────────────────────────
 
 export async function getStats() {

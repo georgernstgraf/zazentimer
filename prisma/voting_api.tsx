@@ -10,6 +10,7 @@ import {
     getModels,
     getProficiencies,
     getStats,
+    getStringSettlement,
     getStrings,
     getVotesGrouped,
 } from "./lib/db.ts";
@@ -540,7 +541,7 @@ app.get("/strings", async (c) => {
                         <th>{sortLink("id", "ID")}</th>
                         <th>{sortLink("text", "Text")}</th>
                         <th>{sortLink("translations", "Translations")}</th>
-                        <th>Compare</th>
+                        <th>Details</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -549,9 +550,9 @@ app.get("/strings", async (c) => {
                             <td>{s.id}</td>
                             <td>{s.text}</td>
                             <td>{s.voteCount}</td>
-                            <td>
-                                <a href={`/strings/${s.id}/comparison`}>Compare</a>
-                            </td>
+                                            <td>
+                                                <a href={`/strings/${s.id}`}>Details</a>
+                                            </td>
                         </tr>
                     ))}
                 </tbody>
@@ -579,6 +580,150 @@ app.get("/strings", async (c) => {
             />
 
             <div id="string-table">
+                {tableContent}
+            </div>
+        </Layout>,
+    );
+});
+
+app.get("/strings/:sid", async (c) => {
+    const sid = parseInt(c.req.param("sid"), 10);
+    if (isNaN(sid)) throw new HTTPException(400, { message: "Invalid string id" });
+
+    const sort = c.req.query("sort") || "";
+    const dir = c.req.query("dir") || "";
+    const isHtmx = c.req.header("HX-Request") === "true";
+
+    const prisma = await getPrisma();
+    const masterString = await prisma.master_strings.findUnique({ where: { id: sid } });
+    if (!masterString) throw new HTTPException(404, { message: "String not found" });
+
+    const settlement = await getStringSettlement(sid);
+
+    if (sort && dir) {
+        settlement.languages.sort((a, b) => {
+            let va: string | number;
+            let vb: string | number;
+            switch (sort) {
+                case "bcp47":
+                    va = a.bcp47;
+                    vb = b.bcp47;
+                    break;
+                case "name":
+                    va = a.englishName;
+                    vb = b.englishName;
+                    break;
+                case "translation":
+                    va = a.translation;
+                    vb = b.translation;
+                    break;
+                case "score":
+                    va = a.voteCount;
+                    vb = b.voteCount;
+                    break;
+                case "settled":
+                    va = a.settled ? 1 : 0;
+                    vb = b.settled ? 1 : 0;
+                    break;
+                default:
+                    return 0;
+            }
+            if (typeof va === "string") {
+                return dir === "asc"
+                    ? va.localeCompare(vb as string)
+                    : (vb as string).localeCompare(va);
+            }
+            return dir === "asc" ? Number(va) - Number(vb) : Number(vb) - Number(va);
+        });
+    }
+
+    const nextDir = dir === "asc" ? "desc" : "asc";
+
+    function sortLink(field: string, label: string) {
+        const indicator = sort === field ? (dir === "asc" ? "▲" : "▼") : "";
+        return (
+            <a
+                href="#"
+                hx-get={`/strings/${sid}?sort=${field}&dir=${nextDir}`}
+                hx-target="#settlement-table"
+                hx-push-url="true"
+                style="text-decoration: none; color: inherit;"
+            >
+                {label} {indicator}
+            </a>
+        );
+    }
+
+    const tableContent = settlement.languages.length === 0
+        ? <p>No translations found for this string.</p>
+        : (
+            <>
+                <p>
+                    Translations in <strong>{settlement.totalLanguages}</strong>{" "}
+                    languages, <strong>{settlement.settledLanguages}</strong> settled.
+                </p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>{sortLink("bcp47", "BCP 47")}</th>
+                            <th>{sortLink("name", "Language")}</th>
+                            <th>{sortLink("translation", "Translation")}</th>
+                            <th style="text-align: center;">
+                                {sortLink("score", "Settlement Score")}
+                            </th>
+                            <th style="text-align: center;">
+                                {sortLink("settled", "Settled")}
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {settlement.languages.map((l) => (
+                            <tr>
+                                <td><code>{l.bcp47}</code></td>
+                                <td>
+                                    <a
+                                        href={`/strings/${sid}/comparison?langId=${l.languageId}`}
+                                    >
+                                        {l.englishName}
+                                    </a>
+                                </td>
+                                <td><strong>{l.translation}</strong></td>
+                                <td style="text-align: center;">{l.voteCount}</td>
+                                <td style="text-align: center;">
+                                    {l.settled
+                                        ? (
+                                            <mark
+                                                style="background: var(--pico-color-green); color: white; padding: 0.1rem 0.4rem; border-radius: var(--pico-border-radius);"
+                                            >
+                                                ✓
+                                            </mark>
+                                        )
+                                        : <span style="color: var(--pico-color-zinc-500);">—</span>}
+                                </td>
+                            </tr>
+                        ))}
+                    </tbody>
+                </table>
+            </>
+        );
+
+    if (isHtmx) return c.html(tableContent);
+
+    return c.html(
+        <Layout title={`String #${sid}`}>
+            <a href="/strings">&larr; Back to Strings</a>
+            <hgroup>
+                <h1>String Details</h1>
+                <p>
+                    Master string: <code>{masterString.text}</code>
+                </p>
+            </hgroup>
+            <p>
+                <a href={`/strings/${sid}/comparison`}>
+                    Compare translations across models &rarr;
+                </a>
+            </p>
+            <div id="settlement-table">
                 {tableContent}
             </div>
         </Layout>,
