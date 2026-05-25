@@ -83,7 +83,7 @@ Read this file carefully before making changes in affected areas.
 - **Parts-Format im Response**: Message-Parts enthalten `step-start`, `reasoning`, `text`, `step-finish`. Der Content liegt im Part mit `type: "text"` — nicht in `parts[0]` (das ist `step-start` ohne `.text`).
 - **Model-Eigenidentifikation**: LLMs geben oft `providerID/modelID` (z.B. `opencode/gpt-5.5`) statt nur `gpt-5.5` als Model-Namen zurück. Verify-Funktionen müssen den letzten Slash-Teil extrahieren (`extractModelName()`).
 - **System + Model per Message**: `POST /session/{id}/message` akzeptiert `{ system, model: { providerID, modelID }, parts }`. Session-Erstellung (`POST /session`) hat KEINEN `system`-Parameter.
-- **zai (Zhipu AI) Provider**: Subscription abgelaufen — Modelle liefern `locale: ""` statt des bcp_47-Codes. Aus PROVIDER_RANKING entfernt. `zai-coding-plan` analog.
+- **zai (Zhipu AI) Provider**: Token müssen regelmäßig rotiert werden. Nach Token-Rotation funktioniert der Provider wieder. `zai-coding-plan` ist ein guter Provider und bleibt in PROVIDER_RANKING.
 
 ### Translation Pipeline
 - **Gemini 3.1 Pro Performance**: ~90s für 154 Strings, Proficiency 5/5, alle 153 übersetzt (0 null).

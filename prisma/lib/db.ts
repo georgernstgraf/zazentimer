@@ -175,6 +175,19 @@ export async function getExistingVotes(
     return new Set(rows.map((r) => r.master_stringsId));
 }
 
+export async function getNullExistingVotes(
+    modelId: number,
+    languageId: number,
+): Promise<Set<number>> {
+    const prisma = await getPrisma();
+    const rows = await prisma.votes.findMany({
+        where: { llm_modelsId: modelId, languagesId: languageId, translation: "" },
+        select: { master_stringsId: true },
+        distinct: ["master_stringsId"],
+    });
+    return new Set(rows.map((r) => r.master_stringsId));
+}
+
 export async function upsertVote(
     languageId: number,
     modelId: number,
