@@ -695,37 +695,15 @@ app.get("/strings", async (c) => {
     );
 });
 
-app.get("/strings/:sid/comparison", async (c) => {
-    const sid = parseInt(c.req.param("sid"), 10);
-    if (isNaN(sid)) throw new HTTPException(400, { message: "Invalid string id" });
-
+async function renderComparisonContent(sid: number, langId: number) {
     const prisma = await getPrisma();
-    const [masterString, models, comparison] = await Promise.all([
-        prisma.master_strings.findUnique({ where: { id: sid } }),
+    const [models, comparison] = await Promise.all([
         getModels(),
-        getComparison(sid, 0),
+        getComparison(sid, langId),
     ]);
 
-    // Nur Sprachen mit mindestens einem Vote für diesen String
-    const langIds = await prisma.votes.findMany({
-        where: { master_stringsId: sid },
-        select: { languagesId: true },
-        distinct: ["languagesId"],
-    });
-    const languages = await prisma.languages.findMany({
-        where: { id: { in: langIds.map((l) => l.languagesId) } },
-        orderBy: { bcp_47: "asc" },
-    });
-    if (!masterString) throw new HTTPException(404, { message: "String not found" });
-
-    return c.html(
-        <Layout title="String Comparison">
-            <a href="/strings">&larr; Back to Strings</a>
-            <hgroup>
-                <h1>String Comparison</h1>
-                <p>Master string: <code>{masterString.text}</code></p>
-            </hgroup>
-
+    return (
+        <>
             <details>
                 <summary>Model Details</summary>
                 <table>
@@ -757,11 +735,45 @@ app.get("/strings/:sid/comparison", async (c) => {
                 </table>
             </details>
 
+            <ComparisonTableView
+                comparisons={comparison.comparisons}
+                masterString={comparison.master_string}
+            />
+        </>
+    );
+}
+
+app.get("/strings/:sid/comparison", async (c) => {
+    const sid = parseInt(c.req.param("sid"), 10);
+    if (isNaN(sid)) throw new HTTPException(400, { message: "Invalid string id" });
+
+    const prisma = await getPrisma();
+    const masterString = await prisma.master_strings.findUnique({ where: { id: sid } });
+    if (!masterString) throw new HTTPException(404, { message: "String not found" });
+
+    const langIds = await prisma.votes.findMany({
+        where: { master_stringsId: sid },
+        select: { languagesId: true },
+        distinct: ["languagesId"],
+    });
+    const languages = await prisma.languages.findMany({
+        where: { id: { in: langIds.map((l) => l.languagesId) } },
+        orderBy: { bcp_47: "asc" },
+    });
+
+    return c.html(
+        <Layout title="String Comparison">
+            <a href="/strings">&larr; Back to Strings</a>
+            <hgroup>
+                <h1>String Comparison</h1>
+                <p>Master string: <code>{masterString.text}</code></p>
+            </hgroup>
+
             <h3>Filter by Language</h3>
             <select
                 name="langId"
                 hx-get={`/strings/${sid}/comparison/table`}
-                hx-target="#comparison-table"
+                hx-target="#comparison-content"
                 hx-trigger="change"
             >
                 <option value="0">— All Languages —</option>
@@ -772,11 +784,8 @@ app.get("/strings/:sid/comparison", async (c) => {
                 ))}
             </select>
 
-            <div id="comparison-table">
-                <ComparisonTableView
-                    comparisons={comparison.comparisons}
-                    masterString={comparison.master_string}
-                />
+            <div id="comparison-content">
+                {await renderComparisonContent(sid, 0)}
             </div>
         </Layout>,
     );
@@ -852,13 +861,7 @@ app.get("/strings/:sid/comparison/table", async (c) => {
     const langId = parseInt(c.req.query("langId") || "0", 10);
     if (isNaN(sid)) return c.html(<p>Invalid string ID.</p>);
 
-    const comparison = await getComparison(sid, langId);
-    return c.html(
-        <ComparisonTableView
-            comparisons={comparison.comparisons}
-            masterString={comparison.master_string}
-        />,
-    );
+    return c.html(await renderComparisonContent(sid, langId));
 });
 
 // ── Error Handler ─────────────────────────────────────────────────────────────
