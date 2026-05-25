@@ -3,41 +3,97 @@ import { getPrisma } from "../lib/prisma.ts";
 const prisma = await getPrisma();
 
 try {
-    // ── 1. Seed languages ──────────────────────────────────────────────
-    const languages: Array<{
-        bcp_47: string;
-        posix_code: string;
-        iso_639_3: string;
-        directory: string;
-        english_name: string;
-        whisper_response: string | null;
-    }> = JSON.parse(
+    // ── 1. Seed languages from filesystem values-* dirs ────────────────
+    const iso639: Record<string, { name: string | null; alpha_3: string | null }> =
+        JSON.parse(
+            await Deno.readTextFile(
+                new URL("iso639.json", import.meta.url),
+            ),
+        );
+    const whisperMap: Record<string, string> = JSON.parse(
         await Deno.readTextFile(
-            new URL("languages_seed.json", import.meta.url),
+            new URL("whisper_languages.json", import.meta.url),
         ),
     );
 
-    for (const lang of languages) {
+    const resPath = new URL(
+        "../../app/src/main/res/",
+        import.meta.url,
+    );
+    const foundDirs: string[] = [];
+    let langCount = 0;
+
+    for await (const entry of Deno.readDir(resPath.pathname)) {
+        if (!entry.name.startsWith("values-") || !entry.isDirectory) continue;
+
+        const dirName = entry.name;
+        foundDirs.push(dirName);
+
+        // Parse BCP 47 from directory name
+        const tag = dirName.slice("values-".length);
+        let bcp47: string;
+        if (tag.startsWith("b+")) {
+            const parts = tag.slice(2).split("+");
+            bcp47 = parts.join("-");
+        } else {
+            bcp47 = tag.replace(/-r([A-Z]{2})/g, (_: string, r: string) => `-${r}`);
+        }
+
+        // Parse POSIX locale
+        const bcpParts = bcp47.split("-");
+        const langPrimary = bcpParts[0];
+        const remaining = bcpParts.slice(1);
+        let region: string | undefined;
+        let script: string | undefined;
+        for (const part of remaining) {
+            if (part.length === 2 && /^[A-Z]{2}$/.test(part)) {
+                region = part;
+            } else if (
+                part.length === 4 && /^[A-Z][a-z]{3}$/.test(part)
+            ) {
+                script = part;
+            }
+        }
+        let posix = langPrimary;
+        if (region) posix += `_${region}`;
+        if (script) posix += `@${script.toLowerCase()}`;
+
+        // Look up ISO 639 and Whisper names
+        const primaryKey = langPrimary.toLowerCase();
+        const isoEntry = iso639[primaryKey];
+        const iso3 = isoEntry?.alpha_3 || primaryKey;
+        const englishName = isoEntry?.name || null;
+        const whisperName = whisperMap[primaryKey] || null;
+        const name = englishName || primaryKey;
+
         await prisma.languages.upsert({
-            where: { bcp_47: lang.bcp_47 },
+            where: { bcp_47: bcp47 },
             update: {
-                posix_code: lang.posix_code,
-                iso_639_3: lang.iso_639_3,
-                directory: lang.directory,
-                english_name: lang.english_name,
-                whisper_response: lang.whisper_response,
+                posix_code: posix,
+                iso_639_3: iso3,
+                directory: dirName,
+                english_name: name,
+                whisper_response: whisperName,
             },
             create: {
-                bcp_47: lang.bcp_47,
-                posix_code: lang.posix_code,
-                iso_639_3: lang.iso_639_3,
-                directory: lang.directory,
-                english_name: lang.english_name,
-                whisper_response: lang.whisper_response,
+                bcp_47: bcp47,
+                posix_code: posix,
+                iso_639_3: iso3,
+                directory: dirName,
+                english_name: name,
+                whisper_response: whisperName,
             },
         });
+        langCount++;
     }
-    console.log(`✔ Seeded ${languages.length} languages`);
+
+    const langRemoved = await prisma.languages.deleteMany({
+        where: { directory: { notIn: foundDirs } },
+    });
+    if (langRemoved.count > 0) {
+        console.log(`✔ Removed ${langRemoved.count} obsolete languages`);
+    }
+    console.log(`✔ Seeded ${langCount} languages`);
 
     // ── 2. Seed LLM models ────────────────────────────────────────────
     const models: Array<{ name: string }> = JSON.parse(
