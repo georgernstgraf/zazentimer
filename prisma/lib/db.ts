@@ -199,13 +199,17 @@ export async function getStrings(search: string) {
         where,
         orderBy: { text: "asc" },
     });
-    const result = await Promise.all(strings.map(async (s) => {
-        const count = await prisma.votes.count({
-            where: { master_stringsId: s.id, ...NOT_EMPTY },
-        });
-        return { ...s, voteCount: count };
-    }));
-    return result;
+
+    const counts = await prisma.votes.groupBy({
+        by: ["master_stringsId"],
+        where: NOT_EMPTY,
+        _count: { id: true },
+    });
+    const countMap = new Map(
+        counts.map((c) => [c.master_stringsId, c._count.id]),
+    );
+
+    return strings.map((s) => ({ ...s, voteCount: countMap.get(s.id) || 0 }));
 }
 
 // ── Votes / Translations ────────────────────────────────────────────────────
@@ -440,8 +444,14 @@ export async function getStringSettlement(stringId: number) {
         include: { language: true, llm_model: true },
     });
 
+    const modelIds = [...new Set(votes.map((v) => v.llm_modelsId))];
+    const langIds = [...new Set(votes.map((v) => v.languagesId))];
     const profs = await prisma.language_proficiencies.findMany({
-        where: { level: { gte: 2 } },
+        where: {
+            level: { gte: 2 },
+            llm_models: { some: { id: { in: modelIds } } },
+            languages: { some: { id: { in: langIds } } },
+        },
         include: { llm_models: true, languages: true },
     });
 
