@@ -888,6 +888,8 @@ app.get("/strings/:sid/comparison", async (c) => {
         throw new HTTPException(400, { message: "Invalid string id" });
     }
 
+    const langId = parseInt(c.req.query("langId") || "0", 10);
+
     const masterString = await getMasterStringById(sid);
     if (!masterString) {
         throw new HTTPException(404, { message: "String not found" });
@@ -914,14 +916,14 @@ app.get("/strings/:sid/comparison", async (c) => {
             >
                 <option value="0">— All Languages —</option>
                 {languages.map((l) => (
-                    <option value={l.id}>
+                    <option value={l.id} selected={l.id === langId}>
                         {l.english_name} ({l.bcp_47})
                     </option>
                 ))}
             </select>
 
             <div id="comparison-content">
-                {await renderComparisonContent(sid, 0, masterString.text)}
+                {await renderComparisonContent(sid, langId, masterString.text)}
             </div>
         </Layout>,
     );
