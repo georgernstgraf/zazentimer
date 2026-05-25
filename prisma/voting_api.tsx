@@ -368,9 +368,77 @@ app.get("/", async (c) => {
     );
 });
 
+async function renderProficiencyTableContent(modelId: number) {
+    if (!modelId) return <p>Select a model above.</p>;
+
+    const [proficiencies, coverage] = await Promise.all([
+        getProficiencies(modelId),
+        (async () => {
+            const prisma = await getPrisma();
+            const results: { langId: number; translated: number; total: number; pct: number }[] = [];
+            for (const l of await prisma.languages.findMany()) {
+                const c = await getCoverage(modelId, l.id);
+                results.push({
+                    langId: l.id,
+                    translated: c.translated,
+                    total: c.total,
+                    pct: c.coverage_pct,
+                });
+            }
+            return results;
+        })(),
+    ]);
+
+    return (
+        <div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Language</th>
+                        <th>BCP 47</th>
+                        <th>Proficiency</th>
+                        <th>Coverage</th>
+                        <th>Votes</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {proficiencies.map((p) => {
+                        const langData = p.languages[0];
+                        if (!langData) return null;
+                        const cov = coverage.find((c) => c.langId === langData.id);
+                        return (
+                            <tr>
+                                <td>{langData.english_name}</td>
+                                <td><code>{langData.bcp_47}</code></td>
+                                <td><LevelBadge level={p.level} /></td>
+                                <td>
+                                    <CoverageBar pct={cov?.pct || 0} />
+                                </td>
+                                <td>
+                                    <a
+                                        href={`/models/${modelId}/languages/${langData.id}`}
+                                    >
+                                        View ({cov?.translated || 0})
+                                    </a>
+                                </td>
+                            </tr>
+                        );
+                    })}
+                </tbody>
+            </table>
+        </div>
+    );
+}
+
 app.get("/models", async (c) => {
+    const modelId = parseInt(c.req.query("modelId") || "0", 10);
+    const isHtmx = c.req.header("HX-Request") === "true";
     const models = await getModels();
-    const languages = await getLanguages();
+
+    if (isHtmx) {
+        const content = await renderProficiencyTableContent(modelId);
+        return c.html(content);
+    }
 
     return c.html(
         <Layout title="Models">
@@ -382,17 +450,24 @@ app.get("/models", async (c) => {
             <div class="grid">
                 <select
                     name="modelId"
-                    hx-get="/models/proficiencies/table"
+                    hx-get="/models"
                     hx-target="#prof-output"
                     hx-trigger="change"
+                    hx-push-url="true"
                 >
                     <option value="">— Select Model —</option>
-                    {models.map((m) => <option value={m.id}>{m.name}</option>)}
+                    {models.map((m) => (
+                        <option value={m.id} selected={m.id === modelId}>
+                            {m.name}
+                        </option>
+                    ))}
                 </select>
             </div>
 
             <div id="prof-output">
-                <p>Select a model above to see proficiency levels.</p>
+                {modelId
+                    ? await renderProficiencyTableContent(modelId)
+                    : <p>Select a model above to see proficiency levels.</p>}
             </div>
         </Layout>,
     );
@@ -664,69 +739,7 @@ function ComparisonTableView(
 
 // ── htmx Fragment Routes ──────────────────────────────────────────────────────
 
-app.get("/models/proficiencies/table", async (c) => {
-    const modelId = parseInt(c.req.query("modelId") || "0", 10);
-    if (!modelId) return c.html(<p>Select a model above.</p>);
 
-    const [proficiencies, lang, coverage] = await Promise.all([
-        getProficiencies(modelId),
-        getLanguages(),
-        (async () => {
-            const prisma = await getPrisma();
-            const results: { langId: number; translated: number; total: number; pct: number }[] = [];
-            for (const l of await prisma.languages.findMany()) {
-                const c = await getCoverage(modelId, l.id);
-                results.push({
-                    langId: l.id,
-                    translated: c.translated,
-                    total: c.total,
-                    pct: c.coverage_pct,
-                });
-            }
-            return results;
-        })(),
-    ]);
-
-    return c.html(
-        <div>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Language</th>
-                        <th>BCP 47</th>
-                        <th>Proficiency</th>
-                        <th>Coverage</th>
-                        <th>Votes</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {proficiencies.map((p) => {
-                        const langData = p.languages[0];
-                        if (!langData) return null;
-                        const cov = coverage.find((c) => c.langId === langData.id);
-                        return (
-                            <tr>
-                                <td>{langData.english_name}</td>
-                                <td><code>{langData.bcp_47}</code></td>
-                                <td><LevelBadge level={p.level} /></td>
-                                <td>
-                                    <CoverageBar pct={cov?.pct || 0} />
-                                </td>
-                                <td>
-                                    <a
-                                        href={`/models/${modelId}/languages/${langData.id}`}
-                                    >
-                                        View ({cov?.translated || 0})
-                                    </a>
-                                </td>
-                            </tr>
-                        );
-                    })}
-                </tbody>
-            </table>
-        </div>,
-    );
-});
 
 app.get("/strings/table", async (c) => {
     const search = c.req.query("search") || "";
