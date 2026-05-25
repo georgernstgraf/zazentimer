@@ -1,21 +1,28 @@
 import { Hono } from "hono";
 import { HTTPException } from "hono/http-exception";
-import { getPrisma } from "./lib/prisma.ts";
 import {
     getComparison,
     getCoverage,
     getEvaluation,
+    getLanguageByBcp47,
+    getLanguageById,
     getLanguages,
     getLanguagesWithStats,
+    getLanguagesWithVotes,
+    getLanguagesWithVotesForString,
+    getMasterStringById,
+    getMasterStringByText,
+    getModelById,
+    getModelByName,
     getModels,
     getProficiencies,
     getStats,
     getStrings,
     getStringSettlement,
     getVotesGrouped,
+    upsertVote,
 } from "./lib/db.ts";
 
-const prisma = await getPrisma();
 const app = new Hono();
 
 // ── JSX Components ────────────────────────────────────────────────────────────
@@ -215,46 +222,31 @@ app.post("/api/votes", async (c) => {
         });
     }
 
-    const language = await prisma.languages.findUnique({ where: { bcp_47 } });
+    const language = await getLanguageByBcp47(bcp_47);
     if (!language) {
         throw new HTTPException(404, {
             message: `Language '${bcp_47}' not found`,
         });
     }
 
-    const llmModel = await prisma.llm_models.findUnique({
-        where: { name: model },
-    });
+    const llmModel = await getModelByName(model);
     if (!llmModel) {
         throw new HTTPException(404, { message: `Model '${model}' not found` });
     }
 
-    const masterString = await prisma.master_strings.findUnique({
-        where: { text: master_text },
-    });
+    const masterString = await getMasterStringByText(master_text);
     if (!masterString) {
         throw new HTTPException(404, {
             message: `Master string '${master_text}' not found`,
         });
     }
 
-    const vote = await prisma.votes.upsert({
-        where: {
-            languagesId_llm_modelsId_master_stringsId_translation: {
-                languagesId: language.id,
-                llm_modelsId: llmModel.id,
-                master_stringsId: masterString.id,
-                translation,
-            },
-        },
-        update: {},
-        create: {
-            languagesId: language.id,
-            llm_modelsId: llmModel.id,
-            master_stringsId: masterString.id,
-            translation,
-        },
-    });
+    const vote = await upsertVote(
+        language.id,
+        llmModel.id,
+        masterString.id,
+        translation,
+    );
 
     return c.json(vote, 201);
 });
@@ -505,8 +497,8 @@ app.get("/models/:mid/languages/:lid", async (c) => {
     if (isNaN(mid) || isNaN(lid)) throw new HTTPException(400);
 
     const [model, lang, groups, coverage] = await Promise.all([
-        prisma.llm_models.findUnique({ where: { id: mid } }),
-        prisma.languages.findUnique({ where: { id: lid } }),
+        getModelById(mid),
+        getLanguageById(lid),
         getVotesGrouped(mid, lid),
         getCoverage(mid, lid),
     ]);
@@ -689,9 +681,7 @@ app.get("/strings/:sid", async (c) => {
     const dir = c.req.query("dir") || "";
     const isHtmx = c.req.header("HX-Request") === "true";
 
-    const masterString = await prisma.master_strings.findUnique({
-        where: { id: sid },
-    });
+    const masterString = await getMasterStringById(sid);
     if (!masterString) {
         throw new HTTPException(404, { message: "String not found" });
     }
@@ -898,22 +888,12 @@ app.get("/strings/:sid/comparison", async (c) => {
         throw new HTTPException(400, { message: "Invalid string id" });
     }
 
-    const masterString = await prisma.master_strings.findUnique({
-        where: { id: sid },
-    });
+    const masterString = await getMasterStringById(sid);
     if (!masterString) {
         throw new HTTPException(404, { message: "String not found" });
     }
 
-    const langIds = await prisma.votes.findMany({
-        where: { master_stringsId: sid },
-        select: { languagesId: true },
-        distinct: ["languagesId"],
-    });
-    const languages = await prisma.languages.findMany({
-        where: { id: { in: langIds.map((l) => l.languagesId) } },
-        orderBy: { bcp_47: "asc" },
-    });
+    const languages = await getLanguagesWithVotesForString(sid);
 
     return c.html(
         <Layout title="String Comparison">
@@ -1194,7 +1174,7 @@ app.get("/languages/:lid", async (c) => {
         throw new HTTPException(400, { message: "Invalid language id" });
     }
 
-    const language = await prisma.languages.findUnique({ where: { id: lid } });
+    const language = await getLanguageById(lid);
     if (!language) {
         throw new HTTPException(404, { message: "Language not found" });
     }
@@ -1243,14 +1223,7 @@ app.get("/evaluation", async (c) => {
     const dir = c.req.query("dir") || "";
     const isHtmx = c.req.header("HX-Request") === "true";
 
-    const langIds = await prisma.votes.findMany({
-        select: { languagesId: true },
-        distinct: ["languagesId"],
-    });
-    const languages = await prisma.languages.findMany({
-        where: { id: { in: langIds.map((l) => l.languagesId) } },
-        orderBy: { bcp_47: "asc" },
-    });
+    const languages = await getLanguagesWithVotes();
 
     const data = langId ? await getEvaluation(langId) : [];
 

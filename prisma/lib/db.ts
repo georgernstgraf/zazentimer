@@ -1,27 +1,12 @@
+import type { languages, master_strings, llm_models } from "prismaclient";
 import { getPrisma } from "./prisma.ts";
 const prisma = await getPrisma();
-
-type PMasterString = {
-    id: number;
-    text: string;
-};
-
-type PLanguage = {
-    id: number;
-    bcp_47: string;
-    english_name: string;
-};
-
-type PModel = {
-    id: number;
-    name: string;
-};
 
 const NOT_EMPTY = { translation: { not: "" as const } };
 
 // ── Models ──────────────────────────────────────────────────────────────────
 
-export async function getAllModels(): Promise<PModel[]> {
+export async function getAllModels(): Promise<llm_models[]> {
     return await prisma.llm_models.findMany({ orderBy: { name: "asc" } });
 }
 
@@ -29,12 +14,20 @@ export async function getModels() {
     return await getAllModels();
 }
 
-export async function getOrCreateModel(name: string): Promise<PModel> {
+export async function getOrCreateModel(name: string): Promise<llm_models> {
     let model = await prisma.llm_models.findUnique({ where: { name } });
     if (!model) {
         model = await prisma.llm_models.create({ data: { name } });
     }
     return model;
+}
+
+export async function getModelById(id: number): Promise<llm_models | null> {
+    return await prisma.llm_models.findUnique({ where: { id } });
+}
+
+export async function getModelByName(name: string): Promise<llm_models | null> {
+    return await prisma.llm_models.findUnique({ where: { name } });
 }
 
 // ── Proficiencies ───────────────────────────────────────────────────────────
@@ -92,7 +85,7 @@ export async function getProficiencyLevel(
 
 // ── Languages ───────────────────────────────────────────────────────────────
 
-export async function getAllLanguages(): Promise<PLanguage[]> {
+export async function getAllLanguages(): Promise<languages[]> {
     return await prisma.languages.findMany({ orderBy: { bcp_47: "asc" } });
 }
 
@@ -100,7 +93,7 @@ export async function getLanguages() {
     return await getAllLanguages();
 }
 
-export async function getOrCreateLanguage(bcp47: string): Promise<PLanguage> {
+export async function getOrCreateLanguage(bcp47: string): Promise<languages> {
     const lang = await prisma.languages.findUnique({
         where: { bcp_47: bcp47 },
     });
@@ -108,6 +101,41 @@ export async function getOrCreateLanguage(bcp47: string): Promise<PLanguage> {
         throw new Error(`Language '${bcp47}' not found in DB. Run seed first.`);
     }
     return lang;
+}
+
+export async function getLanguageById(id: number): Promise<languages | null> {
+    return await prisma.languages.findUnique({ where: { id } });
+}
+
+export async function getLanguageByBcp47(
+    bcp47: string,
+): Promise<languages | null> {
+    return await prisma.languages.findUnique({ where: { bcp_47: bcp47 } });
+}
+
+export async function getLanguagesWithVotes(): Promise<languages[]> {
+    const langIds = await prisma.votes.findMany({
+        select: { languagesId: true },
+        distinct: ["languagesId"],
+    });
+    return await prisma.languages.findMany({
+        where: { id: { in: langIds.map((l) => l.languagesId) } },
+        orderBy: { bcp_47: "asc" },
+    });
+}
+
+export async function getLanguagesWithVotesForString(
+    stringId: number,
+): Promise<languages[]> {
+    const langIds = await prisma.votes.findMany({
+        where: { master_stringsId: stringId },
+        select: { languagesId: true },
+        distinct: ["languagesId"],
+    });
+    return await prisma.languages.findMany({
+        where: { id: { in: langIds.map((l) => l.languagesId) } },
+        orderBy: { bcp_47: "asc" },
+    });
 }
 
 export async function getLanguagesWithStats(search: string) {
@@ -139,18 +167,30 @@ export async function getLanguagesWithStats(search: string) {
 
 // ── Master Strings ──────────────────────────────────────────────────────────
 
-export async function getAllMasterStrings(): Promise<PMasterString[]> {
+export async function getAllMasterStrings(): Promise<master_strings[]> {
     return await prisma.master_strings.findMany({ orderBy: { id: "asc" } });
 }
 
 export async function getOrCreateMasterString(
     text: string,
-): Promise<PMasterString> {
+): Promise<master_strings> {
     let ms = await prisma.master_strings.findUnique({ where: { text } });
     if (!ms) {
         ms = await prisma.master_strings.create({ data: { text } });
     }
     return ms;
+}
+
+export async function getMasterStringById(
+    id: number,
+): Promise<master_strings | null> {
+    return await prisma.master_strings.findUnique({ where: { id } });
+}
+
+export async function getMasterStringByText(
+    text: string,
+): Promise<master_strings | null> {
+    return await prisma.master_strings.findUnique({ where: { text } });
 }
 
 export async function getStrings(search: string) {
