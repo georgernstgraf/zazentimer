@@ -17,7 +17,7 @@ function Layout(
                 <title>{title} — ZazenTimer Votes</title>
                 <link
                     rel="stylesheet"
-                    href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css"
+                    href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.violet.min.css"
                 />
                 <script src="https://unpkg.com/htmx.org@2.0.4">
                 </script>
