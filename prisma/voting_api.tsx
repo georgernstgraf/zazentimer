@@ -700,12 +700,22 @@ app.get("/strings/:sid/comparison", async (c) => {
     if (isNaN(sid)) throw new HTTPException(400, { message: "Invalid string id" });
 
     const prisma = await getPrisma();
-    const [masterString, languages, models, comparison] = await Promise.all([
+    const [masterString, models, comparison] = await Promise.all([
         prisma.master_strings.findUnique({ where: { id: sid } }),
-        getLanguages(),
         getModels(),
         getComparison(sid, 0),
     ]);
+
+    // Nur Sprachen mit mindestens einem Vote für diesen String
+    const langIds = await prisma.votes.findMany({
+        where: { master_stringsId: sid },
+        select: { languagesId: true },
+        distinct: ["languagesId"],
+    });
+    const languages = await prisma.languages.findMany({
+        where: { id: { in: langIds.map((l) => l.languagesId) } },
+        orderBy: { bcp_47: "asc" },
+    });
     if (!masterString) throw new HTTPException(404, { message: "String not found" });
 
     return c.html(
