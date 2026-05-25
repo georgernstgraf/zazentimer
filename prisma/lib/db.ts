@@ -1,4 +1,5 @@
 import { getPrisma } from "./prisma.ts";
+const prisma = await getPrisma();
 
 type PMasterString = {
     id: number;
@@ -21,7 +22,6 @@ const NOT_EMPTY = { translation: { not: "" as const } };
 // ── Models ──────────────────────────────────────────────────────────────────
 
 export async function getAllModels(): Promise<PModel[]> {
-    const prisma = await getPrisma();
     return await prisma.llm_models.findMany({ orderBy: { name: "asc" } });
 }
 
@@ -30,7 +30,6 @@ export async function getModels() {
 }
 
 export async function getOrCreateModel(name: string): Promise<PModel> {
-    const prisma = await getPrisma();
     let model = await prisma.llm_models.findUnique({ where: { name } });
     if (!model) {
         model = await prisma.llm_models.create({ data: { name } });
@@ -41,7 +40,6 @@ export async function getOrCreateModel(name: string): Promise<PModel> {
 // ── Proficiencies ───────────────────────────────────────────────────────────
 
 export async function getProficiencies(modelId: number) {
-    const prisma = await getPrisma();
     return await prisma.language_proficiencies.findMany({
         where: { llm_models: { some: { id: modelId } } },
         include: { languages: true },
@@ -54,7 +52,6 @@ export async function upsertProficiency(
     modelId: number,
     level: number,
 ) {
-    const prisma = await getPrisma();
     return await prisma.language_proficiencies.create({
         data: {
             level,
@@ -68,7 +65,6 @@ export async function hasProficiency(
     modelId: number,
     languageId: number,
 ): Promise<boolean> {
-    const prisma = await getPrisma();
     const rows = await prisma.language_proficiencies.findMany({
         where: {
             llm_models: { some: { id: modelId } },
@@ -84,7 +80,6 @@ export async function getProficiencyLevel(
     modelId: number,
     languageId: number,
 ): Promise<number | null> {
-    const prisma = await getPrisma();
     const row = await prisma.language_proficiencies.findFirst({
         where: {
             llm_models: { some: { id: modelId } },
@@ -98,7 +93,6 @@ export async function getProficiencyLevel(
 // ── Languages ───────────────────────────────────────────────────────────────
 
 export async function getAllLanguages(): Promise<PLanguage[]> {
-    const prisma = await getPrisma();
     return await prisma.languages.findMany({ orderBy: { bcp_47: "asc" } });
 }
 
@@ -107,8 +101,9 @@ export async function getLanguages() {
 }
 
 export async function getOrCreateLanguage(bcp47: string): Promise<PLanguage> {
-    const prisma = await getPrisma();
-    const lang = await prisma.languages.findUnique({ where: { bcp_47: bcp47 } });
+    const lang = await prisma.languages.findUnique({
+        where: { bcp_47: bcp47 },
+    });
     if (!lang) {
         throw new Error(`Language '${bcp47}' not found in DB. Run seed first.`);
     }
@@ -116,7 +111,6 @@ export async function getOrCreateLanguage(bcp47: string): Promise<PLanguage> {
 }
 
 export async function getLanguagesWithStats(search: string) {
-    const prisma = await getPrisma();
     const where = search
         ? {
             OR: [
@@ -146,12 +140,12 @@ export async function getLanguagesWithStats(search: string) {
 // ── Master Strings ──────────────────────────────────────────────────────────
 
 export async function getAllMasterStrings(): Promise<PMasterString[]> {
-    const prisma = await getPrisma();
     return await prisma.master_strings.findMany({ orderBy: { id: "asc" } });
 }
 
-export async function getOrCreateMasterString(text: string): Promise<PMasterString> {
-    const prisma = await getPrisma();
+export async function getOrCreateMasterString(
+    text: string,
+): Promise<PMasterString> {
     let ms = await prisma.master_strings.findUnique({ where: { text } });
     if (!ms) {
         ms = await prisma.master_strings.create({ data: { text } });
@@ -160,7 +154,6 @@ export async function getOrCreateMasterString(text: string): Promise<PMasterStri
 }
 
 export async function getStrings(search: string) {
-    const prisma = await getPrisma();
     const where = search ? { text: { contains: search } } : {};
     const strings = await prisma.master_strings.findMany({
         where,
@@ -181,7 +174,6 @@ export async function getExistingVotes(
     modelId: number,
     languageId: number,
 ): Promise<Set<number>> {
-    const prisma = await getPrisma();
     const rows = await prisma.votes.findMany({
         where: { llm_modelsId: modelId, languagesId: languageId, ...NOT_EMPTY },
         select: { master_stringsId: true },
@@ -194,9 +186,12 @@ export async function getNullExistingVotes(
     modelId: number,
     languageId: number,
 ): Promise<Set<number>> {
-    const prisma = await getPrisma();
     const rows = await prisma.votes.findMany({
-        where: { llm_modelsId: modelId, languagesId: languageId, translation: "" },
+        where: {
+            llm_modelsId: modelId,
+            languagesId: languageId,
+            translation: "",
+        },
         select: { master_stringsId: true },
         distinct: ["master_stringsId"],
     });
@@ -209,7 +204,6 @@ export async function upsertVote(
     masterStringId: number,
     translation: string,
 ) {
-    const prisma = await getPrisma();
     return await prisma.votes.upsert({
         where: {
             languagesId_llm_modelsId_master_stringsId_translation: {
@@ -230,14 +224,16 @@ export async function upsertVote(
 }
 
 export async function getVotesGrouped(modelId: number, langId: number) {
-    const prisma = await getPrisma();
     const votes = await prisma.votes.findMany({
         where: { languagesId: langId, llm_modelsId: modelId, ...NOT_EMPTY },
         include: { master_string: true },
         orderBy: [{ master_stringsId: "asc" }, { created_at: "desc" }],
     });
 
-    const grouped: Record<number, { master_string: string; translations: string[] }> = {};
+    const grouped: Record<
+        number,
+        { master_string: string; translations: string[] }
+    > = {};
     for (const v of votes) {
         if (!grouped[v.master_stringsId]) {
             grouped[v.master_stringsId] = {
@@ -253,7 +249,6 @@ export async function getVotesGrouped(modelId: number, langId: number) {
 }
 
 export async function getCoverage(modelId: number, langId: number) {
-    const prisma = await getPrisma();
     const [translated, total] = await Promise.all([
         prisma.votes.findMany({
             where: { languagesId: langId, llm_modelsId: modelId, ...NOT_EMPTY },
@@ -271,8 +266,11 @@ export async function getCoverage(modelId: number, langId: number) {
     };
 }
 
-export async function getComparison(stringId: number, langId: number, masterStringText?: string) {
-    const prisma = await getPrisma();
+export async function getComparison(
+    stringId: number,
+    langId: number,
+    masterStringText?: string,
+) {
     if (!masterStringText) {
         const masterString = await prisma.master_strings.findUnique({
             where: { id: stringId },
@@ -281,7 +279,10 @@ export async function getComparison(stringId: number, langId: number, masterStri
         masterStringText = masterString.text;
     }
 
-    const where: Record<string, unknown> = { master_stringsId: stringId, ...NOT_EMPTY };
+    const where: Record<string, unknown> = {
+        master_stringsId: stringId,
+        ...NOT_EMPTY,
+    };
     if (langId) where.languagesId = langId;
 
     const votes = await prisma.votes.findMany({
@@ -290,7 +291,10 @@ export async function getComparison(stringId: number, langId: number, masterStri
         orderBy: [{ llm_modelsId: "asc" }, { created_at: "desc" }],
     });
 
-    const byModel: Record<number, { model: string; translations: string[]; modelId: number }> = {};
+    const byModel: Record<
+        number,
+        { model: string; translations: string[]; modelId: number }
+    > = {};
     for (const v of votes) {
         if (!byModel[v.llm_modelsId]) {
             byModel[v.llm_modelsId] = {
@@ -303,14 +307,15 @@ export async function getComparison(stringId: number, langId: number, masterStri
             byModel[v.llm_modelsId].translations.push(v.translation);
         }
     }
-    return { master_string: masterStringText, comparisons: Object.values(byModel) };
+    return {
+        master_string: masterStringText,
+        comparisons: Object.values(byModel),
+    };
 }
 
 // ── Evaluation ───────────────────────────────────────────────────────────────
 
 export async function getEvaluation(langId: number) {
-    const prisma = await getPrisma();
-
     const votes = await prisma.votes.findMany({
         where: { languagesId: langId, ...NOT_EMPTY },
         include: { master_string: true, llm_model: true },
@@ -326,11 +331,17 @@ export async function getEvaluation(langId: number) {
         for (const m of p.llm_models) modelLevels.set(m.id, p.level);
     }
 
-    const groups = new Map<number, Map<string, {
-        master_stringsId: number;
-        master_string: string; translation: string;
-        score: number; modelCount: number; modelNames: string[];
-    }>>();
+    const groups = new Map<
+        number,
+        Map<string, {
+            master_stringsId: number;
+            master_string: string;
+            translation: string;
+            score: number;
+            modelCount: number;
+            modelNames: string[];
+        }>
+    >();
 
     for (const v of votes) {
         const level = modelLevels.get(v.llm_modelsId);
@@ -384,8 +395,6 @@ export async function getSettledStrings(langId: number): Promise<Set<number>> {
 }
 
 export async function getStringSettlement(stringId: number) {
-    const prisma = await getPrisma();
-
     const votes = await prisma.votes.findMany({
         where: { master_stringsId: stringId, ...NOT_EMPTY },
         include: { language: true, llm_model: true },
@@ -460,7 +469,6 @@ export async function getStringSettlement(stringId: number) {
 // ── Stats ───────────────────────────────────────────────────────────────────
 
 export async function getStats() {
-    const prisma = await getPrisma();
     const [models, languages, votes, strings] = await Promise.all([
         prisma.llm_models.count(),
         prisma.languages.count(),

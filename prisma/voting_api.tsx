@@ -10,11 +10,12 @@ import {
     getModels,
     getProficiencies,
     getStats,
-    getStringSettlement,
     getStrings,
+    getStringSettlement,
     getVotesGrouped,
 } from "./lib/db.ts";
 
+const prisma = await getPrisma();
 const app = new Hono();
 
 // ── JSX Components ────────────────────────────────────────────────────────────
@@ -26,7 +27,10 @@ function Layout(
         <html lang="en">
             <head>
                 <meta charset="utf-8" />
-                <meta name="viewport" content="width=device-width, initial-scale=1" />
+                <meta
+                    name="viewport"
+                    content="width=device-width, initial-scale=1"
+                />
                 <title>{title} — ZazenTimer Votes</title>
                 <link
                     rel="stylesheet"
@@ -39,14 +43,24 @@ function Layout(
                 <nav class="container-fluid">
                     <ul>
                         <li>
-                            <a href="/" class="contrast"><strong>ZazenTimer Votes</strong></a>
+                            <a href="/" class="contrast">
+                                <strong>ZazenTimer Votes</strong>
+                            </a>
                         </li>
                     </ul>
                     <ul>
-                        <li><a href="/models">Models</a></li>
-                        <li><a href="/strings">Strings</a></li>
-                        <li><a href="/languages">Languages</a></li>
-                        <li><a href="/evaluation">Evaluation</a></li>
+                        <li>
+                            <a href="/models">Models</a>
+                        </li>
+                        <li>
+                            <a href="/strings">Strings</a>
+                        </li>
+                        <li>
+                            <a href="/languages">Languages</a>
+                        </li>
+                        <li>
+                            <a href="/evaluation">Evaluation</a>
+                        </li>
                     </ul>
                 </nav>
                 <main class="container">
@@ -77,7 +91,8 @@ function LevelBadge({ level }: { level: number }) {
             style={`color: ${colors[level] || "inherit"}; font-weight: bold;`}
             title={labels[level]}
         >
-            {"★".repeat(level)}{"☆".repeat(5 - level)}
+            {"★".repeat(level)}
+            {"☆".repeat(5 - level)}
         </span>
     );
 }
@@ -126,7 +141,9 @@ app.get("/api/models", async (c) => {
 
 app.get("/api/models/:id/proficiencies", async (c) => {
     const id = parseInt(c.req.param("id"), 10);
-    if (isNaN(id)) throw new HTTPException(400, { message: "Invalid model id" });
+    if (isNaN(id)) {
+        throw new HTTPException(400, { message: "Invalid model id" });
+    }
     const proficiencies = await getProficiencies(id);
     return c.json(proficiencies);
 });
@@ -146,7 +163,9 @@ app.get("/api/models/:mid/languages/:lid/votes", async (c) => {
     const mid = parseInt(c.req.param("mid"), 10);
     const lid = parseInt(c.req.param("lid"), 10);
     if (isNaN(mid) || isNaN(lid)) {
-        throw new HTTPException(400, { message: "Invalid model or language id" });
+        throw new HTTPException(400, {
+            message: "Invalid model or language id",
+        });
     }
     const groups = await getVotesGrouped(mid, lid);
     return c.json(groups);
@@ -156,7 +175,9 @@ app.get("/api/models/:mid/languages/:lid/coverage", async (c) => {
     const mid = parseInt(c.req.param("mid"), 10);
     const lid = parseInt(c.req.param("lid"), 10);
     if (isNaN(mid) || isNaN(lid)) {
-        throw new HTTPException(400, { message: "Invalid model or language id" });
+        throw new HTTPException(400, {
+            message: "Invalid model or language id",
+        });
     }
     const coverage = await getCoverage(mid, lid);
     return c.json(coverage);
@@ -165,7 +186,9 @@ app.get("/api/models/:mid/languages/:lid/coverage", async (c) => {
 app.get("/api/strings/:sid/comparison", async (c) => {
     const sid = parseInt(c.req.param("sid"), 10);
     const langId = parseInt(c.req.query("langId") || "0", 10);
-    if (isNaN(sid)) throw new HTTPException(400, { message: "Invalid string id" });
+    if (isNaN(sid)) {
+        throw new HTTPException(400, { message: "Invalid string id" });
+    }
     const comparison = await getComparison(sid, langId);
     return c.json(comparison);
 });
@@ -192,18 +215,27 @@ app.post("/api/votes", async (c) => {
         });
     }
 
-    const prisma = await getPrisma();
     const language = await prisma.languages.findUnique({ where: { bcp_47 } });
-    if (!language) throw new HTTPException(404, { message: `Language '${bcp_47}' not found` });
+    if (!language) {
+        throw new HTTPException(404, {
+            message: `Language '${bcp_47}' not found`,
+        });
+    }
 
-    const llmModel = await prisma.llm_models.findUnique({ where: { name: model } });
-    if (!llmModel) throw new HTTPException(404, { message: `Model '${model}' not found` });
+    const llmModel = await prisma.llm_models.findUnique({
+        where: { name: model },
+    });
+    if (!llmModel) {
+        throw new HTTPException(404, { message: `Model '${model}' not found` });
+    }
 
     const masterString = await prisma.master_strings.findUnique({
         where: { text: master_text },
     });
     if (!masterString) {
-        throw new HTTPException(404, { message: `Master string '${master_text}' not found` });
+        throw new HTTPException(404, {
+            message: `Master string '${master_text}' not found`,
+        });
     }
 
     const vote = await prisma.votes.upsert({
@@ -241,11 +273,15 @@ app.get("/", async (c) => {
             <div class="grid">
                 <article>
                     <h2>{models}</h2>
-                    <footer><a href="/models">Models</a></footer>
+                    <footer>
+                        <a href="/models">Models</a>
+                    </footer>
                 </article>
                 <article>
                     <h2>{languages}</h2>
-                    <footer><a href="/languages">Languages</a></footer>
+                    <footer>
+                        <a href="/languages">Languages</a>
+                    </footer>
                 </article>
                 <article>
                     <h2>{votes}</h2>
@@ -253,7 +289,9 @@ app.get("/", async (c) => {
                 </article>
                 <article>
                     <h2>{strings}</h2>
-                    <footer><a href="/strings">Master Strings</a></footer>
+                    <footer>
+                        <a href="/strings">Master Strings</a>
+                    </footer>
                 </article>
             </div>
         </Layout>,
@@ -270,7 +308,12 @@ async function renderProficiencyTableContent(
     const [proficiencies, coverage] = await Promise.all([
         getProficiencies(modelId),
         (async () => {
-            const results: { langId: number; translated: number; total: number; pct: number }[] = [];
+            const results: {
+                langId: number;
+                translated: number;
+                total: number;
+                pct: number;
+            }[] = [];
             for (const l of await getLanguages()) {
                 const c = await getCoverage(modelId, l.id);
                 results.push({
@@ -284,7 +327,14 @@ async function renderProficiencyTableContent(
         })(),
     ]);
 
-    type Row = typeof proficiencies[number] & { coverage?: { langId: number; translated: number; total: number; pct: number } };
+    type Row = typeof proficiencies[number] & {
+        coverage?: {
+            langId: number;
+            translated: number;
+            total: number;
+            pct: number;
+        };
+    };
     const rows: Row[] = proficiencies.map((p) => {
         const langData = p.languages[0];
         if (!langData) return null;
@@ -296,19 +346,27 @@ async function renderProficiencyTableContent(
         const getVal = (r: Row): string | number => {
             const lang = r.languages[0];
             switch (sort) {
-                case "language": return lang?.english_name || "";
-                case "bcp47": return lang?.bcp_47 || "";
-                case "proficiency": return r.level;
-                case "coverage": return r.coverage?.pct || 0;
-                case "votes": return r.coverage?.translated || 0;
-                default: return 0;
+                case "language":
+                    return lang?.english_name || "";
+                case "bcp47":
+                    return lang?.bcp_47 || "";
+                case "proficiency":
+                    return r.level;
+                case "coverage":
+                    return r.coverage?.pct || 0;
+                case "votes":
+                    return r.coverage?.translated || 0;
+                default:
+                    return 0;
             }
         };
         rows.sort((a, b) => {
             const va = getVal(a);
             const vb = getVal(b);
             if (typeof va === "string" && typeof vb === "string") {
-                return dir === "asc" ? va.localeCompare(vb) : vb.localeCompare(va);
+                return dir === "asc"
+                    ? va.localeCompare(vb)
+                    : vb.localeCompare(va);
             }
             const na = Number(va);
             const nb = Number(vb);
@@ -354,8 +412,12 @@ async function renderProficiencyTableContent(
                         return (
                             <tr>
                                 <td>{langData.english_name}</td>
-                                <td><code>{langData.bcp_47}</code></td>
-                                <td><LevelBadge level={r.level} /></td>
+                                <td>
+                                    <code>{langData.bcp_47}</code>
+                                </td>
+                                <td>
+                                    <LevelBadge level={r.level} />
+                                </td>
                                 <td style="text-align: center;">
                                     <CoverageBar pct={r.coverage?.pct || 0} />
                                 </td>
@@ -425,7 +487,6 @@ app.get("/models/:mid/languages/:lid", async (c) => {
     const lid = parseInt(c.req.param("lid"), 10);
     if (isNaN(mid) || isNaN(lid)) throw new HTTPException(400);
 
-    const prisma = await getPrisma();
     const [model, lang, groups, coverage] = await Promise.all([
         prisma.llm_models.findUnique({ where: { id: mid } }),
         prisma.languages.findUnique({ where: { id: lid } }),
@@ -439,7 +500,14 @@ app.get("/models/:mid/languages/:lid", async (c) => {
         <Layout title={`${model.name} — ${lang.bcp_47}`}>
             <a href="/models">&larr; Back to Models</a>
             <hgroup>
-                <h1><a href={`/models?modelId=${mid}`} style="text-decoration: none; color: inherit;">{model.name}</a></h1>
+                <h1>
+                    <a
+                        href={`/models?modelId=${mid}`}
+                        style="text-decoration: none; color: inherit;"
+                    >
+                        {model.name}
+                    </a>
+                </h1>
                 <p>
                     {lang.english_name} ({lang.bcp_47})
                 </p>
@@ -500,18 +568,26 @@ app.get("/strings", async (c) => {
         strings.sort((a, b) => {
             const getVal = (s: typeof strings[number]): string | number => {
                 switch (sort) {
-                    case "id": return s.id;
-                    case "text": return s.text;
-                    case "translations": return s.voteCount;
-                    default: return 0;
+                    case "id":
+                        return s.id;
+                    case "text":
+                        return s.text;
+                    case "translations":
+                        return s.voteCount;
+                    default:
+                        return 0;
                 }
             };
             const va = getVal(a);
             const vb = getVal(b);
             if (typeof va === "string" && typeof vb === "string") {
-                return dir === "asc" ? va.localeCompare(vb) : vb.localeCompare(va);
+                return dir === "asc"
+                    ? va.localeCompare(vb)
+                    : vb.localeCompare(va);
             }
-            return dir === "asc" ? Number(va) - Number(vb) : Number(vb) - Number(va);
+            return dir === "asc"
+                ? Number(va) - Number(vb)
+                : Number(vb) - Number(va);
         });
     }
 
@@ -550,9 +626,9 @@ app.get("/strings", async (c) => {
                             <td>{s.id}</td>
                             <td>{s.text}</td>
                             <td>{s.voteCount}</td>
-                                            <td>
-                                                <a href={`/strings/${s.id}`}>Details</a>
-                                            </td>
+                            <td>
+                                <a href={`/strings/${s.id}`}>Details</a>
+                            </td>
                         </tr>
                     ))}
                 </tbody>
@@ -588,15 +664,20 @@ app.get("/strings", async (c) => {
 
 app.get("/strings/:sid", async (c) => {
     const sid = parseInt(c.req.param("sid"), 10);
-    if (isNaN(sid)) throw new HTTPException(400, { message: "Invalid string id" });
+    if (isNaN(sid)) {
+        throw new HTTPException(400, { message: "Invalid string id" });
+    }
 
     const sort = c.req.query("sort") || "";
     const dir = c.req.query("dir") || "";
     const isHtmx = c.req.header("HX-Request") === "true";
 
-    const prisma = await getPrisma();
-    const masterString = await prisma.master_strings.findUnique({ where: { id: sid } });
-    if (!masterString) throw new HTTPException(404, { message: "String not found" });
+    const masterString = await prisma.master_strings.findUnique({
+        where: { id: sid },
+    });
+    if (!masterString) {
+        throw new HTTPException(404, { message: "String not found" });
+    }
 
     const settlement = await getStringSettlement(sid);
 
@@ -633,7 +714,9 @@ app.get("/strings/:sid", async (c) => {
                     ? va.localeCompare(vb as string)
                     : (vb as string).localeCompare(va);
             }
-            return dir === "asc" ? Number(va) - Number(vb) : Number(vb) - Number(va);
+            return dir === "asc"
+                ? Number(va) - Number(vb)
+                : Number(vb) - Number(va);
         });
     }
 
@@ -659,8 +742,11 @@ app.get("/strings/:sid", async (c) => {
         : (
             <>
                 <p>
-                    Translations in <strong>{settlement.totalLanguages}</strong>{" "}
-                    languages, <strong>{settlement.settledLanguages}</strong> settled.
+                    Translations in <strong>{settlement.totalLanguages}</strong>
+                    {" "}
+                    languages, <strong>{settlement.settledLanguages}</strong>
+                    {" "}
+                    settled.
                 </p>
                 <table>
                     <thead>
@@ -679,7 +765,9 @@ app.get("/strings/:sid", async (c) => {
                     <tbody>
                         {settlement.languages.map((l) => (
                             <tr>
-                                <td><code>{l.bcp47}</code></td>
+                                <td>
+                                    <code>{l.bcp47}</code>
+                                </td>
                                 <td>
                                     <a
                                         href={`/strings/${sid}/comparison?langId=${l.languageId}`}
@@ -687,18 +775,24 @@ app.get("/strings/:sid", async (c) => {
                                         {l.englishName}
                                     </a>
                                 </td>
-                                <td><strong>{l.translation}</strong></td>
-                                <td style="text-align: center;">{l.voteCount}</td>
+                                <td>
+                                    <strong>{l.translation}</strong>
+                                </td>
+                                <td style="text-align: center;">
+                                    {l.voteCount}
+                                </td>
                                 <td style="text-align: center;">
                                     {l.settled
                                         ? (
-                                            <mark
-                                                style="background: var(--pico-color-green); color: white; padding: 0.1rem 0.4rem; border-radius: var(--pico-border-radius);"
-                                            >
+                                            <mark style="background: var(--pico-color-green); color: white; padding: 0.1rem 0.4rem; border-radius: var(--pico-border-radius);">
                                                 ✓
                                             </mark>
                                         )
-                                        : <span style="color: var(--pico-color-zinc-500);">—</span>}
+                                        : (
+                                            <span style="color: var(--pico-color-zinc-500);">
+                                                —
+                                            </span>
+                                        )}
                                 </td>
                             </tr>
                         ))}
@@ -730,7 +824,11 @@ app.get("/strings/:sid", async (c) => {
     );
 });
 
-async function renderComparisonContent(sid: number, langId: number, masterStringText?: string) {
+async function renderComparisonContent(
+    sid: number,
+    langId: number,
+    masterStringText?: string,
+) {
     const [models, comparison] = await Promise.all([
         getModels(),
         getComparison(sid, langId, masterStringText),
@@ -779,11 +877,16 @@ async function renderComparisonContent(sid: number, langId: number, masterString
 
 app.get("/strings/:sid/comparison", async (c) => {
     const sid = parseInt(c.req.param("sid"), 10);
-    if (isNaN(sid)) throw new HTTPException(400, { message: "Invalid string id" });
+    if (isNaN(sid)) {
+        throw new HTTPException(400, { message: "Invalid string id" });
+    }
 
-    const prisma = await getPrisma();
-    const masterString = await prisma.master_strings.findUnique({ where: { id: sid } });
-    if (!masterString) throw new HTTPException(404, { message: "String not found" });
+    const masterString = await prisma.master_strings.findUnique({
+        where: { id: sid },
+    });
+    if (!masterString) {
+        throw new HTTPException(404, { message: "String not found" });
+    }
 
     const langIds = await prisma.votes.findMany({
         where: { master_stringsId: sid },
@@ -800,7 +903,9 @@ app.get("/strings/:sid/comparison", async (c) => {
             <a href="/strings">&larr; Back to Strings</a>
             <hgroup>
                 <h1>String Comparison</h1>
-                <p>Master string: <code>{masterString.text}</code></p>
+                <p>
+                    Master string: <code>{masterString.text}</code>
+                </p>
             </hgroup>
 
             <h3>Filter by Language</h3>
@@ -855,7 +960,9 @@ function ComparisonTableView(
             <tbody>
                 {comparisons.map((c) => (
                     <tr>
-                        <td><strong>{c.model}</strong></td>
+                        <td>
+                            <strong>{c.model}</strong>
+                        </td>
                         <td>
                             {c.translations.map((t) => (
                                 <div>
@@ -863,7 +970,11 @@ function ComparisonTableView(
                                 </div>
                             ))}
                             {c.translations.length === 0
-                                ? <em style="color: var(--pico-color-red);">No translation</em>
+                                ? (
+                                    <em style="color: var(--pico-color-red);">
+                                        No translation
+                                    </em>
+                                )
                                 : ""}
                         </td>
                         <td>
@@ -874,9 +985,15 @@ function ComparisonTableView(
                                         <mark>{t}</mark>
                                     </div>
                                 ))}
-                            {c.translations.filter((t) => (translationCounts[t] || 0) >= 2)
+                            {c.translations.filter((t) =>
+                                    (translationCounts[t] || 0) >= 2
+                                )
                                     .length === 0
-                                ? <span style="color: var(--pico-color-zinc-500);">—</span>
+                                ? (
+                                    <span style="color: var(--pico-color-zinc-500);">
+                                        —
+                                    </span>
+                                )
                                 : ""}
                         </td>
                     </tr>
@@ -887,8 +1004,6 @@ function ComparisonTableView(
 }
 
 // ── htmx Fragment Routes ──────────────────────────────────────────────────────
-
-
 
 app.get("/strings/:sid/comparison/table", async (c) => {
     const sid = parseInt(c.req.param("sid"), 10);
@@ -912,32 +1027,52 @@ app.get("/languages", async (c) => {
         languages.sort((a, b) => {
             const va = (() => {
                 switch (sort) {
-                    case "bcp47": return a.bcp_47;
-                    case "name": return a.english_name;
-                    case "posix": return a.posix_code;
-                    case "iso": return a.iso_639_3;
-                    case "whisper": return a.whisper_response || "";
-                    case "models": return a.modelCount;
-                    case "votes": return a.voteCount;
-                    default: return 0;
+                    case "bcp47":
+                        return a.bcp_47;
+                    case "name":
+                        return a.english_name;
+                    case "posix":
+                        return a.posix_code;
+                    case "iso":
+                        return a.iso_639_3;
+                    case "whisper":
+                        return a.whisper_response || "";
+                    case "models":
+                        return a.modelCount;
+                    case "votes":
+                        return a.voteCount;
+                    default:
+                        return 0;
                 }
             })();
             const vb = (() => {
                 switch (sort) {
-                    case "bcp47": return b.bcp_47;
-                    case "name": return b.english_name;
-                    case "posix": return b.posix_code;
-                    case "iso": return b.iso_639_3;
-                    case "whisper": return b.whisper_response || "";
-                    case "models": return b.modelCount;
-                    case "votes": return b.voteCount;
-                    default: return 0;
+                    case "bcp47":
+                        return b.bcp_47;
+                    case "name":
+                        return b.english_name;
+                    case "posix":
+                        return b.posix_code;
+                    case "iso":
+                        return b.iso_639_3;
+                    case "whisper":
+                        return b.whisper_response || "";
+                    case "models":
+                        return b.modelCount;
+                    case "votes":
+                        return b.voteCount;
+                    default:
+                        return 0;
                 }
             })();
             if (typeof va === "string" && typeof vb === "string") {
-                return dir === "asc" ? va.localeCompare(vb) : vb.localeCompare(va);
+                return dir === "asc"
+                    ? va.localeCompare(vb)
+                    : vb.localeCompare(va);
             }
-            return dir === "asc" ? Number(va) - Number(vb) : Number(vb) - Number(va);
+            return dir === "asc"
+                ? Number(va) - Number(vb)
+                : Number(vb) - Number(va);
         });
     }
 
@@ -969,18 +1104,38 @@ app.get("/languages", async (c) => {
                         <th>{sortLink("posix", "POSIX")}</th>
                         <th>{sortLink("iso", "ISO 639-3")}</th>
                         <th>{sortLink("whisper", "Whisper")}</th>
-                        <th style="text-align: center;">{sortLink("models", "Models")}</th>
-                        <th style="text-align: center;">{sortLink("votes", "Votes")}</th>
+                        <th style="text-align: center;">
+                            {sortLink("models", "Models")}
+                        </th>
+                        <th style="text-align: center;">
+                            {sortLink("votes", "Votes")}
+                        </th>
                     </tr>
                 </thead>
                 <tbody>
                     {languages.map((l) => (
                         <tr>
-                            <td><code>{l.bcp_47}</code></td>
-                            <td><a href={`/languages/${l.id}`}>{l.english_name}</a></td>
-                            <td><code>{l.posix_code}</code></td>
-                            <td><code>{l.iso_639_3}</code></td>
-                            <td>{l.whisper_response || <em style="color: var(--pico-color-zinc-500);">—</em>}</td>
+                            <td>
+                                <code>{l.bcp_47}</code>
+                            </td>
+                            <td>
+                                <a href={`/languages/${l.id}`}>
+                                    {l.english_name}
+                                </a>
+                            </td>
+                            <td>
+                                <code>{l.posix_code}</code>
+                            </td>
+                            <td>
+                                <code>{l.iso_639_3}</code>
+                            </td>
+                            <td>
+                                {l.whisper_response || (
+                                    <em style="color: var(--pico-color-zinc-500);">
+                                        —
+                                    </em>
+                                )}
+                            </td>
                             <td style="text-align: center;">{l.modelCount}</td>
                             <td style="text-align: center;">{l.voteCount}</td>
                         </tr>
@@ -1018,11 +1173,14 @@ app.get("/languages", async (c) => {
 
 app.get("/languages/:lid", async (c) => {
     const lid = parseInt(c.req.param("lid"), 10);
-    if (isNaN(lid)) throw new HTTPException(400, { message: "Invalid language id" });
+    if (isNaN(lid)) {
+        throw new HTTPException(400, { message: "Invalid language id" });
+    }
 
-    const prisma = await getPrisma();
     const language = await prisma.languages.findUnique({ where: { id: lid } });
-    if (!language) throw new HTTPException(404, { message: "Language not found" });
+    if (!language) {
+        throw new HTTPException(404, { message: "Language not found" });
+    }
 
     return c.html(
         <Layout title={language.english_name}>
@@ -1041,9 +1199,20 @@ app.get("/languages/:lid", async (c) => {
             <article>
                 <header>Details</header>
                 {language.whisper_response
-                    ? <p>Whisper response: <code>{language.whisper_response}</code></p>
-                    : <p>Whisper: <em>Not supported</em></p>}
-                <p>Directory: <code>{language.directory}</code></p>
+                    ? (
+                        <p>
+                            Whisper response:{" "}
+                            <code>{language.whisper_response}</code>
+                        </p>
+                    )
+                    : (
+                        <p>
+                            Whisper: <em>Not supported</em>
+                        </p>
+                    )}
+                <p>
+                    Directory: <code>{language.directory}</code>
+                </p>
             </article>
         </Layout>,
     );
@@ -1057,7 +1226,6 @@ app.get("/evaluation", async (c) => {
     const dir = c.req.query("dir") || "";
     const isHtmx = c.req.header("HX-Request") === "true";
 
-    const prisma = await getPrisma();
     const langIds = await prisma.votes.findMany({
         select: { languagesId: true },
         distinct: ["languagesId"],
@@ -1075,17 +1243,37 @@ app.get("/evaluation", async (c) => {
             let va: string | number;
             let vb: string | number;
             switch (sort) {
-                case "master_string": va = a.master_string; vb = b.master_string; break;
-                case "translation": va = a.translation; vb = b.translation; break;
-                case "score": va = a.score; vb = b.score; break;
-                case "models": va = a.modelCount; vb = b.modelCount; break;
-                case "settled": va = a.modelCount >= 3 ? 1 : 0; vb = b.modelCount >= 3 ? 1 : 0; break;
-                default: return 0;
+                case "master_string":
+                    va = a.master_string;
+                    vb = b.master_string;
+                    break;
+                case "translation":
+                    va = a.translation;
+                    vb = b.translation;
+                    break;
+                case "score":
+                    va = a.score;
+                    vb = b.score;
+                    break;
+                case "models":
+                    va = a.modelCount;
+                    vb = b.modelCount;
+                    break;
+                case "settled":
+                    va = a.modelCount >= 3 ? 1 : 0;
+                    vb = b.modelCount >= 3 ? 1 : 0;
+                    break;
+                default:
+                    return 0;
             }
             if (typeof va === "string") {
-                return dir === "asc" ? va.localeCompare(vb as string) : (vb as string).localeCompare(va);
+                return dir === "asc"
+                    ? va.localeCompare(vb as string)
+                    : (vb as string).localeCompare(va);
             }
-            return dir === "asc" ? Number(va) - Number(vb) : Number(vb) - Number(va);
+            return dir === "asc"
+                ? Number(va) - Number(vb)
+                : Number(vb) - Number(va);
         });
     }
 
@@ -1107,16 +1295,28 @@ app.get("/evaluation", async (c) => {
     }
 
     const tableContent = data.length === 0
-        ? <p>{langId ? "No evaluation data found." : "Select a language to see evaluation results."}</p>
+        ? (
+            <p>
+                {langId
+                    ? "No evaluation data found."
+                    : "Select a language to see evaluation results."}
+            </p>
+        )
         : (
             <table>
                 <thead>
                     <tr>
                         <th>{sortLink("master_string", "Master String")}</th>
                         <th>{sortLink("translation", "Translation")}</th>
-                        <th style="text-align: center;">{sortLink("models", "Votes")}</th>
-                        <th style="text-align: center;">{sortLink("score", "Confidence")}</th>
-                        <th style="text-align: center;">{sortLink("settled", "Settled")}</th>
+                        <th style="text-align: center;">
+                            {sortLink("models", "Votes")}
+                        </th>
+                        <th style="text-align: center;">
+                            {sortLink("score", "Confidence")}
+                        </th>
+                        <th style="text-align: center;">
+                            {sortLink("settled", "Settled")}
+                        </th>
                         <th>Models</th>
                     </tr>
                 </thead>
@@ -1129,16 +1329,28 @@ app.get("/evaluation", async (c) => {
                                 <td>
                                     <strong>{r.translation}</strong>
                                 </td>
-                                <td style="text-align: center;">{r.modelCount}</td>
+                                <td style="text-align: center;">
+                                    {r.modelCount}
+                                </td>
                                 <td style="text-align: center;">
                                     <code>{r.score}</code>
                                 </td>
                                 <td style="text-align: center;">
                                     {settled
-                                        ? <mark style="background: var(--pico-color-green); color: white; padding: 0.1rem 0.4rem; border-radius: var(--pico-border-radius);">✓</mark>
-                                        : <span style="color: var(--pico-color-zinc-500);">—</span>}
+                                        ? (
+                                            <mark style="background: var(--pico-color-green); color: white; padding: 0.1rem 0.4rem; border-radius: var(--pico-border-radius);">
+                                                ✓
+                                            </mark>
+                                        )
+                                        : (
+                                            <span style="color: var(--pico-color-zinc-500);">
+                                                —
+                                            </span>
+                                        )}
                                 </td>
-                                <td style="font-size: 0.85rem;">{r.modelNames}</td>
+                                <td style="font-size: 0.85rem;">
+                                    {r.modelNames}
+                                </td>
                             </tr>
                         );
                     })}
@@ -1152,7 +1364,10 @@ app.get("/evaluation", async (c) => {
         <Layout title="Evaluation">
             <hgroup>
                 <h1>Evaluation</h1>
-                <p>Democratic vote: sorted by vote count, ties broken by confidence sum</p>
+                <p>
+                    Democratic vote: sorted by vote count, ties broken by
+                    confidence sum
+                </p>
             </hgroup>
 
             <select
@@ -1181,10 +1396,14 @@ app.get("/evaluation", async (c) => {
 
 app.onError((err, c) => {
     if (err instanceof HTTPException) return err.getResponse();
-    if (err instanceof SyntaxError) return c.json({ error: "Invalid JSON body" }, 400);
+    if (err instanceof SyntaxError) {
+        return c.json({ error: "Invalid JSON body" }, 400);
+    }
     if (typeof err === "object" && err !== null && "code" in err) {
         const prismaErr = err as { code: string; message: string };
-        if (prismaErr.code === "P2002") return c.json({ error: prismaErr.message }, 409);
+        if (prismaErr.code === "P2002") {
+            return c.json({ error: prismaErr.message }, 409);
+        }
         return c.json({ error: prismaErr.message }, 400);
     }
     console.error("Unhandled error:", err);
