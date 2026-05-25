@@ -359,12 +359,13 @@ async function dispatchTranslate(
                 let stored = 0;
                 let skipped = 0;
                 for (const t of result.translations) {
-                    if (t.translation === null) {
+                    const ms = allMs.find((s) => s.text === t.key);
+                    if (!ms) {
                         skipped++;
                         continue;
                     }
-                    const ms = allMs.find((s) => s.text === t.key);
-                    if (!ms) {
+                    if (t.translation === null) {
+                        await upsertVote(language.id, modelDb.id, ms.id, "");
                         skipped++;
                         continue;
                     }
