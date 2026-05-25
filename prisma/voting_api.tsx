@@ -380,7 +380,7 @@ app.get("/", async (c) => {
                 </article>
                 <article>
                     <h2>{languages}</h2>
-                    <footer>Languages</footer>
+                    <footer><a href="/languages">Languages</a></footer>
                 </article>
                 <article>
                     <h2>{votes}</h2>
