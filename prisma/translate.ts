@@ -17,6 +17,7 @@ import {
     getNullExistingVotes,
     getOrCreateLanguage,
     getOrCreateModel,
+    getProficiencyLevel,
     getSettledStrings,
     hasProficiency,
     upsertProficiency,
@@ -106,7 +107,8 @@ const LOG_DIR = "logs";
 const LOG_FILE = "logs/orchestrator.log";
 
 function ts(): string {
-    return new Date().toISOString();
+    const d = new Date();
+    return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}_${String(d.getHours()).padStart(2, "0")}-${String(d.getMinutes()).padStart(2, "0")}-${String(d.getSeconds()).padStart(2, "0")}`;
 }
 
 function ensureLogDir(): void {
@@ -131,13 +133,13 @@ function writeLog(line: string): void {
 
 function log(msg: string): void {
     const line = `[${ts()}] ${msg}`;
-    console.log(msg);
+    console.log(line);
     writeLog(line);
 }
 
 function logError(msg: string): void {
     const line = `[${ts()}] ERROR: ${msg}`;
-    console.error(msg);
+    console.error(line);
     writeLog(line);
 }
 
@@ -318,6 +320,8 @@ async function dispatchTranslate(
     langEnglishName: string,
     strings: InputString[],
     availableModels: Map<string, ModelEntry[]>,
+    proficiency: number,
+    unsettledCount: number,
 ): Promise<void> {
     const input = {
         locale: { bcp_47: langBcp47, english_name: langEnglishName },
@@ -345,6 +349,11 @@ async function dispatchTranslate(
             const text = retry === 0
                 ? `Write the translations to ${OUTPUT_FILE}. Read the input data from ${INPUT_FILE}.`
                 : `Verification failed: ${lastError}. Please fix ${OUTPUT_FILE}.`;
+
+            const rank = getProviderRank(modelRef.providerID);
+            log(
+                `submitting translation request for ${langEnglishName} to ${modelRef.providerID}(rank ${rank})/${modelRef.modelID}, proficiency: ${proficiency}. searching for ${unsettledCount} unsettled strings`,
+            );
 
             await opencode.sendMessage(sessionId, text, opts);
 
@@ -385,9 +394,8 @@ async function dispatchTranslate(
                     }
                 }
 
-                const rank = getProviderRank(modelRef.providerID);
                 log(
-                    `translate ${modelName} ${langBcp47} ${modelRef.providerID} rank=${rank} → stored ${stored} skipped ${skipped}`,
+                    `got translation result for ${langEnglishName} to ${modelRef.providerID}(rank ${rank})/${modelRef.modelID}: stored ${stored}, skipped ${skipped}`,
                 );
                 return;
             } catch (e) {
@@ -413,7 +421,7 @@ async function runOne(
     langBcp47: string,
     langEnglishName: string,
     availableModels: Map<string, ModelEntry[]>,
-    _minProficiency: number,
+    minProficiency: number,
 ): Promise<void> {
     const modelDb = await getOrCreateModel(modelName);
     const language = await getOrCreateLanguage(langBcp47);
@@ -421,14 +429,13 @@ async function runOne(
     // Step 1: Proficiency (on-demand if not in DB)
     if (!(await hasProficiency(modelDb.id, language.id))) {
         try {
-            const p = await dispatchProficiency(
+            await dispatchProficiency(
                 opencode,
                 modelName,
                 langBcp47,
                 langEnglishName,
                 availableModels,
             );
-            log(`proficiency ${modelName} ${langBcp47} → ${p}`);
         } catch (e) {
             logError(
                 `${modelName} ${langBcp47}: proficiency failed, skipping translate: ${
@@ -437,6 +444,13 @@ async function runOne(
             );
             return;
         }
+    }
+
+    const proficiency = await getProficiencyLevel(modelDb.id, language.id) ?? 0;
+
+    if (proficiency < minProficiency) {
+        log(`${modelName} ${langBcp47}: proficiency ${proficiency} below threshold ${minProficiency}, skipping`);
+        return;
     }
 
     // Step 2: Translate (only missing strings)
@@ -465,6 +479,8 @@ async function runOne(
             langEnglishName,
             strings,
             availableModels,
+            proficiency,
+            missing.length,
         );
     } catch (e) {
         logError(

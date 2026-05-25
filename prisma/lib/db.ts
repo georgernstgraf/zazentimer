@@ -80,6 +80,21 @@ export async function hasProficiency(
     return rows.length > 0;
 }
 
+export async function getProficiencyLevel(
+    modelId: number,
+    languageId: number,
+): Promise<number | null> {
+    const prisma = await getPrisma();
+    const row = await prisma.language_proficiencies.findFirst({
+        where: {
+            llm_models: { some: { id: modelId } },
+            languages: { some: { id: languageId } },
+        },
+        select: { level: true },
+    });
+    return row?.level ?? null;
+}
+
 // ── Languages ───────────────────────────────────────────────────────────────
 
 export async function getAllLanguages(): Promise<PLanguage[]> {
