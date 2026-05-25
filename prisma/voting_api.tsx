@@ -302,8 +302,9 @@ async function renderProficiencyTableContent(
     modelId: number,
     sort: string,
     dir: string,
+    modelName?: string,
 ) {
-    if (!modelId) return <p>Select a model above.</p>;
+    if (!modelId) return null;
 
     const [proficiencies, coverage] = await Promise.all([
         getProficiencies(modelId),
@@ -382,7 +383,7 @@ async function renderProficiencyTableContent(
             <a
                 href="#"
                 hx-get={`/models?modelId=${modelId}&sort=${field}&dir=${nextDir}`}
-                hx-target="#prof-output"
+                hx-target="#models-content"
                 hx-push-url="true"
                 style="text-decoration: none; color: inherit;"
             >
@@ -393,6 +394,7 @@ async function renderProficiencyTableContent(
 
     return (
         <div>
+            {modelName ? <h2>{modelName}</h2> : null}
             <table>
                 <thead>
                     <tr>
@@ -443,41 +445,56 @@ app.get("/models", async (c) => {
     const dir = c.req.query("dir") || "";
     const isHtmx = c.req.header("HX-Request") === "true";
     const models = await getModels();
+    const activeModel = modelId ? models.find((m) => m.id === modelId) : null;
 
-    if (isHtmx) {
-        const content = await renderProficiencyTableContent(modelId, sort, dir);
-        return c.html(content);
+    function renderModelNav() {
+        return (
+            <nav
+                style="display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1rem;"
+            >
+                {models.map((m) => {
+                    const active = m.id === modelId;
+                    return (
+                        <a
+                            href="#"
+                            hx-get={`/models?modelId=${m.id}&sort=${sort}&dir=${dir}`}
+                            hx-target="#models-content"
+                            hx-push-url="true"
+                            role="button"
+                            class={active ? "secondary" : "outline contrast"}
+                            style="flex: 0 1 auto;"
+                        >
+                            {m.name}
+                        </a>
+                    );
+                })}
+            </nav>
+        );
     }
+
+    const content = (
+        <div id="models-content">
+            {renderModelNav()}
+            {modelId
+                ? await renderProficiencyTableContent(
+                    modelId,
+                    sort,
+                    dir,
+                    activeModel?.name,
+                )
+                : null}
+        </div>
+    );
+
+    if (isHtmx) return c.html(content);
 
     return c.html(
         <Layout title="Models">
             <hgroup>
                 <h1>Models</h1>
-                <p>Model proficiency levels by language</p>
+                <p>Select a model to view proficiency levels by language</p>
             </hgroup>
-
-            <div class="grid">
-                <select
-                    name="modelId"
-                    hx-get={`/models?sort=${sort}&dir=${dir}`}
-                    hx-target="#prof-output"
-                    hx-trigger="change"
-                    hx-push-url="true"
-                >
-                    <option value="">— Select Model —</option>
-                    {models.map((m) => (
-                        <option value={m.id} selected={m.id === modelId}>
-                            {m.name}
-                        </option>
-                    ))}
-                </select>
-            </div>
-
-            <div id="prof-output">
-                {modelId
-                    ? await renderProficiencyTableContent(modelId, sort, dir)
-                    : <p>Select a model above to see proficiency levels.</p>}
-            </div>
+            {content}
         </Layout>,
     );
 });
