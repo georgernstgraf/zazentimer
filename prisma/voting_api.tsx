@@ -368,7 +368,11 @@ app.get("/", async (c) => {
     );
 });
 
-async function renderProficiencyTableContent(modelId: number) {
+async function renderProficiencyTableContent(
+    modelId: number,
+    sort: string,
+    dir: string,
+) {
     if (!modelId) return <p>Select a model above.</p>;
 
     const [proficiencies, coverage] = await Promise.all([
@@ -389,36 +393,86 @@ async function renderProficiencyTableContent(modelId: number) {
         })(),
     ]);
 
+    type Row = typeof proficiencies[number] & { coverage?: { langId: number; translated: number; total: number; pct: number } };
+    const rows: Row[] = proficiencies.map((p) => {
+        const langData = p.languages[0];
+        if (!langData) return null;
+        const cov = coverage.find((c) => c.langId === langData.id);
+        return { ...p, coverage: cov };
+    }).filter(Boolean) as Row[];
+
+    if (sort && dir) {
+        const getVal = (r: Row): string | number => {
+            const lang = r.languages[0];
+            switch (sort) {
+                case "language": return lang?.english_name || "";
+                case "bcp47": return lang?.bcp_47 || "";
+                case "proficiency": return r.level;
+                case "coverage": return r.coverage?.pct || 0;
+                case "votes": return r.coverage?.translated || 0;
+                default: return 0;
+            }
+        };
+        rows.sort((a, b) => {
+            const va = getVal(a);
+            const vb = getVal(b);
+            if (typeof va === "string" && typeof vb === "string") {
+                return dir === "asc" ? va.localeCompare(vb) : vb.localeCompare(va);
+            }
+            const na = Number(va);
+            const nb = Number(vb);
+            return dir === "asc" ? na - nb : nb - na;
+        });
+    }
+
+    const nextDir = dir === "asc" ? "desc" : "asc";
+
+    function sortLink(field: string, label: string) {
+        const indicator = sort === field ? (dir === "asc" ? "▲" : "▼") : "";
+        return (
+            <a
+                href="#"
+                hx-get={`/models?modelId=${modelId}&sort=${field}&dir=${nextDir}`}
+                hx-target="#prof-output"
+                hx-push-url="true"
+                style="text-decoration: none; color: inherit;"
+            >
+                {label} {indicator}
+            </a>
+        );
+    }
+
     return (
         <div>
             <table>
                 <thead>
                     <tr>
-                        <th>Language</th>
-                        <th>BCP 47</th>
-                        <th>Proficiency</th>
-                        <th>Coverage</th>
-                        <th>Votes</th>
+                        <th>{sortLink("language", "Language")}</th>
+                        <th>{sortLink("bcp47", "BCP 47")}</th>
+                        <th>{sortLink("proficiency", "Proficiency")}</th>
+                        <th style="text-align: center;">
+                            {sortLink("coverage", "Coverage")}
+                        </th>
+                        <th>{sortLink("votes", "Votes")}</th>
                     </tr>
                 </thead>
                 <tbody>
-                    {proficiencies.map((p) => {
-                        const langData = p.languages[0];
+                    {rows.map((r) => {
+                        const langData = r.languages[0];
                         if (!langData) return null;
-                        const cov = coverage.find((c) => c.langId === langData.id);
                         return (
                             <tr>
                                 <td>{langData.english_name}</td>
                                 <td><code>{langData.bcp_47}</code></td>
-                                <td><LevelBadge level={p.level} /></td>
-                                <td>
-                                    <CoverageBar pct={cov?.pct || 0} />
+                                <td><LevelBadge level={r.level} /></td>
+                                <td style="text-align: center;">
+                                    <CoverageBar pct={r.coverage?.pct || 0} />
                                 </td>
                                 <td>
                                     <a
                                         href={`/models/${modelId}/languages/${langData.id}`}
                                     >
-                                        View ({cov?.translated || 0})
+                                        View ({r.coverage?.translated || 0})
                                     </a>
                                 </td>
                             </tr>
@@ -432,11 +486,13 @@ async function renderProficiencyTableContent(modelId: number) {
 
 app.get("/models", async (c) => {
     const modelId = parseInt(c.req.query("modelId") || "0", 10);
+    const sort = c.req.query("sort") || "";
+    const dir = c.req.query("dir") || "";
     const isHtmx = c.req.header("HX-Request") === "true";
     const models = await getModels();
 
     if (isHtmx) {
-        const content = await renderProficiencyTableContent(modelId);
+        const content = await renderProficiencyTableContent(modelId, sort, dir);
         return c.html(content);
     }
 
@@ -450,7 +506,7 @@ app.get("/models", async (c) => {
             <div class="grid">
                 <select
                     name="modelId"
-                    hx-get="/models"
+                    hx-get={`/models?sort=${sort}&dir=${dir}`}
                     hx-target="#prof-output"
                     hx-trigger="change"
                     hx-push-url="true"
@@ -466,7 +522,7 @@ app.get("/models", async (c) => {
 
             <div id="prof-output">
                 {modelId
-                    ? await renderProficiencyTableContent(modelId)
+                    ? await renderProficiencyTableContent(modelId, sort, dir)
                     : <p>Select a model above to see proficiency levels.</p>}
             </div>
         </Layout>,
