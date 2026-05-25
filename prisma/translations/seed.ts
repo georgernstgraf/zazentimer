@@ -62,6 +62,7 @@ try {
 
     let count = 0;
     let skipped = 0;
+    const currentTexts: string[] = [];
     const stringRegex = /<string\s+name="([^"]*)"([^>]*)>([\s\S]*?)<\/string>/g;
     let match: RegExpExecArray | null;
     while ((match = stringRegex.exec(xml)) !== null) {
@@ -84,8 +85,19 @@ try {
             update: {},
             create: { text: decoded },
         });
+        currentTexts.push(decoded);
         count++;
     }
+
+    const removed = await prisma.master_strings.deleteMany({
+        where: { text: { notIn: currentTexts } },
+    });
+    if (removed.count > 0) {
+        console.log(
+            `✔ Removed ${removed.count} obsolete master strings (cascaded to votes)`,
+        );
+    }
+
     console.log(
         `✔ Seeded ${count} master strings (skipped ${skipped} non-translatable)`,
     );
