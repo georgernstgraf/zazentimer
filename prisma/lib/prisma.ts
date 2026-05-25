@@ -8,6 +8,7 @@ export async function getPrisma(): Promise<PrismaClient> {
         await prisma.$connect();
         await prisma.$queryRawUnsafe("PRAGMA journal_mode=WAL");
         await prisma.$queryRawUnsafe("PRAGMA busy_timeout=5000");
+        await prisma.$queryRawUnsafe("PRAGMA wal_checkpoint(TRUNCATE)");
     }
     return prisma;
 }

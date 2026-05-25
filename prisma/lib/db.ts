@@ -256,12 +256,15 @@ export async function getCoverage(modelId: number, langId: number) {
     };
 }
 
-export async function getComparison(stringId: number, langId: number) {
+export async function getComparison(stringId: number, langId: number, masterStringText?: string) {
     const prisma = await getPrisma();
-    const masterString = await prisma.master_strings.findUnique({
-        where: { id: stringId },
-    });
-    if (!masterString) throw new Error("Master string not found");
+    if (!masterStringText) {
+        const masterString = await prisma.master_strings.findUnique({
+            where: { id: stringId },
+        });
+        if (!masterString) throw new Error("Master string not found");
+        masterStringText = masterString.text;
+    }
 
     const where: Record<string, unknown> = { master_stringsId: stringId, ...NOT_EMPTY };
     if (langId) where.languagesId = langId;
@@ -285,7 +288,7 @@ export async function getComparison(stringId: number, langId: number) {
             byModel[v.llm_modelsId].translations.push(v.translation);
         }
     }
-    return { master_string: masterString.text, comparisons: Object.values(byModel) };
+    return { master_string: masterStringText, comparisons: Object.values(byModel) };
 }
 
 // ── Evaluation ───────────────────────────────────────────────────────────────

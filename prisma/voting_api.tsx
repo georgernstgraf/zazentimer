@@ -585,10 +585,10 @@ app.get("/strings", async (c) => {
     );
 });
 
-async function renderComparisonContent(sid: number, langId: number) {
+async function renderComparisonContent(sid: number, langId: number, masterStringText?: string) {
     const [models, comparison] = await Promise.all([
         getModels(),
-        getComparison(sid, langId),
+        getComparison(sid, langId, masterStringText),
     ]);
 
     return (
@@ -674,7 +674,7 @@ app.get("/strings/:sid/comparison", async (c) => {
             </select>
 
             <div id="comparison-content">
-                {await renderComparisonContent(sid, 0)}
+                {await renderComparisonContent(sid, 0, masterString.text)}
             </div>
         </Layout>,
     );
