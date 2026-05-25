@@ -575,7 +575,7 @@ app.get("/models/:mid/languages/:lid", async (c) => {
         <Layout title={`${model.name} — ${lang.bcp_47}`}>
             <a href="/models">&larr; Back to Models</a>
             <hgroup>
-                <h1>{model.name}</h1>
+                <h1><a href={`/models?modelId=${mid}`} style="text-decoration: none; color: inherit;">{model.name}</a></h1>
                 <p>
                     {lang.english_name} ({lang.bcp_47})
                 </p>
