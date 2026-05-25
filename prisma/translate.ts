@@ -153,18 +153,19 @@ const OUTPUT_FILE = "translate-output.json";
 const PROFICIENCY_OUTPUT_FILE = "proficiency-output.json";
 
 const START_TIME = Date.now();
-const MAX_DURATION_MS = 600_000;
 const MAX_RETRIES = 3;
 const DEFAULT_MIN_PROFICIENCY = 2;
+const DEFAULT_MAX_DURATION_MIN = 10;
 
-function isTimeUp(): boolean {
-    return Date.now() - START_TIME >= MAX_DURATION_MS;
+function isTimeUp(maxDurationMs: number): boolean {
+    return Date.now() - START_TIME >= maxDurationMs;
 }
 
 // ── CLI args ─────────────────────────────────────────────────────────────────
 interface CliArgs {
     all: boolean;
     minProficiency: number;
+    maxDuration: number;
     model?: string;
     locale?: string;
 }
@@ -173,6 +174,7 @@ function parseArgs(): CliArgs {
     const args = Deno.args;
     let all = false;
     let minProficiency = DEFAULT_MIN_PROFICIENCY;
+    let maxDuration = DEFAULT_MAX_DURATION_MIN;
     let model: string | undefined;
     let locale: string | undefined;
 
@@ -190,6 +192,9 @@ function parseArgs(): CliArgs {
             case "--min-proficiency":
                 minProficiency = parseInt(args[++i], 10);
                 break;
+            case "--max-duration":
+                maxDuration = parseInt(args[++i], 10);
+                break;
             case "--help":
                 log(
                     `Usage: deno task translate -- [OPTIONS]
@@ -199,6 +204,7 @@ Options:
   --model <name> --all                Single model over all locales
   --all                               Full matrix over all models x locales
   --min-proficiency <N>               Skip locales below this proficiency (default: ${DEFAULT_MIN_PROFICIENCY})
+  --max-duration <minutes>            Max runtime before graceful stop (default: ${DEFAULT_MAX_DURATION_MIN})
   --help                              Show this help`,
                 );
                 Deno.exit(0);
@@ -211,13 +217,14 @@ Options:
             model: undefined,
             locale: undefined,
             minProficiency,
+            maxDuration,
         };
     }
     if (model && all) {
-        return { all: true, model, locale: undefined, minProficiency };
+        return { all: true, model, locale: undefined, minProficiency, maxDuration };
     }
     if (model && locale) {
-        return { all: false, model, locale, minProficiency };
+        return { all: false, model, locale, minProficiency, maxDuration };
     }
     logError("Specify --model <name> --locale <bcp47>, --model <name> --all, or --all");
     Deno.exit(1);
@@ -459,11 +466,12 @@ async function runAll(
     languages: { id: number; bcp_47: string; english_name: string }[],
     availableModels: Map<string, ModelEntry[]>,
     minProficiency: number,
+    maxDurationMs: number,
 ): Promise<void> {
     for (const m of models) {
         for (const lang of languages) {
-            if (isTimeUp()) {
-                log(`Timeout. Stopped at model=${m.name}, locale=${lang.bcp_47}`);
+            if (isTimeUp(maxDurationMs)) {
+                log(`Stopping: configured runtime reached at model=${m.name}, locale=${lang.bcp_47}`);
                 Deno.exit(0);
             }
             await runOne(
@@ -484,13 +492,14 @@ async function runOneModelAllLocales(
     modelName: string,
     availableModels: Map<string, ModelEntry[]>,
     minProficiency: number,
+    maxDurationMs: number,
 ): Promise<void> {
     const languages = await getAllLanguages();
     log(`Model '${modelName}' over ${languages.length} locales`);
 
     for (const lang of languages) {
-        if (isTimeUp()) {
-            log(`Timeout. Stopped at model=${modelName}, locale=${lang.bcp_47}`);
+        if (isTimeUp(maxDurationMs)) {
+            log(`Stopping: configured runtime reached at model=${modelName}, locale=${lang.bcp_47}`);
             Deno.exit(0);
         }
         await runOne(
@@ -524,6 +533,7 @@ async function main() {
             languages,
             availableModels,
             args.minProficiency,
+            args.maxDuration * 60_000,
         );
 
         log("Full run complete");
@@ -533,6 +543,7 @@ async function main() {
             args.model,
             availableModels,
             args.minProficiency,
+            args.maxDuration * 60_000,
         );
 
         log(`Model '${args.model}' complete`);
