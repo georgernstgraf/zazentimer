@@ -6,8 +6,8 @@ import {
 import {
     InputString,
     VerifyError,
-    verifyProficiency,
-    verifyTranslation,
+    verifyProficiencyFile,
+    verifyTranslationFile,
 } from "./lib/verify.ts";
 import {
     getAllLanguages,
@@ -150,6 +150,7 @@ const SKILL_PROFICIENCY = await Deno.readTextFile(
 // ── Constants ────────────────────────────────────────────────────────────────
 const INPUT_FILE = "translate-input.json";
 const OUTPUT_FILE = "translate-output.json";
+const PROFICIENCY_OUTPUT_FILE = "proficiency-output.json";
 
 const START_TIME = Date.now();
 const MAX_DURATION_MS = 600_000;
@@ -227,70 +228,6 @@ async function writeInput(data: unknown): Promise<void> {
     await Deno.writeTextFile(INPUT_FILE, JSON.stringify(data, null, 2));
 }
 
-async function writeOutput(raw: string): Promise<void> {
-    await Deno.writeTextFile(OUTPUT_FILE, raw);
-}
-
-async function recoverStaleOutput(): Promise<void> {
-    try {
-        await Deno.stat(OUTPUT_FILE);
-    } catch {
-        return;
-    }
-
-    const raw = await Deno.readTextFile(OUTPUT_FILE);
-    log(`Recovering stale ${OUTPUT_FILE}...`);
-
-    try {
-        const parsed = JSON.parse(raw);
-        if (!parsed.locale) {
-            logError(`Cannot recover ${OUTPUT_FILE}: missing locale`);
-            await Deno.remove(OUTPUT_FILE);
-            return;
-        }
-
-        if (parsed.model) {
-            // Old-format recovery: output includes model → can attribute to DB
-            const language = await getOrCreateLanguage(parsed.locale);
-            const modelDb = await getOrCreateModel(parsed.model);
-
-            if (parsed.translations) {
-                const result = verifyTranslation(raw, parsed.locale, []);
-                const allMs = await getAllMasterStrings();
-                for (const t of result.translations) {
-                    if (t.translation === null) continue;
-                    const ms = allMs.find((s) => s.text === t.key);
-                    if (ms) {
-                        await upsertVote(
-                            language.id,
-                            modelDb.id,
-                            ms.id,
-                            t.translation,
-                        );
-                    }
-                }
-            } else if (parsed.proficiency) {
-                const result = verifyProficiency(raw, parsed.locale);
-                await upsertProficiency(
-                    language.id,
-                    modelDb.id,
-                    result.proficiency,
-                );
-            }
-
-            await Deno.remove(OUTPUT_FILE);
-            log("Recovery successful");
-        } else {
-            // New-format output without model → discard, orchestrator will retry
-            log(`New-format output without model — discarding (will retry)`);
-            await Deno.remove(OUTPUT_FILE);
-        }
-    } catch (e) {
-        logError(`Cannot recover ${OUTPUT_FILE}: ${e}`);
-        await Deno.remove(OUTPUT_FILE);
-    }
-}
-
 // ── Dispatch functions ───────────────────────────────────────────────────────
 async function dispatchProficiency(
     opencode: OpencodeClient,
@@ -322,14 +259,16 @@ async function dispatchProficiency(
             };
 
             const text = retry === 0
-                ? JSON.stringify(input, null, 2)
-                : `Verification failed: ${lastError}. Please fix and return valid JSON.`;
+                ? `Write the proficiency assessment to ${PROFICIENCY_OUTPUT_FILE}. Read the input data from ${INPUT_FILE}.`
+                : `Verification failed: ${lastError}. Please fix ${PROFICIENCY_OUTPUT_FILE}.`;
 
-            const raw = await opencode.sendMessage(sessionId, text, opts);
-            await writeOutput(raw);
+            await opencode.sendMessage(sessionId, text, opts);
 
             try {
-                const result = verifyProficiency(raw, langBcp47);
+                const result = await verifyProficiencyFile(
+                    PROFICIENCY_OUTPUT_FILE,
+                    langBcp47,
+                );
                 const language = await getOrCreateLanguage(langBcp47);
                 const modelDb = await getOrCreateModel(modelName);
                 await upsertProficiency(
@@ -337,7 +276,6 @@ async function dispatchProficiency(
                     modelDb.id,
                     result.proficiency,
                 );
-                await Deno.remove(OUTPUT_FILE);
 
                 const rank = getProviderRank(modelRef.providerID);
                 log(
@@ -349,12 +287,10 @@ async function dispatchProficiency(
                 logError(
                     `${modelRef.providerID}/${modelRef.modelID} retry ${retry + 1}/${MAX_RETRIES}: ${lastError}`,
                 );
-                logError(`Raw response (first 500 chars): ${raw.slice(0, 500)}`);
             }
         }
     }
 
-    await Deno.remove(OUTPUT_FILE);
     throw new VerifyError(
         `Proficiency assessment for '${modelName}' in '${langBcp47}' failed across all ${chain.length} provider(s)`,
     );
@@ -392,14 +328,17 @@ async function dispatchTranslate(
             };
 
             const text = retry === 0
-                ? JSON.stringify(input, null, 2)
-                : `Verification failed: ${lastError}. Please fix and return valid JSON.`;
+                ? `Write the translations to ${OUTPUT_FILE}. Read the input data from ${INPUT_FILE}.`
+                : `Verification failed: ${lastError}. Please fix ${OUTPUT_FILE}.`;
 
-            const raw = await opencode.sendMessage(sessionId, text, opts);
-            await writeOutput(raw);
+            await opencode.sendMessage(sessionId, text, opts);
 
             try {
-                const result = verifyTranslation(raw, langBcp47, strings);
+                const result = await verifyTranslationFile(
+                    OUTPUT_FILE,
+                    langBcp47,
+                    strings,
+                );
                 const language = await getOrCreateLanguage(langBcp47);
                 const modelDb = await getOrCreateModel(modelName);
 
@@ -416,16 +355,19 @@ async function dispatchTranslate(
                         skipped++;
                         continue;
                     }
-                    await upsertVote(
-                        language.id,
-                        modelDb.id,
-                        ms.id,
-                        t.translation,
-                    );
-                    stored++;
+                    const items = Array.isArray(t.translation)
+                        ? t.translation
+                        : [t.translation];
+                    for (const item of items) {
+                        await upsertVote(
+                            language.id,
+                            modelDb.id,
+                            ms.id,
+                            item,
+                        );
+                        stored++;
+                    }
                 }
-
-                await Deno.remove(OUTPUT_FILE);
 
                 const rank = getProviderRank(modelRef.providerID);
                 log(
@@ -439,12 +381,10 @@ async function dispatchTranslate(
                         retry + 1
                     }/${MAX_RETRIES}: ${lastError}`,
                 );
-                logError(`Raw response (first 500 chars): ${raw.slice(0, 500)}`);
             }
         }
     }
 
-    await Deno.remove(OUTPUT_FILE);
     logError(
         `${modelName} ${langBcp47}: failed after ${MAX_RETRIES} retries across ${chain.length} provider(s)`,
     );
@@ -572,8 +512,6 @@ async function main() {
     log("Fetching available models from opencode...");
     const availableModels = await fetchAvailableModels();
     log(`Found ${availableModels.size} unique models across providers`);
-
-    await recoverStaleOutput();
 
     if (args.all && !args.model) {
         const models = await getAllModels();

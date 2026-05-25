@@ -1,6 +1,6 @@
 export interface TranslationEntry {
   key: string;
-  translation: string | null;
+  translation: string | string[] | null;
 }
 
 export interface TranslationOutput {
@@ -68,10 +68,11 @@ function checkLocale(value: unknown, expected: string): string {
   return locale;
 }
 
-export function verifyProficiency(
-  raw: string,
+export async function verifyProficiencyFile(
+  filePath: string,
   expectedLocale: string,
-): ProficiencyOutput {
+): Promise<ProficiencyOutput> {
+  const raw = await Deno.readTextFile(filePath);
   const obj = asObject(raw);
   const locale = checkLocale(obj.locale, expectedLocale);
   const proficiency = checkProficiency(obj.proficiency);
@@ -79,11 +80,12 @@ export function verifyProficiency(
   return { locale, proficiency, reasoning };
 }
 
-export function verifyTranslation(
-  raw: string,
+export async function verifyTranslationFile(
+  filePath: string,
   expectedLocale: string,
   inputStrings: InputString[],
-): TranslationOutput {
+): Promise<TranslationOutput> {
+  const raw = await Deno.readTextFile(filePath);
   const obj = asObject(raw);
   const locale = checkLocale(obj.locale, expectedLocale);
 
@@ -106,10 +108,20 @@ export function verifyTranslation(
       throw new VerifyError("Each entry must have a non-empty 'key' string");
     }
 
-    if (translation !== null && typeof translation !== "string") {
+    if (translation !== null && typeof translation !== "string" && !Array.isArray(translation)) {
       throw new VerifyError(
-        `translation for '${key}' must be a string or null`,
+        `translation for '${key}' must be a string, array of strings, or null`,
       );
+    }
+
+    if (Array.isArray(translation)) {
+      for (const t of translation) {
+        if (typeof t !== "string") {
+          throw new VerifyError(
+            `Each element in translation array for '${key}' must be a string`,
+          );
+        }
+      }
     }
 
     if (outputKeys.has(key)) {
@@ -118,17 +130,20 @@ export function verifyTranslation(
     outputKeys.add(key);
 
     if (translation !== null) {
+      const items = Array.isArray(translation) ? translation : [translation];
       const inputText = inputKeyToText.get(key as string);
-      if (inputText) {
-        const srcPlaceholders = extractPlaceholders(inputText);
-        const tgtPlaceholders = extractPlaceholders(translation as string);
-        if (srcPlaceholders.length !== tgtPlaceholders.length) {
-          throw new VerifyError(
-            `Placeholder count mismatch for '${key}': source has ${srcPlaceholders.length}, translation has ${tgtPlaceholders.length}`,
-          );
+      for (const item of items) {
+        if (inputText) {
+          const srcPlaceholders = extractPlaceholders(inputText);
+          const tgtPlaceholders = extractPlaceholders(item);
+          if (srcPlaceholders.length !== tgtPlaceholders.length) {
+            throw new VerifyError(
+              `Placeholder count mismatch for '${key}': source has ${srcPlaceholders.length}, translation has ${tgtPlaceholders.length}`,
+            );
+          }
         }
       }
-      translations.push({ key, translation: translation as string });
+      translations.push({ key, translation: Array.isArray(translation) ? translation : translation as string });
     } else {
       translations.push({ key, translation: null });
     }

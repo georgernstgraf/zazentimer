@@ -43,7 +43,8 @@ Use calm, meditation-appropriate vocabulary.
   "locale": "de",
   "translations": [
     {"key": "cancel", "translation": "Abbrechen"},
-    {"key": "about_title", "translation": null}
+    {"key": "about_title", "translation": ["Titel", "Über"]},
+    {"key": "unknown_key", "translation": null}
   ]
 }
 ```
@@ -51,8 +52,10 @@ Use calm, meditation-appropriate vocabulary.
 - `locale`: must match the input `bcp_47`.
 - `translations`: one entry per input string, in the same order.
 - `key`: must exactly match the input key.
-- `translation`: your translation, or **`null`** if you are not confident enough.
-  A null entry is treated as "skip this string" and will remain in English.
+- `translation`: your translation, or an **array** of alternatives, or **`null`**:
+  - A single confident translation → plain string.
+  - Two or more equally valid options → array of strings.
+  - If you do not know the translation → `null` (entry stays in English).
   Prefer null over a bad translation.
 
 ## Rules — Violations Cause App Crashes
@@ -64,4 +67,5 @@ Use calm, meditation-appropriate vocabulary.
 3. **All input keys must appear in output.** If you skip a string,
    set `"translation": null`.
 4. **No extra keys.** Output only the keys from the input.
-5. **Your entire response must be a single valid JSON object** — no markdown code fences (no ```), no surrounding text, no explanation. Start with `{` and end with `}`.
+5. **Write the result to `translate-output.json` using your file-writing tool.** The file must contain only the JSON object, starting with `{` and ending with `}`.
+6. **If you are uncertain between two valid translations**, you may provide both as an array: `"translation": ["Option A", "Option B"]`. The system stores multiple candidates for later voting. A single confident translation should be a plain string.

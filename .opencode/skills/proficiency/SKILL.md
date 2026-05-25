@@ -46,4 +46,4 @@ configurations), and sections (timed segments within a session).
   **BE HONEST.** Low proficiency is better than bad translations.
 - `reasoning`: brief explanation of your self-assessment.
 
-Your entire response must be a single valid JSON object — no markdown code fences (no ```), no surrounding text, no explanation. Start with `{` and end with `}`.
+Write the result to `proficiency-output.json` using your file-writing tool. The file must contain only the JSON object, starting with `{` and ending with `}`.
