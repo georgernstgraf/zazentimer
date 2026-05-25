@@ -973,7 +973,7 @@ app.get("/evaluation", async (c) => {
                     </tr>
                 </thead>
                 <tbody>
-                    {data.map((r, i) => (
+                    {data.map((r) => (
                         <tr>
                             <td>{r.master_string}</td>
                             <td>
