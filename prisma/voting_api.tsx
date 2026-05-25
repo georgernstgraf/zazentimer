@@ -598,7 +598,77 @@ app.get("/models/:mid/languages/:lid", async (c) => {
 });
 
 app.get("/strings", async (c) => {
-    const strings = await getStrings("");
+    const search = c.req.query("search") || "";
+    const sort = c.req.query("sort") || "";
+    const dir = c.req.query("dir") || "";
+    const isHtmx = c.req.header("HX-Request") === "true";
+
+    const strings = await getStrings(search);
+
+    if (sort && dir) {
+        strings.sort((a, b) => {
+            const getVal = (s: typeof strings[number]): string | number => {
+                switch (sort) {
+                    case "id": return s.id;
+                    case "text": return s.text;
+                    case "translations": return s.voteCount;
+                    default: return 0;
+                }
+            };
+            const va = getVal(a);
+            const vb = getVal(b);
+            if (typeof va === "string" && typeof vb === "string") {
+                return dir === "asc" ? va.localeCompare(vb) : vb.localeCompare(va);
+            }
+            return dir === "asc" ? Number(va) - Number(vb) : Number(vb) - Number(va);
+        });
+    }
+
+    const nextDir = dir === "asc" ? "desc" : "asc";
+
+    function sortLink(field: string, label: string) {
+        const indicator = sort === field ? (dir === "asc" ? "▲" : "▼") : "";
+        return (
+            <a
+                href="#"
+                hx-get={`/strings?search=${search}&sort=${field}&dir=${nextDir}`}
+                hx-target="#string-table"
+                hx-push-url="true"
+                style="text-decoration: none; color: inherit;"
+            >
+                {label} {indicator}
+            </a>
+        );
+    }
+
+    const tableContent = strings.length === 0
+        ? <p>No strings found.</p>
+        : (
+            <table>
+                <thead>
+                    <tr>
+                        <th>{sortLink("id", "ID")}</th>
+                        <th>{sortLink("text", "Text")}</th>
+                        <th>{sortLink("translations", "Translations")}</th>
+                        <th>Compare</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {strings.map((s) => (
+                        <tr key={s.id}>
+                            <td>{s.id}</td>
+                            <td>{s.text}</td>
+                            <td>{s.voteCount}</td>
+                            <td>
+                                <a href={`/strings/${s.id}/comparison`}>Compare</a>
+                            </td>
+                        </tr>
+                    ))}
+                </tbody>
+            </table>
+        );
+
+    if (isHtmx) return c.html(tableContent);
 
     return c.html(
         <Layout title="Strings">
@@ -611,47 +681,19 @@ app.get("/strings", async (c) => {
                 type="search"
                 name="search"
                 placeholder="Search strings..."
-                hx-get="/strings/table"
+                value={search}
+                hx-get={`/strings?sort=${sort}&dir=${dir}`}
                 hx-target="#string-table"
                 hx-trigger="keyup changed delay:300ms"
+                hx-push-url="true"
             />
 
             <div id="string-table">
-                <StringTableView strings={strings} />
+                {tableContent}
             </div>
         </Layout>,
     );
 });
-
-function StringTableView({ strings }: { strings: { id: number; text: string; voteCount: number }[] }) {
-    if (strings.length === 0) {
-        return <p>No strings found.</p>;
-    }
-    return (
-        <table>
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Text</th>
-                    <th>Translations</th>
-                    <th>Compare</th>
-                </tr>
-            </thead>
-            <tbody>
-                {strings.map((s) => (
-                    <tr>
-                        <td>{s.id}</td>
-                        <td>{s.text}</td>
-                        <td>{s.voteCount}</td>
-                        <td>
-                            <a href={`/strings/${s.id}/comparison`}>Compare</a>
-                        </td>
-                    </tr>
-                ))}
-            </tbody>
-        </table>
-    );
-}
 
 app.get("/strings/:sid/comparison", async (c) => {
     const sid = parseInt(c.req.param("sid"), 10);
@@ -794,12 +836,6 @@ function ComparisonTableView(
 // ── htmx Fragment Routes ──────────────────────────────────────────────────────
 
 
-
-app.get("/strings/table", async (c) => {
-    const search = c.req.query("search") || "";
-    const strings = await getStrings(search);
-    return c.html(<StringTableView strings={strings} />);
-});
 
 app.get("/strings/:sid/comparison/table", async (c) => {
     const sid = parseInt(c.req.param("sid"), 10);
