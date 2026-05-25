@@ -275,6 +275,62 @@ export async function getComparison(stringId: number, langId: number) {
     return { master_string: masterString.text, comparisons: Object.values(byModel) };
 }
 
+// ── Evaluation ───────────────────────────────────────────────────────────────
+
+export async function getEvaluation(langId: number) {
+    const prisma = await getPrisma();
+
+    const votes = await prisma.votes.findMany({
+        where: { languagesId: langId, ...NOT_EMPTY },
+        include: { master_string: true, llm_model: true },
+    });
+
+    const profs = await prisma.language_proficiencies.findMany({
+        where: { languages: { some: { id: langId } }, level: { gte: 2 } },
+        include: { llm_models: true },
+    });
+
+    const modelLevels = new Map<number, number>();
+    for (const p of profs) {
+        for (const m of p.llm_models) modelLevels.set(m.id, p.level);
+    }
+
+    const groups = new Map<number, Map<string, {
+        master_string: string; translation: string;
+        score: number; modelNames: string[];
+    }>>();
+
+    for (const v of votes) {
+        const level = modelLevels.get(v.llm_modelsId);
+        if (!level) continue;
+        const msId = v.master_stringsId;
+        if (!groups.has(msId)) groups.set(msId, new Map());
+        const tmap = groups.get(msId)!;
+        if (!tmap.has(v.translation)) {
+            tmap.set(v.translation, {
+                master_string: v.master_string.text,
+                translation: v.translation,
+                score: 0,
+                modelNames: [],
+            });
+        }
+        const entry = tmap.get(v.translation)!;
+        entry.score += level;
+        entry.modelNames.push(v.llm_model.name);
+    }
+
+    const result = [];
+    for (const [, tmap] of groups) {
+        const ranked = [...tmap.values()].sort((a, b) => b.score - a.score);
+        result.push(...ranked);
+    }
+    return result.map((r) => ({
+        ...r,
+        modelCount: r.modelNames.length,
+        modelNames: r.modelNames.join(", "),
+    }));
+}
+
 // ── Stats ───────────────────────────────────────────────────────────────────
 
 export async function getStats() {

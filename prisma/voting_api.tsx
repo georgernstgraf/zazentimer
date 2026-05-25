@@ -4,6 +4,7 @@ import { getPrisma } from "./lib/prisma.ts";
 import {
     getComparison,
     getCoverage,
+    getEvaluation,
     getLanguages,
     getLanguagesWithStats,
     getModels,
@@ -44,6 +45,7 @@ function Layout(
                         <li><a href="/models">Models</a></li>
                         <li><a href="/strings">Strings</a></li>
                         <li><a href="/languages">Languages</a></li>
+                        <li><a href="/evaluation">Evaluation</a></li>
                     </ul>
                 </nav>
                 <main class="container">
@@ -898,6 +900,123 @@ app.get("/languages/:lid", async (c) => {
                     : <p>Whisper: <em>Not supported</em></p>}
                 <p>Directory: <code>{language.directory}</code></p>
             </article>
+        </Layout>,
+    );
+});
+
+// ── Evaluation Page ─────────────────────────────────────────────────────────
+
+app.get("/evaluation", async (c) => {
+    const langId = parseInt(c.req.query("langId") || "0", 10);
+    const sort = c.req.query("sort") || "";
+    const dir = c.req.query("dir") || "";
+    const isHtmx = c.req.header("HX-Request") === "true";
+
+    const prisma = await getPrisma();
+    const langIds = await prisma.votes.findMany({
+        select: { languagesId: true },
+        distinct: ["languagesId"],
+    });
+    const languages = await prisma.languages.findMany({
+        where: { id: { in: langIds.map((l) => l.languagesId) } },
+        orderBy: { bcp_47: "asc" },
+    });
+
+    const data = langId ? await getEvaluation(langId) : [];
+
+    if (sort && dir && data.length > 0) {
+        data.sort((a, b) => {
+            let va: string | number;
+            let vb: string | number;
+            switch (sort) {
+                case "master_string": va = a.master_string; vb = b.master_string; break;
+                case "translation": va = a.translation; vb = b.translation; break;
+                case "score": va = a.score; vb = b.score; break;
+                case "models": va = a.modelCount; vb = b.modelCount; break;
+                default: return 0;
+            }
+            if (typeof va === "string") {
+                return dir === "asc" ? va.localeCompare(vb as string) : (vb as string).localeCompare(va);
+            }
+            return dir === "asc" ? Number(va) - Number(vb) : Number(vb) - Number(va);
+        });
+    }
+
+    const nextDir = dir === "asc" ? "desc" : "asc";
+
+    function sortLink(field: string, label: string) {
+        const indicator = sort === field ? (dir === "asc" ? "▲" : "▼") : "";
+        return (
+            <a
+                href="#"
+                hx-get={`/evaluation?langId=${langId}&sort=${field}&dir=${nextDir}`}
+                hx-target="#eval-table"
+                hx-push-url="true"
+                style="text-decoration: none; color: inherit;"
+            >
+                {label} {indicator}
+            </a>
+        );
+    }
+
+    const tableContent = data.length === 0
+        ? <p>{langId ? "No evaluation data found." : "Select a language to see evaluation scores."}</p>
+        : (
+            <table>
+                <thead>
+                    <tr>
+                        <th>{sortLink("master_string", "Master String")}</th>
+                        <th>{sortLink("translation", "Translation")}</th>
+                        <th style="text-align: center;">{sortLink("score", "Score")}</th>
+                        <th style="text-align: center;">{sortLink("models", "Models")}</th>
+                        <th>Voting Models</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {data.map((r, i) => (
+                        <tr>
+                            <td>{r.master_string}</td>
+                            <td>
+                                <strong>{r.translation}</strong>
+                            </td>
+                            <td style="text-align: center;">
+                                <code>{r.score}</code>
+                            </td>
+                            <td style="text-align: center;">{r.modelCount}</td>
+                            <td style="font-size: 0.85rem;">{r.modelNames}</td>
+                        </tr>
+                    ))}
+                </tbody>
+            </table>
+        );
+
+    if (isHtmx) return c.html(tableContent);
+
+    return c.html(
+        <Layout title="Evaluation">
+            <hgroup>
+                <h1>Evaluation</h1>
+                <p>Score-based translation ranking (proficiency-weighted)</p>
+            </hgroup>
+
+            <select
+                name="langId"
+                hx-get="/evaluation"
+                hx-target="#eval-table"
+                hx-trigger="change"
+                hx-push-url="true"
+            >
+                <option value="">— Select Language —</option>
+                {languages.map((l) => (
+                    <option value={l.id} selected={l.id === langId}>
+                        {l.english_name} ({l.bcp_47})
+                    </option>
+                ))}
+            </select>
+
+            <div id="eval-table">
+                {tableContent}
+            </div>
         </Layout>,
     );
 });
