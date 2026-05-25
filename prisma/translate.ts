@@ -172,7 +172,12 @@ interface CliArgs {
 }
 
 function parseArgs(): CliArgs {
-    const args = Deno.args;
+    const args = Deno.args
+        .flatMap((a) =>
+            a.startsWith("--") && a.includes("=")
+                ? a.split("=", 2)
+                : [a]
+        );
     let all = false;
     let minProficiency = DEFAULT_MIN_PROFICIENCY;
     let maxDuration = DEFAULT_MAX_DURATION_MIN;

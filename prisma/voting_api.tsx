@@ -723,7 +723,7 @@ app.get("/strings", async (c) => {
 });
 
 async function renderComparisonContent(sid: number, langId: number) {
-    const prisma = await getPrisma();
+    const _prisma = await getPrisma();
     const [models, comparison] = await Promise.all([
         getModels(),
         getComparison(sid, langId),
