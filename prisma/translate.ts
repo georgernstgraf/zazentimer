@@ -149,9 +149,9 @@ const SKILL_PROFICIENCY = await Deno.readTextFile(
 
 // ── Constants ────────────────────────────────────────────────────────────────
 const PROJECT_DIR = Deno.cwd();
-const INPUT_FILE = "translate-input.json";
-const OUTPUT_FILE = "translate-output.json";
-const PROFICIENCY_OUTPUT_FILE = "proficiency-output.json";
+const INPUT_FILE = `${PROJECT_DIR}/translate-input.json`;
+const OUTPUT_FILE = `${PROJECT_DIR}/translate-output.json`;
+const PROFICIENCY_OUTPUT_FILE = `${PROJECT_DIR}/proficiency-output.json`;
 
 const START_TIME = Date.now();
 const MAX_RETRIES = 3;
