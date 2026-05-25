@@ -1,6 +1,17 @@
 import { Hono } from "hono";
 import { HTTPException } from "hono/http-exception";
 import { getPrisma } from "./lib/prisma.ts";
+import {
+    getComparison,
+    getCoverage,
+    getLanguages,
+    getLanguagesWithStats,
+    getModels,
+    getProficiencies,
+    getStats,
+    getStrings,
+    getVotesGrouped,
+} from "./lib/db.ts";
 
 const app = new Hono();
 
@@ -103,143 +114,6 @@ function CoverageBar({ pct }: { pct: number }) {
     );
 }
 
-// ── Data helpers ──────────────────────────────────────────────────────────────
-
-async function getModels() {
-    const prisma = await getPrisma();
-    return await prisma.llm_models.findMany({ orderBy: { name: "asc" } });
-}
-
-async function getProficiencies(modelId: number) {
-    const prisma = await getPrisma();
-    return await prisma.language_proficiencies.findMany({
-        where: { llm_models: { some: { id: modelId } } },
-        include: { languages: true },
-        orderBy: { level: "desc" },
-    });
-}
-
-async function getLanguages() {
-    const prisma = await getPrisma();
-    return await prisma.languages.findMany({ orderBy: { bcp_47: "asc" } });
-}
-
-async function getStrings(search: string) {
-    const prisma = await getPrisma();
-    const where = search ? { text: { contains: search } } : {};
-    const strings = await prisma.master_strings.findMany({
-        where,
-        orderBy: { text: "asc" },
-    });
-    const result = await Promise.all(strings.map(async (s) => {
-        const count = await prisma.votes.count({
-            where: { master_stringsId: s.id },
-        });
-        return { ...s, voteCount: count };
-    }));
-    return result;
-}
-
-async function getVotesGrouped(modelId: number, langId: number) {
-    const prisma = await getPrisma();
-    const votes = await prisma.votes.findMany({
-        where: { languagesId: langId, llm_modelsId: modelId },
-        include: { master_string: true },
-        orderBy: [{ master_stringsId: "asc" }, { created_at: "desc" }],
-    });
-
-    const grouped: Record<number, { master_string: string; translations: string[] }> = {};
-    for (const v of votes) {
-        if (!grouped[v.master_stringsId]) {
-            grouped[v.master_stringsId] = {
-                master_string: v.master_string.text,
-                translations: [],
-            };
-        }
-        if (!grouped[v.master_stringsId].translations.includes(v.translation)) {
-            grouped[v.master_stringsId].translations.push(v.translation);
-        }
-    }
-    return Object.values(grouped);
-}
-
-async function getCoverage(modelId: number, langId: number) {
-    const prisma = await getPrisma();
-    const [translated, total] = await Promise.all([
-        prisma.votes.findMany({
-            where: { languagesId: langId, llm_modelsId: modelId },
-            select: { master_stringsId: true },
-            distinct: ["master_stringsId"],
-        }),
-        prisma.master_strings.count(),
-    ]);
-    return {
-        translated: translated.length,
-        total,
-        coverage_pct: total > 0
-            ? Math.round((translated.length / total) * 100 * 10) / 10
-            : 0,
-    };
-}
-
-async function getComparison(stringId: number, langId: number) {
-    const prisma = await getPrisma();
-    const masterString = await prisma.master_strings.findUnique({
-        where: { id: stringId },
-    });
-    if (!masterString) throw new HTTPException(404, { message: "String not found" });
-
-    const where: Record<string, unknown> = { master_stringsId: stringId };
-    if (langId) where.languagesId = langId;
-
-    const votes = await prisma.votes.findMany({
-        where,
-        include: { llm_model: true, language: true },
-        orderBy: [{ llm_modelsId: "asc" }, { created_at: "desc" }],
-    });
-
-    const byModel: Record<number, { model: string; translations: string[]; modelId: number }> = {};
-    for (const v of votes) {
-        if (!byModel[v.llm_modelsId]) {
-            byModel[v.llm_modelsId] = {
-                model: v.llm_model.name,
-                modelId: v.llm_modelsId,
-                translations: [],
-            };
-        }
-        if (!byModel[v.llm_modelsId].translations.includes(v.translation)) {
-            byModel[v.llm_modelsId].translations.push(v.translation);
-        }
-    }
-    return { master_string: masterString.text, comparisons: Object.values(byModel) };
-}
-
-async function getLanguagesWithStats(search: string) {
-    const prisma = await getPrisma();
-    const where = search
-        ? {
-            OR: [
-                { english_name: { contains: search } },
-                { bcp_47: { contains: search } },
-            ],
-        }
-        : {};
-    const languages = await prisma.languages.findMany({
-        where,
-        orderBy: { bcp_47: "asc" },
-    });
-
-    return await Promise.all(languages.map(async (lang) => {
-        const [modelCount, voteCount] = await Promise.all([
-            prisma.language_proficiencies.count({
-                where: { languages: { some: { id: lang.id } } },
-            }),
-            prisma.votes.count({ where: { languagesId: lang.id } }),
-        ]);
-        return { ...lang, modelCount, voteCount };
-    }));
-}
-
 // ── API Routes (JSON) ─────────────────────────────────────────────────────────
 
 app.get("/api/models", async (c) => {
@@ -294,14 +168,8 @@ app.get("/api/strings/:sid/comparison", async (c) => {
 });
 
 app.get("/api/stats", async (c) => {
-    const prisma = await getPrisma();
-    const [models, languages, votes, strings] = await Promise.all([
-        prisma.llm_models.count(),
-        prisma.languages.count(),
-        prisma.votes.count(),
-        prisma.master_strings.count(),
-    ]);
-    return c.json({ models, languages, votes, strings });
+    const stats = await getStats();
+    return c.json(stats);
 });
 
 // ── POST /api/votes (bestehendes Pattern) ─────────────────────────────────────
@@ -359,13 +227,7 @@ app.post("/api/votes", async (c) => {
 // ── Frontend Pages (JSX) ──────────────────────────────────────────────────────
 
 app.get("/", async (c) => {
-    const prisma = await getPrisma();
-    const [models, languages, votes, strings] = await Promise.all([
-        prisma.llm_models.count(),
-        prisma.languages.count(),
-        prisma.votes.count(),
-        prisma.master_strings.count(),
-    ]);
+    const { models, languages, votes, strings } = await getStats();
 
     return c.html(
         <Layout title="Dashboard">
@@ -405,9 +267,8 @@ async function renderProficiencyTableContent(
     const [proficiencies, coverage] = await Promise.all([
         getProficiencies(modelId),
         (async () => {
-            const prisma = await getPrisma();
             const results: { langId: number; translated: number; total: number; pct: number }[] = [];
-            for (const l of await prisma.languages.findMany()) {
+            for (const l of await getLanguages()) {
                 const c = await getCoverage(modelId, l.id);
                 results.push({
                     langId: l.id,
@@ -723,7 +584,6 @@ app.get("/strings", async (c) => {
 });
 
 async function renderComparisonContent(sid: number, langId: number) {
-    const _prisma = await getPrisma();
     const [models, comparison] = await Promise.all([
         getModels(),
         getComparison(sid, langId),
