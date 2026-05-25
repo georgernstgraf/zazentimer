@@ -9,6 +9,7 @@ import {
     verifyProficiencyFile,
     verifyTranslationFile,
 } from "./lib/verify.ts";
+import { getPrisma } from "./lib/prisma.ts";
 import {
     getAllLanguages,
     getAllMasterStrings,
@@ -397,6 +398,7 @@ async function dispatchTranslate(
                 log(
                     `got translation result for ${langEnglishName} to ${modelRef.providerID}(rank ${rank})/${modelRef.modelID}: stored ${stored}, skipped ${skipped}`,
                 );
+                await (await getPrisma()).$queryRawUnsafe("PRAGMA wal_checkpoint(TRUNCATE)");
                 return;
             } catch (e) {
                 lastError = e instanceof VerifyError ? e.message : String(e);
