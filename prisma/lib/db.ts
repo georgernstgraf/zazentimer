@@ -19,7 +19,7 @@ type PModel = {
 let lastClient: PrismaClient | null = null;
 let queue = Promise.resolve();
 
-async function getClient(): Promise<PrismaClient> {
+function getClient(): Promise<PrismaClient> {
   return new Promise<PrismaClient>((resolve, reject) => {
     queue = queue.then(async () => {
       try {
@@ -38,7 +38,7 @@ async function getClient(): Promise<PrismaClient> {
 
 export async function getOrCreateLanguage(bcp47: string): Promise<PLanguage> {
   const prisma = await getClient();
-  let lang = await prisma.languages.findUnique({ where: { bcp_47: bcp47 } });
+  const lang = await prisma.languages.findUnique({ where: { bcp_47: bcp47 } });
   if (!lang) {
     throw new Error(`Language '${bcp47}' not found in DB. Run seed first.`);
   }

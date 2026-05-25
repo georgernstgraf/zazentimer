@@ -15,4 +15,10 @@ echo "Running ktlintCheck..."
 echo "Running detekt..."
 ./gradlew detekt --quiet
 
-echo "Lint checks passed."
+echo "Running Deno type check..."
+(cd prisma && deno task check)
+
+echo "Running Deno lint..."
+(cd prisma && deno task lint)
+
+echo "Checks passed."

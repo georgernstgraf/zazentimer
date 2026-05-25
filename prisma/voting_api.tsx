@@ -731,7 +731,7 @@ app.get("/strings/:sid/comparison", async (c) => {
 });
 
 function ComparisonTableView(
-    { comparisons, masterString }: {
+    { comparisons, masterString: _masterString }: {
         comparisons: { model: string; translations: string[] }[];
         masterString: string;
     },
@@ -739,8 +739,6 @@ function ComparisonTableView(
     if (comparisons.length === 0) {
         return <p>No translations yet.</p>;
     }
-
-    const headers = comparisons.map((c) => c.model);
 
     // For each model, find consensus:
     // A translation is "consensus" if 2+ models have it

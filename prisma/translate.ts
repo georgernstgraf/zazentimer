@@ -404,7 +404,7 @@ async function runOne(
     langBcp47: string,
     langEnglishName: string,
     availableModels: Map<string, ModelEntry[]>,
-    minProficiency: number,
+    _minProficiency: number,
 ): Promise<void> {
     const modelDb = await getOrCreateModel(modelName);
     const language = await getOrCreateLanguage(langBcp47);

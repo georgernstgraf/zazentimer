@@ -10,7 +10,9 @@
     "prismatranslationsmigratestatus": "deno run  -A prisma migrate status --schema=translations/schema.prisma",
     "prismatranslationsmigratereset": "deno run  -A prisma migrate reset --schema=translations/schema.prisma",
     "translate": "deno run --env-file=translations/.env -A translate.ts --",
-    "votingbackend": "deno run --env-file=translations/.env -A voting_api.tsx"
+    "votingbackend": "deno run --env-file=translations/.env -A voting_api.tsx",
+    "check": "deno check --config=deno.json translate.ts voting_api.tsx lib/verify.ts lib/db.ts lib/opencode_client.ts lib/prisma.ts translations/seed.ts",
+    "lint": "deno lint"
   },
   "imports": {
     "@std/assert": "jsr:@std/assert@1",
