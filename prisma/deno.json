@@ -5,7 +5,6 @@
     "prismatranslationsmigratedev": "deno run  -A prisma migrate dev --schema=translations/schema.prisma",
     "prismatranslationsmigratestatus": "deno run  -A prisma migrate status --schema=translations/schema.prisma",
     "prismatranslationsmigratereset": "deno run  -A prisma migrate reset --schema=translations/schema.prisma",
-    "votingbackend": "deno run --env-file=translations/.env -A voting_api.ts",
     "translate": "deno run --env-file=translations/.env -A translate.ts --"
   },
   "imports": {

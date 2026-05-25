@@ -64,4 +64,4 @@ Use calm, meditation-appropriate vocabulary.
 3. **All input keys must appear in output.** If you skip a string,
    set `"translation": null`.
 4. **No extra keys.** Output only the keys from the input.
-5. **Your output must be valid JSON.** No surrounding text, no markdown.
+5. **Your entire response must be a single valid JSON object** — no markdown code fences (no ```), no surrounding text, no explanation. Start with `{` and end with `}`.

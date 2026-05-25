@@ -61,7 +61,7 @@ Follow these without question. Do not deviate unless explicitly told.
 - Confidence `Int` with CHECK — never use Prisma enum for numeric ranges (SQLite sorts enums alphabetically).
 
 ## Translation Pipeline (#202)
-- Shared Prisma DB queries in `prisma/lib/db.ts` — verwendet von `voting_api.ts` und `translate.ts`.
+- Shared Prisma DB queries in `prisma/lib/db.ts` — verwendet von `translate.ts`.
 - Orchestrator at `prisma/translate.ts` — nistete Loop `for model × for locale → dispatch → verify → store`.
 - `prisma/lib/opencode_client.ts` — HTTP Client für opencode Server (`createSession`, `sendMessage`, `closeSession`).
 - `prisma/lib/verify.ts` — Output-Verifikation: JSON-Struktur, Keys, null erlaubt, Placeholder-Check.

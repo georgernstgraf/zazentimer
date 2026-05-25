@@ -46,4 +46,4 @@ configurations), and sections (timed segments within a session).
   **BE HONEST.** Low proficiency is better than bad translations.
 - `reasoning`: brief explanation of your self-assessment.
 
-Your output must be valid JSON. No surrounding text, no markdown.
+Your entire response must be a single valid JSON object — no markdown code fences (no ```), no surrounding text, no explanation. Start with `{` and end with `}`.
