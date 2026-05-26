@@ -6,7 +6,6 @@ deno.lock
 *.db-wal
 *.db-shm
 generatedprismaclient/
-translation_votes.*
 translate-*.json
 proficiency-*.json
 session-*.md
