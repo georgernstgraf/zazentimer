@@ -160,7 +160,7 @@ const PROFICIENCY_OUTPUT_FILE = `${PROJECT_DIR}/proficiency-output.json`;
 
 const START_TIME = Date.now();
 const MAX_RETRIES = 3;
-const SESSION_TIMEOUT_MS = 21 * 60 * 1000; // 12 minutes inactivity timeout
+const SESSION_TIMEOUT_MS = 60 * 60 * 1000; // 60 minutes inactivity timeout (opencode-go is slow)
 const MAX_STALL_RETRIES = 3;
 const DEFAULT_MIN_PROFICIENCY = 2;
 const DEFAULT_MAX_DURATION_MIN = 10;

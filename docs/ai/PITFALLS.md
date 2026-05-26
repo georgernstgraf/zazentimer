@@ -84,6 +84,9 @@ Read this file carefully before making changes in affected areas.
 - **Model-Eigenidentifikation**: LLMs geben oft `providerID/modelID` (z.B. `opencode/gpt-5.5`) statt nur `gpt-5.5` als Model-Namen zurück. Verify-Funktionen müssen den letzten Slash-Teil extrahieren (`extractModelName()`).
 - **System + Model per Message**: `POST /session/{id}/message` akzeptiert `{ system, model: { providerID, modelID }, parts }`. Session-Erstellung (`POST /session`) hat KEINEN `system`-Parameter.
 - **zai (Zhipu AI) Provider**: Token müssen regelmäßig rotiert werden. Nach Token-Rotation funktioniert der Provider wieder. `zai-coding-plan` ist ein guter Provider und bleibt in PROVIDER_RANKING.
+- **kimi-k2.6 / opencode-go is slow**: Average 8:30 per locale (deepseek-v4-pro: 2:50). Extreme outlier: Irish took 39 min. When running many locales, kimi-k2.6 over opencode-go dominates runtime.
+- **Prisma v6 library engine intermittent blocking**: The native `.so.node` addon (`libquery_engine-debian-openssl-3.0.x.so.node`) has sporadic internal locks causing 15-20s delays on simple `findUnique` queries with a singleton PrismaClient. Workaround: fresh client per query (`new PrismaClient()` + `$connect()` on each call). The PRAGMA `busy_timeout=2000` is set by Prisma v6 itself even without explicit PRAGMA statements. `PRISMA_CLIENT_ENGINE_TYPE` env var is ignored in v6 — only `library` engine is available for SQLite.
+- `_minProficiency` was never checked: The underscore-prefixed parameter in `runOne()` was dead code. Models below proficiency threshold were never skipped despite `--min-proficiency` flag. Renamed to `minProficiency` and actual check added.
 
 ### Translation Pipeline
 - **Gemini 3.1 Pro Performance**: ~90s für 154 Strings, Proficiency 5/5, alle 153 übersetzt (0 null).

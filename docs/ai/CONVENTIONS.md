@@ -99,6 +99,10 @@ Follow these without question. Do not deviate unless explicitly told.
 - **Use `inRoot(isDialog())` for AlertDialog interactions**: On API 36+, the system enforces edge-to-edge (`EDGE_TO_EDGE_ENFORCED`), which can cause activity windows to lose focus when `AlertDialog` appears. Espresso's default root matcher requires window focus, causing `RootViewWithoutFocusException`. Use `.inRoot(isDialog())` to target the dialog root directly. Import: `import androidx.test.espresso.matcher.RootMatchers.isDialog`.
 - **Bell DB tests**: Always seed at least one builtin bell via `TestBellHelper.seedBell()`. Insert custom bells with `isBuiltin=false` and `file://` URIs. For `deleteCustomBell` tests, `BellCollection.getDemoBell()` returns null in Robolectric — the fallback `bellDao?.getBuiltinBells()?.firstOrNull()` is used instead.
 - **ManageBellsPage pattern**: Use `RecyclerViewActions.actionOnItem<ViewHolder>(withBellName(name), clickChildViewWithId(R.id.deleteButton))` to find and click delete for a specific bell. Custom matcher `withBellName()` checks `R.id.bellName` text on each item. `hasSibling()` from Hamcrest is NOT available — use custom TypeSafeMatcher instead.
+- **Fresh PrismaClient for blocking endpoints**: In `prisma/lib/db.ts`, `getLanguageById()` and `getMasterStringById()` call `prisma = await getPrisma()` on every invocation (not just module-level init). This avoids Prisma v6 library engine's intermittent internal blocking with a singleton.
+- **getEvaluation() return includes modelDetails**: Each entry contains `modelDetails: {name, level}[]` for tooltips, plus `modelNames: string` (comma-joined, backwards compatible).
+- **getVotesGrouped() returns master_stringsId**: Enables linking to `/strings/{id}` detail pages.
+- **WAL checkpoint after translate batches**: `dispatchTranslate()` runs `PRAGMA wal_checkpoint(TRUNCATE)` after each successful store cycle to prevent WAL bloat and reader blocking.
 
 
 ## Play Store Automation

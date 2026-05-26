@@ -291,6 +291,56 @@ Each entry documents WHAT was decided and WHY.
 - **Considered**: `npm:xmldom` polyfill (additional import, maintenance), `npm:fast-xml-parser` (heavier, configuration needed).
 - **Tradeoff**: Regex breaks on multi-line string definitions or XML comments within the strings block. Must be verified if `strings.xml` format changes.
 
+## 2026-05-25: Include null-vote strings in translate skip set (#219)
+- **Choice**: Added `getNullExistingVotes()` to query `translation: ""` entries separately. `runOne()` now merges `nullVotes` into the skip set alongside `existing` (non-null) and `settled` (3+ model consensus).
+- **Reason**: `getExistingVotes()` filters with `NOT_EMPTY`, so empty-string votes from `null` returns were never included in the skip set. On restart, every (model, locale) re-requested all strings where the model previously returned `null`, wasting 10-30 minutes per run.
+- **Considered**: Changing `getExistingVotes()` to include empty strings (would break frontend coverage counts).
+- **Tradeoff**: Separate query function keeps existing semantics intact.
+
+## 2026-05-25: Pseudo-ISO timestamp format in translate logs
+- **Choice**: Changed `ts()` from ISO format (`2026-05-25T12:38:40.123Z`) to filesystem-safe pseudo-ISO (`2026-05-25_12-38-40`). Console output now also includes the timestamp prefix.
+- **Reason**: The ISO format with colons is problematic for filenames and log parsers. User wanted timestamps visible in console output too.
+- **Tradeoff**: One-time format change, parsers must handle both formats during transition.
+
+## 2026-05-25: Proficiency threshold skip bugfix (#222)
+- **Choice**: Renamed `_minProficiency` to `minProficiency` and added the actual check: `if (proficiency < minProficiency) return`. Added `getProficiencyLevel()` helper in `db.ts`.
+- **Reason**: The underscore-prefixed parameter was unused — models with proficiency below threshold were never skipped despite the `--min-proficiency` CLI flag.
+- **Tradeoff**: Additional DB query for proficiency level on every (model, locale) run.
+
+## 2026-05-25: WAL checkpoint after each translate batch (#229)
+- **Choice**: Added `PRAGMA wal_checkpoint(TRUNCATE)` after each successful translate store cycle in `dispatchTranslate()`.
+- **Reason**: The voting backend's PrismaClient blocked on `busy_timeout=5000` while translate wrote large batches, causing ~40s timeouts on `/strings/:sid/comparison`.
+- **Considered**: Setting checkpoint at voting backend startup only (didn't help long-running translates).
+- **Tradeoff**: ~2ms overhead per (model, locale) batch.
+
+## 2026-05-25: Fresh PrismaClient per query for blocking endpoints
+- **Choice**: `prisma.ts` changed from singleton to `new PrismaClient()` on every call. `getLanguageById()` and `getMasterStringById()` refresh the client on each invocation.
+- **Reason**: Prisma v6's library engine (`.so.node` native addon) has intermittent internal blocking with a singleton client. A fresh client per query avoids accumulated engine state.
+- **Considered**: PRAGMA-based workarounds (busy_timeout, WAL mode, CHECKPOINT) — none resolved the sporadic 15s delays.
+- **Tradeoff**: ~6ms per-query overhead for engine startup.
+
+## 2026-05-26: getEvaluation() now includes modelDetails[] (#230)
+- **Choice**: `getEvaluation()` returns `modelDetails: {name, level}[]` per entry alongside the existing `modelNames: string`.
+- **Reason**: The `/languages/:lid` page needed per-translation tooltips showing which models voted and at what proficiency level.
+- **Tradeoff**: Slightly larger response; backwards compatible (modelNames remains).
+
+## 2026-05-26: Voting backend /models page replaced nav tiles with table (#230)
+- **Choice**: Replaced the model navigation button bar with a model overview table (Model | Languages | Avg. Proficiency | Total Votes). Clicking a model name loads the existing per-language proficiency table via htmx.
+- **Reason**: User wanted a table instead of tiles, and per-model summary statistics (avg proficiency, non-empty vote count).
+- **Tradeoff**: Additional `getModelsWithStats()` DB function; two-level navigation (overview → detail) instead of immediate tile selection.
+
+## 2026-05-26: Explicit FK columns for language_proficiencies (#231)
+- **Choice**: Replaced implicit M:N junction tables with explicit `modelId`/`languageId` FK columns on `language_proficiencies`, plus `@@unique([modelId, languageId])`.
+- **Reason**: The implicit M:N pattern (`llm_models[]`, `languages[]`) was semantically wrong — a proficiency assessment belongs to exactly one (model, language) pair. Query patterns with `some: { id }` were awkward.
+- **Considered**: Keeping implicit M:N (works but misleading schema).
+- **Tradeoff**: Migration required deduplication (2 duplicates found) and table recreate; 6 query functions updated.
+
+## 2026-05-26: 60min session timeout + 2 stall retries for translate (#232)
+- **Choice**: Added `sendMessageWithTimeout()` using `AbortController`, 60-minute inactivity timeout, and 2 stall retries per (model, locale) in both `dispatchProficiency()` and `dispatchTranslate()`. Separate from the existing `MAX_RETRIES=3` verify-error retry mechanism. Added `scripts/analyze_translate_logs.sh`.
+- **Reason**: opencode-go provider sessions sometimes hang indefinitely (observed: kimi-k2.6 took 39 min for Irish). The stall layer closes the hung session and creates a fresh one. User prefers generous timeout (60 min) to avoid false positives.
+- **Considered**: Per-provider timeout (rejected — too complex), single timeout kills entire run (rejected — per-session granularity better).
+- **Tradeoff**: 60-min timeout means the stall-retry will rarely fire; its primary value is as a safety net.
+
 ## 2026-05-24: Pre-push hook as symlink to scripts/git-hooks/
 - **Choice**: `.git/hooks/pre-push` → `../../scripts/git-hooks/pre-push` (symlink). Not a copy.
 - **Reason**: Keeps the pre-push hook always in sync with the template. Any edit to `scripts/git-hooks/pre-push` immediately applies to the live hook. The `--no-daemon` flag was removed from the hook to avoid unnecessary daemon-spawning behavior.
