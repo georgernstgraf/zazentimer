@@ -160,11 +160,28 @@ const PROFICIENCY_OUTPUT_FILE = `${PROJECT_DIR}/proficiency-output.json`;
 
 const START_TIME = Date.now();
 const MAX_RETRIES = 3;
+const SESSION_TIMEOUT_MS = 21 * 60 * 1000; // 12 minutes inactivity timeout
+const MAX_STALL_RETRIES = 3;
 const DEFAULT_MIN_PROFICIENCY = 2;
 const DEFAULT_MAX_DURATION_MIN = 10;
 
 function isTimeUp(maxDurationMs: number): boolean {
     return Date.now() - START_TIME >= maxDurationMs;
+}
+
+async function sendMessageWithTimeout(
+    opencode: OpencodeClient,
+    sessionId: string,
+    text: string,
+    opts: SendOptions,
+): Promise<void> {
+    const controller = new AbortController();
+    const timer = setTimeout(() => controller.abort(), SESSION_TIMEOUT_MS);
+    try {
+        await opencode.sendMessage(sessionId, text, opts, controller.signal);
+    } finally {
+        clearTimeout(timer);
+    }
 }
 
 // ── CLI args ─────────────────────────────────────────────────────────────────
@@ -265,7 +282,7 @@ async function dispatchProficiency(
         throw new Error(`No available provider for model '${modelName}'`);
     }
 
-    const sessionId = await opencode.createSession(PROJECT_DIR);
+    let sessionId = await opencode.createSession(PROJECT_DIR);
 
     for (const modelRef of chain) {
         let lastError: string | undefined;
@@ -280,7 +297,26 @@ async function dispatchProficiency(
                 ? `Write the proficiency assessment to ${PROFICIENCY_OUTPUT_FILE}. Read the input data from ${INPUT_FILE}.`
                 : `Verification failed: ${lastError}. Please fix ${PROFICIENCY_OUTPUT_FILE}.`;
 
-            await opencode.sendMessage(sessionId, text, opts);
+            const context = `${langEnglishName} to ${modelRef.providerID}(rank ${getProviderRank(modelRef.providerID)})/${modelRef.modelID}`;
+            let stallTry = 0;
+            while (true) {
+                stallTry++;
+                try {
+                    await sendMessageWithTimeout(opencode, sessionId, text, opts);
+                    break;
+                } catch (e) {
+                    if (e instanceof DOMException && e.name === "AbortError") {
+                        logError(`proficiency session timeout after ${SESSION_TIMEOUT_MS / 60000} min for ${context}, closing session (stall ${stallTry}/${MAX_STALL_RETRIES})`);
+                        await opencode.closeSession(sessionId);
+                        if (stallTry < MAX_STALL_RETRIES) {
+                            sessionId = await opencode.createSession(PROJECT_DIR);
+                            continue;
+                        }
+                        throw new Error(`Proficiency session timed out for ${context} after ${MAX_STALL_RETRIES} retries`);
+                    }
+                    throw e;
+                }
+            }
 
             try {
                 const result = await verifyProficiencyFile(
@@ -336,7 +372,7 @@ async function dispatchTranslate(
         throw new Error(`No available provider for model '${modelName}'`);
     }
 
-    const sessionId = await opencode.createSession(PROJECT_DIR);
+    let sessionId = await opencode.createSession(PROJECT_DIR);
 
     for (const modelRef of chain) {
         let lastError: string | undefined;
@@ -356,7 +392,26 @@ async function dispatchTranslate(
                 `submitting translation request for ${langEnglishName} to ${modelRef.providerID}(rank ${rank})/${modelRef.modelID}, proficiency: ${proficiency}. searching for ${unsettledCount} unsettled strings`,
             );
 
-            await opencode.sendMessage(sessionId, text, opts);
+            const context = `${langEnglishName} to ${modelRef.providerID}(rank ${rank})/${modelRef.modelID}`;
+            let stallTry = 0;
+            while (true) {
+                stallTry++;
+                try {
+                    await sendMessageWithTimeout(opencode, sessionId, text, opts);
+                    break;
+                } catch (e) {
+                    if (e instanceof DOMException && e.name === "AbortError") {
+                        logError(`translation session timeout after ${SESSION_TIMEOUT_MS / 60000} min for ${context}, closing session (stall ${stallTry}/${MAX_STALL_RETRIES})`);
+                        await opencode.closeSession(sessionId);
+                        if (stallTry < MAX_STALL_RETRIES) {
+                            sessionId = await opencode.createSession(PROJECT_DIR);
+                            continue;
+                        }
+                        throw new Error(`Translation session timed out for ${context} after ${MAX_STALL_RETRIES} retries`);
+                    }
+                    throw e;
+                }
+            }
 
             try {
                 const result = await verifyTranslationFile(

@@ -48,6 +48,7 @@ export class OpencodeClient {
     sessionId: string,
     text: string,
     opts?: SendOptions,
+    signal?: AbortSignal,
   ): Promise<string> {
     const body: Record<string, unknown> = {
       parts: [{ type: "text", text }],
@@ -67,6 +68,7 @@ export class OpencodeClient {
       method: "POST",
       headers: authHeaders(),
       body: JSON.stringify(body),
+      signal,
     });
     if (!res.ok) {
       throw new Error(
