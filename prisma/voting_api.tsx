@@ -15,7 +15,9 @@ import {
     getModelById,
     getModelByName,
     getModels,
+    getModelsWithStats,
     getProficiencies,
+    getSettledStrings,
     getStats,
     getStrings,
     getStringSettlement,
@@ -419,7 +421,7 @@ async function renderProficiencyTableContent(
                                     <a
                                         href={`/models/${modelId}/languages/${langData.id}`}
                                     >
-                                        View ({r.coverage?.translated || 0})
+                                        {r.coverage?.translated || 0} votes
                                     </a>
                                 </td>
                             </tr>
@@ -439,42 +441,33 @@ app.get("/models", async (c) => {
     const models = await getModels();
     const activeModel = modelId ? models.find((m) => m.id === modelId) : null;
 
-    function renderModelNav() {
+    function renderBackLink() {
         return (
-            <nav style="display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1rem;">
-                {models.map((m) => {
-                    const active = m.id === modelId;
-                    return (
-                        <a
-                            href="#"
-                            hx-get={`/models?modelId=${m.id}&sort=${sort}&dir=${dir}`}
-                            hx-target="#models-content"
-                            hx-push-url="true"
-                            role="button"
-                            class={active ? "secondary" : "outline contrast"}
-                            style="flex: 0 1 auto;"
-                        >
-                            {m.name}
-                        </a>
-                    );
-                })}
-            </nav>
+            <a
+                href="#"
+                hx-get="/models"
+                hx-target="#models-content"
+                hx-push-url="true"
+                style="display: inline-block; margin-bottom: 1rem;"
+            >
+                &larr; All Models
+            </a>
         );
     }
 
-    const content = (
-        <div id="models-content">
-            {renderModelNav()}
-            {modelId
-                ? await renderProficiencyTableContent(
+    const content = modelId
+        ? (
+            <div id="models-content">
+                {renderBackLink()}
+                {await renderProficiencyTableContent(
                     modelId,
                     sort,
                     dir,
                     activeModel?.name,
-                )
-                : null}
-        </div>
-    );
+                )}
+            </div>
+        )
+        : await renderModelsOverview();
 
     if (isHtmx) return c.html(content);
 
@@ -482,12 +475,64 @@ app.get("/models", async (c) => {
         <Layout title="Models">
             <hgroup>
                 <h1>Models</h1>
-                <p>Select a model to view proficiency levels by language</p>
+                <p>Average proficiency and non-empty vote counts per model</p>
             </hgroup>
             {content}
         </Layout>,
     );
 });
+
+async function renderModelsOverview() {
+    const models = await getModelsWithStats();
+
+    return (
+        <div id="models-content">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Model</th>
+                        <th style="text-align: center;">Languages</th>
+                        <th style="text-align: center;">Avg. Proficiency</th>
+                        <th style="text-align: center;">Total Votes</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {models.map((m) => (
+                        <tr>
+                            <td>
+                                <a
+                                    href="#"
+                                    hx-get={`/models?modelId=${m.id}`}
+                                    hx-target="#models-content"
+                                    hx-push-url="true"
+                                >
+                                    {m.name}
+                                </a>
+                            </td>
+                            <td style="text-align: center;">
+                                {m.languageCount}
+                            </td>
+                            <td style="text-align: center;">
+                                {m.avgProficiency !== null
+                                    ? (
+                                        <LevelBadge level={Math.round(m.avgProficiency)} />
+                                    )
+                                    : (
+                                        <span style="color: var(--pico-color-zinc-400);">
+                                            —
+                                        </span>
+                                    )}
+                            </td>
+                            <td style="text-align: center;">
+                                {m.voteCount}
+                            </td>
+                        </tr>
+                    ))}
+                </tbody>
+            </table>
+        </div>
+    );
+}
 
 app.get("/models/:mid/languages/:lid", async (c) => {
     const mid = parseInt(c.req.param("mid"), 10);
@@ -536,14 +581,18 @@ app.get("/models/:mid/languages/:lid", async (c) => {
                         <tr>
                             <th>#</th>
                             <th>Master String</th>
-                            <th>Translations</th>
+                            <th>Translation</th>
                         </tr>
                     </thead>
                     <tbody>
                         {groups.map((g, i) => (
                             <tr>
                                 <td>{i + 1}</td>
-                                <td>{g.master_string}</td>
+                                <td>
+                                    <a href={`/strings/${g.master_stringsId}`}>
+                                        {g.master_string}
+                                    </a>
+                                </td>
                                 <td>
                                     {g.translations.map((t, j) => (
                                         <div>
@@ -1174,10 +1223,170 @@ app.get("/languages/:lid", async (c) => {
         throw new HTTPException(400, { message: "Invalid language id" });
     }
 
+    const sort = c.req.query("sort") || "";
+    const dir = c.req.query("dir") || "";
+    const isHtmx = c.req.header("HX-Request") === "true";
+
     const language = await getLanguageById(lid);
     if (!language) {
         throw new HTTPException(404, { message: "Language not found" });
     }
+
+    const [evaluation, settled] = await Promise.all([
+        getEvaluation(lid),
+        getSettledStrings(lid),
+    ]);
+
+    const grouped = new Map<number, {
+        best: typeof evaluation[0];
+        alternatives: typeof evaluation;
+    }>();
+    for (const row of evaluation) {
+        if (!grouped.has(row.master_stringsId)) {
+            grouped.set(row.master_stringsId, { best: row, alternatives: [] });
+        } else {
+            grouped.get(row.master_stringsId)!.alternatives.push(row);
+        }
+    }
+
+    const rows = [...grouped.values()].map((g) => ({
+        ...g.best,
+        alternatives: g.alternatives,
+        settled: settled.has(g.best.master_stringsId),
+    }));
+
+    if (sort && dir) {
+        rows.sort((a, b) => {
+            let va: string | number;
+            let vb: string | number;
+            switch (sort) {
+                case "master_string":
+                    va = a.master_string;
+                    vb = b.master_string;
+                    break;
+                case "translation":
+                    va = a.translation;
+                    vb = b.translation;
+                    break;
+                case "score":
+                    va = a.score;
+                    vb = b.score;
+                    break;
+                case "models":
+                    va = a.modelCount;
+                    vb = b.modelCount;
+                    break;
+                case "settled":
+                    va = a.settled ? 1 : 0;
+                    vb = b.settled ? 1 : 0;
+                    break;
+                default:
+                    return 0;
+            }
+            if (typeof va === "string") {
+                return dir === "asc"
+                    ? va.localeCompare(vb as string)
+                    : (vb as string).localeCompare(va);
+            }
+            return dir === "asc"
+                ? Number(va) - Number(vb)
+                : Number(vb) - Number(va);
+        });
+    }
+
+    const nextDir = dir === "asc" ? "desc" : "asc";
+
+    function sortLink(field: string, label: string) {
+        const indicator = sort === field ? (dir === "asc" ? "▲" : "▼") : "";
+        return (
+            <a
+                href="#"
+                hx-get={`/languages/${lid}?sort=${field}&dir=${nextDir}`}
+                hx-target="#eval-table"
+                hx-push-url="true"
+                style="text-decoration: none; color: inherit;"
+            >
+                {label} {indicator}
+            </a>
+        );
+    }
+
+    const tableContent = rows.length === 0
+        ? <p>No evaluation data found for this language.</p>
+        : (
+            <table>
+                <thead>
+                    <tr>
+                        <th>{sortLink("master_string", "Master String")}</th>
+                        <th>{sortLink("translation", "Best Translation")}</th>
+                        <th>Alternatives</th>
+                        <th style="text-align: center;">
+                            {sortLink("models", "Models")}
+                        </th>
+                        <th style="text-align: center;">
+                            {sortLink("score", "Score")}
+                        </th>
+                        <th style="text-align: center;">
+                            {sortLink("settled", "Settled")}
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {rows.map((r) => (
+                        <tr>
+                            <td>{r.master_string}</td>
+                            <td>
+                            <span
+                                title={r.modelDetails.map((md) => `${md.name}: ${md.level}`).join("\n")}
+                                style="cursor: help;"
+                            >
+                                {r.translation}
+                            </span>
+                            </td>
+                            <td>
+                                {r.alternatives.length > 0
+                                    ? (
+                                        <span
+                                            title={r.alternatives.map((a) =>
+                                                `${a.translation} (${a.modelDetails.map((md) => `${md.name}: ${md.level}`).join(", ")})`
+                                            ).join("\n")}
+                                            style="cursor: help;"
+                                        >
+                                            {r.alternatives.length} alt.
+                                        </span>
+                                    )
+                                    : (
+                                        <span style="color: var(--pico-color-zinc-400); font-size: 0.85rem;">
+                                            —
+                                        </span>
+                                    )}
+                            </td>
+                            <td style="text-align: center;">
+                                {r.modelCount}
+                            </td>
+                            <td style="text-align: center;">
+                                <code>{r.score}</code>
+                            </td>
+                            <td style="text-align: center;">
+                                {r.settled
+                                    ? (
+                                        <mark style="background: var(--pico-color-green); color: white; padding: 0.1rem 0.4rem; border-radius: var(--pico-border-radius);">
+                                            ✓
+                                        </mark>
+                                    )
+                                    : (
+                                        <span style="color: var(--pico-color-zinc-500);">
+                                            —
+                                        </span>
+                                    )}
+                            </td>
+                        </tr>
+                    ))}
+                </tbody>
+            </table>
+        );
+
+    if (isHtmx) return c.html(tableContent);
 
     return c.html(
         <Layout title={language.english_name}>
@@ -1210,6 +1419,13 @@ app.get("/languages/:lid", async (c) => {
                 <p>
                     Directory: <code>{language.directory}</code>
                 </p>
+            </article>
+
+            <article>
+                <header>Translations ({rows.length} strings)</header>
+                <div id="eval-table">
+                    {tableContent}
+                </div>
             </article>
         </Layout>,
     );

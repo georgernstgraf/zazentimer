@@ -30,6 +30,34 @@ export async function getModelByName(name: string): Promise<llm_models | null> {
     return await prisma.llm_models.findUnique({ where: { name } });
 }
 
+export async function getModelsWithStats() {
+    const models = await prisma.llm_models.findMany({
+        orderBy: { name: "asc" },
+        include: { language_proficiencies: true },
+    });
+    const voteCounts = await prisma.votes.groupBy({
+        by: ["llm_modelsId"],
+        where: { translation: { not: "" } },
+        _count: { id: true },
+    });
+    const voteMap = new Map(
+        voteCounts.map((v) => [v.llm_modelsId, v._count.id]),
+    );
+
+    return models.map((m) => ({
+        id: m.id,
+        name: m.name,
+        avgProficiency: m.language_proficiencies.length > 0
+            ? Math.round(
+                m.language_proficiencies.reduce((s, p) => s + p.level, 0) /
+                    m.language_proficiencies.length * 10,
+            ) / 10
+            : null,
+        languageCount: m.language_proficiencies.length,
+        voteCount: voteMap.get(m.id) ?? 0,
+    }));
+}
+
 // ── Proficiencies ───────────────────────────────────────────────────────────
 
 export async function getProficiencies(modelId: number) {
@@ -278,11 +306,12 @@ export async function getVotesGrouped(modelId: number, langId: number) {
 
     const grouped: Record<
         number,
-        { master_string: string; translations: string[] }
+        { master_stringsId: number; master_string: string; translations: string[] }
     > = {};
     for (const v of votes) {
         if (!grouped[v.master_stringsId]) {
             grouped[v.master_stringsId] = {
+                master_stringsId: v.master_stringsId,
                 master_string: v.master_string.text,
                 translations: [],
             };
@@ -386,6 +415,7 @@ export async function getEvaluation(langId: number) {
             score: number;
             modelCount: number;
             modelNames: string[];
+            modelDetails: { name: string; level: number }[];
         }>
     >();
 
@@ -403,12 +433,14 @@ export async function getEvaluation(langId: number) {
                 score: 0,
                 modelCount: 0,
                 modelNames: [],
+                modelDetails: [],
             });
         }
         const entry = tmap.get(v.translation)!;
         entry.score += level;
         entry.modelCount++;
         entry.modelNames.push(v.llm_model.name);
+        entry.modelDetails.push({ name: v.llm_model.name, level });
     }
 
     const result = [];
