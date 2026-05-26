@@ -423,17 +423,18 @@ async function dispatchTranslate(
                 const modelDb = await getOrCreateModel(modelName);
 
                 const allMs = await getAllMasterStrings();
-                let stored = 0;
-                let skipped = 0;
+                let stringCount = 0;
+                let emptyCount = 0;
+                let skippedMasterString = 0;
                 for (const t of result.translations) {
                     const ms = allMs.find((s) => s.text === t.key);
                     if (!ms) {
-                        skipped++;
+                        skippedMasterString++;
                         continue;
                     }
                     if (t.translation === null) {
                         await upsertVote(language.id, modelDb.id, ms.id, "");
-                        skipped++;
+                        emptyCount++;
                         continue;
                     }
                     const items = Array.isArray(t.translation)
@@ -446,12 +447,20 @@ async function dispatchTranslate(
                             ms.id,
                             item,
                         );
-                        stored++;
+                        if (item === "") {
+                            emptyCount++;
+                        } else {
+                            stringCount++;
+                        }
                     }
                 }
 
+                const total = stringCount + emptyCount;
+                const suffix = skippedMasterString > 0
+                    ? `, ${skippedMasterString} skipped (no master_string match)`
+                    : "";
                 log(
-                    `got translation result for ${langEnglishName} to ${modelRef.providerID}(rank ${rank})/${modelRef.modelID}: stored ${stored}, skipped ${skipped}`,
+                    `got translation result for ${langEnglishName} to ${modelRef.providerID}(rank ${rank})/${modelRef.modelID}: ${total} votes stored (${stringCount} strings, ${emptyCount} empty)${suffix}`,
                 );
                 await (await getPrisma()).$queryRawUnsafe("PRAGMA wal_checkpoint(TRUNCATE)");
                 return;
@@ -486,6 +495,7 @@ async function runOne(
     // Step 1: Proficiency (on-demand if not in DB)
     if (!(await hasProficiency(modelDb.id, language.id))) {
         try {
+            log(`requesting proficiency for ${modelName} ${langEnglishName} (${langBcp47})`);
             await dispatchProficiency(
                 opencode,
                 modelName,
@@ -523,9 +533,13 @@ async function runOne(
         return;
     }
 
-    if (settled.size > 0) {
-        log(`${modelName} ${langBcp47}: ${allMs.length} total, ${skip.size} skip (${existing.size} existing, ${nullVotes.size} null, ${settled.size} settled), ${missing.length} remaining`);
-    }
+    const nonSettled = allMs.length - settled.size;
+    const modelVotesTotal = existing.size + nullVotes.size;
+    log(
+        `In ${langEnglishName} (${langBcp47}) ${settled.size} out of ${allMs.length} strings are settled. ` +
+        `For the remaining ${nonSettled}, the model has given ${modelVotesTotal} votings already (${existing.size} strings, ${nullVotes.size} null). ` +
+        `Will ask for ${missing.length} strings.`,
+    );
 
     const strings = missing.map((s) => ({ key: s.text, text: s.text }));
     try {
