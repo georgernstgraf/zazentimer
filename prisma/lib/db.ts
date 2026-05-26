@@ -1,6 +1,6 @@
-import type { languages, master_strings, llm_models } from "prismaclient";
+import type { languages, llm_models, master_strings } from "prismaclient";
 import { getPrisma } from "./prisma.ts";
-const prisma = await getPrisma();
+let prisma = await getPrisma();
 
 const NOT_EMPTY = { translation: { not: "" as const } };
 
@@ -104,6 +104,7 @@ export async function getOrCreateLanguage(bcp47: string): Promise<languages> {
 }
 
 export async function getLanguageById(id: number): Promise<languages | null> {
+    prisma = await getPrisma();
     return await prisma.languages.findUnique({ where: { id } });
 }
 
@@ -184,6 +185,7 @@ export async function getOrCreateMasterString(
 export async function getMasterStringById(
     id: number,
 ): Promise<master_strings | null> {
+    prisma = await getPrisma();
     return await prisma.master_strings.findUnique({ where: { id } });
 }
 

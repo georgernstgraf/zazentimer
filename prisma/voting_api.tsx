@@ -441,9 +441,7 @@ app.get("/models", async (c) => {
 
     function renderModelNav() {
         return (
-            <nav
-                style="display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1rem;"
-            >
+            <nav style="display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1rem;">
                 {models.map((m) => {
                     const active = m.id === modelId;
                     return (
