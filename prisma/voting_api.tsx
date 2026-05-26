@@ -331,7 +331,7 @@ async function renderProficiencyTableContent(
         };
     };
     const rows: Row[] = proficiencies.map((p) => {
-        const langData = p.languages[0];
+        const langData = p.language;
         if (!langData) return null;
         const cov = coverage.find((c) => c.langId === langData.id);
         return { ...p, coverage: cov };
@@ -339,7 +339,7 @@ async function renderProficiencyTableContent(
 
     if (sort && dir) {
         const getVal = (r: Row): string | number => {
-            const lang = r.languages[0];
+            const lang = r.language;
             switch (sort) {
                 case "language":
                     return lang?.english_name || "";
@@ -403,7 +403,7 @@ async function renderProficiencyTableContent(
                 </thead>
                 <tbody>
                     {rows.map((r) => {
-                        const langData = r.languages[0];
+                        const langData = r.language;
                         if (!langData) return null;
                         return (
                             <tr>

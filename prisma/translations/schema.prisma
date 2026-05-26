@@ -42,10 +42,14 @@ model llm_models {
 
 /// self-assessment of llms
 model language_proficiencies {
-  id         Int          @id @default(autoincrement())
+  id         Int       @id @default(autoincrement())
   level      Int
-  llm_models llm_models[]
-  languages  languages[]
+  modelId    Int
+  languageId Int
+  llm_model  llm_models @relation(fields: [modelId], references: [id], onDelete: Cascade)
+  language   languages  @relation(fields: [languageId], references: [id], onDelete: Cascade)
+
+  @@unique([modelId, languageId])
 }
 
 /// Individual Votings of large models

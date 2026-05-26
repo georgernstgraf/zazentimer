@@ -62,8 +62,8 @@ export async function getModelsWithStats() {
 
 export async function getProficiencies(modelId: number) {
     return await prisma.language_proficiencies.findMany({
-        where: { llm_models: { some: { id: modelId } } },
-        include: { languages: true },
+        where: { modelId },
+        include: { language: true },
         orderBy: { level: "desc" },
     });
 }
@@ -74,11 +74,7 @@ export async function upsertProficiency(
     level: number,
 ) {
     return await prisma.language_proficiencies.create({
-        data: {
-            level,
-            llm_models: { connect: { id: modelId } },
-            languages: { connect: { id: languageId } },
-        },
+        data: { level, modelId, languageId },
     });
 }
 
@@ -87,10 +83,7 @@ export async function hasProficiency(
     languageId: number,
 ): Promise<boolean> {
     const rows = await prisma.language_proficiencies.findMany({
-        where: {
-            llm_models: { some: { id: modelId } },
-            languages: { some: { id: languageId } },
-        },
+        where: { modelId, languageId },
         take: 1,
         select: { id: true },
     });
@@ -102,10 +95,7 @@ export async function getProficiencyLevel(
     languageId: number,
 ): Promise<number | null> {
     const row = await prisma.language_proficiencies.findFirst({
-        where: {
-            llm_models: { some: { id: modelId } },
-            languages: { some: { id: languageId } },
-        },
+        where: { modelId, languageId },
         select: { level: true },
     });
     return row?.level ?? null;
@@ -184,7 +174,7 @@ export async function getLanguagesWithStats(search: string) {
     return await Promise.all(languages.map(async (lang) => {
         const [modelCount, voteCount] = await Promise.all([
             prisma.language_proficiencies.count({
-                where: { languages: { some: { id: lang.id } } },
+                where: { languageId: lang.id },
             }),
             prisma.votes.count({
                 where: { languagesId: lang.id, ...NOT_EMPTY },
@@ -397,13 +387,13 @@ export async function getEvaluation(langId: number) {
     });
 
     const profs = await prisma.language_proficiencies.findMany({
-        where: { languages: { some: { id: langId } }, level: { gte: 2 } },
-        include: { llm_models: true },
+        where: { languageId: langId, level: { gte: 2 } },
+        include: { llm_model: true },
     });
 
     const modelLevels = new Map<number, number>();
     for (const p of profs) {
-        for (const m of p.llm_models) modelLevels.set(m.id, p.level);
+        modelLevels.set(p.llm_model.id, p.level);
     }
 
     const groups = new Map<
@@ -483,19 +473,14 @@ export async function getStringSettlement(stringId: number) {
     const profs = await prisma.language_proficiencies.findMany({
         where: {
             level: { gte: 2 },
-            llm_models: { some: { id: { in: modelIds } } },
-            languages: { some: { id: { in: langIds } } },
+            modelId: { in: modelIds },
+            languageId: { in: langIds },
         },
-        include: { llm_models: true, languages: true },
     });
 
     const levelMap = new Map<string, number>();
     for (const p of profs) {
-        for (const m of p.llm_models) {
-            for (const l of p.languages) {
-                levelMap.set(`${m.id}:${l.id}`, p.level);
-            }
-        }
+        levelMap.set(`${p.modelId}:${p.languageId}`, p.level);
     }
 
     const langData = new Map<number, {
