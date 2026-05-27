@@ -111,7 +111,10 @@ function buildFallbackChain(
     for (const pid of providers) {
         const match = availableEntries.find((e) => e.providerID === pid);
         if (match) {
-            chain.push({ providerID: match.providerID, modelID: match.modelID });
+            chain.push({
+                providerID: match.providerID,
+                modelID: match.modelID,
+            });
         }
     }
     return chain;
@@ -123,7 +126,11 @@ const LOG_FILE = "logs/orchestrator.log";
 
 function ts(): string {
     const d = new Date();
-    return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}_${String(d.getHours()).padStart(2, "0")}-${String(d.getMinutes()).padStart(2, "0")}-${String(d.getSeconds()).padStart(2, "0")}`;
+    return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${
+        String(d.getDate()).padStart(2, "0")
+    }_${String(d.getHours()).padStart(2, "0")}-${
+        String(d.getMinutes()).padStart(2, "0")
+    }-${String(d.getSeconds()).padStart(2, "0")}`;
 }
 
 function ensureLogDir(): void {
@@ -174,8 +181,7 @@ const PROFICIENCY_OUTPUT_FILE = `${PROJECT_DIR}/proficiency-output.json`;
 
 const START_TIME = Date.now();
 const MAX_RETRIES = 3;
-const SESSION_TIMEOUT_MS = 60 * 60 * 1000; // 60 minutes inactivity timeout (opencode-go is slow)
-const MAX_STALL_RETRIES = 3;
+const POLL_TIMEOUT_MS = 15 * 60 * 1000; // 15 minutes max per (model, locale) attempt
 const DEFAULT_MIN_PROFICIENCY = 2;
 const DEFAULT_MAX_DURATION_MIN = 10;
 
@@ -183,19 +189,74 @@ function isTimeUp(maxDurationMs: number): boolean {
     return Date.now() - START_TIME >= maxDurationMs;
 }
 
-async function sendMessageWithTimeout(
+function sleep(ms: number): Promise<void> {
+    return new Promise((resolve) => setTimeout(resolve, ms));
+}
+
+function isQuotaError(
+    s: { message?: string; action?: { reason?: string } },
+): boolean {
+    if (s.action?.reason === "free_tier_limit") return true;
+    const msg = (s.message || "").toLowerCase();
+    return msg.includes("quota") || msg.includes("rate limit") ||
+        msg.includes("429") || msg.includes("exceeded");
+}
+
+type PollResult =
+    | { type: "done" }
+    | { type: "quota"; message: string }
+    | { type: "timeout" };
+
+async function pollForCompletion(
     opencode: OpencodeClient,
     sessionId: string,
-    text: string,
-    opts: SendOptions,
-): Promise<void> {
-    const controller = new AbortController();
-    const timer = setTimeout(() => controller.abort(), SESSION_TIMEOUT_MS);
+    outputFile: string,
+    timeoutMs: number,
+): Promise<PollResult> {
+    const start = Date.now();
+    let lastMtime = 0;
     try {
-        await opencode.sendMessage(sessionId, text, opts, controller.signal);
-    } finally {
-        clearTimeout(timer);
+        const stat = await Deno.stat(outputFile);
+        lastMtime = stat.mtime?.getTime() || 0;
+    } catch {
+        // file doesn't exist yet
     }
+
+    while (Date.now() - start < timeoutMs) {
+        await sleep(10000);
+
+        // Session-Status für Quota-Detection (fast-fail)
+        try {
+            const statusMap = await opencode.getSessionStatus();
+            const s = statusMap[sessionId] as
+                | {
+                    type: string;
+                    message?: string;
+                    action?: { reason?: string };
+                }
+                | undefined;
+            if (s?.type === "retry" && isQuotaError(s)) {
+                return { type: "quota", message: s.message || "unknown" };
+            }
+        } catch {
+            // ignore poll errors
+        }
+
+        // Output-File als primäres Completion-Signal
+        try {
+            const stat = await Deno.stat(outputFile);
+            const mtime = stat.mtime?.getTime() || 0;
+            if (mtime > lastMtime) {
+                const content = await Deno.readTextFile(outputFile);
+                if (content.trim().startsWith("{")) {
+                    return { type: "done" };
+                }
+            }
+        } catch {
+            // file not yet written
+        }
+    }
+    return { type: "timeout" };
 }
 
 // ── CLI args ─────────────────────────────────────────────────────────────────
@@ -210,9 +271,7 @@ interface CliArgs {
 function parseArgs(): CliArgs {
     const args = Deno.args
         .flatMap((a) =>
-            a.startsWith("--") && a.includes("=")
-                ? a.split("=", 2)
-                : [a]
+            a.startsWith("--") && a.includes("=") ? a.split("=", 2) : [a]
         );
     let all = false;
     let minProficiency = DEFAULT_MIN_PROFICIENCY;
@@ -263,12 +322,20 @@ Options:
         };
     }
     if (model && all) {
-        return { all: true, model, locale: undefined, minProficiency, maxDuration };
+        return {
+            all: true,
+            model,
+            locale: undefined,
+            minProficiency,
+            maxDuration,
+        };
     }
     if (model && locale) {
         return { all: false, model, locale, minProficiency, maxDuration };
     }
-    logError("Specify --model <name> --locale <bcp47>, --model <name> --all, or --all");
+    logError(
+        "Specify --model <name> --locale <bcp47>, --model <name> --all, or --all",
+    );
     Deno.exit(1);
 }
 
@@ -296,43 +363,53 @@ async function dispatchProficiency(
         throw new Error(`No available provider for model '${modelName}'`);
     }
 
-    let sessionId = await opencode.createSession(PROJECT_DIR);
-
     for (const modelRef of chain) {
         let lastError: string | undefined;
+        let sessionId = await opencode.createSession(PROJECT_DIR);
 
-        for (let retry = 0; retry < MAX_RETRIES; retry++) {
-            const opts: SendOptions = {
-                system: SKILL_PROFICIENCY,
-                model: retry === 0 ? modelRef : undefined,
-            };
-
-            const text = retry === 0
-                ? `Write the proficiency assessment to ${PROFICIENCY_OUTPUT_FILE}. Read the input data from ${INPUT_FILE}.`
-                : `Verification failed: ${lastError}. Please fix ${PROFICIENCY_OUTPUT_FILE}. You may read '${PROFICIENCY_OUTPUT_FILE}' and '${INPUT_FILE}' to inspect.`;
-
-            const context = `${langEnglishName} to ${modelRef.providerID}(rank ${getModelRank(modelName, modelRef.providerID)})/${modelRef.modelID}`;
-            let stallTry = 0;
-            while (true) {
-                stallTry++;
-                try {
-                    await sendMessageWithTimeout(opencode, sessionId, text, opts);
-                    break;
-                } catch (e) {
-                    if (e instanceof DOMException && e.name === "AbortError") {
-                        logError(`proficiency session timeout after ${SESSION_TIMEOUT_MS / 60000} min for ${context}, closing session (stall ${stallTry}/${MAX_STALL_RETRIES})`);
-                        await opencode.closeSession(sessionId);
-                        if (stallTry < MAX_STALL_RETRIES) {
-                            sessionId = await opencode.createSession(PROJECT_DIR);
-                            continue;
-                        }
-                        throw new Error(`Proficiency session timed out for ${context} after ${MAX_STALL_RETRIES} retries`);
-                    }
-                    throw e;
-                }
-            }
-
+        for (let attempt = 0; attempt < MAX_RETRIES; attempt++) {
             try {
+                const opts: SendOptions = {
+                    system: SKILL_PROFICIENCY,
+                    model: attempt === 0 ? modelRef : undefined,
+                };
+
+                const text = attempt === 0
+                    ? `Write the proficiency assessment to ${PROFICIENCY_OUTPUT_FILE}. Read the input data from ${INPUT_FILE}.`
+                    : `Verification failed: ${lastError}. Please fix ${PROFICIENCY_OUTPUT_FILE}. You may read '${PROFICIENCY_OUTPUT_FILE}' and '${INPUT_FILE}' to inspect.`;
+
+                const context =
+                    `${langEnglishName} to ${modelRef.providerID}(rank ${
+                        getModelRank(modelName, modelRef.providerID)
+                    })/${modelRef.modelID}`;
+
+                log(`submitting proficiency request for ${context}`);
+
+                await opencode.sendMessageAsync(sessionId, text, opts);
+
+                const pollResult = await pollForCompletion(
+                    opencode,
+                    sessionId,
+                    PROFICIENCY_OUTPUT_FILE,
+                    POLL_TIMEOUT_MS,
+                );
+
+                if (pollResult.type === "quota") {
+                    lastError = `Quota exceeded: ${pollResult.message}`;
+                    logError(`${context}: ${lastError}, falling back`);
+                    await opencode.closeSession(sessionId);
+                    break;
+                }
+
+                if (pollResult.type === "timeout") {
+                    logError(
+                        `proficiency session timeout after ${POLL_TIMEOUT_MS / 60000} min for ${context}, creating new session`,
+                    );
+                    await opencode.closeSession(sessionId);
+                    sessionId = await opencode.createSession(PROJECT_DIR);
+                    continue;
+                }
+
                 const result = await verifyProficiencyFile(
                     PROFICIENCY_OUTPUT_FILE,
                     langBcp47,
@@ -353,7 +430,9 @@ async function dispatchProficiency(
             } catch (e) {
                 lastError = e instanceof VerifyError ? e.message : String(e);
                 logError(
-                    `${modelRef.providerID}/${modelRef.modelID} retry ${retry + 1}/${MAX_RETRIES}: ${lastError}`,
+                    `${modelRef.providerID}/${modelRef.modelID} attempt ${
+                        attempt + 1
+                    }/${MAX_RETRIES}: ${lastError}`,
                 );
             }
         }
@@ -386,48 +465,54 @@ async function dispatchTranslate(
         throw new Error(`No available provider for model '${modelName}'`);
     }
 
-    let sessionId = await opencode.createSession(PROJECT_DIR);
-
     for (const modelRef of chain) {
         let lastError: string | undefined;
+        let sessionId = await opencode.createSession(PROJECT_DIR);
 
-        for (let retry = 0; retry < MAX_RETRIES; retry++) {
-            const opts: SendOptions = {
-                system: SKILL_TRANSLATE,
-                model: retry === 0 ? modelRef : undefined,
-            };
-
-            const text = retry === 0
-                ? `Write the translations to ${OUTPUT_FILE}. Read the input data from ${INPUT_FILE}.`
-                : `Verification failed: ${lastError}. Please fix ${OUTPUT_FILE}. You may read '${INPUT_FILE}' and '${OUTPUT_FILE}' to inspect.`;
-
-            const rank = getModelRank(modelName, modelRef.providerID);
-            log(
-                `submitting translation request for ${langEnglishName} to ${modelRef.providerID}(rank ${rank})/${modelRef.modelID}, proficiency: ${proficiency}. searching for ${unsettledCount} unsettled strings`,
-            );
-
-            const context = `${langEnglishName} to ${modelRef.providerID}(rank ${rank})/${modelRef.modelID}`;
-            let stallTry = 0;
-            while (true) {
-                stallTry++;
-                try {
-                    await sendMessageWithTimeout(opencode, sessionId, text, opts);
-                    break;
-                } catch (e) {
-                    if (e instanceof DOMException && e.name === "AbortError") {
-                        logError(`translation session timeout after ${SESSION_TIMEOUT_MS / 60000} min for ${context}, closing session (stall ${stallTry}/${MAX_STALL_RETRIES})`);
-                        await opencode.closeSession(sessionId);
-                        if (stallTry < MAX_STALL_RETRIES) {
-                            sessionId = await opencode.createSession(PROJECT_DIR);
-                            continue;
-                        }
-                        throw new Error(`Translation session timed out for ${context} after ${MAX_STALL_RETRIES} retries`);
-                    }
-                    throw e;
-                }
-            }
-
+        for (let attempt = 0; attempt < MAX_RETRIES; attempt++) {
             try {
+                const opts: SendOptions = {
+                    system: SKILL_TRANSLATE,
+                    model: attempt === 0 ? modelRef : undefined,
+                };
+
+                const text = attempt === 0
+                    ? `Write the translations to ${OUTPUT_FILE}. Read the input data from ${INPUT_FILE}.`
+                    : `Verification failed: ${lastError}. Please fix ${OUTPUT_FILE}. You may read '${INPUT_FILE}' and '${OUTPUT_FILE}' to inspect.`;
+
+                const rank = getModelRank(modelName, modelRef.providerID);
+                log(
+                    `submitting translation request for ${langEnglishName} to ${modelRef.providerID}(rank ${rank})/${modelRef.modelID}, proficiency: ${proficiency}. searching for ${unsettledCount} unsettled strings`,
+                );
+
+                const context =
+                    `${langEnglishName} to ${modelRef.providerID}(rank ${rank})/${modelRef.modelID}`;
+
+                await opencode.sendMessageAsync(sessionId, text, opts);
+
+                const pollResult = await pollForCompletion(
+                    opencode,
+                    sessionId,
+                    OUTPUT_FILE,
+                    POLL_TIMEOUT_MS,
+                );
+
+                if (pollResult.type === "quota") {
+                    lastError = `Quota exceeded: ${pollResult.message}`;
+                    logError(`${context}: ${lastError}, falling back`);
+                    await opencode.closeSession(sessionId);
+                    break;
+                }
+
+                if (pollResult.type === "timeout") {
+                    logError(
+                        `translation session timeout after ${POLL_TIMEOUT_MS / 60000} min for ${context}, creating new session`,
+                    );
+                    await opencode.closeSession(sessionId);
+                    sessionId = await opencode.createSession(PROJECT_DIR);
+                    continue;
+                }
+
                 const result = await verifyTranslationFile(
                     OUTPUT_FILE,
                     langBcp47,
@@ -476,13 +561,15 @@ async function dispatchTranslate(
                 log(
                     `got translation result for ${langEnglishName} to ${modelRef.providerID}(rank ${rank})/${modelRef.modelID}: ${total} votes stored (${stringCount} strings, ${emptyCount} empty)${suffix}`,
                 );
-                await (await getPrisma()).$queryRawUnsafe("PRAGMA wal_checkpoint(TRUNCATE)");
+                await (await getPrisma()).$queryRawUnsafe(
+                    "PRAGMA wal_checkpoint(TRUNCATE)",
+                );
                 return;
             } catch (e) {
                 lastError = e instanceof VerifyError ? e.message : String(e);
                 logError(
-                    `${modelRef.providerID}/${modelRef.modelID} retry ${
-                        retry + 1
+                    `${modelRef.providerID}/${modelRef.modelID} attempt ${
+                        attempt + 1
                     }/${MAX_RETRIES}: ${lastError}`,
                 );
             }
@@ -553,14 +640,16 @@ async function runOne(
     const providerLabel = chain.length > 0
         ? isOnlyProvider
             ? `only provider (${chain[0].providerID})`
-            : `${chain[0].providerID} (rank ${getModelRank(modelName, chain[0].providerID)}/${modelProviders!.length})/${chain[0].modelID}`
+            : `${chain[0].providerID} (rank ${
+                getModelRank(modelName, chain[0].providerID)
+            }/${modelProviders!.length})/${chain[0].modelID}`
         : "no provider";
     const nonSettled = allMs.length - settled.size;
     const modelVotesTotal = existing.size + nullVotes.size;
     log(
         `In ${langEnglishName} (${langBcp47}) to ${providerLabel}: ${settled.size} out of ${allMs.length} strings are settled. ` +
-        `For the remaining ${nonSettled}, the model has given ${modelVotesTotal} votings already (${existing.size} strings, ${nullVotes.size} null). ` +
-        `Will ask for ${missing.length} strings.`,
+            `For the remaining ${nonSettled}, the model has given ${modelVotesTotal} votings already (${existing.size} strings, ${nullVotes.size} null). ` +
+            `Will ask for ${missing.length} strings.`,
     );
 
     const strings = missing.map((s) => ({ key: s.text, text: s.text }));
@@ -656,9 +745,9 @@ async function main() {
             if (!allModels.some((m) => normalizeModelName(m.name) === norm)) {
                 logError(
                     `Model '${norm}' is defined in MODEL_PROVIDERS (prisma/translate.ts) ` +
-                    `but not in DB (llm_models). ` +
-                    `Ensure it's in 'prisma/translations/llmmodels_master.json' ` +
-                    `and run 'deno task prismatranslationsseed'.`,
+                        `but not in DB (llm_models). ` +
+                        `Ensure it's in 'prisma/translations/llmmodels_master.json' ` +
+                        `and run 'deno task prismatranslationsseed'.`,
                 );
                 Deno.exit(1);
             }
@@ -669,7 +758,7 @@ async function main() {
             if (!MODEL_PROVIDERS.has(normalizeModelName(m.name))) {
                 log(
                     `WARNING: model '${m.name}' exists in DB ` +
-                    `but is not defined in MODEL_PROVIDERS (prisma/translate.ts)`,
+                        `but is not defined in MODEL_PROVIDERS (prisma/translate.ts)`,
                 );
             }
         }
@@ -701,9 +790,9 @@ async function main() {
         if (!dbModel) {
             logError(
                 `Model '${args.model}' is defined in MODEL_PROVIDERS ` +
-                `but not in DB (llm_models). ` +
-                `Ensure it's in 'prisma/translations/llmmodels_master.json' ` +
-                `and run 'deno task prismatranslationsseed'.`,
+                    `but not in DB (llm_models). ` +
+                    `Ensure it's in 'prisma/translations/llmmodels_master.json' ` +
+                    `and run 'deno task prismatranslationsseed'.`,
             );
             Deno.exit(1);
         }

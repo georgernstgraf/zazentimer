@@ -84,6 +84,39 @@ export class OpencodeClient {
     return data.message || data.text || JSON.stringify(data);
   }
 
+  async sendMessageAsync(
+    sessionId: string,
+    text: string,
+    opts?: SendOptions,
+  ): Promise<void> {
+    const body: Record<string, unknown> = {
+      parts: [{ type: "text", text }],
+    };
+    if (opts?.system) body.system = opts.system;
+    if (opts?.model) body.model = opts.model;
+    const res = await fetch(
+      `${BASE_URL}/session/${sessionId}/prompt_async`,
+      {
+        method: "POST",
+        headers: authHeaders(),
+        body: JSON.stringify(body),
+      },
+    );
+    if (!res.ok) {
+      throw new Error(
+        `sendMessageAsync failed: ${res.status} ${await res.text()}`,
+      );
+    }
+  }
+
+  async getSessionStatus(): Promise<Record<string, unknown>> {
+    const res = await fetch(`${BASE_URL}/session/status`, {
+      headers: authHeaders(),
+    });
+    if (!res.ok) return {};
+    return await res.json();
+  }
+
   async closeSession(sessionId: string): Promise<void> {
     try {
       await fetch(`${BASE_URL}/session/${sessionId}`, {
