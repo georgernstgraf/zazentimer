@@ -3,8 +3,8 @@
 ## Policy
 
 Translate English Android string resources into the target language.
-You have no access to files, tools, scripts, or APIs. Use only your
-internal knowledge of the target language.
+You may read `translate-input.json` and `translate-output.json`.
+You have no access to other files, tools, scripts, or APIs.
 
 Source language is always English.
 

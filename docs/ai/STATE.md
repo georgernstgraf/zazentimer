@@ -1,25 +1,29 @@
 # Project State
 
-Current status as of 2026-05-26.
+Current status as of 2026-05-27.
 
 ## Current Focus
-#232 — Translate pipeline improvements: session timeout, stall retries, log analyzer
+#202 — Translation pipeline (runs in progress, ~100 locales seeded)
 
 ## Completed (this cycle)
-- [x] #219 — Include null-vote strings in translate skip set
-- [x] #220 — Fix voting backend comparison timeout (WAL checkpoint + duplicate query)
-- [x] #222 — Timestamp format, proficiency threshold skip, log cleanup
-- [x] #229 — WAL checkpoint after each translate batch
-- [x] #230 — Voting backend overhaul: model stats table, language eval view, tooltips, detail links
-- [x] #231 — Explicit FK columns for language_proficiencies (remove implicit M:N junction tables)
-- [x] #232 — 60min session timeout + stall retry + log analyzer script
+- [x] Verbose translate log: `stringCount`/`emptyCount`/`skippedMasterString` instead of `stored`/`skipped`
+- [x] Proficiency start log line before each proficiency assessment
+- [x] Always-on verbose language-start stats with provider label
+- [x] Verify error enrichment: raw output snippet + JSON.parse error in error messages
+- [x] Skill "no access to files" relaxed — models may read their own output files
+- [x] System prompt always sent on retry (not just first request)
+- [x] PROVIDER_RANKING → MODEL_PROVIDERS: per-model provider mapping
+- [x] llmmodels_seed.json → llmmodels_master.json: renamed, mistral-large added, seed deletes obsolete models
+- [x] Model-DB validation: error if MODEL_PROVIDERS model not in DB, warning if DB model not in MODEL_PROVIDERS
+- [x] Provider label in language-start log: "only provider (xyz)" vs "provider (rank X/Y)/model"
 
 ## Pending
-- [ ] #64 — Promotion/Upload automation
-- [ ] Voting: auto-resolve consensus translations → export `strings.xml`
+- [ ] #64 — Play Store
+- [ ] #202 — Translation Epic (runs in progress)
+- [ ] #207 — db refactor: `_id` -> `id`
 
 ## Blockers
 None
 
 ## Next Session Suggestion
-Run the translate pipeline with the 60-min timeout and monitor `scripts/analyze_translate_logs.sh` output for any remaining slow providers.
+Check latest translation run results. If all models have completed enough locales, implement voting auto-resolve → export strings.xml.

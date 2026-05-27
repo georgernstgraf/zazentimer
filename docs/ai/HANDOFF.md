@@ -1,12 +1,13 @@
 # Hand Off
 
-No pending tasks. Last cleared: 2026-05-26.
+No pending tasks. Last cleared: 2026-05-27.
 
 ## Recently Completed
-- #232 — 60min session timeout + stall retry + log analyzer
-- #231 — Explicit FK columns for language_proficiencies
-- #230 — Voting backend overhaul
-- #229 — WAL checkpoint after translate batches
-- #222 — Timestamp format, proficiency threshold fix
-- #220 — Voting backend comparison timeout fix
-- #219 — Null-vote strings in skip set
+- Log verbosity: `stringCount`/`emptyCount`/`skippedMasterString`, proficiency start log, always-on language stats with provider label
+- Verify error enrichment: raw output snippet + JSON.parse error
+- SKILL.md: relaxed "no access to files" — models may read output files
+- System prompt always sent on retry
+- PROVIDER_RANKING → MODEL_PROVIDERS per-model mapping
+- llmmodels_seed.json → llmmodels_master.json (renamed, mistral-large added, seed deletes obsolete)
+- Model-DB validation in --all mode
+- All knowledge files updated

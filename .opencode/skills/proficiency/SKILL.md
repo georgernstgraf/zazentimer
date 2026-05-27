@@ -3,8 +3,8 @@
 ## Policy
 
 Assess your own language proficiency for translating Android string resources
-of a meditation timer app. You have no access to files, tools, scripts, or
-APIs. Use only your internal knowledge of the target language.
+of a meditation timer app. You may read `proficiency-output.json`.
+You have no access to other files, tools, scripts, or APIs.
 
 Source language is always English.
 

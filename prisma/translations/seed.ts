@@ -98,7 +98,7 @@ try {
     // ── 2. Seed LLM models ────────────────────────────────────────────
     const models: Array<{ name: string }> = JSON.parse(
         await Deno.readTextFile(
-            new URL("llmmodels_seed.json", import.meta.url),
+            new URL("llmmodels_master.json", import.meta.url),
         ),
     );
 
@@ -110,6 +110,14 @@ try {
         });
     }
     console.log(`✔ Seeded ${models.length} LLM models`);
+
+    const modelNames = new Set(models.map(m => m.name));
+    const removedModels = await prisma.llm_models.deleteMany({
+        where: { name: { notIn: [...modelNames] } },
+    });
+    if (removedModels.count > 0) {
+        console.log(`✔ Removed ${removedModels.count} obsolete LLM models`);
+    }
 
     // ── 3. Seed master strings from English strings.xml ──────────────
     const xml = await Deno.readTextFile(

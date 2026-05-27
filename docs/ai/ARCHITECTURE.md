@@ -1,6 +1,6 @@
 # Architecture
 
-Living structural map of the system as of 2026-05-22.
+Living structural map of the system as of 2026-05-27.
 
 ## Overview
 ZazenTimer is an Android application for timing meditation sessions. It uses a foreground service for background timing and a Repository-based architecture to synchronize state between the UI and the service.
@@ -58,6 +58,7 @@ ZazenTimer is an Android application for timing meditation sessions. It uses a f
 Two Prisma-managed SQLite schemas coexist under `prisma/`:
 - **Device DB** (`prisma/desired/` + `prisma/current/`): Documents the Room-managed app database. `desired/` is hand-crafted (SOLL), `current/` is auto-generated from device via `prisma db pull` (IST). Drift detection via `prismaCheckSchema` Gradle task.
 - **Translation DB** (`prisma/translations/`): Stores multi-LLM translation candidates and voting results for the app's 123 locale files. 4 models: locales, strings, translations, votes. No auto-generation — schema evolves by hand. Validation via `prismaValidateTranslationsSchema` Gradle task.
+- **Translate Pipeline** (`prisma/translate.ts`): Orchestrator that iterates (model, locale) pairs, dispatches proficiency assessment + translation to opencode server, verifies output, stores votes. Uses `MODEL_PROVIDERS` (per-model provider mapping, replaces `PROVIDER_RANKING`). Seed at `prisma/translations/llmmodels_master.json` (12 models, seed deletes obsolete). Skills at `.opencode/skills/translate/SKILL.md` and `.opencode/skills/proficiency/SKILL.md` (allow reading output files).
 
 ## Extracted Helpers (2026-05-11, #142)
 - **DemoSessionCreator** (`database/`) — Creates demo sessions on first launch; extracted from ZazenTimerActivity

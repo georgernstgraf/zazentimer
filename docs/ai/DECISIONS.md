@@ -435,3 +435,50 @@ Each entry documents WHAT was decided and WHY.
 - **Tradeoff**: Hostname is hardcoded in `case` statement; adding a new host requires editing the script.
 - **SUPERSEDED 2026-05-24**: claw no longer uses `zazentimer.test.apis.claw` (property removed). All hosts use `zazentimer.test.apis`. Missing AVDs are silently skipped instead of failing. Gradle exit code is no longer fatal — per-API pass/fail is tracked independently, and overall exit code reflects test results only.
 
+## 2026-05-27: Verbose translate logs — stringCount/emptyCount/skippedMasterString
+- **Choice**: Replaced `stored`/`skipped` counters with `stringCount` (non-empty votes), `emptyCount` (`""` votes including null-LLM-responses), and `skippedMasterString` (no master_string match, only logged when >0).
+- **Reason**: User wanted to distinguish real translation votes from empty-string sentinel entries in the log. Previously both were lumped under `stored`.
+- **Tradeoff**: Additional counters, but no behavioral change — same DB writes.
+
+## 2026-05-27: Proficiency start log line
+- **Choice**: Added `requesting proficiency for ${modelName} ${langEnglishName} (${langBcp47})` before each proficiency assessment call.
+- **Reason**: Provide visibility into which (model, locale) pair is being assessed, matching the existing "submitting translation request" log.
+- **Tradeoff**: One extra log line per (model, locale) with proficiency.
+
+## 2026-05-27: Always-on verbose language-start stats
+- **Choice**: The `runOne()` language stat log fires on every translate attempt (not only when `settled.size > 0`), showing settled/existing/null/missing counts with the active provider label.
+- **Reason**: User wanted to see full context for every (model, locale) run, including "0 out of N strings are settled" cases.
+- **Tradeoff**: Redundant log line when settled=0 (but informative).
+
+## 2026-05-27: Verify error enrichment with raw output snippet
+- **Choice**: `asObject()` now preserves the `JSON.parse` error message. `verifyTranslationFile()` and `verifyProficiencyFile()` wrap their body in try/catch and append the raw output (first 200 chars) to every `VerifyError`.
+- **Reason**: Models on retry got only "Response is not valid JSON" with no clue what they wrote. Since skills previously said "no access to files", they couldn't read their own output.
+- **Tradeoff**: Error messages are longer; raw snippet may be truncated at 200 chars.
+
+## 2026-05-27: Skill "no access to files" relaxed for output files
+- **Choice**: Translate Skill now says "You may read `translate-input.json` and `translate-output.json`." Proficiency Skill now says "You may read `proficiency-output.json`." Both skills: "You have no access to other files, tools, scripts, or APIs."
+- **Reason**: Models couldn't self-diagnose on retry because the skill forbade file reading. With the output file readable, the model can inspect what it wrote.
+- **Considered**: Keeping "no access" and embedding full output in error message (belt-and-suspenders approach — both are now implemented).
+- **Tradeoff**: Slightly relaxed security — models can read two specific files in the project dir.
+
+## 2026-05-27: System prompt always sent on retry
+- **Choice**: `dispatchTranslate()` and `dispatchProficiency()` now send `system: SKILL_*` on every retry (not only `retry === 0`). Retry user message also mentions "You may read 'INPUT' and 'OUTPUT' to inspect."
+- **Reason**: On retry, the model had no system prompt (previous one was lost as conversation context). Without it, the model didn't know the locale, input keys, or output format.
+- **Tradeoff**: Extra tokens on retry (the SKILL is ~600 chars).
+
+## 2026-05-27: PROVIDER_RANKING → MODEL_PROVIDERS per-model mapping
+- **Choice**: Replaced the global `PROVIDER_RANKING` array with `MODEL_PROVIDERS`, a per-model `Record<string, string | string[]>` that maps each model to its preferred provider(s) in priority order. `buildFallbackChain()` uses this instead of the global ranking. `fetchAvailableModels()` no longer stores rank or sorts by it.
+- **Reason**: Some models are only available from specific providers; a global ranking didn't capture that. For example, `mistral-large` is only on `opencode-go`, but the old system would try other providers first (which don't have it) before falling back. `ModelEntry` no longer needs a `rank` field.
+- **Considered**: Keeping both systems (messy), making MODEL_PROVIDERS override PROVIDER_RANKING (unnecessary indirection).
+- **Tradeoff**: Changes to `MODEL_PROVIDERS` require code edits (not env config). Models not in `MODEL_PROVIDERS` cannot be used by the pipeline.
+
+## 2026-05-27: llmmodels_seed.json → llmmodels_master.json + deleteMany in seed
+- **Choice**: Renamed `llmmodels_seed.json` to `llmmodels_master.json` (single source of truth). Added `mistral-large`. The seed now runs `deleteMany` for LLM models not in the master list (cascade-deletes votes + proficiencies).
+- **Reason**: Previously, models removed from the seed file were never cleaned up from the DB. The seed already did this for languages and master_strings; models should be consistent.
+- **Tradeoff**: Running the seed (or any pipeline run via `--all`) may cascade-delete votes for retired models.
+
+## 2026-05-27: Model-DB validation at pipeline start
+- **Choice**: `--all` validates that every `MODEL_PROVIDERS` entry exists in DB (error + exit(1)), warns for DB models not in `MODEL_PROVIDERS`. `--model --all` validates the specific model exists in `MODEL_PROVIDERS` and DB. Errors suggest: "Ensure it's in llmmodels_master.json and run deno task prismatranslationsseed."
+- **Reason**: Prevent silent pipeline failures when a model is defined in config but hasn't been seeded yet, and alert when stale models linger in DB.
+- **Tradeoff**: Extra startup validation (~ms per model).
+

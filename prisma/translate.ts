@@ -15,6 +15,7 @@ import {
     getAllMasterStrings,
     getAllModels,
     getExistingVotes,
+    getModelByName,
     getNullExistingVotes,
     getOrCreateLanguage,
     getOrCreateModel,
@@ -25,19 +26,34 @@ import {
     upsertVote,
 } from "./lib/db.ts";
 
-// ── Provider Ranking (ascending = cheapest/worst -> most expensive/best) ─────
-const PROVIDER_RANKING = [
-    "zai-coding-plan",
-    // "nvidia",
-    "opencode-go",
-    "github-copilot",
-    "google",
-    "opencode",
-    "openrouter",
-];
-function getProviderRank(providerID: string): number {
-    const idx = PROVIDER_RANKING.indexOf(providerID);
-    return idx === -1 ? 99 : idx;
+// ── Model → Provider mapping (ordered by preference) ─────────────────────────
+const MODEL_PROVIDERS_RAW: Record<string, string | string[]> = {
+    "claude-opus-4.7": "openrouter",
+    "deepseek-v4-pro": "opencode-go",
+    "gemini-3.1-pro-preview": ["github-copilot", "google"],
+    "gemini-3.1-pro": ["opencode"],
+    "gemini-3.5-flash": ["opencode", "github-copilot", "google", "openrouter"],
+    "glm-5.1": ["zai-coding-plan", "opencode-go"],
+    "gpt-5.4": "github-copilot",
+    "gpt-5.5": "opencode",
+    "kimi-k2.6": "opencode-go",
+    "minimax-m2.7": "opencode-go",
+    "mistral-large": "opencode-go",
+    "qwen-3.6-plus": "opencode-go",
+};
+
+const MODEL_PROVIDERS: Map<string, string[]> = new Map(
+    Object.entries(MODEL_PROVIDERS_RAW).map(([key, val]) => [
+        normalizeModelName(key),
+        typeof val === "string" ? [val] : val,
+    ]),
+);
+
+function getModelRank(modelName: string, providerID: string): number {
+    const providers = MODEL_PROVIDERS.get(normalizeModelName(modelName));
+    if (!providers) return 99;
+    const idx = providers.indexOf(providerID);
+    return idx === -1 ? 99 : idx + 1;
 }
 
 function normalizeModelName(name: string): string {
@@ -47,7 +63,6 @@ function normalizeModelName(name: string): string {
 interface ModelEntry {
     providerID: string;
     modelID: string;
-    rank: number;
 }
 
 async function fetchAvailableModels(): Promise<Map<string, ModelEntry[]>> {
@@ -76,15 +91,7 @@ async function fetchAvailableModels(): Promise<Map<string, ModelEntry[]>> {
         const normalized = normalizeModelName(matchKey);
 
         if (!rawMap.has(normalized)) rawMap.set(normalized, []);
-        rawMap.get(normalized)!.push({
-            providerID,
-            modelID: modelPath,
-            rank: getProviderRank(providerID),
-        });
-    }
-
-    for (const [, entries] of rawMap) {
-        entries.sort((a, b) => a.rank - b.rank);
+        rawMap.get(normalized)!.push({ providerID, modelID: modelPath });
     }
 
     return rawMap;
@@ -95,12 +102,19 @@ function buildFallbackChain(
     available: Map<string, ModelEntry[]>,
 ): ModelRef[] {
     const normalized = normalizeModelName(seedModelName);
-    const entries = available.get(normalized);
-    if (!entries || entries.length === 0) return [];
-    return entries.map((e) => ({
-        providerID: e.providerID,
-        modelID: e.modelID,
-    }));
+    const providers = MODEL_PROVIDERS.get(normalized);
+    if (!providers) return [];
+
+    const availableEntries = available.get(normalized) || [];
+    const chain: ModelRef[] = [];
+
+    for (const pid of providers) {
+        const match = availableEntries.find((e) => e.providerID === pid);
+        if (match) {
+            chain.push({ providerID: match.providerID, modelID: match.modelID });
+        }
+    }
+    return chain;
 }
 
 // ── Logging ───────────────────────────────────────────────────────────────────
@@ -289,15 +303,15 @@ async function dispatchProficiency(
 
         for (let retry = 0; retry < MAX_RETRIES; retry++) {
             const opts: SendOptions = {
-                system: retry === 0 ? SKILL_PROFICIENCY : undefined,
+                system: SKILL_PROFICIENCY,
                 model: retry === 0 ? modelRef : undefined,
             };
 
             const text = retry === 0
                 ? `Write the proficiency assessment to ${PROFICIENCY_OUTPUT_FILE}. Read the input data from ${INPUT_FILE}.`
-                : `Verification failed: ${lastError}. Please fix ${PROFICIENCY_OUTPUT_FILE}.`;
+                : `Verification failed: ${lastError}. Please fix ${PROFICIENCY_OUTPUT_FILE}. You may read '${PROFICIENCY_OUTPUT_FILE}' and '${INPUT_FILE}' to inspect.`;
 
-            const context = `${langEnglishName} to ${modelRef.providerID}(rank ${getProviderRank(modelRef.providerID)})/${modelRef.modelID}`;
+            const context = `${langEnglishName} to ${modelRef.providerID}(rank ${getModelRank(modelName, modelRef.providerID)})/${modelRef.modelID}`;
             let stallTry = 0;
             while (true) {
                 stallTry++;
@@ -331,7 +345,7 @@ async function dispatchProficiency(
                     result.proficiency,
                 );
 
-                const rank = getProviderRank(modelRef.providerID);
+                const rank = getModelRank(modelName, modelRef.providerID);
                 log(
                     `proficiency ${modelName} ${langBcp47} ${modelRef.providerID} rank=${rank} → ${result.proficiency}`,
                 );
@@ -379,15 +393,15 @@ async function dispatchTranslate(
 
         for (let retry = 0; retry < MAX_RETRIES; retry++) {
             const opts: SendOptions = {
-                system: retry === 0 ? SKILL_TRANSLATE : undefined,
+                system: SKILL_TRANSLATE,
                 model: retry === 0 ? modelRef : undefined,
             };
 
             const text = retry === 0
                 ? `Write the translations to ${OUTPUT_FILE}. Read the input data from ${INPUT_FILE}.`
-                : `Verification failed: ${lastError}. Please fix ${OUTPUT_FILE}.`;
+                : `Verification failed: ${lastError}. Please fix ${OUTPUT_FILE}. You may read '${INPUT_FILE}' and '${OUTPUT_FILE}' to inspect.`;
 
-            const rank = getProviderRank(modelRef.providerID);
+            const rank = getModelRank(modelName, modelRef.providerID);
             log(
                 `submitting translation request for ${langEnglishName} to ${modelRef.providerID}(rank ${rank})/${modelRef.modelID}, proficiency: ${proficiency}. searching for ${unsettledCount} unsettled strings`,
             );
@@ -533,10 +547,18 @@ async function runOne(
         return;
     }
 
+    const chain = buildFallbackChain(modelName, availableModels);
+    const modelProviders = MODEL_PROVIDERS.get(normalizeModelName(modelName));
+    const isOnlyProvider = modelProviders && modelProviders.length === 1;
+    const providerLabel = chain.length > 0
+        ? isOnlyProvider
+            ? `only provider (${chain[0].providerID})`
+            : `${chain[0].providerID} (rank ${getModelRank(modelName, chain[0].providerID)}/${modelProviders!.length})/${chain[0].modelID}`
+        : "no provider";
     const nonSettled = allMs.length - settled.size;
     const modelVotesTotal = existing.size + nullVotes.size;
     log(
-        `In ${langEnglishName} (${langBcp47}) ${settled.size} out of ${allMs.length} strings are settled. ` +
+        `In ${langEnglishName} (${langBcp47}) to ${providerLabel}: ${settled.size} out of ${allMs.length} strings are settled. ` +
         `For the remaining ${nonSettled}, the model has given ${modelVotesTotal} votings already (${existing.size} strings, ${nullVotes.size} null). ` +
         `Will ask for ${missing.length} strings.`,
     );
@@ -626,13 +648,40 @@ async function main() {
     log(`Found ${availableModels.size} unique models across providers`);
 
     if (args.all && !args.model) {
-        const models = await getAllModels();
+        const allModels = await getAllModels();
         const languages = await getAllLanguages();
-        log(`Full run: ${models.length} models x ${languages.length} locales`);
+
+        // Error: MODEL_PROVIDERS-Model nicht in DB
+        for (const [norm] of MODEL_PROVIDERS) {
+            if (!allModels.some((m) => normalizeModelName(m.name) === norm)) {
+                logError(
+                    `Model '${norm}' is defined in MODEL_PROVIDERS (prisma/translate.ts) ` +
+                    `but not in DB (llm_models). ` +
+                    `Ensure it's in 'prisma/translations/llmmodels_master.json' ` +
+                    `and run 'deno task prismatranslationsseed'.`,
+                );
+                Deno.exit(1);
+            }
+        }
+
+        // Warning: DB-Model nicht in MODEL_PROVIDERS
+        for (const m of allModels) {
+            if (!MODEL_PROVIDERS.has(normalizeModelName(m.name))) {
+                log(
+                    `WARNING: model '${m.name}' exists in DB ` +
+                    `but is not defined in MODEL_PROVIDERS (prisma/translate.ts)`,
+                );
+            }
+        }
+
+        const activeModels = allModels.filter((m) =>
+            MODEL_PROVIDERS.has(normalizeModelName(m.name))
+        );
+        log(`Full run: ${activeModels.length} models x ${languages.length} locales`);
 
         await runAll(
             opencode,
-            models,
+            activeModels,
             languages,
             availableModels,
             args.minProficiency,
@@ -641,6 +690,24 @@ async function main() {
 
         log("Full run complete");
     } else if (args.model && args.all) {
+        const normalized = normalizeModelName(args.model);
+        if (!MODEL_PROVIDERS.has(normalized)) {
+            logError(
+                `Model '${args.model}' is not defined in MODEL_PROVIDERS (prisma/translate.ts)`,
+            );
+            Deno.exit(1);
+        }
+        const dbModel = await getModelByName(args.model);
+        if (!dbModel) {
+            logError(
+                `Model '${args.model}' is defined in MODEL_PROVIDERS ` +
+                `but not in DB (llm_models). ` +
+                `Ensure it's in 'prisma/translations/llmmodels_master.json' ` +
+                `and run 'deno task prismatranslationsseed'.`,
+            );
+            Deno.exit(1);
+        }
+
         await runOneModelAllLocales(
             opencode,
             args.model,
