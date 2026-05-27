@@ -47,6 +47,7 @@ class BellVolumeConfigDialog : DialogFragment() {
     private var bellEntities: Map<Int, BellEntity> = emptyMap()
     private var systemVolumeSeekBar: SeekBar? = null
     private var systemVolumeLabel: TextView? = null
+    private var systemMaxVolume: Int = 7
     private var volumeChangeReceiver: BroadcastReceiver? = null
 
     companion object {
@@ -148,6 +149,7 @@ class BellVolumeConfigDialog : DialogFragment() {
         val maxVolume = audioManager.getStreamMaxVolume(AudioManager.STREAM_ALARM)
         val currentVolume = audioManager.getStreamVolume(AudioManager.STREAM_ALARM)
 
+        systemMaxVolume = maxVolume
         seekBar.max = maxVolume
         seekBar.progress = currentVolume
         label.text = getString(R.string.system_volume_label_format, currentVolume, maxVolume)
@@ -273,9 +275,15 @@ class BellVolumeConfigDialog : DialogFragment() {
             val bell = findBellForVolume(bv)
             holder.bellName.text = bell?.getName() ?: ""
 
-            holder.seekBar.max = VOLUME_MAX
-            holder.seekBar.progress = bv.volume.coerceIn(VOLUME_MIN, VOLUME_MAX)
+            holder.seekBar.max = systemMaxVolume
+            val progress = ((bv.volume - VOLUME_MIN).toFloat()
+                / (VOLUME_MAX - VOLUME_MIN) * systemMaxVolume).toInt()
+            holder.seekBar.progress = progress.coerceIn(0, systemMaxVolume)
             updateVolumeLabel(holder, bv.volume)
+
+            val toVolume: (Int) -> Int = { p ->
+                VOLUME_MIN + (p.toFloat() / systemMaxVolume * (VOLUME_MAX - VOLUME_MIN)).toInt()
+            }
 
             holder.seekBar.setOnSeekBarChangeListener(
                 object : SeekBar.OnSeekBarChangeListener {
@@ -284,7 +292,7 @@ class BellVolumeConfigDialog : DialogFragment() {
                         progress: Int,
                         fromUser: Boolean,
                     ) {
-                        val vol = progress.coerceIn(VOLUME_MIN, VOLUME_MAX)
+                        val vol = toVolume(progress).coerceIn(VOLUME_MIN, VOLUME_MAX)
                         updateVolumeLabel(holder, vol)
                         onVolumeChanged(holder.adapterPosition, vol)
                     }
@@ -294,7 +302,7 @@ class BellVolumeConfigDialog : DialogFragment() {
                     }
 
                     override fun onStopTrackingTouch(seekBar: SeekBar?) {
-                        val vol = (seekBar?.progress ?: VOLUME_MIN).coerceIn(VOLUME_MIN, VOLUME_MAX)
+                        val vol = toVolume(seekBar?.progress ?: 0).coerceIn(VOLUME_MIN, VOLUME_MAX)
                         bell?.let { b ->
                             lifecycleScope.launch {
                                 audio?.playAbsVolume(b, vol)
@@ -305,7 +313,7 @@ class BellVolumeConfigDialog : DialogFragment() {
             )
 
             holder.previewButton.setOnClickListener {
-                val vol = holder.seekBar.progress.coerceIn(VOLUME_MIN, VOLUME_MAX)
+                val vol = toVolume(holder.seekBar.progress).coerceIn(VOLUME_MIN, VOLUME_MAX)
                 bell?.let { b ->
                     lifecycleScope.launch {
                         audio?.playAbsVolume(b, vol)
