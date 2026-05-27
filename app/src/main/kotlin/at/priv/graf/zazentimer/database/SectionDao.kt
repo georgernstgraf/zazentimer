@@ -10,7 +10,7 @@ interface SectionDao {
     @Query("SELECT * FROM sections WHERE fk_session = :sessionId ORDER BY rank")
     suspend fun getSectionsForSession(sessionId: Int): List<SectionEntity>
 
-    @Query("SELECT * FROM sections WHERE _id = :id")
+    @Query("SELECT * FROM sections WHERE id = :id")
     suspend fun getSectionById(id: Int): SectionEntity?
 
     @Insert
@@ -19,13 +19,13 @@ interface SectionDao {
     @Update
     suspend fun update(section: SectionEntity)
 
-    @Query("DELETE FROM sections WHERE _id = :id")
+    @Query("DELETE FROM sections WHERE id = :id")
     suspend fun deleteById(id: Long)
 
     @Query("SELECT max(rank) FROM sections WHERE fk_session = :sessionId")
     suspend fun getMaxRank(sessionId: Int): Int?
 
-    @Query("UPDATE sections SET rank = :rank WHERE _id = :sectionId")
+    @Query("UPDATE sections SET rank = :rank WHERE id = :sectionId")
     suspend fun updateRank(
         sectionId: Int,
         rank: Int,

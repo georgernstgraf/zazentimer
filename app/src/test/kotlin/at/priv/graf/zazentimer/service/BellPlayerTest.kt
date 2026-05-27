@@ -175,7 +175,7 @@ class BellPlayerTest {
                     mockContext,
                     CoroutineDispatchers(main = testDispatcher),
                 ) {
-                    BellEntity(_id = 1, uri = "fake://bell/1")
+                    BellEntity(id = 1, uri = "fake://bell/1")
                 }
             concurrentPlayer.playBells(section, volume = Constants.DEFAULT_BELL_VOLUME, stoppingCheck = { false })
             advanceUntilIdle()

@@ -148,7 +148,7 @@ class ManageBellsFragment : Fragment() {
             val affectedParts = mutableListOf<String>()
             for (session in dbOperations.readSessions()) {
                 for (section in dbOperations.readSections(session.id)) {
-                    if (section.bellId == bell._id) {
+                    if (section.bellId == bell.id) {
                         val part =
                             getString(
                                 R.string.affected_section_format,
@@ -182,7 +182,7 @@ class ManageBellsFragment : Fragment() {
 
     private fun deleteBell(bell: BellEntity) {
         lifecycleScope.launch {
-            dbOperations.deleteCustomBell(bell._id)
+            dbOperations.deleteCustomBell(bell.id)
 
             if (bell.uri.startsWith("file://")) {
                 val filePath = bell.uri.removePrefix("file://")

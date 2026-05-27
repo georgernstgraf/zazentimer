@@ -10,7 +10,7 @@ interface SessionDao {
     @Query("SELECT * FROM sessions ORDER BY rank, name COLLATE NOCASE")
     suspend fun getAllSessions(): List<SessionEntity>
 
-    @Query("SELECT * FROM sessions WHERE _id = :id")
+    @Query("SELECT * FROM sessions WHERE id = :id")
     suspend fun getSessionById(id: Int): SessionEntity?
 
     @Insert
@@ -19,13 +19,13 @@ interface SessionDao {
     @Update
     suspend fun update(session: SessionEntity)
 
-    @Query("DELETE FROM sessions WHERE _id = :id")
+    @Query("DELETE FROM sessions WHERE id = :id")
     suspend fun deleteById(id: Int)
 
     @Query("SELECT MAX(rank) FROM sessions")
     suspend fun getMaxRank(): Int?
 
-    @Query("UPDATE sessions SET rank = :rank WHERE _id = :sessionId")
+    @Query("UPDATE sessions SET rank = :rank WHERE id = :sessionId")
     suspend fun updateRank(
         sessionId: Int,
         rank: Int,

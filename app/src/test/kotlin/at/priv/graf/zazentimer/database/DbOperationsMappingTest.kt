@@ -10,7 +10,7 @@ class DbOperationsMappingTest {
     fun toEntity_session_mapsId() {
         val session = Session(id = 42, name = "Test")
         val entity = EntityMapper.toEntity(session)
-        assertThat(entity._id).isEqualTo(42)
+        assertThat(entity.id).isEqualTo(42)
     }
 
     @Test
@@ -50,28 +50,28 @@ class DbOperationsMappingTest {
 
     @Test
     fun toBo_sessionEntity_mapsRank() {
-        val entity = SessionEntity(_id = 7, name = "Hello", description = "World", rank = 3)
+        val entity = SessionEntity(id = 7, name = "Hello", description = "World", rank = 3)
         val bo = EntityMapper.toBo(entity)
         assertThat(bo.rank).isEqualTo(3)
     }
 
     @Test
     fun toBo_sessionEntity_mapsId() {
-        val entity = SessionEntity(_id = 7, name = "Hello", description = "World")
+        val entity = SessionEntity(id = 7, name = "Hello", description = "World")
         val bo = EntityMapper.toBo(entity)
         assertThat(bo.id).isEqualTo(7)
     }
 
     @Test
     fun toBo_sessionEntity_mapsName() {
-        val entity = SessionEntity(_id = 1, name = "Hello", description = "")
+        val entity = SessionEntity(id = 1, name = "Hello", description = "")
         val bo = EntityMapper.toBo(entity)
         assertThat(bo.name).isEqualTo("Hello")
     }
 
     @Test
     fun toBo_sessionEntity_mapsDescription() {
-        val entity = SessionEntity(_id = 1, name = "", description = "World")
+        val entity = SessionEntity(id = 1, name = "", description = "World")
         val bo = EntityMapper.toBo(entity)
         assertThat(bo.description).isEqualTo("World")
     }
@@ -90,7 +90,7 @@ class DbOperationsMappingTest {
                 bellId = 0,
             )
         val entity = EntityMapper.toEntity(section)
-        assertThat(entity._id).isEqualTo(5)
+        assertThat(entity.id).isEqualTo(5)
         assertThat(entity.fk_session).isEqualTo(10)
         assertThat(entity.name).isEqualTo("Zazen")
         assertThat(entity.duration).isEqualTo(1800)
@@ -111,7 +111,7 @@ class DbOperationsMappingTest {
     fun toBo_sectionEntity_mapsAllFields() {
         val entity =
             SectionEntity(
-                _id = 5,
+                id = 5,
                 fk_session = 10,
                 name = "Kinhin",
                 duration = 300,
@@ -133,14 +133,14 @@ class DbOperationsMappingTest {
 
     @Test
     fun toBo_sectionEntity_defaultBellcount_isOne() {
-        val entity = SectionEntity(_id = 1)
+        val entity = SectionEntity(id = 1)
         val bo = EntityMapper.toBo(entity)
         assertThat(bo.bellcount).isEqualTo(1)
     }
 
     @Test
     fun toBo_sectionEntity_defaultBellpause_isOne() {
-        val entity = SectionEntity(_id = 1)
+        val entity = SectionEntity(id = 1)
         val bo = EntityMapper.toBo(entity)
         assertThat(bo.bellpause).isEqualTo(1)
     }

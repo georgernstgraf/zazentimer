@@ -337,7 +337,7 @@ class DbOperationsTest {
                 dbOps
                     .insertBell(BellEntity(name = "Old", uri = "file://old.mp3", isBuiltin = false))
                     .toInt()
-            dbOps.updateBell(BellEntity(_id = id, name = "New", uri = "file://new.mp3", isBuiltin = false))
+            dbOps.updateBell(BellEntity(id = id, name = "New", uri = "file://new.mp3", isBuiltin = false))
             val bell = dbOps.getBellById(id)
             assertThat(bell!!.name).isEqualTo("New")
             assertThat(bell.uri).isEqualTo("file://new.mp3")
@@ -398,7 +398,7 @@ class DbOperationsTest {
     @Test
     fun deleteCustomBell_noBuiltinBells_noOp() =
         runBlocking {
-            dbOps.getAllBells().forEach { dbOps.deleteBellById(it._id) }
+            dbOps.getAllBells().forEach { dbOps.deleteBellById(it.id) }
 
             val customId =
                 dbOps

@@ -106,7 +106,7 @@ class SectionEditFragment : Fragment() {
                     val uri = BellCollection.getUriForName(str)
                     if (uri != null) {
                         val entity = runBlocking { dbOperations.getBellByUri(uri.toString()) }
-                        s.bellId = entity?._id ?: 0
+                        s.bellId = entity?.id ?: 0
                         runBlocking {
                             if (s.bellId > 0) {
                                 dbOperations.updateSection(s)
@@ -219,7 +219,7 @@ class SectionEditFragment : Fragment() {
             val s = section ?: return
             val bell = (binding.selectGongSound.selectedItem as? Bell) ?: return
             val entity = runBlocking { dbOperations.getBellByUri(bell.uri.toString()) }
-            s.bellId = entity?._id ?: 0
+            s.bellId = entity?.id ?: 0
             s.name = binding.sectionName.text.toString()
             s.duration = (this.durationMinutes * SECONDS_PER_MINUTE) + this.durationSeconds
         }
@@ -350,7 +350,7 @@ class SectionEditFragment : Fragment() {
                         section?.let { s ->
                             BellCollection.getBell(i2)?.let { bell ->
                                 val entity = runBlocking { dbOperations.getBellByUri(bell.uri.toString()) }
-                                s.bellId = entity?._id ?: 0
+                                s.bellId = entity?.id ?: 0
                                 if (s.bellId > 0) {
                                     runBlocking { dbOperations.updateSection(s) }
                                 }

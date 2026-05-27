@@ -36,7 +36,7 @@ class DbOperations
                         context,
                         AppDatabase::class.java,
                         AppDatabase.DATABASE_NAME,
-                    ).fallbackToDestructiveMigration()
+                    )                    .addMigrations(AppDatabase.MIGRATION_1_2)
                     .addCallback(AppDatabase.ON_CREATE_CALLBACK)
                     .build()
             val db = appDb ?: return
@@ -218,7 +218,7 @@ class DbOperations
                     BellCollection.getDemoBell()?.uri?.toString()?.let { uri ->
                         bellDao?.getByUri(uri)
                     }
-                section.bellId = demoBell?._id ?: 0
+                section.bellId = demoBell?.id ?: 0
             }
             section.fkSession = session.id
             val entity = EntityMapper.toEntity(section)
@@ -299,21 +299,21 @@ class DbOperations
                     } else {
                         bellDao?.getBuiltinBells()?.firstOrNull()
                     } ?: return@withIdling
-                val targetBellId = demoTarget._id
+                val targetBellId = demoTarget.id
 
                 val allSessionEntities = sessionDao?.getAllSessions() ?: emptyList()
                 for (sessionEntity in allSessionEntities) {
-                    val sections = sectionDao?.getSectionsForSession(sessionEntity._id) ?: emptyList()
+                    val sections = sectionDao?.getSectionsForSession(sessionEntity.id) ?: emptyList()
                     for (section in sections) {
                         if (section.bellId == bellId) {
                             section.bellId = targetBellId
                             sectionDao?.update(section)
                         }
                     }
-                    val volumes = sessionBellVolumeDao?.getBellVolumesForSession(sessionEntity._id) ?: emptyList()
+                    val volumes = sessionBellVolumeDao?.getBellVolumesForSession(sessionEntity.id) ?: emptyList()
                     for (volume in volumes) {
                         if (volume.bellId == bellId) {
-                            sessionBellVolumeDao?.deleteById(volume._id.toLong())
+                            sessionBellVolumeDao?.deleteById(volume.id.toLong())
                         }
                     }
                 }

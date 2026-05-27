@@ -26,7 +26,7 @@ class ManageBellsTest : AbstractZazenTest() {
     fun tearDown() {
         runBlocking {
             for (bell in dbOperations.getNonBuiltinBells()) {
-                dbOperations.deleteBellById(bell._id)
+                dbOperations.deleteBellById(bell.id)
             }
         }
         val context = InstrumentationRegistry.getInstrumentation().targetContext

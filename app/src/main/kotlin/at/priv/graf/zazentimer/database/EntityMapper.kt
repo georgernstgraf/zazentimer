@@ -10,7 +10,7 @@ object EntityMapper {
 
     fun toEntity(bo: Session): SessionEntity {
         val entity = SessionEntity()
-        entity._id = bo.id
+        entity.id = bo.id
         entity.name = bo.name ?: ""
         entity.description = bo.description ?: ""
         entity.rank = bo.rank
@@ -19,7 +19,7 @@ object EntityMapper {
 
     fun toBo(entity: SessionEntity): Session {
         val bo = Session()
-        bo.id = entity._id
+        bo.id = entity.id
         bo.name = entity.name
         bo.description = entity.description
         bo.rank = entity.rank
@@ -28,7 +28,7 @@ object EntityMapper {
 
     fun toEntity(bo: Section): SectionEntity {
         val entity = SectionEntity()
-        entity._id = bo.id
+        entity.id = bo.id
         entity.name = bo.name ?: ""
         entity.duration = bo.duration
         entity.rank = bo.rank
@@ -41,7 +41,7 @@ object EntityMapper {
 
     fun toBo(entity: SectionEntity): Section {
         val bo = Section()
-        bo.id = entity._id
+        bo.id = entity.id
         bo.fkSession = entity.fk_session
         bo.name = entity.name
         bo.duration = entity.duration
@@ -54,7 +54,7 @@ object EntityMapper {
 
     fun toEntity(bo: SessionBellVolume): SessionBellVolumeEntity {
         val entity = SessionBellVolumeEntity()
-        entity._id = bo.id
+        entity.id = bo.id
         entity.fk_session = bo.fkSession
         entity.bellId = bo.bellId
         entity.volume = bo.volume
@@ -63,7 +63,7 @@ object EntityMapper {
 
     fun toBo(entity: SessionBellVolumeEntity): SessionBellVolume {
         val bo = SessionBellVolume()
-        bo.id = entity._id
+        bo.id = entity.id
         bo.fkSession = entity.fk_session
         bo.bellId = entity.bellId
         bo.volume = entity.volume

@@ -11,22 +11,21 @@ import at.priv.graf.zazentimer.Constants
     foreignKeys = [
         ForeignKey(
             entity = SessionEntity::class,
-            parentColumns = ["_id"],
+            parentColumns = ["id"],
             childColumns = ["fk_session"],
             onDelete = ForeignKey.CASCADE,
         ),
         ForeignKey(
             entity = BellEntity::class,
-            parentColumns = ["_id"],
+            parentColumns = ["id"],
             childColumns = ["bellId"],
         ),
     ],
     indices = [Index("fk_session"), Index(value = ["fk_session", "bellId"], unique = true), Index("bellId")],
 )
-@Suppress("ConstructorParameterNaming")
 data class SessionBellVolumeEntity(
     @PrimaryKey(autoGenerate = true)
-    var _id: Int = 0,
+    var id: Int = 0,
     var fk_session: Int = 0,
     var bellId: Int = 0,
     var volume: Int = Constants.DEFAULT_BELL_VOLUME,

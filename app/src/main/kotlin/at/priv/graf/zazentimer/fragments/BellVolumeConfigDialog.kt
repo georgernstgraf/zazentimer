@@ -124,7 +124,7 @@ class BellVolumeConfigDialog : DialogFragment() {
 
         lifecycleScope.launch {
             val entities = dbOperations.getAllBells()
-            bellEntities = entities.associateBy { it._id }
+            bellEntities = entities.associateBy { it.id }
             adapter.notifyDataSetChanged()
         }
 

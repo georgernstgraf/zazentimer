@@ -86,7 +86,7 @@ class DaoTest {
         runBlocking {
             val id = sessionDao.insert(SessionEntity(name = "Old", description = ""))
 
-            sessionDao.update(SessionEntity(_id = id.toInt(), name = "New", description = "Updated"))
+            sessionDao.update(SessionEntity(id = id.toInt(), name = "New", description = "Updated"))
 
             val result = sessionDao.getAllSessions()
             assertThat(result).hasSize(1)
@@ -260,7 +260,7 @@ class DaoTest {
 
             sectionDao.update(
                 SectionEntity(
-                    _id = id.toInt(),
+                    id = id.toInt(),
                     fk_session = sessionId.toInt(),
                     name = "Updated",
                     duration = 120,
