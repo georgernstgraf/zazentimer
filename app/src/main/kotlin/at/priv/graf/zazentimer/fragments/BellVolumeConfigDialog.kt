@@ -54,8 +54,7 @@ class BellVolumeConfigDialog : DialogFragment() {
         private const val ARG_IS_DARK = "isDark"
         private const val STATE_BELL_VOLUMES = "bellVolumes"
         private const val VOLUME_MAX = 100
-        private const val VOLUME_STEP_SIZE = 10
-        private const val VOLUME_MAX_STEP = 9
+        private const val VOLUME_MIN = 10
 
         fun newInstance(
             sessionId: Int,
@@ -274,9 +273,8 @@ class BellVolumeConfigDialog : DialogFragment() {
             val bell = findBellForVolume(bv)
             holder.bellName.text = bell?.getName() ?: ""
 
-            val step = (VOLUME_MAX - bv.volume) / VOLUME_STEP_SIZE
-            holder.seekBar.max = VOLUME_MAX_STEP
-            holder.seekBar.progress = step.coerceIn(0, VOLUME_MAX_STEP)
+            holder.seekBar.max = VOLUME_MAX
+            holder.seekBar.progress = bv.volume.coerceIn(VOLUME_MIN, VOLUME_MAX)
             updateVolumeLabel(holder, bv.volume)
 
             holder.seekBar.setOnSeekBarChangeListener(
@@ -286,7 +284,7 @@ class BellVolumeConfigDialog : DialogFragment() {
                         progress: Int,
                         fromUser: Boolean,
                     ) {
-                        val vol = VOLUME_MAX - progress * VOLUME_STEP_SIZE
+                        val vol = progress.coerceIn(VOLUME_MIN, VOLUME_MAX)
                         updateVolumeLabel(holder, vol)
                         onVolumeChanged(holder.adapterPosition, vol)
                     }
@@ -296,7 +294,7 @@ class BellVolumeConfigDialog : DialogFragment() {
                     }
 
                     override fun onStopTrackingTouch(seekBar: SeekBar?) {
-                        val vol = VOLUME_MAX - (seekBar?.progress ?: 0) * VOLUME_STEP_SIZE
+                        val vol = (seekBar?.progress ?: VOLUME_MIN).coerceIn(VOLUME_MIN, VOLUME_MAX)
                         bell?.let { b ->
                             lifecycleScope.launch {
                                 audio?.playAbsVolume(b, vol)
@@ -307,7 +305,7 @@ class BellVolumeConfigDialog : DialogFragment() {
             )
 
             holder.previewButton.setOnClickListener {
-                val vol = VOLUME_MAX - holder.seekBar.progress * VOLUME_STEP_SIZE
+                val vol = holder.seekBar.progress.coerceIn(VOLUME_MIN, VOLUME_MAX)
                 bell?.let { b ->
                     lifecycleScope.launch {
                         audio?.playAbsVolume(b, vol)

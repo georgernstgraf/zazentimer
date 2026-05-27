@@ -25,8 +25,8 @@
     <string name="no_bells_configured">No bells configured yet</string>
     <string name="system_volume_section_title">Meditation Volume</string>
     <string name="system_volume_subtitle">Controls the phone\'s alarm volume for all bells.</string>
-    <string name="bell_dimming_section_title">Bell Dimming</string>
-    <string name="bell_volume_dim_explanation">Reduce individual bell volumes for this session.</string>
+    <string name="bell_dimming_section_title">Configure Bell Volume</string>
+    <string name="bell_volume_dim_explanation">Adjust individual bell volumes for this session.</string>
     <string name="system_volume_label_format">%1$d / %2$d</string>
 
     <string name="bottom_sheet_behavior" translatable="false">android.support.design.widget.BottomSheetBehavior</string>
