@@ -245,14 +245,21 @@ class SessionEditFragment :
     @Suppress("ReturnCount")
     private fun showBellVolumeDialog() {
         val s = session ?: return
-        val secs = sections ?: return
-        if (secs.isEmpty()) return
-
-        val derived = deriveBellVolumesFromSections(secs, s.bellVolumes)
-        val isDark = isDarkTheme()
-        val dialog = BellVolumeConfigDialog.newInstance(s.id, isDark)
-        dialog.setBellVolumes(derived)
-        dialog.show(childFragmentManager, "bellVolumeConfig")
+        lifecycleScope.launch {
+            val secs = dbOperations.readSections(s.id)
+            if (secs.isEmpty()) return@launch
+            val seen = linkedSetOf<Int>()
+            for (sec in secs) if (sec.bellId > 0) seen.add(sec.bellId)
+            val derived =
+                seen
+                    .map { bellId ->
+                        s.bellVolumes.find { it.bellId == bellId }
+                            ?: SessionBellVolume(bellId = bellId, volume = DEFAULT_BELL_VOLUME)
+                    }
+            val dialog = BellVolumeConfigDialog.newInstance(s.id, isDarkTheme())
+            dialog.setBellVolumes(derived)
+            dialog.show(childFragmentManager, "bellVolumeConfig")
+        }
     }
 
     @Suppress("ReturnCount")
@@ -267,25 +274,6 @@ class SessionEditFragment :
             return nightMode == android.content.res.Configuration.UI_MODE_NIGHT_YES
         }
         return false
-    }
-
-    private fun deriveBellVolumesFromSections(
-        secs: Array<Section>,
-        saved: List<SessionBellVolume>,
-    ): List<SessionBellVolume> {
-        val seen = linkedSetOf<Int>()
-        for (sec in secs) {
-            if (sec.bellId > 0) {
-                seen.add(sec.bellId)
-            }
-        }
-        return seen.map { bellId ->
-            val match = saved.find { bv -> bv.bellId == bellId }
-            match ?: SessionBellVolume(
-                bellId = bellId,
-                volume = DEFAULT_BELL_VOLUME,
-            )
-        }
     }
 
     override fun onBellVolumesSaved(volumes: List<SessionBellVolume>) {
