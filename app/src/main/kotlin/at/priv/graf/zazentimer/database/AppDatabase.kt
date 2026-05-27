@@ -32,7 +32,7 @@ abstract class AppDatabase : RoomDatabase() {
 
                 db.execSQL(
                     """CREATE TABLE IF NOT EXISTS bells_new (
-                    id INTEGER PRIMARY KEY AUTOINCREMENT,
+                    id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
                     name TEXT NOT NULL,
                     uri TEXT NOT NULL,
                     is_builtin INTEGER NOT NULL DEFAULT 0
@@ -44,10 +44,10 @@ abstract class AppDatabase : RoomDatabase() {
 
                 db.execSQL(
                     """CREATE TABLE IF NOT EXISTS sessions_new (
-                    id INTEGER PRIMARY KEY AUTOINCREMENT,
+                    id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
                     name TEXT NOT NULL,
                     description TEXT NOT NULL,
-                    rank INTEGER NOT NULL DEFAULT 0
+                    rank INTEGER NOT NULL
                 )""",
                 )
                 db.execSQL(
@@ -58,7 +58,7 @@ abstract class AppDatabase : RoomDatabase() {
 
                 db.execSQL(
                     """CREATE TABLE IF NOT EXISTS sections_new (
-                    id INTEGER PRIMARY KEY AUTOINCREMENT,
+                    id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
                     name TEXT NOT NULL,
                     duration INTEGER NOT NULL,
                     rank INTEGER NOT NULL,
@@ -79,7 +79,7 @@ abstract class AppDatabase : RoomDatabase() {
 
                 db.execSQL(
                     """CREATE TABLE IF NOT EXISTS session_bell_volumes_new (
-                    id INTEGER PRIMARY KEY AUTOINCREMENT,
+                    id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
                     fk_session INTEGER NOT NULL,
                     bellId INTEGER NOT NULL,
                     volume INTEGER NOT NULL,

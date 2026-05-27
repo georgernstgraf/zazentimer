@@ -37,6 +37,7 @@ class DbOperations
                         AppDatabase::class.java,
                         AppDatabase.DATABASE_NAME,
                     ).addMigrations(AppDatabase.MIGRATION_1_2)
+                    .fallbackToDestructiveMigration(true)
                     .addCallback(AppDatabase.ON_CREATE_CALLBACK)
                     .build()
             val db = appDb ?: return

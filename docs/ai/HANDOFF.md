@@ -11,3 +11,5 @@ No pending tasks. Last cleared: 2026-05-27.
 - Fixed langId param in comparison page (#228)
 - Fixed stale bell list in Adjust Bell Volumes dialog (#234)
 - Bell sliders: direct volume, normal direction, matched to system steps (#235)
+- Fixed Room MIGRATION_1_2: missing `NOT NULL` on PK columns + unwanted `DEFAULT 0` on `rank` (#207)
+- Added `fallbackToDestructiveMigration(true)` as safety net
