@@ -3,11 +3,11 @@
 No pending tasks. Last cleared: 2026-05-27.
 
 ## Recently Completed
-- Log verbosity: `stringCount`/`emptyCount`/`skippedMasterString`, proficiency start log, always-on language stats with provider label
-- Verify error enrichment: raw output snippet + JSON.parse error
-- SKILL.md: relaxed "no access to files" — models may read output files
-- System prompt always sent on retry
-- PROVIDER_RANKING → MODEL_PROVIDERS per-model mapping
-- llmmodels_seed.json → llmmodels_master.json (renamed, mistral-large added, seed deletes obsolete)
-- Model-DB validation in --all mode
-- All knowledge files updated
+- Removed 35 unused English strings from values/strings.xml (#223)
+- seed.ts idempotent: deletes obsolete master_strings (#224)
+- Inline language seeding into seed.ts, removed Python script (#225)
+- Removed custom types + direct Prisma from voting_api.tsx (#226)
+- Performance: groupBy for vote counts, filtered proficiencies (#227)
+- Fixed langId param in comparison page (#228)
+- Fixed stale bell list in Adjust Bell Volumes dialog (#234)
+- Bell sliders: direct volume, normal direction, matched to system steps (#235)

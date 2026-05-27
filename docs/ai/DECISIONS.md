@@ -482,3 +482,43 @@ Each entry documents WHAT was decided and WHY.
 - **Reason**: Prevent silent pipeline failures when a model is defined in config but hasn't been seeded yet, and alert when stale models linger in DB.
 - **Tradeoff**: Extra startup validation (~ms per model).
 
+## 2026-05-27: Remove 35 unused English string resources (#223)
+- **Choice**: Deleted 35 `<string>` entries from `values/strings.xml` that had zero references in `.kt`/`.xml` source files (no `R.string.` / `@string/`).
+- **Reason**: These were dead strings from removed features (ACRA crash reporting, server news, SD card status, bell dimming, legacy bottom navigation). Translation files untouched.
+- **Tradeoff**: Language-pair files (`values-*/strings.xml`) still contain these keys — they become orphans until the translation pipeline is rerun against the cleaned source.
+
+## 2026-05-27: seed.ts deletes obsolete master_strings for idempotency (#224)
+- **Choice**: After upserting master_strings from `values/strings.xml`, added `deleteMany({ text: { notIn: currentTexts } })`. Orphaned votes cascade-deleted via FK constraint.
+- **Reason**: Previously, removing strings from the XML left orphan master_strings (and their votes) in the DB permanently. The seed was not truly idempotent.
+- **Tradeoff**: Running seed may cascade-delete votes if strings were removed since last run.
+
+## 2026-05-27: Inline language seeding into seed.ts, remove Python script (#225)
+- **Choice**: `seed.ts` now scans `app/src/main/res/` for `values-*` dirs directly. `iso639.json` (committed, 8K entries, generated once from pycountry) replaces runtime Python dependency. Deleted `generate_languages_seed.py` and `languages_seed.json`.
+- **Reason**: Filesystem is the single source of truth for available locales. Seed now auto-detects new dirs and deletes orphan languages. Eliminates intermediate Python+JSON build step.
+- **Tradeoff**: Adding a new locale requires adding the `values-xx` directory and potentially updating `iso639.json` if the language code is not in pycountry (unlikely for ISO 639-1 codes).
+
+## 2026-05-27: Remove custom types from db.ts, use Prisma-generated types (#226)
+- **Choice**: Replaced `PLanguage`, `PModel`, `PMasterString` with `import type { languages, master_strings, llm_models } from "prismaclient"`.
+- **Reason**: Hand-rolled types duplicated Prisma schema and were always out of date. Prisma-generated types are always correct after `prisma generate`.
+- **Tradeoff**: Type change may cause false-positive lint errors if imported types differ slightly from custom subset.
+
+## 2026-05-27: Remove direct Prisma dependency from voting_api.tsx (#226)
+- **Choice**: Moved all 13 `prisma.xxx` calls from `voting_api.tsx` into 8 new functions in `lib/db.ts`. Removed `import { getPrisma }` and `const prisma = await getPrisma()` from voting_api.tsx.
+- **Reason**: Clean layering — route handlers should never touch Prisma directly. All DB access via `db.ts` makes the interface explicit and testable.
+- **Tradeoff**: Slightly more function definitions in db.ts; some are thin wrappers (`getModelById`, `getLanguageById`).
+
+## 2026-05-27: Performance: groupBy for string vote counts, filter proficiencies (#227)
+- **Choice**: `getStrings()` uses `prisma.votes.groupBy` (single query) instead of N+1 `votes.count`. `getStringSettlement()` filters `language_proficiencies` to only models+languages present in the string's votes.
+- **Reason**: strings page did 1+N queries (130+ queries). Settlement page loaded all ~1230 proficiencies for a single string query.
+- **Tradeoff**: groupBy may not use indexes ideally on SQLite; acceptable for current data volume.
+
+## 2026-05-27: Fix stale bell list in Adjust Bell Volumes dialog (#234)
+- **Choice**: `showBellVolumeDialog()` reads sections fresh from DB via `dbOperations.readSections(s.id)` inside a coroutine instead of using the cached `this.sections` field. Removed `deriveBellVolumesFromSections()`.
+- **Reason**: Deleting sections or swapping bells within a section left `this.sections` stale. When the dialog opened, it included bells from deleted sections.
+- **Tradeoff**: Dialog open now requires a coroutine launch (non-blocking, already async pattern).
+
+## 2026-05-27: Bell sliders: direct volume, normal direction, matched steps (#235)
+- **Choice**: Replaced the inverted "dimming" seekbar (left=loud, right=quiet, `vol = 100 - progress*10`) with standard direct volume seekbar (left=quiet, right=loud, `max=same as system slider`). Section title changed from "Bell Dimming" to "Configure Bell Volume". Removed `VOLUME_STEP_SIZE`/`VOLUME_MAX_STEP` constants.
+- **Reason**: User wanted normal seekbar behavior and same step count as system alarm slider. Dimming concept was confusing (reduced from 100% = dimmed).
+- **Tradeoff**: Bell slider now maps 10-100% volume to system slider steps (e.g., 0-7). Linear mapping gives ~12% per step on 7-step devices.
+

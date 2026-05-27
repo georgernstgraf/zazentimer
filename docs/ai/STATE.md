@@ -3,19 +3,18 @@
 Current status as of 2026-05-27.
 
 ## Current Focus
-#202 — Translation pipeline (runs in progress, ~100 locales seeded)
+#235 — Bell volume UI: dimming concept removed, direct volume + matched slider steps
 
 ## Completed (this cycle)
-- [x] Verbose translate log: `stringCount`/`emptyCount`/`skippedMasterString` instead of `stored`/`skipped`
-- [x] Proficiency start log line before each proficiency assessment
-- [x] Always-on verbose language-start stats with provider label
-- [x] Verify error enrichment: raw output snippet + JSON.parse error in error messages
-- [x] Skill "no access to files" relaxed — models may read their own output files
-- [x] System prompt always sent on retry (not just first request)
-- [x] PROVIDER_RANKING → MODEL_PROVIDERS: per-model provider mapping
-- [x] llmmodels_seed.json → llmmodels_master.json: renamed, mistral-large added, seed deletes obsolete models
-- [x] Model-DB validation: error if MODEL_PROVIDERS model not in DB, warning if DB model not in MODEL_PROVIDERS
-- [x] Provider label in language-start log: "only provider (xyz)" vs "provider (rank X/Y)/model"
+- [x] Remove 35 unused English strings from values/strings.xml (#223)
+- [x] seed.ts: delete obsolete master_strings for idempotency (#224)
+- [x] Inline language seeding into seed.ts, remove Python/JSON pipeline (#225)
+- [x] Remove custom types from db.ts, use Prisma-generated types (#226)
+- [x] Remove direct Prisma dependency from voting_api.tsx (#226)
+- [x] Performance: groupBy for string vote counts, filter proficiencies (#227)
+- [x] Fix: respect langId query param in /strings/:sid/comparison (#228)
+- [x] Fix: load bell list fresh from DB in Adjust Bell Volumes dialog (#234)
+- [x] Bell sliders: direct volume, normal direction, matched steps to system slider (#235)
 
 ## Pending
 - [ ] #64 — Play Store

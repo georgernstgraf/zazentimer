@@ -47,7 +47,7 @@ class BellVolumeConfigDialog : DialogFragment() {
     private var bellEntities: Map<Int, BellEntity> = emptyMap()
     private var systemVolumeSeekBar: SeekBar? = null
     private var systemVolumeLabel: TextView? = null
-    private var systemMaxVolume: Int = 7
+    private var systemMaxVolume: Int = DEFAULT_SYSTEM_MAX_VOLUME
     private var volumeChangeReceiver: BroadcastReceiver? = null
 
     companion object {
@@ -56,6 +56,7 @@ class BellVolumeConfigDialog : DialogFragment() {
         private const val STATE_BELL_VOLUMES = "bellVolumes"
         private const val VOLUME_MAX = 100
         private const val VOLUME_MIN = 10
+        private const val DEFAULT_SYSTEM_MAX_VOLUME = 7
 
         fun newInstance(
             sessionId: Int,
@@ -276,8 +277,11 @@ class BellVolumeConfigDialog : DialogFragment() {
             holder.bellName.text = bell?.getName() ?: ""
 
             holder.seekBar.max = systemMaxVolume
-            val progress = ((bv.volume - VOLUME_MIN).toFloat()
-                / (VOLUME_MAX - VOLUME_MIN) * systemMaxVolume).toInt()
+            val progress =
+                (
+                    (bv.volume - VOLUME_MIN).toFloat() /
+                        (VOLUME_MAX - VOLUME_MIN) * systemMaxVolume
+                ).toInt()
             holder.seekBar.progress = progress.coerceIn(0, systemMaxVolume)
             updateVolumeLabel(holder, bv.volume)
 
