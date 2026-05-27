@@ -23,6 +23,7 @@ import at.priv.graf.zazentimer.Constants
     ],
     indices = [Index("fk_session"), Index(value = ["fk_session", "bellId"], unique = true), Index("bellId")],
 )
+@Suppress("ConstructorParameterNaming")
 data class SessionBellVolumeEntity(
     @PrimaryKey(autoGenerate = true)
     var id: Int = 0,

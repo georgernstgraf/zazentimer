@@ -107,7 +107,7 @@ class BellVolumeConfigDialog : DialogFragment() {
     ) {
         super.onViewCreated(view, savedInstanceState)
         if (savedInstanceState != null) {
-            @Suppress("DEPRECATION")
+            @Suppress("DEPRECATION", "UNCHECKED_CAST")
             val saved = savedInstanceState.getSerializable(STATE_BELL_VOLUMES) as? ArrayList<SessionBellVolume>
             if (saved != null && saved.isNotEmpty()) {
                 bellVolumes = saved.toMutableList()
@@ -298,7 +298,7 @@ class BellVolumeConfigDialog : DialogFragment() {
                     ) {
                         val vol = toVolume(progress).coerceIn(VOLUME_MIN, VOLUME_MAX)
                         updateVolumeLabel(holder, vol)
-                        onVolumeChanged(holder.adapterPosition, vol)
+                        onVolumeChanged(holder.bindingAdapterPosition, vol)
                     }
 
                     override fun onStartTrackingTouch(seekBar: SeekBar?) {
