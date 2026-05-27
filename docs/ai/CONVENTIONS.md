@@ -15,6 +15,7 @@ Follow these without question. Do not deviate unless explicitly told.
 - Use `ZazenClock` for all time-related logic.
 - Instrumented tests must register `IdlingResourceManager.countingIdlingResource`.
 - Prefer `StateFlow` over `LiveData` for new state streams to better support coroutine-based testing.
+- **Jede Room-Migration braucht einen Test:** Zu jeder neuen `Migration(X, Y)` muss ein `RoomMigrationTest`-Fall existieren, der die Migration auf einer temporären V1-Datenbank mit realistischen Daten ausführt und Daten-Integrität + Schema-Korrektheit prüft. Die Migration muss direkt via `.migrate(db)` aufgerufen werden (nicht über Room Builder), um das exakte Laufzeitverhalten zu testen. Die Tests müssen zumindest umfassen: Daten-Erhalt, Schema-Korrektheit (PK NOT NULL, Indices, Default-Werte), und Indices-Existenz.
 
 ## Test Infrastructure
 - API levels for instrumentation tests are defined in `gradle.properties` (`zazentimer.test.apis`).
