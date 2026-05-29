@@ -13,3 +13,6 @@ No pending tasks. Last cleared: 2026-05-27.
 - Bell sliders: direct volume, normal direction, matched to system steps (#235)
 - Fixed Room MIGRATION_1_2: missing `NOT NULL` on PK columns + unwanted `DEFAULT 0` on `rank` (#207)
 - Added `fallbackToDestructiveMigration(true)` as safety net
+- Added RoomMigrationTest with 6 test cases for MIGRATION_1_2 (#207)
+- Created `prisma/export.ts` — exports best tiebreak-winner translations to parallel `values-*/strings.xml` structure
+- Added `export` task to `prisma/deno.json`

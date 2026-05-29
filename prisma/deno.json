@@ -9,10 +9,11 @@
     "prismatranslationsmigratedev": "deno run  -A prisma migrate dev --schema=translations/schema.prisma",
     "prismatranslationsmigratestatus": "deno run  -A prisma migrate status --schema=translations/schema.prisma",
     "prismatranslationsmigratereset": "deno run  -A prisma migrate reset --schema=translations/schema.prisma",
+    "export": "deno run --env-file=translations/.env -A export.ts --",
     "translate": "deno run --env-file=translations/.env -A translate.ts --",
     "votingbackend": "deno run --env-file=translations/.env -A voting_api.tsx",
     "savetranslationstogit": "echo .dump | sqlite3 translation_votes.sqlite > translation_votes.sql",
-    "check": "deno check --config=deno.json translate.ts voting_api.tsx lib/verify.ts lib/db.ts lib/opencode_client.ts lib/prisma.ts translations/seed.ts",
+    "check": "deno check --config=deno.json translate.ts export.ts voting_api.tsx lib/verify.ts lib/db.ts lib/opencode_client.ts lib/prisma.ts translations/seed.ts",
     "lint": "deno lint"
   },
   "imports": {

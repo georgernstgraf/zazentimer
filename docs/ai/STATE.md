@@ -17,6 +17,8 @@ Fix Room MIGRATION_1_2 crash: PK columns missing `NOT NULL` + unwanted `DEFAULT 
 - [x] Bell sliders: direct volume, normal direction, matched steps to system slider (#235)
 - [x] Fix MIGRATION_1_2: added `NOT NULL` to all 4 PK columns, removed `DEFAULT 0` from `rank` (#207)
 - [x] Add `fallbackToDestructiveMigration(true)` as safety net in DbOperations.kt
+- [x] Add RoomMigrationTest with 6 test cases for MIGRATION_1_2 (#207)
+- [x] Create `prisma/export.ts` — exports best translations (tiebreak-winner) to `values-*/strings.xml` files
 
 ## Pending
 - [ ] #64 — Play Store

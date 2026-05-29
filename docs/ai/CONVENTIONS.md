@@ -86,6 +86,13 @@ Follow these without question. Do not deviate unless explicitly told.
 - Translate/Proficiency Skills erlauben jetzt das Lesen der Output-Dateien (`translate-output.json`, `proficiency-output.json`) für Retry-Diagnose.
 - `--all` und `--model --all` validieren vor dem Start: Error wenn ein Model in `MODEL_PROVIDERS` aber nicht in DB, Warning wenn ein Model in DB aber nicht in `MODEL_PROVIDERS`.
 
+## Translation Export
+- `prisma/export.ts` exportiert pro Locale die jeweils beste Übersetzung (Tiebreak-Winner via `getEvaluation`) in `<target>/<language.directory>/strings.xml`.
+- `--target=<pfad>` ist Pflicht. Das Skript bricht ab, wenn das Zielverzeichnis bereits existiert.
+- Die englische `values/strings.xml` wird 1:1 ins Target kopiert.
+- Strings ohne Übersetzung werden weggelassen (Android-Fallback auf Englisch).
+- Aufruf: `deno task export -- --target=../app/src/main/res-export`
+
 ## Detekt
 - `./gradlew detekt` must exit 0 before any commit. Zero violations policy.
 - Use `@Suppress("TooManyFunctions")` for classes that are cohesive but exceed function limits (e.g., main Activity, core business logic).
