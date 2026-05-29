@@ -114,7 +114,6 @@ async function main() {
         const evaluation = await getEvaluation(lang.id);
 
         // First entry per master_stringsId is the tiebreak winner
-        // (getEvaluation sorts by modelCount desc, then score desc)
         const winners = new Map<number, string>();
         for (const row of evaluation) {
             if (!winners.has(row.master_stringsId)) {
@@ -122,21 +121,26 @@ async function main() {
             }
         }
 
+        // Collect translations, sort alphabetically by key
+        const entries: { key: string; text: string }[] = [];
+        for (const src of sourceStrings) {
+            const translation = winners.get(src.id);
+            if (translation) {
+                entries.push({ key: src.key, text: translation });
+            }
+        }
+        entries.sort((a, b) => a.key.localeCompare(b.key));
+
         const lines: string[] = [];
         lines.push('<?xml version="1.0" encoding="utf-8"?>');
         lines.push(
             '<resources xmlns:tools="http://schemas.android.com/tools">',
         );
 
-        let translatedCount = 0;
-        for (const src of sourceStrings) {
-            const translation = winners.get(src.id);
-            if (translation) {
-                lines.push(
-                    `    <string name="${src.key}">${escapeXml(translation)}</string>`,
-                );
-                translatedCount++;
-            }
+        for (const e of entries) {
+            lines.push(
+                `    <string name="${e.key}">${escapeXml(e.text)}</string>`,
+            );
         }
 
         lines.push("</resources>");
@@ -149,9 +153,9 @@ async function main() {
         );
 
         console.log(
-            `  ${lang.directory}: ${translatedCount}/${sourceStrings.length} strings`,
+            `  ${lang.directory}: ${entries.length}/${sourceStrings.length} strings`,
         );
-        totalWritten += translatedCount;
+        totalWritten += entries.length;
     }
 
     console.log(
