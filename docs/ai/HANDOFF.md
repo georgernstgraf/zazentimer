@@ -16,3 +16,5 @@ No pending tasks. Last cleared: 2026-05-27.
 - Added RoomMigrationTest with 6 test cases for MIGRATION_1_2 (#207)
 - Created `prisma/export.ts` — exports best tiebreak-winner translations to parallel `values-*/strings.xml` structure
 - Added `export` task to `prisma/deno.json`
+- #233: export.ts in-place regeneration with random tiebreak, keep_english, clean resources tag
+- Deleted `scripts/apply_translations.py`

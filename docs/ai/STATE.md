@@ -18,7 +18,10 @@ Fix Room MIGRATION_1_2 crash: PK columns missing `NOT NULL` + unwanted `DEFAULT 
 - [x] Fix MIGRATION_1_2: added `NOT NULL` to all 4 PK columns, removed `DEFAULT 0` from `rank` (#207)
 - [x] Add `fallbackToDestructiveMigration(true)` as safety net in DbOperations.kt
 - [x] Add RoomMigrationTest with 6 test cases for MIGRATION_1_2 (#207)
-- [x] Create `prisma/export.ts` — exports best translations (tiebreak-winner) to `values-*/strings.xml` files
+- [x] Create `prisma/export.ts` — exports best tiebreak-winner translations to `values-*/strings.xml` files
+- [x] #233: export.ts in-place regeneration, random tiebreak, keep_english, clean resources tag
+- [x] Deleted `scripts/apply_translations.py` (replaced by export.ts)
+- [x] `getBestTranslation(text, bcp47)` in db.ts — per-string voting lookup
 
 ## Pending
 - [ ] #64 — Play Store
