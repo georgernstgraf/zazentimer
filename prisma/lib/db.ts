@@ -435,7 +435,13 @@ export async function getEvaluation(langId: number) {
 
     const result = [];
     for (const [, tmap] of groups) {
-        const ranked = [...tmap.values()].sort((a, b) => {
+        const values = [...tmap.values()];
+        // Fisher-Yates shuffle as random tiebreak (order preserved on match)
+        for (let i = values.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [values[i], values[j]] = [values[j], values[i]];
+        }
+        const ranked = values.sort((a, b) => {
             const dc = b.modelCount - a.modelCount;
             if (dc !== 0) return dc;
             return b.score - a.score;
@@ -446,6 +452,72 @@ export async function getEvaluation(langId: number) {
         ...r,
         modelNames: r.modelNames.join(", "),
     }));
+}
+
+export async function getBestTranslation(
+    text: string,
+    bcp47: string,
+): Promise<{ translation: string; modelCount: number; score: number } | null> {
+    const ms = await prisma.master_strings.findUnique({ where: { text } });
+    if (!ms) return null;
+    const lang = await prisma.languages.findUnique({
+        where: { bcp_47: bcp47 },
+    });
+    if (!lang) return null;
+
+    const votes = await prisma.votes.findMany({
+        where: {
+            master_stringsId: ms.id,
+            languagesId: lang.id,
+            ...NOT_EMPTY,
+        },
+        include: { llm_model: true },
+    });
+
+    if (votes.length === 0) return null;
+
+    const modelIds = [...new Set(votes.map((v) => v.llm_modelsId))];
+    const profs = await prisma.language_proficiencies.findMany({
+        where: {
+            languageId: lang.id,
+            llm_modelsId: { in: modelIds },
+            level: { gte: 2 },
+        },
+        include: { llm_model: true },
+    });
+    const modelLevels = new Map(profs.map((p) => [p.llm_model.id, p.level]));
+
+    const groups = new Map<string, { modelCount: number; score: number }>();
+    for (const v of votes) {
+        const level = modelLevels.get(v.llm_modelsId);
+        if (!level) continue;
+        const entry = groups.get(v.translation) || {
+            modelCount: 0,
+            score: 0,
+        };
+        entry.modelCount++;
+        entry.score += level;
+        groups.set(v.translation, entry);
+    }
+
+    const entries = [...groups.entries()].map(([t, g]) => ({
+        translation: t,
+        modelCount: g.modelCount,
+        score: g.score,
+    }));
+
+    // Fisher-Yates shuffle + sort
+    for (let i = entries.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [entries[i], entries[j]] = [entries[j], entries[i]];
+    }
+    entries.sort((a, b) => {
+        const dc = b.modelCount - a.modelCount;
+        if (dc !== 0) return dc;
+        return b.score - a.score;
+    });
+
+    return entries[0];
 }
 
 export async function getSettledStrings(langId: number): Promise<Set<number>> {

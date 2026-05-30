@@ -87,11 +87,12 @@ Follow these without question. Do not deviate unless explicitly told.
 - `--all` und `--model --all` validieren vor dem Start: Error wenn ein Model in `MODEL_PROVIDERS` aber nicht in DB, Warning wenn ein Model in DB aber nicht in `MODEL_PROVIDERS`.
 
 ## Translation Export
-- `prisma/export.ts` exportiert pro Locale die jeweils beste Übersetzung (Tiebreak-Winner via `getEvaluation`) in `<target>/<language.directory>/strings.xml`.
-- `--target=<pfad>` ist Pflicht. Das Skript bricht ab, wenn das Zielverzeichnis bereits existiert.
-- Die englische `values/strings.xml` wird 1:1 ins Target kopiert.
-- Strings ohne Übersetzung werden weggelassen (Android-Fallback auf Englisch).
-- Aufruf: `deno task export -- --target=../app/src/main/res-export`
+- `prisma/export.ts` generiert ALLE `values-*`-Verzeichnisse im Target komplett neu aus der Voting-DB.
+  Vorherige `values-*`-Verzeichnisse werden gelöscht — der Export ist die autoritative Quelle.
+- `--target=<pfad>` ist Pflicht (z.B. `../app/src/main/res`).
+- Strings ohne Übersetzung werden weggelassen (Android-Fallback auf `values/strings.xml`).
+- `keep_english.json`-Keys erscheinen nie in Locale-XMLs (aktuell: `bell_volume_label_format`, `system_volume_label_format`).
+- Ausgabe ist alphabetisch nach Key sortiert für deterministische, diff-freundliche Deltas.
 
 ## Detekt
 - `./gradlew detekt` must exit 0 before any commit. Zero violations policy.
@@ -131,9 +132,8 @@ Follow these without question. Do not deviate unless explicitly told.
 - **No Automated Blind Scripts**: The LLM performs translations interactively with explicit Zen meditation context. Script-based, context-free automated translation of meditation-specific strings (e.g. via Google Translate API, MyMemory, or any batch script) is **strictly forbidden**. Every locale must be translated by an LLM sub-agent that understands Zazen, Kinhin, mindfulness, and singing-bowl terminology.
 - **Extremely Strict LLM Instructions**: When using LLMs for translation, you **MUST** provide extremely precise instructions regarding XML tags and placeholders (`%s`, `%1$d`, `&lt;`, `&gt;`). LLMs often corrupt these in low-resource languages, leading to runtime formatting crashes.
 - **Explicit Fallback Rule**: Explicitly prompt any translation sub-agent: *"If you do not have high confidence in this specific language, or if you cannot guarantee that EVERY placeholder will be preserved exactly, you MUST leave the string in English. Guessing or hallucinating will cause the application to crash."*
-- **Translation Workflow**: Work in batches of 5–10 locales. After each batch, run `scripts/translation_deltas.py` to verify no keys remain missing. Run `scripts/apply_translations.py` to inject translations into XML.
+- **Translation Workflow**: `prisma/translate.ts` liest den englischen Master `strings.xml`, seeded die Strings in die Voting-DB und führt autonom das LLM-Voting durch (per-skill Sub-Agents). Die DB ist die zentrale Autorität für alle Übersetzungen. Nach einem Translate-Lauf wird die DB via `deno task savetranslationstogit` als SQL-Dump versioniert. `prisma/export.ts` regeneriert die `values-*`-Verzeichnisse komplett aus der DB. `scripts/translation_deltas.py` analysiert Deltas (obsolet/missing).
 - Always use `R.string` — never hardcode user-facing text in Kotlin, XML, or navigation graphs
-- New strings go to `values/strings.xml` first, then run `scripts/translation_deltas.py`
 - Mark programmatic strings as `translatable="false"` in XML
 - Never add `abc_*` strings — those come from AndroidX automatically
 - Use `@string/` references in layout XML and navigation graphs

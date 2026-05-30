@@ -56,29 +56,30 @@ interface SourceString {
 async function main() {
     const { targetDir } = parseArgs();
 
-    // Safety: target directory must NOT already exist
+    // ── 1. Load keep_english keys ─────────────────────────────────────
+    const keepEnglish = new Set<string>();
     try {
-        await Deno.stat(targetDir);
-        console.error(
-            `Error: Target directory '${targetDir}' already exists. Remove it first.`,
+        const keepJson = JSON.parse(
+            await Deno.readTextFile(
+                new URL("../scripts/keep_english.json", import.meta.url),
+            ),
         );
-        Deno.exit(1);
-    } catch (err) {
-        if (!(err instanceof Deno.errors.NotFound)) throw err;
+        if (Array.isArray(keepJson)) {
+            for (const k of keepJson) keepEnglish.add(k);
+        }
+        console.log(
+            `keep_english.json: ${keepEnglish.size} keys excluded`,
+        );
+    } catch {
+        console.warn("No keep_english.json found — exporting all keys");
     }
 
-    // ── 1. Read English master strings.xml ────────────────────────────
+    // ── 2. Read English master strings.xml ────────────────────────────
     const masterPath = new URL(
         "../app/src/main/res/values/strings.xml",
         import.meta.url,
     );
     const masterXml = await Deno.readTextFile(masterPath);
-
-    // Copy master to target
-    const valuesDir = `${targetDir}/values`;
-    await Deno.mkdir(valuesDir, { recursive: true });
-    await Deno.writeTextFile(`${valuesDir}/strings.xml`, masterXml);
-    console.log(`Copied: values/strings.xml`);
 
     // Parse translatable keys from master (same logic as seed.ts)
     const sourceStrings: SourceString[] = [];
@@ -90,6 +91,10 @@ async function main() {
         const text = match[3].trim();
         if (!text) continue;
         if (/translatable\s*=\s*"false"/.test(attrs)) continue;
+        if (keepEnglish.has(match[1])) {
+            console.log(`  keep_english: skipping "${match[1]}"`);
+            continue;
+        }
 
         const decoded = decodeXml(text);
         const ms = await getMasterStringByText(decoded);
@@ -103,11 +108,20 @@ async function main() {
         `Parsed ${sourceStrings.length} translatable keys from master`,
     );
 
-    // ── 2. Get all languages with votes ──────────────────────────────
+    // ── 3. Get all languages with votes ──────────────────────────────
     const languages = await getLanguagesWithVotes();
     console.log(`Found ${languages.length} languages with votes`);
 
-    // ── 3. Per language: pick tiebreak winner, write XML ─────────────
+    // ── 4. Delete existing values-* directories in target ─────────────
+    for await (const entry of Deno.readDir(targetDir)) {
+        if (entry.isDirectory && entry.name.startsWith("values-")) {
+            await Deno.remove(`${targetDir}/${entry.name}`, {
+                recursive: true,
+            });
+        }
+    }
+
+    // ── 5. Per language: pick tiebreak winner, write XML ─────────────
     let totalWritten = 0;
 
     for (const lang of languages) {
@@ -133,9 +147,7 @@ async function main() {
 
         const lines: string[] = [];
         lines.push('<?xml version="1.0" encoding="utf-8"?>');
-        lines.push(
-            '<resources xmlns:tools="http://schemas.android.com/tools">',
-        );
+        lines.push("<resources>");
 
         for (const e of entries) {
             lines.push(
