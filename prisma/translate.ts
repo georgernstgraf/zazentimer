@@ -30,7 +30,7 @@ import {
 const MODEL_PROVIDERS_RAW: Record<string, string | string[]> = {
     "claude-opus-4.7": "openrouter",
     "deepseek-v4-pro": "opencode-go",
-    "gemini-3.1-pro-preview": ["github-copilot", "google"],
+    "gemini-3.1-pro-preview": ["google", "github-copilot"],
     "gemini-3.1-pro": ["opencode"],
     "gemini-3.5-flash": ["opencode", "github-copilot", "google", "openrouter"],
     "glm-5.1": ["zai-coding-plan", "opencode-go"],
@@ -183,7 +183,7 @@ const START_TIME = Date.now();
 const MAX_RETRIES = 3;
 const POLL_TIMEOUT_MS = 15 * 60 * 1000; // 15 minutes max per (model, locale) attempt
 const DEFAULT_MIN_PROFICIENCY = 2;
-const DEFAULT_MAX_DURATION_MIN = 10;
+const DEFAULT_MAX_DURATION_MIN = 210;
 
 function isTimeUp(maxDurationMs: number): boolean {
     return Date.now() - START_TIME >= maxDurationMs;
@@ -403,7 +403,9 @@ async function dispatchProficiency(
 
                 if (pollResult.type === "timeout") {
                     logError(
-                        `proficiency session timeout after ${POLL_TIMEOUT_MS / 60000} min for ${context}, creating new session`,
+                        `proficiency session timeout after ${
+                            POLL_TIMEOUT_MS / 60000
+                        } min for ${context}, creating new session`,
                     );
                     await opencode.closeSession(sessionId);
                     sessionId = await opencode.createSession(PROJECT_DIR);
@@ -506,7 +508,9 @@ async function dispatchTranslate(
 
                 if (pollResult.type === "timeout") {
                     logError(
-                        `translation session timeout after ${POLL_TIMEOUT_MS / 60000} min for ${context}, creating new session`,
+                        `translation session timeout after ${
+                            POLL_TIMEOUT_MS / 60000
+                        } min for ${context}, creating new session`,
                     );
                     await opencode.closeSession(sessionId);
                     sessionId = await opencode.createSession(PROJECT_DIR);
