@@ -11,8 +11,9 @@ function escapeXml(text: string): string {
         .replace(/&/g, "&amp;")
         .replace(/</g, "&lt;")
         .replace(/>/g, "&gt;")
-        .replace(/'/g, "\\'")
-        .replace(/"/g, '\\"');
+        .replace(/(?<!\\)'/g, "\\'")
+        .replace(/(?<!\\)"/g, '\\"')
+        .replace(/\\&amp;/g, "&amp;");
 }
 
 function decodeXml(text: string): string {
@@ -139,9 +140,12 @@ async function main() {
         const entries: { key: string; text: string }[] = [];
         for (const src of sourceStrings) {
             const translation = winners.get(src.id);
-            if (translation) {
-                entries.push({ key: src.key, text: translation });
+            if (!translation) continue;
+            // Skip translations that broke \'%s\' quote structure
+            if (src.text.includes("\\'%s\\'") && !translation.includes("\\'%s\\'")) {
+                continue;
             }
+            entries.push({ key: src.key, text: translation });
         }
         entries.sort((a, b) => a.key.localeCompare(b.key));
 

@@ -1,41 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="abbrechen">Отмена</string>
-    <string name="about1">Таймер Дзэн-медитации — простой таймер медитации с настраиваемыми секциями, звуками гонга и управлением сессиями.</string>
-    <string name="about2">Изначально создан Stefan Gaffga. В настоящее время поддерживается Georg Graf.&lt;br&gt;&lt;br&gt;Спасибо Winfried из &lt;a href="http://www.meditationsuhren.de">http://www.meditationsuhren.de&lt;/a&gt; за предоставление отличных звуков гонга!</string>
-    <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues">Сообщить об ошибке на GitHub&lt;/a&gt;</string>
-    <string name="app_description">Приложение позволяет создавать собственные сессии медитации и предоставляет таймер с визуальными и звуковыми уведомлениями об окончании части или всей медитации.</string>
-    <string name="appbar_scrolling_view_behavior">android.support.design.widget.AppBarLayout$ScrollingViewBehavior</string>
-    <string name="backup_error_text">Произошла ошибка при сохранении.</string>
-    <string name="backup_no_permission">Не удалось создать резервную копию из-за отсутствия разрешений.</string>
-    <string name="backup_not_createable">Ошибка создания файла резервной копии.</string>
+    <string name="about1">Zazen Meditation Timer — простой таймер для медитации с настраиваемыми секциями, звуками поющих чаш и управлением сессиями.</string>
+    <string name="about2">Изначально создано Stefan Gaffga. В настоящее время поддерживается Georg Graf.&lt;br&gt;&lt;br&gt;Спасибо Winfried с &lt;a href=\"http://www.meditationsuhren.de\"&gt;http://www.meditationsuhren.de&lt;/a&gt; за предоставление таких замечательных звуков поющих чаш!</string>
+    <string name="about3">&lt;a href=\"https://github.com/georgernstgraf/zazentimer/issues\"&gt;Сообщить о проблемах на GitHub&lt;/a&gt;</string>
+    <string name="action_delete">Удалить</string>
+    <string name="action_undo">Отменить</string>
+    <string name="affected_section_format">• этап \"%1$s\" в сессии \"%2$s\"</string>
+    <string name="app_description">Это приложение позволяет пользователю определять набор сессий для медитации и предоставляет таймер с визуальной и звуковой обратной связью, когда часть или вся медитация завершена.</string>
+    <string name="backup_error_text">Извините, при сохранении произошла ошибка.</string>
     <string name="backup_success_text">Резервная копия успешно создана!</string>
     <string name="bell_name_1">Высокий тон</string>
     <string name="bell_name_2">Низкий тон</string>
-    <string name="bell_name_3">Яп. чаша Дхарма, 107 мм</string>
-    <string name="bell_name_4">Яп. чаша Дхарма, 88 мм (черная, глазурь)</string>
-    <string name="bell_name_5">Яп. чаша Сёмё, 90 мм</string>
-    <string name="bell_name_6">Яп. чаша Тан, 164 мм</string>
+    <string name="bell_name_3">Яп. поющая чаша Дхарма, 107 мм</string>
+    <string name="bell_name_4">Яп. поющая чаша Дхарма, 88 мм (чёрная, глазурованная)</string>
+    <string name="bell_name_5">Яп. поющая чаша Сёмё, 90 мм</string>
+    <string name="bell_name_6">Японская чаша Тан, 164 мм</string>
     <string name="bell_name_7">Тиб. чаша, 230 мм</string>
-    <string name="bell_name_8">Яп. чаша, 97 мм</string>
-    <string name="bell_pause">Пауза чаши (сек)</string>
+    <string name="bell_name_8">Яп. поющая чаша, 97 мм</string>
+    <string name="bell_pause">Интервал между чашами (сек)</string>
     <string name="bell_user">Добавить чашу…</string>
-    <string name="bottom_nav_meditation">Медитация</string>
-    <string name="bottom_nav_sessions">Сессии</string>
-    <string name="bottom_sheet_behavior">android.support.design.widget.BottomSheetBehavior</string>
     <string name="but_pause">Пауза</string>
     <string name="but_start">Начать медитацию</string>
     <string name="but_stop">Стоп</string>
-    <string name="caption_zazen_meditation">Дзэн-медитация</string>
+    <string name="button_bell_volumes">Настроить громкость чаш</string>
+    <string name="caption_zazen_meditation">Медитация Дзадзэн</string>
     <string name="checkbox_keep_screen_on">Не выключать экран</string>
-    <string name="checkbox_no_server_messages">Показывать новости</string>
+    <string name="confirm_delete_bell">Удалить чашу \"%s\"?</string>
+    <string name="confirm_delete_bell_affected">Удалить чашу \"%1$s\"?\n\nСледующие секции будут переключены на чашу по умолчанию:\n%2$s</string>
+    <string name="content_desc_drag_handle">Перетащите для изменения порядка</string>
+    <string name="content_desc_section_actions">Действия с секцией</string>
+    <string name="content_desc_session_actions">Действия с сессией</string>
     <string name="copy_prefix">Копия</string>
-    <string name="crash_dialog_comment_prompt">Необязательно: Какое действие вызвало ошибку?</string>
-    <string name="crash_dialog_ok_toast">Огромное спасибо за вашу помощь!</string>
-    <string name="crash_dialog_text">Извините, произошла ошибка. Вы можете помочь найти и исправить проблему, отправив отчет об ошибке и подробности ваших действий.</string>
-    <string name="crash_dialog_title">Таймер Дзэн-медитации</string>
-    <string name="crash_toast_text">Извините, произошла внутренняя ошибка!</string>
-    <string name="crash_user_email_label">Необязательно: Ваш email для вопросов или обновлений по этой проблеме.</string>
     <string name="default_section_name">Без названия</string>
     <string name="demo_sess1_description">Воскресная вечерняя медитация</string>
     <string name="demo_sess1_name">Дзадзэн и Кинхин</string>
@@ -46,114 +42,102 @@
     <string name="demo_sess1_sec5_name">Кинхин 3</string>
     <string name="demo_sess1_sec6_name">Дзадзэн 3</string>
     <string name="demo_sess2_description">Ежедневная медитация</string>
-    <string name="demo_sess2_name">Только дзадзэн</string>
-    <string name="desc_get_messages">Если автоматические новости отключены, вы можете проверить их здесь.</string>
-    <string name="desc_keep_screen_on">Экран остается включенным во время медитации</string>
-    <string name="desc_no_server_messages">Автоматически показывать новости при запуске</string>
-    <string name="error_checking_for_server_messages">Ошибка получения новостей.</string>
+    <string name="demo_sess2_name">Только Дзадзэн</string>
+    <string name="desc_keep_screen_on">Не выключает экран во время медитации</string>
     <string name="gong_type">Звук гонга</string>
-    <string name="help_sectionlist_text">Здесь вы можете назвать, описать и изменить содержимое сессии.\n\n ИЗМЕНЕНИЕ ПОРЯДКА\n Удерживайте элемент и перетащите\n его на новую позицию.\n\n УДАЛЕНИЕ\n Чтобы удалить элемент, смахните вправо.\n\n РЕДАКТИРОВАНИЕ\n Нажмите на секцию для изменения.\n\n ДОБАВЛЕНИЕ\n Нажмите +, чтобы добавить секцию.</string>
-    <string name="help_sectionlist_title">Изменить сессию</string>
+    <string name="help_sectionlist_text">Здесь вы можете назвать, описать и изменить содержимое вашей Сессии.
+
+ ИЗМЕНЕНИЕ ПОРЯДКА
+ Чтобы изменить порядок элементов, нажмите и удерживайте элемент, а затем
+ перетащите его на новое место.
+
+ УДАЛЕНИЕ
+ Чтобы удалить элемент, сдвиньте его вправо.
+
+ РЕДАКТИРОВАНИЕ
+ Чтобы изменить секцию, просто коснитесь её один раз.
+
+ ДОБАВЛЕНИЕ
+ Чтобы добавить новую секцию, нажмите кнопку +.</string>
+    <string name="help_sectionlist_title">Редактировать сессию</string>
+    <string name="import_bell">Импортировать чашу</string>
     <string name="label_section_name">Название секции</string>
     <string name="label_session_description">Описание сессии</string>
     <string name="label_session_name">Название сессии</string>
+    <string name="manage_bells">Управление чашами</string>
+    <string name="manage_bells_summary">Добавить чаши из файловой системы / удалить чаши из приложения</string>
     <string name="menu_about">О приложении…</string>
+    <string name="menu_add_section">Добавить секцию</string>
+    <string name="menu_add_session">Добавить сессию</string>
     <string name="menu_copy_session">Дублировать сессию</string>
     <string name="menu_delete_section">Удалить секцию</string>
     <string name="menu_delete_session">Удалить сессию</string>
     <string name="menu_duplicate_section">Дублировать секцию</string>
-    <string name="menu_edit_session">Изменить сессию</string>
+    <string name="menu_edit_session">Редактировать сессию</string>
     <string name="menu_help">Справка</string>
-    <string name="menu_add_session">Добавить сессию</string>
-    <string name="menu_new_session">Новая сессия</string>
     <string name="menu_privacy">Конфиденциальность…</string>
     <string name="menu_settings">Настройки</string>
     <string name="minuten">Минуты</string>
-    <string name="no_new_server_messages">Нет новых сообщений.</string>
-    <string name="no_sections_in_session">Невозможно начать: в выбранной сессии нет секций.</string>
-    <string name="no_session_exists">Нет сессии для запуска. Пожалуйста, сначала создайте ее.</string>
-    <string name="notification_text">Дзэн-медитация сейчас запущена</string>
-    <string name="notification_text_paused">Дзэн-медитация приостановлена</string>
-    <string name="notification_title">Дзэн-медитация</string>
-    <string name="notification_title_paused">Дзэн-медитация (пауза)</string>
-    <string name="num_bells">Количество ударов</string>
+    <string name="nav_label_edit_section">Редактировать секцию</string>
+    <string name="nav_label_edit_session">Редактировать сессию</string>
+    <string name="nav_label_manage_bells">Управление чашами</string>
+    <string name="nav_label_meditation">Медитация</string>
+    <string name="nav_label_sessions">Сессии</string>
+    <string name="nav_label_settings">Настройки</string>
+    <string name="no_bells_configured">Чаши ещё не настроены</string>
+    <string name="no_custom_bells">Пользовательские чаши не импортированы.</string>
+    <string name="no_sections_in_session">Невозможно начать медитацию: выбранная сессия не содержит секций.</string>
+    <string name="no_session_exists">Нет сессии, которую можно запустить. Пожалуйста, сначала создайте её.</string>
+    <string name="notification_channel_name">Таймер медитации</string>
+    <string name="notification_text">В данный момент идет медитация Дзадзэн</string>
+    <string name="notification_text_paused">Медитация Дзадзэн приостановлена</string>
+    <string name="notification_title">Медитация Дзадзэн</string>
+    <string name="notification_title_paused">Медитация Дзадзэн (приостановлена)</string>
+    <string name="num_bells">Количество ударов в чашу</string>
     <string name="ok">ОК</string>
     <string name="pref_desc_brightness">Яркость экрана во время медитации</string>
-    <string name="pref_get_messages">Проверить новые сообщения</string>
-    <string name="pref_sum_backup">Сохранить резервную копию сессий и звуков на SD-карту.</string>
-    <string name="pref_sum_bad_removal">SD-карта извлечена некорректно.</string>
-    <string name="pref_sum_checking">SD-карта проверяется</string>
-    <string name="pref_sum_ejecting">SD-карта извлекается</string>
-    <string name="pref_sum_nofs">На SD-карте нет файловой системы</string>
-    <string name="pref_sum_read_only">SD-карта доступна только для чтения</string>
-    <string name="pref_sum_removed">SD-карта отсутствует</string>
-    <string name="pref_sum_restore">Восстановить сессии и звуки из резервной копии SD-карты</string>
-    <string name="pref_sum_shared">SD-карта используется совместно</string>
+    <string name="pref_sum_backup">Сохранить резервную копию ваших сессий и звуков на SD-карту.</string>
+    <string name="pref_sum_restore">Восстановить сессии и пользовательские звуки из резервной копии на SD-карте</string>
     <string name="pref_title_backup">Создать резервную копию</string>
     <string name="pref_title_brightness">Яркость</string>
-    <string name="pref_title_restore">Восстановить из копии</string>
-    <string name="privacy_message">Приложение не собирает персональные данные, IP-адреса и не использует их каким-либо образом.</string>
+    <string name="pref_title_restore">Восстановить из резервной копии</string>
+    <string name="privacy_message">Это приложение не собирает никаких личных данных — оно также не использует IP-адреса или любые другие технологические данные, а также не собирает, не обрабатывает и не использует их каким-либо образом.</string>
     <string name="privacy_ok">ОК</string>
-    <string name="privacy_title">Конфиденциальность</string>
-    <string name="really_stop">Действительно остановить медитацию?</string>
+    <string name="privacy_title">Информация о конфиденциальности</string>
     <string name="restore_backup_not_found">Файл резервной копии не найден</string>
-    <string name="restore_error_text">Ошибка восстановления из копии</string>
-    <string name="restore_no_permission">Не удалось восстановить из-за отсутствия разрешений.</string>
-    <string name="restore_really_text">Это заменит все ваши сессии на сессии из резервной копии! (Без возможности отмены)</string>
-    <string name="restore_really_title">Действительно восстановить?</string>
+    <string name="restore_error_text">Ошибка при восстановлении из резервной копии</string>
+    <string name="restore_really_text">Это заменит все ваши сессии на те, что в резервной копии! (Без возможности отмены!)</string>
+    <string name="restore_really_title">Действительно восстановить данные?</string>
     <string name="restore_success_text">Данные успешно восстановлены</string>
+    <string name="restore_version_mismatch_text">Эта резервная копия была создана более новой версией ZazenTimer. Пожалуйста, обновите приложение.</string>
+    <string name="restore_version_mismatch_title">Более новая версия резервной копии</string>
     <string name="search_menu_title">Поиск</string>
-    <string name="section_info_string_1_pl">%1$d ударов</string>
-    <string name="section_info_string_1_sg">1 удар</string>
-    <string name="section_info_string_2_pl">каждые %1$d сек</string>
+    <string name="section_deleted">Удалено \'%s\'</string>
+    <string name="section_info_string_1_pl">%1$d чаш</string>
+    <string name="section_info_string_1_sg">1 удар в чашу</string>
+    <string name="section_info_string_2_pl">каждые %1$d секунд</string>
     <string name="section_info_string_2_sg">каждую секунду</string>
     <string name="sekunden">Секунды</string>
-    <string name="select_audio">Выбрать аудиофайл</string>
-    <string name="service_description">Текущая дзэн-медитация</string>
-    <string name="content_desc_drag_handle">Перетащите для изменения порядка</string>
-    <string name="content_desc_section_actions">Действия с секцией</string>
-    <string name="content_desc_session_actions">Действия с сессией</string>
+    <string name="select_audio">Выбрать звуковой файл</string>
+    <string name="service_description">Текущая медитация Дзадзэн</string>
     <string name="session_list_unnamed_entry">Сессия без названия</string>
-    <string name="status_bar_notification_info_overflow">999+</string>
-    <string name="text_no_notify_access_settings">Отсутствуют стандартные настройки отключения звука. Найдите параметр "Доступ к режиму Не беспокоить" и включите его.</string>
-    <string name="text_no_sections">Секции не заданы.</string>
+    <string name="stop_meditation_cancel">Отмена</string>
+    <string name="stop_meditation_message">Ваша сессия медитации все еще продолжается.</string>
+    <string name="stop_meditation_stop">Стоп</string>
+    <string name="stop_meditation_title">Остановить медитацию?</string>
+    <string name="system_volume_section_title">Громкость медитации</string>
+    <string name="system_volume_subtitle">Управляет громкостью будильника телефона для всех чаш.</string>
     <string name="text_question_delete_session">Действительно удалить выбранную сессию?</string>
     <string name="theme">Тема</string>
     <string name="theme_dark">Тёмная тема</string>
-    <string name="theme_desc">Выберите оформление приложения</string>
+    <string name="theme_desc">Выберите внешний вид приложения</string>
     <string name="theme_light">Светлая тема</string>
     <string name="theme_system">Системная тема</string>
-    <string name="time_section_elapsed">Прошло в секции</string>
-    <string name="time_section_remaining">Осталось в секции</string>
-    <string name="time_session_elapsed">Прошло в сессии</string>
-    <string name="time_session_remaining">Осталось в сессии</string>
-    <string name="title_question_delete_session">Удалить сессию?</string>
-    <string name="title_volume_bells">Громкость гонга</string>
-    <string name="unnamed">Без названия</string>
-    <string name="stop_meditation_title">Остановить медитацию?</string>
-    <string name="stop_meditation_message">Ваша сессия медитации все еще активна.</string>
-    <string name="stop_meditation_stop">Стоп</string>
-    <string name="stop_meditation_cancel">Отмена</string>
-    <string name="pref_title_bell_volume">Громкость гонга</string>
-    <string name="pref_desc_bell_volume">Управляет громкостью звука гонга</string>
-    <string name="title_dim_bell">Приглушить гонг</string>
-    <string name="dim_bell_label_off">Не приглушен</string>
-    <string name="dim_bell_label_format">Приглушен: %1$d0%%</string>
-    <string name="section_deleted">Удалено \'%s\'</string>
-    <string name="action_undo">Отмена</string>
-    <string name="notification_channel_name">Таймер медитации</string>
-    <string name="nav_label_sessions">Сессии</string>
-    <string name="nav_label_meditation">Медитация</string>
-    <string name="nav_label_edit_session">Изменить сессию</string>
-    <string name="nav_label_edit_section">Изменить секцию</string>
-    <string name="nav_label_settings">Настройки</string>
-
+    <string name="time_section_elapsed">Прошло времени секции</string>
+    <string name="time_section_remaining">Осталось времени секции</string>
+    <string name="time_session_elapsed">Прошло времени сессии</string>
+    <string name="time_session_remaining">Осталось времени сессии</string>
     <string name="title_bell_volumes">Громкость чаш</string>
-    <string name="button_bell_volumes">Настроить громкость</string>
-    <string name="bell_volume_label_format" translatable="false">%1$d%%</string>
-    <string name="bell_volume_default">По умолчанию</string>
-    <string name="no_bells_configured">Чаши пока не настроены</string>
-    <string name="bell_volume_dim_explanation">Уменьшите громкость отдельных чаш. Также учитывайте системную громкость будильника.</string>
-    <string name="restore_version_mismatch_title">Более новая версия резервной копии</string>
-    <string name="restore_version_mismatch_text">Эта резервная копия создана в более новой версии ZazenTimer. Пожалуйста, обновите приложение.</string>
+    <string name="title_question_delete_session">Удалить сессию?</string>
+    <string name="unnamed">Без названия</string>
 </resources>
