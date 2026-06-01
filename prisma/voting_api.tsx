@@ -12,6 +12,7 @@ import {
     getLanguagesWithVotesForString,
     getMasterStringById,
     getMasterStringByText,
+    getMasterStringCount,
     getModelById,
     getModelByName,
     getModels,
@@ -467,7 +468,7 @@ app.get("/models", async (c) => {
                 )}
             </div>
         )
-        : await renderModelsOverview();
+        : await renderModelsOverview(sort, dir);
 
     if (isHtmx) return c.html(content);
 
@@ -482,18 +483,70 @@ app.get("/models", async (c) => {
     );
 });
 
-async function renderModelsOverview() {
+async function renderModelsOverview(sort: string, dir: string) {
     const models = await getModelsWithStats();
+
+    if (sort && dir) {
+        models.sort((a, b) => {
+            const getVal = (m: typeof models[number]): string | number => {
+                switch (sort) {
+                    case "name":
+                        return m.name;
+                    case "languages":
+                        return m.languageCount;
+                    case "proficiency":
+                        return m.avgProficiency ?? 0;
+                    case "votes":
+                        return m.voteCount;
+                    default:
+                        return 0;
+                }
+            };
+            const va = getVal(a);
+            const vb = getVal(b);
+            if (typeof va === "string" && typeof vb === "string") {
+                return dir === "asc"
+                    ? va.localeCompare(vb)
+                    : vb.localeCompare(va);
+            }
+            return dir === "asc"
+                ? Number(va) - Number(vb)
+                : Number(vb) - Number(va);
+        });
+    }
+
+    const nextDir = dir === "asc" ? "desc" : "asc";
+
+    function sortLink(field: string, label: string) {
+        const indicator = sort === field ? (dir === "asc" ? "▲" : "▼") : "";
+        return (
+            <a
+                href="#"
+                hx-get={`/models?sort=${field}&dir=${nextDir}`}
+                hx-target="#models-content"
+                hx-push-url="true"
+                style="text-decoration: none; color: inherit;"
+            >
+                {label} {indicator}
+            </a>
+        );
+    }
 
     return (
         <div id="models-content">
             <table>
                 <thead>
                     <tr>
-                        <th>Model</th>
-                        <th style="text-align: center;">Languages</th>
-                        <th style="text-align: center;">Avg. Proficiency</th>
-                        <th style="text-align: center;">Total Votes</th>
+                        <th>{sortLink("name", "Model")}</th>
+                        <th style="text-align: center;">
+                            {sortLink("languages", "Languages")}
+                        </th>
+                        <th style="text-align: center;">
+                            {sortLink("proficiency", "Avg. Proficiency")}
+                        </th>
+                        <th style="text-align: center;">
+                            {sortLink("votes", "Total Votes")}
+                        </th>
                     </tr>
                 </thead>
                 <tbody>
@@ -1083,6 +1136,10 @@ app.get("/languages", async (c) => {
                         return a.iso_639_3;
                     case "whisper":
                         return a.whisper_response || "";
+                    case "translated":
+                        return a.translatedCount;
+                    case "settled":
+                        return a.settledCount;
                     case "models":
                         return a.modelCount;
                     case "votes":
@@ -1103,6 +1160,10 @@ app.get("/languages", async (c) => {
                         return b.iso_639_3;
                     case "whisper":
                         return b.whisper_response || "";
+                    case "translated":
+                        return b.translatedCount;
+                    case "settled":
+                        return b.settledCount;
                     case "models":
                         return b.modelCount;
                     case "votes":
@@ -1145,16 +1206,22 @@ app.get("/languages", async (c) => {
             <table>
                 <thead>
                     <tr>
-                        <th>{sortLink("bcp47", "BCP 47")}</th>
                         <th>{sortLink("name", "English Name")}</th>
-                        <th>{sortLink("posix", "POSIX")}</th>
+                        <th>{sortLink("whisper", "Whisper Name")}</th>
+                        <th>{sortLink("bcp47", "BCP 47")}</th>
                         <th>{sortLink("iso", "ISO 639-3")}</th>
-                        <th>{sortLink("whisper", "Whisper")}</th>
+                        <th>{sortLink("posix", "POSIX")}</th>
+                        <th style="text-align: center;">
+                            {sortLink("translated", "Translated")}
+                        </th>
+                        <th style="text-align: center;">
+                            {sortLink("settled", "Settled")}
+                        </th>
                         <th style="text-align: center;">
                             {sortLink("models", "Models")}
                         </th>
                         <th style="text-align: center;">
-                            {sortLink("votes", "Votes")}
+                            {sortLink("votes", "Total Votes")}
                         </th>
                     </tr>
                 </thead>
@@ -1162,18 +1229,9 @@ app.get("/languages", async (c) => {
                     {languages.map((l) => (
                         <tr>
                             <td>
-                                <code>{l.bcp_47}</code>
-                            </td>
-                            <td>
                                 <a href={`/languages/${l.id}`}>
                                     {l.english_name}
                                 </a>
-                            </td>
-                            <td>
-                                <code>{l.posix_code}</code>
-                            </td>
-                            <td>
-                                <code>{l.iso_639_3}</code>
                             </td>
                             <td>
                                 {l.whisper_response || (
@@ -1181,6 +1239,21 @@ app.get("/languages", async (c) => {
                                         —
                                     </em>
                                 )}
+                            </td>
+                            <td>
+                                <code>{l.bcp_47}</code>
+                            </td>
+                            <td>
+                                <code>{l.iso_639_3}</code>
+                            </td>
+                            <td>
+                                <code>{l.posix_code}</code>
+                            </td>
+                            <td style="text-align: center;">
+                                {l.translatedCount}
+                            </td>
+                            <td style="text-align: center;">
+                                {l.settledCount}
                             </td>
                             <td style="text-align: center;">{l.modelCount}</td>
                             <td style="text-align: center;">{l.voteCount}</td>
@@ -1196,7 +1269,7 @@ app.get("/languages", async (c) => {
         <Layout title="Languages">
             <hgroup>
                 <h1>Languages</h1>
-                <p>Browse {languages.length} locales</p>
+                <p>Browse {languages.length} locales for {await getMasterStringCount()} master strings</p>
             </hgroup>
 
             <input

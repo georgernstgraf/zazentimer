@@ -172,19 +172,28 @@ export async function getLanguagesWithStats(search: string) {
     });
 
     return await Promise.all(languages.map(async (lang) => {
-        const [modelCount, voteCount] = await Promise.all([
+        const [modelCount, voteCount, translatedCount, settledCount] = await Promise.all([
             prisma.language_proficiencies.count({
                 where: { languageId: lang.id },
             }),
             prisma.votes.count({
                 where: { languagesId: lang.id, ...NOT_EMPTY },
             }),
+            prisma.votes.groupBy({
+                by: ["master_stringsId"],
+                where: { languagesId: lang.id, ...NOT_EMPTY },
+            }).then((r) => r.length),
+            getSettledStrings(lang.id).then((s) => s.size),
         ]);
-        return { ...lang, modelCount, voteCount };
+        return { ...lang, modelCount, voteCount, translatedCount, settledCount };
     }));
 }
 
 // ── Master Strings ──────────────────────────────────────────────────────────
+
+export async function getMasterStringCount(): Promise<number> {
+    return await prisma.master_strings.count();
+}
 
 export async function getAllMasterStrings(): Promise<master_strings[]> {
     return await prisma.master_strings.findMany({ orderBy: { id: "asc" } });

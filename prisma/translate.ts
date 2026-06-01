@@ -34,12 +34,12 @@ const MODEL_PROVIDERS_RAW: Record<string, string | string[]> = {
     "gemini-3.1-pro": ["opencode"],
     "gemini-3.5-flash": ["opencode", "github-copilot", "google", "openrouter"],
     "glm-5.1": ["zai-coding-plan", "opencode-go"],
-    "gpt-5.4": "github-copilot",
+    "gpt-5.4": ["openrouter", "github-copilot"],
     "gpt-5.5": "opencode",
     "kimi-k2.6": "opencode-go",
     "minimax-m2.7": "opencode-go",
     "mistral-large": "opencode-go",
-    "qwen-3.6-plus": "opencode-go",
+    "qwen3.6-plus": "opencode-go",
 };
 
 const MODEL_PROVIDERS: Map<string, string[]> = new Map(
@@ -649,11 +649,13 @@ async function runOne(
             }/${modelProviders!.length})/${chain[0].modelID}`
         : "no provider";
     const nonSettled = allMs.length - settled.size;
-    const modelVotesTotal = existing.size + nullVotes.size;
+    const votesOnNonSettled = [...existing].filter((id) => !settled.has(id)).length;
+    const nullsOnNonSettled = [...nullVotes].filter((id) => !settled.has(id)).length;
+    const totalOnNonSettled = votesOnNonSettled + nullsOnNonSettled;
     log(
-        `In ${langEnglishName} (${langBcp47}) to ${providerLabel}: ${settled.size} out of ${allMs.length} strings are settled. ` +
-            `For the remaining ${nonSettled}, the model has given ${modelVotesTotal} votings already (${existing.size} strings, ${nullVotes.size} null). ` +
-            `Will ask for ${missing.length} strings.`,
+        `In ${langEnglishName} (${langBcp47}) to ${providerLabel}: ${settled.size} of ${allMs.length} strings are settled. ` +
+            `Of the remaining ${nonSettled} unsettled, this model has already voted on ${totalOnNonSettled} (including ${nullsOnNonSettled} empty votes). ` +
+            `Asking for ${missing.length} new string(s).`,
     );
 
     const strings = missing.map((s) => ({ key: s.text, text: s.text }));
