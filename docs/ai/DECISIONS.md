@@ -546,6 +546,14 @@ Each entry documents WHAT was decided and WHY.
 - **Tradeoff**: None — fix is confirmed working.
 
 ## 2026-06-02: Update #64 — Play Store checklist finalized
+
+## 2026-06-02: Room DB version on About screen reads PRAGMA user_version (#238)
+- **Choice**: `DbOperations.getActualDatabaseVersion()` reads `appDb?.openHelper?.readableDatabase?.version` (maps to SQLite `PRAGMA user_version`) instead of the compile-time constant `AppDatabase.CURRENT_VERSION`.
+- **Reason**: The compile-time constant says what version the code declares; `PRAGMA user_version` says what version the database actually is on disk. They can diverge after `fallbackToDestructiveMigration` or backup restore. The issue explicitly requested "reading it from migration, not Gradle."
+- **Considered**: Using `AppDatabase.CURRENT_VERSION` directly (simpler but potentially inaccurate), embedding in `BuildConfig` via Gradle (explicitly rejected by issue).
+- **Tradeoff**: A null-safe fallback to `AppDatabase.CURRENT_VERSION` is needed since `openHelper` can be null when the DB is closed (during backup operations). The About screen is never reachable during those operations.
+
+## 2026-06-02: Update #64 — Play Store checklist finalized
 - **Choice**: Replaced the tutorial-style issue body with a concise checklist reflecting current progress.
 - **Reason**: CI/release pipeline is complete; most Play Console setup is done. The original issue body was a generic guide, not a project-specific checklist.
 - **Tradeoff**: None — the issue is now actionable.

@@ -26,6 +26,11 @@ class AboutPage {
         return this
     }
 
+    fun verifyRoomVersion(version: String): AboutPage {
+        onView(withText(containsString("Room DB: v$version"))).check(matches(isDisplayed()))
+        return this
+    }
+
     fun clickOk(): MainPage {
         robot.clickDialogButton(R.string.privacy_ok)
         return MainPage()

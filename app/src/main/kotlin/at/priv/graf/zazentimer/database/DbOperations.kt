@@ -74,6 +74,11 @@ class DbOperations
 
         fun isConnected(): Boolean = appDb?.isOpen == true
 
+        fun getActualDatabaseVersion(): Int {
+            val v = appDb?.openHelper?.readableDatabase?.version
+            return v ?: AppDatabase.CURRENT_VERSION
+        }
+
         suspend fun readSession(id: Int): Session? =
             withIdling {
                 val dao = sessionDao ?: return@withIdling null
