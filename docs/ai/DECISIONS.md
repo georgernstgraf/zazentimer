@@ -534,6 +534,23 @@ Each entry documents WHAT was decided and WHY.
 - **Tradeoff**: If two custom bells happen to have files ending in the same suffix, the wrong bell could be selected. Currently impossible since `bell_` prefix ensures uniqueness.
 
 ## 2026-06-02: `openOutputStream("wt")` to prevent ZIP tail corruption (#237)
+
+## 2026-06-02: Close #202 — Python scripts obsolete
+- **Choice**: Closed issue #202 without implementing the Python scripts (`translation_votes.py`, `dispatch_translations.py`).
+- **Reason**: The Deno/TypeScript voting pipeline (`prisma/translations/`, `voting_api.tsx`, `export.ts`) was built instead and fully replaces the originally-planned Python approach. No Python scripts needed.
+- **Tradeoff**: None — the existing Deno pipeline is superior (type-safe, same toolchain as Prisma, no Python dependency).
+
+## 2026-06-02: Close #234 — already implemented
+- **Choice**: Closed issue #234 as already fixed in commit history (2026-05-27).
+- **Reason**: `showBellVolumeDialog()` reads sections fresh from DB. `deriveBellVolumesFromSections()` was removed. Verified against source code.
+- **Tradeoff**: None — fix is confirmed working.
+
+## 2026-06-02: Update #64 — Play Store checklist finalized
+- **Choice**: Replaced the tutorial-style issue body with a concise checklist reflecting current progress.
+- **Reason**: CI/release pipeline is complete; most Play Console setup is done. The original issue body was a generic guide, not a project-specific checklist.
+- **Tradeoff**: None — the issue is now actionable.
+
+## 2026-06-02: `openOutputStream("wt")` to prevent ZIP tail corruption (#237)
 - **Choice**: Changed `contentResolver.openOutputStream(uri)` → `contentResolver.openOutputStream(uri, "wt")` in `SettingsFragment.doBackup()`.
 - **Reason**: Without `"wt"` (write-truncate) mode, the content provider opens the existing file for writing at offset 0 but does NOT truncate it. If the new backup is smaller than the old file, the old central directory and EOCD remain at the tail. `unzip` finds the stale EOCD and reads garbage entry listings (CRC mismatch, filename mismatch, bad offsets).
 - **Considered**: Deleting the file before writing (not possible with content URIs), manually truncating via `FileChannel.truncate(0)` (requires `ParcelFileDescriptor`).
