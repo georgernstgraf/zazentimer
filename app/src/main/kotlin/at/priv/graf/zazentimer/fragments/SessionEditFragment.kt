@@ -16,6 +16,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
+import at.priv.graf.zazentimer.Constants
 import at.priv.graf.zazentimer.R
 import at.priv.graf.zazentimer.ZazenTimerActivity
 import at.priv.graf.zazentimer.bo.Section
@@ -329,8 +330,8 @@ class SessionEditFragment :
 
     companion object {
         private const val TAG = "ZMT_SessionEditFragment"
-        private const val DEFAULT_SECTION_DURATION_SECONDS = 60
-        private const val DEFAULT_BELL_VOLUME = at.priv.graf.zazentimer.Constants.DEFAULT_BELL_VOLUME
+        private const val DEFAULT_SECTION_DURATION_SECONDS = Constants.DEFAULT_SECTION_DURATION_SECONDS
+        private const val DEFAULT_BELL_VOLUME = Constants.DEFAULT_BELL_VOLUME
         private const val HELP_PADDING_DP = 24
     }
 }

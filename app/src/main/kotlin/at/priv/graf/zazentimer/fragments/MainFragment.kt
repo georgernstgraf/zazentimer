@@ -18,6 +18,7 @@ import androidx.recyclerview.widget.RecyclerView
 import at.priv.graf.zazentimer.R
 import at.priv.graf.zazentimer.ZazenTimerActivity
 import at.priv.graf.zazentimer.base.SpinnerUtil
+import at.priv.graf.zazentimer.bo.Section
 import at.priv.graf.zazentimer.bo.Session
 import at.priv.graf.zazentimer.database.DbOperations
 import at.priv.graf.zazentimer.databinding.FragmentMainBinding
@@ -169,10 +170,16 @@ class MainFragment : Fragment() {
         fun addNewSession() {
             if (!interactionsEnabled) return
             val session = Session()
-            session.name = ""
-            session.description = ""
+            session.name = getString(R.string.new_session_name)
+            session.description = getString(R.string.new_session_description)
             lifecycleScope.launch {
                 dbOperations.insertSession(session)
+                val section =
+                    Section(
+                        resources.getString(R.string.default_section_name),
+                        at.priv.graf.zazentimer.Constants.DEFAULT_SECTION_DURATION_SECONDS,
+                    )
+                dbOperations.insertSection(session, section)
                 updateSessionList()
                 setSelectedSessionId(session.id)
                 navigateToSessionEdit(session.id)

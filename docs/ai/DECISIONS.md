@@ -564,6 +564,12 @@ Each entry documents WHAT was decided and WHY.
 - **Considered**: Deleting the file before writing (not possible with content URIs), manually truncating via `FileChannel.truncate(0)` (requires `ParcelFileDescriptor`).
 - **Tradeoff**: `"wt"` mode is supported by all standard Android DocumentsProvider implementations. A non-standard provider might ignore it — but the app would fail with the old behavior anyway.
 
+## 2026-06-02: New session pre-fills defaults + auto-creates first section (#236)
+- **Choice**: `MainFragment.addNewSession()` now sets `name = getString(R.string.new_session_name)` ("New Session") and `description = getString(R.string.new_session_description)` ("New Session Description"). After inserting the session, it also creates a default section via `Section(resources.getString(R.string.default_section_name), Constants.DEFAULT_SECTION_DURATION_SECONDS)` and `dbOperations.insertSection(session, section)`.
+- **Reason**: Previously, new sessions opened with blank name/description and zero sections, leaving users with an empty screen and no guidance. Pre-filling defaults and auto-creating a section eliminates the empty state and matches the mental model of "a session has at least one section."
+- **Considered**: Adding an empty-state UI (TextView placeholder when sections list is empty) — rejected as more complex and the session would still appear empty. Auto-creating the section is simpler and makes the session immediately usable.
+- **Tradeoff**: Every new session starts with one "Unnamed" section (60s, demo bell). Users who want zero sections must delete it. This matches the most common workflow (create session → add section → edit section).
+
 ## 2026-05-27: Bell sliders: direct volume, normal direction, matched steps (#235)
 - **Choice**: Replaced the inverted "dimming" seekbar (left=loud, right=quiet, `vol = 100 - progress*10`) with standard direct volume seekbar (left=quiet, right=loud, `max=same as system slider`). Section title changed from "Bell Dimming" to "Configure Bell Volume". Removed `VOLUME_STEP_SIZE`/`VOLUME_MAX_STEP` constants.
 - **Reason**: User wanted normal seekbar behavior and same step count as system alarm slider. Dimming concept was confusing (reduced from 100% = dimmed).

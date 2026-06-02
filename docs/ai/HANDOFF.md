@@ -8,3 +8,4 @@ No pending tasks. Last cleared: 2026-06-02.
 - #234: Closed — stale bell list fix already implemented
 - #64: Updated description — accurate checklist of Play Store readiness
 - #238: Room DB version on About screen — reads PRAGMA user_version at runtime
+- #236: New session pre-fills defaults + auto-creates first section

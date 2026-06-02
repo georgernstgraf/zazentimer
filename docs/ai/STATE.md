@@ -3,7 +3,7 @@
 Current status as of 2026-06-02.
 
 ## Current Focus
-ADR session bug: empty-state UI for sessions with no sections (#236)
+None — all open issues triaged
 
 ## Completed (this cycle)
 - [x] #237: Backup filter, BellCollection refresh, selectBell URI fallback, ZIP truncation fix
@@ -11,10 +11,10 @@ ADR session bug: empty-state UI for sessions with no sections (#236)
 - [x] #234: Closed — stale bell list fix already implemented
 - [x] #64: Updated description — accurate checklist of Play Store readiness
 - [x] #238: Room DB version on About screen — reads actual `PRAGMA user_version` at runtime via `DbOperations.getActualDatabaseVersion()`
+- [x] #236: New session pre-fills name/description + auto-creates first section — no more empty session bug
 
 ## Pending
 - [ ] #64 — Play Store (promote alpha → production after testing completes)
-- [ ] #236 — ADR session bug (empty-state UI for sessions with no sections)
 
 ## Blockers
 None
