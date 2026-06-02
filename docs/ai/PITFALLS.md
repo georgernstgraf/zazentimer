@@ -82,7 +82,9 @@ Read this file carefully before making changes in affected areas.
 - **Hono HTTPException requires app.onError handler**: Without `app.onError()`, unhandled `HTTPException` instances return an empty 500 response body. Add global error handler to return proper status codes (400, 404, 409, 500) with meaningful messages.
 - **Prisma P2002 (Unique Constraint) returns empty response without error handler**: Unhandled Prisma errors crash the request with no response body. Global `app.onError()` must catch errors with `code === "P2002"` and return 409 with the error message.
 
-### Opencode HTTP API
+#- **`openOutputStream(uri)` does NOT truncate**: Writing to a content URI via `contentResolver.openOutputStream(uri)` (without mode) opens the existing file at byte 0 but keeps the file's length. If the new content is shorter, old data beyond the write position survives. For ZIP backups, this means the old End-of-Central-Directory remains at the tail, causing `unzip -t` to report CRC mismatch, mismatching local filenames, and bad offsets. Always use `openOutputStream(uri, "wt")` to truncate the file before writing.
+
+## Opencode HTTP API
 - **Basic Auth required**: Server läuft hinter `OPENCODE_SERVER_USERNAME`/`OPENCODE_SERVER_PASSWORD`. Alle API-Calls brauchen `Authorization: Basic <base64>`. Default-Port: `4096` (nicht `3001`).
 - **Parts-Format im Response**: Message-Parts enthalten `step-start`, `reasoning`, `text`, `step-finish`. Der Content liegt im Part mit `type: "text"` — nicht in `parts[0]` (das ist `step-start` ohne `.text`).
 - **Model-Eigenidentifikation**: LLMs geben oft `providerID/modelID` (z.B. `opencode/gpt-5.5`) statt nur `gpt-5.5` als Model-Namen zurück. Verify-Funktionen müssen den letzten Slash-Teil extrahieren (`extractModelName()`).

@@ -158,7 +158,7 @@ class SettingsFragment : PreferenceFragmentCompat() {
 
     private fun doBackup(uri: Uri) {
         lifecycleScope.launch {
-            val os = requireActivity().contentResolver.openOutputStream(uri)
+            val os = requireActivity().contentResolver.openOutputStream(uri, "wt")
             val success =
                 if (os != null) {
                     backupManager.backup(os)

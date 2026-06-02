@@ -517,6 +517,28 @@ Each entry documents WHAT was decided and WHY.
 - **Reason**: Deleting sections or swapping bells within a section left `this.sections` stale. When the dialog opened, it included bells from deleted sections.
 - **Tradeoff**: Dialog open now requires a coroutine launch (non-blocking, already async pattern).
 
+## 2026-06-02: Backup filter — only `bell_*` files (#237)
+- **Choice**: `BackupManager.addFilesDirToZip()` now includes only files starting with `bell_` from `filesDir`. Previously it included everything except `InstantRun`.
+- **Reason**: The old filter swept stale artifacts (`zentimer`, `profileInstalled`, `profileinstaller_*`) into every backup. Custom bell audio files (the only meaningful data in `filesDir` besides the DB) all start with `bell_`.
+- **Considered**: Excluding specific known-stale filenames (brittle, misses future artifacts).
+- **Tradeoff**: Any non-`bell_*` file in `filesDir` is silently excluded. Currently no such files carry useful data.
+
+## 2026-06-02: `BellCollection` refresh after backup restore (#237)
+- **Choice**: Added `BellCollection.initialize(requireContext())` in `SettingsFragment.doRestore()` after successful restore, alongside the existing `seedBuiltinBells()` call.
+- **Reason**: `BellCollection` is a singleton that caches available bells in memory. Restoring a backup writes audio files to `filesDir` but doesn't refresh `BellCollection`, so the Section Edit bell spinner (which reads from `BellCollection`) is stale. Manage Bells always worked because it reads directly from the DB.
+- **Tradeoff**: Adds ~ms of filesystem scanning per restore; idempotent.
+
+## 2026-06-02: selectBell URI fallback for cross-device restore (#237)
+- **Choice**: `SectionEditFragment.selectBell()` now falls back to filename-suffix matching when exact URI comparison fails.
+- **Reason**: The database stores absolute file paths from the backup device (e.g., `file:///data/.../OldDevice/files/...`). `BellCollection` builds URIs dynamically from the current device's `filesDir`. Exact URI matching fails across devices. Comparing only the filename part (`bell_*`) works regardless of `filesDir` path.
+- **Tradeoff**: If two custom bells happen to have files ending in the same suffix, the wrong bell could be selected. Currently impossible since `bell_` prefix ensures uniqueness.
+
+## 2026-06-02: `openOutputStream("wt")` to prevent ZIP tail corruption (#237)
+- **Choice**: Changed `contentResolver.openOutputStream(uri)` → `contentResolver.openOutputStream(uri, "wt")` in `SettingsFragment.doBackup()`.
+- **Reason**: Without `"wt"` (write-truncate) mode, the content provider opens the existing file for writing at offset 0 but does NOT truncate it. If the new backup is smaller than the old file, the old central directory and EOCD remain at the tail. `unzip` finds the stale EOCD and reads garbage entry listings (CRC mismatch, filename mismatch, bad offsets).
+- **Considered**: Deleting the file before writing (not possible with content URIs), manually truncating via `FileChannel.truncate(0)` (requires `ParcelFileDescriptor`).
+- **Tradeoff**: `"wt"` mode is supported by all standard Android DocumentsProvider implementations. A non-standard provider might ignore it — but the app would fail with the old behavior anyway.
+
 ## 2026-05-27: Bell sliders: direct volume, normal direction, matched steps (#235)
 - **Choice**: Replaced the inverted "dimming" seekbar (left=loud, right=quiet, `vol = 100 - progress*10`) with standard direct volume seekbar (left=quiet, right=loud, `max=same as system slider`). Section title changed from "Bell Dimming" to "Configure Bell Volume". Removed `VOLUME_STEP_SIZE`/`VOLUME_MAX_STEP` constants.
 - **Reason**: User wanted normal seekbar behavior and same step count as system alarm slider. Dimming concept was confusing (reduced from 100% = dimmed).

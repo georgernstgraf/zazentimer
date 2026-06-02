@@ -1,12 +1,10 @@
 # Hand Off
 
-No pending tasks. Last cleared: 2026-05-29.
+No pending tasks. Last cleared: 2026-06-02.
 
 ## Recently Completed
-- Fixed Room MIGRATION_1_2: missing `NOT NULL` on PK + unwanted `DEFAULT 0` (#207)
-- Added `fallbackToDestructiveMigration(true)` + RoomMigrationTest with 6 cases
-- Created `prisma/export.ts` — in-place values-* regeneration from voting DB
-- Added `export` task to `prisma/deno.json`
-- Deleted `scripts/apply_translations.py`
-- #233: escapeXml negative lookbehind + \&amp; repair + \'%s\' filter
-- #233: getEvaluation random tiebreak + getBestTranslation(text, bcp47)
+- #237: Backup filter — only `bell_*` files in backup, excludes stale artifacts
+- #237: `BellCollection.initialize()` after restore for Section Edit spinner
+- #237: `selectBell()` URI fallback — filename-suffix matching for cross-device restore
+- #237: `openOutputStream(uri, "wt")` truncation — prevents ZIP corruption on overwrite
+- #237: Analyzed backup `tmp/blah.zip` — confirmed internal structure, stale `zentimer` identified
