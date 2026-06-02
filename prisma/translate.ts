@@ -36,6 +36,7 @@ const MODEL_PROVIDERS_RAW: Record<string, string | string[]> = {
     "glm-5.1": ["zai-coding-plan", "opencode-go"],
     "gpt-5.4": ["openrouter", "github-copilot"],
     "gpt-5.5": "opencode",
+    "grok-4.3": "openrouter",
     "kimi-k2.6": "opencode-go",
     "minimax-m2.7": "opencode-go",
     "mistral-large": "opencode-go",

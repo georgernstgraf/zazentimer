@@ -417,6 +417,16 @@ class SectionEditFragment : Fragment() {
             for (i in bellList.indices) {
                 if (bellList[i].uri.toString() == str) {
                     binding.selectGongSound.setSelection(i)
+                    return
+                }
+            }
+            if (str != null) {
+                val suffix = str.substringAfterLast("/")
+                for (i in bellList.indices) {
+                    if (bellList[i].uri.toString().endsWith(suffix)) {
+                        binding.selectGongSound.setSelection(i)
+                        return
+                    }
                 }
             }
         }

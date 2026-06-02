@@ -57,8 +57,8 @@ class BackupManagerTest {
     @Test
     fun backup_withFiles_producesZipWithAllFiles() {
         databaseFile.writeText("db-content")
-        File(filesDir, "prefs1").writeText("pref-content-1")
-        File(filesDir, "prefs2").writeText("pref-content-2")
+        File(filesDir, "bell_prefs1").writeText("pref-content-1")
+        File(filesDir, "bell_prefs2").writeText("pref-content-2")
         val backupFile = File(tempDir, "backup.zip")
 
         val result = backupManager.backup(FileOutputStream(backupFile))
@@ -68,7 +68,7 @@ class BackupManagerTest {
             java.util.zip.ZipFile(backupFile).use { zf ->
                 zf.entries().toList().map { it.name }
             }
-        assertThat(entries).containsExactly("zentimer", "prefs1", "prefs2")
+        assertThat(entries).containsExactly("zentimer", "bell_prefs1", "bell_prefs2")
     }
 
     @Test
@@ -76,7 +76,7 @@ class BackupManagerTest {
         databaseFile.writeText("db-content")
         val instantRun = File(filesDir, "InstantRun")
         instantRun.mkdirs()
-        File(filesDir, "goodfile").writeText("data")
+        File(filesDir, "bell_goodfile").writeText("data")
         val backupFile = File(tempDir, "backup.zip")
 
         backupManager.backup(FileOutputStream(backupFile))
@@ -85,7 +85,7 @@ class BackupManagerTest {
             java.util.zip.ZipFile(backupFile).use { zf ->
                 zf.entries().toList().map { it.name }
             }
-        assertThat(entries).containsExactly("zentimer", "goodfile")
+        assertThat(entries).containsExactly("zentimer", "bell_goodfile")
     }
 
     @Test
@@ -112,7 +112,7 @@ class BackupManagerTest {
     @Test
     fun restore_roundTrip_preservesData() {
         databaseFile.writeText("original-db-content")
-        File(filesDir, "config").writeText("config-data")
+        File(filesDir, "bell_config").writeText("config-data")
         val backupFile = File(tempDir, "backup.zip")
 
         backupManager.backup(FileOutputStream(backupFile))
@@ -124,7 +124,7 @@ class BackupManagerTest {
 
         assertThat(result).isEqualTo(0)
         assertThat(databaseFile.readText()).isEqualTo("original-db-content")
-        assertThat(File(filesDir, "config").readText()).isEqualTo("config-data")
+        assertThat(File(filesDir, "bell_config").readText()).isEqualTo("config-data")
     }
 
     @Test

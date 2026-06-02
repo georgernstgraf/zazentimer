@@ -18,6 +18,7 @@ import androidx.preference.PreferenceFragmentCompat
 import at.priv.graf.zazentimer.MigrationHelper
 import at.priv.graf.zazentimer.R
 import at.priv.graf.zazentimer.ZazenTimerActivity
+import at.priv.graf.zazentimer.audio.BellCollection
 import at.priv.graf.zazentimer.backup.BackupManager
 import at.priv.graf.zazentimer.database.AppDatabase
 import at.priv.graf.zazentimer.database.DbOperations
@@ -199,6 +200,7 @@ class SettingsFragment : PreferenceFragmentCompat() {
                 Log.e(TAG, "Error restoring", e)
             }
             if (result == 0) {
+                BellCollection.initialize(requireContext())
                 launch {
                     MigrationHelper.seedBuiltinBells(requireActivity(), dbOperations)
                 }

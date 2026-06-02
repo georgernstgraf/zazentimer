@@ -147,7 +147,7 @@ class BackupManager(
         zos: ZipOutputStream,
         filesDir: File,
     ): Boolean {
-        val listFiles = filesDir.listFiles { f -> f.name != "InstantRun" } ?: return true
+        val listFiles = filesDir.listFiles { f -> f.name.startsWith("bell_") } ?: return true
         var fileFailed = false
         for (file in listFiles) {
             val ze = ZipEntry(file.name)
