@@ -489,12 +489,11 @@ export async function getBestTranslation(
     const profs = await prisma.language_proficiencies.findMany({
         where: {
             languageId: lang.id,
-            llm_modelsId: { in: modelIds },
+            modelId: { in: modelIds },
             level: { gte: 2 },
         },
-        include: { llm_model: true },
     });
-    const modelLevels = new Map(profs.map((p) => [p.llm_model.id, p.level]));
+    const modelLevels = new Map(profs.map((p) => [p.modelId, p.level]));
 
     const groups = new Map<string, { modelCount: number; score: number }>();
     for (const v of votes) {
