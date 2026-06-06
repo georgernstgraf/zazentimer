@@ -8,7 +8,7 @@ import dagger.hilt.android.HiltAndroidApp
 class ZazenTimerApplication : Application() {
     override fun onCreate() {
         super.onCreate()
-        if (!applicationInfo.processName.endsWith(":crash")) {
+        if (applicationInfo?.processName?.endsWith(":crash") != true) {
             Thread.setDefaultUncaughtExceptionHandler { _, throwable ->
                 val intent = CrashActivity.createIntent(this, throwable)
                 startActivity(intent)
