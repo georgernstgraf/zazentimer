@@ -36,6 +36,13 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
+        <activity
+            android:name="at.priv.graf.zazentimer.CrashActivity"
+            android:exported="false"
+            android:theme="@style/Theme.AppCompat.Dialog"
+            android:excludeFromRecents="true"
+            android:process=":crash"/>
+
         <service
             android:name="at.priv.graf.zazentimer.service.MeditationService"
             android:exported="false"

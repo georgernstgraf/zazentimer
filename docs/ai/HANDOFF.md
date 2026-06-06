@@ -1,6 +1,6 @@
 # Hand Off
 
-No pending tasks. Last cleared: 2026-06-02.
+No pending tasks. Last cleared: 2026-06-06.
 
 ## Recently Completed
 - #237: Backup filter, BellCollection refresh, selectBell URI fallback, ZIP truncation fix
@@ -9,3 +9,4 @@ No pending tasks. Last cleared: 2026-06-02.
 - #64: Updated description — accurate checklist of Play Store readiness
 - #238: Room DB version on About screen — reads PRAGMA user_version at runtime
 - #236: New session pre-fills defaults + auto-creates first section
+- Global crash handler with CrashActivity pop-up showing exception details (#240)

@@ -575,3 +575,9 @@ Each entry documents WHAT was decided and WHY.
 - **Reason**: User wanted normal seekbar behavior and same step count as system alarm slider. Dimming concept was confusing (reduced from 100% = dimmed).
 - **Tradeoff**: Bell slider now maps 10-100% volume to system slider steps (e.g., 0-7). Linear mapping gives ~12% per step on 7-step devices.
 
+## 2026-06-06: Global crash handler with separate-process CrashActivity (#240)
+- **Choice**: Implemented `Thread.setDefaultUncaughtExceptionHandler` in `ZazenTimerApplication` that launches a new `CrashActivity` (running in `:crash` process) to display exception details in an AlertDialog.
+- **Reason**: Previously, uncaught exceptions silently crashed the app with no user-visible feedback. A global handler ensures all exceptions are caught and displayed as a pop-up with the exception type, message, and stack trace. The separate process ensures the dialog can launch even if the main process is corrupted.
+- **Considered**: Try-catch wrapping individual entry points (brittle, misses background thread crashes), in-process crash activity (vulnerable to corrupted main process), ACRA integration (heavy dependency for a simple dialog).
+- **Tradeoff**: CrashActivity runs in a separate process, meaning a second app instance is briefly spawned. The `ZazenTimerApplication`'s `onCreate` skips setting the handler in the crash process to avoid recursion.
+
