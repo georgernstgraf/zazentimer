@@ -179,7 +179,6 @@ class ZazenTimerActivity :
         }
         observeViewModel()
         lifecycleScope.launch {
-            MigrationHelper.seedBuiltinBells(this@ZazenTimerActivity, dbOperations)
             dbOperations.sanitizeBellUris()
             val demoMarker = File(noBackupFilesDir, "demo_sessions_created")
             if (demoMarker.exists() && dbOperations.readSessions().isEmpty()) {

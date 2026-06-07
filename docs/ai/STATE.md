@@ -12,6 +12,7 @@ Resilient cross-build-type backup restore with strict 1:1 bell sync (#241)
 - [x] #241: Orphaned builtin cleanup — delete bells not in current BellCollection, reassign sections to demo bell
 - [x] #241: Strict 1:1 custom bell sync — remove DB entries for missing files (reassign sections), insert DB entries for orphaned files on disk
 - [x] #241: Startup health check — `dbOperations.sanitizeBellUris()` runs in `ZazenTimerActivity.onCreate()` lifecycleScope, replacing old `ensureBellsTableConsistent()`
+- [x] #241: Deleted `MigrationHelper.kt`/`seedBuiltinBells()` — fully redundant with `sanitizeBellUris()`
 
 ## Pending
 - [ ] #64 — Play Store (promote alpha → production after testing completes)

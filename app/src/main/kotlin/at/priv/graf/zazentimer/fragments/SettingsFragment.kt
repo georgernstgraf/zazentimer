@@ -15,7 +15,6 @@ import androidx.navigation.Navigation
 import androidx.preference.CheckBoxPreference
 import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
-import at.priv.graf.zazentimer.MigrationHelper
 import at.priv.graf.zazentimer.R
 import at.priv.graf.zazentimer.ZazenTimerActivity
 import at.priv.graf.zazentimer.audio.BellCollection
@@ -202,7 +201,6 @@ class SettingsFragment : PreferenceFragmentCompat() {
             if (result == 0) {
                 BellCollection.initialize(requireContext())
                 launch {
-                    MigrationHelper.seedBuiltinBells(requireActivity(), dbOperations)
                     dbOperations.sanitizeBellUris()
                 }
                 Toast.makeText(requireActivity(), R.string.restore_success_text, Toast.LENGTH_SHORT).show()

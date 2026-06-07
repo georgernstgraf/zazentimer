@@ -1,12 +1,5 @@
-on /languages it shows:
+# my thoughts
 
-English Name	Whisper Name	BCP 47	ISO 639-3	POSIX	Translated	Settled ▲	Models	Total Votes
-Cebuano	—	ceb	ceb	ceb	120	0	7	223
-Chiga	—	cgg	cgg	cgg	2	0	7	2
+My suggestion for Fix 2 is to open the Room database, then verify the availability of all URIs in the bells table before proceeding.
 
-but on http://localhost:8000/languages/13 (chiga) i get:
-
-Translations (0 strings)
-No evaluation data found for this language.
-
-explain this please.
+During the restore process we perform a sanitization or health‑check step, using Room tools rather than a direct SQL hack to bring the Ruhm database into a proper state.

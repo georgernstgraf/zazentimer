@@ -406,6 +406,7 @@ Each entry documents WHAT was decided and WHY.
 - **Reason**: WAL/SHM stale files caused SQLite to corrupt the restored database on reopen. Debug↔production package name mismatches in bell URIs caused FK constraint violations when editing sessions after restore. Running at startup heals the app after direct file operations, app updates with changed bell sets, and any database drift.
 - **Considered**: Fixing only via defensive code in `fillDataFromViews()` (masks root cause), raw SQL URI update in BackupManager (bypasses Room), running only after restore (misses edge cases).
 - **Tradeoff**: `sanitizeBellUris()` is ~90 lines and requires `@Suppress("CyclomaticComplexMethod", "LongMethod")`; `onCreate()` also needs `@Suppress("LongMethod")`.
+- **Deleted**: `MigrationHelper.kt` and its `seedBuiltinBells()` — fully redundant with `sanitizeBellUris()`.
 
 ## 2026-05-20: Emulator scripts as sourceable libraries (#200)
 - **Choice**: Restructured `start-emulator.sh` and `stop-emulator.sh` to be both standalone executables AND sourceable libraries with a `[[ "${BASH_SOURCE[0]}" == "${0}" ]]` guard. `run-instrumentation.sh` and `create-emulator-snapshots.sh` source them instead of duplicating functions.

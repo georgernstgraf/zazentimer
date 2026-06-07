@@ -32,7 +32,7 @@ Follow these without question. Do not deviate unless explicitly told.
 - Bell references use the `bells` table (`_id`, `name`, `uri`, `is_builtin`). Sections and session_bell_volumes reference bells via `bellId` FK exclusively — no `bell`/`bellUri` duplicate columns.
 - New sections must have a valid `bellId` before insert. `DbOperations.insertSection()` defaults `bellId=0` to the demo bell via `getBellByUri()` to satisfy FK constraint.
 - Sessions use `rank` column for persistent ordering. Query: `ORDER BY rank, name COLLATE NOCASE`. New sessions get `rank = MAX(rank) + 1`.
-- `sanitizeBellUris()` runs at every startup in `ZazenTimerActivity.onCreate()`. It syncs builtin bells with `BellCollection`, removes orphaned bells (reassigning sections to demo), and enforces strict 1:1 mapping for custom bells with disk. Replaces the removed `ensureBellsTableConsistent()`.
+- `sanitizeBellUris()` runs at every startup in `ZazenTimerActivity.onCreate()` (and after manual restores). It is the sole bell-sync function — replaces both `ensureBellsTableConsistent()` and `seedBuiltinBells()`. Syncs builtin bells with `BellCollection`, removes orphaned bells (reassigning sections to demo), and enforces strict 1:1 mapping for custom bells with disk.
 - **FK constraint testing**: Any unit test that creates sections must first insert a bell row and set `bellId` to the valid ID.
 - **Migration snapshots**: Every Room migration that modifies table schemas must include index creation statements for all indices in `@Entity`. Room validates full schema after migration.
 - Column order in SQLite is cosmetic — Room maps by column name, not position. Reordering columns in a migration is harmless.
