@@ -3,7 +3,7 @@
 Current status as of 2026-06-07.
 
 ## Current Focus
-Resilient cross-build-type backup restore with strict 1:1 bell sync (#241)
+F-Droid submission — build succeeds but APK not found (#242)
 
 ## Completed (this cycle)
 - [x] #241: WAL/SHM deletion in BackupManager after database overwrite to prevent stale WAL corruption
@@ -13,12 +13,7 @@ Resilient cross-build-type backup restore with strict 1:1 bell sync (#241)
 - [x] #241: Strict 1:1 custom bell sync — remove DB entries for missing files (reassign sections), insert DB entries for orphaned files on disk
 - [x] #241: Startup health check — `dbOperations.sanitizeBellUris()` runs in `ZazenTimerActivity.onCreate()` lifecycleScope, replacing old `ensureBellsTableConsistent()`
 - [x] #241: Deleted `MigrationHelper.kt`/`seedBuiltinBells()` — fully redundant with `sanitizeBellUris()`
-
-## Pending
-- [ ] #64 — Play Store (promote alpha → production after testing completes)
-
-## Blockers
-None
-
-## Next Session Suggestion
-Play Store release, or continue translation pipeline auto-resolution.
+- [x] #239: Closed — empty session bug already fixed by #236 (auto-create first section)
+- [x] #64: Closed — Play Store pipeline complete, alpha→production manual
+- [x] F-Droid: `SOUND_LICENSES.md`, `.fdroid.yml`, `scripts/release.sh` created
+- [x] F-Droid: metadata submitted as MR !39945 to fdroiddata

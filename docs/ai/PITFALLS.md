@@ -54,6 +54,14 @@ Read this file carefully before making changes in affected areas.
 - **New sections with bellId=0 fail FK in V10**: `SectionEntity.bellId` defaults to 0 (no bell selected). The FK constraint `bellId → bells._id` rejects this at insert. `DbOperations.insertSection()` now defaults to the demo bell when `bellId <= 0`. Any test or code path that inserts a section via raw DAO (not DbOperations) must explicitly set a valid bellId.
 - **Stale WAL/SHM files corrupt restored database**: When `BackupManager.restoreEntries()` overwrites the database file, the old `-wal` and `-shm` companion files remain. On reopen, SQLite applies stale WAL content on top of the new database, causing corruption. Always delete `-wal` and `-shm` after overwriting the database file and before reopening.
 - **Bell URIs differ between debug and production**: `BellCollection.getPredefinedBellUri()` uses `context.packageName` to build `android.resource://<pkg>/<resId>`. Debug builds have `at.priv.graf.zazentimer.debug`, production has `at.priv.graf.zazentimer`. If a backup is created with one build type and restored into the other, all bell URIs in the database become unresolvable. This causes FK constraint violations on section edit because `getBellByUri()` returns null and `bellId` falls back to 0. `sanitizeBellUris()` fixes this by matching builtin bells by name and updating their URIs.
+- **F-Droid .fdroid.yml format quirks**: 
+  - `prebuild` must be on a single line (not a YAML list), e.g. `prebuild: sed -i '...' file`
+  - `versionName` must NOT be quoted: `versionName: 3.0.7` not `versionName: '3.0.7'`
+  - `gradle: - yes` is the standard pattern (not `assembleRelease` explicitly) — F-Droid appends its own tasks
+  - `AutoUpdateMode: None` required when `UpdateCheckMode: None` during initial submission
+  - `CurrentVersion` must NOT be quoted: `CurrentVersion: 3.0.7` not `CurrentVersion: '3.0.7'`
+  - `Description` must NOT use `|-` block scalar — use plain folded style with indented continuation lines
+- **F-Droid 'Failed to find any output apks' with AGP 9.1.1**: The Gradle build succeeds (BUILD SUCCESSFUL) but F-Droid's post-build scanner can't find the APK at `app/build/outputs/apk/release/app-release-unsigned.apk`. The APK is confirmed to be produced locally. This may be an F-Droid build server compatibility issue with Gradle 9.5.1 / AGP 9.1.1. Tracked in #242.
 
 - **prismaCheckSchema fails after DB migration**: After any Room migration, the device DB schema changes, and `prisma db pull` regenerates `current/schema.prisma`. The `prismaCheckSchema` Gradle task diffs `desired/` (hand-crafted) vs `current/` (auto-generated) and will FAIL until a human updates `desired/schema.prisma`. The agent must NOT edit `desired/schema.prisma` — it is human-only.
 
