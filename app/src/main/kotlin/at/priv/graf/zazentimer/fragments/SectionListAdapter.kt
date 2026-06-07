@@ -16,6 +16,12 @@ class SectionListAdapter(
     private val clickListener: OnItemClickListener?,
     private val actionListener: OnSectionActionListener? = null,
 ) : RecyclerView.Adapter<SectionListAdapter.ViewHolder>() {
+    var bellNames: Map<Int, String> = emptyMap()
+        set(value) {
+            field = value
+            notifyDataSetChanged()
+        }
+
     interface OnItemClickListener {
         fun onItemClick(section: Section)
     }
@@ -34,6 +40,7 @@ class SectionListAdapter(
         view: View,
     ) : RecyclerView.ViewHolder(view) {
         val spinnerText1: TextView = view.findViewById(R.id.spinnerText1)
+        val bellNameText: TextView = view.findViewById(R.id.bellNameText)
         val spinnerText2: TextView = view.findViewById(R.id.spinnerText2)
         val dragHandle: ImageView = view.findViewById(R.id.dragHandle)
         val sectionOverflow: ImageButton = view.findViewById(R.id.sectionOverflow)
@@ -74,6 +81,7 @@ class SectionListAdapter(
             }
 
         holder.spinnerText1.text = name
+        holder.bellNameText.text = bellNames[section.bellId] ?: ""
         holder.spinnerText2.text = info
 
         holder.itemView.setOnClickListener {

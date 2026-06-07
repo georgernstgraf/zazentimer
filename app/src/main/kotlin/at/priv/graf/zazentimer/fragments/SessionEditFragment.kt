@@ -173,6 +173,8 @@ class SessionEditFragment :
                 _binding?.textSitzungName?.setText(s.name)
                 _binding?.textSitzungBeschreibung?.setText(s.description)
                 this@SessionEditFragment.sections = dbOperations.readSections(s.id)
+                val allBells = dbOperations.getAllBells()
+                adapter?.bellNames = allBells.associate { it.id to it.name }
                 editHelper.initSectionList()
                 _binding?.buttonBellVolumes?.isEnabled = !this@SessionEditFragment.sections.isNullOrEmpty()
             }
