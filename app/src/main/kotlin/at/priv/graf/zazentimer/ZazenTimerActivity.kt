@@ -140,6 +140,7 @@ class ZazenTimerActivity :
         }
     }
 
+    @Suppress("LongMethod")
     override fun onCreate(bundle: Bundle?) {
         Log.d(TAG, "onCreate")
         val preferences = getPreferences(this)
@@ -179,6 +180,7 @@ class ZazenTimerActivity :
         observeViewModel()
         lifecycleScope.launch {
             MigrationHelper.seedBuiltinBells(this@ZazenTimerActivity, dbOperations)
+            dbOperations.sanitizeBellUris()
             val demoMarker = File(noBackupFilesDir, "demo_sessions_created")
             if (demoMarker.exists() && dbOperations.readSessions().isEmpty()) {
                 Log.d(TAG, "Marker exists but DB empty -- data lost, recreating demo sessions")

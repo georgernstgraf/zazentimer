@@ -207,8 +207,8 @@ Each entry documents WHAT was decided and WHY.
 - **Considered**: Resolving in `onItemSelected()` callback (async race with `onPause()` save), scheduling at startup only (leaves window of broken state).
 - **Tradeoff**: One extra DB query per section save; negligible overhead.
 
-## 2026-05-19: ensureBellsTableConsistent at every startup
-- **Choice**: `ZazenTimerActivity` now calls `MigrationHelper.ensureBellsTableConsistent()` at every app startup (not just on backup restore), before demo session creation.
+## 2026-05-19: ensureBellsTableConsistent at every startup (SUPERSEDED)
+- **Choice**: (Superseded by 2026-06-07 startup health check below) `ZazenTimerActivity` now calls `MigrationHelper.ensureBellsTableConsistent()` at every app startup (not just on backup restore), before demo session creation.
 - **Reason**: The bells table may be stale after backup restore, manual DB modification, or upgrade from older versions. Running it every startup ensures consistency for the FK constraint.
 - **Considered**: Running only on version upgrade (misses backup restore), running only on demo creation (misses stale data in existing sessions).
 - **Tradeoff**: ~few dozen ms of DB operations at startup; idempotent (INSERT OR IGNORE for built-in bells).
@@ -401,11 +401,11 @@ Each entry documents WHAT was decided and WHY.
 - **Considered**: JSON-only storage (no queryability), keeping in-memory only (no persistence between sessions).
 - **Tradeoff**: Two Prisma schemas now coexist under `prisma/` — device DB at `prisma/desired/` + `prisma/current/`, translation DB at `prisma/translations/`. The translation DB is not auto-pulled from a device; schema evolves by hand.
 
-## 2026-06-07: Bidirectional resilient backup restore with 1:1 bell sync (#241)
-- **Choice**: Two fixes: (1) delete stale `-wal`/`-shm` files after database overwrite in restore; (2) add `DbOperations.sanitizeBellUris()` that runs after restore via Room DAOs (no raw SQL).
-- **Reason**: WAL/SHM stale files caused SQLite to corrupt the restored database on reopen. Debug↔production package name mismatches in bell URIs (e.g. `android.resource://at.priv.graf.zazentimer.debug` vs `...zazentimer`) caused FK constraint violations when editing sessions after restore.
-- **Considered**: Fixing only via defensive code in `fillDataFromViews()` (masks root cause), raw SQL URI update in BackupManager (bypasses Room).
-- **Tradeoff**: `sanitizeBellUris()` is ~90 lines and requires `@Suppress("CyclomaticComplexMethod", "LongMethod")`; the 1:1 custom bell sync adds DB writes for every orphaned file/entry.
+## 2026-06-07: Bidirectional resilient backup restore with 1:1 bell sync + startup health check (#241)
+- **Choice**: Three parts: (1) delete stale `-wal`/`-shm` files after database overwrite in restore; (2) add `DbOperations.sanitizeBellUris()` via Room DAOs (no raw SQL); (3) run `sanitizeBellUris()` at every app startup in `ZazenTimerActivity.onCreate()` lifecycleScope, superseding `ensureBellsTableConsistent()`.
+- **Reason**: WAL/SHM stale files caused SQLite to corrupt the restored database on reopen. Debug↔production package name mismatches in bell URIs caused FK constraint violations when editing sessions after restore. Running at startup heals the app after direct file operations, app updates with changed bell sets, and any database drift.
+- **Considered**: Fixing only via defensive code in `fillDataFromViews()` (masks root cause), raw SQL URI update in BackupManager (bypasses Room), running only after restore (misses edge cases).
+- **Tradeoff**: `sanitizeBellUris()` is ~90 lines and requires `@Suppress("CyclomaticComplexMethod", "LongMethod")`; `onCreate()` also needs `@Suppress("LongMethod")`.
 
 ## 2026-05-20: Emulator scripts as sourceable libraries (#200)
 - **Choice**: Restructured `start-emulator.sh` and `stop-emulator.sh` to be both standalone executables AND sourceable libraries with a `[[ "${BASH_SOURCE[0]}" == "${0}" ]]` guard. `run-instrumentation.sh` and `create-emulator-snapshots.sh` source them instead of duplicating functions.
