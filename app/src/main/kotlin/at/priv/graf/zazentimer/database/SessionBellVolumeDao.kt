@@ -23,6 +23,9 @@ interface SessionBellVolumeDao {
     @Query("DELETE FROM session_bell_volumes WHERE fk_session = :sessionId")
     suspend fun deleteForSession(sessionId: Int)
 
+    @Query("DELETE FROM session_bell_volumes WHERE bellId = :bellId")
+    suspend fun deleteByBellId(bellId: Int)
+
     @Query("DELETE FROM session_bell_volumes WHERE id = :id")
     suspend fun deleteById(id: Long)
 }

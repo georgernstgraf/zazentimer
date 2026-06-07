@@ -1,8 +1,9 @@
 # Hand Off
 
-No pending tasks. Last cleared: 2026-06-06.
+No pending tasks. Last cleared: 2026-06-07.
 
 ## Recently Completed
+- #241: Resilient cross-build-type backup restore with WAL/SHM deletion + sanitizeBellUris()
 - #237: Backup filter, BellCollection refresh, selectBell URI fallback, ZIP truncation fix
 - #202: Closed — Python scripts obsolete, Deno/TS voting pipeline replaced original plan
 - #234: Closed — stale bell list fix already implemented

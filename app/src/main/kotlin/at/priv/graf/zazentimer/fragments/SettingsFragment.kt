@@ -203,6 +203,7 @@ class SettingsFragment : PreferenceFragmentCompat() {
                 BellCollection.initialize(requireContext())
                 launch {
                     MigrationHelper.seedBuiltinBells(requireActivity(), dbOperations)
+                    dbOperations.sanitizeBellUris()
                 }
                 Toast.makeText(requireActivity(), R.string.restore_success_text, Toast.LENGTH_SHORT).show()
             } else if (result == 1) {

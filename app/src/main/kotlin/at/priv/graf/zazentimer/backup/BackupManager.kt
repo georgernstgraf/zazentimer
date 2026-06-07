@@ -102,6 +102,9 @@ class BackupManager(
                 if (!receiveBytes(entryBytes, databaseFileProvider())) {
                     result = 2
                 }
+                val dbPath = databaseFileProvider().absolutePath
+                File("$dbPath-wal").delete()
+                File("$dbPath-shm").delete()
                 onReopenDatabase()
             } else if (!receiveFile(zf.getInputStream(entry), File(filesDirProvider(), entry.name))) {
                 result = 2

@@ -1,21 +1,16 @@
 # Project State
 
-Current status as of 2026-06-06.
+Current status as of 2026-06-07.
 
 ## Current Focus
-Global crash handler: catching uncaught exceptions via UncaughtExceptionHandler + CrashActivity pop-up (#240)
+Resilient cross-build-type backup restore with strict 1:1 bell sync (#241)
 
 ## Completed (this cycle)
-- [x] #237: Backup filter, BellCollection refresh, selectBell URI fallback, ZIP truncation fix
-- [x] #202: Closed — Python scripts obsolete, Deno/TS voting pipeline replaces original plan
-- [x] #234: Closed — stale bell list fix already implemented
-- [x] #64: Updated description — accurate checklist of Play Store readiness
-- [x] #238: Room DB version on About screen — reads actual `PRAGMA user_version` at runtime via `DbOperations.getActualDatabaseVersion()`
-- [x] #236: New session pre-fills name/description + auto-creates first section — no more empty session bug
-- [x] Global UncaughtExceptionHandler in ZazenTimerApplication — intercepts all uncaught exceptions (#240)
-- [x] CrashActivity — AlertDialog pop-up in separate process showing exception type, message, and first 10 stack frames (#240)
-- [x] Copy Stack Trace & Exit button — copies full trace to clipboard, then exits (#240)
-- [x] Exit button — dismisses dialog and terminates app (#240)
+- [x] #241: WAL/SHM deletion in BackupManager after database overwrite to prevent stale WAL corruption
+- [x] #241: Room-based sanitizeBellUris() health check after restore
+- [x] #241: Builtin bell sync — insert missing bells, update URIs for package name changes (debug ↔ production)
+- [x] #241: Orphaned builtin cleanup — delete bells not in current BellCollection, reassign sections to demo bell
+- [x] #241: Strict 1:1 custom bell sync — remove DB entries for missing files (reassign sections), insert DB entries for orphaned files on disk
 
 ## Pending
 - [ ] #64 — Play Store (promote alpha → production after testing completes)

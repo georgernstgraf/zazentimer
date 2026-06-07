@@ -1,6 +1,7 @@
 package at.priv.graf.zazentimer.database
 
 import android.content.Context
+import android.util.Log
 import androidx.room.Room
 import at.priv.graf.zazentimer.audio.BellCollection
 import at.priv.graf.zazentimer.bo.Section
@@ -326,4 +327,108 @@ class DbOperations
 
                 bellDao?.deleteById(bellId)
             }
+
+        @Suppress("CyclomaticComplexMethod", "LongMethod")
+        suspend fun sanitizeBellUris() =
+            withIdling {
+                val bellDao = bellDao ?: return@withIdling
+                val sectionDao = sectionDao ?: return@withIdling
+                val bvDao = sessionBellVolumeDao ?: return@withIdling
+
+                val allDbBells = bellDao.getAll()
+                val currentBells = BellCollection.getBellList()
+
+                for (bell in currentBells) {
+                    if (bell.uri.scheme != "android.resource") continue
+                    val name = bell.getName()
+                    val existing = allDbBells.find { it.isBuiltin && it.name == name }
+                    if (existing != null) {
+                        if (existing.uri != bell.uri.toString()) {
+                            existing.uri = bell.uri.toString()
+                            bellDao.update(existing)
+                        }
+                    } else {
+                        bellDao.insert(
+                            BellEntity(
+                                name = name,
+                                uri = bell.uri.toString(),
+                                isBuiltin = true,
+                            ),
+                        )
+                    }
+                }
+
+                val updatedBells = bellDao.getAll()
+                val demoBellId =
+                    BellCollection.getDemoBell()?.let { demo ->
+                        updatedBells.find { it.isBuiltin && it.name == demo.getName() }?.id
+                    } ?: return@withIdling
+
+                val builtinNames =
+                    currentBells
+                        .filter { it.uri.scheme == "android.resource" }
+                        .map { it.getName() }
+                        .toSet()
+                for (dbBell in updatedBells.filter { it.isBuiltin }) {
+                    if (dbBell.name !in builtinNames) {
+                        Log.w(TAG, "Builtin bell '${dbBell.name}' no longer exists, reassigning to demo")
+                        val sections = sectionDao.getSectionsByBellId(dbBell.id)
+                        for (s in sections) {
+                            s.bellId = demoBellId
+                            sectionDao.update(s)
+                        }
+                        bvDao.deleteByBellId(dbBell.id)
+                        bellDao.deleteById(dbBell.id)
+                    }
+                }
+
+                val customBellFiles =
+                    context
+                        .filesDir
+                        .listFiles { _, name -> name.startsWith("bell_") }
+                        ?.map { it.name }
+                        ?.toSet() ?: emptySet()
+
+                for (bell in updatedBells.filter { !it.isBuiltin }) {
+                    val fileName = bell.uri.substringAfterLast("/")
+                    if (fileName !in customBellFiles) {
+                        Log.w(TAG, "Custom bell file missing ($fileName), removing from DB")
+                        val sections = sectionDao.getSectionsByBellId(bell.id)
+                        for (s in sections) {
+                            s.bellId = demoBellId
+                            sectionDao.update(s)
+                        }
+                        bvDao.deleteByBellId(bell.id)
+                        bellDao.deleteById(bell.id)
+                    } else {
+                        val correctUri = "file://${context.filesDir}/$fileName"
+                        if (bell.uri != correctUri) {
+                            bell.uri = correctUri
+                            bellDao.update(bell)
+                        }
+                    }
+                }
+
+                val dbCustomFilenames =
+                    updatedBells
+                        .filter { !it.isBuiltin }
+                        .map { it.uri.substringAfterLast("/") }
+                        .toSet()
+                for (fileName in customBellFiles) {
+                    if (fileName !in dbCustomFilenames) {
+                        Log.i(TAG, "Found orphaned custom bell file ($fileName), adding to DB")
+                        bellDao.insert(
+                            BellEntity(
+                                name = fileName.removePrefix("bell_"),
+                                uri = "file://${context.filesDir}/$fileName",
+                                isBuiltin = false,
+                            ),
+                        )
+                    }
+                }
+            }
+
+        companion object {
+            private const val TAG = "ZMT_DbOperations"
+        }
     }

@@ -37,6 +37,7 @@ Follow these without question. Do not deviate unless explicitly told.
 - **Migration snapshots**: Every Room migration that modifies table schemas must include index creation statements for all indices in `@Entity`. Room validates full schema after migration.
 - Column order in SQLite is cosmetic — Room maps by column name, not position. Reordering columns in a migration is harmless.
 - **Session rank persistence**: Session order is persisted in `MainFragment.onPause()` by recomputing `sessions[i].rank = i` from list position and calling `dbOperations.updateSession()` — matching the pattern in `SessionEditFragment.onPause()` for sections.
+- **After backup restore, call `sanitizeBellUris()`**: `SettingsFragment.doRestore()` calls `dbOperations.sanitizeBellUris()` after a successful backup restore. This ensures bell URIs are normalized for the current app's package name, builtin bells match `BellCollection`, and custom bells have a strict 1:1 mapping with files on disk. Never skip this step — the database may have stale URIs from a different build type or app version.
 
 ## Prisma — Device DB
 - `prisma/desired/schema.prisma` is **human-only** — hand-crafted SOLL schema. Never auto-generate or edit by agent.

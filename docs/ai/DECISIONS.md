@@ -401,6 +401,12 @@ Each entry documents WHAT was decided and WHY.
 - **Considered**: JSON-only storage (no queryability), keeping in-memory only (no persistence between sessions).
 - **Tradeoff**: Two Prisma schemas now coexist under `prisma/` — device DB at `prisma/desired/` + `prisma/current/`, translation DB at `prisma/translations/`. The translation DB is not auto-pulled from a device; schema evolves by hand.
 
+## 2026-06-07: Bidirectional resilient backup restore with 1:1 bell sync (#241)
+- **Choice**: Two fixes: (1) delete stale `-wal`/`-shm` files after database overwrite in restore; (2) add `DbOperations.sanitizeBellUris()` that runs after restore via Room DAOs (no raw SQL).
+- **Reason**: WAL/SHM stale files caused SQLite to corrupt the restored database on reopen. Debug↔production package name mismatches in bell URIs (e.g. `android.resource://at.priv.graf.zazentimer.debug` vs `...zazentimer`) caused FK constraint violations when editing sessions after restore.
+- **Considered**: Fixing only via defensive code in `fillDataFromViews()` (masks root cause), raw SQL URI update in BackupManager (bypasses Room).
+- **Tradeoff**: `sanitizeBellUris()` is ~90 lines and requires `@Suppress("CyclomaticComplexMethod", "LongMethod")`; the 1:1 custom bell sync adds DB writes for every orphaned file/entry.
+
 ## 2026-05-20: Emulator scripts as sourceable libraries (#200)
 - **Choice**: Restructured `start-emulator.sh` and `stop-emulator.sh` to be both standalone executables AND sourceable libraries with a `[[ "${BASH_SOURCE[0]}" == "${0}" ]]` guard. `run-instrumentation.sh` and `create-emulator-snapshots.sh` source them instead of duplicating functions.
 - **Reason**: 6 functions were duplicated 3-4x across scripts (`resolve_avd`, `wait_for_boot`, `configure_system`, `kill_emulator`, `kill_stale`, `setup_device`). Single source of truth eliminates drift.
