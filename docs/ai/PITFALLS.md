@@ -61,7 +61,15 @@ Read this file carefully before making changes in affected areas.
   - `AutoUpdateMode: None` required when `UpdateCheckMode: None` during initial submission
   - `CurrentVersion` must NOT be quoted: `CurrentVersion: 3.0.7` not `CurrentVersion: '3.0.7'`
   - `Description` must NOT use `|-` block scalar — use plain folded style with indented continuation lines
-- **F-Droid 'Failed to find any output apks' with AGP 9.1.1**: The Gradle build succeeds (BUILD SUCCESSFUL) but F-Droid's post-build scanner can't find the APK at `app/build/outputs/apk/release/app-release-unsigned.apk`. The APK is confirmed to be produced locally. This may be an F-Droid build server compatibility issue with Gradle 9.5.1 / AGP 9.1.1. Tracked in #242.
+- **F-Droid 'Failed to find any output apks'**: Fixed by adding `subdir: app` to metadata YAML. With subdir, F-Droid's build scanner finds the APK in the `app/build/` directory. Do NOT set `output:` when `subdir:` is set.
+- **F-Droid `AutoUpdateMode: VersionTag` is NOT valid**: Valid values: `None`, `Version`, `VersionCode`. Using `VersionTag` causes `fdroid lint` errors.
+- **F-Droid `UpdateCheckData` must have exactly 4 pipe-separated parts**: Format: `file|codeRegex|codeReplacement|nameRegex`. Extra pipes cause `ValueError: too many values to unpack (expected 4)`.
+- **F-Droid backslashes in regex must be preserved in YAML**: `\d`, `\s` etc. in unquoted YAML values are stored as literal characters. Do NOT double-quote the value or `sed` will eat backslashes.
+- **F-Droid `checkupdates` pipeline checks ALL existing tags**: Each tag is checked out and the `UpdateCheckData` regex is applied. If no tag matches (e.g., old tags had dynamic version), the job fails with "Couldn't find any version information". Fix: ensure a tag exists at a commit with static version code/name.
+- **F-Droid `checkupdates` adds `AutoName:` automatically**: When fastlane `title.txt` is detected in the upstream repo, `checkupdates` injects `AutoName: <title>` into the YAML. If missing from the metadata, the pipeline detects uncommitted changes and fails. Add `AutoName:` explicitly to prevent this.
+- **F-Droid dynamic version incompatible with auto-update**: `VersionTagSource`/`CommitCountSource` dynamically compute versionCode/versionName from git tags. F-Droid's `UpdateCheckData` regex can only match static literals in files. Convert to static `versionCode = N` / `versionName = "X.Y.Z"` for F-Droid compatibility.
+- **F-Droid `prebuild` with `subdir: app`**: When `subdir: app` is set, F-Droid changes to the `app/` directory before running prebuild commands. Paths in prebuild must be relative to `app/`, not to repo root (e.g., `src/main/AndroidManifest.xml` not `app/src/main/AndroidManifest.xml`).
+- **F-Droid `gradleprops` not needed with static version**: When version is static in `build.gradle.kts`, remove `gradleprops:` from the metadata YAML entirely. The version code/name will be parsed directly from the build file.
 
 - **prismaCheckSchema fails after DB migration**: After any Room migration, the device DB schema changes, and `prisma db pull` regenerates `current/schema.prisma`. The `prismaCheckSchema` Gradle task diffs `desired/` (hand-crafted) vs `current/` (auto-generated) and will FAIL until a human updates `desired/schema.prisma`. The agent must NOT edit `desired/schema.prisma` — it is human-only.
 
