@@ -15,52 +15,6 @@ abstract class GitHashSource : ValueSource<String, ValueSourceParameters.None> {
     }
 }
 
-abstract class VersionTagSource : ValueSource<String, ValueSourceParameters.None> {
-    override fun obtain(): String {
-        val dir = File(System.getProperty("user.dir"))
-        ProcessBuilder("git", "fetch", "--tags", "--quiet")
-            .directory(dir)
-            .start()
-            .waitFor()
-        val process =
-            ProcessBuilder("git", "describe", "--tags", "--match", "v*", "--abbrev=0")
-                .directory(dir)
-                .start()
-        process.waitFor()
-        val tag =
-            process.inputStream
-                .bufferedReader()
-                .readText()
-                .trim()
-        return if (tag.startsWith("v")) tag.substring(1) else "0.0.0"
-    }
-}
-
-abstract class CommitCountSource : ValueSource<String, ValueSourceParameters.None> {
-    override fun obtain(): String {
-        val tagProcess =
-            ProcessBuilder("git", "describe", "--tags", "--match", "v*", "--abbrev=0")
-                .directory(File(System.getProperty("user.dir")))
-                .start()
-        tagProcess.waitFor()
-        val tag =
-            tagProcess.inputStream
-                .bufferedReader()
-                .readText()
-                .trim()
-        if (!tag.startsWith("v")) return "0"
-        val countProcess =
-            ProcessBuilder("git", "rev-list", "$tag..HEAD", "--count")
-                .directory(File(System.getProperty("user.dir")))
-                .start()
-        countProcess.waitFor()
-        return countProcess.inputStream
-            .bufferedReader()
-            .readText()
-            .trim()
-    }
-}
-
 plugins {
     id("com.android.application")
     id("com.google.dagger.hilt.android")
@@ -77,30 +31,8 @@ android {
         applicationId = "at.priv.graf.zazentimer"
         minSdk = 23
         targetSdk = 36
-        versionCode =
-            if (project.hasProperty("versionCode")) {
-                project.property("versionCode").toString().toInt()
-            } else {
-                val versionFromTag = providers.of(VersionTagSource::class.java) {}.get().trim()
-                val baseVersion = versionFromTag.substringBefore("-")
-                val parts = baseVersion.split(".")
-                val major = parts.getOrElse(0) { "0" }.toInt()
-                val minor = parts.getOrElse(1) { "0" }.toInt()
-                val patch = parts.getOrElse(2) { "0" }.toInt()
-                val commits =
-                    providers
-                        .of(CommitCountSource::class.java) {}
-                        .get()
-                        .trim()
-                        .toInt()
-                major * 1000000 + minor * 10000 + patch * 100 + commits
-            }
-        versionName =
-            if (project.hasProperty("versionName")) {
-                project.property("versionName").toString()
-            } else {
-                providers.of(VersionTagSource::class.java) {}.get().trim()
-            }
+        versionCode = 3000700
+        versionName = "3.0.7"
 
         testInstrumentationRunner = "at.priv.graf.zazentimer.HiltTestRunner"
         testInstrumentationRunnerArguments["testTimeoutSeconds"] = "120"
@@ -108,9 +40,7 @@ android {
         val gitHash = providers.of(GitHashSource::class.java) {}.get().trim()
         buildConfigField("String", "GIT_HASH", "\"$gitHash\"")
 
-        val commitCount = providers.of(CommitCountSource::class.java) {}.get().trim()
-        val versionDisplay = if (commitCount == "0") versionName else "$versionName+$commitCount"
-        buildConfigField("String", "VERSION_DISPLAY", "\"$versionDisplay\"")
+        buildConfigField("String", "VERSION_DISPLAY", "\"$versionName\"")
 
         ksp {
             arg("room.schemaLocation", "$projectDir/schemas")
