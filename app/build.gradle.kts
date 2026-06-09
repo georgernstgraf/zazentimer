@@ -15,6 +15,31 @@ abstract class GitHashSource : ValueSource<String, ValueSourceParameters.None> {
     }
 }
 
+abstract class CommitCountSource : ValueSource<String, ValueSourceParameters.None> {
+    override fun obtain(): String {
+        val tagProcess =
+            ProcessBuilder("git", "describe", "--tags", "--match", "v*", "--abbrev=0")
+                .directory(File(System.getProperty("user.dir")))
+                .start()
+        tagProcess.waitFor()
+        val tag =
+            tagProcess.inputStream
+                .bufferedReader()
+                .readText()
+                .trim()
+        if (!tag.startsWith("v")) return "0"
+        val countProcess =
+            ProcessBuilder("git", "rev-list", "$tag..HEAD", "--count")
+                .directory(File(System.getProperty("user.dir")))
+                .start()
+        countProcess.waitFor()
+        return countProcess.inputStream
+            .bufferedReader()
+            .readText()
+            .trim()
+    }
+}
+
 plugins {
     id("com.android.application")
     id("com.google.dagger.hilt.android")
@@ -47,7 +72,9 @@ android {
         val gitHash = providers.of(GitHashSource::class.java) {}.get().trim()
         buildConfigField("String", "GIT_HASH", "\"$gitHash\"")
 
-        buildConfigField("String", "VERSION_DISPLAY", "\"$versionName\"")
+        val commitCount = providers.of(CommitCountSource::class.java) {}.get().trim()
+        val versionDisplay = if (commitCount == "0") versionName else "$versionName+$commitCount"
+        buildConfigField("String", "VERSION_DISPLAY", "\"$versionDisplay\"")
 
         ksp {
             arg("room.schemaLocation", "$projectDir/schemas")
