@@ -2,6 +2,7 @@ package at.priv.graf.zazentimer.fragments
 
 import android.view.LayoutInflater
 import android.view.MenuItem
+import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageButton
@@ -16,6 +17,8 @@ class SessionListAdapter(
     private val clickListener: OnItemClickListener?,
     private val actionListener: OnSessionActionListener? = null,
 ) : RecyclerView.Adapter<SessionListAdapter.ViewHolder>() {
+    var onDragHandleTouched: ((RecyclerView.ViewHolder) -> Unit)? = null
+
     interface OnItemClickListener {
         fun onItemClick(
             position: Int,
@@ -83,13 +86,22 @@ class SessionListAdapter(
 
         holder.itemView.setOnClickListener {
             if (!interactionsEnabled) return@setOnClickListener
-            val previous = selectedPosition
             selectedPosition = holder.bindingAdapterPosition
-            if (previous != -1) {
-                notifyItemChanged(previous)
-            }
-            notifyItemChanged(selectedPosition)
+            for (i in items.indices) notifyItemChanged(i)
             clickListener?.onItemClick(selectedPosition, items[selectedPosition])
+        }
+
+        holder.itemView.setOnLongClickListener {
+            if (!interactionsEnabled) return@setOnLongClickListener false
+            actionListener?.onEditSession(holder.bindingAdapterPosition)
+            true
+        }
+
+        holder.dragHandle.setOnTouchListener { _, event ->
+            if (event.action == MotionEvent.ACTION_DOWN) {
+                onDragHandleTouched?.invoke(holder)
+            }
+            false
         }
 
         holder.sessionOverflow.setOnClickListener {
@@ -132,14 +144,8 @@ class SessionListAdapter(
     }
 
     fun setSelectedPosition(position: Int) {
-        val previous = selectedPosition
         selectedPosition = position
-        if (previous != -1) {
-            notifyItemChanged(previous)
-        }
-        if (selectedPosition != -1) {
-            notifyItemChanged(selectedPosition)
-        }
+        for (i in items.indices) notifyItemChanged(i)
     }
 
     fun setInteractionsEnabled(enabled: Boolean) {

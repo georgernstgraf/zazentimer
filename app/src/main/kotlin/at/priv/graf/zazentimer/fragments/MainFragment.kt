@@ -120,28 +120,33 @@ class MainFragment : Fragment() {
 
         binding.recyclerSessions.viewTreeObserver.addOnGlobalLayoutListener(globalLayoutListener)
 
-        ItemTouchHelper(
-            SessionTouchHelperCallback(
-                object : SessionTouchHelperCallback.SessionTouchListener {
-                    override fun onSwipe(position: Int) {
-                        sessionListMenuHandler.deleteSessionAt(position)
-                    }
+        val itemTouchHelper =
+            ItemTouchHelper(
+                SessionTouchHelperCallback(
+                    object : SessionTouchHelperCallback.SessionTouchListener {
+                        override fun onSwipe(position: Int) {
+                            sessionListMenuHandler.deleteSessionAt(position)
+                        }
 
-                    override fun onMove(
-                        fromPosition: Int,
-                        toPosition: Int,
-                    ): Boolean {
-                        val validFrom = fromPosition in sessions.indices
-                        val validTo = toPosition in sessions.indices
-                        if (!validFrom || !validTo) return false
-                        val moved = sessions.removeAt(fromPosition)
-                        sessions.add(toPosition, moved)
-                        sessionListAdapter?.moveItem(fromPosition, toPosition)
-                        return true
-                    }
-                },
-            ),
-        ).attachToRecyclerView(binding.recyclerSessions as RecyclerView)
+                        override fun onMove(
+                            fromPosition: Int,
+                            toPosition: Int,
+                        ): Boolean {
+                            val validFrom = fromPosition in sessions.indices
+                            val validTo = toPosition in sessions.indices
+                            if (!validFrom || !validTo) return false
+                            val moved = sessions.removeAt(fromPosition)
+                            sessions.add(toPosition, moved)
+                            sessionListAdapter?.moveItem(fromPosition, toPosition)
+                            return true
+                        }
+                    },
+                ),
+            )
+        sessionListAdapter?.onDragHandleTouched = { viewHolder ->
+            itemTouchHelper.startDrag(viewHolder)
+        }
+        itemTouchHelper.attachToRecyclerView(binding.recyclerSessions as RecyclerView)
 
         return binding.root
     }
