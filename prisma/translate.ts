@@ -25,29 +25,14 @@ import {
     upsertProficiency,
     upsertVote,
 } from "./lib/db.ts";
+import masterModels from "./translations/llmmodels_master.json" with { type: "json" };
 
-// ── Model → Provider mapping (ordered by preference) ─────────────────────────
-const MODEL_PROVIDERS_RAW: Record<string, string | string[]> = {
-    "claude-opus-4.7": "openrouter",
-    "deepseek-v4-pro": "opencode-go",
-    "gemini-3.1-pro-preview": ["google", "github-copilot"],
-    "gemini-3.1-pro": ["opencode"],
-    "gemini-3.5-flash": ["opencode", "github-copilot", "google", "openrouter"],
-    "glm-5.1": ["zai-coding-plan", "opencode-go"],
-    "gpt-5.4": ["openrouter", "github-copilot"],
-    "gpt-5.5": "opencode",
-    "grok-4.3": "openrouter",
-    "kimi-k2.6": "opencode-go",
-    "minimax-m2.7": "opencode-go",
-    "mistral-large": "opencode-go",
-    "qwen3.6-plus": "opencode-go",
-};
+function normalizeModelName(name: string): string {
+    return name.replace(/[.-]/g, "").toLowerCase();
+}
 
 const MODEL_PROVIDERS: Map<string, string[]> = new Map(
-    Object.entries(MODEL_PROVIDERS_RAW).map(([key, val]) => [
-        normalizeModelName(key),
-        typeof val === "string" ? [val] : val,
-    ]),
+    masterModels.map((m) => [normalizeModelName(m.name), m.providers]),
 );
 
 function getModelRank(modelName: string, providerID: string): number {
@@ -55,10 +40,6 @@ function getModelRank(modelName: string, providerID: string): number {
     if (!providers) return 99;
     const idx = providers.indexOf(providerID);
     return idx === -1 ? 99 : idx + 1;
-}
-
-function normalizeModelName(name: string): string {
-    return name.replace(/[.-]/g, "").toLowerCase();
 }
 
 interface ModelEntry {

@@ -3,14 +3,13 @@
 Current status as of 2026-06-11.
 
 ## Current Focus
-UX improvements — swipe-delete, long-press-edit, selection fix
+Translation infrastructure — consolidating model/provider config into single source of truth
 
 ## Completed (this cycle)
+- [x] #247: Make `llmmodels_master.json` the single source of truth for seed and translate
 - [x] #246: Long-press session to edit + fix dual-selection (full-refresh pattern)
 - [x] #244: Session rank persistence — save ranks before reloading in suspendUpdateSessionList()
 - [x] #243: Swipe-right to delete session with Snackbar undo
-- [x] #242: F-Droid pipeline green — static version, fastlane, subdir: app
-- [x] #241: Resilient backup restore with WAL/SHM deletion + sanitizeBellUris()
 
 ## Pending
 - [ ] F-Droid MR !39945 — await maintainer review

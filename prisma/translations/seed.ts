@@ -1,4 +1,5 @@
 import { getPrisma } from "../lib/prisma.ts";
+import masterModels from "./llmmodels_master.json" with { type: "json" };
 
 const prisma = await getPrisma();
 
@@ -96,22 +97,16 @@ try {
     console.log(`✔ Seeded ${langCount} languages`);
 
     // ── 2. Seed LLM models ────────────────────────────────────────────
-    const models: Array<{ name: string }> = JSON.parse(
-        await Deno.readTextFile(
-            new URL("llmmodels_master.json", import.meta.url),
-        ),
-    );
-
-    for (const m of models) {
+    for (const m of masterModels) {
         await prisma.llm_models.upsert({
             where: { name: m.name },
             update: {},
             create: { name: m.name },
         });
     }
-    console.log(`✔ Seeded ${models.length} LLM models`);
+    console.log(`✔ Seeded ${masterModels.length} LLM models`);
 
-    const modelNames = new Set(models.map(m => m.name));
+    const modelNames = new Set(masterModels.map(m => m.name));
     const removedModels = await prisma.llm_models.deleteMany({
         where: { name: { notIn: [...modelNames] } },
     });

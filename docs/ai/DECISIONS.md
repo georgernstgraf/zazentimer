@@ -600,3 +600,9 @@ Each entry documents WHAT was decided and WHY.
 - **Considered**: (a) Keep `isLongPressDragEnabled() = true` and use a different edit trigger (double-tap, dedicated button) — less intuitive. (b) Forward-update `selectedPosition` in all three mutating adapter methods with bounds guards — more code, more fragile. (c) Keep long-press drag and add `setOnLongClickListener` — they conflict; `ItemTouchHelper` intercepts first.
 - **Tradeoff**: Full-list refresh rebinds N views per selection change instead of 2. For ~10 sessions this is imperceptible. Drag now requires deliberately touching the handle instead of anywhere on the item — slightly less convenient but consistent with visible handle affordance.
 
+## 2026-06-11: llmmodels_master.json as single source of truth for seed + translate (#247)
+- **Choice**: Changed `llmmodels_master.json` data type from `{ name: string }[]` to `{ name: string, providers: string[] }[]`. Both `prisma/translations/seed.ts` and `prisma/translate.ts` now import the file via `import masterModels from "./llmmodels_master.json" with { type: "json" }`. Removed hardcoded `MODEL_PROVIDERS_RAW` object from `translate.ts`. `MODEL_PROVIDERS` is now built directly from the JSON import.
+- **Reason**: Model names and their provider mappings were maintained in two separate places — `llmmodels_master.json` (for seed) and `MODEL_PROVIDERS_RAW` in `translate.ts` (for the pipeline). Adding, removing, or renaming a model required editing both files, risking drift.
+- **Considered**: Keeping providers in a separate config file (still two files to maintain), storing providers in the DB (over-engineered, providers are deployment config not data).
+- **Tradeoff**: The JSON file now carries provider information that is only relevant to `translate.ts`, not to `seed.ts`. `seed.ts` ignores the `providers` field. The JSON shape is slightly more complex but eliminates all duplication.
+
