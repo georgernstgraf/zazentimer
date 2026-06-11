@@ -3,15 +3,14 @@
 Current status as of 2026-06-11.
 
 ## Current Focus
-Bug fixes — session drag-reorder persistence (#244)
+UX improvements — swipe-delete, long-press-edit, selection fix
 
 ## Completed (this cycle)
+- [x] #246: Long-press session to edit + fix dual-selection (full-refresh pattern)
 - [x] #244: Session rank persistence — save ranks before reloading in suspendUpdateSessionList()
-- [x] #242: F-Droid pipeline green — static version, fastlane, subdir: app, autoupdate, tag fix
+- [x] #243: Swipe-right to delete session with Snackbar undo
+- [x] #242: F-Droid pipeline green — static version, fastlane, subdir: app
 - [x] #241: Resilient backup restore with WAL/SHM deletion + sanitizeBellUris()
-- [x] #239/#236: Empty session fix (auto-create first section)
-- [x] #238: Room DB version on About screen
-- [x] #240: Global crash handler with CrashActivity
 
 ## Pending
 - [ ] F-Droid MR !39945 — await maintainer review
@@ -21,4 +20,4 @@ Bug fixes — session drag-reorder persistence (#244)
 - None
 
 ## Next Session Suggestion
-- Check F-Droid MR !39945 status — if merged, tag v3.0.7 for Play Store too
+- Check F-Droid MR !39945 status — if merged, tag v3.0.8 for Play Store too
