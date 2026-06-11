@@ -7,6 +7,8 @@ class SessionTouchHelperCallback(
     private val listener: SessionTouchListener?,
 ) : ItemTouchHelper.Callback() {
     interface SessionTouchListener {
+        fun onSwipe(position: Int)
+
         fun onMove(
             fromPosition: Int,
             toPosition: Int,
@@ -18,7 +20,8 @@ class SessionTouchHelperCallback(
         viewHolder: RecyclerView.ViewHolder,
     ): Int {
         val dragFlags = ItemTouchHelper.UP or ItemTouchHelper.DOWN
-        return makeMovementFlags(dragFlags, 0)
+        val swipeFlags = ItemTouchHelper.START
+        return makeMovementFlags(dragFlags, swipeFlags)
     }
 
     override fun onMove(
@@ -31,10 +34,10 @@ class SessionTouchHelperCallback(
         viewHolder: RecyclerView.ViewHolder,
         direction: Int,
     ) {
-        // no-op: drag-only mode
+        listener?.onSwipe(viewHolder.bindingAdapterPosition)
     }
 
     override fun isLongPressDragEnabled(): Boolean = true
 
-    override fun isItemViewSwipeEnabled(): Boolean = false
+    override fun isItemViewSwipeEnabled(): Boolean = true
 }

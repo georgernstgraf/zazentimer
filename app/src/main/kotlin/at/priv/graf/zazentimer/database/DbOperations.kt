@@ -190,6 +190,23 @@ class DbOperations
                 entity?.let { EntityMapper.toBo(it) }
             }
 
+        suspend fun restoreSession(
+            session: Session,
+            sections: List<Section>,
+            volumes: List<SessionBellVolume>,
+        ) = withIdling {
+            val sDao = sessionDao ?: return@withIdling
+            val secDao = sectionDao ?: return@withIdling
+            val bvDao = sessionBellVolumeDao ?: return@withIdling
+            sDao.insert(EntityMapper.toEntity(session))
+            for (section in sections) {
+                secDao.insert(EntityMapper.toEntity(section))
+            }
+            for (volume in volumes) {
+                bvDao.insert(EntityMapper.toEntity(volume))
+            }
+        }
+
         suspend fun updateSection(section: Section) =
             withIdling {
                 val entity = EntityMapper.toEntity(section)

@@ -588,3 +588,9 @@ Each entry documents WHAT was decided and WHY.
 - **Considered**: Try-catch wrapping individual entry points (brittle, misses background thread crashes), in-process crash activity (vulnerable to corrupted main process), ACRA integration (heavy dependency for a simple dialog).
 - **Tradeoff**: CrashActivity runs in a separate process, meaning a second app instance is briefly spawned. The `ZazenTimerApplication`'s `onCreate` skips setting the handler in the crash process to avoid recursion.
 
+## 2026-06-11: Fix session drag-reorder lost after Add/Delete/Duplicate (#244)
+- **Choice**: Persist session ranks at the top of `suspendUpdateSessionList()` before clearing and reloading from DB, in addition to the existing `onPause()` persistence.
+- **Reason**: The drag-reorder only mutates the in-memory `sessions` ArrayList. Actions like `addNewSession()`, `onCardDeleteSession()`, and `onCardCopySession()` call `suspendUpdateSessionList()` which cleared the in-memory list and reloaded from DB — but the DB still had stale pre-drag ranks, silently discarding the drag order. Saving ranks in `suspendUpdateSessionList()` before the reload ensures the in-memory order survives.
+- **Considered**: (a) Persisting immediately in `onMove` on every drag step — too many DB writes during a single drag gesture. (b) Saving ranks in each individual action handler before calling `updateSessionList()` — fragile, easy to forget in future actions. (c) Eliminating `updateSessionList()` calls from action handlers entirely and manipulating adapter/in-memory lists directly — more invasive, more edge cases.
+- **Tradeoff**: Minor duplicate DB writes (ranks may be saved twice — once in `suspendUpdateSessionList()`, once in `onPause()`), but both are idempotent and the overhead is negligible for typical session counts.
+

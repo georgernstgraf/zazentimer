@@ -1,11 +1,12 @@
 # Project State
 
-Current status as of 2026-06-09.
+Current status as of 2026-06-11.
 
 ## Current Focus
-F-Droid MR !39945 — waiting for maintainer review (all 9 pipeline stages green)
+Bug fixes — session drag-reorder persistence (#244)
 
 ## Completed (this cycle)
+- [x] #244: Session rank persistence — save ranks before reloading in suspendUpdateSessionList()
 - [x] #242: F-Droid pipeline green — static version, fastlane, subdir: app, autoupdate, tag fix
 - [x] #241: Resilient backup restore with WAL/SHM deletion + sanitizeBellUris()
 - [x] #239/#236: Empty session fix (auto-create first section)

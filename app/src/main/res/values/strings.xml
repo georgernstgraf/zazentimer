@@ -126,6 +126,7 @@
     <string name="stop_meditation_stop">Stop</string>
     <string name="stop_meditation_cancel">Cancel</string>
     <string name="section_deleted" tools:ignore="MissingTranslation">Deleted \'%s\'</string>
+    <string name="session_deleted" tools:ignore="MissingTranslation">Deleted \'%s\'</string>
     <string name="action_undo" tools:ignore="MissingTranslation">Undo</string>
     <string name="notification_channel_name" tools:ignore="MissingTranslation">Meditation Timer</string>
     <string name="nav_label_sessions" tools:ignore="MissingTranslation">Sessions</string>

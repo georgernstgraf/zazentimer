@@ -11,6 +11,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import at.priv.graf.zazentimer.R
 
+@Suppress("TooManyFunctions")
 class SessionListAdapter(
     private val clickListener: OnItemClickListener?,
     private val actionListener: OnSessionActionListener? = null,
@@ -155,6 +156,20 @@ class SessionListAdapter(
     }
 
     fun getSelectedPosition(): Int = selectedPosition
+
+    fun removeItem(position: Int): SessionWithTimeInfo {
+        val removed = items.removeAt(position)
+        notifyItemRemoved(position)
+        return removed
+    }
+
+    fun insertItem(
+        position: Int,
+        item: SessionWithTimeInfo,
+    ) {
+        items.add(position, item)
+        notifyItemInserted(position)
+    }
 
     fun getItem(position: Int): SessionWithTimeInfo? {
         if (position >= 0 && position < items.size) {

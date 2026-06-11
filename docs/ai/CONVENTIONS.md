@@ -36,7 +36,7 @@ Follow these without question. Do not deviate unless explicitly told.
 - **FK constraint testing**: Any unit test that creates sections must first insert a bell row and set `bellId` to the valid ID.
 - **Migration snapshots**: Every Room migration that modifies table schemas must include index creation statements for all indices in `@Entity`. Room validates full schema after migration.
 - Column order in SQLite is cosmetic — Room maps by column name, not position. Reordering columns in a migration is harmless.
-- **Session rank persistence**: Session order is persisted in `MainFragment.onPause()` by recomputing `sessions[i].rank = i` from list position and calling `dbOperations.updateSession()` — matching the pattern in `SessionEditFragment.onPause()` for sections.
+- **Session rank persistence**: Session ranks are saved in TWO places: (1) `MainFragment.onPause()` via `runBlocking` — the lifecycle safety net that fires on navigation/pause; (2) `MainFragment.suspendUpdateSessionList()` at the TOP (before clearing and reloading from DB) — prevents the in-memory drag order from being overwritten by stale DB data when actions like Add/Delete/Duplicate call `updateSessionList()`. Both assign `sessions[i].rank = i` and call `dbOperations.updateSession()`.
 - **After backup restore, call `sanitizeBellUris()`**: `SettingsFragment.doRestore()` calls `dbOperations.sanitizeBellUris()` after a successful backup restore. This ensures bell URIs are normalized for the current app's package name, builtin bells match `BellCollection`, and custom bells have a strict 1:1 mapping with files on disk. Never skip this step — the database may have stale URIs from a different build type or app version.
 
 ## Release Workflow

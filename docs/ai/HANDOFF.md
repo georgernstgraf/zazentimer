@@ -1,10 +1,12 @@
 # Hand Off
 
-Last cleared: 2026-06-09.
+No pending tasks. Last cleared: 2026-06-11.
 
 ## Recently Completed
-- #242: F-Droid pipeline fully green — static version, fastlane, subdir: app, autoupdate, tag fix
+- #244: Session rank persistence — save ranks in suspendUpdateSessionList() before reloading from DB
 - #241: Resilient cross-build-type backup restore with WAL/SHM deletion + sanitizeBellUris()
+- #237: Backup filter, BellCollection refresh, selectBell URI fallback, ZIP truncation fix
+- #240: Global crash handler with CrashActivity pop-up showing exception details
 
-## Open (non-blocking)
-- [ ] F-Droid MR !39945 — awaiting maintainer review (https://gitlab.com/fdroid/fdroiddata/-/merge_requests/39945)
+## Open Issues
+1. [ ] #242 — F-Droid submission: build succeeds but 'Failed to find any output apks'. Waiting on fdroiddata maintainers.

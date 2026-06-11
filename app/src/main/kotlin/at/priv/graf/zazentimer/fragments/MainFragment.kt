@@ -23,6 +23,7 @@ import at.priv.graf.zazentimer.bo.Session
 import at.priv.graf.zazentimer.database.DbOperations
 import at.priv.graf.zazentimer.databinding.FragmentMainBinding
 import at.priv.graf.zazentimer.service.MeditationService
+import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.transition.MaterialFadeThrough
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
@@ -122,6 +123,10 @@ class MainFragment : Fragment() {
         ItemTouchHelper(
             SessionTouchHelperCallback(
                 object : SessionTouchHelperCallback.SessionTouchListener {
+                    override fun onSwipe(position: Int) {
+                        sessionListMenuHandler.deleteSessionAt(position)
+                    }
+
                     override fun onMove(
                         fromPosition: Int,
                         toPosition: Int,
@@ -226,6 +231,42 @@ class MainFragment : Fragment() {
                 }.setNegativeButton(R.string.abbrechen) { _, _ ->
                 }.create()
                 .show()
+        }
+
+        fun deleteSessionAt(position: Int) {
+            if (!interactionsEnabled || position !in sessions.indices) return
+
+            val sessionToDelete = sessions[position]
+            val adapterItem = sessionListAdapter?.getItem(position) ?: return
+
+            sessions.removeAt(position)
+            sessionListAdapter?.removeItem(position)
+            if (sessions.isEmpty()) {
+                selectLastSession()
+            } else {
+                val newPos = position.coerceAtMost(sessions.size - 1)
+                setSelectedSessionId(sessions[newPos].id)
+            }
+
+            lifecycleScope.launch {
+                val sections = dbOperations.readSections(sessionToDelete.id).toList()
+                val volumes = dbOperations.readBellVolumes(sessionToDelete.id)
+                dbOperations.deleteSession(sessionToDelete.id)
+                if (!isAdded) return@launch
+                Snackbar
+                    .make(
+                        binding.recyclerSessions,
+                        getString(R.string.session_deleted, sessionToDelete.name ?: ""),
+                        Snackbar.LENGTH_LONG,
+                    ).setAction(getString(R.string.action_undo)) {
+                        lifecycleScope.launch {
+                            dbOperations.restoreSession(sessionToDelete, sections, volumes)
+                            sessions.add(position, sessionToDelete)
+                            sessionListAdapter?.insertItem(position, adapterItem)
+                            setSelectedSessionId(sessionToDelete.id)
+                        }
+                    }.show()
+            }
         }
 
         fun navigateToSessionEdit(sessionId: Int) {
