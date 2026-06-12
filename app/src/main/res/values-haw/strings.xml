@@ -1,30 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="abbrechen">Hoʻopau</string>
-    <string name="action_delete">Holoi</string>
-    <string name="action_undo">Hoʻihoʻi</string>
-    <string name="but_pause">Hoʻomaha</string>
-    <string name="but_stop">Hoʻōki</string>
-    <string name="demo_sess1_sec1_name">Hoʻomākaukau</string>
     <string name="demo_sess1_sec2_name">Zazen 1</string>
     <string name="demo_sess1_sec3_name">Kinhin 1</string>
     <string name="demo_sess1_sec4_name">Zazen 2</string>
     <string name="demo_sess1_sec5_name">Kinhin 3</string>
     <string name="demo_sess1_sec6_name">Zazen 3</string>
-    <string name="menu_about">E pili ana…</string>
-    <string name="menu_help">Kōkua</string>
-    <string name="menu_settings">Nā hoʻonohonoho</string>
-    <string name="minuten">Minuke</string>
-    <string name="nav_label_settings">Nā hoʻonohonoho</string>
-    <string name="ok">Hiki nō</string>
-    <string name="pref_title_brightness">Mālamalama</string>
-    <string name="privacy_ok">Hiki nō</string>
-    <string name="search_menu_title">Huli</string>
-    <string name="sekunden">Kekona</string>
-    <string name="stop_meditation_cancel">Hoʻopau</string>
-    <string name="stop_meditation_stop">Hoʻōki</string>
-    <string name="theme">Kumuhana</string>
-    <string name="theme_dark">Kumuhana pōʻeleʻele</string>
-    <string name="theme_light">Kumuhana mālamalama</string>
-    <string name="theme_system">Kumuhana ʻōnaehana</string>
 </resources>

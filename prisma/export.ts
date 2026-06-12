@@ -40,6 +40,7 @@ function parseArgs(): { targetDir: string } {
         console.error(
             "Usage: deno run -A export.ts -- --target=<directory>",
         );
+        console.error("Hint: production directory is ../app/src/main/res/");
         Deno.exit(1);
     }
     return { targetDir };

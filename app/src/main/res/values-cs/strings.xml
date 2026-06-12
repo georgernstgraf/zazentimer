@@ -1,25 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="abbrechen">Zrušit</string>
-    <string name="about1">Zazen časovač meditace — Jednoduchý meditační časovač s přizpůsobitelnými sekcemi, zvuky mís a správou sezení.</string>
+    <string name="about1">Zazen Meditation Timer — Jednoduchý meditační časovač s přizpůsobitelnými sekcemi, zvuky zvonů a správou sezení.</string>
     <string name="about2">Původně vytvořil Stefan Gaffga. V současnosti spravuje Georg Graf.&lt;br&gt;&lt;br&gt;Poděkování Winfriedovi z &lt;a href=\"http://www.meditationsuhren.de\"&gt;http://www.meditationsuhren.de&lt;/a&gt; za poskytnutí tak skvělých zvuků zvonů!</string>
     <string name="about3">&lt;a href=\"https://github.com/georgernstgraf/zazentimer/issues\"&gt;Nahlásit problémy na GitHubu&lt;/a&gt;</string>
     <string name="action_delete">Smazat</string>
     <string name="action_undo">Zpět</string>
     <string name="affected_section_format">• sekce \"%1$s\" v sezení \"%2$s\"</string>
-    <string name="app_description">Tato aplikace umožňuje uživateli definovat sadu meditačních sezení a poskytuje časovač s vizuální a zvukovou zpětnou vazbou, když skončí část nebo celá meditace.</string>
+    <string name="app_description">Tato aplikace umožňuje uživateli definovat sadu meditačních sezení a poskytuje časovač s vizuální a zvukovou zpětnou vazbou, když část nebo celá meditace skončí.</string>
     <string name="backup_error_text">Omlouváme se, při ukládání došlo k chybě.</string>
     <string name="backup_success_text">Záloha byla úspěšně vytvořena!</string>
+    <string name="bell_dimming_section_title">Nastavit hlasitost zvonu</string>
     <string name="bell_name_1">Vysoký tón</string>
     <string name="bell_name_2">Nízký tón</string>
-    <string name="bell_name_3">Jap. Rhinbowl Dharma, 107mm</string>
-    <string name="bell_name_4">Jap. Rhinbowl Dharma, 88mm (černá, glazovaná)</string>
-    <string name="bell_name_5">Jap. Rhinbowl Shomyo, 90mm</string>
-    <string name="bell_name_6">Jap. Rhinbowl Tang, 164mm</string>
-    <string name="bell_name_7">Tib. mísa, 230mm</string>
-    <string name="bell_name_8">Jap. Rhinbowl, 97mm</string>
     <string name="bell_pause">Mezera zvonu (sek)</string>
-    <string name="bell_user">Přidat mísu…</string>
+    <string name="bell_user">Přidat zvon…</string>
+    <string name="bell_volume_dim_explanation">Upravit individuální hlasitosti zvonů pro toto sezení.</string>
     <string name="but_pause">Pauza</string>
     <string name="but_start">Spustit meditaci</string>
     <string name="but_stop">Zastavit</string>
@@ -28,10 +24,13 @@
     <string name="checkbox_keep_screen_on">Ponechat obrazovku zapnutou</string>
     <string name="confirm_delete_bell">Smazat zvon \"%s\"?</string>
     <string name="confirm_delete_bell_affected">Smazat zvon \"%1$s\"?\n\nNásledující sekce budou přepnuty na výchozí zvon:\n%2$s</string>
-    <string name="content_desc_drag_handle">Přetáhněte pro změnu pořadí</string>
+    <string name="content_desc_drag_handle">Přetáhněte pro přeskupení</string>
     <string name="content_desc_section_actions">Akce sekce</string>
     <string name="content_desc_session_actions">Akce sezení</string>
     <string name="copy_prefix">Kopie</string>
+    <string name="crash_copy_exit">Kopírovat trasování zásobníku a ukončit</string>
+    <string name="crash_dialog_title">Fatální chyba</string>
+    <string name="crash_exit">Ukončit</string>
     <string name="default_section_name">Bez názvu</string>
     <string name="demo_sess1_description">Nedělní večerní meditace</string>
     <string name="demo_sess1_name">Zazen a Kinhin</string>
@@ -45,14 +44,14 @@
     <string name="demo_sess2_name">Pouze Zazen</string>
     <string name="desc_keep_screen_on">Udržuje obrazovku zapnutou během meditace</string>
     <string name="gong_type">Zvuk gongu</string>
-    <string name="help_sectionlist_text">Zde můžete pojmenovat, popsat a upravit obsah vašeho sezení.\n\n PŘESUNUTÍ\n Chcete-li položky přesunout, dlouze na položku stiskněte a\n přetáhněte ji na novou pozici.\n\n SMAZÁNÍ\n Chcete-li položku smazat, posuňte ji doprava.\n\n ÚPRAVA\n Chcete-li sekci upravit, stačí se jí jednou dotknout.\n\n PŘIDÁNÍ\n Chcete-li přidat novou sekci, stiskněte tlačítko +.</string>
+    <string name="help_sectionlist_text">Zde můžete pojmenovat, popsat a upravit obsah vašeho Sezení.\n\n PŘESUNUTÍ\n Chcete-li změnit pořadí položek, dlouze stiskněte položku a\n přetáhněte ji na novou pozici.\n\n MAZÁNÍ\n Chcete-li položku smazat, posuňte ji doprava.\n\n ÚPRAVA\n Chcete-li upravit sekci, stačí se jí jednou dotknout.\n\n PŘIDAT\n Chcete-li přidat novou sekci, stiskněte tlačítko +.</string>
     <string name="help_sectionlist_title">Upravit sezení</string>
     <string name="import_bell">Importovat zvon</string>
     <string name="label_section_name">Název sekce</string>
     <string name="label_session_description">Popis sezení</string>
     <string name="label_session_name">Název sezení</string>
     <string name="manage_bells">Spravovat zvony</string>
-    <string name="manage_bells_summary">Přidat zvuky ze souborového systému / odstranit zvuky z aplikace</string>
+    <string name="manage_bells_summary">Přidat zvony ze souborového systému / odebrat zvony z aplikace</string>
     <string name="menu_about">O aplikaci…</string>
     <string name="menu_add_section">Přidat sekci</string>
     <string name="menu_add_session">Přidat sezení</string>
@@ -71,9 +70,11 @@
     <string name="nav_label_meditation">Meditace</string>
     <string name="nav_label_sessions">Sezení</string>
     <string name="nav_label_settings">Nastavení</string>
+    <string name="new_session_description">Popis nového sezení</string>
+    <string name="new_session_name">Nové sezení</string>
     <string name="no_bells_configured">Zatím nejsou nakonfigurovány žádné zvony</string>
     <string name="no_custom_bells">Nebyly importovány žádné vlastní zvony.</string>
-    <string name="no_sections_in_session">Nelze spustit meditaci: Vybrané sezení nemá žádné sekce.</string>
+    <string name="no_sections_in_session">Nelze spustit meditaci: Vybrané sezení neobsahuje žádné sekce.</string>
     <string name="no_session_exists">Není k dispozici žádné sezení, které by bylo možné spustit. Nejprve prosím nějaké vytvořte.</string>
     <string name="notification_channel_name">Meditační časovač</string>
     <string name="notification_text">Zazen meditace právě probíhá</string>
@@ -92,8 +93,8 @@
     <string name="privacy_ok">OK</string>
     <string name="privacy_title">Informace o soukromí</string>
     <string name="restore_backup_not_found">Záložní soubor nenalezen</string>
-    <string name="restore_error_text">Chyba při obnovování ze zálohy</string>
-    <string name="restore_really_text">Tímto nahradíte všechna vaše sezení těmi ze zálohy! (Nelze vrátit zpět!)</string>
+    <string name="restore_error_text">Chyba při obnově ze zálohy</string>
+    <string name="restore_really_text">Tímto nahradíte všechna vaše Sezení těmi ze zálohy! (Nelze vrátit zpět!)</string>
     <string name="restore_really_title">Opravdu obnovit data?</string>
     <string name="restore_success_text">Obnova dat byla úspěšná</string>
     <string name="restore_version_mismatch_text">Tato záloha byla vytvořena novější verzí ZazenTimer. Aktualizujte prosím aplikaci.</string>
@@ -107,6 +108,7 @@
     <string name="sekunden">Sekundy</string>
     <string name="select_audio">Vybrat zvukový soubor</string>
     <string name="service_description">Probíhající Zazen meditace</string>
+    <string name="session_deleted">Smazáno \'%s\'</string>
     <string name="session_list_unnamed_entry">Nepojmenované sezení</string>
     <string name="stop_meditation_cancel">Zrušit</string>
     <string name="stop_meditation_message">Vaše meditační sezení stále běží.</string>

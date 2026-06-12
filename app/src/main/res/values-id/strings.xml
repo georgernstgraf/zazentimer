@@ -1,25 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="abbrechen">Batal</string>
-    <string name="about1">Zazen Meditation Timer — Pengatur waktu meditasi sederhana dengan bagian, suara bel, dan manajemen sesi yang dapat disesuaikan.</string>
-    <string name="about2">Awalnya dibuat oleh Stefan Gaffga. Saat ini dikelola oleh Georg Graf.&lt;br&gt;&lt;br&gt;Terima kasih kepada Winfried dari &lt;a href=\"http://www.meditationsuhren.de\"&gt;http://www.meditationsuhren.de&lt;/a&gt; karena telah menyediakan Suara Mangkuk Bernyanyi yang luar biasa!</string>
+    <string name="about1">Zazen Meditation Timer — Timer meditasi sederhana dengan bagian yang dapat disesuaikan, suara lonceng, dan manajemen sesi.</string>
+    <string name="about2">Awalnya dibuat oleh Stefan Gaffga. Saat ini dikelola oleh Georg Graf.&lt;br&gt;&lt;br&gt;Terima kasih kepada Winfried dari &lt;a href=\"http://www.meditationsuhren.de\"&gt;http://www.meditationsuhren.de&lt;/a&gt; karena telah menyediakan Suara Genta yang luar biasa!</string>
     <string name="about3">&lt;a href=\"https://github.com/georgernstgraf/zazentimer/issues\"&gt;Laporkan masalah di GitHub&lt;/a&gt;</string>
     <string name="action_delete">Hapus</string>
     <string name="action_undo">Urungkan</string>
-    <string name="affected_section_format">• bagian \"%1$s\" dalam Sesi \"%2$s\"</string>
-    <string name="app_description">Aplikasi ini memungkinkan pengguna untuk menentukan serangkaian sesi meditasi dan menyediakan pengatur waktu dengan umpan balik visual dan audio saat sebagian atau seluruh meditasi selesai.</string>
+    <string name="affected_section_format">• bagian \"%1$s\" di Sesi \"%2$s\"</string>
+    <string name="app_description">Aplikasi ini memungkinkan pengguna menentukan serangkaian sesi meditasi dan menyediakan timer dengan umpan balik visual dan suara saat sebagian atau seluruh meditasi selesai.</string>
     <string name="backup_error_text">Maaf, terjadi kesalahan saat menyimpan.</string>
     <string name="backup_success_text">Cadangan berhasil dibuat!</string>
+    <string name="bell_dimming_section_title">Atur Volume Lonceng</string>
     <string name="bell_name_1">Nada Tinggi</string>
     <string name="bell_name_2">Nada Rendah</string>
-    <string name="bell_name_3">Jap. Rhinbowl Dharma, 107mm</string>
-    <string name="bell_name_4">Jap. Rhinbowl Dharma, 88mm (hitam, mengkilap)</string>
-    <string name="bell_name_5">Jap. Rhinbowl Shomyo, 90mm</string>
-    <string name="bell_name_6">Jap. Rhinbowl Tang, 164mm</string>
-    <string name="bell_name_7">Tib. Bowl, 230mm</string>
-    <string name="bell_name_8">Jap. Rhinbowl, 97mm</string>
     <string name="bell_pause">Jeda lonceng (dtk)</string>
     <string name="bell_user">Tambah Lonceng…</string>
+    <string name="bell_volume_dim_explanation">Sesuaikan volume lonceng individual untuk sesi ini.</string>
     <string name="but_pause">Jeda</string>
     <string name="but_start">Mulai Meditasi</string>
     <string name="but_stop">Berhenti</string>
@@ -27,11 +23,14 @@
     <string name="caption_zazen_meditation">Meditasi Zazen</string>
     <string name="checkbox_keep_screen_on">Biarkan layar tetap menyala</string>
     <string name="confirm_delete_bell">Hapus lonceng \"%s\"?</string>
-    <string name="confirm_delete_bell_affected">Hapus bel \"%1$s\"?\n\nBagian berikut akan dialihkan ke bel bawaan:\n%2$s</string>
+    <string name="confirm_delete_bell_affected">Hapus genta \"%1$s\"?\n\nBagian berikut akan dialihkan ke genta default:\n%2$s</string>
     <string name="content_desc_drag_handle">Seret untuk mengurutkan ulang</string>
     <string name="content_desc_section_actions">Tindakan bagian</string>
     <string name="content_desc_session_actions">Tindakan sesi</string>
     <string name="copy_prefix">Salinan dari</string>
+    <string name="crash_copy_exit">Salin Stack Trace &amp; Keluar</string>
+    <string name="crash_dialog_title">Kesalahan Fatal</string>
+    <string name="crash_exit">Keluar</string>
     <string name="default_section_name">Tanpa nama</string>
     <string name="demo_sess1_description">Meditasi Minggu malam</string>
     <string name="demo_sess1_name">Zazen dan Kinhin</string>
@@ -45,7 +44,7 @@
     <string name="demo_sess2_name">Hanya Zazen</string>
     <string name="desc_keep_screen_on">Menjaga layar tetap menyala selama meditasi</string>
     <string name="gong_type">Suara Gong</string>
-    <string name="help_sectionlist_text">Di sini Anda dapat menamai, mendeskripsikan, dan mengedit isi Sesi Anda.\n\n MENGURUTKAN ULANG\n Untuk mengurutkan ulang item, tekan lama pada item dan\n seret ke posisi barunya.\n\n MENGHAPUS\n Untuk menghapus item, geser ke kanan.\n\n EDIT\n Untuk mengedit bagian, sentuh saja sekali.\n\n TAMBAH\n Untuk menambahkan bagian baru, tekan tombol +.</string>
+    <string name="help_sectionlist_text">Di sini Anda dapat menamai, mendeskripsikan, dan mengedit isi Sesi Anda.\n\n MENGURUTKAN KEMBALI\n Untuk mengurutkan kembali item, tekan lama pada item dan\n seret ke posisi barunya.\n\n MENGHAPUS\n Untuk menghapus item, geser ke kanan.\n\n MENGEDIT\n Untuk mengedit bagian, cukup sentuh satu kali.\n\n MENAMBAHKAN\n Untuk menambahkan bagian baru, tekan tombol +.</string>
     <string name="help_sectionlist_title">Edit Sesi</string>
     <string name="import_bell">Impor Lonceng</string>
     <string name="label_section_name">Nama bagian</string>
@@ -71,12 +70,14 @@
     <string name="nav_label_meditation">Meditasi</string>
     <string name="nav_label_sessions">Sesi</string>
     <string name="nav_label_settings">Pengaturan</string>
+    <string name="new_session_description">Deskripsi Sesi Baru</string>
+    <string name="new_session_name">Sesi Baru</string>
     <string name="no_bells_configured">Belum ada lonceng yang dikonfigurasi</string>
     <string name="no_custom_bells">Tidak ada lonceng kustom yang diimpor.</string>
     <string name="no_sections_in_session">Tidak dapat memulai Meditasi: Sesi yang dipilih tidak memiliki Bagian apa pun.</string>
     <string name="no_session_exists">Tidak ada sesi yang dapat dimulai. Silakan buat terlebih dahulu.</string>
     <string name="notification_channel_name">Timer Meditasi</string>
-    <string name="notification_text">Meditasi Zazen sedang berjalan</string>
+    <string name="notification_text">Meditasi Zazen sedang berlangsung</string>
     <string name="notification_text_paused">Meditasi Zazen dijeda</string>
     <string name="notification_title">Meditasi Zazen</string>
     <string name="notification_title_paused">Meditasi Zazen (dijeda)</string>
@@ -88,7 +89,7 @@
     <string name="pref_title_backup">Buat Cadangan</string>
     <string name="pref_title_brightness">Kecerahan</string>
     <string name="pref_title_restore">Pulihkan dari Cadangan</string>
-    <string name="privacy_message">Aplikasi ini tidak mengumpulkan data pribadi apa pun - juga tidak menggunakan Alamat IP atau data terkait teknologi lainnya, dan juga tidak mengumpulkan, memproses, atau menggunakannya dengan cara apa pun.</string>
+    <string name="privacy_message">Aplikasi ini tidak mengumpulkan data pribadi apa pun - aplikasi ini juga tidak menggunakan Alamat-IP atau data terkait teknologi lainnya, dan juga tidak mengumpulkan, memproses, atau menggunakannya dengan cara apa pun.</string>
     <string name="privacy_ok">OK</string>
     <string name="privacy_title">Informasi Privasi</string>
     <string name="restore_backup_not_found">File Cadangan tidak ditemukan</string>
@@ -107,9 +108,10 @@
     <string name="sekunden">Detik</string>
     <string name="select_audio">Pilih file suara</string>
     <string name="service_description">Meditasi Zazen yang sedang berjalan</string>
+    <string name="session_deleted">Dihapus \'%s\'</string>
     <string name="session_list_unnamed_entry">Sesi Tanpa Nama</string>
     <string name="stop_meditation_cancel">Batal</string>
-    <string name="stop_meditation_message">Sesi meditasi Anda masih berjalan.</string>
+    <string name="stop_meditation_message">Sesi meditasi Anda masih berlangsung.</string>
     <string name="stop_meditation_stop">Berhenti</string>
     <string name="stop_meditation_title">Hentikan meditasi?</string>
     <string name="system_volume_section_title">Volume Meditasi</string>
@@ -121,9 +123,9 @@
     <string name="theme_light">Tema Terang</string>
     <string name="theme_system">Tema Sistem</string>
     <string name="time_section_elapsed">Bagian berlalu</string>
-    <string name="time_section_remaining">Sisa bagian</string>
+    <string name="time_section_remaining">Bagian tersisa</string>
     <string name="time_session_elapsed">Sesi berlalu</string>
-    <string name="time_session_remaining">Sisa sesi</string>
+    <string name="time_session_remaining">Sesi tersisa</string>
     <string name="title_bell_volumes">Volume Lonceng</string>
     <string name="title_question_delete_session">Hapus Sesi?</string>
     <string name="unnamed">Tanpa nama</string>

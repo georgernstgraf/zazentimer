@@ -2,24 +2,20 @@
 <resources>
     <string name="abbrechen">Abbrechen</string>
     <string name="about1">Zazen Meditation Timer — Ein einfacher Meditationstimer mit anpassbaren Abschnitten, Klangschalenklängen und Sitzungsverwaltung.</string>
-    <string name="about2">Ursprünglich erstellt von Stefan Gaffga. Aktuell gepflegt von Georg Graf.&lt;br&gt;&lt;br&gt;Danke an Winfried von &lt;a href=\"http://www.meditationsuhren.de\"&gt;http://www.meditationsuhren.de&lt;/a&gt; für die Bereitstellung solch großartiger Klangschalen-Klänge!</string>
-    <string name="about3">&lt;a href=\"https://github.com/georgernstgraf/zazentimer/issues\"&gt;Probleme auf GitHub melden&lt;/a&gt;</string>
+    <string name="about2">Ursprünglich erstellt von Stefan Gaffga. Derzeit gepflegt von Georg Graf.&lt;br&gt;&lt;br&gt;Dank an Winfried von &lt;a href=\"http://www.meditationsuhren.de\"&gt;http://www.meditationsuhren.de&lt;/a&gt; für die Bereitstellung so großartiger Klangschalen-Klänge!</string>
+    <string name="about3">&lt;a href=\"https://github.com/georgernstgraf/zazentimer/issues\"&gt;Fehler auf GitHub melden&lt;/a&gt;</string>
     <string name="action_delete">Löschen</string>
     <string name="action_undo">Rückgängig</string>
     <string name="affected_section_format">• Abschnitt \"%1$s\" in Sitzung \"%2$s\"</string>
-    <string name="app_description">Diese Anwendung ermöglicht es dem Nutzer, eine Reihe von Meditationssitzungen zu definieren, und bietet einen Timer mit visuellem und akustischem Feedback, wenn ein Teil oder die gesamte Meditation beendet ist.</string>
+    <string name="app_description">Diese Anwendung ermöglicht es dem Benutzer, eine Reihe von Meditationssitzungen zu definieren, und bietet einen Timer mit visuellem und akustischem Feedback, wenn ein Teil oder die gesamte Meditation beendet ist.</string>
     <string name="backup_error_text">Entschuldigung, beim Speichern ist ein Fehler aufgetreten.</string>
     <string name="backup_success_text">Backup erfolgreich erstellt!</string>
+    <string name="bell_dimming_section_title">Klangschalen-Lautstärke konfigurieren</string>
     <string name="bell_name_1">Hoher Ton</string>
     <string name="bell_name_2">Tiefer Ton</string>
-    <string name="bell_name_3">Jap. Rhinbowl Dharma, 107mm</string>
-    <string name="bell_name_4">Jap. Rhinbowl Dharma, 88mm (schwarz, glasiert)</string>
-    <string name="bell_name_5">Jap. Rhinbowl Shomyo, 90mm</string>
-    <string name="bell_name_6">Jap. Rhinbowl Tang, 164mm</string>
-    <string name="bell_name_7">Tib. Klangschale, 230mm</string>
-    <string name="bell_name_8">Jap. Rhinbowl, 97mm</string>
-    <string name="bell_pause">Klangschalen-Abstand (Sek)</string>
+    <string name="bell_pause">Klangschalen-Abstand (Sek.)</string>
     <string name="bell_user">Klangschale hinzufügen…</string>
+    <string name="bell_volume_dim_explanation">Individuelle Klangschalen-Lautstärken für diese Session anpassen.</string>
     <string name="but_pause">Pause</string>
     <string name="but_start">Meditation starten</string>
     <string name="but_stop">Stopp</string>
@@ -32,6 +28,9 @@
     <string name="content_desc_section_actions">Abschnittsaktionen</string>
     <string name="content_desc_session_actions">Sitzungsaktionen</string>
     <string name="copy_prefix">Kopie von</string>
+    <string name="crash_copy_exit">Stack-Trace kopieren &amp; Beenden</string>
+    <string name="crash_dialog_title">Schwerwiegender Fehler</string>
+    <string name="crash_exit">Beenden</string>
     <string name="default_section_name">Unbenannt</string>
     <string name="demo_sess1_description">Sonntagabend-Meditation</string>
     <string name="demo_sess1_name">Zazen und Kinhin</string>
@@ -43,16 +42,16 @@
     <string name="demo_sess1_sec6_name">Zazen 3</string>
     <string name="demo_sess2_description">Tägliche Meditation</string>
     <string name="demo_sess2_name">Nur Zazen</string>
-    <string name="desc_keep_screen_on">Hält den Bildschirm während der Meditation eingeschaltet</string>
+    <string name="desc_keep_screen_on">Hält den Bildschirm während der Meditation an</string>
     <string name="gong_type">Gong-Klang</string>
-    <string name="help_sectionlist_text">Hier kannst du den Namen, die Beschreibung und den Inhalt deiner Sitzung bearbeiten.\n\n NEU ANORDNEN\n Um Elemente neu anzuordnen, halte ein Element gedrückt und\n ziehe es an die neue Position.\n\n LÖSCHEN\n Um ein Element zu löschen, wische es nach rechts.\n\n BEARBEITEN\n Um einen Abschnitt zu bearbeiten, tippe ihn einmal an.\n\n HINZUFÜGEN\n Um einen neuen Abschnitt hinzuzufügen, drücke die +-Taste.</string>
+    <string name="help_sectionlist_text">Hier können Sie Ihre Session benennen, beschreiben und deren Inhalt bearbeiten.\n\n UMSORTIEREN\n Zum Umsortieren ein Element lange gedrückt halten und\n an die neue Position ziehen.\n\n LÖSCHEN\n Zum Löschen ein Element nach rechts schieben.\n\n BEARBEITEN\n Zum Bearbeiten eines Abschnitts einfach einmal darauf tippen.\n\n HINZUFÜGEN\n Zum Hinzufügen eines neuen Abschnitts die +-Taste drücken.</string>
     <string name="help_sectionlist_title">Sitzung bearbeiten</string>
     <string name="import_bell">Klangschale importieren</string>
     <string name="label_section_name">Abschnittsname</string>
     <string name="label_session_description">Sitzungsbeschreibung</string>
     <string name="label_session_name">Sitzungsname</string>
     <string name="manage_bells">Klangschalen verwalten</string>
-    <string name="manage_bells_summary">Klangschalen aus dem Dateisystem hinzufügen / Klangschalen aus der App entfernen</string>
+    <string name="manage_bells_summary">Klangschalen aus dem Dateisystem hinzufügen / aus der App entfernen</string>
     <string name="menu_about">Über…</string>
     <string name="menu_add_section">Abschnitt hinzufügen</string>
     <string name="menu_add_session">Sitzung hinzufügen</string>
@@ -71,9 +70,11 @@
     <string name="nav_label_meditation">Meditation</string>
     <string name="nav_label_sessions">Sitzungen</string>
     <string name="nav_label_settings">Einstellungen</string>
+    <string name="new_session_description">Neue Sitzungsbeschreibung</string>
+    <string name="new_session_name">Neue Sitzung</string>
     <string name="no_bells_configured">Noch keine Klangschalen konfiguriert</string>
-    <string name="no_custom_bells">Keine eigenen Klangschalen importiert.</string>
-    <string name="no_sections_in_session">Meditation kann nicht gestartet werden: Die ausgewählte Sitzung hat keine Abschnitte.</string>
+    <string name="no_custom_bells">Keine benutzerdefinierten Klangschalen importiert.</string>
+    <string name="no_sections_in_session">Meditation kann nicht gestartet werden: Die ausgewählte Sitzung enthält keine Abschnitte.</string>
     <string name="no_session_exists">Es gibt keine Sitzung, die gestartet werden kann. Bitte erstelle zuerst eine.</string>
     <string name="notification_channel_name">Meditationstimer</string>
     <string name="notification_text">Eine Zazen-Meditation läuft gerade</string>
@@ -83,17 +84,17 @@
     <string name="num_bells">Klangschalen-Anzahl</string>
     <string name="ok">OK</string>
     <string name="pref_desc_brightness">Helligkeit des Displays während der Meditation</string>
-    <string name="pref_sum_backup">Speichere ein Backup deiner Sessions und Sounds auf deiner SD-Karte.</string>
-    <string name="pref_sum_restore">Stelle deine Sitzungen und eigenen Klänge aus dem SD-Karten-Backup wieder her</string>
+    <string name="pref_sum_backup">Ein Backup deiner Sitzungen und Klänge auf die SD-Karte speichern.</string>
+    <string name="pref_sum_restore">Stellen Sie Ihre Sitzungen und benutzerdefinierten Klänge aus der SD-Karten-Sicherung wieder her</string>
     <string name="pref_title_backup">Backup erstellen</string>
     <string name="pref_title_brightness">Helligkeit</string>
     <string name="pref_title_restore">Aus Backup wiederherstellen</string>
-    <string name="privacy_message">Diese App sammelt keine personenbezogenen Daten - sie verwendet auch keine IP-Adressen oder andere technologiebezogene Daten, noch werden diese in irgendeiner Weise gesammelt, verarbeitet oder genutzt.</string>
+    <string name="privacy_message">Diese App sammelt keine persönlichen Daten – sie verwendet auch keine IP-Adressen oder andere technologiebezogene Daten und sammelt, verarbeitet oder nutzt diese in keiner Weise.</string>
     <string name="privacy_ok">OK</string>
-    <string name="privacy_title">Datenschutzinformationen</string>
+    <string name="privacy_title">Datenschutzinformation</string>
     <string name="restore_backup_not_found">Backup-Datei nicht gefunden</string>
     <string name="restore_error_text">Fehler beim Wiederherstellen aus dem Backup</string>
-    <string name="restore_really_text">Dies ersetzt alle deine Sitzungen durch die im Backup! (Kein Rückgängigmachen!)</string>
+    <string name="restore_really_text">Dies wird alle deine Sessions mit denen aus dem Backup ersetzen! (Kein Rückgängigmachen!)</string>
     <string name="restore_really_title">Daten wirklich wiederherstellen?</string>
     <string name="restore_success_text">Datenwiederherstellung erfolgreich</string>
     <string name="restore_version_mismatch_text">Dieses Backup wurde mit einer neueren Version von ZazenTimer erstellt. Bitte aktualisiere die App.</string>
@@ -105,8 +106,9 @@
     <string name="section_info_string_2_pl">alle %1$d Sekunden</string>
     <string name="section_info_string_2_sg">jede Sekunde</string>
     <string name="sekunden">Sekunden</string>
-    <string name="select_audio">Sounddatei auswählen</string>
+    <string name="select_audio">Klangdatei auswählen</string>
     <string name="service_description">Eine laufende Zazen-Meditation</string>
+    <string name="session_deleted">\'%s\' gelöscht</string>
     <string name="session_list_unnamed_entry">Unbenannte Sitzung</string>
     <string name="stop_meditation_cancel">Abbrechen</string>
     <string name="stop_meditation_message">Deine Meditationssitzung läuft noch.</string>

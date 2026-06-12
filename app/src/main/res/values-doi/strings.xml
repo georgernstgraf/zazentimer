@@ -1,3 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="action_delete">मिटाओ</string>
+    <string name="action_undo">वापस करो</string>
+    <string name="copy_prefix">दी नकल</string>
+    <string name="demo_sess1_sec1_name">तैयारी</string>
+    <string name="demo_sess1_sec2_name">Zazen 1</string>
+    <string name="demo_sess1_sec3_name">Kinhin 1</string>
+    <string name="demo_sess1_sec4_name">Zazen 2</string>
+    <string name="demo_sess1_sec5_name">Kinhin 3</string>
+    <string name="demo_sess1_sec6_name">Zazen 3</string>
+    <string name="demo_sess2_description">रोज़ाना ध्यान</string>
+    <string name="desc_keep_screen_on">ध्यान दौरान स्क्रीन चालू रक्खदा ऐ</string>
+    <string name="manage_bells">घंटियां संभालो</string>
+    <string name="menu_add_session">सत्र जोड़ो</string>
+    <string name="menu_copy_session">सत्र दी नकल करो</string>
+    <string name="menu_delete_session">सत्र मिटाओ</string>
+    <string name="menu_help">मदद</string>
+    <string name="menu_privacy">गोपनीयता…</string>
+    <string name="nav_label_manage_bells">घंटियां संभालो</string>
+    <string name="nav_label_meditation">ध्यान</string>
+    <string name="nav_label_sessions">सत्र</string>
+    <string name="notification_channel_name">ध्यान टाइमर</string>
+    <string name="pref_title_brightness">चमक</string>
+    <string name="section_info_string_2_pl">हर %1$d सेकंड</string>
+    <string name="section_info_string_2_sg">हर सेकंड</string>
+    <string name="sekunden">सेकंड</string>
+    <string name="select_audio">आवाज़ दी फाइल चुनो</string>
+    <string name="theme">थीम</string>
+    <string name="theme_desc">ऐप दा रूप चुनो</string>
+    <string name="theme_system">सिस्टम थीम</string>
 </resources>

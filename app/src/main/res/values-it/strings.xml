@@ -2,24 +2,20 @@
 <resources>
     <string name="abbrechen">Annulla</string>
     <string name="about1">Zazen Meditation Timer — Un semplice timer per la meditazione con sezioni personalizzabili, suoni di campana e gestione delle sessioni.</string>
-    <string name="about2">Creato originariamente da Stefan Gaffga. Attualmente mantenuto da Georg Graf.&lt;br&gt;&lt;br&gt;Grazie a Winfried di &lt;a href=\"http://www.meditationsuhren.de\"&gt;http://www.meditationsuhren.de&lt;/a&gt; per aver fornito questi fantastici suoni delle campane!</string>
+    <string name="about2">Originariamente creata da Stefan Gaffga. Attualmente mantenuta da Georg Graf.&lt;br&gt;&lt;br&gt;Grazie a Winfried di &lt;a href=\"http://www.meditationsuhren.de\"&gt;http://www.meditationsuhren.de&lt;/a&gt; per aver fornito suoni di campane così belli!</string>
     <string name="about3">&lt;a href=\"https://github.com/georgernstgraf/zazentimer/issues\"&gt;Segnala problemi su GitHub&lt;/a&gt;</string>
     <string name="action_delete">Elimina</string>
     <string name="action_undo">Annulla</string>
     <string name="affected_section_format">• sezione \"%1$s\" nella sessione \"%2$s\"</string>
-    <string name="app_description">Questa applicazione permette all\'utente di definire un insieme di sessioni di meditazione e fornisce un timer con feedback visivo e sonoro quando una parte o l\'intera meditazione è terminata.</string>
-    <string name="backup_error_text">Spiacenti, si è verificato un errore durante il salvataggio.</string>
+    <string name="app_description">Questa applicazione permette all\'utente di definire una serie di sessioni di meditazione e fornisce un timer con feedback visivo e sonoro al termine di una parte o dell\'intera meditazione.</string>
+    <string name="backup_error_text">Spiacente, si è verificato un errore durante il salvataggio.</string>
     <string name="backup_success_text">Backup creato con successo!</string>
+    <string name="bell_dimming_section_title">Configura volume campana</string>
     <string name="bell_name_1">Tono alto</string>
     <string name="bell_name_2">Tono basso</string>
-    <string name="bell_name_3">Jap. Rhinbowl Dharma, 107mm</string>
-    <string name="bell_name_4">Jap. Rhinbowl Dharma, 88mm (nero, smaltato)</string>
-    <string name="bell_name_5">Giapp. Rhinbowl Shomyo, 90mm</string>
-    <string name="bell_name_6">Jap. Rhinbowl Tang, 164mm</string>
-    <string name="bell_name_7">Tib. Bowl, 230mm</string>
-    <string name="bell_name_8">Giapp. Rhinbowl, 97mm</string>
     <string name="bell_pause">Intervallo campana (sec)</string>
     <string name="bell_user">Aggiungi campana…</string>
+    <string name="bell_volume_dim_explanation">Regola i volumi individuali delle campane per questa sessione.</string>
     <string name="but_pause">Pausa</string>
     <string name="but_start">Inizia meditazione</string>
     <string name="but_stop">Ferma</string>
@@ -27,11 +23,14 @@
     <string name="caption_zazen_meditation">Meditazione Zazen</string>
     <string name="checkbox_keep_screen_on">Mantieni schermo acceso</string>
     <string name="confirm_delete_bell">Eliminare la campana \"%s\"?</string>
-    <string name="confirm_delete_bell_affected">Eliminare la campana \"%1$s\"?\n\nLe seguenti sezioni passeranno alla campana predefinita:\n%2$s</string>
+    <string name="confirm_delete_bell_affected">Eliminare la campana \"%1$s\"?\n\nLe seguenti sezioni verranno impostate sulla campana predefinita:\n%2$s</string>
     <string name="content_desc_drag_handle">Trascina per riordinare</string>
     <string name="content_desc_section_actions">Azioni sezione</string>
     <string name="content_desc_session_actions">Azioni sessione</string>
     <string name="copy_prefix">Copia di</string>
+    <string name="crash_copy_exit">Copia stack trace ed esci</string>
+    <string name="crash_dialog_title">Errore fatale</string>
+    <string name="crash_exit">Esci</string>
     <string name="default_section_name">Senza nome</string>
     <string name="demo_sess1_description">Meditazione della domenica sera</string>
     <string name="demo_sess1_name">Zazen e Kinhin</string>
@@ -71,31 +70,33 @@
     <string name="nav_label_meditation">Meditazione</string>
     <string name="nav_label_sessions">Sessioni</string>
     <string name="nav_label_settings">Impostazioni</string>
+    <string name="new_session_description">Descrizione nuova sessione</string>
+    <string name="new_session_name">Nuova sessione</string>
     <string name="no_bells_configured">Nessuna campana ancora configurata</string>
     <string name="no_custom_bells">Nessuna campana personalizzata importata.</string>
     <string name="no_sections_in_session">Impossibile avviare la meditazione: la sessione selezionata non ha sezioni.</string>
-    <string name="no_session_exists">Non c\'è nessuna sessione che possa essere avviata. Creane prima una.</string>
-    <string name="notification_channel_name">Timer Meditazione</string>
-    <string name="notification_text">Una meditazione Zazen è attualmente in corso</string>
+    <string name="no_session_exists">Non c\'è alcuna sessione che possa essere avviata. Creane una prima.</string>
+    <string name="notification_channel_name">Timer meditazione</string>
+    <string name="notification_text">Una meditazione Zazen è in corso</string>
     <string name="notification_text_paused">Meditazione Zazen in pausa</string>
     <string name="notification_title">Meditazione Zazen</string>
     <string name="notification_title_paused">Meditazione Zazen (in pausa)</string>
-    <string name="num_bells">Numero di campane</string>
+    <string name="num_bells">Conteggio campane</string>
     <string name="ok">OK</string>
     <string name="pref_desc_brightness">Luminosità del display durante la meditazione</string>
     <string name="pref_sum_backup">Salva un backup delle tue sessioni e suoni sulla scheda SD.</string>
-    <string name="pref_sum_restore">Ripristina le tue Sessioni e Suoni Personalizzati dal backup sulla scheda SD</string>
+    <string name="pref_sum_restore">Ripristina le tue sessioni e i suoni personalizzati dal backup sulla scheda SD</string>
     <string name="pref_title_backup">Crea backup</string>
     <string name="pref_title_brightness">Luminosità</string>
     <string name="pref_title_restore">Ripristina da backup</string>
-    <string name="privacy_message">Questa app non raccoglie alcun dato personale - non utilizza indirizzi IP o qualsiasi altro dato tecnologico, né raccoglie, elabora o utilizza alcun dato in alcun modo.</string>
+    <string name="privacy_message">Questa App non raccoglie alcun dato personale - inoltre non utilizza indirizzi IP o altri dati legati alla tecnologia, né li raccoglie, processa o utilizza in alcun modo.</string>
     <string name="privacy_ok">OK</string>
     <string name="privacy_title">Informazioni sulla privacy</string>
     <string name="restore_backup_not_found">File di backup non trovato</string>
-    <string name="restore_error_text">Errore durante il ripristino dal backup</string>
+    <string name="restore_error_text">Errore nel ripristino dal backup</string>
     <string name="restore_really_text">Questo sostituirà tutte le tue sessioni con quelle nel backup! (Non annullabile!)</string>
     <string name="restore_really_title">Ripristinare davvero i dati?</string>
-    <string name="restore_success_text">Ripristino dati completato con successo</string>
+    <string name="restore_success_text">Ripristino dati riuscito</string>
     <string name="restore_version_mismatch_text">Questo backup è stato creato da una versione più recente di ZazenTimer. Aggiorna l\'app.</string>
     <string name="restore_version_mismatch_title">Versione backup più recente</string>
     <string name="search_menu_title">Cerca</string>
@@ -107,6 +108,7 @@
     <string name="sekunden">Secondi</string>
     <string name="select_audio">Seleziona file audio</string>
     <string name="service_description">Una meditazione Zazen in corso</string>
+    <string name="session_deleted">Eliminato \'%s\'</string>
     <string name="session_list_unnamed_entry">Sessione senza nome</string>
     <string name="stop_meditation_cancel">Annulla</string>
     <string name="stop_meditation_message">La tua sessione di meditazione è ancora in corso.</string>
@@ -124,7 +126,7 @@
     <string name="time_section_remaining">Sezione rimanente</string>
     <string name="time_session_elapsed">Sessione trascorsa</string>
     <string name="time_session_remaining">Sessione rimanente</string>
-    <string name="title_bell_volumes">Volume campane</string>
+    <string name="title_bell_volumes">Volumi campana</string>
     <string name="title_question_delete_session">Eliminare sessione?</string>
     <string name="unnamed">Senza nome</string>
 </resources>

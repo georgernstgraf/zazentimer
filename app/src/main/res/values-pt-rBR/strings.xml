@@ -1,29 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="abbrechen">Cancelar</string>
-    <string name="about1">Zazen Meditation Timer — Um timer de meditação simples com seções personalizáveis, sons de sino e gerenciamento de sessões.</string>
-    <string name="about2">Originalmente criado por Stefan Gaffga. Atualmente mantido por Georg Graf.&lt;br&gt;&lt;br&gt;Obrigado a Winfried de &lt;a href=\"http://www.meditationsuhren.de\"&gt;http://www.meditationsuhren.de&lt;/a&gt; por fornecer sons de sino tão fantásticos!</string>
+    <string name="about1">Zazen Meditation Timer — Um temporizador de meditação simples com seções personalizáveis, sons de sino e gerenciamento de sessões.</string>
+    <string name="about2">Criado originalmente por Stefan Gaffga. Atualmente mantido por Georg Graf.&lt;br&gt;&lt;br&gt;Obrigado a Winfried de &lt;a href=\"http://www.meditationsuhren.de\"&gt;http://www.meditationsuhren.de&lt;/a&gt; por fornecer excelentes sons de sino!</string>
     <string name="about3">&lt;a href=\"https://github.com/georgernstgraf/zazentimer/issues\"&gt;Relatar problemas no GitHub&lt;/a&gt;</string>
     <string name="action_delete">Excluir</string>
     <string name="action_undo">Desfazer</string>
     <string name="affected_section_format">• seção \"%1$s\" na Sessão \"%2$s\"</string>
-    <string name="app_description">Este aplicativo permite ao usuário definir um conjunto de sessões de meditação e fornece um timer com feedback visual e sonoro quando uma parte ou a meditação inteira termina.</string>
+    <string name="app_description">Este aplicativo permite que o usuário defina um conjunto de sessões de meditação e oferece um temporizador com feedback visual e sonoro quando uma parte ou toda a meditação termina.</string>
     <string name="backup_error_text">Desculpe, ocorreu um erro ao salvar.</string>
     <string name="backup_success_text">Backup criado com sucesso!</string>
+    <string name="bell_dimming_section_title">Configurar Volume do Sino</string>
     <string name="bell_name_1">Tom Alto</string>
     <string name="bell_name_2">Tom Baixo</string>
-    <string name="bell_name_3">Jap. Rhinbowl Dharma, 107mm</string>
-    <string name="bell_name_4">Jap. Rhinbowl Dharma, 88mm (preto, esmaltado)</string>
-    <string name="bell_name_5">Jap. Rhinbowl Shomyo, 90mm</string>
-    <string name="bell_name_6">Jap. Rhinbowl Tang, 164mm</string>
-    <string name="bell_name_7">Tib. Bowl, 230mm</string>
-    <string name="bell_name_8">Jap. Rhinbowl, 97mm</string>
     <string name="bell_pause">Intervalo do sino (seg)</string>
     <string name="bell_user">Adicionar Sino…</string>
+    <string name="bell_volume_dim_explanation">Ajuste os volumes individuais dos sinos para esta sessão.</string>
     <string name="but_pause">Pausar</string>
     <string name="but_start">Iniciar Meditação</string>
     <string name="but_stop">Parar</string>
-    <string name="button_bell_volumes">Ajustar Volumes dos Sinos</string>
+    <string name="button_bell_volumes">Ajustar volumes dos sinos</string>
     <string name="caption_zazen_meditation">Meditação Zazen</string>
     <string name="checkbox_keep_screen_on">Manter tela ligada</string>
     <string name="confirm_delete_bell">Excluir sino \"%s\"?</string>
@@ -32,6 +28,9 @@
     <string name="content_desc_section_actions">Ações da seção</string>
     <string name="content_desc_session_actions">Ações da sessão</string>
     <string name="copy_prefix">Cópia de</string>
+    <string name="crash_copy_exit">Copiar Stack Trace &amp; Sair</string>
+    <string name="crash_dialog_title">Erro Fatal</string>
+    <string name="crash_exit">Sair</string>
     <string name="default_section_name">Sem nome</string>
     <string name="demo_sess1_description">Meditação de domingo à noite</string>
     <string name="demo_sess1_name">Zazen e Kinhin</string>
@@ -42,7 +41,7 @@
     <string name="demo_sess1_sec5_name">Kinhin 3</string>
     <string name="demo_sess1_sec6_name">Zazen 3</string>
     <string name="demo_sess2_description">Meditação diária</string>
-    <string name="demo_sess2_name">Apenas Zazen</string>
+    <string name="demo_sess2_name">Somente Zazen</string>
     <string name="desc_keep_screen_on">Mantém a tela ligada durante a meditação</string>
     <string name="gong_type">Som do gongo</string>
     <string name="help_sectionlist_text">Aqui você pode nomear, descrever e editar o conteúdo da sua Sessão.\n\n REORDENAR\n Para reordenar os itens, pressione longamente um item e\n arraste-o para a nova posição.\n\n EXCLUIR\n Para excluir um item, mova-o para a direita.\n\n EDITAR\n Para editar uma seção, toque nela uma vez.\n\n ADICIONAR\n Para adicionar uma nova seção, pressione o botão +.</string>
@@ -52,7 +51,7 @@
     <string name="label_session_description">Descrição da Sessão</string>
     <string name="label_session_name">Nome da Sessão</string>
     <string name="manage_bells">Gerenciar Sinos</string>
-    <string name="manage_bells_summary">Adicionar Sinos do sistema de arquivos / remover Sinos do App</string>
+    <string name="manage_bells_summary">Adicionar sinos do sistema de arquivos / remover sinos do aplicativo</string>
     <string name="menu_about">Sobre…</string>
     <string name="menu_add_section">Adicionar Seção</string>
     <string name="menu_add_session">Adicionar Sessão</string>
@@ -71,6 +70,8 @@
     <string name="nav_label_meditation">Meditação</string>
     <string name="nav_label_sessions">Sessões</string>
     <string name="nav_label_settings">Configurações</string>
+    <string name="new_session_description">Descrição da Nova Sessão</string>
+    <string name="new_session_name">Nova Sessão</string>
     <string name="no_bells_configured">Nenhum sino configurado ainda</string>
     <string name="no_custom_bells">Nenhum sino personalizado importado.</string>
     <string name="no_sections_in_session">Não é possível iniciar a Meditação: A Sessão selecionada não possui nenhuma Seção.</string>
@@ -83,12 +84,12 @@
     <string name="num_bells">Contagem de sinos</string>
     <string name="ok">OK</string>
     <string name="pref_desc_brightness">Brilho da Tela durante a Meditação</string>
-    <string name="pref_sum_backup">Salve um backup de suas Sessões e Sons no seu cartão SD.</string>
-    <string name="pref_sum_restore">Restaure suas Sessões e Sons Personalizados do Backup do Cartão SD</string>
+    <string name="pref_sum_backup">Salve um backup de suas Sessões e Sons no cartão SD.</string>
+    <string name="pref_sum_restore">Restaurar suas Sessões e Sons Personalizados do Backup do cartão SD</string>
     <string name="pref_title_backup">Criar Backup</string>
     <string name="pref_title_brightness">Brilho</string>
     <string name="pref_title_restore">Restaurar do Backup</string>
-    <string name="privacy_message">Este App não coleta nenhum dado pessoal - ele também não usa endereços IP ou qualquer outro dado relacionado à tecnologia, nem coleta, processa ou usa de forma alguma.</string>
+    <string name="privacy_message">Este aplicativo não coleta dados pessoais - também não usa endereços IP ou quaisquer outros dados relacionados à tecnologia, nem coleta, processa ou os utiliza de forma alguma.</string>
     <string name="privacy_ok">OK</string>
     <string name="privacy_title">Informações de Privacidade</string>
     <string name="restore_backup_not_found">Arquivo de Backup não encontrado</string>
@@ -107,6 +108,7 @@
     <string name="sekunden">Segundos</string>
     <string name="select_audio">Selecionar arquivo de som</string>
     <string name="service_description">Uma Meditação Zazen em andamento</string>
+    <string name="session_deleted">Excluído \'%s\'</string>
     <string name="session_list_unnamed_entry">Sessão sem nome</string>
     <string name="stop_meditation_cancel">Cancelar</string>
     <string name="stop_meditation_message">Sua sessão de meditação ainda está em andamento.</string>
@@ -124,7 +126,7 @@
     <string name="time_section_remaining">Seção restante</string>
     <string name="time_session_elapsed">Sessão decorrida</string>
     <string name="time_session_remaining">Sessão restante</string>
-    <string name="title_bell_volumes">Volumes dos Sinos</string>
+    <string name="title_bell_volumes">Volumes dos sinos</string>
     <string name="title_question_delete_session">Excluir Sessão?</string>
     <string name="unnamed">Sem nome</string>
 </resources>

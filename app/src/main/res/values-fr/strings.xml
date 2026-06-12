@@ -2,7 +2,7 @@
 <resources>
     <string name="abbrechen">Annuler</string>
     <string name="about1">Minuteur de méditation Zazen — Un simple minuteur de méditation avec des sections personnalisables, des sons de cloche et une gestion de session.</string>
-    <string name="about2">Créé à l\'origine par Stefan Gaffga. Actuellement maintenu par Georg Graf.&lt;br&gt;&lt;br&gt;Merci à Winfried de &lt;a href=\"http://www.meditationsuhren.de\"&gt;http://www.meditationsuhren.de&lt;/a&gt; pour avoir fourni de si superbes sons de cloche !</string>
+    <string name="about2">Créé à l\'origine par Stefan Gaffga. Actuellement maintenu par Georg Graf.&lt;br&gt;&lt;br&gt;Merci à Winfried de &lt;a href=\"http://www.meditationsuhren.de\"&gt;http://www.meditationsuhren.de&lt;/a&gt; pour avoir fourni de si beaux sons de cloche !</string>
     <string name="about3">&lt;a href=\"https://github.com/georgernstgraf/zazentimer/issues\"&gt;Signaler des problèmes sur GitHub&lt;/a&gt;</string>
     <string name="action_delete">Supprimer</string>
     <string name="action_undo">Annuler</string>
@@ -10,28 +10,27 @@
     <string name="app_description">Cette application permet à l\'utilisateur de définir un ensemble de sessions de méditation et fournit un minuteur avec un retour visuel et sonore lorsqu\'une partie ou la totalité de la méditation est terminée.</string>
     <string name="backup_error_text">Désolé, une erreur s\'est produite lors de l\'enregistrement.</string>
     <string name="backup_success_text">Sauvegarde créée avec succès !</string>
-    <string name="bell_name_1">Son aigu</string>
-    <string name="bell_name_2">Son grave</string>
-    <string name="bell_name_3">Bol japonais Dharma, 107mm</string>
-    <string name="bell_name_4">Bol japonais Dharma, 88mm (noir, émaillé)</string>
-    <string name="bell_name_5">Bol japonais Shomyo, 90mm</string>
-    <string name="bell_name_6">Bol japonais Tang, 164mm</string>
-    <string name="bell_name_7">Bol tibétain, 230mm</string>
-    <string name="bell_name_8">Bol japonais, 97mm</string>
-    <string name="bell_pause">Intervalle entre les bols (sec)</string>
-    <string name="bell_user">Ajouter une cloche…</string>
+    <string name="bell_dimming_section_title">Configurer le volume de la cloche</string>
+    <string name="bell_name_1">Ton aigu</string>
+    <string name="bell_name_2">Ton grave</string>
+    <string name="bell_pause">Intervalle entre les cloches (sec)</string>
+    <string name="bell_user">Ajouter un bol…</string>
+    <string name="bell_volume_dim_explanation">Ajuster les volumes individuels des cloches pour cette session.</string>
     <string name="but_pause">Pause</string>
     <string name="but_start">Démarrer la méditation</string>
     <string name="but_stop">Arrêter</string>
-    <string name="button_bell_volumes">Ajuster les volumes des cloches</string>
+    <string name="button_bell_volumes">Ajuster les volumes des bols</string>
     <string name="caption_zazen_meditation">Méditation Zazen</string>
     <string name="checkbox_keep_screen_on">Garder l\'écran allumé</string>
-    <string name="confirm_delete_bell">Supprimer la cloche \"%s\" ?</string>
-    <string name="confirm_delete_bell_affected">Supprimer la cloche \"%1$s\" ?\n\nLes sections suivantes passeront à la cloche par défaut :\n%2$s</string>
-    <string name="content_desc_drag_handle">Faire glisser pour réorganiser</string>
+    <string name="confirm_delete_bell">Supprimer le bol \"%s\" ?</string>
+    <string name="confirm_delete_bell_affected">Supprimer le bol \"%1$s\" ?\n\nLes sections suivantes seront basculées vers le bol par défaut :\n%2$s</string>
+    <string name="content_desc_drag_handle">Glisser pour réorganiser</string>
     <string name="content_desc_section_actions">Actions de section</string>
     <string name="content_desc_session_actions">Actions de session</string>
     <string name="copy_prefix">Copie de</string>
+    <string name="crash_copy_exit">Copier la trace de pile et quitter</string>
+    <string name="crash_dialog_title">Erreur fatale</string>
+    <string name="crash_exit">Quitter</string>
     <string name="default_section_name">Sans nom</string>
     <string name="demo_sess1_description">Méditation du dimanche soir</string>
     <string name="demo_sess1_name">Zazen et Kinhin</string>
@@ -47,12 +46,12 @@
     <string name="gong_type">Son de gong</string>
     <string name="help_sectionlist_text">Ici, vous pouvez nommer, décrire et modifier le contenu de votre session.\n\n RÉORGANISER\n Pour réorganiser les éléments, appuyez longuement sur un élément et\n faites-le glisser vers sa nouvelle position.\n\n SUPPRIMER\n Pour supprimer un élément, déplacez-le vers la droite.\n\n MODIFIER\n Pour modifier une section, touchez-la simplement une fois.\n\n AJOUTER\n Pour ajouter une nouvelle section, appuyez sur le bouton +.</string>
     <string name="help_sectionlist_title">Modifier la session</string>
-    <string name="import_bell">Importer une cloche</string>
+    <string name="import_bell">Importer un bol</string>
     <string name="label_section_name">Nom de la section</string>
     <string name="label_session_description">Description de la session</string>
     <string name="label_session_name">Nom de la session</string>
-    <string name="manage_bells">Gérer les cloches</string>
-    <string name="manage_bells_summary">Ajouter des cloches depuis le système de fichiers / supprimer des cloches de l\'application</string>
+    <string name="manage_bells">Gérer les bols</string>
+    <string name="manage_bells_summary">Ajouter des bols depuis le système de fichiers / supprimer des bols de l\'application</string>
     <string name="menu_about">À propos…</string>
     <string name="menu_add_section">Ajouter une section</string>
     <string name="menu_add_session">Ajouter une session</string>
@@ -67,12 +66,14 @@
     <string name="minuten">Minutes</string>
     <string name="nav_label_edit_section">Modifier la section</string>
     <string name="nav_label_edit_session">Modifier la session</string>
-    <string name="nav_label_manage_bells">Gérer les cloches</string>
+    <string name="nav_label_manage_bells">Gérer les bols</string>
     <string name="nav_label_meditation">Méditation</string>
     <string name="nav_label_sessions">Sessions</string>
     <string name="nav_label_settings">Paramètres</string>
-    <string name="no_bells_configured">Aucune cloche configurée pour le moment</string>
-    <string name="no_custom_bells">Aucune cloche personnalisée importée.</string>
+    <string name="new_session_description">Description de la nouvelle session</string>
+    <string name="new_session_name">Nouvelle session</string>
+    <string name="no_bells_configured">Aucun bol configuré pour l\'instant</string>
+    <string name="no_custom_bells">Aucun bol personnalisé importé.</string>
     <string name="no_sections_in_session">Impossible de démarrer la méditation : la session sélectionnée ne contient aucune section.</string>
     <string name="no_session_exists">Il n\'y a aucune session pouvant être démarrée. Veuillez d\'abord en créer une.</string>
     <string name="notification_channel_name">Minuteur de méditation</string>
@@ -80,15 +81,15 @@
     <string name="notification_text_paused">Méditation Zazen en pause</string>
     <string name="notification_title">Méditation Zazen</string>
     <string name="notification_title_paused">Méditation Zazen (en pause)</string>
-    <string name="num_bells">Nombre de cloches</string>
+    <string name="num_bells">Nombre de bols</string>
     <string name="ok">OK</string>
     <string name="pref_desc_brightness">Luminosité de l\'écran pendant la méditation</string>
-    <string name="pref_sum_backup">Enregistrer une sauvegarde de vos sessions et sons sur votre carte SD.</string>
-    <string name="pref_sum_restore">Restaurer vos sessions et sons personnalisés à partir de la sauvegarde de la carte SD</string>
+    <string name="pref_sum_backup">Enregistrer une sauvegarde de vos sessions et sons sur la carte SD.</string>
+    <string name="pref_sum_restore">Restaurer vos sessions et sons personnalisés depuis la sauvegarde de la carte SD</string>
     <string name="pref_title_backup">Créer une sauvegarde</string>
     <string name="pref_title_brightness">Luminosité</string>
     <string name="pref_title_restore">Restaurer depuis la sauvegarde</string>
-    <string name="privacy_message">Cette application ne collecte aucune donnée personnelle - elle n\'utilise pas non plus d\'adresses IP ou d\'autres données liées à la technologie, ni ne les collecte, traite ou utilise de quelque manière que ce soit.</string>
+    <string name="privacy_message">Cette application ne collecte aucune donnée personnelle - elle n\'utilise pas non plus d\'adresses IP ou d\'autres données liées à la technologie, et ne les collecte, ne les traite ou ne les utilise d\'aucune manière.</string>
     <string name="privacy_ok">OK</string>
     <string name="privacy_title">Informations sur la confidentialité</string>
     <string name="restore_backup_not_found">Fichier de sauvegarde introuvable</string>
@@ -107,6 +108,7 @@
     <string name="sekunden">Secondes</string>
     <string name="select_audio">Sélectionner un fichier son</string>
     <string name="service_description">Une méditation Zazen en cours</string>
+    <string name="session_deleted">Supprimé \'%s\'</string>
     <string name="session_list_unnamed_entry">Session sans nom</string>
     <string name="stop_meditation_cancel">Annuler</string>
     <string name="stop_meditation_message">Votre session de méditation est toujours en cours.</string>
@@ -124,7 +126,7 @@
     <string name="time_section_remaining">Section restante</string>
     <string name="time_session_elapsed">Session écoulée</string>
     <string name="time_session_remaining">Session restante</string>
-    <string name="title_bell_volumes">Volumes des cloches</string>
+    <string name="title_bell_volumes">Volumes des bols</string>
     <string name="title_question_delete_session">Supprimer la session ?</string>
     <string name="unnamed">Sans nom</string>
 </resources>
