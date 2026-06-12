@@ -58,25 +58,7 @@ interface SourceString {
 async function main() {
     const { targetDir } = parseArgs();
 
-    // ── 1. Load keep_english keys ─────────────────────────────────────
-    const keepEnglish = new Set<string>();
-    try {
-        const keepJson = JSON.parse(
-            await Deno.readTextFile(
-                new URL("../scripts/keep_english.json", import.meta.url),
-            ),
-        );
-        if (Array.isArray(keepJson)) {
-            for (const k of keepJson) keepEnglish.add(k);
-        }
-        console.log(
-            `keep_english.json: ${keepEnglish.size} keys excluded`,
-        );
-    } catch {
-        console.warn("No keep_english.json found — exporting all keys");
-    }
-
-    // ── 2. Read English master strings.xml ────────────────────────────
+    // ── 1. Read English master strings.xml ────────────────────────────
     const masterPath = new URL(
         "../app/src/main/res/values/strings.xml",
         import.meta.url,
@@ -93,10 +75,6 @@ async function main() {
         const text = match[3].trim();
         if (!text) continue;
         if (/translatable\s*=\s*"false"/.test(attrs)) continue;
-        if (keepEnglish.has(match[1])) {
-            console.log(`  keep_english: skipping "${match[1]}"`);
-            continue;
-        }
 
         const decoded = decodeXml(text);
         const ms = await getMasterStringByText(decoded);

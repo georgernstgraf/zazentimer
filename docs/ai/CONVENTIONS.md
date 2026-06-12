@@ -117,7 +117,6 @@ Follow these without question. Do not deviate unless explicitly told.
 - `--target=<pfad>` ist Pflicht (z.B. `../app/src/main/res`).
 - Languages are exported if they have at least one translation scoring >= `TRANSLATION_SCORE_THRESHOLD`. Languages with no qualifying translations are skipped (no directory created).
 - A language NOT in `supported_languages.json` CAN still be exported if its translations meet the threshold.
-- `keep_english.json`-Keys erscheinen nie in Locale-XMLs (aktuell: `bell_volume_label_format`, `system_volume_label_format`).
 - Ausgabe ist alphabetisch nach Key sortiert für deterministische, diff-freundliche Deltas.
 
 ## Detekt
@@ -158,7 +157,7 @@ Follow these without question. Do not deviate unless explicitly told.
 - **No Automated Blind Scripts**: The LLM performs translations interactively with explicit Zen meditation context. Script-based, context-free automated translation of meditation-specific strings (e.g. via Google Translate API, MyMemory, or any batch script) is **strictly forbidden**. Every locale must be translated by an LLM sub-agent that understands Zazen, Kinhin, mindfulness, and singing-bowl terminology.
 - **Extremely Strict LLM Instructions**: When using LLMs for translation, you **MUST** provide extremely precise instructions regarding XML tags and placeholders (`%s`, `%1$d`, `&lt;`, `&gt;`). LLMs often corrupt these in low-resource languages, leading to runtime formatting crashes.
 - **Explicit Fallback Rule**: Explicitly prompt any translation sub-agent: *"If you do not have high confidence in this specific language, or if you cannot guarantee that EVERY placeholder will be preserved exactly, you MUST leave the string in English. Guessing or hallucinating will cause the application to crash."*
-- **Translation Workflow**: `prisma/translate.ts` liest den englischen Master `strings.xml`, seeded die Strings in die Voting-DB und führt autonom das LLM-Voting durch (per-skill Sub-Agents). Die DB ist die zentrale Autorität für alle Übersetzungen. Nach einem Translate-Lauf wird die DB via `deno task savetranslationstogit` als SQL-Dump versioniert. `prisma/export.ts` regeneriert die `values-*`-Verzeichnisse komplett aus der DB. `scripts/translation_deltas.py` analysiert Deltas (obsolet/missing).
+- **Translation Workflow**: `prisma/translate.ts` liest den englischen Master `strings.xml`, seeded die Strings in die Voting-DB und führt autonom das LLM-Voting durch (per-skill Sub-Agents). Die DB ist die zentrale Autorität für alle Übersetzungen. Nach einem Translate-Lauf wird die DB via `deno task savetranslationstogit` als SQL-Dump versioniert. `prisma/export.ts` regeneriert die `values-*`-Verzeichnisse komplett aus der DB.
 - Always use `R.string` — never hardcode user-facing text in Kotlin, XML, or navigation graphs
 - Mark programmatic strings as `translatable="false"` in XML
 - Never add `abc_*` strings — those come from AndroidX automatically

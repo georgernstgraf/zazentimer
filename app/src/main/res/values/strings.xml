@@ -11,23 +11,23 @@
     <string name="backup_success_text">Backup created successfully!</string>
     <string name="bell_name_1">High Tone</string>
     <string name="bell_name_2">Low Tone</string>
-    <string name="bell_name_3">Jap. Rhinbowl Dharma, 107mm</string>
-    <string name="bell_name_4">Jap. Rhinbowl Dharma, 88mm (black, glazed)</string>
-    <string name="bell_name_5">Jap. Rhinbowl Shomyo, 90mm</string>
-    <string name="bell_name_6">Jap. Rhinbowl Tang, 164mm</string>
-    <string name="bell_name_7">Tib. Bowl, 230mm</string>
-    <string name="bell_name_8">Jap. Rhinbowl, 97mm</string>
+    <string name="bell_name_3" translatable="false">Jap. Rhinbowl Dharma, 107mm</string>
+    <string name="bell_name_4" translatable="false">Jap. Rhinbowl Dharma, 88mm (black, glazed)</string>
+    <string name="bell_name_5" translatable="false">Jap. Rhinbowl Shomyo, 90mm</string>
+    <string name="bell_name_6" translatable="false">Jap. Rhinbowl Tang, 164mm</string>
+    <string name="bell_name_7" translatable="false">Tib. Bowl, 230mm</string>
+    <string name="bell_name_8" translatable="false">Jap. Rhinbowl, 97mm</string>
     <string name="bell_pause">Bell gap (sec)</string>
     <string name="bell_user">Add Bell…</string>
     <string name="title_bell_volumes">Bell Volumes</string>
     <string name="button_bell_volumes">Adjust Bell Volumes</string>
-    <string name="bell_volume_label_format">%1$d%%</string>
+    <string name="bell_volume_label_format" translatable="false">%1$d%%</string>
     <string name="no_bells_configured">No bells configured yet</string>
     <string name="system_volume_section_title">Meditation Volume</string>
     <string name="system_volume_subtitle">Controls the phone\'s alarm volume for all bells.</string>
     <string name="bell_dimming_section_title">Configure Bell Volume</string>
     <string name="bell_volume_dim_explanation">Adjust individual bell volumes for this session.</string>
-    <string name="system_volume_label_format">%1$d / %2$d</string>
+    <string name="system_volume_label_format" translatable="false">%1$d / %2$d</string>
 
     <string name="bottom_sheet_behavior" translatable="false">android.support.design.widget.BottomSheetBehavior</string>
     <string name="but_pause">Pause</string>
