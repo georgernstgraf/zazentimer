@@ -1,5 +1,6 @@
 [
   { "name": "glm-5.1", "providers": ["opencode-go"] },
+  { "name": "big-pickle", "providers": ["opencode"] },
   { "name": "deepseek-v4-pro", "providers": ["deepseek"] },
   { "name": "qwen3.7-max", "providers": ["opencode-go"]  },
   { "name": "kimi-k2.6", "providers": ["opencode-go"]  },

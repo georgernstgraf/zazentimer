@@ -114,6 +114,8 @@ Read this file carefully before making changes in affected areas.
 - **Prisma v6 library engine intermittent blocking**: The native `.so.node` addon (`libquery_engine-debian-openssl-3.0.x.so.node`) has sporadic internal locks causing 15-20s delays on simple `findUnique` queries with a singleton PrismaClient. Workaround: fresh client per query (`new PrismaClient()` + `$connect()` on each call). The PRAGMA `busy_timeout=2000` is set by Prisma v6 itself even without explicit PRAGMA statements. `PRISMA_CLIENT_ENGINE_TYPE` env var is ignored in v6 — only `library` engine is available for SQLite.
 - `_minProficiency` was never checked: The underscore-prefixed parameter in `runOne()` was dead code. Models below proficiency threshold were never skipped despite `--min-proficiency` flag. Renamed to `minProficiency` and actual check added.
 
+- **Deno type-check must use `deno task check` from `prisma/`**: Running standalone `deno check prisma/translate.ts` from the project root fails with spurious `"prismaclient" not a dependency` errors because it doesn't load the import map from `prisma/deno.json`. Always use `cd prisma && deno task check` which passes `--config=deno.json` and resolves the `prismaclient` alias correctly. There are NO pre-existing type errors.
+
 ### Translation Pipeline
 - **Gemini 3.1 Pro Performance**: ~90s für 154 Strings, Proficiency 5/5, alle 153 übersetzt (0 null).
 - **GPT-5.5 Performance**: ~120s für 154 Strings, Proficiency 4/5, alle 154 übersetzt (0 null).

@@ -22,6 +22,8 @@ import {
     getProficiencyLevel,
     getSettledStrings,
     hasProficiency,
+    MIN_VOTE_PROFICIENCY,
+    SETTLED_SCORE_THRESHOLD,
     upsertProficiency,
     upsertVote,
 } from "./lib/db.ts";
@@ -164,7 +166,7 @@ const PROFICIENCY_OUTPUT_FILE = `${PROJECT_DIR}/proficiency-output.json`;
 const START_TIME = Date.now();
 const MAX_RETRIES = 3;
 const POLL_TIMEOUT_MS = 15 * 60 * 1000; // 15 minutes max per (model, locale) attempt
-const DEFAULT_MIN_PROFICIENCY = 2;
+
 const DEFAULT_MAX_DURATION_MIN = 210;
 
 function isTimeUp(maxDurationMs: number): boolean {
@@ -246,6 +248,7 @@ interface CliArgs {
     all: boolean;
     minProficiency: number;
     maxDuration: number;
+    settledThreshold: number;
     model?: string;
     locale?: string;
 }
@@ -256,8 +259,9 @@ function parseArgs(): CliArgs {
             a.startsWith("--") && a.includes("=") ? a.split("=", 2) : [a]
         );
     let all = false;
-    let minProficiency = DEFAULT_MIN_PROFICIENCY;
+    let minProficiency = MIN_VOTE_PROFICIENCY;
     let maxDuration = DEFAULT_MAX_DURATION_MIN;
+    let settledThreshold = SETTLED_SCORE_THRESHOLD;
     let model: string | undefined;
     let locale: string | undefined;
 
@@ -278,6 +282,9 @@ function parseArgs(): CliArgs {
             case "--max-duration":
                 maxDuration = parseInt(args[++i], 10);
                 break;
+            case "--settled-threshold":
+                settledThreshold = parseInt(args[++i], 10);
+                break;
             case "--help":
                 log(
                     `Usage: deno task translate -- [OPTIONS]
@@ -286,7 +293,8 @@ Options:
   --model <name> --locale <bcp47>    Single (model, locale) pair
   --model <name> --all                Single model over all locales
   --all                               Full matrix over all models x locales
-  --min-proficiency <N>               Skip locales below this proficiency (default: ${DEFAULT_MIN_PROFICIENCY})
+  --min-proficiency <N>               Skip locales below this proficiency (default: ${MIN_VOTE_PROFICIENCY})
+  --settled-threshold <N>             Score threshold for settled strings (default: ${SETTLED_SCORE_THRESHOLD})
   --max-duration <minutes>            Max runtime before graceful stop (default: ${DEFAULT_MAX_DURATION_MIN})
   --help                              Show this help`,
                 );
@@ -301,6 +309,7 @@ Options:
             locale: undefined,
             minProficiency,
             maxDuration,
+            settledThreshold,
         };
     }
     if (model && all) {
@@ -310,10 +319,11 @@ Options:
             locale: undefined,
             minProficiency,
             maxDuration,
+            settledThreshold,
         };
     }
     if (model && locale) {
-        return { all: false, model, locale, minProficiency, maxDuration };
+        return { all: false, model, locale, minProficiency, maxDuration, settledThreshold };
     }
     logError(
         "Specify --model <name> --locale <bcp47>, --model <name> --all, or --all",
@@ -581,6 +591,7 @@ async function runOne(
     langEnglishName: string,
     availableModels: Map<string, ModelEntry[]>,
     minProficiency: number,
+    settledThreshold: number,
 ): Promise<void> {
     const modelDb = await getOrCreateModel(modelName);
     const language = await getOrCreateLanguage(langBcp47);
@@ -617,7 +628,7 @@ async function runOne(
     const allMs = await getAllMasterStrings();
     const existing = await getExistingVotes(modelDb.id, language.id);
     const nullVotes = await getNullExistingVotes(modelDb.id, language.id);
-    const settled = await getSettledStrings(language.id);
+    const settled = await getSettledStrings(language.id, settledThreshold);
     const skip = new Set([...existing, ...nullVotes, ...settled]);
     const missing = allMs.filter((s) => !skip.has(s.id));
 
@@ -675,6 +686,7 @@ async function runAll(
     availableModels: Map<string, ModelEntry[]>,
     minProficiency: number,
     maxDurationMs: number,
+    settledThreshold: number,
 ): Promise<void> {
     for (const m of models) {
         for (const lang of languages) {
@@ -689,6 +701,7 @@ async function runAll(
                 lang.english_name,
                 availableModels,
                 minProficiency,
+                settledThreshold,
             );
         }
     }
@@ -701,6 +714,7 @@ async function runOneModelAllLocales(
     availableModels: Map<string, ModelEntry[]>,
     minProficiency: number,
     maxDurationMs: number,
+    settledThreshold: number,
 ): Promise<void> {
     const languages = await getAllLanguages();
     log(`Model '${modelName}' over ${languages.length} locales`);
@@ -717,6 +731,7 @@ async function runOneModelAllLocales(
             lang.english_name,
             availableModels,
             minProficiency,
+            settledThreshold,
         );
     }
 }
@@ -769,6 +784,7 @@ async function main() {
             availableModels,
             args.minProficiency,
             args.maxDuration * 60_000,
+            args.settledThreshold,
         );
 
         log("Full run complete");
@@ -797,6 +813,7 @@ async function main() {
             availableModels,
             args.minProficiency,
             args.maxDuration * 60_000,
+            args.settledThreshold,
         );
 
         log(`Model '${args.model}' complete`);
@@ -809,6 +826,7 @@ async function main() {
             language.english_name,
             availableModels,
             args.minProficiency,
+            args.settledThreshold,
         );
     }
 }

@@ -72,6 +72,7 @@ Follow these without question. Do not deviate unless explicitly told.
 ## Prisma — Translation DB
 - `prisma/translations/schema.prisma` uses Prisma Client generator with `runtime = "deno"` and `output = "../generatedprismaclient"`. Never use Node.js/npm.
 - Deno import map alias: `"prismaclient": "./generatedprismaclient/client.ts"` in `prisma/deno.json`.
+- **Type-checking**: Always run `deno task check` from within `prisma/` (uses `--config=deno.json`). Never use standalone `deno check` from the project root — it cannot resolve the `prismaclient` alias.
 - `prisma generate --schema=translations/schema.prisma` outputs client to `prisma/generatedprismaclient/`.
 - All Prisma CLI operations use `deno run -A npm:prisma@^6.19.3` (via `prisma/deno.json` tasks).
 - Translation DB is NOT auto-pulled from device — schema evolves by hand (like `desired/`).
