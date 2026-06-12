@@ -634,3 +634,64 @@ export async function getStats() {
     ]);
     return { models, languages, votes, strings };
 }
+
+// ── Consistency checks ──────────────────────────────────────────────────────
+
+export function parseMasterStringsXml(xml: string): string[] {
+    const texts: string[] = [];
+    const regex = /<string\s+name="([^"]*)"([^>]*)>([\s\S]*?)<\/string>/g;
+    let match: RegExpExecArray | null;
+    while ((match = regex.exec(xml)) !== null) {
+        const attrs = match[2];
+        const text = match[3].trim();
+        if (!text) continue;
+        if (/translatable\s*=\s*"false"/.test(attrs)) continue;
+        const decoded = text
+            .replace(/&lt;/g, "<")
+            .replace(/&gt;/g, ">")
+            .replace(/&amp;/g, "&")
+            .replace(/&quot;/g, '"')
+            .replace(/&#39;/g, "'");
+        texts.push(decoded);
+    }
+    return texts;
+}
+
+export async function checkModelConsistency(expectedNames: string[]): Promise<{
+    missingFromDb: string[];
+    extraInDb: llm_models[];
+}> {
+    const allModels = await prisma.llm_models.findMany();
+    const dbNames = new Set(allModels.map((m) => m.name));
+    const expectedSet = new Set(expectedNames);
+    return {
+        missingFromDb: expectedNames.filter((n) => !dbNames.has(n)),
+        extraInDb: allModels.filter((m) => !expectedSet.has(m.name)),
+    };
+}
+
+export async function checkLanguageConsistency(expectedBcp47s: string[]): Promise<{
+    missingFromDb: string[];
+    extraInDb: languages[];
+}> {
+    const allLangs = await prisma.languages.findMany();
+    const dbBcp47s = new Set(allLangs.map((l) => l.bcp_47));
+    const expectedSet = new Set(expectedBcp47s);
+    return {
+        missingFromDb: expectedBcp47s.filter((b) => !dbBcp47s.has(b)),
+        extraInDb: allLangs.filter((l) => !expectedSet.has(l.bcp_47)),
+    };
+}
+
+export async function checkMasterStringConsistency(expectedTexts: string[]): Promise<{
+    missingFromDb: string[];
+    extraInDb: master_strings[];
+}> {
+    const allStrings = await prisma.master_strings.findMany();
+    const dbTexts = new Set(allStrings.map((s) => s.text));
+    const expectedSet = new Set(expectedTexts);
+    return {
+        missingFromDb: expectedTexts.filter((t) => !dbTexts.has(t)),
+        extraInDb: allStrings.filter((s) => !expectedSet.has(s.text)),
+    };
+}

@@ -11,11 +11,13 @@ import {
 } from "./lib/verify.ts";
 import { getPrisma } from "./lib/prisma.ts";
 import {
+    checkLanguageConsistency,
+    checkMasterStringConsistency,
+    checkModelConsistency,
     getAllLanguages,
     getAllMasterStrings,
     getAllModels,
     getExistingVotes,
-    getModelByName,
     getNullExistingVotes,
     getOrCreateLanguage,
     getOrCreateModel,
@@ -23,11 +25,13 @@ import {
     getSettledStrings,
     hasProficiency,
     MIN_VOTE_PROFICIENCY,
+    parseMasterStringsXml,
     SETTLED_SCORE_THRESHOLD,
     upsertProficiency,
     upsertVote,
 } from "./lib/db.ts";
 import masterModels from "./translations/llmmodels_master.json" with { type: "json" };
+import supportedLanguages from "./translations/supported_languages.json" with { type: "json" };
 
 function normalizeModelName(name: string): string {
     return name.replace(/[.-]/g, "").toLowerCase();
@@ -296,7 +300,10 @@ Options:
   --min-proficiency <N>               Skip locales below this proficiency (default: ${MIN_VOTE_PROFICIENCY})
   --settled-threshold <N>             Score threshold for settled strings (default: ${SETTLED_SCORE_THRESHOLD})
   --max-duration <minutes>            Max runtime before graceful stop (default: ${DEFAULT_MAX_DURATION_MIN})
-  --help                              Show this help`,
+  --help                              Show this help
+
+Models:
+${masterModels.map((m) => `  ${m.name.padEnd(28)}(${m.providers.join(", ")})`).join("\n")}`,
                 );
                 Deno.exit(0);
         }
@@ -736,10 +743,52 @@ async function runOneModelAllLocales(
     }
 }
 
+// ── Validation ───────────────────────────────────────────────────────────────
+async function validateDatabaseConsistency(): Promise<void> {
+    const xml = await Deno.readTextFile(
+        new URL("../app/src/main/res/values/strings.xml", import.meta.url),
+    );
+
+    const models = await checkModelConsistency(masterModels.map((m) => m.name));
+    const languages = await checkLanguageConsistency(supportedLanguages.map((l) => l.bcp_47));
+    const strings = await checkMasterStringConsistency(parseMasterStringsXml(xml));
+
+    let failed = false;
+    if (models.missingFromDb.length > 0) {
+        logError(
+            `${models.missingFromDb.length} model(s) in llmmodels_master.json but not in DB: ${models.missingFromDb.join(", ")}`,
+        );
+        failed = true;
+    }
+    if (languages.missingFromDb.length > 0) {
+        logError(
+            `${languages.missingFromDb.length} language(s) in supported_languages.json but not in DB: ${languages.missingFromDb.join(", ")}`,
+        );
+        failed = true;
+    }
+    if (strings.missingFromDb.length > 0) {
+        logError(
+            `${strings.missingFromDb.length} master string(s) in strings.xml but not in DB`,
+        );
+        failed = true;
+    }
+    if (failed) {
+        logError("Run 'deno task seed' to synchronize.");
+        Deno.exit(1);
+    }
+}
+
 // ── Main ─────────────────────────────────────────────────────────────────────
 async function main() {
     const args = parseArgs();
     const opencode = new OpencodeClient();
+
+    await validateDatabaseConsistency();
+
+    if (args.model && !MODEL_PROVIDERS.has(normalizeModelName(args.model))) {
+        logError(`Unknown model '${args.model}'. Run with --help for available models.`);
+        Deno.exit(1);
+    }
 
     log("Fetching available models from opencode...");
     const availableModels = await fetchAvailableModels();
@@ -748,38 +797,11 @@ async function main() {
     if (args.all && !args.model) {
         const allModels = await getAllModels();
         const languages = await getAllLanguages();
-
-        // Error: MODEL_PROVIDERS-Model nicht in DB
-        for (const [norm] of MODEL_PROVIDERS) {
-            if (!allModels.some((m) => normalizeModelName(m.name) === norm)) {
-                logError(
-                    `Model '${norm}' is defined in MODEL_PROVIDERS (prisma/translate.ts) ` +
-                        `but not in DB (llm_models). ` +
-                        `Ensure it's in 'prisma/translations/llmmodels_master.json' ` +
-                        `and run 'deno task prismatranslationsseed'.`,
-                );
-                Deno.exit(1);
-            }
-        }
-
-        // Warning: DB-Model nicht in MODEL_PROVIDERS
-        for (const m of allModels) {
-            if (!MODEL_PROVIDERS.has(normalizeModelName(m.name))) {
-                log(
-                    `WARNING: model '${m.name}' exists in DB ` +
-                        `but is not defined in MODEL_PROVIDERS (prisma/translate.ts)`,
-                );
-            }
-        }
-
-        const activeModels = allModels.filter((m) =>
-            MODEL_PROVIDERS.has(normalizeModelName(m.name))
-        );
-        log(`Full run: ${activeModels.length} models x ${languages.length} locales`);
+        log(`Full run: ${allModels.length} models x ${languages.length} locales`);
 
         await runAll(
             opencode,
-            activeModels,
+            allModels,
             languages,
             availableModels,
             args.minProficiency,
@@ -789,24 +811,6 @@ async function main() {
 
         log("Full run complete");
     } else if (args.model && args.all) {
-        const normalized = normalizeModelName(args.model);
-        if (!MODEL_PROVIDERS.has(normalized)) {
-            logError(
-                `Model '${args.model}' is not defined in MODEL_PROVIDERS (prisma/translate.ts)`,
-            );
-            Deno.exit(1);
-        }
-        const dbModel = await getModelByName(args.model);
-        if (!dbModel) {
-            logError(
-                `Model '${args.model}' is defined in MODEL_PROVIDERS ` +
-                    `but not in DB (llm_models). ` +
-                    `Ensure it's in 'prisma/translations/llmmodels_master.json' ` +
-                    `and run 'deno task prismatranslationsseed'.`,
-            );
-            Deno.exit(1);
-        }
-
         await runOneModelAllLocales(
             opencode,
             args.model,

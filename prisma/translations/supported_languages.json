@@ -1,0 +1,962 @@
+[
+  {
+    "bcp_47": "af",
+    "posix_code": "af",
+    "iso_639_3": "afr",
+    "directory": "values-af",
+    "english_name": "Afrikaans",
+    "whisper_response": "afrikaans"
+  },
+  {
+    "bcp_47": "am",
+    "posix_code": "am",
+    "iso_639_3": "amh",
+    "directory": "values-am",
+    "english_name": "Amharic",
+    "whisper_response": "amharic"
+  },
+  {
+    "bcp_47": "ar",
+    "posix_code": "ar",
+    "iso_639_3": "ara",
+    "directory": "values-ar",
+    "english_name": "Arabic",
+    "whisper_response": "arabic"
+  },
+  {
+    "bcp_47": "az",
+    "posix_code": "az",
+    "iso_639_3": "aze",
+    "directory": "values-az",
+    "english_name": "Azerbaijani",
+    "whisper_response": "azerbaijani"
+  },
+  {
+    "bcp_47": "be",
+    "posix_code": "be",
+    "iso_639_3": "bel",
+    "directory": "values-be",
+    "english_name": "Belarusian",
+    "whisper_response": "belarusian"
+  },
+  {
+    "bcp_47": "bg",
+    "posix_code": "bg",
+    "iso_639_3": "bul",
+    "directory": "values-bg",
+    "english_name": "Bulgarian",
+    "whisper_response": "bulgarian"
+  },
+  {
+    "bcp_47": "bho",
+    "posix_code": "bho",
+    "iso_639_3": "bho",
+    "directory": "values-bho",
+    "english_name": "Bhojpuri",
+    "whisper_response": null
+  },
+  {
+    "bcp_47": "bn",
+    "posix_code": "bn",
+    "iso_639_3": "ben",
+    "directory": "values-bn",
+    "english_name": "Bengali",
+    "whisper_response": "bengali"
+  },
+  {
+    "bcp_47": "bs",
+    "posix_code": "bs",
+    "iso_639_3": "bos",
+    "directory": "values-bs",
+    "english_name": "Bosnian",
+    "whisper_response": "bosnian"
+  },
+  {
+    "bcp_47": "ca",
+    "posix_code": "ca",
+    "iso_639_3": "cat",
+    "directory": "values-ca",
+    "english_name": "Catalan",
+    "whisper_response": "catalan"
+  },
+  {
+    "bcp_47": "ceb",
+    "posix_code": "ceb",
+    "iso_639_3": "ceb",
+    "directory": "values-ceb",
+    "english_name": "Cebuano",
+    "whisper_response": null
+  },
+  {
+    "bcp_47": "cgg",
+    "posix_code": "cgg",
+    "iso_639_3": "cgg",
+    "directory": "values-cgg",
+    "english_name": "Chiga",
+    "whisper_response": null
+  },
+  {
+    "bcp_47": "co",
+    "posix_code": "co",
+    "iso_639_3": "cos",
+    "directory": "values-co",
+    "english_name": "Corsican",
+    "whisper_response": null
+  },
+  {
+    "bcp_47": "cs",
+    "posix_code": "cs",
+    "iso_639_3": "ces",
+    "directory": "values-cs",
+    "english_name": "Czech",
+    "whisper_response": "czech"
+  },
+  {
+    "bcp_47": "cy",
+    "posix_code": "cy",
+    "iso_639_3": "cym",
+    "directory": "values-cy",
+    "english_name": "Welsh",
+    "whisper_response": "welsh"
+  },
+  {
+    "bcp_47": "da",
+    "posix_code": "da",
+    "iso_639_3": "dan",
+    "directory": "values-da",
+    "english_name": "Danish",
+    "whisper_response": "danish"
+  },
+  {
+    "bcp_47": "de",
+    "posix_code": "de",
+    "iso_639_3": "deu",
+    "directory": "values-de",
+    "english_name": "German",
+    "whisper_response": "german"
+  },
+  {
+    "bcp_47": "doi",
+    "posix_code": "doi",
+    "iso_639_3": "doi",
+    "directory": "values-doi",
+    "english_name": "Dogri (macrolanguage)",
+    "whisper_response": null
+  },
+  {
+    "bcp_47": "dv",
+    "posix_code": "dv",
+    "iso_639_3": "div",
+    "directory": "values-dv",
+    "english_name": "Divehi",
+    "whisper_response": null
+  },
+  {
+    "bcp_47": "el",
+    "posix_code": "el",
+    "iso_639_3": "ell",
+    "directory": "values-el",
+    "english_name": "Modern Greek (1453-)",
+    "whisper_response": "greek"
+  },
+  {
+    "bcp_47": "eo",
+    "posix_code": "eo",
+    "iso_639_3": "epo",
+    "directory": "values-eo",
+    "english_name": "Esperanto",
+    "whisper_response": null
+  },
+  {
+    "bcp_47": "es",
+    "posix_code": "es",
+    "iso_639_3": "spa",
+    "directory": "values-es",
+    "english_name": "Spanish",
+    "whisper_response": "spanish"
+  },
+  {
+    "bcp_47": "et",
+    "posix_code": "et",
+    "iso_639_3": "est",
+    "directory": "values-et",
+    "english_name": "Estonian",
+    "whisper_response": "estonian"
+  },
+  {
+    "bcp_47": "eu",
+    "posix_code": "eu",
+    "iso_639_3": "eus",
+    "directory": "values-eu",
+    "english_name": "Basque",
+    "whisper_response": "basque"
+  },
+  {
+    "bcp_47": "fa",
+    "posix_code": "fa",
+    "iso_639_3": "fas",
+    "directory": "values-fa",
+    "english_name": "Persian",
+    "whisper_response": "persian"
+  },
+  {
+    "bcp_47": "fi",
+    "posix_code": "fi",
+    "iso_639_3": "fin",
+    "directory": "values-fi",
+    "english_name": "Finnish",
+    "whisper_response": "finnish"
+  },
+  {
+    "bcp_47": "fil",
+    "posix_code": "fil",
+    "iso_639_3": "fil",
+    "directory": "values-fil",
+    "english_name": "Filipino",
+    "whisper_response": null
+  },
+  {
+    "bcp_47": "fr",
+    "posix_code": "fr",
+    "iso_639_3": "fra",
+    "directory": "values-fr",
+    "english_name": "French",
+    "whisper_response": "french"
+  },
+  {
+    "bcp_47": "fy",
+    "posix_code": "fy",
+    "iso_639_3": "fry",
+    "directory": "values-fy",
+    "english_name": "Western Frisian",
+    "whisper_response": null
+  },
+  {
+    "bcp_47": "ga",
+    "posix_code": "ga",
+    "iso_639_3": "gle",
+    "directory": "values-ga",
+    "english_name": "Irish",
+    "whisper_response": null
+  },
+  {
+    "bcp_47": "gd",
+    "posix_code": "gd",
+    "iso_639_3": "gla",
+    "directory": "values-gd",
+    "english_name": "Scottish Gaelic",
+    "whisper_response": null
+  },
+  {
+    "bcp_47": "gl",
+    "posix_code": "gl",
+    "iso_639_3": "glg",
+    "directory": "values-gl",
+    "english_name": "Galician",
+    "whisper_response": "galician"
+  },
+  {
+    "bcp_47": "gu",
+    "posix_code": "gu",
+    "iso_639_3": "guj",
+    "directory": "values-gu",
+    "english_name": "Gujarati",
+    "whisper_response": "gujarati"
+  },
+  {
+    "bcp_47": "haw",
+    "posix_code": "haw",
+    "iso_639_3": "haw",
+    "directory": "values-haw",
+    "english_name": "Hawaiian",
+    "whisper_response": "hawaiian"
+  },
+  {
+    "bcp_47": "he",
+    "posix_code": "he",
+    "iso_639_3": "heb",
+    "directory": "values-he",
+    "english_name": "Hebrew",
+    "whisper_response": "hebrew"
+  },
+  {
+    "bcp_47": "hi",
+    "posix_code": "hi",
+    "iso_639_3": "hin",
+    "directory": "values-hi",
+    "english_name": "Hindi",
+    "whisper_response": "hindi"
+  },
+  {
+    "bcp_47": "hmn",
+    "posix_code": "hmn",
+    "iso_639_3": "hmn",
+    "directory": "values-hmn",
+    "english_name": "Hmong",
+    "whisper_response": null
+  },
+  {
+    "bcp_47": "hr",
+    "posix_code": "hr",
+    "iso_639_3": "hrv",
+    "directory": "values-hr",
+    "english_name": "Croatian",
+    "whisper_response": "croatian"
+  },
+  {
+    "bcp_47": "ht",
+    "posix_code": "ht",
+    "iso_639_3": "hat",
+    "directory": "values-ht",
+    "english_name": "Haitian",
+    "whisper_response": "haitian creole"
+  },
+  {
+    "bcp_47": "hu",
+    "posix_code": "hu",
+    "iso_639_3": "hun",
+    "directory": "values-hu",
+    "english_name": "Hungarian",
+    "whisper_response": "hungarian"
+  },
+  {
+    "bcp_47": "hy",
+    "posix_code": "hy",
+    "iso_639_3": "hye",
+    "directory": "values-hy",
+    "english_name": "Armenian",
+    "whisper_response": "armenian"
+  },
+  {
+    "bcp_47": "id",
+    "posix_code": "id",
+    "iso_639_3": "ind",
+    "directory": "values-id",
+    "english_name": "Indonesian",
+    "whisper_response": "indonesian"
+  },
+  {
+    "bcp_47": "ig",
+    "posix_code": "ig",
+    "iso_639_3": "ibo",
+    "directory": "values-ig",
+    "english_name": "Igbo",
+    "whisper_response": null
+  },
+  {
+    "bcp_47": "is",
+    "posix_code": "is",
+    "iso_639_3": "isl",
+    "directory": "values-is",
+    "english_name": "Icelandic",
+    "whisper_response": "icelandic"
+  },
+  {
+    "bcp_47": "it",
+    "posix_code": "it",
+    "iso_639_3": "ita",
+    "directory": "values-it",
+    "english_name": "Italian",
+    "whisper_response": "italian"
+  },
+  {
+    "bcp_47": "ja",
+    "posix_code": "ja",
+    "iso_639_3": "jpn",
+    "directory": "values-ja",
+    "english_name": "Japanese",
+    "whisper_response": "japanese"
+  },
+  {
+    "bcp_47": "jv",
+    "posix_code": "jv",
+    "iso_639_3": "jav",
+    "directory": "values-jv",
+    "english_name": "Javanese",
+    "whisper_response": null
+  },
+  {
+    "bcp_47": "ka",
+    "posix_code": "ka",
+    "iso_639_3": "kat",
+    "directory": "values-ka",
+    "english_name": "Georgian",
+    "whisper_response": "georgian"
+  },
+  {
+    "bcp_47": "kk",
+    "posix_code": "kk",
+    "iso_639_3": "kaz",
+    "directory": "values-kk",
+    "english_name": "Kazakh",
+    "whisper_response": "kazakh"
+  },
+  {
+    "bcp_47": "km",
+    "posix_code": "km",
+    "iso_639_3": "khm",
+    "directory": "values-km",
+    "english_name": "Khmer",
+    "whisper_response": "khmer"
+  },
+  {
+    "bcp_47": "kn",
+    "posix_code": "kn",
+    "iso_639_3": "kan",
+    "directory": "values-kn",
+    "english_name": "Kannada",
+    "whisper_response": "kannada"
+  },
+  {
+    "bcp_47": "ko",
+    "posix_code": "ko",
+    "iso_639_3": "kor",
+    "directory": "values-ko",
+    "english_name": "Korean",
+    "whisper_response": "korean"
+  },
+  {
+    "bcp_47": "kok",
+    "posix_code": "kok",
+    "iso_639_3": "kok",
+    "directory": "values-kok",
+    "english_name": "Konkani (macrolanguage)",
+    "whisper_response": null
+  },
+  {
+    "bcp_47": "ku",
+    "posix_code": "ku",
+    "iso_639_3": "kur",
+    "directory": "values-ku",
+    "english_name": "Kurdish",
+    "whisper_response": null
+  },
+  {
+    "bcp_47": "ky",
+    "posix_code": "ky",
+    "iso_639_3": "kir",
+    "directory": "values-ky",
+    "english_name": "Kirghiz",
+    "whisper_response": null
+  },
+  {
+    "bcp_47": "la",
+    "posix_code": "la",
+    "iso_639_3": "lat",
+    "directory": "values-la",
+    "english_name": "Latin",
+    "whisper_response": "latin"
+  },
+  {
+    "bcp_47": "lb",
+    "posix_code": "lb",
+    "iso_639_3": "ltz",
+    "directory": "values-lb",
+    "english_name": "Luxembourgish",
+    "whisper_response": "luxembourgish"
+  },
+  {
+    "bcp_47": "lg",
+    "posix_code": "lg",
+    "iso_639_3": "lug",
+    "directory": "values-lg",
+    "english_name": "Ganda",
+    "whisper_response": null
+  },
+  {
+    "bcp_47": "lo",
+    "posix_code": "lo",
+    "iso_639_3": "lao",
+    "directory": "values-lo",
+    "english_name": "Lao",
+    "whisper_response": "lao"
+  },
+  {
+    "bcp_47": "lt",
+    "posix_code": "lt",
+    "iso_639_3": "lit",
+    "directory": "values-lt",
+    "english_name": "Lithuanian",
+    "whisper_response": "lithuanian"
+  },
+  {
+    "bcp_47": "luo",
+    "posix_code": "luo",
+    "iso_639_3": "luo",
+    "directory": "values-luo",
+    "english_name": "Luo (Kenya and Tanzania)",
+    "whisper_response": null
+  },
+  {
+    "bcp_47": "lv",
+    "posix_code": "lv",
+    "iso_639_3": "lav",
+    "directory": "values-lv",
+    "english_name": "Latvian",
+    "whisper_response": "latvian"
+  },
+  {
+    "bcp_47": "mai",
+    "posix_code": "mai",
+    "iso_639_3": "mai",
+    "directory": "values-mai",
+    "english_name": "Maithili",
+    "whisper_response": null
+  },
+  {
+    "bcp_47": "mg",
+    "posix_code": "mg",
+    "iso_639_3": "mlg",
+    "directory": "values-mg",
+    "english_name": "Malagasy",
+    "whisper_response": "malagasy"
+  },
+  {
+    "bcp_47": "mi",
+    "posix_code": "mi",
+    "iso_639_3": "mri",
+    "directory": "values-mi",
+    "english_name": "Maori",
+    "whisper_response": "maori"
+  },
+  {
+    "bcp_47": "mk",
+    "posix_code": "mk",
+    "iso_639_3": "mkd",
+    "directory": "values-mk",
+    "english_name": "Macedonian",
+    "whisper_response": "macedonian"
+  },
+  {
+    "bcp_47": "ml",
+    "posix_code": "ml",
+    "iso_639_3": "mal",
+    "directory": "values-ml",
+    "english_name": "Malayalam",
+    "whisper_response": "malayalam"
+  },
+  {
+    "bcp_47": "mn",
+    "posix_code": "mn",
+    "iso_639_3": "mon",
+    "directory": "values-mn",
+    "english_name": "Mongolian",
+    "whisper_response": "mongolian"
+  },
+  {
+    "bcp_47": "mr",
+    "posix_code": "mr",
+    "iso_639_3": "mar",
+    "directory": "values-mr",
+    "english_name": "Marathi",
+    "whisper_response": "marathi"
+  },
+  {
+    "bcp_47": "ms",
+    "posix_code": "ms",
+    "iso_639_3": "msa",
+    "directory": "values-ms",
+    "english_name": "Malay (macrolanguage)",
+    "whisper_response": "malay"
+  },
+  {
+    "bcp_47": "mt",
+    "posix_code": "mt",
+    "iso_639_3": "mlt",
+    "directory": "values-mt",
+    "english_name": "Maltese",
+    "whisper_response": "maltese"
+  },
+  {
+    "bcp_47": "my",
+    "posix_code": "my",
+    "iso_639_3": "mya",
+    "directory": "values-my",
+    "english_name": "Burmese",
+    "whisper_response": "myanmar"
+  },
+  {
+    "bcp_47": "nb",
+    "posix_code": "nb",
+    "iso_639_3": "nob",
+    "directory": "values-nb",
+    "english_name": "Norwegian Bokmål",
+    "whisper_response": null
+  },
+  {
+    "bcp_47": "ne",
+    "posix_code": "ne",
+    "iso_639_3": "nep",
+    "directory": "values-ne",
+    "english_name": "Nepali (macrolanguage)",
+    "whisper_response": "nepali"
+  },
+  {
+    "bcp_47": "nl",
+    "posix_code": "nl",
+    "iso_639_3": "nld",
+    "directory": "values-nl",
+    "english_name": "Dutch",
+    "whisper_response": "dutch"
+  },
+  {
+    "bcp_47": "nus",
+    "posix_code": "nus",
+    "iso_639_3": "nus",
+    "directory": "values-nus",
+    "english_name": "Nuer",
+    "whisper_response": null
+  },
+  {
+    "bcp_47": "ny",
+    "posix_code": "ny",
+    "iso_639_3": "nya",
+    "directory": "values-ny",
+    "english_name": "Chichewa",
+    "whisper_response": null
+  },
+  {
+    "bcp_47": "om",
+    "posix_code": "om",
+    "iso_639_3": "orm",
+    "directory": "values-om",
+    "english_name": "Oromo",
+    "whisper_response": null
+  },
+  {
+    "bcp_47": "or",
+    "posix_code": "or",
+    "iso_639_3": "ori",
+    "directory": "values-or",
+    "english_name": "Oriya (macrolanguage)",
+    "whisper_response": null
+  },
+  {
+    "bcp_47": "pa",
+    "posix_code": "pa",
+    "iso_639_3": "pan",
+    "directory": "values-pa",
+    "english_name": "Panjabi",
+    "whisper_response": "punjabi"
+  },
+  {
+    "bcp_47": "pl",
+    "posix_code": "pl",
+    "iso_639_3": "pol",
+    "directory": "values-pl",
+    "english_name": "Polish",
+    "whisper_response": "polish"
+  },
+  {
+    "bcp_47": "ps",
+    "posix_code": "ps",
+    "iso_639_3": "pus",
+    "directory": "values-ps",
+    "english_name": "Pushto",
+    "whisper_response": "pashto"
+  },
+  {
+    "bcp_47": "pt",
+    "posix_code": "pt",
+    "iso_639_3": "por",
+    "directory": "values-pt",
+    "english_name": "Portuguese",
+    "whisper_response": "portuguese"
+  },
+  {
+    "bcp_47": "pt-BR",
+    "posix_code": "pt_BR",
+    "iso_639_3": "por",
+    "directory": "values-pt-rBR",
+    "english_name": "Portuguese",
+    "whisper_response": "portuguese"
+  },
+  {
+    "bcp_47": "pt-PT",
+    "posix_code": "pt_PT",
+    "iso_639_3": "por",
+    "directory": "values-pt-rPT",
+    "english_name": "Portuguese",
+    "whisper_response": "portuguese"
+  },
+  {
+    "bcp_47": "qu",
+    "posix_code": "qu",
+    "iso_639_3": "que",
+    "directory": "values-qu",
+    "english_name": "Quechua",
+    "whisper_response": null
+  },
+  {
+    "bcp_47": "ro",
+    "posix_code": "ro",
+    "iso_639_3": "ron",
+    "directory": "values-ro",
+    "english_name": "Romanian",
+    "whisper_response": "romanian"
+  },
+  {
+    "bcp_47": "ru",
+    "posix_code": "ru",
+    "iso_639_3": "rus",
+    "directory": "values-ru",
+    "english_name": "Russian",
+    "whisper_response": "russian"
+  },
+  {
+    "bcp_47": "rw",
+    "posix_code": "rw",
+    "iso_639_3": "kin",
+    "directory": "values-rw",
+    "english_name": "Kinyarwanda",
+    "whisper_response": null
+  },
+  {
+    "bcp_47": "sa",
+    "posix_code": "sa",
+    "iso_639_3": "san",
+    "directory": "values-sa",
+    "english_name": "Sanskrit",
+    "whisper_response": "sanskrit"
+  },
+  {
+    "bcp_47": "sd",
+    "posix_code": "sd",
+    "iso_639_3": "snd",
+    "directory": "values-sd",
+    "english_name": "Sindhi",
+    "whisper_response": "sindhi"
+  },
+  {
+    "bcp_47": "si",
+    "posix_code": "si",
+    "iso_639_3": "sin",
+    "directory": "values-si",
+    "english_name": "Sinhala",
+    "whisper_response": "sinhala"
+  },
+  {
+    "bcp_47": "sk",
+    "posix_code": "sk",
+    "iso_639_3": "slk",
+    "directory": "values-sk",
+    "english_name": "Slovak",
+    "whisper_response": "slovak"
+  },
+  {
+    "bcp_47": "sl",
+    "posix_code": "sl",
+    "iso_639_3": "slv",
+    "directory": "values-sl",
+    "english_name": "Slovenian",
+    "whisper_response": "slovenian"
+  },
+  {
+    "bcp_47": "sm",
+    "posix_code": "sm",
+    "iso_639_3": "smo",
+    "directory": "values-sm",
+    "english_name": "Samoan",
+    "whisper_response": null
+  },
+  {
+    "bcp_47": "so",
+    "posix_code": "so",
+    "iso_639_3": "som",
+    "directory": "values-so",
+    "english_name": "Somali",
+    "whisper_response": "somali"
+  },
+  {
+    "bcp_47": "sq",
+    "posix_code": "sq",
+    "iso_639_3": "sqi",
+    "directory": "values-sq",
+    "english_name": "Albanian",
+    "whisper_response": "albanian"
+  },
+  {
+    "bcp_47": "sr",
+    "posix_code": "sr",
+    "iso_639_3": "srp",
+    "directory": "values-sr",
+    "english_name": "Serbian",
+    "whisper_response": "serbian"
+  },
+  {
+    "bcp_47": "sr-Latn",
+    "posix_code": "sr@latn",
+    "iso_639_3": "srp",
+    "directory": "values-b+sr+Latn",
+    "english_name": "Serbian",
+    "whisper_response": "serbian"
+  },
+  {
+    "bcp_47": "su",
+    "posix_code": "su",
+    "iso_639_3": "sun",
+    "directory": "values-su",
+    "english_name": "Sundanese",
+    "whisper_response": "sundanese"
+  },
+  {
+    "bcp_47": "sv",
+    "posix_code": "sv",
+    "iso_639_3": "swe",
+    "directory": "values-sv",
+    "english_name": "Swedish",
+    "whisper_response": "swedish"
+  },
+  {
+    "bcp_47": "sw",
+    "posix_code": "sw",
+    "iso_639_3": "swa",
+    "directory": "values-sw",
+    "english_name": "Swahili (macrolanguage)",
+    "whisper_response": "swahili"
+  },
+  {
+    "bcp_47": "ta",
+    "posix_code": "ta",
+    "iso_639_3": "tam",
+    "directory": "values-ta",
+    "english_name": "Tamil",
+    "whisper_response": "tamil"
+  },
+  {
+    "bcp_47": "te",
+    "posix_code": "te",
+    "iso_639_3": "tel",
+    "directory": "values-te",
+    "english_name": "Telugu",
+    "whisper_response": "telugu"
+  },
+  {
+    "bcp_47": "tg",
+    "posix_code": "tg",
+    "iso_639_3": "tgk",
+    "directory": "values-tg",
+    "english_name": "Tajik",
+    "whisper_response": "tajik"
+  },
+  {
+    "bcp_47": "th",
+    "posix_code": "th",
+    "iso_639_3": "tha",
+    "directory": "values-th",
+    "english_name": "Thai",
+    "whisper_response": "thai"
+  },
+  {
+    "bcp_47": "tk",
+    "posix_code": "tk",
+    "iso_639_3": "tuk",
+    "directory": "values-tk",
+    "english_name": "Turkmen",
+    "whisper_response": "turkmen"
+  },
+  {
+    "bcp_47": "tl",
+    "posix_code": "tl",
+    "iso_639_3": "tgl",
+    "directory": "values-tl",
+    "english_name": "Tagalog",
+    "whisper_response": "tagalog"
+  },
+  {
+    "bcp_47": "tr",
+    "posix_code": "tr",
+    "iso_639_3": "tur",
+    "directory": "values-tr",
+    "english_name": "Turkish",
+    "whisper_response": "turkish"
+  },
+  {
+    "bcp_47": "tt",
+    "posix_code": "tt",
+    "iso_639_3": "tat",
+    "directory": "values-tt",
+    "english_name": "Tatar",
+    "whisper_response": "tatar"
+  },
+  {
+    "bcp_47": "uk",
+    "posix_code": "uk",
+    "iso_639_3": "ukr",
+    "directory": "values-uk",
+    "english_name": "Ukrainian",
+    "whisper_response": "ukrainian"
+  },
+  {
+    "bcp_47": "ur",
+    "posix_code": "ur",
+    "iso_639_3": "urd",
+    "directory": "values-ur",
+    "english_name": "Urdu",
+    "whisper_response": "urdu"
+  },
+  {
+    "bcp_47": "uz",
+    "posix_code": "uz",
+    "iso_639_3": "uzb",
+    "directory": "values-uz",
+    "english_name": "Uzbek",
+    "whisper_response": "uzbek"
+  },
+  {
+    "bcp_47": "vi",
+    "posix_code": "vi",
+    "iso_639_3": "vie",
+    "directory": "values-vi",
+    "english_name": "Vietnamese",
+    "whisper_response": "vietnamese"
+  },
+  {
+    "bcp_47": "xh",
+    "posix_code": "xh",
+    "iso_639_3": "xho",
+    "directory": "values-xh",
+    "english_name": "Xhosa",
+    "whisper_response": null
+  },
+  {
+    "bcp_47": "yi",
+    "posix_code": "yi",
+    "iso_639_3": "yid",
+    "directory": "values-yi",
+    "english_name": "Yiddish",
+    "whisper_response": "yiddish"
+  },
+  {
+    "bcp_47": "yo",
+    "posix_code": "yo",
+    "iso_639_3": "yor",
+    "directory": "values-yo",
+    "english_name": "Yoruba",
+    "whisper_response": "yoruba"
+  },
+  {
+    "bcp_47": "zh",
+    "posix_code": "zh",
+    "iso_639_3": "zho",
+    "directory": "values-zh",
+    "english_name": "Chinese",
+    "whisper_response": "chinese"
+  },
+  {
+    "bcp_47": "zh-TW",
+    "posix_code": "zh_TW",
+    "iso_639_3": "zho",
+    "directory": "values-zh-rTW",
+    "english_name": "Chinese",
+    "whisper_response": "chinese"
+  },
+  {
+    "bcp_47": "zu",
+    "posix_code": "zu",
+    "iso_639_3": "zul",
+    "directory": "values-zu",
+    "english_name": "Zulu",
+    "whisper_response": null
+  }
+]
