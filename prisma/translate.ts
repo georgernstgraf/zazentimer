@@ -349,76 +349,79 @@ async function dispatchProficiency(
         let lastError: string | undefined;
         let sessionId = await opencode.createSession(PROJECT_DIR);
 
-        for (let attempt = 0; attempt < MAX_RETRIES; attempt++) {
-            try {
-                const opts: SendOptions = {
-                    system: SKILL_PROFICIENCY,
-                    model: attempt === 0 ? modelRef : undefined,
-                };
+        try {
+            for (let attempt = 0; attempt < MAX_RETRIES; attempt++) {
+                try {
+                    const opts: SendOptions = {
+                        system: SKILL_PROFICIENCY,
+                        model: attempt === 0 ? modelRef : undefined,
+                    };
 
-                const text = attempt === 0
-                    ? `Write the proficiency assessment to ${PROFICIENCY_OUTPUT_FILE}. Read the input data from ${INPUT_FILE}.`
-                    : `Verification failed: ${lastError}. Please fix ${PROFICIENCY_OUTPUT_FILE}. You may read '${PROFICIENCY_OUTPUT_FILE}' and '${INPUT_FILE}' to inspect.`;
+                    const text = attempt === 0
+                        ? `Write the proficiency assessment to ${PROFICIENCY_OUTPUT_FILE}. Read the input data from ${INPUT_FILE}.`
+                        : `Verification failed: ${lastError}. Please fix ${PROFICIENCY_OUTPUT_FILE}. You may read '${PROFICIENCY_OUTPUT_FILE}' and '${INPUT_FILE}' to inspect.`;
 
-                const context =
-                    `${langEnglishName} to ${modelRef.providerID}(rank ${
-                        getModelRank(modelName, modelRef.providerID)
-                    })/${modelRef.modelID}`;
+                    const context =
+                        `${langEnglishName} to ${modelRef.providerID}(rank ${
+                            getModelRank(modelName, modelRef.providerID)
+                        })/${modelRef.modelID}`;
 
-                log(`submitting proficiency request for ${context}`);
+                    log(`submitting proficiency request for ${context}`);
 
-                await opencode.sendMessageAsync(sessionId, text, opts);
+                    await opencode.sendMessageAsync(sessionId, text, opts);
 
-                const pollResult = await pollForCompletion(
-                    opencode,
-                    sessionId,
-                    PROFICIENCY_OUTPUT_FILE,
-                    POLL_TIMEOUT_MS,
-                );
-
-                if (pollResult.type === "quota") {
-                    lastError = `Quota exceeded: ${pollResult.message}`;
-                    logError(`${context}: ${lastError}, falling back`);
-                    await opencode.closeSession(sessionId);
-                    break;
-                }
-
-                if (pollResult.type === "timeout") {
-                    logError(
-                        `proficiency session timeout after ${
-                            POLL_TIMEOUT_MS / 60000
-                        } min for ${context}, creating new session`,
+                    const pollResult = await pollForCompletion(
+                        opencode,
+                        sessionId,
+                        PROFICIENCY_OUTPUT_FILE,
+                        POLL_TIMEOUT_MS,
                     );
-                    await opencode.closeSession(sessionId);
-                    sessionId = await opencode.createSession(PROJECT_DIR);
-                    continue;
+
+                    if (pollResult.type === "quota") {
+                        lastError = `Quota exceeded: ${pollResult.message}`;
+                        logError(`${context}: ${lastError}, falling back`);
+                        break;
+                    }
+
+                    if (pollResult.type === "timeout") {
+                        logError(
+                            `proficiency session timeout after ${
+                                POLL_TIMEOUT_MS / 60000
+                            } min for ${context}, creating new session`,
+                        );
+                        await opencode.terminateSession(sessionId);
+                        sessionId = await opencode.createSession(PROJECT_DIR);
+                        continue;
+                    }
+
+                    const result = await verifyProficiencyFile(
+                        PROFICIENCY_OUTPUT_FILE,
+                        langBcp47,
+                    );
+                    const language = await getOrCreateLanguage(langBcp47);
+                    const modelDb = await getOrCreateModel(modelName);
+                    await upsertProficiency(
+                        language.id,
+                        modelDb.id,
+                        result.proficiency,
+                    );
+
+                    const rank = getModelRank(modelName, modelRef.providerID);
+                    log(
+                        `proficiency ${modelName} ${langBcp47} ${modelRef.providerID} rank=${rank} → ${result.proficiency}`,
+                    );
+                    return result.proficiency;
+                } catch (e) {
+                    lastError = e instanceof VerifyError ? e.message : String(e);
+                    logError(
+                        `${modelRef.providerID}/${modelRef.modelID} attempt ${
+                            attempt + 1
+                        }/${MAX_RETRIES}: ${lastError}`,
+                    );
                 }
-
-                const result = await verifyProficiencyFile(
-                    PROFICIENCY_OUTPUT_FILE,
-                    langBcp47,
-                );
-                const language = await getOrCreateLanguage(langBcp47);
-                const modelDb = await getOrCreateModel(modelName);
-                await upsertProficiency(
-                    language.id,
-                    modelDb.id,
-                    result.proficiency,
-                );
-
-                const rank = getModelRank(modelName, modelRef.providerID);
-                log(
-                    `proficiency ${modelName} ${langBcp47} ${modelRef.providerID} rank=${rank} → ${result.proficiency}`,
-                );
-                return result.proficiency;
-            } catch (e) {
-                lastError = e instanceof VerifyError ? e.message : String(e);
-                logError(
-                    `${modelRef.providerID}/${modelRef.modelID} attempt ${
-                        attempt + 1
-                    }/${MAX_RETRIES}: ${lastError}`,
-                );
             }
+        } finally {
+            await opencode.terminateSession(sessionId);
         }
     }
 
@@ -453,112 +456,115 @@ async function dispatchTranslate(
         let lastError: string | undefined;
         let sessionId = await opencode.createSession(PROJECT_DIR);
 
-        for (let attempt = 0; attempt < MAX_RETRIES; attempt++) {
-            try {
-                const opts: SendOptions = {
-                    system: SKILL_TRANSLATE,
-                    model: attempt === 0 ? modelRef : undefined,
-                };
+        try {
+            for (let attempt = 0; attempt < MAX_RETRIES; attempt++) {
+                try {
+                    const opts: SendOptions = {
+                        system: SKILL_TRANSLATE,
+                        model: attempt === 0 ? modelRef : undefined,
+                    };
 
-                const text = attempt === 0
-                    ? `Write the translations to ${OUTPUT_FILE}. Read the input data from ${INPUT_FILE}.`
-                    : `Verification failed: ${lastError}. Please fix ${OUTPUT_FILE}. You may read '${INPUT_FILE}' and '${OUTPUT_FILE}' to inspect.`;
+                    const text = attempt === 0
+                        ? `Write the translations to ${OUTPUT_FILE}. Read the input data from ${INPUT_FILE}.`
+                        : `Verification failed: ${lastError}. Please fix ${OUTPUT_FILE}. You may read '${INPUT_FILE}' and '${OUTPUT_FILE}' to inspect.`;
 
-                const rank = getModelRank(modelName, modelRef.providerID);
-                log(
-                    `submitting translation request for ${langEnglishName} to ${modelRef.providerID}(rank ${rank})/${modelRef.modelID}, proficiency: ${proficiency}. searching for ${unsettledCount} unsettled strings`,
-                );
-
-                const context =
-                    `${langEnglishName} to ${modelRef.providerID}(rank ${rank})/${modelRef.modelID}`;
-
-                await opencode.sendMessageAsync(sessionId, text, opts);
-
-                const pollResult = await pollForCompletion(
-                    opencode,
-                    sessionId,
-                    OUTPUT_FILE,
-                    POLL_TIMEOUT_MS,
-                );
-
-                if (pollResult.type === "quota") {
-                    lastError = `Quota exceeded: ${pollResult.message}`;
-                    logError(`${context}: ${lastError}, falling back`);
-                    await opencode.closeSession(sessionId);
-                    break;
-                }
-
-                if (pollResult.type === "timeout") {
-                    logError(
-                        `translation session timeout after ${
-                            POLL_TIMEOUT_MS / 60000
-                        } min for ${context}, creating new session`,
+                    const rank = getModelRank(modelName, modelRef.providerID);
+                    log(
+                        `submitting translation request for ${langEnglishName} to ${modelRef.providerID}(rank ${rank})/${modelRef.modelID}, proficiency: ${proficiency}. searching for ${unsettledCount} unsettled strings`,
                     );
-                    await opencode.closeSession(sessionId);
-                    sessionId = await opencode.createSession(PROJECT_DIR);
-                    continue;
-                }
 
-                const result = await verifyTranslationFile(
-                    OUTPUT_FILE,
-                    langBcp47,
-                    strings,
-                );
-                const language = await getOrCreateLanguage(langBcp47);
-                const modelDb = await getOrCreateModel(modelName);
+                    const context =
+                        `${langEnglishName} to ${modelRef.providerID}(rank ${rank})/${modelRef.modelID}`;
 
-                const allMs = await getAllMasterStrings();
-                let stringCount = 0;
-                let emptyCount = 0;
-                let skippedMasterString = 0;
-                for (const t of result.translations) {
-                    const ms = allMs.find((s) => s.text === t.key);
-                    if (!ms) {
-                        skippedMasterString++;
-                        continue;
+                    await opencode.sendMessageAsync(sessionId, text, opts);
+
+                    const pollResult = await pollForCompletion(
+                        opencode,
+                        sessionId,
+                        OUTPUT_FILE,
+                        POLL_TIMEOUT_MS,
+                    );
+
+                    if (pollResult.type === "quota") {
+                        lastError = `Quota exceeded: ${pollResult.message}`;
+                        logError(`${context}: ${lastError}, falling back`);
+                        break;
                     }
-                    if (t.translation === null) {
-                        await upsertVote(language.id, modelDb.id, ms.id, "");
-                        emptyCount++;
-                        continue;
-                    }
-                    const items = Array.isArray(t.translation)
-                        ? t.translation
-                        : [t.translation];
-                    for (const item of items) {
-                        await upsertVote(
-                            language.id,
-                            modelDb.id,
-                            ms.id,
-                            item,
+
+                    if (pollResult.type === "timeout") {
+                        logError(
+                            `translation session timeout after ${
+                                POLL_TIMEOUT_MS / 60000
+                            } min for ${context}, creating new session`,
                         );
-                        if (item === "") {
+                        await opencode.terminateSession(sessionId);
+                        sessionId = await opencode.createSession(PROJECT_DIR);
+                        continue;
+                    }
+
+                    const result = await verifyTranslationFile(
+                        OUTPUT_FILE,
+                        langBcp47,
+                        strings,
+                    );
+                    const language = await getOrCreateLanguage(langBcp47);
+                    const modelDb = await getOrCreateModel(modelName);
+
+                    const allMs = await getAllMasterStrings();
+                    let stringCount = 0;
+                    let emptyCount = 0;
+                    let skippedMasterString = 0;
+                    for (const t of result.translations) {
+                        const ms = allMs.find((s) => s.text === t.key);
+                        if (!ms) {
+                            skippedMasterString++;
+                            continue;
+                        }
+                        if (t.translation === null) {
+                            await upsertVote(language.id, modelDb.id, ms.id, "");
                             emptyCount++;
-                        } else {
-                            stringCount++;
+                            continue;
+                        }
+                        const items = Array.isArray(t.translation)
+                            ? t.translation
+                            : [t.translation];
+                        for (const item of items) {
+                            await upsertVote(
+                                language.id,
+                                modelDb.id,
+                                ms.id,
+                                item,
+                            );
+                            if (item === "") {
+                                emptyCount++;
+                            } else {
+                                stringCount++;
+                            }
                         }
                     }
-                }
 
-                const total = stringCount + emptyCount;
-                const suffix = skippedMasterString > 0
-                    ? `, ${skippedMasterString} skipped (no master_string match)`
-                    : "";
-                log(
-                    `got translation result for ${langEnglishName} to ${modelRef.providerID}(rank ${rank})/${modelRef.modelID}: ${total} votes stored (${stringCount} strings, ${emptyCount} empty)${suffix}`,
-                );
-                await (await getPrisma()).$queryRawUnsafe(
-                    "PRAGMA wal_checkpoint(TRUNCATE)",
-                );
-                return;
-            } catch (e) {
-                lastError = e instanceof VerifyError ? e.message : String(e);
-                logError(
-                    `${modelRef.providerID}/${modelRef.modelID} attempt ${
-                        attempt + 1
-                    }/${MAX_RETRIES}: ${lastError}`,
-                );
+                    const total = stringCount + emptyCount;
+                    const suffix = skippedMasterString > 0
+                        ? `, ${skippedMasterString} skipped (no master_string match)`
+                        : "";
+                    log(
+                        `got translation result for ${langEnglishName} to ${modelRef.providerID}(rank ${rank})/${modelRef.modelID}: ${total} votes stored (${stringCount} strings, ${emptyCount} empty)${suffix}`,
+                    );
+                    await (await getPrisma()).$queryRawUnsafe(
+                        "PRAGMA wal_checkpoint(TRUNCATE)",
+                    );
+                    return;
+                } catch (e) {
+                    lastError = e instanceof VerifyError ? e.message : String(e);
+                    logError(
+                        `${modelRef.providerID}/${modelRef.modelID} attempt ${
+                            attempt + 1
+                        }/${MAX_RETRIES}: ${lastError}`,
+                    );
+                }
             }
+        } finally {
+            await opencode.terminateSession(sessionId);
         }
     }
 
