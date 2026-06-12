@@ -93,7 +93,7 @@ Follow these without question. Do not deviate unless explicitly told.
 - Orchestrator at `prisma/translate.ts` — nistete Loop `for model × for locale → dispatch → verify → store`.
 - `prisma/lib/opencode_client.ts` — HTTP Client für opencode Server (`createSession`, `sendMessage`, `closeSession`).
 - `prisma/lib/verify.ts` — Output-Verifikation: JSON-Struktur, Keys, null erlaubt, Placeholder-Check.
-- One opencode session per (model, locale) pair. `DELETE /session/{id}` nach erfolgreichem oder abgebrochenem Durchlauf.
+- One opencode session per (model, locale) pair. `terminateSession()` (abort + delete) is called via `try/finally` on ALL exit paths (success, timeout, quota, retry exhaustion). `abortSession()` sends `POST /session/{id}/abort` to interrupt the running fiber; `closeSession()` sends `DELETE` to remove session storage.
 - `--all` runs haben 10 Minuten Timeout. Erreichte Sessions sind dauerhaft in DB (Idempotenz via `getExistingVotes`-Check).
 - Output-JSON erlaubt `"translation": null` für unbekannte Strings → kein Vote, kein Fehler.
 - Proficiency (1-5) ist Pflicht. Fehlt sie → `Deno.exit(1)`. Keine halben Sachen in der DB.
@@ -102,13 +102,21 @@ Follow these without question. Do not deviate unless explicitly told.
 - `MODEL_PROVIDERS` in `prisma/translate.ts` is built from `llmmodels_master.json` at import time — no hardcoded model-provider mapping in code. `buildFallbackChain()` durchläuft diese Liste und filtert gegen `fetchAvailableModels()`.
 - Verify-Fehler bei Translate/Proficiency enthalten den Roh-Output (erste 200 Zeichen) + den eigentlichen Fehlertext, damit das Model auf Retry seinen Fehler selbst diagnostizieren kann.
 - Translate/Proficiency Skills erlauben jetzt das Lesen der Output-Dateien (`translate-output.json`, `proficiency-output.json`) für Retry-Diagnose.
-- `--all` und `--model --all` validieren vor dem Start: Error wenn ein Model in `MODEL_PROVIDERS` aber nicht in DB, Warning wenn ein Model in DB aber nicht in `MODEL_PROVIDERS`.
+- `validateDatabaseConsistency()` runs unconditionally at translate startup: checks models, languages, and master strings against DB. Aborts only if source files have items MISSING from DB (not for extras in DB). Shared consistency functions (`checkModelConsistency`, `checkLanguageConsistency`, `checkMasterStringConsistency`) live in `db.ts`, used by both `translate.ts` and `seed.ts`.
+
+## Translation Scoring Constants (in `db.ts`)
+- `SETTLED_SCORE_THRESHOLD = 7`: string is "settled" (no more votes needed) when best translation score >= 7. Override via `--settled-threshold <N>` CLI flag.
+- `TRANSLATION_SCORE_THRESHOLD = 3`: minimum score to export a translation or return it from `getTranslation()`.
+- `MIN_VOTE_PROFICIENCY = 2`: default for `--min-proficiency` — models below this are never asked to translate.
+- `byScoreThenCount`: shared comparator (score primary, modelCount tiebreak) used in all ranking sorts. Never duplicate sort logic.
+- Proficiency filter removed from scoring: all models with a proficiency record contribute their level to the score. The `--min-proficiency` gate at request time is the single control.
 
 ## Translation Export
 - `prisma/export.ts` generiert ALLE `values-*`-Verzeichnisse im Target komplett neu aus der Voting-DB.
   Vorherige `values-*`-Verzeichnisse werden gelöscht — der Export ist die autoritative Quelle.
 - `--target=<pfad>` ist Pflicht (z.B. `../app/src/main/res`).
-- Strings ohne Übersetzung werden weggelassen (Android-Fallback auf `values/strings.xml`).
+- Languages are exported if they have at least one translation scoring >= `TRANSLATION_SCORE_THRESHOLD`. Languages with no qualifying translations are skipped (no directory created).
+- A language NOT in `supported_languages.json` CAN still be exported if its translations meet the threshold.
 - `keep_english.json`-Keys erscheinen nie in Locale-XMLs (aktuell: `bell_volume_label_format`, `system_volume_label_format`).
 - Ausgabe ist alphabetisch nach Key sortiert für deterministische, diff-freundliche Deltas.
 

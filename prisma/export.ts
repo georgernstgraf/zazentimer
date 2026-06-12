@@ -150,6 +150,8 @@ async function main() {
         }
         entries.sort((a, b) => a.key.localeCompare(b.key));
 
+        if (entries.length === 0) continue;
+
         const lines: string[] = [];
         lines.push('<?xml version="1.0" encoding="utf-8"?>');
         lines.push("<resources>");
