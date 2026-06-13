@@ -129,6 +129,7 @@ class DbOperations
                         val maxRank = secDao.getMaxRank(source.id)
                         section.rank = (maxRank ?: 0) + 1
                     }
+                    section.bellId = resolveBellId(section.bellId)
                     val sectionEntity = EntityMapper.toEntity(section)
                     val sid = secDao.insert(sectionEntity)
                     section.id = sid.toInt()
@@ -139,7 +140,7 @@ class DbOperations
                     val newBv =
                         SessionBellVolumeEntity(
                             fk_session = source.id,
-                            bellId = bv.bellId,
+                            bellId = resolveBellId(bv.bellId),
                             volume = bv.volume,
                         )
                     bvDao.insert(newBv)
@@ -237,17 +238,27 @@ class DbOperations
                 val maxRank = dao.getMaxRank(session.id)
                 section.rank = (maxRank ?: 0) + 1
             }
-            if (section.bellId <= 0) {
-                val demoBell =
-                    BellCollection.getDemoBell()?.uri?.toString()?.let { uri ->
-                        bellDao?.getByUri(uri)
-                    }
-                section.bellId = demoBell?.id ?: 0
-            }
+            section.bellId = resolveBellId(section.bellId)
             section.fkSession = session.id
             val entity = EntityMapper.toEntity(section)
             val newId = dao.insert(entity)
             section.id = newId.toInt()
+        }
+
+        private suspend fun resolveBellId(bellId: Int): Int {
+            if (bellId > 0) {
+                val bell = bellDao?.getById(bellId)
+                if (bell != null && bell.id > 0) return bell.id
+            }
+            return fallbackBellId()
+        }
+
+        private suspend fun fallbackBellId(): Int {
+            val demoBell =
+                BellCollection.getDemoBell()?.uri?.toString()?.let { uri ->
+                    bellDao?.getByUri(uri)
+                }
+            return demoBell?.id ?: 0
         }
 
         suspend fun insertSession(session: Session) =
