@@ -508,11 +508,16 @@ run_api_tests() {
     if [ "$is_emulator" = true ]; then
         emulator_configure_system "$serial"
     else
-        # Minimal system config for physical devices
-        adb -s "$serial" shell settings put global window_animation_scale 0.0 2>/dev/null || true
-        adb -s "$serial" shell settings put global transition_animation_scale 0.0 2>/dev/null || true
-        adb -s "$serial" shell settings put global animator_duration_scale 0.0 2>/dev/null || true
+        # Disable animations — required for Espresso tests
+        local anim_failed=false
+        adb -s "$serial" shell settings put global window_animation_scale 0.0 2>/dev/null || anim_failed=true
+        adb -s "$serial" shell settings put global transition_animation_scale 0.0 2>/dev/null || anim_failed=true
+        adb -s "$serial" shell settings put global animator_duration_scale 0.0 2>/dev/null || anim_failed=true
         adb -s "$serial" shell svc power stayon true 2>/dev/null || true
+        if [ "$anim_failed" = true ]; then
+            log_api "WARNING: Could not disable animations on $serial — Espresso UI tests may fail"
+            log_api "  Fix: Enable Developer Options → Disable animations on the device, or use an emulator"
+        fi
     fi
     clear_logcat "$serial"
 
