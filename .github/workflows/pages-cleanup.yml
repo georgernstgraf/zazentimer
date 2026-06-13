@@ -1,0 +1,22 @@
+name: Pages Cleanup
+
+on:
+  page_build
+
+jobs:
+  cleanup:
+    runs-on: ubuntu-latest
+    permissions:
+      deployments: write
+    steps:
+      - name: Cap deployments to last 7
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh api '/repos/${{ github.repository }}/deployments?environment=github-pages&per_page=100' \
+            --paginate --jq '.[].id' \
+            | tail -n +8 \
+            | while read -r id; do
+              echo "Deleting deployment $id"
+              gh api --method DELETE "/repos/${{ github.repository }}/deployments/$id"
+            done
