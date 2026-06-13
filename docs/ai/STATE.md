@@ -3,13 +3,13 @@
 Current status as of 2026-06-13.
 
 ## Current Focus
-All instrumented tests green. No active work.
+All tests green. No active work.
 
 ## Completed (this cycle)
-- [x] #252: Extract `BellPlayer`, `MeditationRepository`, and `AlarmScheduler` interfaces to decouple Meditation from Android components and fix memory leaks (OOM) during testing.
-- [x] #252: Add `runCurrent()` in tests to resolve coroutine-timing hangs.
-- [x] #252: Implement comprehensive, 100% MockK-free `MeditationTest.kt` using pure Kotlin fakes.
-- [x] #253: Fix stale in-memory session write in `MainFragment.suspendUpdateSessionList()` that overwrote edits from other fragments.
+- [x] #252: Extract `BellPlayer`, `MeditationRepository`, and `AlarmScheduler` interfaces; implement pure Kotlin fakes; add 20 `MeditationTest` methods.
+- [x] #253: Fix stale in-memory session write in `MainFragment.suspendUpdateSessionList()` that overwrote edits from `SessionEditFragment`.
+- [x] #254: Fix `clearText()+typeText()` race condition in `SessionCrudTest` by using `replaceText()`; enable emulator snapshot saving in `run-instrumentation.sh`.
+- [x] All 14 API levels (23–36) instrumented tests PASS. Auto-tag `tested-2026-06-13` pushed.
 
 ## Pending
 - [ ] F-Droid MR !39945 — await maintainer review

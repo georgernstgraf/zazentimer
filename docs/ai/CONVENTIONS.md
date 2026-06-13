@@ -16,6 +16,7 @@ Follow these without question. Do not deviate unless explicitly told.
 - Instrumented tests must register `IdlingResourceManager.countingIdlingResource`.
 - Prefer `StateFlow` over `LiveData` for new state streams to better support coroutine-based testing.
 - **Always use pure Kotlin fakes** instead of heavy MockK mocks for core timer dependencies (`BellPlayer`, `MeditationRepository`, `AlarmScheduler`) to avoid OutOfMemoryErrors and JVM proxy-generation leaks in large test suites.
+- **Always use `replaceText()` in Espresso tests**, never `clearText() + typeText()`. The latter causes a race condition where `typeText()` starts before `clearText()` finishes, resulting in duplicated characters (e.g., "UUpdated Session Name"). `replaceText()` atomically replaces the entire field content without going through the IME.
 - **Call `meditation.release()` in `tearDown()` and at the end of each `runTest` block** to properly cancel Meditation's coroutine scope and clean up timer tasks.
 - **Use `runCurrent()` between sequential `meditation.pause()` calls** to let the cooperative coroutine cancellations complete on the test dispatcher before launching a new ticker.
 - **Jede Room-Migration braucht einen Test:** Zu jeder neuen `Migration(X, Y)` muss ein `RoomMigrationTest`-Fall existieren, der die Migration auf einer temporären V1-Datenbank mit realistischen Daten ausführt und Daten-Integrität + Schema-Korrektheit prüft. Die Migration muss direkt via `.migrate(db)` aufgerufen werden (nicht über Room Builder), um das exakte Laufzeitverhalten zu testen. Die Tests müssen zumindest umfassen: Daten-Erhalt, Schema-Korrektheit (PK NOT NULL, Indices, Default-Werte), und Indices-Existenz.
@@ -27,7 +28,20 @@ Follow these without question. Do not deviate unless explicitly told.
 - Shared test utilities (ScreenRobot, IdlingResource, PreFlightRule) live in `src/testFixtures/`.
 - `DevicePreFlightRule` is applied in `HiltTestRunner.onStart()` to ensure screen is awake and animations disabled.
 - Android Test utilities use `java-test-fixtures` via `testFixtures { enable = true }` in AGP, NOT the standalone plugin.
-- **Launching long-running scripts**: Always use `echo "cd <dir> && <cmd>" | at now` to schedule via `atd`. Never use `nohup &` from the bash tool — the tool's shell timeout kills the process. Redirect stdout/stderr to `/dev/null` since the scripts already tee to log files.
+- **Launching long-running instrumentation test runs**: Use `nohup` with background execution for full 14-API matrix runs:
+  ```
+  nohup scripts/run-instrumentation.sh > logs/full-run-$(date +%Y-%m-%d).log 2>&1 &
+  ```
+  Monitor with:
+  - `ps aux | grep run-instrumentation | grep -v grep` — is it still running?
+  - `fuser logs/* 2>/dev/null` — which log file is actively being written (identifies current API level)
+  - `tail -20 logs/full-run-$(date +%Y-%m-%d).log` — latest combined output
+  - `ls -la logs/api*-$(date +%Y-%m-%d)*.log` — which per-API logs exist and their sizes
+  - `scripts/summarize-tests.sh` — formatted report after completion
+  - The script auto-tags `tested-YYYY-MM-DD` on full green runs with real `$DISPLAY`
+  - The script is fail-fast by default; use `--continue-on-error` to run all levels even if some fail
+  - The repo must be clean (no dirty git) before the script starts
+  - **Never use the `echo ... | at now` pattern from the bash tool** — `nohup &` works because the background process outlives the tool's shell
 - **Monitoring test runs**: Use `scripts/summarize-tests.sh --date YYYY-MM-DD` to get an at-a-glance report. Check process liveness with `ps aux | grep -E "(gradle|emulator|run-instrument)" | grep -v grep`.
 
 ## Database
@@ -176,6 +190,7 @@ Follow these without question. Do not deviate unless explicitly told.
 
 ## Emulator Scripts
 - `start-emulator.sh` and `stop-emulator.sh` are sourceable libraries. Use `[[ "${BASH_SOURCE[0]}" == "${0}" ]]` guard for standalone mode.
-- `emulator_launch(avd, serial, logfile, ...flags)` requires a logfile parameter. Callers pass `-noaudio`, `-no-snapshot-save`, `-wipe-data` etc. explicitly.
+- `emulator_launch(avd, serial, logfile, ...flags)` requires a logfile parameter. Callers pass `-noaudio`, `-wipe-data` etc. explicitly.
+- By default, `run-instrumentation.sh` starts emulators with no snapshot flags (`SNAPSHOT_FLAG=""`) — emulators load existing `default_boot` snapshots on startup and save state on shutdown, preserving system configuration changes. Use `--cold-boot` for `-no-snapshot` (no snapshots at all, full cold boot).
 - `-noaudio` must be passed by callers based on display state (Xvfb vs real X11); it is NOT auto-detected in emulator_launch.
 - New emulator-management scripts (`run-instrumentation.sh`, `create-emulator-snapshots.sh`) source `start-emulator.sh` and `stop-emulator.sh` — do NOT duplicate functions.
