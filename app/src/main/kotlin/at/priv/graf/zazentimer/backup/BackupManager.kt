@@ -135,6 +135,7 @@ class BackupManager(
         try {
             val fos = FileOutputStream(file)
             fos.write(bytes)
+            fos.fd.sync()
             fos.close()
         } catch (e: IOException) {
             Log.e(TAG, "Failed to receive bytes", e)
