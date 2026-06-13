@@ -7,11 +7,12 @@ ZazenTimer is an Android application for timing meditation sessions. It uses a f
 
 ## Components
 - **MeditationService**: Foreground service managing the `Meditation` state machine and player logic.
-- **MeditationRepository**: Singleton state holder providing `StateFlow` updates to both Service and UI.
+- **MeditationRepository**: Interface implemented by `DbMeditationRepository` (singleton state holder providing `StateFlow` updates).
 - **MeditationViewModel**: Bridges the UI and Repository; manages service binding.
 - **DbOperations**: Room database wrapper with built-in `IdlingResource` for test synchronization.
 - **ZazenClock**: Abstraction for system time to facilitate deterministic testing.
-- **BellPlayer**: Manages pooled `Audio` instances for bell playback. Receives `getBellById: suspend (Int) -> BellEntity?` lambda for DB-backed bell resolution. Falls back to `getDemoBell()` if no bell found.
+- **BellPlayer**: Interface implemented by `BellPlayerManager` (manages pooled `Audio` instances for bell playback).
+- **AlarmScheduler**: Interface implemented by `SystemAlarmScheduler` (schedules/cancels exact alarms).
 - **BellVolumeConfigDialog**: DialogFragment in session editor for configuring per-bell-type volumes and system alarm volume. Uses Hilt EntryPoints for manual `DbOperations` injection. Controls `AudioManager.STREAM_ALARM` via a seekbar at the top of the dialog.
 
 ## Database (Room, V10)
@@ -66,8 +67,8 @@ Two Prisma-managed SQLite schemas coexist under `prisma/`:
 - **WakeLockManager** (`service/`) — Manages screen wake lock lifecycle; extracted from MeditationViewModel
 - **MeditationServiceState** (`service/`) — Static helper for `isServiceRunning()`; extracted from MeditationService
 - **EntityMapper** (`database/`) — Maps between BO and Entity types for Room; extracted from DbOperations
-- **AlarmScheduler** (`service/`) — Schedules/cancels exact alarms for section transitions; extracted from Meditation
-- **BellPlayer** (`service/`) — Manages MediaPlayer lifecycle for bell playback; extracted from Meditation
+- **AlarmScheduler** (`service/`) — Interface implemented by `SystemAlarmScheduler` (schedules/cancels exact alarms for section transitions; extracted from Meditation)
+- **BellPlayer** (`service/`) — Interface implemented by `BellPlayerManager` (manages MediaPlayer lifecycle for bell playback; extracted from Meditation)
 - **TimerAnimator + AnimationRunner** (`views/`) — Animation state machine; extracted from TimerView
 
 ## Test Infrastructure

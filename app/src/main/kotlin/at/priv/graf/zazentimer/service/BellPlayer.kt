@@ -12,19 +12,30 @@ import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
-class BellPlayer(
-    private val context: Context,
-    private val dispatchers: CoroutineDispatchers = CoroutineDispatchers(),
-    private val getBellById: suspend (Int) -> BellEntity? = { null },
-) {
-    private val scope = CoroutineScope(SupervisorJob() + dispatchers.main)
-    private val audioObjects = ArrayList<Audio>()
-
+interface BellPlayer {
     fun playBells(
         section: Section,
         volume: Int,
         stoppingCheck: () -> Boolean,
         onDone: Runnable? = null,
+    )
+
+    suspend fun release()
+}
+
+class BellPlayerManager(
+    private val context: Context,
+    private val dispatchers: CoroutineDispatchers = CoroutineDispatchers(),
+    private val getBellById: suspend (Int) -> BellEntity? = { null },
+) : BellPlayer {
+    private val scope = CoroutineScope(SupervisorJob() + dispatchers.main)
+    private val audioObjects = ArrayList<Audio>()
+
+    override fun playBells(
+        section: Section,
+        volume: Int,
+        stoppingCheck: () -> Boolean,
+        onDone: Runnable?,
     ) {
         scope.launch {
             Log.d(TAG, "Playing bells in coroutine")
@@ -56,7 +67,7 @@ class BellPlayer(
         }
     }
 
-    suspend fun release() {
+    override suspend fun release() {
         val it = audioObjects.iterator()
         while (it.hasNext()) {
             it.next().release()

@@ -606,3 +606,9 @@ Each entry documents WHAT was decided and WHY.
 - **Considered**: Keeping providers in a separate config file (still two files to maintain), storing providers in the DB (over-engineered, providers are deployment config not data).
 - **Tradeoff**: The JSON file now carries provider information that is only relevant to `translate.ts`, not to `seed.ts`. `seed.ts` ignores the `providers` field. The JSON shape is slightly more complex but eliminates all duplication.
 
+## 2026-06-13: Decouple Meditation from Android Components via Interfaces (#252)
+- **Choice**: Extracted `BellPlayer`, `MeditationRepository`, and `AlarmScheduler` into interfaces, and replaced direct references in `Meditation.kt` with these interfaces. Renamed concrete classes to `BellPlayerManager`, `DbMeditationRepository`, and `SystemAlarmScheduler` respectively. Replaced MockK mocks in `MeditationTest.kt` with pure Kotlin fakes (`FakeAlarmScheduler`, `FakeMeditationRepository`). Added `runCurrent()` between sequential pause calls in test methods.
+- **Reason**: Mocking Android framework classes (like `Context`, `Service`, `AlarmManager`) with MockK's relaxed mocks created massive proxy objects on each test run, leading to OutOfMemoryErrors. Direct synchronous pause calls with the test dispatcher led to infinite delay loops because cancelled coroutines weren't processed in time. Releasing Meditation's coroutine scope in `tearDown` cleans up resources.
+- **Considered**: Increasing JVM heap size (didn't fix the leak), using manual fakes directly without interface extraction (impossible in Kotlin as classes are final by default).
+- **Tradeoff**: Slight boilerplate increase for interface declarations; much faster, 100% memory-safe, and decoupled tests.
+

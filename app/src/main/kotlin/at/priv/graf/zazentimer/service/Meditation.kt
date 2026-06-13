@@ -14,7 +14,6 @@ import kotlinx.coroutines.launch
 
 @Suppress("TooManyFunctions", "LongParameterList")
 class Meditation(
-    private val meditationService: MeditationService,
     private val repository: MeditationRepository,
     private val sessionName: String,
     private val sections: Array<Section>,
@@ -22,6 +21,7 @@ class Meditation(
     private val dispatchers: CoroutineDispatchers = CoroutineDispatchers(),
     private val alarmScheduler: AlarmScheduler,
     private val bellPlayer: BellPlayer,
+    private val onMeditationEnd: () -> Unit = {},
 ) {
     private val scope = CoroutineScope(SupervisorJob() + dispatchers.main)
     private val clock = repository.clock
@@ -192,7 +192,7 @@ class Meditation(
         MeditationService.setRunning(false)
         repository.onMeditationStopped()
         bellPlayer.release()
-        meditationService.onMeditationEnd()
+        onMeditationEnd()
     }
 
     private fun startTicker() {

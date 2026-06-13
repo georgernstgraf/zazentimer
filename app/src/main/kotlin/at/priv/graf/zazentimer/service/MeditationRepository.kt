@@ -11,28 +11,47 @@ import kotlinx.coroutines.flow.asStateFlow
 import javax.inject.Inject
 import javax.inject.Singleton
 
+interface MeditationRepository {
+    val clock: ZazenClock
+    val meditationState: StateFlow<MeditationUiState>
+
+    fun onMeditationStarted(meditation: Meditation)
+
+    fun onMeditationUpdated()
+
+    fun onMeditationStopped()
+
+    suspend fun readSession(id: Int): Session?
+
+    suspend fun readSections(id: Int): Array<Section>
+
+    suspend fun readBellVolumes(sessionId: Int): List<SessionBellVolume>
+
+    suspend fun getBellById(id: Int): BellEntity?
+}
+
 @Singleton
-class MeditationRepository
+class DbMeditationRepository
     @Inject
     constructor(
         private val dbOperations: DbOperations,
-        val clock: ZazenClock,
-    ) {
+        override val clock: ZazenClock,
+    ) : MeditationRepository {
         private val _meditationState = MutableStateFlow<MeditationUiState>(MeditationUiState.Idle())
-        val meditationState: StateFlow<MeditationUiState> = _meditationState.asStateFlow()
+        override val meditationState: StateFlow<MeditationUiState> = _meditationState.asStateFlow()
 
         private var activeMeditation: Meditation? = null
 
-        fun onMeditationStarted(meditation: Meditation) {
+        override fun onMeditationStarted(meditation: Meditation) {
             activeMeditation = meditation
             updateState()
         }
 
-        fun onMeditationUpdated() {
+        override fun onMeditationUpdated() {
             updateState()
         }
 
-        fun onMeditationStopped() {
+        override fun onMeditationStopped() {
             activeMeditation = null
             _meditationState.value = MeditationUiState.Idle()
         }
@@ -74,11 +93,12 @@ class MeditationRepository
             _meditationState.value = state
         }
 
-        suspend fun readSession(id: Int): Session? = dbOperations.readSession(id)
+        override suspend fun readSession(id: Int): Session? = dbOperations.readSession(id)
 
-        suspend fun readSections(id: Int): Array<Section> = dbOperations.readSections(id)
+        override suspend fun readSections(id: Int): Array<Section> = dbOperations.readSections(id)
 
-        suspend fun readBellVolumes(sessionId: Int): List<SessionBellVolume> = dbOperations.readBellVolumes(sessionId)
+        @Suppress("MaxLineLength")
+        override suspend fun readBellVolumes(sessionId: Int): List<SessionBellVolume> = dbOperations.readBellVolumes(sessionId)
 
-        suspend fun getBellById(id: Int): BellEntity? = dbOperations.getBellById(id)
+        override suspend fun getBellById(id: Int): BellEntity? = dbOperations.getBellById(id)
     }

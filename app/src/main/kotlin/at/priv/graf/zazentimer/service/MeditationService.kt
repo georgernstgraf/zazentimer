@@ -133,16 +133,16 @@ class MeditationService : LifecycleService() {
             if (sections.isEmpty()) return@launch
             runningMeditation =
                 Meditation(
-                    this@MeditationService,
                     meditationRepository,
                     session.name ?: "",
                     sections,
                     bellVolumes,
                     coroutineDispatchers,
-                    AlarmScheduler(this@MeditationService, clock),
-                    BellPlayer(this@MeditationService, coroutineDispatchers) { id ->
+                    SystemAlarmScheduler(this@MeditationService, clock),
+                    BellPlayerManager(this@MeditationService, coroutineDispatchers) { id ->
                         meditationRepository.getBellById(id)
                     },
+                    { this@MeditationService.onMeditationEnd() },
                 )
             val meditation = runningMeditation ?: return@launch
             meditation.start()

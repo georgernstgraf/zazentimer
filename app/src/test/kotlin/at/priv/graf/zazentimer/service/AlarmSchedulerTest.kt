@@ -19,7 +19,7 @@ class AlarmSchedulerTest {
     private lateinit var mockAlarmManager: AlarmManager
     private lateinit var mockClock: ZazenClock
     private lateinit var mockPendingIntent: PendingIntent
-    private lateinit var scheduler: AlarmScheduler
+    private lateinit var scheduler: SystemAlarmScheduler
     private val section =
         at.priv.graf.zazentimer.bo
             .Section("Zazen", 600)
@@ -39,7 +39,7 @@ class AlarmSchedulerTest {
             PendingIntent.getBroadcast(any(), any(), any<Intent>(), any())
         } returns mockPendingIntent
 
-        scheduler = AlarmScheduler(mockContext, mockClock)
+        scheduler = SystemAlarmScheduler(mockContext, mockClock)
     }
 
     @After

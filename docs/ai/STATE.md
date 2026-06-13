@@ -1,15 +1,14 @@
 # Project State
 
-Current status as of 2026-06-11.
+Current status as of 2026-06-13.
 
 ## Current Focus
-Translation infrastructure — consolidating model/provider config into single source of truth
+Decoupling timer logic and implementing pure Kotlin fakes to fix test hangs and memory leaks.
 
 ## Completed (this cycle)
-- [x] #247: Make `llmmodels_master.json` the single source of truth for seed and translate
-- [x] #246: Long-press session to edit + fix dual-selection (full-refresh pattern)
-- [x] #244: Session rank persistence — save ranks before reloading in suspendUpdateSessionList()
-- [x] #243: Swipe-right to delete session with Snackbar undo
+- [x] #252: Extract `BellPlayer`, `MeditationRepository`, and `AlarmScheduler` interfaces to decouple Meditation from Android components and fix memory leaks (OOM) during testing.
+- [x] #252: Add `runCurrent()` in tests to resolve coroutine-timing hangs.
+- [x] #252: Implement comprehensive, 100% MockK-free `MeditationTest.kt` using pure Kotlin fakes.
 
 ## Pending
 - [ ] F-Droid MR !39945 — await maintainer review
@@ -19,4 +18,4 @@ Translation infrastructure — consolidating model/provider config into single s
 - None
 
 ## Next Session Suggestion
-- Check F-Droid MR !39945 status — if merged, tag v3.0.8 for Play Store too
+- Await F-Droid merge or move forward with Play Store production release.

@@ -29,7 +29,7 @@ class BellPlayerTest {
     private lateinit var mockContext: Context
     private lateinit var mockPowerManager: PowerManager
     private lateinit var mockWakeLock: PowerManager.WakeLock
-    private lateinit var player: BellPlayer
+    private lateinit var player: BellPlayerManager
 
     @OptIn(ExperimentalCoroutinesApi::class)
     private val testDispatcher = UnconfinedTestDispatcher()
@@ -49,7 +49,7 @@ class BellPlayerTest {
         coEvery { anyConstructed<Audio>().playAbsVolume(any(), any()) } returns Unit
         coEvery { anyConstructed<Audio>().release() } returns Unit
 
-        player = BellPlayer(mockContext, CoroutineDispatchers(main = testDispatcher)) { null }
+        player = BellPlayerManager(mockContext, CoroutineDispatchers(main = testDispatcher)) { null }
     }
 
     @After
@@ -64,6 +64,7 @@ class BellPlayerTest {
                 Section(name = "Zazen", duration = 600),
                 volume = Constants.DEFAULT_BELL_VOLUME,
                 stoppingCheck = { false },
+                onDone = null,
             )
             advanceUntilIdle()
         }
@@ -78,6 +79,7 @@ class BellPlayerTest {
                 Section(name = "Zazen", duration = 600),
                 volume = Constants.DEFAULT_BELL_VOLUME,
                 stoppingCheck = { false },
+                onDone = null,
             )
             advanceUntilIdle()
         }
@@ -109,6 +111,7 @@ class BellPlayerTest {
                 Section(name = "Zazen", duration = 600),
                 volume = Constants.DEFAULT_BELL_VOLUME,
                 stoppingCheck = { false },
+                onDone = null,
             )
             advanceUntilIdle()
         }
@@ -123,6 +126,7 @@ class BellPlayerTest {
                 Section(name = "Zazen", duration = 600),
                 volume = Constants.DEFAULT_BELL_VOLUME,
                 stoppingCheck = { false },
+                onDone = null,
             )
             advanceUntilIdle()
             coVerify(exactly = 0) { anyConstructed<Audio>().playAbsVolume(any(), any()) }
@@ -146,6 +150,7 @@ class BellPlayerTest {
                 Section(name = "Zazen", duration = 600),
                 volume = Constants.DEFAULT_BELL_VOLUME,
                 stoppingCheck = { true },
+                onDone = null,
             )
             advanceUntilIdle()
         }
@@ -171,13 +176,18 @@ class BellPlayerTest {
             section.bellcount = 3
             section.bellpause = 0
             val concurrentPlayer =
-                BellPlayer(
+                BellPlayerManager(
                     mockContext,
                     CoroutineDispatchers(main = testDispatcher),
                 ) {
                     BellEntity(id = 1, uri = "fake://bell/1")
                 }
-            concurrentPlayer.playBells(section, volume = Constants.DEFAULT_BELL_VOLUME, stoppingCheck = { false })
+            concurrentPlayer.playBells(
+                section,
+                volume = Constants.DEFAULT_BELL_VOLUME,
+                stoppingCheck = { false },
+                onDone = null,
+            )
             advanceUntilIdle()
             bells.clear()
 

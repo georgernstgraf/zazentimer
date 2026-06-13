@@ -8,17 +8,28 @@ import android.os.Build
 import android.util.Log
 import at.priv.graf.zazentimer.bo.Section
 
-class AlarmScheduler(
+interface AlarmScheduler {
+    val sectionStartTime: Long
+
+    fun setAlarmForSectionEnd(
+        section: Section,
+        pauseSectionSeconds: Int,
+    )
+
+    fun cancelAlarm()
+}
+
+class SystemAlarmScheduler(
     private val context: Context,
     private val clock: ZazenClock,
-) {
+) : AlarmScheduler {
     private val alarmManager: AlarmManager =
         context.getSystemService(Context.ALARM_SERVICE) as AlarmManager
-    var sectionStartTime: Long = 0L
+    override var sectionStartTime: Long = 0L
         private set
     private var pendingIntent: PendingIntent? = null
 
-    fun setAlarmForSectionEnd(
+    override fun setAlarmForSectionEnd(
         section: Section,
         pauseSectionSeconds: Int,
     ) {
@@ -44,7 +55,7 @@ class AlarmScheduler(
         Log.d(TAG, "Started AlarmClock for next section: triggerTime=$triggerTime")
     }
 
-    fun cancelAlarm() {
+    override fun cancelAlarm() {
         pendingIntent?.let { alarmManager.cancel(it) }
         pendingIntent = null
     }

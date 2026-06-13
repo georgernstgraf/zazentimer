@@ -15,6 +15,9 @@ Follow these without question. Do not deviate unless explicitly told.
 - Use `ZazenClock` for all time-related logic.
 - Instrumented tests must register `IdlingResourceManager.countingIdlingResource`.
 - Prefer `StateFlow` over `LiveData` for new state streams to better support coroutine-based testing.
+- **Always use pure Kotlin fakes** instead of heavy MockK mocks for core timer dependencies (`BellPlayer`, `MeditationRepository`, `AlarmScheduler`) to avoid OutOfMemoryErrors and JVM proxy-generation leaks in large test suites.
+- **Call `meditation.release()` in `tearDown()` and at the end of each `runTest` block** to properly cancel Meditation's coroutine scope and clean up timer tasks.
+- **Use `runCurrent()` between sequential `meditation.pause()` calls** to let the cooperative coroutine cancellations complete on the test dispatcher before launching a new ticker.
 - **Jede Room-Migration braucht einen Test:** Zu jeder neuen `Migration(X, Y)` muss ein `RoomMigrationTest`-Fall existieren, der die Migration auf einer temporären V1-Datenbank mit realistischen Daten ausführt und Daten-Integrität + Schema-Korrektheit prüft. Die Migration muss direkt via `.migrate(db)` aufgerufen werden (nicht über Room Builder), um das exakte Laufzeitverhalten zu testen. Die Tests müssen zumindest umfassen: Daten-Erhalt, Schema-Korrektheit (PK NOT NULL, Indices, Default-Werte), und Indices-Existenz.
 
 ## Test Infrastructure
