@@ -334,12 +334,6 @@ class MainFragment : Fragment() {
     }
 
     suspend fun suspendUpdateSessionList(restoreSelectionId: Int = -1) {
-        for (i in sessions.indices) {
-            sessions[i].rank = i
-        }
-        for (session in sessions) {
-            dbOperations.updateSession(session)
-        }
         val readSessions = dbOperations.readSessions()
         if (!isAdded) return
         val arrayList = ArrayList<SessionWithTimeInfo>()
