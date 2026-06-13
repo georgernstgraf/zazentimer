@@ -1,5 +1,6 @@
 package at.priv.graf.zazentimer.backup
 
+import at.priv.graf.zazentimer.database.AppDatabase
 import com.google.common.truth.Truth.assertThat
 import org.junit.After
 import org.junit.Before
@@ -23,7 +24,7 @@ class BackupManagerTest {
         tempDir = createTempDir()
         databaseDir = File(tempDir, "databases").apply { mkdirs() }
         filesDir = File(tempDir, "files").apply { mkdirs() }
-        databaseFile = File(databaseDir, "zentimer")
+        databaseFile = File(databaseDir, AppDatabase.DATABASE_NAME)
         closeCalled = false
         reopenCalled = false
         backupManager =
@@ -68,7 +69,7 @@ class BackupManagerTest {
             java.util.zip.ZipFile(backupFile).use { zf ->
                 zf.entries().toList().map { it.name }
             }
-        assertThat(entries).containsExactly("zentimer", "bell_prefs1", "bell_prefs2")
+        assertThat(entries).containsExactly(AppDatabase.DATABASE_NAME, "bell_prefs1", "bell_prefs2")
     }
 
     @Test
@@ -85,7 +86,7 @@ class BackupManagerTest {
             java.util.zip.ZipFile(backupFile).use { zf ->
                 zf.entries().toList().map { it.name }
             }
-        assertThat(entries).containsExactly("zentimer", "bell_goodfile")
+        assertThat(entries).containsExactly(AppDatabase.DATABASE_NAME, "bell_goodfile")
     }
 
     @Test
@@ -253,11 +254,11 @@ class BackupManagerTest {
         databaseFile.writeText("existing-data")
         val dbBytes =
             createMockDatabaseBytes(
-                version = at.priv.graf.zazentimer.database.AppDatabase.CURRENT_VERSION + 1,
+                version = AppDatabase.CURRENT_VERSION + 1,
             )
         val zipFile = File(tempDir, "newversion.zip")
         ZipOutputStream(FileOutputStream(zipFile)).use { zos ->
-            val entry = ZipEntry("zentimer")
+            val entry = ZipEntry(AppDatabase.DATABASE_NAME)
             zos.putNextEntry(entry)
             zos.write(dbBytes)
             zos.closeEntry()
@@ -272,10 +273,10 @@ class BackupManagerTest {
     @Test
     fun restore_databaseVersionEqualsCurrent_restoresSuccessfully() {
         databaseFile.writeText("old-data")
-        val dbBytes = createMockDatabaseBytes(version = at.priv.graf.zazentimer.database.AppDatabase.CURRENT_VERSION)
+        val dbBytes = createMockDatabaseBytes(version = AppDatabase.CURRENT_VERSION)
         val zipFile = File(tempDir, "validversion.zip")
         ZipOutputStream(FileOutputStream(zipFile)).use { zos ->
-            val entry = ZipEntry("zentimer")
+            val entry = ZipEntry(AppDatabase.DATABASE_NAME)
             zos.putNextEntry(entry)
             zos.write(dbBytes)
             zos.closeEntry()

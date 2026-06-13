@@ -6,6 +6,7 @@ local.properties
 output/
 *.apk
 *.zip
+!app/src/test/resources/backups/*.zip
 *.keystore
 .DS_Store
 *crash*.txt

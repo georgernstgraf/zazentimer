@@ -259,6 +259,9 @@ run_gradle_test() {
     emulator_configure_system "$serial"
     clear_logcat "$serial"
 
+    log_api "Pushing backup fixture to /data/local/tmp/..."
+    adb -s "$serial" push "$PROJECT_DIR/app/src/test/resources/backups/zentimer_backup_room_v2.zip" /data/local/tmp/ 2>/dev/null || log_api "WARNING: backup fixture zip not found — skipping push"
+
     log_phase "$api_level" "running tests"
     log_api ""
     log_api "========================================="
