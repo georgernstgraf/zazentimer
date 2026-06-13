@@ -612,3 +612,33 @@ Each entry documents WHAT was decided and WHY.
 - **Considered**: Increasing JVM heap size (didn't fix the leak), using manual fakes directly without interface extraction (impossible in Kotlin as classes are final by default).
 - **Tradeoff**: Slight boilerplate increase for interface declarations; much faster, 100% memory-safe, and decoupled tests.
 
+## 2026-06-13: Single-device am instrument runner (#255)
+- **Choice**: Replaced `connectedDebugAndroidTest` with `am instrument` targeting a single device serial (`adb -s $SERIAL`). Physical device is preferred over emulator.
+- **Reason**: `connectedDebugAndroidTest` ignores `ANDROID_SERIAL` and runs on ALL connected devices simultaneously. When a physical phone and emulator are both connected, tests run on both — the phone lacks the backup fixture and times out. `am instrument` with explicit serial guarantees single-device execution.
+- **Considered**: Keeping Gradle runner and disconnecting physical device (fragile, manual), using `ANDROID_SERIAL` env var (ignored by AGP), adding `-e package` filter (doesn't support exclude).
+- **Tradeoff**: Manual APK installation (`adb install`) and test class discovery from source tree instead of Gradle automation; no orchestrator (already set to `HOST` execution mode).
+
+## 2026-06-13: Two-phase test execution with backup test last (#255)
+- **Choice**: Phase 1 runs all tests except `BackupRestoreInstrumentedTest`. Phase 2 runs `BackupRestoreInstrumentedTest` last. Class lists discovered from source tree, excluding `AbstractZazenTest`, `BackupRestoreInstrumentedTest`, `BackupTest`.
+- **Reason**: A corrupted database from backup restore would block subsequent tests. Running backup test last isolates DB corruption to the final phase.
+- **Considered**: `@BackupTest` annotation with `-e excludeAnnotation` (not supported by `am instrument`), separate package for backup test (invasive).
+- **Tradeoff**: `@BackupTest` annotation is documentation only; class list built at script runtime by scanning source files.
+
+## 2026-06-13: Dynamic runner/package discovery from installed APK (#255)
+- **Choice**: After installing both APKs, extract `TEST_PACKAGE` and `RUNNER` from `adb shell pm list instrumentation | grep zazentimer`. No hardcoded package or class names.
+- **Reason**: The test runner class (`HiltTestRunner`) and package name (`at.priv.graf.zazentimer.debug.test`) depend on build variant. Hardcoding them breaks if the app changes package name or adds build flavors.
+- **Considered**: Parsing `build.gradle.kts` for `testInstrumentationRunner` (fragile, misses runtime merges), using `aapt dump badging` (requires build-tools on PATH).
+- **Tradeoff**: Requires APK installation before discovery (solved by build-first, install-second flow).
+
+## 2026-06-13: Backup fixture push to /sdcard/Download/ (#255)
+- **Choice**: Push backup fixture ZIP to `/sdcard/Download/` instead of `/data/local/tmp/`. Test manifest declares `MANAGE_EXTERNAL_STORAGE` permission. Script grants it via `adb shell appops set` on API 30+.
+- **Reason**: SAF file picker can browse `/sdcard/Download/` but not `/data/local/tmp/`. Future UI test will use SAF. On API 30+, `MANAGE_EXTERNAL_STORAGE` is required for direct `File` access.
+- **Considered**: Pushing to app's internal files dir (package-specific, SAF can't reach), keeping `/data/local/tmp/` (inaccessible on API 30+ scoped storage).
+- **Tradeoff**: Requires `MANAGE_EXTERNAL_STORAGE` permission in test manifest; `appops set` command in script for API 30+.
+
+## 2026-06-13: fos.fd.sync() before fos.close() in BackupManager (#255)
+- **Choice**: Added `fos.fd.sync()` before `fos.close()` in `BackupManager.receiveBytes()`.
+- **Reason**: Without `fsync`, the restored database file may not be committed to disk before Room reopens it, causing `SQLiteDatabaseCorruptException` on some devices.
+- **Considered**: Adding `Thread.sleep()` after close (fragile, wasteful), calling `sync()` on the parent directory file descriptor (overcomplicated).
+- **Tradeoff**: Minimal performance cost (fsync is fast for typical backup sizes < 1MB).
+

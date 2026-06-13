@@ -28,6 +28,12 @@ Follow these without question. Do not deviate unless explicitly told.
 - Shared test utilities (ScreenRobot, IdlingResource, PreFlightRule) live in `src/testFixtures/`.
 - `DevicePreFlightRule` is applied in `HiltTestRunner.onStart()` to ensure screen is awake and animations disabled.
 - Android Test utilities use `java-test-fixtures` via `testFixtures { enable = true }` in AGP, NOT the standalone plugin.
+- **`am instrument` over `connectedDebugAndroidTest`**: Always use `am instrument -w -e class <classes> <test_package>/<runner>` instead of `connectedDebugAndroidTest`. The Gradle runner ignores `ANDROID_SERIAL` and runs on ALL connected devices simultaneously. `am instrument` targets exactly one device via `adb -s $SERIAL`.
+- **Dynamic runner discovery**: Extract `TEST_PACKAGE` and `RUNNER` from `adb shell pm list instrumentation | grep zazentimer` after APK install. Never hardcode `HiltTestRunner` or test package names — they depend on build variant (debug suffix).
+- **Two-phase test execution**: Phase 1 runs all tests except `BackupRestoreInstrumentedTest`. Phase 2 runs `BackupRestoreInstrumentedTest` last. A corrupted DB from backup restore must not block other tests.
+- **Physical device preferred**: `resolve_physical_device()` checks `adb devices` for non-emulator devices first. If found, uses that device. Only falls back to emulator if no physical device is connected.
+- **Source-tree class discovery**: Phase 1 classes are discovered from `app/src/androidTest/kotlin/at/priv/graf/zazentimer/*Test.kt`, excluding `AbstractZazenTest`, `BackupRestoreInstrumentedTest`, and `BackupTest`. No hardcoded class lists.
+- **Backup fixture location**: Push to `/sdcard/Download/` (not `/data/local/tmp/`). The SAF file picker can browse `/sdcard/Download/` but not `/data/local/tmp/`. Test manifest declares `MANAGE_EXTERNAL_STORAGE` for API 30+ access.
 - **Launching long-running instrumentation test runs**: Use `nohup` with background execution for full 14-API matrix runs:
   ```
   nohup scripts/run-instrumentation.sh > logs/full-run-$(date +%Y-%m-%d).log 2>&1 &
