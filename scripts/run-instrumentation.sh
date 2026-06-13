@@ -14,7 +14,6 @@ set -euo pipefail
 #   scripts/run-instrumentation.sh [options]
 #   Options:
 #     --continue-on-error    Don't stop on first API failure
-#     --ignore-dirty-git     Skip git clean check
 #     --debug                Verbose logging
 #     --force-xvfb           Force Xvfb for display
 #     --cold-boot            Don't use emulator snapshots
@@ -22,7 +21,6 @@ set -euo pipefail
 # ──────────────────────────────────────────────
 
 CONTINUE_ON_ERROR=false
-IGNORE_DIRTY_GIT=false
 DEBUG_LOG=false
 FORCE_XVFB=false
 COLD_BOOT=false
@@ -32,10 +30,6 @@ while [[ $# -gt 0 ]]; do
     case "$1" in
     --continue-on-error)
         CONTINUE_ON_ERROR=true
-        shift
-        ;;
-    --ignore-dirty-git)
-        IGNORE_DIRTY_GIT=true
         shift
         ;;
     --debug)
@@ -613,18 +607,6 @@ exec > >(tee -a "$LOG_FILE") 2>&1
 log "=== Instrumentation Test Run — $TODAY ==="
 
 cd "$PROJECT_DIR"
-
-if [ "$IGNORE_DIRTY_GIT" = false ]; then
-    if [ -n "$(git status --porcelain)" ]; then
-        log "ERROR: Git repository is not clean. Commit or stash changes before running."
-        git status --short
-        exit 1
-    fi
-
-    git fetch origin && git pull --ff-only origin main
-else
-    log "=== WARNING: --ignore-dirty-git enabled — skipping git clean check and pull ==="
-fi
 
 # ──────────────────────────────────────────────
 # Hostname-specific configuration
