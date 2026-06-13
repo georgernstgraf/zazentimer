@@ -1,5 +1,6 @@
 package at.priv.graf.zazentimer
 
+import android.app.Instrumentation
 import android.content.Intent
 import android.os.SystemClock
 import android.view.MotionEvent
@@ -12,6 +13,7 @@ import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.action.ViewActions.scrollTo
 import androidx.test.espresso.intent.Intents
 import androidx.test.espresso.intent.Intents.intended
+import androidx.test.espresso.intent.Intents.intending
 import androidx.test.espresso.intent.matcher.IntentMatchers.hasAction
 import androidx.test.espresso.matcher.ViewMatchers.isAssignableFrom
 import androidx.test.espresso.matcher.ViewMatchers.withText
@@ -89,6 +91,13 @@ class SettingsTest : AbstractZazenTest() {
     fun testBackup() {
         Intents.init()
         try {
+            intending(hasAction(Intent.ACTION_CREATE_DOCUMENT))
+                .respondWith(
+                    Instrumentation.ActivityResult(
+                        0,
+                        null,
+                    ),
+                )
             MainPage()
                 .verifyMainScreenIsDisplayed()
                 .clickToolbarOverflowItem(R.string.menu_settings)
@@ -105,6 +114,13 @@ class SettingsTest : AbstractZazenTest() {
     fun testRestore() {
         Intents.init()
         try {
+            intending(hasAction(Intent.ACTION_OPEN_DOCUMENT))
+                .respondWith(
+                    Instrumentation.ActivityResult(
+                        0,
+                        null,
+                    ),
+                )
             MainPage()
                 .verifyMainScreenIsDisplayed()
                 .clickToolbarOverflowItem(R.string.menu_settings)
