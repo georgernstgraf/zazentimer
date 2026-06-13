@@ -18,6 +18,7 @@ import org.junit.runner.RunWith
 import java.io.File
 import javax.inject.Inject
 
+@BackupTest
 @HiltAndroidTest
 @RunWith(AndroidJUnit4::class)
 @LargeTest
@@ -27,7 +28,7 @@ class BackupRestoreInstrumentedTest : AbstractZazenTest() {
 
     private lateinit var backupManager: BackupManager
 
-    private val zipFile = File("/data/local/tmp/zentimer_backup_room_v2.zip")
+    private val zipFile = File("/sdcard/Download/zentimer_backup_room_v2.zip")
 
     @Before
     fun setupBackupRestore() {
