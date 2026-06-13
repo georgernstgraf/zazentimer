@@ -352,7 +352,7 @@ DEFAULT_APIS_STRING=$(grep -oP "^zazentimer\.test\.apis=\K.*" "$PROJECT_DIR/grad
 if [ "$COLD_BOOT" = true ]; then
     SNAPSHOT_FLAG="-no-snapshot"
 else
-    SNAPSHOT_FLAG="-no-snapshot-save"
+    SNAPSHOT_FLAG=""
 fi
 
 IFS=',' read -ra DEFAULT_APIS <<<"$DEFAULT_APIS_STRING"

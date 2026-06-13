@@ -3,9 +3,8 @@ package at.priv.graf.zazentimer
 import androidx.test.espresso.Espresso.closeSoftKeyboard
 import androidx.test.espresso.Espresso.onIdle
 import androidx.test.espresso.Espresso.onView
-import androidx.test.espresso.action.ViewActions.clearText
 import androidx.test.espresso.action.ViewActions.click
-import androidx.test.espresso.action.ViewActions.typeText
+import androidx.test.espresso.action.ViewActions.replaceText
 import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.matcher.RootMatchers.isDialog
 import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
@@ -68,9 +67,9 @@ class SessionCrudTest : AbstractZazenTest() {
         onView(withId(R.id.text_sitzung_name)).check(matches(withText(demoSessionName)))
 
         onView(withId(R.id.text_sitzung_name))
-            .perform(clearText(), typeText("Updated Session Name"))
+            .perform(replaceText("Updated Session Name"))
         onView(withId(R.id.text_sitzung_beschreibung))
-            .perform(clearText(), typeText("Updated Description"))
+            .perform(replaceText("Updated Description"))
 
         closeSoftKeyboard()
         SessionEditPage().goBack()
