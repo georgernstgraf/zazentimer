@@ -121,3 +121,4 @@ Read this file carefully before making changes in affected areas.
 - **GPT-5.5 Performance**: ~120s für 154 Strings, Proficiency 4/5, alle 154 übersetzt (0 null).
 - **Übersetzungsqualität**: Beide Modelle liefern exzellente Ergebnisse mit korrektem Fachvokabular („Klangschale" statt „Glocke"), HTML-Tags erhalten, Placeholder intakt.
 - **Große Batches**: 154 Strings passen in einen Request — Response-Zeit skaliert linear mit String-Anzahl.
+- **Stale in-memory write in suspendUpdateSessionList**: Writing stale `sessions` objects back to DB in `MainFragment.suspendUpdateSessionList()` overwrites edits made by other fragments (e.g., `SessionEditFragment.onPause()` saving a new name). Rank persistence is already handled by `MainFragment.onPause()`. The `onResume()` path must only read fresh data, never write stale objects. (#253)
