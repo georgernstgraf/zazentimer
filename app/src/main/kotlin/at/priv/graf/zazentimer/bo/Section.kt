@@ -1,7 +1,6 @@
 package at.priv.graf.zazentimer.bo
 
 import java.io.Serializable
-import java.util.Locale
 
 data class Section(
     @JvmField var bellId: Int = 0,
@@ -21,17 +20,9 @@ data class Section(
         rank = -1,
     )
 
-    fun getDurationString(): String =
-        String.format(
-            Locale.US,
-            "%02d:%02d",
-            duration / SECONDS_PER_MINUTE,
-            duration % SECONDS_PER_MINUTE,
-        )
+    fun getDurationString(): String = TimeFormat.mmss(duration)
 
     companion object {
         private const val serialVersionUID = 1L
-
-        private const val SECONDS_PER_MINUTE = 60
     }
 }

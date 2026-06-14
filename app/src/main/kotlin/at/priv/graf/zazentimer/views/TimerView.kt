@@ -13,6 +13,7 @@ import android.view.View
 import android.view.animation.AccelerateDecelerateInterpolator
 import androidx.preference.PreferenceManager
 import androidx.recyclerview.widget.ItemTouchHelper
+import at.priv.graf.zazentimer.Constants
 import at.priv.graf.zazentimer.R
 import at.priv.graf.zazentimer.ZazenTimerActivity
 import java.util.HashMap
@@ -75,7 +76,7 @@ class TimerView
             private const val HALF_DIVISOR_FLOAT = 2.0f
             private const val HALF_FACTOR = 0.5f
 
-            private const val SECONDS_PER_MINUTE = 60
+            private const val SECONDS_PER_MINUTE = Constants.SECONDS_PER_MINUTE
             private const val TIME_FORMAT_POSITIVE = "%1$02d:%2$02d"
             private const val TIME_FORMAT_NEGATIVE = "-%1$02d:%2$02d"
 

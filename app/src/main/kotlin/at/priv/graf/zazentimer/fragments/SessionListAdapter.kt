@@ -11,6 +11,7 @@ import android.widget.PopupMenu
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import at.priv.graf.zazentimer.R
+import at.priv.graf.zazentimer.bo.TimeFormat
 
 @Suppress("TooManyFunctions")
 class SessionListAdapter(
@@ -182,15 +183,5 @@ class SessionListAdapter(
         return null
     }
 
-    private fun formatDuration(totalSeconds: Int): String =
-        String.format(
-            java.util.Locale.getDefault(),
-            "%02d:%02d",
-            totalSeconds / SECONDS_PER_MINUTE,
-            totalSeconds % SECONDS_PER_MINUTE,
-        )
-
-    companion object {
-        private const val SECONDS_PER_MINUTE = 60
-    }
+    private fun formatDuration(totalSeconds: Int): String = TimeFormat.mmss(totalSeconds)
 }

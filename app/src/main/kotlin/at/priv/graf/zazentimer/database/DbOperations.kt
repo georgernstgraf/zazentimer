@@ -310,6 +310,18 @@ class DbOperations
 
         suspend fun deleteBellById(id: Int) = withIdling { bellDao?.deleteById(id) }
 
+        suspend fun reassignBellReferences(
+            oldBellId: Int,
+            newBellId: Int,
+        ) = withIdling {
+            val dao = sectionDao ?: return@withIdling
+            val sections = dao.getSectionsByBellId(oldBellId)
+            for (section in sections) {
+                section.bellId = newBellId
+                dao.update(section)
+            }
+        }
+
         suspend fun deleteCustomBell(bellId: Int) =
             withIdling {
                 val demoBellUri = BellCollection.getDemoBell()?.uri?.toString()
@@ -321,23 +333,8 @@ class DbOperations
                     } ?: return@withIdling
                 val targetBellId = demoTarget.id
 
-                val allSessionEntities = sessionDao?.getAllSessions() ?: emptyList()
-                for (sessionEntity in allSessionEntities) {
-                    val sections = sectionDao?.getSectionsForSession(sessionEntity.id) ?: emptyList()
-                    for (section in sections) {
-                        if (section.bellId == bellId) {
-                            section.bellId = targetBellId
-                            sectionDao?.update(section)
-                        }
-                    }
-                    val volumes = sessionBellVolumeDao?.getBellVolumesForSession(sessionEntity.id) ?: emptyList()
-                    for (volume in volumes) {
-                        if (volume.bellId == bellId) {
-                            sessionBellVolumeDao?.deleteById(volume.id.toLong())
-                        }
-                    }
-                }
-
+                reassignBellReferences(bellId, targetBellId)
+                sessionBellVolumeDao?.deleteByBellId(bellId)
                 bellDao?.deleteById(bellId)
             }
 
@@ -345,7 +342,6 @@ class DbOperations
         suspend fun sanitizeBellUris() =
             withIdling {
                 val bellDao = bellDao ?: return@withIdling
-                val sectionDao = sectionDao ?: return@withIdling
                 val bvDao = sessionBellVolumeDao ?: return@withIdling
 
                 val allDbBells = bellDao.getAll()
@@ -385,11 +381,7 @@ class DbOperations
                 for (dbBell in updatedBells.filter { it.isBuiltin }) {
                     if (dbBell.name !in builtinNames) {
                         Log.w(TAG, "Builtin bell '${dbBell.name}' no longer exists, reassigning to demo")
-                        val sections = sectionDao.getSectionsByBellId(dbBell.id)
-                        for (s in sections) {
-                            s.bellId = demoBellId
-                            sectionDao.update(s)
-                        }
+                        reassignBellReferences(dbBell.id, demoBellId)
                         bvDao.deleteByBellId(dbBell.id)
                         bellDao.deleteById(dbBell.id)
                     }
@@ -406,11 +398,7 @@ class DbOperations
                     val fileName = bell.uri.substringAfterLast("/")
                     if (fileName !in customBellFiles) {
                         Log.w(TAG, "Custom bell file missing ($fileName), removing from DB")
-                        val sections = sectionDao.getSectionsByBellId(bell.id)
-                        for (s in sections) {
-                            s.bellId = demoBellId
-                            sectionDao.update(s)
-                        }
+                        reassignBellReferences(bell.id, demoBellId)
                         bvDao.deleteByBellId(bell.id)
                         bellDao.deleteById(bell.id)
                     } else {

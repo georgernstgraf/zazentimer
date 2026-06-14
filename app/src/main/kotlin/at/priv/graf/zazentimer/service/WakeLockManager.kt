@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.SharedPreferences
 import android.os.PowerManager
 import android.util.Log
+import at.priv.graf.zazentimer.Constants
 import at.priv.graf.zazentimer.ZazenTimerActivity
 import at.priv.graf.zazentimer.database.DbOperations
 import dagger.hilt.android.qualifiers.ApplicationContext
@@ -46,7 +47,7 @@ class WakeLockManager
                         WAKELOCK_TAG,
                     )
                 val timeoutSeconds = totalSeconds + WAKELOCK_TIMEOUT_BUFFER_SECONDS
-                wakeLock?.acquire(timeoutSeconds * MILLIS_PER_SECOND)
+                wakeLock?.acquire(timeoutSeconds * Constants.MS_PER_SECOND)
                 Log.i(TAG, "Acquired WakeLock to keep screen on for $timeoutSeconds seconds")
             }
         }
@@ -71,6 +72,5 @@ class WakeLockManager
             private const val TAG = "ZMT_WakeLockManager"
             private const val WAKELOCK_TAG = "zazentimer:ScreenOnWakeLock"
             private const val WAKELOCK_TIMEOUT_BUFFER_SECONDS = 60
-            private const val MILLIS_PER_SECOND = 1000L
         }
     }

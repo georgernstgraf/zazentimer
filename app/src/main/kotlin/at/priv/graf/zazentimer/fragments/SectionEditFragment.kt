@@ -3,7 +3,6 @@ package at.priv.graf.zazentimer.fragments
 import android.app.Activity
 import android.content.Intent
 import android.content.SharedPreferences
-import android.database.Cursor
 import android.graphics.Rect
 import android.os.Bundle
 import android.util.Log
@@ -17,22 +16,20 @@ import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
+import at.priv.graf.zazentimer.Constants
 import at.priv.graf.zazentimer.R
 import at.priv.graf.zazentimer.ZazenTimerActivity
 import at.priv.graf.zazentimer.audio.Audio
 import at.priv.graf.zazentimer.audio.BellCollection
 import at.priv.graf.zazentimer.bo.Bell
 import at.priv.graf.zazentimer.bo.Section
-import at.priv.graf.zazentimer.database.BellEntity
+import at.priv.graf.zazentimer.bo.TimeFormat
 import at.priv.graf.zazentimer.database.DbOperations
 import at.priv.graf.zazentimer.databinding.FragmentEditSectionBinding
 import com.google.android.material.transition.MaterialSharedAxis
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
-import java.io.IOException
-import java.io.InputStream
-import java.util.Locale
 import javax.inject.Inject
 
 @AndroidEntryPoint
@@ -52,74 +49,26 @@ class SectionEditFragment : Fragment() {
     @Inject
     lateinit var dbOperations: DbOperations
 
+    @Inject
+    lateinit var bellImporter: at.priv.graf.zazentimer.audio.BellImporter
+
     private val bellPickerLauncher: ActivityResultLauncher<Intent> =
         registerForActivityResult(
             ActivityResultContracts.StartActivityForResult(),
         ) { result ->
             if (result.resultCode != Activity.RESULT_OK || result.data == null) return@registerForActivityResult
-            val intent = result.data ?: return@registerForActivityResult
-            val data = intent.data ?: return@registerForActivityResult
-            var str = "bell_unnamed"
-            if (data.scheme == "content") {
-                val query: Cursor? = requireActivity().contentResolver.query(data, null, null, null, null)
-                if (query != null && query.count != 0) {
-                    val columnIndex = query.getColumnIndex("_display_name")
-                    if (columnIndex >= 0) {
-                        query.moveToFirst()
-                        val colVal = query.getString(columnIndex) ?: ""
-                        str = "bell_$colVal"
-                    } else {
-                        val segment = data.lastPathSegment ?: ""
-                        str = "bell_$segment"
-                    }
-                }
-                query?.close()
-            } else {
-                data.lastPathSegment?.let { str = "bell_$it" }
-            }
-            try {
-                val openInputStream: InputStream? = requireActivity().contentResolver.openInputStream(data)
-                if (openInputStream == null) return@registerForActivityResult
-                val openFileOutput = requireActivity().openFileOutput(str, 0)
-                val bArr = ByteArray(BUFFER_SIZE)
-                var read = openInputStream.read(bArr)
-                while (read > 0) {
-                    openFileOutput.write(bArr, 0, read)
-                    read = openInputStream.read(bArr)
-                }
-                openInputStream.close()
-                openFileOutput.close()
+            val data = result.data?.data ?: return@registerForActivityResult
+            lifecycleScope.launch {
+                val entity = bellImporter.import(data) ?: return@launch
                 BellCollection.initialize(requireContext())
                 fillBellList()
-                val bellUri = BellCollection.getUriForName(str)
-                if (bellUri != null) {
-                    runBlocking {
-                        dbOperations.insertBell(
-                            BellEntity(
-                                name = str.removePrefix("bell_"),
-                                uri = bellUri.toString(),
-                            ),
-                        )
-                    }
-                }
                 section?.let { s ->
-                    val uri = BellCollection.getUriForName(str)
-                    if (uri != null) {
-                        val entity = runBlocking { dbOperations.getBellByUri(uri.toString()) }
-                        s.bellId = entity?.id ?: 0
-                        runBlocking {
-                            if (s.bellId > 0) {
-                                dbOperations.updateSection(s)
-                            }
-                        }
+                    s.bellId = entity.id
+                    if (s.bellId > 0) {
+                        dbOperations.updateSection(s)
                     }
-                    fillBellList()
                     selectBellForSection(s)
                 }
-            } catch (e: IOException) {
-                e.printStackTrace()
-            } catch (e: SecurityException) {
-                Log.e(TAG, "SecurityException importing bell", e)
             }
         }
 
@@ -209,9 +158,7 @@ class SectionEditFragment : Fragment() {
     @Suppress("TooManyFunctions")
     companion object {
         private const val TAG = "ZMT_SectionEdit"
-        private const val BUFFER_SIZE = 8192
-        private const val SECONDS_PER_MINUTE = 60
-        private const val DEFAULT_BELL_VOLUME = at.priv.graf.zazentimer.Constants.DEFAULT_BELL_VOLUME
+        private const val DEFAULT_BELL_VOLUME = Constants.DEFAULT_BELL_VOLUME
         private const val GAP_COUNT = 14
         private const val GAP_ARRAY_SIZE = 15
 
@@ -221,7 +168,7 @@ class SectionEditFragment : Fragment() {
             val entity = runBlocking { dbOperations.getBellByUri(bell.uri.toString()) }
             s.bellId = entity?.id ?: 0
             s.name = binding.sectionName.text.toString()
-            s.duration = (this.durationMinutes * SECONDS_PER_MINUTE) + this.durationSeconds
+            s.duration = (this.durationMinutes * Constants.SECONDS_PER_MINUTE) + this.durationSeconds
         }
 
         private fun SectionEditFragment.fillViewFromData() {
@@ -229,8 +176,8 @@ class SectionEditFragment : Fragment() {
             setViewBellCount(s.bellcount)
             setViewGap(s.bellpause)
             binding.sectionName.setText(s.name)
-            setDurationMinutes(s.duration / SECONDS_PER_MINUTE)
-            setDurationSeconds(s.duration % SECONDS_PER_MINUTE)
+            setDurationMinutes(s.duration / Constants.SECONDS_PER_MINUTE)
+            setDurationSeconds(s.duration % Constants.SECONDS_PER_MINUTE)
             fillBellList()
             selectBellForSection(s)
         }
@@ -396,8 +343,7 @@ class SectionEditFragment : Fragment() {
 
         private fun SectionEditFragment.updateDurationView() {
             _binding?.let { b ->
-                b.time.text =
-                    String.format(Locale.getDefault(), "%02d:%02d", durationMinutes, durationSeconds)
+                b.time.text = TimeFormat.mmss(durationMinutes, durationSeconds)
             }
         }
 

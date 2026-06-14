@@ -1,6 +1,7 @@
 package at.priv.graf.zazentimer.backup
 
 import android.util.Log
+import at.priv.graf.zazentimer.Constants
 import at.priv.graf.zazentimer.database.AppDatabase
 import java.io.File
 import java.io.FileInputStream
@@ -165,7 +166,7 @@ class BackupManager(
     }
 
     companion object {
-        internal const val BUFFER_SIZE = 32768
+        internal const val BACKUP_BUFFER_SIZE = Constants.BACKUP_BUFFER_SIZE
 
         internal const val ERROR_VERSION_TOO_HIGH = 3
 
@@ -174,49 +175,35 @@ class BackupManager(
         internal fun sendFile(
             file: File,
             outputStream: OutputStream,
-        ): Boolean {
-            var success = true
+        ): Boolean =
             try {
-                val fis = FileInputStream(file)
-                val buf = ByteArray(BUFFER_SIZE)
-                var read = fis.read(buf)
-                while (read > 0) {
-                    outputStream.write(buf, 0, read)
-                    read = fis.read(buf)
+                FileInputStream(file).use { fis ->
+                    Streams.copy(fis, outputStream, BACKUP_BUFFER_SIZE)
                 }
-                fis.close()
+                true
             } catch (e: IOException) {
                 Log.e(TAG, "Failed to send file", e)
-                success = false
+                false
             } catch (e: SecurityException) {
                 Log.e(TAG, "Failed to send file", e)
-                success = false
+                false
             }
-            return success
-        }
 
         internal fun receiveFile(
             inputStream: InputStream,
             file: File,
-        ): Boolean {
-            var success = true
+        ): Boolean =
             try {
-                val fos = FileOutputStream(file)
-                val buf = ByteArray(BUFFER_SIZE)
-                var read = inputStream.read(buf)
-                while (read > 0) {
-                    fos.write(buf, 0, read)
-                    read = inputStream.read(buf)
+                FileOutputStream(file).use { fos ->
+                    Streams.copy(inputStream, fos, BACKUP_BUFFER_SIZE)
                 }
-                fos.close()
+                true
             } catch (e: IOException) {
                 Log.e(TAG, "Failed to receive file", e)
-                success = false
+                false
             } catch (e: SecurityException) {
                 Log.e(TAG, "Failed to receive file", e)
-                success = false
+                false
             }
-            return success
-        }
     }
 }

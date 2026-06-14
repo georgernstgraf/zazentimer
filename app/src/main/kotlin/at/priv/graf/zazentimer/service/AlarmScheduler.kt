@@ -6,6 +6,7 @@ import android.content.Context
 import android.content.Intent
 import android.os.Build
 import android.util.Log
+import at.priv.graf.zazentimer.Constants
 import at.priv.graf.zazentimer.bo.Section
 
 interface AlarmScheduler {
@@ -35,7 +36,7 @@ class SystemAlarmScheduler(
     ) {
         sectionStartTime = clock.now()
         val triggerTime =
-            sectionStartTime + ((section.duration - pauseSectionSeconds) * MS_PER_SECOND)
+            sectionStartTime + ((section.duration - pauseSectionSeconds) * Constants.MS_PER_SECOND)
         val pi =
             PendingIntent.getBroadcast(
                 context,
@@ -62,6 +63,5 @@ class SystemAlarmScheduler(
 
     companion object {
         private const val TAG = "ZMT_AlarmScheduler"
-        private const val MS_PER_SECOND = 1000L
     }
 }

@@ -3,6 +3,7 @@ package at.priv.graf.zazentimer.service
 import android.content.Context
 import android.os.PowerManager
 import android.util.Log
+import at.priv.graf.zazentimer.Constants
 import at.priv.graf.zazentimer.audio.Audio
 import at.priv.graf.zazentimer.audio.BellCollection
 import at.priv.graf.zazentimer.bo.Section
@@ -47,14 +48,14 @@ class BellPlayerManager(
                     "zazentimer:PlayBells",
                 )
             wakeLock.acquire(
-                (section.bellcount * BELL_WAKE_LOCK_MULTIPLIER * MS_PER_SECOND),
+                (section.bellcount * BELL_WAKE_LOCK_MULTIPLIER * Constants.MS_PER_SECOND),
             )
             Log.d(TAG, "WakeLock created for playing bells")
             for (i in 0 until section.bellcount) {
                 if (stoppingCheck()) break
                 playBell(section, volume)
                 if (i < section.bellcount - 1) {
-                    delay((section.bellpause * MS_PER_SECOND))
+                    delay((section.bellpause * Constants.MS_PER_SECOND))
                 }
             }
             while (isPlaying()) {
@@ -116,7 +117,6 @@ class BellPlayerManager(
     companion object {
         private const val TAG = "ZMT_BellPlayer"
         private const val BELL_WAKE_LOCK_MULTIPLIER = 25
-        private const val MS_PER_SECOND = 1000L
         private const val WAIT_FOR_PLAYBACK_MS = 100L
     }
 }

@@ -17,6 +17,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import at.priv.graf.zazentimer.R
 import at.priv.graf.zazentimer.audio.BellCollection
+import at.priv.graf.zazentimer.audio.BellImporter
 import at.priv.graf.zazentimer.database.BellEntity
 import at.priv.graf.zazentimer.database.DbOperations
 import at.priv.graf.zazentimer.databinding.FragmentManageBellsBinding
@@ -24,7 +25,6 @@ import com.google.android.material.transition.MaterialSharedAxis
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 import java.io.File
-import java.io.IOException
 import javax.inject.Inject
 
 @AndroidEntryPoint
@@ -37,56 +37,19 @@ class ManageBellsFragment : Fragment() {
     @Inject
     lateinit var dbOperations: DbOperations
 
+    @Inject
+    lateinit var bellImporter: BellImporter
+
     private val bellPickerLauncher: ActivityResultLauncher<Intent> =
         registerForActivityResult(
             ActivityResultContracts.StartActivityForResult(),
         ) { result ->
             if (result.resultCode != Activity.RESULT_OK || result.data == null) return@registerForActivityResult
-            val intent = result.data ?: return@registerForActivityResult
-            val data = intent.data ?: return@registerForActivityResult
-            var str = "bell_unnamed"
-            val query = requireActivity().contentResolver.query(data, null, null, null, null)
-            if (query != null && query.count != 0) {
-                val columnIndex = query.getColumnIndex("_display_name")
-                if (columnIndex >= 0) {
-                    query.moveToFirst()
-                    val colVal = query.getString(columnIndex) ?: ""
-                    str = "bell_$colVal"
-                } else {
-                    val segment = data.lastPathSegment ?: ""
-                    str = "bell_$segment"
-                }
-            }
-            query?.close()
-            try {
-                val openInputStream =
-                    requireActivity().contentResolver.openInputStream(data) ?: return@registerForActivityResult
-                val openFileOutput = requireActivity().openFileOutput(str, 0)
-                val bArr = ByteArray(BUFFER_SIZE)
-                var read = openInputStream.read(bArr)
-                while (read > 0) {
-                    openFileOutput.write(bArr, 0, read)
-                    read = openInputStream.read(bArr)
-                }
-                openInputStream.close()
-                openFileOutput.close()
+            val data = result.data?.data ?: return@registerForActivityResult
+            lifecycleScope.launch {
+                bellImporter.import(data) ?: return@launch
                 BellCollection.initialize(requireContext())
-                val bellUri = BellCollection.getUriForName(str)
-                if (bellUri != null) {
-                    lifecycleScope.launch {
-                        dbOperations.insertBell(
-                            BellEntity(
-                                name = str.removePrefix("bell_"),
-                                uri = bellUri.toString(),
-                            ),
-                        )
-                        loadCustomBells()
-                    }
-                }
-            } catch (e: SecurityException) {
-                e.printStackTrace()
-            } catch (e: IOException) {
-                e.printStackTrace()
+                loadCustomBells()
             }
         }
 
@@ -225,9 +188,5 @@ class ManageBellsFragment : Fragment() {
             val nameView: TextView = view.findViewById(R.id.bellName)
             val deleteButton: Button = view.findViewById(R.id.deleteButton)
         }
-    }
-
-    companion object {
-        private const val BUFFER_SIZE = 8192
     }
 }

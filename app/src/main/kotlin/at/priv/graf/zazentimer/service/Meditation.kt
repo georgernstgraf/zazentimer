@@ -160,8 +160,8 @@ class Meditation(
             } else {
                 Math.round(
                     (
-                        (clock.now() / MS_PER_SECOND) -
-                            (alarmScheduler.sectionStartTime / MS_PER_SECOND)
+                        (clock.now() / Constants.MS_PER_SECOND) -
+                            (alarmScheduler.sectionStartTime / Constants.MS_PER_SECOND)
                     ).toFloat(),
                 ) + pauseSectionSeconds
             }
@@ -223,7 +223,6 @@ class Meditation(
         const val INTENT_SECTION_ENDED: String = "at.priv.graf.zazentimer.ACTION_SECTION_ENDED"
         private const val TAG = "ZMT_Meditation"
         private const val TICKER_INTERVAL_MS = 1000L
-        private const val MS_PER_SECOND = 1000L
         private const val DEFAULT_BELL_VOLUME = Constants.DEFAULT_BELL_VOLUME
     }
 }

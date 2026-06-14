@@ -15,10 +15,12 @@ import androidx.navigation.Navigation
 import androidx.preference.CheckBoxPreference
 import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
+import at.priv.graf.zazentimer.Constants
 import at.priv.graf.zazentimer.R
 import at.priv.graf.zazentimer.ZazenTimerActivity
 import at.priv.graf.zazentimer.audio.BellCollection
 import at.priv.graf.zazentimer.backup.BackupManager
+import at.priv.graf.zazentimer.backup.Streams
 import at.priv.graf.zazentimer.database.AppDatabase
 import at.priv.graf.zazentimer.database.DbOperations
 import com.google.android.material.transition.MaterialFadeThrough
@@ -185,13 +187,11 @@ class SettingsFragment : PreferenceFragmentCompat() {
                     result = 1
                 } else {
                     val fos = FileOutputStream(tempFile)
-                    val buf = ByteArray(BUFFER_SIZE)
-                    var read: Int
-                    while ((inputStream.read(buf).also { read = it }) > 0) {
-                        fos.write(buf, 0, read)
+                    inputStream.use { ins ->
+                        fos.use { fosInner ->
+                            Streams.copy(ins, fosInner, BACKUP_BUFFER_SIZE)
+                        }
                     }
-                    fos.close()
-                    inputStream.close()
                     result = backupManager.restore(tempFile)
                     tempFile.delete()
                 }
@@ -221,6 +221,6 @@ class SettingsFragment : PreferenceFragmentCompat() {
 
     companion object {
         private const val TAG = "ZMT_SettingsFragment"
-        private const val BUFFER_SIZE = 32768
+        private const val BACKUP_BUFFER_SIZE = Constants.BACKUP_BUFFER_SIZE
     }
 }
