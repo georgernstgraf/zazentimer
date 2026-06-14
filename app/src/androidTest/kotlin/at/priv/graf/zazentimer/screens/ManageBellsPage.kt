@@ -31,6 +31,15 @@ class ManageBellsPage {
     }
 
     fun verifyEmptyState(): ManageBellsPage {
+        for (i in 0 until 20) {
+            try {
+                robot.checkElementIsDisplayed(R.id.emptyText)
+                onView(withId(R.id.emptyText)).check(matches(withText(R.string.no_custom_bells)))
+                return this
+            } catch (_: Throwable) {
+                Thread.sleep(500)
+            }
+        }
         robot.checkElementIsDisplayed(R.id.emptyText)
         onView(withId(R.id.emptyText)).check(matches(withText(R.string.no_custom_bells)))
         return this
