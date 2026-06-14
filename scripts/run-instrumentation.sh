@@ -373,13 +373,17 @@ install_apks() {
 }
 
 # ──────────────────────────────────────────────
-# push_backup_fixture — push to /sdcard/Download/
+# push_backup_fixture — push to app-specific external files dir
+# (accessible without storage permissions on all API levels)
 # ──────────────────────────────────────────────
 push_backup_fixture() {
     local serial=$1
+    local app_pkg="${TEST_PACKAGE%.test}"
+    local ext_dir="/sdcard/Android/data/$app_pkg/files"
     if [ -f "$BACKUP_FIXTURE" ]; then
-        log_api "Pushing backup fixture to /sdcard/Download/..."
-        adb -s "$serial" push "$BACKUP_FIXTURE" /sdcard/Download/ 2>&1 | tee -a "$API_LOG" || {
+        log_api "Pushing backup fixture to app external files dir..."
+        adb -s "$serial" shell mkdir -p "$ext_dir" 2>/dev/null
+        adb -s "$serial" push "$BACKUP_FIXTURE" "$ext_dir/" 2>&1 | tee -a "$API_LOG" || {
             log_api "WARNING: Failed to push backup fixture"
         }
     else
@@ -392,7 +396,9 @@ push_backup_fixture() {
 # ──────────────────────────────────────────────
 remove_backup_fixture() {
     local serial=$1
-    adb -s "$serial" shell rm -f /sdcard/Download/zentimer_backup_room_v2.zip 2>/dev/null || true
+    local app_pkg="${TEST_PACKAGE%.test}"
+    local ext_dir="/sdcard/Android/data/$app_pkg/files"
+    adb -s "$serial" shell rm -f "$ext_dir/zentimer_backup_room_v2.zip" 2>/dev/null || true
 }
 
 # ──────────────────────────────────────────────

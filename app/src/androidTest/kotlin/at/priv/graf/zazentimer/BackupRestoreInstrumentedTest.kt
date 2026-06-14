@@ -28,7 +28,12 @@ class BackupRestoreInstrumentedTest : AbstractZazenTest() {
 
     private lateinit var backupManager: BackupManager
 
-    private val zipFile = File("/sdcard/Download/zentimer_backup_room_v2.zip")
+    private val zipFile by lazy {
+        File(
+            InstrumentationRegistry.getInstrumentation().targetContext.getExternalFilesDir(null),
+            "zentimer_backup_room_v2.zip",
+        )
+    }
 
     @Before
     fun setupBackupRestore() {
