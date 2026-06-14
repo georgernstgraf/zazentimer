@@ -1,34 +1,33 @@
 # Project State
 
-Current status as of 2026-06-13.
+Current status as of 2026-06-14.
 
 ## Current Focus
-#255: Real V2 backup restore tests, single-device `am instrument` runner.
+Epic #256: "Code quality and project cleanup" (including sub-issues #257–#267). Completing the pre-flight readiness and doc refresh before dispatching pre-flight research agents.
 
 ## Completed (this cycle)
-- [x] #252: Extract `BellPlayer`, `MeditationRepository`, and `AlarmScheduler` interfaces; implement pure Kotlin fakes; add 20 `MeditationTest` methods.
-- [x] #253: Fix stale in-memory session write in `MainFragment.suspendUpdateSessionList()` that overwrote edits from `SessionEditFragment`.
-- [x] #254: Fix `clearText()+typeText()` race condition in `SessionCrudTest` by using `replaceText()`; enable emulator snapshot saving in `run-instrumentation.sh`.
-- [x] #255: Add `fos.fd.sync()` to `BackupManager.receiveBytes()` before `fos.close()`.
-- [x] #255: Create `@BackupTest` annotation; annotate `BackupRestoreInstrumentedTest`.
-- [x] #255: Change fixture path from `/data/local/tmp/` to `/sdcard/Download/` (accessible by SAF).
-- [x] #255: Add `MANAGE_EXTERNAL_STORAGE` to test manifest for API 30+.
-- [x] #255: Rewrite `run-instrumentation.sh` — replace `connectedDebugAndroidTest` with `am instrument` targeting a single device serial.
-- [x] #255: Dynamic runner/package discovery from `pm list instrumentation` after APK install.
-- [x] #255: Two-phase test execution: Phase 1 (main tests), Phase 2 (backup restore last).
-- [x] #255: Source-tree-based test class discovery (no hardcoded class names).
-- [x] #255: Physical device preferred over emulator; single device guarantee.
-- [x] All 14 API levels (23–36) instrumented tests PASS. Auto-tag `tested-2026-06-13` pushed.
+- [x] Create GitHub Epic #256 "Code quality and project cleanup" with 11 sub-issues (#257–#267) formally linked via the Sub-Issues API.
+- [x] Create `HISTORY.md` as an append-only archive for historical and superseded entries (Phase 1).
+- [x] Audit `DECISIONS.md`, relocating all stale database-migration stories (V7-V10, MIGRATION_7_8/9_10, 3NF drops, `ensureBellsTableConsistent()`) to `HISTORY.md` and correcting `_id` to `id` (Phase 2).
+- [x] Split `PITFALLS.md`, moving all fixed-bug pitfalls (clearText race, session rank loss, dual selection, etc.) to `HISTORY.md` and leaving clean, one-line pointers in `PITFALLS.md` (Phase 3).
+- [x] Overwrite `ARCHITECTURE.md` to represent V2 reality, use `id` primary keys, and fold the contents of `PLAY_STORE_SETUP.md` and `UI_TEST_PLAN.md` into it (Phase 4).
+- [x] Update `CONVENTIONS.md` database and annotation rules to match the modern codebase (Phase 5).
 
-## Pending
-- [ ] #255: Run instrumented tests with new `run-instrumentation.sh` to verify.
-- [ ] #255: Create `BackupRestoreUiTest.kt` (UiAutomator, SAF picker flow) — future task.
-- [ ] F-Droid MR !39945 — await maintainer review
-- [ ] Play Store release (first production deploy)
+## Pending (Epic #256 sub-issues)
+- [ ] #257: Remove rubble (orphaned zip, scratch files, stale schema JSONs) (Low)
+- [ ] #258: Refresh stale docs/ai/ knowledge files for V2 reality (Low) ← **This is being executed now as a prerequisite**
+- [ ] #259: Document Play Store vs F-Droid asset stores (Low)
+- [ ] #260: Quick naming wins (log tag, ServCon, MyAnimator, German resources) (Low)
+- [ ] #261: Delete dead code (Low)
+- [ ] #262: Extract duplicated utilities + BellImporter (Medium)
+- [ ] #263: Split DbOperations god class (462 lines) (Medium-High)
+- [ ] #264: Backfill missing regression tests (Low-Medium)
+- [ ] #265: Normalize bellId -> bell_id (snake_case FK; needs MIGRATION_2_3) (Medium)
+- [ ] #266: Refactor TimerView god class (844 lines) (High)
+- [ ] #267: (Optional, defer) Large naming sweeps (High blast)
 
 ## Blockers
 - None
 
 ## Next Session Suggestion
-- Run `scripts/run-instrumentation.sh` to verify the new `am instrument` two-phase approach works on all API levels.
-- If green, persist knowledge and close #255.
+- Launch the parallel read-only pre-flight orchestration pass across all 11 sub-issues (#257–#267) to gather, collect, and synthesize clarifying questions for the user.

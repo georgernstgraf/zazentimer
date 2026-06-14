@@ -8,6 +8,9 @@ Before starting any task, read the following files in order:
 6. `docs/ai/STATE.md`
 7. `docs/ai/DOMAIN.md` (if task involves business logic)
 8. `docs/ai/ONBOARDING.md` (if setting up the development environment)
+9. `docs/ai/HISTORY.md` (reference only — read last, as needed)
+
+**Active vs Historical Knowledge Rule:** Active files (1–7) represent the current, absolute truth of the codebase at HEAD. No stale/superseded narrative is allowed in these files. All historical choices, superseded decisions, and fixed-bug pitfall logs are moved to `HISTORY.md` (9) to keep active documentation compact, accurate, and free of clutter.
 
 If `HANDOFF.md` contains open tasks, complete them before starting
 

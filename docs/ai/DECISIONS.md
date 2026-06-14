@@ -88,18 +88,6 @@ Each entry documents WHAT was decided and WHY.
 - **Considered**: Single volume per session (simpler but loses flexibility), keep per-section (rejected as UX problem).
 - **Tradeoff**: More complex schema (new `session_bell_volumes` table); migration averages section volumes per bell type.
 
-## 2026-05-14: DND uses INTERRUPTION_FILTER_PRIORITY with alarm-allowing policy
-- **Choice**: ~~Changed "None" mute mode from `INTERRUPTION_FILTER_NONE` to `INTERRUPTION_FILTER_PRIORITY` with a custom `NotificationManager.Policy` that allows alarms (`PRIORITY_CATEGORY_ALARMS`). Refactored `AudioStateManager` to save `activeMuteMode` at mute time instead of re-reading preferences at unmute time. Simplified DND restore guard to compare only the filter (not the policy). Refactored `Meditation.finishMeditation()` into `stopImmediate()` (stop button) and `finishAfterLastBell()` (natural end) with shared `cleanup()`.~~ **SUPERSeded by #182 (2026-05-16): DND/mute functionality removed entirely. The app no longer modifies the phone's ringer or DND state.**
-- **Reason**: ~~`INTERRUPTION_FILTER_NONE` suppressed all audio including alarms. DND restore was failing due to `NotificationManager.Policy.equals()` being unreliable across read cycles. `unmutePhone()` was re-reading preferences which could differ from what `mutePhone()` used. Single `finishMeditation()` had race conditions with `BellPlayer`'s `onDone` callback.~~ Phone has its own DND system; app should not modify it.
-- **Considered**: ~~`INTERRUPTION_FILTER_ALARMS` (simpler but less flexible), comparing policy in guard (unreliable), keeping single `finishMeditation()` (race conditions).~~
-- **Tradeoff**: ~~Filter-only guard means if user changes DND filter during meditation but keeps same filter value, settings still get restored. `finishAfterLastBell()` guard prevents double-invocation but relies on `stopping` volatile flag.~~ No tradeoff — app is simpler without DND code.
-
-## 2026-05-14: Avg volume migration for bell volumes
-- **Choice**: When multiple sections used the same bell with different volumes, the migration takes the average.
-- **Reason**: Average preserves the intent of all sections rather than favoring one arbitrarily.
-- **Considered**: First encountered volume (biased), maximum (favors loudest).
-- **Tradeoff**: Averaged volume may differ from any individual section's original setting.
-
 ## 2026-05-16: Xvfb restart per API level in run-instrumentation.sh
 - **Choice**: Refactored `run-instrumentation.sh` to restart Xvfb for each API level when running in virtual framebuffer mode (`IS_REAL_DISPLAY=false`).
 - **Reason**: Xvfb dies mid-run (OOM, emulator GPU driver conflict) causing cascading failures — all subsequent APIs are lost. Fresh Xvfb per API isolates failures to the affected API only.
@@ -195,29 +183,11 @@ Each entry documents WHAT was decided and WHY.
 - **Considered**: Link to system settings (less integrated), percentage-based slider (raw device steps are more accurate).
 - **Tradeoff**: Volume label shows raw device steps (e.g. "5/7") rather than percentage; UI now uses ScrollView.
 
-## 2026-05-19: Foreign key bellId → bells._id with DB migration 7→8
-- **Choice**: Added `FOREIGN KEY (bellId) REFERENCES bells(_id)` to both `sections` and `session_bell_volumes` tables via MIGRATION_7_8, plus `@ForeignKey` annotations on Room entities.
-- **Reason**: No FK constraint existed — `bellId = 0` was silently allowed, causing sections with the same bell to collapse into a single entry in the Bell Volume dialog. The FK constraint prevents this at the database level, guaranteeing referential integrity.
-- **Considered**: Fixing only the UI (deriveBellVolumesFromSections deduplication) — treats symptoms, not root cause. Adding FK without migration — would fail on existing data with bellId=0.
-- **Tradeoff**: Migration must seed built-in bells with hardcoded package-name URIs (`android.resource://at.priv.graf.zazentimer/raw/…`). Debug builds produce different URIs; `ensureBellsTableConsistent()` at startup repairs the mismatch. Every test that creates sections now needs a bell row in the bells table first.
-
 ## 2026-05-19: BellId resolved at write time, not startup time
 - **Choice**: `SectionEditFragment.onPause()` resolves `bellId` via `dbOperations.getBellByUri()` before saving. `DemoSessionCreator.createSection()` resolves `bellId` via `getBellByUri()` before insert. Removed `s.bellId = 0` in `onItemSelected()`.
-- **Reason**: Previously, `bellId` was set to `0` when the user changed a bell and was resolved only at next app startup by `MigrationHelper.resolveUnresolvedBellIds()`. Between the change and the restart, all sections with `bellId=0` appeared as a single bell in the dialog.
+- **Reason**: Previously, `bellId` was set to `0` when the user changed a bell and was resolved only at next app startup by the old `MigrationHelper.resolveUnresolvedBellIds()` (helper now deleted). Between the change and the restart, all sections with `bellId=0` appeared as a single bell in the dialog.
 - **Considered**: Resolving in `onItemSelected()` callback (async race with `onPause()` save), scheduling at startup only (leaves window of broken state).
 - **Tradeoff**: One extra DB query per section save; negligible overhead.
-
-## 2026-05-19: ensureBellsTableConsistent at every startup (SUPERSEDED)
-- **Choice**: (Superseded by 2026-06-07 startup health check below) `ZazenTimerActivity` now calls `MigrationHelper.ensureBellsTableConsistent()` at every app startup (not just on backup restore), before demo session creation.
-- **Reason**: The bells table may be stale after backup restore, manual DB modification, or upgrade from older versions. Running it every startup ensures consistency for the FK constraint.
-- **Considered**: Running only on version upgrade (misses backup restore), running only on demo creation (misses stale data in existing sessions).
-- **Tradeoff**: ~few dozen ms of DB operations at startup; idempotent (INSERT OR IGNORE for built-in bells).
-
-## 2026-05-19: 3NF Normalization — remove bell/belluri/resourceName (#199)
-- **Choice**: Dropped `sections.bell`, `sections.belluri`, `session_bell_volumes.bell`, `session_bell_volumes.belluri`, `bells.resourceName`. Made `sections.rank`/`bellcount`/`bellpause` NOT NULL. Changed `session_bell_volumes` unique constraint from `(fk_session, bell, belluri)` to `(fk_session, bellId)`.
-- **Reason**: These columns were duplicate representations of bell identity — the canonical source is `bells._id` via FK constraint (MIGRATION_7_8). Maintaining duplicates violates 3NF. `resourceName` is redundant with `bells.uri` (e.g., `android.resource://.../raw/bell2` encodes the resource name).
-- **Considered**: Keeping them as safety net (rejected — FK constraint already enforces integrity). Gradual deprecation via code-only removal (rejected — leaves cruft in migration chain).
-- **Tradeoff**: Large migration (MIGRATION_9_10 drops 5 columns across 3 tables). All callers of `section.bell`/`section.bellUri` must be updated. `deriveBellVolumesFromSections()` simplified to bellId-only grouping.
 
 ## 2026-05-19: sessions.rank for persistent session ordering (#199)
 - **Choice**: Added `rank INTEGER NOT NULL DEFAULT 0` to `sessions` table. `SessionDao` queries now `ORDER BY rank, name COLLATE NOCASE`.
@@ -233,7 +203,7 @@ Each entry documents WHAT was decided and WHY.
 
 ## 2026-05-19: insertSection defaults bellId=0 to demo bell
 - **Choice**: `DbOperations.insertSection()` resolves `bellId=0` to the demo bell via `BellCollection.getDemoBell() → getBellByUri() → bellId` before Room insert.
-- **Reason**: New sections are created with `bellId=0` (no bell selected yet). The FK constraint `bellId → bells._id` rejects `bellId=0` at the SQLite level. Defaulting to the demo bell prevents the FK violation while keeping the user experience (bell can be changed immediately after creation in SectionEditFragment).
+- **Reason**: New sections are created with `bellId=0` (no bell selected yet). The FK constraint `bellId → bells.id` rejects `bellId=0` at the SQLite level. Defaulting to the demo bell prevents the FK violation while keeping the user experience (bell can be changed immediately after creation in SectionEditFragment).
 - **Considered**: Making `bellId` nullable in the FK (allows 0 as "no bell", but 0 is not NULL — FK constraint still fires). Requiring the UI to always set bellId before insert (SectionEditFragment doesn't set it until onPause).
 - **Tradeoff**: Slightly magic behavior — user creates a section, it defaults to demo bell. The SectionEditFragment immediately shows the selected bell in the spinner, so the user sees the correct bell.
 
@@ -539,8 +509,6 @@ Each entry documents WHAT was decided and WHY.
 - **Choice**: `SectionEditFragment.selectBell()` now falls back to filename-suffix matching when exact URI comparison fails.
 - **Reason**: The database stores absolute file paths from the backup device (e.g., `file:///data/.../OldDevice/files/...`). `BellCollection` builds URIs dynamically from the current device's `filesDir`. Exact URI matching fails across devices. Comparing only the filename part (`bell_*`) works regardless of `filesDir` path.
 - **Tradeoff**: If two custom bells happen to have files ending in the same suffix, the wrong bell could be selected. Currently impossible since `bell_` prefix ensures uniqueness.
-
-## 2026-06-02: `openOutputStream("wt")` to prevent ZIP tail corruption (#237)
 
 ## 2026-06-02: Close #202 — Python scripts obsolete
 - **Choice**: Closed issue #202 without implementing the Python scripts (`translation_votes.py`, `dispatch_translations.py`).

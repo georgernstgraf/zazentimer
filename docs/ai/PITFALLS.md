@@ -3,128 +3,107 @@
 Things that do not work, subtle bugs, and non-obvious constraints.
 Read this file carefully before making changes in affected areas.
 
-- **Espresso & 300ms Polling**: Legacy polling in ViewModels prevented Espresso from reaching an idle state, causing `AppNotIdleException`.
+## Active Codebase & System Constraints
+
 - **Service Binding Race**: Fragments attempting to interact with `MeditationService` before `onServiceConnected` caused NPEs or lost commands; use `MeditationRepository` as the stable intermediary.
-- **UTP / API 35 "0 tests found"**: AGP 9.1.1 UTP runner may report "0 tests found" on API 35; this was the original reason for the `am instrument` fallback. However, as of 2026-05-16, `connectedDebugAndroidTest` was tested and works on API 31-36 with `gradleMaxApi=36`. The UTP bug may still occur intermittently — if it reappears, the `am instrument` fallback remains in the script.
+- **UTP / API 35 "0 tests found"**: AGP 9.1.1 UTP runner may report "0 tests found" on API 35. If it reappears, the `am instrument` fallback remains in `run-instrumentation.sh`.
 - **Emulator Hardware**: Never use `-target google_apis` with newer emulators (36.5.10+); use `-target android`.
-- **Database Race**: DB operations are async; without `IdlingResource`, tests may read old data before a write finishes.
-- **java-test-fixtures Plugin Conflict**: Adding `id("java-test-fixtures")` to the plugins block conflicts with AGP's built-in `testFixtures { enable = true }`. Only use the AGP block — do not add the standalone plugin.
-- **Kotlin Init Order NPE**: In `MeditationViewModel`, the `init` block accessed `meditationState` LiveData which was declared AFTER the init block, causing NPE on API 36. Always declare LiveData/StateFlow fields before the `init` block that uses them.
-- **runBlocking(Dispatchers.Main) Deadlock**: Calling `runBlocking(Dispatchers.Main)` from the Main thread deadlocks because `runBlocking` blocks the thread while `Dispatchers.Main` tries to dispatch to it. Use `runBlocking { withContext(Dispatchers.Main) { } }` or avoid blocking calls on Main.
-- **Captured Null ServiceConnection**: `MeditationViewModel.startMeditation()` captured `serviceConnection` into a local val before `bindToService()` set it, causing stale null reference. Always read mutable fields directly inside coroutine closures.
-- **systemd-oomd Kills Emulators**: On hosts with `systemd-oomd` active, emulator memory of 2048+MB triggers OOM kills. Reduce emulator memory (`-memory 2048`) and kernel cache clearing (`echo 3 > /proc/sys/vm/drop_caches`) help.
-- **No orchestrator with am instrument**: The `am instrument` path does NOT install the orchestrator APK, but `execution = "ANDROIDX_TEST_ORCHESTRATOR"` requires it. Set `execution = "HOST"` in build.gradle.kts to match the `am instrument` path, or install orchestrator manually.
-- **Emulator Not Advertising ADB**: If `adb wait-for-device` hangs, check that the emulator process is actually running (not killed by oomd) and that ADB server is started (`adb start-server`). Use `tmux` to isolate long-running emulator processes from script timeout.
-- **Hilt @TestInstallIn requires `replaces`**: Omitting `replaces` from `@TestInstallIn` causes KSP processor failure: `@TestInstallIn, 'replaces' class is invalid or missing`. Must always specify at least one module.
-- **@TestInstallIn replaces drops ALL bindings**: When `replaces = [DatabaseModule::class]` is used, ALL `@Provides` methods from that module are unavailable in tests. Every binding needed from the replaced module must be re-provided in the test module (e.g., both `ZazenClock` and `CoroutineDispatchers`).
-- **kotlinx-coroutines-test for instrumented tests**: `kotlinx-coroutines-test` added as `testImplementation` is NOT available in `androidTest/`. Must add `androidTestImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.10.2")` for instrumented tests using `UnconfinedTestDispatcher`.
-- **Auto-tag FAILED_APIS leak**: `run-instrumentation.sh` mutates `FAILED_APIS` inside `run_gradle_test()`/`run_am_instrument_test()` on failure but never clears it on retry success. If an API fails on attempt 1 but passes on attempt 2, `FAILED_APIS` still contains that API, blocking auto-tag. Must clean FAILED_APIS after retry success.
-- **LLM Translation Hallucinations**: In extremely low-resource languages (e.g., Kashmiri `ks`, Manipuri `mni`, Bemba `bem`), LLMs will hallucinate completely unrelated strings (sometimes NSFW) or silently destroy `%s` and `%1$d` placeholders, causing `UnknownFormatConversionException` at runtime. You MUST guardrail sub-agents to fall back to English if they lack high confidence or if they alter formatting.
-- **AGP 9.x disallowKotlinSourceSets**: Even with no explicit `sourceSets{}` block, AGP 9.x built-in Kotlin may trigger `kotlin.sourceSets DSL` errors from ktlint plugin. Keep `android.disallowKotlinSourceSets=false` in `gradle.properties` until the ktlint plugin is updated.
-- **Room MIGRATION_1_2: PK must be `NOT NULL` explicitly**: Room validates the migrated database against the entity annotations using `PRAGMA table_info`. Even though SQLite treats `INTEGER PRIMARY KEY AUTOINCREMENT` as implicitly NOT NULL, `table_info.notnull` returns 0 for the PK if `NOT NULL` is not explicitly written in the CREATE TABLE. All PK columns in migration CREATE TABLE statements MUST include `NOT NULL` (e.g., `id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL`). Also, do NOT include `DEFAULT` values (e.g., `DEFAULT 0`) on columns where the entity annotation does not declare a default — Room's schema validator checks `dflt_value` and rejects unexpected defaults.
-- **SQLite DROP COLUMN**: SQLite versions before 3.35.0 don't support `ALTER TABLE ... DROP COLUMN`. To remove a column, must create temp table, copy data, drop old, rename. This affects Room migrations on older Android versions (API < 30).
-- **ktlint vs detekt formatting conflicts**: ktlint's `function-signature` rule wants body expressions on the same line, while detekt's `MaxLineLength` may reject long lines. Use block body format when both rules conflict.
-- **BellPlayer onDone race**: `BellPlayer.playBells()` runs in its own scope and calls `onDone` after bells finish. If `stopImmediate()` is called during playback, `bellPlayer.release()` stops MediaPlayers, causing `isPlaying()` to return false, which triggers `onDone`. Use `stopping` flag guard in `finishAfterLastBell()` to prevent double cleanup.
-- **Xvfb crash cascades**: Xvfb dies during emulator runs (GPU driver conflict, OOM) killing all subsequent API tests. The script now restarts Xvfb per API level via `start_xvfb()` with `xdpyinfo` readiness check and lock-file cleanup.
-- **Xvfb not ready on start**: Starting Xvfb with `&` + `sleep 2` is not reliable — the X server may not be accepting connections yet. Always poll with `xdpyinfo -display :99` and check process liveness with `kill -0 $PID` before proceeding.
-- **Bash `&>>` is NOT background + redirect**: `command &>> file` means `command >> file 2>&1` (redirect both streams, append). The command runs in the FOREGROUND. To background AND redirect, use `command >> file 2>&1 &`. This is critical for emulator launch where `$!` must capture the PID.
-- **Zombie qemu processes survive `adb emu kill`**: After killing an emulator, qemu child processes may linger. Use `pkill -9 -f "qemu.*android"` to clean up between API runs, otherwise the next emulator launch fails (port conflict, stale lock files).
-- **Session drag-reorder lost after Add/Delete/Duplicate (#244)**: Drag reorder mutates only the in-memory `MainFragment.sessions` ArrayList — ranks are NOT written to DB. Actions like `addNewSession()`, `onCardDeleteSession()`, and `onCardCopySession()` call `suspendUpdateSessionList()` which clears the in-memory list and reloads from DB. Since the DB still has stale pre-drag ranks, the drag order is silently overwritten. Fix: persist `sessions[i].rank = i` at the TOP of `suspendUpdateSessionList()` before reloading. This salvages any in-memory drag order before the DB read can discard it.
-- **Dual-selection after removeItem/insertItem/moveItem (#246)**: `SessionListAdapter.removeItem()`, `insertItem()`, and `moveItem()` never updated `selectedPosition`. When `setSelectedPosition()` was called afterward, `previous = selectedPosition` was stale — pointing to a wrong or out-of-bounds index. `notifyItemChanged(previous)` would either deselect the wrong item or be silently ignored by RecyclerView (OOB), leaving the old view activated during the removal animation while the new position was also selected. Fix: replaced targeted `notifyItemChanged(previous/selectedPosition)` with a full-list refresh `for (i in items.indices) notifyItemChanged(i)` in both `setSelectedPosition()` and the click listener. No stale variable to mistrack.
-- **Unstaged changes are fragile**: Multiple agents working on the same repo can accidentally discard each other's unstaged changes. Always commit important work promptly, or coordinate file ownership between agents.
-- **ktlintFormat removes annotation imports in derived test classes**: When a test class extends a base class (e.g., `AbstractZazenTest`) that imports `HiltAndroidTest`, ktlint considers the import "unused" in the derived class and removes it. But `@HiltAndroidTest` is a class-level annotation that must be present on **every** test class — it is NOT inherited. After running `ktlintFormat`, always verify with `./gradlew compileDebugAndroidTestKotlin` that test sources still compile.
-- **nohup inside bash tool is NOT background-safe**: The opencode bash tool kills its shell after the timeout. `nohup cmd &` inside that shell dies WITH the shell — `nohup` only survives terminal hangup (SIGHUP), not parent shell termination. Use `echo "cmd" | at now` to schedule via the system `atd` daemon instead.
-- **`at` job output goes to mail**: `at` captures stdout/stderr and attempts to deliver via sendmail. If no MTA is configured, output is lost or written to `~/dead.letter`. Always redirect `>/dev/null 2>&1` in the `at` job if the script already logs to files.
-- **Package cleanup kills system services on API 36**: `adb uninstall` in rapid succession on a freshly booted API 36 emulator causes `cmd: Failure calling service package: Broken pipe (32)`, which cascades to kill the `activity` service and all others. Skip package cleanup on API 36+ — Gradle's `connectedDebugAndroidTest` replaces the APK anyway.
-- **`service check activity` output varies by API**: On older APIs the output is `Service: activity`, on API 36+ it's `Service activity: found`. Grep for `activity` (case-insensitive) to cover both formats.
-- **`Espresso.onIdle()` in @Before crashes**: Calling `onIdle()` in a `@Before` method (after `onActivity {}` but before the test method runs) causes `TestLooperManager already held for this looper` because Espresso's looper management hasn't been fully initialized by the ActivityScenarioRule yet. DB operations in `onActivity {}` are synchronous — no idle wait needed.
-- **JUnit Timeout rule vs SystemClock.sleep**: The `@Rule Timeout(2, MINUTES)` rule creates a separate thread and joins it. If the test calls `SystemClock.sleep()` on the main thread, the join completes after the timeout but the main thread is still blocked. This leaves Espresso in an inconsistent state, causing `TestLooperManager already held` in subsequent tests. Always use `onIdle()` or `Until.hasObject()` instead.
-- **`android.enableAdditionalTestOutput=false` crashes AGP 9.x**: Setting this in `gradle.properties` makes the `connectedDebugAndroidTest` task's `additionalTestOutputDir` property null, which crashes with `Cannot query the value of task property 'additionalTestOutputDir' because it has no value available`. Do NOT use this property with AGP 9.x.
-- **UTP runner writes to /sdcard on device**: AGP's UTP test runner attempts to create `/sdcard/Android/media/<pkg>/additional_test_output` on the device. On API 33+ with scoped storage, this fails with Permission denied. The test manifest must declare `WRITE_EXTERNAL_STORAGE` for API ≤32. For API 33+, the error is non-fatal (tests still run).
-- **Gradle pipe buffering swallows progress lines**: When `./gradlew connectedDebugAndroidTest` output is piped through `tee`, Java's stdout switches to block-buffered mode. The final `Tests N/N completed` progress line may sit in Gradle's buffer and be lost when the pipe closes. Use `stdbuf -oL ./gradlew ...` to force line buffering. Also add a fallback in log parsers: if the last progress line shows fewer tests than `Finished N tests`, use the finished count.
-- **RootViewWithoutFocusException on API 36 for AlertDialog**: On API 36, edge-to-edge enforcement (`EDGE_TO_EDGE_ENFORCED` decor flag) causes the activity window to lose focus when an `AlertDialog` appears. Espresso's default root matcher requires `hasWindowFocus()`, causing a 10-second timeout. Fix: use `.inRoot(isDialog())` to target the dialog root directly (`import androidx.test.espresso.matcher.RootMatchers.isDialog`).
-- **Stale bell URIs from backup imports**: When importing a backup from an older app version (different package name like `de.gaffga.android.zazentimer` vs `at.priv.graf.zazentimer`, different R.raw compile-time resource IDs), `BellCollection.getBellForSection()` returns null because the URI doesn't match any current bell. `DbOperations.sanitizeBellUris()` handles this by matching builtin bells by name and updating their URIs, removing orphaned bells, and syncing custom bells with disk. Runs automatically at every startup.
-- **Play Console Invite Error (64F4C82A)**: Inviting a service account with "Admin (All)" permissions can trigger transient errors. Workaround: Invite with specific "App permissions" (Release Manager) for the target app only.
-- **Hilt KSP import conflict**: Adding `import at.priv.graf.zazentimer.Constants` to files processed by Room KSP (`AppDatabase.kt`) causes Hilt's KSP processor to fail with "@AndroidEntryPoint base class must extend..." on unrelated valid Android classes. Use fully-qualified references (`at.priv.graf.zazentimer.Constants.DEFAULT_BELL_VOLUME`) instead of adding the import.
-- **Android Auto Backup & demo sessions**: With `allowBackup="true"`, SharedPreferences survive uninstall/reinstall. Using a `PREF_KEY_FIRST_START` flag fails because it's restored as `false`. Use a marker file in `noBackupFilesDir` (excluded from backup) or check the actual database state instead.
-- **Room migration must match Entity annotations exactly**: When adding `@ForeignKey` or `@Index` to an Entity, the migration SQL must produce the EXACT schema Room expects — including ALL foreign keys AND ALL indices with the EXACT names Room generates (e.g., `index_sections_bellId`). A missing index causes `IllegalStateException: Migration didn't properly handle: <table>`. Room validates both the "Expected" (from annotations) and "Found" (from SQL) schemas after migration.
-- **Migration CREATE TABLE: PK-Spalte braucht explizites `NOT NULL`**: Room validiert die migrierte DB via `PRAGMA table_info`, das für PK-Spalten auch dann `notnull=0` zurückgibt wenn SQLite sie implizit als NOT NULL behandelt. `id INTEGER PRIMARY KEY AUTOINCREMENT` reicht nicht — es muss `id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL` heißen. Sonst crasht Room mit `Migration didn't properly handle: <table>`.
-- **Migration CREATE TABLE: kein `DEFAULT` ohne Entity-Default**: Room prüft `dflt_value` im Schema-Validator. Ein `DEFAULT 0` auf einer Spalte, für die das Entity keinen Default deklariert (z.B. `rank`), führt zu `Migration didn't properly handle`. `CREATE TABLE`-Statements in Migrationen dürfen nur `DEFAULT` haben, die auch im `@Entity`-Annotation deklariert sind.
-- **Migration tests via `RoomMigrationTest`: Tests rufen `MIGRATION_X_Y.migrate(db)` direkt auf einer via `FrameworkSQLiteOpenHelperFactory` erstellten V-Datenbank auf. `MigrationTestHelper` von `room-testing` wird nicht verwendet — stattdessen wird die V1-Datenbank manuell mit dem exakten Schema aus `1.json` angelegt. Die Tests decken ab: Daten-Erhalt, `PRAGMA table_info` auf `notnull`/`dflt_value`, und `SELECT * FROM sqlite_master` auf Indices.
-- **bellId = 0 silently breaks FK**: Before V8 FK constraint, `bellId = 0` was silently allowed in the DB. Multiple sections with different bells but all having `bellId = 0` collapsed into a single entry in `deriveBellVolumesFromSections()`, making bells disappear from the "Adjust Bell Volumes" dialog. As of V8, the FK constraint prevents `bellId = 0` at the DB level.
+- **Database Race**: DB operations are async; without `IdlingResource`, tests may read old data before a write finishes (ensure `withIdling { ... }` is used in `DbOperations`).
+- **java-test-fixtures Plugin Conflict**: Adding `id("java-test-fixtures")` to the plugins block conflicts with AGP's built-in `testFixtures { enable = true }`. Only use the AGP block.
+- **Kotlin Init Order NPE**: Always declare LiveData/StateFlow fields before the `init` block that uses them.
+- **runBlocking(Dispatchers.Main) Deadlock**: Calling `runBlocking(Dispatchers.Main)` from the Main thread deadlocks. Use `runBlocking { withContext(Dispatchers.Main) { } }` or avoid blocking calls on Main.
+- **Captured Null ServiceConnection**: Always read mutable fields directly inside coroutine closures rather than capturing local vals before binding.
+- **systemd-oomd Kills Emulators**: Reduce emulator memory to `-memory 2048` and run cache-clearing commands if needed to avoid OOM kills on VPS hosts.
+- **No orchestrator with am instrument**: Set `execution = "HOST"` in `build.gradle.kts` to match the `am instrument` single-device test runner execution mode.
+- **Emulator Not Advertising ADB**: If `adb wait-for-device` hangs, use `tmux` or ensure the ADB server is restarted (`adb start-server`).
+- **Hilt @TestInstallIn requires `replaces`**: Omitting `replaces` from `@TestInstallIn` causes KSP processor failure.
+- **@TestInstallIn replaces drops ALL bindings**: Every binding needed from a replaced module must be re-provided in the test module.
+- **kotlinx-coroutines-test for instrumented tests**: Must add `androidTestImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.10.2")` separately for `androidTest/`.
+- **Auto-tag FAILED_APIS leak**: Ensure `run-instrumentation.sh` clears `FAILED_APIS` on retry success so auto-tagging functions correctly.
+- **LLM Translation Hallucinations**: Low-resource LLM translations can silently destroy `%s` / `%1$d` placeholders, causing crashes. Prompt sub-agents to fall back to English if confidence is low.
+- **AGP 9.x disallowKotlinSourceSets**: Keep `android.disallowKotlinSourceSets=false` in `gradle.properties` to prevent ktlint conflicts.
+- **SQLite DROP COLUMN**: SQLite versions before 3.35.0 (Android < 10) don't support `DROP COLUMN`. Re-create tables if migrating older databases.
+- **ktlint vs detekt formatting conflicts**: Use block body format instead of single-line expression body when both rules conflict on line length.
+- **BellPlayer onDone race**: Use `stopping` flag guard in `finishAfterLastBell()` to prevent double cleanup when `stopImmediate()` is called during playback.
+- **Xvfb crash cascades**: The script restarts Xvfb per API level via `start_xvfb()` to prevent headless VPS crashes.
+- **Xvfb not ready on start**: Always poll with `xdpyinfo -display :99` to ensure readiness before launching emulators.
+- **Zombie qemu processes survive adb emu kill**: Use `pkill -9 -f "qemu.*android"` between runs to clean up ports.
+- **Unstaged changes are fragile**: Commit important work promptly to prevent multi-agent overwrites.
+- **ktlintFormat removes annotation imports in derived test classes**: Always verify compilation with `./gradlew compileDebugAndroidTestKotlin` after running `ktlintFormat`.
+- **nohup inside bash tool is NOT background-safe**: Use `echo "cmd" | at now` to schedule background jobs via `atd`.
+- **at job output goes to mail**: Always redirect `>/dev/null 2>&1` in `at` jobs to avoid lost/blocked output.
+- **Package cleanup kills system services on API 36**: Skip package uninstalls on API 36+ to prevent package-manager broken pipes.
+- **service check activity output varies by API**: Grep for case-insensitive `activity` to support all system check outputs.
+- **Espresso.onIdle() in @Before crashes**: DB setup in `@Before` is synchronous; never call `onIdle()` there.
+- **JUnit Timeout rule vs SystemClock.sleep**: Never use `SystemClock.sleep` inside tests as it blocks the main thread and defeats timeout rules. Use `onIdle()` or `Until.hasObject()`.
+- **android.enableAdditionalTestOutput=false crashes AGP 9.x**: Do NOT use this property with AGP 9.x.
+- **UTP runner writes to /sdcard on device**: Ensure test manifest declares `WRITE_EXTERNAL_STORAGE` for API <=32 to prevent permissions errors.
+- **Gradle pipe buffering swallows progress lines**: Use `stdbuf -oL ./gradlew` to force line buffering on piped outputs.
+- **RootViewWithoutFocusException on API 36 for AlertDialog**: Use `.inRoot(isDialog())` when interacting with dialog buttons under edge-to-edge enforcement.
+- **Play Console Invite Error (64F4C82A)**: Invite service accounts with specific "App permissions" instead of "Admin (All)" as a workaround.
+- **Hilt KSP import conflict**: Use fully-qualified references (`at.priv.graf.zazentimer.Constants.DEFAULT_BELL_VOLUME`) instead of importing Constants directly in files processed by Room KSP.
+- **Android Auto Backup & demo sessions**: With backup enabled, check the actual database state rather than a SharedPreferences first-start flag which is restored on reinstall.
+- **Room migration must match Entity annotations exactly**: Migration SQL must produce the EXACT schema Room expects, including index names.
+- **Migration CREATE TABLE: PK-Spalte braucht explizites NOT NULL**: Primary key columns in migrations MUST include `NOT NULL` in SQL to satisfy Room's validator.
+- **Migration CREATE TABLE: kein DEFAULT ohne Entity-Default**: SQL table definitions in migrations must not specify default values unless declared in entity annotations.
+- **Migration tests via RoomMigrationTest**: Create baseline databases manually from JSON files to test migrations rather than using `room-testing` helper.
+- **bellId = 0 silently breaks FK**: The FK constraint prevents this. `DbOperations.insertSection()` defaults `bellId` to the demo bell if unset.
+- **New sections with bellId=0 fail FK in V2**: Ensure all manual DAO insertions (like tests) set a valid `bellId`.
+- **Stale WAL/SHM files corrupt restored database**: Overwriting a DB file keeps `-wal` and `-shm` files; always delete them during restore before reopening the DB.
+- **Bell URIs differ between debug and production**: `sanitizeBellUris()` runs at every startup in `ZazenTimerActivity.onCreate()` to heal package-name changes and backup-mismatch URIs.
+- **Backup fixture must go to /sdcard/Download/**: Internal directories are inaccessible to SAF on API 30+; push to `/sdcard/Download/` and grant `MANAGE_EXTERNAL_STORAGE`.
 
-- **New sections with bellId=0 fail FK in V10**: `SectionEntity.bellId` defaults to 0 (no bell selected). The FK constraint `bellId → bells._id` rejects this at insert. `DbOperations.insertSection()` now defaults to the demo bell when `bellId <= 0`. Any test or code path that inserts a section via raw DAO (not DbOperations) must explicitly set a valid bellId.
-- **Stale WAL/SHM files corrupt restored database**: When `BackupManager.restoreEntries()` overwrites the database file, the old `-wal` and `-shm` companion files remain. On reopen, SQLite applies stale WAL content on top of the new database, causing corruption. Always delete `-wal` and `-shm` after overwriting the database file and before reopening.
-- **Bell URIs differ between debug and production**: `BellCollection.getPredefinedBellUri()` uses `context.packageName` to build `android.resource://<pkg>/<resId>`. Debug builds have `at.priv.graf.zazentimer.debug`, production has `at.priv.graf.zazentimer`. If a backup is created with one build type and restored into the other, all bell URIs in the database become unresolvable. This causes FK constraint violations on section edit because `getBellByUri()` returns null and `bellId` falls back to 0. `sanitizeBellUris()` fixes this by matching builtin bells by name and updating their URIs.
-- **F-Droid .fdroid.yml format quirks**: 
-  - `prebuild` must be on a single line (not a YAML list), e.g. `prebuild: sed -i '...' file`
-  - `versionName` must NOT be quoted: `versionName: 3.0.7` not `versionName: '3.0.7'`
-  - `gradle: - yes` is the standard pattern (not `assembleRelease` explicitly) — F-Droid appends its own tasks
-  - `AutoUpdateMode: None` required when `UpdateCheckMode: None` during initial submission
-  - `CurrentVersion` must NOT be quoted: `CurrentVersion: 3.0.7` not `CurrentVersion: '3.0.7'`
-  - `Description` must NOT use `|-` block scalar — use plain folded style with indented continuation lines
-- **F-Droid 'Failed to find any output apks'**: Fixed by adding `subdir: app` to metadata YAML. With subdir, F-Droid's build scanner finds the APK in the `app/build/` directory. Do NOT set `output:` when `subdir:` is set.
-- **F-Droid `AutoUpdateMode: VersionTag` is NOT valid**: Valid values: `None`, `Version`, `VersionCode`. Using `VersionTag` causes `fdroid lint` errors.
-- **F-Droid `UpdateCheckData` must have exactly 4 pipe-separated parts**: Format: `file|codeRegex|codeReplacement|nameRegex`. Extra pipes cause `ValueError: too many values to unpack (expected 4)`.
-- **F-Droid backslashes in regex must be preserved in YAML**: `\d`, `\s` etc. in unquoted YAML values are stored as literal characters. Do NOT double-quote the value or `sed` will eat backslashes.
-- **F-Droid `checkupdates` pipeline checks ALL existing tags**: Each tag is checked out and the `UpdateCheckData` regex is applied. If no tag matches (e.g., old tags had dynamic version), the job fails with "Couldn't find any version information". Fix: ensure a tag exists at a commit with static version code/name.
-- **F-Droid `checkupdates` adds `AutoName:` automatically**: When fastlane `title.txt` is detected in the upstream repo, `checkupdates` injects `AutoName: <title>` into the YAML. If missing from the metadata, the pipeline detects uncommitted changes and fails. Add `AutoName:` explicitly to prevent this.
-- **F-Droid dynamic version incompatible with auto-update**: `VersionTagSource`/`CommitCountSource` dynamically compute versionCode/versionName from git tags. F-Droid's `UpdateCheckData` regex can only match static literals in files. Convert to static `versionCode = N` / `versionName = "X.Y.Z"` for F-Droid compatibility.
-- **F-Droid `prebuild` with `subdir: app`**: When `subdir: app` is set, F-Droid changes to the `app/` directory before running prebuild commands. Paths in prebuild must be relative to `app/`, not to repo root (e.g., `src/main/AndroidManifest.xml` not `app/src/main/AndroidManifest.xml`).
-- **F-Droid `gradleprops` not needed with static version**: When version is static in `build.gradle.kts`, remove `gradleprops:` from the metadata YAML entirely. The version code/name will be parsed directly from the build file.
+## Prisma / Deno / Translation Pipeline Constraints
 
-- **prismaCheckSchema fails after DB migration**: After any Room migration, the device DB schema changes, and `prisma db pull` regenerates `current/schema.prisma`. The `prismaCheckSchema` Gradle task diffs `desired/` (hand-crafted) vs `current/` (auto-generated) and will FAIL until a human updates `desired/schema.prisma`. The agent must NOT edit `desired/schema.prisma` — it is human-only.
+- **prismaCheckSchema fails after DB migration**: Device schema pull regenerates `current/schema.prisma`. It will fail until a human updates `desired/schema.prisma` (human-only).
+- **-noaudio auto-detection via $DISPLAY fails with Xvfb**: Always pass `-noaudio` explicitly when launching emulators in virtual buffers.
+- **Subshell redirect doesn't capture background process output**: Redirect process output inside the function using `>> "$logfile" 2>&1 &`.
+- **AppCompat Theme & Material text appearances**: Use explicit sizing and styles for TextViews to prevent unstyled fallbacks on AppCompat base themes.
+- **PRAGMA via $executeRawUnsafe schlägt fehl**: Use `$queryRawUnsafe` for PRAGMAs since they return rows.
+- **JavaScript in <script>-Tags ist nicht self-closing**: Always close script tags with `</script>` explicitly.
+- **Deno 2.7.14 has no native DOMParser**: Parse files with regex or pull `npm:xmldom`.
+- **openai-whisper pip install is 106+ MB**: Use the static `whisper_languages.json` instead of importing the full python library.
+- **SQLite ALTER TABLE ADD CHECK not supported in Prisma**: Define CHECK constraints in the original init migration.
+- **Prisma SQLite enum sorts alphabetically**: Use `Int` with CHECK constraint for ordered numerical ranges.
+- **prisma format doesn't validate raw SQL**: DB-level checks fail only at `push`/`migrate dev` time.
+- **prisma generate with runtime = "deno"**: Output path must map to `deno.json` import map.
+- **.env file location matters**: Active `.env` files must live relative to schema directories (e.g. `prisma/translations/.env`).
+- **3 ISO 639-3 duplicates across locales**: `por`, `srp`, `zho` cover multiple regional variants — do not make `iso_639_3` unique.
+- **32 locales lack Whisper support**: Set `whisper_response = null` and handle the null in code.
+- **new URL("file.json", import.meta.url)**: Standard Deno path resolution rule.
+- **Pre-push hook installed as symlink**: symlink `.git/hooks/pre-push` to `scripts/git-hooks/pre-push`.
+- **Missing AVDs cause gradle to fail**: Check and skip missing AVDs with `avdmanager list avd` inside scripts.
+- **PrismaClient + Deno.serve: module-level client loses connectivity**: Always instantiate a fresh client per request inside `Deno.serve` to avoid socket locks.
+- **PrismaClient concurrent init in Deno**: Serialize client creation via a promise queue (`withPrisma`) to prevent concurrent `node:fs` imports.
+- **Hono HTTPException requires app.onError handler**: Add global error handlers to return proper bodies.
+- **Prisma P2002 returns empty response**: Global error handler must capture unique-constraint errors.
+- **Basic Auth required for Opencode API**: Basic auth with `OPENCODE_SERVER_*` environment vars is required.
+- **Parts-Format im Response**: Extract JSON from `type: "text"` parts, not parts[0].
+- **Model-Eigenidentifikation**: Extract model names using `extractModelName()`.
+- **System + Model per Message**: Send `system` with every message request.
+- **zai (Zhipu AI) Provider**: Rerun token rotations to fix GLM model connection.
+- **kimi-k2.6 / opencode-go is slow**: Limit locale loops or use DeepSeek.
+- **Prisma v6 library engine intermittent blocking**: Re-instantiate client per query to bypass locks.
+- **connectedDebugAndroidTest ignores ANDROID_SERIAL**: Gradle targets all connected devices; use `am instrument` and target serial directly.
+- **am instrument has no -e excludeAnnotation**: Discover classes from source tree instead of relying on exclude annotations.
 
-- **`-noaudio` auto-detection via `$DISPLAY` fails with Xvfb**: `emulator_launch()` checked `$([ -z "${DISPLAY:-}" ] && echo "-noaudio")` to decide audio. But after `emulator_x11_prepare` starts Xvfb, `DISPLAY=:99` is set, so `-noaudio` was never passed. This caused pulseaudio connection errors on headless VPS. Fix: callers pass `-noaudio` explicitly based on their own knowledge of audio state (e.g., `[ "$IS_REAL_DISPLAY" = false ]`).
+---
 
-- **Subshell redirect doesn't capture background process output**: `emu_pid=$(emulator_launch ... 2>>logfile)` only redirects stderr during the function call's subshell. The background emulator process inherits those file descriptors only momentarily — subsequent emulator output (boot logs, pulseaudio errors) is lost. Fix: `emulator_launch` must redirect the emulator process itself via `>> "$logfile" 2>&1 &` inside the function.
+## Superseded & Relocated Pitfalls
 
-- **AppCompat Theme & Material text appearances**: In projects with AppCompat base themes (e.g., `Theme.AppCompat`), Material Components attributes like `?attr/textAppearanceSubtitle1` are undefined or do not resolve properly, causing TextViews to fall back to tiny, unstyled sizes. Use explicit text sizing and styling (e.g., `android:textSize="18sp"`, `android:textStyle="bold"`) to guarantee correct styling across different parent themes.
+The following fixed-bug pitfalls have been relocated to `docs/ai/HISTORY.md` for historical reference:
 
-- **PRAGMA via $executeRawUnsafe schlägt fehl mit "Execute returned results"**: `PRAGMA journal_mode=WAL` gibt einen Ergebnis-String zurück ("wal"), den `$executeRawUnsafe` nicht akzeptiert. Verwende `$queryRawUnsafe` für PRAGMAs.
-- **JavaScript in <script>-Tags ist nicht self-closing**: `<script src="htmx.org" />` schließt das Tag nicht korrekt — ein separater `</script>`-Abschluss ist nötig. Sonst wird der Rest der HTML-Seite als JavaScript interpretiert.
-
-## Prisma / Deno / Translation Pipeline
-- **Deno 2.7.14 has no native `DOMParser`**: Unlike Node.js + `jsdom`, Deno's standard library doesn't include an XML parser. Must use regex or pull in `npm:xmldom` as a polyfill. For well-formed single-line `strings.xml`, regex is sufficient.
-- **`openai-whisper` pip install is 106+ MB**: Pulls Torch, CUDA, NumPy, tqdm, and more. For just extracting the 100-language map from `tokenizer.py`, use a static JSON instead. The `pycountry` library alone is <1 MB.
-- **SQLite `ALTER TABLE ADD CHECK` not supported in Prisma**: Prisma's SQLite migration engine rejects `ALTER TABLE ADD CHECK` with `SQLite does not support adding CHECK constraints to existing tables`. The CHECK must be in the original `CREATE TABLE`. Plan accordingly: add CHECKs in the init migration or don't add them at all.
-- **Prisma SQLite enum sorts alphabetically**: `enum Confidence { LOW MEDIUM HIGH }` sorts as HIGH (1), LOW (2), MEDIUM (3) — the string values are sorted lexicographically, not by declaration order. Use `Int` with CHECK constraint for ordered ranges.
-- **`prisma format` doesn't validate raw SQL**: CHECK constraints, `onDelete: Cascade`, and other raw SQL directives in migration files are NOT checked by `prisma format` or `prisma validate`. They only fail at `prisma db push` / `prisma migrate dev` time.
-- **`prisma generate` with `runtime = "deno"` outputs `.ts` files**: Output path must be in `deno.json`'s import map. The generated `client.ts` uses `npm:prisma@^6.19.3` import internally.
-- **`.env` file location matters**: Prisma's `datasource db` block references `env("DATABASE_URL")`. The `.env` file must be at `prisma/translations/.env` (relative to schema dir) or Prisma won't find it.
-- **3 ISO 639-3 duplicates across locales**: `por` (pt, pt-BR, pt-PT), `srp` (sr, sr-Latn), `zho` (zh, zh-TW). These are legitimate — ISO 639-3 is a language-level code, not region-specific. Don't add `@unique` to `iso_639_3`.
-- **32 locales lack Whisper support**: Not all 123 locales have a corresponding Whisper language code. The seed script sets `whisper_response = null` for these. Handle null in application code.
-- **`new URL("file.json", import.meta.url)` for relative paths in Deno**: Deno doesn't support `__dirname` or `path.join` with `import.meta.resolve`. Use `new URL("relative/path", import.meta.url)` for seed data file resolution.
-- **Pre-push hook installed as symlink**: `.git/hooks/pre-push -> ../../scripts/git-hooks/pre-push`. A copy would drift from the template. Fresh clones must create the symlink manually.
-- **Missing AVDs cause `gradle` to fail**: `./gradlew connectedDebugAndroidTest` on a non-existent AVD exits non-zero. The script now detects missing AVDs with `avdmanager list avd` and skips them with `SKIP` status instead of failing. Gradle exit code is no longer treated as fatal.
-- **PrismaClient + Deno.serve: module-level client loses connectivity**: Creating `new PrismaClient()` at module level works for standalone queries, but once `Deno.serve` enters its event loop, any subsequent Prisma query on that client hangs indefinitely. Must create a fresh PrismaClient per request.
-- **PrismaClient concurrent init in Deno causes node:fs error**: When two PrismaClients are created simultaneously (two concurrent requests), Prisma's runtime library (`library.mjs`) tries to import `node:fs` which Deno's npm compatibility layer doesn't support. Error: `Unsupported scheme "node" for module "node:fs"`. Fix: serialize PrismaClient creation via promise queue.
-- **Hono HTTPException requires app.onError handler**: Without `app.onError()`, unhandled `HTTPException` instances return an empty 500 response body. Add global error handler to return proper status codes (400, 404, 409, 500) with meaningful messages.
-- **Prisma P2002 (Unique Constraint) returns empty response without error handler**: Unhandled Prisma errors crash the request with no response body. Global `app.onError()` must catch errors with `code === "P2002"` and return 409 with the error message.
-
-#- **`openOutputStream(uri)` does NOT truncate**: Writing to a content URI via `contentResolver.openOutputStream(uri)` (without mode) opens the existing file at byte 0 but keeps the file's length. If the new content is shorter, old data beyond the write position survives. For ZIP backups, this means the old End-of-Central-Directory remains at the tail, causing `unzip -t` to report CRC mismatch, mismatching local filenames, and bad offsets. Always use `openOutputStream(uri, "wt")` to truncate the file before writing.
-
-## Opencode HTTP API
-- **Basic Auth required**: Server läuft hinter `OPENCODE_SERVER_USERNAME`/`OPENCODE_SERVER_PASSWORD`. Alle API-Calls brauchen `Authorization: Basic <base64>`. Default-Port: `4096` (nicht `3001`).
-- **Parts-Format im Response**: Message-Parts enthalten `step-start`, `reasoning`, `text`, `step-finish`. Der Content liegt im Part mit `type: "text"` — nicht in `parts[0]` (das ist `step-start` ohne `.text`).
-- **Model-Eigenidentifikation**: LLMs geben oft `providerID/modelID` (z.B. `opencode/gpt-5.5`) statt nur `gpt-5.5` als Model-Namen zurück. Verify-Funktionen müssen den letzten Slash-Teil extrahieren (`extractModelName()`).
-- **System + Model per Message**: `POST /session/{id}/message` akzeptiert `{ system, model: { providerID, modelID }, parts }`. Session-Erstellung (`POST /session`) hat KEINEN `system`-Parameter.
-- **zai (Zhipu AI) Provider**: Token müssen regelmäßig rotiert werden. Nach Token-Rotation funktioniert der Provider wieder. `zai-coding-plan` ist in `MODEL_PROVIDERS` für `glm-5.1` als erster Provider eingetragen.
-- **kimi-k2.6 / opencode-go is slow**: Average 8:30 per locale (deepseek-v4-pro: 2:50). Extreme outlier: Irish took 39 min. When running many locales, kimi-k2.6 over opencode-go dominates runtime.
-- **Prisma v6 library engine intermittent blocking**: The native `.so.node` addon (`libquery_engine-debian-openssl-3.0.x.so.node`) has sporadic internal locks causing 15-20s delays on simple `findUnique` queries with a singleton PrismaClient. Workaround: fresh client per query (`new PrismaClient()` + `$connect()` on each call). The PRAGMA `busy_timeout=2000` is set by Prisma v6 itself even without explicit PRAGMA statements. `PRISMA_CLIENT_ENGINE_TYPE` env var is ignored in v6 — only `library` engine is available for SQLite.
-- `_minProficiency` was never checked: The underscore-prefixed parameter in `runOne()` was dead code. Models below proficiency threshold were never skipped despite `--min-proficiency` flag. Renamed to `minProficiency` and actual check added.
-
-- **Deno type-check must use `deno task check` from `prisma/`**: Running standalone `deno check prisma/translate.ts` from the project root fails with spurious `"prismaclient" not a dependency` errors because it doesn't load the import map from `prisma/deno.json`. Always use `cd prisma && deno task check` which passes `--config=deno.json` and resolves the `prismaclient` alias correctly. There are NO pre-existing type errors.
-
-### Translation Pipeline
-- **Gemini 3.1 Pro Performance**: ~90s für 154 Strings, Proficiency 5/5, alle 153 übersetzt (0 null).
-- **GPT-5.5 Performance**: ~120s für 154 Strings, Proficiency 4/5, alle 154 übersetzt (0 null).
-- **Übersetzungsqualität**: Beide Modelle liefern exzellente Ergebnisse mit korrektem Fachvokabular („Klangschale" statt „Glocke"), HTML-Tags erhalten, Placeholder intakt.
-- **Große Batches**: 154 Strings passen in einen Request — Response-Zeit skaliert linear mit String-Anzahl.
-- **`connectedDebugAndroidTest` ignores `ANDROID_SERIAL`**: The Gradle task runs on ALL connected devices (emulator + physical). It cannot target a single device. Always use `am instrument -w -e class ... $TEST_PACKAGE/$RUNNER` with `adb -s $SERIAL` instead.
-- **`am instrument` has no `-e excludeAnnotation`**: You cannot exclude tests by annotation with `am instrument`. Workaround: build class lists from the source tree, excluding specific test classes (e.g., `BackupRestoreInstrumentedTest`). The `@BackupTest` annotation serves as documentation only.
-- **`fos.fd.sync()` required before `fos.close()` on restore**: Without `fsync`, the restored database file may not be committed to disk before Room reopens it, causing `SQLiteDatabaseCorruptException` / "connection is closed" on some devices. Call `fos.fd.sync()` before `fos.close()` in `BackupManager.receiveBytes()`.
-- **Backup fixture must go to `/sdcard/Download/`**: On API 30+ with scoped storage, apps cannot access `/data/local/tmp/` directly. `/sdcard/Download/` is accessible via `MANAGE_EXTERNAL_STORAGE` permission (declared in test manifest) and also via the SAF file picker.
-- **Stale in-memory write in `suspendUpdateSessionList()`**: Writing stale `sessions` objects back to DB in `MainFragment.suspendUpdateSessionList()` overwrites edits made by other fragments (e.g., `SessionEditFragment.onPause()` saving a new name). Rank persistence is handled by `onPause()`. The `onResume()` path must only read fresh data, never write stale objects. (#253)
-- **Espresso `clearText()` + `typeText()` race condition**: `clearText()` and `typeText()` are separate IME actions that can interleave, causing duplicated characters (e.g., "UUpdated Session Name" instead of "Updated Session Name"). Always use `replaceText()` in Espresso tests — it atomically replaces field content without going through the IME. `SectionEditPage.kt` already uses `replaceText()` correctly. (#254)
-- **Emulator snapshot `-no-snapshot-save` prevents state persistence**: The default `SNAPSHOT_FLAG="-no-snapshot-save"` in `run-instrumentation.sh` caused the emulator to load snapshots on boot but discard all state changes on shutdown. This means system configuration from `emulator_configure_system` was lost between runs. Changed default to `SNAPSHOT_FLAG=""` so snapshots are saved on shutdown. The `--cold-boot` flag (`-no-snapshot`) remains unchanged. (#254)
+- **Espresso clearText() + typeText() race condition** → Relocated to `HISTORY.md` (Fixed in #254; use `replaceText()` convention).
+- **Session drag-reorder lost after Add/Delete/Duplicate** → Relocated to `HISTORY.md` (Fixed in #244; save ranks before reload).
+- **Dual-selection after removeItem/insertItem/moveItem** → Relocated to `HISTORY.md` (Fixed in #246; use full-list refresh).
+- **Stale in-memory write in suspendUpdateSessionList()** → Relocated to `HISTORY.md` (Fixed in #253).
+- **Emulator snapshot -no-snapshot-save prevents state persistence** → Relocated to `HISTORY.md` (Fixed in #254).
+- **Stale WAL/SHM files corrupt restored database** → Relocated to `HISTORY.md` (Fixed in #255).
+- **openOutputStream(uri) does NOT truncate** → Relocated to `HISTORY.md` (Fixed in #237; use `"wt"` mode).
+- **fos.fd.sync() required before fos.close() on restore** → Relocated to `HISTORY.md` (Fixed in #255).
+- **Room MIGRATION_1_2: PK must be NOT NULL explicitly** → Relocated to `HISTORY.md` (Baseline V2 migration complies).
+- **Migration CREATE TABLE: PK-Spalte braucht explizites NOT NULL** → Relocated to `HISTORY.md`.
+- **Migration CREATE TABLE: kein DEFAULT ohne Entity-Default** → Relocated to `HISTORY.md`.
+- **Migration tests via RoomMigrationTest** → Relocated to `HISTORY.md`.
+- **bellId = 0 silently breaks FK** → Relocated to `HISTORY.md` (FK bakes directly into V2).
+- **New sections with bellId=0 fail FK in V10** → Relocated to `HISTORY.md` (V10 story is historical).
