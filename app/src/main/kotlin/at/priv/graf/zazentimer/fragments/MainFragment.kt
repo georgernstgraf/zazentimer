@@ -160,13 +160,8 @@ class MainFragment : Fragment() {
     override fun onPause() {
         super.onPause()
         if (!isAdded) return
-        for (i in sessions.indices) {
-            sessions[i].rank = i
-        }
         runBlocking {
-            for (session in sessions) {
-                dbOperations.updateSession(session)
-            }
+            dbOperations.assignRanks(sessions)
         }
     }
 

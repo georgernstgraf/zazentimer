@@ -149,6 +149,16 @@ internal class SessionRepository(
             result.toTypedArray()
         }
 
+    suspend fun assignRanks(sessions: List<Session>) =
+        withIdling {
+            for (i in sessions.indices) {
+                sessions[i].rank = i
+            }
+            for (session in sessions) {
+                sessionDao.update(EntityMapper.toEntity(session))
+            }
+        }
+
     private suspend fun resolveBellId(bellId: Int): Int {
         if (bellId > 0) {
             val bell = bellDao.getById(bellId)
@@ -162,6 +172,8 @@ internal class SessionRepository(
             BellCollection.getDemoBell()?.uri?.toString()?.let { uri ->
                 bellDao.getByUri(uri)
             }
-        return demoBell?.id ?: 0
+        if (demoBell != null) return demoBell.id
+        val firstBuiltin = bellDao.getBuiltinBells().firstOrNull()
+        return firstBuiltin?.id ?: 0
     }
 }

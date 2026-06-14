@@ -121,6 +121,8 @@ class DbOperations
 
         suspend fun readSessions(): Array<Session> = sessionRepo.readSessions()
 
+        suspend fun assignRanks(sessions: List<Session>) = sessionRepo.assignRanks(sessions)
+
         suspend fun readSection(id: Int): Section? = sectionRepo.readSection(id)
 
         suspend fun readSections(sessionId: Int): Array<Section> = sectionRepo.readSections(sessionId)

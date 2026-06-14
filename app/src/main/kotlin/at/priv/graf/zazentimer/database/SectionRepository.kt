@@ -73,6 +73,8 @@ internal class SectionRepository(
             BellCollection.getDemoBell()?.uri?.toString()?.let { uri ->
                 bellDao.getByUri(uri)
             }
-        return demoBell?.id ?: 0
+        if (demoBell != null) return demoBell.id
+        val firstBuiltin = bellDao.getBuiltinBells().firstOrNull()
+        return firstBuiltin?.id ?: 0
     }
 }
