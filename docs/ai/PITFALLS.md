@@ -85,6 +85,7 @@ Read this file carefully before making changes in affected areas.
 - **Prisma v6 library engine intermittent blocking**: Re-instantiate client per query to bypass locks.
 - **connectedDebugAndroidTest ignores ANDROID_SERIAL**: Gradle targets all connected devices; use `am instrument` and target serial directly.
 - **am instrument has no -e excludeAnnotation**: Discover classes from source tree instead of relying on exclude annotations.
+- **`const val` referencing `R.x` triggers Kotlin IR interpreter error**: In an `object`, `const val FOO: Int = R.string.bar` fails with `InterpreterMethodNotFoundError` during `compileDebugKotlin` because the Kotlin compiler tries to fold the constant at compile time but `R` fields aren't available to the IR interpreter. Use `val` (non-const) instead — the field is still effectively final.
 
 ---
 

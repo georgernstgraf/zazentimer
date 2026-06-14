@@ -25,12 +25,13 @@ ZazenTimer is an Android application for timing meditation sessions. It uses a f
 | `session_bell_volumes` | `id`, `fk_session`, `bellId`, `volume` | Per-session per-bell volume; unique on (fk_session, bellId); FKs to sessions and bells |
 
 ### Bell Resolution Flow (V2)
-1. **Startup**: `DbOperations.sanitizeBellUris()` seeds built-in bells via URI, syncs custom bells from filesDir, fixes stale URIs, and resolves any unresolvable entries. Runs EVERY startup inside `ZazenTimerActivity.onCreate()` lifecycleScope.
-2. **Section creation**: `DemoSessionCreator` resolves `bellId` via `getBellByUri()` before insert. `DbOperations.insertSection()` defaults bellId=0 to demo bell.
-3. **Section edit**: `SectionEditFragment` resolves bell via `bellId` from DB (no direct field access).
-4. **Playback**: `BellPlayer.playBell()` resolves bell via `getBellById(bellId)` lambda (DB lookup → BellEntity.uri → BellCollection.getBellByUri()); fallback to getDemoBell().
-5. **Volume**: `Meditation.getVolumeForSection()` matches `session_bell_volumes.bellId == section.bellId`
-6. **UI**: `deriveBellVolumesFromSections()` groups by `bellId` only.
+1. **Startup**: `DbOperations.sanitizeBellUris()` seeds the 8 built-in bells from `BuiltinBells.definitions()` (pure config object, no in-memory state), syncs custom bells from filesDir, fixes stale URIs, and resolves any unresolvable entries. Runs EVERY startup inside `ZazenTimerActivity.onCreate()` lifecycleScope.
+2. **Demo bell lookup**: `BellDao.getBuiltinByName(name)` finds the demo bell by its localized name (`BuiltinBells.DEMO_BELL_NAME_RES`). Exposed via `BellRepository.getDemoBell()` and `DbOperations.getDemoBell()`. `fallbackBellId()` throws `IllegalStateException` if no builtin bell exists (no silent `0` FK corruption).
+3. **Section creation**: `DemoSessionCreator` resolves `bellId` via `getBellByUri(BuiltinBells.resourceUri(...))` before insert. `DbOperations.insertSection()` defaults bellId=0 to demo bell.
+4. **Section edit**: `SectionEditFragment` resolves bell via `bellId` from DB; bell list is populated from `dbOperations.getAllBells()`.
+5. **Playback**: `BellPlayer.playBell()` resolves bell via `getBellById(bellId)` lambda → uses `BellEntity.uri` directly; fallback to demo bell URI from `BuiltinBells.resourceUri(context, DEMO_BELL_RAW_RES)`.
+6. **Volume**: `Meditation.getVolumeForSection()` matches `session_bell_volumes.bellId == section.bellId`
+7. **UI**: `deriveBellVolumesFromSections()` groups by `bellId` only.
 
 ---
 

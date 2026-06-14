@@ -195,11 +195,19 @@ Each entry documents WHAT was decided and WHY.
 - **Considered**: Storing order in SharedPreferences (fragile, breaks when sessions are added/deleted). Using natural alphabetical order only (already in place but users wanted custom order).
 - **Tradeoff**: One extra column in sessions table. `DbOperations.insertSession()` now assigns `rank = MAX(rank) + 1`. Drag-and-drop in MainFragment needs to persist via `switchSessionPositions()`.
 
+## 2026-06-15: Eliminate BellCollection in-memory cache — DB as single source of truth (#270)
+- **Choice**: Deleted `BellCollection` singleton and `bo/Bell` business object. The `bells` DB table (`BellEntity` + `BellDao`) is the sole bell representation. Added pure-config `BuiltinBells` object (8 built-in bell definitions, no mutable state) as the seeding source for `BellSanitizer`.
+- **Reason**: `BellCollection.initialize(context)` had to run before any read, but DB operations didn't wait for it. The in-memory list raced with the DB, causing `getDemoBell()` to return null → `fallbackBellId()` returned the "fake 0" → `FOREIGN KEY constraint failed` → process crash (observed in `DuplicateSessionTest.testDuplicateSessionCreatesCopyWithPrefix`).
+- **Considered**: Option A (make `getDemoBell()` non-null — band-aid on the symptom). Option B (eliminate the cache — chosen).
+- **Key changes**: (1) `BellDao.getBuiltinByName(name)` for demo-bell lookup by localized name; (2) `fallbackBellId()` throws `IllegalStateException` instead of returning `0`; (3) `Audio.playAbsVolume(uri: Uri?, volume)` takes URI directly (was `Bell?`); (4) `BellPlayer` falls back to demo URI from `BuiltinBells.resourceUri(context, DEMO_BELL_RAW_RES)`; (5) `DemoSessionCreator.createSection` takes `bellRawResId: Int` and resolves via `BuiltinBells.resourceUri` + `getBellByUri`; (6) `GongListAdapter` is `ArrayAdapter<BellEntity>`.
+- **Tradeoff**: All bell reads are now async (`suspend`). Fragment callsites that used `runBlocking { dbOperations... }` remain on `runBlocking` where synchronous-result-usage made `lifecycleScope.launch` migration too invasive (noted for follow-up). `SectionEditFragment.fillBellList/selectBell` were migrated to suspend within the existing `onResume` launch block.
+
 ## 2026-05-19: BellPlayer accepts getBellById lambda
 - **Choice**: `BellPlayer` constructor takes `getBellById: suspend (Int) -> BellEntity?` lambda instead of resolving bells internally.
-- **Reason**: `BellCollection.getBellForSection()` accessed `section.bellUri` which no longer exists. Bell resolution now requires a DB query (`bellId → BellEntity.uri → BellCollection.getBellByUri`). BellPlayer is a service-layer class without Hilt injection; the lambda keeps it decoupled from DbOperations while enabling async resolution.
+- **Reason**: `BellCollection.getBellForSection()` accessed `section.bellUri` which no longer exists. Bell resolution now requires a DB query (`bellId → BellEntity.uri`). BellPlayer is a service-layer class without Hilt injection; the lambda keeps it decoupled from DbOperations while enabling async resolution.
 - **Considered**: Injecting DbOperations directly into BellPlayer (heavier DI, changes MeditationService construction). Passing Bell objects directly to playBells() (changes API, caller must pre-resolve for all sections).
 - **Tradeoff**: BellPlayer callers (MeditationService) must provide a lambda wrapping `meditationRepository.getBellById()`.
+- **Updated 2026-06-15 (#270)**: `getBellById` lambda now returns `BellEntity` whose `.uri` is used directly via `Uri.parse(entity.uri)` — no more `BellCollection.getBellByUri` indirection. Demo fallback is `BuiltinBells.resourceUri(context, DEMO_BELL_RAW_RES)` (computed locally, no DB lookup needed).
 
 ## 2026-05-19: insertSection defaults bellId=0 to demo bell
 - **Choice**: `DbOperations.insertSection()` resolves `bellId=0` to the demo bell via `BellCollection.getDemoBell() → getBellByUri() → bellId` before Room insert.
