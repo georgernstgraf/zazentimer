@@ -30,8 +30,7 @@ Read this file carefully before making changes in affected areas.
 - **Zombie qemu processes survive adb emu kill**: Use `pkill -9 -f "qemu.*android"` between runs to clean up ports.
 - **Unstaged changes are fragile**: Commit important work promptly to prevent multi-agent overwrites.
 - **ktlintFormat removes annotation imports in derived test classes**: Always verify compilation with `./gradlew compileDebugAndroidTestKotlin` after running `ktlintFormat`.
-- **nohup inside bash tool is NOT background-safe**: Use `echo "cmd" | at now` to schedule background jobs via `atd`.
-- **at job output goes to mail**: Always redirect `>/dev/null 2>&1` in `at` jobs to avoid lost/blocked output.
+- **Background-Jobs im bash tool**: `nohup cmd > logs/...log 2>&1 &` ist der zuverlässige Weg (Prompt kehrt sofort zurück, Prozess erbt `$DISPLAY`; poll via `tail`/`fuser`). Eine volle API-Matrix-Instrumentierung läuft ca. 2,5 h — alle ~7 min in die Logdatei schauen. **`at now` NICHT verwenden**: `at` startet in einer sauberen Umgebung und verliert `$DISPLAY` (sowie andere ENV-Vars), wodurch `run-instrumentation.sh` die instrumentierten Tests überspringt.
 - **Package cleanup kills system services on API 36**: Skip package uninstalls on API 36+ to prevent package-manager broken pipes.
 - **service check activity output varies by API**: Grep for case-insensitive `activity` to support all system check outputs.
 - **Espresso.onIdle() in @Before crashes**: DB setup in `@Before` is synchronous; never call `onIdle()` there.
