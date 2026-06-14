@@ -2,12 +2,9 @@ package at.priv.graf.zazentimer.service
 
 import android.content.Context
 import android.media.AudioManager
-import android.net.Uri
 import android.os.PowerManager
 import at.priv.graf.zazentimer.Constants
 import at.priv.graf.zazentimer.audio.Audio
-import at.priv.graf.zazentimer.audio.BellCollection
-import at.priv.graf.zazentimer.bo.Bell
 import at.priv.graf.zazentimer.bo.Section
 import at.priv.graf.zazentimer.database.BellEntity
 import io.mockk.coEvery
@@ -44,6 +41,7 @@ class BellPlayerTest {
         every { mockContext.getSystemService(Context.AUDIO_SERVICE) } returns mockk<AudioManager>(relaxed = true)
         every { mockPowerManager.newWakeLock(any(), any()) } returns mockWakeLock
         every { mockWakeLock.isHeld } returns true
+        every { mockContext.packageName } returns "at.priv.graf.zazentimer"
 
         mockkConstructor(Audio::class)
         coEvery { anyConstructed<Audio>().playAbsVolume(any(), any()) } returns Unit
@@ -105,7 +103,7 @@ class BellPlayerTest {
     }
 
     @Test
-    fun `playBells creates no Audio when BellPlayer has no bells`() {
+    fun `playBells falls back to demo bell when getBellById returns null`() {
         runTest {
             player.playBells(
                 Section(name = "Zazen", duration = 600),
@@ -116,11 +114,11 @@ class BellPlayerTest {
             advanceUntilIdle()
         }
 
-        coVerify(exactly = 0) { anyConstructed<Audio>().playAbsVolume(any(), any()) }
+        coVerify(exactly = 1) { anyConstructed<Audio>().playAbsVolume(any(), any()) }
     }
 
     @Test
-    fun `playBells creates no Audio when BellCollection returns null`() =
+    fun `playBells falls back to demo bell when getBellById returns null (explicit)`() =
         runTest {
             player.playBells(
                 Section(name = "Zazen", duration = 600),
@@ -129,7 +127,7 @@ class BellPlayerTest {
                 onDone = null,
             )
             advanceUntilIdle()
-            coVerify(exactly = 0) { anyConstructed<Audio>().playAbsVolume(any(), any()) }
+            coVerify(exactly = 1) { anyConstructed<Audio>().playAbsVolume(any(), any()) }
         }
 
     @Test
@@ -159,16 +157,6 @@ class BellPlayerTest {
     @Test
     fun `playBells spawns concurrent Audio instances when previous gongs are still playing`() =
         runTest {
-            val mockBell = mockk<Bell>(relaxed = true)
-            val fakeUri = mockk<Uri>(relaxed = true)
-            every { mockBell.uri } returns fakeUri
-            every { fakeUri.toString() } returns "fake://bell/1"
-            val field = BellCollection::class.java.getDeclaredField("bells")
-            field.isAccessible = true
-            @Suppress("UNCHECKED_CAST")
-            val bells = field.get(BellCollection) as ArrayList<Bell>
-            bells.clear()
-            bells.add(mockBell)
             every { anyConstructed<Audio>().isPlaying() } returns true
 
             val section = Section(name = "Zazen", duration = 600)
@@ -189,7 +177,6 @@ class BellPlayerTest {
                 onDone = null,
             )
             advanceUntilIdle()
-            bells.clear()
 
             coVerify(exactly = 3) { anyConstructed<Audio>().playAbsVolume(any(), any()) }
         }

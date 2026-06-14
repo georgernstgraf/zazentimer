@@ -5,7 +5,6 @@ import android.media.AudioAttributes
 import android.media.AudioManager
 import android.media.MediaPlayer
 import android.net.Uri
-import at.priv.graf.zazentimer.bo.Bell
 import com.google.common.truth.Truth.assertThat
 import io.mockk.every
 import io.mockk.just
@@ -63,10 +62,9 @@ class AudioTest {
     @Test
     fun playAbsVolume_setsPlaying() {
         val uri = Uri.parse("android.resource://at.priv.graf.zazentimer/1234")
-        val bell = Bell(uri, "Test Bell")
 
         val audio = Audio(context)
-        runBlocking { audio.playAbsVolume(bell, 80) }
+        runBlocking { audio.playAbsVolume(uri, 80) }
 
         assertThat(audio.isPlaying()).isTrue()
         verify { anyConstructed<MediaPlayer>().setVolume(0.8f, 0.8f) }
@@ -76,10 +74,9 @@ class AudioTest {
     @Test
     fun playAbsVolume_fullVolume() {
         val uri = Uri.parse("android.resource://at.priv.graf.zazentimer/1234")
-        val bell = Bell(uri, "Test Bell")
 
         val audio = Audio(context)
-        runBlocking { audio.playAbsVolume(bell, 100) }
+        runBlocking { audio.playAbsVolume(uri, 100) }
 
         verify { anyConstructed<MediaPlayer>().setVolume(1.0f, 1.0f) }
     }
@@ -87,10 +84,9 @@ class AudioTest {
     @Test
     fun playAbsVolume_zeroVolume() {
         val uri = Uri.parse("android.resource://at.priv.graf.zazentimer/1234")
-        val bell = Bell(uri, "Test Bell")
 
         val audio = Audio(context)
-        runBlocking { audio.playAbsVolume(bell, 0) }
+        runBlocking { audio.playAbsVolume(uri, 0) }
 
         verify { anyConstructed<MediaPlayer>().setVolume(0.0f, 0.0f) }
     }
@@ -98,10 +94,9 @@ class AudioTest {
     @Test
     fun playAbsVolume_halfVolume() {
         val uri = Uri.parse("android.resource://at.priv.graf.zazentimer/1234")
-        val bell = Bell(uri, "Test Bell")
 
         val audio = Audio(context)
-        runBlocking { audio.playAbsVolume(bell, 50) }
+        runBlocking { audio.playAbsVolume(uri, 50) }
 
         verify { anyConstructed<MediaPlayer>().setVolume(0.5f, 0.5f) }
     }
@@ -109,10 +104,9 @@ class AudioTest {
     @Test
     fun playAbsVolume_setsAlarmAudioAttributes() {
         val uri = Uri.parse("android.resource://at.priv.graf.zazentimer/1234")
-        val bell = Bell(uri, "Test Bell")
 
         val audio = Audio(context)
-        runBlocking { audio.playAbsVolume(bell, 100) }
+        runBlocking { audio.playAbsVolume(uri, 100) }
 
         verify {
             anyConstructed<MediaPlayer>().setAudioAttributes(
@@ -127,19 +121,18 @@ class AudioTest {
     @Test
     fun playAbsVolume_setsDataSourceAndPrepares() {
         val uri = Uri.parse("android.resource://at.priv.graf.zazentimer/1234")
-        val bell = Bell(uri, "Test Bell")
 
         val audio = Audio(context)
-        runBlocking { audio.playAbsVolume(bell, 100) }
+        runBlocking { audio.playAbsVolume(uri, 100) }
 
         verify { anyConstructed<MediaPlayer>().setDataSource(context, uri) }
         verify { anyConstructed<MediaPlayer>().prepare() }
     }
 
     @Test
-    fun playAbsVolume_nullBell_doesNotPlay() {
+    fun playAbsVolume_nullUri_doesNotPlay() {
         val audio = Audio(context)
-        runBlocking { audio.playAbsVolume(null as Bell?, 100) }
+        runBlocking { audio.playAbsVolume(null, 100) }
 
         assertThat(audio.isPlaying()).isFalse()
     }
@@ -149,10 +142,9 @@ class AudioTest {
         every { anyConstructed<MediaPlayer>().prepare() } throws java.io.IOException("prepare failed")
 
         val uri = Uri.parse("android.resource://at.priv.graf.zazentimer/1234")
-        val bell = Bell(uri, "Test Bell")
 
         val audio = Audio(context)
-        runBlocking { audio.playAbsVolume(bell, 100) }
+        runBlocking { audio.playAbsVolume(uri, 100) }
 
         assertThat(audio.isPlaying()).isFalse()
     }
@@ -160,11 +152,10 @@ class AudioTest {
     @Test
     fun release_stopsAndReleasesPlayer() {
         val uri = Uri.parse("android.resource://at.priv.graf.zazentimer/1234")
-        val bell = Bell(uri, "Test Bell")
 
         val audio = Audio(context)
         runBlocking {
-            audio.playAbsVolume(bell, 100)
+            audio.playAbsVolume(uri, 100)
             audio.release()
         }
 
@@ -182,10 +173,9 @@ class AudioTest {
     @Test
     fun onCompletion_setsPlayingFalse() {
         val uri = Uri.parse("android.resource://at.priv.graf.zazentimer/1234")
-        val bell = Bell(uri, "Test Bell")
 
         val audio = Audio(context)
-        runBlocking { audio.playAbsVolume(bell, 100) }
+        runBlocking { audio.playAbsVolume(uri, 100) }
         assertThat(audio.isPlaying()).isTrue()
 
         val listeners = mutableListOf<MediaPlayer.OnCompletionListener>()
@@ -209,13 +199,11 @@ class AudioTest {
     fun playAbsVolume_replacesPreviousPlayer() {
         val uri1 = Uri.parse("android.resource://at.priv.graf.zazentimer/1111")
         val uri2 = Uri.parse("android.resource://at.priv.graf.zazentimer/2222")
-        val bell1 = Bell(uri1, "Bell 1")
-        val bell2 = Bell(uri2, "Bell 2")
 
         val audio = Audio(context)
         runBlocking {
-            audio.playAbsVolume(bell1, 100)
-            audio.playAbsVolume(bell2, 50)
+            audio.playAbsVolume(uri1, 100)
+            audio.playAbsVolume(uri2, 50)
         }
 
         verify { anyConstructed<MediaPlayer>().stop() }

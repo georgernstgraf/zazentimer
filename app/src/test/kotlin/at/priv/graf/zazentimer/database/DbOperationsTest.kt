@@ -396,7 +396,7 @@ class DbOperationsTest {
         }
 
     @Test
-    fun deleteCustomBell_noBuiltinBells_noOp() =
+    fun deleteCustomBell_noBuiltinBells_throws() =
         runBlocking {
             dbOps.getAllBells().forEach { dbOps.deleteBellById(it.id) }
 
@@ -404,8 +404,12 @@ class DbOperationsTest {
                 dbOps
                     .insertBell(BellEntity(name = "Custom", uri = "file://test.mp3", isBuiltin = false))
                     .toInt()
-            dbOps.deleteCustomBell(customId)
-
-            assertThat(dbOps.getBellById(customId)).isNotNull()
+            var threw = false
+            try {
+                dbOps.deleteCustomBell(customId)
+            } catch (_: IllegalStateException) {
+                threw = true
+            }
+            assert(threw)
         }
 }

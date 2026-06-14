@@ -3,7 +3,7 @@ package at.priv.graf.zazentimer.database
 import android.content.Context
 import androidx.test.core.app.ApplicationProvider
 import androidx.test.ext.junit.runners.AndroidJUnit4
-import at.priv.graf.zazentimer.audio.BellCollection
+import at.priv.graf.zazentimer.audio.BuiltinBells
 import at.priv.graf.zazentimer.bo.Section
 import at.priv.graf.zazentimer.bo.Session
 import com.google.common.truth.Truth.assertThat
@@ -18,22 +18,23 @@ import org.robolectric.annotation.Config
 @Config(sdk = [29])
 class DbOperationsBellFallbackTest {
     private lateinit var dbOps: DbOperations
+    private lateinit var context: Context
     private var demoBellId: Int = 0
 
     @Before
     fun setUp() {
-        val context = ApplicationProvider.getApplicationContext<Context>()
-        BellCollection.initialize(context)
+        context = ApplicationProvider.getApplicationContext()
         context.deleteDatabase(AppDatabase.DATABASE_NAME)
         dbOps = DbOperations(context)
         runBlocking {
-            val demoBell = BellCollection.getDemoBell()!!
+            val demoUri = BuiltinBells.resourceUri(context, BuiltinBells.DEMO_BELL_RAW_RES)
+            val demoName = context.getString(BuiltinBells.DEMO_BELL_NAME_RES)
             demoBellId =
                 dbOps
                     .insertBell(
                         BellEntity(
-                            name = demoBell.getName(),
-                            uri = demoBell.uri.toString(),
+                            name = demoName,
+                            uri = demoUri,
                             isBuiltin = true,
                         ),
                     ).toInt()
@@ -43,7 +44,6 @@ class DbOperationsBellFallbackTest {
     @After
     fun tearDown() {
         dbOps.close()
-        BellCollection.release()
     }
 
     @Test
