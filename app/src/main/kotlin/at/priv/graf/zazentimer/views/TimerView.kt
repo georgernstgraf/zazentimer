@@ -234,96 +234,80 @@ class TimerView
                 canvas.drawPath(triangle, paintTriangle)
             }
 
-            @Suppress("LongParameterList")
-            private fun drawSectionLabels(
-                canvas: Canvas,
-                fp: FloatArray,
-                interp: AccelerateDecelerateInterpolator,
-                cxs: Float,
-                cxe: Float,
-                cys: Float,
-                cye: Float,
-                csSize: Float,
-                nxs: Float,
-                nxe: Float,
-                nys: Float,
-                nye: Float,
-                nsStart: Float,
-                nsEnd: Float,
-                ncStart: Int,
-                ncEnd: Int,
-                nnxs: Float,
-                nnxe: Float,
-                nnys: Float,
-                nnye: Float,
-                colorRingCurrent: Int,
-                colorRingNext: Int,
-                paintCur: Paint,
-                paintNextSec: Paint,
-                paintNewNext: Paint,
-                curName: String,
-                nextName: String,
-                newNextName: String,
-            ) {
-                val t = interp.getInterpolation(fp[PROP_NAME_SWITCH])
-                val dcx = cxs + ((cxe - cxs) * t)
-                val dcy = cys + ((cye - cys) * t)
-                val dnx = nxs + ((nxe - nxs) * t)
-                val dny = nys + ((nye - nys) * t)
-                val drawAlpha = ALPHA_MAX_FLOAT - t
-                val dns = nsStart + ((nsEnd - nsStart) * t)
-                val dnnx = nnxs + ((nnxe - nnxs) * t)
-                val dnny = nnys + ((nnye - nnys) * t)
-                val dnnAlpha = t
-                val dnColor = morphColor(ncStart, ncEnd, t)
-                paintCur.apply {
-                    isAntiAlias = true
-                    textAlign = Paint.Align.CENTER
-                    textSize = csSize
-                    color = colorRingCurrent
-                    alpha = (drawAlpha * FLOAT_ALPHA_RANGE_START).toInt()
-                }
-                paintNewNext.apply {
-                    isAntiAlias = true
-                    textAlign = Paint.Align.CENTER
-                    textSize = nsStart
-                    color = colorRingNext
-                    alpha = (dnnAlpha * FLOAT_ALPHA_RANGE_START).toInt()
-                }
-                paintNextSec.apply {
-                    isAntiAlias = true
-                    textAlign = Paint.Align.CENTER
-                    textSize = dns
-                    color = dnColor
-                    alpha = FULL_ALPHA
-                }
-                canvas.drawText(curName, dcx, dcy, paintCur)
-                canvas.drawText(nextName, dnx, dny, paintNextSec)
-                canvas.drawText(newNextName, dnnx, dnny, paintNewNext)
+        @Suppress("LongParameterList")
+        private fun drawSectionLabels(
+            canvas: Canvas,
+            fp: FloatArray,
+            interp: AccelerateDecelerateInterpolator,
+            curLayout: SectionLayout,
+            nextLayout: SectionLayout,
+            newNextLayout: SectionLayout,
+            colorRingCurrent: Int,
+            colorRingNext: Int,
+            paintCur: Paint,
+            paintNextSec: Paint,
+            paintNewNext: Paint,
+        ) {
+            val t = interp.getInterpolation(fp[PROP_NAME_SWITCH])
+            val dcx = curLayout.xStart + ((curLayout.xEnd - curLayout.xStart) * t)
+            val dcy = curLayout.yStart + ((curLayout.yEnd - curLayout.yStart) * t)
+            val dnx = nextLayout.xStart + ((nextLayout.xEnd - nextLayout.xStart) * t)
+            val dny = nextLayout.yStart + ((nextLayout.yEnd - nextLayout.yStart) * t)
+            val drawAlpha = ALPHA_MAX_FLOAT - t
+            val dns = nextLayout.sizeStart + ((nextLayout.sizeEnd - nextLayout.sizeStart) * t)
+            val dnnx = newNextLayout.xStart + ((newNextLayout.xEnd - newNextLayout.xStart) * t)
+            val dnny = newNextLayout.yStart + ((newNextLayout.yEnd - newNextLayout.yStart) * t)
+            val dnnAlpha = t
+            val dnColor = morphColor(nextLayout.colorStart, nextLayout.colorEnd, t)
+            paintCur.apply {
+                isAntiAlias = true
+                textAlign = Paint.Align.CENTER
+                textSize = curLayout.size
+                color = colorRingCurrent
+                alpha = (drawAlpha * FLOAT_ALPHA_RANGE_START).toInt()
             }
+            paintNewNext.apply {
+                isAntiAlias = true
+                textAlign = Paint.Align.CENTER
+                textSize = nextLayout.sizeStart
+                color = colorRingNext
+                alpha = (dnnAlpha * FLOAT_ALPHA_RANGE_START).toInt()
+            }
+            paintNextSec.apply {
+                isAntiAlias = true
+                textAlign = Paint.Align.CENTER
+                textSize = dns
+                color = dnColor
+                alpha = FULL_ALPHA
+            }
+            canvas.drawText(curLayout.name, dcx, dcy, paintCur)
+            canvas.drawText(nextLayout.name, dnx, dny, paintNextSec)
+            canvas.drawText(newNextLayout.name, dnnx, dnny, paintNewNext)
+        }
 
-            @Suppress("LongParameterList")
-            private fun drawTimeText(
-                canvas: Canvas,
-                ctx: Float,
-                cty: Float,
-                csz: Float,
-                tix: Float,
-                tiy: Float,
-                tisz: Float,
-                showTimeMode: Int,
-                fcs: Int,
-                fns: Int,
-                fst: Int,
-                secElapsed: Int,
-                tta: ValueAnimator,
-                paintInfo: Paint,
-                paintE: Paint,
-                paintR: Paint,
-                paintSE: Paint,
-                paintSR: Paint,
-                context: Context,
-            ) {
+        @Suppress("LongParameterList")
+        private fun drawTimeText(
+            canvas: Canvas,
+            ctx: Float,
+            cty: Float,
+            curLayout: SectionLayout,
+            tix: Float,
+            tiy: Float,
+            tisz: Float,
+            showTimeMode: Int,
+            fcs: Int,
+            fns: Int,
+            fst: Int,
+            secElapsed: Int,
+            tta: ValueAnimator,
+            paintInfo: Paint,
+            paintE: Paint,
+            paintR: Paint,
+            paintSE: Paint,
+            paintSR: Paint,
+            context: Context,
+        ) {
+            val csz = curLayout.size
                 paintE.textSize = csz
                 paintR.textSize = csz
                 paintSE.textSize = csz
@@ -438,83 +422,73 @@ class TimerView
             }
         }
 
-        private var angleEnd = ANGLE_END_DEGREES
-        private var angleStart = ANGLE_START_DEGREES
-        private var animDuration = ItemTouchHelper.Callback.DEFAULT_DRAG_ANIMATION_DURATION
-        private var colorMarkerLine = COLOR_DEFAULT_MARKER_LINE
-        private var colorMarkerTriangle = COLOR_DEFAULT_MARKER_TRIANGLE
-        private var colorRingCurrent = COLOR_DEFAULT_RING_CURRENT
-        private var colorRingNext = COLOR_DEFAULT_RING_NEXT
-        private var colorRingPrev = COLOR_DEFAULT_RING_PREV
-        private var colorRingRemaining = COLOR_DEFAULT_RING_REMAINING
-        private var curSectionAlpha = ZERO_ALPHA.toFloat()
-        private var curSectionSize = ZERO_ALPHA.toFloat()
-        private var curSectionX = ZERO_ALPHA.toFloat()
-        private var curSectionXEnd = ZERO_ALPHA.toFloat()
-        private var curSectionXStart = ZERO_ALPHA.toFloat()
-        private var curSectionY = ZERO_ALPHA.toFloat()
-        private var curSectionYEnd = ZERO_ALPHA.toFloat()
-        private var curSectionYStart = ZERO_ALPHA.toFloat()
-        private var curTimeX = ZERO_ALPHA.toFloat()
-        private var curTimeY = ZERO_ALPHA.toFloat()
-        private var currentSectionName: String = ""
-        private var deltaX = ZERO_ALPHA
-        private var deltaY = ZERO_ALPHA
-        private var fixedCurrentStartSeconds = ZERO_ALPHA
-        private var fixedNextStartSeconds = ZERO_ALPHA
-        private var fixedSessionTotalSeconds = ZERO_ALPHA
-        private var interp = AccelerateDecelerateInterpolator()
-        private var markerWidth = DEFAULT_MARKER_WIDTH
-        private var newNextSectionAlpha = ZERO_ALPHA.toFloat()
-        private var newNextSectionName: String = ""
-        private var newNextSectionX = ZERO_ALPHA.toFloat()
-        private var newNextSectionXEnd = ZERO_ALPHA.toFloat()
-        private var newNextSectionXStart = ZERO_ALPHA.toFloat()
-        private var newNextSectionY = ZERO_ALPHA.toFloat()
-        private var newNextSectionYEnd = ZERO_ALPHA.toFloat()
-        private var newNextSectionYStart = ZERO_ALPHA.toFloat()
-        private var nextSectionColorEnd = COLOR_DEFAULT_RING_CURRENT
-        private var nextSectionColorStart = COLOR_DEFAULT_RING_NEXT
-        private var nextSectionName: String = ""
-        private var nextSectionSize = ZERO_ALPHA.toFloat()
-        private var nextSectionSizeEnd = ZERO_ALPHA.toFloat()
-        private var nextSectionSizeStart = ZERO_ALPHA.toFloat()
-        private var nextSectionX = ZERO_ALPHA.toFloat()
-        private var nextSectionXEnd = ZERO_ALPHA.toFloat()
-        private var nextSectionXStart = ZERO_ALPHA.toFloat()
-        private var nextSectionY = ZERO_ALPHA.toFloat()
-        private var nextSectionYEnd = ZERO_ALPHA.toFloat()
-        private var nextSectionYStart = ZERO_ALPHA.toFloat()
-        private var paddingBottom = DEFAULT_PADDING
-        private var paddingLeft = DEFAULT_PADDING
-        private var paddingRight = DEFAULT_PADDING
-        private var paddingTop = DEFAULT_PADDING
-        private var paintCurSection = Paint()
-        private var paintCurrent = Paint()
-        private var paintGrayLine = Paint()
-        private var paintMarkerLine = Paint()
-        private var paintNewNextSection = Paint()
-        private var paintNext = Paint()
-        private var paintNextSection = Paint()
-        private var paintPrev = Paint()
-        private var paintRemaining = Paint()
-        private var paintTimeInfoText = Paint()
-        private var paintTimeSectionElapsed = Paint()
-        private var paintTimeSectionRemaining = Paint()
-        private var paintTimeSessionElapsed = Paint()
-        private var paintTimeSessionRemaining = Paint()
-        private var paintTriangle = Paint()
-        private var prefs: SharedPreferences? = null
-        private var rectFull = RectF()
-        private var ringWidthPercent = DEFAULT_RING_WIDTH_PERCENT
-        private var sectionElapsedSeconds = ZERO_ALPHA
-        private var showTimeMode = SHOW_TIME_MODE_DEFAULT
-        private var size = ZERO_ALPHA
-        private var timeInfoSize = ZERO_ALPHA.toFloat()
-        private var timeInfoX = ZERO_ALPHA.toFloat()
-        private var timeInfoY = ZERO_ALPHA.toFloat()
-        private var timeTextAnimator = ValueAnimator()
-        private var triangle = Path()
+    private data class SectionLayout(
+        var name: String = "",
+        var x: Float = 0f,
+        var y: Float = 0f,
+        var xStart: Float = 0f,
+        var yStart: Float = 0f,
+        var xEnd: Float = 0f,
+        var yEnd: Float = 0f,
+        var size: Float = 0f,
+        var sizeStart: Float = 0f,
+        var sizeEnd: Float = 0f,
+        var alpha: Float = 1f,
+        var colorStart: Int = 0,
+        var colorEnd: Int = 0,
+    )
+
+    private var angleEnd = ANGLE_END_DEGREES
+    private var angleStart = ANGLE_START_DEGREES
+    private var animDuration = ItemTouchHelper.Callback.DEFAULT_DRAG_ANIMATION_DURATION
+    private var colorMarkerLine = COLOR_DEFAULT_MARKER_LINE
+    private var colorMarkerTriangle = COLOR_DEFAULT_MARKER_TRIANGLE
+    private var colorRingCurrent = COLOR_DEFAULT_RING_CURRENT
+    private var colorRingNext = COLOR_DEFAULT_RING_NEXT
+    private var colorRingPrev = COLOR_DEFAULT_RING_PREV
+    private var colorRingRemaining = COLOR_DEFAULT_RING_REMAINING
+    private val curLayout = SectionLayout()
+    private var curTimeX = ZERO_ALPHA.toFloat()
+    private var curTimeY = ZERO_ALPHA.toFloat()
+    private var deltaX = ZERO_ALPHA
+    private var deltaY = ZERO_ALPHA
+    private var fixedCurrentStartSeconds = ZERO_ALPHA
+    private var fixedNextStartSeconds = ZERO_ALPHA
+    private var fixedSessionTotalSeconds = ZERO_ALPHA
+    private var interp = AccelerateDecelerateInterpolator()
+    private var markerWidth = DEFAULT_MARKER_WIDTH
+    private val newNextLayout = SectionLayout()
+    private val nextLayout = SectionLayout()
+    private var paddingBottom = DEFAULT_PADDING
+    private var paddingLeft = DEFAULT_PADDING
+    private var paddingRight = DEFAULT_PADDING
+    private var paddingTop = DEFAULT_PADDING
+    private var paintCurSection = Paint()
+    private var paintCurrent = Paint()
+    private var paintGrayLine = Paint()
+    private var paintMarkerLine = Paint()
+    private var paintNewNextSection = Paint()
+    private var paintNext = Paint()
+    private var paintNextSection = Paint()
+    private var paintPrev = Paint()
+    private var paintRemaining = Paint()
+    private var paintTimeInfoText = Paint()
+    private var paintTimeSectionElapsed = Paint()
+    private var paintTimeSectionRemaining = Paint()
+    private var paintTimeSessionElapsed = Paint()
+    private var paintTimeSessionRemaining = Paint()
+    private var paintTriangle = Paint()
+    private var prefs: SharedPreferences? = null
+    private var rectFull = RectF()
+    private var ringWidthPercent = DEFAULT_RING_WIDTH_PERCENT
+    private var sectionElapsedSeconds = ZERO_ALPHA
+    private var showTimeMode = SHOW_TIME_MODE_DEFAULT
+    private var size = ZERO_ALPHA
+    private var timeInfoSize = ZERO_ALPHA.toFloat()
+    private var timeInfoX = ZERO_ALPHA.toFloat()
+    private var timeInfoY = ZERO_ALPHA.toFloat()
+    private var timeTextAnimator = ValueAnimator()
+    private var triangle = Path()
 
         private val animHelper by lazy {
             TimerAnimator(this, HashMap(), FloatArray(PROP_COUNT), animDuration)
@@ -637,39 +611,39 @@ class TimerView
                 deltaY = (h - w) / HALF_DIVISOR
                 size = w
             }
-            val halfW = wf / HALF_DIVISOR_FLOAT
-            val halfH = hf / HALF_DIVISOR_FLOAT
-            curSectionX = halfW
-            curSectionY = halfH
-            nextSectionX = halfW
-            nextSectionY = (size * NEXT_SECTION_Y_FACTOR) + halfH
-            curSectionXStart = curSectionX
-            curSectionYStart = curSectionY
-            curSectionXEnd = halfW
-            curSectionYEnd = halfH - (size * CUR_SECTION_Y_END_FACTOR)
-            curSectionAlpha = ALPHA_MAX_FLOAT
-            nextSectionXStart = nextSectionX
-            nextSectionYStart = nextSectionY
-            nextSectionXEnd = curSectionXStart
-            nextSectionYEnd = curSectionYStart
-            timeInfoSize = size * TIME_INFO_SIZE_FACTOR
-            curSectionSize = size * CUR_SECTION_SIZE_FACTOR
-            nextSectionSize = size * NEXT_SECTION_SIZE_FACTOR
-            nextSectionSizeStart = nextSectionSize
-            nextSectionSizeEnd = curSectionSize
-            nextSectionColorStart = colorRingNext
-            nextSectionColorEnd = colorRingCurrent
-            newNextSectionXStart = nextSectionX
-            newNextSectionYStart = nextSectionY + (size * NEW_NEXT_Y_OFFSET_FACTOR)
-            newNextSectionXEnd = nextSectionX
-            newNextSectionYEnd = nextSectionY
-            newNextSectionAlpha = ALPHA_MIN_FLOAT
-            newNextSectionX = newNextSectionXStart
-            newNextSectionY = newNextSectionYStart
-            curTimeX = halfW
-            curTimeY = halfH - curSectionSize
-            timeInfoX = halfW
-            timeInfoY = curTimeY - curSectionSize
+        val halfW = wf / HALF_DIVISOR_FLOAT
+        val halfH = hf / HALF_DIVISOR_FLOAT
+        curLayout.x = halfW
+        curLayout.y = halfH
+        nextLayout.x = halfW
+        nextLayout.y = (size * NEXT_SECTION_Y_FACTOR) + halfH
+        curLayout.xStart = curLayout.x
+        curLayout.yStart = curLayout.y
+        curLayout.xEnd = halfW
+        curLayout.yEnd = halfH - (size * CUR_SECTION_Y_END_FACTOR)
+        curLayout.alpha = ALPHA_MAX_FLOAT
+        nextLayout.xStart = nextLayout.x
+        nextLayout.yStart = nextLayout.y
+        nextLayout.xEnd = curLayout.xStart
+        nextLayout.yEnd = curLayout.yStart
+        timeInfoSize = size * TIME_INFO_SIZE_FACTOR
+        curLayout.size = size * CUR_SECTION_SIZE_FACTOR
+        nextLayout.size = size * NEXT_SECTION_SIZE_FACTOR
+        nextLayout.sizeStart = nextLayout.size
+        nextLayout.sizeEnd = curLayout.size
+        nextLayout.colorStart = colorRingNext
+        nextLayout.colorEnd = colorRingCurrent
+        newNextLayout.xStart = nextLayout.x
+        newNextLayout.yStart = nextLayout.y + (size * NEW_NEXT_Y_OFFSET_FACTOR)
+        newNextLayout.xEnd = nextLayout.x
+        newNextLayout.yEnd = nextLayout.y
+        newNextLayout.alpha = ALPHA_MIN_FLOAT
+        newNextLayout.x = newNextLayout.xStart
+        newNextLayout.y = newNextLayout.yStart
+        curTimeX = halfW
+        curTimeY = halfH - curLayout.size
+        timeInfoX = halfW
+        timeInfoY = curTimeY - curLayout.size
         }
 
         @Suppress("LongMethod")
@@ -728,71 +702,54 @@ class TimerView
                 triangle,
             )
 
-            if (isInEditMode) {
-                canvas.drawText(EDIT_MODE_TIME_TEXT, curTimeX, curTimeY, paintCurSection)
-                canvas.drawText(EDIT_MODE_CURRENT_LABEL, curSectionX, curSectionY, paintCurSection)
-                canvas.drawText(EDIT_MODE_NEXT_LABEL, nextSectionX, nextSectionY, paintNextSection)
-                canvas.drawText(
-                    EDIT_MODE_NEXT_NEXT_LABEL,
-                    newNextSectionX,
-                    newNextSectionY,
-                    paintNewNextSection,
-                )
-                return
-            }
-
-            drawSectionLabels(
-                canvas,
-                floatProperties,
-                interp,
-                curSectionXStart,
-                curSectionXEnd,
-                curSectionYStart,
-                curSectionYEnd,
-                curSectionSize,
-                nextSectionXStart,
-                nextSectionXEnd,
-                nextSectionYStart,
-                nextSectionYEnd,
-                nextSectionSizeStart,
-                nextSectionSizeEnd,
-                nextSectionColorStart,
-                nextSectionColorEnd,
-                newNextSectionXStart,
-                newNextSectionXEnd,
-                newNextSectionYStart,
-                newNextSectionYEnd,
-                colorRingCurrent,
-                colorRingNext,
-                paintCurSection,
-                paintNextSection,
+        if (isInEditMode) {
+            canvas.drawText(EDIT_MODE_TIME_TEXT, curTimeX, curTimeY, paintCurSection)
+            canvas.drawText(EDIT_MODE_CURRENT_LABEL, curLayout.x, curLayout.y, paintCurSection)
+            canvas.drawText(EDIT_MODE_NEXT_LABEL, nextLayout.x, nextLayout.y, paintNextSection)
+            canvas.drawText(
+                EDIT_MODE_NEXT_NEXT_LABEL,
+                newNextLayout.x,
+                newNextLayout.y,
                 paintNewNextSection,
-                currentSectionName,
-                nextSectionName,
-                newNextSectionName,
             )
+            return
+        }
 
-            drawTimeText(
-                canvas,
-                curTimeX,
-                curTimeY,
-                curSectionSize,
-                timeInfoX,
-                timeInfoY,
-                timeInfoSize,
-                showTimeMode,
-                fixedCurrentStartSeconds,
-                fixedNextStartSeconds,
-                fixedSessionTotalSeconds,
-                sectionElapsedSeconds,
-                timeTextAnimator,
-                paintTimeInfoText,
-                paintTimeSectionElapsed,
-                paintTimeSectionRemaining,
-                paintTimeSessionElapsed,
-                paintTimeSessionRemaining,
-                context,
-            )
+        drawSectionLabels(
+            canvas,
+            floatProperties,
+            interp,
+            curLayout,
+            nextLayout,
+            newNextLayout,
+            colorRingCurrent,
+            colorRingNext,
+            paintCurSection,
+            paintNextSection,
+            paintNewNextSection,
+        )
+
+        drawTimeText(
+            canvas,
+            curTimeX,
+            curTimeY,
+            curLayout,
+            timeInfoX,
+            timeInfoY,
+            timeInfoSize,
+            showTimeMode,
+            fixedCurrentStartSeconds,
+            fixedNextStartSeconds,
+            fixedSessionTotalSeconds,
+            sectionElapsedSeconds,
+            timeTextAnimator,
+            paintTimeInfoText,
+            paintTimeSectionElapsed,
+            paintTimeSectionRemaining,
+            paintTimeSessionElapsed,
+            paintTimeSessionRemaining,
+            context,
+        )
         }
 
         fun animateProperty(
@@ -811,33 +768,33 @@ class TimerView
             sectionElapsedSeconds = value
         }
 
-        fun setSectionNames(
-            currentName: String,
-            nextName: String,
-        ) {
-            val nameChanged = !(currentName == currentSectionName && nextName == nextSectionName)
-            if (nameChanged && runningAnims[PROP_NAME_SWITCH] == null) {
-                newNextSectionName = nextName
-                animHelper.animateTo(
-                    PROP_NAME_SWITCH,
-                    ONE_INT,
-                    SECTION_MORPH_DURATION_MS,
-                    Runnable {
-                        floatProperties[PROP_NAME_SWITCH] = MORPH_END_VALUE
-                        currentSectionName = currentName
-                        nextSectionName = nextName
-                    },
-                )
-            }
+    fun setSectionNames(
+        currentName: String,
+        nextName: String,
+    ) {
+        val nameChanged = !(currentName == curLayout.name && nextName == nextLayout.name)
+        if (nameChanged && runningAnims[PROP_NAME_SWITCH] == null) {
+            newNextLayout.name = nextName
+            animHelper.animateTo(
+                PROP_NAME_SWITCH,
+                ONE_INT,
+                SECTION_MORPH_DURATION_MS,
+                Runnable {
+                    floatProperties[PROP_NAME_SWITCH] = MORPH_END_VALUE
+                    curLayout.name = currentName
+                    nextLayout.name = nextName
+                },
+            )
         }
+    }
 
-        fun setSectionNamesNoAnim(
-            currentName: String,
-            nextName: String,
-        ) {
-            currentSectionName = currentName
-            nextSectionName = nextName
-        }
+    fun setSectionNamesNoAnim(
+        currentName: String,
+        nextName: String,
+    ) {
+        curLayout.name = currentName
+        nextLayout.name = nextName
+    }
 
         fun getProperty(index: Int): Float = floatProperties[index]
 
