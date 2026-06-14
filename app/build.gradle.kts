@@ -40,6 +40,20 @@ abstract class CommitCountSource : ValueSource<String, ValueSourceParameters.Non
     }
 }
 
+abstract class HostnameSource : ValueSource<String, ValueSourceParameters.None> {
+    override fun obtain(): String {
+        val process =
+            ProcessBuilder("hostname", "-s")
+                .directory(File(System.getProperty("user.dir")))
+                .start()
+        process.waitFor()
+        return process.inputStream
+            .bufferedReader()
+            .readText()
+            .trim()
+    }
+}
+
 plugins {
     id("com.android.application")
     id("com.google.dagger.hilt.android")
@@ -76,6 +90,9 @@ android {
         val versionDisplay = if (commitCount == "0") versionName else "$versionName+$commitCount"
         buildConfigField("String", "VERSION_DISPLAY", "\"$versionDisplay\"")
 
+        val buildHost = providers.of(HostnameSource::class.java) {}.get().trim()
+        buildConfigField("String", "BUILD_HOST", "\"$buildHost\"")
+
         ksp {
             arg("room.schemaLocation", "$projectDir/schemas")
         }
@@ -85,10 +102,12 @@ android {
         debug {
             applicationIdSuffix = ".debug"
             versionNameSuffix = "-debug"
+            buildConfigField("String", "BUILD_TYPE", "\"debug\"")
         }
         release {
             isMinifyEnabled = false
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
+            buildConfigField("String", "BUILD_TYPE", "\"release\"")
         }
     }
 
