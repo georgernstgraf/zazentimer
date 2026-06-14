@@ -65,7 +65,7 @@ class SessionRankPersistenceTest : AbstractZazenTest() {
             .perform(
                 RecyclerViewActions.actionOnItemAtPosition<RecyclerView.ViewHolder>(
                     0,
-                    dragToPosition(2),
+                    dragToPosition(1),
                 ),
             )
 
