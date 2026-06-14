@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="abbrechen">ರದ್ದುಗೊಳಿಸಿ</string>
     <string name="about3">&lt;a href=\"https://github.com/georgernstgraf/zazentimer/issues\"&gt;GitHub ನಲ್ಲಿ ಸಮಸ್ಯೆಗಳನ್ನು ವರದಿ ಮಾಡಿ&lt;/a&gt;</string>
     <string name="action_delete">ಅಳಿಸಿ</string>
     <string name="action_undo">ರದ್ದುಮಾಡು</string>
@@ -12,6 +11,7 @@
     <string name="but_pause">ವಿರಾಮ</string>
     <string name="but_start">ಧ್ಯಾನವನ್ನು ಪ್ರಾರಂಭಿಸಿ</string>
     <string name="but_stop">ನಿಲ್ಲಿಸಿ</string>
+    <string name="cancel">ರದ್ದುಗೊಳಿಸಿ</string>
     <string name="caption_zazen_meditation">Zazen ಧ್ಯಾನ</string>
     <string name="content_desc_drag_handle">ಮರುಕ್ರಮಗೊಳಿಸಲು ಎಳೆಯಿರಿ</string>
     <string name="content_desc_section_actions">ವಿಭಾಗದ ಕ್ರಿಯೆಗಳು</string>
@@ -41,7 +41,7 @@
     <string name="menu_help">ಸಹಾಯ</string>
     <string name="menu_privacy">ಗೌಪ್ಯತೆ…</string>
     <string name="menu_settings">ಸೆಟ್ಟಿಂಗ್‌ಗಳು</string>
-    <string name="minuten">ನಿಮಿಷಗಳು</string>
+    <string name="minutes">ನಿಮಿಷಗಳು</string>
     <string name="nav_label_edit_section">ವಿಭಾಗವನ್ನು ಸಂಪಾದಿಸಿ</string>
     <string name="nav_label_edit_session">ಅಧಿವೇಶನವನ್ನು ಸಂಪಾದಿಸಿ</string>
     <string name="nav_label_manage_bells">ಗಂಟೆಗಳನ್ನು ನಿರ್ವಹಿಸಿ</string>
@@ -61,14 +61,13 @@
     <string name="restore_success_text">ಡೇಟಾ ಮರುಸ್ಥಾಪನೆ ಯಶಸ್ವಿ</string>
     <string name="restore_version_mismatch_title">ಹೊಸ ಬ್ಯಾಕಪ್ ಆವೃತ್ತಿ</string>
     <string name="search_menu_title">ಹುಡುಕಿ</string>
+    <string name="seconds">ಸೆಕೆಂಡುಗಳು</string>
     <string name="section_deleted">\'%s\' ಅಳಿಸಲಾಗಿದೆ</string>
     <string name="section_info_string_1_pl">%1$d ಗಂಟೆಗಳು</string>
     <string name="section_info_string_1_sg">1 ಗಂಟೆ</string>
     <string name="section_info_string_2_pl">ಪ್ರತಿ %1$d ಸೆಕೆಂಡುಗಳಿಗೆ</string>
     <string name="section_info_string_2_sg">ಪ್ರತಿ ಸೆಕೆಂಡಿಗೆ</string>
-    <string name="sekunden">ಸೆಕೆಂಡುಗಳು</string>
     <string name="session_deleted">\'%s\' ಅಳಿಸಲಾಗಿದೆ</string>
-    <string name="stop_meditation_cancel">ರದ್ದುಗೊಳಿಸಿ</string>
     <string name="stop_meditation_stop">ನಿಲ್ಲಿಸಿ</string>
     <string name="stop_meditation_title">ಧ್ಯಾನವನ್ನು ನಿಲ್ಲಿಸಬೇಕೆ?</string>
     <string name="theme">ಥೀಮ್</string>

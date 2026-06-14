@@ -197,7 +197,7 @@ class MeditationFragment : Fragment() {
                     if (isAdded) {
                         Navigation.findNavController(requireView()).popBackStack()
                     }
-                }.setNegativeButton(R.string.stop_meditation_cancel) { dialog, _ -> dialog.dismiss() }
+                }.setNegativeButton(R.string.cancel) { dialog, _ -> dialog.dismiss() }
                 .setCancelable(true)
                 .show()
         } catch (e: IllegalStateException) {

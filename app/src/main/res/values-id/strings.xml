@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="abbrechen">Batal</string>
     <string name="about1">Zazen Meditation Timer — Timer meditasi sederhana dengan bagian yang dapat disesuaikan, suara lonceng, dan manajemen sesi.</string>
-    <string name="about2">Awalnya dibuat oleh Stefan Gaffga. Saat ini dikelola oleh Georg Graf.&lt;br&gt;&lt;br&gt;Terima kasih kepada Winfried dari &lt;a href=\"http://www.meditationsuhren.de\"&gt;http://www.meditationsuhren.de&lt;/a&gt; karena telah menyediakan Suara Genta yang luar biasa!</string>
+    <string name="about2">Awalnya dibuat oleh Stefan Gaffga. Saat ini dikelola oleh Georg Graf.&lt;br&gt;&lt;br&gt;Terima kasih kepada Winfried dari &lt;a href=\"http://www.meditationsuhren.de\"&gt;http://www.meditationsuhren.de&lt;/a&gt; karena telah menyediakan Suara Mangkuk Bernyanyi yang luar biasa!</string>
     <string name="about3">&lt;a href=\"https://github.com/georgernstgraf/zazentimer/issues\"&gt;Laporkan masalah di GitHub&lt;/a&gt;</string>
     <string name="action_delete">Hapus</string>
     <string name="action_undo">Urungkan</string>
@@ -15,11 +14,12 @@
     <string name="bell_name_2">Nada Rendah</string>
     <string name="bell_pause">Jeda lonceng (dtk)</string>
     <string name="bell_user">Tambah Lonceng…</string>
-    <string name="bell_volume_dim_explanation">Sesuaikan volume lonceng individual untuk sesi ini.</string>
+    <string name="bell_volume_dim_explanation">Sesuaikan volume masing-masing lonceng untuk sesi ini.</string>
     <string name="but_pause">Jeda</string>
     <string name="but_start">Mulai Meditasi</string>
     <string name="but_stop">Berhenti</string>
     <string name="button_bell_volumes">Sesuaikan Volume Lonceng</string>
+    <string name="cancel">Batal</string>
     <string name="caption_zazen_meditation">Meditasi Zazen</string>
     <string name="checkbox_keep_screen_on">Biarkan layar tetap menyala</string>
     <string name="confirm_delete_bell">Hapus lonceng \"%s\"?</string>
@@ -63,7 +63,7 @@
     <string name="menu_help">Bantuan</string>
     <string name="menu_privacy">Privasi…</string>
     <string name="menu_settings">Pengaturan</string>
-    <string name="minuten">Menit</string>
+    <string name="minutes">Menit</string>
     <string name="nav_label_edit_section">Edit Bagian</string>
     <string name="nav_label_edit_session">Edit Sesi</string>
     <string name="nav_label_manage_bells">Kelola Lonceng</string>
@@ -100,17 +100,16 @@
     <string name="restore_version_mismatch_text">Cadangan ini dibuat oleh versi ZazenTimer yang lebih baru. Silakan perbarui aplikasi.</string>
     <string name="restore_version_mismatch_title">Versi Cadangan Lebih Baru</string>
     <string name="search_menu_title">Cari</string>
+    <string name="seconds">Detik</string>
     <string name="section_deleted">Dihapus \'%s\'</string>
     <string name="section_info_string_1_pl">%1$d Lonceng</string>
     <string name="section_info_string_1_sg">1 Lonceng</string>
     <string name="section_info_string_2_pl">setiap %1$d Detik</string>
     <string name="section_info_string_2_sg">setiap Detik</string>
-    <string name="sekunden">Detik</string>
     <string name="select_audio">Pilih file suara</string>
     <string name="service_description">Meditasi Zazen yang sedang berjalan</string>
     <string name="session_deleted">Dihapus \'%s\'</string>
     <string name="session_list_unnamed_entry">Sesi Tanpa Nama</string>
-    <string name="stop_meditation_cancel">Batal</string>
     <string name="stop_meditation_message">Sesi meditasi Anda masih berlangsung.</string>
     <string name="stop_meditation_stop">Berhenti</string>
     <string name="stop_meditation_title">Hentikan meditasi?</string>

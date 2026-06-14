@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="abbrechen">Anulare</string>
-    <string name="about1">Cronometru de Meditație Zazen — Un cronometru de meditație simplu cu secțiuni personalizabile, sunete de bol și gestionarea sesiunilor.</string>
-    <string name="about2">Creat inițial de Stefan Gaffga. Întreținut în prezent de Georg Graf.&lt;br&gt;&lt;br&gt;Mulțumiri lui Winfried de la &lt;a href=\"http://www.meditationsuhren.de\"&gt;http://www.meditationsuhren.de&lt;/a&gt; pentru furnizarea unor sunete de bol atât de grozave!</string>
+    <string name="about1">Cronometru de Meditație Zazen — Un cronometru simplu pentru meditație cu secțiuni personalizabile, sunete de bol și gestionare a sesiunilor.</string>
+    <string name="about2">Creat inițial de Stefan Gaffga. Întreținut în prezent de Georg Graf.&lt;br&gt;&lt;br&gt;Mulțumiri lui Winfried de la &lt;a href=\"http://www.meditationsuhren.de\"&gt;http://www.meditationsuhren.de&lt;/a&gt; pentru furnizarea unor sunete de bol atât de frumoase!</string>
     <string name="about3">&lt;a href=\"https://github.com/georgernstgraf/zazentimer/issues\"&gt;Raportați probleme pe GitHub&lt;/a&gt;</string>
     <string name="action_delete">Șterge</string>
     <string name="action_undo">Anulează</string>
@@ -20,6 +19,7 @@
     <string name="but_start">Începe meditația</string>
     <string name="but_stop">Oprește</string>
     <string name="button_bell_volumes">Ajustează volumele bolurilor</string>
+    <string name="cancel">Anulare</string>
     <string name="caption_zazen_meditation">Meditație Zazen</string>
     <string name="checkbox_keep_screen_on">Menține ecranul aprins</string>
     <string name="confirm_delete_bell">Ștergeți clopotul \"%s\"?</string>
@@ -63,7 +63,7 @@
     <string name="menu_help">Ajutor</string>
     <string name="menu_privacy">Confidențialitate…</string>
     <string name="menu_settings">Setări</string>
-    <string name="minuten">Minute</string>
+    <string name="minutes">Minute</string>
     <string name="nav_label_edit_section">Editare secțiune</string>
     <string name="nav_label_edit_session">Editare sesiune</string>
     <string name="nav_label_manage_bells">Gestionează clopotele</string>
@@ -85,11 +85,11 @@
     <string name="ok">OK</string>
     <string name="pref_desc_brightness">Luminozitatea ecranului în timpul meditației</string>
     <string name="pref_sum_backup">Salvați o copie de rezervă a Sesiunilor și Sunetelor pe cardul SD.</string>
-    <string name="pref_sum_restore">Restaurați Sesiunile și Sunetele Personalizate din copia de rezervă de pe cardul SD</string>
+    <string name="pref_sum_restore">Restaurați Sesiunile și Sunetele Personalizate din Copia de Rezervă de pe Cardul SD</string>
     <string name="pref_title_backup">Creează copie de rezervă</string>
     <string name="pref_title_brightness">Luminozitate</string>
-    <string name="pref_title_restore">Restaurează din Copia de Rezervă</string>
-    <string name="privacy_message">Această aplicație nu colectează date personale - de asemenea, nu folosește adrese IP sau orice alte date legate de tehnologie și nici nu colectează, procesează sau utilizează în vreun fel.</string>
+    <string name="pref_title_restore">Restaurare din copia de rezervă</string>
+    <string name="privacy_message">Această aplicație nu colectează date personale — nu utilizează adrese IP sau alte date tehnologice și nu colectează, prelucrează sau utilizează date în niciun fel.</string>
     <string name="privacy_ok">OK</string>
     <string name="privacy_title">Informații de confidențialitate</string>
     <string name="restore_backup_not_found">Fișierul de rezervă nu a fost găsit</string>
@@ -100,17 +100,16 @@
     <string name="restore_version_mismatch_text">Această copie de rezervă a fost creată de o versiune mai nouă a ZazenTimer. Vă rugăm să actualizați aplicația.</string>
     <string name="restore_version_mismatch_title">Versiune mai nouă a copiei de rezervă</string>
     <string name="search_menu_title">Căutare</string>
+    <string name="seconds">Secunde</string>
     <string name="section_deleted">S-a șters \'%s\'</string>
     <string name="section_info_string_1_pl">%1$d Clopote</string>
     <string name="section_info_string_1_sg">1 Clopot</string>
     <string name="section_info_string_2_pl">la fiecare %1$d secunde</string>
     <string name="section_info_string_2_sg">în fiecare secundă</string>
-    <string name="sekunden">Secunde</string>
     <string name="select_audio">Selectează fișierul audio</string>
     <string name="service_description">O meditație Zazen în desfășurare</string>
     <string name="session_deleted">S-a șters \'%s\'</string>
     <string name="session_list_unnamed_entry">Sesiune fără nume</string>
-    <string name="stop_meditation_cancel">Anulare</string>
     <string name="stop_meditation_message">Sesiunea dumneavoastră de meditație este încă în desfășurare.</string>
     <string name="stop_meditation_stop">Oprește</string>
     <string name="stop_meditation_title">Opriți meditația?</string>

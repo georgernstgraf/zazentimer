@@ -149,7 +149,7 @@ class SettingsFragment : PreferenceFragmentCompat() {
                         intent.addCategory(Intent.CATEGORY_OPENABLE)
                         intent.type = "application/zip"
                         restoreLauncher.launch(intent)
-                    }.setNegativeButton(R.string.abbrechen) { _: DialogInterface, _: Int ->
+                    }.setNegativeButton(R.string.cancel) { _: DialogInterface, _: Int ->
                     }.show()
                 true
             }

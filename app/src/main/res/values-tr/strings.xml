@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="abbrechen">İptal</string>
     <string name="about1">Zazen Meditasyon Zamanlayıcısı — Özelleştirilebilir bölümler, çan sesleri ve oturum yönetimi ile basit bir meditasyon zamanlayıcısı.</string>
-    <string name="about2">İlk olarak Stefan Gaffga tarafından oluşturuldu. Şu anda Georg Graf tarafından sürdürülmektedir.&lt;br&gt;&lt;br&gt;Harika zil sesleri sağladığı için &lt;a href=\"http://www.meditationsuhren.de\"&gt;http://www.meditationsuhren.de&lt;/a&gt; adresinden Winfried\'e teşekkürler!</string>
+    <string name="about2">Başlangıçta Stefan Gaffga tarafından oluşturulmuştur. Şu anda Georg Graf tarafından sürdürülmektedir.&lt;br&gt;&lt;br&gt;Bu harika Klangschale seslerini sunan &lt;a href=\"http://www.meditationsuhren.de\"&gt;http://www.meditationsuhren.de&lt;/a&gt;\'den Winfried\'e teşekkürler!</string>
     <string name="about3">&lt;a href=\"https://github.com/georgernstgraf/zazentimer/issues\"&gt;GitHub\'da sorun bildir&lt;/a&gt;</string>
     <string name="action_delete">Sil</string>
     <string name="action_undo">Geri Al</string>
     <string name="affected_section_format">• \"%2$s\" Oturumundaki \"%1$s\" bölümü</string>
-    <string name="app_description">Bu uygulama, kullanıcının meditasyon seansları tanımlamasına olanak sağlar ve bir bölüm veya tüm meditasyon sona erdiğinde görsel ve sesli geri bildirimli bir zamanlayıcı sunar.</string>
+    <string name="app_description">Bu uygulama, kullanıcının bir dizi meditasyon oturumu tanımlamasına olanak tanır ve meditasyonun bir bölümü veya tamamı bittiğinde görsel ve işitsel geri bildirim sağlayan bir zamanlayıcı sunar.</string>
     <string name="backup_error_text">Üzgünüz, kaydetme sırasında bir hata oluştu.</string>
     <string name="backup_success_text">Yedek başarıyla oluşturuldu!</string>
     <string name="bell_dimming_section_title">Çan Ses Seviyesini Yapılandır</string>
@@ -20,6 +19,7 @@
     <string name="but_start">Meditasyonu Başlat</string>
     <string name="but_stop">Durdur</string>
     <string name="button_bell_volumes">Çan Ses Düzeylerini Ayarla</string>
+    <string name="cancel">İptal</string>
     <string name="caption_zazen_meditation">Zazen Meditasyonu</string>
     <string name="checkbox_keep_screen_on">Ekranı açık tut</string>
     <string name="confirm_delete_bell">\"%s\" çanı silinsin mi?</string>
@@ -44,7 +44,7 @@
     <string name="demo_sess2_name">Sadece Zazen</string>
     <string name="desc_keep_screen_on">Meditasyon sırasında ekranı açık tutar</string>
     <string name="gong_type">Gong Sesi</string>
-    <string name="help_sectionlist_text">Burada Oturumunuzun içeriğini adlandırabilir, açıklayabilir ve düzenleyebilirsiniz.\n\n YENİDEN SIRALAMA\n Öğeleri yeniden sıralamak için, bir öğeye uzun basın ve\n yeni konumuna sürükleyin.\n\n SİLME\n Bir öğeyi silmek için sağa kaydırın.\n\n DÜZENLEME\n Bir bölümü düzenlemek için ona bir kez dokunmanız yeterlidir.\n\n EKLEME\n Yeni bir bölüm eklemek için + düğmesine basın.</string>
+    <string name="help_sectionlist_text">Burada Seansınızın içeriğini adlandırabilir, tanımlayabilir ve düzenleyebilirsiniz.\n\n YENİDEN SIRALAMA\n Öğeleri yeniden sıralamak için bir öğeye uzun basın ve\n yeni konumuna sürükleyin.\n\n SİLME\n Bir öğeyi silmek için sağa kaydırın.\n\n DÜZENLE\n Bir bölümü düzenlemek için üzerine bir kez dokunun.\n\n EKLE\n Yeni bir bölüm eklemek için + düğmesine basın.</string>
     <string name="help_sectionlist_title">Oturumu Düzenle</string>
     <string name="import_bell">Çan İçe Aktar</string>
     <string name="label_section_name">Bölüm adı</string>
@@ -63,7 +63,7 @@
     <string name="menu_help">Yardım</string>
     <string name="menu_privacy">Gizlilik…</string>
     <string name="menu_settings">Ayarlar</string>
-    <string name="minuten">Dakika</string>
+    <string name="minutes">Dakika</string>
     <string name="nav_label_edit_section">Bölümü Düzenle</string>
     <string name="nav_label_edit_session">Oturumu Düzenle</string>
     <string name="nav_label_manage_bells">Çanları Yönet</string>
@@ -85,7 +85,7 @@
     <string name="ok">Tamam</string>
     <string name="pref_desc_brightness">Meditasyon sırasında ekran parlaklığı</string>
     <string name="pref_sum_backup">Oturumlarınızın ve Seslerinizin yedeğini SD Kartınıza kaydedin.</string>
-    <string name="pref_sum_restore">Seanslarınızı ve Özel Seslerinizi SD Kart Yedeğinden geri yükleyin</string>
+    <string name="pref_sum_restore">SD Kart Yedeğinden Oturumlarınızı ve Özel Seslerinizi Geri Yükleyin</string>
     <string name="pref_title_backup">Yedek Oluştur</string>
     <string name="pref_title_brightness">Parlaklık</string>
     <string name="pref_title_restore">Yedekten Geri Yükle</string>
@@ -94,23 +94,22 @@
     <string name="privacy_title">Gizlilik Bilgisi</string>
     <string name="restore_backup_not_found">Yedek Dosyası bulunamadı</string>
     <string name="restore_error_text">Yedekten geri yükleme hatası</string>
-    <string name="restore_really_text">Bu, tüm Oturumlarınızı Yedekteki oturumlarla değiştirecektir! (Geri Alma Yok!)</string>
+    <string name="restore_really_text">Bu işlem tüm Seanslarınızı Yedekteki seanslarla değiştirecektir! (Geri alınamaz!)</string>
     <string name="restore_really_title">Veriler gerçekten geri yüklensin mi?</string>
     <string name="restore_success_text">Veri Geri Yükleme başarılı</string>
     <string name="restore_version_mismatch_text">Bu yedek ZazenTimer\'ın daha yeni bir sürümü tarafından oluşturulmuş. Lütfen uygulamayı güncelleyin.</string>
     <string name="restore_version_mismatch_title">Daha Yeni Yedek Sürümü</string>
     <string name="search_menu_title">Ara</string>
+    <string name="seconds">Saniye</string>
     <string name="section_deleted">\'%s\' silindi</string>
     <string name="section_info_string_1_pl">%1$d Çan</string>
     <string name="section_info_string_1_sg">1 Çan</string>
     <string name="section_info_string_2_pl">her %1$d Saniyede bir</string>
     <string name="section_info_string_2_sg">her Saniye</string>
-    <string name="sekunden">Saniye</string>
     <string name="select_audio">Ses dosyası seç</string>
     <string name="service_description">Devam eden bir Zazen Meditasyonu</string>
     <string name="session_deleted">\'%s\' silindi</string>
     <string name="session_list_unnamed_entry">İsimsiz Oturum</string>
-    <string name="stop_meditation_cancel">İptal</string>
     <string name="stop_meditation_message">Meditasyon seansınız hâlâ devam ediyor.</string>
     <string name="stop_meditation_stop">Durdur</string>
     <string name="stop_meditation_title">Meditasyon durdurulsun mu?</string>
@@ -124,7 +123,7 @@
     <string name="theme_system">Sistem Teması</string>
     <string name="time_section_elapsed">Bölüm geçen süre</string>
     <string name="time_section_remaining">Bölüm kalan süre</string>
-    <string name="time_session_elapsed">Oturum geçen süre</string>
+    <string name="time_session_elapsed">Geçen oturum süresi</string>
     <string name="time_session_remaining">Oturum kalan süre</string>
     <string name="title_bell_volumes">Çan Ses Düzeyleri</string>
     <string name="title_question_delete_session">Seans Silinsin mi?</string>

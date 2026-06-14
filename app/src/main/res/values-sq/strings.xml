@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="abbrechen">Anulo</string>
     <string name="about1">Kohëmatësi i Meditimit Zazen — Një kohëmatës i thjeshtë meditimi me seksione të personalizueshme, tinguj zilesh dhe menaxhim të sesioneve.</string>
     <string name="about2">Krijuar fillimisht nga Stefan Gaffga. Aktualisht mirëmbahet nga Georg Graf.&lt;br&gt;&lt;br&gt;Faleminderit Winfried nga &lt;a href=\"http://www.meditationsuhren.de\"&gt;http://www.meditationsuhren.de&lt;/a&gt; për ofrimin e këtyre Tingujve të shkëlqyer të Zileve!</string>
     <string name="about3">&lt;a href=\"https://github.com/georgernstgraf/zazentimer/issues\"&gt;Raportoni problemet në GitHub&lt;/a&gt;</string>
@@ -20,6 +19,7 @@
     <string name="but_start">Fillo meditimin</string>
     <string name="but_stop">Ndalo</string>
     <string name="button_bell_volumes">Rregullo Volumin e Zileve</string>
+    <string name="cancel">Anulo</string>
     <string name="caption_zazen_meditation">Meditimi Zazen</string>
     <string name="checkbox_keep_screen_on">Mbaje ekranin ndezur</string>
     <string name="confirm_delete_bell">Të fshihet zilja \"%s\"?</string>
@@ -63,7 +63,7 @@
     <string name="menu_help">Ndihmë</string>
     <string name="menu_privacy">Privatësi…</string>
     <string name="menu_settings">Cilësimet</string>
-    <string name="minuten">Minuta</string>
+    <string name="minutes">Minuta</string>
     <string name="nav_label_edit_section">Modifiko Seksionin</string>
     <string name="nav_label_edit_session">Modifiko Sesionin</string>
     <string name="nav_label_manage_bells">Menaxho Zilet</string>
@@ -100,17 +100,16 @@
     <string name="restore_version_mismatch_text">Kjo kopje rezervë u krijua nga një version më i ri i ZazenTimer. Ju lutemi, përditësoni aplikacionin.</string>
     <string name="restore_version_mismatch_title">Version më i Ri i Kopjes Rezervë</string>
     <string name="search_menu_title">Kërko</string>
+    <string name="seconds">Sekonda</string>
     <string name="section_deleted">U fshi \'%s\'</string>
     <string name="section_info_string_1_pl">%1$d Zile</string>
     <string name="section_info_string_1_sg">1 Zile</string>
     <string name="section_info_string_2_pl">çdo %1$d sekonda</string>
     <string name="section_info_string_2_sg">çdo sekondë</string>
-    <string name="sekunden">Sekonda</string>
     <string name="select_audio">Zgjidhni skedarin e tingullit</string>
     <string name="service_description">Një meditim Zazen në zhvillim</string>
     <string name="session_deleted">U fshi \'%s\'</string>
     <string name="session_list_unnamed_entry">Seancë pa emër</string>
-    <string name="stop_meditation_cancel">Anulo</string>
     <string name="stop_meditation_message">Sesioni yt i meditimit është ende duke u zhvilluar.</string>
     <string name="stop_meditation_stop">Ndalo</string>
     <string name="stop_meditation_title">Ndalo meditimin?</string>

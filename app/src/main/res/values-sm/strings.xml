@@ -11,7 +11,7 @@
     <string name="demo_sess1_sec6_name">Zazen 3</string>
     <string name="menu_about">E uiga i…</string>
     <string name="menu_help">Fesoasoani</string>
-    <string name="minuten">Minute</string>
-    <string name="sekunden">Sekone</string>
+    <string name="minutes">Minute</string>
+    <string name="seconds">Sekone</string>
     <string name="stop_meditation_stop">Taofi</string>
 </resources>

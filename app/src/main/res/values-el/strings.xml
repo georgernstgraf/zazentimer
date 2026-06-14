@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="abbrechen">Ακύρωση</string>
-    <string name="about1">Χρονόμετρο Διαλογισμού Zazen — Ένα απλό χρονόμετρο διαλογισμού με προσαρμόσιμα τμήματα, ήχους κωδώνων και διαχείριση συνεδριών.</string>
-    <string name="about2">Αρχικά δημιουργήθηκε από τον Stefan Gaffga. Συντηρείται επί του παρόντος από τον Georg Graf.&lt;br&gt;&lt;br&gt;Ευχαριστούμε τον Winfried από το &lt;a href=\"http://www.meditationsuhren.de\"&gt;http://www.meditationsuhren.de&lt;/a&gt; για την παροχή τόσο υπέροχων ήχων κωδώνων!</string>
+    <string name="about1">Χρονόμετρο Διαλογισμού Zazen — Ένα απλό χρονόμετρο διαλογισμού με προσαρμόσιμες ενότητες, ήχους ηχογαβάθας και διαχείριση συνεδριών.</string>
+    <string name="about2">Αρχικά δημιουργήθηκε από τον Stefan Gaffga. Σήμερα συντηρείται από τον Georg Graf.&lt;br&gt;&lt;br&gt;Ευχαριστίες στον Winfried του &lt;a href=\"http://www.meditationsuhren.de\"&gt;http://www.meditationsuhren.de&lt;/a&gt; για την παροχή εξαιρετικών ήχων ηχογαβάθας!</string>
     <string name="about3">&lt;a href=\"https://github.com/georgernstgraf/zazentimer/issues\"&gt;Αναφορά προβλημάτων στο GitHub&lt;/a&gt;</string>
     <string name="action_delete">Διαγραφή</string>
     <string name="action_undo">Αναίρεση</string>
@@ -19,7 +18,8 @@
     <string name="but_pause">Παύση</string>
     <string name="but_start">Έναρξη διαλογισμού</string>
     <string name="but_stop">Διακοπή</string>
-    <string name="button_bell_volumes">Προσαρμογή εντάσεων ήχων</string>
+    <string name="button_bell_volumes">Ρύθμιση έντασης κωδώνων</string>
+    <string name="cancel">Ακύρωση</string>
     <string name="caption_zazen_meditation">Διαλογισμός Zazen</string>
     <string name="checkbox_keep_screen_on">Διατήρηση οθόνης ενεργής</string>
     <string name="confirm_delete_bell">Διαγραφή του ήχου \"%s\";</string>
@@ -43,27 +43,27 @@
     <string name="demo_sess2_description">Καθημερινός διαλογισμός</string>
     <string name="demo_sess2_name">Μόνο Zazen</string>
     <string name="desc_keep_screen_on">Διατηρεί την οθόνη ενεργή κατά τη διάρκεια του διαλογισμού</string>
-    <string name="gong_type">Ήχος γκονγκ</string>
-    <string name="help_sectionlist_text">Εδώ μπορείτε να ονομάσετε, να περιγράψετε και να επεξεργαστείτε τα περιεχόμενα της Συνεδρίας σας.\n\n ΑΝΑΔΙΑΤΑΞΗ\n Για να αναδιατάξετε τα στοιχεία, πατήστε παρατεταμένα σε ένα στοιχείο και\n σύρετέ το στη νέα του θέση.\n\n ΔΙΑΓΡΑΦΗ\n Για να διαγράψετε ένα στοιχείο, μετακινήστε το προς τα δεξιά.\n\n ΕΠΕΞΕΡΓΑΣΙΑ\n Για να επεξεργαστείτε ένα τμήμα, απλώς πατήστε το μία φορά.\n\n ΠΡΟΣΘΗΚΗ\n Για να προσθέσετε ένα νέο τμήμα, πατήστε το κουμπί +.</string>
+    <string name="gong_type">Ήχος Γκονγκ</string>
+    <string name="help_sectionlist_text">Εδώ μπορείτε να ονομάσετε, να περιγράψετε και να επεξεργαστείτε τα περιεχόμενα της Συνεδρίας σας.\n\n ΑΝΑΔΙΑΤΑΞΗ\n Για να αναδιατάξετε τα στοιχεία, πατήστε παρατεταμένα ένα στοιχείο και\n σύρετέ το στη νέα του θέση.\n\n ΔΙΑΓΡΑΦΗ\n Για να διαγράψετε ένα στοιχείο, μετακινήστε το προς τα δεξιά.\n\n ΕΠΕΞΕΡΓΑΣΙΑ\n Για να επεξεργαστείτε μια ενότητα, απλώς αγγίξτε την μία φορά.\n\n ΠΡΟΣΘΗΚΗ\n Για να προσθέσετε μια νέα ενότητα, πατήστε το κουμπί +.</string>
     <string name="help_sectionlist_title">Επεξεργασία συνεδρίας</string>
     <string name="import_bell">Εισαγωγή κωδώνου</string>
     <string name="label_section_name">Όνομα ενότητας</string>
     <string name="label_session_description">Περιγραφή συνεδρίας</string>
     <string name="label_session_name">Όνομα συνεδρίας</string>
     <string name="manage_bells">Διαχείριση κωδώνων</string>
-    <string name="manage_bells_summary">Προσθήκη κωδώνων από το σύστημα αρχείων / αφαίρεση κωδώνων από την εφαρμογή</string>
+    <string name="manage_bells_summary">Προσθήκη ήχων από το σύστημα αρχείων / αφαίρεση ήχων από την εφαρμογή</string>
     <string name="menu_about">Σχετικά…</string>
     <string name="menu_add_section">Προσθήκη Ενότητας</string>
     <string name="menu_add_session">Προσθήκη συνεδρίας</string>
     <string name="menu_copy_session">Διπλασιασμός συνεδρίας</string>
     <string name="menu_delete_section">Διαγραφή Ενότητας</string>
     <string name="menu_delete_session">Διαγραφή συνεδρίας</string>
-    <string name="menu_duplicate_section">Δημιουργία διπλότυπου ενότητας</string>
+    <string name="menu_duplicate_section">Διπλασιασμός τμήματος</string>
     <string name="menu_edit_session">Επεξεργασία συνεδρίας</string>
     <string name="menu_help">Βοήθεια</string>
     <string name="menu_privacy">Απόρρητο…</string>
     <string name="menu_settings">Ρυθμίσεις</string>
-    <string name="minuten">Λεπτά</string>
+    <string name="minutes">Λεπτά</string>
     <string name="nav_label_edit_section">Επεξεργασία Ενότητας</string>
     <string name="nav_label_edit_session">Επεξεργασία συνεδρίας</string>
     <string name="nav_label_manage_bells">Διαχείριση κωδώνων</string>
@@ -72,11 +72,11 @@
     <string name="nav_label_settings">Ρυθμίσεις</string>
     <string name="new_session_description">Περιγραφή Νέας Συνεδρίας</string>
     <string name="new_session_name">Νέα Συνεδρία</string>
-    <string name="no_bells_configured">Δεν έχουν ρυθμιστεί ήχοι ακόμα</string>
+    <string name="no_bells_configured">Δεν έχουν ρυθμιστεί κωδώνοι ακόμα</string>
     <string name="no_custom_bells">Δεν έχουν εισαχθεί προσαρμοσμένες καμπάνες.</string>
     <string name="no_sections_in_session">Δεν είναι δυνατή η έναρξη του Διαλογισμού: Η επιλεγμένη Συνεδρία δεν έχει Τμήματα.</string>
     <string name="no_session_exists">Δεν υπάρχει συνεδρία που μπορεί να ξεκινήσει. Παρακαλώ δημιουργήστε μία πρώτα.</string>
-    <string name="notification_channel_name">Χρονόμετρο διαλογισμού</string>
+    <string name="notification_channel_name">Χρονόμετρο Διαλογισμού</string>
     <string name="notification_text">Ένας διαλογισμός Zazen εκτελείται αυτή τη στιγμή</string>
     <string name="notification_text_paused">Ο διαλογισμός Zazen τέθηκε σε παύση</string>
     <string name="notification_title">Διαλογισμός Zazen</string>
@@ -85,7 +85,7 @@
     <string name="ok">OK</string>
     <string name="pref_desc_brightness">Φωτεινότητα της οθόνης κατά τη διάρκεια του διαλογισμού</string>
     <string name="pref_sum_backup">Αποθηκεύστε ένα αντίγραφο ασφαλείας των συνεδριών και των ήχων σας στην κάρτα SD.</string>
-    <string name="pref_sum_restore">Επαναφέρετε τις συνεδρίες και τους προσαρμοσμένους ήχους σας από το αντίγραφο ασφαλείας της κάρτας SD</string>
+    <string name="pref_sum_restore">Επαναφέρετε τις Συνεδρίες και τους Προσαρμοσμένους Ήχους σας από το αντίγραφο ασφαλείας της κάρτας SD</string>
     <string name="pref_title_backup">Δημιουργία αντιγράφου ασφαλείας</string>
     <string name="pref_title_brightness">Φωτεινότητα</string>
     <string name="pref_title_restore">Επαναφορά από αντίγραφο ασφαλείας</string>
@@ -94,28 +94,27 @@
     <string name="privacy_title">Πληροφορίες απορρήτου</string>
     <string name="restore_backup_not_found">Το αρχείο αντιγράφου ασφαλείας δεν βρέθηκε</string>
     <string name="restore_error_text">Σφάλμα κατά την επαναφορά από το αντίγραφο ασφαλείας</string>
-    <string name="restore_really_text">Αυτό θα αντικαταστήσει όλες τις συνεδρίες σας με αυτές στο αντίγραφο ασφαλείας! (Καμία αναίρεση!)</string>
+    <string name="restore_really_text">Αυτό θα αντικαταστήσει όλες τις Συνεδρίες σας με αυτές στο αντίγραφο ασφαλείας! (Χωρίς αναίρεση!)</string>
     <string name="restore_really_title">Σίγουρα επαναφορά δεδομένων;</string>
     <string name="restore_success_text">Η επαναφορά δεδομένων ήταν επιτυχής</string>
     <string name="restore_version_mismatch_text">Αυτό το αντίγραφο ασφαλείας δημιουργήθηκε από νεότερη έκδοση του ZazenTimer. Παρακαλώ ενημερώστε την εφαρμογή.</string>
     <string name="restore_version_mismatch_title">Νεότερη έκδοση αντιγράφου ασφαλείας</string>
     <string name="search_menu_title">Αναζήτηση</string>
+    <string name="seconds">Δευτερόλεπτα</string>
     <string name="section_deleted">Διαγράφηκε \'%s\'</string>
     <string name="section_info_string_1_pl">%1$d Ήχοι</string>
     <string name="section_info_string_1_sg">1 κωδώνος</string>
     <string name="section_info_string_2_pl">κάθε %1$d δευτερόλεπτα</string>
     <string name="section_info_string_2_sg">κάθε δευτερόλεπτο</string>
-    <string name="sekunden">Δευτερόλεπτα</string>
     <string name="select_audio">Επιλογή αρχείου ήχου</string>
     <string name="service_description">Ένας διαλογισμός Zazen σε εξέλιξη</string>
     <string name="session_deleted">Διαγράφηκε \'%s\'</string>
     <string name="session_list_unnamed_entry">Ανώνυμη Συνεδρία</string>
-    <string name="stop_meditation_cancel">Ακύρωση</string>
     <string name="stop_meditation_message">Η συνεδρία διαλογισμού σας εκτελείται ακόμα.</string>
     <string name="stop_meditation_stop">Διακοπή</string>
     <string name="stop_meditation_title">Διακοπή διαλογισμού;</string>
     <string name="system_volume_section_title">Ένταση διαλογισμού</string>
-    <string name="system_volume_subtitle">Ελέγχει την ένταση ειδοποίησης του τηλεφώνου για όλους τους ήχους.</string>
+    <string name="system_volume_subtitle">Ελέγχει την ένταση ειδοποιήσεων του τηλεφώνου για όλους τους κωδώνους.</string>
     <string name="text_question_delete_session">Σίγουρα διαγραφή της επιλεγμένης Συνεδρίας;</string>
     <string name="theme">Θέμα</string>
     <string name="theme_dark">Σκοτεινό Θέμα</string>
@@ -123,7 +122,7 @@
     <string name="theme_light">Φωτεινό θέμα</string>
     <string name="theme_system">Θέμα συστήματος</string>
     <string name="time_section_elapsed">Χρόνος ενότητας που παρήλθε</string>
-    <string name="time_section_remaining">Χρόνος ενότητας που απομένει</string>
+    <string name="time_section_remaining">Υπόλοιπο τμήματος</string>
     <string name="time_session_elapsed">Συνεδρία που πέρασε</string>
     <string name="time_session_remaining">Υπόλοιπο συνεδρίας</string>
     <string name="title_bell_volumes">Ένταση κωδώνων</string>

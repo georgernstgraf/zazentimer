@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="abbrechen">Скасаваць</string>
     <string name="about1">Zazen Meditation Timer — просты таймер для медытацыі з наладжвальнымі секцыямі, гукамі чары і кіраваннем сесіямі.</string>
     <string name="about2">Першапачаткова створана Stefan Gaffga. У цяперашні час падтрымліваецца Georg Graf.&lt;br&gt;&lt;br&gt;Дзякуй Winfried з &lt;a href=\"http://www.meditationsuhren.de\"&gt;http://www.meditationsuhren.de&lt;/a&gt; за выдатныя гукі чар!</string>
     <string name="about3">&lt;a href=\"https://github.com/georgernstgraf/zazentimer/issues\"&gt;Паведаміць пра праблемы на GitHub&lt;/a&gt;</string>
@@ -12,12 +11,13 @@
     <string name="backup_success_text">Рэзервовая копія паспяхова створана!</string>
     <string name="bell_name_1">Высокі тон</string>
     <string name="bell_name_2">Нізкі тон</string>
-    <string name="bell_pause">Інтэрвал паміж гукамі (сек)</string>
+    <string name="bell_pause">Інтэрвал чары (сек)</string>
     <string name="bell_user">Дадаць звон…</string>
     <string name="but_pause">Паўза</string>
     <string name="but_start">Пачаць медытацыю</string>
     <string name="but_stop">Спыніць</string>
     <string name="button_bell_volumes">Наладзіць гучнасць чар</string>
+    <string name="cancel">Скасаваць</string>
     <string name="caption_zazen_meditation">Медытацыя Zazen</string>
     <string name="checkbox_keep_screen_on">Трымаць экран уключаным</string>
     <string name="confirm_delete_bell">Выдаліць звон \"%s\"?</string>
@@ -60,7 +60,7 @@
     <string name="menu_help">Дапамога</string>
     <string name="menu_privacy">Прыватнасць…</string>
     <string name="menu_settings">Налады</string>
-    <string name="minuten">Хвіліны</string>
+    <string name="minutes">Хвіліны</string>
     <string name="nav_label_edit_section">Рэдагаваць секцыю</string>
     <string name="nav_label_edit_session">Рэдагаваць сесію</string>
     <string name="nav_label_manage_bells">Кіраванне звонамі</string>
@@ -97,17 +97,16 @@
     <string name="restore_version_mismatch_text">Гэтая рэзервовая копія была створана больш новай версіяй ZazenTimer. Калі ласка, абнавіце праграму.</string>
     <string name="restore_version_mismatch_title">Навейшая версія рэзервовай копіі</string>
     <string name="search_menu_title">Пошук</string>
+    <string name="seconds">Секунды</string>
     <string name="section_deleted">Выдалена \'%s\'</string>
     <string name="section_info_string_1_pl">%1$d чар</string>
     <string name="section_info_string_1_sg">1 звон</string>
     <string name="section_info_string_2_pl">кожныя %1$d секунд</string>
     <string name="section_info_string_2_sg">кожную секунду</string>
-    <string name="sekunden">Секунды</string>
     <string name="select_audio">Выберыце гукавы файл</string>
     <string name="service_description">Бягучая медытацыя Дзадзэн</string>
     <string name="session_deleted">Выдалена \'%s\'</string>
     <string name="session_list_unnamed_entry">Сесія без назвы</string>
-    <string name="stop_meditation_cancel">Скасаваць</string>
     <string name="stop_meditation_message">Ваша сесія медытацыі ўсё яшчэ працягваецца.</string>
     <string name="stop_meditation_stop">Спыніць</string>
     <string name="stop_meditation_title">Спыніць медытацыю?</string>

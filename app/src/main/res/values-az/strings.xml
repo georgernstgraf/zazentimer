@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="abbrechen">Ləğv et</string>
     <string name="about1">Zazen Meditation Timer — Fərdiləşdirilə bilən bölmələr, zəng səsləri və seans idarəetməsi ilə sadə meditasiya taymeri.</string>
-    <string name="about2">İlk olaraq Stefan Gaffga tərəfindən yaradılmışdır. Hazırda Georg Graf tərəfindən idarə olunur.&lt;br&gt;&lt;br&gt;Belə möhtəşəm Zəng Səslərini təmin etdiyi üçün &lt;a href=\"http://www.meditationsuhren.de\"&gt;http://www.meditationsuhren.de&lt;/a&gt; saytından Winfried-ə təşəkkürlər!</string>
+    <string name="about2">İlkin olaraq Stefan Gaffqa tərəfindən yaradılıb. Hal-hazırda Georg Graf tərəfindən saxlanılır.&lt;br&gt;&lt;br&gt;&lt;a href=\"http://www.meditationsuhren.de\"&gt;http://www.meditationsuhren.de&lt;/a&gt; saytından Vinfriedə bu qədər gözəl Zəng Səsləri təqdim etdiyinə görə təşəkkürlər!</string>
     <string name="about3">&lt;a href=\"https://github.com/georgernstgraf/zazentimer/issues\"&gt;Problemləri GitHub-da bildirin&lt;/a&gt;</string>
     <string name="action_delete">Sil</string>
     <string name="action_undo">Geri qaytar</string>
@@ -20,6 +19,7 @@
     <string name="but_start">Meditasiyaya Başla</string>
     <string name="but_stop">Dayandır</string>
     <string name="button_bell_volumes">Zəng Səviyyələrini Tənzimlə</string>
+    <string name="cancel">Ləğv et</string>
     <string name="caption_zazen_meditation">Zazen Meditasiyası</string>
     <string name="checkbox_keep_screen_on">Ekranı açıq saxla</string>
     <string name="confirm_delete_bell">\"%s\" zəngi silinsin?</string>
@@ -44,26 +44,26 @@
     <string name="demo_sess2_name">Yalnız Zazen</string>
     <string name="desc_keep_screen_on">Meditasiya zamanı ekranı açıq saxlayır</string>
     <string name="gong_type">Qonq Səsi</string>
-    <string name="help_sectionlist_text">Burada Seansınızın adını, təsvirini və məzmununu redaktə edə bilərsiniz.\n\n YENİDƏN SIRALAMA\n Elementləri yenidən sıralamaq üçün elementin üzərinə uzun basın və\n onu yeni mövqeyinə sürükləyin.\n\n SİLİNMƏ\n Elementi silmək üçün onu sağa çəkin.\n\n REDAKTƏ\n Bölməni redaktə etmək üçün ona bir dəfə toxunun.\n\n ƏLAVƏ ET\n Yeni bölmə əlavə etmək üçün + düyməsini basın.</string>
+    <string name="help_sectionlist_text">Burada Seansınızın məzmununu adlandıra, təsvir edə və redaktə edə bilərsiniz.\n\n YENİDƏN SIRALAMA\n Elementləri yenidən sıralamaq üçün elementə uzun basın və\n yeni mövqeyinə sürükləyin.\n\n SİLMƏ\n Elementi silmək üçün onu sağa hərəkət etdirin.\n\n REDAKTƏ\n Bölməni redaktə etmək üçün ona bir dəfə toxunun.\n\n ƏLAVƏ ET\n Yeni bölmə əlavə etmək üçün + düyməsini basın.</string>
     <string name="help_sectionlist_title">Seansı Redaktə Et</string>
     <string name="import_bell">Zəng İdxal Et</string>
     <string name="label_section_name">Bölmə adı</string>
     <string name="label_session_description">Seans Təsviri</string>
     <string name="label_session_name">Seans Adı</string>
     <string name="manage_bells">Zəngləri İdarə Et</string>
-    <string name="manage_bells_summary">Fayl sistemindən Zəng əlavə et / Tətbiqdən Zəng sil</string>
+    <string name="manage_bells_summary">Fayl sistemindən Zənglər əlavə et / Tətbiqdən Zəngləri sil</string>
     <string name="menu_about">Haqqında…</string>
     <string name="menu_add_section">Bölmə Əlavə Et</string>
     <string name="menu_add_session">Seans Əlavə Et</string>
-    <string name="menu_copy_session">Seansın Nüsxəsini Çıxar</string>
+    <string name="menu_copy_session">Seansı Kopyala</string>
     <string name="menu_delete_section">Bölməni Sil</string>
     <string name="menu_delete_session">Seansı Sil</string>
-    <string name="menu_duplicate_section">Bölmənin Nüsxəsini Çıxar</string>
+    <string name="menu_duplicate_section">Bölməni Kopyala</string>
     <string name="menu_edit_session">Seansı Redaktə Et</string>
     <string name="menu_help">Kömək</string>
     <string name="menu_privacy">Məxfilik…</string>
     <string name="menu_settings">Parametrlər</string>
-    <string name="minuten">Dəqiqə</string>
+    <string name="minutes">Dəqiqə</string>
     <string name="nav_label_edit_section">Bölməni Redaktə Et</string>
     <string name="nav_label_edit_session">Seansı Redaktə Et</string>
     <string name="nav_label_manage_bells">Zəngləri İdarə Et</string>
@@ -75,12 +75,12 @@
     <string name="no_bells_configured">Hələ heç bir zəng konfiqurasiya edilməyib</string>
     <string name="no_custom_bells">Heç bir xüsusi zəng idxal edilməyib.</string>
     <string name="no_sections_in_session">Meditasiyaya başlamaq mümkün deyil: Seçilmiş Seansda heç bir Bölmə yoxdur.</string>
-    <string name="no_session_exists">Başlana biləcək heç bir seans yoxdur. Zəhmət olmasa əvvəlcə birini yaradın.</string>
+    <string name="no_session_exists">Başlana biləcək heç bir seans yoxdur. Zəhmət olmasa, əvvəlcə birini yaradın.</string>
     <string name="notification_channel_name">Meditasiya Taymeri</string>
     <string name="notification_text">Hazırda Zazen Meditasiyası davam edir</string>
     <string name="notification_text_paused">Zazen Meditasiyası dayandırıldı</string>
     <string name="notification_title">Zazen Meditasiyası</string>
-    <string name="notification_title_paused">Zazen Meditasiyası (fasilədə)</string>
+    <string name="notification_title_paused">Zazen Meditasiyası (fasilədədir)</string>
     <string name="num_bells">Zəng sayı</string>
     <string name="ok">OK</string>
     <string name="pref_desc_brightness">Meditasiya zamanı Ekranın Parlaqlığı</string>
@@ -96,21 +96,20 @@
     <string name="restore_error_text">Ehtiyat Nüsxədən bərpa zamanı xəta</string>
     <string name="restore_really_text">Bu, bütün Seanslarınızı Ehtiyat Nüsxədəkilərlə əvəz edəcək! (Geri qaytarmaq mümkün deyil!)</string>
     <string name="restore_really_title">Həqiqətən məlumatlar bərpa edilsin?</string>
-    <string name="restore_success_text">Məlumatların Bərpası uğurla tamamlandı</string>
+    <string name="restore_success_text">Məlumat Bərpası uğurlu</string>
     <string name="restore_version_mismatch_text">Bu ehtiyat nüsxə ZazenTimer-in daha yeni versiyası tərəfindən yaradılıb. Zəhmət olmasa tətbiqi yeniləyin.</string>
     <string name="restore_version_mismatch_title">Daha Yeni Ehtiyat Nüsxə Versiyası</string>
     <string name="search_menu_title">Axtar</string>
+    <string name="seconds">Saniyə</string>
     <string name="section_deleted">\'%s\' silindi</string>
     <string name="section_info_string_1_pl">%1$d Zəng</string>
     <string name="section_info_string_1_sg">1 Zəng</string>
     <string name="section_info_string_2_pl">hər %1$d Saniyədən bir</string>
-    <string name="section_info_string_2_sg">hər Saniyə</string>
-    <string name="sekunden">Saniyə</string>
+    <string name="section_info_string_2_sg">hər Saniyədə</string>
     <string name="select_audio">Səs faylı seçin</string>
     <string name="service_description">Davam edən Zazen Meditasiyası</string>
     <string name="session_deleted">\'%s\' silindi</string>
     <string name="session_list_unnamed_entry">Adsız Seans</string>
-    <string name="stop_meditation_cancel">Ləğv et</string>
     <string name="stop_meditation_message">Meditasiya seansınız hələ də davam edir.</string>
     <string name="stop_meditation_stop">Dayandır</string>
     <string name="stop_meditation_title">Meditasiya dayandırılsın?</string>
@@ -120,13 +119,13 @@
     <string name="theme">Mövzu</string>
     <string name="theme_dark">Qaranlıq Tema</string>
     <string name="theme_desc">Tətbiq görünüşünü seçin</string>
-    <string name="theme_light">Açıq Mövzu</string>
+    <string name="theme_light">İşıqlı Mövzu</string>
     <string name="theme_system">Sistem Mövzusu</string>
-    <string name="time_section_elapsed">Bölmənin keçən vaxtı</string>
+    <string name="time_section_elapsed">Bölmə keçdi</string>
     <string name="time_section_remaining">Bölmənin qalan vaxtı</string>
     <string name="time_session_elapsed">Seans keçdi</string>
-    <string name="time_session_remaining">Seansda qalan vaxt</string>
-    <string name="title_bell_volumes">Zəng Səsləri</string>
+    <string name="time_session_remaining">Seansın qalan vaxtı</string>
+    <string name="title_bell_volumes">Zəng Səviyyələri</string>
     <string name="title_question_delete_session">Seans Silinsin?</string>
     <string name="unnamed">Adsız</string>
 </resources>

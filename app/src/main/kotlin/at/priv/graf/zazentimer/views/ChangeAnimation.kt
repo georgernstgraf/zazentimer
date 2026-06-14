@@ -3,7 +3,7 @@ package at.priv.graf.zazentimer.views
 import android.view.View
 import java.util.HashMap
 
-class MyAnimator {
+class PropertyAnimator {
     var duration = 0
     var fromVal = 0f
     var propertyIdx = 0
@@ -14,7 +14,7 @@ class MyAnimator {
 
 internal class TimerAnimator(
     private val view: View,
-    val runningAnims: HashMap<Int, MyAnimator>,
+    val runningAnims: HashMap<Int, PropertyAnimator>,
     val floatProperties: FloatArray,
     private val animDuration: Int,
 ) {
@@ -29,7 +29,7 @@ internal class TimerAnimator(
     ) {
         var anim = runningAnims[index]
         if (anim == null) {
-            anim = MyAnimator()
+            anim = PropertyAnimator()
         }
         anim.runOnEnd = onEnd
         anim.propertyIdx = index
@@ -76,7 +76,7 @@ internal class TimerAnimator(
 }
 
 internal class AnimationRunner(
-    private val runningAnims: HashMap<Int, MyAnimator>,
+    private val runningAnims: HashMap<Int, PropertyAnimator>,
     private val floatProperties: FloatArray,
     private val onStep: (Boolean) -> Unit,
 ) : Runnable {

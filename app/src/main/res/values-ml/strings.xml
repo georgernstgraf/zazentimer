@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="abbrechen">റദ്ദാക്കുക</string>
-    <string name="about1">Zazen Meditation Timer — ക്രമീകരിക്കാവുന്ന ഭാഗങ്ങൾ, ബെൽ ശബ്ദങ്ങൾ, സെഷൻ മാനേജ്മെന്റ് എന്നിവ ഉൾക്കൊള്ളുന്ന ലളിതമായ ഒരു മെഡിറ്റേഷൻ ടൈമർ.</string>
+    <string name="about1">Zazen Meditation Timer — ഇഷ്ടാനുസൃതമാക്കാവുന്ന ഭാഗങ്ങളും ബെൽ ശബ്ദങ്ങളും സെഷൻ മാനേജ്‌മെൻ്റുമുള്ള ലളിതമായ മെഡിറ്റേഷൻ ടൈമർ.</string>
     <string name="about2">ആദ്യം നിർമ്മിച്ചത് Stefan Gaffga. നിലവിൽ പരിപാലിക്കുന്നത് Georg Graf.&lt;br&gt;&lt;br&gt;ഇത്രയും മികച്ച ബെൽ ശബ്ദങ്ങൾ നൽകിയതിന് &lt;a href=\"http://www.meditationsuhren.de\"&gt;http://www.meditationsuhren.de&lt;/a&gt; ലെ Winfried-ന് നന്ദി!</string>
     <string name="about3">&lt;a href=\"https://github.com/georgernstgraf/zazentimer/issues\"&gt;GitHub-ൽ പ്രശ്നങ്ങൾ റിപ്പോർട്ട് ചെയ്യുക&lt;/a&gt;</string>
     <string name="action_delete">ഇല്ലാതാക്കുക</string>
@@ -18,6 +17,7 @@
     <string name="but_start">ധ്യാനം ആരംഭിക്കുക</string>
     <string name="but_stop">നിർത്തുക</string>
     <string name="button_bell_volumes">മണി വോളിയങ്ങൾ ക്രമീകരിക്കുക</string>
+    <string name="cancel">റദ്ദാക്കുക</string>
     <string name="caption_zazen_meditation">സാസെൻ ധ്യാനം</string>
     <string name="checkbox_keep_screen_on">സ്ക്രീൻ ഓണാക്കി വെക്കുക</string>
     <string name="confirm_delete_bell">\"%s\" ബെൽ ഇല്ലാതാക്കണോ?</string>
@@ -60,7 +60,7 @@
     <string name="menu_help">സഹായം</string>
     <string name="menu_privacy">സ്വകാര്യത…</string>
     <string name="menu_settings">ക്രമീകരണങ്ങൾ</string>
-    <string name="minuten">മിനിറ്റുകൾ</string>
+    <string name="minutes">മിനിറ്റുകൾ</string>
     <string name="nav_label_edit_section">വിഭാഗം എഡിറ്റ് ചെയ്യുക</string>
     <string name="nav_label_edit_session">സെഷൻ തിരുത്തുക</string>
     <string name="nav_label_manage_bells">മണികൾ നിയന്ത്രിക്കുക</string>
@@ -97,17 +97,16 @@
     <string name="restore_version_mismatch_text">ഈ ബാക്കപ്പ് ZazenTimer-ൻ്റെ പുതിയ പതിപ്പിൽ ഉണ്ടാക്കിയതാണ്. ദയവായി ആപ്പ് അപ്ഡേറ്റ് ചെയ്യുക.</string>
     <string name="restore_version_mismatch_title">പുതിയ ബാക്കപ്പ് പതിപ്പ്</string>
     <string name="search_menu_title">തിരയുക</string>
+    <string name="seconds">സെക്കൻഡുകൾ</string>
     <string name="section_deleted">\'%s\' ഇല്ലാതാക്കി</string>
     <string name="section_info_string_1_pl">%1$d മണികൾ</string>
     <string name="section_info_string_1_sg">1 മണി</string>
     <string name="section_info_string_2_pl">ഓരോ %1$d സെക്കൻഡിലും</string>
     <string name="section_info_string_2_sg">ഓരോ സെക്കൻഡിലും</string>
-    <string name="sekunden">സെക്കൻഡുകൾ</string>
     <string name="select_audio">ശബ്ദ ഫയൽ തിരഞ്ഞെടുക്കുക</string>
     <string name="service_description">നടന്നുകൊണ്ടിരിക്കുന്ന ഒരു സാസെൻ മെഡിറ്റേഷൻ</string>
     <string name="session_deleted">\'%s\' ഇല്ലാതാക്കി</string>
     <string name="session_list_unnamed_entry">പേരില്ലാത്ത സെഷൻ</string>
-    <string name="stop_meditation_cancel">റദ്ദാക്കുക</string>
     <string name="stop_meditation_message">നിങ്ങളുടെ ധ്യാന സെഷൻ ഇപ്പോഴും പ്രവർത്തിക്കുന്നു.</string>
     <string name="stop_meditation_stop">നിർത്തുക</string>
     <string name="stop_meditation_title">ധ്യാനം നിർത്തണോ?</string>

@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="abbrechen">Cancelar</string>
-    <string name="about1">Zazen Meditation Timer — Un temporizador de meditación sencillo con secciones personalizables, sonidos de cuenco y gestión de sesiones.</string>
-    <string name="about2">Creado originalmente por Stefan Gaffga. Actualmente mantenido por Georg Graf.&lt;br&gt;&lt;br&gt;¡Gracias a Winfried de &lt;a href=\"http://www.meditationsuhren.de\"&gt;http://www.meditationsuhren.de&lt;/a&gt; por proporcionar tan grandes sonidos de campana!</string>
+    <string name="about1">Temporizador de Meditación Zazen — Un temporizador de meditación simple con secciones personalizables, sonidos de campana y gestión de sesiones.</string>
+    <string name="about2">Creado originalmente por Stefan Gaffga. Mantenido actualmente por Georg Graf.&lt;br&gt;&lt;br&gt;¡Gracias a Winfried de &lt;a href=\"http://www.meditationsuhren.de\"&gt;http://www.meditationsuhren.de&lt;/a&gt; por proporcionar estos fantásticos sonidos de cuenco!</string>
     <string name="about3">&lt;a href=\"https://github.com/georgernstgraf/zazentimer/issues\"&gt;Informar de problemas en GitHub&lt;/a&gt;</string>
     <string name="action_delete">Eliminar</string>
     <string name="action_undo">Deshacer</string>
     <string name="affected_section_format">• sección \"%1$s\" en la sesión \"%2$s\"</string>
-    <string name="app_description">Esta aplicación permite al usuario definir un conjunto de sesiones de meditación y proporciona un temporizador con información visual y auditiva cuando finaliza una parte o toda la meditación.</string>
+    <string name="app_description">Esta aplicación permite al usuario definir un conjunto de sesiones de meditación y proporciona un temporizador con retroalimentación visual y audible cuando una parte o toda la meditación termina.</string>
     <string name="backup_error_text">Lo sentimos, se ha producido un error al guardar.</string>
     <string name="backup_success_text">¡Copia de seguridad creada con éxito!</string>
     <string name="bell_dimming_section_title">Configurar volumen de campana</string>
@@ -20,6 +19,7 @@
     <string name="but_start">Iniciar meditación</string>
     <string name="but_stop">Detener</string>
     <string name="button_bell_volumes">Ajustar volúmenes de campana</string>
+    <string name="cancel">Cancelar</string>
     <string name="caption_zazen_meditation">Meditación Zazen</string>
     <string name="checkbox_keep_screen_on">Mantener pantalla encendida</string>
     <string name="confirm_delete_bell">¿Eliminar campana \"%s\"?</string>
@@ -44,7 +44,7 @@
     <string name="demo_sess2_name">Solo Zazen</string>
     <string name="desc_keep_screen_on">Mantiene la pantalla encendida durante la meditación</string>
     <string name="gong_type">Sonido de gong</string>
-    <string name="help_sectionlist_text">Aquí puedes nombrar, describir y editar el contenido de tu Sesión.\n\n REORDENAR\n Para reordenar los elementos, mantén pulsado un elemento y\n arrástralo a su nueva posición.\n\n ELIMINAR\n Para eliminar un elemento, muévelo hacia la derecha.\n\n EDITAR\n Para editar una sección, simplemente tócala una vez.\n\n AÑADIR\n Para añadir una nueva sección, pulsa el botón +.</string>
+    <string name="help_sectionlist_text">Aquí puede nombrar, describir y editar el contenido de su sesión.\n\n REORDENAR\n Para reordenar los elementos, mantenga pulsado un elemento y\n arrástrelo a su nueva posición.\n\n ELIMINAR\n Para eliminar un elemento, muévalo a la derecha.\n\n EDITAR\n Para editar una sección, simplemente tóquela una vez.\n\n AÑADIR\n Para añadir una nueva sección, pulse el botón +.</string>
     <string name="help_sectionlist_title">Editar sesión</string>
     <string name="import_bell">Importar campana</string>
     <string name="label_section_name">Nombre de sección</string>
@@ -63,7 +63,7 @@
     <string name="menu_help">Ayuda</string>
     <string name="menu_privacy">Privacidad…</string>
     <string name="menu_settings">Configuración</string>
-    <string name="minuten">Minutos</string>
+    <string name="minutes">Minutos</string>
     <string name="nav_label_edit_section">Editar sección</string>
     <string name="nav_label_edit_session">Editar sesión</string>
     <string name="nav_label_manage_bells">Gestionar campanas</string>
@@ -89,28 +89,27 @@
     <string name="pref_title_backup">Crear copia de seguridad</string>
     <string name="pref_title_brightness">Brillo</string>
     <string name="pref_title_restore">Restaurar desde copia de seguridad</string>
-    <string name="privacy_message">Esta aplicación no recopila ningún dato personal; tampoco utiliza direcciones IP ni ninguna otra tecnología relacionada con datos, ni recopila, procesa ni utiliza de ninguna manera.</string>
+    <string name="privacy_message">Esta aplicación no recopila ningún dato personal: tampoco utiliza direcciones IP ni ningún otro dato relacionado con la tecnología, ni los recopila, procesa o utiliza de ninguna manera.</string>
     <string name="privacy_ok">Aceptar</string>
     <string name="privacy_title">Información de privacidad</string>
     <string name="restore_backup_not_found">Archivo de copia de seguridad no encontrado</string>
     <string name="restore_error_text">Error al restaurar desde la copia de seguridad</string>
-    <string name="restore_really_text">¡Esto reemplazará todas sus sesiones con las de la copia de seguridad! (¡No se puede deshacer!)</string>
+    <string name="restore_really_text">¡Esto reemplazará todas tus Sesiones con las de la copia de seguridad! (¡Sin deshacer!)</string>
     <string name="restore_really_title">¿Realmente restaurar datos?</string>
     <string name="restore_success_text">Restauración de datos exitosa</string>
     <string name="restore_version_mismatch_text">Esta copia de seguridad fue creada por una versión más reciente de ZazenTimer. Por favor, actualiza la aplicación.</string>
     <string name="restore_version_mismatch_title">Versión de copia de seguridad más reciente</string>
     <string name="search_menu_title">Buscar</string>
+    <string name="seconds">Segundos</string>
     <string name="section_deleted">Eliminado \'%s\'</string>
     <string name="section_info_string_1_pl">%1$d campanas</string>
     <string name="section_info_string_1_sg">1 campana</string>
     <string name="section_info_string_2_pl">cada %1$d segundos</string>
     <string name="section_info_string_2_sg">cada segundo</string>
-    <string name="sekunden">Segundos</string>
     <string name="select_audio">Seleccionar archivo de sonido</string>
     <string name="service_description">Una meditación Zazen en curso</string>
     <string name="session_deleted">Eliminado \'%s\'</string>
     <string name="session_list_unnamed_entry">Sesión sin nombre</string>
-    <string name="stop_meditation_cancel">Cancelar</string>
     <string name="stop_meditation_message">Tu sesión de meditación sigue en curso.</string>
     <string name="stop_meditation_stop">Detener</string>
     <string name="stop_meditation_title">¿Detener meditación?</string>

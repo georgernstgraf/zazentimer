@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="abbrechen">Atšaukti</string>
     <string name="about1">Zazen Meditation Timer — paprastas meditacijos laikmatis su tinkinamomis sekcijomis, varpų garsais ir sesijų valdymu.</string>
     <string name="about2">Iš pradžių sukūrė Stefan Gaffga. Šiuo metu prižiūri Georg Graf.&lt;br&gt;&lt;br&gt;Ačiū Winfried iš &lt;a href=\"http://www.meditationsuhren.de\"&gt;http://www.meditationsuhren.de&lt;/a&gt; už puikius varpų garsus!</string>
     <string name="about3">&lt;a href=\"https://github.com/georgernstgraf/zazentimer/issues\"&gt;Pranešti apie problemas GitHub&lt;/a&gt;</string>
@@ -19,6 +18,7 @@
     <string name="but_start">Pradėti meditaciją</string>
     <string name="but_stop">Stabdyti</string>
     <string name="button_bell_volumes">Reguliuoti varpų garsumą</string>
+    <string name="cancel">Atšaukti</string>
     <string name="caption_zazen_meditation">Zazen meditacija</string>
     <string name="checkbox_keep_screen_on">Neišjungti ekrano</string>
     <string name="confirm_delete_bell">Ištrinti varpą \"%s\"?</string>
@@ -61,7 +61,7 @@
     <string name="menu_help">Pagalba</string>
     <string name="menu_privacy">Privatumas…</string>
     <string name="menu_settings">Nustatymai</string>
-    <string name="minuten">Minutės</string>
+    <string name="minutes">Minutės</string>
     <string name="nav_label_edit_section">Redaguoti skyrių</string>
     <string name="nav_label_edit_session">Redaguoti sesiją</string>
     <string name="nav_label_manage_bells">Tvarkyti varpus</string>
@@ -98,17 +98,16 @@
     <string name="restore_version_mismatch_text">Ši atsarginė kopija buvo sukurta naujesne ZazenTimer versija. Prašome atnaujinti programą.</string>
     <string name="restore_version_mismatch_title">Naujesnė atsarginės kopijos versija</string>
     <string name="search_menu_title">Paieška</string>
+    <string name="seconds">Sekundės</string>
     <string name="section_deleted">Ištrinta \'%s\'</string>
     <string name="section_info_string_1_pl">%1$d varpai</string>
     <string name="section_info_string_1_sg">1 varpas</string>
     <string name="section_info_string_2_pl">kas %1$d sekundžių</string>
     <string name="section_info_string_2_sg">kas sekundę</string>
-    <string name="sekunden">Sekundės</string>
     <string name="select_audio">Pasirinkti garso failą</string>
     <string name="service_description">Vykstanti Zazen meditacija</string>
     <string name="session_deleted">Ištrinta \'%s\'</string>
     <string name="session_list_unnamed_entry">Sesija be pavadinimo</string>
-    <string name="stop_meditation_cancel">Atšaukti</string>
     <string name="stop_meditation_message">Jūsų meditacijos sesija vis dar vyksta.</string>
     <string name="stop_meditation_stop">Stabdyti</string>
     <string name="stop_meditation_title">Sustabdyti meditaciją?</string>

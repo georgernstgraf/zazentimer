@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="abbrechen">لغو</string>
     <string name="about1">Zazen Meditation Timer — یک تایمر مدیتیشن ساده با بخش‌های قابل تنظیم، صداهای زنگ و مدیریت جلسات.</string>
     <string name="about2">Originally created by Stefan Gaffga. Currently maintained by Georg Graf.&lt;br&gt;&lt;br&gt;Thanks to Winfried of &lt;a href=\"http://www.meditationsuhren.de\"&gt;http://www.meditationsuhren.de&lt;/a&gt; for providing such great Bell Sounds!</string>
     <string name="about3">&lt;a href=\"https://github.com/georgernstgraf/zazentimer/issues\"&gt;گزارش مشکلات در گیت‌هاب&lt;/a&gt;</string>
@@ -10,7 +9,7 @@
     <string name="app_description">این برنامه به کاربر اجازه می‌دهد مجموعه‌ای از جلسات مدیتیشن را تعریف کند و بازخورد بصری و صوتی ارائه می‌دهد زمانی که بخشی یا کل مدیتیشن تمام شود.</string>
     <string name="backup_error_text">متاسفیم، هنگام ذخیره خطایی رخ داد.</string>
     <string name="backup_success_text">نسخه پشتیبان با موفقیت ایجاد شد!</string>
-    <string name="bell_dimming_section_title">تنظیم بلندی صدای زنگ</string>
+    <string name="bell_dimming_section_title">تنظیم صدای زنگ</string>
     <string name="bell_name_1">صدای زیر</string>
     <string name="bell_name_2">صدای بم</string>
     <string name="bell_pause">فاصله زنگ (ثانیه)</string>
@@ -20,6 +19,7 @@
     <string name="but_start">شروع مدیتیشن</string>
     <string name="but_stop">توقف</string>
     <string name="button_bell_volumes">تنظیم صدای زنگ‌ها</string>
+    <string name="cancel">لغو</string>
     <string name="caption_zazen_meditation">مدیتیشن Zazen</string>
     <string name="checkbox_keep_screen_on">روشن نگه داشتن صفحه</string>
     <string name="confirm_delete_bell">حذف زنگ \"%s\"؟</string>
@@ -63,14 +63,14 @@
     <string name="menu_help">راهنما</string>
     <string name="menu_privacy">حریم خصوصی…</string>
     <string name="menu_settings">تنظیمات</string>
-    <string name="minuten">دقیقه</string>
+    <string name="minutes">دقیقه</string>
     <string name="nav_label_edit_section">ویرایش بخش</string>
     <string name="nav_label_edit_session">ویرایش جلسه</string>
     <string name="nav_label_manage_bells">مدیریت زنگ‌ها</string>
     <string name="nav_label_meditation">مدیتیشن</string>
     <string name="nav_label_sessions">جلسات</string>
     <string name="nav_label_settings">تنظیمات</string>
-    <string name="new_session_description">توضیحات نشست جدید</string>
+    <string name="new_session_description">توضیحات جلسه جدید</string>
     <string name="new_session_name">نشست جدید</string>
     <string name="no_bells_configured">هنوز زنگی تنظیم نشده است</string>
     <string name="no_custom_bells">زنگ سفارشی وارد نشده است.</string>
@@ -100,17 +100,16 @@
     <string name="restore_version_mismatch_text">این نسخه پشتیبان توسط نسخه جدیدتری از ZazenTimer ایجاد شده است. لطفاً برنامه را بروزرسانی کنید.</string>
     <string name="restore_version_mismatch_title">نسخه پشتیبان جدیدتر</string>
     <string name="search_menu_title">جستجو</string>
+    <string name="seconds">ثانیه</string>
     <string name="section_deleted">حذف شد \'%s\'</string>
     <string name="section_info_string_1_pl">%1$d زنگ</string>
     <string name="section_info_string_1_sg">۱ زنگ</string>
     <string name="section_info_string_2_pl">هر %1$d ثانیه</string>
     <string name="section_info_string_2_sg">هر ثانیه</string>
-    <string name="sekunden">ثانیه</string>
     <string name="select_audio">انتخاب فایل صوتی</string>
     <string name="service_description">یک مدیتیشن Zazen در حال اجرا</string>
     <string name="session_deleted">حذف شد \'%s\'</string>
     <string name="session_list_unnamed_entry">جلسه بدون نام</string>
-    <string name="stop_meditation_cancel">لغو</string>
     <string name="stop_meditation_message">جلسه مدیتیشن شما هنوز در حال اجراست.</string>
     <string name="stop_meditation_stop">توقف</string>
     <string name="stop_meditation_title">مدیتیشن متوقف شود؟</string>

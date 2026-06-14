@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="menu_help">मदत</string>
-    <string name="minuten">मिनटां</string>
+    <string name="minutes">मिनटां</string>
     <string name="nav_label_meditation">ध्यान</string>
     <string name="ok">बरें</string>
     <string name="privacy_ok">बरें</string>
-    <string name="sekunden">सेकंद</string>
+    <string name="seconds">सेकंद</string>
 </resources>

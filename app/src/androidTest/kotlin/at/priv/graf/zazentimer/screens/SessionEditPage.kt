@@ -14,18 +14,18 @@ class SessionEditPage {
 
     fun verifyEditSessionScreen(): SessionEditPage {
         Thread.sleep(1000)
-        robot.checkElementIsDisplayed(R.id.text_sitzung_name)
+        robot.checkElementIsDisplayed(R.id.text_session_name)
         robot.checkElementIsDisplayed(R.id.list)
         return this
     }
 
     fun setSessionName(name: String): SessionEditPage {
-        onView(withId(R.id.text_sitzung_name)).perform(typeText(name))
+        onView(withId(R.id.text_session_name)).perform(typeText(name))
         return this
     }
 
     fun setSessionDescription(desc: String): SessionEditPage {
-        onView(withId(R.id.text_sitzung_beschreibung)).perform(typeText(desc))
+        onView(withId(R.id.text_session_description)).perform(typeText(desc))
         return this
     }
 

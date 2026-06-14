@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="abbrechen">రద్దు చేయండి</string>
     <string name="about1">జాజెన్ ధ్యాన టైమర్ — అనుకూలీకరించగల విభాగాలు, గంట శబ్దాలు మరియు సెషన్ నిర్వహణతో కూడిన సాధారణ ధ్యాన టైమర్.</string>
     <string name="about2">స్టెఫాన్ గాఫ్‌గా చేత సృష్టించబడింది. ప్రస్తుతం జార్జ్ గ్రాఫ్ చేత నిర్వహించబడుతోంది.&lt;br&gt;&lt;br&gt;అద్భుతమైన గంట శబ్దాలను అందించిన &lt;a href=\"http://www.meditationsuhren.de\"&gt;http://www.meditationsuhren.de&lt;/a&gt; కి చెందిన విన్‌ఫ్రైడ్ కు ధన్యవాదాలు!</string>
     <string name="about3">&lt;a href=\"https://github.com/georgernstgraf/zazentimer/issues\"&gt;GitHub లో సమస్యలను నివేదించండి&lt;/a&gt;</string>
@@ -20,6 +19,7 @@
     <string name="but_start">ధ్యానం ప్రారంభించు</string>
     <string name="but_stop">ఆపు</string>
     <string name="button_bell_volumes">బెల్ వాల్యూమ్‌లను సర్దుబాటు చేయండి</string>
+    <string name="cancel">రద్దు చేయండి</string>
     <string name="caption_zazen_meditation">జాజెన్ ధ్యానం</string>
     <string name="checkbox_keep_screen_on">స్క్రీన్‌ను ఆన్‌లో ఉంచండి</string>
     <string name="confirm_delete_bell">\"%s\" బెల్‌ను తొలగించాలా?</string>
@@ -63,7 +63,7 @@
     <string name="menu_help">సహాయం</string>
     <string name="menu_privacy">గోప్యత…</string>
     <string name="menu_settings">సెట్టింగ్‌లు</string>
-    <string name="minuten">నిమిషాలు</string>
+    <string name="minutes">నిమిషాలు</string>
     <string name="nav_label_edit_section">విభాగాన్ని సవరించండి</string>
     <string name="nav_label_edit_session">సెషన్‌ను సవరించండి</string>
     <string name="nav_label_manage_bells">బెల్స్ నిర్వహించండి</string>
@@ -100,17 +100,16 @@
     <string name="restore_version_mismatch_text">ఈ బ్యాకప్ ZazenTimer యొక్క కొత్త వెర్షన్ ద్వారా సృష్టించబడింది. దయచేసి యాప్‌ని అప్‌డేట్ చేయండి.</string>
     <string name="restore_version_mismatch_title">కొత్త బ్యాకప్ వెర్షన్</string>
     <string name="search_menu_title">శోధించండి</string>
+    <string name="seconds">సెకన్లు</string>
     <string name="section_deleted">\'%s\' తొలగించబడింది</string>
     <string name="section_info_string_1_pl">%1$d గంటలు</string>
     <string name="section_info_string_1_sg">1 గంట</string>
     <string name="section_info_string_2_pl">ప్రతి %1$d సెకన్లకు</string>
     <string name="section_info_string_2_sg">ప్రతి సెకనుకు</string>
-    <string name="sekunden">సెకన్లు</string>
     <string name="select_audio">సౌండ్ ఫైల్‌ను ఎంచుకోండి</string>
     <string name="service_description">నడుస్తున్న జాజెన్ ధ్యానం</string>
     <string name="session_deleted">\'%s\' తొలగించబడింది</string>
     <string name="session_list_unnamed_entry">పేరులేని సెషన్</string>
-    <string name="stop_meditation_cancel">రద్దు చేయండి</string>
     <string name="stop_meditation_message">మీ ధ్యాన సెషన్ ఇంకా నడుస్తోంది.</string>
     <string name="stop_meditation_stop">ఆపు</string>
     <string name="stop_meditation_title">ధ్యానం ఆపాలా?</string>

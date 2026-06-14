@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="abbrechen">Batal</string>
     <string name="about1">Pemasa Meditasi Zazen — Pemasa meditasi ringkas dengan bahagian yang boleh disesuaikan, bunyi loceng, dan pengurusan sesi.</string>
     <string name="about2">Dicipta asalnya oleh Stefan Gaffga. Kini diselenggara oleh Georg Graf.&lt;br&gt;&lt;br&gt;Terima kasih kepada Winfried dari &lt;a href=\"http://www.meditationsuhren.de\"&gt;http://www.meditationsuhren.de&lt;/a&gt; kerana menyediakan Bunyi Loceng yang hebat!</string>
     <string name="about3">&lt;a href=\"https://github.com/georgernstgraf/zazentimer/issues\"&gt;Laporkan isu di GitHub&lt;/a&gt;</string>
     <string name="action_delete">Padam</string>
     <string name="action_undo">Buat Asal</string>
     <string name="affected_section_format">• bahagian \"%1$s\" dalam Sesi \"%2$s\"</string>
-    <string name="app_description">Aplikasi ini membenarkan pengguna menentukan set sesi meditasi dan menyediakan pemasa dengan maklum balas visual serta audio apabila sebahagian atau seluruh meditasi selesai.</string>
+    <string name="app_description">Aplikasi ini membolehkan pengguna menetapkan set sesi meditasi dan menyediakan pemasa dengan maklum balas visual dan audio apabila sebahagian atau keseluruhan meditasi tamat.</string>
     <string name="backup_error_text">Maaf, ralat berlaku semasa menyimpan.</string>
     <string name="backup_success_text">Sandaran berjaya dibuat!</string>
     <string name="bell_dimming_section_title">Konfigurasi Kelantangan Loceng</string>
@@ -19,7 +18,8 @@
     <string name="but_pause">Jeda</string>
     <string name="but_start">Mulakan Meditasi</string>
     <string name="but_stop">Henti</string>
-    <string name="button_bell_volumes">Laras Kelantangan Loceng</string>
+    <string name="button_bell_volumes">Sesuaikan Kelantangan Loceng</string>
+    <string name="cancel">Batal</string>
     <string name="caption_zazen_meditation">Meditasi Zazen</string>
     <string name="checkbox_keep_screen_on">Kekalkan skrin hidup</string>
     <string name="confirm_delete_bell">Padam loceng \"%s\"?</string>
@@ -63,7 +63,7 @@
     <string name="menu_help">Bantuan</string>
     <string name="menu_privacy">Privasi…</string>
     <string name="menu_settings">Tetapan</string>
-    <string name="minuten">Minit</string>
+    <string name="minutes">Minit</string>
     <string name="nav_label_edit_section">Edit Bahagian</string>
     <string name="nav_label_edit_session">Edit Sesi</string>
     <string name="nav_label_manage_bells">Urus Loceng</string>
@@ -95,28 +95,27 @@
     <string name="restore_backup_not_found">Fail Sandaran tidak dijumpai</string>
     <string name="restore_error_text">Ralat semasa memulihkan dari Sandaran</string>
     <string name="restore_really_text">Ini akan menggantikan semua Sesi anda dengan yang ada dalam Sandaran! (Tiada Buat Asal!)</string>
-    <string name="restore_really_title">Pasti ingin memulihkan data?</string>
+    <string name="restore_really_title">Benar-benar mahu pulihkan data?</string>
     <string name="restore_success_text">Pemulihan Data berjaya</string>
     <string name="restore_version_mismatch_text">Sandaran ini dibuat oleh versi ZazenTimer yang lebih baharu. Sila kemas kini aplikasi.</string>
     <string name="restore_version_mismatch_title">Versi Sandaran Lebih Baharu</string>
     <string name="search_menu_title">Cari</string>
+    <string name="seconds">Saat</string>
     <string name="section_deleted">Dipadam \'%s\'</string>
     <string name="section_info_string_1_pl">%1$d Loceng</string>
     <string name="section_info_string_1_sg">1 Loceng</string>
     <string name="section_info_string_2_pl">setiap %1$d Saat</string>
     <string name="section_info_string_2_sg">setiap Saat</string>
-    <string name="sekunden">Saat</string>
     <string name="select_audio">Pilih fail bunyi</string>
     <string name="service_description">Meditasi Zazen yang sedang berjalan</string>
     <string name="session_deleted">Dipadam \'%s\'</string>
     <string name="session_list_unnamed_entry">Sesi Tanpa Nama</string>
-    <string name="stop_meditation_cancel">Batal</string>
     <string name="stop_meditation_message">Sesi meditasi anda masih berjalan.</string>
     <string name="stop_meditation_stop">Henti</string>
     <string name="stop_meditation_title">Hentikan meditasi?</string>
     <string name="system_volume_section_title">Kelantangan Meditasi</string>
     <string name="system_volume_subtitle">Mengawal kelantangan penggera telefon untuk semua loceng.</string>
-    <string name="text_question_delete_session">Pasti ingin memadam Sesi yang dipilih?</string>
+    <string name="text_question_delete_session">Benar-benar mahu padam Sesi yang dipilih?</string>
     <string name="theme">Tema</string>
     <string name="theme_dark">Tema Gelap</string>
     <string name="theme_desc">Pilih penampilan aplikasi</string>

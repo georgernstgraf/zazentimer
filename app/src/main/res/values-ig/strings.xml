@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="abbrechen">Kagbuo</string>
     <string name="action_delete">Hichapụ</string>
     <string name="but_pause">Kwụsịtụ</string>
     <string name="but_stop">Kwụsị</string>
+    <string name="cancel">Kagbuo</string>
     <string name="content_desc_section_actions">Omume ngalaba</string>
     <string name="demo_sess1_name">Zazen na Kinhin</string>
     <string name="demo_sess1_sec2_name">Zazen 1</string>
@@ -16,16 +16,15 @@
     <string name="menu_help">Enyemaka</string>
     <string name="menu_privacy">Nzuzo…</string>
     <string name="menu_settings">Ntọala</string>
-    <string name="minuten">Nkeji</string>
+    <string name="minutes">Nkeji</string>
     <string name="nav_label_settings">Ntọala</string>
     <string name="ok">Ọ dị mma</string>
     <string name="privacy_ok">Ọ dị mma</string>
     <string name="search_menu_title">Chọọ</string>
+    <string name="seconds">Sekọnd</string>
     <string name="section_info_string_2_pl">kwa sekọnd %1$d</string>
     <string name="section_info_string_2_sg">kwa sekọnd</string>
-    <string name="sekunden">Sekọnd</string>
     <string name="select_audio">Họrọ faịlụ ụda</string>
-    <string name="stop_meditation_cancel">Kagbuo</string>
     <string name="stop_meditation_stop">Kwụsị</string>
     <string name="theme">Isiokwu</string>
 </resources>

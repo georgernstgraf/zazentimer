@@ -5,7 +5,7 @@ import android.content.ServiceConnection
 import android.os.IBinder
 import android.util.Log
 
-class ServCon : ServiceConnection {
+class ServiceConnectionHelper : ServiceConnection {
     private var binder: MeditationServiceBinder? = null
     private var runOnConnect: RunOnConnect? = null
 

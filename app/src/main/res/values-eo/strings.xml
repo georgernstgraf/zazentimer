@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="abbrechen">Nuligi</string>
-    <string name="about1">Tempigilo por Zazen-Meditado — Simpla meditad-tempigilo kun personigeblaj sekcioj, sonorilaj sonoj, kaj seanc-administrado.</string>
-    <string name="about2">Origine kreita de Stefan Gaffga. Aktuale prizorgata de Georg Graf.&lt;br&gt;&lt;br&gt;Dankon al Winfried de &lt;a href=\"http://www.meditationsuhren.de\"&gt;http://www.meditationsuhren.de&lt;/a&gt; por provizi tiajn bonegajn sonorilajn sonojn!</string>
+    <string name="about1">Zazen-Medita Tempomezurilo — Simpla meditada tempomezurilo kun agordeblaj sekcioj, sonorilsonoj kaj seancadministrado.</string>
+    <string name="about2">Origine kreita de Stefan Gaffga. Nun prizorgata de Georg Graf.&lt;br&gt;&lt;br&gt;Dankon al Winfried de &lt;a href=\"http://www.meditationsuhren.de\"&gt;http://www.meditationsuhren.de&lt;/a&gt; pro la bonegaj sonorilsonoj!</string>
     <string name="about3">&lt;a href=\"https://github.com/georgernstgraf/zazentimer/issues\"&gt;Raporti problemojn en GitHub&lt;/a&gt;</string>
     <string name="action_delete">Forigi</string>
     <string name="action_undo">Malfari</string>
     <string name="affected_section_format">• sekcio \"%1$s\" en seanco \"%2$s\"</string>
-    <string name="app_description">Ĉi tiu aplikaĵo ebligas al la uzanto difini aron da meditad-seancoj kaj provizas tempigilon kun vida kaj aŭda rimarkigoj kiam parto aŭ la tuta meditado finiĝas.</string>
+    <string name="app_description">Tiu ĉi aplikaĵo ebligas difini aron da meditadaj seancoj kaj provizas tempomezurilon kun vida kaj aŭda reago kiam parto aŭ la tuta meditado finiĝas.</string>
     <string name="backup_error_text">Pardonu, eraro okazis dum konservado.</string>
     <string name="backup_success_text">Sekurkopio sukcese kreita!</string>
     <string name="bell_dimming_section_title">Agordi Sonorilan Laŭtecon</string>
@@ -19,7 +18,8 @@
     <string name="but_pause">Paŭzo</string>
     <string name="but_start">Komenci meditadon</string>
     <string name="but_stop">Haltigi</string>
-    <string name="button_bell_volumes">Alĝustigi sonorilajn laŭtecojn</string>
+    <string name="button_bell_volumes">Ĝustigi sonorilajn laŭtojn</string>
+    <string name="cancel">Nuligi</string>
     <string name="caption_zazen_meditation">Zazen-meditado</string>
     <string name="checkbox_keep_screen_on">Teni ekranon ŝaltita</string>
     <string name="confirm_delete_bell">Ĉu forigi sonorilon \"%s\"?</string>
@@ -44,7 +44,7 @@
     <string name="demo_sess2_name">Nur Zazen</string>
     <string name="desc_keep_screen_on">Tenas la ekranon ŝaltita dum la meditado</string>
     <string name="gong_type">Gong-sono</string>
-    <string name="help_sectionlist_text">Ĉi tie vi povas nomi, priskribi kaj redakti la enhavon de via seanco.\n\n REORDO\n Por reordigi la elementojn, longe premu elementon kaj\n trenu ĝin al sia nova pozicio.\n\n FORIGO\n Por forigi elementon, ŝovu ĝin dekstren.\n\n REDAKTO\n Por redakti sekcion, simple tuŝu ĝin unufoje.\n\n ALDONO\n Por aldoni novan sekcion, premu la butonon +.</string>
+    <string name="help_sectionlist_text">Ĉi tie vi povas nomi, priskribi kaj redakti la enhavon de via Seanco.\n\n REORDIGO\n Por reordigi la erojn, longe premu sur ero kaj\n trenu ĝin al ĝia nova pozicio.\n\n FORIGO\n Por forigi eron, movu ĝin dekstren.\n\n REDAKTO\n Por redakti sekcion, simple tuŝu ĝin unufoje.\n\n ALDONO\n Por aldoni novan sekcion, premu la + butonon.</string>
     <string name="help_sectionlist_title">Redakti seancon</string>
     <string name="import_bell">Importi sonorilon</string>
     <string name="label_section_name">Sekcia nomo</string>
@@ -63,7 +63,7 @@
     <string name="menu_help">Helpo</string>
     <string name="menu_privacy">Privateco…</string>
     <string name="menu_settings">Agordoj</string>
-    <string name="minuten">Minutoj</string>
+    <string name="minutes">Minutoj</string>
     <string name="nav_label_edit_section">Redakti sekcion</string>
     <string name="nav_label_edit_session">Redakti seancon</string>
     <string name="nav_label_manage_bells">Administri sonorilojn</string>
@@ -75,7 +75,7 @@
     <string name="no_bells_configured">Ankoraŭ neniuj sonoriloj agorditaj</string>
     <string name="no_custom_bells">Neniuj propraj sonoriloj importitaj.</string>
     <string name="no_sections_in_session">Ne eblas komenci meditadon: La elektita seanco ne havas sekciojn.</string>
-    <string name="no_session_exists">Estas neniu seanco startigebla. Bonvolu unue krei unu.</string>
+    <string name="no_session_exists">Ne ekzistas seanco kiu povas esti komencita. Bonvolu unue krei unu.</string>
     <string name="notification_channel_name">Medita Tempomezurilo</string>
     <string name="notification_text">Zazen-meditado nuntempe funkcias</string>
     <string name="notification_text_paused">Zazen-meditado paŭzita</string>
@@ -94,28 +94,27 @@
     <string name="privacy_title">Privatecaj informoj</string>
     <string name="restore_backup_not_found">Sekurkopia dosiero ne trovita</string>
     <string name="restore_error_text">Eraro dum restarigo el sekurkopio</string>
-    <string name="restore_really_text">Ĉi tio anstataŭigos ĉiujn viajn Seancojn per tiuj en la Sekurkopio! (Neniu malfaro!)</string>
+    <string name="restore_really_text">Tio ĉi anstataŭigos ĉiujn viajn seancojn per tiuj en la sekurkopio! (Neniu malfaro!)</string>
     <string name="restore_really_title">Ĉu vere restarigi datumojn?</string>
     <string name="restore_success_text">Datuma Restaŭro sukcesa</string>
     <string name="restore_version_mismatch_text">Tiu ĉi sekurkopio estis kreita de pli nova versio de ZazenTimer. Bonvolu ĝisdatigi la aplikaĵon.</string>
     <string name="restore_version_mismatch_title">Pli nova sekurkopia versio</string>
     <string name="search_menu_title">Serĉi</string>
+    <string name="seconds">Sekundoj</string>
     <string name="section_deleted">Forigita \'%s\'</string>
     <string name="section_info_string_1_pl">%1$d sonoriloj</string>
     <string name="section_info_string_1_sg">1 sonorilo</string>
     <string name="section_info_string_2_pl">ĉiujn %1$d sekundojn</string>
     <string name="section_info_string_2_sg">ĉiun sekundon</string>
-    <string name="sekunden">Sekundoj</string>
     <string name="select_audio">Elekti sondosieron</string>
     <string name="service_description">Funkcianta Zazen-meditado</string>
     <string name="session_deleted">Forigita \'%s\'</string>
     <string name="session_list_unnamed_entry">Sennoma seanco</string>
-    <string name="stop_meditation_cancel">Nuligi</string>
     <string name="stop_meditation_message">Via meditada seanco ankoraŭ okazas.</string>
     <string name="stop_meditation_stop">Haltigi</string>
     <string name="stop_meditation_title">Ĉu haltigi meditadon?</string>
     <string name="system_volume_section_title">Meditada laŭteco</string>
-    <string name="system_volume_subtitle">Kontrolas la alarm-volumon de la telefono por ĉiuj sonoriloj.</string>
+    <string name="system_volume_subtitle">Regas la alarman laŭtecon de la telefono por ĉiuj sonoriloj.</string>
     <string name="text_question_delete_session">Ĉu vere forigi la elektitan seancon?</string>
     <string name="theme">Etoso</string>
     <string name="theme_dark">Malhela etoso</string>

@@ -32,7 +32,7 @@
     <string name="menu_delete_session">אויסמעקן סעסיע</string>
     <string name="menu_help">הילף</string>
     <string name="menu_privacy">פּריוואַטקייט…</string>
-    <string name="minuten">מינוטן</string>
+    <string name="minutes">מינוטן</string>
     <string name="nav_label_meditation">מעדיטאַציע</string>
     <string name="nav_label_sessions">סעסיעס</string>
     <string name="new_session_description">נײַע סעסיע באַשרײַבונג</string>
@@ -47,12 +47,12 @@
     <string name="restore_backup_not_found">באַקאַפּ טעקע נישט געפֿונען</string>
     <string name="restore_version_mismatch_title">נײַערע באַקאַפּ ווערסיע</string>
     <string name="search_menu_title">זוכן</string>
+    <string name="seconds">סעקונדעס</string>
     <string name="section_deleted">אויסגעמעקט \'%s\'</string>
     <string name="section_info_string_1_pl">%1$d גלאָקן</string>
     <string name="section_info_string_1_sg">1 גלאָק</string>
     <string name="section_info_string_2_pl">יעדע %1$d סעקונדעס</string>
     <string name="section_info_string_2_sg">יעדע סעקונדע</string>
-    <string name="sekunden">סעקונדעס</string>
     <string name="select_audio">אויסקלײַבן קלאַנג טעקע</string>
     <string name="session_deleted">אויסגעמעקט \'%s\'</string>
     <string name="session_list_unnamed_entry">סעסיע אָן נאָמען</string>

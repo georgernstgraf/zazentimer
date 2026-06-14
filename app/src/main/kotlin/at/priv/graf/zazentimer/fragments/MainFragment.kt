@@ -233,7 +233,7 @@ class MainFragment : Fragment() {
                         updateSessionList()
                         selectLastSession()
                     }
-                }.setNegativeButton(R.string.abbrechen) { _, _ ->
+                }.setNegativeButton(R.string.cancel) { _, _ ->
                 }.create()
                 .show()
         }

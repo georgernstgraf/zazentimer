@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="abbrechen">Avbryt</string>
     <string name="about1">Zazen Meditation Timer — En enkel meditationstimer med anpassningsbara sektioner, klockljud och sessionshantering.</string>
     <string name="about2">Ursprungligen skapad av Stefan Gaffga. Underhålls för närvarande av Georg Graf.&lt;br&gt;&lt;br&gt;Tack till Winfried på &lt;a href=\"http://www.meditationsuhren.de\"&gt;http://www.meditationsuhren.de&lt;/a&gt; för att ha tillhandahållit så fantastiska klockljud!</string>
     <string name="about3">&lt;a href=\"https://github.com/georgernstgraf/zazentimer/issues\"&gt;Rapportera problem på GitHub&lt;/a&gt;</string>
     <string name="action_delete">Ta bort</string>
     <string name="action_undo">Ångra</string>
     <string name="affected_section_format">• sektion \"%1$s\" i session \"%2$s\"</string>
-    <string name="app_description">Den här applikationen låter användaren definiera en uppsättning meditationspass och ger en timer med visuell och ljudåterkoppling när en del eller hela meditationen är slut.</string>
+    <string name="app_description">Denna applikation låter användaren definiera en uppsättning meditationssessioner och erbjuder en timer med visuell och hörbar återkoppling när en del eller hela meditationen är över.</string>
     <string name="backup_error_text">Tyvärr inträffade ett fel vid sparandet.</string>
     <string name="backup_success_text">Säkerhetskopia skapad!</string>
     <string name="bell_dimming_section_title">Konfigurera klockvolym</string>
@@ -20,6 +19,7 @@
     <string name="but_start">Starta meditation</string>
     <string name="but_stop">Stopp</string>
     <string name="button_bell_volumes">Justera klangskålsvolymer</string>
+    <string name="cancel">Avbryt</string>
     <string name="caption_zazen_meditation">Zazen Meditation</string>
     <string name="checkbox_keep_screen_on">Håll skärmen på</string>
     <string name="confirm_delete_bell">Radera klockan \"%s\"?</string>
@@ -44,7 +44,7 @@
     <string name="demo_sess2_name">Endast Zazen</string>
     <string name="desc_keep_screen_on">Håller skärmen på under meditationen</string>
     <string name="gong_type">Gongljud</string>
-    <string name="help_sectionlist_text">Här kan du namnge, beskriva och redigera innehållet i din session.\n\n ÄNDRA ORDNING\n För att ändra ordning på objekten, tryck länge på ett objekt och\n dra det till dess nya position.\n\n RADERA\n För att radera ett objekt, dra det åt höger.\n\n REDIGERA\n För att redigera en sektion, tryck bara på den en gång.\n\n LÄGG TILL\n För att lägga till en ny sektion, tryck på +-knappen.</string>
+    <string name="help_sectionlist_text">Här kan du namnge, beskriva och redigera innehållet i ditt pass.\n\n OMORDNING\n För att ordna om objekten, tryck länge på ett objekt och\n dra det till sin nya position.\n\n RADERA\n För att ta bort ett objekt, flytta det åt höger.\n\n REDIGERA\n För att redigera en sektion, tryck på den en gång.\n\n LÄGG TILL\n För att lägga till en ny sektion, tryck på +-knappen.</string>
     <string name="help_sectionlist_title">Redigera session</string>
     <string name="import_bell">Importera klocka</string>
     <string name="label_section_name">Sektionsnamn</string>
@@ -63,7 +63,7 @@
     <string name="menu_help">Hjälp</string>
     <string name="menu_privacy">Integritet…</string>
     <string name="menu_settings">Inställningar</string>
-    <string name="minuten">Minuter</string>
+    <string name="minutes">Minuter</string>
     <string name="nav_label_edit_section">Redigera sektion</string>
     <string name="nav_label_edit_session">Redigera session</string>
     <string name="nav_label_manage_bells">Hantera klockor</string>
@@ -89,7 +89,7 @@
     <string name="pref_title_backup">Skapa säkerhetskopia</string>
     <string name="pref_title_brightness">Ljusstyrka</string>
     <string name="pref_title_restore">Återställ från säkerhetskopia</string>
-    <string name="privacy_message">Denna app samlar inte in några personuppgifter – den använder inte heller IP-adresser eller annan teknisk data, och samlar inte in, behandlar eller använder sådan data på något sätt.</string>
+    <string name="privacy_message">Denna app samlar inte in några personuppgifter - den använder inte heller IP-adresser eller andra teknikrelaterade data, och samlar, bearbetar eller använder inte heller något av detta på något sätt.</string>
     <string name="privacy_ok">OK</string>
     <string name="privacy_title">Integritetsinformation</string>
     <string name="restore_backup_not_found">Säkerhetskopian hittades inte</string>
@@ -100,17 +100,16 @@
     <string name="restore_version_mismatch_text">Denna säkerhetskopia skapades av en nyare version av ZazenTimer. Vänligen uppdatera appen.</string>
     <string name="restore_version_mismatch_title">Nyare säkerhetskopieversion</string>
     <string name="search_menu_title">Sök</string>
+    <string name="seconds">Sekunder</string>
     <string name="section_deleted">Tog bort \'%s\'</string>
     <string name="section_info_string_1_pl">%1$d klockor</string>
     <string name="section_info_string_1_sg">1 klocka</string>
     <string name="section_info_string_2_pl">var %1$d:e sekund</string>
     <string name="section_info_string_2_sg">varje sekund</string>
-    <string name="sekunden">Sekunder</string>
     <string name="select_audio">Välj ljudfil</string>
     <string name="service_description">En pågående Zazen Meditation</string>
     <string name="session_deleted">Tog bort \'%s\'</string>
     <string name="session_list_unnamed_entry">Namnlös session</string>
-    <string name="stop_meditation_cancel">Avbryt</string>
     <string name="stop_meditation_message">Din meditationssession pågår fortfarande.</string>
     <string name="stop_meditation_stop">Stopp</string>
     <string name="stop_meditation_title">Stoppa meditation?</string>

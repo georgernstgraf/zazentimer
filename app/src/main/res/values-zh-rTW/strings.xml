@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="abbrechen">取消</string>
-    <string name="about1">坐禪冥想計時器 — 一款簡單的冥想計時器，具備可自訂段落、頌缽聲音與課程管理功能。</string>
-    <string name="about2">最初由 Stefan Gaffga 創建。目前由 Georg Graf 維護。&lt;br&gt;&lt;br&gt;感謝 &lt;a href=\"http://www.meditationsuhren.de\"&gt;http://www.meditationsuhren.de&lt;/a&gt; 的 Winfried 提供如此優質的鐘聲！</string>
+    <string name="about1">坐禪冥想計時器 — 一款簡單的冥想計時器，具有可自訂的時段、鐘聲和會話管理。</string>
+    <string name="about2">最初由 Stefan Gaffga 創建。目前由 Georg Graf 維護。&lt;br&gt;&lt;br&gt;感謝 &lt;a href=\"http://www.meditationsuhren.de\"&gt;http://www.meditationsuhren.de&lt;/a&gt; 的 Winfried 提供了如此美妙的鐘聲！</string>
     <string name="about3">&lt;a href=\"https://github.com/georgernstgraf/zazentimer/issues\"&gt;在 GitHub 上回報問題&lt;/a&gt;</string>
     <string name="action_delete">刪除</string>
     <string name="action_undo">復原</string>
     <string name="affected_section_format">• 課程「%2$s」中的段落「%1$s」</string>
-    <string name="app_description">本應用程式讓使用者定義一組冥想課程，並在部分或全部冥想結束時，提供視覺與聽覺回饋的計時器。</string>
+    <string name="app_description">此應用程式讓使用者定義一組冥想課程，並在段落或整個冥想結束時，透過視覺與聽覺回饋的計時器提醒。</string>
     <string name="backup_error_text">抱歉，儲存時發生錯誤。</string>
     <string name="backup_success_text">備份建立成功！</string>
     <string name="bell_dimming_section_title">設定鐘聲音量</string>
@@ -15,11 +14,12 @@
     <string name="bell_name_2">低音</string>
     <string name="bell_pause">鐘聲間隔（秒）</string>
     <string name="bell_user">新增鐘聲…</string>
-    <string name="bell_volume_dim_explanation">調整此場次的個別鈴聲音量。</string>
+    <string name="bell_volume_dim_explanation">調整此課程中各個鐘聲的音量。</string>
     <string name="but_pause">暫停</string>
     <string name="but_start">開始冥想</string>
     <string name="but_stop">停止</string>
     <string name="button_bell_volumes">調整鐘聲音量</string>
+    <string name="cancel">取消</string>
     <string name="caption_zazen_meditation">坐禪冥想</string>
     <string name="checkbox_keep_screen_on">保持螢幕開啟</string>
     <string name="confirm_delete_bell">刪除頌缽 \"%s\"?</string>
@@ -63,15 +63,15 @@
     <string name="menu_help">說明</string>
     <string name="menu_privacy">隱私…</string>
     <string name="menu_settings">設定</string>
-    <string name="minuten">分鐘</string>
+    <string name="minutes">分鐘</string>
     <string name="nav_label_edit_section">編輯段落</string>
     <string name="nav_label_edit_session">編輯課程</string>
     <string name="nav_label_manage_bells">管理鐘聲</string>
     <string name="nav_label_meditation">冥想</string>
     <string name="nav_label_sessions">課程</string>
     <string name="nav_label_settings">設定</string>
-    <string name="new_session_description">新座描述</string>
-    <string name="new_session_name">新課程</string>
+    <string name="new_session_description">新課程描述</string>
+    <string name="new_session_name">新座</string>
     <string name="no_bells_configured">尚未設定鐘聲</string>
     <string name="no_custom_bells">未匯入自訂鐘聲。</string>
     <string name="no_sections_in_session">無法開始禪修：所選課程沒有任何段落。</string>
@@ -83,13 +83,13 @@
     <string name="notification_title_paused">坐禪冥想（已暫停）</string>
     <string name="num_bells">鐘聲次數</string>
     <string name="ok">確定</string>
-    <string name="pref_desc_brightness">冥想期間螢幕亮度</string>
-    <string name="pref_sum_backup">將會話和聲音備份儲存至 SD 卡。</string>
-    <string name="pref_sum_restore">從 SD 卡備份還原您的課程與自訂鐘聲</string>
+    <string name="pref_desc_brightness">冥想期間的顯示亮度</string>
+    <string name="pref_sum_backup">將您的課程與聲音備份儲存至 SD 卡。</string>
+    <string name="pref_sum_restore">從 SD 卡備份還原您的課程與自訂聲音</string>
     <string name="pref_title_backup">建立備份</string>
     <string name="pref_title_brightness">亮度</string>
     <string name="pref_title_restore">從備份還原</string>
-    <string name="privacy_message">本應用程式不收集任何個人資料——也不使用 IP 位址或任何其他技術相關資料，更不會以任何方式收集、處理或使用任何資料。</string>
+    <string name="privacy_message">此應用程式不收集任何個人資料 — 也不使用 IP 位址或任何其他技術相關資料，不以任何方式收集、處理或使用任何資料。</string>
     <string name="privacy_ok">確定</string>
     <string name="privacy_title">隱私權資訊</string>
     <string name="restore_backup_not_found">找不到備份檔案</string>
@@ -100,17 +100,16 @@
     <string name="restore_version_mismatch_text">此備份是由較新版本的 ZazenTimer 建立的。請更新應用程式。</string>
     <string name="restore_version_mismatch_title">較新的備份版本</string>
     <string name="search_menu_title">搜尋</string>
+    <string name="seconds">秒</string>
     <string name="section_deleted">已刪除 \'%s\'</string>
     <string name="section_info_string_1_pl">%1$d 個頌缽</string>
     <string name="section_info_string_1_sg">1 個頌缽</string>
     <string name="section_info_string_2_pl">每 %1$d 秒</string>
     <string name="section_info_string_2_sg">每秒</string>
-    <string name="sekunden">秒</string>
     <string name="select_audio">選擇聲音檔案</string>
     <string name="service_description">正在進行的坐禪冥想</string>
     <string name="session_deleted">已刪除 \'%s\'</string>
     <string name="session_list_unnamed_entry">未命名課程</string>
-    <string name="stop_meditation_cancel">取消</string>
     <string name="stop_meditation_message">您的冥想課程仍在進行中。</string>
     <string name="stop_meditation_stop">停止</string>
     <string name="stop_meditation_title">停止冥想？</string>

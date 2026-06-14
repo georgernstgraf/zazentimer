@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="abbrechen">Баш тарту</string>
     <string name="but_pause">Пауза</string>
     <string name="but_stop">Туктату</string>
+    <string name="cancel">Баш тарту</string>
     <string name="demo_sess2_name">Zazen гына</string>
     <string name="menu_settings">Көйләүләр</string>
     <string name="nav_label_sessions">Сессияләр</string>
     <string name="nav_label_settings">Көйләүләр</string>
     <string name="notification_channel_name">Медитация таймеры</string>
     <string name="pref_title_brightness">Яктылык</string>
-    <string name="stop_meditation_cancel">Баш тарту</string>
     <string name="stop_meditation_stop">Туктату</string>
 </resources>

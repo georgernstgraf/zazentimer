@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="abbrechen">გაუქმება</string>
     <string name="about1">Zazen მედიტაციის ტაიმერი — მარტივი მედიტაციის ტაიმერი კონფიგურირებადი სექციებით, ზარის ხმებითა და სესიების მართვით.</string>
     <string name="about2">თავდაპირველად შექმნილია სტეფან გაფგას მიერ. ამჟამად შენარჩუნებულია გეორგ გრაფის მიერ.&lt;br&gt;&lt;br&gt;მადლობა ვინფრიდს &lt;a href=\"http://www.meditationsuhren.de\"&gt;http://www.meditationsuhren.de&lt;/a&gt;-დან ასეთი შესანიშნავი ზარის ხმებისთვის!</string>
     <string name="about3">&lt;a href=\"https://github.com/georgernstgraf/zazentimer/issues\"&gt;პრობლემების შეტყობინება GitHub-ზე&lt;/a&gt;</string>
@@ -20,6 +19,7 @@
     <string name="but_start">მედიტაციის დაწყება</string>
     <string name="but_stop">გაჩერება</string>
     <string name="button_bell_volumes">ზარის ხმის რეგულირება</string>
+    <string name="cancel">გაუქმება</string>
     <string name="caption_zazen_meditation">Zazen მედიტაცია</string>
     <string name="checkbox_keep_screen_on">ეკრანის ჩართულად დატოვება</string>
     <string name="confirm_delete_bell">წაიშალოს ზარი \"%s\"?</string>
@@ -63,7 +63,7 @@
     <string name="menu_help">დახმარება</string>
     <string name="menu_privacy">კონფიდენციალურობა…</string>
     <string name="menu_settings">პარამეტრები</string>
-    <string name="minuten">წუთი</string>
+    <string name="minutes">წუთი</string>
     <string name="nav_label_edit_section">სექციის რედაქტირება</string>
     <string name="nav_label_edit_session">სესიის რედაქტირება</string>
     <string name="nav_label_manage_bells">ზარების მართვა</string>
@@ -100,17 +100,16 @@
     <string name="restore_version_mismatch_text">ეს სარეზერვო ასლი შექმნილია ZazenTimer-ის ახალი ვერსიით. გთხოვთ, განაახლოთ აპლიკაცია.</string>
     <string name="restore_version_mismatch_title">სარეზერვო ასლის ახალი ვერსია</string>
     <string name="search_menu_title">ძიება</string>
+    <string name="seconds">წამი</string>
     <string name="section_deleted">წაიშალა \'%s\'</string>
     <string name="section_info_string_1_pl">%1$d ზარი</string>
     <string name="section_info_string_1_sg">1 ზარი</string>
     <string name="section_info_string_2_pl">ყოველ %1$d წამში</string>
     <string name="section_info_string_2_sg">ყოველ წამში</string>
-    <string name="sekunden">წამი</string>
     <string name="select_audio">ხმოვანი ფაილის არჩევა</string>
     <string name="service_description">მიმდინარე Zazen მედიტაცია</string>
     <string name="session_deleted">წაიშალა \'%s\'</string>
     <string name="session_list_unnamed_entry">უსახელო სესია</string>
-    <string name="stop_meditation_cancel">გაუქმება</string>
     <string name="stop_meditation_message">თქვენი მედიტაციის სესია ჯერ კიდევ მიმდინარეობს.</string>
     <string name="stop_meditation_stop">გაჩერება</string>
     <string name="stop_meditation_title">შეჩერდეს მედიტაცია?</string>

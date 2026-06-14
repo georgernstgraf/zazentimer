@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="abbrechen">निरस्यताम्</string>
     <string name="action_delete">निष्कासयतु</string>
     <string name="action_undo">पूर्ववत् कुरु</string>
     <string name="backup_success_text">प्रतिलिपिः सफलतया निर्मिता!</string>
@@ -12,6 +11,7 @@
     <string name="but_start">ध्यानम् आरभताम्</string>
     <string name="but_stop">विरमतु</string>
     <string name="button_bell_volumes">घण्टास्वरमानानि समायोजयतु</string>
+    <string name="cancel">निरस्यताम्</string>
     <string name="caption_zazen_meditation">Zazen ध्यानम्</string>
     <string name="confirm_delete_bell">घण्टां निष्कासयतु \"%s\"?</string>
     <string name="content_desc_section_actions">विभागक्रियाः</string>
@@ -47,7 +47,7 @@
     <string name="menu_help">साहाय्यम्</string>
     <string name="menu_privacy">गोपनीयता…</string>
     <string name="menu_settings">विन्यासाः</string>
-    <string name="minuten">निमेषाः</string>
+    <string name="minutes">निमेषाः</string>
     <string name="nav_label_edit_section">विभागं सम्पादयतु</string>
     <string name="nav_label_edit_session">सत्रं सम्पादयतु</string>
     <string name="nav_label_manage_bells">घण्टाः प्रबन्धयतु</string>
@@ -66,13 +66,12 @@
     <string name="privacy_ok">अस्तु</string>
     <string name="privacy_title">गोपनीयतासूचना</string>
     <string name="search_menu_title">अन्वेषणम्</string>
+    <string name="seconds">तत्क्षणानि</string>
     <string name="section_deleted">निष्कासितम् \'%s\'</string>
     <string name="section_info_string_1_pl">%1$d घण्टाः</string>
     <string name="section_info_string_1_sg">१ घण्टा</string>
-    <string name="sekunden">तत्क्षणानि</string>
     <string name="session_deleted">निष्कासितम् \'%s\'</string>
     <string name="session_list_unnamed_entry">अनामकं सत्रम्</string>
-    <string name="stop_meditation_cancel">निरस्यताम्</string>
     <string name="stop_meditation_stop">विरमतु</string>
     <string name="stop_meditation_title">ध्यानं विरमतु?</string>
     <string name="system_volume_section_title">ध्यानस्वरमानम्</string>

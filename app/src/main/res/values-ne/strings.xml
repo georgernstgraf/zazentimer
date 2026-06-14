@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="abbrechen">रद्द गर्नुहोस्</string>
     <string name="about3">&lt;a href=\"https://github.com/georgernstgraf/zazentimer/issues\"&gt;GitHub मा समस्या रिपोर्ट गर्नुहोस्&lt;/a&gt;</string>
     <string name="action_delete">मेटाउनुहोस्</string>
     <string name="action_undo">पूर्ववत गर्नुहोस्</string>
@@ -13,6 +12,7 @@
     <string name="but_pause">पज गर्नुहोस्</string>
     <string name="but_start">ध्यान सुरु गर्नुहोस्</string>
     <string name="but_stop">रोक्नुहोस्</string>
+    <string name="cancel">रद्द गर्नुहोस्</string>
     <string name="caption_zazen_meditation">Zazen ध्यान</string>
     <string name="checkbox_keep_screen_on">स्क्रिन अन राख्नुहोस्</string>
     <string name="content_desc_section_actions">खण्ड कार्यहरू</string>
@@ -47,7 +47,7 @@
     <string name="menu_help">मद्दत</string>
     <string name="menu_privacy">गोपनीयता…</string>
     <string name="menu_settings">सेटिङहरू</string>
-    <string name="minuten">मिनेट</string>
+    <string name="minutes">मिनेट</string>
     <string name="nav_label_edit_section">खण्ड सम्पादन गर्नुहोस्</string>
     <string name="nav_label_edit_session">सत्र सम्पादन गर्नुहोस्</string>
     <string name="nav_label_manage_bells">घण्टीहरू व्यवस्थापन गर्नुहोस्</string>
@@ -75,16 +75,15 @@
     <string name="restore_success_text">डाटा पुनर्स्थापना सफल</string>
     <string name="restore_version_mismatch_title">नयाँ ब्याकअप संस्करण</string>
     <string name="search_menu_title">खोज्नुहोस्</string>
+    <string name="seconds">सेकेन्ड</string>
     <string name="section_deleted">\'%s\' मेटाइयो</string>
     <string name="section_info_string_1_pl">%1$d घण्टीहरू</string>
     <string name="section_info_string_1_sg">१ घण्टी</string>
     <string name="section_info_string_2_pl">प्रत्येक %1$d सेकेन्ड</string>
     <string name="section_info_string_2_sg">प्रत्येक सेकेन्ड</string>
-    <string name="sekunden">सेकेन्ड</string>
     <string name="select_audio">ध्वनि फाइल छान्नुहोस्</string>
     <string name="service_description">चलिरहेको जाजेन ध्यान</string>
     <string name="session_deleted">\'%s\' मेटाइयो</string>
-    <string name="stop_meditation_cancel">रद्द गर्नुहोस्</string>
     <string name="stop_meditation_message">तपाईंको ध्यान सत्र अझै चलिरहेको छ।</string>
     <string name="stop_meditation_stop">रोक्नुहोस्</string>
     <string name="stop_meditation_title">ध्यान रोक्ने?</string>

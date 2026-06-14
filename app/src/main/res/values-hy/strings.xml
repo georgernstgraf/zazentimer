@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="abbrechen">Չեղարկել</string>
     <string name="about1">Zazen մեդdelays...</string>
     <string name="about3">&lt;a href=\"https://github.com/georgernstgraf/zazentimer/issues\"&gt;Հաdelays...&lt;/a&gt;</string>
     <string name="action_delete">Ջնջել</string>
@@ -14,6 +13,7 @@
     <string name="but_start">Սկսել մեդիտացիան</string>
     <string name="but_stop">Կանգնեցնել</string>
     <string name="button_bell_volumes">Կարգավորել զանգի ձայնի մակարդակները</string>
+    <string name="cancel">Չեղարկել</string>
     <string name="caption_zazen_meditation">Zazen մեդիտացիա</string>
     <string name="checkbox_keep_screen_on">Վառ պահել էկրանը</string>
     <string name="confirm_delete_bell">Ջնջե՞լ զանգը \"%s\":</string>
@@ -52,7 +52,7 @@
     <string name="menu_help">Օգնություն</string>
     <string name="menu_privacy">Գաղտնիություն…</string>
     <string name="menu_settings">Կարգավորումներ</string>
-    <string name="minuten">Րոպեներ</string>
+    <string name="minutes">Րոպեներ</string>
     <string name="nav_label_edit_section">Խմբագրել բաժինը</string>
     <string name="nav_label_edit_session">Խմբագրել սեանսը</string>
     <string name="nav_label_manage_bells">Կառավարել զանգերը</string>
@@ -80,17 +80,16 @@
     <string name="restore_success_text">Տվյալների վերականգնումը հաջողվեց</string>
     <string name="restore_version_mismatch_title">Կրկնօրինակի ավելի նոր տարբերակ</string>
     <string name="search_menu_title">Որոնել</string>
+    <string name="seconds">Վայրկյաններ</string>
     <string name="section_deleted">Ջնջված է \'%s\'</string>
     <string name="section_info_string_1_pl">%1$d զանգ</string>
     <string name="section_info_string_1_sg">1 զանգ</string>
     <string name="section_info_string_2_pl">ամեն %1$d վայրկյանը</string>
     <string name="section_info_string_2_sg">ամեն վայրկյան</string>
-    <string name="sekunden">Վայրկյաններ</string>
     <string name="select_audio">Ընտրեք ձայնային ֆայլ</string>
     <string name="service_description">Ընթացիկ Zazen մեդիտացիա</string>
     <string name="session_deleted">Ջնջված է \'%s\'</string>
     <string name="session_list_unnamed_entry">Անանուն սեանս</string>
-    <string name="stop_meditation_cancel">Չեղարկել</string>
     <string name="stop_meditation_message">Ձեր մեդիտացիայի սեանսը դեռ ընթանում է:</string>
     <string name="stop_meditation_stop">Կանգնեցնել</string>
     <string name="stop_meditation_title">Կանգնեցնե՞լ մեդիտացիան:</string>

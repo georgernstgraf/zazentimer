@@ -22,9 +22,9 @@
     <string name="nav_label_sessions">सत्र</string>
     <string name="notification_channel_name">ध्यान टाइमर</string>
     <string name="pref_title_brightness">चमक</string>
+    <string name="seconds">सेकंड</string>
     <string name="section_info_string_2_pl">हर %1$d सेकंड</string>
     <string name="section_info_string_2_sg">हर सेकंड</string>
-    <string name="sekunden">सेकंड</string>
     <string name="select_audio">आवाज़ दी फाइल चुनो</string>
     <string name="theme">थीम</string>
     <string name="theme_desc">ऐप दा रूप चुनो</string>

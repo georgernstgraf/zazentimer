@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="abbrechen">Ka noqo</string>
     <string name="action_delete">Tirtir</string>
     <string name="action_undo">Ka noqo</string>
     <string name="backup_error_text">Waan ka xunnahay, khalad ayaa dhacay markii la keydinayay.</string>
@@ -9,6 +8,7 @@
     <string name="bell_name_2">Cod Hoose</string>
     <string name="but_pause">Haki</string>
     <string name="but_stop">Jooji</string>
+    <string name="cancel">Ka noqo</string>
     <string name="checkbox_keep_screen_on">Shaashada sii daaran</string>
     <string name="content_desc_drag_handle">Jiid si aad u habayso</string>
     <string name="copy_prefix">Nuqulka</string>
@@ -34,7 +34,7 @@
     <string name="menu_help">Caawin</string>
     <string name="menu_privacy">Qarsoodi…</string>
     <string name="menu_settings">Dejinta</string>
-    <string name="minuten">Daqiiqado</string>
+    <string name="minutes">Daqiiqado</string>
     <string name="nav_label_edit_section">Wax ka beddel Qaybta</string>
     <string name="nav_label_edit_session">Wax ka beddel Kalfadhiga</string>
     <string name="nav_label_sessions">Kalfadhiyo</string>
@@ -50,11 +50,10 @@
     <string name="restore_really_title">Runtii soo celi xogta?</string>
     <string name="restore_success_text">Xogta si guul leh ayaa loo soo celiyay</string>
     <string name="search_menu_title">Raadi</string>
+    <string name="seconds">Ilbiriqsiyo</string>
     <string name="section_deleted">Waa la tirtiray \'%s\'</string>
-    <string name="sekunden">Ilbiriqsiyo</string>
     <string name="session_deleted">Waa la tirtiray \'%s\'</string>
     <string name="session_list_unnamed_entry">Kalfadhi Magac La\'aan</string>
-    <string name="stop_meditation_cancel">Ka noqo</string>
     <string name="stop_meditation_stop">Jooji</string>
     <string name="stop_meditation_title">Jooji fikirka?</string>
     <string name="text_question_delete_session">Runtii ma tirtirtaa Kalfadhiga la doortay?</string>

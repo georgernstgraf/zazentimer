@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="abbrechen">Abrogare</string>
     <string name="about1">Horologium Meditationis Zazen — Horologium meditationis simplex cum sectionibus personalizabilibus, sonis campanarum, et sessionum administratione.</string>
     <string name="about2">Ab initio a Stefan Gaffga creatum. Nunc a Georg Graf conservatum.&lt;br&gt;&lt;br&gt;Gratias Winfriedo de &lt;a href=\"http://www.meditationsuhren.de\"&gt;http://www.meditationsuhren.de&lt;/a&gt; ob sonos campanarum tam praeclaros!</string>
     <string name="about3">&lt;a href=\"https://github.com/georgernstgraf/zazentimer/issues\"&gt;Errata in GitHub refer&lt;/a&gt;</string>
@@ -17,9 +16,10 @@
     <string name="bell_user">Campanam adde…</string>
     <string name="bell_volume_dim_explanation">Modera Singula Volumina Campanarum Pro Hac Sessione</string>
     <string name="but_pause">Pausa</string>
-    <string name="but_start">Incipe Meditationem</string>
+    <string name="but_start">Meditationem incipe</string>
     <string name="but_stop">Sistere</string>
     <string name="button_bell_volumes">Volumina campanarum adiusta</string>
+    <string name="cancel">Abrogare</string>
     <string name="caption_zazen_meditation">Meditatio Zazen</string>
     <string name="checkbox_keep_screen_on">Ostensionem accensam serva</string>
     <string name="confirm_delete_bell">Campanam \'%s\' delere?</string>
@@ -53,18 +53,18 @@
     <string name="manage_bells">Campanarum administratio</string>
     <string name="manage_bells_summary">Adde campanas ex tabulis / remove campanas ex applicatione</string>
     <string name="menu_about">De…</string>
-    <string name="menu_add_section">Adde Sectionem</string>
-    <string name="menu_add_session">Adde Sessionem</string>
+    <string name="menu_add_section">Sectionem adde</string>
+    <string name="menu_add_session">Sessionem adde</string>
     <string name="menu_copy_session">Sessionem duplica</string>
     <string name="menu_delete_section">Sectionem dele</string>
-    <string name="menu_delete_session">Sessionem dele</string>
-    <string name="menu_duplicate_section">Duplica Sectionem</string>
+    <string name="menu_delete_session">Dele Sessionem</string>
+    <string name="menu_duplicate_section">Sectionem duplica</string>
     <string name="menu_edit_session">Editio Sessionis</string>
     <string name="menu_help">Auxilium</string>
     <string name="menu_privacy">Privacitas…</string>
     <string name="menu_settings">Optiones</string>
-    <string name="minuten">Minuta</string>
-    <string name="nav_label_edit_section">Editio Sectionis</string>
+    <string name="minutes">Minuta</string>
+    <string name="nav_label_edit_section">Recense Sectionem</string>
     <string name="nav_label_edit_session">Editio Sessionis</string>
     <string name="nav_label_manage_bells">Campanarum administratio</string>
     <string name="nav_label_meditation">Meditatio</string>
@@ -100,17 +100,16 @@
     <string name="restore_version_mismatch_text">Haec copia a recentiore versione ZazenTimer creata est. Quaeso, applicationem ad novam redige.</string>
     <string name="restore_version_mismatch_title">Copia recentior</string>
     <string name="search_menu_title">Quaerere</string>
+    <string name="seconds">Secunda</string>
     <string name="section_deleted">\'%s\' deletum est</string>
     <string name="section_info_string_1_pl">%1$d Campanae</string>
     <string name="section_info_string_1_sg">1 Campana</string>
     <string name="section_info_string_2_pl">Omni %1$d secundis</string>
     <string name="section_info_string_2_sg">Omni secunda</string>
-    <string name="sekunden">Secunda</string>
     <string name="select_audio">Elige tabulam soni</string>
     <string name="service_description">Meditatio Zazen in cursu</string>
     <string name="session_deleted">\'%s\' deletum est</string>
     <string name="session_list_unnamed_entry">Sessio Innominata</string>
-    <string name="stop_meditation_cancel">Abrogare</string>
     <string name="stop_meditation_message">Tua sessio meditationis adhuc agitur.</string>
     <string name="stop_meditation_stop">Sistere</string>
     <string name="stop_meditation_title">Meditationem desinere?</string>

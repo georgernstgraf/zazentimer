@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="abbrechen">रद्द करू</string>
     <string name="action_delete">मेटाउ</string>
     <string name="action_undo">पूर्ववत करू</string>
     <string name="bell_name_1">उच्च स्वर</string>
@@ -9,6 +8,7 @@
     <string name="but_pause">विराम</string>
     <string name="but_start">ध्यान आरंभ करू</string>
     <string name="but_stop">रोकू</string>
+    <string name="cancel">रद्द करू</string>
     <string name="caption_zazen_meditation">ज़ाज़ेन ध्यान</string>
     <string name="checkbox_keep_screen_on">स्क्रीन चालू राखू</string>
     <string name="crash_dialog_title">गंभीर त्रुटि</string>
@@ -36,7 +36,7 @@
     <string name="menu_help">सहायता</string>
     <string name="menu_privacy">गोपनीयता…</string>
     <string name="menu_settings">सेटिंग्स</string>
-    <string name="minuten">मिनट</string>
+    <string name="minutes">मिनट</string>
     <string name="nav_label_edit_section">खंड संपादित करू</string>
     <string name="nav_label_edit_session">सत्र संपादित करू</string>
     <string name="nav_label_manage_bells">घंटी प्रबंधित करू</string>
@@ -59,14 +59,13 @@
     <string name="restore_success_text">डेटा पुनर्स्थापना सफल</string>
     <string name="restore_version_mismatch_title">नव बैकअप संस्करण</string>
     <string name="search_menu_title">खोजू</string>
+    <string name="seconds">सेकंड</string>
     <string name="section_info_string_1_pl">%1$d घंटी</string>
     <string name="section_info_string_1_sg">1 घंटी</string>
     <string name="section_info_string_2_pl">प्रत्येक %1$d सेकंड</string>
     <string name="section_info_string_2_sg">प्रत्येक सेकंड</string>
-    <string name="sekunden">सेकंड</string>
     <string name="select_audio">ध्वनि फाइल चुनू</string>
     <string name="service_description">एकटा चलि रहल ज़ाज़ेन ध्यान</string>
-    <string name="stop_meditation_cancel">रद्द करू</string>
     <string name="stop_meditation_message">अहाँक ध्यान सत्र अखनो चलि रहल अछि।</string>
     <string name="stop_meditation_stop">रोकू</string>
     <string name="theme">थीम</string>

@@ -1,25 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="abbrechen">Otkaži</string>
     <string name="about1">Zazen Meditation Timer — Jednostavan meditacijski tajmer s prilagodljivim sekcijama, zvucima zvona i upravljanjem sesijama.</string>
-    <string name="about2">Originalno kreirao Stefan Gaffga. Trenutno održava Georg Graf.&lt;br&gt;&lt;br&gt;Hvala Winfriedu s &lt;a href=\"http://www.meditationsuhren.de\"&gt;http://www.meditationsuhren.de&lt;/a&gt; na izvrsnim zvucima zvona!</string>
+    <string name="about2">Originalno kreirao Stefan Gaffga. Trenutno održava Georg Graf.&lt;br&gt;&lt;br&gt;Hvala Winfriedu s &lt;a href=\"http://www.meditationsuhren.de\"&gt;http://www.meditationsuhren.de&lt;/a&gt; na pružanju tako sjajnih zvukova zvona!</string>
     <string name="about3">&lt;a href=\"https://github.com/georgernstgraf/zazentimer/issues\"&gt;Prijavite probleme na GitHub-u&lt;/a&gt;</string>
     <string name="action_delete">Izbriši</string>
     <string name="action_undo">Poništi</string>
     <string name="affected_section_format">• sekcija \"%1$s\" u sesiji \"%2$s\"</string>
-    <string name="app_description">Ova aplikacija omogućava korisniku da definiše set meditacionih sesija i pruža timer s vizuelnim i zvučnim signalom kada se dio ili cijela meditacija završi.</string>
-    <string name="backup_error_text">Izvinite, došlo je do greške prilikom spremanja.</string>
+    <string name="app_description">Ova aplikacija omogućava korisniku da definira skup meditacijskih sesija i pruža tajmer s vizuelnom i zvučnom povratnom informacijom kada je dio ili cijela meditacija završena.</string>
+    <string name="backup_error_text">Žao nam je, došlo je do greške prilikom spašavanja.</string>
     <string name="backup_success_text">Backup uspješno kreiran!</string>
     <string name="bell_dimming_section_title">Konfiguriraj glasnoću zvona</string>
     <string name="bell_name_1">Visoki ton</string>
     <string name="bell_name_2">Niski ton</string>
     <string name="bell_pause">Razmak zvona (sek)</string>
     <string name="bell_user">Dodaj zvono…</string>
-    <string name="bell_volume_dim_explanation">Podesite pojedinačne jačine zvuka zvona za ovu sesiju.</string>
+    <string name="bell_volume_dim_explanation">Podesi pojedinačne glasnoće zvona za ovu sesiju.</string>
     <string name="but_pause">Pauza</string>
     <string name="but_start">Započni meditaciju</string>
     <string name="but_stop">Zaustavi</string>
     <string name="button_bell_volumes">Prilagodi glasnoću zvona</string>
+    <string name="cancel">Otkaži</string>
     <string name="caption_zazen_meditation">Zazen meditacija</string>
     <string name="checkbox_keep_screen_on">Zadrži ekran uključen</string>
     <string name="confirm_delete_bell">Izbrisati zvono \"%s\"?</string>
@@ -44,14 +44,14 @@
     <string name="demo_sess2_name">Samo Zazen</string>
     <string name="desc_keep_screen_on">Zadržava ekran uključenim tokom meditacije</string>
     <string name="gong_type">Zvuk gonga</string>
-    <string name="help_sectionlist_text">Ovdje možete imenovati, opisati i urediti sadržaj vaše sesije.\n\n PROMJENA REDOSLIJEDA\n Za promjenu redoslijeda, dugo pritisnite stavku i\n povucite je na novo mjesto.\n\n BRISANJE\n Za brisanje stavke, pomjerite je udesno.\n\n UREĐIVANJE\n Za uređivanje sekcije, dodirnite je jednom.\n\n DODAVANJE\n Za dodavanje nove sekcije, pritisnite + dugme.</string>
+    <string name="help_sectionlist_text">Ovdje možete imenovati, opisati i urediti sadržaj vaše sesije.\n\n PRESLAGIVANJE\n Za preslagivanje stavki, dugo pritisnite stavku i\n povucite je na novi položaj.\n\n BRISANJE\n Za brisanje stavke, pomjerite je udesno.\n\n UREĐIVANJE\n Za uređivanje sekcije, samo je dodirnite jednom.\n\n DODAVANJE\n Za dodavanje nove sekcije, pritisnite dugme +.</string>
     <string name="help_sectionlist_title">Uredi sesiju</string>
     <string name="import_bell">Uvezi zvono</string>
     <string name="label_section_name">Naziv sekcije</string>
     <string name="label_session_description">Opis sesije</string>
     <string name="label_session_name">Naziv sesije</string>
     <string name="manage_bells">Upravljanje zvonima</string>
-    <string name="manage_bells_summary">Dodaj zvona iz datotečnog sistema / ukloni zvona iz aplikacije</string>
+    <string name="manage_bells_summary">Dodajte zvona iz sistema datoteka / uklonite zvona iz aplikacije</string>
     <string name="menu_about">O aplikaciji…</string>
     <string name="menu_add_section">Dodaj sekciju</string>
     <string name="menu_add_session">Dodaj sesiju</string>
@@ -63,7 +63,7 @@
     <string name="menu_help">Pomoć</string>
     <string name="menu_privacy">Privatnost…</string>
     <string name="menu_settings">Postavke</string>
-    <string name="minuten">Minute</string>
+    <string name="minutes">Minute</string>
     <string name="nav_label_edit_section">Uredi sekciju</string>
     <string name="nav_label_edit_session">Uredi sesiju</string>
     <string name="nav_label_manage_bells">Upravljanje zvonima</string>
@@ -84,7 +84,7 @@
     <string name="num_bells">Broj zvona</string>
     <string name="ok">U redu</string>
     <string name="pref_desc_brightness">Svjetlina ekrana tokom meditacije</string>
-    <string name="pref_sum_backup">Spremi backup vaših sesija i zvukova na SD karticu.</string>
+    <string name="pref_sum_backup">Spremite rezervnu kopiju vaših sesija i zvukova na SD karticu.</string>
     <string name="pref_sum_restore">Vratite vaše sesije i prilagođene zvukove iz SD kartice backupa</string>
     <string name="pref_title_backup">Kreiraj backup</string>
     <string name="pref_title_brightness">Svjetlina</string>
@@ -94,23 +94,22 @@
     <string name="privacy_title">Informacije o privatnosti</string>
     <string name="restore_backup_not_found">Datoteka rezervne kopije nije pronađena</string>
     <string name="restore_error_text">Greška pri vraćanju iz sigurnosne kopije</string>
-    <string name="restore_really_text">Ovo će zamijeniti sve vaše sesije sa onima iz rezervne kopije! (Nema poništavanja!)</string>
+    <string name="restore_really_text">Ovo će zamijeniti sve vaše sesije sa onima iz backupa! (Bez povratka!)</string>
     <string name="restore_really_title">Zaista vratiti podatke?</string>
     <string name="restore_success_text">Vraćanje podataka uspješno</string>
     <string name="restore_version_mismatch_text">Ova rezervna kopija je kreirana novijom verzijom ZazenTimera. Molimo ažurirajte aplikaciju.</string>
     <string name="restore_version_mismatch_title">Novija verzija backupa</string>
     <string name="search_menu_title">Pretraži</string>
+    <string name="seconds">Sekunde</string>
     <string name="section_deleted">Izbrisano \'%s\'</string>
     <string name="section_info_string_1_pl">%1$d zvona</string>
     <string name="section_info_string_1_sg">1 zvono</string>
     <string name="section_info_string_2_pl">svakih %1$d sekundi</string>
     <string name="section_info_string_2_sg">svake sekunde</string>
-    <string name="sekunden">Sekunde</string>
     <string name="select_audio">Odaberite zvučnu datoteku</string>
     <string name="service_description">Zazen meditacija u toku</string>
     <string name="session_deleted">Izbrisano \'%s\'</string>
     <string name="session_list_unnamed_entry">Neimenovana sesija</string>
-    <string name="stop_meditation_cancel">Otkaži</string>
     <string name="stop_meditation_message">Vaša meditacijska sesija je još uvijek u toku.</string>
     <string name="stop_meditation_stop">Zaustavi</string>
     <string name="stop_meditation_title">Zaustaviti meditaciju?</string>

@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="abbrechen">Abbrechen</string>
     <string name="about1">Zazen Meditation Timer — Ein einfacher Meditationstimer mit anpassbaren Abschnitten, Klangschalenklängen und Sitzungsverwaltung.</string>
-    <string name="about2">Ursprünglich erstellt von Stefan Gaffga. Derzeit gepflegt von Georg Graf.&lt;br&gt;&lt;br&gt;Dank an Winfried von &lt;a href=\"http://www.meditationsuhren.de\"&gt;http://www.meditationsuhren.de&lt;/a&gt; für die Bereitstellung so großartiger Klangschalen-Klänge!</string>
+    <string name="about2">Ursprünglich erstellt von Stefan Gaffga. Aktuell gepflegt von Georg Graf.&lt;br&gt;&lt;br&gt;Danke an Winfried von &lt;a href=\"http://www.meditationsuhren.de\"&gt;http://www.meditationsuhren.de&lt;/a&gt; für die Bereitstellung solch großartiger Klangschalen-Klänge!</string>
     <string name="about3">&lt;a href=\"https://github.com/georgernstgraf/zazentimer/issues\"&gt;Fehler auf GitHub melden&lt;/a&gt;</string>
     <string name="action_delete">Löschen</string>
     <string name="action_undo">Rückgängig</string>
     <string name="affected_section_format">• Abschnitt \"%1$s\" in Sitzung \"%2$s\"</string>
-    <string name="app_description">Diese Anwendung ermöglicht es dem Benutzer, eine Reihe von Meditationssitzungen zu definieren, und bietet einen Timer mit visuellem und akustischem Feedback, wenn ein Teil oder die gesamte Meditation beendet ist.</string>
+    <string name="app_description">Diese Anwendung ermöglicht es Ihnen, Meditations-Sitzungen zu definieren, und bietet einen Timer mit visuellem und akustischem Feedback, wenn ein Teil oder die gesamte Meditation beendet ist.</string>
     <string name="backup_error_text">Entschuldigung, beim Speichern ist ein Fehler aufgetreten.</string>
     <string name="backup_success_text">Backup erfolgreich erstellt!</string>
     <string name="bell_dimming_section_title">Klangschalen-Lautstärke konfigurieren</string>
@@ -15,11 +14,12 @@
     <string name="bell_name_2">Tiefer Ton</string>
     <string name="bell_pause">Klangschalen-Abstand (Sek.)</string>
     <string name="bell_user">Klangschale hinzufügen…</string>
-    <string name="bell_volume_dim_explanation">Individuelle Klangschalen-Lautstärken für diese Session anpassen.</string>
+    <string name="bell_volume_dim_explanation">Individuelle Klanglautstärken für diese Sitzung anpassen.</string>
     <string name="but_pause">Pause</string>
     <string name="but_start">Meditation starten</string>
     <string name="but_stop">Stopp</string>
     <string name="button_bell_volumes">Klangschalen-Lautstärken anpassen</string>
+    <string name="cancel">Abbrechen</string>
     <string name="caption_zazen_meditation">Zazen-Meditation</string>
     <string name="checkbox_keep_screen_on">Bildschirm eingeschaltet lassen</string>
     <string name="confirm_delete_bell">Klangschale \"%s\" löschen?</string>
@@ -63,7 +63,7 @@
     <string name="menu_help">Hilfe</string>
     <string name="menu_privacy">Datenschutz…</string>
     <string name="menu_settings">Einstellungen</string>
-    <string name="minuten">Minuten</string>
+    <string name="minutes">Minuten</string>
     <string name="nav_label_edit_section">Abschnitt bearbeiten</string>
     <string name="nav_label_edit_session">Sitzung bearbeiten</string>
     <string name="nav_label_manage_bells">Klangschalen verwalten</string>
@@ -94,23 +94,22 @@
     <string name="privacy_title">Datenschutzinformation</string>
     <string name="restore_backup_not_found">Backup-Datei nicht gefunden</string>
     <string name="restore_error_text">Fehler beim Wiederherstellen aus dem Backup</string>
-    <string name="restore_really_text">Dies wird alle deine Sessions mit denen aus dem Backup ersetzen! (Kein Rückgängigmachen!)</string>
+    <string name="restore_really_text">Dies ersetzt alle Ihre Sessions durch die im Backup! (Kein Rückgängig!)</string>
     <string name="restore_really_title">Daten wirklich wiederherstellen?</string>
     <string name="restore_success_text">Datenwiederherstellung erfolgreich</string>
     <string name="restore_version_mismatch_text">Dieses Backup wurde mit einer neueren Version von ZazenTimer erstellt. Bitte aktualisiere die App.</string>
     <string name="restore_version_mismatch_title">Neuere Backup-Version</string>
     <string name="search_menu_title">Suchen</string>
+    <string name="seconds">Sekunden</string>
     <string name="section_deleted">\'%s\' gelöscht</string>
     <string name="section_info_string_1_pl">%1$d Klangschalen</string>
     <string name="section_info_string_1_sg">1 Klangschale</string>
     <string name="section_info_string_2_pl">alle %1$d Sekunden</string>
     <string name="section_info_string_2_sg">jede Sekunde</string>
-    <string name="sekunden">Sekunden</string>
     <string name="select_audio">Klangdatei auswählen</string>
     <string name="service_description">Eine laufende Zazen-Meditation</string>
     <string name="session_deleted">\'%s\' gelöscht</string>
     <string name="session_list_unnamed_entry">Unbenannte Sitzung</string>
-    <string name="stop_meditation_cancel">Abbrechen</string>
     <string name="stop_meditation_message">Deine Meditationssitzung läuft noch.</string>
     <string name="stop_meditation_stop">Stopp</string>
     <string name="stop_meditation_title">Meditation beenden?</string>

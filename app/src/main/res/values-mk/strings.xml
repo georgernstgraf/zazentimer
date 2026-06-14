@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="abbrechen">Откажи</string>
     <string name="about1">Тајмер за Зазен Медитација — Едноставен тајмер за медитација со приспособливи секции, звуци од звучни садови и управување со сесии.</string>
     <string name="about2">Оригинално креирана од Stefan Gaffga. Моментално одржувана од Georg Graf.&lt;br&gt;&lt;br&gt;Благодарност до Winfried од &lt;a href=\"http://www.meditationsuhren.de\"&gt;http://www.meditationsuhren.de&lt;/a&gt; за одличните звуци од звучни садови!</string>
     <string name="about3">&lt;a href=\"https://github.com/georgernstgraf/zazentimer/issues\"&gt;Пријавете проблеми на GitHub&lt;/a&gt;</string>
@@ -20,6 +19,7 @@
     <string name="but_start">Започни медитација</string>
     <string name="but_stop">Стоп</string>
     <string name="button_bell_volumes">Прилагоди јачина на ѕвончиња</string>
+    <string name="cancel">Откажи</string>
     <string name="caption_zazen_meditation">Zazen медитација</string>
     <string name="checkbox_keep_screen_on">Задржи го екранот вклучен</string>
     <string name="confirm_delete_bell">Избриши ѕвонче \"%s\"?</string>
@@ -63,7 +63,7 @@
     <string name="menu_help">Помош</string>
     <string name="menu_privacy">Приватност…</string>
     <string name="menu_settings">Поставки</string>
-    <string name="minuten">Минути</string>
+    <string name="minutes">Минути</string>
     <string name="nav_label_edit_section">Уреди дел</string>
     <string name="nav_label_edit_session">Уреди сесија</string>
     <string name="nav_label_manage_bells">Управувај со ѕвончиња</string>
@@ -100,17 +100,16 @@
     <string name="restore_version_mismatch_text">Оваа резервна копија е креирана од понова верзија на ZazenTimer. Ве молиме ажурирајте ја апликацијата.</string>
     <string name="restore_version_mismatch_title">Понова верзија на резервна копија</string>
     <string name="search_menu_title">Пребарај</string>
+    <string name="seconds">Секунди</string>
     <string name="section_deleted">Избришано \'%s\'</string>
     <string name="section_info_string_1_pl">%1$d ѕвончиња</string>
     <string name="section_info_string_1_sg">1 ѕвонче</string>
     <string name="section_info_string_2_pl">секои %1$d секунди</string>
     <string name="section_info_string_2_sg">секоја секунда</string>
-    <string name="sekunden">Секунди</string>
     <string name="select_audio">Избери звучна датотека</string>
     <string name="service_description">Zazen медитација во тек</string>
     <string name="session_deleted">Избришано \'%s\'</string>
     <string name="session_list_unnamed_entry">Неименувана сесија</string>
-    <string name="stop_meditation_cancel">Откажи</string>
     <string name="stop_meditation_message">Вашата сесија за медитација сè уште е во тек.</string>
     <string name="stop_meditation_stop">Стоп</string>
     <string name="stop_meditation_title">Запри медитација?</string>

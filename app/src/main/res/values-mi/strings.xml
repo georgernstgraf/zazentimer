@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="abbrechen">Whakakore</string>
     <string name="action_delete">Muku</string>
     <string name="bell_user">Tāpiri Pere…</string>
+    <string name="cancel">Whakakore</string>
     <string name="content_desc_section_actions">Ngā mahi wāhanga</string>
     <string name="content_desc_session_actions">Ngā mahi wātū</string>
     <string name="copy_prefix">Kape o</string>
@@ -27,7 +27,7 @@
     <string name="menu_edit_session">Whakatika Wātū</string>
     <string name="menu_help">Āwhina</string>
     <string name="menu_settings">Tautuhinga</string>
-    <string name="minuten">Miniti</string>
+    <string name="minutes">Miniti</string>
     <string name="nav_label_edit_section">Whakatika Wāhanga</string>
     <string name="nav_label_edit_session">Whakatika Wātū</string>
     <string name="nav_label_settings">Tautuhinga</string>
@@ -35,11 +35,10 @@
     <string name="ok">Āe</string>
     <string name="privacy_ok">Āe</string>
     <string name="search_menu_title">Rapu</string>
+    <string name="seconds">Hēkona</string>
     <string name="section_deleted">Kua mukua \'%s\'</string>
     <string name="section_info_string_1_sg">1 Pere</string>
-    <string name="sekunden">Hēkona</string>
     <string name="session_deleted">Kua mukua \'%s\'</string>
-    <string name="stop_meditation_cancel">Whakakore</string>
     <string name="theme">Kaupapa</string>
     <string name="theme_dark">Kaupapa Pōuri</string>
     <string name="theme_light">Kaupapa Mārama</string>

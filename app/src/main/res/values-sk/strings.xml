@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="abbrechen">Zrušiť</string>
     <string name="about1">Zazen Meditation Timer — Jednoduchý časovač meditácie s prispôsobiteľnými sekciami, zvukmi zvonov a správou relácií.</string>
     <string name="about2">Pôvodne vytvoril Stefan Gaffga. V súčasnosti spravuje Georg Graf.&lt;br&gt;&lt;br&gt;Poďakovanie pre Winfrieda z &lt;a href=\"http://www.meditationsuhren.de\"&gt;http://www.meditationsuhren.de&lt;/a&gt; za poskytnutie takých skvelých zvukov zvonov!</string>
     <string name="about3">&lt;a href=\"https://github.com/georgernstgraf/zazentimer/issues\"&gt;Nahlásiť problémy na GitHube&lt;/a&gt;</string>
@@ -15,11 +14,12 @@
     <string name="bell_name_2">Nízky tón</string>
     <string name="bell_pause">Medzera medzi zvonmi (sek)</string>
     <string name="bell_user">Pridať zvon…</string>
-    <string name="bell_volume_dim_explanation">Upraviť individuálnu hlasitosť zvonov pre toto sedenie.</string>
+    <string name="bell_volume_dim_explanation">Upraviť jednotlivé hlasitosti zvonov pre túto reláciu.</string>
     <string name="but_pause">Pauza</string>
     <string name="but_start">Spustiť meditáciu</string>
     <string name="but_stop">Zastaviť</string>
     <string name="button_bell_volumes">Upraviť hlasitosti zvonov</string>
+    <string name="cancel">Zrušiť</string>
     <string name="caption_zazen_meditation">Zazen meditácia</string>
     <string name="checkbox_keep_screen_on">Ponechať obrazovku zapnutú</string>
     <string name="confirm_delete_bell">Odstrániť zvon \"%s\"?</string>
@@ -28,7 +28,7 @@
     <string name="content_desc_section_actions">Akcie sekcie</string>
     <string name="content_desc_session_actions">Akcie sedenia</string>
     <string name="copy_prefix">Kópia</string>
-    <string name="crash_copy_exit">Kopírovať trasovanie zásobníka a ukončiť</string>
+    <string name="crash_copy_exit">Kopírovať výpis zásobníka a ukončiť</string>
     <string name="crash_dialog_title">Fatálna chyba</string>
     <string name="crash_exit">Ukončiť</string>
     <string name="default_section_name">Bez názvu</string>
@@ -63,7 +63,7 @@
     <string name="menu_help">Pomocník</string>
     <string name="menu_privacy">Súkromie…</string>
     <string name="menu_settings">Nastavenia</string>
-    <string name="minuten">Minúty</string>
+    <string name="minutes">Minúty</string>
     <string name="nav_label_edit_section">Upraviť sekciu</string>
     <string name="nav_label_edit_session">Upraviť sedenie</string>
     <string name="nav_label_manage_bells">Spravovať zvony</string>
@@ -100,17 +100,16 @@
     <string name="restore_version_mismatch_text">Táto záloha bola vytvorená novšou verziou ZazenTimer. Prosím, aktualizujte aplikáciu.</string>
     <string name="restore_version_mismatch_title">Novšia verzia zálohy</string>
     <string name="search_menu_title">Hľadať</string>
+    <string name="seconds">Sekundy</string>
     <string name="section_deleted">Odstránené \'%s\'</string>
     <string name="section_info_string_1_pl">%1$d zvonov</string>
     <string name="section_info_string_1_sg">1 zvon</string>
     <string name="section_info_string_2_pl">každých %1$d sekúnd</string>
     <string name="section_info_string_2_sg">každú sekundu</string>
-    <string name="sekunden">Sekundy</string>
     <string name="select_audio">Vybrať zvukový súbor</string>
     <string name="service_description">Prebiehajúca Zazen meditácia</string>
     <string name="session_deleted">Odstránené \'%s\'</string>
     <string name="session_list_unnamed_entry">Sedenie bez názvu</string>
-    <string name="stop_meditation_cancel">Zrušiť</string>
     <string name="stop_meditation_message">Vaše meditačné sedenie stále prebieha.</string>
     <string name="stop_meditation_stop">Zastaviť</string>
     <string name="stop_meditation_title">Zastaviť meditáciu?</string>

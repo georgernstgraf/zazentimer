@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="abbrechen">Annuleren</string>
-    <string name="about1">Zazen Meditatietimer — Een eenvoudige meditatietimer met aanpasbare secties, belgeluiden en sessiebeheer.</string>
-    <string name="about2">Oorspronkelijk gemaakt door Stefan Gaffga. Momenteel onderhouden door Georg Graf.&lt;br&gt;&lt;br&gt;Dank aan Winfried van &lt;a href=\"http://www.meditationsuhren.de\"&gt;http://www.meditationsuhren.de&lt;/a&gt; voor het aanbieden van zulke geweldige belgeluiden!</string>
+    <string name="about1">Zazen Meditation Timer — Een eenvoudige meditatietimer met aanpasbare secties, klanken en sessiebeheer.</string>
+    <string name="about2">Oorspronkelijk gemaakt door Stefan Gaffga. Momenteel onderhouden door Georg Graf.&lt;br&gt;&lt;br&gt;Met dank aan Winfried van &lt;a href=\"http://www.meditationsuhren.de\"&gt;http://www.meditationsuhren.de&lt;/a&gt; voor het beschikbaar stellen van zo\'n geweldige klanken!</string>
     <string name="about3">&lt;a href=\"https://github.com/georgernstgraf/zazentimer/issues\"&gt;Meld problemen op GitHub&lt;/a&gt;</string>
     <string name="action_delete">Verwijderen</string>
     <string name="action_undo">Ongedaan maken</string>
@@ -14,16 +13,17 @@
     <string name="bell_name_1">Hoge toon</string>
     <string name="bell_name_2">Lage toon</string>
     <string name="bell_pause">Pauze tussen klankschalen (sec)</string>
-    <string name="bell_user">Klankschaal toevoegen…</string>
+    <string name="bell_user">Bel toevoegen…</string>
     <string name="bell_volume_dim_explanation">Pas individuele belvolumes aan voor deze sessie.</string>
     <string name="but_pause">Pauze</string>
     <string name="but_start">Meditatie starten</string>
     <string name="but_stop">Stop</string>
     <string name="button_bell_volumes">Belvolumes aanpassen</string>
+    <string name="cancel">Annuleren</string>
     <string name="caption_zazen_meditation">Zazen Meditatie</string>
     <string name="checkbox_keep_screen_on">Scherm aan houden</string>
     <string name="confirm_delete_bell">Bel \"%s\" verwijderen?</string>
-    <string name="confirm_delete_bell_affected">Klank \"%1$s\" verwijderen?\n\nDe volgende secties worden omgeschakeld naar de standaardklank:\n%2$s</string>
+    <string name="confirm_delete_bell_affected">Klankschaal \"%1$s\" verwijderen?\n\nDe volgende secties worden overgeschakeld naar de standaard klankschaal:\n%2$s</string>
     <string name="content_desc_drag_handle">Sleep om te herordenen</string>
     <string name="content_desc_section_actions">Sectieacties</string>
     <string name="content_desc_session_actions">Sessieacties</string>
@@ -44,9 +44,9 @@
     <string name="demo_sess2_name">Alleen Zazen</string>
     <string name="desc_keep_screen_on">Houdt het scherm aan tijdens de meditatie</string>
     <string name="gong_type">Gonggeluid</string>
-    <string name="help_sectionlist_text">Hier kun je de inhoud van je sessie een naam geven, beschrijven en bewerken.\n\n HERORDENEN\n Om de items te herordenen, druk je lang op een item en\n sleep je het naar de nieuwe positie.\n\n VERWIJDEREN\n Om een item te verwijderen, verplaats je het naar rechts.\n\n BEWERKEN\n Om een sectie te bewerken, raak je deze één keer aan.\n\n TOEVOEGEN\n Om een nieuwe sectie toe te voegen, druk je op de + knop.</string>
+    <string name="help_sectionlist_text">Hier kun je je sessie een naam geven, beschrijven en de inhoud bewerken.\n\n HERORDENEN\n Houd een item lang ingedrukt en sleep het naar de nieuwe positie om de items te herordenen.\n\n VERWIJDEREN\n Om een item te verwijderen, veeg het naar rechts.\n\n BEWERKEN\n Om een sectie te bewerken, tik je er één keer op.\n\n TOEVOEGEN\n Om een nieuwe sectie toe te voegen, druk je op de + knop.</string>
     <string name="help_sectionlist_title">Sessie bewerken</string>
-    <string name="import_bell">Bel importeren</string>
+    <string name="import_bell">Klankschaal importeren</string>
     <string name="label_section_name">Sectienaam</string>
     <string name="label_session_description">Sessiebeschrijving</string>
     <string name="label_session_name">Sessienaam</string>
@@ -63,7 +63,7 @@
     <string name="menu_help">Help</string>
     <string name="menu_privacy">Privacy…</string>
     <string name="menu_settings">Instellingen</string>
-    <string name="minuten">Minuten</string>
+    <string name="minutes">Minuten</string>
     <string name="nav_label_edit_section">Sectie bewerken</string>
     <string name="nav_label_edit_session">Sessie bewerken</string>
     <string name="nav_label_manage_bells">Klankschalen beheren</string>
@@ -77,7 +77,7 @@
     <string name="no_sections_in_session">Kan meditatie niet starten: De geselecteerde sessie heeft geen secties.</string>
     <string name="no_session_exists">Er is geen sessie die gestart kan worden. Maak er eerst een aan.</string>
     <string name="notification_channel_name">Meditatietimer</string>
-    <string name="notification_text">Er is momenteel een Zazen-meditatie bezig</string>
+    <string name="notification_text">Er is momenteel een Zazen-meditatie actief</string>
     <string name="notification_text_paused">Zazen-meditatie gepauzeerd</string>
     <string name="notification_title">Zazen Meditatie</string>
     <string name="notification_title_paused">Zazen-meditatie (gepauzeerd)</string>
@@ -85,7 +85,7 @@
     <string name="ok">OK</string>
     <string name="pref_desc_brightness">Helderheid van het scherm tijdens meditatie</string>
     <string name="pref_sum_backup">Sla een back-up van je sessies en geluiden op je SD-kaart op.</string>
-    <string name="pref_sum_restore">Herstel je sessies en aangepaste geluiden van de SD-kaartback-up</string>
+    <string name="pref_sum_restore">Herstel je sessies en aangepaste geluiden van de back-up op de SD-kaart</string>
     <string name="pref_title_backup">Back-up maken</string>
     <string name="pref_title_brightness">Helderheid</string>
     <string name="pref_title_restore">Herstellen van back-up</string>
@@ -100,22 +100,21 @@
     <string name="restore_version_mismatch_text">Deze back-up is gemaakt door een nieuwere versie van ZazenTimer. Werk de app bij.</string>
     <string name="restore_version_mismatch_title">Nieuwere back-upversie</string>
     <string name="search_menu_title">Zoeken</string>
+    <string name="seconds">Seconden</string>
     <string name="section_deleted">\'%s\' verwijderd</string>
-    <string name="section_info_string_1_pl">%1$d bellen</string>
-    <string name="section_info_string_1_sg">1 bel</string>
+    <string name="section_info_string_1_pl">%1$d klankschalen</string>
+    <string name="section_info_string_1_sg">1 klankschaal</string>
     <string name="section_info_string_2_pl">elke %1$d seconden</string>
     <string name="section_info_string_2_sg">elke seconde</string>
-    <string name="sekunden">Seconden</string>
     <string name="select_audio">Geluidsbestand selecteren</string>
     <string name="service_description">Een lopende Zazen meditatie</string>
     <string name="session_deleted">\'%s\' verwijderd</string>
     <string name="session_list_unnamed_entry">Naamloze sessie</string>
-    <string name="stop_meditation_cancel">Annuleren</string>
     <string name="stop_meditation_message">Je meditatiesessie is nog bezig.</string>
     <string name="stop_meditation_stop">Stop</string>
     <string name="stop_meditation_title">Meditatie stoppen?</string>
     <string name="system_volume_section_title">Meditatievolume</string>
-    <string name="system_volume_subtitle">Regelt het alarmvolume van de telefoon voor alle bellen.</string>
+    <string name="system_volume_subtitle">Regelt het alarmvolume van de telefoon voor alle klankschalen.</string>
     <string name="text_question_delete_session">Geselecteerde sessie echt verwijderen?</string>
     <string name="theme">Thema</string>
     <string name="theme_dark">Donker thema</string>

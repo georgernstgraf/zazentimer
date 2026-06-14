@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="abbrechen">ביטול</string>
     <string name="about1">טיימר מדיטציית זאזן — טיימר מדיטציה פשוט עם מקטעים הניתנים להתאמה, צלילי פעמון וניהול הפעלות.</string>
     <string name="about2">נוצר במקור על ידי Stefan Gaffga. כרגע מתוחזק על ידי Georg Graf.&lt;br&gt;&lt;br&gt;תודה ל-Winfried מ-&lt;a href=\"http://www.meditationsuhren.de\"&gt;http://www.meditationsuhren.de&lt;/a&gt; על שסיפק צלילי פעמון נהדרים כל כך!</string>
     <string name="about3">&lt;a href=\"https://github.com/georgernstgraf/zazentimer/issues\"&gt;דווח על בעיות ב-GitHub&lt;/a&gt;</string>
@@ -10,16 +9,17 @@
     <string name="app_description">אפליקציה זו מאפשרת למשתמש להגדיר סדרת אימוני מדיטציה ומספקת טיימר עם משוב חזותי ושמעי כאשר חלק מהמדיטציה או כולה מסתיימים.</string>
     <string name="backup_error_text">מצטערים, אירעה שגיאה בעת השמירה.</string>
     <string name="backup_success_text">הגיבוי נוצר בהצלחה!</string>
-    <string name="bell_dimming_section_title">כיוון עוצמת פעמון</string>
+    <string name="bell_dimming_section_title">הגדרת עוצמת פעמון</string>
     <string name="bell_name_1">צליל גבוה</string>
     <string name="bell_name_2">צליל נמוך</string>
     <string name="bell_pause">מרווח פעמון (שניות)</string>
     <string name="bell_user">הוסף פעמון…</string>
-    <string name="bell_volume_dim_explanation">התאם עוצמת פעמונים בנפרד לסשן זה</string>
+    <string name="bell_volume_dim_explanation">כוונון עוצמת פעמונים בודדים להפעלה זו.</string>
     <string name="but_pause">השהה</string>
     <string name="but_start">התחל מדיטציה</string>
     <string name="but_stop">עצור</string>
     <string name="button_bell_volumes">כוונן עוצמת שמע פעמונים</string>
+    <string name="cancel">ביטול</string>
     <string name="caption_zazen_meditation">מדיטציית זאזן</string>
     <string name="checkbox_keep_screen_on">השאר מסך דולק</string>
     <string name="confirm_delete_bell">למחוק פעמון \"%s\"?</string>
@@ -28,7 +28,7 @@
     <string name="content_desc_section_actions">פעולות מקטע</string>
     <string name="content_desc_session_actions">פעולות אימון</string>
     <string name="copy_prefix">עותק של</string>
-    <string name="crash_copy_exit">העתקת Stack Trace ויציאה</string>
+    <string name="crash_copy_exit">העתק מחסנית קריאות וצא</string>
     <string name="crash_dialog_title">שגיאה חמורה</string>
     <string name="crash_exit">יציאה</string>
     <string name="default_section_name">ללא שם</string>
@@ -63,14 +63,14 @@
     <string name="menu_help">עזרה</string>
     <string name="menu_privacy">פרטיות…</string>
     <string name="menu_settings">הגדרות</string>
-    <string name="minuten">דקות</string>
+    <string name="minutes">דקות</string>
     <string name="nav_label_edit_section">ערוך מקטע</string>
     <string name="nav_label_edit_session">ערוך אימון</string>
     <string name="nav_label_manage_bells">נהל פעמונים</string>
     <string name="nav_label_meditation">מדיטציה</string>
     <string name="nav_label_sessions">אימונים</string>
     <string name="nav_label_settings">הגדרות</string>
-    <string name="new_session_description">תיאור הפעלה חדשה</string>
+    <string name="new_session_description">תיאור אימון חדש</string>
     <string name="new_session_name">אימון חדש</string>
     <string name="no_bells_configured">עדיין לא הוגדרו פעמונים</string>
     <string name="no_custom_bells">לא יובאו פעמונים מותאמים אישית.</string>
@@ -100,17 +100,16 @@
     <string name="restore_version_mismatch_text">גיבוי זה נוצר על ידי גרסה חדשה יותר של ZazenTimer. אנא עדכן את האפליקציה.</string>
     <string name="restore_version_mismatch_title">גרסת גיבוי חדשה יותר</string>
     <string name="search_menu_title">חיפוש</string>
+    <string name="seconds">שניות</string>
     <string name="section_deleted">נמחק \'%s\'</string>
     <string name="section_info_string_1_pl">%1$d פעמונים</string>
     <string name="section_info_string_1_sg">פעמון 1</string>
     <string name="section_info_string_2_pl">כל %1$d שניות</string>
     <string name="section_info_string_2_sg">כל שנייה</string>
-    <string name="sekunden">שניות</string>
     <string name="select_audio">בחר קובץ צליל</string>
     <string name="service_description">מדיטציית זאזן פועלת</string>
     <string name="session_deleted">נמחק \'%s\'</string>
     <string name="session_list_unnamed_entry">אימון ללא שם</string>
-    <string name="stop_meditation_cancel">ביטול</string>
     <string name="stop_meditation_message">אימון המדיטציה שלך עדיין פועל.</string>
     <string name="stop_meditation_stop">עצור</string>
     <string name="stop_meditation_title">לעצור מדיטציה?</string>

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="abbrechen">বাতিল</string>
     <string name="about1">জাজেন মেডিটেশন টাইমার — কাস্টমাইজযোগ্য পর্ব, ঘণ্টার শব্দ এবং সেশন ম্যানেজমেন্ট সহ একটি সাধারণ মেডিটেশন টাইমার।</string>
     <string name="about2">মূলত Stefan Gaffga কর্তৃক তৈরি। বর্তমানে Georg Graf এর রক্ষণাবেক্ষণ করছেন।&lt;br&gt;&lt;br&gt;অসাধারণ সব ঘণ্টার শব্দ প্রদান করার জন্য &lt;a href=\"http://www.meditationsuhren.de\"&gt;http://www.meditationsuhren.de&lt;/a&gt; এর Winfried কে ধন্যবাদ!</string>
     <string name="about3">&lt;a href=\"https://github.com/georgernstgraf/zazentimer/issues\"&gt;GitHub এ সমস্যা রিপোর্ট করুন&lt;/a&gt;</string>
@@ -20,6 +19,7 @@
     <string name="but_start">ধ্যান শুরু করুন</string>
     <string name="but_stop">থামুন</string>
     <string name="button_bell_volumes">ঘণ্টার ভলিউম সামঞ্জস্য করুন</string>
+    <string name="cancel">বাতিল</string>
     <string name="caption_zazen_meditation">জাজেন ধ্যান</string>
     <string name="checkbox_keep_screen_on">স্ক্রিন চালু রাখুন</string>
     <string name="confirm_delete_bell">\"%s\" ঘণ্টা মুছবেন?</string>
@@ -63,7 +63,7 @@
     <string name="menu_help">সাহায্য</string>
     <string name="menu_privacy">গোপনীয়তা…</string>
     <string name="menu_settings">সেটিংস</string>
-    <string name="minuten">মিনিট</string>
+    <string name="minutes">মিনিট</string>
     <string name="nav_label_edit_section">বিভাগ সম্পাদনা</string>
     <string name="nav_label_edit_session">সেশন সম্পাদনা</string>
     <string name="nav_label_manage_bells">ঘণ্টা পরিচালনা করুন</string>
@@ -100,17 +100,16 @@
     <string name="restore_version_mismatch_text">এই ব্যাকআপটি ZazenTimer-এর একটি নতুন সংস্করণ দ্বারা তৈরি করা হয়েছে। অনুগ্রহ করে অ্যাপটি আপডেট করুন।</string>
     <string name="restore_version_mismatch_title">নতুন ব্যাকআপ সংস্করণ</string>
     <string name="search_menu_title">অনুসন্ধান</string>
+    <string name="seconds">সেকেন্ড</string>
     <string name="section_deleted">\'%s\' মুছে ফেলা হয়েছে</string>
     <string name="section_info_string_1_pl">%1$dটি ঘণ্টা</string>
     <string name="section_info_string_1_sg">১টি ঘণ্টা</string>
     <string name="section_info_string_2_pl">প্রতি %1$d সেকেন্ডে</string>
     <string name="section_info_string_2_sg">প্রতি সেকেন্ডে</string>
-    <string name="sekunden">সেকেন্ড</string>
     <string name="select_audio">শব্দ ফাইল নির্বাচন করুন</string>
     <string name="service_description">একটি চলমান জাজেন মেডিটেশন</string>
     <string name="session_deleted">\'%s\' মুছে ফেলা হয়েছে</string>
     <string name="session_list_unnamed_entry">নামহীন সেশন</string>
-    <string name="stop_meditation_cancel">বাতিল</string>
     <string name="stop_meditation_message">আপনার ধ্যান সেশন এখনও চলছে।</string>
     <string name="stop_meditation_stop">থামুন</string>
     <string name="stop_meditation_title">ধ্যান থামাবেন?</string>

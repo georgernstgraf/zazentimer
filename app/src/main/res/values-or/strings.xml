@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="abbrechen">ବାତିଲ୍</string>
     <string name="action_delete">ଡିଲିଟ୍ କରନ୍ତୁ</string>
     <string name="action_undo">ଅନ୍‌ଡୁ</string>
     <string name="but_pause">ବିରାମ</string>
     <string name="but_start">ଧ୍ୟାନ ଆରମ୍ଭ କରନ୍ତୁ</string>
     <string name="but_stop">ବନ୍ଦ କରନ୍ତୁ</string>
+    <string name="cancel">ବାତିଲ୍</string>
     <string name="caption_zazen_meditation">ଜାଜେନ୍ ଧ୍ୟାନ</string>
     <string name="demo_sess1_name">ଜାଜେନ୍ ଏବଂ କିନହିନ୍</string>
     <string name="demo_sess1_sec1_name">ପ୍ରସ୍ତୁତି</string>
@@ -20,23 +20,22 @@
     <string name="menu_help">ସାହାଯ୍ୟ</string>
     <string name="menu_privacy">ଗୋପନୀୟତା…</string>
     <string name="menu_settings">ସେଟିଂସ</string>
-    <string name="minuten">ମିନିଟ୍</string>
+    <string name="minutes">ମିନିଟ୍</string>
     <string name="nav_label_meditation">ଧ୍ୟାନ</string>
     <string name="nav_label_settings">ସେଟିଂସ</string>
     <string name="notification_channel_name">ଧ୍ୟାନ ଟାଇମର୍</string>
     <string name="notification_text_paused">ଜାଜେନ୍ ଧ୍ୟାନ ବିରାମ ହୋଇଛି</string>
     <string name="notification_title">ଜାଜେନ୍ ଧ୍ୟାନ</string>
     <string name="notification_title_paused">ଜାଜେନ୍ ଧ୍ୟାନ (ବିରାମ ହୋଇଛି)</string>
-    <string name="ok">ଓକେ</string>
+    <string name="ok">ଠିକ୍ ଅଛି</string>
     <string name="pref_title_brightness">ଉଜ୍ଜ୍ୱଳତା</string>
-    <string name="privacy_ok">ଓକେ</string>
+    <string name="privacy_ok">ଠିକ୍ ଅଛି</string>
     <string name="privacy_title">ଗୋପନୀୟତା ସୂଚନା</string>
     <string name="restore_backup_not_found">ବ୍ୟାକଅପ୍ ଫାଇଲ୍ ମିଳିଲା ନାହିଁ</string>
     <string name="restore_success_text">ଡାଟା ପୁନରୁଦ୍ଧାର ସଫଳ</string>
     <string name="search_menu_title">ଖୋଜନ୍ତୁ</string>
+    <string name="seconds">ସେକେଣ୍ଡ</string>
     <string name="section_info_string_2_sg">ପ୍ରତି ସେକେଣ୍ଡରେ</string>
-    <string name="sekunden">ସେକେଣ୍ଡ</string>
-    <string name="stop_meditation_cancel">ବାତିଲ୍</string>
     <string name="stop_meditation_stop">ବନ୍ଦ କରନ୍ତୁ</string>
     <string name="stop_meditation_title">ଧ୍ୟାନ ବନ୍ଦ କରିବେ କି?</string>
     <string name="theme">ଥିମ୍</string>

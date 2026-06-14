@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="abbrechen">Annuler</string>
     <string name="about1">Minuteur de méditation Zazen — Un simple minuteur de méditation avec des sections personnalisables, des sons de cloche et une gestion de session.</string>
     <string name="about2">Créé à l\'origine par Stefan Gaffga. Actuellement maintenu par Georg Graf.&lt;br&gt;&lt;br&gt;Merci à Winfried de &lt;a href=\"http://www.meditationsuhren.de\"&gt;http://www.meditationsuhren.de&lt;/a&gt; pour avoir fourni de si beaux sons de cloche !</string>
     <string name="about3">&lt;a href=\"https://github.com/georgernstgraf/zazentimer/issues\"&gt;Signaler des problèmes sur GitHub&lt;/a&gt;</string>
@@ -20,6 +19,7 @@
     <string name="but_start">Démarrer la méditation</string>
     <string name="but_stop">Arrêter</string>
     <string name="button_bell_volumes">Ajuster les volumes des bols</string>
+    <string name="cancel">Annuler</string>
     <string name="caption_zazen_meditation">Méditation Zazen</string>
     <string name="checkbox_keep_screen_on">Garder l\'écran allumé</string>
     <string name="confirm_delete_bell">Supprimer le bol \"%s\" ?</string>
@@ -63,7 +63,7 @@
     <string name="menu_help">Aide</string>
     <string name="menu_privacy">Confidentialité…</string>
     <string name="menu_settings">Paramètres</string>
-    <string name="minuten">Minutes</string>
+    <string name="minutes">Minutes</string>
     <string name="nav_label_edit_section">Modifier la section</string>
     <string name="nav_label_edit_session">Modifier la session</string>
     <string name="nav_label_manage_bells">Gérer les bols</string>
@@ -100,17 +100,16 @@
     <string name="restore_version_mismatch_text">Cette sauvegarde a été créée par une version plus récente de ZazenTimer. Veuillez mettre à jour l\'application.</string>
     <string name="restore_version_mismatch_title">Version de sauvegarde plus récente</string>
     <string name="search_menu_title">Rechercher</string>
+    <string name="seconds">Secondes</string>
     <string name="section_deleted">Supprimé \'%s\'</string>
     <string name="section_info_string_1_pl">%1$d cloches</string>
     <string name="section_info_string_1_sg">1 cloche</string>
     <string name="section_info_string_2_pl">toutes les %1$d secondes</string>
     <string name="section_info_string_2_sg">chaque seconde</string>
-    <string name="sekunden">Secondes</string>
     <string name="select_audio">Sélectionner un fichier son</string>
     <string name="service_description">Une méditation Zazen en cours</string>
     <string name="session_deleted">Supprimé \'%s\'</string>
     <string name="session_list_unnamed_entry">Session sans nom</string>
-    <string name="stop_meditation_cancel">Annuler</string>
     <string name="stop_meditation_message">Votre session de méditation est toujours en cours.</string>
     <string name="stop_meditation_stop">Arrêter</string>
     <string name="stop_meditation_title">Arrêter la méditation ?</string>

@@ -65,7 +65,7 @@ class TimePickerFragment :
             npMin?.let { this@TimePickerFragment.minutes = it.value }
             onOkRunnable?.run()
         }
-        builder.setNegativeButton(R.string.abbrechen) { _: DialogInterface, _: Int ->
+        builder.setNegativeButton(R.string.cancel) { _: DialogInterface, _: Int ->
         }
         val create = builder.create()
         this.view?.let { v ->

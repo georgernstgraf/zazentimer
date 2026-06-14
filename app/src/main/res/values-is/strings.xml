@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="abbrechen">Hætta við</string>
     <string name="about1">Zazen hugleiðsluklukka — Einföld hugleiðsluklukka með sérsniðnum hlutum, bjölluhljóðum og lotustjórnun.</string>
     <string name="about2">Upphaflega búið til af Stefan Gaffga. Núverandi viðhald af Georg Graf.&lt;br&gt;&lt;br&gt;Þakkir til Winfried á &lt;a href=\"http://www.meditationsuhren.de\"&gt;http://www.meditationsuhren.de&lt;/a&gt; fyrir að útvega svo frábær bjölluhljóð!</string>
     <string name="about3">&lt;a href=\"https://github.com/georgernstgraf/zazentimer/issues\"&gt;Tilkynna vandamál á GitHub&lt;/a&gt;</string>
@@ -20,6 +19,7 @@
     <string name="but_start">Hefja hugleiðslu</string>
     <string name="but_stop">Stöðva</string>
     <string name="button_bell_volumes">Stilla bjölluhljóðstyrk</string>
+    <string name="cancel">Hætta við</string>
     <string name="caption_zazen_meditation">Zazen hugleiðsla</string>
     <string name="checkbox_keep_screen_on">Halda skjá kveiktum</string>
     <string name="confirm_delete_bell">Eyða bjöllu \"%s\"?</string>
@@ -63,7 +63,7 @@
     <string name="menu_help">Hjálp</string>
     <string name="menu_privacy">Persónuvernd…</string>
     <string name="menu_settings">Stillingar</string>
-    <string name="minuten">Mínútur</string>
+    <string name="minutes">Mínútur</string>
     <string name="nav_label_edit_section">Breyta hluta</string>
     <string name="nav_label_edit_session">Breyta lotu</string>
     <string name="nav_label_manage_bells">Stjórna bjöllum</string>
@@ -100,17 +100,16 @@
     <string name="restore_version_mismatch_text">Þetta öryggisafrit var búið til af nýrri útgáfu af ZazenTimer. Vinsamlegast uppfærðu forritið.</string>
     <string name="restore_version_mismatch_title">Nýrri útgáfa öryggisafrits</string>
     <string name="search_menu_title">Leita</string>
+    <string name="seconds">Sekúndur</string>
     <string name="section_deleted">Eytt \'%s\'</string>
     <string name="section_info_string_1_pl">%1$d bjöllur</string>
     <string name="section_info_string_1_sg">1 bjalla</string>
     <string name="section_info_string_2_pl">á %1$d sekúndna fresti</string>
     <string name="section_info_string_2_sg">hverja sekúndu</string>
-    <string name="sekunden">Sekúndur</string>
     <string name="select_audio">Veldu hljóðskrá</string>
     <string name="service_description">Zazen hugleiðsla í gangi</string>
     <string name="session_deleted">Eytt \'%s\'</string>
     <string name="session_list_unnamed_entry">Ónefnd lota</string>
-    <string name="stop_meditation_cancel">Hætta við</string>
     <string name="stop_meditation_message">Hugleiðslulotan þín er enn í gangi.</string>
     <string name="stop_meditation_stop">Stöðva</string>
     <string name="stop_meditation_title">Stöðva hugleiðslu?</string>

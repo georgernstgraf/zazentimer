@@ -177,6 +177,6 @@ class MeditationServiceTest : AbstractZazenTest() {
     }
 
     companion object {
-        private const val TAG = "MST"
+        private const val TAG = "ZMT_MeditationServiceTest"
     }
 }

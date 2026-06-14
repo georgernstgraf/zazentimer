@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="abbrechen">रद्द करें</string>
-    <string name="about1">ज़ाज़ेन ध्यान टाइमर — अनुकूलन योग्य खंडों, घंटी ध्वनियों और सत्र प्रबंधन के साथ एक सरल ध्यान टाइमर।</string>
+    <string name="about1">ज़ाज़ेन मेडिटेशन टाइमर — कस्टमाइज़ करने योग्य सेक्शन, बेल साउंड और सेशन मैनेजमेंट के साथ एक सरल मेडिटेशन टाइमर।</string>
     <string name="about2">मूल रूप से Stefan Gaffga द्वारा बनाया गया। वर्तमान में Georg Graf द्वारा अनुरक्षित।&lt;br&gt;&lt;br&gt;इतनी शानदार घंटी ध्वनियाँ प्रदान करने के लिए &lt;a href=\"http://www.meditationsuhren.de\"&gt;http://www.meditationsuhren.de&lt;/a&gt; के Winfried का धन्यवाद!</string>
     <string name="about3">&lt;a href=\"https://github.com/georgernstgraf/zazentimer/issues\"&gt;GitHub पर समस्याएँ रिपोर्ट करें&lt;/a&gt;</string>
     <string name="action_delete">हटाएँ</string>
     <string name="action_undo">पूर्ववत करें</string>
     <string name="affected_section_format">• सत्र \"%2$s\" में खंड \"%1$s\"</string>
-    <string name="app_description">यह एप्लिकेशन उपयोगकर्ता को मेडिटेशन सेशन का एक सेट परिभाषित करने देता है और एक भाग या पूरा मेडिटेशन समाप्त होने पर दृश्य और श्रव्य प्रतिक्रिया के साथ एक टाइमर प्रदान करता है।</string>
+    <string name="app_description">यह एप्लिकेशन उपयोगकर्ता को ध्यान सत्रों का एक सेट परिभाषित करने देती है और एक टाइमर प्रदान करती है जो किसी भाग या पूरे ध्यान के समाप्त होने पर दृश्य और श्रव्य प्रतिक्रिया देता है।</string>
     <string name="backup_error_text">क्षमा करें, सहेजते समय एक त्रुटि हुई।</string>
     <string name="backup_success_text">बैकअप सफलतापूर्वक बनाया गया!</string>
     <string name="bell_dimming_section_title">घंटी वॉल्यूम कॉन्फ़िगर करें</string>
@@ -20,10 +19,11 @@
     <string name="but_start">ध्यान शुरू करें</string>
     <string name="but_stop">रोकें</string>
     <string name="button_bell_volumes">घंटी की आवाज़ समायोजित करें</string>
+    <string name="cancel">रद्द करें</string>
     <string name="caption_zazen_meditation">ज़ाज़ेन ध्यान</string>
     <string name="checkbox_keep_screen_on">स्क्रीन चालू रखें</string>
     <string name="confirm_delete_bell">घंटी \"%s\" हटाएँ?</string>
-    <string name="confirm_delete_bell_affected">घंटी \"%1$s\" हटाएँ?\n\nनिम्नलिखित खंड डिफ़ॉल्ट घंटी पर स्विच किए जाएँगे:\n%2$s</string>
+    <string name="confirm_delete_bell_affected">बेल \"%1$s\" हटाएं?\n\nनिम्नलिखित सेक्शन को डिफ़ॉल्ट बेल पर स्विच कर दिया जाएगा:\n%2$s</string>
     <string name="content_desc_drag_handle">पुनर्व्यवस्थित करने के लिए खींचें</string>
     <string name="content_desc_section_actions">खंड क्रियाएँ</string>
     <string name="content_desc_session_actions">सत्र क्रियाएँ</string>
@@ -63,7 +63,7 @@
     <string name="menu_help">सहायता</string>
     <string name="menu_privacy">गोपनीयता…</string>
     <string name="menu_settings">सेटिंग्स</string>
-    <string name="minuten">मिनट</string>
+    <string name="minutes">मिनट</string>
     <string name="nav_label_edit_section">खंड संपादित करें</string>
     <string name="nav_label_edit_session">सत्र संपादित करें</string>
     <string name="nav_label_manage_bells">घंटियाँ प्रबंधित करें</string>
@@ -84,7 +84,7 @@
     <string name="num_bells">घंटी गणना</string>
     <string name="ok">ठीक है</string>
     <string name="pref_desc_brightness">ध्यान के दौरान डिस्प्ले की चमक</string>
-    <string name="pref_sum_backup">अपने सत्रों और ध्वनियों का बैकअप SD कार्ड पर सहेजें।</string>
+    <string name="pref_sum_backup">अपने सेशन और साउंड का बैकअप अपने SD-Card में सहेजें।</string>
     <string name="pref_sum_restore">SD-कार्ड बैकअप से अपने सत्र और कस्टम ध्वनियाँ पुनर्स्थापित करें</string>
     <string name="pref_title_backup">बैकअप बनाएँ</string>
     <string name="pref_title_brightness">चमक</string>
@@ -100,17 +100,16 @@
     <string name="restore_version_mismatch_text">यह बैकअप ZazenTimer के नए संस्करण द्वारा बनाया गया था। कृपया ऐप अपडेट करें।</string>
     <string name="restore_version_mismatch_title">नया बैकअप संस्करण</string>
     <string name="search_menu_title">खोजें</string>
+    <string name="seconds">सेकंड</string>
     <string name="section_deleted">\'%s\' हटाया गया</string>
     <string name="section_info_string_1_pl">%1$d घंटियाँ</string>
     <string name="section_info_string_1_sg">1 घंटी</string>
     <string name="section_info_string_2_pl">हर %1$d सेकंड</string>
     <string name="section_info_string_2_sg">हर सेकंड</string>
-    <string name="sekunden">सेकंड</string>
     <string name="select_audio">ध्वनि फ़ाइल चुनें</string>
     <string name="service_description">एक चल रहा ज़ाज़ेन ध्यान</string>
     <string name="session_deleted">\'%s\' हटाया गया</string>
     <string name="session_list_unnamed_entry">अनाम सत्र</string>
-    <string name="stop_meditation_cancel">रद्द करें</string>
     <string name="stop_meditation_message">आपका ध्यान सत्र अभी भी चल रहा है।</string>
     <string name="stop_meditation_stop">रोकें</string>
     <string name="stop_meditation_title">ध्यान रोकें?</string>

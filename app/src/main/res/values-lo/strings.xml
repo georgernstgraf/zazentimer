@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="abbrechen">ຍົກເລີກ</string>
     <string name="action_delete">ລຶບ</string>
     <string name="but_pause">ຢຸດຊົ່ວຄາວ</string>
     <string name="but_stop">ຢຸດ</string>
+    <string name="cancel">ຍົກເລີກ</string>
     <string name="checkbox_keep_screen_on">ເປີດໜ້າຈໍຄ້າງໄວ້</string>
     <string name="default_section_name">ບໍ່ມີຊື່</string>
     <string name="demo_sess1_sec1_name">ການກະກຽມ</string>
@@ -16,15 +16,14 @@
     <string name="menu_help">ຊ່ວຍເຫຼືອ</string>
     <string name="menu_privacy">ຄວາມເປັນສ່ວນຕົວ…</string>
     <string name="menu_settings">ການຕັ້ງຄ່າ</string>
-    <string name="minuten">ນາທີ</string>
+    <string name="minutes">ນາທີ</string>
     <string name="nav_label_meditation">ສະມາທິ</string>
     <string name="nav_label_settings">ການຕັ້ງຄ່າ</string>
     <string name="ok">ຕົກລົງ</string>
     <string name="pref_title_brightness">ຄວາມສະຫວ່າງ</string>
     <string name="privacy_ok">ຕົກລົງ</string>
     <string name="search_menu_title">ຊອກຫາ</string>
-    <string name="sekunden">ວິນາທີ</string>
-    <string name="stop_meditation_cancel">ຍົກເລີກ</string>
+    <string name="seconds">ວິນາທີ</string>
     <string name="stop_meditation_stop">ຢຸດ</string>
     <string name="theme">ຮູບແບບ</string>
     <string name="theme_dark">ຮູບແບບມືດ</string>

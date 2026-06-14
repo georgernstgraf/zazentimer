@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="abbrechen">キャンセル</string>
     <string name="about1">Zazen Meditation Timer — カスタマイズ可能なセクション、ベルの音、セッション管理を備えたシンプルな瞑想タイマー。</string>
     <string name="about2">元々の開発者はStefan Gaffga。現在はGeorg Grafによって保守されています。&lt;br&gt;&lt;br&gt;素晴らしいベルの音を提供してくれた &lt;a href=\"http://www.meditationsuhren.de\"&gt;http://www.meditationsuhren.de&lt;/a&gt; のWinfriedに感謝します！</string>
     <string name="about3">&lt;a href=\"https://github.com/georgernstgraf/zazentimer/issues\"&gt;GitHubで問題を報告する&lt;/a&gt;</string>
@@ -20,6 +19,7 @@
     <string name="but_start">瞑想を開始</string>
     <string name="but_stop">停止</string>
     <string name="button_bell_volumes">鈴の音量を調整</string>
+    <string name="cancel">キャンセル</string>
     <string name="caption_zazen_meditation">座禅</string>
     <string name="checkbox_keep_screen_on">画面をオンに保つ</string>
     <string name="confirm_delete_bell">鈴「%s」を削除しますか？</string>
@@ -27,7 +27,7 @@
     <string name="content_desc_drag_handle">ドラッグして並べ替え</string>
     <string name="content_desc_section_actions">セクションの操作</string>
     <string name="content_desc_session_actions">セッションの操作</string>
-    <string name="copy_prefix">コピー</string>
+    <string name="copy_prefix">のコピー</string>
     <string name="crash_copy_exit">スタックトレースをコピーして終了</string>
     <string name="crash_dialog_title">致命的なエラー</string>
     <string name="crash_exit">終了</string>
@@ -50,7 +50,7 @@
     <string name="label_section_name">セクション名</string>
     <string name="label_session_description">セッションの説明</string>
     <string name="label_session_name">セッション名</string>
-    <string name="manage_bells">鈴の管理</string>
+    <string name="manage_bells">鈴を管理</string>
     <string name="manage_bells_summary">ファイルシステムから鐘を追加 / アプリから鐘を削除</string>
     <string name="menu_about">アプリについて…</string>
     <string name="menu_add_section">セクションを追加</string>
@@ -63,10 +63,10 @@
     <string name="menu_help">ヘルプ</string>
     <string name="menu_privacy">プライバシー…</string>
     <string name="menu_settings">設定</string>
-    <string name="minuten">分</string>
+    <string name="minutes">分</string>
     <string name="nav_label_edit_section">セクションを編集</string>
     <string name="nav_label_edit_session">セッションを編集</string>
-    <string name="nav_label_manage_bells">鈴の管理</string>
+    <string name="nav_label_manage_bells">鈴を管理</string>
     <string name="nav_label_meditation">瞑想</string>
     <string name="nav_label_sessions">セッション</string>
     <string name="nav_label_settings">設定</string>
@@ -77,11 +77,11 @@
     <string name="no_sections_in_session">瞑想を開始できません：選択したセッションにはセクションがありません。</string>
     <string name="no_session_exists">開始できるセッションがありません。まずセッションを作成してください。</string>
     <string name="notification_channel_name">瞑想タイマー</string>
-    <string name="notification_text">坐禅瞑想が実行中です</string>
+    <string name="notification_text">座禅瞑想が実行中です</string>
     <string name="notification_text_paused">座禅瞑想が一時停止されました</string>
     <string name="notification_title">座禅</string>
     <string name="notification_title_paused">坐禅瞑想（一時停止中）</string>
-    <string name="num_bells">鈴の回数</string>
+    <string name="num_bells">鈴の数</string>
     <string name="ok">OK</string>
     <string name="pref_desc_brightness">瞑想中の画面の明るさ</string>
     <string name="pref_sum_backup">セッションとサウンドのバックアップをSDカードに保存します。</string>
@@ -100,15 +100,14 @@
     <string name="restore_version_mismatch_text">このバックアップは新しいバージョンのZazenTimerで作成されました。アプリを更新してください。</string>
     <string name="restore_version_mismatch_title">新しいバックアップバージョン</string>
     <string name="search_menu_title">検索</string>
+    <string name="seconds">秒</string>
     <string name="section_info_string_1_pl">%1$d 個のベル</string>
     <string name="section_info_string_1_sg">1 個のベル</string>
     <string name="section_info_string_2_pl">%1$d 秒ごと</string>
     <string name="section_info_string_2_sg">毎秒</string>
-    <string name="sekunden">秒</string>
     <string name="select_audio">サウンドファイルを選択</string>
     <string name="service_description">実行中の座禅瞑想</string>
     <string name="session_list_unnamed_entry">名前なしのセッション</string>
-    <string name="stop_meditation_cancel">キャンセル</string>
     <string name="stop_meditation_message">瞑想セッションはまだ実行中です。</string>
     <string name="stop_meditation_stop">停止</string>
     <string name="stop_meditation_title">瞑想を停止しますか？</string>

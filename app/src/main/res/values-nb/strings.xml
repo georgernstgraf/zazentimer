@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="abbrechen">Avbryt</string>
-    <string name="about1">Zazen Meditasjonstidtaker — En enkel meditasjonstidtaker med tilpassbare seksjoner, klokkelyder og øktadministrasjon.</string>
+    <string name="about1">Zazen meditasjonstimer — En enkel meditasjonstimer med tilpassbare seksjoner, klangskållyder og øktadministrasjon.</string>
     <string name="about2">Opprinnelig laget av Stefan Gaffga. Vedlikeholdes for tiden av Georg Graf.&lt;br&gt;&lt;br&gt;Takk til Winfried på &lt;a href=\"http://www.meditationsuhren.de\"&gt;http://www.meditationsuhren.de&lt;/a&gt; for å tilby så flotte klangskållyder!</string>
     <string name="about3">&lt;a href=\"https://github.com/georgernstgraf/zazentimer/issues\"&gt;Rapporter problemer på GitHub&lt;/a&gt;</string>
     <string name="action_delete">Slett</string>
@@ -19,7 +18,8 @@
     <string name="but_pause">Pause</string>
     <string name="but_start">Start meditasjon</string>
     <string name="but_stop">Stopp</string>
-    <string name="button_bell_volumes">Juster klokkevolum</string>
+    <string name="button_bell_volumes">Juster klangskålvolumer</string>
+    <string name="cancel">Avbryt</string>
     <string name="caption_zazen_meditation">Zazen-meditasjon</string>
     <string name="checkbox_keep_screen_on">Hold skjermen på</string>
     <string name="confirm_delete_bell">Slett klokke \"%s\"?</string>
@@ -63,7 +63,7 @@
     <string name="menu_help">Hjelp</string>
     <string name="menu_privacy">Personvern…</string>
     <string name="menu_settings">Innstillinger</string>
-    <string name="minuten">Minutter</string>
+    <string name="minutes">Minutter</string>
     <string name="nav_label_edit_section">Rediger seksjon</string>
     <string name="nav_label_edit_session">Rediger økt</string>
     <string name="nav_label_manage_bells">Administrer klangskåler</string>
@@ -89,7 +89,7 @@
     <string name="pref_title_backup">Opprett sikkerhetskopi</string>
     <string name="pref_title_brightness">Lysstyrke</string>
     <string name="pref_title_restore">Gjenopprett fra sikkerhetskopi</string>
-    <string name="privacy_message">Denne appen samler ikke inn personlige data — den bruker heller ikke IP-adresser eller annen teknologirelatert data, og samler ikke inn, behandler eller bruker slike data på noen måte.</string>
+    <string name="privacy_message">Denne appen samler ikke inn noen personlige data - den bruker heller ikke IP-adresser eller andre teknologirelaterte data, og samler, behandler eller bruker dem ikke på noen som helst måte.</string>
     <string name="privacy_ok">OK</string>
     <string name="privacy_title">Personverninformasjon</string>
     <string name="restore_backup_not_found">Sikkerhetskopifil ikke funnet</string>
@@ -100,17 +100,16 @@
     <string name="restore_version_mismatch_text">Denne sikkerhetskopien ble opprettet av en nyere versjon av ZazenTimer. Vennligst oppdater appen.</string>
     <string name="restore_version_mismatch_title">Nyere sikkerhetskopiversjon</string>
     <string name="search_menu_title">Søk</string>
+    <string name="seconds">Sekunder</string>
     <string name="section_deleted">Slettet \'%s\'</string>
     <string name="section_info_string_1_pl">%1$d klangskåler</string>
     <string name="section_info_string_1_sg">1 klangskål</string>
     <string name="section_info_string_2_pl">hvert %1$d sekund</string>
     <string name="section_info_string_2_sg">hvert sekund</string>
-    <string name="sekunden">Sekunder</string>
     <string name="select_audio">Velg lydfil</string>
     <string name="service_description">En pågående Zazen-meditasjon</string>
     <string name="session_deleted">Slettet \'%s\'</string>
     <string name="session_list_unnamed_entry">Navnløs økt</string>
-    <string name="stop_meditation_cancel">Avbryt</string>
     <string name="stop_meditation_message">Meditasjonsøkten din pågår fortsatt.</string>
     <string name="stop_meditation_stop">Stopp</string>
     <string name="stop_meditation_title">Stopp meditasjon?</string>

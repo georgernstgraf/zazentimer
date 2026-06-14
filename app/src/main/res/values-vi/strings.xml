@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="abbrechen">Hủy</string>
-    <string name="about1">Đồng hồ Thiền Zazen — Ứng dụng hẹn giờ thiền đơn giản với các phần tùy chỉnh, âm thanh chuông và quản lý phiên thiền.</string>
+    <string name="about1">Bộ hẹn giờ thiền Zazen — Bộ hẹn giờ thiền đơn giản với các phần tùy chỉnh, âm thanh chuông và quản lý phiên.</string>
     <string name="about2">Ban đầu được tạo bởi Stefan Gaffga. Hiện được bảo trì bởi Georg Graf.&lt;br&gt;&lt;br&gt;Cảm ơn Winfried của &lt;a href=\"http://www.meditationsuhren.de\"&gt;http://www.meditationsuhren.de&lt;/a&gt; đã cung cấp những âm thanh chuông tuyệt vời!</string>
     <string name="about3">&lt;a href=\"https://github.com/georgernstgraf/zazentimer/issues\"&gt;Báo cáo vấn đề trên GitHub&lt;/a&gt;</string>
     <string name="action_delete">Xóa</string>
@@ -20,6 +19,7 @@
     <string name="but_start">Bắt đầu thiền</string>
     <string name="but_stop">Dừng</string>
     <string name="button_bell_volumes">Điều chỉnh âm lượng chuông</string>
+    <string name="cancel">Hủy</string>
     <string name="caption_zazen_meditation">Thiền Zazen</string>
     <string name="checkbox_keep_screen_on">Giữ màn hình bật</string>
     <string name="confirm_delete_bell">Xóa chuông \"%s\"?</string>
@@ -32,7 +32,7 @@
     <string name="crash_dialog_title">Lỗi nghiêm trọng</string>
     <string name="crash_exit">Thoát</string>
     <string name="default_section_name">Chưa đặt tên</string>
-    <string name="demo_sess1_description">Thiền buổi tối Chủ nhật</string>
+    <string name="demo_sess1_description">Thiền tối Chủ nhật</string>
     <string name="demo_sess1_name">Zazen và Kinhin</string>
     <string name="demo_sess1_sec1_name">Chuẩn bị</string>
     <string name="demo_sess1_sec2_name">Zazen 1</string>
@@ -63,15 +63,15 @@
     <string name="menu_help">Trợ giúp</string>
     <string name="menu_privacy">Quyền riêng tư…</string>
     <string name="menu_settings">Cài đặt</string>
-    <string name="minuten">Phút</string>
+    <string name="minutes">Phút</string>
     <string name="nav_label_edit_section">Chỉnh sửa phần</string>
     <string name="nav_label_edit_session">Chỉnh sửa phiên</string>
     <string name="nav_label_manage_bells">Quản lý chuông</string>
     <string name="nav_label_meditation">Thiền</string>
     <string name="nav_label_sessions">Phiên</string>
     <string name="nav_label_settings">Cài đặt</string>
-    <string name="new_session_description">Mô tả phiên mới</string>
-    <string name="new_session_name">Phiên thiền mới</string>
+    <string name="new_session_description">Mô tả phiên thiền mới</string>
+    <string name="new_session_name">Phiên mới</string>
     <string name="no_bells_configured">Chưa cấu hình chuông nào</string>
     <string name="no_custom_bells">Chưa nhập chuông tùy chỉnh nào.</string>
     <string name="no_sections_in_session">Không thể bắt đầu Thiền: Phiên đã chọn không có Phần nào.</string>
@@ -84,7 +84,7 @@
     <string name="num_bells">Số lượng chuông</string>
     <string name="ok">OK</string>
     <string name="pref_desc_brightness">Độ sáng màn hình trong khi thiền</string>
-    <string name="pref_sum_backup">Lưu bản sao lưu các Phiên thiền và Âm thanh vào thẻ SD.</string>
+    <string name="pref_sum_backup">Lưu bản sao lưu Phiên và Âm thanh vào thẻ SD.</string>
     <string name="pref_sum_restore">Khôi phục các Phiên thiền và Âm thanh tùy chỉnh từ bản sao lưu trên thẻ SD</string>
     <string name="pref_title_backup">Tạo bản sao lưu</string>
     <string name="pref_title_brightness">Độ sáng</string>
@@ -94,23 +94,22 @@
     <string name="privacy_title">Thông tin quyền riêng tư</string>
     <string name="restore_backup_not_found">Không tìm thấy tệp sao lưu</string>
     <string name="restore_error_text">Lỗi khi khôi phục từ bản sao lưu</string>
-    <string name="restore_really_text">Thao tác này sẽ thay thế tất cả Phiên của bạn bằng các Phiên trong Bản sao lưu! (Không thể hoàn tác!)</string>
+    <string name="restore_really_text">Thao tác này sẽ thay thế tất cả Phiên thiền của bạn bằng các phiên trong bản sao lưu! (Không thể hoàn tác!)</string>
     <string name="restore_really_title">Thực sự khôi phục dữ liệu?</string>
     <string name="restore_success_text">Khôi phục dữ liệu thành công</string>
     <string name="restore_version_mismatch_text">Bản sao lưu này được tạo bởi phiên bản ZazenTimer mới hơn. Vui lòng cập nhật ứng dụng.</string>
     <string name="restore_version_mismatch_title">Phiên bản sao lưu mới hơn</string>
     <string name="search_menu_title">Tìm kiếm</string>
+    <string name="seconds">Giây</string>
     <string name="section_deleted">Đã xóa \'%s\'</string>
     <string name="section_info_string_1_pl">%1$d chuông</string>
     <string name="section_info_string_1_sg">1 chuông</string>
     <string name="section_info_string_2_pl">mỗi %1$d giây</string>
     <string name="section_info_string_2_sg">mỗi giây</string>
-    <string name="sekunden">Giây</string>
     <string name="select_audio">Chọn tệp âm thanh</string>
-    <string name="service_description">Một buổi thiền Zazen đang chạy</string>
+    <string name="service_description">Phiên thiền Zazen đang chạy</string>
     <string name="session_deleted">Đã xóa \'%s\'</string>
     <string name="session_list_unnamed_entry">Phiên không tên</string>
-    <string name="stop_meditation_cancel">Hủy</string>
     <string name="stop_meditation_message">Phiên thiền của bạn vẫn đang chạy.</string>
     <string name="stop_meditation_stop">Dừng</string>
     <string name="stop_meditation_title">Dừng thiền?</string>

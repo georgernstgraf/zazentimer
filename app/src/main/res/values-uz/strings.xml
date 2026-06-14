@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="abbrechen">Bekor qilish</string>
     <string name="action_delete">O\'chirish</string>
     <string name="action_undo">Bekor qilish</string>
     <string name="affected_section_format">• \"%2$s\" sessiyasidagi \"%1$s\" bo\'limi</string>
@@ -12,6 +11,7 @@
     <string name="but_start">Meditatsiyani boshlash</string>
     <string name="but_stop">To\'xtatish</string>
     <string name="button_bell_volumes">Qo\'ng\'iroq ovozini sozlash</string>
+    <string name="cancel">Bekor qilish</string>
     <string name="checkbox_keep_screen_on">Ekranni yoniq qoldirish</string>
     <string name="content_desc_drag_handle">Qayta tartiblash uchun torting</string>
     <string name="content_desc_section_actions">Bo\'lim amallari</string>
@@ -65,7 +65,6 @@
     <string name="select_audio">Ovoz faylini tanlash</string>
     <string name="session_deleted">\'%s\' o\'chirildi</string>
     <string name="session_list_unnamed_entry">Nomsiz sessiya</string>
-    <string name="stop_meditation_cancel">Bekor qilish</string>
     <string name="stop_meditation_stop">To\'xtatish</string>
     <string name="stop_meditation_title">Meditatsiyani to\'xtatish?</string>
     <string name="system_volume_section_title">Meditatsiya ovozi</string>

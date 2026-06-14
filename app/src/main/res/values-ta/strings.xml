@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="abbrechen">ரத்துசெய்</string>
     <string name="about1">Zazen தியான டைமர் — தனிப்பயனாக்கக்கூடிய பிரிவுகள், மணி ஒலிகள் மற்றும் அமர்வு நிர்வாகத்துடன் கூடிய எளிய தியான டைமர்.</string>
     <string name="about2">மூல வடிவமைப்பு: Stefan Gaffga. தற்போது பராமரிப்பவர்: Georg Graf.&lt;br&gt;&lt;br&gt;சிறந்த மணி ஒலிகளை வழங்கிய &lt;a href=\"http://www.meditationsuhren.de\"&gt;http://www.meditationsuhren.de&lt;/a&gt; ஐச் சேர்ந்த Winfried-க்கு நன்றி!</string>
     <string name="about3">&lt;a href=\"https://github.com/georgernstgraf/zazentimer/issues\"&gt;GitHub இல் சிக்கல்களைப் புகாரளிக்கவும்&lt;/a&gt;</string>
@@ -20,6 +19,7 @@
     <string name="but_start">தியானத்தைத் தொடங்கு</string>
     <string name="but_stop">நிறுத்து</string>
     <string name="button_bell_volumes">மணி ஒலியளவுகளைச் சரிசெய்</string>
+    <string name="cancel">ரத்துசெய்</string>
     <string name="caption_zazen_meditation">Zazen தியானம்</string>
     <string name="checkbox_keep_screen_on">திரையை இயக்கத்தில் வை</string>
     <string name="confirm_delete_bell">\"%s\" மணியை நீக்கவா?</string>
@@ -63,7 +63,7 @@
     <string name="menu_help">உதவி</string>
     <string name="menu_privacy">தனியுரிமை…</string>
     <string name="menu_settings">அமைப்புகள்</string>
-    <string name="minuten">நிமிடங்கள்</string>
+    <string name="minutes">நிமிடங்கள்</string>
     <string name="nav_label_edit_section">பிரிவைத் திருத்து</string>
     <string name="nav_label_edit_session">அமர்வைத் திருத்து</string>
     <string name="nav_label_manage_bells">மணிகளை நிர்வகி</string>
@@ -100,17 +100,16 @@
     <string name="restore_version_mismatch_text">இந்தக் காப்புப்பிரதி ZazenTimer இன் புதிய பதிப்பால் உருவாக்கப்பட்டது. செயலியைப் புதுப்பிக்கவும்.</string>
     <string name="restore_version_mismatch_title">புதிய காப்புப்பிரதி பதிப்பு</string>
     <string name="search_menu_title">தேடு</string>
+    <string name="seconds">நொடிகள்</string>
     <string name="section_deleted">\'%s\' நீக்கப்பட்டது</string>
     <string name="section_info_string_1_pl">%1$d மணிகள்</string>
     <string name="section_info_string_1_sg">1 மணி</string>
     <string name="section_info_string_2_pl">ஒவ்வொரு %1$d நொடிகளுக்கும்</string>
     <string name="section_info_string_2_sg">ஒவ்வொரு வினாடிக்கும்</string>
-    <string name="sekunden">நொடிகள்</string>
     <string name="select_audio">ஒலிக் கோப்பைத் தேர்ந்தெடு</string>
     <string name="service_description">இயங்கும் Zazen தியானம்</string>
     <string name="session_deleted">\'%s\' நீக்கப்பட்டது</string>
     <string name="session_list_unnamed_entry">பெயரிடப்படாத அமர்வு</string>
-    <string name="stop_meditation_cancel">ரத்துசெய்</string>
     <string name="stop_meditation_message">உங்கள் தியான அமர்வு இன்னும் இயங்குகிறது.</string>
     <string name="stop_meditation_stop">நிறுத்து</string>
     <string name="stop_meditation_title">தியானத்தை நிறுத்தவா?</string>

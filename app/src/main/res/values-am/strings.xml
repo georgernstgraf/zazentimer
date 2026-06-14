@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="abbrechen">ሰርዝ</string>
     <string name="action_delete">ሰርዝ</string>
     <string name="action_undo">ቀልብስ</string>
     <string name="affected_section_format">• ክፍል \"%1$s\" በክፍለ ጊዜ \"%2$s\" ውስጥ</string>
@@ -8,6 +7,7 @@
     <string name="bell_user">ደወል ጨምር…</string>
     <string name="but_start">ማሰላሰል ጀምር</string>
     <string name="but_stop">አቁም</string>
+    <string name="cancel">ሰርዝ</string>
     <string name="caption_zazen_meditation">ዛዘን ማሰላሰል</string>
     <string name="demo_sess1_name">ዛዘን እና ኪንሂን</string>
     <string name="demo_sess1_sec1_name">ዝግጅት</string>
@@ -30,7 +30,7 @@
     <string name="menu_help">እገዛ</string>
     <string name="menu_privacy">ግላዊነት…</string>
     <string name="menu_settings">ቅንብሮች</string>
-    <string name="minuten">ደቂቃዎች</string>
+    <string name="minutes">ደቂቃዎች</string>
     <string name="nav_label_meditation">ማሰላሰል</string>
     <string name="nav_label_sessions">ክፍለ ጊዜዎች</string>
     <string name="nav_label_settings">ቅንብሮች</string>
@@ -48,13 +48,12 @@
     <string name="restore_backup_not_found">የምትኬ ፋይል አልተገኘም</string>
     <string name="restore_version_mismatch_title">አዲስ የምትኬ ስሪት</string>
     <string name="search_menu_title">ፈልግ</string>
+    <string name="seconds">ሰከንዶች</string>
     <string name="section_deleted">\'%s\' ተሰርዟል</string>
     <string name="section_info_string_1_pl">%1$d ደወሎች</string>
     <string name="section_info_string_1_sg">1 ደወል</string>
     <string name="section_info_string_2_pl">በየ %1$d ሰከንዶች</string>
-    <string name="sekunden">ሰከንዶች</string>
     <string name="session_deleted">\'%s\' ተሰርዟል</string>
-    <string name="stop_meditation_cancel">ሰርዝ</string>
     <string name="stop_meditation_stop">አቁም</string>
     <string name="theme">ገጽታ</string>
     <string name="theme_dark">ጨለማ ገጽታ</string>

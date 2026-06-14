@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="abbrechen">Annuller</string>
     <string name="about1">Zazen Meditation Timer — En simpel meditationstimer med tilpassede sektioner, klangskålslyde og sessionsstyring.</string>
     <string name="about2">Oprindeligt skabt af Stefan Gaffga. Vedligeholdes i øjeblikket af Georg Graf.&lt;br&gt;&lt;br&gt;Tak til Winfried fra &lt;a href=\"http://www.meditationsuhren.de\"&gt;http://www.meditationsuhren.de&lt;/a&gt; for at levere så fantastiske klangskålslyde!</string>
     <string name="about3">&lt;a href=\"https://github.com/georgernstgraf/zazentimer/issues\"&gt;Rapportér problemer på GitHub&lt;/a&gt;</string>
     <string name="action_delete">Slet</string>
     <string name="action_undo">Fortryd</string>
     <string name="affected_section_format">• sektion \"%1$s\" i session \"%2$s\"</string>
-    <string name="app_description">Denne applikation lader brugeren definere et sæt meditationssessioner og giver en timer med visuel og hørbar feedback, når en del af eller hele meditationen er slut.</string>
+    <string name="app_description">Denne applikation lader brugeren definere et sæt meditationssessioner og tilbyder en timer med visuel og hørbar feedback, når en del af eller hele meditationen er forbi.</string>
     <string name="backup_error_text">Beklager, der opstod en fejl under lagring.</string>
     <string name="backup_success_text">Backup oprettet!</string>
     <string name="bell_dimming_section_title">Indstil klokkelydstyrke</string>
@@ -20,6 +19,7 @@
     <string name="but_start">Start meditation</string>
     <string name="but_stop">Stop</string>
     <string name="button_bell_volumes">Juster klokkevolumener</string>
+    <string name="cancel">Annuller</string>
     <string name="caption_zazen_meditation">Zazen Meditation</string>
     <string name="checkbox_keep_screen_on">Hold skærmen tændt</string>
     <string name="confirm_delete_bell">Slet klokke \"%s\"?</string>
@@ -43,8 +43,8 @@
     <string name="demo_sess2_description">Daglig meditation</string>
     <string name="demo_sess2_name">Kun Zazen</string>
     <string name="desc_keep_screen_on">Holder skærmen tændt under meditationen</string>
-    <string name="gong_type">Gonglyd</string>
-    <string name="help_sectionlist_text">Her kan du navngive, beskrive og redigere indholdet af din session.\n\n OMARRANGERING\n For at omarrangere elementerne, tryk længe på et element og\n træk det til sin nye position.\n\n SLETNING\n For at slette et element, swipe det til højre.\n\n REDIGER\n For at redigere en sektion, tryk på den én gang.\n\n TILFØJ\n For at tilføje en ny sektion, tryk på + knappen.</string>
+    <string name="gong_type">Gong-lyd</string>
+    <string name="help_sectionlist_text">Her kan du navngive, beskrive og redigere indholdet af din session.\n\n OMBYTNING\n For at ændre rækkefølgen, tryk længe på et element og\n træk det til dets nye position.\n\n SLETNING\n For at slette et element, flyt det til højre.\n\n REDIGER\n For at redigere en sektion, skal du blot trykke på den en gang.\n\n TILFØJ\n For at tilføje en ny sektion, tryk på knappen +.</string>
     <string name="help_sectionlist_title">Rediger session</string>
     <string name="import_bell">Importer klangskål</string>
     <string name="label_section_name">Sektionsnavn</string>
@@ -63,7 +63,7 @@
     <string name="menu_help">Hjælp</string>
     <string name="menu_privacy">Privatliv…</string>
     <string name="menu_settings">Indstillinger</string>
-    <string name="minuten">Minutter</string>
+    <string name="minutes">Minutter</string>
     <string name="nav_label_edit_section">Rediger sektion</string>
     <string name="nav_label_edit_session">Rediger session</string>
     <string name="nav_label_manage_bells">Administrer klangskåle</string>
@@ -100,17 +100,16 @@
     <string name="restore_version_mismatch_text">Denne backup blev oprettet af en nyere version af ZazenTimer. Opdater venligst appen.</string>
     <string name="restore_version_mismatch_title">Nyere backup-version</string>
     <string name="search_menu_title">Søg</string>
+    <string name="seconds">Sekunder</string>
     <string name="section_deleted">Slettet \'%s\'</string>
     <string name="section_info_string_1_pl">%1$d klangskåle</string>
     <string name="section_info_string_1_sg">1 klangskål</string>
     <string name="section_info_string_2_pl">hvert %1$d. sekund</string>
     <string name="section_info_string_2_sg">hvert sekund</string>
-    <string name="sekunden">Sekunder</string>
     <string name="select_audio">Vælg lydfil</string>
     <string name="service_description">En igangværende Zazen-meditation</string>
     <string name="session_deleted">Slettet \'%s\'</string>
     <string name="session_list_unnamed_entry">Unavngivet session</string>
-    <string name="stop_meditation_cancel">Annuller</string>
     <string name="stop_meditation_message">Din meditationssession kører stadig.</string>
     <string name="stop_meditation_stop">Stop</string>
     <string name="stop_meditation_title">Stop meditation?</string>

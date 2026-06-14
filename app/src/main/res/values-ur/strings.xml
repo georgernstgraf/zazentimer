@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="abbrechen">منسوخ کریں</string>
     <string name="about1">زازن مراقبہ ٹائمر — ایک سادہ مراقبہ ٹائمر جس میں حسب ضرورت حصے، گھنٹی کی آوازیں، اور سیشن کا انتظام ہے۔</string>
     <string name="about2">اصل میں سٹیفن گافگا نے بنایا۔ فی الحال جارج گراف دیکھ بھال کر رہے ہیں۔&lt;br&gt;&lt;br&gt;ونفریڈ کا شکریہ جنہوں نے &lt;a href=\"http://www.meditationsuhren.de\"&gt;http://www.meditationsuhren.de&lt;/a&gt; سے ایسی بہترین گھنٹی کی آوازیں فراہم کیں!</string>
     <string name="about3">&lt;a href=\"https://github.com/georgernstgraf/zazentimer/issues\"&gt;گٹ ہب پر مسائل رپورٹ کریں&lt;/a&gt;</string>
@@ -20,6 +19,7 @@
     <string name="but_start">مراقبہ شروع کریں</string>
     <string name="but_stop">روکیں</string>
     <string name="button_bell_volumes">گھنٹی کا حجم ایڈجسٹ کریں</string>
+    <string name="cancel">منسوخ کریں</string>
     <string name="caption_zazen_meditation">زازین مراقبہ</string>
     <string name="checkbox_keep_screen_on">اسکرین آن رکھیں</string>
     <string name="confirm_delete_bell">گھنٹی \"%s\" حذف کریں؟</string>
@@ -63,7 +63,7 @@
     <string name="menu_help">مدد</string>
     <string name="menu_privacy">رازداری…</string>
     <string name="menu_settings">ترتیبات</string>
-    <string name="minuten">منٹ</string>
+    <string name="minutes">منٹ</string>
     <string name="nav_label_edit_section">حصے میں ترمیم کریں</string>
     <string name="nav_label_edit_session">سیشن میں ترمیم کریں</string>
     <string name="nav_label_manage_bells">گھنٹیوں کا انتظام کریں</string>
@@ -100,15 +100,14 @@
     <string name="restore_version_mismatch_text">یہ بیک اپ زازن ٹائمر کے نئے ورژن سے بنایا گیا تھا۔ براہ کرم ایپ اپ ڈیٹ کریں۔</string>
     <string name="restore_version_mismatch_title">نیا بیک اپ ورژن</string>
     <string name="search_menu_title">تلاش کریں</string>
+    <string name="seconds">سیکنڈ</string>
     <string name="section_info_string_1_pl">%1$d گھنٹیاں</string>
     <string name="section_info_string_1_sg">1 گھنٹی</string>
     <string name="section_info_string_2_pl">ہر %1$d سیکنڈ</string>
     <string name="section_info_string_2_sg">ہر سیکنڈ</string>
-    <string name="sekunden">سیکنڈ</string>
     <string name="select_audio">آواز کی فائل منتخب کریں</string>
     <string name="service_description">جاری زازن مراقبہ</string>
     <string name="session_list_unnamed_entry">بے نام سیشن</string>
-    <string name="stop_meditation_cancel">منسوخ کریں</string>
     <string name="stop_meditation_message">آپ کا مراقبہ سیشن ابھی بھی جاری ہے۔</string>
     <string name="stop_meditation_stop">روکیں</string>
     <string name="stop_meditation_title">مراقبہ روکیں؟</string>

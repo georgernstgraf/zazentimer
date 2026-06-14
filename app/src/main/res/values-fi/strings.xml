@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="abbrechen">Peruuta</string>
     <string name="about1">Zazen-meditaatioajastin — Yksinkertainen meditaatioajastin muokattavilla osilla, äänimaljoilla ja istuntojen hallinnalla.</string>
     <string name="about2">Alun perin luonut Stefan Gaffga. Tällä hetkellä ylläpitää Georg Graf.&lt;br&gt;&lt;br&gt;Kiitos Winfriedille osoitteesta &lt;a href=\"http://www.meditationsuhren.de\"&gt;http://www.meditationsuhren.de&lt;/a&gt; upeiden kelloäänien tarjoamisesta!</string>
     <string name="about3">&lt;a href=\"https://github.com/georgernstgraf/zazentimer/issues\"&gt;Ilmoita ongelmista GitHubissa&lt;/a&gt;</string>
@@ -20,6 +19,7 @@
     <string name="but_start">Aloita meditaatio</string>
     <string name="but_stop">Pysäytä</string>
     <string name="button_bell_volumes">Säädä kellojen äänenvoimakkuuksia</string>
+    <string name="cancel">Peruuta</string>
     <string name="caption_zazen_meditation">Zazen-meditaatio</string>
     <string name="checkbox_keep_screen_on">Pidä näyttö päällä</string>
     <string name="confirm_delete_bell">Poistetaanko kello \"%s\"?</string>
@@ -27,7 +27,7 @@
     <string name="content_desc_drag_handle">Järjestä vetämällä</string>
     <string name="content_desc_section_actions">Osion toiminnot</string>
     <string name="content_desc_session_actions">Istunnon toiminnot</string>
-    <string name="copy_prefix">Kopio kohteesta</string>
+    <string name="copy_prefix">Kopio:</string>
     <string name="crash_copy_exit">Kopioi pinolistaus ja poistu</string>
     <string name="crash_dialog_title">Vakava virhe</string>
     <string name="crash_exit">Poistu</string>
@@ -63,7 +63,7 @@
     <string name="menu_help">Ohje</string>
     <string name="menu_privacy">Tietosuoja…</string>
     <string name="menu_settings">Asetukset</string>
-    <string name="minuten">Minuuttia</string>
+    <string name="minutes">Minuuttia</string>
     <string name="nav_label_edit_section">Muokkaa osiota</string>
     <string name="nav_label_edit_session">Muokkaa istuntoa</string>
     <string name="nav_label_manage_bells">Hallitse kelloja</string>
@@ -100,17 +100,16 @@
     <string name="restore_version_mismatch_text">Tämä varmuuskopio on luotu uudemmalla ZazenTimer-versiolla. Päivitä sovellus.</string>
     <string name="restore_version_mismatch_title">Uudempi varmuuskopioversio</string>
     <string name="search_menu_title">Haku</string>
+    <string name="seconds">Sekuntia</string>
     <string name="section_deleted">Poistettu \'%s\'</string>
     <string name="section_info_string_1_pl">%1$d kelloa</string>
     <string name="section_info_string_1_sg">1 kello</string>
     <string name="section_info_string_2_pl">%1$d sekunnin välein</string>
     <string name="section_info_string_2_sg">joka sekunti</string>
-    <string name="sekunden">Sekuntia</string>
     <string name="select_audio">Valitse äänitiedosto</string>
     <string name="service_description">Käynnissä oleva Zazen-meditaatio</string>
     <string name="session_deleted">Poistettu \'%s\'</string>
     <string name="session_list_unnamed_entry">Nimetön istunto</string>
-    <string name="stop_meditation_cancel">Peruuta</string>
     <string name="stop_meditation_message">Meditaatioistuntosi on yhä käynnissä.</string>
     <string name="stop_meditation_stop">Pysäytä</string>
     <string name="stop_meditation_title">Pysäytetäänkö meditaatio?</string>

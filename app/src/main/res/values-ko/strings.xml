@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="abbrechen">취소</string>
     <string name="about1">Zazen Meditation Timer — 사용자 정의 가능한 섹션, 종소리 및 세션 관리가 있는 간단한 명상 타이머입니다.</string>
     <string name="about2">원래 Stefan Gaffga가 제작했습니다. 현재 Georg Graf가 유지보수하고 있습니다.&lt;br&gt;&lt;br&gt;훌륭한 종소리를 제공해주신 &lt;a href=\"http://www.meditationsuhren.de\"&gt;http://www.meditationsuhren.de&lt;/a&gt;의 Winfried에게 감사드립니다!</string>
     <string name="about3">&lt;a href=\"https://github.com/georgernstgraf/zazentimer/issues\"&gt;GitHub에서 문제 보고&lt;/a&gt;</string>
     <string name="action_delete">삭제</string>
     <string name="action_undo">실행 취소</string>
-    <string name="affected_section_format">• 세션 \"%2$s\"의 섹션 \"%1$s\"</string>
+    <string name="affected_section_format">• 세션 \"%2$s\"의 구간 \"%1$s\"</string>
     <string name="app_description">이 애플리케이션을 통해 사용자는 일련의 명상 세션을 정의할 수 있으며, 명상의 일부 또는 전체가 끝났을 때 시각적 및 청각적 피드백을 제공하는 타이머를 제공합니다.</string>
     <string name="backup_error_text">죄송합니다. 저장하는 동안 오류가 발생했습니다.</string>
     <string name="backup_success_text">백업이 성공적으로 생성되었습니다!</string>
@@ -20,6 +19,7 @@
     <string name="but_start">명상 시작</string>
     <string name="but_stop">정지</string>
     <string name="button_bell_volumes">종 음량 조절</string>
+    <string name="cancel">취소</string>
     <string name="caption_zazen_meditation">좌선 명상</string>
     <string name="checkbox_keep_screen_on">화면 켜짐 유지</string>
     <string name="confirm_delete_bell">종 \"%s\"을(를) 삭제하시겠습니까?</string>
@@ -63,7 +63,7 @@
     <string name="menu_help">도움말</string>
     <string name="menu_privacy">개인정보…</string>
     <string name="menu_settings">설정</string>
-    <string name="minuten">분</string>
+    <string name="minutes">분</string>
     <string name="nav_label_edit_section">구간 편집</string>
     <string name="nav_label_edit_session">세션 편집</string>
     <string name="nav_label_manage_bells">종 관리</string>
@@ -78,7 +78,7 @@
     <string name="no_session_exists">시작할 수 있는 세션이 없습니다. 먼저 세션을 만들어 주세요.</string>
     <string name="notification_channel_name">명상 타이머</string>
     <string name="notification_text">Zazen 명상이 현재 실행 중입니다</string>
-    <string name="notification_text_paused">좌선 명상 일시정지됨</string>
+    <string name="notification_text_paused">Zazen 명상이 일시 중지되었습니다</string>
     <string name="notification_title">좌선 명상</string>
     <string name="notification_title_paused">좌선 명상 (일시정지)</string>
     <string name="num_bells">종 횟수</string>
@@ -89,7 +89,7 @@
     <string name="pref_title_backup">백업 만들기</string>
     <string name="pref_title_brightness">밝기</string>
     <string name="pref_title_restore">백업에서 복원</string>
-    <string name="privacy_message">이 앱은 어떠한 개인 데이터도 수집하지 않습니다. 또한 IP 주소나 기타 기술 관련 데이터를 사용하지 않으며, 어떠한 방식으로도 수집, 처리 또는 사용하지 않습니다.</string>
+    <string name="privacy_message">이 앱은 개인 데이터를 수집하지 않습니다. IP 주소나 기타 기술 관련 데이터를 사용하지 않으며, 어떠한 방식으로도 수집, 처리 또는 사용하지 않습니다.</string>
     <string name="privacy_ok">확인</string>
     <string name="privacy_title">개인정보 안내</string>
     <string name="restore_backup_not_found">백업 파일을 찾을 수 없습니다</string>
@@ -100,15 +100,14 @@
     <string name="restore_version_mismatch_text">이 백업은 최신 버전의 ZazenTimer로 생성되었습니다. 앱을 업데이트해 주세요.</string>
     <string name="restore_version_mismatch_title">최신 백업 버전</string>
     <string name="search_menu_title">검색</string>
+    <string name="seconds">초</string>
     <string name="section_info_string_1_pl">%1$d개의 종소리</string>
     <string name="section_info_string_1_sg">종 1개</string>
     <string name="section_info_string_2_pl">%1$d초마다</string>
     <string name="section_info_string_2_sg">1초마다</string>
-    <string name="sekunden">초</string>
     <string name="select_audio">소리 파일 선택</string>
     <string name="service_description">진행 중인 좌선 명상</string>
     <string name="session_list_unnamed_entry">이름 없는 세션</string>
-    <string name="stop_meditation_cancel">취소</string>
     <string name="stop_meditation_message">명상 세션이 아직 진행 중입니다.</string>
     <string name="stop_meditation_stop">정지</string>
     <string name="stop_meditation_title">명상을 중지하시겠습니까?</string>

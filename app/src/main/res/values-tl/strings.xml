@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="abbrechen">Kanselahin</string>
     <string name="about1">Zazen Meditation Timer — Isang simpleng timer ng pagninilay na may napapasadya na mga seksyon, tunog ng kampana, at pamamahala ng session.</string>
     <string name="about2">Orihinal na nilikha ni Stefan Gaffga. Kasalukuyang pinapanatili ni Georg Graf.&lt;br&gt;&lt;br&gt;Salamat kay Winfried ng &lt;a href=\"http://www.meditationsuhren.de\"&gt;http://www.meditationsuhren.de&lt;/a&gt; sa pagbibigay ng magagandang tunog ng kampana!</string>
     <string name="about3">&lt;a href=\"https://github.com/georgernstgraf/zazentimer/issues\"&gt;Mag-ulat ng mga isyu sa GitHub&lt;/a&gt;</string>
@@ -19,6 +18,7 @@
     <string name="but_start">Simulan ang Meditasyon</string>
     <string name="but_stop">Ihinto</string>
     <string name="button_bell_volumes">Ayusin ang Volume ng Kampana</string>
+    <string name="cancel">Kanselahin</string>
     <string name="caption_zazen_meditation">Zazen Meditation</string>
     <string name="checkbox_keep_screen_on">Panatilihing nakabukas ang screen</string>
     <string name="confirm_delete_bell">I-delete ang kampana na \"%s\"?</string>
@@ -61,7 +61,7 @@
     <string name="menu_help">Tulong</string>
     <string name="menu_privacy">Privacy…</string>
     <string name="menu_settings">Mga Setting</string>
-    <string name="minuten">Minuto</string>
+    <string name="minutes">Minuto</string>
     <string name="nav_label_edit_section">I-edit ang Seksyon</string>
     <string name="nav_label_edit_session">I-edit ang Session</string>
     <string name="nav_label_manage_bells">Pamahalaan ang mga Kampana</string>
@@ -97,17 +97,16 @@
     <string name="restore_version_mismatch_text">Ang backup na ito ay ginawa ng mas bagong bersyon ng ZazenTimer. Mangyaring i-update ang app.</string>
     <string name="restore_version_mismatch_title">Mas Bagong Bersyon ng Backup</string>
     <string name="search_menu_title">Maghanap</string>
+    <string name="seconds">Segundo</string>
     <string name="section_deleted">Na-delete ang \'%s\'</string>
     <string name="section_info_string_1_pl">%1$d Kampana</string>
     <string name="section_info_string_1_sg">1 Kampana</string>
     <string name="section_info_string_2_pl">bawat %1$d Segundo</string>
     <string name="section_info_string_2_sg">bawat Segundo</string>
-    <string name="sekunden">Segundo</string>
     <string name="select_audio">Pumili ng sound file</string>
     <string name="service_description">Isang tumatakbong Zazen Meditation</string>
     <string name="session_deleted">Na-delete ang \'%s\'</string>
     <string name="session_list_unnamed_entry">Walang pangalang Session</string>
-    <string name="stop_meditation_cancel">Kanselahin</string>
     <string name="stop_meditation_message">Tumatakbo pa rin ang iyong session ng pagninilay.</string>
     <string name="stop_meditation_stop">Ihinto</string>
     <string name="stop_meditation_title">Ihinto ang meditasyon?</string>

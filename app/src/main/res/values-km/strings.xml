@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="abbrechen">បោះបង់</string>
     <string name="about1">Zazen Meditation Timer — កម្មវិធីកំណត់ពេលសមាធិសាមញ្ញដែលមានផ្នែកដែលអាចប្ដូរតាមបំណង សំឡេងជួង និងការគ្រប់គ្រងវគ្គ។</string>
     <string name="about2">បង្កើតដំបូងដោយ Stefan Gaffga។ បច្ចុប្បន្នថែរក្សាដោយ Georg Graf។&lt;br&gt;&lt;br&gt;សូមអរគុណដល់ Winfried នៃ &lt;a href=\"http://www.meditationsuhren.de\"&gt;http://www.meditationsuhren.de&lt;/a&gt; សម្រាប់ការផ្តល់សំឡេងជួងដ៏អស្ចារ្យបែបនេះ!</string>
     <string name="about3">&lt;a href=\"https://github.com/georgernstgraf/zazentimer/issues\"&gt;រាយការណ៍បញ្ហានៅលើ GitHub&lt;/a&gt;</string>
@@ -18,6 +17,7 @@
     <string name="but_start">ចាប់ផ្តើមសមាធិ</string>
     <string name="but_stop">បញ្ឈប់</string>
     <string name="button_bell_volumes">កែតម្រូវកម្រិតសំឡេងជួង</string>
+    <string name="cancel">បោះបង់</string>
     <string name="caption_zazen_meditation">សមាធិសាសេន</string>
     <string name="checkbox_keep_screen_on">រក្សាអេក្រង់ឱ្យបើក</string>
     <string name="confirm_delete_bell">លុបជួង \"%s\"?</string>
@@ -58,7 +58,7 @@
     <string name="menu_help">ជំនួយ</string>
     <string name="menu_privacy">ឯកជនភាព…</string>
     <string name="menu_settings">ការកំណត់</string>
-    <string name="minuten">នាទី</string>
+    <string name="minutes">នាទី</string>
     <string name="nav_label_edit_section">កែសម្រួលផ្នែក</string>
     <string name="nav_label_edit_session">កែសម្រួលវគ្គ</string>
     <string name="nav_label_manage_bells">គ្រប់គ្រងជួង</string>
@@ -93,17 +93,16 @@
     <string name="restore_version_mismatch_text">ការបម្រុងទុកនេះត្រូវបានបង្កើតដោយកំណែថ្មីរបស់ ZazenTimer។ សូមធ្វើបច្ចុប្បន្នភាពកម្មវិធី។</string>
     <string name="restore_version_mismatch_title">កំណែបម្រុងទុកថ្មីជាង</string>
     <string name="search_menu_title">ស្វែងរក</string>
+    <string name="seconds">វិនាទី</string>
     <string name="section_deleted">បានលុប \'%s\'</string>
     <string name="section_info_string_1_pl">ជួង %1$d</string>
     <string name="section_info_string_1_sg">ជួង 1</string>
     <string name="section_info_string_2_pl">រៀងរាល់ %1$d វិនាទី</string>
     <string name="section_info_string_2_sg">រៀងរាល់វិនាទី</string>
-    <string name="sekunden">វិនាទី</string>
     <string name="select_audio">ជ្រើសរើសឯកសារសំឡេង</string>
     <string name="service_description">សមាធិសាសេនដែលកំពុងដំណើរការ</string>
     <string name="session_deleted">បានលុប \'%s\'</string>
     <string name="session_list_unnamed_entry">វគ្គគ្មានឈ្មោះ</string>
-    <string name="stop_meditation_cancel">បោះបង់</string>
     <string name="stop_meditation_message">វគ្គសមាធិរបស់អ្នកកំពុងដំណើរការនៅឡើយ។</string>
     <string name="stop_meditation_stop">បញ្ឈប់</string>
     <string name="stop_meditation_title">បញ្ឈប់សមាធិមែនទេ?</string>

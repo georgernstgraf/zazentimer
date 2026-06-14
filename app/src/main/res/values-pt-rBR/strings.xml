@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="abbrechen">Cancelar</string>
     <string name="about1">Zazen Meditation Timer — Um temporizador de meditação simples com seções personalizáveis, sons de sino e gerenciamento de sessões.</string>
     <string name="about2">Criado originalmente por Stefan Gaffga. Atualmente mantido por Georg Graf.&lt;br&gt;&lt;br&gt;Obrigado a Winfried de &lt;a href=\"http://www.meditationsuhren.de\"&gt;http://www.meditationsuhren.de&lt;/a&gt; por fornecer excelentes sons de sino!</string>
     <string name="about3">&lt;a href=\"https://github.com/georgernstgraf/zazentimer/issues\"&gt;Relatar problemas no GitHub&lt;/a&gt;</string>
@@ -20,6 +19,7 @@
     <string name="but_start">Iniciar Meditação</string>
     <string name="but_stop">Parar</string>
     <string name="button_bell_volumes">Ajustar volumes dos sinos</string>
+    <string name="cancel">Cancelar</string>
     <string name="caption_zazen_meditation">Meditação Zazen</string>
     <string name="checkbox_keep_screen_on">Manter tela ligada</string>
     <string name="confirm_delete_bell">Excluir sino \"%s\"?</string>
@@ -63,7 +63,7 @@
     <string name="menu_help">Ajuda</string>
     <string name="menu_privacy">Privacidade…</string>
     <string name="menu_settings">Configurações</string>
-    <string name="minuten">Minutos</string>
+    <string name="minutes">Minutos</string>
     <string name="nav_label_edit_section">Editar Seção</string>
     <string name="nav_label_edit_session">Editar Sessão</string>
     <string name="nav_label_manage_bells">Gerenciar Sinos</string>
@@ -100,17 +100,16 @@
     <string name="restore_version_mismatch_text">Este backup foi criado por uma versão mais recente do ZazenTimer. Por favor, atualize o aplicativo.</string>
     <string name="restore_version_mismatch_title">Versão de Backup Mais Recente</string>
     <string name="search_menu_title">Pesquisar</string>
+    <string name="seconds">Segundos</string>
     <string name="section_deleted">Excluído \'%s\'</string>
     <string name="section_info_string_1_pl">%1$d Sinos</string>
     <string name="section_info_string_1_sg">1 Sino</string>
     <string name="section_info_string_2_pl">a cada %1$d Segundos</string>
     <string name="section_info_string_2_sg">a cada Segundo</string>
-    <string name="sekunden">Segundos</string>
     <string name="select_audio">Selecionar arquivo de som</string>
     <string name="service_description">Uma Meditação Zazen em andamento</string>
     <string name="session_deleted">Excluído \'%s\'</string>
     <string name="session_list_unnamed_entry">Sessão sem nome</string>
-    <string name="stop_meditation_cancel">Cancelar</string>
     <string name="stop_meditation_message">Sua sessão de meditação ainda está em andamento.</string>
     <string name="stop_meditation_stop">Parar</string>
     <string name="stop_meditation_title">Parar meditação?</string>

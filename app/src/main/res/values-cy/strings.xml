@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="abbrechen">Canslo</string>
     <string name="about3">&lt;a href=\"https://github.com/georgernstgraf/zazentimer/issues\"&gt;Adrodd problemau ar GitHub&lt;/a&gt;</string>
     <string name="action_delete">Dileu</string>
     <string name="action_undo">Dadwneud</string>
@@ -12,6 +11,7 @@
     <string name="but_pause">Oedi</string>
     <string name="but_start">Dechrau Myfyrdod</string>
     <string name="but_stop">Stop</string>
+    <string name="cancel">Canslo</string>
     <string name="caption_zazen_meditation">Myfyrdod Zazen</string>
     <string name="checkbox_keep_screen_on">Cadw\'r sgrin ymlaen</string>
     <string name="confirm_delete_bell">Dileu cloch \"%s\"?</string>
@@ -51,7 +51,7 @@
     <string name="menu_help">Cymorth</string>
     <string name="menu_privacy">Preifatrwydd…</string>
     <string name="menu_settings">Gosodiadau</string>
-    <string name="minuten">Munudau</string>
+    <string name="minutes">Munudau</string>
     <string name="nav_label_edit_section">Golygu Adran</string>
     <string name="nav_label_edit_session">Golygu Sesiwn</string>
     <string name="nav_label_manage_bells">Rheoli Clychau</string>
@@ -79,17 +79,16 @@
     <string name="restore_error_text">Gwall wrth adfer o\'r Copi Wrth Gefn</string>
     <string name="restore_success_text">Adfer Data yn llwyddiannus</string>
     <string name="search_menu_title">Chwilio</string>
+    <string name="seconds">Eiliadau</string>
     <string name="section_deleted">Wedi dileu \'%s\'</string>
     <string name="section_info_string_1_pl">%1$d Cloch</string>
     <string name="section_info_string_1_sg">1 Cloch</string>
     <string name="section_info_string_2_pl">bob %1$d Eiliad</string>
     <string name="section_info_string_2_sg">bob Eiliad</string>
-    <string name="sekunden">Eiliadau</string>
     <string name="select_audio">Dewis ffeil sain</string>
-    <string name="service_description">Myfyrdod Zazen sy\'n rhedeg</string>
+    <string name="service_description">Myfyrdod Zazen yn rhedeg</string>
     <string name="session_deleted">Wedi dileu \'%s\'</string>
     <string name="session_list_unnamed_entry">Sesiwn Dienw</string>
-    <string name="stop_meditation_cancel">Canslo</string>
     <string name="stop_meditation_message">Mae eich sesiwn myfyrdod yn dal i redeg.</string>
     <string name="stop_meditation_stop">Stop</string>
     <string name="stop_meditation_title">Atal myfyrdod?</string>

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="abbrechen">Kanselahon</string>
     <string name="action_delete">Papasa</string>
     <string name="action_undo">Ibalik</string>
     <string name="backup_success_text">Malampuson nga nahimo ang backup!</string>
     <string name="but_pause">Hunong</string>
     <string name="but_stop">Hunong</string>
+    <string name="cancel">Kanselahon</string>
     <string name="copy_prefix">Kopya sa</string>
     <string name="demo_sess1_name">Zazen ug Kinhin</string>
     <string name="demo_sess1_sec1_name">Pagpangandam</string>
@@ -20,7 +20,7 @@
     <string name="menu_help">Tabang</string>
     <string name="menu_privacy">Pribasiya…</string>
     <string name="menu_settings">Mga Setting</string>
-    <string name="minuten">Minuto</string>
+    <string name="minutes">Minuto</string>
     <string name="nav_label_sessions">Mga Sesyon</string>
     <string name="nav_label_settings">Mga Setting</string>
     <string name="ok">OK</string>
@@ -28,9 +28,8 @@
     <string name="privacy_ok">OK</string>
     <string name="restore_error_text">Sayop sa pag-restore gikan sa Backup</string>
     <string name="search_menu_title">Pangita</string>
+    <string name="seconds">Segundo</string>
     <string name="section_info_string_2_sg">matag Segundo</string>
-    <string name="sekunden">Segundo</string>
-    <string name="stop_meditation_cancel">Kanselahon</string>
     <string name="stop_meditation_stop">Hunong</string>
     <string name="theme">Tema</string>
     <string name="theme_desc">Pilia ang hitsura sa app</string>

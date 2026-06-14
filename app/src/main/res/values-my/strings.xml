@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="abbrechen">ပယ်ဖျက်</string>
     <string name="about1">Zazen Meditation Timer — စိတ်ကြိုက်ပြင်ဆင်နိုင်သော အပိုင်းများ၊ ခေါင်းလောင်းသံများနှင့် အစီအစဉ်စီမံခန့်ခွဲမှုပါဝင်သည့် ရိုးရှင်းသော တရားထိုင်ချိန်မှတ်တိုင်မာ။</string>
     <string name="about2">မူလက Stefan Gaffga ဖန်တီးခဲ့သည်။ လက်ရှိတွင် Georg Graf မှ ထိန်းသိမ်းထားသည်။&lt;br&gt;&lt;br&gt;အကောင်းဆုံး ခေါင်းလောင်းသံများကို ထောက်ပံ့ပေးသော &lt;a href=\"http://www.meditationsuhren.de\"&gt;http://www.meditationsuhren.de&lt;/a&gt; မှ Winfried ကို ကျေးဇူးတင်ပါသည်။</string>
     <string name="about3">&lt;a href=\"https://github.com/georgernstgraf/zazentimer/issues\"&gt;GitHub တွင် ပြဿနာများကို အစီရင်ခံရန်&lt;/a&gt;</string>
@@ -18,6 +17,7 @@
     <string name="but_start">တရားထိုင်ခြင်း စတင်ရန်</string>
     <string name="but_stop">ရပ်ရန်</string>
     <string name="button_bell_volumes">ခေါင်းလောင်း အသံပမာဏများကို ချိန်ညှိရန်</string>
+    <string name="cancel">ပယ်ဖျက်</string>
     <string name="caption_zazen_meditation">Zazen တရားထိုင်ခြင်း</string>
     <string name="checkbox_keep_screen_on">မျက်နှာပြင်ကို ဖွင့်ထားရန်</string>
     <string name="confirm_delete_bell">ခေါင်းလောင်း \"%s\" ကို ဖျက်မည်လား?</string>
@@ -38,7 +38,7 @@
     <string name="demo_sess2_description">နေ့စဉ် တရားထိုင်ခြင်း</string>
     <string name="demo_sess2_name">Zazen သာ</string>
     <string name="desc_keep_screen_on">တရားထိုင်နေစဉ် မျက်နှာပြင်ကို ဖွင့်ထားပေးသည်</string>
-    <string name="gong_type">ဂေါင်း အသံ</string>
+    <string name="gong_type">ခေါင်းလောင်းသံ</string>
     <string name="help_sectionlist_text">ဤနေရာတွင် သင့်အစီအစဉ်၏ အမည်၊ ဖော်ပြချက်နှင့် အကြောင်းအရာများကို တည်းဖြတ်နိုင်သည်။\n\n အစီအစဉ်ပြောင်းရန်\n အရာများကို အစီအစဉ်ပြောင်းရန်၊ အရာတစ်ခုပေါ်တွင် ဖိနှိပ်ထားပြီး\n ၎င်း၏နေရာသစ်သို့ ဆွဲရွှေ့ပါ။\n\n ဖျက်ရန်\n အရာတစ်ခုကို ဖျက်ရန်၊ ညာဘက်သို့ ရွှေ့ပါ။\n\n တည်းဖြတ်ရန်\n အပိုင်းတစ်ခုကို တည်းဖြတ်ရန်၊ ၎င်းကို တစ်ကြိမ်နှိပ်ပါ။\n\n ထည့်ရန်\n အပိုင်းသစ်တစ်ခုထည့်ရန် + ခလုတ်ကိုနှိပ်ပါ။</string>
     <string name="help_sectionlist_title">အစီအစဉ် တည်းဖြတ်ရန်</string>
     <string name="import_bell">ခေါင်းလောင်းကို တင်သွင်းရန်</string>
@@ -58,7 +58,7 @@
     <string name="menu_help">အကူအညီ</string>
     <string name="menu_privacy">ကိုယ်ရေးကိုယ်တာ…</string>
     <string name="menu_settings">ဆက်တင်များ</string>
-    <string name="minuten">မိနစ်</string>
+    <string name="minutes">မိနစ်</string>
     <string name="nav_label_edit_section">အပိုင်းကို တည်းဖြတ်ရန်</string>
     <string name="nav_label_edit_session">အစီအစဉ် တည်းဖြတ်ရန်</string>
     <string name="nav_label_manage_bells">ခေါင်းလောင်းများကို စီမံရန်</string>
@@ -93,17 +93,16 @@
     <string name="restore_version_mismatch_text">ဤအရန်ကူးယူမှုကို ပိုသစ်သော ZazenTimer ဗားရှင်းဖြင့် ဖန်တီးထားသည်။ ကျေးဇူးပြု၍ အက်ပ်ကို အပ်ဒိတ်လုပ်ပါ။</string>
     <string name="restore_version_mismatch_title">ပိုသစ်သော အရန်ကူးယူမှု ဗားရှင်း</string>
     <string name="search_menu_title">ရှာဖွေရန်</string>
+    <string name="seconds">စက္ကန့်</string>
     <string name="section_deleted">\'%s\' ကို ဖျက်လိုက်ပါပြီ</string>
     <string name="section_info_string_1_pl">ခေါင်းလောင်း %1$d ခု</string>
     <string name="section_info_string_1_sg">ခေါင်းလောင်း ၁ ခု</string>
     <string name="section_info_string_2_pl">စက္ကန့် %1$d တိုင်း</string>
     <string name="section_info_string_2_sg">စက္ကန့်တိုင်း</string>
-    <string name="sekunden">စက္ကန့်</string>
     <string name="select_audio">အသံဖိုင် ရွေးချယ်ပါ</string>
     <string name="service_description">လုပ်ဆောင်နေသော Zazen တရားထိုင်ခြင်း</string>
     <string name="session_deleted">\'%s\' ကို ဖျက်လိုက်ပါပြီ</string>
     <string name="session_list_unnamed_entry">အမည်မသိ အစီအစဉ်</string>
-    <string name="stop_meditation_cancel">ပယ်ဖျက်</string>
     <string name="stop_meditation_message">သင့်တရားထိုင်ခြင်း အစီအစဉ်သည် ဆက်လက်လည်ပတ်နေဆဲဖြစ်သည်။</string>
     <string name="stop_meditation_stop">ရပ်ရန်</string>
     <string name="stop_meditation_title">တရားထိုင်ခြင်းကို ရပ်မည်လား?</string>

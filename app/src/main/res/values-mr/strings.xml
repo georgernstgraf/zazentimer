@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="abbrechen">रद्द करा</string>
     <string name="about1">झाझेन ध्यान टायमर — सानुकूल विभाग, घंटाध्वनी आणि सत्र व्यवस्थापन असलेले एक सोपे ध्यान टायमर.</string>
     <string name="about2">मूळतः स्टेफन गाफ्गा यांनी तयार केले. सध्या जॉर्ज ग्राफ यांच्या देखरेखीखाली.&lt;br&gt;&lt;br&gt;इतक्या उत्तम घंटाध्वनी देण्यासाठी &lt;a href=\"http://www.meditationsuhren.de\"&gt;http://www.meditationsuhren.de&lt;/a&gt; येथील विनफ्रीड यांचे आभार!</string>
     <string name="about3">&lt;a href=\"https://github.com/georgernstgraf/zazentimer/issues\"&gt;GitHub वर समस्या कळवा&lt;/a&gt;</string>
@@ -20,6 +19,7 @@
     <string name="but_start">ध्यान सुरू करा</string>
     <string name="but_stop">थांबा</string>
     <string name="button_bell_volumes">घंटा आवाज समायोजित करा</string>
+    <string name="cancel">रद्द करा</string>
     <string name="caption_zazen_meditation">Zazen ध्यान</string>
     <string name="checkbox_keep_screen_on">स्क्रीन चालू ठेवा</string>
     <string name="confirm_delete_bell">घंटा \"%s\" हटवायची?</string>
@@ -63,7 +63,7 @@
     <string name="menu_help">मदत</string>
     <string name="menu_privacy">गोपनीयता…</string>
     <string name="menu_settings">सेटिंग्ज</string>
-    <string name="minuten">मिनिटे</string>
+    <string name="minutes">मिनिटे</string>
     <string name="nav_label_edit_section">विभाग संपादित करा</string>
     <string name="nav_label_edit_session">सत्र संपादित करा</string>
     <string name="nav_label_manage_bells">घंटा व्यवस्थापित करा</string>
@@ -100,17 +100,16 @@
     <string name="restore_version_mismatch_text">हा बॅकअप ZazenTimer च्या नवीन आवृत्तीने तयार केला आहे. कृपया अॅप अपडेट करा.</string>
     <string name="restore_version_mismatch_title">नवीन बॅकअप आवृत्ती</string>
     <string name="search_menu_title">शोधा</string>
+    <string name="seconds">सेकंद</string>
     <string name="section_deleted">\'%s\' हटवले</string>
     <string name="section_info_string_1_pl">%1$d घंटा</string>
     <string name="section_info_string_1_sg">१ घंटा</string>
     <string name="section_info_string_2_pl">दर %1$d सेकंदांनी</string>
     <string name="section_info_string_2_sg">दर सेकंदाला</string>
-    <string name="sekunden">सेकंद</string>
     <string name="select_audio">ध्वनी फाईल निवडा</string>
     <string name="service_description">चालू असलेले झाझेन ध्यान</string>
     <string name="session_deleted">\'%s\' हटवले</string>
     <string name="session_list_unnamed_entry">निनावी सत्र</string>
-    <string name="stop_meditation_cancel">रद्द करा</string>
     <string name="stop_meditation_message">तुमचे ध्यान सत्र अजूनही चालू आहे.</string>
     <string name="stop_meditation_stop">थांबा</string>
     <string name="stop_meditation_title">ध्यान थांबवायचे?</string>

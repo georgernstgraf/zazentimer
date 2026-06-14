@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="abbrechen">Anile</string>
     <string name="about3">&lt;a href=\"https://github.com/georgernstgraf/zazentimer/issues\"&gt;Rapòte pwoblèm sou GitHub&lt;/a&gt;</string>
     <string name="action_delete">Efase</string>
     <string name="action_undo">Defè</string>
@@ -11,6 +10,7 @@
     <string name="but_pause">Poz</string>
     <string name="but_start">Kòmanse Meditasyon</string>
     <string name="but_stop">Kanpe</string>
+    <string name="cancel">Anile</string>
     <string name="caption_zazen_meditation">Meditasyon Zazen</string>
     <string name="checkbox_keep_screen_on">Kenbe ekran an limen</string>
     <string name="content_desc_section_actions">Aksyon seksyon</string>
@@ -43,7 +43,7 @@
     <string name="menu_help">Èd</string>
     <string name="menu_privacy">Konfidansyalite…</string>
     <string name="menu_settings">Anviwònman</string>
-    <string name="minuten">Minit</string>
+    <string name="minutes">Minit</string>
     <string name="nav_label_edit_section">Modifye Seksyon</string>
     <string name="nav_label_edit_session">Modifye Sesyon</string>
     <string name="nav_label_meditation">Meditasyon</string>
@@ -58,14 +58,13 @@
     <string name="pref_title_brightness">Klète</string>
     <string name="privacy_ok">OK</string>
     <string name="search_menu_title">Chèche</string>
+    <string name="seconds">Segonn</string>
     <string name="section_deleted">Efase \'%s\'</string>
     <string name="section_info_string_2_pl">chak %1$d Segonn</string>
     <string name="section_info_string_2_sg">chak Segonn</string>
-    <string name="sekunden">Segonn</string>
     <string name="select_audio">Chwazi fichye son</string>
     <string name="session_deleted">Efase \'%s\'</string>
     <string name="session_list_unnamed_entry">Sesyon san non</string>
-    <string name="stop_meditation_cancel">Anile</string>
     <string name="stop_meditation_stop">Kanpe</string>
     <string name="stop_meditation_title">Kanpe meditasyon?</string>
     <string name="system_volume_section_title">Volim Meditasyon</string>

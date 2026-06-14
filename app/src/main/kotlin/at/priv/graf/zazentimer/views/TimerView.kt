@@ -519,7 +519,7 @@ class TimerView
             TimerAnimator(this, HashMap(), FloatArray(PROP_COUNT), animDuration)
         }
         private val floatProperties: FloatArray get() = animHelper.floatProperties
-        private val runningAnims: HashMap<Int, MyAnimator> get() = animHelper.runningAnims
+        private val runningAnims: HashMap<Int, PropertyAnimator> get() = animHelper.runningAnims
 
         val colorMarkerLineVal: Int get() = colorMarkerLine
         val colorMarkerTriangleVal: Int get() = colorMarkerTriangle

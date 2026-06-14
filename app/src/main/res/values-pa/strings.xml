@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="abbrechen">ਰੱਦ ਕਰੋ</string>
     <string name="about1">ਜ਼ਾਜ਼ੇਨ ਮੈਡੀਟੇਸ਼ਨ ਟਾਈਮਰ — ਅਨੁਕੂਲਿਤ ਭਾਗਾਂ, ਘੰਟੀ ਦੀਆਂ ਆਵਾਜ਼ਾਂ, ਅਤੇ ਸੈਸ਼ਨ ਪ੍ਰਬੰਧਨ ਦੇ ਨਾਲ ਇੱਕ ਸਧਾਰਨ ਧਿਆਨ ਟਾਈਮਰ।</string>
     <string name="about2">ਅਸਲ ਵਿੱਚ ਸਟੀਫਨ ਗੈਫਗਾ ਦੁਆਰਾ ਬਣਾਇਆ ਗਿਆ। ਇਸ ਸਮੇਂ ਜਾਰਜ ਗ੍ਰਾਫ ਦੁਆਰਾ ਬਣਾਈ ਰੱਖਿਆ ਜਾ ਰਿਹਾ ਹੈ।&lt;br&gt;&lt;br&gt;ਵਿਨਫ੍ਰੀਡ ਦਾ &lt;a href=\"http://www.meditationsuhren.de\"&gt;http://www.meditationsuhren.de&lt;/a&gt; ਇੰਨੀਆਂ ਵਧੀਆ ਘੰਟੀ ਦੀਆਂ ਆਵਾਜ਼ਾਂ ਪ੍ਰਦਾਨ ਕਰਨ ਲਈ ਧੰਨਵਾਦ!</string>
     <string name="about3">&lt;a href=\"https://github.com/georgernstgraf/zazentimer/issues\"&gt;GitHub \'ਤੇ ਸਮੱਸਿਆਵਾਂ ਦੀ ਰਿਪੋਰਟ ਕਰੋ&lt;/a&gt;</string>
@@ -20,6 +19,7 @@
     <string name="but_start">ਧਿਆਨ ਸ਼ੁਰੂ ਕਰੋ</string>
     <string name="but_stop">ਬੰਦ ਕਰੋ</string>
     <string name="button_bell_volumes">ਘੰਟੀ ਦੀਆਂ ਆਵਾਜ਼ਾਂ ਨੂੰ ਵਿਵਸਥਿਤ ਕਰੋ</string>
+    <string name="cancel">ਰੱਦ ਕਰੋ</string>
     <string name="caption_zazen_meditation">ਜ਼ਾਜ਼ੇਨ ਧਿਆਨ</string>
     <string name="checkbox_keep_screen_on">ਸਕਰੀਨ ਚਾਲੂ ਰੱਖੋ</string>
     <string name="confirm_delete_bell">ਘੰਟੀ \"%s\" ਮਿਟਾਉਣੀ ਹੈ?</string>
@@ -63,7 +63,7 @@
     <string name="menu_help">ਮਦਦ</string>
     <string name="menu_privacy">ਗੋਪਨੀਯਤਾ…</string>
     <string name="menu_settings">ਸੈਟਿੰਗਾਂ</string>
-    <string name="minuten">ਮਿੰਟ</string>
+    <string name="minutes">ਮਿੰਟ</string>
     <string name="nav_label_edit_section">ਭਾਗ ਸੋਧੋ</string>
     <string name="nav_label_edit_session">ਸੈਸ਼ਨ ਸੋਧੋ</string>
     <string name="nav_label_manage_bells">ਘੰਟੀਆਂ ਦਾ ਪ੍ਰਬੰਧਨ ਕਰੋ</string>
@@ -100,17 +100,16 @@
     <string name="restore_version_mismatch_text">ਇਹ ਬੈਕਅੱਪ ZazenTimer ਦੇ ਨਵੇਂ ਸੰਸਕਰਣ ਦੁਆਰਾ ਬਣਾਇਆ ਗਿਆ ਸੀ। ਕਿਰਪਾ ਕਰਕੇ ਐਪ ਨੂੰ ਅੱਪਡੇਟ ਕਰੋ।</string>
     <string name="restore_version_mismatch_title">ਨਵਾਂ ਬੈਕਅੱਪ ਵਰਜ਼ਨ</string>
     <string name="search_menu_title">ਖੋਜ</string>
+    <string name="seconds">ਸਕਿੰਟ</string>
     <string name="section_deleted">\'%s\' ਮਿਟਾਇਆ ਗਿਆ</string>
     <string name="section_info_string_1_pl">%1$d ਘੰਟੀਆਂ</string>
     <string name="section_info_string_1_sg">1 ਘੰਟੀ</string>
     <string name="section_info_string_2_pl">ਹਰ %1$d ਸਕਿੰਟ</string>
     <string name="section_info_string_2_sg">ਹਰ ਸਕਿੰਟ</string>
-    <string name="sekunden">ਸਕਿੰਟ</string>
     <string name="select_audio">ਆਵਾਜ਼ ਫ਼ਾਈਲ ਚੁਣੋ</string>
     <string name="service_description">ਇੱਕ ਚੱਲ ਰਿਹਾ ਜ਼ਾਜ਼ੇਨ ਧਿਆਨ</string>
     <string name="session_deleted">\'%s\' ਮਿਟਾਇਆ ਗਿਆ</string>
     <string name="session_list_unnamed_entry">ਬੇਨਾਮ ਸੈਸ਼ਨ</string>
-    <string name="stop_meditation_cancel">ਰੱਦ ਕਰੋ</string>
     <string name="stop_meditation_message">ਤੁਹਾਡਾ ਧਿਆਨ ਸੈਸ਼ਨ ਅਜੇ ਵੀ ਚੱਲ ਰਿਹਾ ਹੈ।</string>
     <string name="stop_meditation_stop">ਬੰਦ ਕਰੋ</string>
     <string name="stop_meditation_title">ਕੀ ਧਿਆਨ ਬੰਦ ਕਰਨਾ ਹੈ?</string>

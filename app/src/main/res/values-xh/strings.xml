@@ -36,7 +36,7 @@
     <string name="label_session_name">Seans nomi</string>
     <string name="manage_bells">Qoʻngʻiroqlarni boshqarish</string>
     <string name="manage_bells_summary">Fayl tizimidan qoʻngʻiroqlar qoʻshish / ilovadan qoʻngʻiroqlarni olib tashlash</string>
-    <string name="menu_about">Ilova haqida…</string>
+    <string name="menu_about">Haqida…</string>
     <string name="menu_add_section">Boʻlim qoʻshish</string>
     <string name="menu_add_session">Seans qoʻshish</string>
     <string name="menu_copy_session">Seansdan nusxa olish</string>
@@ -70,12 +70,12 @@
     <string name="restore_success_text">Maʼlumotlar muvaffaqiyatli tiklandi</string>
     <string name="restore_version_mismatch_text">Ushbu zaxira nusxasi ZazenTimerning yangiroq versiyasi tomonidan yaratilgan. Iltimos, ilovani yangilang.</string>
     <string name="restore_version_mismatch_title">Yangi zaxira nusxasi versiyasi</string>
+    <string name="seconds">Soniya</string>
     <string name="section_deleted">\'%s\' oʻchirildi</string>
     <string name="section_info_string_1_pl">%1$d ta qoʻngʻiroq</string>
     <string name="section_info_string_1_sg">1 ta qoʻngʻiroq</string>
     <string name="section_info_string_2_pl">har %1$d soniyada</string>
     <string name="section_info_string_2_sg">har soniyada</string>
-    <string name="sekunden">Soniya</string>
     <string name="select_audio">Ovoz faylini tanlang</string>
     <string name="service_description">Ishlayotgan Zazen meditatsiyasi</string>
     <string name="session_deleted">\'%s\' oʻchirildi</string>

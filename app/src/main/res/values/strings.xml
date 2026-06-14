@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <string name="abbrechen">Cancel</string>
+    <string name="cancel">Cancel</string>
     <string name="about1">Zazen Meditation Timer — A simple meditation timer with customizable sections, bell sounds, and session management.</string>
     <string name="about2" tools:ignore="MissingTranslation">Originally created by Stefan Gaffga. Currently maintained by Georg Graf.&lt;br&gt;&lt;br&gt;Thanks to Winfried of &lt;a href="http://www.meditationsuhren.de"&gt;http://www.meditationsuhren.de&lt;/a&gt; for providing such great Bell Sounds!</string>
     <string name="about3">&lt;a href="https://github.com/georgernstgraf/zazentimer/issues"&gt;Report issues on GitHub&lt;/a&gt;</string>
@@ -68,7 +68,7 @@
     <string name="menu_add_section">Add Section</string>
     <string name="menu_privacy">Privacy…</string>
     <string name="menu_settings">Settings</string>
-    <string name="minuten">Minutes</string>
+    <string name="minutes">Minutes</string>
     <string name="no_sections_in_session">Can\'t start Meditation: The selected Session does not have any Sections.</string>
     <string name="no_session_exists">There is no session that can be started. Please create one first.</string>
     <string name="notification_text">A Zazen Meditation is currently running</string>
@@ -98,7 +98,7 @@
     <string name="section_info_string_1_sg">1 Bell</string>
     <string name="section_info_string_2_pl" tools:ignore="MissingTranslation">every %1$d Seconds</string>
     <string name="section_info_string_2_sg">every Second</string>
-    <string name="sekunden">Seconds</string>
+    <string name="seconds">Seconds</string>
     <string name="select_audio">Select sound file</string>
     <string name="service_description">A running Zazen Meditation</string>
     <string name="content_desc_drag_handle">Drag to reorder</string>
@@ -124,7 +124,6 @@
     <string name="stop_meditation_title">Stop meditation?</string>
     <string name="stop_meditation_message">Your meditation session is still running.</string>
     <string name="stop_meditation_stop">Stop</string>
-    <string name="stop_meditation_cancel">Cancel</string>
     <string name="section_deleted" tools:ignore="MissingTranslation">Deleted \'%s\'</string>
     <string name="session_deleted" tools:ignore="MissingTranslation">Deleted \'%s\'</string>
     <string name="action_undo" tools:ignore="MissingTranslation">Undo</string>

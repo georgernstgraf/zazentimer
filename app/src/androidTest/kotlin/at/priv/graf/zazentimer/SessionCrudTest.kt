@@ -47,7 +47,7 @@ class SessionCrudTest : AbstractZazenTest() {
         SessionEditPage()
             .verifyEditSessionScreen()
 
-        onView(withId(R.id.text_sitzung_name))
+        onView(withId(R.id.text_session_name))
             .check(matches(not(withText(""))))
     }
 
@@ -64,11 +64,11 @@ class SessionCrudTest : AbstractZazenTest() {
         SessionEditPage()
             .verifyEditSessionScreen()
 
-        onView(withId(R.id.text_sitzung_name)).check(matches(withText(demoSessionName)))
+        onView(withId(R.id.text_session_name)).check(matches(withText(demoSessionName)))
 
-        onView(withId(R.id.text_sitzung_name))
+        onView(withId(R.id.text_session_name))
             .perform(replaceText("Updated Session Name"))
-        onView(withId(R.id.text_sitzung_beschreibung))
+        onView(withId(R.id.text_session_description))
             .perform(replaceText("Updated Description"))
 
         closeSoftKeyboard()
@@ -107,7 +107,7 @@ class SessionCrudTest : AbstractZazenTest() {
         onView(withText(R.string.title_question_delete_session))
             .inRoot(isDialog())
             .check(matches(isDisplayed()))
-        onView(withText(R.string.abbrechen))
+        onView(withText(R.string.cancel))
             .inRoot(isDialog())
             .perform(click())
 

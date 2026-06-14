@@ -18,7 +18,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/minuten"/>
+            android:text="@string/minutes"/>
         <NumberPicker
             android:id="@+id/pickerMinutes"
             android:descendantFocusability="blocksDescendants"
@@ -38,7 +38,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/sekunden"/>
+            android:text="@string/seconds"/>
         <NumberPicker
             android:id="@+id/pickerSeconds"
             android:descendantFocusability="blocksDescendants"

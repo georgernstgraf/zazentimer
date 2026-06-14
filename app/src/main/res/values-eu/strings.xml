@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="abbrechen">Utzi</string>
     <string name="action_delete">Ezabatu</string>
     <string name="action_undo">Desegin</string>
     <string name="affected_section_format">• \"%1$s\" atala \"%2$s\" Saioan</string>
@@ -10,6 +9,7 @@
     <string name="but_pause">Pausatu</string>
     <string name="but_start">Hasi meditazioa</string>
     <string name="but_stop">Gelditu</string>
+    <string name="cancel">Utzi</string>
     <string name="caption_zazen_meditation">Zazen Meditazioa</string>
     <string name="checkbox_keep_screen_on">Mantendu pantaila piztuta</string>
     <string name="confirm_delete_bell">Ezabatu \"%s\" kanpaia?</string>
@@ -39,7 +39,7 @@
     <string name="menu_help">Laguntza</string>
     <string name="menu_privacy">Pribatutasuna…</string>
     <string name="menu_settings">Ezarpenak</string>
-    <string name="minuten">Minutuak</string>
+    <string name="minutes">Minutuak</string>
     <string name="nav_label_edit_session">Editatu saioa</string>
     <string name="nav_label_meditation">Meditazioa</string>
     <string name="nav_label_sessions">Saioak</string>
@@ -55,11 +55,10 @@
     <string name="pref_title_restore">Berrezarri babeskopiatik</string>
     <string name="privacy_ok">Ados</string>
     <string name="search_menu_title">Bilatu</string>
+    <string name="seconds">Segundoak</string>
     <string name="section_info_string_1_pl">%1$d kanpai</string>
-    <string name="sekunden">Segundoak</string>
     <string name="select_audio">Hautatu soinu fitxategia</string>
     <string name="session_list_unnamed_entry">Izenik gabeko saioa</string>
-    <string name="stop_meditation_cancel">Utzi</string>
     <string name="stop_meditation_stop">Gelditu</string>
     <string name="stop_meditation_title">Gelditu meditazioa?</string>
     <string name="theme">Gaia</string>

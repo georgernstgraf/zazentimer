@@ -31,7 +31,7 @@ class MeditationViewModel
     ) : AndroidViewModel(application) {
         private val meditationEnded = MutableLiveData<Boolean>()
 
-        private var serviceConnection: ServCon? = null
+        private var serviceConnection: ServiceConnectionHelper? = null
         private var handler: Handler? = null
         private var serviceIntent: Intent? = null
         private var selectedSessionId = -1
@@ -74,7 +74,7 @@ class MeditationViewModel
             val conn = this.serviceConnection
             if (conn == null) {
                 Log.d(TAG, "serviceConnection is null - making fresh connection service")
-                val newConn = ServCon()
+                val newConn = ServiceConnectionHelper()
                 this.serviceConnection = newConn
                 newConn.setRunOnConnect(RunOnConnect(h, callback))
                 app.bindService(intent, newConn, Context.BIND_AUTO_CREATE)

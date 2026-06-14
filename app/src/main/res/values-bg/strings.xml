@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="abbrechen">Отказ</string>
     <string name="about1">Таймер за Дзадзен медитация — Опростен таймер за медитация с персонализируеми секции, звуци на камбани и управление на сесии.</string>
     <string name="about2">Първоначално създаден от Stefan Gaffga. В момента се поддържа от Georg Graf.&lt;br&gt;&lt;br&gt;Благодарности на Winfried от &lt;a href=\"http://www.meditationsuhren.de\"&gt;http://www.meditationsuhren.de&lt;/a&gt; за предоставянето на страхотните звуци на камбани!</string>
     <string name="about3">&lt;a href=\"https://github.com/georgernstgraf/zazentimer/issues\"&gt;Докладвайте проблеми в GitHub&lt;/a&gt;</string>
@@ -15,11 +14,12 @@
     <string name="bell_name_2">Нисък тон</string>
     <string name="bell_pause">Интервал на камбаната (сек)</string>
     <string name="bell_user">Добавяне на камбана…</string>
-    <string name="bell_volume_dim_explanation">Настройте индивидуалната сила на камбаните за тази сесия.</string>
+    <string name="bell_volume_dim_explanation">Регулиране на силата на звука на отделните звънци за тази сесия.</string>
     <string name="but_pause">Пауза</string>
     <string name="but_start">Започване на медитация</string>
     <string name="but_stop">Спри</string>
     <string name="button_bell_volumes">Регулиране силата на звука на камбаните</string>
+    <string name="cancel">Отказ</string>
     <string name="caption_zazen_meditation">Дзадзен медитация</string>
     <string name="checkbox_keep_screen_on">Екранът да остане включен</string>
     <string name="confirm_delete_bell">Изтриване на камбана \"%s\"?</string>
@@ -48,8 +48,8 @@
     <string name="help_sectionlist_title">Редактиране на сесия</string>
     <string name="import_bell">Импортиране на камбана</string>
     <string name="label_section_name">Име на секция</string>
-    <string name="label_session_description">Описание на сесия</string>
-    <string name="label_session_name">Име на сесия</string>
+    <string name="label_session_description">Описание на сесията</string>
+    <string name="label_session_name">Име на сесията</string>
     <string name="manage_bells">Управление на камбаните</string>
     <string name="manage_bells_summary">Добавяне на камбани от файловата система / премахване на камбани от приложението</string>
     <string name="menu_about">За приложението…</string>
@@ -63,7 +63,7 @@
     <string name="menu_help">Помощ</string>
     <string name="menu_privacy">Поверителност…</string>
     <string name="menu_settings">Настройки</string>
-    <string name="minuten">Минути</string>
+    <string name="minutes">Минути</string>
     <string name="nav_label_edit_section">Редактиране на секция</string>
     <string name="nav_label_edit_session">Редактиране на сесия</string>
     <string name="nav_label_manage_bells">Управление на камбаните</string>
@@ -96,21 +96,20 @@
     <string name="restore_error_text">Грешка при възстановяване от резервно копие</string>
     <string name="restore_really_text">Това ще замени всички ваши сесии с тези от резервното копие! (Без отмяна!)</string>
     <string name="restore_really_title">Наистина ли да се възстановят данните?</string>
-    <string name="restore_success_text">Данните са възстановени успешно</string>
+    <string name="restore_success_text">Възстановяването на данните е успешно</string>
     <string name="restore_version_mismatch_text">Това резервно копие е създадено от по-нова версия на ZazenTimer. Моля, актуализирайте приложението.</string>
     <string name="restore_version_mismatch_title">По-нова версия на резервното копие</string>
     <string name="search_menu_title">Търсене</string>
+    <string name="seconds">Секунди</string>
     <string name="section_deleted">Изтрито \'%s\'</string>
     <string name="section_info_string_1_pl">%1$d камбани</string>
     <string name="section_info_string_1_sg">1 камбана</string>
     <string name="section_info_string_2_pl">на всеки %1$d секунди</string>
     <string name="section_info_string_2_sg">всяка секунда</string>
-    <string name="sekunden">Секунди</string>
     <string name="select_audio">Избор на звуков файл</string>
     <string name="service_description">Работеща Дзадзен медитация</string>
     <string name="session_deleted">Изтрито \'%s\'</string>
     <string name="session_list_unnamed_entry">Сесия без име</string>
-    <string name="stop_meditation_cancel">Отказ</string>
     <string name="stop_meditation_message">Вашата медитационна сесия все още работи.</string>
     <string name="stop_meditation_stop">Спри</string>
     <string name="stop_meditation_title">Спиране на медитацията?</string>

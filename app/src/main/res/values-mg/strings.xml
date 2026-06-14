@@ -10,12 +10,12 @@
     <string name="menu_help">Fanampiana</string>
     <string name="menu_privacy">Tsiambaratelo…</string>
     <string name="menu_settings">Fikirakirana</string>
-    <string name="minuten">Minitra</string>
+    <string name="minutes">Minitra</string>
     <string name="nav_label_settings">Fikirakirana</string>
     <string name="ok">OK</string>
     <string name="pref_title_brightness">Fahazavana</string>
     <string name="privacy_ok">OK</string>
-    <string name="sekunden">Segondra</string>
+    <string name="seconds">Segondra</string>
     <string name="theme">Endrika</string>
     <string name="theme_dark">Endrika maizina</string>
     <string name="theme_light">Endrika mazava</string>

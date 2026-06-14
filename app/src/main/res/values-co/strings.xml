@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="abbrechen">Annullà</string>
     <string name="action_undo">Annullà</string>
     <string name="affected_section_format">• sezzione \"%1$s\" in Sessione \"%2$s\"</string>
     <string name="bell_name_1">Tonu Altu</string>
@@ -8,6 +7,7 @@
     <string name="bell_user">Aghjunghje campana…</string>
     <string name="but_pause">Pausa</string>
     <string name="but_stop">Piantà</string>
+    <string name="cancel">Annullà</string>
     <string name="caption_zazen_meditation">Meditazione Zazen</string>
     <string name="checkbox_keep_screen_on">Mantene u screnu accesu</string>
     <string name="copy_prefix">Copia di</string>
@@ -30,7 +30,7 @@
     <string name="menu_help">Aiutu</string>
     <string name="menu_privacy">Cunfidenzialità…</string>
     <string name="menu_settings">Parametri</string>
-    <string name="minuten">Minuti</string>
+    <string name="minutes">Minuti</string>
     <string name="nav_label_meditation">Meditazione</string>
     <string name="nav_label_sessions">Sessioni</string>
     <string name="nav_label_settings">Parametri</string>
@@ -43,12 +43,11 @@
     <string name="ok">OK</string>
     <string name="pref_title_brightness">Luminosità</string>
     <string name="privacy_ok">OK</string>
+    <string name="seconds">Secondi</string>
     <string name="section_info_string_1_pl">%1$d campane</string>
     <string name="section_info_string_1_sg">1 campana</string>
-    <string name="sekunden">Secondi</string>
     <string name="service_description">Una Meditazione Zazen in corsu</string>
     <string name="session_list_unnamed_entry">Sessione senza nome</string>
-    <string name="stop_meditation_cancel">Annullà</string>
     <string name="stop_meditation_message">A vostra sessione di meditazione hè sempre in corsu.</string>
     <string name="stop_meditation_stop">Piantà</string>
     <string name="stop_meditation_title">Piantà a meditazione?</string>

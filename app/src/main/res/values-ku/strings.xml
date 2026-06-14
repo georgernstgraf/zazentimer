@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="abbrechen">Betal bike</string>
     <string name="action_delete">Jê bibe</string>
     <string name="action_undo">Vegerîne</string>
     <string name="bell_name_1">Dengê Bilind</string>
     <string name="bell_name_2">Dengê Nizm</string>
     <string name="but_stop">Rawestîne</string>
+    <string name="cancel">Betal bike</string>
     <string name="caption_zazen_meditation">Medîtasyona Zazen</string>
     <string name="default_section_name">Bênav</string>
     <string name="demo_sess1_description">Medîtasyona êvara yekşemê</string>
@@ -19,12 +19,12 @@
     <string name="demo_sess2_description">Medîtasyona rojane</string>
     <string name="demo_sess2_name">Tenê Zazen</string>
     <string name="label_section_name">Navê beşê</string>
-    <string name="menu_about">Derbarê…</string>
+    <string name="menu_about">Li ser…</string>
     <string name="menu_delete_section">Beşê Jê Bibe</string>
     <string name="menu_help">Alîkarî</string>
     <string name="menu_privacy">Nepenî…</string>
     <string name="menu_settings">Mîheng</string>
-    <string name="minuten">Xulek</string>
+    <string name="minutes">Xulek</string>
     <string name="nav_label_edit_section">Beşê Biguherîne</string>
     <string name="nav_label_meditation">Medîtasyon</string>
     <string name="nav_label_settings">Mîheng</string>
@@ -34,13 +34,12 @@
     <string name="pref_title_brightness">Ronahî</string>
     <string name="privacy_ok">Temam</string>
     <string name="search_menu_title">Lêgerîn</string>
+    <string name="seconds">Çirk</string>
     <string name="section_deleted">\'%s\' hate jêbirin</string>
     <string name="section_info_string_1_pl">%1$d Zengil</string>
     <string name="section_info_string_1_sg">1 Zengil</string>
-    <string name="sekunden">Çirk</string>
     <string name="service_description">Medîtasyoneke Zazen a dimeşe</string>
     <string name="session_deleted">\'%s\' hate jêbirin</string>
-    <string name="stop_meditation_cancel">Betal bike</string>
     <string name="stop_meditation_stop">Rawestîne</string>
     <string name="theme">Rûkar</string>
     <string name="theme_dark">Rûkara Tarî</string>

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="abbrechen">إلغاء</string>
     <string name="about1">مؤقت التأمل زازين — مؤقت تأمل بسيط مع أقسام قابلة للتخصيص، أصوات أوعية التأمل، وإدارة الجلسات.</string>
     <string name="about2">تم إنشاؤه في الأصل بواسطة Stefan Gaffga. تتم صيانته حاليًا بواسطة Georg Graf.&lt;br&gt;&lt;br&gt;شكرًا لـ Winfried من &lt;a href=\"http://www.meditationsuhren.de\"&gt;http://www.meditationsuhren.de&lt;/a&gt; لتقديم أصوات أوعية الغناء الرائعة هذه!</string>
     <string name="about3">&lt;a href=\"https://github.com/georgernstgraf/zazentimer/issues\"&gt;الإبلاغ عن المشاكل على GitHub&lt;/a&gt;</string>
@@ -10,7 +9,7 @@
     <string name="app_description">يتيح هذا التطبيق للمستخدم تحديد مجموعة من جلسات التأمل ويوفر مؤقتًا مع ملاحظات مرئية ومسموعة عند انتهاء جزء أو كل التأمل.</string>
     <string name="backup_error_text">عذرًا، حدث خطأ أثناء الحفظ.</string>
     <string name="backup_success_text">تم إنشاء النسخة الاحتياطية بنجاح!</string>
-    <string name="bell_dimming_section_title">تكوين مستوى صوت الجرس</string>
+    <string name="bell_dimming_section_title">ضبط مستوى صوت الجرس</string>
     <string name="bell_name_1">نغمة عالية</string>
     <string name="bell_name_2">نغمة منخفضة</string>
     <string name="bell_pause">فاصل الجرس (ثانية)</string>
@@ -20,6 +19,7 @@
     <string name="but_start">بدء التأمل</string>
     <string name="but_stop">إيقاف</string>
     <string name="button_bell_volumes">ضبط مستويات صوت الأجراس</string>
+    <string name="cancel">إلغاء</string>
     <string name="caption_zazen_meditation">تأمل الزازن</string>
     <string name="checkbox_keep_screen_on">إبقاء الشاشة قيد التشغيل</string>
     <string name="confirm_delete_bell">حذف الجرس \"%s\"؟</string>
@@ -63,7 +63,7 @@
     <string name="menu_help">مساعدة</string>
     <string name="menu_privacy">الخصوصية…</string>
     <string name="menu_settings">الإعدادات</string>
-    <string name="minuten">دقائق</string>
+    <string name="minutes">دقائق</string>
     <string name="nav_label_edit_section">تحرير القسم</string>
     <string name="nav_label_edit_session">تحرير الجلسة</string>
     <string name="nav_label_manage_bells">إدارة الأجراس</string>
@@ -100,17 +100,16 @@
     <string name="restore_version_mismatch_text">تم إنشاء هذه النسخة الاحتياطية بواسطة إصدار أحدث من ZazenTimer. يرجى تحديث التطبيق.</string>
     <string name="restore_version_mismatch_title">إصدار نسخة احتياطية أحدث</string>
     <string name="search_menu_title">بحث</string>
+    <string name="seconds">ثوانٍ</string>
     <string name="section_deleted">تم حذف \'%s\'</string>
     <string name="section_info_string_1_pl">%1$d أجراس</string>
     <string name="section_info_string_1_sg">جرس واحد</string>
     <string name="section_info_string_2_pl">كل %1$d ثانية</string>
     <string name="section_info_string_2_sg">كل ثانية</string>
-    <string name="sekunden">ثوانٍ</string>
     <string name="select_audio">اختر ملف الصوت</string>
     <string name="service_description">تأمل زازن قيد التشغيل</string>
     <string name="session_deleted">تم حذف \'%s\'</string>
     <string name="session_list_unnamed_entry">جلسة بدون اسم</string>
-    <string name="stop_meditation_cancel">إلغاء</string>
     <string name="stop_meditation_message">جلسة التأمل لا تزال قيد التشغيل.</string>
     <string name="stop_meditation_stop">إيقاف</string>
     <string name="stop_meditation_title">إيقاف التأمل؟</string>

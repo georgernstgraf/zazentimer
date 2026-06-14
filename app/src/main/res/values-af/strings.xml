@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="abbrechen">Kanselleer</string>
     <string name="about1">Zazen Meditasie Afteller — \'n Eenvoudige meditasie afteller met aanpasbare afdelings, klankskaalklanke en sessiebestuur.</string>
     <string name="about2">Oorspronklik geskep deur Stefan Gaffga. Tans in stand gehou deur Georg Graf.&lt;br&gt;&lt;br&gt;Dankie aan Winfried van &lt;a href=\"http://www.meditationsuhren.de\"&gt;http://www.meditationsuhren.de&lt;/a&gt; vir die verskaffing van sulke wonderlike Klankskaalklanke!</string>
     <string name="about3">&lt;a href=\"https://github.com/georgernstgraf/zazentimer/issues\"&gt;Rapporteer probleme op GitHub&lt;/a&gt;</string>
@@ -20,6 +19,7 @@
     <string name="but_start">Begin Meditasie</string>
     <string name="but_stop">Stop</string>
     <string name="button_bell_volumes">Pas Klankskaalvolumes Aan</string>
+    <string name="cancel">Kanselleer</string>
     <string name="caption_zazen_meditation">Zazen Meditasie</string>
     <string name="checkbox_keep_screen_on">Hou skerm aan</string>
     <string name="confirm_delete_bell">Vee klankskaal \"%s\" uit?</string>
@@ -63,7 +63,7 @@
     <string name="menu_help">Hulp</string>
     <string name="menu_privacy">Privaatheid…</string>
     <string name="menu_settings">Instellings</string>
-    <string name="minuten">Minute</string>
+    <string name="minutes">Minute</string>
     <string name="nav_label_edit_section">Wysig Afdeling</string>
     <string name="nav_label_edit_session">Wysig Sessie</string>
     <string name="nav_label_manage_bells">Bestuur Klankskale</string>
@@ -100,17 +100,16 @@
     <string name="restore_version_mismatch_text">Hierdie rugsteun is geskep deur \'n nuwer weergawe van ZazenTimer. Dateer asseblief die toepassing op.</string>
     <string name="restore_version_mismatch_title">Nuwer Rugsteunweergawe</string>
     <string name="search_menu_title">Soek</string>
+    <string name="seconds">Sekondes</string>
     <string name="section_deleted">\'%s\' uitgevee</string>
     <string name="section_info_string_1_pl">%1$d Klankskale</string>
     <string name="section_info_string_1_sg">1 Klankskaal</string>
     <string name="section_info_string_2_pl">elke %1$d Sekondes</string>
     <string name="section_info_string_2_sg">elke Sekonde</string>
-    <string name="sekunden">Sekondes</string>
     <string name="select_audio">Kies klanklêer</string>
     <string name="service_description">\'n Lopende Zazen Meditasie</string>
     <string name="session_deleted">\'%s\' uitgevee</string>
     <string name="session_list_unnamed_entry">Naamlose Sessie</string>
-    <string name="stop_meditation_cancel">Kanselleer</string>
     <string name="stop_meditation_message">U meditasiesessie is steeds aan die gang.</string>
     <string name="stop_meditation_stop">Stop</string>
     <string name="stop_meditation_title">Stop meditasie?</string>

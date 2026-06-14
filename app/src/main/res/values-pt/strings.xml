@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="abbrechen">Cancelar</string>
     <string name="about1">Zazen Meditation Timer — Um temporizador de meditação simples com seções personalizáveis, sons de sino e gerenciamento de sessões.</string>
     <string name="about2">Originalmente criado por Stefan Gaffga. Atualmente mantido por Georg Graf.&lt;br&gt;&lt;br&gt;Obrigado a Winfried do &lt;a href=\"http://www.meditationsuhren.de\"&gt;http://www.meditationsuhren.de&lt;/a&gt; por fornecer ótimos sons de sinos!</string>
     <string name="about3">&lt;a href=\"https://github.com/georgernstgraf/zazentimer/issues\"&gt;Reportar problemas no GitHub&lt;/a&gt;</string>
@@ -20,6 +19,7 @@
     <string name="but_start">Iniciar Meditação</string>
     <string name="but_stop">Parar</string>
     <string name="button_bell_volumes">Ajustar Volumes dos Sinos</string>
+    <string name="cancel">Cancelar</string>
     <string name="caption_zazen_meditation">Meditação Zazen</string>
     <string name="checkbox_keep_screen_on">Manter o ecrã ligado</string>
     <string name="confirm_delete_bell">Eliminar sino \"%s\"?</string>
@@ -44,7 +44,7 @@
     <string name="demo_sess2_name">Apenas Zazen</string>
     <string name="desc_keep_screen_on">Mantém o ecrã ligado durante a meditação</string>
     <string name="gong_type">Som do Gong</string>
-    <string name="help_sectionlist_text">Aqui pode nomear, descrever e editar o conteúdo da sua Sessão.\n\n REORDENAR\n Para reordenar os itens, pressione prolongadamente num item e\n arraste-o para a sua nova posição.\n\n APAGAR\n Para apagar um item, mova-o para a direita.\n\n EDITAR\n Para editar uma secção, basta tocar-lhe uma vez.\n\n ADICIONAR\n Para adicionar uma nova secção, pressione o botão +.</string>
+    <string name="help_sectionlist_text">Aqui você pode nomear, descrever e editar o conteúdo da sua Sessão.\n\n REORDENAR\n Para reordenar os itens, pressione longamente em um item e\n arraste-o para a nova posição.\n\n EXCLUIR\n Para excluir um item, mova-o para a direita.\n\n EDITAR\n Para editar uma seção, basta tocá-la uma vez.\n\n ADICIONAR\n Para adicionar uma nova seção, pressione o botão +.</string>
     <string name="help_sectionlist_title">Editar Sessão</string>
     <string name="import_bell">Importar Sino</string>
     <string name="label_section_name">Nome da secção</string>
@@ -63,7 +63,7 @@
     <string name="menu_help">Ajuda</string>
     <string name="menu_privacy">Privacidade…</string>
     <string name="menu_settings">Definições</string>
-    <string name="minuten">Minutos</string>
+    <string name="minutes">Minutos</string>
     <string name="nav_label_edit_section">Editar Secção</string>
     <string name="nav_label_edit_session">Editar Sessão</string>
     <string name="nav_label_manage_bells">Gerir Sinos</string>
@@ -89,28 +89,27 @@
     <string name="pref_title_backup">Criar Cópia de Segurança</string>
     <string name="pref_title_brightness">Brilho</string>
     <string name="pref_title_restore">Restaurar do Backup</string>
-    <string name="privacy_message">Esta Aplicação não recolhe dados pessoais - também não utiliza endereços IP ou quaisquer outros dados relacionados com tecnologia, nem os recolhe, processa ou utiliza de forma alguma.</string>
+    <string name="privacy_message">Este App não coleta dados pessoais - também não usa endereços IP ou quaisquer outros dados relacionados à tecnologia, nem os coleta, processa ou usa de forma alguma.</string>
     <string name="privacy_ok">OK</string>
     <string name="privacy_title">Informação de Privacidade</string>
     <string name="restore_backup_not_found">Ficheiro de cópia de segurança não encontrado</string>
     <string name="restore_error_text">Erro ao restaurar da cópia de segurança</string>
     <string name="restore_really_text">Isso substituirá todas as suas Sessões pelas que estão no Backup! (Sem Desfazer!)</string>
     <string name="restore_really_title">Restaurar realmente os dados?</string>
-    <string name="restore_success_text">Restauração de dados bem-sucedida</string>
+    <string name="restore_success_text">Restauro de dados bem-sucedido</string>
     <string name="restore_version_mismatch_text">Esta cópia de segurança foi criada por uma versão mais recente do ZazenTimer. Por favor, atualize a aplicação.</string>
     <string name="restore_version_mismatch_title">Versão de Backup Mais Recente</string>
     <string name="search_menu_title">Pesquisar</string>
+    <string name="seconds">Segundos</string>
     <string name="section_deleted">Eliminado \'%s\'</string>
     <string name="section_info_string_1_pl">%1$d Sinos</string>
     <string name="section_info_string_1_sg">1 Sino</string>
     <string name="section_info_string_2_pl">a cada %1$d Segundos</string>
     <string name="section_info_string_2_sg">a cada Segundo</string>
-    <string name="sekunden">Segundos</string>
     <string name="select_audio">Selecionar ficheiro de som</string>
     <string name="service_description">Uma meditação Zazen em execução</string>
     <string name="session_deleted">Eliminado \'%s\'</string>
     <string name="session_list_unnamed_entry">Sessão sem nome</string>
-    <string name="stop_meditation_cancel">Cancelar</string>
     <string name="stop_meditation_message">A sua sessão de meditação ainda está em execução.</string>
     <string name="stop_meditation_stop">Parar</string>
     <string name="stop_meditation_title">Parar meditação?</string>

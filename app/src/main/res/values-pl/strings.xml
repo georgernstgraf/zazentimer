@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="abbrechen">Anuluj</string>
     <string name="about1">Zazen Meditation Timer — Prosty timer do medytacji z konfigurowalnymi sekcjami, dźwiękami mis i zarządzaniem sesjami.</string>
     <string name="about2">Pierwotnie stworzony przez Stefana Gaffgę. Obecnie utrzymywany przez Georga Grafa.&lt;br&gt;&lt;br&gt;Podziękowania dla Winfrieda z &lt;a href=\"http://www.meditationsuhren.de\"&gt;http://www.meditationsuhren.de&lt;/a&gt; za udostępnienie tak wspaniałych dźwięków dzwonka!</string>
     <string name="about3">&lt;a href=\"https://github.com/georgernstgraf/zazentimer/issues\"&gt;Zgłoś problem na GitHubie&lt;/a&gt;</string>
     <string name="action_delete">Usuń</string>
     <string name="action_undo">Cofnij</string>
     <string name="affected_section_format">• sekcja \"%1$s\" w sesji \"%2$s\"</string>
-    <string name="app_description">Ta aplikacja pozwala użytkownikowi zdefiniować zestaw sesji medytacyjnych i zapewnia timer z wizualnym i dźwiękowym powiadomieniem, gdy część lub cała medytacja dobiegnie końca.</string>
+    <string name="app_description">Ta aplikacja pozwala użytkownikowi zdefiniować zestaw sesji medytacyjnych oraz zapewnia minutnik z wizualnymi i dźwiękowymi powiadomieniami o zakończeniu części lub całości medytacji.</string>
     <string name="backup_error_text">Przepraszamy, wystąpił błąd podczas zapisywania.</string>
     <string name="backup_success_text">Kopia zapasowa utworzona pomyślnie!</string>
     <string name="bell_dimming_section_title">Konfiguruj głośność dzwonka</string>
@@ -20,6 +19,7 @@
     <string name="but_start">Rozpocznij medytację</string>
     <string name="but_stop">Zatrzymaj</string>
     <string name="button_bell_volumes">Dostosuj głośność dzwonków</string>
+    <string name="cancel">Anuluj</string>
     <string name="caption_zazen_meditation">Medytacja Zazen</string>
     <string name="checkbox_keep_screen_on">Pozostaw ekran włączony</string>
     <string name="confirm_delete_bell">Usunąć dzwonek \"%s\"?</string>
@@ -63,7 +63,7 @@
     <string name="menu_help">Pomoc</string>
     <string name="menu_privacy">Prywatność…</string>
     <string name="menu_settings">Ustawienia</string>
-    <string name="minuten">Minuty</string>
+    <string name="minutes">Minuty</string>
     <string name="nav_label_edit_section">Edytuj sekcję</string>
     <string name="nav_label_edit_session">Edytuj sesję</string>
     <string name="nav_label_manage_bells">Zarządzaj dzwonkami</string>
@@ -75,9 +75,9 @@
     <string name="no_bells_configured">Brak skonfigurowanych dzwonków</string>
     <string name="no_custom_bells">Nie zaimportowano niestandardowych dzwonków.</string>
     <string name="no_sections_in_session">Nie można rozpocząć medytacji: Wybrana sesja nie zawiera żadnych sekcji.</string>
-    <string name="no_session_exists">Brak sesji do rozpoczęcia. Proszę najpierw ją utworzyć.</string>
+    <string name="no_session_exists">Brak sesji do uruchomienia. Najpierw utwórz sesję.</string>
     <string name="notification_channel_name">Timer medytacyjny</string>
-    <string name="notification_text">Obecnie trwa medytacja Zazen</string>
+    <string name="notification_text">Medytacja Zazen jest w trakcie</string>
     <string name="notification_text_paused">Medytacja Zazen wstrzymana</string>
     <string name="notification_title">Medytacja Zazen</string>
     <string name="notification_title_paused">Medytacja Zazen (wstrzymana)</string>
@@ -89,7 +89,7 @@
     <string name="pref_title_backup">Utwórz kopię zapasową</string>
     <string name="pref_title_brightness">Jasność</string>
     <string name="pref_title_restore">Przywróć z kopii zapasowej</string>
-    <string name="privacy_message">Ta aplikacja nie zbiera żadnych danych osobowych — nie wykorzystuje również adresów IP ani żadnych innych danych technicznych, ani w żaden sposób ich nie gromadzi, nie przetwarza ani nie używa.</string>
+    <string name="privacy_message">Ta aplikacja nie zbiera żadnych danych osobowych — nie używa również adresów IP ani żadnych innych danych związanych z technologią, ani nie zbiera, przetwarza ani w żaden sposób nie wykorzystuje żadnych danych.</string>
     <string name="privacy_ok">OK</string>
     <string name="privacy_title">Informacje o prywatności</string>
     <string name="restore_backup_not_found">Nie znaleziono pliku kopii zapasowej</string>
@@ -100,17 +100,16 @@
     <string name="restore_version_mismatch_text">Ta kopia zapasowa została utworzona przez nowszą wersję ZazenTimer. Zaktualizuj aplikację.</string>
     <string name="restore_version_mismatch_title">Nowsza wersja kopii zapasowej</string>
     <string name="search_menu_title">Szukaj</string>
+    <string name="seconds">Sekundy</string>
     <string name="section_deleted">Usunięto \'%s\'</string>
     <string name="section_info_string_1_pl">%1$d dzwonków</string>
     <string name="section_info_string_1_sg">1 dzwonek</string>
     <string name="section_info_string_2_pl">co %1$d sekund</string>
     <string name="section_info_string_2_sg">co sekundę</string>
-    <string name="sekunden">Sekundy</string>
     <string name="select_audio">Wybierz plik dźwiękowy</string>
     <string name="service_description">Trwająca medytacja Zazen</string>
     <string name="session_deleted">Usunięto \'%s\'</string>
     <string name="session_list_unnamed_entry">Sesja bez nazwy</string>
-    <string name="stop_meditation_cancel">Anuluj</string>
     <string name="stop_meditation_message">Twoja sesja medytacyjna wciąż trwa.</string>
     <string name="stop_meditation_stop">Zatrzymaj</string>
     <string name="stop_meditation_title">Zatrzymać medytację?</string>

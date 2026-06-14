@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="abbrechen">Batal</string>
     <string name="about3">&lt;a href=\"https://github.com/georgernstgraf/zazentimer/issues\"&gt;Laporkeun masalah di GitHub&lt;/a&gt;</string>
     <string name="action_delete">Hapus</string>
     <string name="action_undo">Bolaykeun</string>
@@ -15,6 +14,7 @@
     <string name="but_start">Mimitian Meditasi</string>
     <string name="but_stop">Eureun</string>
     <string name="button_bell_volumes">Saluyukeun Volume Loncéng</string>
+    <string name="cancel">Batal</string>
     <string name="caption_zazen_meditation">Meditasi Zazen</string>
     <string name="checkbox_keep_screen_on">Jaga layar tetep hurung</string>
     <string name="confirm_delete_bell">Hapus loncéng \"%s\"?</string>
@@ -54,7 +54,7 @@
     <string name="menu_help">Pitulung</string>
     <string name="menu_privacy">Privasi…</string>
     <string name="menu_settings">Setélan</string>
-    <string name="minuten">Menit</string>
+    <string name="minutes">Menit</string>
     <string name="nav_label_edit_section">Édit Bagian</string>
     <string name="nav_label_edit_session">Édit Sési</string>
     <string name="nav_label_manage_bells">Atur Loncéng</string>
@@ -88,23 +88,22 @@
     <string name="restore_version_mismatch_text">Cadangan ieu didamel ku vérsi ZazenTimer nu langkung anyar. Punten apdét aplikasina.</string>
     <string name="restore_version_mismatch_title">Vérsi Cadangan nu Langkung Anyar</string>
     <string name="search_menu_title">Pilari</string>
+    <string name="seconds">Detik</string>
     <string name="section_deleted">Dihapus \'%s\'</string>
     <string name="section_info_string_1_pl">%1$d Loncéng</string>
     <string name="section_info_string_1_sg">1 Loncéng</string>
     <string name="section_info_string_2_pl">unggal %1$d Detik</string>
     <string name="section_info_string_2_sg">unggal Detik</string>
-    <string name="sekunden">Detik</string>
     <string name="select_audio">Pilih berkas sora</string>
     <string name="service_description">Meditasi Zazen anu nuju jalan</string>
     <string name="session_deleted">Dihapus \'%s\'</string>
     <string name="session_list_unnamed_entry">Sési Tanpa Ngaran</string>
-    <string name="stop_meditation_cancel">Batal</string>
     <string name="stop_meditation_message">Sési meditasi anjeun nuju jalan kénéh.</string>
     <string name="stop_meditation_stop">Eureun</string>
     <string name="stop_meditation_title">Eureunkeun meditasi?</string>
     <string name="system_volume_section_title">Volume Meditasi</string>
     <string name="system_volume_subtitle">Ngadalikeun volume alarem telepon pikeun sadaya loncéng.</string>
-    <string name="text_question_delete_session">Leres badé mupus Sési nu dipilih?</string>
+    <string name="text_question_delete_session">Leres badé ngahapus Sési nu dipilih?</string>
     <string name="theme">Téma</string>
     <string name="theme_dark">Téma Poék</string>
     <string name="theme_desc">Pilih panémbong aplikasi</string>

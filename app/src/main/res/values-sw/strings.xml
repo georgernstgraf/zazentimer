@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="abbrechen">Ghairi</string>
     <string name="about1">Kipima Muda cha Kutafakari cha Zazen — Kipima muda rahisi cha kutafakari chenye sehemu zinazoweza kubadilishwa, sauti za kengele, na usimamizi wa vipindi.</string>
     <string name="about2">Iliundwa awali na Stefan Gaffga. Kwa sasa inatunzwa na Georg Graf.&lt;br&gt;&lt;br&gt;Asante kwa Winfried wa &lt;a href=\"http://www.meditationsuhren.de\"&gt;http://www.meditationsuhren.de&lt;/a&gt; kwa kutoa Sauti za Kengele nzuri sana!</string>
     <string name="about3">&lt;a href=\"https://github.com/georgernstgraf/zazentimer/issues\"&gt;Ripoti matatizo kwenye GitHub&lt;/a&gt;</string>
@@ -20,6 +19,7 @@
     <string name="but_start">Anza Kutafakari</string>
     <string name="but_stop">Simama</string>
     <string name="button_bell_volumes">Rekebisha Kiwango cha Sauti ya Kengele</string>
+    <string name="cancel">Ghairi</string>
     <string name="caption_zazen_meditation">Kutafakari kwa Zazen</string>
     <string name="checkbox_keep_screen_on">Weka skrini iwe imewashwa</string>
     <string name="confirm_delete_bell">Futa kengele \"%s\"?</string>
@@ -63,7 +63,7 @@
     <string name="menu_help">Msaada</string>
     <string name="menu_privacy">Faragha…</string>
     <string name="menu_settings">Mipangilio</string>
-    <string name="minuten">Dakika</string>
+    <string name="minutes">Dakika</string>
     <string name="nav_label_edit_section">Hariri Sehemu</string>
     <string name="nav_label_edit_session">Hariri Kipindi</string>
     <string name="nav_label_manage_bells">Simamia Kengele</string>
@@ -100,17 +100,16 @@
     <string name="restore_version_mismatch_text">Hifadhi rudufu hii iliundwa na toleo jipya la ZazenTimer. Tafadhali sasisha programu.</string>
     <string name="restore_version_mismatch_title">Toleo Jipya la Hifadhi Nakala</string>
     <string name="search_menu_title">Tafuta</string>
+    <string name="seconds">Sekunde</string>
     <string name="section_deleted">Imefutwa \'%s\'</string>
     <string name="section_info_string_1_pl">Kengele %1$d</string>
     <string name="section_info_string_1_sg">Kengele 1</string>
     <string name="section_info_string_2_pl">kila Sekunde %1$d</string>
     <string name="section_info_string_2_sg">kila Sekunde</string>
-    <string name="sekunden">Sekunde</string>
     <string name="select_audio">Chagua faili la sauti</string>
     <string name="service_description">Kutafakari kwa Zazen kunakoendelea</string>
     <string name="session_deleted">Imefutwa \'%s\'</string>
     <string name="session_list_unnamed_entry">Kipindi Bila Jina</string>
-    <string name="stop_meditation_cancel">Ghairi</string>
     <string name="stop_meditation_message">Kipindi chako cha kutafakari bado kinaendelea.</string>
     <string name="stop_meditation_stop">Simama</string>
     <string name="stop_meditation_title">Simamisha kutafakari?</string>

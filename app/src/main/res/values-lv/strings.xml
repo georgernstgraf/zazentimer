@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="abbrechen">Atcelt</string>
     <string name="about1">Zazen Meditation Timer — vienkāršs meditācijas taimeris ar pielāgojamiem posmiem, zvanu skaņām un sesiju pārvaldību.</string>
     <string name="about2">Sākotnēji izveidoja Stefan Gaffga. Pašlaik uztur Georg Graf.&lt;br&gt;&lt;br&gt;Paldies Winfried no &lt;a href=\"http://www.meditationsuhren.de\"&gt;http://www.meditationsuhren.de&lt;/a&gt; par lieliskajām zvanu skaņām!</string>
     <string name="about3">&lt;a href=\"https://github.com/georgernstgraf/zazentimer/issues\"&gt;Ziņot par problēmām GitHub&lt;/a&gt;</string>
@@ -20,6 +19,7 @@
     <string name="but_start">Sākt meditāciju</string>
     <string name="but_stop">Apturēt</string>
     <string name="button_bell_volumes">Pielāgot zvanu skaļumus</string>
+    <string name="cancel">Atcelt</string>
     <string name="caption_zazen_meditation">Zazen meditācija</string>
     <string name="checkbox_keep_screen_on">Neizslēgt ekrānu</string>
     <string name="confirm_delete_bell">Vai dzēst zvanu \"%s\"?</string>
@@ -63,7 +63,7 @@
     <string name="menu_help">Palīdzība</string>
     <string name="menu_privacy">Privātums…</string>
     <string name="menu_settings">Iestatījumi</string>
-    <string name="minuten">Minūtes</string>
+    <string name="minutes">Minūtes</string>
     <string name="nav_label_edit_section">Rediģēt posmu</string>
     <string name="nav_label_edit_session">Rediģēt sesiju</string>
     <string name="nav_label_manage_bells">Pārvaldīt zvanus</string>
@@ -100,17 +100,16 @@
     <string name="restore_version_mismatch_text">Šo dublējumu izveidoja jaunāka ZazenTimer versija. Lūdzu, atjauniniet lietotni.</string>
     <string name="restore_version_mismatch_title">Jaunāka dublējuma versija</string>
     <string name="search_menu_title">Meklēt</string>
+    <string name="seconds">Sekundes</string>
     <string name="section_deleted">Izdzēsts \'%s\'</string>
     <string name="section_info_string_1_pl">%1$d zvani</string>
     <string name="section_info_string_1_sg">1 zvans</string>
     <string name="section_info_string_2_pl">ik pēc %1$d sekundēm</string>
     <string name="section_info_string_2_sg">ik sekundi</string>
-    <string name="sekunden">Sekundes</string>
     <string name="select_audio">Izvēlēties skaņas failu</string>
     <string name="service_description">Aktīva Zazen meditācija</string>
     <string name="session_deleted">Izdzēsts \'%s\'</string>
     <string name="session_list_unnamed_entry">Nenosaukta sesija</string>
-    <string name="stop_meditation_cancel">Atcelt</string>
     <string name="stop_meditation_message">Jūsu meditācijas sesija joprojām darbojas.</string>
     <string name="stop_meditation_stop">Apturēt</string>
     <string name="stop_meditation_title">Apturēt meditāciju?</string>

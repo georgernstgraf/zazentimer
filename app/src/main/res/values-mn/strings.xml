@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="abbrechen">Цуцлах</string>
     <string name="action_delete">Устгах</string>
     <string name="action_undo">Буцаах</string>
     <string name="backup_error_text">Уучлаарай, хадгалах явцад алдаа гарлаа.</string>
@@ -11,6 +10,7 @@
     <string name="but_start">Бясалгал эхлэх</string>
     <string name="but_stop">Зогсоох</string>
     <string name="button_bell_volumes">Хонхны дууны түвшнийг тохируулах</string>
+    <string name="cancel">Цуцлах</string>
     <string name="caption_zazen_meditation">Zazen бясалгал</string>
     <string name="checkbox_keep_screen_on">Дэлгэцийг асаалттай байлгах</string>
     <string name="confirm_delete_bell">\"%s\" хонхыг устгах уу?</string>
@@ -49,7 +49,7 @@
     <string name="menu_help">Тусламж</string>
     <string name="menu_privacy">Нууцлал…</string>
     <string name="menu_settings">Тохиргоо</string>
-    <string name="minuten">Минут</string>
+    <string name="minutes">Минут</string>
     <string name="nav_label_edit_section">Хэсэг засах</string>
     <string name="nav_label_edit_session">Сесс засах</string>
     <string name="nav_label_manage_bells">Хонх удирдах</string>
@@ -75,17 +75,16 @@
     <string name="restore_really_title">Өгөгдлийг үнэхээр сэргээх үү?</string>
     <string name="restore_success_text">Өгөгдлийг амжилттай сэргээлээ</string>
     <string name="search_menu_title">Хайх</string>
+    <string name="seconds">Секунд</string>
     <string name="section_deleted">\'%s\' устгагдлаа</string>
     <string name="section_info_string_1_pl">%1$d хонх</string>
     <string name="section_info_string_1_sg">1 хонх</string>
     <string name="section_info_string_2_pl">%1$d секунд тутамд</string>
     <string name="section_info_string_2_sg">секунд тутамд</string>
-    <string name="sekunden">Секунд</string>
     <string name="select_audio">Дууны файл сонгох</string>
     <string name="service_description">Явагдаж буй Zazen бясалгал</string>
     <string name="session_deleted">\'%s\' устгагдлаа</string>
     <string name="session_list_unnamed_entry">Нэргүй сесс</string>
-    <string name="stop_meditation_cancel">Цуцлах</string>
     <string name="stop_meditation_message">Таны бясалгалын сесс явагдсаар байна.</string>
     <string name="stop_meditation_stop">Зогсоох</string>
     <string name="stop_meditation_title">Бясалгалыг зогсоох уу?</string>

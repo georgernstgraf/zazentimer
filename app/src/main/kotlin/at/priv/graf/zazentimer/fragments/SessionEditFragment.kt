@@ -170,8 +170,8 @@ class SessionEditFragment :
                 Log.e(TAG, "session is NULL")
             } else {
                 Log.i(TAG, "session found and valid")
-                _binding?.textSitzungName?.setText(s.name)
-                _binding?.textSitzungBeschreibung?.setText(s.description)
+                _binding?.textSessionName?.setText(s.name)
+                _binding?.textSessionDescription?.setText(s.description)
                 this@SessionEditFragment.sections = dbOperations.readSections(s.id)
                 val allBells = dbOperations.getAllBells()
                 adapter?.bellNames = allBells.associate { it.id to it.name }
@@ -199,8 +199,8 @@ class SessionEditFragment :
             sectionsToUpdate.add(section)
         }
         session?.let { s ->
-            s.name = binding.textSitzungName.text.toString()
-            s.description = binding.textSitzungBeschreibung.text.toString()
+            s.name = binding.textSessionName.text.toString()
+            s.description = binding.textSessionDescription.text.toString()
             runBlocking {
                 for (section in sectionsToUpdate) {
                     dbOperations.updateSection(section)

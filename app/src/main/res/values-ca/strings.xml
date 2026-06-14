@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="abbrechen">Cancel·la</string>
-    <string name="about1">Temporitzador de Meditació Zazen — Un temporitzador de meditació senzill amb seccions personalitzables, sons de campana i gestió de sessions.</string>
+    <string name="about1">Temporitzador de meditació Zazen — Un temporitzador de meditació senzill amb seccions personalitzables, sons de campana i gestió de sessions.</string>
     <string name="about2">Creat originalment per Stefan Gaffga. Mantingut actualment per Georg Graf.&lt;br&gt;&lt;br&gt;Gràcies a Winfried de &lt;a href=\"http://www.meditationsuhren.de\"&gt;http://www.meditationsuhren.de&lt;/a&gt; per proporcionar sons de campana tan fantàstics!</string>
     <string name="about3">&lt;a href=\"https://github.com/georgernstgraf/zazentimer/issues\"&gt;Informeu de problemes a GitHub&lt;/a&gt;</string>
     <string name="action_delete">Elimina</string>
     <string name="action_undo">Desfés</string>
     <string name="affected_section_format">• secció \"%1$s\" a la sessió \"%2$s\"</string>
-    <string name="app_description">Aquesta aplicació permet a l\'usuari definir un conjunt de sessions de meditació i proporciona un temporitzador amb senyals visuals i sonors quan una part o tota la meditació ha acabat.</string>
+    <string name="app_description">Aquesta aplicació permet a l\'usuari definir un conjunt de sessions de meditació i proporciona un temporitzador amb retroalimentació visual i sonora quan una part o la meditació sencera ha acabat.</string>
     <string name="backup_error_text">Ho sentim, s\'ha produït un error en desar.</string>
     <string name="backup_success_text">Còpia de seguretat creada correctament!</string>
     <string name="bell_dimming_section_title">Configurar el volum de la campana</string>
@@ -20,10 +19,11 @@
     <string name="but_start">Inicia la meditació</string>
     <string name="but_stop">Atura</string>
     <string name="button_bell_volumes">Ajustar volums de campana</string>
+    <string name="cancel">Cancel·la</string>
     <string name="caption_zazen_meditation">Meditació Zazen</string>
     <string name="checkbox_keep_screen_on">Mantén la pantalla encesa</string>
     <string name="confirm_delete_bell">Eliminar la campana \"%s\"?</string>
-    <string name="confirm_delete_bell_affected">Voleu suprimir la campana \"%1$s\"?\n\nLes seccions següents canviaran a la campana predeterminada:\n%2$s</string>
+    <string name="confirm_delete_bell_affected">Vols eliminar la campana \"%1$s\"?\n\nLes següents seccions canviaran a la campana per defecte:\n%2$s</string>
     <string name="content_desc_drag_handle">Arrossega per reordenar</string>
     <string name="content_desc_section_actions">Accions de la secció</string>
     <string name="content_desc_session_actions">Accions de la sessió</string>
@@ -44,7 +44,7 @@
     <string name="demo_sess2_name">Només Zazen</string>
     <string name="desc_keep_screen_on">Manté la pantalla encesa durant la meditació</string>
     <string name="gong_type">So de gong</string>
-    <string name="help_sectionlist_text">Aquí pots nomenar, descriure i editar els continguts de la teva sessió.\n\n REORDENAR\n Per reordenar els elements, mantén premut un element i\n arrossega\'l a la seva nova posició.\n\n ELIMINAR\n Per eliminar un element, mou-lo cap a la dreta.\n\n EDITAR\n Per editar una secció, només cal que la toquis una vegada.\n\n AFEGIR\n Per afegir una nova secció, prem el botó +.</string>
+    <string name="help_sectionlist_text">Aquí podeu anomenar, descriure i editar el contingut de la vostra sessió.\n\n REORDENAR\n Per reordenar els elements, mantingueu premut un element i\n arrossegueu-lo a la seva nova posició.\n\n SUPRIMIR\n Per suprimir un element, moveu-lo cap a la dreta.\n\n EDITAR\n Per editar una secció, toqueu-la una vegada.\n\n AFEGIR\n Per afegir una nova secció, premeu el botó +.</string>
     <string name="help_sectionlist_title">Edita la sessió</string>
     <string name="import_bell">Importa una campana</string>
     <string name="label_section_name">Nom de la secció</string>
@@ -63,7 +63,7 @@
     <string name="menu_help">Ajuda</string>
     <string name="menu_privacy">Privadesa…</string>
     <string name="menu_settings">Configuració</string>
-    <string name="minuten">Minuts</string>
+    <string name="minutes">Minuts</string>
     <string name="nav_label_edit_section">Edita la secció</string>
     <string name="nav_label_edit_session">Edita la sessió</string>
     <string name="nav_label_manage_bells">Gestiona les campanes</string>
@@ -89,28 +89,27 @@
     <string name="pref_title_backup">Crea una còpia de seguretat</string>
     <string name="pref_title_brightness">Brillantor</string>
     <string name="pref_title_restore">Restaura des de la còpia de seguretat</string>
-    <string name="privacy_message">Aquesta aplicació no recull cap dada personal - tampoc no utilitza adreces IP ni cap altra dada tecnològica, ni les recull, processa o utilitza de cap manera.</string>
+    <string name="privacy_message">Aquesta aplicació no recopila cap dada personal: tampoc utilitza adreces IP ni cap altra dada relacionada amb la tecnologia, ni en recopila, processa o utilitza de cap manera.</string>
     <string name="privacy_ok">D\'acord</string>
     <string name="privacy_title">Informació de privadesa</string>
     <string name="restore_backup_not_found">No s\'ha trobat el fitxer de còpia de seguretat</string>
     <string name="restore_error_text">Error en restaurar la còpia de seguretat</string>
-    <string name="restore_really_text">Això substituirà totes les teves sessions per les de la còpia de seguretat! (No es pot desfer!)</string>
+    <string name="restore_really_text">Això substituirà totes les sessions per les de la còpia de seguretat! (No es pot desfer!)</string>
     <string name="restore_really_title">Realment voleu restaurar les dades?</string>
     <string name="restore_success_text">Restauració de dades correcta</string>
-    <string name="restore_version_mismatch_text">Aquesta còpia de seguretat va ser creada per una versió més recent de ZazenTimer. Si us plau, actualitza l\'aplicació.</string>
+    <string name="restore_version_mismatch_text">Aquesta còpia de seguretat va ser creada per una versió més recent del ZazenTimer. Si us plau, actualitzeu l\'aplicació.</string>
     <string name="restore_version_mismatch_title">Versió de còpia de seguretat més recent</string>
     <string name="search_menu_title">Cerca</string>
+    <string name="seconds">Segons</string>
     <string name="section_deleted">S\'ha eliminat \'%s\'</string>
     <string name="section_info_string_1_pl">%1$d campanes</string>
     <string name="section_info_string_1_sg">1 campana</string>
     <string name="section_info_string_2_pl">cada %1$d segons</string>
     <string name="section_info_string_2_sg">cada segon</string>
-    <string name="sekunden">Segons</string>
     <string name="select_audio">Seleccionar fitxer de so</string>
     <string name="service_description">Una meditació Zazen en curs</string>
     <string name="session_deleted">S\'ha eliminat \'%s\'</string>
     <string name="session_list_unnamed_entry">Sessió sense nom</string>
-    <string name="stop_meditation_cancel">Cancel·la</string>
     <string name="stop_meditation_message">La vostra sessió de meditació encara s\'està executant.</string>
     <string name="stop_meditation_stop">Atura</string>
     <string name="stop_meditation_title">Aturar la meditació?</string>

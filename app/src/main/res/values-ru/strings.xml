@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="abbrechen">Отмена</string>
     <string name="about1">Zazen Meditation Timer — простой таймер для медитации с настраиваемыми секциями, звуками поющих чаш и управлением сессиями.</string>
     <string name="about2">Изначально создано Stefan Gaffga. В настоящее время поддерживается Georg Graf.&lt;br&gt;&lt;br&gt;Спасибо Winfried с &lt;a href=\"http://www.meditationsuhren.de\"&gt;http://www.meditationsuhren.de&lt;/a&gt; за предоставление таких замечательных звуков поющих чаш!</string>
     <string name="about3">&lt;a href=\"https://github.com/georgernstgraf/zazentimer/issues\"&gt;Сообщить о проблемах на GitHub&lt;/a&gt;</string>
@@ -20,6 +19,7 @@
     <string name="but_start">Начать медитацию</string>
     <string name="but_stop">Стоп</string>
     <string name="button_bell_volumes">Настроить громкость чаш</string>
+    <string name="cancel">Отмена</string>
     <string name="caption_zazen_meditation">Медитация Дзадзэн</string>
     <string name="checkbox_keep_screen_on">Не выключать экран</string>
     <string name="confirm_delete_bell">Удалить чашу \"%s\"?</string>
@@ -76,7 +76,7 @@
     <string name="menu_help">Справка</string>
     <string name="menu_privacy">Конфиденциальность…</string>
     <string name="menu_settings">Настройки</string>
-    <string name="minuten">Минуты</string>
+    <string name="minutes">Минуты</string>
     <string name="nav_label_edit_section">Редактировать секцию</string>
     <string name="nav_label_edit_session">Редактировать сессию</string>
     <string name="nav_label_manage_bells">Управление чашами</string>
@@ -113,17 +113,16 @@
     <string name="restore_version_mismatch_text">Эта резервная копия была создана более новой версией ZazenTimer. Пожалуйста, обновите приложение.</string>
     <string name="restore_version_mismatch_title">Более новая версия резервной копии</string>
     <string name="search_menu_title">Поиск</string>
+    <string name="seconds">Секунды</string>
     <string name="section_deleted">Удалено \'%s\'</string>
-    <string name="section_info_string_1_pl">%1$d чаш</string>
+    <string name="section_info_string_1_pl">%1$d ударов в чашу</string>
     <string name="section_info_string_1_sg">1 колокольчик</string>
     <string name="section_info_string_2_pl">каждые %1$d секунд</string>
     <string name="section_info_string_2_sg">каждую секунду</string>
-    <string name="sekunden">Секунды</string>
     <string name="select_audio">Выбрать звуковой файл</string>
     <string name="service_description">Текущая медитация Дзадзэн</string>
     <string name="session_deleted">Удалено \'%s\'</string>
     <string name="session_list_unnamed_entry">Сессия без названия</string>
-    <string name="stop_meditation_cancel">Отмена</string>
     <string name="stop_meditation_message">Ваша сессия медитации всё ещё выполняется.</string>
     <string name="stop_meditation_stop">Стоп</string>
     <string name="stop_meditation_title">Остановить медитацию?</string>
