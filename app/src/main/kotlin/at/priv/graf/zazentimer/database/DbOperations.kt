@@ -87,6 +87,8 @@ class DbOperations
 
         fun isConnected(): Boolean = appDb?.isOpen == true
 
+        fun applicationContext(): Context = context
+
         fun getActualDatabaseVersion(): Int {
             val v = appDb?.openHelper?.readableDatabase?.version
             return v ?: AppDatabase.CURRENT_VERSION

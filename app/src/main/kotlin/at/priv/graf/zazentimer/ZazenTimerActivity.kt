@@ -36,7 +36,7 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.NavigationUI
 import androidx.preference.PreferenceManager
-import at.priv.graf.zazentimer.audio.BellCollection
+import at.priv.graf.zazentimer.audio.Audio
 import at.priv.graf.zazentimer.backup.BackupManager
 import at.priv.graf.zazentimer.database.AppDatabase
 import at.priv.graf.zazentimer.database.DbOperations
@@ -155,7 +155,6 @@ class ZazenTimerActivity :
         this.handler = Handler(Looper.getMainLooper())
         this.viewModel = ViewModelProvider(this).get(MeditationViewModel::class.java)
         this.viewModel?.setHandler(this.handler ?: Handler(Looper.getMainLooper()))
-        BellCollection.initialize(this)
         this.pref = getPreferences(this)
         this.pref?.let { p ->
             if (p.contains(PREF_KEY_SHOW_ELAPSED_TIME)) {

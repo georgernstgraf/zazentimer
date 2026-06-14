@@ -1,11 +1,12 @@
 package at.priv.graf.zazentimer.service
 
 import android.content.Context
+import android.net.Uri
 import android.os.PowerManager
 import android.util.Log
 import at.priv.graf.zazentimer.Constants
 import at.priv.graf.zazentimer.audio.Audio
-import at.priv.graf.zazentimer.audio.BellCollection
+import at.priv.graf.zazentimer.audio.BuiltinBells
 import at.priv.graf.zazentimer.bo.Section
 import at.priv.graf.zazentimer.database.BellEntity
 import kotlinx.coroutines.CoroutineScope
@@ -90,27 +91,22 @@ class BellPlayerManager(
         section: Section,
         volume: Int,
     ) {
-        var bell: at.priv.graf.zazentimer.bo.Bell? = null
         val entity = getBellById(section.bellId)
-        if (entity != null) {
-            bell = BellCollection.getBellByUri(entity.uri)
-        }
-        if (bell == null) {
-            bell = BellCollection.getDemoBell() ?: return
-        }
+        val uriStr = entity?.uri ?: BuiltinBells.resourceUri(context, BuiltinBells.DEMO_BELL_RAW_RES)
+        val uri = Uri.parse(uriStr)
 
         val it = audioObjects.iterator()
         while (it.hasNext()) {
             val next = it.next()
             if (!next.isPlaying()) {
                 Log.d(TAG, "Found free Audio Object")
-                next.playAbsVolume(bell, volume)
+                next.playAbsVolume(uri, volume)
                 return
             }
         }
         Log.d(TAG, "Created new Audio Object for new bell")
         val audio = Audio(context)
-        audio.playAbsVolume(bell, volume)
+        audio.playAbsVolume(uri, volume)
         audioObjects.add(audio)
     }
 

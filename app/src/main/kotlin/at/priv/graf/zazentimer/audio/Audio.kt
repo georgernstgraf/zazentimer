@@ -7,7 +7,6 @@ import android.media.MediaPlayer
 import android.net.Uri
 import android.os.Build
 import android.util.Log
-import at.priv.graf.zazentimer.bo.Bell
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import java.io.IOException
@@ -32,11 +31,10 @@ class Audio(
     }
 
     private fun preparePlayer(
-        bell: Bell,
+        uri: Uri,
         volume: Int,
     ): MediaPlayer? {
         Log.d(TAG, "preparing Audio Player")
-        val uri: Uri = bell.uri
         val mediaPlayer = MediaPlayer()
         var result: MediaPlayer? = null
         try {
@@ -86,7 +84,7 @@ class Audio(
     }
 
     suspend fun playAbsVolume(
-        bell: Bell?,
+        uri: Uri?,
         volume: Int,
     ) {
         if (this.player != null) {
@@ -94,7 +92,7 @@ class Audio(
         }
         this.player =
             withContext(Dispatchers.IO) {
-                bell?.let { preparePlayer(it, volume) }
+                uri?.let { preparePlayer(it, volume) }
             }
         this.player?.let { p ->
             this.playing = true

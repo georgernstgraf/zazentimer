@@ -2,7 +2,7 @@ package at.priv.graf.zazentimer.database
 
 import android.content.res.Resources
 import at.priv.graf.zazentimer.R
-import at.priv.graf.zazentimer.audio.BellCollection
+import at.priv.graf.zazentimer.audio.BuiltinBells
 import at.priv.graf.zazentimer.bo.Section
 import at.priv.graf.zazentimer.bo.Session
 import kotlinx.coroutines.Dispatchers
@@ -27,7 +27,7 @@ class DemoSessionCreator(
         createSection(
             session,
             R.string.demo_sess1_sec1_name,
-            BellCollection.BELL_IDX_JAP_RHINBOWL_88,
+            R.raw.dharmaschwarz88,
             BELL_COUNT_1,
             RANK_1,
             DURATION_30,
@@ -35,7 +35,7 @@ class DemoSessionCreator(
         createSection(
             session,
             R.string.demo_sess1_sec2_name,
-            BellCollection.BELL_IDX_JAP_RHINBOWL_107,
+            R.raw.dharma107,
             BELL_COUNT_2,
             RANK_2,
             DURATION_900,
@@ -43,7 +43,7 @@ class DemoSessionCreator(
         createSection(
             session,
             R.string.demo_sess1_sec3_name,
-            BellCollection.BELL_IDX_JAP_RHINBOWL_88,
+            R.raw.dharmaschwarz88,
             BELL_COUNT_2,
             RANK_3,
             DURATION_300,
@@ -51,7 +51,7 @@ class DemoSessionCreator(
         createSection(
             session,
             R.string.demo_sess1_sec4_name,
-            BellCollection.BELL_IDX_JAP_RHINBOWL_107,
+            R.raw.dharma107,
             BELL_COUNT_2,
             RANK_4,
             DURATION_900,
@@ -59,7 +59,7 @@ class DemoSessionCreator(
         createSection(
             session,
             R.string.demo_sess1_sec5_name,
-            BellCollection.BELL_IDX_JAP_RHINBOWL_88,
+            R.raw.dharmaschwarz88,
             BELL_COUNT_2,
             RANK_5,
             DURATION_300,
@@ -67,7 +67,7 @@ class DemoSessionCreator(
         createSection(
             session,
             R.string.demo_sess1_sec6_name,
-            BellCollection.BELL_IDX_JAP_RHINBOWL_107,
+            R.raw.dharma107,
             BELL_COUNT_2,
             RANK_6,
             DURATION_900,
@@ -82,7 +82,7 @@ class DemoSessionCreator(
         createSection(
             session,
             R.string.demo_sess1_sec1_name,
-            BellCollection.BELL_IDX_TIB_RHINBOWL_230,
+            R.raw.tib230,
             BELL_COUNT_1,
             RANK_1,
             DURATION_5,
@@ -90,7 +90,7 @@ class DemoSessionCreator(
         createSection(
             session,
             R.string.demo_sess1_sec2_name,
-            BellCollection.BELL_IDX_JAP_RHINBOWL_107,
+            R.raw.dharma107,
             BELL_COUNT_2,
             RANK_2,
             DURATION_600,
@@ -101,16 +101,15 @@ class DemoSessionCreator(
     private suspend fun createSection(
         session: Session,
         nameResId: Int,
-        bellIdx: Int,
+        bellRawResId: Int,
         bellCount: Int,
         rank: Int,
         duration: Int,
     ) {
+        val uri = BuiltinBells.resourceUri(dbOperations.applicationContext(), bellRawResId)
+        val bellEntity = dbOperations.getBellByUri(uri) ?: return
         val section = Section()
-        section.bellId =
-            BellCollection.getBell(bellIdx)?.let { bell ->
-                dbOperations.getBellByUri(bell.uri.toString())?.id ?: 0
-            } ?: return
+        section.bellId = bellEntity.id
         section.bellcount = bellCount
         section.bellpause = if (bellCount == 1) BELL_PAUSE_1 else BELL_PAUSE_3
         section.duration = duration

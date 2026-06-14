@@ -4,6 +4,7 @@ import android.app.Activity
 import android.content.Intent
 import android.content.SharedPreferences
 import android.graphics.Rect
+import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -20,10 +21,10 @@ import at.priv.graf.zazentimer.Constants
 import at.priv.graf.zazentimer.R
 import at.priv.graf.zazentimer.ZazenTimerActivity
 import at.priv.graf.zazentimer.audio.Audio
-import at.priv.graf.zazentimer.audio.BellCollection
-import at.priv.graf.zazentimer.bo.Bell
+import at.priv.graf.zazentimer.audio.BellImporter
 import at.priv.graf.zazentimer.bo.Section
 import at.priv.graf.zazentimer.bo.TimeFormat
+import at.priv.graf.zazentimer.database.BellEntity
 import at.priv.graf.zazentimer.database.DbOperations
 import at.priv.graf.zazentimer.databinding.FragmentEditSectionBinding
 import com.google.android.material.transition.MaterialSharedAxis
@@ -50,7 +51,7 @@ class SectionEditFragment : Fragment() {
     lateinit var dbOperations: DbOperations
 
     @Inject
-    lateinit var bellImporter: at.priv.graf.zazentimer.audio.BellImporter
+    lateinit var bellImporter: BellImporter
 
     private val bellPickerLauncher: ActivityResultLauncher<Intent> =
         registerForActivityResult(
@@ -60,7 +61,6 @@ class SectionEditFragment : Fragment() {
             val data = result.data?.data ?: return@registerForActivityResult
             lifecycleScope.launch {
                 val entity = bellImporter.import(data) ?: return@launch
-                BellCollection.initialize(requireContext())
                 fillBellList()
                 section?.let { s ->
                     s.bellId = entity.id
@@ -164,14 +164,13 @@ class SectionEditFragment : Fragment() {
 
         private fun SectionEditFragment.fillDataFromViews() {
             val s = section ?: return
-            val bell = (binding.selectGongSound.selectedItem as? Bell) ?: return
-            val entity = runBlocking { dbOperations.getBellByUri(bell.uri.toString()) }
-            s.bellId = entity?.id ?: 0
+            val bell = (binding.selectGongSound.selectedItem as? BellEntity) ?: return
+            s.bellId = bell.id
             s.name = binding.sectionName.text.toString()
             s.duration = (this.durationMinutes * Constants.SECONDS_PER_MINUTE) + this.durationSeconds
         }
 
-        private fun SectionEditFragment.fillViewFromData() {
+        private suspend fun SectionEditFragment.fillViewFromData() {
             val s = section ?: return
             setViewBellCount(s.bellcount)
             setViewGap(s.bellpause)
@@ -272,11 +271,9 @@ class SectionEditFragment : Fragment() {
             binding.playGong.setOnClickListener {
                 val s = section ?: return@setOnClickListener
                 val entity = runBlocking { dbOperations.getBellById(s.bellId) }
-                val bell = entity?.let { BellCollection.getBellByUri(it.uri) }
-                bell?.let { b ->
-                    lifecycleScope.launch {
-                        audio?.playAbsVolume(b, DEFAULT_BELL_VOLUME)
-                    }
+                val uri = entity?.uri?.let { Uri.parse(it) } ?: return@setOnClickListener
+                lifecycleScope.launch {
+                    audio?.playAbsVolume(uri, DEFAULT_BELL_VOLUME)
                 }
             }
         }
@@ -295,9 +292,9 @@ class SectionEditFragment : Fragment() {
                         j: Long,
                     ) {
                         section?.let { s ->
-                            BellCollection.getBell(i2)?.let { bell ->
-                                val entity = runBlocking { dbOperations.getBellByUri(bell.uri.toString()) }
-                                s.bellId = entity?.id ?: 0
+                            val entity = binding.selectGongSound.getItemAtPosition(i2) as? BellEntity
+                            if (entity != null) {
+                                s.bellId = entity.id
                                 if (s.bellId > 0) {
                                     runBlocking { dbOperations.updateSection(s) }
                                 }
@@ -347,32 +344,34 @@ class SectionEditFragment : Fragment() {
             }
         }
 
-        private fun SectionEditFragment.fillBellList() {
+        private suspend fun SectionEditFragment.fillBellList() {
             this.gongListAdapter =
                 GongListAdapter(requireContext(), R.id.selectGongSound, R.id.spinnerText1)
-            val bellList = BellCollection.getBellList()
             val adapter = this.gongListAdapter ?: return
-            for (i in bellList.indices) {
-                adapter.add(bellList[i])
+            val bellList = dbOperations.getAllBells()
+            for (bell in bellList) {
+                adapter.add(bell)
             }
             binding.selectGongSound.adapter = adapter as SpinnerAdapter
         }
 
+        @Suppress("ReturnCount")
         private fun SectionEditFragment.selectBell(str: String?) {
-            val bellList = BellCollection.getBellList()
-            for (i in bellList.indices) {
-                if (bellList[i].uri.toString() == str) {
+            val adapter = binding.selectGongSound.adapter ?: return
+            if (str == null) return
+            for (i in 0 until adapter.count) {
+                val entity = adapter.getItem(i) as? BellEntity ?: continue
+                if (entity.uri == str) {
                     binding.selectGongSound.setSelection(i)
                     return
                 }
             }
-            if (str != null) {
-                val suffix = str.substringAfterLast("/")
-                for (i in bellList.indices) {
-                    if (bellList[i].uri.toString().endsWith(suffix)) {
-                        binding.selectGongSound.setSelection(i)
-                        return
-                    }
+            val suffix = str.substringAfterLast("/")
+            for (i in 0 until adapter.count) {
+                val entity = adapter.getItem(i) as? BellEntity ?: continue
+                if (entity.uri.endsWith(suffix)) {
+                    binding.selectGongSound.setSelection(i)
+                    return
                 }
             }
         }

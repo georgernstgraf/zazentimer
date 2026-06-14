@@ -6,6 +6,7 @@ import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
 import android.media.AudioManager
+import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -20,8 +21,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import at.priv.graf.zazentimer.R
 import at.priv.graf.zazentimer.audio.Audio
-import at.priv.graf.zazentimer.audio.BellCollection
-import at.priv.graf.zazentimer.bo.Bell
 import at.priv.graf.zazentimer.bo.SessionBellVolume
 import at.priv.graf.zazentimer.database.BellEntity
 import at.priv.graf.zazentimer.database.DbOperations
@@ -274,7 +273,7 @@ class BellVolumeConfigDialog : DialogFragment() {
         ) {
             val bv = items[position]
             val bell = findBellForVolume(bv)
-            holder.bellName.text = bell?.getName() ?: ""
+            holder.bellName.text = bell?.name ?: ""
 
             holder.seekBar.max = systemMaxVolume
             val progress =
@@ -307,22 +306,14 @@ class BellVolumeConfigDialog : DialogFragment() {
 
                     override fun onStopTrackingTouch(seekBar: SeekBar?) {
                         val vol = toVolume(seekBar?.progress ?: 0).coerceIn(VOLUME_MIN, VOLUME_MAX)
-                        bell?.let { b ->
-                            lifecycleScope.launch {
-                                audio?.playAbsVolume(b, vol)
-                            }
-                        }
+                        playBell(bell, vol)
                     }
                 },
             )
 
             holder.previewButton.setOnClickListener {
                 val vol = toVolume(holder.seekBar.progress).coerceIn(VOLUME_MIN, VOLUME_MAX)
-                bell?.let { b ->
-                    lifecycleScope.launch {
-                        audio?.playAbsVolume(b, vol)
-                    }
-                }
+                playBell(bell, vol)
             }
         }
 
@@ -335,17 +326,16 @@ class BellVolumeConfigDialog : DialogFragment() {
             holder.volumeLabel.text = getString(R.string.bell_volume_label_format, volume)
         }
 
-        @Suppress("ReturnCount")
-        private fun findBellForVolume(bv: SessionBellVolume): Bell? {
-            val entity = bellEntities[bv.bellId]
-            if (entity != null) {
-                val uriStr = entity.uri
-                val found = BellCollection.getBellList().find { it.uri.toString() == uriStr }
-                if (found != null) return found
-                BellCollection.getBell(entity.name)?.let { return it }
+        private fun playBell(
+            bell: BellEntity?,
+            volume: Int,
+        ) {
+            val uri = bell?.uri?.let { Uri.parse(it) } ?: return
+            lifecycleScope.launch {
+                audio?.playAbsVolume(uri, volume)
             }
-
-            return BellCollection.getDemoBell()
         }
+
+        private fun findBellForVolume(bv: SessionBellVolume): BellEntity? = bellEntities[bv.bellId]
     }
 }

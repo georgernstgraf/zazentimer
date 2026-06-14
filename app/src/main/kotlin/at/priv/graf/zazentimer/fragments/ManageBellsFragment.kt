@@ -16,7 +16,6 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import at.priv.graf.zazentimer.R
-import at.priv.graf.zazentimer.audio.BellCollection
 import at.priv.graf.zazentimer.audio.BellImporter
 import at.priv.graf.zazentimer.database.BellEntity
 import at.priv.graf.zazentimer.database.DbOperations
@@ -48,7 +47,6 @@ class ManageBellsFragment : Fragment() {
             val data = result.data?.data ?: return@registerForActivityResult
             lifecycleScope.launch {
                 bellImporter.import(data) ?: return@launch
-                BellCollection.initialize(requireContext())
                 loadCustomBells()
             }
         }
@@ -151,8 +149,6 @@ class ManageBellsFragment : Fragment() {
                 val filePath = bell.uri.removePrefix("file://")
                 File(filePath).delete()
             }
-
-            BellCollection.initialize(requireContext())
 
             loadCustomBells()
         }

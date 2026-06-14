@@ -3,7 +3,6 @@ package at.priv.graf.zazentimer
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.filters.LargeTest
 import androidx.test.platform.app.InstrumentationRegistry
-import at.priv.graf.zazentimer.audio.BellCollection
 import at.priv.graf.zazentimer.backup.BackupManager
 import at.priv.graf.zazentimer.database.AppDatabase
 import at.priv.graf.zazentimer.database.DbOperations
@@ -53,10 +52,8 @@ class BackupRestoreInstrumentedTest : AbstractZazenTest() {
 
     @Test
     fun restore_realBackup_fullPipelineWorks() {
-        val context = InstrumentationRegistry.getInstrumentation().targetContext
         val result = backupManager.restore(zipFile)
         assertEquals(0, result)
-        BellCollection.initialize(context)
         runBlocking { dbOperations.sanitizeBellUris() }
         val sessions = runBlocking { dbOperations.readSessions() }
         assertEquals(4, sessions.size)
@@ -73,7 +70,6 @@ class BackupRestoreInstrumentedTest : AbstractZazenTest() {
         val context = InstrumentationRegistry.getInstrumentation().targetContext
         val result = backupManager.restore(zipFile)
         assertEquals(0, result)
-        BellCollection.initialize(context)
         runBlocking { dbOperations.sanitizeBellUris() }
         val bells = runBlocking { dbOperations.getAllBells() }
         for (bell in bells) {

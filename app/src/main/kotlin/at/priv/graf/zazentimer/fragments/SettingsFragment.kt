@@ -18,7 +18,6 @@ import androidx.preference.PreferenceFragmentCompat
 import at.priv.graf.zazentimer.Constants
 import at.priv.graf.zazentimer.R
 import at.priv.graf.zazentimer.ZazenTimerActivity
-import at.priv.graf.zazentimer.audio.BellCollection
 import at.priv.graf.zazentimer.backup.BackupManager
 import at.priv.graf.zazentimer.backup.Streams
 import at.priv.graf.zazentimer.database.AppDatabase
@@ -199,7 +198,6 @@ class SettingsFragment : PreferenceFragmentCompat() {
                 Log.e(TAG, "Error restoring", e)
             }
             if (result == 0) {
-                BellCollection.initialize(requireContext())
                 launch {
                     dbOperations.sanitizeBellUris()
                 }

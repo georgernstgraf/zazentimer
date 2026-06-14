@@ -7,13 +7,13 @@ import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.TextView
 import at.priv.graf.zazentimer.R
-import at.priv.graf.zazentimer.bo.Bell
+import at.priv.graf.zazentimer.database.BellEntity
 
 class GongListAdapter(
     context: Context,
     i: Int,
     i2: Int,
-) : ArrayAdapter<Bell>(context, i, i2) {
+) : ArrayAdapter<BellEntity>(context, i, i2) {
     private val context: Context = context
 
     override fun getView(
@@ -27,7 +27,7 @@ class GongListAdapter(
         i2: Int,
     ): View {
         val inflate = LayoutInflater.from(this.context).inflate(i2, null as ViewGroup?)
-        (inflate.findViewById<TextView>(R.id.spinnerText1)).text = getItem(i)?.getName() ?: ""
+        (inflate.findViewById<TextView>(R.id.spinnerText1)).text = getItem(i)?.name ?: ""
         return inflate
     }
 
