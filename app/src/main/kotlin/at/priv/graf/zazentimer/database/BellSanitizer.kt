@@ -2,8 +2,7 @@ package at.priv.graf.zazentimer.database
 
 import android.content.Context
 import android.util.Log
-import at.priv.graf.zazentimer.audio.BellCollection
-import at.priv.graf.zazentimer.bo.Bell
+import at.priv.graf.zazentimer.audio.BuiltinBells
 
 internal class BellSanitizer(
     private val bellDao: BellDao,
@@ -11,20 +10,30 @@ internal class BellSanitizer(
     private val sessionBellVolumeDao: SessionBellVolumeDao,
     private val context: Context,
 ) {
+    private data class BuiltinDefinition(val name: String, val uri: String)
+
+    private fun builtinDefinitions(): List<BuiltinDefinition> =
+        BuiltinBells.definitions().map { seed ->
+            BuiltinDefinition(
+                name = context.getString(seed.nameResId),
+                uri = BuiltinBells.resourceUri(context, seed.rawResId),
+            )
+        }
+
     suspend fun sanitizeBellUris() =
         withIdling {
             val allDbBells = bellDao.getAll()
-            val currentBells = BellCollection.getBellList()
+            val definitions = builtinDefinitions()
 
-            syncBuiltinBellUris(allDbBells, currentBells)
+            syncBuiltinBellUris(allDbBells, definitions)
 
             val updatedBells = bellDao.getAll()
+            val demoBellName = context.getString(BuiltinBells.DEMO_BELL_NAME_RES)
             val demoBellId =
-                BellCollection.getDemoBell()?.let { demo ->
-                    updatedBells.find { it.isBuiltin && it.name == demo.getName() }?.id
-                } ?: return@withIdling
+                updatedBells.find { it.isBuiltin && it.name == demoBellName }?.id
+                    ?: return@withIdling
 
-            removeOrphanedBuiltinBells(updatedBells, currentBells, demoBellId)
+            removeOrphanedBuiltinBells(updatedBells, definitions, demoBellId)
             removeOrphanedCustomBells(updatedBells, customBellFiles(), demoBellId)
             importOrphanedBellFiles(updatedBells, customBellFiles())
         }
@@ -38,22 +47,20 @@ internal class BellSanitizer(
 
     private suspend fun syncBuiltinBellUris(
         allDbBells: List<BellEntity>,
-        currentBells: List<Bell>,
+        definitions: List<BuiltinDefinition>,
     ) {
-        for (bell in currentBells) {
-            if (bell.uri.scheme != "android.resource") continue
-            val name = bell.getName()
-            val existing = allDbBells.find { it.isBuiltin && it.name == name }
+        for (definition in definitions) {
+            val existing = allDbBells.find { it.isBuiltin && it.name == definition.name }
             if (existing != null) {
-                if (existing.uri != bell.uri.toString()) {
-                    existing.uri = bell.uri.toString()
+                if (existing.uri != definition.uri) {
+                    existing.uri = definition.uri
                     bellDao.update(existing)
                 }
             } else {
                 bellDao.insert(
                     BellEntity(
-                        name = name,
-                        uri = bell.uri.toString(),
+                        name = definition.name,
+                        uri = definition.uri,
                         isBuiltin = true,
                     ),
                 )
@@ -63,14 +70,10 @@ internal class BellSanitizer(
 
     private suspend fun removeOrphanedBuiltinBells(
         updatedBells: List<BellEntity>,
-        currentBells: List<Bell>,
+        definitions: List<BuiltinDefinition>,
         demoBellId: Int,
     ) {
-        val builtinNames =
-            currentBells
-                .filter { it.uri.scheme == "android.resource" }
-                .map { it.getName() }
-                .toSet()
+        val builtinNames = definitions.map { it.name }.toSet()
         for (dbBell in updatedBells.filter { it.isBuiltin }) {
             if (dbBell.name !in builtinNames) {
                 Log.w(TAG, "Builtin bell '${dbBell.name}' no longer exists, reassigning to demo")
