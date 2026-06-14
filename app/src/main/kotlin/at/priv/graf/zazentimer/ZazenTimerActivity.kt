@@ -157,6 +157,12 @@ class ZazenTimerActivity :
         this.viewModel?.setHandler(this.handler ?: Handler(Looper.getMainLooper()))
         BellCollection.initialize(this)
         this.pref = getPreferences(this)
+        this.pref?.let { p ->
+            if (p.contains(PREF_KEY_SHOW_ELAPSED_TIME)) {
+                val mode = if (p.getBoolean(PREF_KEY_SHOW_ELAPSED_TIME, true)) 0 else 1
+                p.edit().putInt(PREF_KEY_SHOW_TIME_MODE, mode).remove(PREF_KEY_SHOW_ELAPSED_TIME).apply()
+            }
+        }
         setContentView(R.layout.main)
         val toolbar = findViewById<Toolbar>(R.id.my_toolbar)
         toolbar?.let {

@@ -37,12 +37,6 @@ class TimerView
             const val PROP_PREV_START_SECONDS = 1
             const val PROP_SESSION_ELAPSED_SECONDS = 5
             const val PROP_SESSION_TOTAL_SECONDS = 0
-            const val TIME_SECTION_ELAPSED = 0
-            const val TIME_SECTION_MAX = 3
-            const val TIME_SECTION_MIN = 0
-            const val TIME_SECTION_REMAINING = 1
-            const val TIME_SESSION_ELAPSED = 2
-            const val TIME_SESSION_REMAINING = 3
 
             private const val TAG = "ZMT_TimerView"
 
@@ -555,24 +549,10 @@ class TimerView
             paintTimeInfoText.color = colorRingCurrent
             paintTimeInfoText.alpha = FULL_ALPHA
 
-            prefs = PreferenceManager.getDefaultSharedPreferences(context)
-            val savedMode =
-                prefs?.let { p ->
-                    if (p.contains(ZazenTimerActivity.PREF_KEY_SHOW_ELAPSED_TIME)) {
-                        val mode =
-                            if (p.getBoolean(ZazenTimerActivity.PREF_KEY_SHOW_ELAPSED_TIME, true)) {
-                                SHOW_TIME_MODE_DEFAULT
-                            } else {
-                                ONE_INT
-                            }
-                        p.edit().putInt(ZazenTimerActivity.PREF_KEY_SHOW_TIME_MODE, mode).apply()
-                        p.edit().remove(ZazenTimerActivity.PREF_KEY_SHOW_ELAPSED_TIME).apply()
-                        mode
-                    } else {
-                        p.getInt(ZazenTimerActivity.PREF_KEY_SHOW_TIME_MODE, SHOW_TIME_MODE_DEFAULT)
-                    }
-                } ?: SHOW_TIME_MODE_DEFAULT
-            showTimeMode = savedMode
+        prefs = PreferenceManager.getDefaultSharedPreferences(context)
+        showTimeMode =
+            prefs?.getInt(ZazenTimerActivity.PREF_KEY_SHOW_TIME_MODE, SHOW_TIME_MODE_DEFAULT)
+                ?: SHOW_TIME_MODE_DEFAULT
 
             timeTextAnimator = ValueAnimator()
             startTimeInfoFadeOut(DEFAULT_FADE_OUT_MS)
