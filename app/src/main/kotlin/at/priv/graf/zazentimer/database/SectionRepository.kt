@@ -1,12 +1,14 @@
 package at.priv.graf.zazentimer.database
 
-import at.priv.graf.zazentimer.audio.BellCollection
+import android.content.Context
+import at.priv.graf.zazentimer.audio.BuiltinBells
 import at.priv.graf.zazentimer.bo.Section
 import at.priv.graf.zazentimer.bo.Session
 
 internal class SectionRepository(
     private val sectionDao: SectionDao,
     private val bellDao: BellDao,
+    private val context: Context,
 ) {
     suspend fun readSection(id: Int): Section? =
         withIdling {
@@ -69,12 +71,10 @@ internal class SectionRepository(
     }
 
     private suspend fun fallbackBellId(): Int {
-        val demoBell =
-            BellCollection.getDemoBell()?.uri?.toString()?.let { uri ->
-                bellDao.getByUri(uri)
-            }
+        val demoBellName = context.getString(BuiltinBells.DEMO_BELL_NAME_RES)
+        val demoBell = bellDao.getBuiltinByName(demoBellName)
         if (demoBell != null) return demoBell.id
         val firstBuiltin = bellDao.getBuiltinBells().firstOrNull()
-        return firstBuiltin?.id ?: 0
+        return firstBuiltin?.id ?: error("No builtin bells in database")
     }
 }

@@ -1,11 +1,14 @@
 package at.priv.graf.zazentimer.database
 
-import at.priv.graf.zazentimer.audio.BellCollection
+import android.content.Context
+import at.priv.graf.zazentimer.audio.BuiltinBells
 
+@Suppress("TooManyFunctions")
 internal class BellRepository(
     private val bellDao: BellDao,
     private val sectionDao: SectionDao,
     private val sessionBellVolumeDao: SessionBellVolumeDao,
+    private val context: Context,
 ) {
     suspend fun getBellById(id: Int): BellEntity? = withIdling { bellDao.getById(id) }
 
@@ -17,6 +20,14 @@ internal class BellRepository(
 
     suspend fun getNonBuiltinBells(): List<BellEntity> = withIdling { bellDao.getNonBuiltinBells() }
 
+    suspend fun getDemoBell(): BellEntity? =
+        withIdling {
+            bellDao.getBuiltinByName(context.getString(BuiltinBells.DEMO_BELL_NAME_RES))
+        }
+
+    suspend fun getDemoBellIdOrThrow(): Int =
+        getDemoBell()?.id ?: error("No builtin bells in database")
+
     suspend fun insertBell(bell: BellEntity): Long = withIdling { bellDao.insert(bell) }
 
     suspend fun updateBell(bell: BellEntity) = withIdling { bellDao.update(bell) }
@@ -25,13 +36,11 @@ internal class BellRepository(
 
     suspend fun deleteCustomBell(bellId: Int) =
         withIdling {
-            val demoBellUri = BellCollection.getDemoBell()?.uri?.toString()
+            val demoBellName = context.getString(BuiltinBells.DEMO_BELL_NAME_RES)
             val demoTarget =
-                if (demoBellUri != null) {
-                    bellDao.getByUri(demoBellUri)
-                } else {
-                    bellDao.getBuiltinBells().firstOrNull()
-                } ?: return@withIdling
+                bellDao.getBuiltinByName(demoBellName)
+                    ?: bellDao.getBuiltinBells().firstOrNull()
+                    ?: error("No builtin bells in database")
             val targetBellId = demoTarget.id
 
             reassignBellReferences(bellId, targetBellId)

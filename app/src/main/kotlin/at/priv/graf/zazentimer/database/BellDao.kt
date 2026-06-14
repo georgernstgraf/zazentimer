@@ -20,6 +20,9 @@ interface BellDao {
     @Query("SELECT * FROM bells WHERE is_builtin = 1")
     suspend fun getBuiltinBells(): List<BellEntity>
 
+    @Query("SELECT * FROM bells WHERE is_builtin = 1 AND name = :name LIMIT 1")
+    suspend fun getBuiltinByName(name: String): BellEntity?
+
     @Query("SELECT * FROM bells WHERE is_builtin = 0")
     suspend fun getNonBuiltinBells(): List<BellEntity>
 

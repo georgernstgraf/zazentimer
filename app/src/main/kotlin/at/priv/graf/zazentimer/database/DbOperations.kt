@@ -57,9 +57,9 @@ class DbOperations
             _sectionDao = db.sectionDao()
             _sessionBellVolumeDao = db.sessionBellVolumeDao()
             _bellDao = db.bellDao()
-            sessionRepo = SessionRepository(sessionDao, sectionDao, sessionBellVolumeDao, bellDao)
-            sectionRepo = SectionRepository(sectionDao, bellDao)
-            bellRepo = BellRepository(bellDao, sectionDao, sessionBellVolumeDao)
+            sessionRepo = SessionRepository(sessionDao, sectionDao, sessionBellVolumeDao, bellDao, context)
+            sectionRepo = SectionRepository(sectionDao, bellDao, context)
+            bellRepo = BellRepository(bellDao, sectionDao, sessionBellVolumeDao, context)
             bellSanitizer = BellSanitizer(bellDao, sectionDao, sessionBellVolumeDao, context)
         }
 
@@ -156,6 +156,10 @@ class DbOperations
         suspend fun getBuiltinBells(): List<BellEntity> = bellRepo.getBuiltinBells()
 
         suspend fun getNonBuiltinBells(): List<BellEntity> = bellRepo.getNonBuiltinBells()
+
+        suspend fun getDemoBell(): BellEntity? = bellRepo.getDemoBell()
+
+        suspend fun getDemoBellIdOrThrow(): Int = bellRepo.getDemoBellIdOrThrow()
 
         suspend fun insertBell(bell: BellEntity): Long = bellRepo.insertBell(bell)
 

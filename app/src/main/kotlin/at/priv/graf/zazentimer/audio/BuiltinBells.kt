@@ -26,7 +26,7 @@ object BuiltinBells {
         rawResId: Int,
     ): String = "android.resource://${context.packageName}/$rawResId"
 
-    const val DEMO_BELL_RAW_RES: Int = R.raw.bell2
+    val DEMO_BELL_RAW_RES: Int = R.raw.bell2
 
-    const val DEMO_BELL_NAME_RES: Int = R.string.bell_name_2
+    val DEMO_BELL_NAME_RES: Int = R.string.bell_name_2
 }
