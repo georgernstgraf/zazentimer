@@ -270,4 +270,131 @@ class RoomMigrationTest {
             assertThat(existingIndices).contains(idx)
         }
     }
+
+    private fun migrateToV2() {
+        seedData(bellCount = 3, sessionCount = 2)
+        AppDatabase.MIGRATION_1_2.migrate(db)
+    }
+
+    @Test
+    fun migrate_2_3_withData_preservesBellId() {
+        migrateToV2()
+
+        AppDatabase.MIGRATION_2_3.migrate(db)
+
+        val cursor =
+            db.query(
+                """SELECT s.id, s.name, sec.id, sec.name, sec.fk_session, sec.bell_id
+                   FROM sessions s
+                   JOIN sections sec ON sec.fk_session = s.id
+                   ORDER BY s.id, sec.id""",
+            )
+        assertThat(cursor.count).isEqualTo(6)
+        cursor.moveToFirst()
+        assertThat(cursor.getInt(0)).isEqualTo(1)
+        assertThat(cursor.getInt(2)).isEqualTo(1)
+        assertThat(cursor.getInt(4)).isEqualTo(1)
+        assertThat(cursor.getInt(5)).isGreaterThan(0)
+        cursor.close()
+    }
+
+    @Test
+    fun migrate_2_3_columnRenamedToBellId() {
+        migrateToV2()
+
+        AppDatabase.MIGRATION_2_3.migrate(db)
+
+        for (table in listOf("sections", "session_bell_volumes")) {
+            val info = db.query("PRAGMA table_info($table)")
+            var hasBellId = false
+            var hasOldBellId = false
+            while (info.moveToNext()) {
+                val colName = info.getString(1)
+                if (colName == "bell_id") hasBellId = true
+                if (colName == "bellId") hasOldBellId = true
+            }
+            info.close()
+            assertThat(hasBellId).isTrue()
+            assertThat(hasOldBellId).isFalse()
+        }
+    }
+
+    @Test
+    fun migrate_2_3_indicesRenamed() {
+        migrateToV2()
+
+        AppDatabase.MIGRATION_2_3.migrate(db)
+
+        val expectedIndices =
+            listOf(
+                "index_sections_fk_session",
+                "index_sections_bell_id",
+                "index_session_bell_volumes_fk_session",
+                "index_session_bell_volumes_fk_session_bell_id",
+                "index_session_bell_volumes_bell_id",
+            )
+        val oldIndices =
+            listOf(
+                "index_sections_bellId",
+                "index_session_bell_volumes_fk_session_bellId",
+                "index_session_bell_volumes_bellId",
+            )
+        val existingIndices = mutableListOf<String>()
+        val cursor = db.query("SELECT name FROM sqlite_master WHERE type = 'index' AND name LIKE 'index_%'")
+        while (cursor.moveToNext()) {
+            existingIndices.add(cursor.getString(0))
+        }
+        cursor.close()
+
+        for (idx in expectedIndices) {
+            assertThat(existingIndices).contains(idx)
+        }
+        for (idx in oldIndices) {
+            assertThat(existingIndices).doesNotContain(idx)
+        }
+    }
+
+    @Test
+    fun migrate_2_3_preservesForeignKeyRelations() {
+        migrateToV2()
+
+        AppDatabase.MIGRATION_2_3.migrate(db)
+
+        val orphanedSections =
+            db.query(
+                """SELECT COUNT(*) FROM sections s LEFT JOIN sessions
+                   ON s.fk_session = sessions.id WHERE sessions.id IS NULL""",
+            )
+        orphanedSections.moveToFirst()
+        assertThat(orphanedSections.getInt(0)).isEqualTo(0)
+        orphanedSections.close()
+
+        val orphanedVolumes =
+            db.query(
+                """SELECT COUNT(*) FROM session_bell_volumes v LEFT JOIN bells
+                   ON v.bell_id = bells.id WHERE bells.id IS NULL""",
+            )
+        orphanedVolumes.moveToFirst()
+        assertThat(orphanedVolumes.getInt(0)).isEqualTo(0)
+        orphanedVolumes.close()
+    }
+
+    @Test
+    fun migrate_2_3_allPkColumnsHaveNotNull() {
+        migrateToV2()
+
+        AppDatabase.MIGRATION_2_3.migrate(db)
+
+        for (table in listOf("bells", "sessions", "sections", "session_bell_volumes")) {
+            val info = db.query("PRAGMA table_info($table)")
+            var idNotNull = false
+            while (info.moveToNext()) {
+                if (info.getString(1) == "id" && info.getInt(3) == 1) {
+                    idNotNull = true
+                }
+            }
+            info.close()
+            assertThat(idNotNull).isTrue()
+        }
+    }
 }

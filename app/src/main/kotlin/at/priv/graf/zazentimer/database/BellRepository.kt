@@ -45,7 +45,7 @@ internal class BellRepository(
     ) {
         val sections = sectionDao.getSectionsByBellId(oldBellId)
         for (section in sections) {
-            section.bellId = newBellId
+            section.bell_id = newBellId
             sectionDao.update(section)
         }
     }

@@ -31,7 +31,7 @@ object EntityMapper {
         entity.rank = bo.rank
         entity.bellcount = bo.bellcount
         entity.bellpause = bo.bellpause
-        entity.bellId = bo.bellId
+        entity.bell_id = bo.bellId
         entity.fk_session = bo.fkSession
         return entity
     }
@@ -45,7 +45,7 @@ object EntityMapper {
         bo.rank = entity.rank
         bo.bellcount = entity.bellcount
         bo.bellpause = entity.bellpause
-        bo.bellId = entity.bellId
+        bo.bellId = entity.bell_id
         return bo
     }
 
@@ -53,7 +53,7 @@ object EntityMapper {
         val entity = SessionBellVolumeEntity()
         entity.id = bo.id
         entity.fk_session = bo.fkSession
-        entity.bellId = bo.bellId
+        entity.bell_id = bo.bellId
         entity.volume = bo.volume
         return entity
     }
@@ -62,7 +62,7 @@ object EntityMapper {
         val bo = SessionBellVolume()
         bo.id = entity.id
         bo.fkSession = entity.fk_session
-        bo.bellId = entity.bellId
+        bo.bellId = entity.bell_id
         bo.volume = entity.volume
         return bo
     }

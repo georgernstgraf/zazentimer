@@ -18,16 +18,16 @@ import at.priv.graf.zazentimer.Constants
         ForeignKey(
             entity = BellEntity::class,
             parentColumns = ["id"],
-            childColumns = ["bellId"],
+            childColumns = ["bell_id"],
         ),
     ],
-    indices = [Index("fk_session"), Index(value = ["fk_session", "bellId"], unique = true), Index("bellId")],
+    indices = [Index("fk_session"), Index(value = ["fk_session", "bell_id"], unique = true), Index("bell_id")],
 )
 @Suppress("ConstructorParameterNaming")
 data class SessionBellVolumeEntity(
     @PrimaryKey(autoGenerate = true)
     var id: Int = 0,
     var fk_session: Int = 0,
-    var bellId: Int = 0,
+    var bell_id: Int = 0,
     var volume: Int = Constants.DEFAULT_BELL_VOLUME,
 )

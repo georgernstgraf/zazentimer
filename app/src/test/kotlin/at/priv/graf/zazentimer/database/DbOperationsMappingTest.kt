@@ -97,7 +97,7 @@ class DbOperationsMappingTest {
         assertThat(entity.rank).isEqualTo(2)
         assertThat(entity.bellcount).isEqualTo(2)
         assertThat(entity.bellpause).isEqualTo(5)
-        assertThat(entity.bellId).isEqualTo(0)
+        assertThat(entity.bell_id).isEqualTo(0)
     }
 
     @Test
@@ -118,7 +118,7 @@ class DbOperationsMappingTest {
                 rank = 3,
                 bellcount = 3,
                 bellpause = 10,
-                bellId = 0,
+                bell_id = 0,
             )
         val bo = EntityMapper.toBo(entity)
         assertThat(bo.id).isEqualTo(5)

@@ -158,7 +158,7 @@ class DaoTest {
                     fk_session = sessionId.toInt(),
                     name = "Section 1",
                     duration = 300,
-                    bellId = bellId,
+                    bell_id = bellId,
                     rank = 1,
                 ),
             )
@@ -179,7 +179,7 @@ class DaoTest {
                         fk_session = sessionId.toInt(),
                         name = "By ID",
                         duration = 60,
-                        bellId = bellId,
+                        bell_id = bellId,
                         rank = 1,
                     ),
                 )
@@ -216,7 +216,7 @@ class DaoTest {
                     fk_session = sessionId.toInt(),
                     name = "S1",
                     duration = 60,
-                    bellId = bellId,
+                    bell_id = bellId,
                     rank = 1,
                 ),
             )
@@ -225,7 +225,7 @@ class DaoTest {
                     fk_session = sessionId.toInt(),
                     name = "S2",
                     duration = 120,
-                    bellId = bellId,
+                    bell_id = bellId,
                     rank = 3,
                 ),
             )
@@ -234,7 +234,7 @@ class DaoTest {
                     fk_session = sessionId.toInt(),
                     name = "S3",
                     duration = 180,
-                    bellId = bellId,
+                    bell_id = bellId,
                     rank = 2,
                 ),
             )
@@ -253,7 +253,7 @@ class DaoTest {
                         fk_session = sessionId.toInt(),
                         name = "Old",
                         duration = 60,
-                        bellId = bellId,
+                        bell_id = bellId,
                         rank = 1,
                     ),
                 )
@@ -265,7 +265,7 @@ class DaoTest {
                     name = "Updated",
                     duration = 120,
                     rank = 1,
-                    bellId = bellId,
+                    bell_id = bellId,
                 ),
             )
 
@@ -285,7 +285,7 @@ class DaoTest {
                         fk_session = sessionId.toInt(),
                         name = "S1",
                         duration = 60,
-                        bellId = bellId,
+                        bell_id = bellId,
                         rank = 1,
                     ),
                 )
@@ -306,7 +306,7 @@ class DaoTest {
                         fk_session = sessionId.toInt(),
                         name = "Del",
                         duration = 60,
-                        bellId = bellId,
+                        bell_id = bellId,
                         rank = 1,
                     ),
                 )
@@ -326,7 +326,7 @@ class DaoTest {
                     fk_session = sessionId.toInt(),
                     name = "Third",
                     duration = 180,
-                    bellId = bellId,
+                    bell_id = bellId,
                     rank = 3,
                 ),
             )
@@ -335,7 +335,7 @@ class DaoTest {
                     fk_session = sessionId.toInt(),
                     name = "First",
                     duration = 60,
-                    bellId = bellId,
+                    bell_id = bellId,
                     rank = 1,
                 ),
             )
@@ -344,7 +344,7 @@ class DaoTest {
                     fk_session = sessionId.toInt(),
                     name = "Second",
                     duration = 120,
-                    bellId = bellId,
+                    bell_id = bellId,
                     rank = 2,
                 ),
             )
@@ -366,7 +366,7 @@ class DaoTest {
                     fk_session = sessionId.toInt(),
                     name = "S1",
                     duration = 60,
-                    bellId = bellId,
+                    bell_id = bellId,
                     rank = 1,
                 ),
             )
@@ -375,7 +375,7 @@ class DaoTest {
                     fk_session = sessionId.toInt(),
                     name = "S2",
                     duration = 120,
-                    bellId = bellId,
+                    bell_id = bellId,
                     rank = 2,
                 ),
             )

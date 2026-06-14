@@ -65,7 +65,7 @@ internal class SessionRepository(
                 val newBv =
                     SessionBellVolumeEntity(
                         fk_session = source.id,
-                        bellId = resolveBellId(bv.bellId),
+                        bell_id = resolveBellId(bv.bell_id),
                         volume = bv.volume,
                     )
                 sessionBellVolumeDao.insert(newBv)

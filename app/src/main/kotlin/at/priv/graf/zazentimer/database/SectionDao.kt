@@ -22,7 +22,7 @@ interface SectionDao {
     @Query("DELETE FROM sections WHERE id = :id")
     suspend fun deleteById(id: Long)
 
-    @Query("SELECT * FROM sections WHERE bellId = :bellId")
+    @Query("SELECT * FROM sections WHERE bell_id = :bellId")
     suspend fun getSectionsByBellId(bellId: Int): List<SectionEntity>
 
     @Query("SELECT max(rank) FROM sections WHERE fk_session = :sessionId")

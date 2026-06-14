@@ -84,12 +84,12 @@ class RealBackupRestoreTest {
     }
 
     @Test
-    fun restore_realV2Backup_versionMatchesCurrent() {
+    fun restore_realV2Backup_versionMatchesBackup() {
         backupManager.restore(copyResourceZip())
 
         val dbFile = File(databaseDir, AppDatabase.DATABASE_NAME)
         SQLiteDatabase.openDatabase(dbFile.absolutePath, null, SQLiteDatabase.OPEN_READONLY).use { db ->
-            assertThat(db.version).isEqualTo(AppDatabase.CURRENT_VERSION)
+            assertThat(db.version).isEqualTo(2)
         }
     }
 

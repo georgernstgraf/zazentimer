@@ -48,7 +48,7 @@ class DbOperations
                         context,
                         AppDatabase::class.java,
                         AppDatabase.DATABASE_NAME,
-                    ).addMigrations(AppDatabase.MIGRATION_1_2)
+                    ).addMigrations(AppDatabase.MIGRATION_1_2, AppDatabase.MIGRATION_2_3)
                     .fallbackToDestructiveMigration(true)
                     .addCallback(AppDatabase.ON_CREATE_CALLBACK)
                     .build()

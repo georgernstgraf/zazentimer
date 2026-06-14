@@ -17,10 +17,10 @@ import androidx.room.PrimaryKey
         ForeignKey(
             entity = BellEntity::class,
             parentColumns = ["id"],
-            childColumns = ["bellId"],
+            childColumns = ["bell_id"],
         ),
     ],
-    indices = [Index("fk_session"), Index("bellId")],
+    indices = [Index("fk_session"), Index("bell_id")],
 )
 @Suppress("ConstructorParameterNaming")
 data class SectionEntity(
@@ -31,6 +31,6 @@ data class SectionEntity(
     var rank: Int = 0,
     var bellcount: Int = 1,
     var bellpause: Int = 1,
-    var bellId: Int = 0,
+    var bell_id: Int = 0,
     var fk_session: Int = 0,
 )

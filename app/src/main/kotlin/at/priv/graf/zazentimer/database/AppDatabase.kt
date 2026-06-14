@@ -23,7 +23,7 @@ abstract class AppDatabase : RoomDatabase() {
     companion object {
         const val DATABASE_NAME = "zazentimer.sqlite"
 
-        const val CURRENT_VERSION = 2
+        const val CURRENT_VERSION = 3
 
         @Suppress("MaxLineLength")
         val MIGRATION_1_2 =
@@ -101,6 +101,60 @@ abstract class AppDatabase : RoomDatabase() {
                 )
                 db.execSQL("CREATE INDEX IF NOT EXISTS index_session_bell_volumes_fk_session ON session_bell_volumes(fk_session)")
                 db.execSQL("CREATE INDEX IF NOT EXISTS index_session_bell_volumes_bellId ON session_bell_volumes(bellId)")
+
+                db.execSQL("PRAGMA foreign_keys=ON")
+            }
+
+        @Suppress("MaxLineLength")
+        val MIGRATION_2_3 =
+            Migration(2, 3) { db ->
+                db.execSQL("PRAGMA foreign_keys=OFF")
+
+                db.execSQL(
+                    """CREATE TABLE IF NOT EXISTS sections_new (
+                    id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
+                    name TEXT NOT NULL,
+                    duration INTEGER NOT NULL,
+                    rank INTEGER NOT NULL,
+                    bellcount INTEGER NOT NULL,
+                    bellpause INTEGER NOT NULL,
+                    bell_id INTEGER NOT NULL,
+                    fk_session INTEGER NOT NULL,
+                    FOREIGN KEY (fk_session) REFERENCES sessions(id) ON DELETE CASCADE,
+                    FOREIGN KEY (bell_id) REFERENCES bells(id)
+                )""",
+                )
+                db.execSQL(
+                    """INSERT INTO sections_new (id, name, duration, rank, bellcount, bellpause, bell_id, fk_session)
+                   SELECT id, name, duration, rank, bellcount, bellpause, bellId, fk_session FROM sections""",
+                )
+                db.execSQL("DROP TABLE sections")
+                db.execSQL("ALTER TABLE sections_new RENAME TO sections")
+
+                db.execSQL(
+                    """CREATE TABLE IF NOT EXISTS session_bell_volumes_new (
+                    id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
+                    fk_session INTEGER NOT NULL,
+                    bell_id INTEGER NOT NULL,
+                    volume INTEGER NOT NULL,
+                    FOREIGN KEY (fk_session) REFERENCES sessions(id) ON DELETE CASCADE,
+                    FOREIGN KEY (bell_id) REFERENCES bells(id)
+                )""",
+                )
+                db.execSQL(
+                    """INSERT INTO session_bell_volumes_new (id, fk_session, bell_id, volume)
+                   SELECT id, fk_session, bellId, volume FROM session_bell_volumes""",
+                )
+                db.execSQL("DROP TABLE session_bell_volumes")
+                db.execSQL("ALTER TABLE session_bell_volumes_new RENAME TO session_bell_volumes")
+
+                db.execSQL("CREATE INDEX IF NOT EXISTS index_sections_fk_session ON sections(fk_session)")
+                db.execSQL("CREATE INDEX IF NOT EXISTS index_sections_bell_id ON sections(bell_id)")
+                db.execSQL(
+                    "CREATE UNIQUE INDEX IF NOT EXISTS index_session_bell_volumes_fk_session_bell_id ON session_bell_volumes(fk_session, bell_id)",
+                )
+                db.execSQL("CREATE INDEX IF NOT EXISTS index_session_bell_volumes_fk_session ON session_bell_volumes(fk_session)")
+                db.execSQL("CREATE INDEX IF NOT EXISTS index_session_bell_volumes_bell_id ON session_bell_volumes(bell_id)")
 
                 db.execSQL("PRAGMA foreign_keys=ON")
             }
