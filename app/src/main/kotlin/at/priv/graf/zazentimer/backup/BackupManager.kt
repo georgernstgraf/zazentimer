@@ -100,12 +100,16 @@ class BackupManager(
                     return ERROR_VERSION_TOO_HIGH
                 }
                 onCloseDatabase()
+                val dbPath = databaseFileProvider().absolutePath
+                // Delete old DB and all auxiliary files to ensure no stale resources
+                // remain before writing the restored backup.
+                File(dbPath).delete()
+                File("$dbPath-wal").delete()
+                File("$dbPath-shm").delete()
+                File("$dbPath-journal").delete()
                 if (!receiveBytes(entryBytes, databaseFileProvider())) {
                     result = 2
                 }
-                val dbPath = databaseFileProvider().absolutePath
-                File("$dbPath-wal").delete()
-                File("$dbPath-shm").delete()
                 onReopenDatabase()
             } else if (!receiveFile(zf.getInputStream(entry), File(filesDirProvider(), entry.name))) {
                 result = 2

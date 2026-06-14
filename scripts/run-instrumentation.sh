@@ -402,9 +402,11 @@ grant_storage_permissions() {
     local serial=$1
     local test_pkg=$2
     local api_level=$3
+    local app_pkg="at.priv.graf.zazentimer.debug"
     if [ "$api_level" -ge 30 ]; then
         log_api "Granting MANAGE_EXTERNAL_STORAGE for API $api_level..."
         adb -s "$serial" shell appops set "$test_pkg" MANAGE_EXTERNAL_STORAGE allow 2>/dev/null || true
+        adb -s "$serial" shell appops set "$app_pkg" MANAGE_EXTERNAL_STORAGE allow 2>/dev/null || true
     fi
     # Grant all runtime permissions for the test app
     adb -s "$serial" shell pm grant "$test_pkg" android.permission.READ_EXTERNAL_STORAGE 2>/dev/null || true
