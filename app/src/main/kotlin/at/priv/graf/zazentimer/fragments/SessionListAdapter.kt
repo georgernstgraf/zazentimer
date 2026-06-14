@@ -161,8 +161,6 @@ class SessionListAdapter(
         notifyItemMoved(fromPosition, toPosition)
     }
 
-    fun getSelectedPosition(): Int = selectedPosition
-
     fun removeItem(position: Int): SessionWithTimeInfo {
         val removed = items.removeAt(position)
         notifyItemRemoved(position)

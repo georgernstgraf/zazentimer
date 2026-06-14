@@ -1,13 +1,10 @@
 package at.priv.graf.zazentimer.database
 
-import at.priv.graf.zazentimer.Constants
 import at.priv.graf.zazentimer.bo.Section
 import at.priv.graf.zazentimer.bo.Session
 import at.priv.graf.zazentimer.bo.SessionBellVolume
 
 object EntityMapper {
-    const val DEFAULT_VOLUME = Constants.DEFAULT_BELL_VOLUME
-
     fun toEntity(bo: Session): SessionEntity {
         val entity = SessionEntity()
         entity.id = bo.id

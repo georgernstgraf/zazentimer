@@ -198,7 +198,6 @@ class ZazenTimerActivity :
                 return@launch
             }
         }
-        BellCollection.initialize(this)
     }
 
     private fun observeViewModel() {
@@ -308,13 +307,6 @@ class ZazenTimerActivity :
 
     fun showMainScreen() {
         getNavController()?.popBackStack(R.id.mainFragment, false)
-    }
-
-    fun showSessionEditFragment(sessionId: Int) {
-        val nc = getNavController() ?: return
-        val args = Bundle()
-        args.putInt("sessionId", sessionId)
-        nc.navigate(R.id.action_mainFragment_to_sessionEditFragment, args)
     }
 
     fun showPrivacyScreen() {
@@ -502,29 +494,18 @@ class ZazenTimerActivity :
         const val INTENT_DATA_SHOW_PREF_ON_START: String = "gotoPrefs"
         const val INTENT_EXTRA_CREATE_BACKUP: String = "create_backup"
         const val BACKUP_ZIP_NAME: String = "zazentimer_backup.zip"
-        const val PREF_DEFAULT_BRIGHTNESS: Int = 0
-        const val PREF_DEFAULT_CONVERTED_BELL_INDICES: Boolean = false
-        const val PREF_DEFAULT_CONVERTED_FROM_DB: Boolean = false
-        const val PREF_DEFAULT_FIRST_START: Boolean = true
         const val PREF_DEFAULT_KEEP_SCREEN_ON: Boolean = false
-        const val PREF_DEFAULT_LAST_SESSION: Int = -1
-        const val PREF_DEFAULT_SHOW_ELAPSED_TIME: Boolean = true
-        const val PREF_DEFAULT_SHOW_SESSION_EDIT_HELP_V13: Boolean = false
-        const val PREF_DEFAULT_SHOW_TIME_MODE: Int = 0
         const val PREF_DEFAULT_THEME: String = "system"
         const val PREF_VALUE_THEME_DARK: String = "dark"
         const val PREF_VALUE_THEME_LIGHT: String = "light"
         const val PREF_VALUE_THEME_SYSTEM: String = "system"
-        const val PREF_DEFAULT_VOLUME: Int = at.priv.graf.zazentimer.Constants.DEFAULT_BELL_VOLUME
         const val PREF_KEY_BRIGHTNESS: String = "brightness"
-        const val PREF_KEY_CONVERTED_BELL_INDICES: String = "bell_indices_converted"
         const val PREF_KEY_KEEP_SCREEN_ON: String = "keep_screen_on"
         const val PREF_KEY_LAST_SESSION: String = "last_session"
         const val PREF_KEY_SHOW_ELAPSED_TIME: String = "show_elapsed_time"
         const val PREF_KEY_SHOW_SESSION_EDIT_HELP_V13: String = "session_edit_help_13"
         const val PREF_KEY_SHOW_TIME_MODE: String = "view_time_mode"
         const val PREF_KEY_THEME: String = "theme"
-        const val PREF_KEY_VOLUME: String = "volume"
 
         @JvmStatic
         fun getPreferences(context: Context): SharedPreferences = PreferenceManager.getDefaultSharedPreferences(context)

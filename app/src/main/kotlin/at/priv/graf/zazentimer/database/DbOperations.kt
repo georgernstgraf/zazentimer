@@ -214,21 +214,6 @@ class DbOperations
                 sectionDao?.update(entity)
             }
 
-        suspend fun switchPositions(
-            id1: Long,
-            id2: Long,
-        ) = withIdling {
-            val dao = sectionDao ?: return@withIdling
-            val s1 = dao.getSectionById(id1.toInt())
-            val s2 = dao.getSectionById(id2.toInt())
-            if (s1 != null && s2 != null) {
-                val rank1 = s1.rank
-                val rank2 = s2.rank
-                dao.updateRank(id1.toInt(), rank2)
-                dao.updateRank(id2.toInt(), rank1)
-            }
-        }
-
         suspend fun insertSection(
             session: Session,
             section: Section,
