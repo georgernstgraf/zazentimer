@@ -1,6 +1,8 @@
 package at.priv.graf.zazentimer.database
 
 import android.content.Context
+import androidx.room.RoomDatabase
+import androidx.room.withTransaction
 import at.priv.graf.zazentimer.audio.BuiltinBells
 import at.priv.graf.zazentimer.bo.Section
 import at.priv.graf.zazentimer.bo.Session
@@ -8,6 +10,7 @@ import at.priv.graf.zazentimer.bo.SessionBellVolume
 
 @Suppress("TooManyFunctions")
 internal class SessionRepository(
+    private val appDb: RoomDatabase,
     private val sessionDao: SessionDao,
     private val sectionDao: SectionDao,
     private val sessionBellVolumeDao: SessionBellVolumeDao,
@@ -40,39 +43,41 @@ internal class SessionRepository(
         newName: String,
     ): Int =
         withIdling {
-            val sourceEntity = sessionDao.getSessionById(sourceId) ?: return@withIdling -1
-            val source = EntityMapper.toBo(sourceEntity)
-            source.name = newName
-            source.id = 0
-            source.rank = (sessionDao.getMaxRank() ?: 0) + 1
-            val sectionEntities = sectionDao.getSectionsForSession(sourceId)
-            val newEntity = EntityMapper.toEntity(source)
-            val newId = sessionDao.insert(newEntity)
-            source.id = newId.toInt()
-            for (se in sectionEntities) {
-                val section = EntityMapper.toBo(se)
-                section.id = 0
-                section.fkSession = source.id
-                if (section.rank == -1) {
-                    val maxRank = sectionDao.getMaxRank(source.id)
-                    section.rank = (maxRank ?: 0) + 1
+            appDb.withTransaction {
+                val sourceEntity = sessionDao.getSessionById(sourceId) ?: return@withTransaction -1
+                val source = EntityMapper.toBo(sourceEntity)
+                source.name = newName
+                source.id = 0
+                source.rank = (sessionDao.getMaxRank() ?: 0) + 1
+                val sectionEntities = sectionDao.getSectionsForSession(sourceId)
+                val newEntity = EntityMapper.toEntity(source)
+                val newId = sessionDao.insert(newEntity)
+                source.id = newId.toInt()
+                for (se in sectionEntities) {
+                    val section = EntityMapper.toBo(se)
+                    section.id = 0
+                    section.fkSession = source.id
+                    if (section.rank == -1) {
+                        val maxRank = sectionDao.getMaxRank(source.id)
+                        section.rank = (maxRank ?: 0) + 1
+                    }
+                    section.bellId = resolveBellId(section.bellId)
+                    val sectionEntity = EntityMapper.toEntity(section)
+                    val sid = sectionDao.insert(sectionEntity)
+                    section.id = sid.toInt()
                 }
-                section.bellId = resolveBellId(section.bellId)
-                val sectionEntity = EntityMapper.toEntity(section)
-                val sid = sectionDao.insert(sectionEntity)
-                section.id = sid.toInt()
+                val bellVolumeEntities = sessionBellVolumeDao.getBellVolumesForSession(sourceId)
+                for (bv in bellVolumeEntities) {
+                    val newBv =
+                        SessionBellVolumeEntity(
+                            fk_session = source.id,
+                            bell_id = resolveBellId(bv.bell_id),
+                            volume = bv.volume,
+                        )
+                    sessionBellVolumeDao.insert(newBv)
+                }
+                source.id
             }
-            val bellVolumeEntities = sessionBellVolumeDao.getBellVolumesForSession(sourceId)
-            for (bv in bellVolumeEntities) {
-                val newBv =
-                    SessionBellVolumeEntity(
-                        fk_session = source.id,
-                        bell_id = resolveBellId(bv.bell_id),
-                        volume = bv.volume,
-                    )
-                sessionBellVolumeDao.insert(newBv)
-            }
-            source.id
         }
 
     suspend fun readBellVolumes(sessionId: Int): List<SessionBellVolume> =
@@ -84,14 +89,16 @@ internal class SessionRepository(
         sessionId: Int,
         volumes: List<SessionBellVolume>,
     ) = withIdling {
-        sessionBellVolumeDao.deleteForSession(sessionId)
-        val entities =
-            volumes.map { bo ->
-                bo.fkSession = sessionId
-                bo.id = 0
-                EntityMapper.toEntity(bo)
-            }
-        sessionBellVolumeDao.insertAll(entities)
+        appDb.withTransaction {
+            sessionBellVolumeDao.deleteForSession(sessionId)
+            val entities =
+                volumes.map { bo ->
+                    bo.fkSession = sessionId
+                    bo.id = 0
+                    EntityMapper.toEntity(bo)
+                }
+            sessionBellVolumeDao.insertAll(entities)
+        }
     }
 
     suspend fun readSessionWithBellVolumes(id: Int): Session? =
@@ -108,12 +115,14 @@ internal class SessionRepository(
         sections: List<Section>,
         volumes: List<SessionBellVolume>,
     ) = withIdling {
-        sessionDao.insert(EntityMapper.toEntity(session))
-        for (section in sections) {
-            sectionDao.insert(EntityMapper.toEntity(section))
-        }
-        for (volume in volumes) {
-            sessionBellVolumeDao.insert(EntityMapper.toEntity(volume))
+        appDb.withTransaction {
+            sessionDao.insert(EntityMapper.toEntity(session))
+            for (section in sections) {
+                sectionDao.insert(EntityMapper.toEntity(section))
+            }
+            for (volume in volumes) {
+                sessionBellVolumeDao.insert(EntityMapper.toEntity(volume))
+            }
         }
     }
 
@@ -131,13 +140,15 @@ internal class SessionRepository(
         id1: Long,
         id2: Long,
     ) = withIdling {
-        val s1 = sessionDao.getSessionById(id1.toInt())
-        val s2 = sessionDao.getSessionById(id2.toInt())
-        if (s1 != null && s2 != null) {
-            val rank1 = s1.rank
-            val rank2 = s2.rank
-            sessionDao.updateRank(id1.toInt(), rank2)
-            sessionDao.updateRank(id2.toInt(), rank1)
+        appDb.withTransaction {
+            val s1 = sessionDao.getSessionById(id1.toInt())
+            val s2 = sessionDao.getSessionById(id2.toInt())
+            if (s1 != null && s2 != null) {
+                val rank1 = s1.rank
+                val rank2 = s2.rank
+                sessionDao.updateRank(id1.toInt(), rank2)
+                sessionDao.updateRank(id2.toInt(), rank1)
+            }
         }
     }
 
@@ -153,11 +164,13 @@ internal class SessionRepository(
 
     suspend fun assignRanks(sessions: List<Session>) =
         withIdling {
-            for (i in sessions.indices) {
-                sessions[i].rank = i
-            }
-            for (session in sessions) {
-                sessionDao.update(EntityMapper.toEntity(session))
+            appDb.withTransaction {
+                for (i in sessions.indices) {
+                    sessions[i].rank = i
+                }
+                for (session in sessions) {
+                    sessionDao.update(EntityMapper.toEntity(session))
+                }
             }
         }
 

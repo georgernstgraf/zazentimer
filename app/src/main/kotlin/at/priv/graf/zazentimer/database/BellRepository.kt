@@ -1,10 +1,13 @@
 package at.priv.graf.zazentimer.database
 
 import android.content.Context
+import androidx.room.RoomDatabase
+import androidx.room.withTransaction
 import at.priv.graf.zazentimer.audio.BuiltinBells
 
 @Suppress("TooManyFunctions")
 internal class BellRepository(
+    private val appDb: RoomDatabase,
     private val bellDao: BellDao,
     private val sectionDao: SectionDao,
     private val sessionBellVolumeDao: SessionBellVolumeDao,
@@ -36,16 +39,18 @@ internal class BellRepository(
 
     suspend fun deleteCustomBell(bellId: Int) =
         withIdling {
-            val demoBellName = context.getString(BuiltinBells.DEMO_BELL_NAME_RES)
-            val demoTarget =
-                bellDao.getBuiltinByName(demoBellName)
-                    ?: bellDao.getBuiltinBells().firstOrNull()
-                    ?: error("No builtin bells in database")
-            val targetBellId = demoTarget.id
+            appDb.withTransaction {
+                val demoBellName = context.getString(BuiltinBells.DEMO_BELL_NAME_RES)
+                val demoTarget =
+                    bellDao.getBuiltinByName(demoBellName)
+                        ?: bellDao.getBuiltinBells().firstOrNull()
+                        ?: error("No builtin bells in database")
+                val targetBellId = demoTarget.id
 
-            reassignBellReferences(bellId, targetBellId)
-            sessionBellVolumeDao.deleteByBellId(bellId)
-            bellDao.deleteById(bellId)
+                reassignBellReferences(bellId, targetBellId)
+                sessionBellVolumeDao.deleteByBellId(bellId)
+                bellDao.deleteById(bellId)
+            }
         }
 
     private suspend fun reassignBellReferences(
