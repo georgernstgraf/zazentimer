@@ -766,7 +766,7 @@ log "========================================="
 log "  Resolving test devices"
 log "========================================="
 
-declare -A PHYS_DEV
+declare -A PHYS_DEV=()
 while IFS=$'\t' read -r ser lvl; do
     [ -n "$lvl" ] && [ -z "${PHYS_DEV[$lvl]:-}" ] && PHYS_DEV["$lvl"]="$ser"
 done < <(enumerate_physical_devices)
