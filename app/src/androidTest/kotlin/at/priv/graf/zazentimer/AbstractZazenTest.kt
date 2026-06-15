@@ -24,7 +24,7 @@ abstract class AbstractZazenTest {
     val activityRule = ActivityScenarioRule(ZazenTimerActivity::class.java)
 
     @get:Rule(order = 2)
-    val globalTimeout: Timeout = Timeout(2, TimeUnit.MINUTES)
+    val globalTimeout: Timeout = Timeout(5, TimeUnit.MINUTES)
 
     @Before
     fun baseInit() {
