@@ -96,7 +96,7 @@ for api in "${API_LEVELS[@]}"; do
     emulator_kill_stale
 
     # Delete existing snapshots so we get a fresh cold boot
-    local avd_dir="$HOME/.android/avd/${avd_name}.avd"
+    avd_dir="$HOME/.android/avd/${avd_name}.avd"
     if [ -d "$avd_dir/snapshots" ]; then
         echo "  Removing existing snapshots: $avd_dir/snapshots/"
         rm -rf "$avd_dir/snapshots"
@@ -106,10 +106,9 @@ for api in "${API_LEVELS[@]}"; do
 
     # Start emulator: -wipe-data for clean state, no snapshot flags so snapshot is saved on exit
     echo "  Starting emulator ($avd_name)..."
-    local logfile="/tmp/zazentimer-snapshot-api${api}.log"
-    local extra_flags="-wipe-data"
+    logfile="/tmp/zazentimer-snapshot-api${api}.log"
+    extra_flags="-wipe-data"
     [ -z "${DISPLAY:-}" ] && extra_flags="$extra_flags -noaudio"
-    local emu_pid
     emu_pid=$(emulator_launch "$avd_name" "$SERIAL" "$logfile" $extra_flags)
     echo "  Emulator PID: $emu_pid"
 
@@ -121,6 +120,21 @@ for api in "${API_LEVELS[@]}"; do
     fi
 
     emulator_configure_system "$SERIAL"
+
+    if [ "$api" -ge 31 ]; then
+        echo "  Disabling app freezer (API $api >= 31) for the saved snapshot..."
+        adb -s "$SERIAL" shell settings put global cached_apps_freezer disabled 2>/dev/null || true
+        adb -s "$SERIAL" shell device_config put activity_manager_native_boot use_freezer false 2>/dev/null || true
+        echo "  Rebooting so the boot-time freezer flag takes effect..."
+        adb -s "$SERIAL" reboot 2>/dev/null || true
+        if ! emulator_wait_boot "$SERIAL"; then
+            echo "ERROR: API $api did not return after freezer-provisioning reboot" >&2
+            kill "$emu_pid" 2>/dev/null || true
+            FAILED+=("$api")
+            continue
+        fi
+        emulator_configure_system "$SERIAL"
+    fi
 
     echo "  Saving snapshot (graceful shutdown)..."
     adb -s "$SERIAL" emu kill 2>/dev/null || true

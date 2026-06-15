@@ -352,7 +352,7 @@ push_backup_fixture() {
     local ext_dir="/sdcard/Android/data/$app_pkg/files"
     if [ -f "$BACKUP_FIXTURE" ]; then
         log_api "Pushing backup fixture to app external files dir..."
-        adb -s "$serial" shell mkdir -p "$ext_dir" 2>/dev/null
+        adb -s "$serial" shell mkdir -p "$ext_dir" 2>/dev/null || true
         adb -s "$serial" push "$BACKUP_FIXTURE" "$ext_dir/" 2>&1 | tee -a "$API_LOG" || {
             log_api "WARNING: Failed to push backup fixture"
         }
