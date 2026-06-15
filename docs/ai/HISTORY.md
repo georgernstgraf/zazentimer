@@ -105,3 +105,13 @@ Format: `## YYYY-MM-DD (SUPERSEDED YYYY-MM-DD, origin: <FILE>, reason: <why|#NNN
 ## 2026-05-24 (SUPERSEDED, origin: PITFALLS.md, reason: knowledge no longer needed): `_minProficiency` was never checked
 - The underscore-prefixed parameter in `runOne()` was dead code. Models below proficiency threshold were never skipped despite `--min-proficiency` flag. **Fix**: Renamed to `minProficiency` and actual check added.
 - **Status**: Fixed in #222.
+
+## 2026-06-15 (SUPERSEDED 2026-06-15, origin: code, reason: #270 correct freezer flags): Wrong app-freezer disable flag
+- **Attempt**: Commit `b3c9837` tried to disable the API-33+ app freezer with `adb shell device_config put activity_manager native_with_freezer false`.
+- **Why it failed**: `activity_manager native_with_freezer` is the wrong namespace; the freezer is actually controlled by `settings global cached_apps_freezer` + the boot flag `activity_manager_native_boot use_freezer`. The test process kept being frozen (`ActivityManager: freezing …zazentimer.debug.test` 15× in logcat), producing the API-34 `am instrument` hang.
+- **Superseded by**: Correct flags in commit `0c79ad0`; active rule in PITFALLS.md ("App freezer freezes the instrumented test process").
+
+## 2026-06-15 (SUPERSEDED 2026-06-15, origin: PITFALLS.md, reason: case-correct process match): `pkill -f "qemu.*android"` was dead code
+- **Attempt**: Teardown scripts used `pkill -9 -f "qemu.*android"` to clean up qemu between runs.
+- **Why it failed**: qemu's cmdline contains `Android` (capital A, from the SDK path) and `-avd`, never lowercase `android`. The pattern never matched; only the accidental `pkill -f "emulator.*-avd"` (matching the SDK path) did any work, fragilely.
+- **Superseded by**: `pgrep -f "qemu-system-x86_64"` (matches the binary name directly) across stop-emulator.sh / start-emulator.sh / kill-test-run.sh; teardown centralized in `emulator_graceful_kill`. Active rule in PITFALLS.md.

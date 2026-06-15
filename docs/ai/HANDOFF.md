@@ -1,10 +1,10 @@
 # Hand Off
 
 ## Open Tasks
-1. [ ] #256: Run the question pre-flight for all 11 sub-issues in parallel, collect the sub-agents' responses, synthesize them, and present the consolidated questions.
-2. [ ] #255: Run `scripts/run-instrumentation.sh` to verify the new `am instrument` two-phase approach works on all API levels (or physical device).
-3. [ ] #255: Create `BackupRestoreUiTest.kt` (UiAutomator, SAF picker flow) — future task, not blocking for #255 closure.
-4. [ ] **#270 (just completed, pending orchestrator verification)**: Run `scripts/run-instrumentation.sh` to verify the BellCollection removal across the full API 23-36 matrix. The API 34 FK crash (`DuplicateSessionTest.testDuplicateSessionCreatesCopyWithPrefix`) should be resolved. All JVM tests + detekt + assembleDebug are green.
-5. [ ] **#270 follow-up**: Migrate remaining `runBlocking` callsites in `SectionEditFragment` (`fillDataFromViews`, `installPlayGongListener`, `installBellSelectionListener`) and `MainFragment.onPause()` to `lifecycleScope.launch` where structurally feasible. These were kept on `runBlocking` because synchronous bell-result usage immediately after the call made a launch-based migration too invasive for this refactor.
+1. [ ] **API 23 test compatibility (Android 6)**: `SessionCrudTest.testDeleteSession` (SessionCrudTest.kt:86), `SessionCrudTest.testDeleteCancel` (SessionCrudTest.kt:105), and `SessionRankPersistenceTest.dragReorder_persistsAfterNavigationAndEdit` (SessionRankPersistenceTest.kt:93) fail deterministically on both attempts. UI/Espresso behavior differs on API 23 (delete-dialog flow, RecyclerView ItemTouchHelper drag-reorder). Likely needs API-23-specific handling or `@RequiresApi` guards. Open a follow-up issue if not a quick fix.
+2. [ ] **#270 follow-up**: migrate remaining `runBlocking` callsites in `SectionEditFragment` (`fillDataFromViews`, `installPlayGongListener`, `installBellSelectionListener`) and `MainFragment.onPause()` to `lifecycleScope.launch` where structurally feasible.
+
+## Completed (verified green this cycle)
+- Emulator / instrumented-test lifecycle stabilization: **13/14 of the API 23–36 matrix PASSES** (APIs 24–36; API 34 — the original hang — green first-try). All work on `main` (HEAD `2f5cd59`, pushed). Baselines regenerated clean; matrix runs `-no-snapshot-save`. See `STATE.md` and the emulator pitfalls in `PITFALLS.md` for the accumulated lifecycle rules a future agent must follow.
 
 Last updated: 2026-06-15
