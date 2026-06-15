@@ -55,6 +55,33 @@ pids_for() {
 }
 
 # ──────────────────────────────────────────────
+# AVD snapshot purge helpers — mirror stop-emulator.sh verbatim.
+# Duplicated (not sourced) to keep this rescue tool self-contained.
+# ──────────────────────────────────────────────
+
+# Echo the AVD name from a live qemu process's cmdline, or nothing.
+# $1 = qemu pid. Must be called BEFORE the process is killed.
+_avd_name_from_pid() {
+    local pid=$1
+    [ -n "$pid" ] && [ -r "/proc/$pid/cmdline" ] || return 0
+    tr '\0' '\n' < "/proc/$pid/cmdline" | awk '/^-avd$/{getline; print; exit}'
+}
+
+# Purge the QuickBoot snapshot for an AVD so the next boot cold-boots clean.
+# Use ONLY after a SIGKILL of qemu (the only kill that truncates the snapshot).
+# $1 = avd name
+emulator_purge_snapshot() {
+    local avd=$1
+    [ -z "$avd" ] && return 0
+    local avd_root="${ANDROID_AVD_HOME:-$HOME/.android/avd}"
+    local snap_dir="$avd_root/${avd}.avd/snapshots"
+    if [ -d "$snap_dir" ]; then
+        echo "Purging suspect snapshot for AVD '$avd' (SIGKILL used) -> $snap_dir" >&2
+        rm -rf "$snap_dir"
+    fi
+}
+
+# ──────────────────────────────────────────────
 # Phase 1: Kill run-instrumentation.sh
 # ──────────────────────────────────────────────
 echo "=== Phase 1: Killing run-instrumentation.sh ==="
@@ -90,12 +117,29 @@ if [ "$DRY_RUN" = false ]; then
     done
     sleep 3
 fi
+# Capture AVD name(s) from live qemu BEFORE the force-kill loop — after SIGKILL
+# /proc/<pid> is gone. Only meaningful in --force / non-dry-run mode (the only
+# path that SIGKILLs); captured unconditionally into force_avd for simplicity.
+force_avd=""
+if [ "$FORCE" = true ] && [ "$DRY_RUN" = false ]; then
+    for pid in $(pgrep -f "qemu-system-x86_64" 2>/dev/null || true); do
+        name=$(_avd_name_from_pid "$pid")
+        [ -n "$name" ] && force_avd="$name"
+    done
+fi
 for pid in $(pgrep -f "qemu-system-x86_64" 2>/dev/null || true); do
     do_kill "$pid" "qemu emulator"
 done
 for pid in $(pgrep -f "emulator.*-avd" 2>/dev/null || true); do
     do_kill "$pid" "emulator wrapper"
 done
+# In --force mode the do_kill above sent SIGKILL, which can truncate an in-flight
+# QuickBoot snapshot save. We captured the AVD name before the kill loop and now
+# purge its snapshots/ so the next run cold-boots clean. Non-force (SIGTERM) and
+# dry-run paths never SIGKILL, so they must not purge.
+if [ "$FORCE" = true ] && [ "$DRY_RUN" = false ]; then
+    emulator_purge_snapshot "$force_avd"
+fi
 for pid in $(pgrep -f "netsimd" 2>/dev/null || true); do
     do_kill "$pid" "netsimd"
 done

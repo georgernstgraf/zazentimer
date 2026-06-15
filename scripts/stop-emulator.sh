@@ -58,6 +58,28 @@ _qemu_progress_snapshot() {
     echo "$cpu_total $wbytes_total $d_state"
 }
 
+# Echo the AVD name from a live qemu process's cmdline, or nothing.
+# $1 = qemu pid. Must be called BEFORE the process is killed.
+_avd_name_from_pid() {
+    local pid=$1
+    [ -n "$pid" ] && [ -r "/proc/$pid/cmdline" ] || return 0
+    tr '\0' '\n' < "/proc/$pid/cmdline" | awk '/^-avd$/{getline; print; exit}'
+}
+
+# Purge the QuickBoot snapshot for an AVD so the next boot cold-boots clean.
+# Use ONLY after a SIGKILL of qemu (the only kill that truncates the snapshot).
+# $1 = avd name
+emulator_purge_snapshot() {
+    local avd=$1
+    [ -z "$avd" ] && return 0
+    local avd_root="${ANDROID_AVD_HOME:-$HOME/.android/avd}"
+    local snap_dir="$avd_root/${avd}.avd/snapshots"
+    if [ -d "$snap_dir" ]; then
+        echo "Purging suspect snapshot for AVD '$avd' (SIGKILL used) -> $snap_dir" >&2
+        rm -rf "$snap_dir"
+    fi
+}
+
 # Gracefully shut down the emulator: issue adb emu kill, then give qemu as much
 # time as it needs while it is making progress (CPU OR I/O OR D-state). Only
 # escalate to SIGTERM then SIGKILL after 60s of sustained zero progress.
@@ -104,7 +126,15 @@ emulator_graceful_kill() {
         fi
     done
 
-    local pid
+    # Capture AVD name(s) from live qemu BEFORE any signal — post-SIGKILL
+    # /proc/<pid> is gone and the name can no longer be recovered.
+    local pid avd_name=""
+    for pid in $(pgrep -f "qemu-system-x86_64" 2>/dev/null || true); do
+        local name
+        name=$(_avd_name_from_pid "$pid")
+        [ -n "$name" ] && avd_name="$name"
+    done
+
     for pid in $(pgrep -f "qemu-system-x86_64" 2>/dev/null || true); do
         echo "SIGTERM qemu PID $pid" >&2
         kill "$pid" 2>/dev/null || true
@@ -119,6 +149,9 @@ emulator_graceful_kill() {
         pkill -9 -f "qemu-system-x86_64" 2>/dev/null || true
         pkill -9 -f "emulator.*-avd" 2>/dev/null || true
         sleep 2
+        # SIGKILL can truncate an in-flight QuickBoot snapshot save; purge it so
+        # the next run cold-boots a clean image (userdata qcow2 is preserved).
+        emulator_purge_snapshot "$avd_name"
     fi
 }
 
@@ -148,9 +181,23 @@ emulator_kill_all() {
         echo "Orphaned qemu still alive — final graceful pass (no serial)" >&2
         emulator_graceful_kill ""
     fi
+    # Belt-and-suspenders final force-sweep. If qemu is still alive here, the
+    # imminent SIGKILL may truncate an in-flight snapshot save — capture the AVD
+    # name first, then purge after the kill (only if something was force-killed).
+    local force_avd="" pid name qemu_was_alive=false
+    if pgrep -f "qemu-system-x86_64" >/dev/null 2>&1; then
+        qemu_was_alive=true
+        for pid in $(pgrep -f "qemu-system-x86_64" 2>/dev/null || true); do
+            name=$(_avd_name_from_pid "$pid")
+            [ -n "$name" ] && force_avd="$name"
+        done
+    fi
     pkill -9 -f "qemu-system-x86_64" 2>/dev/null || true
     pkill -9 -f "emulator.*-avd" 2>/dev/null || true
     sleep 1
+    if [ "$qemu_was_alive" = true ]; then
+        emulator_purge_snapshot "$force_avd"
+    fi
 }
 
 # ──────────────────────────────────────────────
