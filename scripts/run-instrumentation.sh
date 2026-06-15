@@ -529,6 +529,8 @@ run_api_tests() {
     fi
     clear_logcat "$serial"
 
+    adb -s "$serial" shell device_config put activity_manager native_with_freezer false 2>/dev/null || true
+
     log_phase "$api_level" "installing APKs"
     if ! install_apks "$serial"; then
         RESULTS[$api_level]=1
