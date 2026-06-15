@@ -667,7 +667,8 @@ DEFAULT_APIS_STRING=$(grep -oP "^zazentimer\.test\.apis=\K.*" "$PROJECT_DIR/grad
 if [ "$COLD_BOOT" = true ]; then
     SNAPSHOT_FLAG="-no-snapshot"
 else
-    SNAPSHOT_FLAG=""
+    # default: fast-boot from baseline, never overwrite it (baselines are written by create-emulator-snapshots.sh)
+    SNAPSHOT_FLAG="-no-snapshot-save"
 fi
 
 IFS=',' read -ra DEFAULT_APIS <<<"$DEFAULT_APIS_STRING"
