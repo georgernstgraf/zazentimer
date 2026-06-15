@@ -10,7 +10,10 @@ internal class BellSanitizer(
     private val sessionBellVolumeDao: SessionBellVolumeDao,
     private val context: Context,
 ) {
-    private data class BuiltinDefinition(val name: String, val uri: String)
+    private data class BuiltinDefinition(
+        val name: String,
+        val uri: String,
+    )
 
     private fun builtinDefinitions(): List<BuiltinDefinition> =
         BuiltinBells.definitions().map { seed ->

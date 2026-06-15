@@ -69,7 +69,9 @@ class DbOperations
                 // and the -wal is truncated. Without this, Room may leave a stale -wal that
                 // corrupts a restored DB of a different schema (see SQLITE_CORRUPT on restore).
                 runCatching {
-                    it.openHelper.writableDatabase.query("PRAGMA wal_checkpoint(TRUNCATE)").close()
+                    it.openHelper.writableDatabase
+                        .query("PRAGMA wal_checkpoint(TRUNCATE)")
+                        .close()
                 }
                 it.close()
                 appDb = null

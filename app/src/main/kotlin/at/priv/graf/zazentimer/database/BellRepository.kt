@@ -28,8 +28,7 @@ internal class BellRepository(
             bellDao.getBuiltinByName(context.getString(BuiltinBells.DEMO_BELL_NAME_RES))
         }
 
-    suspend fun getDemoBellIdOrThrow(): Int =
-        getDemoBell()?.id ?: error("No builtin bells in database")
+    suspend fun getDemoBellIdOrThrow(): Int = getDemoBell()?.id ?: error("No builtin bells in database")
 
     suspend fun insertBell(bell: BellEntity): Long = withIdling { bellDao.insert(bell) }
 
