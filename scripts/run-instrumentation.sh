@@ -99,9 +99,6 @@ SNAPSHOT_FLAG=""
 API_LOG=""
 EMULATOR_XVFB_PID=""
 
-USE_PHYSICAL_DEVICE=false
-DEVICE_SERIAL=""
-DEVICE_API_LEVEL=0
 TEST_PACKAGE=""
 RUNNER=""
 PHASE1_CLASSES=""
@@ -167,9 +164,7 @@ print_summary() {
     log "  Test Summary — $TODAY"
     log "========================================="
     log "Mode: $([ "$CONTINUE_ON_ERROR" = true ] && echo 'continue-on-error' || echo 'fail-fast')"
-    if [ "$USE_PHYSICAL_DEVICE" = true ]; then
-        log "Device: $DEVICE_SERIAL (physical, API $DEVICE_API_LEVEL)"
-    elif [ ${#TARGET_APIS[@]} -gt 0 ]; then
+    if [ ${#TARGET_APIS[@]} -gt 0 ]; then
         log "Target APIs: ${TARGET_APIS[*]}"
     else
         log "Target APIs: all (23-36)"
@@ -177,25 +172,15 @@ print_summary() {
     log "Display: $([ "$IS_REAL_DISPLAY" = true ] && echo 'real' || echo 'Xvfb')"
     log ""
     log "Unit Tests: $([ $UNIT_RESULT -eq 0 ] && echo 'PASS' || echo 'FAIL')"
-    if [ "$USE_PHYSICAL_DEVICE" = true ]; then
-        if [ -z "${RESULTS[$DEVICE_API_LEVEL]+isset}" ]; then
-            log "API $DEVICE_API_LEVEL:  SKIPPED"
-        elif [ "${RESULTS[$DEVICE_API_LEVEL]}" -ne 0 ]; then
-            log "API $DEVICE_API_LEVEL:  FAIL"
+    for api in "${APIS_TO_RUN[@]}"; do
+        if [ -z "${RESULTS[$api]+isset}" ]; then
+            log "API $api:    SKIPPED"
+        elif [ "${RESULTS[$api]}" -ne 0 ]; then
+            log "API $api:    FAIL"
         else
-            log "API $DEVICE_API_LEVEL:  PASS"
+            log "API $api:    PASS"
         fi
-    else
-        for api in "${APIS_TO_RUN[@]}"; do
-            if [ -z "${RESULTS[$api]+isset}" ]; then
-                log "API $api:    SKIPPED"
-            elif [ "${RESULTS[$api]}" -ne 0 ]; then
-                log "API $api:    FAIL"
-            else
-                log "API $api:    PASS"
-            fi
-        done
-    fi
+    done
     log "========================================="
 }
 
@@ -264,33 +249,18 @@ clear_logcat() {
 }
 
 # ──────────────────────────────────────────────
-# resolve_physical_device — prefer physical device over emulator
-# Echoes serial to stdout. Returns 0 if found, 1 otherwise.
+# enumerate_physical_devices — list physical devices as "<serial>\t<api_level>"
+# Echoes to stdout. Returns 0 always (empty output = no devices).
 # ──────────────────────────────────────────────
-resolve_physical_device() {
-    local serial
-    serial=$(adb devices 2>/dev/null \
-        | grep -v "^List" \
-        | grep -v "^$" \
-        | grep -v "emulator-" \
-        | grep "device$" \
+enumerate_physical_devices() {
+    adb devices 2>/dev/null \
+        | grep -v "^List" | grep -v "^$" | grep -v "emulator-" | grep "device$" \
         | awk '{print $1}' \
-        | head -1) || true
-    if [ -n "$serial" ]; then
-        echo "$serial"
-        return 0
-    fi
-    return 1
-}
-
-# ──────────────────────────────────────────────
-# get_device_api_level
-# ──────────────────────────────────────────────
-get_device_api_level() {
-    local serial=$1
-    local level
-    level=$(adb -s "$serial" shell getprop ro.build.version.sdk 2>/dev/null | tr -d '\r')
-    echo "${level:-0}"
+        | while read -r ser; do
+            local lvl
+            lvl=$(adb -s "$ser" shell getprop ro.build.version.sdk 2>/dev/null | tr -d '\r\n')
+            [ -n "$lvl" ] && printf '%s\t%s\n' "$ser" "$lvl"
+        done
 }
 
 # ──────────────────────────────────────────────
@@ -434,10 +404,18 @@ run_test_phase() {
     local phase_output
     local result=0
     set +e
-    phase_output=$(adb -s "$serial" shell am instrument -w -e class "$classes" "$TEST_PACKAGE/$RUNNER" 2>&1)
+    phase_output=$(timeout 900 adb -s "$serial" shell am instrument -w -e class "$classes" "$TEST_PACKAGE/$RUNNER" 2>&1)
     result=$?
     set -e
     echo "$phase_output" >> "$API_LOG"
+
+    if [ $result -eq 124 ]; then
+        log_api "TIMEOUT: $label exceeded 900s — force-stopping test and app packages"
+        adb -s "$serial" shell am force-stop "$TEST_PACKAGE" 2>/dev/null || true
+        adb -s "$serial" shell am force-stop "${TEST_PACKAGE%.test}" 2>/dev/null || true
+        log_api "FAIL: $label (timed out after 900s)"
+        return 1
+    fi
 
     if [ $result -ne 0 ]; then
         log_api "FAIL: $label (exit code $result)"
@@ -529,7 +507,30 @@ run_api_tests() {
     fi
     clear_logcat "$serial"
 
-    adb -s "$serial" shell device_config put activity_manager native_with_freezer false 2>/dev/null || true
+    if [ "$api_level" -ge 31 ]; then
+        local freezer_state
+        freezer_state=$(adb -s "$serial" shell settings get global cached_apps_freezer 2>/dev/null | tr -d '\r\n')
+        if [ "$freezer_state" != "disabled" ]; then
+            log_api "Disabling app freezer on $serial (was: '${freezer_state:-unset}')..."
+            adb -s "$serial" shell settings put global cached_apps_freezer disabled 2>/dev/null || true
+            adb -s "$serial" shell device_config put activity_manager_native_boot use_freezer false 2>/dev/null || true
+            if [ "$is_emulator" = true ]; then
+                log_api "Rebooting $serial so the boot-time freezer flag takes effect (one-time provisioning)..."
+                adb -s "$serial" reboot 2>/dev/null || true
+                if ! emulator_wait_boot "$serial"; then
+                    log_api "FAIL: $serial did not return after freezer-provisioning reboot"
+                    RESULTS[$api_level]=1
+                    FAILED_APIS+=("$api_level")
+                    ERROR_LOGS+=("API $api_level: freezer-provisioning reboot failed")
+                    emulator_kill_serial "$serial"
+                    return 0
+                fi
+                log_api "Freezer provisioning complete on $serial"
+            fi
+        else
+            log_api "App freezer already disabled on $serial — skipping provisioning"
+        fi
+    fi
 
     log_phase "$api_level" "installing APKs"
     if ! install_apks "$serial"; then
@@ -758,121 +759,90 @@ if [ "$SKIP_INSTRUMENTED" = true ]; then
 fi
 
 # ──────────────────────────────────────────────
-# Resolve device: prefer physical, fallback emulator
+# Resolve devices: enumerate physical devices per API, fall back to emulator
 # ──────────────────────────────────────────────
 log ""
 log "========================================="
-log "  Resolving test device"
+log "  Resolving test devices"
 log "========================================="
 
-DEVICE_SERIAL=$(resolve_physical_device) || true
-if [ -n "$DEVICE_SERIAL" ]; then
-    USE_PHYSICAL_DEVICE=true
-    DEVICE_API_LEVEL=$(get_device_api_level "$DEVICE_SERIAL")
-    log "Physical device found: $DEVICE_SERIAL (API $DEVICE_API_LEVEL)"
-    log "Using physical device for instrumented tests"
+declare -A PHYS_DEV
+while IFS=$'\t' read -r ser lvl; do
+    [ -n "$lvl" ] && [ -z "${PHYS_DEV[$lvl]:-}" ] && PHYS_DEV["$lvl"]="$ser"
+done < <(enumerate_physical_devices)
+
+if [ ${#PHYS_DEV[@]} -gt 0 ]; then
+    phys_list=""
+    for lvl in "${!PHYS_DEV[@]}"; do phys_list+="API $lvl=${PHYS_DEV[$lvl]} "; done
+    log "Physical devices available: $phys_list"
 else
-    USE_PHYSICAL_DEVICE=false
-    log "No physical device found — will use emulator(s)"
+    log "No physical devices — using emulators exclusively"
 fi
 
-if [ "$USE_PHYSICAL_DEVICE" = true ]; then
-    # ──────────────────────────────────────────
-    # Physical device path
-    # ──────────────────────────────────────────
-    API_IDX=1
-
-    log ""
-    log "========================================="
-    log "  Physical device ($DEVICE_SERIAL, API $DEVICE_API_LEVEL)"
-    log "========================================="
-
-    pass=false
-    for attempt in 1 2; do
-        run_api_tests "$DEVICE_SERIAL" "$DEVICE_API_LEVEL" false
-        if [ "${RESULTS[$DEVICE_API_LEVEL]:-0}" -eq 0 ]; then
-            pass=true
-            break
-        fi
-        if [ $attempt -eq 1 ]; then
-            log "Attempt 1 failed on physical device — retrying..."
-        fi
-    done
-
-    if [ "$pass" = true ]; then
-        FAILED_APIS=()
-    fi
-
-else
-    # ──────────────────────────────────────────
-    # Emulator path
-    # ──────────────────────────────────────────
-    API_IDX=0
-    for api in "${APIS_TO_RUN[@]}"; do
-        API_IDX=$((API_IDX + 1))
+API_IDX=0
+for api in "${APIS_TO_RUN[@]}"; do
+    API_IDX=$((API_IDX + 1))
+    phys_serial="${PHYS_DEV[$api]:-}"
+    run_serial="emulator-5554"
+    run_is_emu=true
+    if [ -n "$phys_serial" ]; then
+        run_serial="$phys_serial"
+        run_is_emu=false
+        log ""
+        log "========================================="
+        log "  API $api ($API_IDX/$TOTAL_APIS) — Physical device $phys_serial"
+        log "========================================="
+    else
         log ""
         log "========================================="
         log "  API $api ($API_IDX/$TOTAL_APIS) — Emulator"
         log "========================================="
+    fi
 
-        pass=false
-        for attempt in 1 2; do
-            run_api_tests "emulator-5554" "$api" true
-            if [ "${RESULTS[$api]:-0}" -eq 0 ]; then
-                pass=true
-                break
-            fi
-            if [ $attempt -eq 1 ]; then
-                log_api "API $api attempt 1 failed — retrying..."
-            fi
-        done
-
-        if [ "$pass" = true ]; then
-            _new_failed=()
-            for _f in "${FAILED_APIS[@]}"; do
-                [ "$_f" != "$api" ] && _new_failed+=("$_f")
-            done
-            FAILED_APIS=("${_new_failed[@]}")
-        fi
-
-        if [ "$CONTINUE_ON_ERROR" = false ] && [ "$pass" = false ]; then
-            log ""
-            log "FAIL-FAST: Stopping at API $api due to failure"
+    pass=false
+    for attempt in 1 2; do
+        run_api_tests "$run_serial" "$api" "$run_is_emu"
+        if [ "${RESULTS[$api]:-0}" -eq 0 ]; then
+            pass=true
             break
         fi
+        if [ $attempt -eq 1 ]; then
+            log_api "API $api attempt 1 failed — retrying..."
+        fi
     done
-fi
+
+    if [ "$pass" = true ]; then
+        _new_failed=()
+        for _f in "${FAILED_APIS[@]}"; do
+            [ "$_f" != "$api" ] && _new_failed+=("$_f")
+        done
+        FAILED_APIS=("${_new_failed[@]}")
+    fi
+
+    if [ "$CONTINUE_ON_ERROR" = false ] && [ "$pass" = false ]; then
+        log ""
+        log "FAIL-FAST: Stopping at API $api due to failure"
+        break
+    fi
+done
 
 # ──────────────────────────────────────────────
 # Summary
 # ──────────────────────────────────────────────
 print_summary
 
-# Auto-tag on green full-matrix run
-if [ $UNIT_RESULT -eq 0 ] && [ ${#FAILED_APIS[@]} -eq 0 ]; then
-    if [ "$USE_PHYSICAL_DEVICE" = true ]; then
-        if [ "$IS_REAL_DISPLAY" = true ] || [ "$IS_REAL_DISPLAY" = false ]; then
-            TAG="tested-${TODAY}"
-            if git tag -l "$TAG" | grep -q "$TAG"; then
-                log "Tag $TAG already exists — skipping"
-            else
-                log "All tests passed on physical device — tagging HEAD as $TAG"
-                git tag "$TAG" HEAD
-                git push origin "$TAG"
-            fi
-        fi
-    elif [ "$IS_REAL_DISPLAY" = true ] && [ ${#TARGET_APIS[@]} -eq 0 ]; then
-        TAG="tested-${TODAY}"
-        if git tag -l "$TAG" | grep -q "$TAG"; then
-            log "Tag $TAG already exists — skipping"
-        else
-            log "All tests passed on real display — tagging HEAD as $TAG"
-            git tag "$TAG" HEAD
-            git push origin "$TAG"
-        fi
-    elif [ "$IS_REAL_DISPLAY" = false ]; then
-        log "All tests passed but running under Xvfb — skipping auto-tag"
+# Auto-tag on green full-matrix run (real display, no --api filter)
+if [ $UNIT_RESULT -eq 0 ] && [ ${#FAILED_APIS[@]} -eq 0 ] && [ "$IS_REAL_DISPLAY" = true ] && [ ${#TARGET_APIS[@]} -eq 0 ]; then
+    TAG="tested-${TODAY}"
+    if git tag -l "$TAG" | grep -q "$TAG"; then
+        log "Tag $TAG already exists — skipping"
+    else
+        log "All tests passed on real display — tagging HEAD as $TAG"
+        git tag "$TAG" HEAD
+        git push origin "$TAG"
     fi
+elif [ $UNIT_RESULT -eq 0 ] && [ ${#FAILED_APIS[@]} -eq 0 ] && [ "$IS_REAL_DISPLAY" = false ]; then
+    log "All tests passed but running under Xvfb — skipping auto-tag"
 fi
 
 if [ $UNIT_RESULT -ne 0 ]; then

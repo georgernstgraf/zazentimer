@@ -75,7 +75,7 @@ emulator_kill_stale() {
         echo "Killing stale emulator $stale" >&2
         adb -s "$stale" emu kill 2>/dev/null || true
     done
-    pkill -9 -f "qemu.*android" 2>/dev/null || true
+    pkill -9 -f "qemu-system-x86_64" 2>/dev/null || true
     pkill -9 -f "emulator.*-avd" 2>/dev/null || true
     sleep 3
 }

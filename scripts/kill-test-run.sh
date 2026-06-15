@@ -90,7 +90,7 @@ if [ "$DRY_RUN" = false ]; then
     done
     sleep 3
 fi
-for pid in $(pgrep -f "qemu.*android" 2>/dev/null || true); do
+for pid in $(pgrep -f "qemu-system-x86_64" 2>/dev/null || true); do
     do_kill "$pid" "qemu emulator"
 done
 for pid in $(pgrep -f "emulator.*-avd" 2>/dev/null || true); do

@@ -36,6 +36,92 @@ emulator_save_snapshot() {
     fi
 }
 
+# Print "<sum_cpu_jiffies> <sum_write_bytes> <any_d_state>" across all qemu-system-x86_64 pids.
+_qemu_progress_snapshot() {
+    local pids cpu_total=0 wbytes_total=0 d_state=0
+    pids=$(pgrep -f "qemu-system-x86_64" 2>/dev/null || true)
+    if [ -z "$pids" ]; then
+        echo "0 0 0"
+        return
+    fi
+    local pid stat suffix state cpu wbytes
+    for pid in $pids; do
+        stat=$(cat "/proc/$pid/stat" 2>/dev/null) || continue
+        suffix=${stat##*\)}
+        state=$(echo "$suffix" | awk '{print $1}')
+        cpu=$(echo "$suffix" | awk '{print $12+$13}')
+        wbytes=$(awk '/^write_bytes/{print $2}' "/proc/$pid/io" 2>/dev/null)
+        cpu_total=$((cpu_total + ${cpu:-0}))
+        wbytes_total=$((wbytes_total + ${wbytes:-0}))
+        [ "$state" = "D" ] && d_state=1
+    done
+    echo "$cpu_total $wbytes_total $d_state"
+}
+
+# Gracefully shut down the emulator: issue adb emu kill, then give qemu as much
+# time as it needs while it is making progress (CPU OR I/O OR D-state). Only
+# escalate to SIGTERM then SIGKILL after 60s of sustained zero progress.
+# $1 = serial (optional; if empty, skip adb emu kill and just poll/escalate orphans)
+emulator_graceful_kill() {
+    local serial="${1:-}"
+    if [ -n "$serial" ] && adb devices 2>/dev/null | grep -q "$serial"; then
+        echo "Requesting graceful shutdown of $serial (adb emu kill)..." >&2
+        adb -s "$serial" emu kill 2>/dev/null || true
+    fi
+
+    local poll_interval=5 idle_limit=12   # 12 * 5s = 60s sustained idleness
+    local prev_snap prev_cpu prev_wbytes idle=0 samples=0
+    prev_snap=$(_qemu_progress_snapshot)
+    prev_cpu=$(echo "$prev_snap" | awk '{print $1}')
+    prev_wbytes=$(echo "$prev_snap" | awk '{print $2}')
+
+    while true; do
+        sleep "$poll_interval"
+        samples=$((samples + 1))
+        if ! pgrep -f "qemu-system-x86_64" >/dev/null 2>&1; then
+            echo "qemu exited cleanly after $((samples * poll_interval))s." >&2
+            return 0
+        fi
+        local snap cpu wbytes dstate progressing=0
+        snap=$(_qemu_progress_snapshot)
+        cpu=$(echo "$snap" | awk '{print $1}')
+        wbytes=$(echo "$snap" | awk '{print $2}')
+        dstate=$(echo "$snap" | awk '{print $3}')
+        [ "$dstate" = "1" ] && progressing=1
+        [ "$((cpu - prev_cpu))" -gt 0 ] && progressing=1
+        [ "$((wbytes - prev_wbytes))" -gt 0 ] && progressing=1
+        if [ "$progressing" = "1" ]; then
+            idle=0
+        else
+            idle=$((idle + 1))
+            echo "qemu idle (no CPU/IO/D-state progress) — idle streak $idle/$idle_limit ($((samples * poll_interval))s elapsed)" >&2
+        fi
+        prev_cpu=$cpu
+        prev_wbytes=$wbytes
+        if [ "$idle" -ge "$idle_limit" ]; then
+            echo "qemu hung for $((idle_limit * poll_interval))s — escalating." >&2
+            break
+        fi
+    done
+
+    local pid
+    for pid in $(pgrep -f "qemu-system-x86_64" 2>/dev/null || true); do
+        echo "SIGTERM qemu PID $pid" >&2
+        kill "$pid" 2>/dev/null || true
+    done
+    local term_wait=0
+    while pgrep -f "qemu-system-x86_64" >/dev/null 2>&1 && [ "$term_wait" -lt 10 ]; do
+        sleep 1
+        term_wait=$((term_wait + 1))
+    done
+    if pgrep -f "qemu-system-x86_64" >/dev/null 2>&1; then
+        echo "qemu survived SIGTERM — SIGKILL (last resort)" >&2
+        pkill -9 -f "qemu-system-x86_64" 2>/dev/null || true
+        pkill -9 -f "emulator.*-avd" 2>/dev/null || true
+        sleep 2
+    fi
+}
+
 # ──────────────────────────────────────────────
 # emulator_kill_serial — kill emulator by serial
 # $1 = serial (e.g. "emulator-5554")
@@ -43,13 +129,7 @@ emulator_save_snapshot() {
 emulator_kill_serial() {
     local serial=$1
     if adb devices 2>/dev/null | grep -q "$serial"; then
-        echo "Killing emulator $serial..." >&2
-        adb -s "$serial" emu kill 2>/dev/null || true
-        local wait_count=0
-        while adb devices 2>/dev/null | grep -q "$serial" && [ $wait_count -lt 30 ]; do
-            sleep 1
-            wait_count=$((wait_count + 1))
-        done
+        emulator_graceful_kill "$serial"
     else
         echo "Emulator $serial not connected — skipping" >&2
     fi
@@ -59,14 +139,18 @@ emulator_kill_serial() {
 # emulator_kill_all — kill all qemu/emulator processes
 # ──────────────────────────────────────────────
 emulator_kill_all() {
+    local emu_serial
     for emu_serial in $(adb devices 2>/dev/null | grep -oP 'emulator-\d+' || true); do
         echo "Killing leftover emulator $emu_serial" >&2
-        adb -s "$emu_serial" emu kill 2>/dev/null || true
+        emulator_graceful_kill "$emu_serial"
     done
-    sleep 2
-    pkill -9 -f "qemu.*android" 2>/dev/null || true
+    if pgrep -f "qemu-system-x86_64" >/dev/null 2>&1; then
+        echo "Orphaned qemu still alive — final graceful pass (no serial)" >&2
+        emulator_graceful_kill ""
+    fi
+    pkill -9 -f "qemu-system-x86_64" 2>/dev/null || true
     pkill -9 -f "emulator.*-avd" 2>/dev/null || true
-    sleep 2
+    sleep 1
 }
 
 # ──────────────────────────────────────────────
