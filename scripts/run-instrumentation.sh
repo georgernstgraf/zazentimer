@@ -404,12 +404,12 @@ run_test_phase() {
     local phase_output
     local result=0
     set +e
-    phase_output=$(timeout 900 adb -s "$serial" shell am instrument -w -e class "$classes" "$TEST_PACKAGE/$RUNNER" 2>&1)
+    phase_output=$(timeout -s KILL 900 adb -s "$serial" shell am instrument -w -e class "$classes" "$TEST_PACKAGE/$RUNNER" 2>&1)
     result=$?
     set -e
     echo "$phase_output" >> "$API_LOG"
 
-    if [ $result -eq 124 ]; then
+    if [ $result -eq 124 ] || [ $result -eq 137 ]; then
         log_api "TIMEOUT: $label exceeded 900s — force-stopping test and app packages"
         adb -s "$serial" shell am force-stop "$TEST_PACKAGE" 2>/dev/null || true
         adb -s "$serial" shell am force-stop "${TEST_PACKAGE%.test}" 2>/dev/null || true
