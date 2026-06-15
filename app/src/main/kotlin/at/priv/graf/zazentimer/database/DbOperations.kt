@@ -58,7 +58,7 @@ class DbOperations
             _sessionBellVolumeDao = db.sessionBellVolumeDao()
             _bellDao = db.bellDao()
             sessionRepo = SessionRepository(db, sessionDao, sectionDao, sessionBellVolumeDao, bellDao, context)
-            sectionRepo = SectionRepository(db, sectionDao, bellDao, context)
+            sectionRepo = SectionRepository(sectionDao, bellDao, context)
             bellRepo = BellRepository(db, bellDao, sectionDao, sessionBellVolumeDao, context)
             bellSanitizer = BellSanitizer(bellDao, sectionDao, sessionBellVolumeDao, context)
         }

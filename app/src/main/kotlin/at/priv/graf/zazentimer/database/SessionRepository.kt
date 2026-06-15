@@ -164,13 +164,11 @@ internal class SessionRepository(
 
     suspend fun assignRanks(sessions: List<Session>) =
         withIdling {
-            appDb.withTransaction {
-                for (i in sessions.indices) {
-                    sessions[i].rank = i
-                }
-                for (session in sessions) {
-                    sessionDao.update(EntityMapper.toEntity(session))
-                }
+            for (i in sessions.indices) {
+                sessions[i].rank = i
+            }
+            for (session in sessions) {
+                sessionDao.update(EntityMapper.toEntity(session))
             }
         }
 
