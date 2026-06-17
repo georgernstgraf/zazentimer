@@ -20,6 +20,7 @@ Follow these without question. Do not deviate unless explicitly told.
 - **Call `meditation.release()` in `tearDown()` and at the end of each `runTest` block** to properly cancel Meditation's coroutine scope and clean up timer tasks.
 - **Use `runCurrent()` between sequential `meditation.pause()` calls** to let the cooperative coroutine cancellations complete on the test dispatcher before launching a new ticker.
 - **Jede Room-Migration braucht einen Test:** Zu jeder neuen `Migration(X, Y)` muss ein `RoomMigrationTest`-Fall existieren, der die Migration auf einer temporären V1-Datenbank mit realistischen Daten ausführt und Daten-Integrität + Schema-Korrektheit prüft. Die Migration muss direkt via `.migrate(db)` aufgerufen werden (nicht über Room Builder), um das exakte Laufzeitverhalten zu testen. Die Tests müssen zumindest umfassen: Daten-Erhalt, Schema-Korrektheit (PK NOT NULL, Indices, Default-Werte), und Indices-Existenz.
+- **Deno-Tests unter `prisma/` müssen DB-free sein:** Pure Module unter `prisma/lib/` (z.B. `settlement.ts`) dürfen `db.ts` NICHT importieren — `db.ts:3` führt `await getPrisma()` beim Import aus und öffnet eine DB-Verbindung, wodurch jeder `deno test`-Import eine Live-DB benötigt. Halte testbare Logik in separaten puren Modulen; `deno test` läuft aus `prisma/` heraus.
 
 ## Test Infrastructure
 - API levels for instrumentation tests are defined in `gradle.properties` (`zazentimer.test.apis`).
@@ -134,8 +135,8 @@ Follow these without question. Do not deviate unless explicitly told.
 - Translate/Proficiency Skills erlauben jetzt das Lesen der Output-Dateien (`translate-output.json`, `proficiency-output.json`) für Retry-Diagnose.
 - `validateDatabaseConsistency()` runs unconditionally at translate startup: checks models, languages, and master strings against DB. Aborts only if source files have items MISSING from DB (not for extras in DB). Shared consistency functions (`checkModelConsistency`, `checkLanguageConsistency`, `checkMasterStringConsistency`) live in `db.ts`, used by both `translate.ts` and `seed.ts`.
 
-## Translation Scoring Constants (in `db.ts`)
-- `SETTLED_SCORE_THRESHOLD = 7`: string is "settled" (no more votes needed) when best translation score >= 7. Override via `--settled-threshold <N>` CLI flag.
+## Translation Scoring Constants
+- `SETTLED_SCORE_THRESHOLD = 7`: string is "settled" (no more votes needed) when best translation score >= 7. Override via `--settled-threshold <N>` CLI flag. Lives in `prisma/lib/settlement.ts` (pure, DB-free) as the single source of truth alongside `isSettled(score)`; `db.ts` re-exports it and `voting_api.tsx` imports `isSettled` from there, so the dashboard and data layer cannot diverge (#271).
 - `TRANSLATION_SCORE_THRESHOLD = 3`: minimum score to export a translation or return it from `getTranslation()`.
 - `MIN_VOTE_PROFICIENCY = 2`: default for `--min-proficiency` — models below this are never asked to translate.
 - `byScoreThenCount`: shared comparator (score primary, modelCount tiebreak) used in all ranking sorts. Never duplicate sort logic.

@@ -1,31 +1,29 @@
 # Project State
 
-Current status as of 2026-06-15.
+Current status as of 2026-06-17.
 
 ## Current Focus
-Emulator / instrumented-test lifecycle stabilization — was blocking #270 matrix verification. Now stable.
+**#272** (OPEN) — API 23 instrumented-test failures. **Could not reproduce on `claw` under Xvfb**, but kept open pending validation on a **real X11** host (`think`). Caveat: claw forces Xvfb; UI tests (dialog focus, `ItemTouchHelper` drag) can differ under a virtual framebuffer vs real X11 — "passes on claw/Xvfb" ≠ "passes on real X11".
 
 ## Completed (this cycle)
-- [x] Emulator lifecycle hardening, all in `scripts/` (commits 0c79ad0, 7f3d41a, d10d425, f66e631, efd1eba, 2f5cd59; all on `main`, pushed):
-  - **App freezer (API ≥ 31)**: correct disable via `cached_apps_freezer=disabled` + `activity_manager_native_boot use_freezer=false`, marker-gated one-time reboot per AVD. (The earlier wrong flag `native_with_freezer` did nothing — see HISTORY.md.)
-  - **`am instrument` hang net**: `timeout -s KILL 900` (adb ignores SIGTERM; SIGKILL returns 137, detect 124||137) + `am force-stop` on timeout.
-  - **Graceful qemu teardown** (`emulator_graceful_kill`): polls CPU/IO/D-state, no time cap while progressing, SIGTERM→SIGKILL only after 60s sustained idleness.
-  - **SIGKILL → purge AVD snapshot** (force-kill truncates the in-flight save); also wired into `kill-test-run.sh --force`.
-  - **API-aware device routing**: `--api N` honored; physical device used only when its API matches.
-  - **Matrix default `-no-snapshot-save`**: stops self-poisoning baselines (post-test snapshots can be non-resumable). Baselines written only by `create-emulator-snapshots.sh`.
-  - **create-emulator-snapshots.sh**: fixed stray `local` (aborted under `set -e`); added freezer provisioning for API ≥ 31.
-  - **push_backup_fixture**: guard `mkdir` with `|| true` (a bare adb call under `set -e` aborted the whole matrix once).
-  - Fixed dead `pkill -f "qemu.*android"` (case mismatch) → `qemu-system-x86_64` across stop/start/kill-test-run.
-- [x] All 14 AVD baselines regenerated clean (api23–30 wiped; api31–36 wiped + freezer-provisioned).
-- [x] Full matrix: **13/14 PASS** (APIs 24–36). API 34 — the original hang — passes first-try.
+- [x] **#273 fixed & closed** (commit `88f44ae`, pushed): session drag-reorder was lost on Settings→back navigation. Root cause: the drag was never persisted at drop time (`SessionTouchHelperCallback` had no `clearView` hook), and after 9bc8a66 `onPause() → runBlocking { assignRanks }` was the only saver — unreliable during in-app fragment transactions. Fix: `clearView → onDragEnd()` → `lifecycleScope.launch { assignRanks }` (async) persists ranks the instant the grip handle is released; `onPause()` kept as safety net. `SessionRankPersistenceTest` rewritten with a **real drag gesture** (DOWN on `dragHandle` → MOVEs → UP) + identity assertions + a Settings→back regression case. Verified: `OK (2 tests)` on API 34; detekt/JVM/ktlint green.
+- [x] **#271 fixed & closed** (commit `252bbd6`): score-based settlement in `voting_api.tsx`; new pure `prisma/lib/settlement.ts` + repo's first `deno test`.
+- [x] **6 issues closed earlier**, plus #273: #270, #255, #245, #269, #256, #271.
+- [x] **#272 investigated on `claw`/Xvfb** — not reproducible (both x86_64 + x86 32-bit pass; ABI ruled out; code unchanged since 2026-06-15). Pending real-X11 validation.
 
 ## Pending
-- [ ] **API 23 test compatibility**: 3 deterministic UI-test failures on Android 6 (`SessionCrudTest.testDeleteSession`, `SessionCrudTest.testDeleteCancel`, `SessionRankPersistenceTest.dragReorder_persistsAfterNavigationAndEdit`) — separate from the emulator work; likely needs API-23-specific Espresso handling or `@RequiresApi` guards.
-- [ ] #270 follow-up: migrate remaining `runBlocking` callsites in `SectionEditFragment` and `MainFragment.onPause()` to `lifecycleScope.launch` where structurally feasible.
-- [ ] Occasional host-load flakes: a few APIs (32/29/28) sometimes fail attempt 1 and pass on retry — test-timing sensitivity under host load, not an emulator regression.
+- [ ] **#272 — validate on real X11 (`think`)** before closing. Clean `test_api23` baseline (regenerate via `create-emulator-snapshots.sh 23` or cold-boot), run `scripts/run-instrumentation.sh --api 23` under real `$DISPLAY`. Two uncontrolled variables remain: (a) baseline snapshot state, (b) Xvfb-vs-real-X11 display env.
+- [ ] **#270 follow-up** — migrate remaining `runBlocking` callsites in `SectionEditFragment` and `MainFragment.onPause()` to `lifecycleScope.launch` where structurally feasible. (Note: `MainFragment.onPause()`'s `runBlocking { assignRanks }` is now a *safety net* behind the drop-time persist — lower priority, but still part of the fragile runBlocking-in-onPause class.)
+- [ ] **#268** (deferred) — full DbOperations Hilt-migration; high blast radius.
+- [ ] **#267** (deferred) — large naming sweeps; cosmetic.
+- [ ] Occasional host-load flakes on a few APIs (32/29/28) — test-timing sensitivity.
+
+## `claw` API 23 AVD inventory (created this session)
+- `test_api23` — x86_64, pixel_6, default tag. **Canonical matrix AVD** (resolver's exact-`test_api<N>` match).
+- `test_api23_x86` — x86 32-bit. Dormant (only used by explicit name for the ABI comparison).
 
 ## Blockers
-- None. The emulator is stable; API 23 is a test-suite compatibility issue.
+- #272 needs a **real-X11** host to rule out the display-environment variable. `claw` is Xvfb-only.
 
 ## Next Session Suggestion
-- Triage the 3 API-23 test failures (open a follow-up issue if not a quick fix). Then re-run the matrix for a fully-green `tested-YYYY-MM-DD` tag.
+- On `think`: clean `test_api23` baseline + run `scripts/run-instrumentation.sh --api 23` under real `$DISPLAY`. Green → close #272.

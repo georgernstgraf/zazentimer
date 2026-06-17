@@ -618,3 +618,15 @@ Each entry documents WHAT was decided and WHY.
 - **Considered**: Adding `Thread.sleep()` after close (fragile, wasteful), calling `sync()` on the parent directory file descriptor (overcomplicated).
 - **Tradeoff**: Minimal performance cost (fsync is fast for typical backup sizes < 1MB).
 
+## 2026-06-17: Pure `settlement.ts` — single source of truth for the settled threshold (#271)
+- **Choice**: Moved `SETTLED_SCORE_THRESHOLD` out of `prisma/lib/db.ts` into a new pure module `prisma/lib/settlement.ts` (`SETTLED_SCORE_THRESHOLD = 7` + `isSettled(score)`). `db.ts` re-exports the constant (keeps the `translate.ts` import + default-param usages working). `voting_api.tsx` imports `isSettled` from `settlement.ts` and calls `isSettled(·.score)` at all 5 settlement sites.
+- **Reason**: `voting_api.tsx` had diverged from `db.ts` — it still used the stale count-based check `modelCount >= 3` (and `/strings/:sid` conflated `voteCount` with `score`) after `db.ts` migrated to score-based settlement. A pure helper that takes only `score` makes it impossible to wire `modelCount` in by mistake, and — being DB-free — is the first unit in `prisma/` testable under `deno test` without a live database.
+- **Considered**: Editing the 5 sites inline (leaves the door open to future divergence); a full route-level integration test (blocked: `db.ts`'s top-level `await getPrisma()` pulls in Prisma at import, so route tests need a test DB).
+- **Tradeoff**: One extra tiny module; `db.ts` now imports+re-exports the constant instead of defining it. Added `lib/settlement.ts` + `lib/settlement.test.ts` to the `deno task check` file list.
+
+## 2026-06-17: Persist session ranks on drag-end, not deferred to onPause (#273)
+- **Choice**: `SessionTouchHelperCallback` overrides `clearView(...)` → `MainFragment.onDragEnd()` → `viewLifecycleOwner.lifecycleScope.launch { dbOperations.assignRanks(sessions) }` (async) writes ranks the instant the user releases the grip handle. `onPause()`'s `runBlocking { assignRanks }` is kept as an idempotent safety net.
+- **Reason**: After 9bc8a66 removed the rank-write from `suspendUpdateSessionList`, `onPause()` was the only persistence path. Its `runBlocking`-on-main-thread is unreliable during in-app fragment transactions (same deadlock-prone class 768ed2b patched), so drag-reorder was lost on Settings→back while surviving app-close (where `onPause` runs to completion). Persisting at the drop signal makes the write independent of destination-fragment lifecycle.
+- **Considered**: Persisting in `onMove` on every step (wasteful — many events per drag). Restoring the pre-9bc8a66 `suspendUpdateSessionList` rank-write (re-introduces the stale-write name-edit bug #253 fixed).
+- **Tradeoff**: `onDragEnd` requires the drag to actually engage `ItemTouchHelper` (touch the drag handle → `startDrag`). The instrumented test's synthetic drag had to be rewritten to do a real DOWN→MOVE→UP gesture (see PITFALLS); the old MOVE-only injection never engaged ItemTouchHelper and hid behind a weak row-exists assertion.
+

@@ -38,6 +38,7 @@ ZazenTimer is an Android application for timing meditation sessions. It uses a f
 ## Voting API + Frontend (`prisma/voting_api.tsx`)
 - **Stack**: Deno + Hono JSX (SSR) + htmx + Pico CSS — alles in einer Datei, kein Build-Schritt.
 - **DB-Anbindung**: Lazy PrismaClient Singleton via `lib/prisma.ts` mit WAL Mode.
+- **Settlement-Logik**: `lib/settlement.ts` (pure, DB-free) hält `SETTLED_SCORE_THRESHOLD` + `isSettled(score)` als Single Source of Truth; `db.ts` re-exportiert es, `voting_api.tsx` nutzt `isSettled(·.score)`. Erste unter `deno test` lauffähige Unit (`lib/settlement.test.ts`) — pure Module unter `prisma/lib/` dürfen `db.ts` nicht importieren (dessen top-level `await getPr()` eine DB-Verbindung öffnet).
 - **REST Endpoints** (JSON):
   - `GET /api/stats` — Dashboard-Zahlen
   - `GET /api/models` — Alle LLM-Modelle
