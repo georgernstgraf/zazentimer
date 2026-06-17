@@ -1,9 +1,11 @@
 package at.priv.graf.zazentimer.screens
 
 import android.view.View
+import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.UiController
+import androidx.test.espresso.ViewAction
 import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.contrib.RecyclerViewActions
@@ -99,5 +101,29 @@ class MainPage {
     fun clickToolbarOverflowItem(textResId: Int): MainPage {
         robot.clickToolbarOverflowItem(textResId)
         return this
+    }
+
+    fun getSessionNameAt(position: Int): String {
+        var name = ""
+        onView(withId(R.id.recycler_sessions))
+            .perform(
+                RecyclerViewActions.actionOnItemAtPosition<RecyclerView.ViewHolder>(
+                    position,
+                    object : ViewAction {
+                        override fun getConstraints(): Matcher<View> = isDisplayed()
+
+                        override fun getDescription(): String = "get session name at position $position"
+
+                        override fun perform(
+                            uiController: UiController,
+                            view: View,
+                        ) {
+                            val textView = view.findViewById<TextView>(R.id.sessionName)
+                            name = textView?.text?.toString() ?: ""
+                        }
+                    },
+                ),
+            )
+        return name
     }
 }

@@ -140,6 +140,12 @@ class MainFragment : Fragment() {
                             sessionListAdapter?.moveItem(fromPosition, toPosition)
                             return true
                         }
+
+                        override fun onDragEnd() {
+                            viewLifecycleOwner.lifecycleScope.launch {
+                                dbOperations.assignRanks(sessions)
+                            }
+                        }
                     },
                 ),
             )

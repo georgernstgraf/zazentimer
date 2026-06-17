@@ -13,6 +13,8 @@ class SessionTouchHelperCallback(
             fromPosition: Int,
             toPosition: Int,
         ): Boolean
+
+        fun onDragEnd()
     }
 
     override fun getMovementFlags(
@@ -35,6 +37,13 @@ class SessionTouchHelperCallback(
         direction: Int,
     ) {
         listener?.onSwipe(viewHolder.bindingAdapterPosition)
+    }
+
+    override fun clearView(
+        recyclerView: RecyclerView,
+        viewHolder: RecyclerView.ViewHolder,
+    ) {
+        listener?.onDragEnd()
     }
 
     override fun isLongPressDragEnabled(): Boolean = false

@@ -1,6 +1,5 @@
 package at.priv.graf.zazentimer
 
-import android.graphics.Point
 import androidx.recyclerview.widget.RecyclerView
 import androidx.test.espresso.Espresso.closeSoftKeyboard
 import androidx.test.espresso.Espresso.onIdle
@@ -13,10 +12,11 @@ import androidx.test.espresso.contrib.RecyclerViewActions
 import androidx.test.espresso.matcher.ViewMatchers.hasDescendant
 import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
 import androidx.test.espresso.matcher.ViewMatchers.withId
+import androidx.test.espresso.matcher.ViewMatchers.withText
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import at.priv.graf.zazentimer.screens.MainPage
-import at.priv.graf.zazentimer.screens.SectionEditPage
 import at.priv.graf.zazentimer.screens.SessionEditPage
+import at.priv.graf.zazentimer.screens.SettingsPage
 import dagger.hilt.android.testing.HiltAndroidTest
 import org.hamcrest.Matcher
 import org.junit.Before
@@ -44,22 +44,8 @@ class SessionRankPersistenceTest : AbstractZazenTest() {
     fun dragReorder_persistsAfterNavigationAndEdit() {
         MainPage()
             .verifyMainScreenIsDisplayed()
-            .clickSessionOverflowAction(0, R.string.menu_edit_session)
 
-        SessionEditPage()
-            .verifyEditSessionScreen()
-            .clickAddSection()
-
-        SectionEditPage()
-            .goBack()
-
-        SessionEditPage()
-            .goBack()
-
-        onIdle()
-
-        MainPage()
-            .verifyMainScreenIsDisplayed()
+        val originalFirstName = MainPage().getSessionNameAt(0)
 
         onView(withId(R.id.recycler_sessions))
             .perform(
@@ -75,16 +61,20 @@ class SessionRankPersistenceTest : AbstractZazenTest() {
             .clickSessionOverflowAction(0, R.string.menu_edit_session)
 
         SessionEditPage()
+            .verifyEditSessionScreen()
             .goBack()
 
         onIdle()
+
+        MainPage()
+            .verifyMainScreenIsDisplayed()
 
         onView(withId(R.id.recycler_sessions))
             .check(
                 matches(
                     atPosition(
-                        0,
-                        hasDescendant(withId(R.id.sessionName)),
+                        1,
+                        hasDescendant(withText(originalFirstName)),
                     ),
                 ),
             )
@@ -108,6 +98,41 @@ class SessionRankPersistenceTest : AbstractZazenTest() {
             .verifyMainScreenIsDisplayed()
     }
 
+    @Test
+    fun dragReorder_persistsAfterSettingsNavigation() {
+        MainPage()
+            .verifyMainScreenIsDisplayed()
+
+        val originalFirstName = MainPage().getSessionNameAt(0)
+
+        onView(withId(R.id.recycler_sessions))
+            .perform(
+                RecyclerViewActions.actionOnItemAtPosition<RecyclerView.ViewHolder>(
+                    0,
+                    dragToPosition(1),
+                ),
+            )
+
+        onIdle()
+
+        MainPage()
+            .clickToolbarOverflowItem(R.string.menu_settings)
+
+        SettingsPage()
+            .goBack()
+            .verifyMainScreenIsDisplayed()
+
+        onView(withId(R.id.recycler_sessions))
+            .check(
+                matches(
+                    atPosition(
+                        1,
+                        hasDescendant(withText(originalFirstName)),
+                    ),
+                ),
+            )
+    }
+
     private fun dragToPosition(targetPosition: Int): ViewAction =
         object : ViewAction {
             override fun getConstraints(): Matcher<android.view.View> = isDisplayed()
@@ -118,32 +143,68 @@ class SessionRankPersistenceTest : AbstractZazenTest() {
                 uiController: UiController,
                 view: android.view.View,
             ) {
+                val dragHandle = view.findViewById<android.view.View>(R.id.dragHandle)
                 val recyclerView = view.parent as RecyclerView
                 val targetHolder = recyclerView.findViewHolderForAdapterPosition(targetPosition)
                 if (targetHolder == null) {
                     throw AssertionError("Target ViewHolder at position $targetPosition not found")
                 }
-                val sourcePoint = Point(view.width / 2, view.height / 2)
-                val targetPoint =
-                    Point(
-                        targetHolder.itemView.width / 2,
-                        targetHolder.itemView.height / 2,
-                    )
+
+                val handleLocation = IntArray(2)
+                dragHandle.getLocationOnScreen(handleLocation)
+                val sourceX = (handleLocation[0] + dragHandle.width / 2).toFloat()
+                val sourceY = (handleLocation[1] + dragHandle.height / 2).toFloat()
+
+                val targetLocation = IntArray(2)
+                targetHolder.itemView.getLocationOnScreen(targetLocation)
+                val targetX = (targetLocation[0] + targetHolder.itemView.width / 2).toFloat()
+                val targetY = (targetLocation[1] + targetHolder.itemView.height / 2).toFloat()
+
+                val downTime = android.os.SystemClock.uptimeMillis()
                 val steps = 20
-                for (i in 1..steps) {
-                    val x = sourcePoint.x + (targetPoint.x - sourcePoint.x) * i / steps
-                    val y = sourcePoint.y + (targetPoint.y - sourcePoint.y) * i / steps
-                    uiController.injectMotionEvent(
-                        android.view.MotionEvent.obtain(
-                            android.os.SystemClock.uptimeMillis(),
-                            android.os.SystemClock.uptimeMillis(),
-                            android.view.MotionEvent.ACTION_MOVE,
-                            x.toFloat(),
-                            y.toFloat(),
-                            0,
-                        ),
+
+                val downEvent =
+                    android.view.MotionEvent.obtain(
+                        downTime,
+                        downTime,
+                        android.view.MotionEvent.ACTION_DOWN,
+                        sourceX,
+                        sourceY,
+                        0,
                     )
+                uiController.injectMotionEvent(downEvent)
+                downEvent.recycle()
+
+                for (i in 1..steps) {
+                    val eventTime = downTime + i * 5L
+                    val x = sourceX + (targetX - sourceX) * i / steps
+                    val y = sourceY + (targetY - sourceY) * i / steps
+                    val moveEvent =
+                        android.view.MotionEvent.obtain(
+                            downTime,
+                            eventTime,
+                            android.view.MotionEvent.ACTION_MOVE,
+                            x,
+                            y,
+                            0,
+                        )
+                    uiController.injectMotionEvent(moveEvent)
+                    moveEvent.recycle()
                 }
+
+                val upEvent =
+                    android.view.MotionEvent.obtain(
+                        downTime,
+                        downTime + (steps + 1) * 5L,
+                        android.view.MotionEvent.ACTION_UP,
+                        targetX,
+                        targetY,
+                        0,
+                    )
+                uiController.injectMotionEvent(upEvent)
+                upEvent.recycle()
+
+                uiController.loopMainThreadUntilIdle()
             }
         }
 
