@@ -4,7 +4,8 @@ let prisma = await getPrisma();
 
 const NOT_EMPTY = { translation: { not: "" as const } };
 
-export const SETTLED_SCORE_THRESHOLD = 7;
+import { SETTLED_SCORE_THRESHOLD } from "./settlement.ts";
+export { SETTLED_SCORE_THRESHOLD } from "./settlement.ts";
 export const TRANSLATION_SCORE_THRESHOLD = 3;
 export const MIN_VOTE_PROFICIENCY = 2;
 

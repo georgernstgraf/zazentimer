@@ -13,7 +13,7 @@
     "votingbackend": "deno run --env-file=translations/.env -A voting_api.tsx",
     "dumpforgit": "echo .dump | sqlite3 translation_votes.sqlite > translation_votes.sql",
     "seed": "deno run --env-file=translations/.env -A translations/seed.ts",
-    "check": "deno check --config=deno.json translate.ts export.ts voting_api.tsx lib/verify.ts lib/db.ts lib/opencode_client.ts lib/prisma.ts translations/seed.ts",
+    "check": "deno check --config=deno.json translate.ts export.ts voting_api.tsx lib/verify.ts lib/db.ts lib/opencode_client.ts lib/prisma.ts lib/settlement.ts lib/settlement.test.ts translations/seed.ts",
     "lint": "deno lint"
   },
   "imports": {

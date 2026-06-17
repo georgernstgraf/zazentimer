@@ -25,6 +25,7 @@ import {
     getVotesGrouped,
     upsertVote,
 } from "./lib/db.ts";
+import { isSettled } from "./lib/settlement.ts";
 
 const app = new Hono();
 
@@ -806,8 +807,8 @@ app.get("/strings/:sid", async (c) => {
                     vb = b.translation;
                     break;
                 case "score":
-                    va = a.voteCount;
-                    vb = b.voteCount;
+                    va = a.score;
+                    vb = b.score;
                     break;
                 case "settled":
                     va = a.settled ? 1 : 0;
@@ -886,7 +887,7 @@ app.get("/strings/:sid", async (c) => {
                                     <strong>{l.translation}</strong>
                                 </td>
                                 <td style="text-align: center;">
-                                    {l.voteCount}
+                                    {l.score}
                                 </td>
                                 <td style="text-align: center;">
                                     {l.settled
@@ -1539,8 +1540,8 @@ app.get("/evaluation", async (c) => {
                     vb = b.modelCount;
                     break;
                 case "settled":
-                    va = a.modelCount >= 3 ? 1 : 0;
-                    vb = b.modelCount >= 3 ? 1 : 0;
+                    va = isSettled(a.score) ? 1 : 0;
+                    vb = isSettled(b.score) ? 1 : 0;
                     break;
                 default:
                     return 0;
@@ -1601,7 +1602,7 @@ app.get("/evaluation", async (c) => {
                 </thead>
                 <tbody>
                     {data.map((r) => {
-                        const settled = r.modelCount >= 3;
+                        const settled = isSettled(r.score);
                         return (
                             <tr>
                                 <td>{r.master_string}</td>
