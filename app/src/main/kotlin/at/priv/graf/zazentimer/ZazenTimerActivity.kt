@@ -38,8 +38,11 @@ import androidx.navigation.ui.NavigationUI
 import androidx.preference.PreferenceManager
 import at.priv.graf.zazentimer.backup.BackupManager
 import at.priv.graf.zazentimer.database.AppDatabase
-import at.priv.graf.zazentimer.database.DbOperations
+import at.priv.graf.zazentimer.database.BellSanitizer
+import at.priv.graf.zazentimer.database.DatabaseOwner
 import at.priv.graf.zazentimer.database.DemoSessionCreator
+import at.priv.graf.zazentimer.database.SectionRepository
+import at.priv.graf.zazentimer.database.SessionRepository
 import at.priv.graf.zazentimer.fragments.MainFragment
 import at.priv.graf.zazentimer.service.MeditationService
 import at.priv.graf.zazentimer.service.MeditationViewModel
@@ -75,7 +78,19 @@ class ZazenTimerActivity :
         }
 
     @Inject
-    lateinit var dbOperations: DbOperations
+    lateinit var sessionRepo: SessionRepository
+
+    @Inject
+    lateinit var sectionRepo: SectionRepository
+
+    @Inject
+    lateinit var bellSanitizer: BellSanitizer
+
+    @Inject
+    lateinit var databaseOwner: DatabaseOwner
+
+    @Inject
+    lateinit var demoSessionCreator: DemoSessionCreator
 
     internal fun forceStopMeditationForTest() {
         viewModel?.stopUpdateThread()
@@ -187,15 +202,15 @@ class ZazenTimerActivity :
         }
         observeViewModel()
         lifecycleScope.launch {
-            dbOperations.sanitizeBellUris()
+            bellSanitizer.sanitizeBellUris()
             val demoMarker = File(noBackupFilesDir, "demo_sessions_created")
-            if (demoMarker.exists() && dbOperations.readSessions().isEmpty()) {
+            if (demoMarker.exists() && sessionRepo.readSessions().isEmpty()) {
                 Log.d(TAG, "Marker exists but DB empty -- data lost, recreating demo sessions")
                 demoMarker.delete()
             }
             if (!demoMarker.exists()) {
                 Log.d(TAG, "No demo marker -- creating demo sessions")
-                DemoSessionCreator(dbOperations, resources).createDemoSessions()
+                demoSessionCreator.createDemoSessions()
                 demoMarker.createNewFile()
                 withContext(Dispatchers.Main) {
                     findMainFragment()?.updateSessionList()
@@ -331,7 +346,7 @@ class ZazenTimerActivity :
     }
 
     fun showAboutScreen() {
-        val dbVersion = dbOperations.getActualDatabaseVersion()
+        val dbVersion = databaseOwner.getActualDatabaseVersion()
         val message =
             "Version: ${BuildConfig.VERSION_DISPLAY}<br>" +
                 "Details: ${BuildConfig.BUILD_TYPE}@${BuildConfig.BUILD_HOST}<br>" +
@@ -426,7 +441,7 @@ class ZazenTimerActivity :
             return
         }
         lifecycleScope.launch {
-            if (dbOperations.readSections(getSelectedSessionId()).isEmpty()) {
+            if (sectionRepo.readSections(getSelectedSessionId()).isEmpty()) {
                 if (getSelectedSessionId() == -1) {
                     Toast.makeText(this@ZazenTimerActivity, R.string.no_session_exists, Toast.LENGTH_SHORT).show()
                     return@launch
@@ -455,14 +470,14 @@ class ZazenTimerActivity :
     fun resetDatabaseForTest() {
         kotlinx.coroutines.runBlocking {
             withContext(Dispatchers.IO) {
-                val readSessions = dbOperations.readSessions()
+                val readSessions = sessionRepo.readSessions()
                 for (i in readSessions.indices) {
-                    for (section in dbOperations.readSections(readSessions[i].id)) {
-                        dbOperations.deleteSection(section.id.toLong())
+                    for (section in sectionRepo.readSections(readSessions[i].id)) {
+                        sectionRepo.deleteSection(section.id.toLong())
                     }
-                    dbOperations.deleteSession(readSessions[i].id)
+                    sessionRepo.deleteSession(readSessions[i].id)
                 }
-                DemoSessionCreator(dbOperations, resources).createDemoSessions()
+                demoSessionCreator.createDemoSessions()
             }
         }
         val f = this@ZazenTimerActivity.findMainFragment()
@@ -482,7 +497,7 @@ class ZazenTimerActivity :
             return
         }
         Log.d(TAG, "Database file: ${dbFile.absolutePath} (${dbFile.length()} bytes)")
-        dbOperations.close()
+        databaseOwner.close()
         val zipFile = File(cacheDir, BACKUP_ZIP_NAME)
         val ok =
             BackupManager(

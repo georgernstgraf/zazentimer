@@ -39,10 +39,10 @@ class MainScreenDeadStateTest : AbstractZazenTest() {
                 .edit()
                 .putBoolean(ZazenTimerActivity.PREF_KEY_SHOW_SESSION_EDIT_HELP_V13, true)
                 .apply()
-            if (runBlocking { activity.dbOperations.readSessions().isEmpty() } ||
+            if (runBlocking { activity.sessionRepo.readSessions().isEmpty() } ||
                 runBlocking {
-                    val sessions = activity.dbOperations.readSessions()
-                    sessions.isEmpty() || activity.dbOperations.readSections(sessions[0].id).isEmpty()
+                    val sessions = activity.sessionRepo.readSessions()
+                    sessions.isEmpty() || activity.sectionRepo.readSections(sessions[0].id).isEmpty()
                 }
             ) {
                 activity.resetDatabaseForTest()

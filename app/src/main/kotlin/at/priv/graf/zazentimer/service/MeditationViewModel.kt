@@ -14,7 +14,8 @@ import androidx.lifecycle.viewModelScope
 import at.priv.graf.zazentimer.ZazenTimerActivity
 import at.priv.graf.zazentimer.bo.Section
 import at.priv.graf.zazentimer.bo.Session
-import at.priv.graf.zazentimer.database.DbOperations
+import at.priv.graf.zazentimer.database.SectionRepository
+import at.priv.graf.zazentimer.database.SessionRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -25,7 +26,8 @@ class MeditationViewModel
     @Inject
     constructor(
         application: Application,
-        private val dbOperations: DbOperations,
+        private val sessionRepo: SessionRepository,
+        private val sectionRepo: SectionRepository,
         private val meditationRepository: MeditationRepository,
         val wakeLockManager: WakeLockManager,
     ) : AndroidViewModel(application) {
@@ -148,12 +150,12 @@ class MeditationViewModel
                     meditationState.setValue(SectionArcCalculator.emptyState())
                     return@launch
                 }
-                val session: Session? = dbOperations.readSession(sessionId)
+                val session: Session? = sessionRepo.readSession(sessionId)
                 if (session == null) {
                     meditationState.setValue(SectionArcCalculator.emptyState())
                     return@launch
                 }
-                val sections: Array<Section> = dbOperations.readSections(sessionId)
+                val sections: Array<Section> = sectionRepo.readSections(sessionId)
                 if (sections.isEmpty()) {
                     meditationState.setValue(SectionArcCalculator.emptyState(session.name ?: ""))
                     return@launch

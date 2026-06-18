@@ -4,7 +4,9 @@ import at.priv.graf.zazentimer.bo.Section
 import at.priv.graf.zazentimer.bo.Session
 import at.priv.graf.zazentimer.bo.SessionBellVolume
 import at.priv.graf.zazentimer.database.BellEntity
-import at.priv.graf.zazentimer.database.DbOperations
+import at.priv.graf.zazentimer.database.BellRepository
+import at.priv.graf.zazentimer.database.SectionRepository
+import at.priv.graf.zazentimer.database.SessionRepository
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -34,7 +36,9 @@ interface MeditationRepository {
 class DbMeditationRepository
     @Inject
     constructor(
-        private val dbOperations: DbOperations,
+        private val sessionRepo: SessionRepository,
+        private val sectionRepo: SectionRepository,
+        private val bellRepo: BellRepository,
         override val clock: ZazenClock,
     ) : MeditationRepository {
         private val _meditationState = MutableStateFlow<MeditationUiState>(MeditationUiState.Idle())
@@ -93,12 +97,12 @@ class DbMeditationRepository
             _meditationState.value = state
         }
 
-        override suspend fun readSession(id: Int): Session? = dbOperations.readSession(id)
+        override suspend fun readSession(id: Int): Session? = sessionRepo.readSession(id)
 
-        override suspend fun readSections(id: Int): Array<Section> = dbOperations.readSections(id)
+        override suspend fun readSections(id: Int): Array<Section> = sectionRepo.readSections(id)
 
         @Suppress("MaxLineLength")
-        override suspend fun readBellVolumes(sessionId: Int): List<SessionBellVolume> = dbOperations.readBellVolumes(sessionId)
+        override suspend fun readBellVolumes(sessionId: Int): List<SessionBellVolume> = sessionRepo.readBellVolumes(sessionId)
 
-        override suspend fun getBellById(id: Int): BellEntity? = dbOperations.getBellById(id)
+        override suspend fun getBellById(id: Int): BellEntity? = bellRepo.getBellById(id)
     }

@@ -38,10 +38,10 @@ class MeditationServiceTest : AbstractZazenTest() {
         IdlingRegistry.getInstance().register(meditationIdlingResource)
         device = UiDevice.getInstance(InstrumentationRegistry.getInstrumentation())
         activityRule.scenario.onActivity { activity ->
-            if (runBlocking { activity.dbOperations.readSessions().isEmpty() } ||
+            if (runBlocking { activity.sessionRepo.readSessions().isEmpty() } ||
                 runBlocking {
-                    val sessions = activity.dbOperations.readSessions()
-                    sessions.isEmpty() || activity.dbOperations.readSections(sessions[0].id).isEmpty()
+                    val sessions = activity.sessionRepo.readSessions()
+                    sessions.isEmpty() || activity.sectionRepo.readSections(sessions[0].id).isEmpty()
                 }
             ) {
                 activity.resetDatabaseForTest()
