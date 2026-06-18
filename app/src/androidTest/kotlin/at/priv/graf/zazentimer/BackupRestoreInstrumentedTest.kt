@@ -5,7 +5,11 @@ import androidx.test.filters.LargeTest
 import androidx.test.platform.app.InstrumentationRegistry
 import at.priv.graf.zazentimer.backup.BackupManager
 import at.priv.graf.zazentimer.database.AppDatabase
-import at.priv.graf.zazentimer.database.DbOperations
+import at.priv.graf.zazentimer.database.BellRepository
+import at.priv.graf.zazentimer.database.BellSanitizer
+import at.priv.graf.zazentimer.database.DatabaseOwner
+import at.priv.graf.zazentimer.database.SectionRepository
+import at.priv.graf.zazentimer.database.SessionRepository
 import dagger.hilt.android.testing.HiltAndroidTest
 import kotlinx.coroutines.runBlocking
 import org.junit.Assert.assertEquals
@@ -23,7 +27,19 @@ import javax.inject.Inject
 @LargeTest
 class BackupRestoreInstrumentedTest : AbstractZazenTest() {
     @Inject
-    lateinit var dbOperations: DbOperations
+    lateinit var databaseOwner: DatabaseOwner
+
+    @Inject
+    lateinit var bellSanitizer: BellSanitizer
+
+    @Inject
+    lateinit var sessionRepo: SessionRepository
+
+    @Inject
+    lateinit var sectionRepo: SectionRepository
+
+    @Inject
+    lateinit var bellRepo: BellRepository
 
     private lateinit var backupManager: BackupManager
 
@@ -42,8 +58,8 @@ class BackupRestoreInstrumentedTest : AbstractZazenTest() {
             BackupManager(
                 databaseFileProvider = { context.getDatabasePath(AppDatabase.DATABASE_NAME) },
                 filesDirProvider = { context.filesDir },
-                onCloseDatabase = { dbOperations.close() },
-                onReopenDatabase = { dbOperations.reopen() },
+                onCloseDatabase = { databaseOwner.close() },
+                onReopenDatabase = { databaseOwner.reopen() },
             )
         var activityRef: ZazenTimerActivity? = null
         activityRule.scenario.onActivity { activityRef = it }
@@ -54,12 +70,12 @@ class BackupRestoreInstrumentedTest : AbstractZazenTest() {
     fun restore_realBackup_fullPipelineWorks() {
         val result = backupManager.restore(zipFile)
         assertEquals(0, result)
-        runBlocking { dbOperations.sanitizeBellUris() }
-        val sessions = runBlocking { dbOperations.readSessions() }
+        runBlocking { bellSanitizer.sanitizeBellUris() }
+        val sessions = runBlocking { sessionRepo.readSessions() }
         assertEquals(4, sessions.size)
         var totalSections = 0
         for (session in sessions) {
-            val sections = runBlocking { dbOperations.readSections(session.id) }
+            val sections = runBlocking { sectionRepo.readSections(session.id) }
             totalSections += sections.size
         }
         assertEquals(17, totalSections)
@@ -70,8 +86,8 @@ class BackupRestoreInstrumentedTest : AbstractZazenTest() {
         val context = InstrumentationRegistry.getInstrumentation().targetContext
         val result = backupManager.restore(zipFile)
         assertEquals(0, result)
-        runBlocking { dbOperations.sanitizeBellUris() }
-        val bells = runBlocking { dbOperations.getAllBells() }
+        runBlocking { bellSanitizer.sanitizeBellUris() }
+        val bells = runBlocking { bellRepo.getAllBells() }
         for (bell in bells) {
             if (bell.isBuiltin) {
                 val expectedPrefix = "android.resource://${context.packageName}/"

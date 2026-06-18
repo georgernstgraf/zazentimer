@@ -15,27 +15,20 @@ import org.robolectric.annotation.Config
 @RunWith(AndroidJUnit4::class)
 @Config(sdk = [29])
 class SessionRankAssignerTest {
-    private lateinit var dbOps: DbOperations
+    private lateinit var owner: DatabaseOwner
+    private lateinit var sessionRepo: SessionRepository
 
     @Before
     fun setUp() {
         val context = ApplicationProvider.getApplicationContext<Context>()
         context.deleteDatabase(AppDatabase.DATABASE_NAME)
-        val owner = DatabaseOwner(context)
-        dbOps =
-            DbOperations(
-                owner,
-                SessionRepository(owner, context),
-                SectionRepository(owner, context),
-                BellRepository(owner, context),
-                BellSanitizer(owner, context),
-                context,
-            )
+        owner = DatabaseOwner(context)
+        sessionRepo = SessionRepository(owner, context)
     }
 
     @After
     fun tearDown() {
-        dbOps.close()
+        owner.close()
     }
 
     @Test
@@ -44,13 +37,13 @@ class SessionRankAssignerTest {
             val a = Session("A", "Desc")
             val b = Session("B", "Desc")
             val c = Session("C", "Desc")
-            dbOps.insertSession(a)
-            dbOps.insertSession(b)
-            dbOps.insertSession(c)
+            sessionRepo.insertSession(a)
+            sessionRepo.insertSession(b)
+            sessionRepo.insertSession(c)
 
-            dbOps.assignRanks(listOf(a, b, c))
+            sessionRepo.assignRanks(listOf(a, b, c))
 
-            val sessions = dbOps.readSessions()
+            val sessions = sessionRepo.readSessions()
             assertThat(sessions).hasLength(3)
             assertThat(sessions[0].name).isEqualTo("A")
             assertThat(sessions[0].rank).isEqualTo(0)
@@ -64,8 +57,8 @@ class SessionRankAssignerTest {
     @Test
     fun assignRanks_emptyList_isNoOp() {
         runBlocking {
-            dbOps.assignRanks(emptyList())
-            val sessions = dbOps.readSessions()
+            sessionRepo.assignRanks(emptyList())
+            val sessions = sessionRepo.readSessions()
             assertThat(sessions).isEmpty()
         }
     }
@@ -74,11 +67,11 @@ class SessionRankAssignerTest {
     fun assignRanks_singleSession_setsRankToZero() {
         runBlocking {
             val a = Session("A", "Desc")
-            dbOps.insertSession(a)
+            sessionRepo.insertSession(a)
 
-            dbOps.assignRanks(listOf(a))
+            sessionRepo.assignRanks(listOf(a))
 
-            val sessions = dbOps.readSessions()
+            val sessions = sessionRepo.readSessions()
             assertThat(sessions).hasLength(1)
             assertThat(sessions[0].rank).isEqualTo(0)
         }
