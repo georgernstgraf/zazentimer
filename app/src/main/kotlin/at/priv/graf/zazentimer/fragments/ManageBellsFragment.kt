@@ -18,7 +18,9 @@ import androidx.recyclerview.widget.RecyclerView
 import at.priv.graf.zazentimer.R
 import at.priv.graf.zazentimer.audio.BellImporter
 import at.priv.graf.zazentimer.database.BellEntity
-import at.priv.graf.zazentimer.database.DbOperations
+import at.priv.graf.zazentimer.database.BellRepository
+import at.priv.graf.zazentimer.database.SectionRepository
+import at.priv.graf.zazentimer.database.SessionRepository
 import at.priv.graf.zazentimer.databinding.FragmentManageBellsBinding
 import com.google.android.material.transition.MaterialSharedAxis
 import dagger.hilt.android.AndroidEntryPoint
@@ -34,7 +36,13 @@ class ManageBellsFragment : Fragment() {
     private var bells: List<BellEntity> = emptyList()
 
     @Inject
-    lateinit var dbOperations: DbOperations
+    lateinit var bellRepo: BellRepository
+
+    @Inject
+    lateinit var sessionRepo: SessionRepository
+
+    @Inject
+    lateinit var sectionRepo: SectionRepository
 
     @Inject
     lateinit var bellImporter: BellImporter
@@ -92,7 +100,7 @@ class ManageBellsFragment : Fragment() {
 
     private fun loadCustomBells() {
         lifecycleScope.launch {
-            bells = dbOperations.getNonBuiltinBells()
+            bells = bellRepo.getNonBuiltinBells()
             if (bells.isEmpty()) {
                 binding.emptyText.visibility = View.VISIBLE
                 binding.list.visibility = View.GONE
@@ -107,8 +115,8 @@ class ManageBellsFragment : Fragment() {
     private fun confirmDeleteBell(bell: BellEntity) {
         lifecycleScope.launch {
             val affectedParts = mutableListOf<String>()
-            for (session in dbOperations.readSessions()) {
-                for (section in dbOperations.readSections(session.id)) {
+            for (session in sessionRepo.readSessions()) {
+                for (section in sectionRepo.readSections(session.id)) {
                     if (section.bellId == bell.id) {
                         val part =
                             getString(
@@ -143,7 +151,7 @@ class ManageBellsFragment : Fragment() {
 
     private fun deleteBell(bell: BellEntity) {
         lifecycleScope.launch {
-            dbOperations.deleteCustomBell(bell.id)
+            bellRepo.deleteCustomBell(bell.id)
 
             if (bell.uri.startsWith("file://")) {
                 val filePath = bell.uri.removePrefix("file://")

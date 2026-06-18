@@ -25,7 +25,8 @@ import at.priv.graf.zazentimer.audio.BellImporter
 import at.priv.graf.zazentimer.bo.Section
 import at.priv.graf.zazentimer.bo.TimeFormat
 import at.priv.graf.zazentimer.database.BellEntity
-import at.priv.graf.zazentimer.database.DbOperations
+import at.priv.graf.zazentimer.database.BellRepository
+import at.priv.graf.zazentimer.database.SectionRepository
 import at.priv.graf.zazentimer.databinding.FragmentEditSectionBinding
 import com.google.android.material.transition.MaterialSharedAxis
 import dagger.hilt.android.AndroidEntryPoint
@@ -48,7 +49,10 @@ class SectionEditFragment : Fragment() {
     private var tvGaps: Array<TextView?> = arrayOfNulls(GAP_ARRAY_SIZE)
 
     @Inject
-    lateinit var dbOperations: DbOperations
+    lateinit var sectionRepo: SectionRepository
+
+    @Inject
+    lateinit var bellRepo: BellRepository
 
     @Inject
     lateinit var bellImporter: BellImporter
@@ -65,7 +69,7 @@ class SectionEditFragment : Fragment() {
                 section?.let { s ->
                     s.bellId = entity.id
                     if (s.bellId > 0) {
-                        dbOperations.updateSection(s)
+                        sectionRepo.updateSection(s)
                     }
                     selectBellForSection(s)
                 }
@@ -108,7 +112,7 @@ class SectionEditFragment : Fragment() {
     override fun onResume() {
         super.onResume()
         viewLifecycleOwner.lifecycleScope.launch {
-            this@SectionEditFragment.section = dbOperations.readSection(this@SectionEditFragment.sectionId)
+            this@SectionEditFragment.section = sectionRepo.readSection(this@SectionEditFragment.sectionId)
             if (!isAdded) return@launch
             this@SectionEditFragment.audio = Audio(requireContext())
             requireActivity().invalidateOptionsMenu()
@@ -136,7 +140,7 @@ class SectionEditFragment : Fragment() {
         fillDataFromViews()
         section?.let { s ->
             runBlocking {
-                dbOperations.updateSection(s)
+                sectionRepo.updateSection(s)
             }
         }
     }
@@ -183,7 +187,7 @@ class SectionEditFragment : Fragment() {
 
         private fun SectionEditFragment.selectBellForSection(s: Section) {
             if (s.bellId <= 0) return
-            val entity = runBlocking { dbOperations.getBellById(s.bellId) }
+            val entity = runBlocking { bellRepo.getBellById(s.bellId) }
             if (entity != null) {
                 selectBell(entity.uri)
             }
@@ -270,7 +274,7 @@ class SectionEditFragment : Fragment() {
             }
             binding.playGong.setOnClickListener {
                 val s = section ?: return@setOnClickListener
-                val entity = runBlocking { dbOperations.getBellById(s.bellId) }
+                val entity = runBlocking { bellRepo.getBellById(s.bellId) }
                 val uri = entity?.uri?.let { Uri.parse(it) } ?: return@setOnClickListener
                 lifecycleScope.launch {
                     audio?.playAbsVolume(uri, DEFAULT_BELL_VOLUME)
@@ -296,7 +300,7 @@ class SectionEditFragment : Fragment() {
                             if (entity != null) {
                                 s.bellId = entity.id
                                 if (s.bellId > 0) {
-                                    runBlocking { dbOperations.updateSection(s) }
+                                    runBlocking { sectionRepo.updateSection(s) }
                                 }
                             }
                         }
@@ -348,7 +352,7 @@ class SectionEditFragment : Fragment() {
             this.gongListAdapter =
                 GongListAdapter(requireContext(), R.id.selectGongSound, R.id.spinnerText1)
             val adapter = this.gongListAdapter ?: return
-            val bellList = dbOperations.getAllBells()
+            val bellList = bellRepo.getAllBells()
             for (bell in bellList) {
                 adapter.add(bell)
             }

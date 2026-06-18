@@ -21,7 +21,8 @@ import at.priv.graf.zazentimer.ZazenTimerActivity
 import at.priv.graf.zazentimer.backup.BackupManager
 import at.priv.graf.zazentimer.backup.Streams
 import at.priv.graf.zazentimer.database.AppDatabase
-import at.priv.graf.zazentimer.database.DbOperations
+import at.priv.graf.zazentimer.database.BellSanitizer
+import at.priv.graf.zazentimer.database.DatabaseOwner
 import com.google.android.material.transition.MaterialFadeThrough
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
@@ -33,14 +34,17 @@ import javax.inject.Inject
 @AndroidEntryPoint
 class SettingsFragment : PreferenceFragmentCompat() {
     @Inject
-    lateinit var dbOperations: DbOperations
+    lateinit var databaseOwner: DatabaseOwner
+
+    @Inject
+    lateinit var bellSanitizer: BellSanitizer
 
     private val backupManager: BackupManager by lazy {
         BackupManager(
             databaseFileProvider = { requireActivity().getDatabasePath(AppDatabase.DATABASE_NAME) },
             filesDirProvider = { requireActivity().filesDir },
-            onCloseDatabase = { dbOperations.close() },
-            onReopenDatabase = { dbOperations.reopen() },
+            onCloseDatabase = { databaseOwner.close() },
+            onReopenDatabase = { databaseOwner.reopen() },
         )
     }
 
@@ -164,7 +168,7 @@ class SettingsFragment : PreferenceFragmentCompat() {
                     backupManager.backup(os)
                 } else {
                     Log.e(TAG, "Could not open output stream for URI")
-                    dbOperations.reopen()
+                    databaseOwner.reopen()
                     false
                 }
             if (success) {
@@ -199,7 +203,7 @@ class SettingsFragment : PreferenceFragmentCompat() {
             }
             if (result == 0) {
                 launch {
-                    dbOperations.sanitizeBellUris()
+                    bellSanitizer.sanitizeBellUris()
                 }
                 Toast.makeText(requireActivity(), R.string.restore_success_text, Toast.LENGTH_SHORT).show()
             } else if (result == 1) {

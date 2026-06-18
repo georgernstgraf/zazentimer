@@ -20,7 +20,8 @@ import at.priv.graf.zazentimer.ZazenTimerActivity
 import at.priv.graf.zazentimer.base.SpinnerUtil
 import at.priv.graf.zazentimer.bo.Section
 import at.priv.graf.zazentimer.bo.Session
-import at.priv.graf.zazentimer.database.DbOperations
+import at.priv.graf.zazentimer.database.SectionRepository
+import at.priv.graf.zazentimer.database.SessionRepository
 import at.priv.graf.zazentimer.databinding.FragmentMainBinding
 import at.priv.graf.zazentimer.service.MeditationService
 import com.google.android.material.snackbar.Snackbar
@@ -44,7 +45,10 @@ class MainFragment : Fragment() {
     private var interactionsEnabled: Boolean = true
 
     @Inject
-    lateinit var dbOperations: DbOperations
+    lateinit var sessionRepo: SessionRepository
+
+    @Inject
+    lateinit var sectionRepo: SectionRepository
 
     interface OnFragmentInteractionListener {
         fun onStartPressed()
@@ -143,7 +147,7 @@ class MainFragment : Fragment() {
 
                         override fun onDragEnd() {
                             viewLifecycleOwner.lifecycleScope.launch {
-                                dbOperations.assignRanks(sessions)
+                                sessionRepo.assignRanks(sessions)
                             }
                         }
                     },
@@ -167,7 +171,7 @@ class MainFragment : Fragment() {
         super.onPause()
         if (!isAdded) return
         runBlocking {
-            dbOperations.assignRanks(sessions)
+            sessionRepo.assignRanks(sessions)
         }
     }
 
@@ -184,13 +188,13 @@ class MainFragment : Fragment() {
             session.name = getString(R.string.new_session_name)
             session.description = getString(R.string.new_session_description)
             lifecycleScope.launch {
-                dbOperations.insertSession(session)
+                sessionRepo.insertSession(session)
                 val section =
                     Section(
                         resources.getString(R.string.default_section_name),
                         at.priv.graf.zazentimer.Constants.DEFAULT_SECTION_DURATION_SECONDS,
                     )
-                dbOperations.insertSection(session, section)
+                sectionRepo.insertSection(session, section)
                 updateSessionList()
                 setSelectedSessionId(session.id)
                 navigateToSessionEdit(session.id)
@@ -209,7 +213,7 @@ class MainFragment : Fragment() {
             val s = sessions[position]
             lifecycleScope.launch {
                 val newId =
-                    dbOperations.duplicateSession(
+                    sessionRepo.duplicateSession(
                         s.id,
                         "${getString(R.string.copy_prefix)} ${s.name}",
                     )
@@ -229,7 +233,7 @@ class MainFragment : Fragment() {
                 .setMessage(R.string.text_question_delete_session)
                 .setPositiveButton(R.string.ok) { _, _ ->
                     lifecycleScope.launch {
-                        dbOperations.deleteSession(s.id)
+                        sessionRepo.deleteSession(s.id)
                         if (!isAdded) return@launch
                         updateSessionList()
                         selectLastSession()
@@ -255,9 +259,9 @@ class MainFragment : Fragment() {
             }
 
             lifecycleScope.launch {
-                val sections = dbOperations.readSections(sessionToDelete.id).toList()
-                val volumes = dbOperations.readBellVolumes(sessionToDelete.id)
-                dbOperations.deleteSession(sessionToDelete.id)
+                val sections = sectionRepo.readSections(sessionToDelete.id).toList()
+                val volumes = sessionRepo.readBellVolumes(sessionToDelete.id)
+                sessionRepo.deleteSession(sessionToDelete.id)
                 if (!isAdded) return@launch
                 Snackbar
                     .make(
@@ -266,7 +270,7 @@ class MainFragment : Fragment() {
                         Snackbar.LENGTH_LONG,
                     ).setAction(getString(R.string.action_undo)) {
                         lifecycleScope.launch {
-                            dbOperations.restoreSession(sessionToDelete, sections, volumes)
+                            sessionRepo.restoreSession(sessionToDelete, sections, volumes)
                             sessions.add(position, sessionToDelete)
                             sessionListAdapter?.insertItem(position, adapterItem)
                             setSelectedSessionId(sessionToDelete.id)
@@ -335,13 +339,13 @@ class MainFragment : Fragment() {
     }
 
     suspend fun suspendUpdateSessionList(restoreSelectionId: Int = -1) {
-        val readSessions = dbOperations.readSessions()
+        val readSessions = sessionRepo.readSessions()
         if (!isAdded) return
         val arrayList = ArrayList<SessionWithTimeInfo>()
         this@MainFragment.sessions.clear()
         for (session in readSessions) {
             var total = 0
-            for (section in dbOperations.readSections(session.id)) {
+            for (section in sectionRepo.readSections(session.id)) {
                 total += section.duration
             }
             arrayList.add(SessionWithTimeInfo(session, total))

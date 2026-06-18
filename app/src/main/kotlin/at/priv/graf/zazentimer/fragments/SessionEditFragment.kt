@@ -22,7 +22,9 @@ import at.priv.graf.zazentimer.ZazenTimerActivity
 import at.priv.graf.zazentimer.bo.Section
 import at.priv.graf.zazentimer.bo.Session
 import at.priv.graf.zazentimer.bo.SessionBellVolume
-import at.priv.graf.zazentimer.database.DbOperations
+import at.priv.graf.zazentimer.database.BellRepository
+import at.priv.graf.zazentimer.database.SectionRepository
+import at.priv.graf.zazentimer.database.SessionRepository
 import at.priv.graf.zazentimer.databinding.FragmentEditSessionBinding
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.transition.MaterialSharedAxis
@@ -46,7 +48,13 @@ class SessionEditFragment :
     private var adapter: SectionListAdapter? = null
 
     @Inject
-    lateinit var dbOperations: DbOperations
+    lateinit var sessionRepo: SessionRepository
+
+    @Inject
+    lateinit var sectionRepo: SectionRepository
+
+    @Inject
+    lateinit var bellRepo: BellRepository
 
     override fun onCreate(bundle: Bundle?) {
         super.onCreate(bundle)
@@ -163,7 +171,7 @@ class SessionEditFragment :
         super.onResume()
         Log.d(TAG, "sessionId=${this.sessionId}")
         viewLifecycleOwner.lifecycleScope.launch {
-            this@SessionEditFragment.session = dbOperations.readSession(this@SessionEditFragment.sessionId)
+            this@SessionEditFragment.session = sessionRepo.readSession(this@SessionEditFragment.sessionId)
             if (!isAdded) return@launch
             val s = this@SessionEditFragment.session
             if (s == null) {
@@ -172,8 +180,8 @@ class SessionEditFragment :
                 Log.i(TAG, "session found and valid")
                 _binding?.textSessionName?.setText(s.name)
                 _binding?.textSessionDescription?.setText(s.description)
-                this@SessionEditFragment.sections = dbOperations.readSections(s.id)
-                val allBells = dbOperations.getAllBells()
+                this@SessionEditFragment.sections = sectionRepo.readSections(s.id)
+                val allBells = bellRepo.getAllBells()
                 adapter?.bellNames = allBells.associate { it.id to it.name }
                 editHelper.initSectionList()
                 _binding?.buttonBellVolumes?.isEnabled = !this@SessionEditFragment.sections.isNullOrEmpty()
@@ -203,9 +211,9 @@ class SessionEditFragment :
             s.description = binding.textSessionDescription.text.toString()
             runBlocking {
                 for (section in sectionsToUpdate) {
-                    dbOperations.updateSection(section)
+                    sectionRepo.updateSection(section)
                 }
-                dbOperations.updateSession(s)
+                sessionRepo.updateSession(s)
             }
         }
     }
@@ -216,7 +224,7 @@ class SessionEditFragment :
         val deletedSection = a.getItem(position)
         val deletedPosition = position
         lifecycleScope.launch {
-            dbOperations.deleteSection(deletedSection.id.toLong())
+            sectionRepo.deleteSection(deletedSection.id.toLong())
         }
         a.removeItem(position)
 
@@ -224,7 +232,7 @@ class SessionEditFragment :
             .make(binding.list, getString(R.string.section_deleted, deletedSection), Snackbar.LENGTH_LONG)
             .setAction(getString(R.string.action_undo)) {
                 lifecycleScope.launch {
-                    dbOperations.insertSection(s, deletedSection)
+                    sectionRepo.insertSection(s, deletedSection)
                     a.insertItem(deletedPosition, deletedSection)
                 }
             }.show()
@@ -239,8 +247,8 @@ class SessionEditFragment :
         copy.bellcount = source.bellcount
         copy.bellpause = source.bellpause
         lifecycleScope.launch {
-            dbOperations.insertSection(s, copy)
-            sections = dbOperations.readSections(s.id)
+            sectionRepo.insertSection(s, copy)
+            sections = sectionRepo.readSections(s.id)
             editHelper.initSectionList()
         }
     }
@@ -249,7 +257,7 @@ class SessionEditFragment :
     private fun showBellVolumeDialog() {
         val s = session ?: return
         lifecycleScope.launch {
-            val secs = dbOperations.readSections(s.id)
+            val secs = sectionRepo.readSections(s.id)
             if (secs.isEmpty()) return@launch
             val seen = linkedSetOf<Int>()
             for (sec in secs) if (sec.bellId > 0) seen.add(sec.bellId)
@@ -283,7 +291,7 @@ class SessionEditFragment :
         session?.bellVolumes = volumes
         lifecycleScope.launch {
             session?.let { s ->
-                dbOperations.saveBellVolumes(s.id, volumes)
+                sessionRepo.saveBellVolumes(s.id, volumes)
             }
         }
     }
@@ -316,7 +324,7 @@ class SessionEditFragment :
                     DEFAULT_SECTION_DURATION_SECONDS,
                 )
             lifecycleScope.launch {
-                dbOperations.insertSection(s, section)
+                sectionRepo.insertSection(s, section)
                 navigateToSectionEdit(section.id)
             }
         }
