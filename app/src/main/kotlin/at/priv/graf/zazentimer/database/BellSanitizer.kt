@@ -155,6 +155,6 @@ class BellSanitizer
         }
 
         companion object {
-            private const val TAG = "ZMT_DbOperations"
+            private const val TAG = "ZMT_BellSanitizer"
         }
     }

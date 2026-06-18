@@ -9,11 +9,12 @@ ZazenTimer is an Android application for timing meditation sessions. It uses a f
 - **MeditationService**: Foreground service managing the `Meditation` state machine and player logic.
 - **MeditationRepository**: Interface implemented by `DbMeditationRepository` (singleton state holder providing `StateFlow` updates).
 - **MeditationViewModel**: Bridges the UI and Repository; manages service binding.
-- **DbOperations**: Room database wrapper with built-in `IdlingResource` for test synchronization.
+- **DatabaseOwner**: `@Singleton` Hilt-providable owner of the Room `AppDatabase` lifecycle (build, close/WAL-checkpoint, reopen, version). Exposes reopen-safe DAO accessors; the 4 repositories fetch DAOs dynamically from it (Hilt singletons can't be rebuilt, and close/reopen recycle the connection).
+- **SessionRepository / SectionRepository / BellRepository / BellSanitizer**: `@Singleton @Inject` repositories — the sole DB-access surface. Each takes `DatabaseOwner` + `@ApplicationContext`. `IdlingResource` for test synchronization is built into the repos via `withIdling`.
 - **ZazenClock**: Abstraction for system time to facilitate deterministic testing.
 - **BellPlayer**: Interface implemented by `BellPlayerManager` (manages pooled `Audio` instances for bell playback).
 - **AlarmScheduler**: Interface implemented by `SystemAlarmScheduler` (schedules/cancels exact alarms).
-- **BellVolumeConfigDialog**: DialogFragment in session editor for configuring per-bell-type volumes and system alarm volume. Uses Hilt EntryPoints for manual `DbOperations` injection. Controls `AudioManager.STREAM_ALARM` via a seekbar at the top of the dialog.
+- **BellVolumeConfigDialog**: DialogFragment in session editor for configuring per-bell-type volumes and system alarm volume. Uses Hilt EntryPoints for manual `BellRepository` injection. Controls `AudioManager.STREAM_ALARM` via a seekbar at the top of the dialog.
 
 ## Database (Room, V2)
 
@@ -25,10 +26,10 @@ ZazenTimer is an Android application for timing meditation sessions. It uses a f
 | `session_bell_volumes` | `id`, `fk_session`, `bellId`, `volume` | Per-session per-bell volume; unique on (fk_session, bellId); FKs to sessions and bells |
 
 ### Bell Resolution Flow (V2)
-1. **Startup**: `DbOperations.sanitizeBellUris()` seeds the 8 built-in bells from `BuiltinBells.definitions()` (pure config object, no in-memory state), syncs custom bells from filesDir, fixes stale URIs, and resolves any unresolvable entries. Runs EVERY startup inside `ZazenTimerActivity.onCreate()` lifecycleScope.
-2. **Demo bell lookup**: `BellDao.getBuiltinByName(name)` finds the demo bell by its localized name (`BuiltinBells.DEMO_BELL_NAME_RES`). Exposed via `BellRepository.getDemoBell()` and `DbOperations.getDemoBell()`. `fallbackBellId()` throws `IllegalStateException` if no builtin bell exists (no silent `0` FK corruption).
-3. **Section creation**: `DemoSessionCreator` resolves `bellId` via `getBellByUri(BuiltinBells.resourceUri(...))` before insert. `DbOperations.insertSection()` defaults bellId=0 to demo bell.
-4. **Section edit**: `SectionEditFragment` resolves bell via `bellId` from DB; bell list is populated from `dbOperations.getAllBells()`.
+1. **Startup**: `BellSanitizer.sanitizeBellUris()` seeds the 8 built-in bells from `BuiltinBells.definitions()` (pure config object, no in-memory state), syncs custom bells from filesDir, fixes stale URIs, and resolves any unresolvable entries. Runs EVERY startup inside `ZazenTimerActivity.onCreate()` lifecycleScope.
+2. **Demo bell lookup**: `BellDao.getBuiltinByName(name)` finds the demo bell by its localized name (`BuiltinBells.DEMO_BELL_NAME_RES`). Exposed via `BellRepository.getDemoBell()`. `fallbackBellId()` throws `IllegalStateException` if no builtin bell exists (no silent `0` FK corruption).
+3. **Section creation**: `DemoSessionCreator` resolves `bellId` via `getBellByUri(BuiltinBells.resourceUri(...))` before insert. `SectionRepository.insertSection()` defaults bellId=0 to demo bell.
+4. **Section edit**: `SectionEditFragment` resolves bell via `bellId` from DB; bell list is populated from `bellRepo.getAllBells()`.
 5. **Playback**: `BellPlayer.playBell()` resolves bell via `getBellById(bellId)` lambda → uses `BellEntity.uri` directly; fallback to demo bell URI from `BuiltinBells.resourceUri(context, DEMO_BELL_RAW_RES)`.
 6. **Volume**: `Meditation.getVolumeForSection()` matches `session_bell_volumes.bellId == section.bellId`
 7. **UI**: `deriveBellVolumesFromSections()` groups by `bellId` only.
@@ -70,7 +71,7 @@ Two Prisma-managed SQLite schemas coexist under `prisma/`:
 - **DemoSessionCreator** (`database/`) — Creates demo sessions on first launch; extracted from ZazenTimerActivity
 - **WakeLockManager** (`service/`) — Manages screen wake lock lifecycle; extracted from MeditationViewModel
 - **MeditationServiceState** (`service/`) — Static helper for `isServiceRunning()`; extracted from MeditationService
-- **EntityMapper** (`database/`) — Maps between BO and Entity types for Room; extracted from DbOperations
+- **EntityMapper** (`database/`) — Maps between BO and Entity types for Room; used by the repositories
 - **AlarmScheduler** (`service/`) — Interface implemented by `SystemAlarmScheduler` (schedules/cancels exact alarms for section transitions; extracted from Meditation)
 - **BellPlayer** (`service/`) — Interface implemented by `BellPlayerManager` (manages MediaPlayer lifecycle for bell playback; extracted from Meditation)
 - **TimerAnimator + AnimationRunner** (`views/`) — Animation state machine; extracted from TimerView
