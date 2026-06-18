@@ -1,7 +1,6 @@
 package at.priv.graf.zazentimer.database
 
 import android.content.Context
-import androidx.room.Room
 import at.priv.graf.zazentimer.bo.Section
 import at.priv.graf.zazentimer.bo.Session
 import at.priv.graf.zazentimer.bo.SessionBellVolume
@@ -14,87 +13,24 @@ import javax.inject.Singleton
 class DbOperations
     @Inject
     constructor(
+        private val databaseOwner: DatabaseOwner,
+        private val sessionRepo: SessionRepository,
+        private val sectionRepo: SectionRepository,
+        private val bellRepo: BellRepository,
+        private val bellSanitizer: BellSanitizer,
         @ApplicationContext context: Context,
     ) {
         private val context: Context = context.applicationContext
-        private var appDb: AppDatabase? = null
 
-        private var _sessionDao: SessionDao? = null
-        private val sessionDao: SessionDao get() = _sessionDao ?: error("Database is closed")
+        fun close() = databaseOwner.close()
 
-        private var _sectionDao: SectionDao? = null
-        private val sectionDao: SectionDao get() = _sectionDao ?: error("Database is closed")
+        fun reopen() = databaseOwner.reopen()
 
-        private var _sessionBellVolumeDao: SessionBellVolumeDao? = null
-        private val sessionBellVolumeDao: SessionBellVolumeDao
-            get() = _sessionBellVolumeDao ?: error("Database is closed")
-
-        private var _bellDao: BellDao? = null
-        private val bellDao: BellDao get() = _bellDao ?: error("Database is closed")
-
-        private lateinit var sessionRepo: SessionRepository
-        private lateinit var sectionRepo: SectionRepository
-        private lateinit var bellRepo: BellRepository
-        private lateinit var bellSanitizer: BellSanitizer
-
-        init {
-            openDatabase()
-        }
-
-        private fun openDatabase() {
-            appDb =
-                Room
-                    .databaseBuilder(
-                        context,
-                        AppDatabase::class.java,
-                        AppDatabase.DATABASE_NAME,
-                    ).addMigrations(AppDatabase.MIGRATION_1_2, AppDatabase.MIGRATION_2_3)
-                    .fallbackToDestructiveMigration(true)
-                    .addCallback(AppDatabase.ON_CREATE_CALLBACK)
-                    .build()
-            val db = appDb ?: return
-            _sessionDao = db.sessionDao()
-            _sectionDao = db.sectionDao()
-            _sessionBellVolumeDao = db.sessionBellVolumeDao()
-            _bellDao = db.bellDao()
-            sessionRepo = SessionRepository(db, sessionDao, sectionDao, sessionBellVolumeDao, bellDao, context)
-            sectionRepo = SectionRepository(sectionDao, bellDao, context)
-            bellRepo = BellRepository(db, bellDao, sectionDao, sessionBellVolumeDao, context)
-            bellSanitizer = BellSanitizer(bellDao, sectionDao, sessionBellVolumeDao, context)
-        }
-
-        fun close() {
-            appDb?.let {
-                // Force a checkpoint so pending WAL frames are flushed into the main DB file
-                // and the -wal is truncated. Without this, Room may leave a stale -wal that
-                // corrupts a restored DB of a different schema (see SQLITE_CORRUPT on restore).
-                runCatching {
-                    it.openHelper.writableDatabase
-                        .query("PRAGMA wal_checkpoint(TRUNCATE)")
-                        .close()
-                }
-                it.close()
-                appDb = null
-                _sessionDao = null
-                _sectionDao = null
-                _sessionBellVolumeDao = null
-                _bellDao = null
-            }
-        }
-
-        fun reopen() {
-            close()
-            openDatabase()
-        }
-
-        fun isConnected(): Boolean = appDb?.isOpen == true
+        fun isConnected(): Boolean = databaseOwner.isConnected()
 
         fun applicationContext(): Context = context
 
-        fun getActualDatabaseVersion(): Int {
-            val v = appDb?.openHelper?.readableDatabase?.version
-            return v ?: AppDatabase.CURRENT_VERSION
-        }
+        fun getActualDatabaseVersion(): Int = databaseOwner.getActualDatabaseVersion()
 
         suspend fun readSession(id: Int): Session? = sessionRepo.readSession(id)
 

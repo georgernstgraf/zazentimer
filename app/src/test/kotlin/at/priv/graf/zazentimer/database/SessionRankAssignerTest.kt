@@ -21,7 +21,16 @@ class SessionRankAssignerTest {
     fun setUp() {
         val context = ApplicationProvider.getApplicationContext<Context>()
         context.deleteDatabase(AppDatabase.DATABASE_NAME)
-        dbOps = DbOperations(context)
+        val owner = DatabaseOwner(context)
+        dbOps =
+            DbOperations(
+                owner,
+                SessionRepository(owner, context),
+                SectionRepository(owner, context),
+                BellRepository(owner, context),
+                BellSanitizer(owner, context),
+                context,
+            )
     }
 
     @After

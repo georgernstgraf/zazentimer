@@ -25,7 +25,16 @@ class DbOperationsBellFallbackTest {
     fun setUp() {
         context = ApplicationProvider.getApplicationContext()
         context.deleteDatabase(AppDatabase.DATABASE_NAME)
-        dbOps = DbOperations(context)
+        val owner = DatabaseOwner(context)
+        dbOps =
+            DbOperations(
+                owner,
+                SessionRepository(owner, context),
+                SectionRepository(owner, context),
+                BellRepository(owner, context),
+                BellSanitizer(owner, context),
+                context,
+            )
         runBlocking {
             val demoUri = BuiltinBells.resourceUri(context, BuiltinBells.DEMO_BELL_RAW_RES)
             val demoName = context.getString(BuiltinBells.DEMO_BELL_NAME_RES)
