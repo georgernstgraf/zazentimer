@@ -15,7 +15,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.Navigation
 import at.priv.graf.zazentimer.R
 import at.priv.graf.zazentimer.ZazenTimerActivity
-import at.priv.graf.zazentimer.database.DbOperations
+import at.priv.graf.zazentimer.database.SectionRepository
 import at.priv.graf.zazentimer.databinding.FragmentMeditationBinding
 import at.priv.graf.zazentimer.service.MeditationService
 import at.priv.graf.zazentimer.service.MeditationUiState
@@ -38,7 +38,7 @@ class MeditationFragment : Fragment() {
     private val buttonStateUpdater by lazy { ButtonStateUpdater() }
 
     @Inject
-    lateinit var dbOperations: DbOperations
+    lateinit var sectionRepository: SectionRepository
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -176,7 +176,7 @@ class MeditationFragment : Fragment() {
             return
         }
         lifecycleScope.launch {
-            if (dbOperations.readSections(sessionId).isEmpty()) {
+            if (sectionRepository.readSections(sessionId).isEmpty()) {
                 return@launch
             }
             viewModel?.setSelectedSessionId(sessionId)

@@ -5,7 +5,7 @@ import android.content.SharedPreferences
 import android.os.PowerManager
 import at.priv.graf.zazentimer.ZazenTimerActivity
 import at.priv.graf.zazentimer.bo.Section
-import at.priv.graf.zazentimer.database.DbOperations
+import at.priv.graf.zazentimer.database.SectionRepository
 import io.mockk.coEvery
 import io.mockk.every
 import io.mockk.mockk
@@ -21,7 +21,7 @@ import org.junit.Test
 class WakeLockManagerTest {
     private lateinit var mockContext: Context
     private lateinit var mockPowerManager: PowerManager
-    private lateinit var mockDbOperations: DbOperations
+    private lateinit var mockSectionRepository: SectionRepository
     private lateinit var mockPrefs: SharedPreferences
 
     @OptIn(ExperimentalCoroutinesApi::class)
@@ -31,7 +31,7 @@ class WakeLockManagerTest {
     fun setUp() {
         mockContext = mockk(relaxed = true)
         mockPowerManager = mockk(relaxed = true)
-        mockDbOperations = mockk(relaxed = true)
+        mockSectionRepository = mockk(relaxed = true)
         mockPrefs = mockk(relaxed = true)
 
         every { mockContext.getSystemService(Context.POWER_SERVICE) } returns mockPowerManager
@@ -51,12 +51,12 @@ class WakeLockManagerTest {
                     ZazenTimerActivity.PREF_DEFAULT_KEEP_SCREEN_ON,
                 )
             } returns true
-            coEvery { mockDbOperations.readSections(1) } returns emptyArray()
+            coEvery { mockSectionRepository.readSections(1) } returns emptyArray()
 
             val manager =
                 WakeLockManager(
                     mockContext,
-                    mockDbOperations,
+                    mockSectionRepository,
                     CoroutineDispatchers(main = testDispatcher),
                 )
             manager.acquire(mockPrefs, selectedSessionId = 1)
@@ -77,7 +77,7 @@ class WakeLockManagerTest {
             val manager =
                 WakeLockManager(
                     mockContext,
-                    mockDbOperations,
+                    mockSectionRepository,
                     CoroutineDispatchers(main = testDispatcher),
                 )
             manager.acquire(mockPrefs, selectedSessionId = 1)
@@ -90,7 +90,7 @@ class WakeLockManagerTest {
         val manager =
             WakeLockManager(
                 mockContext,
-                mockDbOperations,
+                mockSectionRepository,
                 CoroutineDispatchers(main = testDispatcher),
             )
         manager.release()
@@ -105,7 +105,7 @@ class WakeLockManagerTest {
                     ZazenTimerActivity.PREF_DEFAULT_KEEP_SCREEN_ON,
                 )
             } returns true
-            coEvery { mockDbOperations.readSections(1) } returns emptyArray()
+            coEvery { mockSectionRepository.readSections(1) } returns emptyArray()
             val mockWakeLock = mockk<PowerManager.WakeLock>(relaxed = true)
             every { mockPowerManager.newWakeLock(any(), any()) } returns mockWakeLock
             every { mockWakeLock.isHeld } returns true
@@ -113,7 +113,7 @@ class WakeLockManagerTest {
             val manager =
                 WakeLockManager(
                     mockContext,
-                    mockDbOperations,
+                    mockSectionRepository,
                     CoroutineDispatchers(main = testDispatcher),
                 )
             manager.acquire(mockPrefs, selectedSessionId = 1)
@@ -132,12 +132,12 @@ class WakeLockManagerTest {
                     ZazenTimerActivity.PREF_DEFAULT_KEEP_SCREEN_ON,
                 )
             } returns true
-            coEvery { mockDbOperations.readSections(1) } returns emptyArray()
+            coEvery { mockSectionRepository.readSections(1) } returns emptyArray()
 
             val manager =
                 WakeLockManager(
                     mockContext,
-                    mockDbOperations,
+                    mockSectionRepository,
                     CoroutineDispatchers(main = testDispatcher),
                 )
             manager.acquire(mockPrefs, selectedSessionId = 1)
@@ -155,7 +155,7 @@ class WakeLockManagerTest {
                     ZazenTimerActivity.PREF_DEFAULT_KEEP_SCREEN_ON,
                 )
             } returns true
-            coEvery { mockDbOperations.readSections(1) } returns
+            coEvery { mockSectionRepository.readSections(1) } returns
                 arrayOf(Section(duration = 600), Section(duration = 300))
             val mockWakeLock = mockk<PowerManager.WakeLock>(relaxed = true)
             every { mockPowerManager.newWakeLock(any(), any()) } returns mockWakeLock
@@ -163,7 +163,7 @@ class WakeLockManagerTest {
             val manager =
                 WakeLockManager(
                     mockContext,
-                    mockDbOperations,
+                    mockSectionRepository,
                     CoroutineDispatchers(main = testDispatcher),
                 )
             manager.acquire(mockPrefs, selectedSessionId = 1)

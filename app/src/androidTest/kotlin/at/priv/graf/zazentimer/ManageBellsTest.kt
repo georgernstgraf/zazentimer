@@ -4,7 +4,7 @@ import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.filters.LargeTest
 import androidx.test.platform.app.InstrumentationRegistry
 import at.priv.graf.zazentimer.database.BellEntity
-import at.priv.graf.zazentimer.database.DbOperations
+import at.priv.graf.zazentimer.database.BellRepository
 import at.priv.graf.zazentimer.screens.MainPage
 import at.priv.graf.zazentimer.screens.SettingsPage
 import dagger.hilt.android.testing.HiltAndroidTest
@@ -20,13 +20,13 @@ import javax.inject.Inject
 @LargeTest
 class ManageBellsTest : AbstractZazenTest() {
     @Inject
-    lateinit var dbOperations: DbOperations
+    lateinit var bellRepository: BellRepository
 
     @After
     fun tearDown() {
         runBlocking {
-            for (bell in dbOperations.getNonBuiltinBells()) {
-                dbOperations.deleteBellById(bell.id)
+            for (bell in bellRepository.getNonBuiltinBells()) {
+                bellRepository.deleteBellById(bell.id)
             }
         }
         val context = InstrumentationRegistry.getInstrumentation().targetContext
@@ -63,7 +63,7 @@ class ManageBellsTest : AbstractZazenTest() {
         val bellFile = File(context.filesDir, bellFileName)
         bellFile.writeText("dummy audio content")
         runBlocking {
-            dbOperations.insertBell(
+            bellRepository.insertBell(
                 BellEntity(
                     name = "test_bell",
                     uri = "file://${context.filesDir}/$bellFileName",

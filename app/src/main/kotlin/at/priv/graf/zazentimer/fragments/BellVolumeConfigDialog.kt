@@ -23,7 +23,7 @@ import at.priv.graf.zazentimer.R
 import at.priv.graf.zazentimer.audio.Audio
 import at.priv.graf.zazentimer.bo.SessionBellVolume
 import at.priv.graf.zazentimer.database.BellEntity
-import at.priv.graf.zazentimer.database.DbOperations
+import at.priv.graf.zazentimer.database.BellRepository
 import com.google.android.material.appbar.MaterialToolbar
 import dagger.hilt.EntryPoint
 import dagger.hilt.EntryPoints
@@ -35,10 +35,10 @@ class BellVolumeConfigDialog : DialogFragment() {
     @EntryPoint
     @InstallIn(SingletonComponent::class)
     interface BellVolumeConfigDialogEntryPoint {
-        fun dbOperations(): DbOperations
+        fun bellRepository(): BellRepository
     }
 
-    private lateinit var dbOperations: DbOperations
+    private lateinit var bellRepository: BellRepository
 
     private var audio: Audio? = null
     private var bellVolumes: MutableList<SessionBellVolume> = mutableListOf()
@@ -77,7 +77,7 @@ class BellVolumeConfigDialog : DialogFragment() {
                 requireContext().applicationContext,
                 BellVolumeConfigDialogEntryPoint::class.java,
             )
-        dbOperations = entryPoint.dbOperations()
+        bellRepository = entryPoint.bellRepository()
 
         sessionId = arguments?.getInt(ARG_SESSION_ID) ?: 0
         val isDark = arguments?.getBoolean(ARG_IS_DARK) ?: false
@@ -122,7 +122,7 @@ class BellVolumeConfigDialog : DialogFragment() {
         recyclerView.adapter = adapter
 
         lifecycleScope.launch {
-            val entities = dbOperations.getAllBells()
+            val entities = bellRepository.getAllBells()
             bellEntities = entities.associateBy { it.id }
             adapter.notifyDataSetChanged()
         }

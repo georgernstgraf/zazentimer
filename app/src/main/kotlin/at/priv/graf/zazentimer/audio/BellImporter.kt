@@ -6,7 +6,7 @@ import android.net.Uri
 import android.util.Log
 import at.priv.graf.zazentimer.backup.Streams
 import at.priv.graf.zazentimer.database.BellEntity
-import at.priv.graf.zazentimer.database.DbOperations
+import at.priv.graf.zazentimer.database.BellRepository
 import dagger.hilt.android.qualifiers.ApplicationContext
 import java.io.IOException
 import javax.inject.Inject
@@ -17,7 +17,7 @@ class BellImporter
     @Inject
     constructor(
         @ApplicationContext private val context: Context,
-        private val dbOperations: DbOperations,
+        private val bellRepository: BellRepository,
     ) {
         suspend fun import(uri: Uri): BellEntity? {
             val fileName = resolveBellFileName(uri)
@@ -39,7 +39,7 @@ class BellImporter
                         name = fileName.removePrefix("bell_"),
                         uri = bellUri,
                     )
-                val id = dbOperations.insertBell(entity)
+                val id = bellRepository.insertBell(entity)
                 entity.id = id.toInt()
                 entity
             } catch (e: IOException) {

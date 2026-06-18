@@ -6,7 +6,7 @@ import android.os.PowerManager
 import android.util.Log
 import at.priv.graf.zazentimer.Constants
 import at.priv.graf.zazentimer.ZazenTimerActivity
-import at.priv.graf.zazentimer.database.DbOperations
+import at.priv.graf.zazentimer.database.SectionRepository
 import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.SupervisorJob
@@ -19,7 +19,7 @@ class WakeLockManager
     @Inject
     constructor(
         @param:ApplicationContext private val context: Context,
-        private val dbOperations: DbOperations,
+        private val sectionRepository: SectionRepository,
         private val dispatchers: CoroutineDispatchers = CoroutineDispatchers(),
     ) {
         private val scope = CoroutineScope(SupervisorJob() + dispatchers.main)
@@ -39,7 +39,7 @@ class WakeLockManager
             }
             val powerManager = context.getSystemService(Context.POWER_SERVICE) as PowerManager
             scope.launch {
-                val totalSeconds = dbOperations.readSections(selectedSessionId).sumOf { it.duration }
+                val totalSeconds = sectionRepository.readSections(selectedSessionId).sumOf { it.duration }
                 wakeLock = null
                 wakeLock =
                     powerManager.newWakeLock(
