@@ -72,13 +72,13 @@ android {
         targetSdk = 36
         // === RELEASE INSTRUCTIONS ===
         // 1. Bump versionCode + versionName here
-        // 2. git commit -m "chore: bump version to X.Y.Z"
+        // 2. git add . && git commit -m "chore: bump version to X.Y.Z"
         // 3. git tag vX.Y.Z && git push origin main vX.Y.Z
         // 4. release.yml → signs + uploads to Play Store
         // 5. F-Droid auto-update picks up new tag automatically
         //    (regex: versionCode\s*=\s*(\d+), versionName\s*=\s*"(.+)")
-        versionCode = 3000900
-        versionName = "3.0.9"
+        versionCode = 3010000
+        versionName = "3.1.0"
 
         testInstrumentationRunner = "at.priv.graf.zazentimer.HiltTestRunner"
         testInstrumentationRunnerArguments["testTimeoutSeconds"] = "120"
