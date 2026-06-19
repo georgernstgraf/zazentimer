@@ -142,17 +142,19 @@ emulator_launch() {
 # emulator_wait_boot — wait for boot + services
 # $1 = serial
 # $2 = boot_timeout (default 300)
+# $3 = wait_for_device_timeout (default 180)
 # Messages to stderr. Returns 0 on success, 1 on failure.
 # ──────────────────────────────────────────────
 emulator_wait_boot() {
     local serial=$1
     local boot_timeout=${2:-300}
+    local wait_for_device_timeout=${3:-180}
 
-    echo "Waiting for device $serial to appear (timeout 120s)..." >&2
-    timeout -s KILL 120 adb -s "$serial" wait-for-device
+    echo "Waiting for device $serial to appear (timeout ${wait_for_device_timeout}s)..." >&2
+    timeout -s KILL "$wait_for_device_timeout" adb -s "$serial" wait-for-device
     local wait_exit=$?
     if [ $wait_exit -eq 124 ] || [ $wait_exit -eq 137 ]; then
-        echo "ERROR: adb wait-for-device timed out for $serial after 120s" >&2
+        echo "ERROR: adb wait-for-device timed out for $serial after ${wait_for_device_timeout}s" >&2
         return 1
     fi
 
