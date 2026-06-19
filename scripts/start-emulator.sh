@@ -239,7 +239,7 @@ if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
     done
 
     API_LEVEL="${API_LEVEL:-35}"
-    SNAPSHOT_FLAG="-no-snapshot-save"
+    SNAPSHOT_FLAG=""
     if [ "$COLD" = true ]; then
         SNAPSHOT_FLAG="-no-snapshot"
     fi

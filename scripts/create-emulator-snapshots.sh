@@ -5,7 +5,7 @@ set -euo pipefail
 # create-emulator-snapshots.sh
 #
 # Creates clean, app-free emulator snapshots for
-# fast test boot via -no-snapshot-save.
+# fast test boot from saved snapshot.
 #
 # Usage:
 #   scripts/create-emulator-snapshots.sh [api_level ...]
