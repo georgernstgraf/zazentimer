@@ -133,7 +133,6 @@ emulator_launch() {
         -gpu swiftshader_indirect \
         -no-boot-anim \
         -memory 2048 \
-        -audio-sndbuf 8192 \
         "$@" >> "$logfile" 2>&1 &
     echo $!
 }
