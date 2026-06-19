@@ -127,6 +127,10 @@ emulator_launch() {
     shift 3
     export ANDROID_SERIAL="$serial"
 
+    export QEMU_AUDIO_DRV="${QEMU_AUDIO_DRV:-pa}"
+    export QEMU_PA_SAMPLES="${QEMU_PA_SAMPLES:-8192}"
+    export QEMU_AUDIO_TIMER_PERIOD="${QEMU_AUDIO_TIMER_PERIOD:-200}"
+
     echo "Starting emulator ($avd, serial=$serial)..." >&2
     "$ANDROID_HOME/emulator/emulator" \
         -avd "$avd" \
