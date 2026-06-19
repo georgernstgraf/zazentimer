@@ -477,6 +477,7 @@ run_api_tests() {
             FAILED_APIS+=("$api_level")
             ERROR_LOGS+=("API $api_level: Emulator failed to boot")
             emulator_kill_serial "$serial"
+            emulator_purge_snapshot "$avd_name"
             return 0
         fi
     fi
@@ -523,6 +524,7 @@ run_api_tests() {
                     FAILED_APIS+=("$api_level")
                     ERROR_LOGS+=("API $api_level: freezer-provisioning reboot failed")
                     emulator_kill_serial "$serial"
+                    emulator_purge_snapshot "$avd_name"
                     return 0
                 fi
                 log_api "Freezer provisioning complete on $serial"
@@ -608,6 +610,9 @@ run_api_tests() {
     fi
 
     if [ "$is_emulator" = true ]; then
+        if [ $total_result -ne 0 ]; then
+            emulator_purge_snapshot "$avd_name"
+        fi
         emulator_kill_serial "$serial"
     fi
 }

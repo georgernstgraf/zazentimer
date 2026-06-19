@@ -146,7 +146,7 @@ class MainFragment : Fragment() {
                         }
 
                         override fun onDragEnd() {
-                            viewLifecycleOwner.lifecycleScope.launch {
+                            lifecycleScope.launch {
                                 sessionRepo.assignRanks(sessions)
                             }
                         }

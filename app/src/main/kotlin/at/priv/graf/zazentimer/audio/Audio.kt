@@ -65,6 +65,43 @@ class Audio(
         return result
     }
 
+    private fun reuseExistingPlayer(
+        player: MediaPlayer,
+        uri: Uri,
+        volume: Int,
+    ): MediaPlayer? {
+        Log.d(TAG, "Reusing existing Audio Player")
+        return try {
+            player.reset()
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                player.setAudioAttributes(
+                    AudioAttributes
+                        .Builder()
+                        .setUsage(AudioAttributes.USAGE_ALARM)
+                        .setContentType(AudioAttributes.CONTENT_TYPE_SONIFICATION)
+                        .build(),
+                )
+            } else {
+                @Suppress("DEPRECATION")
+                player.setAudioStreamType(AudioManager.STREAM_ALARM)
+            }
+            player.setDataSource(this.context, uri)
+            player.prepare()
+            val f = volume / VOLUME_SCALE
+            player.setVolume(f, f)
+            player
+        } catch (e: IOException) {
+            Log.e(TAG, "Error reusing MediaPlayer, falling back to new", e)
+            null
+        } catch (e: IllegalStateException) {
+            Log.e(TAG, "Error reusing MediaPlayer, falling back to new", e)
+            null
+        } catch (e: SecurityException) {
+            Log.e(TAG, "Error reusing MediaPlayer, falling back to new", e)
+            null
+        }
+    }
+
     private fun stopAndRelease() {
         Log.d(TAG, "stopAndRelease Audio Instance")
         this.player?.let { p ->
@@ -87,13 +124,18 @@ class Audio(
         uri: Uri?,
         volume: Int,
     ) {
-        if (this.player != null) {
-            stopAndRelease()
+        if (uri == null) {
+            Log.e(TAG, "Cannot play null URI")
+            return
         }
-        this.player =
-            withContext(Dispatchers.IO) {
-                uri?.let { preparePlayer(it, volume) }
+        withContext(Dispatchers.IO) {
+            val p = this@Audio.player
+            if (p != null) {
+                this@Audio.player = reuseExistingPlayer(p, uri, volume) ?: preparePlayer(uri, volume)
+            } else {
+                this@Audio.player = preparePlayer(uri, volume)
             }
+        }
         this.player?.let { p ->
             this.playing = true
             Log.d(TAG, "Start playing Bell")

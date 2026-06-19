@@ -206,7 +206,6 @@ class AudioTest {
             audio.playAbsVolume(uri2, 50)
         }
 
-        verify { anyConstructed<MediaPlayer>().stop() }
         verify { anyConstructed<MediaPlayer>().reset() }
         verify { anyConstructed<MediaPlayer>().setVolume(0.5f, 0.5f) }
         assertThat(audio.isPlaying()).isTrue()

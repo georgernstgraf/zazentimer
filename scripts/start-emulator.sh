@@ -133,6 +133,7 @@ emulator_launch() {
         -gpu swiftshader_indirect \
         -no-boot-anim \
         -memory 2048 \
+        -audio-sndbuf 8192 \
         "$@" >> "$logfile" 2>&1 &
     echo $!
 }
@@ -147,8 +148,13 @@ emulator_wait_boot() {
     local serial=$1
     local boot_timeout=${2:-300}
 
-    echo "Waiting for device $serial to appear..." >&2
-    adb -s "$serial" wait-for-device
+    echo "Waiting for device $serial to appear (timeout 120s)..." >&2
+    timeout -s KILL 120 adb -s "$serial" wait-for-device
+    local wait_exit=$?
+    if [ $wait_exit -eq 124 ] || [ $wait_exit -eq 137 ]; then
+        echo "ERROR: adb wait-for-device timed out for $serial after 120s" >&2
+        return 1
+    fi
 
     echo "Waiting for boot to complete..." >&2
     local boot_elapsed=0
