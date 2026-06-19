@@ -132,6 +132,7 @@ declare -A API_BUILD_TIME
 declare -A API_BUILD_RESULT
 declare -A API_TEST_PROGRESS
 declare -A API_TEST_FAILED_COUNT
+declare -A API_TEST_TIME
 declare -A API_FAILED_TESTS
 declare -A API_ERROR_PATTERNS
 declare -A API_LOG_FILE
@@ -155,33 +156,74 @@ for f in "${api_logs[@]}"; do
         API_BUILD_RESULT[$api]="PASS"
     fi
 
-    progress=$(grep -oP 'Tests \K[0-9]+/[0-9]+ completed' "$f" | tail -1)
-    if [ -n "$progress" ]; then
-        p_n=${progress%/*}
-        finished=$(grep -oP 'Finished \K[0-9]+' "$f" | tail -1)
-        if [ -n "$finished" ] && [ "$finished" -gt "$p_n" ] 2>/dev/null; then
-            progress="${finished}/${finished} completed"
+    # Tier 1: am instrument partial failure — "Tests run: N,  Failures: F"
+    tests_run=$(grep -oP 'Tests run:\s*\K[0-9]+' "$f" | tail -1)
+    if [ -n "$tests_run" ]; then
+        failures_run=$(grep -oP 'Tests run: [0-9]+,\s*Failures:\s*\K[0-9]+' "$f" | tail -1)
+        if [ "${failures_run:-0}" -gt 0 ] 2>/dev/null; then
+            API_TEST_PROGRESS[$api]="$tests_run tests, ${failures_run:-0} failed"
+        else
+            API_TEST_PROGRESS[$api]="$tests_run completed"
         fi
     else
-        finished=$(grep -oP 'Finished \K[0-9]+' "$f" | tail -1)
-        if [ -z "$finished" ]; then
-            finished=$(grep -oP 'OK \(\K[0-9]+' "$f" | tail -1)
+        # Tier 2: am instrument pass — sum all "OK (N tests)" across phases
+        total_ok=0
+        while IFS= read -r n; do
+            [ -n "$n" ] && total_ok=$((total_ok + n))
+        done < <(grep -oP 'OK \(\K[0-9]+' "$f" || true)
+        if [ "$total_ok" -gt 0 ] 2>/dev/null; then
+            API_TEST_PROGRESS[$api]="$total_ok completed"
+        else
+            # Tier 3: Gradle runner fallback
+            progress=$(grep -oP 'Tests \K[0-9]+/[0-9]+ completed' "$f" | tail -1)
+            if [ -n "$progress" ]; then
+                p_n=${progress%/*}
+                finished=$(grep -oP 'Finished \K[0-9]+' "$f" | tail -1)
+                if [ -n "$finished" ] && [ "$finished" -gt "$p_n" ] 2>/dev/null; then
+                    progress="${finished}/${finished} completed"
+                fi
+            else
+                finished=$(grep -oP 'Finished \K[0-9]+' "$f" | tail -1)
+                [ -n "$finished" ] && progress="${finished}/${finished} completed"
+            fi
+            [ -n "$progress" ] && API_TEST_PROGRESS[$api]=$progress
         fi
-        [ -n "$finished" ] && progress="${finished}/${finished} completed"
     fi
-    [ -n "$progress" ] && API_TEST_PROGRESS[$api]=$progress
+
+    # Parse am instrument run time: "Time: N.N"
+    test_time=$(grep -oP 'Time:\s*\K[0-9.]+' "$f" | tail -1)
+    [ -n "$test_time" ] && API_TEST_TIME[$api]="${test_time}s"
 
     failed_count=$(grep -oP '\(([0-9]+) failed\)' "$f" | tail -1 | grep -oP '[0-9]+')
     [ -n "$failed_count" ] && API_TEST_FAILED_COUNT[$api]=$failed_count
 
     failed_tests=""
+    # am instrument format: "Error in testName(ClassName):"
     while IFS= read -r ft; do
-        test_name=$(echo "$ft" | sed 's/\x1b\[[0-9;]*m//g' | grep -oP '[\w.]+Test > \K[\w]+' || true)
+        test_name=$(echo "$ft" | grep -oP 'Error in \K\w+' || true)
         if [ -n "$test_name" ]; then
             [ -n "$failed_tests" ] && failed_tests+=", "
             failed_tests+="$test_name"
         fi
-    done < <(grep "FAILED" "$f" | grep -v "BUILD FAILED" | grep -v "Execute " | grep -v "FAIL:" || true)
+    done < <(grep "^Error in " "$f" || true)
+    # am instrument format: "Process crashed while executing testName(ClassName):"
+    while IFS= read -r ft; do
+        test_name=$(echo "$ft" | grep -oP 'Process crashed while executing \K\w+' || true)
+        if [ -n "$test_name" ]; then
+            [ -n "$failed_tests" ] && failed_tests+=", "
+            failed_tests+="crash:$test_name"
+        fi
+    done < <(grep "Process crashed while executing" "$f" || true)
+    # Gradle runner fallback: "ClassTest > methodName FAILED"
+    if [ -z "$failed_tests" ]; then
+        while IFS= read -r ft; do
+            test_name=$(echo "$ft" | sed 's/\x1b\[[0-9;]*m//g' | grep -oP '[\w.]+Test > \K[\w]+' || true)
+            if [ -n "$test_name" ]; then
+                [ -n "$failed_tests" ] && failed_tests+=", "
+                failed_tests+="$test_name"
+            fi
+        done < <(grep "FAILED" "$f" | grep -v "BUILD FAILED" | grep -v "Execute " | grep -v "FAIL:" || true)
+    fi
     [ -n "$failed_tests" ] && API_FAILED_TESTS[$api]=$failed_tests
 
     errors=""
@@ -314,14 +356,14 @@ separator
 out "## Summary"
 separator
 
-out "| API | Result | Tests | Build Time | Failed Tests | Error Patterns |"
-out "|-----|--------|-------|------------|--------------|----------------|"
+out "| API | Result | Tests | Time | Failed Tests | Error Patterns |"
+out "|-----|--------|-------|------|--------------|----------------|"
 
 any_fail=0
 for api in "${api_order[@]}"; do
     result="${API_RESULT[$api]:-UNKNOWN}"
     progress="${API_TEST_PROGRESS[$api]:---}"
-    bt="${API_BUILD_TIME[$api]:---}"
+    bt="${API_TEST_TIME[$api]:---}"
     ft="${API_FAILED_TESTS[$api]:-—}"
     ep="${API_ERROR_PATTERNS[$api]:-—}"
 
