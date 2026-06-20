@@ -1,7 +1,6 @@
 package at.priv.graf.zazentimer.backup
 
 import android.util.Log
-import at.priv.graf.zazentimer.Constants
 import at.priv.graf.zazentimer.database.AppDatabase
 import java.io.File
 import java.io.FileInputStream
@@ -170,8 +169,6 @@ class BackupManager(
     }
 
     companion object {
-        internal const val BACKUP_BUFFER_SIZE = Constants.BACKUP_BUFFER_SIZE
-
         internal const val ERROR_VERSION_TOO_HIGH = 3
 
         private const val TAG = "ZMT_BackupManager"
@@ -182,7 +179,7 @@ class BackupManager(
         ): Boolean =
             try {
                 FileInputStream(file).use { fis ->
-                    Streams.copy(fis, outputStream, BACKUP_BUFFER_SIZE)
+                    fis.copyTo(outputStream)
                 }
                 true
             } catch (e: IOException) {
@@ -199,7 +196,7 @@ class BackupManager(
         ): Boolean =
             try {
                 FileOutputStream(file).use { fos ->
-                    Streams.copy(inputStream, fos, BACKUP_BUFFER_SIZE)
+                    inputStream.copyTo(fos)
                 }
                 true
             } catch (e: IOException) {

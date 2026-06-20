@@ -4,7 +4,6 @@ import android.content.Context
 import android.database.Cursor
 import android.net.Uri
 import android.util.Log
-import at.priv.graf.zazentimer.backup.Streams
 import at.priv.graf.zazentimer.database.BellEntity
 import at.priv.graf.zazentimer.database.BellRepository
 import dagger.hilt.android.qualifiers.ApplicationContext
@@ -30,7 +29,7 @@ class BellImporter
                 val output = context.openFileOutput(fileName, 0)
                 input.use { inputStream ->
                     output.use { outputStream ->
-                        Streams.copy(inputStream, outputStream)
+                        inputStream.copyTo(outputStream)
                     }
                 }
                 val bellUri = "file://${context.filesDir}/$fileName"
