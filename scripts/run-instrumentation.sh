@@ -509,28 +509,32 @@ run_api_tests() {
     clear_logcat "$serial"
 
     if [ "$api_level" -ge 31 ]; then
-        local freezer_state
-        freezer_state=$(adb -s "$serial" shell settings get global cached_apps_freezer 2>/dev/null | tr -d '\r\n')
-        if [ "$freezer_state" != "disabled" ]; then
-            log_api "Disabling app freezer on $serial (was: '${freezer_state:-unset}')..."
+        if [ "$is_emulator" = true ]; then
+            log_api "Disabling app freezer on $serial (emulator — snapshot state is untrustworthy)..."
             adb -s "$serial" shell settings put global cached_apps_freezer disabled 2>/dev/null || true
             adb -s "$serial" shell device_config put activity_manager_native_boot use_freezer false 2>/dev/null || true
-            if [ "$is_emulator" = true ]; then
-                log_api "Rebooting $serial so the boot-time freezer flag takes effect (one-time provisioning)..."
-                adb -s "$serial" reboot 2>/dev/null || true
-                if ! emulator_wait_boot "$serial"; then
-                    log_api "FAIL: $serial did not return after freezer-provisioning reboot"
-                    RESULTS[$api_level]=1
-                    FAILED_APIS+=("$api_level")
-                    ERROR_LOGS+=("API $api_level: freezer-provisioning reboot failed")
-                    emulator_kill_serial "$serial"
-                    emulator_purge_snapshot "$avd_name"
-                    return 0
-                fi
-                log_api "Freezer provisioning complete on $serial"
+            log_api "Rebooting $serial so the boot-time freezer flag takes effect..."
+            adb -s "$serial" reboot 2>/dev/null || true
+            if ! emulator_wait_boot "$serial"; then
+                log_api "FAIL: $serial did not return after freezer-provisioning reboot"
+                RESULTS[$api_level]=1
+                FAILED_APIS+=("$api_level")
+                ERROR_LOGS+=("API $api_level: freezer-provisioning reboot failed")
+                emulator_kill_serial "$serial"
+                emulator_purge_snapshot "$avd_name"
+                return 0
             fi
+            log_api "Freezer provisioning complete on $serial"
         else
-            log_api "App freezer already disabled on $serial — skipping provisioning"
+            local freezer_state
+            freezer_state=$(adb -s "$serial" shell settings get global cached_apps_freezer 2>/dev/null | tr -d '\r\n')
+            if [ "$freezer_state" != "disabled" ]; then
+                log_api "Disabling app freezer on $serial (was: '${freezer_state:-unset}')..."
+                adb -s "$serial" shell settings put global cached_apps_freezer disabled 2>/dev/null || true
+                adb -s "$serial" shell device_config put activity_manager_native_boot use_freezer false 2>/dev/null || true
+            else
+                log_api "App freezer already disabled on $serial — skipping provisioning"
+            fi
         fi
     fi
 
