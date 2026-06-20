@@ -235,7 +235,7 @@
                 android:layout_height="40dp"
                 android:layout_marginLeft="@dimen/caption_margin"
                 android:layout_marginStart="@dimen/caption_margin"
-                android:src="@drawable/button_plus"
+                android:src="@drawable/ic_plus"
                 android:scaleType="fitCenter"
                 android:contentDescription="@null"
                 tools:ignore="ContentDescription"/>
