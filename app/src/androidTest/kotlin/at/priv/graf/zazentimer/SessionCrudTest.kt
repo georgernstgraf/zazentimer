@@ -39,7 +39,7 @@ class SessionCrudTest : AbstractZazenTest() {
     }
 
     @Test
-    fun testOpenEditSession() {
+    fun openEditSession_navigatesToEdit() {
         MainPage()
             .verifyMainScreenIsDisplayed()
             .clickSessionOverflowAction(0, R.string.menu_edit_session)
@@ -52,7 +52,7 @@ class SessionCrudTest : AbstractZazenTest() {
     }
 
     @Test
-    fun testUpdateSessionMetadata() {
+    fun updateSessionMetadata_savesChanges() {
         var demoSessionName = "Zazen and Kinhin"
         activityRule.scenario.onActivity { demoSessionName = it.getString(R.string.demo_sess1_name) }
 
@@ -80,7 +80,7 @@ class SessionCrudTest : AbstractZazenTest() {
     }
 
     @Test
-    fun testDeleteSession() {
+    fun deleteSession_removesSession() {
         MainPage()
             .verifyMainScreenIsDisplayed()
             .clickSessionOverflowAction(0, R.string.menu_delete_session)
@@ -99,7 +99,7 @@ class SessionCrudTest : AbstractZazenTest() {
     }
 
     @Test
-    fun testDeleteCancel() {
+    fun deleteCancel_keepsSession() {
         MainPage()
             .verifyMainScreenIsDisplayed()
             .clickSessionOverflowAction(0, R.string.menu_delete_session)

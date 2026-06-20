@@ -29,7 +29,7 @@ class MainScreenNavigationTest : AbstractZazenTest() {
     }
 
     @Test
-    fun testSessionSelectionHighlight() {
+    fun sessionSelectionHighlight_selectsSession() {
         MainPage()
             .verifyMainScreenIsDisplayed()
             .selectSessionByPosition(0)
@@ -39,7 +39,7 @@ class MainScreenNavigationTest : AbstractZazenTest() {
     }
 
     @Test
-    fun testAddSessionViaMenu() {
+    fun addSessionViaMenu_addsSession() {
         MainPage()
             .verifyMainScreenIsDisplayed()
             .clickToolbarOverflowItem(R.string.menu_add_session)
@@ -49,7 +49,7 @@ class MainScreenNavigationTest : AbstractZazenTest() {
     }
 
     @Test
-    fun testBackArrowFromMeditation() {
+    fun backArrowFromMeditation_isBlocked() {
         activityRule.scenario.onActivity { activity ->
             activity.showMeditationScreen()
         }
@@ -66,7 +66,7 @@ class MainScreenNavigationTest : AbstractZazenTest() {
     }
 
     @Test
-    fun testBackArrowFromEdit() {
+    fun backArrowFromEdit_navigatesBack() {
         MainPage()
             .verifyMainScreenIsDisplayed()
             .clickSessionOverflowAction(0, R.string.menu_edit_session)
@@ -78,7 +78,7 @@ class MainScreenNavigationTest : AbstractZazenTest() {
     }
 
     @Test
-    fun testScreenRotation() {
+    fun screenRotation_preservesState() {
         MainPage()
             .verifyMainScreenIsDisplayed()
             .selectSessionByPosition(0)

@@ -58,7 +58,7 @@ class MainScreenDeadStateTest : AbstractZazenTest() {
     }
 
     @Test
-    fun testButStartEnabledAfterStoppingMeditation() {
+    fun butStart_enabledAfterStoppingMeditation() {
         var stopText = "Stop"
         activityRule.scenario.onActivity { stopText = it.getString(R.string.stop_meditation_stop) }
 

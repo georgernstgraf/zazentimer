@@ -43,7 +43,7 @@ class WakeLockManagerTest {
     }
 
     @Test
-    fun `acquire when screen on pref true creates wake lock`() =
+    fun acquire_whenScreenOnPrefTrueCreatesWakeLock() =
         runTest {
             every {
                 mockPrefs.getBoolean(
@@ -65,7 +65,7 @@ class WakeLockManagerTest {
         }
 
     @Test
-    fun `acquire when screen on pref false does not create wake lock`() =
+    fun acquire_whenScreenOnPrefFalseDoesNotCreateWakeLock() =
         runTest {
             every {
                 mockPrefs.getBoolean(
@@ -86,7 +86,7 @@ class WakeLockManagerTest {
         }
 
     @Test
-    fun `release does not crash when no lock acquired`() {
+    fun release_doesNotCrashWhenNoLockAcquired() {
         val manager =
             WakeLockManager(
                 mockContext,
@@ -97,7 +97,7 @@ class WakeLockManagerTest {
     }
 
     @Test
-    fun `release after acquire releases the held lock`() =
+    fun release_afterAcquireReleasesTheHeldLock() =
         runTest {
             every {
                 mockPrefs.getBoolean(
@@ -124,7 +124,7 @@ class WakeLockManagerTest {
         }
 
     @Test
-    fun `acquire twice creates new wake lock each time`() =
+    fun acquire_twiceCreatesNewWakeLockEachTime() =
         runTest {
             every {
                 mockPrefs.getBoolean(
@@ -147,7 +147,7 @@ class WakeLockManagerTest {
         }
 
     @Test
-    fun `acquire calculates wake lock timeout from section durations`() =
+    fun acquire_calculatesWakeLockTimeoutFromSectionDurations() =
         runTest {
             every {
                 mockPrefs.getBoolean(

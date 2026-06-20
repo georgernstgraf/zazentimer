@@ -42,7 +42,7 @@ class SettingsTest : AbstractZazenTest() {
     }
 
     @Test
-    fun testOpenSettings() {
+    fun openSettings_navigatesToSettings() {
         MainPage()
             .verifyMainScreenIsDisplayed()
             .clickToolbarOverflowItem(R.string.menu_settings)
@@ -53,7 +53,7 @@ class SettingsTest : AbstractZazenTest() {
     }
 
     @Test
-    fun testThemeToggle() {
+    fun themeToggle_switchesMode() {
         MainPage()
             .verifyMainScreenIsDisplayed()
             .clickToolbarOverflowItem(R.string.menu_settings)
@@ -68,7 +68,7 @@ class SettingsTest : AbstractZazenTest() {
     }
 
     @Test
-    fun testBrightnessAdjustment() {
+    fun brightnessAdjustment_updatesBrightness() {
         MainPage()
             .verifyMainScreenIsDisplayed()
             .clickToolbarOverflowItem(R.string.menu_settings)
@@ -88,7 +88,7 @@ class SettingsTest : AbstractZazenTest() {
     }
 
     @Test
-    fun testBackup() {
+    fun backup_createsBackup() {
         Intents.init()
         try {
             intending(hasAction(Intent.ACTION_CREATE_DOCUMENT))
@@ -111,7 +111,7 @@ class SettingsTest : AbstractZazenTest() {
     }
 
     @Test
-    fun testRestore() {
+    fun restore_restoresData() {
         Intents.init()
         try {
             intending(hasAction(Intent.ACTION_OPEN_DOCUMENT))

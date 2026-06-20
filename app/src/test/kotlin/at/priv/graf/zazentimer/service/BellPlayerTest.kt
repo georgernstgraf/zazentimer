@@ -56,7 +56,7 @@ class BellPlayerTest {
     }
 
     @Test
-    fun `playBells acquires WakeLock even without bells`() {
+    fun playBells_acquiresWakeLockEvenWithoutBells() {
         runTest {
             player.playBells(
                 Section(name = "Zazen", duration = 600),
@@ -71,7 +71,7 @@ class BellPlayerTest {
     }
 
     @Test
-    fun `playBells releases WakeLock`() {
+    fun playBells_releasesWakeLock() {
         runTest {
             player.playBells(
                 Section(name = "Zazen", duration = 600),
@@ -86,7 +86,7 @@ class BellPlayerTest {
     }
 
     @Test
-    fun `playBells calls onDone when finished`() {
+    fun playBells_callsOnDoneWhenFinished() {
         var onDoneCalled = false
 
         runTest {
@@ -103,7 +103,7 @@ class BellPlayerTest {
     }
 
     @Test
-    fun `playBells falls back to demo bell when getBellById returns null`() {
+    fun playBells_fallsBackToDemoBellWhenGetBellByIdReturnsNull() {
         runTest {
             player.playBells(
                 Section(name = "Zazen", duration = 600),
@@ -118,7 +118,7 @@ class BellPlayerTest {
     }
 
     @Test
-    fun `playBells falls back to demo bell when getBellById returns null (explicit)`() =
+    fun playBells_fallsBackToDemoBellWhenGetBellByIdReturnsNull_explicit() =
         runTest {
             player.playBells(
                 Section(name = "Zazen", duration = 600),
@@ -131,18 +131,18 @@ class BellPlayerTest {
         }
 
     @Test
-    fun `isPlaying returns false when no bells have been played`() {
+    fun isPlaying_returnsFalseWhenNoBellsHaveBeenPlayed() {
         assert(!player.isPlaying())
     }
 
     @Test
-    fun `release does not crash`() =
+    fun release_doesNotCrash() =
         runTest {
             player.release()
         }
 
     @Test
-    fun `playBells handles stoppingCheck returning true immediately`() {
+    fun playBells_handlesStoppingCheckReturningTrueImmediately() {
         runTest {
             player.playBells(
                 Section(name = "Zazen", duration = 600),
@@ -155,7 +155,7 @@ class BellPlayerTest {
     }
 
     @Test
-    fun `playBells spawns concurrent Audio instances when previous gongs are still playing`() =
+    fun playBells_spawnsConcurrentAudioInstancesWhenPreviousGongsAreStillPlaying() =
         runTest {
             every { anyConstructed<Audio>().isPlaying() } returns true
 

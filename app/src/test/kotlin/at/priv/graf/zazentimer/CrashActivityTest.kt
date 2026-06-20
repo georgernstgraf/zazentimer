@@ -17,7 +17,7 @@ import org.robolectric.shadows.ShadowDialog
 @Config(sdk = [29])
 class CrashActivityTest {
     @Test
-    fun testCrashDialogDisplaysExceptionDetails() {
+    fun crashDialog_displaysExceptionDetails() {
         val context = ApplicationProvider.getApplicationContext<Context>()
         val exception = IllegalStateException("Simulated fatal crash")
         val intent = CrashActivity.createIntent(context, exception)
@@ -43,7 +43,7 @@ class CrashActivityTest {
     }
 
     @Test
-    fun testCreateIntentPopulatesExtras() {
+    fun createIntent_populatesExtras() {
         val context = ApplicationProvider.getApplicationContext<Context>()
         val exception = RuntimeException("Test error")
 

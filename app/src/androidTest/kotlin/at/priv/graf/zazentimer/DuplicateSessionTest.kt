@@ -32,7 +32,7 @@ class DuplicateSessionTest : AbstractZazenTest() {
     }
 
     @Test
-    fun testDuplicateSessionDoesNotCrash() {
+    fun duplicateSession_doesNotCrash() {
         MainPage()
             .verifyMainScreenIsDisplayed()
             .clickSessionOverflowAtPosition(0)
@@ -41,7 +41,7 @@ class DuplicateSessionTest : AbstractZazenTest() {
     }
 
     @Test
-    fun testDuplicateSessionCreatesCopyWithPrefix() {
+    fun duplicateSession_createsCopyWithPrefix() {
         MainPage()
             .verifyMainScreenIsDisplayed()
             .clickSessionOverflowAtPosition(0)

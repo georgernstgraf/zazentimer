@@ -35,7 +35,7 @@ class SectionEditTest : AbstractZazenTest() {
     }
 
     @Test
-    fun testAddNewSection() {
+    fun addNewSection_addsSection() {
         MainPage()
             .verifyMainScreenIsDisplayed()
             .clickSessionOverflowAction(0, R.string.menu_edit_session)
@@ -52,7 +52,7 @@ class SectionEditTest : AbstractZazenTest() {
     }
 
     @Test
-    fun testEditSectionConfig() {
+    fun editSectionConfig_opensEditor() {
         MainPage()
             .verifyMainScreenIsDisplayed()
             .clickSessionOverflowAction(0, R.string.menu_edit_session)
@@ -78,7 +78,7 @@ class SectionEditTest : AbstractZazenTest() {
     }
 
     @Test
-    fun testBellSoundPlayback() {
+    fun bellSoundPlayback_playsSound() {
         MainPage()
             .verifyMainScreenIsDisplayed()
             .clickSessionOverflowAction(0, R.string.menu_edit_session)

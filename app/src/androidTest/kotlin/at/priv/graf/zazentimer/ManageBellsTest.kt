@@ -64,7 +64,7 @@ class ManageBellsTest : AbstractZazenTest() {
     }
 
     @Test
-    fun testNavigateToManageBells() {
+    fun navigateToManageBells_navigates() {
         MainPage()
             .verifyMainScreenIsDisplayed()
             .clickToolbarOverflowItem(R.string.menu_settings)
@@ -74,7 +74,7 @@ class ManageBellsTest : AbstractZazenTest() {
     }
 
     @Test
-    fun testEmptyState() {
+    fun emptyState_displaysDefaultMessage() {
         MainPage()
             .verifyMainScreenIsDisplayed()
             .clickToolbarOverflowItem(R.string.menu_settings)
@@ -84,7 +84,7 @@ class ManageBellsTest : AbstractZazenTest() {
     }
 
     @Test
-    fun testDeleteCustomBell() {
+    fun deleteCustomBell_removesBell() {
         val context = InstrumentationRegistry.getInstrumentation().targetContext
         val bellFileName = "bell_test_bell.mp3"
         val bellFile = File(context.filesDir, bellFileName)

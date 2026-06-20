@@ -128,7 +128,7 @@ class MeditationServiceTest : AbstractZazenTest() {
     private fun isDialogVisible(titleText: String): Boolean = device.hasObject(By.text(titleText))
 
     @Test
-    fun testStopMeditationConfirmation() {
+    fun stopMeditationConfirmation_showsDialog() {
         var demoSessionName = "Zazen and Kinhin"
         activityRule.scenario.onActivity { demoSessionName = it.getString(R.string.demo_sess1_name) }
 
@@ -157,7 +157,7 @@ class MeditationServiceTest : AbstractZazenTest() {
     }
 
     @Test
-    fun testTimerCountdown() {
+    fun timerCountdown_countsCorrectly() {
         var demoSessionName = "Zazen and Kinhin"
         activityRule.scenario.onActivity { demoSessionName = it.getString(R.string.demo_sess1_name) }
 

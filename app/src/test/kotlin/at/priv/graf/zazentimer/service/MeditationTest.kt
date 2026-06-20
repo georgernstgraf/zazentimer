@@ -126,7 +126,7 @@ class MeditationTest {
     )
 
     @Test
-    fun `initial state has correct total session time`() {
+    fun initialState_hasCorrectTotalSessionTime() {
         assertEquals(900, meditation.getTotalSessionTime())
         assertEquals(0, meditation.getCurrentSessionTime())
         assertFalse(meditation.isPaused())
@@ -134,7 +134,7 @@ class MeditationTest {
     }
 
     @Test
-    fun `start sets alarm for first section and notifies repository`() =
+    fun start_setsAlarmForFirstSectionAndNotifiesRepository() =
         runTest(testDispatcher) {
             meditation.start()
 
@@ -147,7 +147,7 @@ class MeditationTest {
         }
 
     @Test
-    fun `start is idempotent`() =
+    fun start_isIdempotent() =
         runTest(testDispatcher) {
             meditation.start()
             meditation.start()
@@ -158,7 +158,7 @@ class MeditationTest {
         }
 
     @Test
-    fun `ticker fires repository update every second after start`() =
+    fun ticker_firesRepositoryUpdateEverySecondAfterStart() =
         runTest(testDispatcher) {
             meditation.start()
             advanceTimeBy(1999)
@@ -168,7 +168,7 @@ class MeditationTest {
         }
 
     @Test
-    fun `pause cancels alarm and sets paused flag`() =
+    fun pause_cancelsAlarmAndSetsPausedFlag() =
         runTest(testDispatcher) {
             meditation.start()
             meditation.pause()
@@ -179,7 +179,7 @@ class MeditationTest {
         }
 
     @Test
-    fun `pausing stops the ticker`() =
+    fun pausing_stopsTheTicker() =
         runTest(testDispatcher) {
             meditation.start()
             advanceTimeBy(2000)
@@ -192,7 +192,7 @@ class MeditationTest {
         }
 
     @Test
-    fun `resume restarts ticker and re-arms alarm with correct offset`() =
+    fun resume_restartsTickerAndReArmsAlarmWithCorrectOffset() =
         runTest(testDispatcher) {
             meditation.start()
             mockClock.now = 2000L
@@ -211,7 +211,7 @@ class MeditationTest {
         }
 
     @Test
-    fun `resume restarts ticker after pause`() =
+    fun resume_restartsTickerAfterPause() =
         runTest(testDispatcher) {
             meditation.start()
             advanceTimeBy(2000)
@@ -233,7 +233,7 @@ class MeditationTest {
         }
 
     @Test
-    fun `intermediate section end advances to next section and plays bells`() {
+    fun intermediateSectionEnd_advancesToNextSectionAndPlaysBells() {
         meditation.onSectionEnd()
 
         assertEquals(1, mockAlarmScheduler.cancelAlarmCount)
@@ -249,7 +249,7 @@ class MeditationTest {
     }
 
     @Test
-    fun `final section end triggers cleanup after bell callback`() =
+    fun finalSectionEnd_triggersCleanupAfterBellCallback() =
         runTest(testDispatcher) {
             val singleSection = arrayOf(zazen)
             meditation = createMeditation(sections = singleSection)
@@ -267,7 +267,7 @@ class MeditationTest {
         }
 
     @Test
-    fun `bell volumes are correctly resolved from configuration`() {
+    fun bellVolumes_areCorrectlyResolvedFromConfiguration() {
         zazen.bellId = 1
         val bellVolumes =
             listOf(
@@ -281,7 +281,7 @@ class MeditationTest {
     }
 
     @Test
-    fun `bell volume falls back to default when no config exists`() {
+    fun bellVolume_fallsBackToDefaultWhenNoConfigExists() {
         zazen.bellId = 42
 
         meditation.onSectionEnd()
@@ -290,7 +290,7 @@ class MeditationTest {
     }
 
     @Test
-    fun `stop triggers cleanup and releases player`() =
+    fun stop_triggersCleanupAndReleasesPlayer() =
         runTest(testDispatcher) {
             meditation.start()
             advanceTimeBy(1000)
@@ -305,7 +305,7 @@ class MeditationTest {
         }
 
     @Test
-    fun `stop is idempotent – second call is ignored`() =
+    fun stop_isIdempotent_secondCallIsIgnored() =
         runTest(testDispatcher) {
             meditation.start()
             advanceTimeBy(1000)
@@ -325,7 +325,7 @@ class MeditationTest {
         }
 
     @Test
-    fun `stopping prevents further actions`() =
+    fun stopping_preventsFurtherActions() =
         runTest(testDispatcher) {
             meditation.start()
             meditation.stop()
@@ -339,7 +339,7 @@ class MeditationTest {
         }
 
     @Test
-    fun `finishAfterLastBell does nothing if already stopping`() =
+    fun finishAfterLastBell_doesNothingIfAlreadyStopping() =
         runTest(testDispatcher) {
             val singleSection = arrayOf(zazen)
             meditation = createMeditation(sections = singleSection)
@@ -360,7 +360,7 @@ class MeditationTest {
         }
 
     @Test
-    fun `getCurrentSectionName returns empty for unnamed section`() {
+    fun getCurrentSectionName_returnsEmptyForUnnamedSection() {
         val unnamed = Section(name = null, duration = 100)
         meditation = createMeditation(sections = arrayOf(unnamed))
 
@@ -368,19 +368,19 @@ class MeditationTest {
     }
 
     @Test
-    fun `getNextSectionName returns correct name`() {
+    fun getNextSectionName_returnsCorrectName() {
         assertEquals("Kinhin", meditation.getNextSectionName())
     }
 
     @Test
-    fun `getNextSectionName returns empty on last section`() =
+    fun getNextSectionName_returnsEmptyOnLastSection() =
         runTest(testDispatcher) {
             meditation.onSectionEnd()
             assertEquals("", meditation.getNextSectionName())
         }
 
     @Test
-    fun `getNextNextSectionName returns empty when only two sections`() {
+    fun getNextNextSectionName_returnsEmptyWhenOnlyTwoSections() {
         assertEquals("", meditation.getNextNextSectionName())
     }
 }

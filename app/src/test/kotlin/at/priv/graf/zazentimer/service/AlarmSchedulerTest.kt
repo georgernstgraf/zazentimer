@@ -48,14 +48,14 @@ class AlarmSchedulerTest {
     }
 
     @Test
-    fun `setAlarmForSectionEnd records sectionStartTime`() {
+    fun setAlarmForSectionEnd_recordsSectionStartTime() {
         scheduler.setAlarmForSectionEnd(section, pauseSectionSeconds = 0)
 
         assertThat(scheduler.sectionStartTime).isEqualTo(10000L)
     }
 
     @Test
-    fun `setAlarmForSectionEnd uses clock for start time`() {
+    fun setAlarmForSectionEnd_usesClockForStartTime() {
         every { mockClock.now() } returns 50000L
 
         scheduler.setAlarmForSectionEnd(section, pauseSectionSeconds = 0)
@@ -64,7 +64,7 @@ class AlarmSchedulerTest {
     }
 
     @Test
-    fun `setAlarmForSectionEnd creates PendingIntent with SECTION_ENDED intent`() {
+    fun setAlarmForSectionEnd_createsPendingIntentWithSectionEndedIntent() {
         scheduler.setAlarmForSectionEnd(section, pauseSectionSeconds = 0)
 
         verify {
@@ -78,14 +78,14 @@ class AlarmSchedulerTest {
     }
 
     @Test
-    fun `setAlarmForSectionEnd triggers setAlarmClock on AlarmManager`() {
+    fun setAlarmForSectionEnd_triggersSetAlarmClockOnAlarmManager() {
         scheduler.setAlarmForSectionEnd(section, pauseSectionSeconds = 0)
 
         verify { mockAlarmManager.setAlarmClock(any(), any()) }
     }
 
     @Test
-    fun `setAlarmForSectionEnd accounts for pause seconds in trigger time`() {
+    fun setAlarmForSectionEnd_accountsForPauseSecondsInTriggerTime() {
         every { mockClock.now() } returns 10000L
 
         scheduler.setAlarmForSectionEnd(section, pauseSectionSeconds = 60)
@@ -94,7 +94,7 @@ class AlarmSchedulerTest {
     }
 
     @Test
-    fun `cancelAlarm cancels pending intent on AlarmManager`() {
+    fun cancelAlarm_cancelsPendingIntentOnAlarmManager() {
         scheduler.setAlarmForSectionEnd(section, pauseSectionSeconds = 0)
 
         scheduler.cancelAlarm()
@@ -103,7 +103,7 @@ class AlarmSchedulerTest {
     }
 
     @Test
-    fun `cancelAlarm without prior set does not crash`() {
+    fun cancelAlarm_withoutPriorSetDoesNotCrash() {
         scheduler.cancelAlarm()
     }
 }
