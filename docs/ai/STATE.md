@@ -3,7 +3,7 @@
 Current status as of 2026-06-20.
 
 ## Current Focus
-None active. Recent cleanup closed #272, #281, #283, #284, and #285 after the full API matrix went green on `think`. The #270 `runBlocking` follow-up is now complete. The remaining open item is the deferred #267 naming sweeps plus env-specific `claw` notes.
+None active. Recent cleanup closed #272, #281, #283, #284, and #285 after the full API matrix went green on `think`. The #270 `runBlocking` follow-up is now complete. #267 naming sweeps have been implemented and verified; awaiting main-agent review/push.
 
 ## Completed (this cycle)
 - [x] **#272 closed** after real-X11 validation on `think`: API 23 (x86_64 + x86) instrumented tests green; `testDeleteSession`, `testDeleteCancel`, and `dragReorder_persistsAfterNavigationAndEdit` all pass.
@@ -17,10 +17,9 @@ None active. Recent cleanup closed #272, #281, #283, #284, and #285 after the fu
 - [x] **#273 fixed & closed** (commit `88f44ae`): session drag-reorder lost on Settings→back; fix = `clearView → onDragEnd → async assignRanks`; `SessionRankPersistenceTest` rewritten with a real drag gesture + identity assertions.
 - [x] **#271 fixed & closed** (commit `252bbd6`): score-based settlement in `voting_api.tsx`; new pure `prisma/lib/settlement.ts` + repo's first `deno test`.
 - [x] **#270 follow-up complete** — remaining production `runBlocking` callsites migrated to an application-scoped `CoroutineScope(SupervisorJob() + Dispatchers.IO)`; UI values captured synchronously in `onPause()`, DB/audio writes launched asynchronously and survive fragment destruction. `./gradlew test`, `assembleDebug`, `assembleDebugAndroidTest`, and `detekt` pass.
-- [x] **#267 deferred** — cosmetic naming sweeps; high blast radius right after #268's churn. Revisit at a quieter moment or when detekt naming rules are adopted.
+- [x] **#267 implemented** (commits `e9890e6`, `0c44144`) — layout IDs and @Test method names normalized to snake_case/camel-snake convention. 34 XML files + 13 test files changed. Both verification suites green. GitHub issue left open for main-agent review/push.
 
 ## Pending
-- [ ] **#267** (deferred) — large naming sweeps (test-method + layout-ID normalization). Cosmetic, high blast radius. Revisit when stable or when detekt naming rules are adopted.
 - [ ] **Env followup (claw)**: API 34 freezer skip-check fooled by `cached_apps_freezer=disabled` setting vs boot flag `use_freezer=false` not taking on fast-boot resume → `run-instrumentation.sh` skips re-provisioning → 900s hang. Remedy: `--cold-boot` or re-baseline to `setting=null`. API 36 `system_server` crash on claw after freezer-provisioning reboot. Both are claw/Xvfb-specific, not code regressions.
 
 ## `claw` AVD inventory
