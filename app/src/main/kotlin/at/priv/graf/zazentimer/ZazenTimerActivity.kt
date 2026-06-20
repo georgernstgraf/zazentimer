@@ -190,7 +190,7 @@ class ZazenTimerActivity :
                 insets
             }
         }
-        zenIndicator = findViewById(R.id.zenIndicator)
+        zenIndicator = findViewById(R.id.zen_indicator)
         val nc = getNavController()
         if (nc != null) {
             appBarConfiguration =

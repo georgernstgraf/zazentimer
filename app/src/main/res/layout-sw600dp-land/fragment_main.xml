@@ -13,9 +13,9 @@
         android:layout_marginRight="20dp"
         android:layout_marginEnd="20dp"
         android:layout_marginBottom="20dp"
-        android:layout_toRightOf="@+id/zenimage"
+        android:layout_toRightOf="@+id/zen_image"
         android:layout_above="@+id/but_start"
-        android:layout_toEndOf="@+id/zenimage"/>
+        android:layout_toEndOf="@+id/zen_image"/>
     <Button
         android:id="@+id/but_start"
         android:layout_width="match_parent"
@@ -26,11 +26,11 @@
         android:layout_marginEnd="20dp"
         android:layout_marginBottom="80dp"
         android:text="@string/but_start"
-        android:layout_toRightOf="@+id/zenimage"
-        android:layout_alignBottom="@+id/zenimage"
-        android:layout_toEndOf="@+id/zenimage"/>
+        android:layout_toRightOf="@+id/zen_image"
+        android:layout_alignBottom="@+id/zen_image"
+        android:layout_toEndOf="@+id/zen_image"/>
     <ImageView
-        android:id="@+id/zenimage"
+        android:id="@+id/zen_image"
         android:padding="40dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

@@ -15,7 +15,7 @@ class SessionEditPage {
     fun verifyEditSessionScreen(): SessionEditPage {
         Thread.sleep(1000)
         robot.checkElementIsDisplayed(R.id.text_session_name)
-        robot.checkElementIsDisplayed(R.id.list)
+        robot.checkElementIsDisplayed(R.id.section_list)
         return this
     }
 
@@ -36,10 +36,10 @@ class SessionEditPage {
     }
 
     fun clickSectionAtPosition(pos: Int): SessionEditPage {
-        robot.waitForRecyclerViewToBePopulated(R.id.list)
+        robot.waitForRecyclerViewToBePopulated(R.id.section_list)
         for (i in 0 until 10) {
             try {
-                onView(withId(R.id.list))
+                onView(withId(R.id.section_list))
                     .perform(actionOnItemAtPosition<RecyclerView.ViewHolder>(pos, click()))
                 return this
             } catch (e: Throwable) {
@@ -50,7 +50,7 @@ class SessionEditPage {
     }
 
     fun verifySectionCount(count: Int): SessionEditPage {
-        robot.assertRecyclerViewItemCount(R.id.list, count)
+        robot.assertRecyclerViewItemCount(R.id.section_list, count)
         return this
     }
 

@@ -6,7 +6,7 @@
     android:padding="12dp"
     android:background="@drawable/bg_session_item">
     <ImageView
-        android:id="@+id/dragHandle"
+        android:id="@+id/drag_handle"
         android:layout_width="32dp"
         android:layout_height="32dp"
         android:src="@drawable/ic_drag_handle"
@@ -20,13 +20,13 @@
         android:layout_weight="1"
         android:layout_gravity="center_vertical">
         <TextView
-            android:id="@+id/sessionName"
+            android:id="@+id/session_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textStyle="bold"
             android:textSize="16sp"/>
         <TextView
-            android:id="@+id/sessionDescription"
+            android:id="@+id/session_description"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:maxLines="2"
@@ -35,7 +35,7 @@
             android:visibility="gone"/>
     </LinearLayout>
     <TextView
-        android:id="@+id/sessionDuration"
+        android:id="@+id/session_duration"
         android:layout_gravity="center_vertical"
         android:paddingStart="12dp"
         android:paddingEnd="4dp"
@@ -43,7 +43,7 @@
         android:layout_height="wrap_content"
         android:textSize="14sp"/>
     <ImageButton
-        android:id="@+id/sessionOverflow"
+        android:id="@+id/session_overflow"
         android:layout_width="36dp"
         android:layout_height="36dp"
         android:layout_gravity="center_vertical"

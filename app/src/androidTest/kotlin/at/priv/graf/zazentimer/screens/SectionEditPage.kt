@@ -22,19 +22,19 @@ class SectionEditPage {
     }
 
     fun tapDurationPicker(): SectionEditPage {
-        robot.clickOnView(R.id.duration)
+        robot.clickOnView(R.id.section_duration)
         return this
     }
 
     fun setBellCount(count: Int): SectionEditPage {
         val id =
             when (count) {
-                1 -> R.id.bellcount1
-                2 -> R.id.bellcount2
-                3 -> R.id.bellcount3
-                4 -> R.id.bellcount4
-                5 -> R.id.bellcount5
-                else -> R.id.bellcount1
+                1 -> R.id.bell_count_1
+                2 -> R.id.bell_count_2
+                3 -> R.id.bell_count_3
+                4 -> R.id.bell_count_4
+                5 -> R.id.bell_count_5
+                else -> R.id.bell_count_1
             }
         robot.clickOnView(id)
         return this
@@ -43,22 +43,22 @@ class SectionEditPage {
     fun setBellGap(gap: Int): SectionEditPage {
         val id =
             when (gap) {
-                1 -> R.id.gap1
-                2 -> R.id.gap2
-                3 -> R.id.gap3
-                4 -> R.id.gap4
-                5 -> R.id.gap5
-                6 -> R.id.gap6
-                7 -> R.id.gap7
-                8 -> R.id.gap8
-                9 -> R.id.gap9
-                10 -> R.id.gap10
-                11 -> R.id.gap11
-                12 -> R.id.gap12
-                13 -> R.id.gap13
-                14 -> R.id.gap14
-                15 -> R.id.gap15
-                else -> R.id.gap1
+                1 -> R.id.bell_gap_1
+                2 -> R.id.bell_gap_2
+                3 -> R.id.bell_gap_3
+                4 -> R.id.bell_gap_4
+                5 -> R.id.bell_gap_5
+                6 -> R.id.bell_gap_6
+                7 -> R.id.bell_gap_7
+                8 -> R.id.bell_gap_8
+                9 -> R.id.bell_gap_9
+                10 -> R.id.bell_gap_10
+                11 -> R.id.bell_gap_11
+                12 -> R.id.bell_gap_12
+                13 -> R.id.bell_gap_13
+                14 -> R.id.bell_gap_14
+                15 -> R.id.bell_gap_15
+                else -> R.id.bell_gap_1
             }
         onView(withId(id)).perform(ViewActions.scrollTo())
         robot.clickOnView(id)

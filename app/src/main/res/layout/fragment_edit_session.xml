@@ -6,7 +6,7 @@
     <RelativeLayout
         android:scrollbarStyle="outsideOverlay"
         android:orientation="vertical"
-        android:id="@+id/LinearLayout1"
+        android:id="@+id/edit_session_container"
         android:padding="10dp"
         android:fitsSystemWindows="true"
         android:layout_width="match_parent"
@@ -67,7 +67,7 @@
             android:text="@string/button_bell_volumes"
             style="@style/PrimaryRoundedButton"/>
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/list"
+            android:id="@+id/section_list"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginLeft="20dp"

@@ -27,7 +27,7 @@ class GongListAdapter(
         i2: Int,
     ): View {
         val inflate = LayoutInflater.from(this.context).inflate(i2, null as ViewGroup?)
-        (inflate.findViewById<TextView>(R.id.spinnerText1)).text = getItem(i)?.name ?: ""
+        (inflate.findViewById<TextView>(R.id.spinner_text_1)).text = getItem(i)?.name ?: ""
         return inflate
     }
 

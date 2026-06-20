@@ -10,14 +10,14 @@ class MeditationPage {
         Thread.sleep(500)
         robot.checkElementIsDisplayed(R.id.but_pause)
         robot.checkElementIsDisplayed(R.id.but_stop)
-        robot.checkElementIsDisplayed(R.id.timerView)
+        robot.checkElementIsDisplayed(R.id.timer_view)
         return this
     }
 
     fun verifyTimerIsRunning(): MeditationPage {
         robot.checkElementIsDisplayed(R.id.but_pause)
         robot.checkElementIsDisplayed(R.id.but_stop)
-        robot.checkElementIsDisplayed(R.id.timerView)
+        robot.checkElementIsDisplayed(R.id.timer_view)
         return this
     }
 

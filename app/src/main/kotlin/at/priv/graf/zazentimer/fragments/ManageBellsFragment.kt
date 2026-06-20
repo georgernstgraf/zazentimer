@@ -90,7 +90,7 @@ class ManageBellsFragment : Fragment() {
         savedInstanceState: Bundle?,
     ) {
         super.onViewCreated(view, savedInstanceState)
-        binding.list.layoutManager = LinearLayoutManager(requireContext())
+        binding.bellList.layoutManager = LinearLayoutManager(requireContext())
         binding.importButton.setOnClickListener {
             val intent = Intent(Intent.ACTION_GET_CONTENT)
             intent.flags = Intent.FLAG_GRANT_READ_URI_PERMISSION
@@ -114,11 +114,11 @@ class ManageBellsFragment : Fragment() {
             bells = bellRepo.getNonBuiltinBells()
             if (bells.isEmpty()) {
                 binding.emptyText.visibility = View.VISIBLE
-                binding.list.visibility = View.GONE
+                binding.bellList.visibility = View.GONE
             } else {
                 binding.emptyText.visibility = View.GONE
-                binding.list.visibility = View.VISIBLE
-                binding.list.adapter = BellAdapter(bells)
+                binding.bellList.visibility = View.VISIBLE
+                binding.bellList.adapter = BellAdapter(bells)
             }
         }
     }
@@ -200,8 +200,8 @@ class ManageBellsFragment : Fragment() {
         inner class ViewHolder(
             view: View,
         ) : RecyclerView.ViewHolder(view) {
-            val nameView: TextView = view.findViewById(R.id.bellName)
-            val deleteButton: Button = view.findViewById(R.id.deleteButton)
+            val nameView: TextView = view.findViewById(R.id.bell_name)
+            val deleteButton: Button = view.findViewById(R.id.delete_button)
         }
     }
 }

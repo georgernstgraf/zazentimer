@@ -69,8 +69,8 @@ class TimePickerFragment :
         }
         val create = builder.create()
         this.view?.let { v ->
-            this.npMin = v.findViewById(R.id.pickerMinutes)
-            this.npSec = v.findViewById(R.id.pickerSeconds)
+            this.npMin = v.findViewById(R.id.picker_minutes)
+            this.npSec = v.findViewById(R.id.picker_seconds)
             npMin?.let { picker ->
                 picker.minValue = MIN_VALUE
                 picker.maxValue = MAX_MINUTES

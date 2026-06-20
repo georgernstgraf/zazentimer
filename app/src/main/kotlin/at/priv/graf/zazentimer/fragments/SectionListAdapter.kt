@@ -39,11 +39,11 @@ class SectionListAdapter(
     class ViewHolder(
         view: View,
     ) : RecyclerView.ViewHolder(view) {
-        val spinnerText1: TextView = view.findViewById(R.id.spinnerText1)
-        val bellNameText: TextView = view.findViewById(R.id.bellNameText)
-        val spinnerText2: TextView = view.findViewById(R.id.spinnerText2)
-        val dragHandle: ImageView = view.findViewById(R.id.dragHandle)
-        val sectionOverflow: ImageButton = view.findViewById(R.id.sectionOverflow)
+        val spinnerText1: TextView = view.findViewById(R.id.spinner_text_1)
+        val bellNameText: TextView = view.findViewById(R.id.bell_name_text)
+        val spinnerText2: TextView = view.findViewById(R.id.spinner_text_2)
+        val dragHandle: ImageView = view.findViewById(R.id.drag_handle)
+        val sectionOverflow: ImageButton = view.findViewById(R.id.section_overflow)
     }
 
     override fun onCreateViewHolder(

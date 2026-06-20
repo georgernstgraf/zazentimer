@@ -42,11 +42,11 @@ class SessionListAdapter(
     class ViewHolder(
         view: View,
     ) : RecyclerView.ViewHolder(view) {
-        val sessionName: TextView = view.findViewById(R.id.sessionName)
-        val sessionDescription: TextView = view.findViewById(R.id.sessionDescription)
-        val sessionDuration: TextView = view.findViewById(R.id.sessionDuration)
-        val sessionOverflow: ImageButton = view.findViewById(R.id.sessionOverflow)
-        val dragHandle: ImageView = view.findViewById(R.id.dragHandle)
+        val sessionName: TextView = view.findViewById(R.id.session_name)
+        val sessionDescription: TextView = view.findViewById(R.id.session_description)
+        val sessionDuration: TextView = view.findViewById(R.id.session_duration)
+        val sessionOverflow: ImageButton = view.findViewById(R.id.session_overflow)
+        val dragHandle: ImageView = view.findViewById(R.id.drag_handle)
     }
 
     override fun onCreateViewHolder(

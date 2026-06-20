@@ -22,26 +22,26 @@ class ManageBellsPage {
 
     init {
         Thread.sleep(1000)
-        robot.checkElementIsDisplayed(R.id.importButton)
+        robot.checkElementIsDisplayed(R.id.import_button)
     }
 
     fun verifyScreenDisplayed(): ManageBellsPage {
-        robot.checkElementIsDisplayed(R.id.importButton)
+        robot.checkElementIsDisplayed(R.id.import_button)
         return this
     }
 
     fun verifyEmptyState(): ManageBellsPage {
         for (i in 0 until 20) {
             try {
-                robot.checkElementIsDisplayed(R.id.emptyText)
-                onView(withId(R.id.emptyText)).check(matches(withText(R.string.no_custom_bells)))
+                robot.checkElementIsDisplayed(R.id.empty_text)
+                onView(withId(R.id.empty_text)).check(matches(withText(R.string.no_custom_bells)))
                 return this
             } catch (_: Throwable) {
                 Thread.sleep(500)
             }
         }
-        robot.checkElementIsDisplayed(R.id.emptyText)
-        onView(withId(R.id.emptyText)).check(matches(withText(R.string.no_custom_bells)))
+        robot.checkElementIsDisplayed(R.id.empty_text)
+        onView(withId(R.id.empty_text)).check(matches(withText(R.string.no_custom_bells)))
         return this
     }
 
@@ -59,11 +59,11 @@ class ManageBellsPage {
     }
 
     fun clickDeleteForBell(name: String): ManageBellsPage {
-        onView(withId(R.id.list))
+        onView(withId(R.id.bell_list))
             .perform(
                 RecyclerViewActions.actionOnItem<RecyclerView.ViewHolder>(
                     withBellName(name),
-                    ScreenRobot.clickChildViewWithId(R.id.deleteButton),
+                    ScreenRobot.clickChildViewWithId(R.id.delete_button),
                 ),
             )
         return this
@@ -90,7 +90,7 @@ class ManageBellsPage {
                 }
 
                 override fun matchesSafely(item: View): Boolean {
-                    val bellName = item.findViewById<TextView>(R.id.bellName)
+                    val bellName = item.findViewById<TextView>(R.id.bell_name)
                     return bellName != null && bellName.text.toString() == name
                 }
             }

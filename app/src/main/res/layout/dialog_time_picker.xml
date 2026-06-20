@@ -20,7 +20,7 @@
             android:layout_height="wrap_content"
             android:text="@string/minutes"/>
         <NumberPicker
-            android:id="@+id/pickerMinutes"
+            android:id="@+id/picker_minutes"
             android:descendantFocusability="blocksDescendants"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
@@ -40,7 +40,7 @@
             android:layout_height="wrap_content"
             android:text="@string/seconds"/>
         <NumberPicker
-            android:id="@+id/pickerSeconds"
+            android:id="@+id/picker_seconds"
             android:descendantFocusability="blocksDescendants"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>

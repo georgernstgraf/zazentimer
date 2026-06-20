@@ -143,7 +143,7 @@ class SessionRankPersistenceTest : AbstractZazenTest() {
                 uiController: UiController,
                 view: android.view.View,
             ) {
-                val dragHandle = view.findViewById<android.view.View>(R.id.dragHandle)
+                val dragHandle = view.findViewById<android.view.View>(R.id.drag_handle)
                 val recyclerView = view.parent as RecyclerView
                 val targetHolder = recyclerView.findViewHolderForAdapterPosition(targetPosition)
                 if (targetHolder == null) {

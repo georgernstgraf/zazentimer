@@ -78,7 +78,7 @@ class MainPage {
             .perform(
                 RecyclerViewActions.actionOnItemAtPosition<RecyclerView.ViewHolder>(
                     position,
-                    ScreenRobot.clickChildViewWithId(R.id.sessionOverflow),
+                    ScreenRobot.clickChildViewWithId(R.id.session_overflow),
                 ),
             )
         return this
@@ -118,7 +118,7 @@ class MainPage {
                             uiController: UiController,
                             view: View,
                         ) {
-                            val textView = view.findViewById<TextView>(R.id.sessionName)
+                            val textView = view.findViewById<TextView>(R.id.session_name)
                             name = textView?.text?.toString() ?: ""
                         }
                     },

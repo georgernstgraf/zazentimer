@@ -48,7 +48,7 @@ class SectionEditTest : AbstractZazenTest() {
 
         sectionEditPage.verifySectionEditScreen()
 
-        onView(withId(R.id.time)).check(matches(withText("01:00")))
+        onView(withId(R.id.section_time)).check(matches(withText("01:00")))
     }
 
     @Test

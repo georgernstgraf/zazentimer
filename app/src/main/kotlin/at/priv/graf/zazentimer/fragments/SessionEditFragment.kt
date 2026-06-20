@@ -134,8 +134,8 @@ class SessionEditFragment :
                 },
             )
 
-        binding.list.layoutManager = LinearLayoutManager(requireContext())
-        binding.list.adapter = adapter
+        binding.sectionList.layoutManager = LinearLayoutManager(requireContext())
+        binding.sectionList.adapter = adapter
 
         val callback =
             SectionTouchHelperCallback(
@@ -153,7 +153,7 @@ class SessionEditFragment :
                     }
                 },
             )
-        ItemTouchHelper(callback).attachToRecyclerView(binding.list)
+        ItemTouchHelper(callback).attachToRecyclerView(binding.sectionList)
 
         binding.buttonBellVolumes.setOnClickListener {
             showBellVolumeDialog()
@@ -233,7 +233,7 @@ class SessionEditFragment :
         a.removeItem(position)
 
         Snackbar
-            .make(binding.list, getString(R.string.section_deleted, deletedSection), Snackbar.LENGTH_LONG)
+            .make(binding.sectionList, getString(R.string.section_deleted, deletedSection), Snackbar.LENGTH_LONG)
             .setAction(getString(R.string.action_undo)) {
                 lifecycleScope.launch {
                     sectionRepo.insertSection(s, deletedSection)

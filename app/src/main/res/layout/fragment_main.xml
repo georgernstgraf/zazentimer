@@ -35,7 +35,7 @@
             android:layout_centerHorizontal="false"/>
 
         <ImageView
-            android:id="@+id/zenimage"
+            android:id="@+id/zen_image"
             android:padding="40dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
     <ImageView
-        android:id="@+id/zenimage"
+        android:id="@+id/zen_image"
         android:padding="40dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

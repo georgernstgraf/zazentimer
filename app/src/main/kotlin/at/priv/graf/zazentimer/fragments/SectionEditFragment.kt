@@ -214,21 +214,21 @@ class SectionEditFragment : Fragment() {
         private fun SectionEditFragment.getViewComponents() {
             val gaps =
                 arrayOf(
-                    binding.gap1,
-                    binding.gap2,
-                    binding.gap3,
-                    binding.gap4,
-                    binding.gap5,
-                    binding.gap6,
-                    binding.gap7,
-                    binding.gap8,
-                    binding.gap9,
-                    binding.gap10,
-                    binding.gap11,
-                    binding.gap12,
-                    binding.gap13,
-                    binding.gap14,
-                    binding.gap15,
+                    binding.bellGap1,
+                    binding.bellGap2,
+                    binding.bellGap3,
+                    binding.bellGap4,
+                    binding.bellGap5,
+                    binding.bellGap6,
+                    binding.bellGap7,
+                    binding.bellGap8,
+                    binding.bellGap9,
+                    binding.bellGap10,
+                    binding.bellGap11,
+                    binding.bellGap12,
+                    binding.bellGap13,
+                    binding.bellGap14,
+                    binding.bellGap15,
                 )
             for (i in gaps.indices) {
                 this.tvGaps[i] = gaps[i]
@@ -244,7 +244,7 @@ class SectionEditFragment : Fragment() {
         }
 
         private fun SectionEditFragment.installCustomBellListener() {
-            binding.addcustombell.setOnClickListener {
+            binding.addCustomBell.setOnClickListener {
                 val intent = Intent("android.intent.action.GET_CONTENT")
                 intent.flags = Intent.FLAG_GRANT_READ_URI_PERMISSION
                 intent.type = "audio/*"
@@ -255,11 +255,11 @@ class SectionEditFragment : Fragment() {
         private fun SectionEditFragment.installBellCountListeners() {
             val bellViews =
                 arrayOf(
-                    binding.bellcount1,
-                    binding.bellcount2,
-                    binding.bellcount3,
-                    binding.bellcount4,
-                    binding.bellcount5,
+                    binding.bellCount1,
+                    binding.bellCount2,
+                    binding.bellCount3,
+                    binding.bellCount4,
+                    binding.bellCount5,
                 )
             for (idx in bellViews.indices) {
                 val count = idx + 1
@@ -287,7 +287,7 @@ class SectionEditFragment : Fragment() {
         }
 
         private fun SectionEditFragment.installPlayGongListener() {
-            binding.duration.setOnClickListener {
+            binding.sectionDuration.setOnClickListener {
                 pickDuration()
             }
             binding.playGong.setOnClickListener {
@@ -329,11 +329,11 @@ class SectionEditFragment : Fragment() {
         private fun SectionEditFragment.setViewBellCount(count: Int) {
             val bellViews =
                 arrayOf(
-                    binding.bellcount1,
-                    binding.bellcount2,
-                    binding.bellcount3,
-                    binding.bellcount4,
-                    binding.bellcount5,
+                    binding.bellCount1,
+                    binding.bellCount2,
+                    binding.bellCount3,
+                    binding.bellCount4,
+                    binding.bellCount5,
                 )
             for (idx in bellViews.indices) {
                 bellViews[idx].isSelected = count >= (idx + 1)
@@ -362,13 +362,13 @@ class SectionEditFragment : Fragment() {
 
         private fun SectionEditFragment.updateDurationView() {
             _binding?.let { b ->
-                b.time.text = TimeFormat.mmss(durationMinutes, durationSeconds)
+                b.sectionTime.text = TimeFormat.mmss(durationMinutes, durationSeconds)
             }
         }
 
         private suspend fun SectionEditFragment.fillBellList() {
             this.gongListAdapter =
-                GongListAdapter(requireContext(), R.id.selectGongSound, R.id.spinnerText1)
+                GongListAdapter(requireContext(), R.id.select_gong_sound, R.id.spinner_text_1)
             val adapter = this.gongListAdapter ?: return
             val bellList = bellRepo.getAllBells()
             for (bell in bellList) {

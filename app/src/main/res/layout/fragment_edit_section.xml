@@ -17,7 +17,7 @@
         <LinearLayout
             android:layout_gravity="center_horizontal"
             android:orientation="horizontal"
-            android:id="@+id/duration"
+            android:id="@+id/section_duration"
             android:paddingLeft="40dp"
             android:paddingStart="40dp"
             android:paddingTop="20dp"
@@ -40,7 +40,7 @@
             <TextView
                 android:textSize="36sp"
                 android:layout_gravity="center"
-                android:id="@+id/time"
+                android:id="@+id/section_time"
                 android:padding="10dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -49,7 +49,7 @@
         </LinearLayout>
         <TextView
             android:layout_gravity="center_vertical"
-            android:id="@+id/textView"
+            android:id="@+id/section_name_label"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/label_section_name"
@@ -75,27 +75,27 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
             <ImageView
-                android:id="@+id/bellcount1"
+                android:id="@+id/bell_count_1"
                 android:contentDescription="@null"
                 tools:ignore="ContentDescription"
                 style="@style/bellcount"/>
             <ImageView
-                android:id="@+id/bellcount2"
+                android:id="@+id/bell_count_2"
                 android:contentDescription="@null"
                 tools:ignore="ContentDescription"
                 style="@style/bellcount"/>
             <ImageView
-                android:id="@+id/bellcount3"
+                android:id="@+id/bell_count_3"
                 android:contentDescription="@null"
                 tools:ignore="ContentDescription"
                 style="@style/bellcount"/>
             <ImageView
-                android:id="@+id/bellcount4"
+                android:id="@+id/bell_count_4"
                 android:contentDescription="@null"
                 tools:ignore="ContentDescription"
                 style="@style/bellcount"/>
             <ImageView
-                android:id="@+id/bellcount5"
+                android:id="@+id/bell_count_5"
                 android:contentDescription="@null"
                 tools:ignore="ContentDescription"
                 style="@style/bellcount"/>
@@ -123,63 +123,63 @@
                 android:layout_height="match_parent"
                 tools:ignore="HardcodedText">
                 <TextView
-                    android:id="@+id/gap1"
+                    android:id="@+id/bell_gap_1"
                     android:text="1"
                     style="@style/bellgapseconds"/>
                 <TextView
-                    android:id="@+id/gap2"
+                    android:id="@+id/bell_gap_2"
                     android:text="2"
                     style="@style/bellgapseconds"/>
                 <TextView
-                    android:id="@+id/gap3"
+                    android:id="@+id/bell_gap_3"
                     android:text="3"
                     style="@style/bellgapseconds"/>
                 <TextView
-                    android:id="@+id/gap4"
+                    android:id="@+id/bell_gap_4"
                     android:text="4"
                     style="@style/bellgapseconds"/>
                 <TextView
-                    android:id="@+id/gap5"
+                    android:id="@+id/bell_gap_5"
                     android:text="5"
                     style="@style/bellgapseconds"/>
                 <TextView
-                    android:id="@+id/gap6"
+                    android:id="@+id/bell_gap_6"
                     android:text="6"
                     style="@style/bellgapseconds"/>
                 <TextView
-                    android:id="@+id/gap7"
+                    android:id="@+id/bell_gap_7"
                     android:text="7"
                     style="@style/bellgapseconds"/>
                 <TextView
-                    android:id="@+id/gap8"
+                    android:id="@+id/bell_gap_8"
                     android:text="8"
                     style="@style/bellgapseconds"/>
                 <TextView
-                    android:id="@+id/gap9"
+                    android:id="@+id/bell_gap_9"
                     android:text="9"
                     style="@style/bellgapseconds"/>
                 <TextView
-                    android:id="@+id/gap10"
+                    android:id="@+id/bell_gap_10"
                     android:text="10"
                     style="@style/bellgapseconds"/>
                 <TextView
-                    android:id="@+id/gap11"
+                    android:id="@+id/bell_gap_11"
                     android:text="11"
                     style="@style/bellgapseconds"/>
                 <TextView
-                    android:id="@+id/gap12"
+                    android:id="@+id/bell_gap_12"
                     android:text="12"
                     style="@style/bellgapseconds"/>
                 <TextView
-                    android:id="@+id/gap13"
+                    android:id="@+id/bell_gap_13"
                     android:text="13"
                     style="@style/bellgapseconds"/>
                 <TextView
-                    android:id="@+id/gap14"
+                    android:id="@+id/bell_gap_14"
                     android:text="14"
                     style="@style/bellgapseconds"/>
                 <TextView
-                    android:id="@+id/gap15"
+                    android:id="@+id/bell_gap_15"
                     android:text="15"
                     style="@style/bellgapseconds"/>
             </LinearLayout>
@@ -194,7 +194,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
             <Spinner
-                android:id="@+id/selectGongSound"
+                android:id="@+id/select_gong_sound"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="0dp"
@@ -222,14 +222,14 @@
             android:layout_marginTop="@dimen/caption_margin">
             <TextView
                 android:layout_gravity="center"
-                android:id="@+id/tvAddBell"
+                android:id="@+id/tv_add_bell"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="5dp"
                 android:layout_marginEnd="5dp"
                 android:text="@string/bell_user"/>
             <ImageButton
-                android:id="@+id/addcustombell"
+                android:id="@+id/add_custom_bell"
                 android:background="@drawable/ball_button_light"
                 android:layout_width="40dp"
                 android:layout_height="40dp"

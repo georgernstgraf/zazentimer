@@ -135,7 +135,7 @@ class ManageBellsTest : AbstractZazenTest() {
                 .clickManageBells()
                 .verifyScreenDisplayed()
 
-            onView(withId(R.id.importButton)).perform(click())
+            onView(withId(R.id.import_button)).perform(click())
 
             onIdle()
 

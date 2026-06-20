@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
     <ImageView
-        android:id="@+id/zenimage"
+        android:id="@+id/zen_image"
         android:padding="30dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -32,11 +32,11 @@
         android:id="@+id/recycler_sessions"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_toRightOf="@+id/zenimage"
+        android:layout_toRightOf="@+id/zen_image"
         android:layout_above="@+id/but_start"
         android:layout_alignLeft="@+id/but_start"
         android:layout_alignRight="@+id/but_start"
-        android:layout_toEndOf="@+id/zenimage"
+        android:layout_toEndOf="@+id/zen_image"
         android:layout_alignStart="@+id/but_start"
         android:layout_alignEnd="@+id/but_start"/>
 </RelativeLayout>
