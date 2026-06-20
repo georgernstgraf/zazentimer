@@ -1,9 +1,9 @@
 # Project State
 
-Current status as of 2026-06-19.
+Current status as of 2026-06-20.
 
 ## Current Focus
-None active. Recent cleanup closed #272, #281, #283, #284, and #285 after the full API matrix went green on `think`. The remaining open items are deferred (#267 naming sweeps, #270 `runBlocking` follow-up) and env-specific `claw` notes.
+None active. Recent cleanup closed #272, #281, #283, #284, and #285 after the full API matrix went green on `think`. The #270 `runBlocking` follow-up is now complete. The remaining open item is the deferred #267 naming sweeps plus env-specific `claw` notes.
 
 ## Completed (this cycle)
 - [x] **#272 closed** after real-X11 validation on `think`: API 23 (x86_64 + x86) instrumented tests green; `testDeleteSession`, `testDeleteCancel`, and `dragReorder_persistsAfterNavigationAndEdit` all pass.
@@ -16,12 +16,11 @@ None active. Recent cleanup closed #272, #281, #283, #284, and #285 after the fu
   - **Blocker the issue body missed**: `DbOperations` wasn't a pure façade — it owned the Room lifecycle. Solved by `DatabaseOwner`.
 - [x] **#273 fixed & closed** (commit `88f44ae`): session drag-reorder lost on Settings→back; fix = `clearView → onDragEnd → async assignRanks`; `SessionRankPersistenceTest` rewritten with a real drag gesture + identity assertions.
 - [x] **#271 fixed & closed** (commit `252bbd6`): score-based settlement in `voting_api.tsx`; new pure `prisma/lib/settlement.ts` + repo's first `deno test`.
-- [x] **onPause `runBlocking` refactor deferred** (commit `a55037b`) — recorded in DECISIONS.md under #270 follow-up.
+- [x] **#270 follow-up complete** — remaining production `runBlocking` callsites migrated to an application-scoped `CoroutineScope(SupervisorJob() + Dispatchers.IO)`; UI values captured synchronously in `onPause()`, DB/audio writes launched asynchronously and survive fragment destruction. `./gradlew test`, `assembleDebug`, `assembleDebugAndroidTest`, and `detekt` pass.
 - [x] **#267 deferred** — cosmetic naming sweeps; high blast radius right after #268's churn. Revisit at a quieter moment or when detekt naming rules are adopted.
 
 ## Pending
 - [ ] **#267** (deferred) — large naming sweeps (test-method + layout-ID normalization). Cosmetic, high blast radius. Revisit when stable or when detekt naming rules are adopted.
-- [ ] **#270 follow-up** — migrate remaining `runBlocking` callsites to async. Deferred (see DECISIONS.md "Keep runBlocking-in-onPause as-is"). Revisit trigger: jank, deadlock reappearance, or `withTransaction` re-added.
 - [ ] **Env followup (claw)**: API 34 freezer skip-check fooled by `cached_apps_freezer=disabled` setting vs boot flag `use_freezer=false` not taking on fast-boot resume → `run-instrumentation.sh` skips re-provisioning → 900s hang. Remedy: `--cold-boot` or re-baseline to `setting=null`. API 36 `system_server` crash on claw after freezer-provisioning reboot. Both are claw/Xvfb-specific, not code regressions.
 
 ## `claw` AVD inventory
@@ -32,4 +31,4 @@ None active. Recent cleanup closed #272, #281, #283, #284, and #285 after the fu
 - Full API matrix on `claw` is unreliable for ≥34 (freezer/cgroup/system_server instability — PITFALLS). Full-matrix gates may need `think` or a real display.
 
 ## Next Session Suggestion
-- Pick a new feature/bug, or revisit #267/#270 at a quieter moment.
+- Pick a new feature/bug, or revisit #267 at a quieter moment.

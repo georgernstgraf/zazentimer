@@ -29,8 +29,8 @@ import at.priv.graf.zazentimer.databinding.FragmentEditSessionBinding
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.transition.MaterialSharedAxis
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.runBlocking
 import javax.inject.Inject
 
 @AndroidEntryPoint
@@ -55,6 +55,9 @@ class SessionEditFragment :
 
     @Inject
     lateinit var bellRepo: BellRepository
+
+    @Inject
+    lateinit var appScope: CoroutineScope
 
     override fun onCreate(bundle: Bundle?) {
         super.onCreate(bundle)
@@ -200,21 +203,22 @@ class SessionEditFragment :
     override fun onPause() {
         super.onPause()
         val items = adapter?.getItems() ?: return
-        val sectionsToUpdate = ArrayList<Section>()
+        val capturedSections = ArrayList<Section>()
         for (i in items.indices) {
-            val section = items[i]
-            section.rank = i + 1
-            sectionsToUpdate.add(section)
+            val section = items[i].copy(rank = i + 1)
+            capturedSections.add(section)
         }
-        session?.let { s ->
-            s.name = binding.textSessionName.text.toString()
-            s.description = binding.textSessionDescription.text.toString()
-            runBlocking {
-                for (section in sectionsToUpdate) {
-                    sectionRepo.updateSection(section)
-                }
-                sessionRepo.updateSession(s)
+        val s = session ?: return
+        val capturedSession =
+            s.copy(
+                name = binding.textSessionName.text.toString(),
+                description = binding.textSessionDescription.text.toString(),
+            )
+        appScope.launch {
+            for (section in capturedSections) {
+                sectionRepo.updateSection(section)
             }
+            sessionRepo.updateSession(capturedSession)
         }
     }
 

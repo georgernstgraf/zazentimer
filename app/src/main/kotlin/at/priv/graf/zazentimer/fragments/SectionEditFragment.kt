@@ -32,8 +32,8 @@ import at.priv.graf.zazentimer.database.SectionRepository
 import at.priv.graf.zazentimer.databinding.FragmentEditSectionBinding
 import com.google.android.material.transition.MaterialSharedAxis
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.runBlocking
 import javax.inject.Inject
 
 @AndroidEntryPoint
@@ -42,6 +42,8 @@ class SectionEditFragment : Fragment() {
     private var _binding: FragmentEditSectionBinding? = null
     private val binding get() = _binding!!
 
+    private var currentBell: BellEntity? = null
+    private var currentBellUri: Uri? = null
     private var durationMinutes: Int = 0
     private var durationSeconds: Int = 0
     private var gongListAdapter: GongListAdapter? = null
@@ -59,6 +61,9 @@ class SectionEditFragment : Fragment() {
     @Inject
     lateinit var bellImporter: BellImporter
 
+    @Inject
+    lateinit var appScope: CoroutineScope
+
     private val bellPickerLauncher: ActivityResultLauncher<Intent> =
         registerForActivityResult(
             ActivityResultContracts.StartActivityForResult(),
@@ -71,6 +76,8 @@ class SectionEditFragment : Fragment() {
                     fillBellList()
                     section?.let { s ->
                         s.bellId = entity.id
+                        currentBell = entity
+                        currentBellUri = entity.uri?.let { Uri.parse(it) }
                         if (s.bellId > 0) {
                             sectionRepo.updateSection(s)
                         }
@@ -143,16 +150,16 @@ class SectionEditFragment : Fragment() {
 
     override fun onPause() {
         super.onPause()
-        runBlocking {
-            audio?.release()
+        val audioToRelease = audio
+        appScope.launch {
+            audioToRelease?.release()
         }
         this.audio = null
         if (_binding == null) return
         fillDataFromViews()
-        section?.let { s ->
-            runBlocking {
-                sectionRepo.updateSection(s)
-            }
+        val s = section ?: return
+        appScope.launch {
+            sectionRepo.updateSection(s)
         }
     }
 
@@ -193,15 +200,15 @@ class SectionEditFragment : Fragment() {
             setDurationMinutes(s.duration / Constants.SECONDS_PER_MINUTE)
             setDurationSeconds(s.duration % Constants.SECONDS_PER_MINUTE)
             fillBellList()
+            currentBell = if (s.bellId > 0) bellRepo.getBellById(s.bellId) else null
+            currentBellUri = currentBell?.uri?.let { Uri.parse(it) }
             selectBellForSection(s)
         }
 
         private fun SectionEditFragment.selectBellForSection(s: Section) {
             if (s.bellId <= 0) return
-            val entity = runBlocking { bellRepo.getBellById(s.bellId) }
-            if (entity != null) {
-                selectBell(entity.uri)
-            }
+            val entity = currentBell ?: return
+            selectBell(entity.uri)
         }
 
         private fun SectionEditFragment.getViewComponents() {
@@ -284,9 +291,7 @@ class SectionEditFragment : Fragment() {
                 pickDuration()
             }
             binding.playGong.setOnClickListener {
-                val s = section ?: return@setOnClickListener
-                val entity = runBlocking { bellRepo.getBellById(s.bellId) }
-                val uri = entity?.uri?.let { Uri.parse(it) } ?: return@setOnClickListener
+                val uri = currentBellUri ?: return@setOnClickListener
                 lifecycleScope.launch {
                     audio?.playAbsVolume(uri, DEFAULT_BELL_VOLUME)
                 }
@@ -306,13 +311,15 @@ class SectionEditFragment : Fragment() {
                         i2: Int,
                         j: Long,
                     ) {
+                        val entity =
+                            binding.selectGongSound.getItemAtPosition(i2) as? BellEntity
+                                ?: return
                         section?.let { s ->
-                            val entity = binding.selectGongSound.getItemAtPosition(i2) as? BellEntity
-                            if (entity != null) {
-                                s.bellId = entity.id
-                                if (s.bellId > 0) {
-                                    runBlocking { sectionRepo.updateSection(s) }
-                                }
+                            s.bellId = entity.id
+                            currentBell = entity
+                            currentBellUri = entity.uri?.let { Uri.parse(it) }
+                            if (s.bellId > 0) {
+                                appScope.launch { sectionRepo.updateSection(s) }
                             }
                         }
                     }

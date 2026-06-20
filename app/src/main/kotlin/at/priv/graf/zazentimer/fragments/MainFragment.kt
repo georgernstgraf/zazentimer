@@ -27,8 +27,8 @@ import at.priv.graf.zazentimer.service.MeditationService
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.transition.MaterialFadeThrough
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.runBlocking
 import javax.inject.Inject
 
 @AndroidEntryPoint
@@ -49,6 +49,9 @@ class MainFragment : Fragment() {
 
     @Inject
     lateinit var sectionRepo: SectionRepository
+
+    @Inject
+    lateinit var appScope: CoroutineScope
 
     interface OnFragmentInteractionListener {
         fun onStartPressed()
@@ -170,8 +173,9 @@ class MainFragment : Fragment() {
     override fun onPause() {
         super.onPause()
         if (!isAdded) return
-        runBlocking {
-            sessionRepo.assignRanks(sessions)
+        val capturedSessions = ArrayList(sessions)
+        appScope.launch {
+            sessionRepo.assignRanks(capturedSessions)
         }
     }
 
