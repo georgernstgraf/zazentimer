@@ -9,7 +9,6 @@ import android.os.Build
 import android.util.Log
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
-import java.io.IOException
 
 class Audio(
     private val context: Context,
@@ -33,73 +32,52 @@ class Audio(
     private fun preparePlayer(
         uri: Uri,
         volume: Int,
-    ): MediaPlayer? {
+    ): MediaPlayer {
         Log.d(TAG, "preparing Audio Player")
         val mediaPlayer = MediaPlayer()
-        var result: MediaPlayer? = null
-        try {
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                mediaPlayer.setAudioAttributes(
-                    AudioAttributes
-                        .Builder()
-                        .setUsage(AudioAttributes.USAGE_ALARM)
-                        .setContentType(AudioAttributes.CONTENT_TYPE_SONIFICATION)
-                        .build(),
-                )
-            } else {
-                @Suppress("DEPRECATION")
-                mediaPlayer.setAudioStreamType(AudioManager.STREAM_ALARM)
-            }
-            mediaPlayer.setDataSource(this.context, uri)
-            mediaPlayer.prepare()
-            val f = volume / VOLUME_SCALE
-            mediaPlayer.setVolume(f, f)
-            result = mediaPlayer
-        } catch (e: IOException) {
-            Log.e(TAG, "Error creating MediaPlayer", e)
-        } catch (e: IllegalStateException) {
-            Log.e(TAG, "Error creating MediaPlayer", e)
-        } catch (e: SecurityException) {
-            Log.e(TAG, "Error creating MediaPlayer", e)
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            mediaPlayer.setAudioAttributes(
+                AudioAttributes
+                    .Builder()
+                    .setUsage(AudioAttributes.USAGE_ALARM)
+                    .setContentType(AudioAttributes.CONTENT_TYPE_SONIFICATION)
+                    .build(),
+            )
+        } else {
+            @Suppress("DEPRECATION")
+            mediaPlayer.setAudioStreamType(AudioManager.STREAM_ALARM)
         }
-        return result
+        mediaPlayer.setDataSource(this.context, uri)
+        mediaPlayer.prepare()
+        val f = volume / VOLUME_SCALE
+        mediaPlayer.setVolume(f, f)
+        return mediaPlayer
     }
 
     private fun reuseExistingPlayer(
         player: MediaPlayer,
         uri: Uri,
         volume: Int,
-    ): MediaPlayer? {
+    ): MediaPlayer {
         Log.d(TAG, "Reusing existing Audio Player")
-        return try {
-            player.reset()
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                player.setAudioAttributes(
-                    AudioAttributes
-                        .Builder()
-                        .setUsage(AudioAttributes.USAGE_ALARM)
-                        .setContentType(AudioAttributes.CONTENT_TYPE_SONIFICATION)
-                        .build(),
-                )
-            } else {
-                @Suppress("DEPRECATION")
-                player.setAudioStreamType(AudioManager.STREAM_ALARM)
-            }
-            player.setDataSource(this.context, uri)
-            player.prepare()
-            val f = volume / VOLUME_SCALE
-            player.setVolume(f, f)
-            player
-        } catch (e: IOException) {
-            Log.e(TAG, "Error reusing MediaPlayer, falling back to new", e)
-            null
-        } catch (e: IllegalStateException) {
-            Log.e(TAG, "Error reusing MediaPlayer, falling back to new", e)
-            null
-        } catch (e: SecurityException) {
-            Log.e(TAG, "Error reusing MediaPlayer, falling back to new", e)
-            null
+        player.reset()
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            player.setAudioAttributes(
+                AudioAttributes
+                    .Builder()
+                    .setUsage(AudioAttributes.USAGE_ALARM)
+                    .setContentType(AudioAttributes.CONTENT_TYPE_SONIFICATION)
+                    .build(),
+            )
+        } else {
+            @Suppress("DEPRECATION")
+            player.setAudioStreamType(AudioManager.STREAM_ALARM)
         }
+        player.setDataSource(this.context, uri)
+        player.prepare()
+        val f = volume / VOLUME_SCALE
+        player.setVolume(f, f)
+        return player
     }
 
     private fun stopAndRelease() {
@@ -130,21 +108,19 @@ class Audio(
         }
         withContext(Dispatchers.IO) {
             val p = this@Audio.player
-            if (p != null) {
-                this@Audio.player = reuseExistingPlayer(p, uri, volume) ?: preparePlayer(uri, volume)
-            } else {
-                this@Audio.player = preparePlayer(uri, volume)
-            }
+            this@Audio.player =
+                if (p != null) {
+                    reuseExistingPlayer(p, uri, volume)
+                } else {
+                    preparePlayer(uri, volume)
+                }
         }
-        this.player?.let { p ->
-            this.playing = true
-            Log.d(TAG, "Start playing Bell")
-            p.isLooping = false
-            p.start()
-            p.setOnCompletionListener(this)
-            return
-        }
-        Log.e(TAG, "Could not preparePlayer")
+        val p = this.player ?: return
+        this.playing = true
+        Log.d(TAG, "Start playing Bell")
+        p.isLooping = false
+        p.start()
+        p.setOnCompletionListener(this)
     }
 
     fun isPlaying(): Boolean = this.playing

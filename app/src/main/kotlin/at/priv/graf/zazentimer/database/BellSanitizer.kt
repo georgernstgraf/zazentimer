@@ -1,7 +1,9 @@
 package at.priv.graf.zazentimer.database
 
 import android.content.Context
+import android.net.Uri
 import android.util.Log
+import at.priv.graf.zazentimer.audio.BellValidator
 import at.priv.graf.zazentimer.audio.BuiltinBells
 import dagger.hilt.android.qualifiers.ApplicationContext
 import javax.inject.Inject
@@ -132,10 +134,12 @@ class BellSanitizer
             for (fileName in customBellFiles) {
                 if (fileName !in dbCustomFilenames) {
                     Log.i(TAG, "Found orphaned custom bell file ($fileName), adding to DB")
+                    val bellUri = "file://${context.filesDir}/$fileName"
+                    BellValidator.validate(context, Uri.parse(bellUri))
                     bellDao().insert(
                         BellEntity(
                             name = fileName.removePrefix("bell_"),
-                            uri = "file://${context.filesDir}/$fileName",
+                            uri = bellUri,
                             isBuiltin = false,
                         ),
                     )

@@ -3,10 +3,10 @@ package at.priv.graf.zazentimer.audio
 import android.content.Context
 import android.database.Cursor
 import android.net.Uri
-import android.util.Log
 import at.priv.graf.zazentimer.database.BellEntity
 import at.priv.graf.zazentimer.database.BellRepository
 import dagger.hilt.android.qualifiers.ApplicationContext
+import java.io.File
 import java.io.IOException
 import javax.inject.Inject
 import javax.inject.Singleton
@@ -20,34 +20,43 @@ class BellImporter
     ) {
         suspend fun import(uri: Uri): BellEntity? {
             val fileName = resolveBellFileName(uri)
+            var success = false
             return try {
-                val input = context.contentResolver.openInputStream(uri)
-                if (input == null) {
-                    Log.e(TAG, "Could not open input stream for URI")
-                    return null
-                }
-                val output = context.openFileOutput(fileName, 0)
-                input.use { inputStream ->
-                    output.use { outputStream ->
-                        inputStream.copyTo(outputStream)
-                    }
-                }
-                val bellUri = "file://${context.filesDir}/$fileName"
-                val entity =
-                    BellEntity(
-                        name = fileName.removePrefix("bell_"),
-                        uri = bellUri,
-                    )
-                val id = bellRepository.insertBell(entity)
-                entity.id = id.toInt()
-                entity
+                doImport(uri, fileName).also { success = true }
             } catch (e: IOException) {
-                Log.e(TAG, "IOException importing bell", e)
-                null
+                throw BellImportException(e.message ?: "IOException importing bell", e)
             } catch (e: SecurityException) {
-                Log.e(TAG, "SecurityException importing bell", e)
-                null
+                throw BellImportException(e.message ?: "SecurityException importing bell", e)
+            } finally {
+                if (!success) {
+                    File(context.filesDir, fileName).delete()
+                }
             }
+        }
+
+        private suspend fun doImport(
+            uri: Uri,
+            fileName: String,
+        ): BellEntity {
+            val input =
+                context.contentResolver.openInputStream(uri)
+                    ?: throw BellImportException("Could not open input stream for URI")
+            input.use { inputStream ->
+                val output = context.openFileOutput(fileName, 0)
+                output.use { outputStream ->
+                    inputStream.copyTo(outputStream)
+                }
+            }
+            val bellUri = "file://${context.filesDir}/$fileName"
+            BellValidator.validate(context, Uri.parse(bellUri))
+            val entity =
+                BellEntity(
+                    name = fileName.removePrefix("bell_"),
+                    uri = bellUri,
+                )
+            val id = bellRepository.insertBell(entity)
+            entity.id = id.toInt()
+            return entity
         }
 
         private fun resolveBellFileName(uri: Uri): String {
@@ -70,9 +79,5 @@ class BellImporter
                 uri.lastPathSegment?.let { str = "bell_$it" }
             }
             return str
-        }
-
-        companion object {
-            private const val TAG = "ZMT_BellImporter"
         }
     }

@@ -15,12 +15,14 @@ import io.mockk.unmockkAll
 import io.mockk.verify
 import kotlinx.coroutines.runBlocking
 import org.junit.After
+import org.junit.Assert.assertThrows
 import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.robolectric.RobolectricTestRunner
 import org.robolectric.RuntimeEnvironment
 import org.robolectric.annotation.Config
+import java.io.IOException
 
 @RunWith(RobolectricTestRunner::class)
 @Config(sdk = [29])
@@ -138,15 +140,18 @@ class AudioTest {
     }
 
     @Test
-    fun playAbsVolume_mediaPlayerFailure_handledGracefully() {
+    fun playAbsVolume_mediaPlayerFailure_throws() {
         every { anyConstructed<MediaPlayer>().prepare() } throws java.io.IOException("prepare failed")
 
         val uri = Uri.parse("android.resource://at.priv.graf.zazentimer/1234")
 
         val audio = Audio(context)
-        runBlocking { audio.playAbsVolume(uri, 100) }
+        val exception =
+            assertThrows(IOException::class.java) {
+                runBlocking { audio.playAbsVolume(uri, 100) }
+            }
 
-        assertThat(audio.isPlaying()).isFalse()
+        assertThat(exception).hasMessageThat().contains("prepare failed")
     }
 
     @Test

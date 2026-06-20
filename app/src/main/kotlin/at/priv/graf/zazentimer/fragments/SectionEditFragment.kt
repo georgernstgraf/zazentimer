@@ -13,6 +13,7 @@ import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.SpinnerAdapter
 import android.widget.TextView
+import android.widget.Toast
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
@@ -21,6 +22,7 @@ import at.priv.graf.zazentimer.Constants
 import at.priv.graf.zazentimer.R
 import at.priv.graf.zazentimer.ZazenTimerActivity
 import at.priv.graf.zazentimer.audio.Audio
+import at.priv.graf.zazentimer.audio.BellImportException
 import at.priv.graf.zazentimer.audio.BellImporter
 import at.priv.graf.zazentimer.bo.Section
 import at.priv.graf.zazentimer.bo.TimeFormat
@@ -64,14 +66,23 @@ class SectionEditFragment : Fragment() {
             if (result.resultCode != Activity.RESULT_OK || result.data == null) return@registerForActivityResult
             val data = result.data?.data ?: return@registerForActivityResult
             lifecycleScope.launch {
-                val entity = bellImporter.import(data) ?: return@launch
-                fillBellList()
-                section?.let { s ->
-                    s.bellId = entity.id
-                    if (s.bellId > 0) {
-                        sectionRepo.updateSection(s)
+                try {
+                    val entity = bellImporter.import(data) ?: return@launch
+                    fillBellList()
+                    section?.let { s ->
+                        s.bellId = entity.id
+                        if (s.bellId > 0) {
+                            sectionRepo.updateSection(s)
+                        }
+                        selectBellForSection(s)
                     }
-                    selectBellForSection(s)
+                } catch (e: BellImportException) {
+                    Toast
+                        .makeText(
+                            requireActivity(),
+                            e.message ?: getString(R.string.bell_import_failed),
+                            Toast.LENGTH_LONG,
+                        ).show()
                 }
             }
         }

@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
+import android.widget.Toast
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AlertDialog
@@ -16,6 +17,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import at.priv.graf.zazentimer.R
+import at.priv.graf.zazentimer.audio.BellImportException
 import at.priv.graf.zazentimer.audio.BellImporter
 import at.priv.graf.zazentimer.database.BellEntity
 import at.priv.graf.zazentimer.database.BellRepository
@@ -54,8 +56,17 @@ class ManageBellsFragment : Fragment() {
             if (result.resultCode != Activity.RESULT_OK || result.data == null) return@registerForActivityResult
             val data = result.data?.data ?: return@registerForActivityResult
             lifecycleScope.launch {
-                bellImporter.import(data) ?: return@launch
-                loadCustomBells()
+                try {
+                    bellImporter.import(data) ?: return@launch
+                    loadCustomBells()
+                } catch (e: BellImportException) {
+                    Toast
+                        .makeText(
+                            requireActivity(),
+                            e.message ?: getString(R.string.bell_import_failed),
+                            Toast.LENGTH_LONG,
+                        ).show()
+                }
             }
         }
 

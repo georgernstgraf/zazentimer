@@ -142,6 +142,7 @@
     <string name="confirm_delete_bell_affected">Delete bell \"%1$s\"?\n\nThe following sections will be switched to the default bell:\n%2$s</string>
     <string name="affected_section_format" tools:ignore="MissingTranslation">• section \"%1$s\" in Session \"%2$s\"</string>
     <string name="import_bell" tools:ignore="MissingTranslation">Import Bell</string>
+    <string name="bell_import_failed" translatable="false">Failed to import bell</string>
     <string name="crash_dialog_title">Fatal Error</string>
     <string name="crash_copy_exit">Copy Stack Trace &amp; Exit</string>
     <string name="crash_exit">Exit</string>
