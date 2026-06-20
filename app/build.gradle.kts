@@ -178,6 +178,8 @@ dependencies {
     ksp("com.google.dagger:hilt-compiler:2.59.2")
     androidTestImplementation("com.google.dagger:hilt-android-testing:2.59.2")
     kspAndroidTest("com.google.dagger:hilt-compiler:2.59.2")
+    testImplementation("com.google.dagger:hilt-android-testing:2.59.2")
+    kspTest("com.google.dagger:hilt-compiler:2.59.2")
 
     testImplementation("junit:junit:4.13.2")
     testImplementation("io.mockk:mockk:1.14.4")
