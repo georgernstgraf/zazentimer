@@ -29,8 +29,10 @@ import at.priv.graf.zazentimer.databinding.FragmentEditSessionBinding
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.transition.MaterialSharedAxis
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.NonCancellable
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 @AndroidEntryPoint
@@ -55,9 +57,6 @@ class SessionEditFragment :
 
     @Inject
     lateinit var bellRepo: BellRepository
-
-    @Inject
-    lateinit var appScope: CoroutineScope
 
     override fun onCreate(bundle: Bundle?) {
         super.onCreate(bundle)
@@ -214,11 +213,13 @@ class SessionEditFragment :
                 name = binding.textSessionName.text.toString(),
                 description = binding.textSessionDescription.text.toString(),
             )
-        appScope.launch {
-            for (section in capturedSections) {
-                sectionRepo.updateSection(section)
+        runBlocking {
+            withContext(NonCancellable) {
+                for (section in capturedSections) {
+                    sectionRepo.updateSection(section)
+                }
+                sessionRepo.updateSession(capturedSession)
             }
-            sessionRepo.updateSession(capturedSession)
         }
     }
 

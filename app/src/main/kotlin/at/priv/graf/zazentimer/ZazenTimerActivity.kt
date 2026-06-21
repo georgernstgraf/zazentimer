@@ -481,6 +481,7 @@ class ZazenTimerActivity :
                 demoSessionCreator.createDemoSessions()
             }
         }
+        File(noBackupFilesDir, "demo_sessions_created").createNewFile()
         val f = this@ZazenTimerActivity.findMainFragment()
         kotlinx.coroutines.runBlocking {
             withContext(Dispatchers.Main) {
@@ -498,14 +499,13 @@ class ZazenTimerActivity :
             return
         }
         Log.d(TAG, "Database file: ${dbFile.absolutePath} (${dbFile.length()} bytes)")
-        databaseOwner.close()
         val zipFile = File(cacheDir, BACKUP_ZIP_NAME)
         val ok =
             BackupManager(
                 databaseFileProvider = { dbFile },
                 filesDirProvider = { filesDir },
-                onCloseDatabase = { },
-                onReopenDatabase = { },
+                onCloseDatabase = { databaseOwner.close() },
+                onReopenDatabase = { databaseOwner.reopen() },
             ).backup(FileOutputStream(zipFile))
         if (!ok) {
             Log.e(TAG, "BackupManager.backup() returned false")

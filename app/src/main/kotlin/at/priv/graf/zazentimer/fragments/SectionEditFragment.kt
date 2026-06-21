@@ -33,7 +33,10 @@ import at.priv.graf.zazentimer.databinding.FragmentEditSectionBinding
 import com.google.android.material.transition.MaterialSharedAxis
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.NonCancellable
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 @AndroidEntryPoint
@@ -151,15 +154,19 @@ class SectionEditFragment : Fragment() {
     override fun onPause() {
         super.onPause()
         val audioToRelease = audio
-        appScope.launch {
-            audioToRelease?.release()
+        runBlocking {
+            withContext(NonCancellable) {
+                audioToRelease?.release()
+            }
         }
         this.audio = null
         if (_binding == null) return
         fillDataFromViews()
         val s = section ?: return
-        appScope.launch {
-            sectionRepo.updateSection(s)
+        runBlocking {
+            withContext(NonCancellable) {
+                sectionRepo.updateSection(s)
+            }
         }
     }
 
