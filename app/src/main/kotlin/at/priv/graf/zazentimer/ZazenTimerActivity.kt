@@ -48,6 +48,7 @@ import at.priv.graf.zazentimer.service.MeditationService
 import at.priv.graf.zazentimer.service.MeditationViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import java.io.File
@@ -69,6 +70,7 @@ class ZazenTimerActivity :
     private var navController: NavController? = null
     private var appBarConfiguration: AppBarConfiguration? = null
     private var zenIndicator: ImageView? = null
+    private var initializationJob: Job? = null
 
     private val notificationPermissionLauncher =
         registerForActivityResult(
@@ -201,26 +203,27 @@ class ZazenTimerActivity :
             appBarConfiguration?.let { NavigationUI.setupActionBarWithNavController(this, nc, it) }
         }
         observeViewModel()
-        lifecycleScope.launch {
-            bellSanitizer.sanitizeBellUris()
-            val demoMarker = File(noBackupFilesDir, "demo_sessions_created")
-            if (demoMarker.exists() && sessionRepo.readSessions().isEmpty()) {
-                Log.d(TAG, "Marker exists but DB empty -- data lost, recreating demo sessions")
-                demoMarker.delete()
-            }
-            if (!demoMarker.exists()) {
-                Log.d(TAG, "No demo marker -- creating demo sessions")
-                demoSessionCreator.createDemoSessions()
-                demoMarker.createNewFile()
-                withContext(Dispatchers.Main) {
-                    findMainFragment()?.updateSessionList()
+        initializationJob =
+            lifecycleScope.launch {
+                bellSanitizer.sanitizeBellUris()
+                val demoMarker = File(noBackupFilesDir, "demo_sessions_created")
+                if (demoMarker.exists() && sessionRepo.readSessions().isEmpty()) {
+                    Log.d(TAG, "Marker exists but DB empty -- data lost, recreating demo sessions")
+                    demoMarker.delete()
+                }
+                if (!demoMarker.exists()) {
+                    Log.d(TAG, "No demo marker -- creating demo sessions")
+                    demoSessionCreator.createDemoSessions()
+                    demoMarker.createNewFile()
+                    withContext(Dispatchers.Main) {
+                        findMainFragment()?.updateSessionList()
+                    }
+                }
+                if (intent.getStringExtra(INTENT_EXTRA_CREATE_BACKUP) == "true") {
+                    createBackupAndFinish()
+                    return@launch
                 }
             }
-            if (intent.getStringExtra(INTENT_EXTRA_CREATE_BACKUP) == "true") {
-                createBackupAndFinish()
-                return@launch
-            }
-        }
     }
 
     private fun observeViewModel() {
@@ -468,6 +471,9 @@ class ZazenTimerActivity :
     }
 
     fun resetDatabaseForTest() {
+        initializationJob?.cancel()
+        kotlinx.coroutines.runBlocking { initializationJob?.join() }
+        initializationJob = null
         kotlinx.coroutines.runBlocking(Dispatchers.IO) {
             val readSessions = sessionRepo.readSessions()
             for (i in readSessions.indices) {

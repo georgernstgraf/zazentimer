@@ -41,20 +41,22 @@ class BellSanitizer
 
         suspend fun sanitizeBellUris() =
             withIdling {
-                val allDbBells = bellDao().getAll()
-                val definitions = builtinDefinitions()
+                appDb().withTransaction {
+                    val allDbBells = bellDao().getAll()
+                    val definitions = builtinDefinitions()
 
-                syncBuiltinBellUris(allDbBells, definitions)
+                    syncBuiltinBellUris(allDbBells, definitions)
 
-                val updatedBells = bellDao().getAll()
-                val demoBellName = context.getString(BuiltinBells.DEMO_BELL_NAME_RES)
-                val demoBellId =
-                    updatedBells.find { it.isBuiltin && it.name == demoBellName }?.id
-                        ?: return@withIdling
+                    val updatedBells = bellDao().getAll()
+                    val demoBellName = context.getString(BuiltinBells.DEMO_BELL_NAME_RES)
+                    val demoBellId =
+                        updatedBells.find { it.isBuiltin && it.name == demoBellName }?.id
+                            ?: return@withTransaction
 
-                removeOrphanedBuiltinBells(updatedBells, definitions, demoBellId)
-                removeOrphanedCustomBells(updatedBells, customBellFiles(), demoBellId)
-                importOrphanedBellFiles(updatedBells, customBellFiles())
+                    removeOrphanedBuiltinBells(updatedBells, definitions, demoBellId)
+                    removeOrphanedCustomBells(updatedBells, customBellFiles(), demoBellId)
+                    importOrphanedBellFiles(updatedBells, customBellFiles())
+                }
             }
 
         private fun customBellFiles(): Set<String> =
