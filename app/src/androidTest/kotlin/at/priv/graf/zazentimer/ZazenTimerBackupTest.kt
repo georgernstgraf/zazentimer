@@ -27,10 +27,7 @@ import javax.inject.Inject
 @HiltAndroidTest
 @RunWith(AndroidJUnit4::class)
 @LargeTest
-@org.junit.Ignore(
-    "Hangs: resetDatabaseForTest() createDemoSessions() races with " +
-        "onCreate lifecycleScope createDemoSessions() — Room 2-thread executor deadlock. See #290",
-)
+@org.junit.Ignore("Blocked by #290: ActivityScenario.launch hangs after resetDatabaseForTest.")
 class ZazenTimerBackupTest : AbstractZazenTest() {
     @Inject
     lateinit var databaseOwner: DatabaseOwner

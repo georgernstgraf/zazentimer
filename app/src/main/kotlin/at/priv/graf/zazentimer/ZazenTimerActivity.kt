@@ -468,25 +468,21 @@ class ZazenTimerActivity :
     }
 
     fun resetDatabaseForTest() {
-        kotlinx.coroutines.runBlocking {
-            withContext(Dispatchers.IO) {
-                val readSessions = sessionRepo.readSessions()
-                for (i in readSessions.indices) {
-                    for (section in sectionRepo.readSections(readSessions[i].id)) {
-                        sectionRepo.deleteSection(section.id.toLong())
-                    }
-                    sessionRepo.deleteSession(readSessions[i].id)
+        kotlinx.coroutines.runBlocking(Dispatchers.IO) {
+            val readSessions = sessionRepo.readSessions()
+            for (i in readSessions.indices) {
+                for (section in sectionRepo.readSections(readSessions[i].id)) {
+                    sectionRepo.deleteSection(section.id.toLong())
                 }
-                bellSanitizer.sanitizeBellUris()
-                demoSessionCreator.createDemoSessions()
+                sessionRepo.deleteSession(readSessions[i].id)
             }
+            bellSanitizer.sanitizeBellUris()
+            demoSessionCreator.createDemoSessions()
         }
         File(noBackupFilesDir, "demo_sessions_created").createNewFile()
         val f = this@ZazenTimerActivity.findMainFragment()
-        kotlinx.coroutines.runBlocking {
-            withContext(Dispatchers.Main) {
-                f?.suspendUpdateSessionList()
-            }
+        kotlinx.coroutines.runBlocking(Dispatchers.Main) {
+            f?.suspendUpdateSessionList()
         }
     }
 
