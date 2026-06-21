@@ -33,7 +33,6 @@ import java.io.File
 import java.util.concurrent.TimeUnit
 import java.util.zip.ZipFile
 import javax.inject.Inject
-import kotlin.io.path.Path
 
 @HiltAndroidTest
 @RunWith(AndroidJUnit4::class)
@@ -79,8 +78,8 @@ class ZazenTimerBackupTest {
             bellSanitizer.sanitizeBellUris()
             demoSessionCreator.createDemoSessions()
         }
-        val noBackupDir = Path(context.noBackupFilesDir.absolutePath).toFile()
-        File(noBackupDir, "demo_sessions_created").createNewFile()
+        val marker = File(context.noBackupFilesDir, "demo_sessions_created")
+        marker.createNewFile()
     }
 
     @After
