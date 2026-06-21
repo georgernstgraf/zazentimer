@@ -175,6 +175,17 @@ class SessionRankPersistenceTest : AbstractZazenTest() {
                 uiController.injectMotionEvent(downEvent)
                 downEvent.recycle()
 
+                // The DOWN propagates to the itemView (drag handle listener returns false)
+                // and schedules a long-press callback. ItemTouchHelper then intercepts the
+                // MOVE/UP events, so the itemView never receives ACTION_CANCEL — the pending
+                // long-press fires ~400ms later and navigates to SessionEditFragment
+                // (SessionListAdapter.setOnLongClickListener -> onEditSession). On the API 35
+                // emulator this races against the framework's own cancellation and reliably
+                // fires, leaving the test on the edit screen instead of the main screen.
+                // Cancel it explicitly so the drag can never trigger navigation.
+                view.cancelLongPress()
+                dragHandle.cancelLongPress()
+
                 for (i in 1..steps) {
                     val eventTime = downTime + i * 5L
                     val x = sourceX + (targetX - sourceX) * i / steps
