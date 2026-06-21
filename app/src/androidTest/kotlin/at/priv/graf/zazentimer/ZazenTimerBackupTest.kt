@@ -4,31 +4,47 @@ import android.content.Context
 import android.content.Intent
 import androidx.lifecycle.Lifecycle
 import androidx.test.core.app.ActivityScenario
+import androidx.test.espresso.IdlingRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.filters.LargeTest
 import androidx.test.platform.app.InstrumentationRegistry
 import at.priv.graf.zazentimer.backup.BackupManager
 import at.priv.graf.zazentimer.database.AppDatabase
+import at.priv.graf.zazentimer.database.BellSanitizer
 import at.priv.graf.zazentimer.database.DatabaseOwner
+import at.priv.graf.zazentimer.database.DemoSessionCreator
 import at.priv.graf.zazentimer.database.SectionRepository
 import at.priv.graf.zazentimer.database.SessionRepository
+import at.priv.graf.zazentimer.service.IdlingResourceManager
+import dagger.hilt.android.testing.HiltAndroidRule
 import dagger.hilt.android.testing.HiltAndroidTest
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.runBlocking
+import org.junit.After
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertNotNull
 import org.junit.Assert.assertTrue
 import org.junit.Before
+import org.junit.Rule
 import org.junit.Test
+import org.junit.rules.Timeout
 import org.junit.runner.RunWith
 import java.io.File
+import java.util.concurrent.TimeUnit
 import java.util.zip.ZipFile
 import javax.inject.Inject
+import kotlin.io.path.Path
 
 @HiltAndroidTest
 @RunWith(AndroidJUnit4::class)
 @LargeTest
-@org.junit.Ignore("Blocked by #290: ActivityScenario.launch hangs after resetDatabaseForTest.")
-class ZazenTimerBackupTest : AbstractZazenTest() {
+class ZazenTimerBackupTest {
+    @get:Rule(order = 0)
+    val hiltRule = HiltAndroidRule(this)
+
+    @get:Rule(order = 1)
+    val globalTimeout: Timeout = Timeout(5, TimeUnit.MINUTES)
+
     @Inject
     lateinit var databaseOwner: DatabaseOwner
 
@@ -38,13 +54,38 @@ class ZazenTimerBackupTest : AbstractZazenTest() {
     @Inject
     lateinit var sectionRepo: SectionRepository
 
+    @Inject
+    lateinit var bellSanitizer: BellSanitizer
+
+    @Inject
+    lateinit var demoSessionCreator: DemoSessionCreator
+
     private lateinit var context: Context
 
     @Before
     fun setup() {
+        hiltRule.inject()
+        IdlingRegistry.getInstance().register(IdlingResourceManager.countingIdlingResource)
         context = InstrumentationRegistry.getInstrumentation().targetContext
         File(context.cacheDir, ZazenTimerActivity.BACKUP_ZIP_NAME).delete()
-        activityRule.scenario.onActivity { it.resetDatabaseForTest() }
+        runBlocking(Dispatchers.IO) {
+            val sessions = sessionRepo.readSessions()
+            for (session in sessions) {
+                for (section in sectionRepo.readSections(session.id)) {
+                    sectionRepo.deleteSection(section.id.toLong())
+                }
+                sessionRepo.deleteSession(session.id)
+            }
+            bellSanitizer.sanitizeBellUris()
+            demoSessionCreator.createDemoSessions()
+        }
+        val noBackupDir = Path(context.noBackupFilesDir.absolutePath).toFile()
+        File(noBackupDir, "demo_sessions_created").createNewFile()
+    }
+
+    @After
+    fun tearDown() {
+        IdlingRegistry.getInstance().unregister(IdlingResourceManager.countingIdlingResource)
     }
 
     @Test
