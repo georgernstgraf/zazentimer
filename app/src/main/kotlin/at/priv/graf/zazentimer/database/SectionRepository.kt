@@ -1,6 +1,7 @@
 package at.priv.graf.zazentimer.database
 
 import android.content.Context
+import androidx.room.withTransaction
 import at.priv.graf.zazentimer.audio.BuiltinBells
 import at.priv.graf.zazentimer.bo.Section
 import at.priv.graf.zazentimer.bo.Session
@@ -9,6 +10,7 @@ import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
+@Suppress("TooManyFunctions")
 class SectionRepository
     @Inject
     constructor(
@@ -18,6 +20,8 @@ class SectionRepository
         private fun sectionDao(): SectionDao = databaseOwner.sectionDao()
 
         private fun bellDao(): BellDao = databaseOwner.bellDao()
+
+        private fun appDb(): AppDatabase = databaseOwner.appDatabase()
 
         suspend fun readSection(id: Int): Section? =
             withIdling {
@@ -44,15 +48,17 @@ class SectionRepository
             session: Session,
             section: Section,
         ) = withIdling {
-            if (section.rank == -1) {
-                val maxRank = sectionDao().getMaxRank(session.id)
-                section.rank = (maxRank ?: 0) + 1
+            appDb().withTransaction {
+                if (section.rank == -1) {
+                    val maxRank = sectionDao().getMaxRank(session.id)
+                    section.rank = (maxRank ?: 0) + 1
+                }
+                section.bellId = resolveBellId(section.bellId)
+                section.fkSession = session.id
+                val entity = EntityMapper.toEntity(section)
+                val newId = sectionDao().insert(entity)
+                section.id = newId.toInt()
             }
-            section.bellId = resolveBellId(section.bellId)
-            section.fkSession = session.id
-            val entity = EntityMapper.toEntity(section)
-            val newId = sectionDao().insert(entity)
-            section.id = newId.toInt()
         }
 
         suspend fun deleteSection(id: Long) =

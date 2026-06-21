@@ -3,6 +3,7 @@ package at.priv.graf.zazentimer.database
 import android.content.Context
 import android.net.Uri
 import android.util.Log
+import androidx.room.withTransaction
 import at.priv.graf.zazentimer.audio.BellValidator
 import at.priv.graf.zazentimer.audio.BuiltinBells
 import dagger.hilt.android.qualifiers.ApplicationContext
@@ -22,6 +23,8 @@ class BellSanitizer
         private fun sectionDao(): SectionDao = databaseOwner.sectionDao()
 
         private fun sessionBellVolumeDao(): SessionBellVolumeDao = databaseOwner.sessionBellVolumeDao()
+
+        private fun appDb(): AppDatabase = databaseOwner.appDatabase()
 
         private data class BuiltinDefinition(
             val name: String,
@@ -93,9 +96,11 @@ class BellSanitizer
             for (dbBell in updatedBells.filter { it.isBuiltin }) {
                 if (dbBell.name !in builtinNames) {
                     Log.w(TAG, "Builtin bell '${dbBell.name}' no longer exists, reassigning to demo")
-                    reassignBellReferences(dbBell.id, demoBellId)
-                    sessionBellVolumeDao().deleteByBellId(dbBell.id)
-                    bellDao().deleteById(dbBell.id)
+                    appDb().withTransaction {
+                        reassignBellReferences(dbBell.id, demoBellId)
+                        sessionBellVolumeDao().deleteByBellId(dbBell.id)
+                        bellDao().deleteById(dbBell.id)
+                    }
                 }
             }
         }
@@ -109,9 +114,11 @@ class BellSanitizer
                 val fileName = bell.uri.substringAfterLast("/")
                 if (fileName !in customBellFiles) {
                     Log.w(TAG, "Custom bell file missing ($fileName), removing from DB")
-                    reassignBellReferences(bell.id, demoBellId)
-                    sessionBellVolumeDao().deleteByBellId(bell.id)
-                    bellDao().deleteById(bell.id)
+                    appDb().withTransaction {
+                        reassignBellReferences(bell.id, demoBellId)
+                        sessionBellVolumeDao().deleteByBellId(bell.id)
+                        bellDao().deleteById(bell.id)
+                    }
                 } else {
                     val correctUri = "file://${context.filesDir}/$fileName"
                     if (bell.uri != correctUri) {

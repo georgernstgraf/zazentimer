@@ -477,6 +477,7 @@ class ZazenTimerActivity :
                     }
                     sessionRepo.deleteSession(readSessions[i].id)
                 }
+                bellSanitizer.sanitizeBellUris()
                 demoSessionCreator.createDemoSessions()
             }
         }
