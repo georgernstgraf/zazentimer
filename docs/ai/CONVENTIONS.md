@@ -72,10 +72,15 @@ Follow these without question. Do not deviate unless explicitly told.
 - **Demo bell lookup by name.** `BellDao.getBuiltinByName(name)` finds the demo bell via `context.getString(BuiltinBells.DEMO_BELL_NAME_RES)`. No extra DB column needed.
 
 ## Release Workflow
-- Use `scripts/release.sh <version>` (e.g. `./scripts/release.sh 3.0.8`) to create releases. The script updates `.fdroid.yml` with the new version, commits, and tags.
-- Push with: `git push origin main v<version>`
-- The tag triggers the GitHub Actions Play Store pipeline automatically.
-- F-Droid updates are handled separately via the MR in fdroiddata (see #242).
+Manual process (no release script — the historical `scripts/release.sh` reference was a stub that was never created).
+
+1. Bump `versionCode` + `versionName` in `app/build.gradle.kts`. versionCode follows `<major><minor 2-digit><patch 2-digit>00` (e.g. 3.2.0 → 3020000). `.github/workflows/release.yml` computes versionCode from the tag with the same formula — keep them in sync.
+2. Sync `.fdroid.yml`: update `CurrentVersion`, `CurrentVersionCode`, and the single `Builds:` entry (`versionName`, `versionCode`, `commit: vX.Y.Z`, `gradleprops`). Do NOT quote `versionName:` or `CurrentVersion:` (per F-Droid Metadata conventions below).
+3. Update `distribution/whatsnew/whatsnew-en-GB` with curated "What's new" text (Play Store reads this via `r0adkll/upload-google-play@v1`'s `whatsNewDirectory` parameter). Keep lines ≤80 chars; the file is plain text.
+4. `git add . && git commit -m "chore: bump version to X.Y.Z"`
+5. `git tag vX.Y.Z`
+6. `git push origin main vX.Y.Z` — pushing the tag triggers `.github/workflows/release.yml` → build → sign → upload to Play Store alpha track (status: completed, live to alpha testers immediately). The Play upload step carries `continue-on-error: true`, so verify the run manually with `gh run view` rather than relying on the workflow's overall green status.
+7. F-Droid's `AutoUpdateMode: Version` + `UpdateCheckMode: Tags` picks up the new tag automatically; the in-repo `.fdroid.yml` is the build recipe. An MR in `fdroiddata` is only needed for the initial submission (done in #242) or metadata config changes — not for routine version bumps.
 
 ## F-Droid Metadata
 - `.fdroid.yml` in project root contains the F-Droid build recipe.

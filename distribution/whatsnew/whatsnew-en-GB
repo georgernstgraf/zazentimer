@@ -1,1 +1,5 @@
-Initial release.
+New: invalid audio files now fail to import with a clear message instead of silently breaking.
+Fix: app could crash on launch if a bell file was corrupt — now caught and cleaned up automatically.
+Fix: backup restore could lose a session or section on newer Android versions.
+Fix: session drag-reorder is now reliably saved.
+Various stability and test-coverage improvements.

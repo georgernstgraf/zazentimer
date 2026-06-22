@@ -77,8 +77,8 @@ android {
         // 4. release.yml → signs + uploads to Play Store
         // 5. F-Droid auto-update picks up new tag automatically
         //    (regex: versionCode\s*=\s*(\d+), versionName\s*=\s*"(.+)")
-        versionCode = 3010000
-        versionName = "3.1.0"
+        versionCode = 3020000
+        versionName = "3.2.0"
 
         testInstrumentationRunner = "at.priv.graf.zazentimer.HiltTestRunner"
         testInstrumentationRunnerArguments["testTimeoutSeconds"] = "120"
