@@ -102,6 +102,9 @@ class MeditationServiceTest : AbstractZazenTest() {
             .onView(
                 androidx.test.espresso.matcher.ViewMatchers
                     .withId(android.R.id.button1),
+            ).inRoot(
+                androidx.test.espresso.matcher.RootMatchers
+                    .isDialog(),
             ).perform(
                 click(),
             )

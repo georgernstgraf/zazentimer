@@ -4,6 +4,7 @@ import androidx.test.espresso.Espresso.onIdle
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.assertion.ViewAssertions.matches
+import androidx.test.espresso.matcher.RootMatchers.isDialog
 import androidx.test.espresso.matcher.ViewMatchers.withId
 import androidx.test.espresso.matcher.ViewMatchers.withText
 import androidx.test.ext.junit.runners.AndroidJUnit4
@@ -67,7 +68,7 @@ class SectionEditTest : AbstractZazenTest() {
 
         onIdle()
 
-        onView(withId(android.R.id.button1)).perform(click())
+        onView(withId(android.R.id.button1)).inRoot(isDialog()).perform(click())
 
         SectionEditPage()
             .setBellCount(3)
