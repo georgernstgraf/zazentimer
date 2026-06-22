@@ -58,6 +58,23 @@ class ManageBellsPage {
         return this
     }
 
+    fun verifyBellNotListed(name: String): ManageBellsPage {
+        for (i in 0 until 20) {
+            val found =
+                try {
+                    onView(withText(name)).check(matches(isDisplayed()))
+                    true
+                } catch (_: Throwable) {
+                    false
+                }
+            if (found) {
+                throw AssertionError("Bell '$name' was expected to be absent but is displayed")
+            }
+            Thread.sleep(500)
+        }
+        return this
+    }
+
     fun clickDeleteForBell(name: String): ManageBellsPage {
         onView(withId(R.id.bell_list))
             .perform(

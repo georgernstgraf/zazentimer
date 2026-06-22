@@ -31,10 +31,12 @@ import dagger.hilt.android.testing.HiltAndroidTest
 import kotlinx.coroutines.runBlocking
 import org.junit.After
 import org.junit.Assert.assertEquals
+import org.junit.Assert.assertFalse
 import org.junit.Test
 import org.junit.runner.RunWith
 import java.io.File
 import javax.inject.Inject
+import at.priv.graf.zazentimer.test.R as TestR
 
 @HiltAndroidTest
 @RunWith(AndroidJUnit4::class)
@@ -140,6 +142,101 @@ class ManageBellsTest : AbstractZazenTest() {
             onIdle()
 
             ManageBellsPage().verifyBellListed("import_test.mp3")
+        } finally {
+            Intents.release()
+            sourceFile.delete()
+        }
+    }
+
+    @Test
+    fun importCustomBell_mp3_succeeds() {
+        runImportTest(TestR.raw.goodbell_mp3, "goodbell.mp3", expectSuccess = true)
+    }
+
+    @Test
+    fun importCustomBell_aac_succeeds() {
+        runImportTest(TestR.raw.goodbell_aac, "goodbell.aac", expectSuccess = true)
+    }
+
+    @Test
+    fun importCustomBell_ogg_succeeds() {
+        runImportTest(TestR.raw.goodbell_ogg, "goodbell.ogg", expectSuccess = true)
+    }
+
+    @Test
+    fun importCustomBell_flac_succeeds() {
+        runImportTest(TestR.raw.goodbell_flac, "goodbell.flac", expectSuccess = true)
+    }
+
+    @Test
+    fun importCustomBell_wav_succeeds() {
+        runImportTest(TestR.raw.goodbell_wav, "goodbell.wav", expectSuccess = true)
+    }
+
+    @Test
+    fun importCustomBell_mp3_invalidAudioFails() {
+        runImportTest(TestR.raw.badbell_mp3, "badbell.mp3", expectSuccess = false)
+    }
+
+    @Test
+    fun importCustomBell_aac_invalidAudioFails() {
+        runImportTest(TestR.raw.badbell_aac, "badbell.aac", expectSuccess = false)
+    }
+
+    @Test
+    fun importCustomBell_ogg_invalidAudioFails() {
+        runImportTest(TestR.raw.badbell_ogg, "badbell.ogg", expectSuccess = false)
+    }
+
+    @Test
+    fun importCustomBell_flac_invalidAudioFails() {
+        runImportTest(TestR.raw.badbell_flac, "badbell.flac", expectSuccess = false)
+    }
+
+    @Test
+    fun importCustomBell_wav_invalidAudioFails() {
+        runImportTest(TestR.raw.badbell_wav, "badbell.wav", expectSuccess = false)
+    }
+
+    private fun runImportTest(
+        rawResId: Int,
+        stagedFileName: String,
+        expectSuccess: Boolean,
+    ) {
+        val context = InstrumentationRegistry.getInstrumentation().targetContext
+        val testContext = InstrumentationRegistry.getInstrumentation().context
+        val sourceFile = File(context.cacheDir, stagedFileName)
+        testContext.resources.openRawResource(rawResId).use { input ->
+            sourceFile.outputStream().use { output -> input.copyTo(output) }
+        }
+
+        Intents.init()
+        try {
+            intending(hasAction(Intent.ACTION_CHOOSER))
+                .respondWith(
+                    Instrumentation.ActivityResult(
+                        Activity.RESULT_OK,
+                        Intent().setData(Uri.fromFile(sourceFile)),
+                    ),
+                )
+
+            MainPage()
+                .verifyMainScreenIsDisplayed()
+                .clickToolbarOverflowItem(R.string.menu_settings)
+            SettingsPage()
+                .clickManageBells()
+                .verifyScreenDisplayed()
+
+            onView(withId(R.id.import_button)).perform(click())
+
+            onIdle()
+
+            if (expectSuccess) {
+                ManageBellsPage().verifyBellListed(stagedFileName)
+            } else {
+                ManageBellsPage().verifyBellNotListed(stagedFileName)
+                assertFalse(File(context.filesDir, "bell_$stagedFileName").exists())
+            }
         } finally {
             Intents.release()
             sourceFile.delete()
