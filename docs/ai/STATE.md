@@ -1,33 +1,31 @@
 # Project State
 
-Current status as of 2026-06-20.
+Current status as of 2026-06-22.
 
 ## Current Focus
-None active. Recent cleanup closed #272, #281, #283, #284, and #285 after the full API matrix went green on `think`. The #270 `runBlocking` follow-up is now complete. #267 naming sweeps have been implemented and verified; awaiting main-agent review/push.
+None active. This cycle closed #290, #291, and #292. Full 4-API matrix (23, 27, 31, 35) is green on `think`. The codebase is at `f6badd3` on `origin/main`.
 
 ## Completed (this cycle)
-- [x] **#272 closed** after real-X11 validation on `think`: API 23 (x86_64 + x86) instrumented tests green; `testDeleteSession`, `testDeleteCancel`, and `dragReorder_persistsAfterNavigationAndEdit` all pass.
-- [x] **#281 closed** (commits `8c763dc`, `2ab171a`, `7a0cbaf`): choppy emulator bell audio fixed via QEMU PulseAudio env vars, disabled virtual audio input, and `MediaPlayer` reuse in `Audio.playAbsVolume()`.
-- [x] **#283 closed** (commits `223006f`, `7a0cbaf`): snapshot protections added — configurable `adb wait-for-device` timeout, purge snapshot after boot timeout, purge snapshot on test failure.
-- [x] **#284 closed**: API 31/32/34 FOREIGN KEY / empty-bells-table crashes no longer reproduce after baseline/snapshot hardening; full matrix green on `think`.
-- [x] **#285 closed** (commit `7a0cbaf`): `MainFragment.onDragEnd()` lifecycle race fixed by using `lifecycleScope` instead of `viewLifecycleOwner.lifecycleScope`.
-- [x] **#268 complete** (6 commits `fd1fe88`→`13fa256`, pushed): the `DbOperations` god-class façade is **deleted**. All consumers (production + test) inject the specific repositories (`SessionRepository`/`SectionRepository`/`BellRepository`/`BellSanitizer`) and `DatabaseOwner` directly via Hilt. `rg "DbOperations" app/src/` → zero type references. Phased 0→4 (Hilt foundation → single-repo consumers → multi-repo fragments → last prod consumers → test consumers → delete). `ARCHITECTURE.md` updated. Issue closed.
-  - **Key design**: `DatabaseOwner` (`@Singleton @Inject`) owns the Room `AppDatabase` lifecycle (build/close/reopen/version); the 4 repos fetch DAOs **dynamically** from it (reopen-safe — Hilt singletons can't be rebuilt, and `close`/`reopen` recycle the connection).
-  - **Blocker the issue body missed**: `DbOperations` wasn't a pure façade — it owned the Room lifecycle. Solved by `DatabaseOwner`.
-- [x] **#273 fixed & closed** (commit `88f44ae`): session drag-reorder lost on Settings→back; fix = `clearView → onDragEnd → async assignRanks`; `SessionRankPersistenceTest` rewritten with a real drag gesture + identity assertions.
-- [x] **#271 fixed & closed** (commit `252bbd6`): score-based settlement in `voting_api.tsx`; new pure `prisma/lib/settlement.ts` + repo's first `deno test`.
-- [x] **#270 follow-up complete** — remaining production `runBlocking` callsites migrated to an application-scoped `CoroutineScope(SupervisorJob() + Dispatchers.IO)`; UI values captured synchronously in `onPause()`, DB/audio writes launched asynchronously and survive fragment destruction. `./gradlew test`, `assembleDebug`, `assembleDebugAndroidTest`, and `detekt` pass.
-- [x] **#267 implemented** (commits `e9890e6`, `0c44144`) — layout IDs and @Test method names normalized to snake_case/camel-snake convention. 34 XML files + 13 test files changed. Both verification suites green. GitHub issue left open for main-agent review/push.
+- [x] **4-API matrix green (23/27/31/35)** on `think` — closed the test regressions blocking #290.
+  - `bb58408` — API 23: `Paths.get` → `java.io.File` (API <26 compat).
+  - `4f83abf` — API 31/35 backup test: `DatabaseOwner.close()` now actually consumes the WAL-checkpoint cursor (was a silent no-op).
+  - `702af05` — API 31 `DuplicateSessionTest` FK crash: `BellSanitizer.sanitizeBellUris()` wrapped in transaction; `resetDatabaseForTest()` cancels the activity's onCreate `initializationJob` before mutating DB (eliminates the sanitize/createDemoSessions race the slower API 31 emulator exposed).
+  - `bb349bc` — API 35 `SessionRankPersistenceTest` drag long-press navigation: drag ViewAction calls `view.cancelLongPress()` + `dragHandle.cancelLongPress()` after `ACTION_DOWN`.
+- [x] **#291 (custom audio import tests)**: 10 parameterized tests (5 formats × good/bad) added to `ManageBellsTest.kt`. Fixtures moved from `app/src/test/resources/audio/` to `app/src/androidTest/res/raw/` (renamed per Android raw-resource rules). Two production bugs surfaced and fixed in follow-up commit `071c264`:
+  - `BellSanitizer.importOrphanedBellFiles` now catches `BellImportException` per-file (log + delete corrupt file) — was an uncaught crash that bricked the app on every launch if any `bell_*` file in `filesDir/` was invalid audio.
+  - `ManageBellsFragment` import-failure toast always uses `R.string.bell_import_failed` (was showing raw `e.message` = "Prepare failed.: status=0x1" — the Elvis fallback was unreachable).
+- [x] **#292 (dialog-root flake)**: `SectionEditTest.kt:70` and `MeditationServiceTest.kt:100-108` now use `.inRoot(isDialog())` for AlertDialog button clicks. Commit `f6badd3`. Attempt-1 API 35 run passes cleanly (no `RootViewWithoutFocusException`, no retry needed).
+- [x] **Knowledge persistence**: PITFALLS.md gained 6 new permanent-constraint entries (setsid vs nohup, Toast invisible to UiAutomator, auto-retry masking, testFixtures classpath, `e.message` anti-pattern, BellImportException catch requirement). CONVENTIONS.md gained 4 new entries under §Instrumented Test Reliability (extending the `.inRoot(isDialog())` rule, negative-assertion corroboration, indirect toast verification, BellValidator catch). HISTORY.md gained entries for the 7 fixed bugs from this cycle.
 
 ## Pending
-- [ ] **Env followup (claw)**: API 34 freezer skip-check fooled by `cached_apps_freezer=disabled` setting vs boot flag `use_freezer=false` not taking on fast-boot resume → `run-instrumentation.sh` skips re-provisioning → 900s hang. Remedy: `--cold-boot` or re-baseline to `setting=null`. API 36 `system_server` crash on claw after freezer-provisioning reboot. Both are claw/Xvfb-specific, not code regressions.
+None.
+
+## Blockers
+None. Full 4-API matrix green on `think`. `claw` still has known env instability for API ≥ 34 (freezer / system_server; see PITFALLS #126-127) — not a code regression.
 
 ## `claw` AVD inventory
 - `test_api23` (x86_64) + `test_api23_x86` (32-bit) — created for #272 repro; both ABIs green.
 - `test_api31`, `test_api34`, `test_api36` — existing; 34/36 baselines rebuilt (freezer-provisioned) but still hit claw env instability at runtime.
 
-## Blockers
-- Full API matrix on `claw` is unreliable for ≥34 (freezer/cgroup/system_server instability — PITFALLS). Full-matrix gates may need `think` or a real display.
-
 ## Next Session Suggestion
-- Pick a new feature/bug, or revisit #267 at a quieter moment.
+- Pick a new feature/bug, or run the full 14-API matrix on `think` for a wider sanity check (the 4-API matrix is green; the other 10 APIs haven't been exercised this cycle).
