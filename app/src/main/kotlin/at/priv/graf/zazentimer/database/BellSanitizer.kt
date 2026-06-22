@@ -4,9 +4,11 @@ import android.content.Context
 import android.net.Uri
 import android.util.Log
 import androidx.room.withTransaction
+import at.priv.graf.zazentimer.audio.BellImportException
 import at.priv.graf.zazentimer.audio.BellValidator
 import at.priv.graf.zazentimer.audio.BuiltinBells
 import dagger.hilt.android.qualifiers.ApplicationContext
+import java.io.File
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -144,14 +146,19 @@ class BellSanitizer
                 if (fileName !in dbCustomFilenames) {
                     Log.i(TAG, "Found orphaned custom bell file ($fileName), adding to DB")
                     val bellUri = "file://${context.filesDir}/$fileName"
-                    BellValidator.validate(context, Uri.parse(bellUri))
-                    bellDao().insert(
-                        BellEntity(
-                            name = fileName.removePrefix("bell_"),
-                            uri = bellUri,
-                            isBuiltin = false,
-                        ),
-                    )
+                    try {
+                        BellValidator.validate(context, Uri.parse(bellUri))
+                        bellDao().insert(
+                            BellEntity(
+                                name = fileName.removePrefix("bell_"),
+                                uri = bellUri,
+                                isBuiltin = false,
+                            ),
+                        )
+                    } catch (e: BellImportException) {
+                        Log.w(TAG, "Orphaned bell file $fileName is invalid audio, deleting", e)
+                        File(context.filesDir, fileName).delete()
+                    }
                 }
             }
         }

@@ -3,6 +3,7 @@ package at.priv.graf.zazentimer.fragments
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -60,10 +61,11 @@ class ManageBellsFragment : Fragment() {
                     bellImporter.import(data) ?: return@launch
                     loadCustomBells()
                 } catch (e: BellImportException) {
+                    Log.w(TAG, "Bell import failed", e)
                     Toast
                         .makeText(
                             requireActivity(),
-                            e.message ?: getString(R.string.bell_import_failed),
+                            getString(R.string.bell_import_failed),
                             Toast.LENGTH_LONG,
                         ).show()
                 }
@@ -203,5 +205,9 @@ class ManageBellsFragment : Fragment() {
             val nameView: TextView = view.findViewById(R.id.bell_name)
             val deleteButton: Button = view.findViewById(R.id.delete_button)
         }
+    }
+
+    private companion object {
+        private const val TAG = "ZMT_ManageBellsFragment"
     }
 }

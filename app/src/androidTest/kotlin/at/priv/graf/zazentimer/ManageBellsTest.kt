@@ -234,6 +234,14 @@ class ManageBellsTest : AbstractZazenTest() {
             if (expectSuccess) {
                 ManageBellsPage().verifyBellListed(stagedFileName)
             } else {
+                // The catch block in ManageBellsFragment.bellPickerLauncher unconditionally shows
+                // the toast (Toast.makeText(...).show() is the only statement besides Log.w). If the
+                // catch block did NOT run, the uncaught BellImportException would crash the test
+                // process — as demonstrated by the d65f120 crash at this exact point. Since the
+                // test reaches these assertions without crashing, the catch block (and therefore
+                // the toast) MUST have executed. Toast TEXT cannot be verified on API 31+ because
+                // system-managed toast windows are invisible to UiDevice.findObject() and
+                // UiAutomation.windows.
                 ManageBellsPage().verifyBellNotListed(stagedFileName)
                 assertFalse(File(context.filesDir, "bell_$stagedFileName").exists())
             }
