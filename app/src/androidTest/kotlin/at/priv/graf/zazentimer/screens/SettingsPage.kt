@@ -77,6 +77,7 @@ class SettingsPage {
     fun clickManageBells(): ManageBellsPage {
         scrollToPreference(R.string.manage_bells)
         onView(withText(R.string.manage_bells)).perform(click())
+        onIdle()
         return ManageBellsPage()
     }
 

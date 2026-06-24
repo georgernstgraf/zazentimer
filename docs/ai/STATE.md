@@ -3,20 +3,19 @@
 Current status as of 2026-06-24.
 
 ## Current Focus
-#289 (backup fixture push fails on API 30 → false-green). Fix verified on full 14-API matrix (13/14 green; API 33 failed on pre-existing overflow-menu UI flakes, unrelated to #289).
+#293 (intermittent overflow-menu UI test flakes under sustained emulator load). Fix verified on both affected API levels (29 and 33) — all 44 tests pass each.
 
 ## Completed (this cycle)
-- [x] **#289 fix**: `BackupRestoreInstrumentedTest` self-provisions fixture from `app/src/androidTest/res/raw/zentimer_backup_room_v2.zip` (removed `Assume.assumeTrue` + `adb push` machinery). Phase 2 backup-restore verified green on API 23–32, 34–36 (13 APIs incl. regression target API 30 twice).
-- [x] **FailOnAssumptionSkipListener**: in-process `RunListener` that crashes on any `Assume` skip. Registered via `am instrument -e listener`. Proven inert on all clean runs (zero false-positives); proven to fire on real assumption-skip (temp test → `Process crashed` → Phase 1 fails ~19s). Replaced the stdout dot-parser (GPU/SwiftShader log interleaving broke it on API 34).
-- [x] **Auto-tag removed**: `run-instrumentation.sh` no longer auto-tags `tested-*`. Replaced with heads-up banner (`ALL TESTS PASSED — ready to commit & tag!`).
-- [x] **Matrix run #2** (full 14-API, `--continue-on-error`, real `$DISPLAY` on `think`): 13/14 PASS. API 33 failed 2× (overflow-menu UI flakes: `SectionEditTest.addNewSection_addsSection` then `SettingsTest.backup_createsBackup`, both `NoMatchingViewException`). API 29 flaked once (`ManageBellsTest` import_button), passed on retry.
+- [x] **#293 fix**: Hardened `ScreenRobot.clickToolbarOverflowItem` — added `onIdle()` before opening, wrapped open-and-find in a 3-attempt retry loop, increased `waitForExists` from 2s to 4s, prefer Espresso's `openActionBarOverflowOrOptionsMenu` with UiAutomator fallback. Added `onIdle()` after screen-transition navigations in `SettingsPage.clickManageBells` and `SessionEditPage.clickAddSection` (replaced `Thread.sleep(1500)`).
+- [x] **Verification**: API 33 (Phase 1: OK 40 tests, Phase 2: OK 4 tests — PASS), API 29 (Phase 1: OK 40 tests, Phase 2: OK 4 tests — PASS). Both were the APIs that flaked in the original 2026-06-24 matrix run.
+- [x] **detekt + ktlintFormat + compileDebugAndroidTestKotlin + assembleDebugAndroidTest**: all pass.
 
 ## Pending
-- [ ] File GitHub issues for pre-existing UI flakes (API 33 overflow-menu: SectionEditTest/SettingsTest; API 29 ManageBellsTest import_button).
+- [ ] Full 14-API matrix run to confirm no regression on other API levels (optional — fix is test-infrastructure-only and conservative).
 
 ## Blockers
-None. #289 is fixed and verified. The API 33/29 flakes are pre-existing environmental UI test flakiness (overflow menu / import button not rendering in time under sustained emulator load), not a code regression.
+None.
 
 ## Next Session Suggestion
-- Tag `tested-2026-06-24` on the #289 fix commit after pushing.
-- Investigate overflow-menu UI flake (API 33/29) if it recurs — likely Espresso idle-sync timing under load, not a deterministic bug.
+- Tag `tested-2026-06-24` on the latest green commit if the full matrix is confirmed clean.
+- Investigate other pre-existing UI flakes if they recur on future matrix runs.

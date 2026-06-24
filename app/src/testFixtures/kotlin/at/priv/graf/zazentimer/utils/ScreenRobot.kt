@@ -3,6 +3,7 @@ package at.priv.graf.zazentimer.utils
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 import androidx.test.espresso.Espresso
+import androidx.test.espresso.Espresso.onIdle
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.Espresso.openActionBarOverflowOrOptionsMenu
 import androidx.test.espresso.UiController
@@ -57,39 +58,47 @@ class ScreenRobot {
     fun onViewWithId(viewId: Int): ViewInteraction = Espresso.onView(ViewMatchers.withId(viewId))
 
     fun clickToolbarOverflowItem(textResId: Int): ScreenRobot {
-        try {
-            val device = UiDevice.getInstance(getInstrumentation())
-            val overflowButton = device.findObject(UiSelector().descriptionContains("More options"))
-            if (overflowButton.waitForExists(2000)) {
-                overflowButton.click()
-                Thread.sleep(1000)
-            } else {
-                openActionBarOverflowOrOptionsMenu(getInstrumentation().targetContext)
-            }
-        } catch (e: Exception) {
-            openActionBarOverflowOrOptionsMenu(getInstrumentation().targetContext)
-        }
-
+        onIdle()
         val context = getInstrumentation().targetContext
         val menuText = context.getString(textResId)
-
-        // Try UI Automator first for the menu item
         val device = UiDevice.getInstance(getInstrumentation())
-        val menuItem = device.findObject(UiSelector().text(menuText))
-        if (menuItem.waitForExists(2000)) {
-            menuItem.click()
-            return this
+
+        for (attempt in 0 until 3) {
+            try {
+                openActionBarOverflowOrOptionsMenu(context)
+            } catch (e: Exception) {
+                val overflowButton = device.findObject(UiSelector().descriptionContains("More options"))
+                if (overflowButton.waitForExists(2000)) {
+                    overflowButton.click()
+                    Thread.sleep(1000)
+                }
+            }
+
+            val menuItem = device.findObject(UiSelector().text(menuText))
+            if (menuItem.waitForExists(4000)) {
+                menuItem.click()
+                return this
+            }
+
+            // PITFALLS #81: popup menu animation not tracked by Espresso idle
+            var espressoVisible = false
+            for (i in 0 until 6) {
+                try {
+                    onView(withText(textResId)).check(matches(isDisplayed()))
+                    espressoVisible = true
+                    break
+                } catch (e: Exception) {
+                    Thread.sleep(500)
+                }
+            }
+            if (espressoVisible) {
+                onView(withText(textResId)).perform(click())
+                return this
+            }
+
+            device.pressBack()
         }
 
-        // PITFALLS #81: popup menu animation not tracked by Espresso idle
-        for (i in 0 until 10) {
-            try {
-                onView(withText(textResId)).check(matches(isDisplayed()))
-                break
-            } catch (e: Exception) {
-                Thread.sleep(500)
-            }
-        }
         onView(withText(textResId)).perform(click())
         return this
     }

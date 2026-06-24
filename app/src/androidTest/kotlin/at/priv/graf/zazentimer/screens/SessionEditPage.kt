@@ -1,6 +1,7 @@
 package at.priv.graf.zazentimer.screens
 
 import androidx.recyclerview.widget.RecyclerView
+import androidx.test.espresso.Espresso.onIdle
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.action.ViewActions.typeText
@@ -31,7 +32,7 @@ class SessionEditPage {
 
     fun clickAddSection(): SectionEditPage {
         robot.clickToolbarOverflowItem(R.string.menu_add_section)
-        Thread.sleep(1500)
+        onIdle()
         return SectionEditPage()
     }
 
