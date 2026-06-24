@@ -17,12 +17,12 @@ import dagger.hilt.android.testing.HiltAndroidTest
 import kotlinx.coroutines.runBlocking
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertTrue
-import org.junit.Assume
 import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
 import java.io.File
 import javax.inject.Inject
+import at.priv.graf.zazentimer.test.R as TestR
 
 @BackupTest
 @HiltAndroidTest
@@ -55,7 +55,10 @@ class BackupRestoreInstrumentedTest : AbstractZazenTest() {
 
     @Before
     fun setupBackupRestore() {
-        Assume.assumeTrue(zipFile.exists())
+        val testCtx = InstrumentationRegistry.getInstrumentation().context
+        zipFile.outputStream().use { out ->
+            testCtx.resources.openRawResource(TestR.raw.zentimer_backup_room_v2).use { it.copyTo(out) }
+        }
         val context = InstrumentationRegistry.getInstrumentation().targetContext
         backupManager =
             BackupManager(

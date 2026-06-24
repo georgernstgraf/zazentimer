@@ -148,3 +148,11 @@ The following bugs were discovered and fixed during the 4-API matrix + #291 + #2
 
 ## 2026-06-22 (origin: PITFALLS.md #41 already documented, reason: fixed in `f6badd3` same day): `SectionEditTest.editSectionConfig_opensEditor` + `MeditationServiceTest.clickStopConfirmButton` missing `.inRoot(isDialog())`
 - Both clicked `android.R.id.button1` (AlertDialog / TimePickerDialog OK button) without targeting the dialog root. Under `EDGE_TO_EDGE_ENFORCED` (API 35+/36+), the activity window loses focus when the dialog appears → Espresso's default root matcher waits 10s for window focus → `RootViewWithoutFocusException`. The script's auto-retry masked it. **Fix**: chain `.inRoot(isDialog())` before `.perform(click())`. PITFALLS #41 already documents the general constraint; the convention update in CONVENTIONS.md now mandates auditing every dialog-button click. Filed as #292.
+
+## 2026-06-24 (SUPERSEDED 2026-06-24, origin: PITFALLS.md, reason: #289 auto-tag removed): Auto-tag FAILED_APIS leak
+- **Original entry**: Ensure `run-instrumentation.sh` clears `FAILED_APIS` on retry success so auto-tagging functions correctly.
+- **Origin**: PITFALLS.md
+- **Reason**: The entire auto-tag mechanism was removed in #289 (replaced with a heads-up banner). The `FAILED_APIS` clear-on-retry logic remains in the script, but the pitfall about auto-tagging correctness is moot.
+
+## 2026-06-24 (origin: discovered/fixed same day, reason: #289): `Assume.assumeTrue()` false-green on API 30 backup-restore tests
+- `BackupRestoreInstrumentedTest` used `Assume.assumeTrue(zipFile.exists())` to guard on the fixture. The script pushed the fixture via `adb push` to `/sdcard/Android/data/<pkg>/files/`, which failed on API 30 scoped storage (permission denied). The `Assume` skip caused `AndroidJUnitRunner` to report `OK (4 tests)` with 0 dots and exit 0 — a false green. The #289 issue went unnoticed until a targeted `--api 30` run revealed Phase 2 had zero dots. **Fix**: self-provision fixture from `app/src/androidTest/res/raw/` (no `adb push`); add `FailOnAssumptionSkipListener` as a future-regression guard; remove the dot-parser (GPU log interleaving broke it on API 34).

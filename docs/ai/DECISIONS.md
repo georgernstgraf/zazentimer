@@ -646,6 +646,24 @@ Each entry documents WHAT was decided and WHY.
 - **Considered**: Big-bang (rejected — too risky, Hilt KSP breaks would be untraceable across 20 files). Keeping `DbOperations` as a thin alias (rejected — no reflection/serialization needs it; full dissolution is cleaner).
 - **Tradeoff**: 6 commits of churn across nearly every screen + the DB layer; higher regression risk than usual, mitigated by the phased approach + instrumented spot-checks (API 23 PASS) at each phase. The repos' public methods match the façade's exactly, so call-site method names didn't change — only the receiver type.
 
+## 2026-06-24: Self-provision backup fixture via raw resource (#289)
+- **Choice**: `BackupRestoreInstrumentedTest` copies the fixture from `app/src/androidTest/res/raw/zentimer_backup_room_v2.zip` to the test's `zipFile` in `@Before`, replacing `Assume.assumeTrue(zipFile.exists())` + the script's `adb push` machinery.
+- **Reason**: The `adb push` to `/sdcard/Android/data/<pkg>/files/` failed on API 30 scoped storage (permission denied). `Assume.assumeTrue` then silently skipped all 4 backup-restore tests → `OK (4 tests)` with 0 dots = false green. Self-provisioning from the test APK's raw resources works on all API levels with no permission/scoped-storage dependency (same pattern as #291).
+- **Considered**: Granting additional storage permissions (fragile, API-dependent), pushing to a different directory (still permission-sensitive on API 30+).
+- **Tradeoff**: The fixture ZIP (~285 KB) is packaged into the test APK, slightly increasing its size. The JVM unit test `RealBackupRestoreTest` still reads its copy from `app/src/test/resources/backups/` (unchanged).
+
+## 2026-06-24: FailOnAssumptionSkipListener — in-process assumption-skip guard (#289)
+- **Choice**: Added `FailOnAssumptionSkipListener` (a JUnit `RunListener`) registered via `am instrument -e listener <FQCN>`. On `testAssumptionFailure()`, it prints a `FAIL_ON_ASSUMPTION_SKIP` marker and calls `Process.killProcess(myPid())`, crashing the instrumentation process so the phase fails fast.
+- **Reason**: `AndroidJUnitRunner` reports assumption-skipped tests as `OK (N tests)` with no failure — the phase exits 0. This produced the #289 false-green. A RunListener is in-process (immune to stdout log interleaving) and fires on the exact JUnit event. No `Assume` usages remain in the test suite today; the listener is a future-regression guard.
+- **Considered**: Re-parsing `am instrument` stdout dots (the previous approach) — GPU/SwiftShader `_glBindAttribLocation` log lines interleave into the dots line on API 34, breaking the parser. A custom `AndroidJUnitRunner` subclass (heavier, changes runner config).
+- **Tradeoff**: `Process.killProcess` is abrupt (no graceful test teardown), but this is intentional — an assumption-skip is always a test-infrastructure bug, never a valid test outcome in this suite.
+
+## 2026-06-24: Remove auto-tag mechanism, replace with heads-up banner (#289)
+- **Choice**: Removed the `git tag tested-${TODAY}` / `git push origin` block from `run-instrumentation.sh`. Replaced with a heads-up banner that prints `ALL TESTS PASSED — ready to commit & tag!` with the manual `git tag` command.
+- **Reason**: The auto-tag landed on HEAD-at-green, which was the pre-fix commit (uncommitted changes in the working tree). This produced misleading tags (e.g. `tested-2026-06-22` on the wrong commit). The tag should be created on the fix commit, which requires manual `git add && git commit` first.
+- **Considered**: Auto-tagging after detecting a clean working tree (still wrong — the fix isn't committed yet at green time).
+- **Tradeoff**: The user must manually run `git tag tested-$(date +%F) && git push origin tested-$(date +%F)` after committing. `tested-*` tags trigger no workflows (ci.yml = branches only, release.yml = `v*` only), so a missed tag has no functional impact.
+
 ## 2026-06-19: Defer #267 (large naming sweeps)
 - **Choice**: Deferred #267 (test-method + layout-ID normalization to snake_case). Leave as-is.
 - **Reason**: Purely cosmetic; high blast radius (~83 test methods across ~30 files + ~50 layout IDs across 18 layouts + every `R.id.xxx` ref). #268 just churned many of the same files (all fragments, repos, tests). The issue itself recommends opportunistic one-offs and revisiting "when ktlint/detekt naming rules are adopted." Poor timing right after #268's heavy churn.

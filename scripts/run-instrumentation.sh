@@ -106,7 +106,6 @@ PHASE2_CLASSES=""
 
 APP_APK="$PROJECT_DIR/app/build/outputs/apk/debug/app-debug.apk"
 TEST_APK="$PROJECT_DIR/app/build/outputs/apk/androidTest/debug/app-debug-androidTest.apk"
-BACKUP_FIXTURE="$PROJECT_DIR/app/src/test/resources/backups/zentimer_backup_room_v2.zip"
 
 # ──────────────────────────────────────────────
 # Logging
@@ -343,35 +342,6 @@ install_apks() {
 }
 
 # ──────────────────────────────────────────────
-# push_backup_fixture — push to app-specific external files dir
-# (accessible without storage permissions on all API levels)
-# ──────────────────────────────────────────────
-push_backup_fixture() {
-    local serial=$1
-    local app_pkg="${TEST_PACKAGE%.test}"
-    local ext_dir="/sdcard/Android/data/$app_pkg/files"
-    if [ -f "$BACKUP_FIXTURE" ]; then
-        log_api "Pushing backup fixture to app external files dir..."
-        adb -s "$serial" shell mkdir -p "$ext_dir" 2>/dev/null || true
-        adb -s "$serial" push "$BACKUP_FIXTURE" "$ext_dir/" 2>&1 | tee -a "$API_LOG" || {
-            log_api "WARNING: Failed to push backup fixture"
-        }
-    else
-        log_api "WARNING: Backup fixture not found at $BACKUP_FIXTURE — skipping push"
-    fi
-}
-
-# ──────────────────────────────────────────────
-# remove_backup_fixture
-# ──────────────────────────────────────────────
-remove_backup_fixture() {
-    local serial=$1
-    local app_pkg="${TEST_PACKAGE%.test}"
-    local ext_dir="/sdcard/Android/data/$app_pkg/files"
-    adb -s "$serial" shell rm -f "$ext_dir/zentimer_backup_room_v2.zip" 2>/dev/null || true
-}
-
-# ──────────────────────────────────────────────
 # grant_storage_permissions — MANAGE_EXTERNAL_STORAGE for API 30+
 # ──────────────────────────────────────────────
 grant_storage_permissions() {
@@ -399,12 +369,12 @@ run_test_phase() {
     local label=$3
 
     log_api "Running $label..."
-    log_api "  Command: am instrument -w -e class $classes $TEST_PACKAGE/$RUNNER"
+    log_api "  Command: am instrument -w -e listener at.priv.graf.zazentimer.FailOnAssumptionSkipListener -e class $classes $TEST_PACKAGE/$RUNNER"
 
     local phase_output
     local result=0
     set +e
-    phase_output=$(timeout -s KILL 900 adb -s "$serial" shell am instrument -w -e class "$classes" "$TEST_PACKAGE/$RUNNER" 2>&1)
+    phase_output=$(timeout -s KILL 900 adb -s "$serial" shell am instrument -w -e listener at.priv.graf.zazentimer.FailOnAssumptionSkipListener -e class "$classes" "$TEST_PACKAGE/$RUNNER" 2>&1)
     result=$?
     set -e
     echo "$phase_output" >> "$API_LOG"
@@ -560,9 +530,6 @@ run_api_tests() {
         return 0
     fi
 
-    log_phase "$api_level" "pushing backup fixture"
-    push_backup_fixture "$serial"
-
     log_phase "$api_level" "granting storage permissions"
     grant_storage_permissions "$serial" "$TEST_PACKAGE" "$api_level"
 
@@ -594,7 +561,6 @@ run_api_tests() {
 
     # Cleanup
     log_phase "$api_level" "cleanup"
-    remove_backup_fixture "$serial"
 
     local total_result=$((phase1_result + phase2_result))
     if [ $total_result -ne 0 ]; then
@@ -841,18 +807,14 @@ done
 # ──────────────────────────────────────────────
 print_summary
 
-# Auto-tag on green full-matrix run (real display, no --api filter)
-if [ $UNIT_RESULT -eq 0 ] && [ ${#FAILED_APIS[@]} -eq 0 ] && [ "$IS_REAL_DISPLAY" = true ] && [ ${#TARGET_APIS[@]} -eq 0 ]; then
-    TAG="tested-${TODAY}"
-    if git tag -l "$TAG" | grep -q "$TAG"; then
-        log "Tag $TAG already exists — skipping"
-    else
-        log "All tests passed on real display — tagging HEAD as $TAG"
-        git tag "$TAG" HEAD
-        git push origin "$TAG"
-    fi
-elif [ $UNIT_RESULT -eq 0 ] && [ ${#FAILED_APIS[@]} -eq 0 ] && [ "$IS_REAL_DISPLAY" = false ]; then
-    log "All tests passed but running under Xvfb — skipping auto-tag"
+# Heads-up on green full-matrix run (no auto-tag — commit first, then tag manually)
+if [ $UNIT_RESULT -eq 0 ] && [ ${#FAILED_APIS[@]} -eq 0 ]; then
+    log ""
+    log "========================================================="
+    log "  ALL TESTS PASSED — ready to commit & tag!"
+    log "  After committing your changes, run:"
+    log "    git tag tested-${TODAY} && git push origin tested-${TODAY}"
+    log "========================================================="
 fi
 
 if [ $UNIT_RESULT -ne 0 ]; then

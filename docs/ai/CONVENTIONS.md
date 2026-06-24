@@ -34,7 +34,7 @@ Follow these without question. Do not deviate unless explicitly told.
 - **Two-phase test execution**: Phase 1 runs all tests except `BackupRestoreInstrumentedTest`. Phase 2 runs `BackupRestoreInstrumentedTest` last. A corrupted DB from backup restore must not block other tests.
 - **Physical device preferred**: `resolve_physical_device()` checks `adb devices` for non-emulator devices first. If found, uses that device. Only falls back to emulator if no physical device is connected.
 - **Source-tree class discovery**: Phase 1 classes are discovered from `app/src/androidTest/kotlin/at/priv/graf/zazentimer/*Test.kt`, excluding `AbstractZazenTest`, `BackupRestoreInstrumentedTest`, and `BackupTest`. No hardcoded class lists.
-- **Backup fixture location**: Push to `/sdcard/Download/` (not `/data/local/tmp/`). The SAF file picker can browse `/sdcard/Download/` but not `/data/local/tmp/`. Test manifest declares `MANAGE_EXTERNAL_STORAGE` for API 30+ access.
+- **Backup test self-provisions fixture**: `BackupRestoreInstrumentedTest` copies the fixture from `app/src/androidTest/res/raw/zentimer_backup_room_v2.zip` to the test's `zipFile` in `@Before`. No `adb push` needed (the old push to `/sdcard/Download/` failed on API 30 scoped storage — see #289). The raw resource is accessed via `InstrumentationRegistry.getInstrumentation().context.resources.openRawResource(TestR.raw.zentimer_backup_room_v2)` (test context, aliased `TestR`).
 - **Launching long-running instrumentation test runs**: Use `nohup` with background execution for full 14-API matrix runs:
   ```
   nohup scripts/run-instrumentation.sh > logs/full-run-$(date +%Y-%m-%d).log 2>&1 &
@@ -45,7 +45,7 @@ Follow these without question. Do not deviate unless explicitly told.
   - `tail -20 logs/full-run-$(date +%Y-%m-%d).log` — latest combined output
   - `ls -la logs/api*-$(date +%Y-%m-%d)*.log` — which per-API logs exist and their sizes
   - `scripts/summarize-tests.sh` — formatted report after completion
-  - The script auto-tags `tested-YYYY-MM-DD` on full green runs with real `$DISPLAY`
+  - The script prints a heads-up banner on full green runs (no auto-tag — commit first, then tag manually: `git tag tested-$(date +%F)`)
   - The script is fail-fast by default; use `--continue-on-error` to run all levels even if some fail
   - The repo must be clean (no dirty git) before the script starts
   - **Never use the `echo ... | at now` pattern from the bash tool** — `nohup &` works because the background process outlives the tool's shell
