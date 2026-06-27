@@ -40,20 +40,6 @@ abstract class CommitCountSource : ValueSource<String, ValueSourceParameters.Non
     }
 }
 
-abstract class HostnameSource : ValueSource<String, ValueSourceParameters.None> {
-    override fun obtain(): String {
-        val process =
-            ProcessBuilder("hostname", "-s")
-                .directory(File(System.getProperty("user.dir")))
-                .start()
-        process.waitFor()
-        return process.inputStream
-            .bufferedReader()
-            .readText()
-            .trim()
-    }
-}
-
 plugins {
     id("com.android.application")
     id("com.google.dagger.hilt.android")
@@ -77,8 +63,8 @@ android {
         // 4. release.yml → signs + uploads to Play Store
         // 5. F-Droid auto-update picks up new tag automatically
         //    (regex: versionCode\s*=\s*(\d+), versionName\s*=\s*"(.+)")
-        versionCode = 3020000
-        versionName = "3.2.0"
+        versionCode = 3020100
+        versionName = "3.2.1"
 
         testInstrumentationRunner = "at.priv.graf.zazentimer.HiltTestRunner"
         testInstrumentationRunnerArguments["testTimeoutSeconds"] = "120"
@@ -89,9 +75,6 @@ android {
         val commitCount = providers.of(CommitCountSource::class.java) {}.get().trim()
         val versionDisplay = if (commitCount == "0") versionName else "$versionName+$commitCount"
         buildConfigField("String", "VERSION_DISPLAY", "\"$versionDisplay\"")
-
-        val buildHost = providers.of(HostnameSource::class.java) {}.get().trim()
-        buildConfigField("String", "BUILD_HOST", "\"$buildHost\"")
 
         ksp {
             arg("room.schemaLocation", "$projectDir/schemas")

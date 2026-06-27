@@ -352,7 +352,7 @@ class ZazenTimerActivity :
         val dbVersion = databaseOwner.getActualDatabaseVersion()
         val message =
             "Version: ${BuildConfig.VERSION_DISPLAY}<br>" +
-                "Details: ${BuildConfig.BUILD_TYPE}@${BuildConfig.BUILD_HOST}<br>" +
+                "Details: ${BuildConfig.BUILD_TYPE}<br>" +
                 "Commit: ${BuildConfig.GIT_HASH}<br>" +
                 "Room DB: v$dbVersion<br><br>" +
                 "${getString(R.string.about1)}<br><br>" +
