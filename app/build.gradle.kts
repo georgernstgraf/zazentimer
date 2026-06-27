@@ -63,8 +63,8 @@ android {
         // 4. release.yml → signs + uploads to Play Store
         // 5. F-Droid auto-update picks up new tag automatically
         //    (regex: versionCode\s*=\s*(\d+), versionName\s*=\s*"(.+)")
-        versionCode = 3020100
-        versionName = "3.2.1"
+        versionCode = 3020200
+        versionName = "3.2.2"
 
         testInstrumentationRunner = "at.priv.graf.zazentimer.HiltTestRunner"
         testInstrumentationRunnerArguments["testTimeoutSeconds"] = "120"
@@ -97,6 +97,13 @@ android {
     lint {
         abortOnError = false
         checkReleaseBuilds = false
+    }
+
+    dependenciesInfo {
+        // AGP embeds a "Dependency metadata" APK signing block by default, which
+        // F-Droid's scanner rejects. Disable it for APKs (the Play AAB keeps its
+        // own metadata via includeInBundle's default).
+        includeInApk = false
     }
 
     buildFeatures {
