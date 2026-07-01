@@ -2,25 +2,34 @@ AuthorName: Georg Graf
 AuthorEmail: georg.ernst.graf@gmail.com
 SourceCode: https://github.com/georgernstgraf/zazentimer
 IssueTracker: https://github.com/georgernstgraf/zazentimer/issues
+Changelog: https://github.com/georgernstgraf/zazentimer/releases
 License: MIT
 Categories:
-  - Health & Fitness
-  - Lifestyle
-  - Time
+  - Meditation
+  - Timer
 
-AutoUpdateMode: Version
-UpdateCheckMode: Tags
-CurrentVersion: 3.2.0
-CurrentVersionCode: 3020000
+AutoName: Zazen Meditation Timer
+
+RepoType: git
+Repo: https://github.com/georgernstgraf/zazentimer.git
+Binaries: https://github.com/georgernstgraf/zazentimer/releases/download/v%v/zazentimer.apk
 
 Builds:
-  - versionName: 3.2.0
-    versionCode: 3020000
-    commit: v3.2.0
+  - versionName: 3.2.2
+    versionCode: 3020200
+    commit: v3.2.2
+    subdir: app
     gradle:
-      - assemble
-    gradleprops:
-      - versionCode=3020000
-      - versionName=3.2.0
-    prebuild:
-      - sed -i '/com.google.android.play.privacy-policy-url/d' app/src/main/AndroidManifest.xml
+      - yes
+    prebuild: sed -i '/com.google.android.play.privacy-policy-url/d' src/main/AndroidManifest.xml
+    scandelete:
+      - app/src/androidTest/res/raw
+      - app/src/test/resources/backups
+
+AllowedAPKSigningKeys: 8b5671f4de1462a02b1100c0e13bc9992f5ea6c8b5ab3cd707990805215f76d7
+
+AutoUpdateMode: Version
+UpdateCheckMode: Tags ^v
+UpdateCheckData: app/build.gradle.kts|versionCode\s*=\s*(\d+)|.|versionName\s*=\s*"(.+)"
+CurrentVersion: 3.2.2
+CurrentVersionCode: 3020200

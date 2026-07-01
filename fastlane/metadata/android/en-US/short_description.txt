@@ -1,1 +1,1 @@
-A meditation timer for Zazen practice with customizable multi-section sessions, authentic bell sounds, and reliable background timing.
+Zazen meditation timer with multi-section sessions and bell sounds.

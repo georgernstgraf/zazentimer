@@ -75,7 +75,7 @@ Follow these without question. Do not deviate unless explicitly told.
 Manual process (no release script — the historical `scripts/release.sh` reference was a stub that was never created).
 
 1. Bump `versionCode` + `versionName` in `app/build.gradle.kts`. versionCode follows `<major><minor 2-digit><patch 2-digit>00` (e.g. 3.2.0 → 3020000). `.github/workflows/release.yml` computes versionCode from the tag with the same formula — keep them in sync.
-2. Sync `.fdroid.yml`: update `CurrentVersion`, `CurrentVersionCode`, and the single `Builds:` entry (`versionName`, `versionCode`, `commit: vX.Y.Z`, `gradleprops`). Do NOT quote `versionName:` or `CurrentVersion:` (per F-Droid Metadata conventions below).
+2. Sync `.fdroid.yml`: update `CurrentVersion`, `CurrentVersionCode`, and the single `Builds:` entry (`versionName`, `versionCode`, `commit: vX.Y.Z`). Version is static in `build.gradle.kts` (no `gradleprops` — the dynamic-version era ended in #242). Do NOT quote `versionName:` or `CurrentVersion:` (per F-Droid Metadata conventions below).
 3. Update `distribution/whatsnew/whatsnew-en-GB` with curated "What's new" text (Play Store reads this via `r0adkll/upload-google-play@v1`'s `whatsNewDirectory` parameter). Keep lines ≤80 chars; the file is plain text.
 4. `git add . && git commit -m "chore: bump version to X.Y.Z"`
 5. `git tag vX.Y.Z`
@@ -83,13 +83,18 @@ Manual process (no release script — the historical `scripts/release.sh` refere
 7. F-Droid's `AutoUpdateMode: Version` + `UpdateCheckMode: Tags` picks up the new tag automatically; the in-repo `.fdroid.yml` is the build recipe. An MR in `fdroiddata` is only needed for the initial submission (done in #242) or metadata config changes — not for routine version bumps.
 
 ## F-Droid Metadata
+- **Active submission MR:** https://gitlab.com/fdroid/fdroiddata/-/merge_requests/39945 (New App: Zazen Meditation Timer). Use `glab` CLI (authenticated as `schurlix`) for all GitLab API access — `gh` only works for GitHub. The MR metadata lives at `metadata/at.priv.graf.zazentimer.yml` in the fdroiddata repo; the app repo's `.fdroid.yml` is the build-recipe template that `AutoUpdateMode: Version` reads on new tags.
 - `.fdroid.yml` in project root contains the F-Droid build recipe.
 - `prebuild:` must be a single line (not a YAML list).
 - `versionName:` and `CurrentVersion:` must NOT be quoted.
 - Use `gradle: - yes` (not explicit task names) — F-Droid handles task selection.
-- `AutoUpdateMode: None` + `UpdateCheckMode: None` for initial submission; switch to `Tags` + `Version` for auto-updates later.
+- `subdir: app` is required so F-Droid finds the APK output.
+- `scandelete:` must list `app/src/androidTest/res/raw` and `app/src/test/resources/backups` — these contain binary blobs (backup ZIPs, audio fixtures) that F-Droid's scanner flags.
+- Reproducible builds: `Binaries:` (signed reference APK URL) + `AllowedAPKSigningKeys:` (release signing key hash). The reference APK is published from `.github/workflows/fdroid-apk.yml`, separate from the Play AAB pipeline.
+- `AutoUpdateMode: Version` + `UpdateCheckMode: Tags ^v` + `UpdateCheckData` regex extracts versionCode/versionName from `app/build.gradle.kts` on new tags.
 - `SOUND_LICENSES.md` documents audio asset licensing for F-Droid compliance.
 - Backup test ZIP files live in `app/src/test/resources/backups/` with `_old` suffix. Do NOT place ZIP files in `databases/` — F-Droid scanner flags them as binary blobs.
+- **Fastlane `short_description.txt` must be < 80 characters** (F-Droid enforces this; Play Store allows 80). The summary is pulled from the app repo's `fastlane/metadata/android/en-US/` structure, NOT from the fdroiddata metadata file.
 
 ## Prisma — Device DB
 - `prisma/desired/schema.prisma` is **human-only** — hand-crafted SOLL schema. Never auto-generate or edit by agent.
